@@ -130,11 +130,13 @@ def test_uncertain_heading_stops_context_unit(monkeypatch, engine):
     assert_preserved(req, result)
 
 
-def test_api_requires_verified_extraction():
+def test_api_groups_before_optional_manual_verification():
     payload = {'elements':[{'type':'Title','text':'Skills','metadata':{}}]}
-    assert client.post('/api/v1/resume/sections',json=payload).status_code == 422
+    response = client.post('/api/v1/resume/sections',json=payload)
+    assert response.status_code == 200
+    assert response.json()['extraction_verified'] is False
     payload['extraction_verified'] = False
-    assert client.post('/api/v1/resume/sections',json=payload).status_code == 422
+    assert client.post('/api/v1/resume/sections',json=payload).status_code == 200
     payload['extraction_verified'] = True
     payload['elements'][0]['text'] = ' '
     assert client.post('/api/v1/resume/sections',json=payload).status_code == 422
@@ -326,3 +328,83 @@ def test_preamble_name_and_headline_stay_with_explicit_contact(engine):
     summary = next(s for s in result.sections if s.category == 'summary')
     assert req.elements[4].text in [b.text for b in summary.blocks]
     assert_preserved(req, result)
+
+
+def test_pdf_columns_merged_headings_and_full_width_continuation(engine):
+    from pypdf import PdfWriter
+    from pypdf.generic import DictionaryObject, NameObject, DecodedStreamObject
+    from local_api.services.text_extraction_service import extract_text
+    class Canvas:
+        def __init__(self, stream, pagesize):
+            self.stream, self.size, self.commands = stream, pagesize, []
+            self.writer = PdfWriter()
+        def setFont(self, font, size):
+            self.font, self.font_size = ('F2' if 'Bold' in font else 'F1'), size
+        def drawString(self, x, y, text):
+            escaped = text.replace('\\', '\\\\').replace('(', '\\(').replace(')', '\\)')
+            self.commands.append(f'BT /{self.font} {self.font_size} Tf {x} {y} Td ({escaped}) Tj ET')
+        def showPage(self):
+            page = self.writer.add_blank_page(*self.size)
+            fonts = DictionaryObject()
+            for key, face in [('F1', 'Helvetica'), ('F2', 'Helvetica-Bold')]:
+                font = DictionaryObject({NameObject('/Type'):NameObject('/Font'), NameObject('/Subtype'):NameObject('/Type1'), NameObject('/BaseFont'):NameObject('/'+face)})
+                fonts[NameObject('/'+key)] = self.writer._add_object(font)
+            page[NameObject('/Resources')] = DictionaryObject({NameObject('/Font'):fonts})
+            contents = DecodedStreamObject(); contents.set_data('\n'.join(self.commands).encode('ascii'))
+            page[NameObject('/Contents')] = self.writer._add_object(contents)
+            self.commands = []
+        def save(self):
+            self.showPage(); self.writer.write(self.stream)
+    stream = BytesIO()
+    canvas = Canvas(stream, pagesize=(600, 840))
+    def line(x, y, text, heading=False):
+        canvas.setFont('Helvetica-Bold' if heading else 'Helvetica', 16 if heading else 9)
+        canvas.drawString(x, y, text)
+    line(25, 790, 'Morgan Taylor', True)
+    line(25, 740, 'Contact', True); line(25, 722, 'morgan@example.com')
+    line(230, 740, 'Profile Snapshot', True); line(230, 722, 'Experienced banking transformation specialist.')
+    line(25, 650, 'Skills', True); line(25, 632, 'Project management'); line(25, 618, 'SQL and communication')
+    line(230, 650, 'Core Industry & Domain Expertise', True); line(230, 632, 'Retail lending and regulatory compliance')
+    line(230, 560, 'Business Analysis & Product Management', True); line(230, 542, 'Requirement elicitation and backlog ownership')
+    line(25, 280, 'Certifications', True); line(25, 262, 'Agile coaching certificate')
+    canvas.showPage()
+    line(25, 790, 'Program management certificate')
+    line(230, 740, 'Work History', True)
+    line(230, 714, 'Novus Bank Ltd | Jan 2020 - Dec 2022')
+    line(230, 699, 'Senior Analyst'); line(230, 678, 'Built credit reconciliation services.')
+    line(25, 110, 'Next Systems Ltd | Jan 2023 - Present')
+    line(25, 94, 'Lead Analyst')
+    canvas.showPage()
+    line(25, 790, 'Led enterprise-wide delivery across lending, payments and regulatory reporting.')
+    line(25, 610, 'Tools & Technology', True); line(25, 590, 'Professional'); line(25, 574, 'Python SQL Docker')
+    line(25, 500, 'Education', True); line(25, 480, 'MBA Finance, Example University, 2018')
+    line(25, 40, 'Place: London')
+    canvas.save()
+    extracted = extract_text(stream.getvalue(), 'synthetic-columns.pdf', strategy='fast')
+    assert any(e.metadata.get('pdf_source_lines') for e in extracted.elements)
+    req = SectionRequest(elements=extracted.elements, extraction_verified=True)
+    response = engine.detect(req)
+    sections = {s.category:s for s in response.sections}
+    expected = {'personal_information': ['Morgan Taylor', 'Place: London'],
+                'summary': ['Experienced banking transformation specialist.'],
+                'skills': ['Project management', 'Retail lending', 'Requirement elicitation', 'Python SQL Docker'],
+                'certifications': ['Agile coaching certificate', 'Program management certificate'],
+                'experience': ['Novus Bank', 'Next Systems', 'Led enterprise-wide delivery'],
+                'education': ['MBA Finance']}
+    for category, markers in expected.items():
+        for marker in markers:
+            assert marker in sections[category].text, (category, marker)
+            assert not any(marker in s.text for s in response.sections if s.category != category)
+    assert 'projects' not in sections
+    assert 'Program management certificate' not in sections['experience'].text
+    assert_preserved(req, response)
+
+
+def test_canonical_text_merges_wordpiece_spans_without_inserting_spaces(engine):
+    req = request(['Work History\n' + 'Extraordinary' * 240 + '\nEducation\nMBA Finance'])
+    response = engine.detect(req)
+    experience = next(s for s in response.sections if s.category == 'experience')
+    assert 'Extraordinary' * 240 in experience.text
+    assert 'MBA Finance' not in experience.text
+    assert len({s.category for s in response.sections}) == len(response.sections)
+    assert_preserved(req, response)

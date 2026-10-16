@@ -14,9 +14,10 @@ RECORD_FIELDS = {'technologies', 'technology', 'tools', 'tool', 'tech stack',
 EXTRA_HEADINGS = {
     'personal_information': ['contact', 'personal info'],
     'summary': ['objective', 'career summary', 'executive summary', 'profile snapshot', 'profile summary'],
+    'projects': ['key projects', 'project highlights'],
     'experience': ['employment', 'professional background', 'work history'],
     'education': ['qualifications', 'educational background'],
-    'skills': ['key strengths', 'technical competencies', 'core skills'],
+    'skills': ['key strengths', 'technical competencies', 'core skills', 'domain expertise', 'business analysis and product management', 'tools and technology'],
     'certifications': ['certificates', 'training'],
 }
 
@@ -97,3 +98,13 @@ def entry_groups(blocks, category, elements):
             active[key] = group
         active[key]['block_indices'].append(index)
     return groups
+
+
+def employment_start(text):
+    from local_api.vendor.resume_semantic_blocks import PERIOD, employment_header, ACTION, EDUCATION
+    period = PERIOD.search(text)
+    prefix = text[:period.start()].strip(' |,–—-') if period else ''
+    if not period or len(text.split()) > 30 or EDUCATION.search(prefix) or ACTION.search(prefix):
+        return False
+    business = re.search(r'\b(?:ltd|limited|inc|llc|corp|corporation|systems|services|bank)\b', prefix, re.I)
+    return bool(employment_header(text) or business or ('|' in text[:period.start()] and len(prefix.split()) <= 14))

@@ -66,6 +66,14 @@ def extract_text(payload: bytes, filename: str, strategy: Strategy = 'auto',
         elements = partition(file=stream, content_type=detected.mime_type,
                              metadata_filename=filename, strategy=strategy, languages=['eng'])
         serialized = [e.to_dict() for e in elements]
+        if detected == FileType.PDF and include_elements:
+            # Supplemental typography/line offsets recover headings merged by
+            # partitioning. Failures never change the raw extraction contract.
+            try:
+                from local_api.services.pdf_section_layout import annotate_pdf_lines
+                annotate_pdf_lines(payload, serialized)
+            except Exception as exc:
+                logger.warning('PDF section layout unavailable: %s', type(exc).__name__)
         # Uploads carry no local filesystem identity. Never expose parser paths.
         for element in serialized:
             metadata = element.setdefault('metadata', {})

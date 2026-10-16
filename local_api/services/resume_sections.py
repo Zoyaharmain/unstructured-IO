@@ -10,10 +10,11 @@ import threading
 
 import numpy as np
 
-from local_api.schemas.sections import SectionRequest, SectionResponse, ResumeSection, SectionBlock, ReadableGroup
+from local_api.schemas.sections import SectionRequest, SectionResponse, ResumeSection, SectionBlock, ReadableGroup, SectionHighlight
 from local_api.utils.file_validation import ExtractionError
+from local_api.services.section_highlights import highlight_kind
 from local_api.services.readable_resume import readable_groups
-from local_api.services.resume_structure import heading_aliases, heading_boundary, entry_groups, RECORD_FIELDS, normalized_heading
+from local_api.services.resume_structure import heading_aliases, heading_boundary, entry_groups, RECORD_FIELDS, normalized_heading, employment_start
 
 MODEL_CONFIG = json.loads((Path(__file__).parents[1] / 'data/section_model.json').read_text())
 MODEL_ID = MODEL_CONFIG['model_id']
@@ -25,6 +26,28 @@ _load_lock = threading.Lock()
 _engine = None
 
 
+def build_sections(grouped, elements):
+    sections = [ResumeSection(category=key, label=ANCHORS[key]['label'], blocks=blocks, entries=entry_groups(blocks, key, elements)) for key, blocks in grouped.items()]
+    for section in sections:
+        parts, previous, cursor = [], None, 0
+        for block in section.blocks:
+            separator = '' if previous is None or (previous.source_element_index == block.source_element_index and previous.end == block.start) else '\n'
+            cursor += len(separator)
+            kind=highlight_kind(section.category,block,elements[block.source_element_index])
+            if kind:
+                start=cursor+len(block.text)-len(block.text.lstrip())
+                end=cursor+len(block.text.rstrip())
+                if end>start:section.highlights.append(SectionHighlight(start=start,end=end,kind=kind))
+            parts.append(separator + block.text)
+            cursor += len(block.text)
+            previous = block
+        section.text = ''.join(parts)
+        section.source_heading = next((block.text.strip().rstrip(':') for block in section.blocks
+                                       if block.assignment in {'section_heading', 'structural_heading'}), None)
+        section.readable_blocks = [ReadableGroup.model_validate(group) for group in readable_groups(section, elements)]
+    return sections
+
+
 @dataclass
 class Unit:
     index: int
@@ -32,6 +55,8 @@ class Unit:
     end: int
     text: str
     lane: str
+    heading_style: bool = False
+    margin_footer: bool = False
 
 
 class SemanticClusters:
@@ -96,11 +121,21 @@ class SectionEngine:
                 encoded = self.encoder.tokenizer(line, add_special_tokens=False, return_offsets_mapping=True, truncation=False)
                 offsets = encoded['offset_mapping']
                 _, inline_cut = heading_boundary(line, ALIASES)
-                cuts = sorted(set([0] + [offsets[i][0] for i in range(200, len(offsets), 200)] + ([inline_cut] if inline_cut else []) + [len(line)]))
+                line_hints = element.metadata.get('pdf_source_lines', [])
+                hint_cuts = [max(0, min(len(line), hint[key] - offset)) for hint in line_hints for key in ('start', 'end') if isinstance(hint.get(key), int) and offset <= hint[key] <= offset + len(line)]
+                recovery_cuts = [cut-offset for cut in element.metadata.get('recovery_cuts', []) if isinstance(cut,int) and offset <= cut <= offset+len(line)]
+                cuts = sorted(set(recovery_cuts + hint_cuts + [0] + [offsets[i][0] for i in range(200, len(offsets), 200)] + ([inline_cut] if inline_cut else []) + [len(line)]))
                 if not line:
                     cuts = [0, 0]
                 for start, end in zip(cuts, cuts[1:]):
-                    units.append(Unit(index, offset + start, offset + end, line[start:end], lanes[index]))
+                    matching = [hint for hint in line_hints if hint.get('start', -1) <= offset + start and hint.get('end', -1) >= offset + end]
+                    hint = min(matching, key=lambda item: item['end']-item['start']) if matching else (min(line_hints, key=lambda item: abs(item['start'] - (offset + start))) if line_hints else None)
+                    lane = lanes[index]
+                    if hint and len(hint.get('bbox', [])) == 4:
+                        lane = 'left' if hint['bbox'][0] < .32 else 'right'
+                        if hint['bbox'][2] - hint['bbox'][0] > .65:
+                            lane = 'wide'
+                    units.append(Unit(index, offset + start, offset + end, line[start:end], lane, bool(hint and hint.get('heading_style')), bool(hint and len(hint.get('bbox', [])) == 4 and hint['bbox'][1] > .85)))
                 offset += len(line)
         if len(units) > 2000:
             raise ExtractionError(422, 'Section detection supports up to 2,000 text units')
@@ -132,6 +167,10 @@ class SectionEngine:
             for owner, (label, _, score, margin) in zip(part_owners, self.headings.score(part_vectors, headings=True)):
                 if score >= .85 and margin >= .12:
                     compounds.setdefault(owner, set()).add(label)
+        page_heading_lanes = {}
+        for unit in units:
+            if heading_boundary(unit.text, ALIASES)[0]:
+                page_heading_lanes.setdefault(request.elements[unit.index].page_number, set()).add(unit.lane)
         grouped, review, contexts = {}, [], {}
         first_heading = next((i for i, (_, _, score, margin) in enumerate(headers)
                               if request.elements[units[i].index].type not in {'Footer', 'PageBreak'} and
@@ -146,10 +185,17 @@ class SectionEngine:
             context = contexts.get(unit.lane)
             short = len(unit.text.split()) <= 12
             structural_label, _ = heading_boundary(unit.text, ALIASES)
+            if unit.heading_style and re.search(r'\b(?:domain|technical) expertise$', normalized_heading(unit.text)):
+                structural_label = 'skills'
+            following = next((contents[j] for j in range(position+1,min(len(contents),position+6)) if units[j].text.strip()), None)
+            if structural_label == 'languages' and context and context[0] == 'skills' and following and following[0] == 'skills' and following[2] >= .4:
+                structural_label = 'skills'
             record_field = ':' in unit.text and normalized_heading(unit.text.split(':', 1)[0]) in RECORD_FIELDS
             alternatives = sorted(compounds.get(position, set()))
             compound = len(alternatives) > 1
-            is_heading = (structural_label is not None or (short and hscore >= .72 and hmargin >= .09 and (not context or not context[2] or element.type in {'Title', 'Header'}))) and not compound and not record_field and element.type not in {'Footer', 'PageBreak'}
+            employer_boundary = employment_start(unit.text)
+            page_artifact = element.type == 'PageBreak' or (element.type == 'Footer' and bool(re.fullmatch(r'\s*(?:page\s*)?\d+(?:\s*(?:of|/)\s*\d+)?\s*', unit.text, flags=re.I)))
+            is_heading = (structural_label is not None or (short and hscore >= .72 and hmargin >= .09 and (not context or not context[2] or unit.heading_style or (not element.metadata.get('pdf_source_lines') and element.type in {'Title', 'Header'})))) and not compound and not record_field and not page_artifact and not employer_boundary
             assignment, reason = 'semantic', 'BERT embedding assigned to a labeled K-means centroid'
             if compound:
                 contexts.pop(unit.lane, None)
@@ -157,23 +203,36 @@ class SectionEngine:
                     contexts.clear()
                 candidate = None
                 assignment, reason = 'needs_review', 'Combined heading contains multiple BERT-recognized section families'
-            elif element.type in {'Footer', 'PageBreak'}:
+            elif page_artifact:
                 assignment, reason = 'needs_review', 'Layout footer or page separator retained outside semantic sections'
+            elif unit.margin_footer and re.match(r'\s*(?:place|date)\s*:', unit.text, re.I):
+                label = 'personal_information'
+                assignment, reason = 'personal_detail', 'Location/date signature in the document bottom margin'
+            elif employer_boundary:
+                label = 'experience'
+                context_source = unit.index
+                target_lanes = set(item.lane for item in units) if len(page_heading_lanes.get(element.page_number, set()) - {'wide', 'unknown'}) <= 1 else {unit.lane}
+                for lane in target_lanes:
+                    contexts[lane] = (label, unit.index, True)
+                assignment, reason = 'employment_boundary', 'Explicit dated employer starts or continues Experience across layout changes'
             elif is_heading:
                 label, cluster, similarity, margin = heading
                 label = structural_label or label
                 contexts[unit.lane] = (label, unit.index, structural_label is not None)
-                if unit.lane == 'wide':
+                if unit.lane == 'wide' or len(page_heading_lanes.get(element.page_number, set()) - {'wide', 'unknown'}) <= 1:
                     for lane in set(item.lane for item in units):
                         contexts[lane] = (label, unit.index, structural_label is not None)
                 candidate = hlabel
                 assignment, reason = ('structural_heading', 'Explicit section heading; BERT/K-means candidate retained as evidence') if structural_label else ('section_heading', 'Distinct BERT heading match with a K-means section label')
+            elif position < first_heading and len(unit.text.split()) <= 22 and any(heading_boundary(item.text, ALIASES)[0] == 'personal_information' for item in units[:20]):
+                label = 'personal_information'
+                assignment, reason = 'contact_context', 'Opening identity/headline before the contact section'
             elif not context and position < first_heading and len(unit.text.split()) <= 18 and not unit.text.rstrip().endswith(('.', '!', '?')) and any(
                     re.search(r'[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}', units[j].text)
                     for j in range(max(0, position - 2), min(first_heading, position + 3)) if units[j].lane == unit.lane):
                 label = 'personal_information'
                 assignment, reason = 'contact_context', 'Opening identity/headline adjacent to an explicit email address'
-            elif not record_field and short and element.type in {'Title', 'Header'} and hscore >= .50 and (hmargin < .09 or similarity < .35):
+            elif (not context or not context[2] or not element.metadata.get('pdf_source_lines')) and not record_field and short and element.type in {'Title', 'Header'} and hscore >= .50 and (hmargin < .09 or similarity < .35):
                 contexts.pop(unit.lane, None)
                 if unit.lane == 'wide':
                     contexts.clear()
@@ -207,11 +266,7 @@ class SectionEngine:
                 review.append(block)
             else:
                 grouped.setdefault(label, []).append(block)
-        sections = [ResumeSection(category=key, label=ANCHORS[key]['label'], blocks=blocks, entries=entry_groups(blocks, key, request.elements)) for key, blocks in grouped.items()]
-        for section in sections:
-            section.source_heading = next((block.text.strip().rstrip(':') for block in section.blocks
-                                           if block.assignment in {'section_heading', 'structural_heading'}), None)
-            section.readable_blocks = [ReadableGroup.model_validate(group) for group in readable_groups(section, request.elements)]
+        sections = build_sections(grouped, request.elements)
         all_blocks = [block for section in sections for block in section.blocks] + review
         # Conservation is an invariant, independent of semantic correctness.
         for index, element in enumerate(request.elements):
@@ -226,11 +281,11 @@ class SectionEngine:
         assigned_chars = sum(len(block.text.strip()) for section in sections for block in section.blocks)
         total_chars = sum(len(block.text.strip()) for block in all_blocks)
         warnings = ['Section assignments are provisional, not guaranteed correct or calibrated probabilities.',
-                    'Extraction verification records caller confirmation; it is not an automatic proof of OCR accuracy.',
+                    ('Caller marked extraction as checked; this is not proof of OCR accuracy.' if request.extraction_verified else 'Extraction has not been manually checked; grouping does not establish word accuracy.'),
                     'Missing headings, merged columns and unusual layouts can require manual review.']
         if multicolumn:
             warnings.append('Multiple layout lanes detected with K-means; reading order and lane assignments need visual review.')
-        return SectionResponse(status='needs_review' if review else 'provisional', sections=sections, needs_review=review,
+        return SectionResponse(status='needs_review' if review else 'provisional', extraction_verified=request.extraction_verified, sections=sections, needs_review=review,
                                metadata={'model': MODEL_ID, 'revision': MODEL_REVISION, 'encoder': 'Sentence-BERT / MiniLM BertModel',
                                          'algorithm': 'structure-led boundaries + Sentence-BERT + seeded K-means', 'readable_grouping': 'pinned repository semantic_blocks.prepare_blocks + group_sections', 'structure_reference': 'Gopi088/knowledge-graph-resume@48376b8d8a0f64d1ab59b405ded3d9f38fc9ae48', 'anchor_sha256': hashlib.sha256(json.dumps(ANCHORS, sort_keys=True).encode()).hexdigest(), 'categories': len(ANCHORS), 'total_units': len(units),
                                          'assigned_units': sum(len(section.blocks) for section in sections), 'review_units': len(review),

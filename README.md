@@ -3,7 +3,7 @@
 Open `/` for the local Resume Inspector: PDF/DOCX preview, ordered blocks, plain text,
 counts, JSON download, and word comparison against pasted source text. `/docs`
 continues to provide interactive API documentation. The **Resume sections** tab
-adds structure-led boundaries and local Sentence-BERT/K-means grouping after extraction verification; see
+adds structure-led boundaries and local Sentence-BERT/K-means grouping automatically after extraction; see
 [section detection and limitations](docs/RESUME_SECTIONS.md).
 
 The modular text endpoint **POST /api/v1/extract/text** is documented in
@@ -11,7 +11,7 @@ The modular text endpoint **POST /api/v1/extract/text** is documented in
 validation, direct Python usage, configuration, and setup. The existing
 `/v1/partition` contract below remains available.
 
-The HTTP API calls `unstructured.partition.auto.partition()` from the pinned published `unstructured==0.27.27` package installed in site-packages. No local Unstructured checkout is required. [Deployment instructions](docs/DEPLOYMENT.md) include a Docker image with system dependencies and cached models. The raw text endpoint preserves upstream extraction behavior. Optional resume section grouping combines explicit heading/layout boundaries with local Sentence-BERT and seeded K-means after extraction verification. The readable view uses the requested repository’s employer/role/responsibility grouping, retains original section labels, and keeps exact source references behind expandable evidence. No hosted extraction API or generative LLM is used.
+The HTTP API calls `unstructured.partition.auto.partition()` from the pinned published `unstructured==0.27.27` package installed in site-packages. No local Unstructured checkout is required. [Deployment instructions](docs/DEPLOYMENT.md) include a Docker image with system dependencies and cached models. The raw text endpoint preserves upstream extraction behavior. Optional resume section grouping combines explicit heading/layout boundaries with local Sentence-BERT and seeded K-means automatically after extraction. The default view combines all relevant text into one block per canonical section (for example Work History becomes Experience). PDF typography supports merged-heading and page-layout recovery; employer/role detail and exact source references remain expandable. Extraction stays local. An optional [DeepSeek review layer](docs/LLM_SECTION_REVIEW.md) validates all assigned and unassigned text together and applies source-linked placement corrections; it is disabled until configured.
 
 ## Install and run
 

@@ -189,3 +189,130 @@ roles and no placeholder roles, reconstructed every supplied source element,
 and extracted a real generated DOCX. Evidence:
 `reports/resume-readable-container-check.json`. Recreate existing containers to
 load this image; the temporary smoke-test container was removed after checking.
+
+## Canonical blocks validated against the requested PDF
+
+The default UI now presents one complete block per category, with canonical
+labels. `Work History` is displayed as Experience, with the source heading as
+context. Employer/role trees remain optional expanded detail. Each API section
+has an exact-source `text` field as well as its underlying spans.
+
+The specific four-page PDF supplied by the user was read from its Windows mount
+and exercised through the actual extraction, local BERT/K-means and browser UI.
+It returned six categories: personal information, summary, skills,
+certifications, experience and education. All five employers were found in the
+single Experience block, the banking/domain expertise and tools remained in
+Skills, certification courses remained in Certifications, and degrees stayed in
+Education. A bottom-margin location/signature stayed with Personal Information.
+Source reconstruction passed with no review units on this document. Zero review
+units is not a guarantee of correct classification on other documents.
+
+The prior pipeline incorrectly retained employer text in Summary/Certifications,
+lost section context across column/full-width transitions, and treated genuine
+body text as footers. Supplemental PDF line/font metadata and scoped section
+continuation address these cases. The new synthetic multi-page PDF test exercises
+those layout changes independently of private resume text.
+
+**85 passed, 8 deselected in 14.22s.** Evidence:
+`reports/canonical-resume-tests.txt`, `reports/canonical-resume-check.json`,
+`reports/canonical-resume-browser-check.json`. Chromium checked actual PDF upload,
+six canonical text blocks, Work History → Experience, all five employers,
+no nested cards shown by default, JSON export and 390px mobile width.
+
+Private extracted/grouped JSON, readable text and screenshots are in the ignored
+`.upstream/resume-validation/` directory. They are not included in tracked reports
+or the Docker build context. Reproduce with the same model cache:
+
+```bash
+HF_HOME="$PWD/.venv/model-cache" HF_HUB_OFFLINE=1 \
+  .venv/bin/python scripts/check_resume_sections.py /path/to/resume.pdf \
+  --report reports/canonical-resume-check.json
+```
+
+This establishes grouping of the extracted input, not perfect PDF word accuracy.
+The PDF text layer has 1,638 whitespace-separated words versus 1,596 from the
+existing `fast` extraction path; at least one source heading is absent from that
+extraction. Grouping preserves all extracted text but cannot restore omitted
+words. Use the original-document/word-comparison workflow to assess extraction
+separately; no claim of perfect original-word recall is made.
+
+The high-resolution path was also checked on the same actual PDF. It returned
+the same six canonical sections, with all five employers exclusively inside
+Experience and education separate. It returned 1,622 whitespace-separated words;
+this is closer to the PDF text-layer count but is not proof of complete recall.
+Every extracted source span reconstructed exactly. Evidence:
+`reports/canonical-resume-hi-res-check.json`.
+
+The UI now opens Resume sections after extraction and labels the low-level view
+Source elements. This distinguishes extraction fragments from the requested
+semantic blocks. Word verification still precedes the Detect resume sections
+button; detection is not silently treated as an OCR accuracy guarantee.
+
+Final image: `unstructured-text-api:local`, ID prefix `7e697840b1f3`. A temporary
+container ran as UID 10001 with `--network none`, `HF_HUB_OFFLINE=1` and no source
+checkout mounts. The actual requested PDF was copied into that temporary local
+container, extracted through HTTP, grouped into six canonical blocks, and checked
+for all five employers exclusively in Experience, separate education, PDF layout
+evidence and exact source reconstruction. All checks passed. Evidence:
+`reports/canonical-resume-container-check.json`. The test container and its copy
+of the PDF were removed afterward. Restart local Uvicorn or recreate existing
+containers from the rebuilt image to load the update.
+
+## Automatic frontend visibility fix
+
+Previously section grouping required checking a review checkbox and clicking a
+second button. The frontend now opens Resume sections and automatically calls the
+section API when extraction completes. Manual word review is optional and is
+recorded separately; automatic grouping sends/returns `extraction_verified:false`.
+Regroup sections provides a retry. Missing legacy `section.text` falls back to its
+source blocks, preventing a blank result on an older response shape.
+
+Frontend HTML and static responses use `Cache-Control: no-store` to prevent stale
+JavaScript after updates. **85 passed, 8 deselected in 16.03s**; UI/cache checks
+and optional-review request behavior are covered. Evidence:
+`reports/automatic-sections-tests.txt`.
+
+Image `unstructured-text-api:local` (`74d9b7507f12`) is running as the
+`resume-inspector` container at `http://localhost:8011`, bound to loopback with
+restart policy `unless-stopped`. Existing containers were not replaced.
+
+The running container passed Chromium verification with the actual requested PDF:
+one click on Extract produced all six canonical section blocks without checking
+manual verification or clicking Regroup. All five employers were in Experience,
+Education and Certifications stayed separate, export and mobile layout passed,
+and no browser errors occurred. Evidence:
+`reports/automatic-sections-browser-check.json`. The production review container
+is intentionally left running; the temporary host test server was stopped.
+
+
+## Optional DeepSeek validation layer
+
+See [LLM_SECTION_REVIEW_VALIDATION.md](LLM_SECTION_REVIEW_VALIDATION.md) for the
+latest 108-test regression run, mocked-provider browser checks and explicit live
+provider limitations. The same automatic section request can now review all
+assigned/unassigned spans together, with source-preserving atomic reassignment.
+No key means local-only behavior. Key-only setup and the selected model are
+documented in [LLM_SECTION_REVIEW.md](LLM_SECTION_REVIEW.md).
+
+## Aditya PDF: embedded-object boundary recovery and live review
+
+The supplied two-page Aditya PDF stores text in Form XObjects. Layout analysis
+now includes those objects and rejects contained short-line matches. This avoids
+using large mixed-section spans as the smallest classification units.
+
+The actual running Docker app was tested through Chromium with the supplied PDF
+and a live DeepSeek review. It returned 150 assigned source spans in seven
+canonical sections, zero unresolved spans, and 18 visible emphasis ranges.
+Employer names were in Experience, programming languages in Skills, degrees in
+Education, and all five checked project titles in Projects. Exact reconstruction
+against the extraction response passed; this does not measure OCR accuracy against
+the original PDF. No browser errors or horizontal overflow at 390px were found.
+Private text/screenshots remain in ignored `.upstream/aditya-validation/`.
+Aggregate results: `reports/aditya-section-check.json` and
+`reports/aditya-browser-check.json`.
+
+Targeted tests: **124 passed, 8 deselected**, including embedded PDF object lines,
+company/project/education emphasis, valid mixed-span splits, rejected gaps/overlaps,
+and the bounded second review of unresolved spans. Existing extraction, grouping,
+API and UI regression tests were included. Provider outcomes on one document do
+not establish accuracy for every resume format.

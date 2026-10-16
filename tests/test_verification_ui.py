@@ -12,8 +12,11 @@ def test_ui_and_local_assets():
     response = client.get('/')
     assert response.status_code == 200
     assert 'Resume Inspector' in response.text
-    for asset in ['app.js', 'styles.css', 'docx-preview.html', 'docx-frame.js', 'vendor/jszip.min.js', 'vendor/docx-preview.min.js']:
-        assert client.get('/static/' + asset).status_code == 200
+    assert response.headers['cache-control'] == 'no-store'
+    for asset in ['app.js', 'sections.js', 'styles.css', 'docx-preview.html', 'docx-frame.js', 'vendor/jszip.min.js', 'vendor/docx-preview.min.js']:
+        asset_response = client.get('/static/' + asset)
+        assert asset_response.status_code == 200
+        assert asset_response.headers['cache-control'] == 'no-store'
     assert client.get('/docs').status_code == 200
 
 

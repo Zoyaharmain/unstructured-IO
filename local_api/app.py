@@ -36,6 +36,14 @@ STATIC_DIR = Path(__file__).parent / 'static'
 app.mount('/static', StaticFiles(directory=STATIC_DIR), name='static')
 
 
+@app.middleware('http')
+async def frontend_cache_control(request: Request, call_next):
+    response = await call_next(request)
+    if request.url.path == '/' or request.url.path.startswith('/static/'):
+        response.headers['Cache-Control'] = 'no-store'
+    return response
+
+
 @app.get('/', include_in_schema=False)
 async def root():
     return FileResponse(STATIC_DIR / 'index.html')

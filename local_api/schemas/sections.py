@@ -5,7 +5,7 @@ from local_api.schemas.extraction import ExtractedElement
 
 class SectionRequest(BaseModel):
     elements: Annotated[list[ExtractedElement], Field(min_length=1, max_length=1000)]
-    extraction_verified: Literal[True]
+    extraction_verified: bool = False
 
     @model_validator(mode='after')
     def validate_text_size(self):
@@ -32,6 +32,10 @@ class SectionBlock(BaseModel):
     margin: float | None = None
     lane: str
     reason: str
+    reviewed_by_llm: bool = False
+    local_section: str | None = None
+    local_assignment: str | None = None
+    llm_action: str | None = None
 
 
 class SectionEntry(BaseModel):
@@ -48,9 +52,17 @@ class ReadableGroup(BaseModel):
     children: list['ReadableGroup'] = Field(default_factory=list)
 
 
+class SectionHighlight(BaseModel):
+    start: int
+    end: int
+    kind: Literal['company', 'project', 'education', 'heading']
+
+
 class ResumeSection(BaseModel):
     category: str
     label: str
+    text: str = ''
+    highlights: list[SectionHighlight] = Field(default_factory=list)
     blocks: list[SectionBlock]
     entries: list[SectionEntry] = Field(default_factory=list)
     source_heading: str | None = None
@@ -59,7 +71,7 @@ class ResumeSection(BaseModel):
 
 class SectionResponse(BaseModel):
     status: Literal['provisional', 'needs_review']
-    extraction_verified: bool = True
+    extraction_verified: bool = False
     sections: list[ResumeSection]
     needs_review: list[SectionBlock]
     metadata: dict

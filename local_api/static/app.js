@@ -62,7 +62,7 @@ $('extract').addEventListener('click', async () => {
     for (const type of [...new Set(result.elements.map(element => element.type))].sort()) $('type-filter').add(new Option(type, type));
     renderBlocks();
     document.dispatchEvent(new Event('extraction-ready'));
-    status(result.text.trim() ? `Extraction complete in ${((performance.now() - started) / 1000).toFixed(1)}s · Requested strategy: ${result.strategy} · Review blocks or compare against reference text.` : 'No text was extracted. If this is a scanned PDF, try OCR only or High resolution.', result.text.trim() ? '' : 'error');
+    status(result.text.trim() ? `Extraction complete in ${((performance.now() - started) / 1000).toFixed(1)}s · Requested strategy: ${result.strategy} · Section blocks appear automatically in Resume sections.` : 'No text was extracted. If this is a scanned PDF, try OCR only or High resolution.', result.text.trim() ? '' : 'error');
   } catch (error) { status(error.message || 'Unable to reach the extraction server.', 'error'); }
   finally { setBusy(false); }
 });

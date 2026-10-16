@@ -23,22 +23,47 @@ body vocabulary cannot override ownership just because it resembles another
 category. Personal header names/headlines adjacent to an explicit email address
 remain together. Missing BERT assets produce a setup error rather than TF-IDF.
 
-## Readable output matching the supplied reference
+## One complete block per canonical section
 
-The default section view displays normal text blocks, not individual extraction
-cards or JSON. It retains headings such as **Profile Snapshot**, **Core
-Competencies** and **Work History**. Work history uses the repository's hierarchy:
+After extraction, the UI opens **Resume sections** and groups the text automatically.
+No second button or verification checkbox is required. **Regroup sections** allows
+a retry; the word-review checkbox records optional manual review. The low-level **Source elements** tab
+contains extraction fragments for auditing. The section view shows **one complete
+text block per category**, rather than
+one card per source line, employer or role. The category label is canonical:
+`Work History`, `Employment History` and `Professional Experience` map to
+**Experience**; `Academic Background` maps to **Education**; `Profile Snapshot`
+maps to **Summary**. A different source heading is shown as a subtitle. Repeated
+headings belonging to one category do not create additional top-level blocks.
 
-```text
-Work History
-  Employer
-    Role and employment dates
-      Responsibilities and their continuation lines
-    Earlier role and dates
-      Earlier responsibilities
-  Next employer
-    Role and responsibilities
-```
+Each section returns `text`, assembled from its original source spans. Contiguous
+spans from the same source element concatenate without adding spaces inside
+words; separate elements retain a newline boundary. All original `blocks`,
+offsets, evidence and readable employer/role trees remain available. Employer and
+role hierarchy is optional expanded detail inside the single Experience block.
+
+### PDF boundaries and changing layouts
+
+PDF extraction now adds supplemental `pdf_source_lines` metadata using the
+installed PDFMiner parser: exact offsets into existing element text, normalized
+line bounds, font size and heading style. This is evidence for grouping only:
+no extracted text is replaced, regenerated or reordered. If layout inspection
+fails, raw extraction still succeeds without that optional evidence.
+
+The detector splits source spans at mapped physical line boundaries, recovering
+headings that partitioning merged into a paragraph. Short text mislabeled as a
+Title by the extractor cannot start a new semantic section inside an explicit
+PDF context unless typography also supports a heading. Thus a Skills item such
+as `Project management` does not become a Projects section. Styled domain or
+technical expertise headings belong to Skills.
+
+Independent columns retain separate contexts when both lanes have section
+headings. Pages with a single section flow propagate its heading to full-width
+text. Explicit dated employers establish Experience context across page/layout
+transitions, while independent sidebar contexts remain isolated. Body text
+incorrectly labeled Footer by extraction stays in its section; actual numeric
+page markers remain review items. A bottom-margin Place/Date signature is kept
+with Personal Information rather than Education.
 
 The supplied reference JSON has many line-sized `details` entries and empty
 responsibility lists. Its section boundaries inform the view; those fragments
@@ -62,10 +87,10 @@ for individual source spans, scores, reasons and navigation to the document.
 
 `POST /api/v1/resume/sections` groups previously extracted elements. It does not
 change the raw Unstructured extraction endpoint or its element order/text.
-The Resume Inspector has a new **Resume sections** tab. The user must confirm
-that extracted words were checked against the original before detection is
-available. API requests require `extraction_verified: true`; false or missing
-confirmation returns 422. This is caller attestation, not proof of OCR accuracy.
+The Resume Inspector has a new **Resume sections** tab. Grouping starts automatically when extraction completes. API requests accept
+`extraction_verified: false` or an omitted value (default false). The optional
+checkbox records caller review, not proof of OCR accuracy. The response preserves
+that review state; automatic grouping never claims that words were checked.
 
 The section families are personal information, summary, experience, projects,
 education, skills, certifications, awards/achievements, publications,
@@ -87,8 +112,10 @@ The implementation uses two learned techniques:
    This is anchor-guided clustering, not anonymous clusters automatically named
    by K-means or per-resume discovery of an unknown number of sections.
 
-Explicit known-heading aliases supplement BERT/K-means. No LLM, hosted inference,
-DBSCAN, NER or unrelated classification model is used. Labeled semantic seed examples and structural
+Explicit known-heading aliases supplement BERT/K-means in the local stage.
+An optional DeepSeek stage now reviews all assigned and unassigned spans together;
+see [LLM_SECTION_REVIEW.md](LLM_SECTION_REVIEW.md). It is disabled until configured.
+The local stage uses no hosted inference, DBSCAN, NER or unrelated classifier. Labeled semantic seed examples and structural
 constraints are essential: K-means alone does not supply category names or
 resume boundaries. Regex recognizes structural formatting, inline heading delimiters and entry boundaries; body keyword matches do not establish section headings.
 
@@ -167,7 +194,7 @@ page metadata is available. On desktop the original preview remains sticky while
 scrolling long section results.
 
 Limits: 1–1,000 elements, 100,000 total characters, 2,000 generated text units;
-no nonempty text or missing verification gives 422. Missing packages/cached model
+empty text or oversized input gives 422; manual verification is optional. Missing packages/cached model
 give a generic 503 with a setup command; unexpected failures give a generic 500.
 Application logs omit document contents and exception messages. Model loading is
 lazy, cached per process and serialized; inference is serialized per model to
@@ -182,8 +209,10 @@ Prepare local assets with the same HF_HOME used by the server:
 HF_HOME="$PWD/.venv/model-cache" .venv/bin/python scripts/warm_models.py --sections
 ```
 
-Runtime loads the pinned model with `local_files_only=True`: no request sends
-resume text to a hosted model or triggers a model download. The Dockerfile
+The local BERT stage loads its pinned model with `local_files_only=True` and
+never downloads models during requests. When explicitly enabled, the separate
+DeepSeek review stage sends the complete extracted resume text to its configured
+provider; see the setup and transmission details above. The Dockerfile
 preloads BERT in addition to its existing assets. Rebuild/recreate the image or
 restart Uvicorn for the new feature. See [DEPLOYMENT.md](DEPLOYMENT.md).
 
@@ -207,3 +236,16 @@ including explicit cross-section leakage and abstention rates. No such product
 accuracy claim is made from the reference repository or this small test suite.
 
 Executed results are recorded in [RESUME_SECTIONS_VALIDATION.md](RESUME_SECTIONS_VALIDATION.md).
+
+### Recovery and heading emphasis
+
+PDF source-line evidence includes text inside Form XObjects. Unresolved merged
+spans receive one local boundary-recovery pass before the full resume is sent to
+DeepSeek. The model may classify exact subranges of a mixed span; validation
+requires complete, contiguous character coverage. If meaningful unresolved text
+remains, one additional full-context review is allowed. A failed follow-up retains
+the successful first result. Unknown text may still require review.
+
+The canonical block view emphasizes company headers, project titles and education
+lines using original-source offsets. Reload the UI and upload/extract again to
+apply the updated pipeline; previously downloaded results do not change.
