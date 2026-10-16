@@ -1,22 +1,38 @@
-# Local Unstructured extraction API
+# Resume Inspector and local extraction API
 
-The HTTP API calls `unstructured.partition.auto.partition()` directly from the authoritative local checkout at `~/unstructured`. It exposes the original extraction behavior, including existing block-detection mistakes. No section detection, clustering, correction rules, hosted API, or LLM is used.
+Open `/` for the local Resume Inspector: PDF/DOCX preview, ordered blocks, plain text,
+counts, JSON download, and word comparison against pasted source text. `/docs`
+continues to provide interactive API documentation. The **Resume sections** tab
+adds structure-led boundaries and local Sentence-BERT/K-means grouping after extraction verification; see
+[section detection and limitations](docs/RESUME_SECTIONS.md).
+
+The modular text endpoint **POST /api/v1/extract/text** is documented in
+[local_api/README.md](local_api/README.md), including supported formats, strategy
+validation, direct Python usage, configuration, and setup. The existing
+`/v1/partition` contract below remains available.
+
+The HTTP API calls `unstructured.partition.auto.partition()` from the pinned published `unstructured==0.27.27` package installed in site-packages. No local Unstructured checkout is required. [Deployment instructions](docs/DEPLOYMENT.md) include a Docker image with system dependencies and cached models. The raw text endpoint preserves upstream extraction behavior. Optional resume section grouping combines explicit heading/layout boundaries with local Sentence-BERT and seeded K-means after extraction verification. The readable view uses the requested repository’s employer/role/responsibility grouping, retains original section labels, and keeps exact source references behind expandable evidence. No hosted extraction API or generative LLM is used.
 
 ## Install and run
 
-Python 3.12 on Linux/WSL is the validated environment. Keep the source checkout available: its editable installation is the extraction library used by the server.
+Python 3.12 on Linux/WSL is the validated environment. Install the published package using the API requirements below.
 
 ```bash
 cd ~/unstructured-IO
 sudo apt-get install poppler-utils tesseract-ocr tesseract-ocr-eng libmagic1
 python3.12 -m venv .venv
 source .venv/bin/activate
-python -m pip install -e "$HOME/unstructured[pdf]" -e '.[api,api-test]'
+python -m pip install 'torch==2.14.1+cpu' 'torchvision==0.29.1+cpu' --index-url https://download.pytorch.org/whl/cpu
+python -m pip install -r local_api/requirements.txt -c local_api/constraints-tested.txt
 export DO_NOT_TRACK=true
 uvicorn local_api.app:app --host 127.0.0.1 --port 8000
 ```
 
-The API dependencies are also listed in `local_api/requirements.txt`; tests add `local_api/requirements-test.txt`. Installing the authoritative `[pdf]` extra supplies the original PDF dependency ranges. Other document formats route through their original partitioners; install the corresponding extras in the source checkout when needed. Missing dependencies that upstream reports as failures produce HTTP 503. Upstream strategy fallback behavior remains unchanged.
+The API requirements pin the published extraction package and selected format extras.
+`local_api/constraints-tested.txt` records validated dependency versions; the root
+`requirements-tested.txt` is a historical PDF-port snapshot, not API setup.
+Missing optional dependencies return HTTP 503. Upstream strategy fallback behavior
+remains unchanged. No Unstructured API key is required.
 
 ```bash
 curl http://127.0.0.1:8000/health
@@ -73,7 +89,7 @@ DO_NOT_TRACK=true HF_HUB_OFFLINE=1 OMP_NUM_THREADS=2 \
   python -m pytest tests/test_local_api.py -v
 ```
 
-The tests compare API outputs with direct calls to `unstructured.partition.auto.partition()` using the same upload bytes, filename and settings. Complete equality of ordered serialized elements tests text, boundaries, types, IDs, reading order, coordinates and all metadata. No fields are excluded or rounded. Explicit `hi_res` comparisons include Jayesh's resume; the other three strategies and a non-PDF document are also exercised. Results and remaining limitations are in `docs/API_VALIDATION.md`.
+The tests compare API outputs with direct calls to the installed `unstructured.partition.auto.partition()` using the same upload bytes, filename and settings. Complete equality of ordered serialized elements tests text, boundaries, types, IDs, reading order, coordinates and all metadata. No fields are excluded or rounded. Explicit `hi_res` comparisons include Jayesh's resume; the other three strategies and a non-PDF document are also exercised. Results and remaining limitations are in `docs/API_VALIDATION.md`.
 
 ## Repository layout and provenance
 
@@ -83,4 +99,4 @@ The tests compare API outputs with direct calls to `unstructured.partition.auto.
 - `reports/api-parity/`: direct extraction outputs and API responses from parity tests.
 - `src/pdf_hires/`: earlier separate PDF-only port retained from the preceding task. The HTTP API does **not** import it. Its historical documentation is in `docs/LEGACY_PORT.md` and earlier comparison reports; those results are distinct from API parity.
 
-The source checkout's `local_api/` directory was absent; the API layer was implemented in this target repository under the user-provided contract. The extraction library itself was not modified. Source code, model assets and dependencies retain their upstream licenses. See `LICENSE.md` and `NOTICE`. User-supplied resume fixtures are included for regression tests; the project license grants no additional rights to their personal content.
+The API layer is maintained in this repository; extraction is supplied by the published package. The historical source review remains documented, but deployment does not depend on that source checkout. Source code, model assets and dependencies retain their upstream licenses. See `LICENSE.md` and `NOTICE`. User-supplied resume fixtures are included for regression tests; the project license grants no additional rights to their personal content.

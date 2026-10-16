@@ -1,4 +1,9 @@
-# Install the authoritative checkout separately: pip install -e '../unstructured[pdf]'
+# Published extraction library; no editable install or source checkout required.
+unstructured[csv,doc,docx,image,md,pdf,pptx,xlsx]==0.27.27
 fastapi>=0.115,<1
 uvicorn>=0.30,<1
 python-multipart>=0.0.18,<1
+
+# Local Sentence-BERT embeddings and seeded K-means for resume sections.
+sentence-transformers==5.7.0
+scikit-learn==1.9.1

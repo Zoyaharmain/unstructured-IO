@@ -2,13 +2,20 @@
 from __future__ import annotations
 
 import logging
+from pathlib import Path
 from typing import Annotated, Literal
 
 from fastapi import FastAPI, File, Form, HTTPException, UploadFile, Request
 from fastapi.exceptions import RequestValidationError
-from fastapi.responses import JSONResponse
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import JSONResponse, FileResponse, Response
 from starlette.concurrency import run_in_threadpool
 from unstructured.partition.auto import partition
+
+from local_api.errors import error_status
+from local_api.routes.extraction import router
+from local_api.routes.comparison import router as comparison_router
+from local_api.routes.sections import router as sections_router
 
 logger = logging.getLogger(__name__)
 MAX_UPLOAD_BYTES = 25 * 1024 * 1024
@@ -22,41 +29,26 @@ async def validation_error(request: Request, exc: RequestValidationError):
     return JSONResponse(status_code=422, content={'detail': 'Invalid request parameters'})
 
 
-def error_status(exc: Exception) -> int:
-    """Translate documented input/dependency failures; do not hide internal bugs as input errors."""
-    dependency_errors = {
-        ('pdf2image.exceptions', 'PDFInfoNotInstalledError'),
-        ('unstructured_pytesseract.pytesseract', 'TesseractNotFoundError'),
-    }
-    invalid_errors = {
-        ('unstructured.partition.common', 'UnsupportedFileFormatError'),
-        ('unstructured.errors', 'UnprocessableEntityError'),
-        ('pdfminer.pdfdocument', 'PDFPasswordIncorrect'),
-        ('pdfminer.pdfdocument', 'PDFEncryptionError'),
-        ('pdfminer.pdfparser', 'PDFSyntaxError'),
-        ('pypdf.errors', 'PdfReadError'),
-        ('unstructured_inference.inference.pdf_image', 'PdfRenderTooLargeError'),
-        ('pdf2image.exceptions', 'PDFPageCountError'),
-        ('pdf2image.exceptions', 'PDFSyntaxError'),
-        ('pypdfium2._helpers.misc', 'PdfiumError'),
-    }
-    cause = exc
-    visited = set()
-    while cause is not None and id(cause) not in visited:
-        visited.add(id(cause))
-        classes = {(c.__module__, c.__name__) for c in type(cause).__mro__}
-        if isinstance(cause, ImportError) or classes & dependency_errors:
-            return 503
-        cause = cause.__cause__
-    classes = {(c.__module__, c.__name__) for c in type(exc).__mro__}
-    if isinstance(exc, ValueError) or classes & invalid_errors:
-        return 422
-    return 500
+app.include_router(router)
+app.include_router(comparison_router)
+app.include_router(sections_router)
+STATIC_DIR = Path(__file__).parent / 'static'
+app.mount('/static', StaticFiles(directory=STATIC_DIR), name='static')
+
+
+@app.get('/', include_in_schema=False)
+async def root():
+    return FileResponse(STATIC_DIR / 'index.html')
+
+
+@app.get('/favicon.ico', include_in_schema=False, status_code=204)
+async def favicon():
+    return Response(status_code=204)
 
 
 @app.exception_handler(Exception)
 async def unexpected_error(request: Request, exc: Exception):
-    logger.error('Unexpected API failure', exc_info=(type(exc), exc, exc.__traceback__))
+    logger.error('Unexpected API failure: %s', type(exc).__name__)
     return JSONResponse(status_code=500, content={'detail': 'Unexpected internal processing failure'})
 
 
@@ -106,7 +98,7 @@ async def partition_document(
             elements = await run_in_threadpool(extract)
         except Exception as exc:
             status = error_status(exc)
-            logger.exception('Document partition failed (HTTP %s)', status)
+            logger.error('Document partition failed (HTTP %s): %s', status, type(exc).__name__)
             message = {422: 'Unsupported or invalid document input',
                        503: 'Required extraction dependency unavailable',
                        500: 'Unexpected internal processing failure'}[status]

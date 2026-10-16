@@ -1,4 +1,4 @@
-"""HTTP contract and real parity tests against the authoritative source checkout."""
+"""HTTP contract and parity against the installed Unstructured package."""
 from io import BytesIO
 import json
 from pathlib import Path
@@ -15,9 +15,15 @@ def test_health():
     assert client.get('/health').json() == {'status': 'ok'}
 
 
-def test_source_is_authoritative():
+def test_extraction_uses_installed_package():
     import inspect
-    assert Path(inspect.getfile(inspect.unwrap(partition))).resolve() == Path.home() / 'unstructured/unstructured/partition/auto.py'
+    import sysconfig
+    from importlib.metadata import distribution
+    source = Path(inspect.getfile(inspect.unwrap(partition))).resolve()
+    site_packages = Path(sysconfig.get_paths()['purelib']).resolve()
+    assert source.is_relative_to(site_packages), source
+    assert distribution('unstructured').version == '0.27.27'
+    assert distribution('unstructured').read_text('direct_url.json') is None
 
 
 @pytest.mark.parametrize('strategy', ['auto', 'fast', 'hi_res', 'ocr_only'])

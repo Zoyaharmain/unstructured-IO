@@ -1,3 +1,6 @@
+> Historical source-based integration record. Current deployment uses the published
+> package; see [DEPLOYMENT.md](DEPLOYMENT.md) and [PACKAGE_DEPLOYMENT_VALIDATION.md](PACKAGE_DEPLOYMENT_VALIDATION.md).
+
 # Authoritative source and API dependency map
 
 Inspected before API edits:
