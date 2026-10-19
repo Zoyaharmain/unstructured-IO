@@ -100,3 +100,14 @@ The tests compare API outputs with direct calls to the installed `unstructured.p
 - `src/pdf_hires/`: earlier separate PDF-only port retained from the preceding task. The HTTP API does **not** import it. Its historical documentation is in `docs/LEGACY_PORT.md` and earlier comparison reports; those results are distinct from API parity.
 
 The API layer is maintained in this repository; extraction is supplied by the published package. The historical source review remains documented, but deployment does not depend on that source checkout. Source code, model assets and dependencies retain their upstream licenses. See `LICENSE.md` and `NOTICE`. User-supplied resume fixtures are included for regression tests; the project license grants no additional rights to their personal content.
+
+Test a folder of resumes locally without HTTP or DeepSeek calls using
+[`run_offline_resume_audit.sh`](scripts/run_offline_resume_audit.sh). It runs the
+models in a network-disabled container and produces private per-file results;
+see [batch audit instructions](docs/BATCH_RESUME_AUDIT.md).
+
+Before scaling the 15-resume pilot, use the [human review editor and approval
+workflow](docs/PILOT_HUMAN_REVIEW.md). It records source-bound decisions separately
+from predictions and gates candidate generation on explicit review. The current
+[readiness audit](reports/pilot-human-review-readiness.md) includes old/new label
+drift, PDF-text discrepancies and relationship-validation blockers.

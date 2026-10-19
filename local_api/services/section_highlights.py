@@ -8,7 +8,9 @@ def highlight_kind(category, block, element):
     text=block.text.strip()
     if not text:return None
     hints=element.metadata.get('pdf_source_lines',[])
-    bold=any(h.get('bold') and h.get('start',-1)<=block.start and h.get('end',-1)>=block.end for h in hints)
+    start = block.start + len(block.text) - len(block.text.lstrip())
+    end = block.end - len(block.text) + len(block.text.rstrip())
+    bold=any(h.get('bold') and h.get('start',-1)<=start and h.get('end',-1)>=end for h in hints)
     if category=='experience' and employment_start(text):return 'company'
     if category=='projects' and len(text.split())<=24 and not ACTION.search(text) and (bold or ('|' in text) or (not hints and element.type=='Title')):return 'project'
     if category=='education' and len(text.split())<=25 and (EDUCATION.search(text) or re.search(r'\b(?:university|institute|college)\b',text,re.I)):return 'education'

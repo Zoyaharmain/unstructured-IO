@@ -5,10 +5,15 @@ import json
 import hashlib
 import logging
 import re
+import os
 from pathlib import Path
 import threading
 
 import numpy as np
+
+_default_hf_home = Path(__file__).resolve().parents[2] / '.venv/model-cache'
+if _default_hf_home.exists() and not os.environ.get('HF_HOME'):
+    os.environ['HF_HOME'] = str(_default_hf_home)
 
 from local_api.schemas.sections import SectionRequest, SectionResponse, ResumeSection, SectionBlock, ReadableGroup, SectionHighlight
 from local_api.utils.file_validation import ExtractionError
@@ -137,6 +142,22 @@ class SectionEngine:
                             lane = 'wide'
                     units.append(Unit(index, offset + start, offset + end, line[start:end], lane, bool(hint and hint.get('heading_style')), bool(hint and len(hint.get('bbox', [])) == 4 and hint['bbox'][1] > .85)))
                 offset += len(line)
+        # PDF line hints can isolate spaces between adjacent physical lines.
+        # Preserve them on a neighboring span instead of classifying whitespace.
+        coalesced = []
+        for unit in units:
+            previous = coalesced[-1] if coalesced else None
+            if previous and previous.index == unit.index and previous.end == unit.start and (not previous.text.strip() or not unit.text.strip()):
+                if not previous.text.strip():
+                    unit.start = previous.start
+                    unit.text = previous.text + unit.text
+                    coalesced[-1] = unit
+                else:
+                    previous.end = unit.end
+                    previous.text += unit.text
+            else:
+                coalesced.append(unit)
+        units = coalesced
         if len(units) > 2000:
             raise ExtractionError(422, 'Section detection supports up to 2,000 text units')
         return units, multicolumn

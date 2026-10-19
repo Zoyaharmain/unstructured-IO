@@ -17,7 +17,7 @@ EXTRA_HEADINGS = {
     'projects': ['key projects', 'project highlights'],
     'experience': ['employment', 'professional background', 'work history'],
     'education': ['qualifications', 'educational background'],
-    'skills': ['key strengths', 'technical competencies', 'core skills', 'domain expertise', 'business analysis and product management', 'tools and technology'],
+    'skills': ['skill set', 'skill sets', 'skillset', 'key strengths', 'technical competencies', 'core skills', 'domain expertise', 'business analysis and product management', 'tools and technology'],
     'certifications': ['certificates', 'training'],
 }
 
@@ -77,7 +77,7 @@ def entry_groups(blocks, category, elements):
     """
     groups, active = [], {}
     for index, block in enumerate(blocks):
-        key = (block.lane, block.context_source_element_index)
+        key = (block.lane, None if block.reviewed_by_llm else block.context_source_element_index)
         if block.assignment in {'section_heading', 'structural_heading'}:
             # Heading is a section member but not a job/project entry.
             active = {key_: value for key_, value in active.items() if key_[0] != block.lane}
@@ -87,6 +87,15 @@ def entry_groups(blocks, category, elements):
         explicit_title = (element.type == 'Title' and block.start == 0 and
                           0 < len(text.split()) <= 18 and not re.match(r'^[•▪●*\-]', text))
         labeled_entry = bool(re.match(r'^\s*(?:\d+[.)]\s*)?(?:project(?: name| title)?|company|employer|institution)\s*:', text, re.I))
+        if block.reviewed_by_llm:
+            # A title detector's field labels and embedded project titles are not
+            # employer boundaries after semantic reassignment to Experience.
+            if category=='experience':
+                explicit_title=explicit_title and employment_start(text)
+                labeled_entry=bool(re.match(r'^\s*(?:company|employer)\s*:\s*\S',text,re.I))
+            elif category=='education':
+                explicit_title=explicit_title and bool(re.search(r'\b(?:university|college|institute|bachelor|master|diploma|phd|bsc|msc|b\.?tech|m\.?tech)\b',text,re.I))
+                labeled_entry=bool(re.match(r'^\s*(?:institution|university|college)\s*:\s*\S',text,re.I))
         dated_header = bool(category in {'experience', 'education'} and len(text.split()) <= 24
                             and re.search(r'\b(?:19|20)\d{2}\s*(?:[-–—]|to)\s*(?:(?:19|20)\d{2}|present|current)\b', text, re.I)
                             and not re.match(r'^[•▪●*\-]', text))

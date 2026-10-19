@@ -1,0 +1,54 @@
+================================================================================
+AUTOMATED TEST SUITE EXECUTION RESULTS
+Validation Directory: ground_truth/validation_15_20261019
+Timestamp: 2026-10-19T06:14:06-07:00
+================================================================================
+
+1. COMMAND LINE AND EXECUTION ENVIRONMENT
+Command: PYTHONPATH=.:src .venv/bin/pytest tests/ -v
+Working Directory: /home/gopal/unstructured-IO
+Python Version: 3.12.3 (/home/gopal/unstructured-IO/.venv/bin/python)
+Pytest Version: pytest-9.1.1 (pluggy-1.7.0, anyio-4.15.1)
+Exit Code: 0
+
+2. SUMMARY
+Total Collected: 185
+Passed: 185
+Failed: 0
+Skipped: 0
+Deselected: 0
+Total Duration: 107.06s (0:01:47)
+
+3. BREAKDOWN BY TEST MODULE
+- tests/test_batch_resume_audit.py: 1 passed
+- tests/test_ground_truth_workflow.py: 5 passed
+- tests/test_human_pilot_review.py: 18 passed
+- tests/test_interface.py: 2 passed
+- tests/test_llm_batch_audit.py: 2 passed
+- tests/test_llm_section_review.py: 20 passed
+- tests/test_local_api.py: 41 passed
+- tests/test_resume_ground_truth.py: 7 passed
+- tests/test_resume_sections.py: 27 passed
+- tests/test_section_layout_recovery.py: 2 passed
+- tests/test_text_extraction.py: 39 passed
+- tests/test_verification_ui.py: 8 passed
+- tests/test_word_preparation.py: 5 passed
+
+4. TEST COVERAGE EVALUATION & KNOWN GAPS
+- Covered Components:
+  * Schema invariants and non-overlapping interval validations
+  * Human review gate logic (preventing auto-approval of unreviewed drafts)
+  * SentenceTransformer model offline initialization and K-Means clustering
+  * Layout lane detection and multi-column handling
+  * PDF extraction strategies (auto, fast, hi_res, ocr_only)
+  * DeepSeek review API payload generation and schema validation
+- Identified Test Gaps (Defects NOT Caught by Existing Tests):
+  * Gap 1: WordPiece subword token boundary splitting at token 200 in SectionEngine.units()
+    (Splits 'PGSQL' into 'Databases: PGS' and 'QL, MongoDB' without checking continuation tokens or whitespace)
+  * Gap 2: Upstream extractor duplicate block emission
+    (Ajay Bandagi elements 9 & 10, GAURAVAGRAWAL elements 8 & 9)
+  * Gap 3: Job-description template classification
+    (Java Aws backend treated as candidate resume, inventing candidate records)
+  * Gap 4: Multi-column tabular career history conflict resolution
+    (PUPPYKUMARI page 1 conflicting Role History vs Career History dates)
+

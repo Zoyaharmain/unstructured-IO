@@ -63,9 +63,20 @@ def extract_text(payload: bytes, filename: str, strategy: Strategy = 'auto',
             raise ExtractionError(503, 'OCR extraction requires Tesseract and unstructured-pytesseract')
         if strategy == 'hi_res' and find_spec('unstructured_inference') is None:
             raise ExtractionError(503, 'High-resolution extraction requires unstructured-inference')
-        elements = partition(file=stream, content_type=detected.mime_type,
+        partition_type = detected
+        repaired_images = 0
+        if detected in {FileType.DOC, FileType.DOCX}:
+            from local_api.services.word_preparation import convert_legacy_word, repair_null_image_relationships
+            prepared = convert_legacy_word(payload) if detected == FileType.DOC else payload
+            prepared, repaired_images = repair_null_image_relationships(prepared)
+            stream = BytesIO(prepared)
+            partition_type = FileType.DOCX
+        elements = partition(file=stream, content_type=partition_type.mime_type,
                              metadata_filename=filename, strategy=strategy, languages=['eng'])
         serialized = [e.to_dict() for e in elements]
+        if repaired_images:
+            for element in serialized:
+                element.setdefault('metadata', {})['removed_null_image_relationships'] = repaired_images
         if detected == FileType.PDF and include_elements:
             # Supplemental typography/line offsets recover headings merged by
             # partitioning. Failures never change the raw extraction contract.

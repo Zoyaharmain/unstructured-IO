@@ -134,3 +134,34 @@ text. None of these steps rewrites extracted words.
 Canonical section text highlights company headers, project titles and education
 lines using source offsets. The browser builds text nodes and strong elements,
 including correct Unicode offset handling; model-generated HTML is never rendered.
+
+## Recovery accounting and pilot reconciliation
+
+The current prompt includes every original source element, all assigned/unassigned
+spans, coordinates, evidence scores and existing entry hints. Returned categories
+remain strict source-offset decisions; output resume prose is never accepted.
+`metadata.source_accounting` reports each exact source interval's outcome:
+assigned, explicit non-content artifact, or human review. Only whitespace and
+explicit page separators/page-number footers are identified automatically as
+artifacts. Repeated text is preserved; it is not silently deduplicated.
+
+`DEEPSEEK_RECOVERY_ATTEMPTS` allows 0–3 recovery attempts (default 1) beyond the first
+request. Invalid/incomplete decisions may be retried with validation feedback;
+unresolved meaningful content may receive another full-context review. Every
+attempt is validated atomically. Provider errors are not retried automatically,
+and a failed follow-up retains the preceding valid review. Completion means valid
+provider decisions, while `all_meaningful_text_assigned` is reported separately.
+Neither means independently verified semantic correctness.
+
+Draft annotations now project the union of local and reviewed source boundaries,
+so LLM split decisions are preserved. Disagreements remain human-review flags;
+unassigned text remains needs_review instead of being fabricated as Experience.
+Source-bound caches are used for new drafts; legacy caches require exact source
+coverage and are marked as lacking full configuration provenance. Record fields
+without source evidence remain blank, and field relationships are still proposed.
+No automatic promotion to gold occurs in recovery or evaluation.
+
+The live 15-resume results and limitations are in
+[the recovery report](../reports/pilot-recovery-report.md). Replaying saved results
+with `python scripts/check_pilot_recovery.py` makes no API calls. The bulk workflow
+uses final candidate assignment coverage, retaining local flags separately.

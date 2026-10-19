@@ -256,3 +256,74 @@ def test_unresolved_content_gets_one_bounded_full_context_followup(document):
     assert result.metadata['llm_review']['pass_count']==2
     assert not result.needs_review
     review.assert_coverage(request.elements,review.source_ledger(result))
+
+
+def test_full_source_inventory_and_record_hints_are_supplied(document):
+    request,local=document
+    def provider(settings,messages):
+        data=json.loads(messages[1]['content'])
+        assert [e['text'] for e in data['source_elements']]==[e.text for e in request.elements]
+        assert len(data['spans'])==3 and 'record_hints' in data
+        assert 'source_id' in data['spans'][0]
+        return reply('experience','experience','education')
+    result=review.review_sections(request,local,settings=configured(),transport=provider)
+    accounting=result.metadata['source_accounting']
+    assert accounting['all_source_text_preserved'] and accounting['all_meaningful_text_assigned']
+    assert accounting['semantic_correctness_verified'] is False
+
+
+def test_invalid_decision_recovery_is_bounded_and_preserves_source(document):
+    request,local=document;calls=[]
+    def provider(*args):
+        calls.append(1)
+        return '{"assignments":[]}' if len(calls)==1 else reply('experience','experience','education')
+    result=review.review_sections(request,local,settings=configured(recovery_attempts=1),transport=provider)
+    assert len(calls)==2 and result.metadata['llm_review']['status']=='complete'
+    assert result.metadata['llm_review']['provider_calls']==2
+    review.assert_coverage(request.elements,review.source_ledger(result))
+
+
+def test_short_meaningful_text_is_not_dropped_as_artifact(document):
+    request,local=document
+    request.elements[2].text='R';local.needs_review[0].text='R';local.needs_review[0].end=1
+    result=review.review_sections(request,local,settings=configured(recovery_attempts=0),transport=lambda *_:reply('experience','experience','needs_review'))
+    assert result.metadata['source_accounting']['unresolved_meaningful_spans']==1
+    assert result.metadata['source_accounting']['non_content_artifacts']==0
+
+
+def test_accounting_preserves_duplicate_text_and_marks_only_explicit_artifacts():
+    from local_api.services.source_accounting import account_source
+    texts=['Python','Python','Page 1','R']
+    elements=[ExtractedElement(type='Footer' if i==2 else 'NarrativeText',text=t,metadata={}) for i,t in enumerate(texts)]
+    blocks=[SectionBlock(source_element_index=i,start=0,end=len(t),text=t,page_number=1,lane='main',assignment='semantic',reason='source') for i,t in enumerate(texts)]
+    result=SectionResponse(status='needs_review',sections=build_sections({'skills':blocks[:2]},elements),needs_review=blocks[2:],metadata={},warnings=[])
+    accounting=account_source(elements,result)
+    assert accounting['duplicates_excluded']==0 and accounting['assigned_meaningful_spans']==2
+    assert accounting['non_content_artifacts']==1 and accounting['unresolved_meaningful_spans']==1
+    assert len(accounting['outcomes'])==4
+
+
+def test_failed_followup_retains_first_valid_review(document):
+    request,local=document;calls=[]
+    def provider(*_):
+        calls.append(1)
+        if len(calls)==1:return reply('experience','experience','needs_review')
+        raise review.ReviewError('provider_unavailable')
+    result=review.review_sections(request,local,settings=configured(),transport=provider)
+    assert result.metadata['llm_review']['status']=='complete'
+    assert result.metadata['llm_review']['recovery_status']=='failed'
+    assert result.metadata['llm_review']['provider_calls']==2
+    assert 'skills' not in {s.category for s in result.sections}
+    assert result.metadata['source_accounting']['unresolved_meaningful_spans']==1
+
+
+def test_reviewed_job_fields_and_embedded_projects_do_not_start_new_employers():
+    from local_api.services.resume_structure import entry_groups
+    texts=['Engineer | Alpha Systems | 2020 - Present','Organization','Designation','Duration',
+           'Project: Warehouse System','Responsibilities: built services']
+    elements=[ExtractedElement(type='Title',text=t,metadata={}) for t in texts]
+    blocks=[SectionBlock(source_element_index=i,start=0,end=len(t),text=t,page_number=1,lane='main',
+             assignment='llm_reassigned',reason='reviewed',reviewed_by_llm=True,context_source_element_index=i) for i,t in enumerate(texts)]
+    entries=entry_groups(blocks,'experience',elements)
+    assert len(entries)==1
+    assert entries[0]['block_indices']==list(range(len(texts)))

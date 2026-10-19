@@ -408,3 +408,18 @@ def test_canonical_text_merges_wordpiece_spans_without_inserting_spaces(engine):
     assert 'MBA Finance' not in experience.text
     assert len({s.category for s in response.sections}) == len(response.sections)
     assert_preserved(req, response)
+
+
+def test_pdf_line_spaces_stay_with_text_without_becoming_review_items(engine):
+    text='  Skill Set  Python SQL  '
+    element=ExtractedElement(type='NarrativeText',text=text,page_number=1,metadata={
+        'pdf_source_lines':[{'start':2,'end':11,'bbox':[.1,.1,.8,.12]},
+                            {'start':13,'end':23,'bbox':[.1,.13,.8,.15]}]})
+    req=SectionRequest(elements=[element])
+    units,_=engine.units(req.elements)
+    assert all(u.text.strip() for u in units)
+    assert ''.join(u.text for u in units)==text
+    result=engine.detect(req)
+    assert not result.needs_review
+    assert result.sections[0].category=='skills'
+    assert_preserved(req,result)

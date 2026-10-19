@@ -1,0 +1,90 @@
+[
+  {
+    "document": "GAURAVAGRAWAL.pdf",
+    "doc_id": "45575a74b9b03bde6e54",
+    "page": 2,
+    "severity": "CRITICAL",
+    "category": "missing_heading",
+    "source_evidence": "Visible 'Achievements' heading on page 2 in original PDF",
+    "output_evidence": "Heading completely absent from extracted elements; awards bullets subsequently misassigned to education locally",
+    "status": "CONFIRMED",
+    "component": "text_extraction_service"
+  },
+  {
+    "document": "GAURAVAGRAWAL.pdf",
+    "doc_id": "45575a74b9b03bde6e54",
+    "page": 2,
+    "severity": "CRITICAL",
+    "category": "duplicate_extraction",
+    "source_evidence": "Paragraph 'Awarded the Student Prize...' occurs once on page 2 of PDF",
+    "output_evidence": "Extracted twice as Element 8 and Element 9 with identical text and coordinates",
+    "status": "CONFIRMED",
+    "component": "text_extraction_service"
+  },
+  {
+    "document": "Ajay Bandagi.pdf",
+    "doc_id": "f3b9f2a6333cad3718ac",
+    "page": 1,
+    "severity": "CRITICAL",
+    "category": "duplicate_extraction",
+    "source_evidence": "185-word work experience bullet ('Independently managing end-to-end Accounts Payable...') occurs once in PDF",
+    "output_evidence": "Extracted twice as Element 9 and Element 10 (identical text and coordinates), inflating word count from 479 to 660",
+    "status": "CONFIRMED",
+    "component": "text_extraction_service"
+  },
+  {
+    "document": "Prasad PR.pdf",
+    "doc_id": "6be5a73777f3dbd961a1",
+    "page": 1,
+    "severity": "HIGH",
+    "category": "broken_word_token_slice",
+    "source_evidence": "Original PDF text at end of Element 4 is 'Databases: PGSQL, MongoDB'",
+    "output_evidence": "Unit/span slicing at token 200 (BERT subword offset 787 between '##s' and '##q') splits 'PGSQL' into 'Databases: PGS' and 'QL, MongoDB'",
+    "status": "CONFIRMED",
+    "component": "local_api/services/resume_sections.py"
+  },
+  {
+    "document": "Java Aws backend.pdf",
+    "doc_id": "820a109ff20c21202713",
+    "page": 1,
+    "severity": "CRITICAL",
+    "category": "out_of_scope_document_type",
+    "source_evidence": "Original PDF is an unfilled Job Requirements Template ('Job title: *', 'Experience range: *')",
+    "output_evidence": "Pipeline forces template fields into candidate work experience and education, fabricating fictional candidate records ('Candidate Role', 'Experience range: (Min to Max years) *')",
+    "status": "CONFIRMED",
+    "component": "document_ingestion_and_scoping"
+  },
+  {
+    "document": "PUPPYKUMARI.pdf",
+    "doc_id": "08aaa025979276b8d070",
+    "page": 1,
+    "severity": "CRITICAL",
+    "category": "conflicting_source_dates_and_corrupt_records",
+    "source_evidence": "Page 1 contains conflicting career dates ('Role History' 2015-2020 vs 'Career History' 2015-2021) in a dense multi-column layout",
+    "output_evidence": "Work experience record construction creates bogus records using section headings and dates as employers ('Emp: Role History', 'Emp: Aug 2021 to March 2024.')",
+    "status": "CONFIRMED",
+    "component": "logical_record_grouping"
+  },
+  {
+    "document": "Rutuja Herekar.pdf",
+    "doc_id": "b493159ea095e1581dbd",
+    "page": 3,
+    "severity": "HIGH",
+    "category": "coursework_classified_as_employment",
+    "source_evidence": "Page 3 contains 'G E N E RA T I VE A I \u2014 F O U N DA T I O NA L K N O WL E D G E', 'Topics Studied', 'QA Applications I\u2019m Building Toward'",
+    "output_evidence": "Classified as 'experience' (work experience) in both local baseline and DeepSeek-reviewed outputs; LLM failed to recover correct classification",
+    "status": "CONFIRMED",
+    "component": "resume_sections_classification"
+  },
+  {
+    "document": "Pavan Bakku.pdf",
+    "doc_id": "b629db55549ed1bd9610",
+    "page": 1,
+    "severity": "MEDIUM",
+    "category": "section_boundary_merge",
+    "source_evidence": "Distinct 'KEY ACHIEVEMENTS' heading with 3 technical bullets following Professional Summary",
+    "output_evidence": "Merged into 'summary' section instead of awards/achievements; drifted from reference label ('awards')",
+    "status": "CONFIRMED",
+    "component": "local_section_classification"
+  }
+]
