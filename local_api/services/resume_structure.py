@@ -5,6 +5,20 @@ normalize, deduplicate, reconstruct names, or regenerate the returned source tex
 """
 import re
 
+
+def word_safe_cut(text, cut):
+    """Move a mechanical tokenizer/geometry cut past an ordinary word.
+
+    Preserve explicit camel-case boundaries in joined headings. Offsets and all
+    characters remain source based; this never inserts or normalizes text.
+    """
+    if 0 < cut < len(text) and text[cut-1].isalnum() and text[cut].isalnum():
+        if text[cut-1].islower() and text[cut].isupper():
+            return cut
+        while cut < len(text) and text[cut].isalnum():
+            cut += 1
+    return cut
+
 # Record fields must not change the owning section, even when their values look
 # like another section (a project's tools are still part of that project).
 RECORD_FIELDS = {'technologies', 'technology', 'tools', 'tool', 'tech stack',
@@ -91,7 +105,7 @@ def entry_groups(blocks, category, elements):
             # A title detector's field labels and embedded project titles are not
             # employer boundaries after semantic reassignment to Experience.
             if category=='experience':
-                explicit_title=explicit_title and employment_start(text)
+                explicit_title=employment_start(text)
                 labeled_entry=bool(re.match(r'^\s*(?:company|employer)\s*:\s*\S',text,re.I))
             elif category=='education':
                 explicit_title=explicit_title and bool(re.search(r'\b(?:university|college|institute|bachelor|master|diploma|phd|bsc|msc|b\.?tech|m\.?tech)\b',text,re.I))
@@ -106,7 +120,51 @@ def entry_groups(blocks, category, elements):
             groups.append(group)
             active[key] = group
         active[key]['block_indices'].append(index)
+    if category in {'experience','education'} and any(b.reviewed_by_llm for b in blocks):
+        groups = attach_aligned_dates(groups, blocks, elements)
     return groups
+
+
+def attach_aligned_dates(groups, blocks, elements):
+    """Attach date-only fragments only with an unambiguous same-row source match.
+
+    Lanes are layout evidence, not record identities. Do not use source order to
+    guess a distant date's owner. Leave ambiguous and unlocated dates unchanged.
+    """
+    def row(block):
+        hints=elements[block.source_element_index].metadata.get('pdf_source_lines',[])
+        candidates=[h for h in hints if len(h.get('bbox',[]))==4 and
+                    min(block.end,h.get('end',0))>max(block.start,h.get('start',0))]
+        if not candidates:return None
+        # A multi-line body cannot establish a unique header row.
+        centers=[(h['bbox'][1]+h['bbox'][3])/2 for h in candidates]
+        if max(centers)-min(centers)>.015:return None
+        return sum(centers)/len(centers)
+    def date_only(text):
+        return bool(re.search(r'\b(?:19|20)\d{2}\b',text)) and not re.sub(
+            r'(?i)\b(?:jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|jun(?:e)?|jul(?:y)?|aug(?:ust)?|sep(?:tember)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?|present|current|to|since|till)\b|[\d\s.,/|:–—\-\'’()]','',text)
+    membership={i:g for g in groups for i in g['block_indices']}
+    for index,block in enumerate(blocks):
+        if not block.reviewed_by_llm or index not in membership or not date_only(block.text):continue
+        y=row(block)
+        if y is None:continue
+        candidates=[]
+        for other_index,other in enumerate(blocks):
+            if other_index not in membership or other.page_number!=block.page_number or date_only(other.text):continue
+            if len(other.text.strip())<4:continue
+            other_y=row(other)
+            if other_y is not None and abs(other_y-y)<=.006:
+                candidates.append(membership[other_index])
+        unique={id(g):g for g in candidates}
+        if len(unique)!=1:continue
+        target=next(iter(unique.values()));old=membership[index]
+        if target is old:continue
+        old['block_indices'].remove(index);target['block_indices'].append(index)
+        target['block_indices'].sort();membership[index]=target
+        target['boundary_reason']='source-aligned date attached across layout lanes; other associations remain proposals'
+    result=[g for g in groups if g['block_indices']]
+    for i,g in enumerate(result):g['entry_id']=f"{g['entry_id'].rsplit('-',1)[0]}-{i+1}"
+    return result
 
 
 def employment_start(text):

@@ -166,6 +166,8 @@ def make_messages(ledger, categories, elements=None, sections=None):
          'source_element': block.source_element_index, 'source_start': block.start, 'source_end': block.end}
         for i, (block, category) in enumerate(ledger)]}
     if elements is not None:
+        from local_api.services.review_resolution import document_scope
+        document['document_scope']=document_scope(elements)
         document['source_elements']=[{'source_element':i,'type':e.type,'text':e.text,'page':e.page_number,
                                      'coordinates':e.metadata.get('coordinates')} for i,e in enumerate(elements)]
         for item,(block,_) in zip(document['spans'],ledger):
@@ -185,11 +187,28 @@ For a mixed span, split it using Unicode character offsets relative to its suppl
 Use exactly this schema: {"assignments":[["u0","experience"],["u1","education"]]}.
 Return complete coverage for EVERY supplied id, with one whole-span pair or contiguous offset segments. Categories must be one of the provided category keys or needs_review.
 If a span really cannot be placed reliably, use needs_review instead of forcing a guess. Preserve blank spans too.
+Declarations, self-attestations and adjacent place/date/signature lines belong to personal_information when explicitly identified in source. Combined section headings can be split at word boundaries into the named categories. A job requirements form is not candidate employment or earned education: abstain rather than invent candidate history.
 A provider response is a provisional review, not a guarantee of correct extraction or classification.'''
     return [{'role': 'system', 'content': system}, {'role': 'user', 'content': json.dumps(document, ensure_ascii=False)}]
 
 
-def parse_decisions(content, count, categories, lengths):
+def assignment_feedback(content, lengths):
+    """Bounded ID/length diagnostics only; never echo provider prose or source."""
+    try:
+        pairs=json.loads(content).get('assignments', [])
+        present={p[0] for p in pairs if isinstance(p,list) and p and isinstance(p[0],str)}
+        missing=[key for key in lengths if key not in present]
+        invalid=[]
+        for p in pairs:
+            if isinstance(p,list) and len(p)==4 and isinstance(p[0],str) and p[0] in lengths:
+                if type(p[2]) is not int or type(p[3]) is not int or not 0<=p[2]<=p[3]<=lengths[p[0]]:
+                    invalid.append({'id':p[0],'required_length':lengths[p[0]]})
+        return json.dumps({'missing_ids':missing[:100],'invalid_ranges':invalid[:100]})
+    except (ValueError,TypeError,AttributeError):
+        return 'Response must be a JSON object containing assignments.'
+
+
+def parse_decisions(content, count, categories, lengths, texts=None):
     try:
         value=json.loads(content)
         if not isinstance(value,dict) or set(value)!={'assignments'} or not isinstance(value['assignments'],list):raise ValueError
@@ -205,6 +224,9 @@ def parse_decisions(content, count, categories, lengths):
             else:
                 start,end=pair[2:]
                 if type(start)!=int or type(end)!=int or not 0<=start<=end<=lengths[span_id] or (start==end and lengths[span_id]!=0):raise ValueError
+                if texts is not None:
+                    from local_api.services.resume_structure import word_safe_cut
+                    if any(word_safe_cut(texts[span_id],cut)!=cut for cut in (start,end)):raise ValueError
             decisions.setdefault(span_id,[]).append((start,end,category))
         if set(decisions)!={f'u{i}' for i in range(count)}:raise ValueError
         for span_id,parts in decisions.items():
@@ -267,13 +289,14 @@ def review_sections(request, local_result, *, settings=None, transport=None, _re
             try:
                 state['provider_calls']+=1
                 content = (transport or call_deepseek)(settings, messages)
-                decisions = parse_decisions(content, len(ledger), categories, {f'u{i}':len(b.text) for i,(b,_) in enumerate(ledger)})
+                decisions = parse_decisions(content, len(ledger), categories, {f'u{i}':len(b.text) for i,(b,_) in enumerate(ledger)}, {f'u{i}':b.text for i,(b,_) in enumerate(ledger)})
                 break
             except ReviewError as exc:
                 attempts.append(str(exc))
                 state['invalid_response_attempts']=list(attempts)
                 if str(exc) not in {'invalid_assignments','incomplete_response'} or attempt==remaining:raise
-                messages.append({'role':'user','content':'The previous response was rejected: '+str(exc)+'. Return complete contiguous decisions for EVERY original span ID. Do not omit any spans or change source text.'})
+                feedback=assignment_feedback(content,{f'u{i}':len(b.text) for i,(b,_) in enumerate(ledger)}) if str(exc)=='invalid_assignments' else ''
+                messages.append({'role':'user','content':'The previous response was rejected: '+str(exc)+'. '+feedback+' Return complete contiguous decisions for EVERY original span ID. Offsets are relative to that span, not its source element. Do not split inside ordinary words. Do not omit spans or change source text.'})
         remaining-=len(attempts)
         state.update(provider_calls=1+len(attempts),invalid_response_attempts=attempts)
         grouped, unresolved = {}, []
@@ -303,7 +326,17 @@ def review_sections(request, local_result, *, settings=None, transport=None, _re
         all_blocks = assigned + unresolved
         candidate.metadata.update(total_units=len(all_blocks), assigned_units=len(assigned), review_units=len(unresolved),
             assigned_text_percent=round(100 * sum(len(b.text.strip()) for b in assigned) / max(1, sum(len(b.text.strip()) for b in all_blocks)), 1))
+        from local_api.services.review_resolution import resolve_unassigned
+        candidate=resolve_unassigned(request,candidate)
+        unresolved=candidate.needs_review
+        assigned=[b for section in candidate.sections for b in section.blocks]
+        all_blocks=assigned+unresolved
+        assert_coverage(request.elements,source_ledger(candidate))
         accounting=account_source(request.elements,candidate)
+        candidate.status='needs_review' if accounting['unresolved_meaningful_spans'] else 'provisional'
+        candidate.metadata.update(total_units=len(all_blocks),assigned_units=len(assigned),review_units=len(unresolved),
+            assigned_text_percent=round(100*sum(len(b.text.strip()) for b in assigned)/max(1,sum(len(b.text.strip()) for b in all_blocks)),1))
+        state['resolution_status']='out_of_scope' if candidate.metadata['document_scope']['candidate_resume'] is False else 'unresolved_meaningful_content' if accounting['unresolved_meaningful_spans'] else 'all_meaningful_text_assigned'
         candidate.metadata['source_accounting']=accounting
         state.update(all_meaningful_text_assigned=accounting['all_meaningful_text_assigned'],
                      remaining_meaningful_review_units=accounting['unresolved_meaningful_spans'])
@@ -311,7 +344,7 @@ def review_sections(request, local_result, *, settings=None, transport=None, _re
                      resolved_units=int(resolved), remaining_review_units=len(unresolved), local_result_retained=False)
         candidate.metadata['llm_review'] = state
         candidate.warnings.append('DeepSeek reviewed all source spans. Its placements remain provisional and do not verify original-word extraction accuracy.')
-        if remaining>0 and accounting['unresolved_meaningful_spans']:
+        if remaining>0 and accounting['unresolved_meaningful_spans'] and state['resolution_status']!='out_of_scope':
             second=review_sections(request,candidate,settings=settings,transport=transport,_remaining=remaining-1)
             next_state=second.metadata['llm_review']
             if next_state['status']=='complete':

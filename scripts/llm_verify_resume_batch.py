@@ -95,8 +95,9 @@ def review_document(row,source,output,folder,settings):
         if errors:record['status']='invariant_failure'
         elif state.get('status')!='complete':
             record.update(status='review_failed',error_code=state.get('error_code',state.get('status','unknown')))
+        elif state.get('resolution_status')=='out_of_scope':record['status']='llm_reviewed_out_of_scope'
         elif not final.sections:record['status']='llm_reviewed_no_sections'
-        elif final.needs_review:record['status']='llm_reviewed_needs_review'
+        elif state.get('remaining_meaningful_review_units',len(final.needs_review)):record['status']='llm_reviewed_needs_review'
         else:record['status']='llm_reviewed_all_assigned'
         artifact={'file':row['file'],'extraction':extraction.model_dump(),'local_sections':local.model_dump(),
                   'reviewed_sections':final.model_dump()}

@@ -19,7 +19,7 @@ from local_api.schemas.sections import SectionRequest, SectionResponse, ResumeSe
 from local_api.utils.file_validation import ExtractionError
 from local_api.services.section_highlights import highlight_kind
 from local_api.services.readable_resume import readable_groups
-from local_api.services.resume_structure import heading_aliases, heading_boundary, entry_groups, RECORD_FIELDS, normalized_heading, employment_start
+from local_api.services.resume_structure import heading_aliases, heading_boundary, entry_groups, RECORD_FIELDS, normalized_heading, employment_start, word_safe_cut
 
 MODEL_CONFIG = json.loads((Path(__file__).parents[1] / 'data/section_model.json').read_text())
 MODEL_ID = MODEL_CONFIG['model_id']
@@ -129,7 +129,8 @@ class SectionEngine:
                 line_hints = element.metadata.get('pdf_source_lines', [])
                 hint_cuts = [max(0, min(len(line), hint[key] - offset)) for hint in line_hints for key in ('start', 'end') if isinstance(hint.get(key), int) and offset <= hint[key] <= offset + len(line)]
                 recovery_cuts = [cut-offset for cut in element.metadata.get('recovery_cuts', []) if isinstance(cut,int) and offset <= cut <= offset+len(line)]
-                cuts = sorted(set(recovery_cuts + hint_cuts + [0] + [offsets[i][0] for i in range(200, len(offsets), 200)] + ([inline_cut] if inline_cut else []) + [len(line)]))
+                mechanical_cuts = hint_cuts + [offsets[i][0] for i in range(200, len(offsets), 200)]
+                cuts = sorted(set(recovery_cuts + [word_safe_cut(line, cut) for cut in mechanical_cuts] + [0] + ([inline_cut] if inline_cut else []) + [len(line)]))
                 if not line:
                     cuts = [0, 0]
                 for start, end in zip(cuts, cuts[1:]):
