@@ -74,6 +74,8 @@ def extract_text(payload: bytes, filename: str, strategy: Strategy = 'auto',
         elements = partition(file=stream, content_type=partition_type.mime_type,
                              metadata_filename=filename, strategy=strategy, languages=['eng'])
         serialized = [e.to_dict() for e in elements]
+        if strategy=='ocr_only':
+            for e in serialized:e.setdefault('metadata',{})['ocr_verification_required']=True
         if repaired_images:
             for element in serialized:
                 element.setdefault('metadata', {})['removed_null_image_relationships'] = repaired_images
@@ -81,8 +83,15 @@ def extract_text(payload: bytes, filename: str, strategy: Strategy = 'auto',
             # Supplemental typography/line offsets recover headings merged by
             # partitioning. Failures never change the raw extraction contract.
             try:
+                from local_api.services.pdf_glyph_recovery import recover_pdf_glyphs
+                serialized = recover_pdf_glyphs(payload, serialized)
                 from local_api.services.pdf_section_layout import annotate_pdf_lines
                 annotate_pdf_lines(payload, serialized)
+                # Retain installed-package output provenance while restoring
+                # independently located PDF character lines it omitted. Never
+                # reuse classifications/offsets from a pre-recovery inventory.
+                from local_api.services.pdf_source_recovery import recover_pdf_source
+                serialized, _ = recover_pdf_source(payload, serialized)
             except Exception as exc:
                 logger.warning('PDF section layout unavailable: %s', type(exc).__name__)
         # Uploads carry no local filesystem identity. Never expose parser paths.

@@ -75,9 +75,12 @@ def review_document(row,source,output,folder,settings):
                                 'categories':[s.category for s in local.sections]}
         def transport(config,messages):
             record['api_calls']+=1
-            envelope=provider_json(config,'/chat/completions',{
+            payload={
                 'model':config.model,'messages':messages,'stream':False,
-                'response_format':{'type':'json_object'},'thinking':{'type':config.thinking},'max_tokens':config.max_tokens})
+                'response_format':{'type':'json_object'},'thinking':{'type':config.thinking},'max_tokens':config.max_tokens}
+            (output/'provider-requests').mkdir(exist_ok=True)
+            write_json(output/'provider-requests'/(identifier+'-'+str(record['api_calls'])+'.json'),payload)
+            envelope=provider_json(config,'/chat/completions',payload)
             for key,value in envelope.get('usage',{}).items():
                 if isinstance(value,int):usage[key]+=value
             try:
@@ -132,7 +135,7 @@ def main():
     logging.basicConfig(level=logging.ERROR)
     os.environ['HF_HUB_OFFLINE']='1';os.environ['TOKENIZERS_PARALLELISM']='false'
     output=args.output;output.mkdir(parents=True,exist_ok=True);output.chmod(0o700)
-    for name in ('documents','provider-decisions','checkpoints'):(output/name).mkdir(exist_ok=True)
+    for name in ('documents','provider-decisions','provider-requests','checkpoints'):(output/name).mkdir(exist_ok=True)
     inventory=json.loads((args.source/'current-results.json').read_text())
     # Freeze source selection: no other resumes or previously untested files enter.
     scope=output/'scope.json'

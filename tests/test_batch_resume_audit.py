@@ -13,7 +13,7 @@ spec.loader.exec_module(audit)
 def fixture():
     block = NS(source_element_index=0,start=0,end=5,text='Alpha')
     section = NS(category='skills',blocks=[block],text='Alpha',
-                 highlights=[NS(start=0,end=5)],entries=[NS(block_indices=[0])])
+                 highlights=[NS(start=0,end=5)],entries=[NS(entry_id="skills-1",block_indices=[0],fields={})])
     return [NS(text='Alpha')], NS(sections=[section],needs_review=[])
 
 

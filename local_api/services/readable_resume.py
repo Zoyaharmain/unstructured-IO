@@ -18,6 +18,22 @@ def readable_groups(section, elements):
     comes from original spans, including duplicates and rows the parser ignores.
     Separate layout lanes are never passed to a shared employer/role context.
     """
+    # The reviewed record inventory is authoritative for display as well as
+    # JSON. Re-running the lane-based vendor adapter would detach dates again.
+    if section.category in {'experience','education'} and section.entries and all(b.reviewed_by_llm for b in section.blocks):
+        nodes=[];owned=set()
+        headings=[i for i,b in enumerate(section.blocks) if b.assignment in HEADINGS]
+        for entry in section.entries:
+            indices=[i for i in entry.block_indices if i not in headings[:1]]
+            if not indices:continue
+            if owned.intersection(indices):raise RuntimeError('Reviewed entries overlap')
+            owned.update(indices)
+            nodes.append({'kind':'employer' if section.category=='experience' else 'education',
+                          'title':section.blocks[indices[0]].text.strip()[:180],
+                          'block_indices':indices,'children':[]})
+        remaining=[i for i in range(len(section.blocks)) if i not in owned and i not in headings[:1]]
+        if remaining:nodes.append({'kind':'content','title':'Additional source content','block_indices':remaining,'children':[]})
+        return nodes
     nodes = []
     for lane in dict.fromkeys(block.lane for block in section.blocks):
         indices = [i for i, b in enumerate(section.blocks) if b.lane == lane]

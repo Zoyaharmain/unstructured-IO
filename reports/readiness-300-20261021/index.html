@@ -1,0 +1,68 @@
+<!doctype html><meta charset="utf-8"><title>Review before another 300 PDFs</title><style>body{font:17px/1.6 system-ui;max-width:1100px;margin:auto;padding:24px}pre{font:inherit;white-space:pre-wrap;overflow-wrap:anywhere}</style><h1>Review before another 300 PDFs</h1><p><a href="report.md">Full report and evidence</a> · <a href="latest-100-corrected/report.md">Corrected latest report</a> · <a href="inventory/latest-distinct-documents.csv">350-document inventory</a></p><pre># Review before selecting another 300 PDFs
+
+**Decision: the existing 350 documents are not established as semantically correct. Do not start another 300-document paid batch on the strength of these reports.** A verified disjoint selection is prepared, but has not been processed.
+
+## Results of the renewed audit
+
+Audited all eight saved batch directories with at least 50 selected documents and provider-result artifacts. The latest `batch-next-20261021-064222` is a fresh recorded 100-document run with 107 historical classification requests; **all 100 hashes already occur in the previously audited 350**. It added no new distinct document. Across recorded live batches the union remains **350 distinct hashes**. The two earlier fixed-100 directories remain offline replays, not extra live batches or extra documents.
+
+Every audited directory passes the saved copied-PDF/local/review bindings and exact extracted-source interval/entry integrity checks for its scope. [Run-by-run results](inventory/runs.json), [all artifact diagnostics](inventory/audit.json) and [latest live outcome per distinct PDF](inventory/latest-distinct-documents.csv) retain the evidence. This is an automated saved-artifact audit and targeted source investigation, not visual verification of every PDF page or a full semantic certification.
+
+The latest live outcome per distinct hash is (offline recoveries are not counted as fresh live-provider success):
+
+| Status | Documents |
+|---|---:|
+| All assigned — coverage only | 323 |
+| Needs review | 16 |
+| Provider review failed | 3 |
+| Out of scope | 8 |
+| Total | 350 |
+
+Current scope rules identify 342 candidate/unknown-scope documents and eight provisional non-resumes. The saved live results contain **69 unresolved meaningful candidate/unknown-scope spans**, across the union. This is not 69 confirmed extraction errors. Some are source noise or category-policy questions. The full candidate collection still lacks independently established section and relationship accuracy.
+
+## Issues fixed in this pass
+
+**Scope accounting in reports:** the latest 100 report&#x27;s 417 meaningful pending spans combine **413 spans in eight out-of-scope documents** and **four in 92 candidate/unknown-scope documents**. Added explicit scope-separated totals to the reporting code and generated a [corrected separate report](latest-100-corrected/report.md). Original reports remain preserved. The four pending source spans are an editing instruction in Ankit, an Additional Information heading in Jasmin, two backslash characters in Khalid, and an HRJ tracking marker in Nimisha. They remain visible until their treatment is source-supported; they were not forced into resume sections.
+
+**Repeat selection:** the default `run_pilot50_review.py --count 300` always includes the original 15 and draws from an existing pool; it does not automatically exclude prior batches. The old additional-100 selector excludes only the specified prior manifest, so excluding the 250 alone can reselect the later 100. Added [select_unseen_resumes.py](../../scripts/select_unseen_resumes.py): it unions all saved batch manifests, excludes both hashes and filenames, verifies original source hashes, deduplicates aliases, uses deterministic strata, refuses insufficient candidates/corrupt history, and refuses output replacement. Excluding hashes prevents renamed copies of a processed PDF from returning; filename exclusion is an additional conservative safeguard.
+
+Prepared [selection-unseen-300.json](selection-unseen-300.json): **300 unique original-source-verified PDFs, zero hash overlap and zero filename overlap with the 350 saved batch selections**. [Verification](selection-verification.json) records the hash check. This is an offline selection, not resume classification, human approval or permission to scale. It does not establish that all selected PDFs are resumes, and PDF hashes cannot detect separately encoded copies of the same candidate&#x27;s resume. Selection excludes prior diagnostic batch selections; PDFs previously extracted only in the upstream local inventory remain eligible by design.
+
+## Remaining blockers
+
+The latest 100 still has employment association flags in 86 documents and education flags in 49, including out-of-scope files; these counts overlap and are heuristic review signals, not error rates. Examples include dozens of unlinked employment blocks in DeepaR/Dhiman, and detached/numeric education groups in PUPPYKUMARI. The role/date/employer ownership therefore cannot be certified merely because the provider supplied valid section assignments. Conservative grouping preserves uncertain content rather than inventing links.
+
+Known source issues also remain: Gopal has damaged-text/parser disagreements, Keerthi requires an original-image/OCR reference, and some output boundaries need distinction between fused source headings and ordinary words. The provider labels sections and offsets; it does not independently approve the final deterministic job/education records. A structural pass is not proof of these relationships.
+
+The [pilot gate](pilot-gate.json) still reports **0 of 15 required documents with qualifying human approval/export or exclusion**. No meaningful accuracy score can be established against an unapproved reference set. The [acceptance review pack](../acceptance-review-20261021/report.md) and running editor at **http://127.0.0.1:8022** are ready for that work. Known extraction defects must be corrected in a new source version and annotations rebased before approval.
+
+## Commands and next action
+
+**Run now:** source review and evaluation of existing predictions. Use the editor, complete explicit review of the 15-document pilot, then export approved references and evaluate section/relationship accuracy plus a separate held-out sample. Follow the [review/export instructions](../../docs/PILOT_HUMAN_REVIEW.md). Recheck:
+
+```bash
+.venv/bin/python scripts/pilot_review_gate.py \
+  --review-dir ground_truth/human_review \
+  --approved-gold-dir ground_truth/approved_gold_v2
+```
+
+This read-only command currently exits with status 2 because approval is incomplete. It makes no API calls. Passing the pilot gate is required by the candidate-generation workflow; it is not by itself proof that all 350 PDFs are correct.
+
+**Selection only, safe to use later:** to refresh the exclusion union after any intervening processing, choose a new manifest path:
+
+```bash
+.venv/bin/python scripts/select_unseen_resumes.py \
+  --count 300 \
+  --output manifests/selection-unseen-300-v2.json
+```
+
+Do not use the unqualified `--count 300` batch command to obtain unseen documents. A later processing command must explicitly use the refreshed `--selection-manifest`, freeze the source/code/provider configuration and write into a new output directory. A paid run command is intentionally not recommended while the correctness and approval prerequisites above remain unmet. No additional extraction batch or paid API calls were started by this review.
+
+## Preservation
+
+Rechecked both protected snapshots: **8,552 earlier artifacts and 9,521 files protected by the latest batch; zero changed in either snapshot**. The snapshots overlap and should not be added. The latest batch report was corrected into a separate directory. Original PDFs, reports and annotations were preserved. No approvals were fabricated.
+
+## Validation
+
+**278 tests passed in 126.63 seconds** in the [complete regression log](tests/regression.log); [JUnit results](tests/tests.xml). Provider credentials were removed and external sockets blocked by the test harness. The [focused tests](focused-tests.log) also passed (24 tests), covering historical exclusion unions, renamed copies, insufficient distinct candidates, corrupt/missing history and scope-separated pending totals. `git diff --check` passed. No live provider calls were made.
+</pre>

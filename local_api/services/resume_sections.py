@@ -34,6 +34,8 @@ _engine = None
 def build_sections(grouped, elements):
     sections = [ResumeSection(category=key, label=ANCHORS[key]['label'], blocks=blocks, entries=entry_groups(blocks, key, elements)) for key, blocks in grouped.items()]
     for section in sections:
+        from local_api.services.record_relationships import annotate_relationships
+        annotate_relationships(section)
         parts, previous, cursor = [], None, 0
         for block in section.blocks:
             separator = '' if previous is None or (previous.source_element_index == block.source_element_index and previous.end == block.start) else '\n'

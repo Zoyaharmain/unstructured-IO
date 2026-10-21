@@ -1,4 +1,4 @@
-"""Orchestrate the existing local and DeepSeek batch CLIs for exactly 50 PDFs.
+"""Orchestrate the existing local and DeepSeek batch CLIs for a bounded number of PDFs (50 by default).
 No extraction, detection or provider algorithms are implemented here.
 """
 import argparse,hashlib,json,os,random,shutil,subprocess,sys
@@ -15,7 +15,7 @@ def write(p,v):
 def configuration():
  paths=sorted((ROOT/'local_api').rglob('*.py'))+sorted((ROOT/'local_api/data').glob('*.json'))+[ROOT/'scripts/batch_check_resumes.py',ROOT/'scripts/llm_verify_resume_batch.py',Path(__file__)]
  return {str(p.relative_to(ROOT)):sha(p) for p in paths}
-def select(folder):
+def select(folder, count=50):
  original=json.loads((ROOT/'ground_truth/selected_15_resumes.json').read_text());rows=json.loads((ROOT/'.upstream/batch-validation/current-results.json').read_text());selected=[];used=set();names=set()
  def add(item,rationale):
   p=folder/item['file']
@@ -38,37 +38,49 @@ def select(folder):
   buckets.setdefault(key,[]).append(item)
  rng=random.Random(42)
  for items in buckets.values():rng.shuffle(items)
- while len(selected)<50:
+ while len(selected)<count:
   progress=False
   for key in sorted(buckets):
    while buckets[key]:
     item=buckets[key].pop()
     if item['sha256'] in used or item['file'] in names:continue
     add(item,f'Seed42 round-robin page/layout/coverage stratum {key}; extension of existing pilot mechanism');progress=True;break
-   if len(selected)==50:break
-  if not progress:raise ValueError('Insufficient distinct hash-verified PDFs for 50')
+   if len(selected)==count:break
+  if not progress:raise ValueError(f'Insufficient distinct hash-verified PDFs for {count}')
  return selected
 
 def main():
- p=argparse.ArgumentParser(description=__doc__);p.add_argument('--folder',type=Path,default=DEFAULT_FOLDER);p.add_argument('--output',type=Path,required=True);p.add_argument('--resume',action='store_true');p.add_argument('--local-only',action='store_true');args=p.parse_args();out=args.output.resolve()
+ p=argparse.ArgumentParser(description=__doc__);p.add_argument('--folder',type=Path,default=DEFAULT_FOLDER);p.add_argument('--output',type=Path,required=True);p.add_argument('--selection-manifest',type=Path,help='Reuse an exact prior selected source hash set, with fresh processing');p.add_argument('--count',type=int,default=50,help='Exact document scope, including the original 15; minimum 15');p.add_argument('--resume',action='store_true');p.add_argument('--local-only',action='store_true');args=p.parse_args();out=args.output.resolve()
+ if args.count<15:p.error('--count must be at least 15')
  load_provider_env(ROOT/'.env')
  if not args.local_only and not os.getenv('DEEPSEEK_API_KEY','').strip():p.error('Private API key unavailable')
  config=configuration()
  if out.exists():
   if not args.resume:p.error('Existing output requires explicit --resume')
   manifest=json.loads((out/'manifest.json').read_text());selected=manifest['selected']
+  if manifest['scope']!=args.count:p.error('--count differs from the frozen run scope')
   if manifest['pipeline_source_hashes']!=config:p.error('Pipeline changed since run creation; stop rather than mix outputs')
   for item in selected:
    if sha(args.folder/item['file'])!=item['sha256'] or sha(out/'selected-pdfs'/item['file'])!=item['sha256']:p.error('Source hash mismatch on resume')
   if manifest.get('provider_model')!=os.getenv('DEEPSEEK_MODEL','deepseek-flash') or manifest.get('provider_base')!=os.getenv('DEEPSEEK_BASE_URL','https://api.deepseek.com'):p.error('Provider configuration changed')
  else:
-  selected=select(args.folder)
-  if len(selected)!=50 or len({s['sha256'] for s in selected})!=50:raise ValueError('Scope must be exactly 50 unique file hashes')
+  if args.selection_manifest:
+   manifest_data=json.loads(args.selection_manifest.read_text())
+   frozen=manifest_data['selected'];selected=[]
+   for item in frozen:
+    source=args.folder/item['file']
+    if not source.is_file() or sha(source)!=item['sha256']:raise ValueError('Frozen selection source hash mismatch: '+item['file'])
+    selected.append({**item,'original_source_path':str(source.resolve()),'bytes':source.stat().st_size,'selection_rationale':'Exact prior manifest hash-bound selection; fresh pipeline and provider review'})
+   selection_desc=manifest_data.get('selection',f'Selection manifest: {args.selection_manifest.name}')
+  else:
+   selected=select(args.folder,args.count)
+   selection_desc=f'original15 +{args.count-15} seeded stratified distinct PDF hashes from existing processed pool'
+  if len(selected)!=args.count or len({s['sha256'] for s in selected})!=args.count:raise ValueError('Scope must contain the requested number of unique hashes')
   out.mkdir(parents=True,mode=0o700);(out/'selected-pdfs').mkdir()
   protected={str(f.resolve()):sha(f) for folder in [ROOT/'ground_truth',ROOT/'reports'] for f in folder.rglob('*') if f.is_file() and out not in f.resolve().parents}
   protected.update({s['original_source_path']:s['sha256'] for s in selected});write(out/'protected-before.json',protected)
   for item in selected:shutil.copy2(args.folder/item['file'],out/'selected-pdfs'/item['file'])
-  manifest={'created_utc':now(),'seed':42,'scope':50,'selection':'original15 +35 seeded stratified distinct PDF hashes from existing processed pool','source_directory':str(args.folder),'selected':selected,'pipeline_source_hashes':config,'provider_model':os.getenv('DEEPSEEK_MODEL','deepseek-flash'),'provider_base':os.getenv('DEEPSEEK_BASE_URL','https://api.deepseek.com'),'status':'selected','commands':[]}
+  manifest={'created_utc':now(),'seed':42,'scope':args.count,'selection':selection_desc,'source_directory':str(args.folder),'selected':selected,'pipeline_source_hashes':config,'provider_model':os.getenv('DEEPSEEK_MODEL','deepseek-flash'),'provider_base':os.getenv('DEEPSEEK_BASE_URL','https://api.deepseek.com'),'status':'selected','selection_manifest':str(args.selection_manifest) if args.selection_manifest else None,'commands':[]}
   write(out/'manifest.json',manifest)
  env=dict(os.environ,DEEPSEEK_REVIEW_ENABLED='true',HF_HUB_OFFLINE='1',TRANSFORMERS_OFFLINE='1',HF_HOME=str(ROOT/'.venv/model-cache'),NUMBA_CACHE_DIR='/tmp/pilot50-numba',MPLCONFIGDIR='/tmp/pilot50-mpl',OMP_NUM_THREADS='1',PYTHONDONTWRITEBYTECODE='1',UNSTRUCTURED_DISABLE_NOTICE='1')
  def run(script,arguments,log):
@@ -79,11 +91,11 @@ def main():
   manifest['local_started_utc']=now();write(out/'manifest.json',manifest)
   run('batch_check_resumes.py',[out/'selected-pdfs','--output',out/'local','--workers','2','--timeout','120'],'local.log')
   local=json.loads((out/'local/current-results.json').read_text())
-  if len(local)!=50 or any(r['status']!='processed' for r in local):
+  if len(local)!=args.count or any(r['status']!='processed' for r in local):
    manifest['status']='blocked_local_stage';write(out/'manifest.json',manifest);raise SystemExit('Blocking local failure: provider not started. Inspect local log; no pipeline changes made')
   manifest['local_completed_utc']=now();manifest['status']='local_complete';write(out/'manifest.json',manifest)
  if manifest['status']=='blocked_local_stage':raise SystemExit('Local blocking issue must be investigated before continuing')
- if args.local_only:print('All 50 local stages complete; no provider calls made');return
+ if args.local_only:print(f'All {args.count} local stages complete; no provider calls made');return
  if manifest['status'] not in {'local_complete','review_started','review_complete'}:raise SystemExit('Invalid phase')
  if manifest['status']!='review_complete':
   # Only this run's source-bound checkpoints are eligible, after source/config checks.

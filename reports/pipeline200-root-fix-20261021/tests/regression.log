@@ -1,0 +1,167 @@
+.........................FFF............................................ [ 29%]
+........................................................................ [ 58%]
+........................................................................ [ 87%]
+..............................                                           [100%]
+=================================== FAILURES ===================================
+_______________________ test_valid_source_and_highlights _______________________
+
+    def test_valid_source_and_highlights():
+        elements,result=fixture()
+>       assert audit.validate_result(elements,result)==[]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_batch_resume_audit.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+elements = [namespace(text='Alpha')]
+result = namespace(sections=[namespace(category='skills', blocks=[namespace(source_element_index=0, start=0, end=5, text='Alpha')], text='Alpha', highlights=[namespace(start=0, end=5)], entries=[namespace(block_indices=[0])])], needs_review=[])
+
+    def validate_result(elements, result):
+        errors = []
+        categories = [s.category for s in result.sections]
+        if len(categories) != len(set(categories)):
+            errors.append('duplicate_categories')
+        spans = sorted([b for s in result.sections for b in s.blocks] + result.needs_review,
+                       key=lambda b: (b.source_element_index, b.start))
+        if any(not 0 <= b.source_element_index < len(elements) for b in spans):
+            errors.append('invalid_source_index')
+        for i, el in enumerate(elements):
+            cursor = 0
+            for b in (b for b in spans if b.source_element_index == i):
+                if b.start != cursor or not 0 <= b.start <= b.end <= len(el.text) or b.text != el.text[b.start:b.end]:
+                    errors.append('source_range_or_text_mismatch')
+                cursor = b.end
+            if cursor != len(el.text):
+                errors.append('source_coverage_incomplete')
+        for section in result.sections:
+            expected, previous = '', None
+            for b in section.blocks:
+                if previous is not None and not (previous.source_element_index == b.source_element_index and previous.end == b.start):
+                    expected += '\n'
+                expected += b.text
+                previous = b
+            if section.text != expected:
+                errors.append('canonical_text_mismatch')
+            end = 0
+            for h in section.highlights:
+                if not 0 <= h.start < h.end <= len(section.text) or h.start < end:
+                    errors.append('invalid_highlight_offsets')
+                end = h.end
+            ownership=[];entry_ids=[]
+            for entry in section.entries:
+>               entry_ids.append(entry.entry_id);ownership.extend(entry.block_indices)
+                                 ^^^^^^^^^^^^^^
+E               AttributeError: 'types.SimpleNamespace' object has no attribute 'entry_id'
+
+scripts/batch_check_resumes.py:98: AttributeError
+______________ test_audit_catches_lost_text_and_invalid_highlight ______________
+
+    def test_audit_catches_lost_text_and_invalid_highlight():
+        elements,result=fixture()
+        result.sections[0].blocks[0].start=1
+        result.sections[0].highlights[0].end=6
+>       errors=audit.validate_result(elements,result)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_batch_resume_audit.py:29: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+elements = [namespace(text='Alpha')]
+result = namespace(sections=[namespace(category='skills', blocks=[namespace(source_element_index=0, start=1, end=5, text='Alpha')], text='Alpha', highlights=[namespace(start=0, end=6)], entries=[namespace(block_indices=[0])])], needs_review=[])
+
+    def validate_result(elements, result):
+        errors = []
+        categories = [s.category for s in result.sections]
+        if len(categories) != len(set(categories)):
+            errors.append('duplicate_categories')
+        spans = sorted([b for s in result.sections for b in s.blocks] + result.needs_review,
+                       key=lambda b: (b.source_element_index, b.start))
+        if any(not 0 <= b.source_element_index < len(elements) for b in spans):
+            errors.append('invalid_source_index')
+        for i, el in enumerate(elements):
+            cursor = 0
+            for b in (b for b in spans if b.source_element_index == i):
+                if b.start != cursor or not 0 <= b.start <= b.end <= len(el.text) or b.text != el.text[b.start:b.end]:
+                    errors.append('source_range_or_text_mismatch')
+                cursor = b.end
+            if cursor != len(el.text):
+                errors.append('source_coverage_incomplete')
+        for section in result.sections:
+            expected, previous = '', None
+            for b in section.blocks:
+                if previous is not None and not (previous.source_element_index == b.source_element_index and previous.end == b.start):
+                    expected += '\n'
+                expected += b.text
+                previous = b
+            if section.text != expected:
+                errors.append('canonical_text_mismatch')
+            end = 0
+            for h in section.highlights:
+                if not 0 <= h.start < h.end <= len(section.text) or h.start < end:
+                    errors.append('invalid_highlight_offsets')
+                end = h.end
+            ownership=[];entry_ids=[]
+            for entry in section.entries:
+>               entry_ids.append(entry.entry_id);ownership.extend(entry.block_indices)
+                                 ^^^^^^^^^^^^^^
+E               AttributeError: 'types.SimpleNamespace' object has no attribute 'entry_id'
+
+scripts/batch_check_resumes.py:98: AttributeError
+________ test_audit_catches_duplicate_sections_and_bad_entry_reference _________
+
+    def test_audit_catches_duplicate_sections_and_bad_entry_reference():
+        elements,result=fixture()
+        result.sections.append(result.sections[0])
+        result.sections[0].entries[0].block_indices=[99]
+>       errors=audit.validate_result(elements,result)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_batch_resume_audit.py:38: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+elements = [namespace(text='Alpha')]
+result = namespace(sections=[namespace(category='skills', blocks=[namespace(source_element_index=0, start=0, end=5, text='Alpha...a')], text='Alpha', highlights=[namespace(start=0, end=5)], entries=[namespace(block_indices=[99])])], needs_review=[])
+
+    def validate_result(elements, result):
+        errors = []
+        categories = [s.category for s in result.sections]
+        if len(categories) != len(set(categories)):
+            errors.append('duplicate_categories')
+        spans = sorted([b for s in result.sections for b in s.blocks] + result.needs_review,
+                       key=lambda b: (b.source_element_index, b.start))
+        if any(not 0 <= b.source_element_index < len(elements) for b in spans):
+            errors.append('invalid_source_index')
+        for i, el in enumerate(elements):
+            cursor = 0
+            for b in (b for b in spans if b.source_element_index == i):
+                if b.start != cursor or not 0 <= b.start <= b.end <= len(el.text) or b.text != el.text[b.start:b.end]:
+                    errors.append('source_range_or_text_mismatch')
+                cursor = b.end
+            if cursor != len(el.text):
+                errors.append('source_coverage_incomplete')
+        for section in result.sections:
+            expected, previous = '', None
+            for b in section.blocks:
+                if previous is not None and not (previous.source_element_index == b.source_element_index and previous.end == b.start):
+                    expected += '\n'
+                expected += b.text
+                previous = b
+            if section.text != expected:
+                errors.append('canonical_text_mismatch')
+            end = 0
+            for h in section.highlights:
+                if not 0 <= h.start < h.end <= len(section.text) or h.start < end:
+                    errors.append('invalid_highlight_offsets')
+                end = h.end
+            ownership=[];entry_ids=[]
+            for entry in section.entries:
+>               entry_ids.append(entry.entry_id);ownership.extend(entry.block_indices)
+                                 ^^^^^^^^^^^^^^
+E               AttributeError: 'types.SimpleNamespace' object has no attribute 'entry_id'
+
+scripts/batch_check_resumes.py:98: AttributeError
+=========================== short test summary info ============================
+FAILED tests/test_batch_resume_audit.py::test_valid_source_and_highlights - A...
+FAILED tests/test_batch_resume_audit.py::test_audit_catches_lost_text_and_invalid_highlight
+FAILED tests/test_batch_resume_audit.py::test_audit_catches_duplicate_sections_and_bad_entry_reference
+3 failed, 243 passed in 111.67s (0:01:51)

@@ -6,6 +6,12 @@ def document_scope(elements):
     text='\n'.join(e.text for e in elements)
     opening=text[:2500]
     # Require document-purpose evidence, not a filename or an isolated skill.
+    if re.search(r'website\s+critique\s+assignment',opening,re.I) and re.search(r'website\s+reviewed\s*:',opening,re.I) and re.search(r'submitted\s+by\s*:',opening,re.I):
+        return {'kind':'website_critique','candidate_resume':False,'reason':'Website critique assignment, submitted-by field and reviewed-website field'}
+    if re.search(r'(?im)^\s*hiring\s+manager\s*:',opening) and re.search(r'(?im)^\s*open\s+position\s*:\s*\d+',opening) and re.search(r'\bmandatory\b|\bat\s+least\s+\d+\+?\s*year',text,re.I):
+        return {'kind':'job_description','candidate_resume':False,'reason':'Hiring-manager field, open-position count and mandatory candidate requirements'}
+    if re.search(r'(?im)^\s*detailed\s+critique\s+on\s+.{1,100}\bwebsite\b',opening) and re.search(r'upon\s+reviewing\s+the\s+website',opening,re.I):
+        return {'kind':'website_critique','candidate_resume':False,'reason':'Explicit website-critique title and document-purpose statement'}
     if re.search(r'(?im)^\s*.{0,60}interview\s+preparation\s+guide\b',opening) and re.search(r'purpose\s+of\s+this\s+document|this\s+guide\s+is\s+meant',text,re.I):
         return {'kind':'interview_preparation_guide','candidate_resume':False,'reason':'Explicit preparation-guide heading and document-purpose statement'}
     if re.search(r'\b(?:I|we)\s+(?:need|require|are\s+looking\s+for)\b.{0,100}\b(?:resources|candidates|developers)\b',opening,re.I|re.S) and re.search(r'\b(?:below\s+defined\s+JD|job\s+description)\b',opening,re.I):
@@ -15,7 +21,11 @@ def document_scope(elements):
     mandatory=bool(re.search(r'mandatory\s+skills',text,re.I))
     if requirements and mandatory and len(blank_fields)>=3:
         return {'kind':'job_requirements','candidate_resume':False,'reason':'Requirements headings and at least three blank starred form fields; not evidence of candidate history'}
-    return {'kind':'candidate_or_unknown','candidate_resume':None}
+    headings={m.group(0).casefold() for m in re.finditer(r'\b(?:education|experience|skills|projects|qualifications|work history)\b',text,re.I)}
+    contact=bool(re.search(r'[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}',opening))
+    if contact and len(headings)>=3 and re.search(r'\b(?:19|20)\d{2}\b',text):
+        return {'kind':'likely_resume','candidate_resume':True,'reason':'Contact details, multiple resume section families and dated history; provisional scope only','human_verified':False}
+    return {'kind':'candidate_or_unknown','candidate_resume':None,'requires_scope_review':True}
 
 
 def resolve_unassigned(request,result):

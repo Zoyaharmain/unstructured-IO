@@ -43,6 +43,9 @@ class SectionEntry(BaseModel):
     block_indices: list[int]
     lane: str
     boundary_reason: str
+    fields: dict[str,list[int]] = Field(default_factory=dict)
+    relationship_status: Literal['provisional','needs_review'] = 'provisional'
+    review_reasons: list[str] = Field(default_factory=list)
 
 
 class ReadableGroup(BaseModel):

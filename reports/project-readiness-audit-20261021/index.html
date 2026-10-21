@@ -1,0 +1,89 @@
+<!doctype html><meta charset="utf-8"><title>Resume pipeline readiness review</title><style>body{font:17px/1.6 system-ui;max-width:1100px;margin:auto;padding:28px}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:inherit}a{color:#1454a0}</style><h1>Resume pipeline readiness review</h1><p><a href="report.md">Full report and evidence links</a> · <a href="corrected-offline-report/index.html">100-document source review</a> · <a href="review-queue.csv">Review queue</a></p><pre># Project and processed-resume readiness review — 21 October 2026
+
+**Recommendation: hold further paid batches and production scaling.** Continue source review and evaluation of the existing documents. Assignment coverage has improved, but employer/date/role and education/grade correctness remain unmeasured. This review does not certify every resume or claim that every defect is fixed.
+
+## Scope and evidence
+
+Reviewed the extraction → source recovery → section classification → provider validation → record grouping → reporting flow, saved batch manifests and outputs, source/hash bindings, exact interval integrity, and regression coverage. Audited seven saved batch directories. Their overlapping selections represent **350 distinct PDF hashes**, including the additional 100 disjoint from the prior 250. This is an artifact audit with targeted original-PDF checks, not independent visual verification of all 350 documents.
+
+| Saved run | Documents | Recorded live requests attributed to run | Saved outcome |
+|---|---:|---:|---|
+| Original 50 | 50 | 58 | 49 structurally valid reviews |
+| Fixed 50 | 50 | 56 | 48 structurally valid reviews |
+| 200 | 200 | 227 | 196 structurally valid reviews |
+| 250 | 250 | 283 | 246 structurally valid reviews |
+| Additional 100 | 100 | 111 | 98 structurally valid reviews |
+| Fixed 100 | 100 | 0 | Offline replay of additional 100 |
+| Structural grouping fix 100 | 100 | 0 | Offline replay of fixed 100 |
+
+Use [runs.json](inventory-v2/runs.json) for the exact enumerated set and evidence. Counts overlap and must not be added to estimate corpus size. Recorded live activity is historical evidence; **this audit and its new replay made zero API calls**. Some older runs lack original wire-request files; reconstructed requests are explicitly labelled.
+
+Both existing “fixed 100” reports copied historical API usage and timing. Their creator scripts also wrote a fixed preservation count instead of measuring it. They are offline replays, and their reported 100/100 does not establish a fresh live-provider result. Historical files were preserved. New replay scripts and reports identify execution provenance, separate historical usage, measure preservation, and refuse existing output directories.
+
+All seven audited directories passed copied-PDF hash/local-review binding and extracted-source interval/entry integrity checks for their selected artifacts. This proves preservation of the extracted inventory; it does not prove that the extractor captured every original-PDF word. See [full audit](inventory-v2/audit.json) and [350-document inventory](inventory-v2/latest-distinct-documents.csv).
+
+Using the latest recorded live outcome per distinct hash: 320 all-assigned, 17 needs-review, six failed, six out-of-scope and one no-sections. These are historical provider statuses, not current semantic accuracy. Current source-artifact rules find 73 unresolved meaningful candidate/unknown-scope spans in those saved live outputs; out-of-scope content is counted separately. Scope rules identify eight possible non-resume documents, including two website critiques that older coverage statuses did not exclude. These scope decisions also require source confirmation.
+
+## Fixes and validation of the additional 100
+
+Implemented strict provider error diagnostics and repair feedback without relaxing exact coverage or atomic fallback. Guards distinguish actual PDF line boundaries from unsupported word cuts. Optional provider `type` is accepted only as the exact documented `json_object` constant. Future provider requests are saved without credentials for reproducibility.
+
+Strengthened source interval and record ownership validation; employer/education field references stay within their own record. Added source-supported employment/qualification anchors, conservative handling of shared accomplishments, and visible uncertainty for unlinked content. Readable records and structured entries use the same grouping. Reports now include unlinked-record and field-review concerns previously omitted.
+
+Added conservative PDF text-layer glyph repair and missing-line recovery with source provenance. Recovery requires matching source evidence; ambiguous glyphs and OCR errors remain flagged. Repeated passages at different PDF locations remain preserved.
+
+Added narrow source-artifact handling for located page-number footers such as `1 | P a g e` and standalone bullets. Meaningful text, graduation years, C#, contact information and headings remain reviewable. No source spans were discarded.
+
+The new [correctly labelled offline report](corrected-offline-report/report.md), [per-document results](corrected-offline-report/per-resume.csv), and [source review page](corrected-offline-report/index.html) replay saved responses against the current validator/grouping:
+
+- 100/100 structurally valid replayed reviews; zero live API calls and no fresh extraction.
+- 100/100 exact interval checks and source/local/review bindings passed.
+- 96 all-assigned coverage statuses; four still need review.
+- 25 raw unknown spans remain: 19 source artifacts and six meaningful spans. The prior report counted 16 meaningful spans; ten were page footers or standalone bullets. This reduction is artifact accounting, not measured semantic improvement.
+- 76 documents have employment association warnings and 51 have education warnings under the fuller diagnostics. These overlap and identify review needs, not confirmed error rates. Earlier low flag counts omitted unlinked content and record-level warnings; they are not directly comparable.
+- 727 source-run files hashed before and after replay; zero changed.
+
+| Remaining document | Meaningful content requiring a decision |
+|---|---|
+| Ankit_Kumar_Jain.pdf | Additional Information heading |
+| KaustubhSalvi.pdf | Additional Information heading |
+| Manisha Singh.pdf | Additional Information heading |
+| Nithin Eswarappa.pdf | Professional Membership heading, IEEE membership, Since 2024 |
+
+The existing taxonomy has no professional-membership category. Preserve this record for review until the category policy is defined. Do not turn it into a certification or employment merely to make coverage reach 100%. The [review queue](review-queue.csv) includes source IDs, text and association warnings; it also retains source artifacts for traceability.
+
+## Remaining material limitations
+
+The provider assigns section categories and offsets. It does **not** independently verify the final employer/title/date/responsibility or degree/institution/year/grade tuples. Deterministic grouping remains provisional, even when every span is assigned. No independent human-approved evaluation set was established by this audit.
+
+Targeted original-PDF checks confirmed a missing Associate Software Engineer title, missing paragraph words in Nageswar Reddy, and missing Year/Score table headers in Prasad Potdar. Source-supported recovery reproductions are retained in [source-repair evidence](../pipeline200-root-fix-20261021/source-repair-replay-v2.json). These are targeted results, not a fresh full-corpus extraction run.
+
+Gopal still contains ambiguous damaged glyphs; Bevara&#x27;s email differs between PDF text parsers; Keerthi&#x27;s scanned page has OCR spelling and column-order errors. These need PDF adjudication or improved OCR with a new extraction version. Increasing DPI alone did not resolve Keerthi in the recorded experiment. Genuine repeated passages must not be automatically deduplicated. Fused PDF headings also need distinction from ordinary words split incorrectly.
+
+The four failed 200-document provider responses have reproducible offset/schema defects. More precise validators and retry feedback are implemented, but their live-provider recovery has **not** been demonstrated by a new 200-document paid run. Offline acceptance of saved responses does not prove future model compliance.
+
+## What to do next
+
+1. Review the six meaningful spans above and the association warnings against original PDFs. Define Additional Information/professional-membership policy before changing labels.
+2. Resolve the damaged-text, email-conflict and scanned-page cases with source evidence. Store any corrected extraction as a new version and rebase annotations; preserve existing inputs.
+3. Complete explicit human review of the source-bound 15-document pilot, covering every page, section and relationship. The [existing review workflow](../../docs/PILOT_HUMAN_REVIEW.md) explains the editor, approval provenance and evaluation commands. Start the local editor with `.venv/bin/python scripts/review_pilot.py --port 8022`; it makes no LLM calls.
+4. Run section and relationship evaluation against those independently approved references, then a held-out sample. Agree acceptance thresholds based on those results. Only then consider another bounded live batch with frozen source, prompt, model and code hashes.
+
+**Proceed now with review and offline validation. Do not proceed with a larger paid batch or production acceptance on the current coverage figures.**
+
+## Reproducibility
+
+New replay command (already executed; use a new output path for another run):
+
+```bash
+.venv/bin/python -B scripts/reproduce_structural_fix_offline.py \
+  --source-run reports/pilot100-additional-llm-20261021-025143 \
+  --output reports/project-readiness-audit-20261021/offline-100
+```
+
+Full regression results and preservation verification are recorded below after completion. Tests run with provider credentials removed and external connections blocked. No human approvals, gold promotions, original-PDF changes or additional paid processing were performed.
+
+Validation completed: **274 tests passed in 101.70 seconds** in the [full regression log](tests/regression.log), with [JUnit results](tests/tests.xml). The external-network guard recorded no external socket attempts. Final report-specific checks also passed; see [report checks](tests/report-checks.log). `git diff --check` passed.
+
+[Preservation verification](preservation.json): **8,552 pre-existing files checked; zero changed**. This covers the snapshotted report, ground-truth and manifest artifacts; it is not a claim to have hashed every file elsewhere on the machine. The separate replay also checked all 727 files in its source-run directory before and after processing, with zero changes.
+</pre>

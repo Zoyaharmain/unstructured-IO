@@ -15,6 +15,8 @@ def recover_sections(request, local_result):
                     updates.setdefault(block.source_element_index,set()).update([block.start+match.start(),block.start+match.end()])
     if not updates:
         local_result.metadata['recovery']={'passes':0,'remaining_review_units':len(local_result.needs_review)}
+        from local_api.services.quality_assessment import assess_quality
+        local_result.metadata['quality_assessment']=assess_quality(request.elements,local_result)
         return local_result
     elements=[]
     for index,element in enumerate(request.elements):
@@ -24,4 +26,6 @@ def recover_sections(request, local_result):
     repaired=get_engine().detect(request.model_copy(update={'elements':elements}))
     repaired.metadata['recovery']={'passes':1,'boundary_count':sum(map(len,updates.values())),
         'initial_review_units':len(local_result.needs_review),'remaining_review_units':len(repaired.needs_review)}
+    from local_api.services.quality_assessment import assess_quality
+    repaired.metadata['quality_assessment']=assess_quality(request.elements,repaired)
     return repaired

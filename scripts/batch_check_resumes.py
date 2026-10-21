@@ -64,7 +64,9 @@ def tokens(text):
 
 def validate_result(elements, result):
     errors = []
+    from local_api.services.resume_sections import ANCHORS
     categories = [s.category for s in result.sections]
+    if any(c not in ANCHORS for c in categories):errors.append('invalid_section_category')
     if len(categories) != len(set(categories)):
         errors.append('duplicate_categories')
     spans = sorted([b for s in result.sections for b in s.blocks] + result.needs_review,
@@ -73,8 +75,10 @@ def validate_result(elements, result):
         errors.append('invalid_source_index')
     for i, el in enumerate(elements):
         cursor = 0
-        for b in (b for b in spans if b.source_element_index == i):
-            if b.start != cursor or not 0 <= b.start <= b.end <= len(el.text) or b.text != el.text[b.start:b.end]:
+        pieces=[b for b in spans if b.source_element_index==i]
+        if not pieces or (len(el.text)==0 and len(pieces)!=1):errors.append('source_coverage_incomplete')
+        for b in pieces:
+            if (b.start==b.end and len(el.text)>0) or b.start != cursor or not 0 <= b.start <= b.end <= len(el.text) or b.text != el.text[b.start:b.end]:
                 errors.append('source_range_or_text_mismatch')
             cursor = b.end
         if cursor != len(el.text):
@@ -93,9 +97,14 @@ def validate_result(elements, result):
             if not 0 <= h.start < h.end <= len(section.text) or h.start < end:
                 errors.append('invalid_highlight_offsets')
             end = h.end
+        ownership=[];entry_ids=[]
         for entry in section.entries:
+            entry_ids.append(entry.entry_id);ownership.extend(entry.block_indices)
+            if any(index not in entry.block_indices for values in entry.fields.values() for index in values):errors.append('invalid_field_entry_reference')
             if any(not 0 <= i < len(section.blocks) for i in entry.block_indices):
                 errors.append('invalid_entry_reference')
+        if len(ownership)!=len(set(ownership)):errors.append('overlapping_entry_ownership')
+        if len(entry_ids)!=len(set(entry_ids)):errors.append('duplicate_entry_id')
     return sorted(set(errors))
 
 

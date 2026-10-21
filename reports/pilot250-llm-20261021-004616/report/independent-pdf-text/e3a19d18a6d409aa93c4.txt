@@ -1,0 +1,116 @@
+                                  Jyoti Prakash Patra
+          +91-7381551419 | jyotiprakash1405@gmail.com | linkedin.com/in/jpatra | github.com/jyotiprakash1405
+
+Summary
+Senior Backend and Platform Engineer with 7+ years of experience building distributed, event-driven systems and
+LLM-powered platforms at production scale. At Maersk, architected an AI documentation assistant (DevPal) serving 18+
+engineering teams using hybrid RAG, Azure OpenAI, and MCP — and independently owns a high-traffic survey platform
+built on Kafka, Temporal, and Node.js. Deep experience across the full delivery lifecycle: infra provisioning, schema design,
+CI/CD, LLM observability, and production migrations.
+
+Experience
+  Senior Software Engineer                                                                              Nov 2023 – Present
+  Maersk                                                                                                  Bangalore, India
+  InsightsHub — Enterprise Survey & Feedback Platform
+     • Led end-to-end migration of a production survey platform from Java Spring Boot to Node.js (Fastify), reducing
+       cold-start latency by ∼45% and cutting infrastructure costs by ∼30%.
+     • Provisioned Azure PostgreSQL Flexible Server via Terraform; owned CI/CD pipelines from build to
+
+       production deployment.
+     • Redesigned data schemas with Prisma ORM and executed zero-downtime large-scale production data migration
+
+       with automated validation and rollback safeguards.
+     • Integrated Kafka consumers to synchronize application and collaborator metadata with central systems, processing
+
+       10K+ events per day reliably.
+     • Built Temporal workflows for survey scoring (NPS, CSAT, SUS), notifications, and collaboration updates —
+
+       replacing fragile cron jobs and reducing failure-related incidents by ∼70%.
+     • Implemented Redis caching layer supporting 1,000+ concurrent users with sub-50ms read latency, preventing DB
+
+       saturation under peak load.
+     • Created a dedicated orchestration service running Temporal workers, enabling horizontal scaling of async workloads
+
+       independently from the API layer.
+     • Set up Prometheus + Grafana dashboards tracking latency percentiles, error rates, and throughput; reduced
+
+       mean time to detect (MTTD) issues by ∼50%.
+  Feature Suggestions Platform — Internal Product Feedback System
+     •Designed and delivered a cross-team feature suggestion system serving multiple product teams, enabling structured
+      product feedback at scale.
+    • Modeled hierarchical discussions using self-referential Prisma relations, supporting arbitrarily nested comments
+
+      and replies with O(1) lookup per node.
+    • Implemented soft-delete strategies to preserve thread integrity and auditability across comment lifecycles.
+
+    • Built engagement features (likes, emoji reactions, voting) and email notification workflows for comments, replies,
+
+      and feature status transitions.
+    • Designed a feature lifecycle integrated with Jira, enabling cross-team triage, scheduling, and release tracking from a
+
+      single interface.
+  DevPal (DevEx Agent) — Enterprise LLM Developer Platform, 18+ Teams
+     • Architected a multi-tenant AI documentation assistant in FastAPI + Azure OpenAI serving 18+ Maersk
+       engineering teams, indexing 1,640+ documents and 1,107 GitHub discussions with 3072-dimension embeddings.
+     • Designed a hybrid RAG pipeline: 3-pass LLM shuffle-and-tag ingestion strategy → Reciprocal Rank Fusion
+
+       (RRF) merging tag-based search, vector similarity, and PostgreSQL full-text search — with LLM re-ranking via
+       GPT-4.1-mini before answer generation via GPT-4.1.
+     • Eliminated OpenAI Agents SDK overhead by replacing the gpt-4.1 routing agent with a direct gpt-4.1-mini
+
+       structured output call — reducing P50 response time from 33–40s to 22–27s (∼35% faster) and streaming first
+       token from 37s to 2–5s (10× improvement).
+     • Reduced GitHub Discussions initial embedding sync from 55 minutes to ∼5 minutes by replacing sequential
+
+       per-item API calls with batched embedding generation (100 texts/request).
+     • Designed AI Ticket Triage service (TriageService): LLM completeness check → hybrid retrieval →
+
+       confidence-gated auto-reply (threshold: 0.70) → Hedwig on-call escalation; integrated with MS Teams via Power
+       Automate and GitHub Discussions webhooks; built bot-loop prevention via triage state machine.
+    • Built a platform tool registry auto-generated from OpenAPI specs (MDP, MTTS, MRMP, MAC, Stargate
+      APIs) enabling the LLM to fetch live platform data — activity logs, service state, Kafka topics, team rosters —
+      without leaving the chat interface; user bearer token forwarded, no service principal needed.
+    • Exposed an MCP server with Azure AD OAuth, enabling DevPal to be consumed as a tool in VS Code,
+
+      Microsoft Teams, and Jira — adopted by 100+ engineers across the organization.
+    • Built a 35-panel Grafana + Prometheus production observability stack; diagnosed and fixed 2 silent
+
+      instrumentation bugs (fallback counter never incrementing, latency histogram using wrong label) that had been
+      masking real metrics in prod.
+ Software Engineer                                                                                   Jul 2022 – Oct 2023
+ HealthEdge Technologies                                                                                Bangalore, India
+    • Built a reusable React + Redux component library published as internal NPM packages, reducing UI
+
+      development time across 3 product teams by ∼25%.
+    • Developed backend REST APIs in Java Spring Boot with JWT-based authentication and role-based access
+
+      control (RBAC).
+    • Implemented BPMN-based process workflows using Kogito and managed schema versioning via Liquibase across
+
+      multiple environments.
+ Software Developer                                                                                 Feb 2019 – May 2022
+ Tata Consultancy Services                                                                              Hyderabad, India
+    • Developed and maintained REST APIs for enterprise SaaS applications serving 10,000+ users using Java and
+
+      Spring Boot.
+    • Wrote unit and integration tests achieving >80% code coverage on critical service modules.
+
+    • Automated operational workflows using shell scripts, reducing manual release effort by ∼3 hours per deployment
+
+      cycle.
+
+Technical Skills
+ Languages: TypeScript, JavaScript, Python, Java, SQL
+ Backend: Node.js, Fastify, Express.js, FastAPI, Spring Boot, REST APIs, Microservices, SSE Streaming
+ Distributed Systems: Apache Kafka, Temporal, Apache ActiveMQ, Apache Camel, Event-Driven Architecture
+ Databases: PostgreSQL (tsvector, pgvector), Prisma ORM, Redis, Schema Design, Zero-Downtime Migrations
+ Cloud & Infra: Azure, Azure OpenAI, Azure AD / OAuth 2.0, Terraform, Docker, Kubernetes, CI/CD
+ Observability: Prometheus, Grafana, Arize Phoenix (LLM Tracing), OpenTelemetry, SLO/SLA Monitoring
+ AI / LLM: Hybrid RAG, RRF Retrieval, Vector Embeddings, Semantic Tagging, MCP (Model Context Protocol), LLM
+ Tool Use, Structured Output, Evals (Precision/Recall/F1)
+ Testing: pytest, Jest, Integration Testing, TDD, LLM-as-Judge Evaluation
+
+Education
+ Parala Maharaja Government Engineering College                                                         Odisha, India
+ Bachelor of Technology, Mechanical Engineering                                                  Aug 2014 – May 2018
+

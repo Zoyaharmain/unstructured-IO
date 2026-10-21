@@ -160,8 +160,9 @@ def source_ledger(result):
 
 
 def make_messages(ledger, categories, elements=None, sections=None):
+    from local_api.services.review_validation import allowed_split_offsets
     document = {'categories': categories, 'spans': [
-        {'id': f'u{i}', 'text': block.text, 'current_category': category or 'needs_review',
+        {'id': f'u{i}', 'length':len(block.text), 'allowed_split_offsets':allowed_split_offsets(block,elements), 'text': block.text, 'current_category': category or 'needs_review',
          'page': block.page_number, 'lane': block.lane, 'local_assignment': block.assignment,
          'source_element': block.source_element_index, 'source_start': block.start, 'source_end': block.end}
         for i, (block, category) in enumerate(ledger)]}
@@ -183,10 +184,10 @@ Confirm correct placements, fix wrong placements, and assign unresolved text to 
 Recognize heading synonyms (Work History means experience), columns, cross-page job continuations and wrapped lines.
 Responsibilities mentioning tools, education, projects or awards remain with their employer/role when appropriate.
 Do not invent, rewrite, summarize, omit or repeat resume text. Return ONLY JSON with no prose or Markdown.
-For a mixed span, split it using Unicode character offsets relative to its supplied text: ["u0","skills",0,10], ["u0","education",10,25]. Segments for an id must cover its entire text contiguously with no gaps or overlaps. Use shorter whole-span pairs only for unmixed spans. For content still marked needs_review, actively recover headings, names and split mixed content before abstaining.
+For a mixed span, split it ONLY at its allowed_split_offsets, using Unicode character offsets relative to its supplied text (0 through length, NEVER source_start/source_end): ["u0","skills",0,10], ["u0","education",10,25]. Segments for an id must cover its entire text contiguously with no gaps or overlaps. Use shorter whole-span pairs only for unmixed spans. For content still marked needs_review, actively recover headings, names and split mixed content before abstaining.
 Use exactly this schema: {"assignments":[["u0","experience"],["u1","education"]]}.
 Return complete coverage for EVERY supplied id, with one whole-span pair or contiguous offset segments. Categories must be one of the provided category keys or needs_review.
-If a span really cannot be placed reliably, use needs_review instead of forcing a guess. Preserve blank spans too.
+If a span really cannot be placed reliably, use needs_review instead of forcing a guess. Preserve blank spans too. A nonempty span cannot have an empty segment. The exact tuple order is [id,category,start,end]; never [id,start,end,category]. Physical PDF line joins in allowed_split_offsets may separate words without inserted spaces.
 Declarations, self-attestations and adjacent place/date/signature lines belong to personal_information when explicitly identified in source. Combined section headings can be split at word boundaries into the named categories. A job requirements form is not candidate employment or earned education: abstain rather than invent candidate history.
 A provider response is a provisional review, not a guarantee of correct extraction or classification.'''
     return [{'role': 'system', 'content': system}, {'role': 'user', 'content': json.dumps(document, ensure_ascii=False)}]
@@ -208,49 +209,28 @@ def assignment_feedback(content, lengths):
         return 'Response must be a JSON object containing assignments.'
 
 
-def parse_decisions(content, count, categories, lengths, texts=None):
-    try:
-        value=json.loads(content)
-        if not isinstance(value,dict) or set(value)!={'assignments'} or not isinstance(value['assignments'],list):raise ValueError
-        decisions={}
-        allowed=set(categories)|{'needs_review'}
-        for pair in value['assignments']:
-            if not isinstance(pair,list) or len(pair) not in {2,4}:raise ValueError
-            span_id,category=pair[:2]
-            if not isinstance(span_id,str) or span_id not in lengths or not isinstance(category,str) or category not in allowed:raise ValueError
-            if len(pair)==2:
-                if span_id in decisions:raise ValueError
-                start,end=0,lengths[span_id]
-            else:
-                start,end=pair[2:]
-                if type(start)!=int or type(end)!=int or not 0<=start<=end<=lengths[span_id] or (start==end and lengths[span_id]!=0):raise ValueError
-                if texts is not None:
-                    from local_api.services.resume_structure import word_safe_cut
-                    if any(word_safe_cut(texts[span_id],cut)!=cut for cut in (start,end)):raise ValueError
-            decisions.setdefault(span_id,[]).append((start,end,category))
-        if set(decisions)!={f'u{i}' for i in range(count)}:raise ValueError
-        for span_id,parts in decisions.items():
-            parts.sort()
-            cursor=0
-            for start,end,_ in parts:
-                if start!=cursor:raise ValueError
-                cursor=end
-            if cursor!=lengths[span_id] or (lengths[span_id]==0 and len(parts)!=1):raise ValueError
-        return decisions
-    except (ValueError,TypeError):
-        raise ReviewError('invalid_assignments') from None
+def parse_decisions(content, count, categories, lengths, texts=None, cuts=None):
+    from local_api.services.review_validation import inspect_assignments
+    decisions,errors=inspect_assignments(content,count,categories,lengths,texts,cuts)
+    if errors:
+        exc=ReviewError('invalid_assignments')
+        exc.details=errors
+        raise exc
+    return decisions
 
 
 def assert_coverage(elements, ledger):
     for index, element in enumerate(elements):
         cursor = 0
+        matched=[]
         for block, _ in ledger:
             if block.source_element_index != index:
                 continue
-            if block.start != cursor or block.text != element.text[block.start:block.end]:
+            matched.append(block)
+            if (block.start==block.end and len(element.text)>0) or block.start != cursor or not 0<=block.start<=block.end<=len(element.text) or block.text != element.text[block.start:block.end]:
                 raise ReviewError('source_coverage_error')
             cursor = block.end
-        if cursor != len(element.text):
+        if not matched or (len(element.text)==0 and len(matched)!=1) or cursor != len(element.text):
             raise ReviewError('source_coverage_error')
     if any(not 0 <= block.source_element_index < len(elements) for block, _ in ledger):
         raise ReviewError('source_coverage_error')
@@ -264,6 +244,8 @@ def review_sections(request, local_result, *, settings=None, transport=None, _re
     state = {'provider': 'DeepSeek', 'status': 'disabled', 'reviewed_units': 0, 'changed_units': 0,
              'resolved_units': 0, 'local_result_retained': True, 'provider_calls':0}
     result.metadata['llm_review'] = state
+    from local_api.services.quality_assessment import assess_quality
+    result.metadata['quality_assessment']=assess_quality(request.elements,result)
     try:
         settings = settings or ReviewSettings.from_env()
         if not settings.enabled:
@@ -284,18 +266,22 @@ def review_sections(request, local_result, *, settings=None, transport=None, _re
         messages = make_messages(ledger, categories, request.elements, result.sections)
         if sum(len(message['content']) for message in messages) > settings.max_input_chars:
             raise ReviewError('document_limit_exceeded')
+        from local_api.services.review_validation import allowed_split_offsets
         attempts=[]
         for attempt in range(remaining+1):
             try:
                 state['provider_calls']+=1
                 content = (transport or call_deepseek)(settings, messages)
-                decisions = parse_decisions(content, len(ledger), categories, {f'u{i}':len(b.text) for i,(b,_) in enumerate(ledger)}, {f'u{i}':b.text for i,(b,_) in enumerate(ledger)})
+                decisions = parse_decisions(content, len(ledger), categories, {f'u{i}':len(b.text) for i,(b,_) in enumerate(ledger)}, {f'u{i}':b.text for i,(b,_) in enumerate(ledger)}, {f'u{i}':allowed_split_offsets(b,request.elements) for i,(b,_) in enumerate(ledger)})
                 break
             except ReviewError as exc:
+                details=getattr(exc,'details',[])
+                state.setdefault('validation_failures',[]).append({'attempt':attempt+1,'error_code':str(exc),'details':details})
                 attempts.append(str(exc))
                 state['invalid_response_attempts']=list(attempts)
                 if str(exc) not in {'invalid_assignments','incomplete_response'} or attempt==remaining:raise
-                feedback=assignment_feedback(content,{f'u{i}':len(b.text) for i,(b,_) in enumerate(ledger)}) if str(exc)=='invalid_assignments' else ''
+                feedback=json.dumps({'validation_errors':details[:40],'error_count':len(details)},ensure_ascii=False) if details else ''
+                if str(exc)=='invalid_assignments':messages.append({'role':'assistant','content':content})
                 messages.append({'role':'user','content':'The previous response was rejected: '+str(exc)+'. '+feedback+' Return complete contiguous decisions for EVERY original span ID. Offsets are relative to that span, not its source element. Do not split inside ordinary words. Do not omit spans or change source text.'})
         remaining-=len(attempts)
         state.update(provider_calls=1+len(attempts),invalid_response_attempts=attempts)
@@ -356,7 +342,9 @@ def review_sections(request, local_result, *, settings=None, transport=None, _re
             state['provider_calls']+=next_state.get('provider_calls',0)
             state['recovery_status']='failed'
             state['recovery_error_code']=next_state.get('error_code')
+            state['recovery_validation_failures']=next_state.get('validation_failures',[])
             candidate.warnings.append('The follow-up review failed; the complete first review was retained.')
+        candidate.metadata['quality_assessment']=assess_quality(request.elements,candidate)
         return candidate
     except (ReviewError, ValueError) as exc:
         code = str(exc) if isinstance(exc, ReviewError) else 'invalid_configuration'
@@ -365,4 +353,5 @@ def review_sections(request, local_result, *, settings=None, transport=None, _re
     logger.warning('DeepSeek review did not complete: %s', code)
     state.update(status='failed', error_code=code, message=failure_message(code))
     result.warnings.append(failure_message(code) + ' All local blocks and unassigned text were retained unchanged.')
+    result.metadata['quality_assessment']=assess_quality(request.elements,result)
     return result

@@ -1,0 +1,90 @@
+{
+  "file": "Avishek M.pdf",
+  "id": "8122d42a7a1176c7117b",
+  "extension": ".pdf",
+  "status": "review_failed",
+  "api_calls": 2,
+  "usage": {
+    "prompt_tokens": 132412,
+    "completion_tokens": 6782,
+    "total_tokens": 139194,
+    "prompt_cache_hit_tokens": 68480,
+    "prompt_cache_miss_tokens": 63932
+  },
+  "source_reextracted": false,
+  "local_before": {
+    "sections": 6,
+    "review_units": 5,
+    "categories": [
+      "summary",
+      "experience",
+      "personal_information",
+      "skills",
+      "languages",
+      "education"
+    ]
+  },
+  "provider": "DeepSeek",
+  "model": "deepseek-flash",
+  "llm_review": {
+    "provider": "DeepSeek",
+    "status": "failed",
+    "reviewed_units": 0,
+    "changed_units": 0,
+    "resolved_units": 0,
+    "local_result_retained": true,
+    "provider_calls": 2,
+    "model": "deepseek-flash",
+    "validation_failures": [
+      {
+        "attempt": 1,
+        "error_code": "invalid_assignments",
+        "details": [
+          {
+            "kind": "offset_out_of_range",
+            "id": "u78",
+            "start": 0,
+            "end": 8,
+            "required_length": 7
+          },
+          {
+            "kind": "missing_span",
+            "id": "u78",
+            "required_length": 7
+          }
+        ]
+      },
+      {
+        "attempt": 2,
+        "error_code": "invalid_assignments",
+        "details": [
+          {
+            "kind": "invalid_schema",
+            "expected": "{\"assignments\":[[id,category],[id,category,start,end]]}"
+          }
+        ]
+      }
+    ],
+    "invalid_response_attempts": [
+      "invalid_assignments",
+      "invalid_assignments"
+    ],
+    "error_code": "invalid_assignments",
+    "message": "DeepSeek returned incomplete or invalid placements. No partial changes were applied."
+  },
+  "invariant_errors": [],
+  "review_units": 5,
+  "review_characters": 92,
+  "sections": 6,
+  "categories": [
+    "summary",
+    "experience",
+    "personal_information",
+    "skills",
+    "languages",
+    "education"
+  ],
+  "error_code": "invalid_assignments",
+  "artifact": "documents/8122d42a7a1176c7117b.json",
+  "seconds": 17.81
+}
