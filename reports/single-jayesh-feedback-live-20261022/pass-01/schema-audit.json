@@ -1,0 +1,219 @@
+{
+  "status": "complete",
+  "findings": [
+    {
+      "field": "data.contact.full_name",
+      "issue": "Full name field concatenates the name with professional title and full contact line rather than only the person's name",
+      "source_ids": [
+        "e0:0:13",
+        "e0:13:80",
+        "e0:80:145"
+      ]
+    },
+    {
+      "field": "data.experience[0].role",
+      "issue": "Employer-level entry for Arcesium has empty role; role text is elsewhere, but source shows Arcesium block also carries the Senior Analyst title line",
+      "source_ids": [
+        "e18:0:93",
+        "e19:0:86"
+      ]
+    },
+    {
+      "field": "data.experience[1].company",
+      "issue": "Company name is populated from fragments of responsibility bullets (go-live text and ETL sentence) instead of an employer name in source",
+      "source_ids": [
+        "e22:201:266",
+        "e24:100:204",
+        "e36:0:97"
+      ]
+    },
+    {
+      "field": "data.experience[1]",
+      "issue": "Senior Analyst role split into a separate entry with invented company text; source places this role under Arcesium India (experience[0])",
+      "source_ids": [
+        "e18:0:93",
+        "e19:0:86"
+      ]
+    },
+    {
+      "field": "data.experience[1].responsibilities",
+      "issue": "Only a subset of responsibilities captured (5 of ~14 bullets); bullets on trade lifecycle, investor flow, audit liaison and others omitted",
+      "source_ids": [
+        "e21:0:103",
+        "e28:0:100",
+        "e35:0:105"
+      ]
+    },
+    {
+      "field": "data.experience[2].role",
+      "issue": "Analyst – Trade Accounting & Data Operations entry lacks company and dates; source places it within the Arcesium block (Dec 2022 – Dec 2024)",
+      "source_ids": [
+        "e18:0:93",
+        "e37:0:75"
+      ]
+    },
+    {
+      "field": "data.experience[2].responsibilities",
+      "issue": "Only 2 of 5 Analyst bullets captured; SSIs/SWIFT, corporate actions and NAV/financial statements bullets omitted",
+      "source_ids": [
+        "e39:0:95",
+        "e40:0:108",
+        "e41:0:104"
+      ]
+    },
+    {
+      "field": "data.experience",
+      "issue": "Intercontinental Exchange (ICE)/NYSE Data Researcher role (Nov 2021 – Nov 2022) entirely omitted from experience array",
+      "source_ids": [
+        "e44:0:72",
+        "e45:0:55",
+        "e46:0:99",
+        "e47:0:104",
+        "e48:0:108"
+      ]
+    },
+    {
+      "field": "data.experience[0].location",
+      "issue": "Location is null although source employer line explicitly states Hyderabad",
+      "source_ids": [
+        "e18:0:93"
+      ]
+    },
+    {
+      "field": "data.experience[0].responsibilities",
+      "issue": "Employer-level entry has no responsibilities and no technologies, dropping all Arcesium duty text",
+      "source_ids": [
+        "e20:0:102",
+        "e25:0:94"
+      ]
+    },
+    {
+      "field": "data.total_experience_years",
+      "issue": "4.0 years stated in summary, but source history spans Nov 2021 to Present (~3+ years), and education MBA ran 2020–2022 overlapping employment; figure not reconcilable from source",
+      "source_ids": [
+        "e2:0:110",
+        "e2:110:221",
+        "e18:0:93",
+        "e44:0:72",
+        "e50:0:42",
+        "e51:0:28"
+      ]
+    },
+    {
+      "field": "data.summary",
+      "issue": "Summary contains verbatim typo 'Buikt ETL workflows' and trailing fragment 'Big Four mid- and year-end audit engagements.'; extraction did not flag garbled text",
+      "source_ids": [
+        "e2:772:878",
+        "e2:878:905"
+      ]
+    },
+    {
+      "field": "data.education[0].degree",
+      "issue": "Degree field concatenates degree and dates ('MBA – Finance & Data Analytics2020 – 2022'); dates not split into start/graduation year",
+      "source_ids": [
+        "e50:0:42"
+      ]
+    },
+    {
+      "field": "data.education[0].institution",
+      "issue": "Institution field merges university, city and coursework line, including a trailing dangling 'Portfolio Management,' fragment",
+      "source_ids": [
+        "e50:42:152",
+        "e50:152:187"
+      ]
+    },
+    {
+      "field": "data.education[0].field_of_study",
+      "issue": "Field of study null although source course content (Derivatives, Portfolio Management, Financial Modelling, Data Analytics) implies a finance/data field",
+      "source_ids": [
+        "e50:152:187"
+      ]
+    },
+    {
+      "field": "data.education[1].degree",
+      "issue": "Degree field concatenates degree and dates ('B.Com (Commerce)2017 – 2020'); start/graduation years null",
+      "source_ids": [
+        "e51:0:28"
+      ]
+    },
+    {
+      "field": "data.education",
+      "issue": "Academic years present in source (MBA 2020–2022, B.Com 2017–2020) not mapped to start_year for either record",
+      "source_ids": [
+        "e50:0:42",
+        "e51:0:28"
+      ]
+    },
+    {
+      "field": "data.certifications[0].name",
+      "issue": "Single certification entry concatenates all four credentials plus the section header '& CERTIFICATIONS'; should be separate records",
+      "source_ids": [
+        "e52:13:30",
+        "e54:0:56",
+        "e54:59:108",
+        "e54:111:155",
+        "e54:158:223"
+      ]
+    },
+    {
+      "field": "data.certifications[0]",
+      "issue": "Certification issuer text '— NSE Academy', 'Quantbot Securities Pvt. Ltd.' embedded in name rather than issuer field; issuer null",
+      "source_ids": [
+        "e54:0:56",
+        "e54:158:223"
+      ]
+    },
+    {
+      "field": "data.skills.tools_and_platforms",
+      "issue": "Tools list mixes platforms with 'Advanced MS Excel'/'Advanced Excel' duplicates and 'Bloomberg'/'Bloomberg (Basic)' duplicates from overlapping source lines",
+      "source_ids": [
+        "e15:26:54",
+        "e16:17:78"
+      ]
+    },
+    {
+      "field": "data.skills.technical_skills",
+      "issue": "Technical skills limited to Python and SQL; source also lists Power BI in the same technical line but is classified only as tool, and 'Ai tools' omitted",
+      "source_ids": [
+        "e15:0:26",
+        "e16:17:78"
+      ]
+    },
+    {
+      "field": "data.skills.all_skills",
+      "issue": "All-skills array contains broken fragments from line-split competencies (e.g. 'Geneva Accounting Engine (NAV', '& Config)', '(Quarterly/Annual)', '(Mid/Year-End)') rather than atomic skills",
+      "source_ids": [
+        "e4:0:30",
+        "e4:30:39",
+        "e11:26:44",
+        "e14:26:40"
+      ]
+    },
+    {
+      "field": "data.skills.soft_skills",
+      "issue": "Soft skills array empty; source mentions cross-functional collaboration and training/mentoring indicators",
+      "source_ids": [
+        "e2:551:662",
+        "e27:0:106"
+      ]
+    },
+    {
+      "field": "data.skills.domain_and_functional",
+      "issue": "Domain skills only 3 entries; source lists many domain competencies (NAV, prime brokerage, FX operations, onboarding, audit management) not represented",
+      "source_ids": [
+        "e5:0:25",
+        "e7:0:33",
+        "e13:0:30",
+        "e14:0:26"
+      ]
+    },
+    {
+      "field": "data.awards",
+      "issue": "Arcesium 2025 Spot Award present in source but no awards field exists in output data; achievement dropped",
+      "source_ids": [
+        "e53:0:91",
+        "e53:91:128"
+      ]
+    }
+  ]
+}

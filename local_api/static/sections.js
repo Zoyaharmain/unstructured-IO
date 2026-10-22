@@ -52,15 +52,18 @@ function renderReadableGroup(group, section) {
 }
 async function detectSections() {
   if (!result || sectionsBusy) return;
+  document.dispatchEvent(new Event('sections-reset'));
   const generation = ++sectionGeneration; const controller = new AbortController(); sectionAbort = controller; sectionsBusy = true; updateSectionButton();
-  sectionStatus('Grouping sections and applying configured LLM review… This can take longer on first use.');
+  const localOnly = $('section-mode').value === 'local';
+  sectionStatus(localOnly ? 'Running local Sentence-BERT, K-means and boundary recovery… No DeepSeek calls.' : 'Grouping sections and applying configured LLM review…');
   $('section-results').replaceChildren(); $('download-sections').disabled = true;
   try {
-    const data = await readResponse(await fetch('/api/v1/resume/sections', {method:'POST',signal:controller.signal,headers:{'Content-Type':'application/json'},body:JSON.stringify({elements:result.elements, extraction_verified:$('verify-extraction').checked})}));
+    const data = await readResponse(await fetch(localOnly ? '/api/v1/resume/sections/local' : '/api/v1/resume/sections', {method:'POST',signal:controller.signal,headers:{'Content-Type':'application/json'},body:JSON.stringify({elements:result.elements, extraction_verified:$('verify-extraction').checked})}));
     if (generation !== sectionGeneration) return;
     sectionResult = data;
     sectionResult.extraction_verified = $('verify-extraction').checked;
     const fragment = document.createDocumentFragment();
+    fragment.append(node('h3', '', localOnly ? 'Local model output · no DeepSeek' : 'Output after configured DeepSeek review'));
     const summary = node('div', 'compare-summary');
     for (const [value, label] of [[data.sections.length, 'Proposed sections'], [data.metadata.assigned_units, 'Assigned text units'], [data.metadata.review_units, 'Units needing review']]) { const card = node('div', 'compare-stat'); card.append(node('strong','',value), node('span','',label)); summary.append(card); }
     fragment.append(summary, node('p','comparison-note', `${data.metadata.assigned_text_percent}% of text assigned; this is coverage, not accuracy. All extracted input text preserved: ${data.metadata.all_source_text_preserved ? 'yes' : 'no'}.`));
@@ -70,11 +73,30 @@ async function detectSections() {
     if (review?.status === 'complete') reviewNote.textContent = `DeepSeek reviewed all ${review.reviewed_units} source spans · ${review.changed_units} placement changes · ${review.resolved_units} previously unassigned spans resolved · ${review.pass_count || 1} review pass(es) · ${review.split_units || 0} mixed spans split.`;
     else if (review?.status === 'failed') { reviewNote.textContent = (review.message || 'DeepSeek review failed.') + ' Showing unchanged local blocks; these have not been LLM-validated.'; reviewNote.classList.add('error'); }
     else if (review?.status === 'not_configured') reviewNote.textContent = 'DeepSeek review is enabled but its API key/model is missing. Showing local grouping only.';
-    else reviewNote.textContent = 'DeepSeek review is disabled. Showing local grouping only.';
+    else reviewNote.textContent = localOnly ? 'Local inspection selected. DeepSeek was not called, even if enabled on the server.' : 'DeepSeek review is disabled. Showing local grouping only.';
     fragment.append(reviewNote);
     const warnings = document.createElement('details'); warnings.className = 'section-warnings'; warnings.append(node('summary','','Model limitations and evidence'));
     for (const warning of data.warnings) warnings.append(node('p','comparison-note',warning));
     warnings.append(node('p','comparison-note',`${data.metadata.encoder} · ${data.metadata.algorithm}`)); fragment.append(warnings);
+    const inspection = node('section', 'block-inspection');
+    inspection.append(node('h3', '', 'Detected block boundaries and labels'), node('p', 'comparison-note', 'Each outlined card is one detected text interval. Compare its full text, page and section with the PDF. These are text blocks, not predicted rectangles on the page. Similarity is an embedding score, not accuracy.'));
+    const allBlocks = data.sections.flatMap(section => section.blocks.map(block => ({block, label:section.label, category:section.category})));
+    allBlocks.push(...data.needs_review.map(block => ({block, label:'Needs review', category:'needs_review'})));
+    allBlocks.sort((a,b) => a.block.source_element_index-b.block.source_element_index || a.block.start-b.block.start);
+    const filter = document.createElement('select'); filter.setAttribute('aria-label', 'Filter detected blocks by section');
+    const choices = [...new Set(allBlocks.map(item => item.label))];
+    for (const label of ['All detected blocks', ...choices]) { const option = node('option', '', label); option.value = label; filter.append(option); }
+    inspection.append(filter);
+    const list = node('div', 'detected-block-list');
+    allBlocks.forEach(({block, label, category}, index) => {
+      const card = node('article', 'detected-block-card'); card.dataset.label = label;
+      if (category === 'needs_review') card.classList.add('unresolved');
+      card.append(node('h4', '', `Block ${index + 1} · ${label}`), node('p', 'comparison-note', `Page ${block.page_number ?? '?'} · source element ${block.source_element_index + 1} · characters ${block.start}–${block.end} · ${block.assignment}`));
+      if (typeof block.similarity === 'number') card.append(node('p', 'comparison-note', `Similarity ${block.similarity.toFixed(3)} · cluster ${block.cluster_id ?? 'none'}`));
+      card.append(renderSectionBlock(block)); list.append(card);
+    });
+    filter.addEventListener('change', () => { for (const card of list.children) card.hidden = filter.value !== 'All detected blocks' && card.dataset.label !== filter.value; });
+    inspection.append(list); fragment.append(inspection);
     for (const section of data.sections) {
       const text = typeof section.text === 'string' ? section.text : (section.blocks || []).map(block => block.text || '').join('\n');
       const card = node('section','resume-section'); const header = node('div','section-title');
@@ -102,12 +124,18 @@ async function detectSections() {
       fragment.append(card);
     }
     if (data.needs_review.length) { const card = node('section','resume-section review-section'); card.append(node('h3','','Needs review — not forced into a section')); for (const block of data.needs_review) card.append(renderSectionBlock(block)); fragment.append(card); }
-    $('section-results').replaceChildren(fragment); $('download-sections').disabled = false;
-    sectionStatus(review?.status === 'complete' ? 'LLM-reviewed sections are ready. Check any remaining Needs review items.' : 'Local sections are ready. DeepSeek review has not completed; inspect Needs review before use.');
+    $('section-results').replaceChildren(fragment); $('download-sections').disabled = false; document.dispatchEvent(new Event('sections-ready'));
+    sectionStatus(localOnly ? 'Local blocks are ready. Inspect the numbered boundaries and section labels below; no DeepSeek was called.' : review?.status === 'complete' ? 'LLM-reviewed sections are ready. Check any remaining Needs review items.' : 'Local sections are ready. DeepSeek review has not completed; inspect Needs review before use.');
   } catch (error) { if (generation === sectionGeneration) sectionStatus(error.message, true); }
   finally { if (sectionAbort === controller) { sectionAbort = null; sectionsBusy = false; updateSectionButton(); } }
 }
 $('detect-sections').addEventListener('click', detectSections);
+$('section-mode').addEventListener('change', () => {
+  sectionGeneration++; if (sectionAbort) sectionAbort.abort(); sectionAbort = null; sectionsBusy = false;
+  sectionResult = null; $('section-results').replaceChildren(); $('download-sections').disabled = true;
+  document.dispatchEvent(new Event('sections-reset')); updateSectionButton();
+  if (result?.text.trim()) detectSections();
+});
 $('download-sections').addEventListener('click', () => {
   if (!sectionResult) return;
   const url = URL.createObjectURL(new Blob([JSON.stringify(sectionResult,null,2)],{type:'application/json'}));
@@ -127,4 +155,4 @@ async function checkDeepSeekConnection() {
   } finally { button.disabled = false; }
 }
 $('check-llm-connection').addEventListener('click', checkDeepSeekConnection);
-checkDeepSeekConnection();
+// Connection checks run only when explicitly requested.

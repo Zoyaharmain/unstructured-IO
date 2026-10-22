@@ -155,3 +155,12 @@ be writable by the runtime user.
 Initial source-based integration results (historical): [../docs/TEXT_EXTRACTION_VALIDATION.md](../docs/TEXT_EXTRACTION_VALIDATION.md).
 
 Current package-based verification is recorded in [../docs/PACKAGE_DEPLOYMENT_VALIDATION.md](../docs/PACKAGE_DEPLOYMENT_VALIDATION.md).
+
+### Map existing blocks into the resume schema
+
+After `/api/v1/extract/text` and `/api/v1/resume/sections`, POST the same `elements`
+and complete section response to `/api/v1/resume/schema`. The response uses the
+user-provided handoff's ResumeSchema, with missing fields, source evidence and
+record warnings. Mapping makes no provider calls. The UI includes **Map to schema**
+and a JSON download. See [integration instructions](../docs/SCHEMA_MAPPING_API.md)
+for the exact request sequence and schema-definition endpoints.

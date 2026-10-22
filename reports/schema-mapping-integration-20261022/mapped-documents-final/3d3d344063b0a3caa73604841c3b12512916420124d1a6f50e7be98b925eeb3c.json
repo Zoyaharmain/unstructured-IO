@@ -1,0 +1,1330 @@
+{
+  "success": true,
+  "source": "LikithRaju.pdf",
+  "extraction_mode": "existing_blocks_schema_mapping",
+  "data": {
+    "contact": {
+      "full_name": "LIKITH PK",
+      "email": "czarwhat@gmail.com",
+      "phone": "8668002632",
+      "location": "Bangalore",
+      "linkedin_url": null,
+      "github_url": null,
+      "portfolio_url": null
+    },
+    "professional_title": "BUSINESS ANALYST",
+    "summary": "Business Analyst with 7 years of Capital Markets experience specializing in Securities operations, Trade Lifecycle, Reference Data, Business Analysis, Regulatory Reporting and Digital Transformation. Experienced in requirements gathering, stakeholder management, Agile delivery, process mapping, UAT, data migration, and end-to-end implementation across Equities, Fixed Income, FX, Funds, Commodities, and Derivatives.",
+    "total_experience_years": null,
+    "skills": {
+      "technical_skills": [
+        "SQL"
+      ],
+      "tools_and_platforms": [
+        "Bloomberg",
+        "JIRA",
+        "Excel"
+      ],
+      "domain_and_functional": [
+        "Trade Lifecycle"
+      ],
+      "soft_skills": [
+        "Agile",
+        "Scrum"
+      ],
+      "all_skills": [
+        "SQL",
+        "Bloomberg",
+        "JIRA",
+        "Excel",
+        "Trade Lifecycle",
+        "Agile",
+        "Scrum",
+        "Business Analysis",
+        "Requirements Gathering",
+        "Functional Specifications",
+        "User Stories",
+        "Agile/Scrum",
+        "Data",
+        "Reconciliation",
+        "UAT",
+        "Release Management",
+        "Equities",
+        "FX",
+        "Derivatives",
+        "Regulatory Reporting",
+        "Root Cause",
+        "Analysis",
+        "Reuters",
+        "Al Tools",
+        "Copilot， ADLC"
+      ]
+    },
+    "experience": [
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      }
+    ],
+    "education": [
+      {
+        "institution": "",
+        "degree": "",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      }
+    ],
+    "certifications": [],
+    "projects": [],
+    "languages": []
+  },
+  "schema_mapping": {
+    "fields_populated": 12,
+    "total_fields": 16,
+    "completion_percentage": 75.0,
+    "field_details": [
+      {
+        "field_name": "contact.full_name",
+        "target_type": "string",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Personal Details",
+        "confidence_score": 0.95,
+        "description": "Candidate's full name, extracted from the top header of the resume."
+      },
+      {
+        "field_name": "contact.email",
+        "target_type": "string (email)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.98,
+        "description": "Candidate's primary contact email address."
+      },
+      {
+        "field_name": "contact.phone",
+        "target_type": "string (phone)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.95,
+        "description": "Candidate's telephone / mobile phone number."
+      },
+      {
+        "field_name": "contact.location",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.85,
+        "description": "Candidate's residential location or work city."
+      },
+      {
+        "field_name": "contact.linkedin_url",
+        "target_type": "string (url) | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "URL to candidate's LinkedIn profile."
+      },
+      {
+        "field_name": "professional_title",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Header / Subtitle",
+        "confidence_score": 0.88,
+        "description": "Candidate's target headline or most recent job title."
+      },
+      {
+        "field_name": "summary",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Summary / Profile / Objective",
+        "confidence_score": 0.85,
+        "description": "Executive bio, professional overview, or career objective."
+      },
+      {
+        "field_name": "total_experience_years",
+        "target_type": "float | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Summary / Experience Calculation",
+        "confidence_score": 0.0,
+        "description": "Total professional experience in years."
+      },
+      {
+        "field_name": "skills.technical_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills / Technical Competencies",
+        "confidence_score": 0.92,
+        "description": "Technical programming languages and core software competencies."
+      },
+      {
+        "field_name": "skills.tools_and_platforms",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills / Tools & Technologies",
+        "confidence_score": 0.9,
+        "description": "Software platforms, developer tools, and operational systems."
+      },
+      {
+        "field_name": "skills.domain_and_functional",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills / Domain Expertise",
+        "confidence_score": 0.9,
+        "description": "Functional domain knowledge (e.g. Hedge Funds, KYC, NAV, Derivatives)."
+      },
+      {
+        "field_name": "skills.all_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills (Aggregated)",
+        "confidence_score": 0.95,
+        "description": "Complete list of candidate skills across all categories."
+      },
+      {
+        "field_name": "experience",
+        "target_type": "array[WorkExperience]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Experience / Work History",
+        "confidence_score": 0.92,
+        "description": "Complete chronological employment records with bullet points."
+      },
+      {
+        "field_name": "education",
+        "target_type": "array[Education]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Education / Academic Qualifications",
+        "confidence_score": 0.9,
+        "description": "University, college, and higher education degree qualifications."
+      },
+      {
+        "field_name": "certifications",
+        "target_type": "array[Certification]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Certifications / Licenses",
+        "confidence_score": 0.0,
+        "description": "Professional accreditations and credentials."
+      },
+      {
+        "field_name": "projects",
+        "target_type": "array[Project]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Projects / Key Engagements",
+        "confidence_score": 0.0,
+        "description": "Major projects or strategic initiatives led by candidate."
+      }
+    ]
+  },
+  "raw_sections": {
+    "personal_information": "LIKITH PK\nBUSINESS ANALYST\n+8668002632\nBangalore\nczarwhat@gmail.com",
+    "experience": "PROFESSIONAL EXPERIENCE\nEXPERIENCE: SOCIETE GENERALE\n2023 - NOW\nBusiness Analyst\nLed requirement analysis for SocGen's Prime Brokerage platform (10M EUR transformation initiative), collaborating with trading, risk, and operations stakeholders to define business needs and translate them into functional specifications, user stories, acceptance criteria, process flows and business documentation. Ochestrated migration of 18 downstream applications from legacy platforms to Azure Data Lake, ensuring seamless data transition, validation, and uninterrupted business operations. Designed and implemented pricing automation and validation control framework, ensuring high-quality market data ingestion, reducing pricing errors, and eliminating manual checks equivalent to 1 FTE daily. Spearheaded automation of Equities, Funds, Options, and Futures contract creation in our system, reducing manual effort by 30% and saving 1 FTE daily while accelerating time-to-market. Owned end-to-end reference data lifecycle (creation, amendment, maintenance) across Derivatives, Equities, FX, and Commodities, ensuring 100% compliance with exchange and regulatory standards. Drove end-to-end migration of referential data from Oracle-based legacy systems to Azure Data Lake, contributing to significant infrastructure cost optimization and scalable enterprise data access. Managed JIRA backlogs, sprint planning, user story refinement, delivery tracking, RAID logs, dependency management, governance reporting, and executive stakeholder communication. Facilitated stakeholder workshops to elicit business requirements, perform impact analysis, and support end-to-end solution delivery across cross-functional teams. Demonstrated strong functional expertise across Cash Equities, FX, Derivatives, Commodities, Funds, Indices, and OTC products, supporting front-to-back trade lifecycle processes, data governance, reconciliations, regulatory reporting, and transformation initiatives. Collaborated with Operations, Technology, and Business teams to support front-to-back trade lifecycle processes including trade capture, validation, settlement, lifecycle events, and exception management across multiple asset classes.\n2019 - 2023 Senior Analyst\nManaged end-to-end onboarding and creating of Equities, Funds, FX , Indices, Futures, Options, and Commodity Derivatives across global markets, ensuring compliance with Bloomberg, Reuters, Exchange, GMI, and market-specific\nregulatory standards. Performed reference data management and static data enrichment, resolving data quality issues and ensuring accuracy across downstream trading and risk systems. Conducted daily market price validation and exception management, investigating pricing discrepancies and ensuring accurate valuation data across asset classes. Managed corporate actions lifecycle for Equities and Derivatives, including symbol changes, stock splits, mergers, instrument ID updates, and strike price adjustments. Supported regulatory reporting initiatives for MiFID II and EMIR by maintaining accurate security reference data and ensuring compliance with reporting requirements. Played a key role in the EUREX NEXTGEN migration, successfully supporting trade rebooking, product onboarding, and implementation of daily and weekly expiry instruments with no downstream impact.",
+    "summary": "Business Analyst with 7 years of Capital Markets experience specializing in Securities operations, Trade Lifecycle, Reference Data, Business Analysis, Regulatory Reporting and Digital Transformation. Experienced in requirements gathering, stakeholder management, Agile delivery, process mapping, UAT, data migration, and end-to-end implementation across Equities, Fixed Income, FX, Funds, Commodities, and Derivatives.",
+    "skills": "SKILLS\nBusiness Analysis, Requirements Gathering, Functional Specifications, User Stories, JIRA, Agile/Scrum, SQL, Data Reconciliation, UAT, Release Management , Trade Lifecycle, Equities, FX, Derivatives, Regulatory Reporting, Root Cause Analysis, Bloomberg, Reuters, Excel, Al Tools, Copilot， ADLC",
+    "education": "EDUCATION\n2016 - 2019\nBachelor of Commerce Vijaya College - Bangalore"
+  },
+  "meta": {
+    "status": "needs_review",
+    "human_verified": false,
+    "provider_calls": 0,
+    "source_accounting": {
+      "all_source_text_preserved": true,
+      "total_spans": 60,
+      "assigned_meaningful_spans": 60,
+      "unresolved_meaningful_spans": 0,
+      "non_content_artifacts": 0,
+      "duplicates_excluded": 0,
+      "all_meaningful_text_assigned": true,
+      "semantic_correctness_verified": false,
+      "outcomes": [
+        {
+          "source_id": "e0:0:9",
+          "source_element_index": 0,
+          "start": 0,
+          "end": 9,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e1:0:16",
+          "source_element_index": 1,
+          "start": 0,
+          "end": 16,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e2:0:11",
+          "source_element_index": 2,
+          "start": 0,
+          "end": 11,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e3:0:9",
+          "source_element_index": 3,
+          "start": 0,
+          "end": 9,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e4:0:18",
+          "source_element_index": 4,
+          "start": 0,
+          "end": 18,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e5:0:23",
+          "source_element_index": 5,
+          "start": 0,
+          "end": 23,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e6:0:116",
+          "source_element_index": 6,
+          "start": 0,
+          "end": 116,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e6:116:239",
+          "source_element_index": 6,
+          "start": 116,
+          "end": 239,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e6:239:354",
+          "source_element_index": 6,
+          "start": 239,
+          "end": 354,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e6:354:418",
+          "source_element_index": 6,
+          "start": 354,
+          "end": 418,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e7:0:6",
+          "source_element_index": 7,
+          "start": 0,
+          "end": 6,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e8:0:113",
+          "source_element_index": 8,
+          "start": 0,
+          "end": 113,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:113:232",
+          "source_element_index": 8,
+          "start": 113,
+          "end": 232,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:232:292",
+          "source_element_index": 8,
+          "start": 232,
+          "end": 292,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:0:12",
+          "source_element_index": 9,
+          "start": 0,
+          "end": 12,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e9:12:28",
+          "source_element_index": 9,
+          "start": 12,
+          "end": 28,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e10:0:10",
+          "source_element_index": 10,
+          "start": 0,
+          "end": 10,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e11:0:16",
+          "source_element_index": 11,
+          "start": 0,
+          "end": 16,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:0:119",
+          "source_element_index": 12,
+          "start": 0,
+          "end": 119,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:119:238",
+          "source_element_index": 12,
+          "start": 119,
+          "end": 238,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:238:315",
+          "source_element_index": 12,
+          "start": 238,
+          "end": 315,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:315:427",
+          "source_element_index": 12,
+          "start": 315,
+          "end": 427,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:427:495",
+          "source_element_index": 12,
+          "start": 427,
+          "end": 495,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:495:607",
+          "source_element_index": 12,
+          "start": 495,
+          "end": 607,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:607:700",
+          "source_element_index": 12,
+          "start": 607,
+          "end": 700,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:700:820",
+          "source_element_index": 12,
+          "start": 700,
+          "end": 820,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:820:885",
+          "source_element_index": 12,
+          "start": 820,
+          "end": 885,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:885:1000",
+          "source_element_index": 12,
+          "start": 885,
+          "end": 1000,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:1000:1078",
+          "source_element_index": 12,
+          "start": 1000,
+          "end": 1078,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:1078:1084",
+          "source_element_index": 12,
+          "start": 1078,
+          "end": 1084,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:1084:1194",
+          "source_element_index": 12,
+          "start": 1084,
+          "end": 1194,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:1194:1276",
+          "source_element_index": 12,
+          "start": 1194,
+          "end": 1276,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:1276:1392",
+          "source_element_index": 12,
+          "start": 1276,
+          "end": 1392,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:1392:1455",
+          "source_element_index": 12,
+          "start": 1392,
+          "end": 1455,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:1455:1570",
+          "source_element_index": 12,
+          "start": 1455,
+          "end": 1570,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:1570:1619",
+          "source_element_index": 12,
+          "start": 1570,
+          "end": 1619,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:1619:1736",
+          "source_element_index": 12,
+          "start": 1619,
+          "end": 1736,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:1736:1858",
+          "source_element_index": 12,
+          "start": 1736,
+          "end": 1858,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:1858:1886",
+          "source_element_index": 12,
+          "start": 1858,
+          "end": 1886,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:1886:1998",
+          "source_element_index": 12,
+          "start": 1886,
+          "end": 1998,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:1998:2112",
+          "source_element_index": 12,
+          "start": 1998,
+          "end": 2112,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:2112:2120",
+          "source_element_index": 12,
+          "start": 2112,
+          "end": 2120,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e13:0:26",
+          "source_element_index": 13,
+          "start": 0,
+          "end": 26,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e14:0:109",
+          "source_element_index": 14,
+          "start": 0,
+          "end": 109,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e14:109:223",
+          "source_element_index": 14,
+          "start": 109,
+          "end": 223,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e15:0:22",
+          "source_element_index": 15,
+          "start": 0,
+          "end": 22,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e15:22:138",
+          "source_element_index": 15,
+          "start": 22,
+          "end": 138,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e15:138:182",
+          "source_element_index": 15,
+          "start": 138,
+          "end": 182,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e15:182:297",
+          "source_element_index": 15,
+          "start": 182,
+          "end": 297,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e15:297:343",
+          "source_element_index": 15,
+          "start": 297,
+          "end": 343,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e15:343:458",
+          "source_element_index": 15,
+          "start": 343,
+          "end": 458,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e15:458:511",
+          "source_element_index": 15,
+          "start": 458,
+          "end": 511,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e15:511:628",
+          "source_element_index": 15,
+          "start": 511,
+          "end": 628,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e15:628:677",
+          "source_element_index": 15,
+          "start": 628,
+          "end": 677,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e15:677:792",
+          "source_element_index": 15,
+          "start": 677,
+          "end": 792,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e15:792:872",
+          "source_element_index": 15,
+          "start": 792,
+          "end": 872,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e16:0:9",
+          "source_element_index": 16,
+          "start": 0,
+          "end": 9,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e17:0:11",
+          "source_element_index": 17,
+          "start": 0,
+          "end": 11,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e18:0:21",
+          "source_element_index": 18,
+          "start": 0,
+          "end": 21,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e18:21:47",
+          "source_element_index": 18,
+          "start": 21,
+          "end": 47,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        }
+      ]
+    },
+    "document_scope": {
+      "kind": "likely_resume",
+      "candidate_resume": true,
+      "reason": "Contact details, multiple resume section families and dated history; provisional scope only",
+      "human_verified": false
+    },
+    "source_inventory_sha256": "ead13b26f777d663861ddfb70260b78adb5ad340bb27b9553a2a441215398549",
+    "field_evidence": {
+      "contact.full_name": [
+        "e0:0:9",
+        "e1:0:16",
+        "e2:0:11",
+        "e3:0:9",
+        "e4:0:18"
+      ],
+      "contact.email": [
+        "e0:0:9",
+        "e1:0:16",
+        "e2:0:11",
+        "e3:0:9",
+        "e4:0:18"
+      ],
+      "contact.phone": [
+        "e0:0:9",
+        "e1:0:16",
+        "e2:0:11",
+        "e3:0:9",
+        "e4:0:18"
+      ],
+      "contact.location": [
+        "e0:0:9",
+        "e1:0:16",
+        "e2:0:11",
+        "e3:0:9",
+        "e4:0:18"
+      ],
+      "professional_title": [
+        "e1:0:16"
+      ],
+      "summary": [
+        "e6:0:116",
+        "e6:116:239",
+        "e6:239:354",
+        "e6:354:418"
+      ],
+      "skills.technical_skills[0]": [
+        "e8:0:113"
+      ],
+      "skills.tools_and_platforms[0]": [
+        "e8:232:292"
+      ],
+      "skills.tools_and_platforms[1]": [
+        "e8:0:113"
+      ],
+      "skills.tools_and_platforms[2]": [
+        "e8:232:292"
+      ],
+      "skills.domain_and_functional[0]": [
+        "e8:113:232"
+      ],
+      "skills.soft_skills[0]": [
+        "e8:0:113"
+      ],
+      "skills.soft_skills[1]": [
+        "e8:0:113"
+      ],
+      "skills.all_skills[0]": [
+        "e8:0:113"
+      ],
+      "skills.all_skills[1]": [
+        "e8:232:292"
+      ],
+      "skills.all_skills[2]": [
+        "e8:0:113"
+      ],
+      "skills.all_skills[3]": [
+        "e8:232:292"
+      ],
+      "skills.all_skills[4]": [
+        "e8:113:232"
+      ],
+      "skills.all_skills[5]": [
+        "e8:0:113"
+      ],
+      "skills.all_skills[6]": [
+        "e8:0:113"
+      ],
+      "skills.all_skills[7]": [
+        "e8:0:113"
+      ],
+      "skills.all_skills[8]": [
+        "e8:0:113"
+      ],
+      "skills.all_skills[9]": [
+        "e8:0:113"
+      ],
+      "skills.all_skills[10]": [
+        "e8:0:113"
+      ],
+      "skills.all_skills[11]": [
+        "e8:0:113"
+      ],
+      "skills.all_skills[12]": [
+        "e8:0:113"
+      ],
+      "skills.all_skills[13]": [
+        "e8:113:232"
+      ],
+      "skills.all_skills[14]": [
+        "e8:113:232"
+      ],
+      "skills.all_skills[15]": [
+        "e8:113:232"
+      ],
+      "skills.all_skills[16]": [
+        "e8:113:232"
+      ],
+      "skills.all_skills[17]": [
+        "e8:113:232"
+      ],
+      "skills.all_skills[18]": [
+        "e8:113:232"
+      ],
+      "skills.all_skills[19]": [
+        "e8:113:232"
+      ],
+      "skills.all_skills[20]": [
+        "e8:113:232"
+      ],
+      "skills.all_skills[21]": [
+        "e8:0:113",
+        "e8:232:292"
+      ],
+      "skills.all_skills[22]": [
+        "e8:232:292"
+      ],
+      "skills.all_skills[23]": [
+        "e8:232:292"
+      ],
+      "skills.all_skills[24]": [
+        "e8:232:292"
+      ]
+    },
+    "record_reviews": [
+      {
+        "category": "experience",
+        "entry_id": "experience-1",
+        "source_ids": [
+          "e9:12:28",
+          "e10:0:10",
+          "e11:0:16",
+          "e12:0:119",
+          "e12:119:238",
+          "e12:238:315",
+          "e12:315:427",
+          "e12:427:495",
+          "e12:495:607",
+          "e12:607:700",
+          "e12:700:820",
+          "e12:820:885",
+          "e12:885:1000",
+          "e12:1000:1078",
+          "e12:1078:1084",
+          "e12:1084:1194",
+          "e12:1194:1276",
+          "e12:1276:1392",
+          "e12:1392:1455",
+          "e12:1455:1570",
+          "e12:1570:1619",
+          "e12:1619:1736",
+          "e12:1736:1858",
+          "e12:1858:1886",
+          "e12:1886:1998",
+          "e12:1998:2112",
+          "e12:2112:2120"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-2",
+        "source_ids": [
+          "e13:0:26",
+          "e14:0:109",
+          "e14:109:223",
+          "e15:0:22",
+          "e15:22:138",
+          "e15:138:182",
+          "e15:182:297",
+          "e15:297:343",
+          "e15:343:458",
+          "e15:458:511",
+          "e15:511:628",
+          "e15:628:677",
+          "e15:677:792",
+          "e15:792:872"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "education",
+        "entry_id": "education-1",
+        "source_ids": [
+          "e17:0:11",
+          "e18:0:21",
+          "e18:21:47"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      }
+    ],
+    "missing_required_fields": [
+      "experience[0].company",
+      "experience[0].role",
+      "experience[1].company",
+      "experience[1].role",
+      "education[0].institution",
+      "education[0].degree"
+    ],
+    "warnings": [
+      "Schema validity and field completion do not establish extraction or relationship accuracy.",
+      "Handoff confidence scores are fixed heuristics, not calibrated probabilities.",
+      "Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields."
+    ],
+    "unmapped_blocks": [
+      {
+        "source_id": "e5:0:23",
+        "category": "experience",
+        "text": "PROFESSIONAL EXPERIENCE",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:0:12",
+        "category": "experience",
+        "text": "EXPERIENCE: ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:12:28",
+        "category": "experience",
+        "text": "SOCIETE GENERALE",
+        "page_number": 1
+      },
+      {
+        "source_id": "e10:0:10",
+        "category": "experience",
+        "text": "2023 - NOW",
+        "page_number": 1
+      },
+      {
+        "source_id": "e11:0:16",
+        "category": "experience",
+        "text": "Business Analyst",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:0:119",
+        "category": "experience",
+        "text": "Led requirement analysis for SocGen's Prime Brokerage platform (10M EUR transformation initiative), collaborating with ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:119:238",
+        "category": "experience",
+        "text": "trading, risk, and operations stakeholders to define business needs and translate them into functional specifications, ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:238:315",
+        "category": "experience",
+        "text": "user stories, acceptance criteria, process flows and business documentation. ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:315:427",
+        "category": "experience",
+        "text": "Ochestrated migration of 18 downstream applications from legacy platforms to Azure Data Lake, ensuring seamless ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:427:495",
+        "category": "experience",
+        "text": "data transition, validation, and uninterrupted business operations. ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:495:607",
+        "category": "experience",
+        "text": "Designed and implemented pricing automation and validation control framework, ensuring high-quality market data ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:607:700",
+        "category": "experience",
+        "text": "ingestion, reducing pricing errors, and eliminating manual checks equivalent to 1 FTE daily. ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:700:820",
+        "category": "experience",
+        "text": "Spearheaded automation of Equities, Funds, Options, and Futures contract creation in our system, reducing manual effort ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:820:885",
+        "category": "experience",
+        "text": "by 30% and saving 1 FTE daily while accelerating time-to-market. ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:885:1000",
+        "category": "experience",
+        "text": "Owned end-to-end reference data lifecycle (creation, amendment, maintenance) across Derivatives, Equities, FX, and ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:1000:1078",
+        "category": "experience",
+        "text": "Commodities, ensuring 100% compliance with exchange and regulatory standards. ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:1078:1084",
+        "category": "experience",
+        "text": "Drove ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:1084:1194",
+        "category": "experience",
+        "text": "end-to-end migration of referential data from Oracle-based legacy systems to Azure Data Lake, contributing to ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:1194:1276",
+        "category": "experience",
+        "text": "significant infrastructure cost optimization and scalable enterprise data access. ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:1276:1392",
+        "category": "experience",
+        "text": "Managed JIRA backlogs, sprint planning, user story refinement, delivery tracking, RAID logs, dependency management, ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:1392:1455",
+        "category": "experience",
+        "text": "governance reporting, and executive stakeholder communication. ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:1455:1570",
+        "category": "experience",
+        "text": "Facilitated stakeholder workshops to elicit business requirements, perform impact analysis, and support end-to-end ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:1570:1619",
+        "category": "experience",
+        "text": "solution delivery across cross-functional teams. ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:1619:1736",
+        "category": "experience",
+        "text": "Demonstrated strong functional expertise across Cash Equities, FX, Derivatives, Commodities, Funds, Indices, and OTC ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:1736:1858",
+        "category": "experience",
+        "text": "products, supporting front-to-back trade lifecycle processes, data governance, reconciliations, regulatory reporting, and ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:1858:1886",
+        "category": "experience",
+        "text": "transformation initiatives. ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:1886:1998",
+        "category": "experience",
+        "text": "Collaborated with Operations, Technology, and Business teams to support front-to-back trade lifecycle processes ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:1998:2112",
+        "category": "experience",
+        "text": "including trade capture, validation, settlement, lifecycle events, and exception management across multiple asset ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:2112:2120",
+        "category": "experience",
+        "text": "classes.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e13:0:26",
+        "category": "experience",
+        "text": "2019 - 2023 Senior Analyst",
+        "page_number": 1
+      },
+      {
+        "source_id": "e14:0:109",
+        "category": "experience",
+        "text": "Managed end-to-end onboarding and creating of Equities, Funds, FX , Indices, Futures, Options, and Commodity ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e14:109:223",
+        "category": "experience",
+        "text": "Derivatives across global markets, ensuring compliance with Bloomberg, Reuters, Exchange, GMI, and market-specific",
+        "page_number": 1
+      },
+      {
+        "source_id": "e15:0:22",
+        "category": "experience",
+        "text": "regulatory standards. ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e15:22:138",
+        "category": "experience",
+        "text": "Performed reference data management and static data enrichment, resolving data quality issues and ensuring accuracy ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e15:138:182",
+        "category": "experience",
+        "text": "across downstream trading and risk systems. ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e15:182:297",
+        "category": "experience",
+        "text": "Conducted daily market price validation and exception management, investigating pricing discrepancies and ensuring ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e15:297:343",
+        "category": "experience",
+        "text": "accurate valuation data across asset classes. ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e15:343:458",
+        "category": "experience",
+        "text": "Managed corporate actions lifecycle for Equities and Derivatives, including symbol changes, stock splits, mergers, ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e15:458:511",
+        "category": "experience",
+        "text": "instrument ID updates, and strike price adjustments. ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e15:511:628",
+        "category": "experience",
+        "text": "Supported regulatory reporting initiatives for MiFID II and EMIR by maintaining accurate security reference data and ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e15:628:677",
+        "category": "experience",
+        "text": "ensuring compliance with reporting requirements. ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e15:677:792",
+        "category": "experience",
+        "text": "Played a key role in the EUREX NEXTGEN migration, successfully supporting trade rebooking, product onboarding, and ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e15:792:872",
+        "category": "experience",
+        "text": "implementation of daily and weekly expiry instruments with no downstream impact.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e7:0:6",
+        "category": "skills",
+        "text": "SKILLS",
+        "page_number": 1
+      },
+      {
+        "source_id": "e16:0:9",
+        "category": "education",
+        "text": "EDUCATION",
+        "page_number": 1
+      },
+      {
+        "source_id": "e17:0:11",
+        "category": "education",
+        "text": "2016 - 2019",
+        "page_number": 1
+      },
+      {
+        "source_id": "e18:0:21",
+        "category": "education",
+        "text": "Bachelor of Commerce ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e18:21:47",
+        "category": "education",
+        "text": "Vijaya College - Bangalore",
+        "page_number": 1
+      }
+    ],
+    "needs_review": []
+  }
+}

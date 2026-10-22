@@ -1,0 +1,214 @@
+{
+  "pass": 3,
+  "section_review": {
+    "provider": "DeepSeek",
+    "status": "complete",
+    "reviewed_units": 120,
+    "changed_units": 0,
+    "resolved_units": 0,
+    "local_result_retained": false,
+    "provider_calls": 1,
+    "model": "deepseek-flash",
+    "invalid_response_attempts": [],
+    "resolution_status": "all_meaningful_text_assigned",
+    "all_meaningful_text_assigned": true,
+    "remaining_meaningful_review_units": 0,
+    "pass_count": 1,
+    "split_units": 0,
+    "remaining_review_units": 0
+  },
+  "audit_status": "complete",
+  "unresolved_meaningful_spans": 0,
+  "missing_required_fields": [
+    "experience[0].role",
+    "experience[2].company"
+  ],
+  "schema_findings": [
+    {
+      "field": "data.contact.full_name",
+      "issue": "full_name includes the professional headline and contact line concatenated with the name, not just the candidate's name",
+      "source_ids": [
+        "e0:0:13",
+        "e0:13:80",
+        "e0:80:145"
+      ]
+    },
+    {
+      "field": "data.contact.location",
+      "issue": "location is recorded as 'Hyderabad' but source text states 'Hyderabad, India'",
+      "source_ids": [
+        "e0:80:145"
+      ]
+    },
+    {
+      "field": "data.summary",
+      "issue": "summary text contains verbatim typo 'Buikt ETL workflows' and truncated fragment 'mid- and year-end audit engagements' with no verb preceding it; presented as clean narrative",
+      "source_ids": [
+        "e2:772:878",
+        "e2:878:905"
+      ]
+    },
+    {
+      "field": "data.total_experience_years",
+      "issue": "4.0 years appears derived from summary phrase '4+ years'; source also lists ICE/NYSE Nov 2021–Nov 2022 which would raise total tenure beyond 4 years",
+      "source_ids": [
+        "e2:0:110",
+        "e45:0:55"
+      ]
+    },
+    {
+      "field": "data.experience[0].company",
+      "issue": "Arcesium entry has an empty role while source shows the employer line followed by two distinct role/date lines (Senior Analyst Jan 2025–Present and Analyst Dec 2022–Dec 2024); the roles were split into separate experience entries rather than under the employer",
+      "source_ids": [
+        "e18:0:93",
+        "e19:0:86",
+        "e37:0:75"
+      ]
+    },
+    {
+      "field": "data.experience[0].responsibilities",
+      "issue": "responsibilities array is empty although source lists numerous duties under the Arcesium employer entry",
+      "source_ids": [
+        "e20:0:102",
+        "e21:0:103",
+        "e22:0:97"
+      ]
+    },
+    {
+      "field": "data.experience[1].company",
+      "issue": "company field contains concatenated source fragments ('ensure seamless go-live across systems...', 'projects, contributing operational expertise...', 'Built ETL workflows in Python...') that are bullet text, not an employer name",
+      "source_ids": [
+        "e22:201:266",
+        "e24:100:204",
+        "e36:0:97"
+      ]
+    },
+    {
+      "field": "data.experience[1].responsibilities",
+      "issue": "responsibilities are only partial sentence fragments with dangling trailing commas/commas, and several source bullets (e.g., summar stated 'Played a key role in launching two new funds ($4B and $120B AUM)' e26, e35 audit liaison, e28 investor flows) are not reflected",
+      "source_ids": [
+        "e20:0:102",
+        "e29:2:105",
+        "e30:2:100",
+        "e34:0:101",
+        "e36:0:97",
+        "e26:0:97",
+        "e35:0:105",
+        "e28:0:100"
+      ]
+    },
+    {
+      "field": "data.experience[2].company",
+      "issue": "experience[2] has empty company; source shows the Analyst role belongs to Arcesium (employer line precedes it) but no employer was established, and ICE/NYSE employer (e44) is entirely absent from the experience array",
+      "source_ids": [
+        "e37:0:75",
+        "e44:0:72"
+      ]
+    },
+    {
+      "field": "data.experience[2].role",
+      "issue": "Analyst role start/end dates (Dec 2022–Dec 2024) present in source were not captured; start_date, end_date, duration all null",
+      "source_ids": [
+        "e37:0:75"
+      ]
+    },
+    {
+      "field": "data.experience",
+      "issue": "ICE/NYSE Data Researcher I (Nov 2021–Nov 2022) employment with its responsibilities is missing from the experience array",
+      "source_ids": [
+        "e44:0:72",
+        "e45:0:55",
+        "e46:0:99",
+        "e47:0:104",
+        "e48:0:108"
+      ]
+    },
+    {
+      "field": "data.experience[*].location",
+      "issue": "all experience location values are null though source lines include Hyderabad for both Arcesium and ICE/NYSE",
+      "source_ids": [
+        "e18:0:93",
+        "e44:0:72"
+      ]
+    },
+    {
+      "field": "data.education[0].degree",
+      "issue": "degree field contains dates glued to degree text: 'MBA – Finance & Data Analytics2020 – 2022'",
+      "source_ids": [
+        "e50:0:42"
+      ]
+    },
+    {
+      "field": "data.education[0].institution",
+      "issue": "institution field contains coursework text appended: 'Prestige Institute of Management & Research, Indore | Relevant coursework: Derivatives, Portfolio Management,'",
+      "source_ids": [
+        "e50:42:152"
+      ]
+    },
+    {
+      "field": "data.education[0].start_year",
+      "issue": "start_year is null while source shows 2020–2022 range",
+      "source_ids": [
+        "e50:0:42"
+      ]
+    },
+    {
+      "field": "data.education[1].degree",
+      "issue": "degree field contains dates glued to degree text: 'B.Com (Commerce)2017 – 2020'",
+      "source_ids": [
+        "e51:0:28"
+      ]
+    },
+    {
+      "field": "data.education[1].graduation_year",
+      "issue": "graduation_year is null while source shows 2017–2020 range",
+      "source_ids": [
+        "e51:28:51",
+        "e51:0:28"
+      ]
+    },
+    {
+      "field": "data.certifications[0].name",
+      "issue": "certification name bundles the section heading '& CERTIFICATIONS' and all four distinct certifications (NSE Academy PGP, NISM Series-VII, Series-XV, Quantbot) into a single string instead of separate items",
+      "source_ids": [
+        "e52:13:30",
+        "e54:0:56",
+        "e54:59:108",
+        "e54:111:155",
+        "e54:158:223"
+      ]
+    },
+    {
+      "field": "data.certifications[0].issuer",
+      "issue": "issuer is null despite named issuing bodies (NSE Academy, NISM, Quantbot Securities) present in source",
+      "source_ids": [
+        "e54:0:56",
+        "e54:158:223"
+      ]
+    },
+    {
+      "field": "data.skills.all_skills",
+      "issue": "skills list contains broken line-fragment tokens ('Geneva Accounting Engine (NAV', '& Config)', 'Prime Broker & Custodian', 'Reconciliation', 'Middle Office & Post-Trade', 'Operations', 'P&L calculations and', 'valuations', etc.) that split single core competencies across array entries",
+      "source_ids": [
+        "e4:0:30",
+        "e4:30:39",
+        "e5:0:25",
+        "e5:25:39",
+        "e6:0:27",
+        "e6:27:37",
+        "e9:0:21",
+        "e9:21:31"
+      ]
+    },
+    {
+      "field": "data.awards",
+      "issue": "source contains Arcesium 2025 Spot Award achievement but no awards field exists in the schema data output",
+      "source_ids": [
+        "e53:0:91",
+        "e53:91:128"
+      ]
+    }
+  ],
+  "fingerprint": "2f59e533142d2df4b66d1fd304bd6f2cdfa091fc84e0f06dd834ec0fc7d0a123",
+  "previous_valid_result_retained": false
+}

@@ -1,0 +1,1440 @@
+{
+  "success": true,
+  "source": "RUSHI M.pdf",
+  "extraction_mode": "existing_blocks_schema_mapping",
+  "data": {
+    "contact": {
+      "full_name": "RUSHI M",
+      "email": "rushimupalla@gmail.com",
+      "phone": "+91-9632100124",
+      "location": "Bengaluru",
+      "linkedin_url": "linkedin.com/in/rushimuppalla",
+      "github_url": null,
+      "portfolio_url": null
+    },
+    "professional_title": "Business Analyst / Technical Project Analyst",
+    "summary": "Results-oriented Business Analyst with 4+ years of experience across requirements documentation, QA coordination, change management, and stakeholder communication in Agile and hybrid delivery environments. Strong hands-on exposure to BRD, SRS, user stories, UAT planning, regression coordination, and production issue analysis. Experienced in client-facing roles requiring documentation discipline, traceability, and controlled change delivery.",
+    "total_experience_years": 4.0,
+    "skills": {
+      "technical_skills": [
+        "SQL"
+      ],
+      "tools_and_platforms": [
+        "Power BI",
+        "JIRA"
+      ],
+      "domain_and_functional": [],
+      "soft_skills": [],
+      "all_skills": [
+        "SQL",
+        "Power BI",
+        "JIRA",
+        "Requirements Gathering (BRD",
+        "FRD",
+        "SRS)",
+        "Manual Testing and QA Process",
+        "Requirement Traceability Matrix",
+        "Change Request and Impact Analysis",
+        "User Stories and Acceptance Criteria",
+        "UAT Planning and Execution",
+        "Regression Testing and Release",
+        "Client Stake Holder Management",
+        "Root Cause Analysis",
+        "Jira",
+        "SQL Server",
+        "MS Office",
+        "Figma",
+        "Snagit",
+        "Linux"
+      ]
+    },
+    "experience": [
+      {
+        "company": "",
+        "role": "Technical Project Analyst\nAct as a client-facing analyst for customization of IRT applications in global clinical",
+        "start_date": "Sep 2023",
+        "end_date": "February 2026",
+        "duration": "Sep 2023 – February 2026",
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "",
+        "role": "Business Analyst",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "LOYLTWO3KS IT Pvt. Ltd.",
+        "role": "",
+        "start_date": "Jul 2021",
+        "end_date": "Sep 2023",
+        "duration": "Jul 2021 – Sep 2023",
+        "location": null,
+        "responsibilities": [
+          "Created and maintained BRD, SRS, user stories, acceptance criteria, workflows, and ",
+          "Conducted GAP analysis, feasibility studies, and detailed impact analysis before ",
+          "Supported manual testing activities, reviewed test cases, and validated test results.",
+          "Supported clients during production issues, performed RCA, and ensured resolution "
+        ],
+        "technologies": []
+      }
+    ],
+    "education": [
+      {
+        "institution": "Sri Venkateshwara College of Engineering, VTU",
+        "degree": "Bachelor of Engineering (Civil Engineering)",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      }
+    ],
+    "certifications": [],
+    "projects": [],
+    "languages": []
+  },
+  "schema_mapping": {
+    "fields_populated": 13,
+    "total_fields": 16,
+    "completion_percentage": 81.2,
+    "field_details": [
+      {
+        "field_name": "contact.full_name",
+        "target_type": "string",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Personal Details",
+        "confidence_score": 0.95,
+        "description": "Candidate's full name, extracted from the top header of the resume."
+      },
+      {
+        "field_name": "contact.email",
+        "target_type": "string (email)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.98,
+        "description": "Candidate's primary contact email address."
+      },
+      {
+        "field_name": "contact.phone",
+        "target_type": "string (phone)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.95,
+        "description": "Candidate's telephone / mobile phone number."
+      },
+      {
+        "field_name": "contact.location",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.85,
+        "description": "Candidate's residential location or work city."
+      },
+      {
+        "field_name": "contact.linkedin_url",
+        "target_type": "string (url) | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.9,
+        "description": "URL to candidate's LinkedIn profile."
+      },
+      {
+        "field_name": "professional_title",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Header / Subtitle",
+        "confidence_score": 0.88,
+        "description": "Candidate's target headline or most recent job title."
+      },
+      {
+        "field_name": "summary",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Summary / Profile / Objective",
+        "confidence_score": 0.85,
+        "description": "Executive bio, professional overview, or career objective."
+      },
+      {
+        "field_name": "total_experience_years",
+        "target_type": "float | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Summary / Experience Calculation",
+        "confidence_score": 0.9,
+        "description": "Total professional experience in years."
+      },
+      {
+        "field_name": "skills.technical_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills / Technical Competencies",
+        "confidence_score": 0.92,
+        "description": "Technical programming languages and core software competencies."
+      },
+      {
+        "field_name": "skills.tools_and_platforms",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills / Tools & Technologies",
+        "confidence_score": 0.9,
+        "description": "Software platforms, developer tools, and operational systems."
+      },
+      {
+        "field_name": "skills.domain_and_functional",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Domain Expertise",
+        "confidence_score": 0.0,
+        "description": "Functional domain knowledge (e.g. Hedge Funds, KYC, NAV, Derivatives)."
+      },
+      {
+        "field_name": "skills.all_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills (Aggregated)",
+        "confidence_score": 0.95,
+        "description": "Complete list of candidate skills across all categories."
+      },
+      {
+        "field_name": "experience",
+        "target_type": "array[WorkExperience]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Experience / Work History",
+        "confidence_score": 0.92,
+        "description": "Complete chronological employment records with bullet points."
+      },
+      {
+        "field_name": "education",
+        "target_type": "array[Education]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Education / Academic Qualifications",
+        "confidence_score": 0.9,
+        "description": "University, college, and higher education degree qualifications."
+      },
+      {
+        "field_name": "certifications",
+        "target_type": "array[Certification]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Certifications / Licenses",
+        "confidence_score": 0.0,
+        "description": "Professional accreditations and credentials."
+      },
+      {
+        "field_name": "projects",
+        "target_type": "array[Project]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Projects / Key Engagements",
+        "confidence_score": 0.0,
+        "description": "Major projects or strategic initiatives led by candidate."
+      }
+    ]
+  },
+  "raw_sections": {
+    "personal_information": "RUSHI M\nBusiness Analyst / Technical Project Analyst Bengaluru, Karnataka, India +91-9632100124 | rushimupalla@gmail.com linkedin.com/in/rushimuppalla",
+    "summary": "PROFESSIONAL SUMMARY\nResults-oriented Business Analyst with 4+ years of experience across requirements documentation, QA coordination, change management, and stakeholder communication in Agile and hybrid delivery environments. Strong hands-on exposure to BRD, SRS, user stories, UAT planning, regression coordination, and production issue analysis. Experienced in client-facing roles requiring documentation discipline, traceability, and controlled change delivery.",
+    "skills": "CORE SKILLS\nRequirements Gathering (BRD, FRD, SRS) • Manual Testing and QA Process • Requirement Traceability Matrix • Change Request and Impact Analysis • User Stories and Acceptance Criteria • UAT Planning and Execution • Regression Testing and Release • Client Stake Holder Management • Root Cause Analysis\nTOOLS & TECHNOLOGIES\nJira, SQL Server, MS Office, Figma, Snagit, Linux, Power BI",
+    "experience": "PROFESSIONAL EXPERIENCE\nTechnical Project Analyst\nIQVIA | Sep 2023 – February 2026\nAct as a client-facing analyst for customization of IRT applications in global clinical trials.\nOwn requirement clarification, documentation, and validation across IT, Business, and external stakeholders.\nManage Software Change Requests (SCRs) including scope definition, feasibility checks, and impact analysis.\nPrepare and review UAT plans, scenarios, and test cases aligned with client-specific guidelines.\nCoordinate UAT execution, issue tracking, defect triage, and resolution with cross- functional teams.\nValidate fixes and enhancements to ensure release readiness and quality compliance. • Support production issue analysis, documentation, and corrective actions.\nDevelop training materials, SOPs, and user documentation for internal and external users.\nMaintain effective communication with internal teams and client stakeholders throughout delivery cycles.\nBusiness Analyst\nLOYLTWO3KS IT Pvt. Ltd. | Jul 2021 – Sep 2023\nOwned end-to-end requirement gathering for small to mid-scale product enhancements, bug fixes, and CRs.\nCreated and maintained BRD, SRS, user stories, acceptance criteria, workflows, and validation rules.\nConducted GAP analysis, feasibility studies, and detailed impact analysis before development start.\nActed as the single point of contact between clients, product, QA, and development teams.\nSupported manual testing activities, reviewed test cases, and validated test results. • Prepared release notes, user manuals, FAQs, and training documentation. • Supported clients during production issues, performed RCA, and ensured resolution closure.\nAssisted in defining QA and documentation best practices within Agile (Scrum) framework and Waterfall methodologies.",
+    "education": "EDUCATION\nBachelor of Engineering (Civil Engineering) Sri Venkateshwara College of Engineering, VTU"
+  },
+  "meta": {
+    "status": "needs_review",
+    "human_verified": false,
+    "provider_calls": 0,
+    "source_accounting": {
+      "all_source_text_preserved": true,
+      "total_spans": 73,
+      "assigned_meaningful_spans": 62,
+      "unresolved_meaningful_spans": 0,
+      "non_content_artifacts": 11,
+      "duplicates_excluded": 0,
+      "all_meaningful_text_assigned": true,
+      "semantic_correctness_verified": false,
+      "outcomes": [
+        {
+          "source_id": "e0:0:7",
+          "source_element_index": 0,
+          "start": 0,
+          "end": 7,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e1:0:45",
+          "source_element_index": 1,
+          "start": 0,
+          "end": 45,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e1:45:73",
+          "source_element_index": 1,
+          "start": 45,
+          "end": 73,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e1:73:113",
+          "source_element_index": 1,
+          "start": 73,
+          "end": 113,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e1:113:142",
+          "source_element_index": 1,
+          "start": 113,
+          "end": 142,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e2:0:20",
+          "source_element_index": 2,
+          "start": 0,
+          "end": 20,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e3:0:82",
+          "source_element_index": 3,
+          "start": 0,
+          "end": 82,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:82:166",
+          "source_element_index": 3,
+          "start": 82,
+          "end": 166,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:166:249",
+          "source_element_index": 3,
+          "start": 166,
+          "end": 249,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:249:343",
+          "source_element_index": 3,
+          "start": 249,
+          "end": 343,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:343:435",
+          "source_element_index": 3,
+          "start": 343,
+          "end": 435,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:435:444",
+          "source_element_index": 3,
+          "start": 435,
+          "end": 444,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e4:0:11",
+          "source_element_index": 4,
+          "start": 0,
+          "end": 11,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e5:0:38",
+          "source_element_index": 5,
+          "start": 0,
+          "end": 38,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e5:38:41",
+          "source_element_index": 5,
+          "start": 38,
+          "end": 41,
+          "section": "skills",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e5:41:70",
+          "source_element_index": 5,
+          "start": 41,
+          "end": 70,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e5:70:73",
+          "source_element_index": 5,
+          "start": 70,
+          "end": 73,
+          "section": "skills",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e5:73:104",
+          "source_element_index": 5,
+          "start": 73,
+          "end": 104,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e5:104:107",
+          "source_element_index": 5,
+          "start": 104,
+          "end": 107,
+          "section": "skills",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e5:107:141",
+          "source_element_index": 5,
+          "start": 107,
+          "end": 141,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e5:141:144",
+          "source_element_index": 5,
+          "start": 141,
+          "end": 144,
+          "section": "skills",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e5:144:180",
+          "source_element_index": 5,
+          "start": 144,
+          "end": 180,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e5:180:183",
+          "source_element_index": 5,
+          "start": 180,
+          "end": 183,
+          "section": "skills",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e5:183:209",
+          "source_element_index": 5,
+          "start": 183,
+          "end": 209,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e5:209:212",
+          "source_element_index": 5,
+          "start": 209,
+          "end": 212,
+          "section": "skills",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e5:212:242",
+          "source_element_index": 5,
+          "start": 212,
+          "end": 242,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e5:242:245",
+          "source_element_index": 5,
+          "start": 242,
+          "end": 245,
+          "section": "skills",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e5:245:275",
+          "source_element_index": 5,
+          "start": 245,
+          "end": 275,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e5:275:278",
+          "source_element_index": 5,
+          "start": 275,
+          "end": 278,
+          "section": "skills",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e5:278:297",
+          "source_element_index": 5,
+          "start": 278,
+          "end": 297,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e6:0:23",
+          "source_element_index": 6,
+          "start": 0,
+          "end": 23,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e7:0:25",
+          "source_element_index": 7,
+          "start": 0,
+          "end": 25,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:0:32",
+          "source_element_index": 8,
+          "start": 0,
+          "end": 32,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:0:88",
+          "source_element_index": 9,
+          "start": 0,
+          "end": 88,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:88:95",
+          "source_element_index": 9,
+          "start": 88,
+          "end": 95,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e10:0:82",
+          "source_element_index": 10,
+          "start": 0,
+          "end": 82,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e10:82:108",
+          "source_element_index": 10,
+          "start": 82,
+          "end": 108,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e11:0:79",
+          "source_element_index": 11,
+          "start": 0,
+          "end": 79,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e11:79:107",
+          "source_element_index": 11,
+          "start": 79,
+          "end": 107,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:0:85",
+          "source_element_index": 12,
+          "start": 0,
+          "end": 85,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:85:96",
+          "source_element_index": 12,
+          "start": 85,
+          "end": 96,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e13:0:84",
+          "source_element_index": 13,
+          "start": 0,
+          "end": 84,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e13:84:101",
+          "source_element_index": 13,
+          "start": 84,
+          "end": 101,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e14:0:83",
+          "source_element_index": 14,
+          "start": 0,
+          "end": 83,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e14:83:86",
+          "source_element_index": 14,
+          "start": 83,
+          "end": 86,
+          "section": "experience",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e14:86:159",
+          "source_element_index": 14,
+          "start": 86,
+          "end": 159,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e15:0:83",
+          "source_element_index": 15,
+          "start": 0,
+          "end": 83,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e15:83:89",
+          "source_element_index": 15,
+          "start": 83,
+          "end": 89,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e16:0:77",
+          "source_element_index": 16,
+          "start": 0,
+          "end": 77,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e16:77:104",
+          "source_element_index": 16,
+          "start": 77,
+          "end": 104,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e17:0:16",
+          "source_element_index": 17,
+          "start": 0,
+          "end": 16,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e18:0:45",
+          "source_element_index": 18,
+          "start": 0,
+          "end": 45,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Explicit dated employer starts or continues Experience across layout changes"
+        },
+        {
+          "source_id": "e19:0:70",
+          "source_element_index": 19,
+          "start": 0,
+          "end": 70,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e19:70:103",
+          "source_element_index": 19,
+          "start": 70,
+          "end": 103,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e20:0:83",
+          "source_element_index": 20,
+          "start": 0,
+          "end": 83,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e20:83:100",
+          "source_element_index": 20,
+          "start": 83,
+          "end": 100,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e21:0:81",
+          "source_element_index": 21,
+          "start": 0,
+          "end": 81,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e21:81:99",
+          "source_element_index": 21,
+          "start": 81,
+          "end": 99,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e22:0:83",
+          "source_element_index": 22,
+          "start": 0,
+          "end": 83,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e22:83:89",
+          "source_element_index": 22,
+          "start": 83,
+          "end": 89,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e23:0:85",
+          "source_element_index": 23,
+          "start": 0,
+          "end": 85,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e23:85:88",
+          "source_element_index": 23,
+          "start": 85,
+          "end": 88,
+          "section": "experience",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e23:88:159",
+          "source_element_index": 23,
+          "start": 88,
+          "end": 159,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e23:159:162",
+          "source_element_index": 23,
+          "start": 159,
+          "end": 162,
+          "section": "experience",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e23:162:244",
+          "source_element_index": 23,
+          "start": 162,
+          "end": 244,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e23:244:252",
+          "source_element_index": 23,
+          "start": 244,
+          "end": 252,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e24:0:78",
+          "source_element_index": 24,
+          "start": 0,
+          "end": 78,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e24:78:116",
+          "source_element_index": 24,
+          "start": 78,
+          "end": 116,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e25:0:20",
+          "source_element_index": 25,
+          "start": 0,
+          "end": 20,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e26:0:59",
+          "source_element_index": 26,
+          "start": 0,
+          "end": 59,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e27:0:9",
+          "source_element_index": 27,
+          "start": 0,
+          "end": 9,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e28:0:44",
+          "source_element_index": 28,
+          "start": 0,
+          "end": 44,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e28:44:89",
+          "source_element_index": 28,
+          "start": 44,
+          "end": 89,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        }
+      ]
+    },
+    "document_scope": {
+      "kind": "likely_resume",
+      "candidate_resume": true,
+      "reason": "Contact details, multiple resume section families and dated history; provisional scope only",
+      "human_verified": false
+    },
+    "source_inventory_sha256": "8bc6f74440f25da086cc89da02e46f8fdbd1687dcc1c32b1da3ce132a93e8b74",
+    "field_evidence": {
+      "contact.full_name": [
+        "e0:0:7",
+        "e1:0:45",
+        "e1:45:73",
+        "e1:73:113",
+        "e1:113:142"
+      ],
+      "contact.email": [
+        "e0:0:7",
+        "e1:0:45",
+        "e1:45:73",
+        "e1:73:113",
+        "e1:113:142"
+      ],
+      "contact.phone": [
+        "e0:0:7",
+        "e1:0:45",
+        "e1:45:73",
+        "e1:73:113",
+        "e1:113:142"
+      ],
+      "contact.location": [
+        "e0:0:7",
+        "e1:0:45",
+        "e1:45:73",
+        "e1:73:113",
+        "e1:113:142"
+      ],
+      "contact.linkedin_url": [
+        "e0:0:7",
+        "e1:0:45",
+        "e1:45:73",
+        "e1:73:113",
+        "e1:113:142"
+      ],
+      "professional_title": [
+        "e1:0:45"
+      ],
+      "summary": [
+        "e3:0:82",
+        "e3:82:166",
+        "e3:166:249",
+        "e3:249:343",
+        "e3:343:435",
+        "e3:435:444"
+      ],
+      "total_experience_years": [
+        "e3:0:82"
+      ],
+      "skills.technical_skills[0]": [
+        "e26:0:59"
+      ],
+      "skills.tools_and_platforms[0]": [
+        "e26:0:59"
+      ],
+      "skills.tools_and_platforms[1]": [
+        "e26:0:59"
+      ],
+      "skills.all_skills[0]": [
+        "e26:0:59"
+      ],
+      "skills.all_skills[1]": [
+        "e26:0:59"
+      ],
+      "skills.all_skills[2]": [
+        "e26:0:59"
+      ],
+      "skills.all_skills[3]": [
+        "e5:0:38"
+      ],
+      "skills.all_skills[4]": [
+        "e5:0:38"
+      ],
+      "skills.all_skills[5]": [
+        "e5:0:38"
+      ],
+      "skills.all_skills[6]": [
+        "e5:41:70"
+      ],
+      "skills.all_skills[7]": [
+        "e5:73:104"
+      ],
+      "skills.all_skills[8]": [
+        "e5:107:141"
+      ],
+      "skills.all_skills[9]": [
+        "e5:144:180"
+      ],
+      "skills.all_skills[10]": [
+        "e5:183:209"
+      ],
+      "skills.all_skills[11]": [
+        "e5:212:242"
+      ],
+      "skills.all_skills[12]": [
+        "e5:245:275"
+      ],
+      "skills.all_skills[13]": [
+        "e5:278:297"
+      ],
+      "skills.all_skills[14]": [
+        "e26:0:59"
+      ],
+      "skills.all_skills[15]": [
+        "e26:0:59"
+      ],
+      "skills.all_skills[16]": [
+        "e26:0:59"
+      ],
+      "skills.all_skills[17]": [
+        "e26:0:59"
+      ],
+      "skills.all_skills[18]": [
+        "e26:0:59"
+      ],
+      "skills.all_skills[19]": [
+        "e26:0:59"
+      ],
+      "experience[0].role": [
+        "e7:0:25",
+        "e9:0:88"
+      ],
+      "experience[0].start_date": [
+        "e8:0:32"
+      ],
+      "experience[0].end_date": [
+        "e8:0:32"
+      ],
+      "experience[0].duration": [
+        "e8:0:32"
+      ],
+      "experience[1].role": [
+        "e17:0:16"
+      ],
+      "experience[2].company": [
+        "e18:0:45"
+      ],
+      "experience[2].start_date": [
+        "e18:0:45"
+      ],
+      "experience[2].end_date": [
+        "e18:0:45"
+      ],
+      "experience[2].duration": [
+        "e18:0:45"
+      ],
+      "experience[2].responsibilities[0]": [
+        "e20:0:83"
+      ],
+      "experience[2].responsibilities[1]": [
+        "e21:0:81"
+      ],
+      "experience[2].responsibilities[2]": [
+        "e23:0:85"
+      ],
+      "experience[2].responsibilities[3]": [
+        "e23:162:244"
+      ],
+      "education[0].degree": [
+        "e28:0:44"
+      ],
+      "education[0].institution": [
+        "e28:44:89"
+      ]
+    },
+    "record_reviews": [
+      {
+        "category": "experience",
+        "entry_id": "experience-1",
+        "source_ids": [
+          "e7:0:25",
+          "e8:0:32",
+          "e9:0:88",
+          "e9:88:95",
+          "e10:0:82",
+          "e10:82:108",
+          "e11:0:79",
+          "e11:79:107",
+          "e12:0:85",
+          "e12:85:96",
+          "e13:0:84",
+          "e13:84:101",
+          "e14:0:83",
+          "e14:86:159",
+          "e15:0:83",
+          "e15:83:89",
+          "e16:0:77",
+          "e16:77:104"
+        ],
+        "relationship_status": "needs_review",
+        "review_reasons": [
+          "employer_not_established_from_supported_fields"
+        ]
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-2",
+        "source_ids": [
+          "e17:0:16"
+        ],
+        "relationship_status": "needs_review",
+        "review_reasons": [
+          "employer_not_established_from_supported_fields"
+        ]
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-3",
+        "source_ids": [
+          "e18:0:45",
+          "e19:0:70",
+          "e19:70:103",
+          "e20:0:83",
+          "e20:83:100",
+          "e21:0:81",
+          "e21:81:99",
+          "e22:0:83",
+          "e22:83:89",
+          "e23:0:85",
+          "e23:88:159",
+          "e23:162:244",
+          "e23:244:252",
+          "e24:0:78",
+          "e24:78:116"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "education",
+        "entry_id": "education-1",
+        "source_ids": [
+          "e28:0:44",
+          "e28:44:89"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      }
+    ],
+    "missing_required_fields": [
+      "experience[0].company",
+      "experience[1].company",
+      "experience[2].role"
+    ],
+    "warnings": [
+      "Schema validity and field completion do not establish extraction or relationship accuracy.",
+      "Handoff confidence scores are fixed heuristics, not calibrated probabilities.",
+      "Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields."
+    ],
+    "unmapped_blocks": [
+      {
+        "source_id": "e2:0:20",
+        "category": "summary",
+        "text": "PROFESSIONAL SUMMARY",
+        "page_number": 1
+      },
+      {
+        "source_id": "e4:0:11",
+        "category": "skills",
+        "text": "CORE SKILLS",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:38:41",
+        "category": "skills",
+        "text": " • ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:70:73",
+        "category": "skills",
+        "text": " • ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:104:107",
+        "category": "skills",
+        "text": " • ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:141:144",
+        "category": "skills",
+        "text": " • ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:180:183",
+        "category": "skills",
+        "text": " • ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:209:212",
+        "category": "skills",
+        "text": " • ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:242:245",
+        "category": "skills",
+        "text": " • ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:275:278",
+        "category": "skills",
+        "text": " • ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e25:0:20",
+        "category": "skills",
+        "text": "TOOLS & TECHNOLOGIES",
+        "page_number": 2
+      },
+      {
+        "source_id": "e6:0:23",
+        "category": "experience",
+        "text": "PROFESSIONAL EXPERIENCE",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:88:95",
+        "category": "experience",
+        "text": "trials.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e10:0:82",
+        "category": "experience",
+        "text": "Own requirement clarification, documentation, and validation across IT, Business, ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e10:82:108",
+        "category": "experience",
+        "text": "and external stakeholders.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e11:0:79",
+        "category": "experience",
+        "text": "Manage Software Change Requests (SCRs) including scope definition, feasibility ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e11:79:107",
+        "category": "experience",
+        "text": "checks, and impact analysis.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:0:85",
+        "category": "experience",
+        "text": "Prepare and review UAT plans, scenarios, and test cases aligned with client-specific ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:85:96",
+        "category": "experience",
+        "text": "guidelines.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e13:0:84",
+        "category": "experience",
+        "text": "Coordinate UAT execution, issue tracking, defect triage, and resolution with cross- ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e13:84:101",
+        "category": "experience",
+        "text": "functional teams.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e14:0:83",
+        "category": "experience",
+        "text": "Validate fixes and enhancements to ensure release readiness and quality compliance.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e14:83:86",
+        "category": "experience",
+        "text": " • ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e14:86:159",
+        "category": "experience",
+        "text": "Support production issue analysis, documentation, and corrective actions.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e15:0:83",
+        "category": "experience",
+        "text": "Develop training materials, SOPs, and user documentation for internal and external ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e15:83:89",
+        "category": "experience",
+        "text": "users.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e16:0:77",
+        "category": "experience",
+        "text": "Maintain effective communication with internal teams and client stakeholders ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e16:77:104",
+        "category": "experience",
+        "text": "throughout delivery cycles.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e19:0:70",
+        "category": "experience",
+        "text": "Owned end-to-end requirement gathering for small to mid-scale product ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e19:70:103",
+        "category": "experience",
+        "text": "enhancements, bug fixes, and CRs.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e20:83:100",
+        "category": "experience",
+        "text": "validation rules.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e21:81:99",
+        "category": "experience",
+        "text": "development start.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e22:0:83",
+        "category": "experience",
+        "text": "Acted as the single point of contact between clients, product, QA, and development ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e22:83:89",
+        "category": "experience",
+        "text": "teams.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e23:85:88",
+        "category": "experience",
+        "text": " • ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e23:88:159",
+        "category": "experience",
+        "text": "Prepared release notes, user manuals, FAQs, and training documentation.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e23:159:162",
+        "category": "experience",
+        "text": " • ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e23:244:252",
+        "category": "experience",
+        "text": "closure.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e24:0:78",
+        "category": "experience",
+        "text": "Assisted in defining QA and documentation best practices within Agile (Scrum) ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e24:78:116",
+        "category": "experience",
+        "text": "framework and Waterfall methodologies.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e27:0:9",
+        "category": "education",
+        "text": "EDUCATION",
+        "page_number": 2
+      }
+    ],
+    "needs_review": []
+  }
+}

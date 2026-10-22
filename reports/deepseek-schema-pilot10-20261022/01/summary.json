@@ -1,0 +1,132 @@
+{
+  "document": 1,
+  "file": "KARTHIYAYINI S_1.pdf",
+  "status": "flagged",
+  "schema_valid": true,
+  "reference_denominator": 19,
+  "reference_value_matches": 19,
+  "before_raw": {
+    "populated_fields": 207,
+    "citation_valid_fields": 205,
+    "citation_compliance_percent": 99.03,
+    "citation_contract_valid": false,
+    "evidence_backed_matches": 19,
+    "issue_kinds": {
+      "value_not_supported_by_quotes": 2
+    }
+  },
+  "after_candidate": {
+    "populated_fields": 207,
+    "citation_valid_fields": 205,
+    "citation_compliance_percent": 99.03,
+    "citation_contract_valid": false,
+    "evidence_backed_matches": 19,
+    "issue_kinds": {
+      "value_not_supported_by_quotes": 2
+    }
+  },
+  "normalizations": [],
+  "alignment_adjustments": [],
+  "omission_repairs": [],
+  "rejections": [],
+  "uncertainty_flags": [
+    {
+      "path": "/contact/phone",
+      "kind": "upstream_defect",
+      "detail": "Phone block was locally categorized as needs_review; value retained with trailing period removed.",
+      "source_ids": [
+        "e2:0:21"
+      ]
+    },
+    {
+      "path": "/experience/0/role",
+      "kind": "ambiguous_source",
+      "detail": "Block lists both CURRENT ROLE: Senior Associate and CORPORATE TITLE: Markets Business Control Manager; role uses Senior Associate, corporate title used as professional_title.",
+      "source_ids": [
+        "e8:0:80",
+        "e9:0:49"
+      ]
+    },
+    {
+      "path": "/total_experience_years",
+      "kind": "explicit_number_with_source_state",
+      "detail": "Source explicitly states 'Overall Work Experience: 11 Years'; stored as stated without calculation.",
+      "source_ids": [
+        "e7:0:33"
+      ]
+    },
+    {
+      "path": "/experience/0/start_date",
+      "kind": "spelling",
+      "detail": "Source spells month as 'FEBRAURY'; retained verbatim.",
+      "source_ids": [
+        "e10:0:51"
+      ]
+    },
+    {
+      "path": "/experience/1/start_date",
+      "kind": "spelling",
+      "detail": "Source spells month as 'FEBRAURY'; retained verbatim.",
+      "source_ids": [
+        "e37:0:57"
+      ]
+    },
+    {
+      "path": "/experience/2/start_date",
+      "kind": "spelling",
+      "detail": "Source spells month as 'AUGEST'; retained verbatim.",
+      "source_ids": [
+        "e74:0:44"
+      ]
+    },
+    {
+      "path": "/projects",
+      "kind": "category_mislabel",
+      "detail": "Project list items (SharePoint migration, Note1 tool, Macro tools, ECRM, Model Ops dashboard, BOT automation) were under 'PROJECTS AT WORK' as SME-supported projects without a named single project; each kept as a separate project entry. UG BCA website creation was also locally categorized as projects.",
+      "source_ids": [
+        "e65:0:9",
+        "e66:0:57"
+      ]
+    },
+    {
+      "path": "/experience/2",
+      "kind": "classification",
+      "detail": "Microsoft role block appeared under local 'projects' category; treated as work experience based on 'PREVIOUS ROLE' and tenure.",
+      "source_ids": [
+        "e73:0:63",
+        "e74:0:44"
+      ]
+    },
+    {
+      "path": "/education",
+      "kind": "category_mislabel",
+      "detail": "Education entries (MBA, BCA, 12th, 10th) were locally categorized as awards.",
+      "source_ids": [
+        "e86:0:25",
+        "e87:0:22",
+        "e92:0:84",
+        "e93:0:81",
+        "e94:0:83"
+      ]
+    },
+    {
+      "path": "/certifications",
+      "kind": "category_mislabel",
+      "detail": "Certificate course block was locally categorized as awards.",
+      "source_ids": [
+        "e95:0:18",
+        "e96:0:95"
+      ]
+    },
+    {
+      "path": "/languages",
+      "kind": "category_mislabel",
+      "detail": "Languages block was locally categorized as languages for multiple distinct fields (languages, nationality, notice period); only language facts extracted.",
+      "source_ids": [
+        "e122:0:9",
+        "e123:0:73"
+      ]
+    }
+  ],
+  "accepted": false
+}

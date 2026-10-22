@@ -1,0 +1,1866 @@
+{
+  "success": true,
+  "source": "Jayalal J K.pdf",
+  "extraction_mode": "existing_blocks_schema_mapping",
+  "data": {
+    "contact": {
+      "full_name": "PHONE: 91-8848464229",
+      "email": "jkjayalal@gmail.com",
+      "phone": "91-8848464229",
+      "location": "Bangalore",
+      "linkedin_url": "https://www.linkedin.com/in/jaya",
+      "github_url": null,
+      "portfolio_url": null
+    },
+    "professional_title": null,
+    "summary": "8 years of overall experience in Anaplan and Electrical Engineering. Certified Anaplan model builder with 4 years of experience in Anaplan.",
+    "total_experience_years": 4.0,
+    "skills": {
+      "technical_skills": [
+        "SQL"
+      ],
+      "tools_and_platforms": [
+        "Power BI",
+        "Azure"
+      ],
+      "domain_and_functional": [],
+      "soft_skills": [],
+      "all_skills": [
+        "SQL",
+        "Power BI",
+        "Azure",
+        "Anaplan",
+        "Azure Fabric"
+      ]
+    },
+    "experience": [
+      {
+        "company": "",
+        "role": "",
+        "start_date": "April 2025",
+        "end_date": "Present",
+        "duration": "April 2025 – Present",
+        "location": null,
+        "responsibilities": [
+          "Designed UX dashboards and reports for business and leadership"
+        ],
+        "technologies": []
+      },
+      {
+        "company": "",
+        "role": "",
+        "start_date": "May 2022",
+        "end_date": "March 2024",
+        "duration": "May 2022 – March 2024",
+        "location": null,
+        "responsibilities": [
+          "Built all Anaplan Apps considering the model performance including",
+          "Created Data hub and maintained various actions and hierarchies in",
+          "Created dynamic user-friendly dashboards in New UX.",
+          "Implemented and managed bottom-up quota planning processes"
+        ],
+        "technologies": []
+      }
+    ],
+    "education": [
+      {
+        "institution": "T. John College, Bangalore University",
+        "degree": "Master Of Business Administration (Finance & Marketing)",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      },
+      {
+        "institution": "",
+        "degree": "B tech Electrical & Electronics Engineering",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      }
+    ],
+    "certifications": [
+      {
+        "name": "Level 1, 2, 3 – 2026 Anaplan Certified Model Builder",
+        "issuer": null,
+        "issue_year": null
+      }
+    ],
+    "projects": [],
+    "languages": [
+      "English",
+      "Malayalam",
+      "Tamil"
+    ]
+  },
+  "schema_mapping": {
+    "fields_populated": 13,
+    "total_fields": 16,
+    "completion_percentage": 81.2,
+    "field_details": [
+      {
+        "field_name": "contact.full_name",
+        "target_type": "string",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Personal Details",
+        "confidence_score": 0.95,
+        "description": "Candidate's full name, extracted from the top header of the resume."
+      },
+      {
+        "field_name": "contact.email",
+        "target_type": "string (email)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.98,
+        "description": "Candidate's primary contact email address."
+      },
+      {
+        "field_name": "contact.phone",
+        "target_type": "string (phone)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.95,
+        "description": "Candidate's telephone / mobile phone number."
+      },
+      {
+        "field_name": "contact.location",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.85,
+        "description": "Candidate's residential location or work city."
+      },
+      {
+        "field_name": "contact.linkedin_url",
+        "target_type": "string (url) | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.9,
+        "description": "URL to candidate's LinkedIn profile."
+      },
+      {
+        "field_name": "professional_title",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Subtitle",
+        "confidence_score": 0.0,
+        "description": "Candidate's target headline or most recent job title."
+      },
+      {
+        "field_name": "summary",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Summary / Profile / Objective",
+        "confidence_score": 0.85,
+        "description": "Executive bio, professional overview, or career objective."
+      },
+      {
+        "field_name": "total_experience_years",
+        "target_type": "float | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Summary / Experience Calculation",
+        "confidence_score": 0.9,
+        "description": "Total professional experience in years."
+      },
+      {
+        "field_name": "skills.technical_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills / Technical Competencies",
+        "confidence_score": 0.92,
+        "description": "Technical programming languages and core software competencies."
+      },
+      {
+        "field_name": "skills.tools_and_platforms",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills / Tools & Technologies",
+        "confidence_score": 0.9,
+        "description": "Software platforms, developer tools, and operational systems."
+      },
+      {
+        "field_name": "skills.domain_and_functional",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Domain Expertise",
+        "confidence_score": 0.0,
+        "description": "Functional domain knowledge (e.g. Hedge Funds, KYC, NAV, Derivatives)."
+      },
+      {
+        "field_name": "skills.all_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills (Aggregated)",
+        "confidence_score": 0.95,
+        "description": "Complete list of candidate skills across all categories."
+      },
+      {
+        "field_name": "experience",
+        "target_type": "array[WorkExperience]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Experience / Work History",
+        "confidence_score": 0.92,
+        "description": "Complete chronological employment records with bullet points."
+      },
+      {
+        "field_name": "education",
+        "target_type": "array[Education]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Education / Academic Qualifications",
+        "confidence_score": 0.9,
+        "description": "University, college, and higher education degree qualifications."
+      },
+      {
+        "field_name": "certifications",
+        "target_type": "array[Certification]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Certifications / Licenses",
+        "confidence_score": 0.8,
+        "description": "Professional accreditations and credentials."
+      },
+      {
+        "field_name": "projects",
+        "target_type": "array[Project]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Projects / Key Engagements",
+        "confidence_score": 0.0,
+        "description": "Major projects or strategic initiatives led by candidate."
+      }
+    ]
+  },
+  "raw_sections": {
+    "summary": "PROFILE\n8 years of overall experience in Anaplan and Electrical Engineering. Certified Anaplan model builder with 4 years of experience in Anaplan.",
+    "certifications": "CERTIFICATION\nLevel 1, 2, 3 – 2026 Anaplan Certified Model Builder",
+    "personal_information": "CONTACT\nPHONE: 91-8848464229\nLINKEDIN: https://www.linkedin.com/in/jaya lal-j-k-46964974\nEMAIL: jkjayalal@gmail.com\nEnphase Confidential\nJAYALAL J K\nPERSONAL INFORMATION\nName: Jayalal J K\nFather’s Name: V.Jayachandran\nDate of Birth: 03/03/1993\nNationality: Indian\nGender: Male\nMarital Status: Married\nEnphase Confidential\nDECLARATION\nI, Jayalal J K, hereby declare that the above furnished details of me are true to the best of my knowledge and belief.\nPlace: Bangalore Date:\n[Jayalal J K]",
+    "experience": "WORK EXPERIENCE\nAnaplan Model Builder |Atlas Systems\nApril 2025 – Present\nWorked closely with business stakeholders and clients to gather\nrequirements, translate them into scalable Anaplan solutions, and\nensure on-time delivery.\n\nProvided post-deployment production support and enhancements.\nDesigned UX dashboards and reports for business and leadership\nteams.\nAnaplan Model Builder |Relanto Global Pvt Ltd.\nMay 2022 – March 2024\nHands on experience in converting User Stories into Real time\nAnaplan Models\nBuilt all Anaplan Apps considering the model performance including\noptimization & reducing sparsity using subsets, subsidiary views, line\nitem & formula optimization\nAdministered user roles and access permissions for various set of\nusers\n\nProvided quick turnaround for UAT, production support and issue\nresolution\nCreated Data hub and maintained various actions and hierarchies in\nmultiple spoke models.\n\nThe model provides Actual Revenue, actual Quarterly P&L so that\ncompany track their business by comparing with predicted\nCreated dynamic user-friendly dashboards in New UX.\n\nImplemented and managed bottom-up quota planning processes\nusing the Cascading method.\nGiven access to 200+ users on their User roles, Selective access and\nDynamic Cell Access in UAT and production workspace.\n\nFollowed Application Lifecycle Management to manage\nDevelopment, Testing & Deployment of our models.\nDefined User Roles and Access.\n Defined Modules, Lists, subsets, Actions, Process based on business\nrequirements.\nBEHAVIOURAL COMPETENCIES\n\nPossess good communication & interpersonal skills.\nHave good grasping power to learn new things easily and\neffectively.\nSocially adjustable and a good team player.\nWell organized and possess good group dynamics.\nOpen to meet challenges.",
+    "interests": "ACTIVITIES AND INTERESTS\nReading Books\nPlaying Cricket\nListening to Music",
+    "skills": "KEY SKILLS\nAnaplan\nPower BI\nAzure Fabric\nSQL",
+    "languages": "LANGUAGES\nEnglish\nMalayalam\nTamil",
+    "education": "EDUCATION\n2019 –2021\nT. John College, Bangalore University\nMaster Of Business Administration (Finance & Marketing)\n2011 –2015\nJOHN COX COLLEGE, TRIVANDRUM (Kerala University)\nB tech Electrical & Electronics Engineering\n2009 - 2011\nST. MARY’S SCHOOL TRIVANDRUM(CBSE) 2011\n12 (Computer Science)"
+  },
+  "meta": {
+    "status": "needs_review",
+    "human_verified": false,
+    "provider_calls": 0,
+    "source_accounting": {
+      "all_source_text_preserved": true,
+      "total_spans": 103,
+      "assigned_meaningful_spans": 96,
+      "unresolved_meaningful_spans": 0,
+      "non_content_artifacts": 7,
+      "duplicates_excluded": 0,
+      "all_meaningful_text_assigned": true,
+      "semantic_correctness_verified": false,
+      "outcomes": [
+        {
+          "source_id": "e0:0:7",
+          "source_element_index": 0,
+          "start": 0,
+          "end": 7,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e1:0:33",
+          "source_element_index": 1,
+          "start": 0,
+          "end": 33,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e1:33:56",
+          "source_element_index": 1,
+          "start": 33,
+          "end": 56,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e1:56:69",
+          "source_element_index": 1,
+          "start": 56,
+          "end": 69,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e1:69:101",
+          "source_element_index": 1,
+          "start": 69,
+          "end": 101,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e1:101:131",
+          "source_element_index": 1,
+          "start": 101,
+          "end": 131,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e1:131:139",
+          "source_element_index": 1,
+          "start": 131,
+          "end": 139,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e2:0:13",
+          "source_element_index": 2,
+          "start": 0,
+          "end": 13,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Distinct BERT heading match with a K-means section label"
+        },
+        {
+          "source_id": "e3:0:29",
+          "source_element_index": 3,
+          "start": 0,
+          "end": 29,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:29:52",
+          "source_element_index": 3,
+          "start": 29,
+          "end": 52,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e4:0:7",
+          "source_element_index": 4,
+          "start": 0,
+          "end": 7,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e5:0:20",
+          "source_element_index": 5,
+          "start": 0,
+          "end": 20,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e6:0:10",
+          "source_element_index": 6,
+          "start": 0,
+          "end": 10,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e6:10:43",
+          "source_element_index": 6,
+          "start": 10,
+          "end": 43,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e6:43:59",
+          "source_element_index": 6,
+          "start": 43,
+          "end": 59,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e7:0:26",
+          "source_element_index": 7,
+          "start": 0,
+          "end": 26,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:0:20",
+          "source_element_index": 8,
+          "start": 0,
+          "end": 20,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:0:11",
+          "source_element_index": 9,
+          "start": 0,
+          "end": 11,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e10:0:15",
+          "source_element_index": 10,
+          "start": 0,
+          "end": 15,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e11:0:36",
+          "source_element_index": 11,
+          "start": 0,
+          "end": 36,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:0:20",
+          "source_element_index": 12,
+          "start": 0,
+          "end": 20,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e13:0:63",
+          "source_element_index": 13,
+          "start": 0,
+          "end": 63,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e14:0:65",
+          "source_element_index": 14,
+          "start": 0,
+          "end": 65,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e15:0:24",
+          "source_element_index": 15,
+          "start": 0,
+          "end": 24,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e16:0:0",
+          "source_element_index": 16,
+          "start": 0,
+          "end": 0,
+          "section": "experience",
+          "outcome": "non_content_artifact",
+          "reason": "Whitespace retained in source inventory"
+        },
+        {
+          "source_id": "e17:0:61",
+          "source_element_index": 17,
+          "start": 0,
+          "end": 61,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e18:0:62",
+          "source_element_index": 18,
+          "start": 0,
+          "end": 62,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e19:0:6",
+          "source_element_index": 19,
+          "start": 0,
+          "end": 6,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e20:0:46",
+          "source_element_index": 20,
+          "start": 0,
+          "end": 46,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e21:0:21",
+          "source_element_index": 21,
+          "start": 0,
+          "end": 21,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e22:0:61",
+          "source_element_index": 22,
+          "start": 0,
+          "end": 61,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e23:0:14",
+          "source_element_index": 23,
+          "start": 0,
+          "end": 14,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e24:0:66",
+          "source_element_index": 24,
+          "start": 0,
+          "end": 66,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e25:0:70",
+          "source_element_index": 25,
+          "start": 0,
+          "end": 70,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e26:0:27",
+          "source_element_index": 26,
+          "start": 0,
+          "end": 27,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e27:0:65",
+          "source_element_index": 27,
+          "start": 0,
+          "end": 65,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e28:0:5",
+          "source_element_index": 28,
+          "start": 0,
+          "end": 5,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e29:0:0",
+          "source_element_index": 29,
+          "start": 0,
+          "end": 0,
+          "section": "experience",
+          "outcome": "non_content_artifact",
+          "reason": "Whitespace retained in source inventory"
+        },
+        {
+          "source_id": "e30:0:63",
+          "source_element_index": 30,
+          "start": 0,
+          "end": 63,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e31:0:10",
+          "source_element_index": 31,
+          "start": 0,
+          "end": 10,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e32:0:66",
+          "source_element_index": 32,
+          "start": 0,
+          "end": 66,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e33:0:22",
+          "source_element_index": 33,
+          "start": 0,
+          "end": 22,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e34:0:0",
+          "source_element_index": 34,
+          "start": 0,
+          "end": 0,
+          "section": "experience",
+          "outcome": "non_content_artifact",
+          "reason": "Whitespace retained in source inventory"
+        },
+        {
+          "source_id": "e35:0:63",
+          "source_element_index": 35,
+          "start": 0,
+          "end": 63,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e36:0:56",
+          "source_element_index": 36,
+          "start": 0,
+          "end": 56,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e37:0:51",
+          "source_element_index": 37,
+          "start": 0,
+          "end": 51,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e38:0:0",
+          "source_element_index": 38,
+          "start": 0,
+          "end": 0,
+          "section": "experience",
+          "outcome": "non_content_artifact",
+          "reason": "Whitespace retained in source inventory"
+        },
+        {
+          "source_id": "e39:0:58",
+          "source_element_index": 39,
+          "start": 0,
+          "end": 58,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e40:0:27",
+          "source_element_index": 40,
+          "start": 0,
+          "end": 27,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e41:0:68",
+          "source_element_index": 41,
+          "start": 0,
+          "end": 68,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e42:0:52",
+          "source_element_index": 42,
+          "start": 0,
+          "end": 52,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e43:0:0",
+          "source_element_index": 43,
+          "start": 0,
+          "end": 0,
+          "section": "experience",
+          "outcome": "non_content_artifact",
+          "reason": "Whitespace retained in source inventory"
+        },
+        {
+          "source_id": "e44:0:51",
+          "source_element_index": 44,
+          "start": 0,
+          "end": 51,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e45:0:48",
+          "source_element_index": 45,
+          "start": 0,
+          "end": 48,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e46:0:30",
+          "source_element_index": 46,
+          "start": 0,
+          "end": 30,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e47:0:2",
+          "source_element_index": 47,
+          "start": 0,
+          "end": 2,
+          "section": "experience",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e47:2:69",
+          "source_element_index": 47,
+          "start": 2,
+          "end": 69,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e48:0:13",
+          "source_element_index": 48,
+          "start": 0,
+          "end": 13,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e49:0:24",
+          "source_element_index": 49,
+          "start": 0,
+          "end": 24,
+          "section": "interests",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e50:0:13",
+          "source_element_index": 50,
+          "start": 0,
+          "end": 13,
+          "section": "interests",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e51:0:15",
+          "source_element_index": 51,
+          "start": 0,
+          "end": 15,
+          "section": "interests",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e52:0:18",
+          "source_element_index": 52,
+          "start": 0,
+          "end": 18,
+          "section": "interests",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e53:0:10",
+          "source_element_index": 53,
+          "start": 0,
+          "end": 10,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e54:0:7",
+          "source_element_index": 54,
+          "start": 0,
+          "end": 7,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e55:0:8",
+          "source_element_index": 55,
+          "start": 0,
+          "end": 8,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e56:0:12",
+          "source_element_index": 56,
+          "start": 0,
+          "end": 12,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e57:0:3",
+          "source_element_index": 57,
+          "start": 0,
+          "end": 3,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e58:0:9",
+          "source_element_index": 58,
+          "start": 0,
+          "end": 9,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e59:0:7",
+          "source_element_index": 59,
+          "start": 0,
+          "end": 7,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e60:0:9",
+          "source_element_index": 60,
+          "start": 0,
+          "end": 9,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e61:0:5",
+          "source_element_index": 61,
+          "start": 0,
+          "end": 5,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e62:0:20",
+          "source_element_index": 62,
+          "start": 0,
+          "end": 20,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e63:0:17",
+          "source_element_index": 63,
+          "start": 0,
+          "end": 17,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e64:0:29",
+          "source_element_index": 64,
+          "start": 0,
+          "end": 29,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e65:0:25",
+          "source_element_index": 65,
+          "start": 0,
+          "end": 25,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e66:0:19",
+          "source_element_index": 66,
+          "start": 0,
+          "end": 19,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e67:0:12",
+          "source_element_index": 67,
+          "start": 0,
+          "end": 12,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e68:0:23",
+          "source_element_index": 68,
+          "start": 0,
+          "end": 23,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e69:0:20",
+          "source_element_index": 69,
+          "start": 0,
+          "end": 20,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e70:0:24",
+          "source_element_index": 70,
+          "start": 0,
+          "end": 24,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e71:0:0",
+          "source_element_index": 71,
+          "start": 0,
+          "end": 0,
+          "section": "experience",
+          "outcome": "non_content_artifact",
+          "reason": "Whitespace retained in source inventory"
+        },
+        {
+          "source_id": "e72:0:50",
+          "source_element_index": 72,
+          "start": 0,
+          "end": 50,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e73:0:55",
+          "source_element_index": 73,
+          "start": 0,
+          "end": 55,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e74:0:12",
+          "source_element_index": 74,
+          "start": 0,
+          "end": 12,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e75:0:43",
+          "source_element_index": 75,
+          "start": 0,
+          "end": 43,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e76:0:47",
+          "source_element_index": 76,
+          "start": 0,
+          "end": 47,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e77:0:24",
+          "source_element_index": 77,
+          "start": 0,
+          "end": 24,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e78:0:9",
+          "source_element_index": 78,
+          "start": 0,
+          "end": 9,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e79:0:10",
+          "source_element_index": 79,
+          "start": 0,
+          "end": 10,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e80:0:37",
+          "source_element_index": 80,
+          "start": 0,
+          "end": 37,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e81:0:55",
+          "source_element_index": 81,
+          "start": 0,
+          "end": 55,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e82:0:10",
+          "source_element_index": 82,
+          "start": 0,
+          "end": 10,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e83:0:48",
+          "source_element_index": 83,
+          "start": 0,
+          "end": 48,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e84:0:43",
+          "source_element_index": 84,
+          "start": 0,
+          "end": 43,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e85:0:11",
+          "source_element_index": 85,
+          "start": 0,
+          "end": 11,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e86:0:39",
+          "source_element_index": 86,
+          "start": 0,
+          "end": 39,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e87:0:21",
+          "source_element_index": 87,
+          "start": 0,
+          "end": 21,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e88:0:11",
+          "source_element_index": 88,
+          "start": 0,
+          "end": 11,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e89:0:74",
+          "source_element_index": 89,
+          "start": 0,
+          "end": 74,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e89:74:118",
+          "source_element_index": 89,
+          "start": 74,
+          "end": 118,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e90:0:17",
+          "source_element_index": 90,
+          "start": 0,
+          "end": 17,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e90:17:22",
+          "source_element_index": 90,
+          "start": 17,
+          "end": 22,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e91:0:13",
+          "source_element_index": 91,
+          "start": 0,
+          "end": 13,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        }
+      ]
+    },
+    "document_scope": {
+      "kind": "likely_resume",
+      "candidate_resume": true,
+      "reason": "Contact details, multiple resume section families and dated history; provisional scope only",
+      "human_verified": false
+    },
+    "source_inventory_sha256": "bc559e50942b735139361db0122678852144f1c9412e9609b898d2b6986da2bf",
+    "field_evidence": {
+      "contact.full_name": [
+        "e5:0:20",
+        "e6:0:10",
+        "e6:10:43",
+        "e6:43:59",
+        "e7:0:26",
+        "e8:0:20",
+        "e9:0:11",
+        "e63:0:17",
+        "e64:0:29",
+        "e65:0:25",
+        "e66:0:19",
+        "e67:0:12",
+        "e68:0:23",
+        "e69:0:20",
+        "e88:0:11",
+        "e89:0:74",
+        "e89:74:118",
+        "e90:0:17",
+        "e90:17:22",
+        "e91:0:13"
+      ],
+      "contact.email": [
+        "e5:0:20",
+        "e6:0:10",
+        "e6:10:43",
+        "e6:43:59",
+        "e7:0:26",
+        "e8:0:20",
+        "e9:0:11",
+        "e63:0:17",
+        "e64:0:29",
+        "e65:0:25",
+        "e66:0:19",
+        "e67:0:12",
+        "e68:0:23",
+        "e69:0:20",
+        "e88:0:11",
+        "e89:0:74",
+        "e89:74:118",
+        "e90:0:17",
+        "e90:17:22",
+        "e91:0:13"
+      ],
+      "contact.phone": [
+        "e5:0:20",
+        "e6:0:10",
+        "e6:10:43",
+        "e6:43:59",
+        "e7:0:26",
+        "e8:0:20",
+        "e9:0:11",
+        "e63:0:17",
+        "e64:0:29",
+        "e65:0:25",
+        "e66:0:19",
+        "e67:0:12",
+        "e68:0:23",
+        "e69:0:20",
+        "e88:0:11",
+        "e89:0:74",
+        "e89:74:118",
+        "e90:0:17",
+        "e90:17:22",
+        "e91:0:13"
+      ],
+      "contact.location": [
+        "e5:0:20",
+        "e6:0:10",
+        "e6:10:43",
+        "e6:43:59",
+        "e7:0:26",
+        "e8:0:20",
+        "e9:0:11",
+        "e63:0:17",
+        "e64:0:29",
+        "e65:0:25",
+        "e66:0:19",
+        "e67:0:12",
+        "e68:0:23",
+        "e69:0:20",
+        "e88:0:11",
+        "e89:0:74",
+        "e89:74:118",
+        "e90:0:17",
+        "e90:17:22",
+        "e91:0:13"
+      ],
+      "contact.linkedin_url": [
+        "e5:0:20",
+        "e6:0:10",
+        "e6:10:43",
+        "e6:43:59",
+        "e7:0:26",
+        "e8:0:20",
+        "e9:0:11",
+        "e63:0:17",
+        "e64:0:29",
+        "e65:0:25",
+        "e66:0:19",
+        "e67:0:12",
+        "e68:0:23",
+        "e69:0:20",
+        "e88:0:11",
+        "e89:0:74",
+        "e89:74:118",
+        "e90:0:17",
+        "e90:17:22",
+        "e91:0:13"
+      ],
+      "summary": [
+        "e1:0:33",
+        "e1:33:56",
+        "e1:56:69",
+        "e1:69:101",
+        "e1:101:131",
+        "e1:131:139"
+      ],
+      "total_experience_years": [
+        "e1:101:131"
+      ],
+      "skills.technical_skills[0]": [
+        "e57:0:3"
+      ],
+      "skills.tools_and_platforms[0]": [
+        "e55:0:8"
+      ],
+      "skills.tools_and_platforms[1]": [
+        "e56:0:12"
+      ],
+      "skills.all_skills[0]": [
+        "e57:0:3"
+      ],
+      "skills.all_skills[1]": [
+        "e55:0:8"
+      ],
+      "skills.all_skills[2]": [
+        "e56:0:12"
+      ],
+      "skills.all_skills[3]": [
+        "e54:0:7"
+      ],
+      "skills.all_skills[4]": [
+        "e56:0:12"
+      ],
+      "experience[0].start_date": [
+        "e12:0:20"
+      ],
+      "experience[0].end_date": [
+        "e12:0:20"
+      ],
+      "experience[0].duration": [
+        "e12:0:20"
+      ],
+      "experience[0].responsibilities[0]": [
+        "e18:0:62"
+      ],
+      "experience[1].start_date": [
+        "e21:0:21"
+      ],
+      "experience[1].end_date": [
+        "e21:0:21"
+      ],
+      "experience[1].duration": [
+        "e21:0:21"
+      ],
+      "experience[1].responsibilities[0]": [
+        "e24:0:66"
+      ],
+      "experience[1].responsibilities[1]": [
+        "e32:0:66"
+      ],
+      "experience[1].responsibilities[2]": [
+        "e37:0:51"
+      ],
+      "experience[1].responsibilities[3]": [
+        "e39:0:58"
+      ],
+      "education[0].degree": [
+        "e81:0:55"
+      ],
+      "education[0].institution": [
+        "e80:0:37"
+      ],
+      "education[1].degree": [
+        "e84:0:43"
+      ],
+      "certifications[0].name": [
+        "e3:0:29",
+        "e3:29:52"
+      ],
+      "languages[0]": [
+        "e59:0:7"
+      ],
+      "languages[1]": [
+        "e60:0:9"
+      ],
+      "languages[2]": [
+        "e61:0:5"
+      ]
+    },
+    "record_reviews": [
+      {
+        "category": "experience",
+        "entry_id": "experience-1",
+        "source_ids": [
+          "e11:0:36",
+          "e12:0:20",
+          "e13:0:63",
+          "e14:0:65",
+          "e15:0:24",
+          "e17:0:61",
+          "e18:0:62",
+          "e19:0:6"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-2",
+        "source_ids": [
+          "e20:0:46",
+          "e21:0:21",
+          "e22:0:61",
+          "e23:0:14",
+          "e24:0:66",
+          "e25:0:70",
+          "e26:0:27",
+          "e27:0:65",
+          "e28:0:5",
+          "e30:0:63",
+          "e31:0:10",
+          "e32:0:66",
+          "e33:0:22",
+          "e35:0:63",
+          "e36:0:56",
+          "e37:0:51",
+          "e39:0:58",
+          "e40:0:27",
+          "e41:0:68",
+          "e42:0:52",
+          "e44:0:51",
+          "e45:0:48",
+          "e46:0:30",
+          "e47:2:69",
+          "e48:0:13",
+          "e70:0:24",
+          "e72:0:50",
+          "e73:0:55",
+          "e74:0:12",
+          "e75:0:43",
+          "e76:0:47",
+          "e77:0:24"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "education",
+        "entry_id": "education-1",
+        "source_ids": [
+          "e79:0:10",
+          "e80:0:37",
+          "e81:0:55",
+          "e82:0:10"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "education",
+        "entry_id": "education-2",
+        "source_ids": [
+          "e83:0:48",
+          "e84:0:43",
+          "e85:0:11",
+          "e86:0:39"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "certifications",
+        "entry_id": "certifications-1",
+        "source_ids": [
+          "e3:0:29",
+          "e3:29:52"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      }
+    ],
+    "missing_required_fields": [
+      "experience[0].company",
+      "experience[0].role",
+      "experience[1].company",
+      "experience[1].role",
+      "education[1].institution"
+    ],
+    "warnings": [
+      "Schema validity and field completion do not establish extraction or relationship accuracy.",
+      "Handoff confidence scores are fixed heuristics, not calibrated probabilities.",
+      "Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields."
+    ],
+    "unmapped_blocks": [
+      {
+        "source_id": "e0:0:7",
+        "category": "summary",
+        "text": "PROFILE",
+        "page_number": 1
+      },
+      {
+        "source_id": "e2:0:13",
+        "category": "certifications",
+        "text": "CERTIFICATION",
+        "page_number": 1
+      },
+      {
+        "source_id": "e4:0:7",
+        "category": "personal_information",
+        "text": "CONTACT",
+        "page_number": 1
+      },
+      {
+        "source_id": "e62:0:20",
+        "category": "personal_information",
+        "text": "PERSONAL INFORMATION",
+        "page_number": 2
+      },
+      {
+        "source_id": "e10:0:15",
+        "category": "experience",
+        "text": "WORK EXPERIENCE",
+        "page_number": 1
+      },
+      {
+        "source_id": "e11:0:36",
+        "category": "experience",
+        "text": "Anaplan Model Builder |Atlas Systems",
+        "page_number": 1
+      },
+      {
+        "source_id": "e13:0:63",
+        "category": "experience",
+        "text": "Worked closely with business stakeholders and clients to gather",
+        "page_number": 1
+      },
+      {
+        "source_id": "e14:0:65",
+        "category": "experience",
+        "text": "requirements, translate them into scalable Anaplan solutions, and",
+        "page_number": 1
+      },
+      {
+        "source_id": "e15:0:24",
+        "category": "experience",
+        "text": "ensure on-time delivery.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e16:0:0",
+        "category": "experience",
+        "text": "",
+        "page_number": 1
+      },
+      {
+        "source_id": "e17:0:61",
+        "category": "experience",
+        "text": "Provided post-deployment production support and enhancements.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e19:0:6",
+        "category": "experience",
+        "text": "teams.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e20:0:46",
+        "category": "experience",
+        "text": "Anaplan Model Builder |Relanto Global Pvt Ltd.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e22:0:61",
+        "category": "experience",
+        "text": "Hands on experience in converting User Stories into Real time",
+        "page_number": 1
+      },
+      {
+        "source_id": "e23:0:14",
+        "category": "experience",
+        "text": "Anaplan Models",
+        "page_number": 1
+      },
+      {
+        "source_id": "e25:0:70",
+        "category": "experience",
+        "text": "optimization & reducing sparsity using subsets, subsidiary views, line",
+        "page_number": 1
+      },
+      {
+        "source_id": "e26:0:27",
+        "category": "experience",
+        "text": "item & formula optimization",
+        "page_number": 1
+      },
+      {
+        "source_id": "e27:0:65",
+        "category": "experience",
+        "text": "Administered user roles and access permissions for various set of",
+        "page_number": 1
+      },
+      {
+        "source_id": "e28:0:5",
+        "category": "experience",
+        "text": "users",
+        "page_number": 1
+      },
+      {
+        "source_id": "e29:0:0",
+        "category": "experience",
+        "text": "",
+        "page_number": 1
+      },
+      {
+        "source_id": "e30:0:63",
+        "category": "experience",
+        "text": "Provided quick turnaround for UAT, production support and issue",
+        "page_number": 1
+      },
+      {
+        "source_id": "e31:0:10",
+        "category": "experience",
+        "text": "resolution",
+        "page_number": 1
+      },
+      {
+        "source_id": "e33:0:22",
+        "category": "experience",
+        "text": "multiple spoke models.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e34:0:0",
+        "category": "experience",
+        "text": "",
+        "page_number": 1
+      },
+      {
+        "source_id": "e35:0:63",
+        "category": "experience",
+        "text": "The model provides Actual Revenue, actual Quarterly P&L so that",
+        "page_number": 1
+      },
+      {
+        "source_id": "e36:0:56",
+        "category": "experience",
+        "text": "company track their business by comparing with predicted",
+        "page_number": 1
+      },
+      {
+        "source_id": "e38:0:0",
+        "category": "experience",
+        "text": "",
+        "page_number": 1
+      },
+      {
+        "source_id": "e40:0:27",
+        "category": "experience",
+        "text": "using the Cascading method.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e41:0:68",
+        "category": "experience",
+        "text": "Given access to 200+ users on their User roles, Selective access and",
+        "page_number": 1
+      },
+      {
+        "source_id": "e42:0:52",
+        "category": "experience",
+        "text": "Dynamic Cell Access in UAT and production workspace.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e43:0:0",
+        "category": "experience",
+        "text": "",
+        "page_number": 1
+      },
+      {
+        "source_id": "e44:0:51",
+        "category": "experience",
+        "text": "Followed Application Lifecycle Management to manage",
+        "page_number": 1
+      },
+      {
+        "source_id": "e45:0:48",
+        "category": "experience",
+        "text": "Development, Testing & Deployment of our models.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e46:0:30",
+        "category": "experience",
+        "text": "Defined User Roles and Access.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e47:0:2",
+        "category": "experience",
+        "text": " ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e47:2:69",
+        "category": "experience",
+        "text": "Defined Modules, Lists, subsets, Actions, Process based on business",
+        "page_number": 1
+      },
+      {
+        "source_id": "e48:0:13",
+        "category": "experience",
+        "text": "requirements.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e70:0:24",
+        "category": "experience",
+        "text": "BEHAVIOURAL COMPETENCIES",
+        "page_number": 2
+      },
+      {
+        "source_id": "e71:0:0",
+        "category": "experience",
+        "text": "",
+        "page_number": 2
+      },
+      {
+        "source_id": "e72:0:50",
+        "category": "experience",
+        "text": "Possess good communication & interpersonal skills.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e73:0:55",
+        "category": "experience",
+        "text": "Have good grasping power to learn new things easily and",
+        "page_number": 2
+      },
+      {
+        "source_id": "e74:0:12",
+        "category": "experience",
+        "text": "effectively.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e75:0:43",
+        "category": "experience",
+        "text": "Socially adjustable and a good team player.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e76:0:47",
+        "category": "experience",
+        "text": "Well organized and possess good group dynamics.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e77:0:24",
+        "category": "experience",
+        "text": "Open to meet challenges.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e49:0:24",
+        "category": "interests",
+        "text": "ACTIVITIES AND INTERESTS",
+        "page_number": 2
+      },
+      {
+        "source_id": "e50:0:13",
+        "category": "interests",
+        "text": "Reading Books",
+        "page_number": 2
+      },
+      {
+        "source_id": "e51:0:15",
+        "category": "interests",
+        "text": "Playing Cricket",
+        "page_number": 2
+      },
+      {
+        "source_id": "e52:0:18",
+        "category": "interests",
+        "text": "Listening to Music",
+        "page_number": 2
+      },
+      {
+        "source_id": "e53:0:10",
+        "category": "skills",
+        "text": "KEY SKILLS",
+        "page_number": 2
+      },
+      {
+        "source_id": "e58:0:9",
+        "category": "languages",
+        "text": "LANGUAGES",
+        "page_number": 2
+      },
+      {
+        "source_id": "e78:0:9",
+        "category": "education",
+        "text": "EDUCATION",
+        "page_number": 2
+      },
+      {
+        "source_id": "e79:0:10",
+        "category": "education",
+        "text": "2019 –2021",
+        "page_number": 2
+      },
+      {
+        "source_id": "e82:0:10",
+        "category": "education",
+        "text": "2011 –2015",
+        "page_number": 2
+      },
+      {
+        "source_id": "e83:0:48",
+        "category": "education",
+        "text": "JOHN COX COLLEGE, TRIVANDRUM (Kerala University)",
+        "page_number": 2
+      },
+      {
+        "source_id": "e85:0:11",
+        "category": "education",
+        "text": "2009 - 2011",
+        "page_number": 2
+      },
+      {
+        "source_id": "e86:0:39",
+        "category": "education",
+        "text": "ST. MARY’S SCHOOL TRIVANDRUM(CBSE) 2011",
+        "page_number": 2
+      },
+      {
+        "source_id": "e87:0:21",
+        "category": "education",
+        "text": "12 (Computer Science)",
+        "page_number": 2
+      }
+    ],
+    "needs_review": []
+  }
+}

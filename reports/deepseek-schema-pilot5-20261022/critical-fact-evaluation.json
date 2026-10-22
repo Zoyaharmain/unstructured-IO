@@ -1,0 +1,1879 @@
+[
+  {
+    "id": "f001",
+    "document": 1,
+    "collection": "root",
+    "selector": null,
+    "field": "contact.full_name",
+    "expected": "Ajay Bandagi",
+    "source_ids": [
+      "e0:0:13"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Ajay Bandagi",
+    "path": "/contact/full_name"
+  },
+  {
+    "id": "f002",
+    "document": 1,
+    "collection": "root",
+    "selector": null,
+    "field": "contact.email",
+    "expected": "ajaybandagi1998@gmail.com",
+    "source_ids": [
+      "e1:0:25"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "ajaybandagi1998@gmail.com",
+    "path": "/contact/email"
+  },
+  {
+    "id": "f003",
+    "document": 1,
+    "collection": "root",
+    "selector": null,
+    "field": "contact.phone",
+    "expected": "+91 9604657161",
+    "source_ids": [
+      "e2:0:14"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "+91 9604657161",
+    "path": "/contact/phone"
+  },
+  {
+    "id": "f004",
+    "document": 1,
+    "collection": "root",
+    "selector": null,
+    "field": "professional_title",
+    "expected": "Senior Accounts Executive",
+    "source_ids": [
+      "e0:13:125"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Senior Accounts Executive",
+    "path": "/professional_title"
+  },
+  {
+    "id": "f005",
+    "document": 1,
+    "collection": "root",
+    "selector": null,
+    "field": "total_experience_years",
+    "expected": 3.5,
+    "source_ids": [
+      "e0:13:125"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": 3.5,
+    "path": "/total_experience_years"
+  },
+  {
+    "id": "f006",
+    "document": 1,
+    "collection": "experience",
+    "selector": {
+      "company": "Vigocare Private Limited"
+    },
+    "field": "company",
+    "expected": "Vigocare Private Limited",
+    "source_ids": [
+      "e6:0:36"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Vigocare Private Limited",
+    "path": "/experience/0/company"
+  },
+  {
+    "id": "f007",
+    "document": 1,
+    "collection": "experience",
+    "selector": {
+      "company": "Vigocare Private Limited"
+    },
+    "field": "role",
+    "expected": "Senior Accounts Executive – Finance Operations & Statutory Compliance",
+    "source_ids": [
+      "e7:0:69"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Senior Accounts Executive – Finance Operations & Statutory Compliance",
+    "path": "/experience/0/role"
+  },
+  {
+    "id": "f008",
+    "document": 1,
+    "collection": "experience",
+    "selector": {
+      "company": "Vigocare Private Limited"
+    },
+    "field": "start_date",
+    "expected": "Dec 2023",
+    "source_ids": [
+      "e8:0:18"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Dec 2023",
+    "path": "/experience/0/start_date"
+  },
+  {
+    "id": "f009",
+    "document": 1,
+    "collection": "experience",
+    "selector": {
+      "company": "Vigocare Private Limited"
+    },
+    "field": "end_date",
+    "expected": "Present",
+    "source_ids": [
+      "e8:0:18"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Present",
+    "path": "/experience/0/end_date"
+  },
+  {
+    "id": "f010",
+    "document": 1,
+    "collection": "experience",
+    "selector": {
+      "company": "Godavari Cuts"
+    },
+    "field": "company",
+    "expected": "Godavari Cuts",
+    "source_ids": [
+      "e10:0:25"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Godavari Cuts",
+    "path": "/experience/1/company"
+  },
+  {
+    "id": "f011",
+    "document": 1,
+    "collection": "experience",
+    "selector": {
+      "company": "Godavari Cuts"
+    },
+    "field": "start_date",
+    "expected": "Feb 2023",
+    "source_ids": [
+      "e9:1360:1379"
+    ],
+    "reason": "Date range is attached to previous employer block. Association is not independently established from the block inventory; retained in conservative denominator.",
+    "status": "ambiguous",
+    "actual": null,
+    "path": "/experience/1/start_date"
+  },
+  {
+    "id": "f012",
+    "document": 1,
+    "collection": "experience",
+    "selector": {
+      "company": "Godavari Cuts"
+    },
+    "field": "end_date",
+    "expected": "Dec 2023",
+    "source_ids": [
+      "e9:1360:1379"
+    ],
+    "reason": "Date range is attached to previous employer block. Association is not independently established from the block inventory; retained in conservative denominator.",
+    "status": "ambiguous",
+    "actual": "Dec 2023",
+    "path": "/experience/1/end_date"
+  },
+  {
+    "id": "f013",
+    "document": 1,
+    "collection": "education",
+    "selector": {
+      "degree": "Master of Business Administration (MBA) – Finance"
+    },
+    "field": "degree",
+    "expected": "Master of Business Administration (MBA) – Finance",
+    "source_ids": [
+      "e16:0:49"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Master of Business Administration (MBA)",
+    "path": "/education/0/degree"
+  },
+  {
+    "id": "f014",
+    "document": 1,
+    "collection": "education",
+    "selector": {
+      "degree": "Master of Business Administration (MBA) – Finance"
+    },
+    "field": "institution",
+    "expected": "Yashwantrao Chavan Maharashtra Open University",
+    "source_ids": [
+      "e15:0:46"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Yashwantrao Chavan Maharashtra Open University",
+    "path": "/education/0/institution"
+  },
+  {
+    "id": "f015",
+    "document": 1,
+    "collection": "education",
+    "selector": {
+      "degree": "Master of Business Administration (MBA) – Finance"
+    },
+    "field": "start_year",
+    "expected": "2024",
+    "source_ids": [
+      "e17:0:53"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "July 2024",
+    "path": "/education/0/start_year"
+  },
+  {
+    "id": "f016",
+    "document": 1,
+    "collection": "education",
+    "selector": {
+      "degree": "Master of Business Administration (MBA) – Finance"
+    },
+    "field": "graduation_year",
+    "expected": "2026",
+    "source_ids": [
+      "e17:0:53"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "June 2026",
+    "path": "/education/0/graduation_year"
+  },
+  {
+    "id": "f017",
+    "document": 1,
+    "collection": "education",
+    "selector": {
+      "degree": "Bachelor of Commerce (B.Com) – Finance & Accounts"
+    },
+    "field": "degree",
+    "expected": "Bachelor of Commerce (B.Com) – Finance & Accounts",
+    "source_ids": [
+      "e18:2:51"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Bachelor of Commerce (B.Com)",
+    "path": "/education/1/degree"
+  },
+  {
+    "id": "f018",
+    "document": 1,
+    "collection": "education",
+    "selector": {
+      "degree": "Bachelor of Commerce (B.Com) – Finance & Accounts"
+    },
+    "field": "start_year",
+    "expected": "2021",
+    "source_ids": [
+      "e19:0:21"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "July 2021",
+    "path": "/education/1/start_year"
+  },
+  {
+    "id": "f019",
+    "document": 1,
+    "collection": "education",
+    "selector": {
+      "degree": "Bachelor of Commerce (B.Com) – Finance & Accounts"
+    },
+    "field": "graduation_year",
+    "expected": "2024",
+    "source_ids": [
+      "e19:0:21"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "June 2024",
+    "path": "/education/1/graduation_year"
+  },
+  {
+    "id": "f020",
+    "document": 2,
+    "collection": "root",
+    "selector": null,
+    "field": "contact.full_name",
+    "expected": "D Dhanush",
+    "source_ids": [
+      "e0:0:9"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "D Dhanush",
+    "path": "/contact/full_name"
+  },
+  {
+    "id": "f021",
+    "document": 2,
+    "collection": "root",
+    "selector": null,
+    "field": "contact.email",
+    "expected": "dhanushdevaraj17@gmail.com",
+    "source_ids": [
+      "e1:0:60"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "dhanushdevaraj17@gmail.com",
+    "path": "/contact/email"
+  },
+  {
+    "id": "f022",
+    "document": 2,
+    "collection": "root",
+    "selector": null,
+    "field": "contact.phone",
+    "expected": "9380249870",
+    "source_ids": [
+      "e1:0:60"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "9380249870",
+    "path": "/contact/phone"
+  },
+  {
+    "id": "f023",
+    "document": 2,
+    "collection": "root",
+    "selector": null,
+    "field": "contact.linkedin_url",
+    "expected": "https://www.linkedin.com/in/d-dhanush-a733521b3/",
+    "source_ids": [
+      "e1:60:157"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "https://www.linkedin.com/in/d-dhanush-a733521b3/",
+    "path": "/contact/linkedin_url"
+  },
+  {
+    "id": "f024",
+    "document": 2,
+    "collection": "root",
+    "selector": null,
+    "field": "contact.github_url",
+    "expected": "https://github.com/ddhanushd",
+    "source_ids": [
+      "e1:60:157"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "https://github.com/ddhanushd",
+    "path": "/contact/github_url"
+  },
+  {
+    "id": "f025",
+    "document": 2,
+    "collection": "experience",
+    "selector": {
+      "company": "CitiusTech Health Technologies Pvt. Ltd."
+    },
+    "field": "company",
+    "expected": "CitiusTech Health Technologies Pvt. Ltd.",
+    "source_ids": [
+      "e6:16:87"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "CitiusTech Health Technologies Pvt. Ltd.",
+    "path": "/experience/0/company"
+  },
+  {
+    "id": "f026",
+    "document": 2,
+    "collection": "experience",
+    "selector": {
+      "company": "CitiusTech Health Technologies Pvt. Ltd."
+    },
+    "field": "role",
+    "expected": "Software Engineer",
+    "source_ids": [
+      "e6:16:87"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Software Engineer",
+    "path": "/experience/0/role"
+  },
+  {
+    "id": "f027",
+    "document": 2,
+    "collection": "experience",
+    "selector": {
+      "company": "CitiusTech Health Technologies Pvt. Ltd."
+    },
+    "field": "start_date",
+    "expected": "July 2022",
+    "source_ids": [
+      "e7:0:26"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "July 2022",
+    "path": "/experience/0/start_date"
+  },
+  {
+    "id": "f028",
+    "document": 2,
+    "collection": "experience",
+    "selector": {
+      "company": "CitiusTech Health Technologies Pvt. Ltd."
+    },
+    "field": "end_date",
+    "expected": "September 2023",
+    "source_ids": [
+      "e7:0:26"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "September 2023",
+    "path": "/experience/0/end_date"
+  },
+  {
+    "id": "f029",
+    "document": 2,
+    "collection": "experience",
+    "selector": {
+      "company": "Independent Projects"
+    },
+    "field": "company",
+    "expected": "Independent Projects",
+    "source_ids": [
+      "e11:0:47"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Independent Projects",
+    "path": "/experience/1/company"
+  },
+  {
+    "id": "f030",
+    "document": 2,
+    "collection": "experience",
+    "selector": {
+      "company": "Independent Projects"
+    },
+    "field": "role",
+    "expected": "Freelance Java Developer",
+    "source_ids": [
+      "e11:0:47"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Freelance Java Developer",
+    "path": "/experience/1/role"
+  },
+  {
+    "id": "f031",
+    "document": 2,
+    "collection": "experience",
+    "selector": {
+      "company": "Independent Projects"
+    },
+    "field": "start_date",
+    "expected": "October 2023",
+    "source_ids": [
+      "e12:0:22"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "October 2023",
+    "path": "/experience/1/start_date"
+  },
+  {
+    "id": "f032",
+    "document": 2,
+    "collection": "experience",
+    "selector": {
+      "company": "Independent Projects"
+    },
+    "field": "end_date",
+    "expected": "Present",
+    "source_ids": [
+      "e12:0:22"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Present",
+    "path": "/experience/1/end_date"
+  },
+  {
+    "id": "f033",
+    "document": 2,
+    "collection": "education",
+    "selector": {
+      "degree": "B.E. in Electronics and Communication Engineering"
+    },
+    "field": "degree",
+    "expected": "B.E. in Electronics and Communication Engineering",
+    "source_ids": [
+      "e26:10:60"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "B.E.",
+    "path": "/education/0/degree"
+  },
+  {
+    "id": "f034",
+    "document": 2,
+    "collection": "education",
+    "selector": {
+      "degree": "B.E. in Electronics and Communication Engineering"
+    },
+    "field": "institution",
+    "expected": "M S Ramaiah Institute of Technology",
+    "source_ids": [
+      "e26:60:95"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "M S Ramaiah Institute of Technology",
+    "path": "/education/0/institution"
+  },
+  {
+    "id": "f035",
+    "document": 2,
+    "collection": "education",
+    "selector": {
+      "degree": "B.E. in Electronics and Communication Engineering"
+    },
+    "field": "graduation_year",
+    "expected": "2022",
+    "source_ids": [
+      "e27:0:24"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "July 2022",
+    "path": "/education/0/graduation_year"
+  },
+  {
+    "id": "f036",
+    "document": 2,
+    "collection": "education",
+    "selector": {
+      "degree": "B.E. in Electronics and Communication Engineering"
+    },
+    "field": "grade_or_gpa",
+    "expected": "7.85/10",
+    "source_ids": [
+      "e27:24:37"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "CGPA: 7.85/10",
+    "path": "/education/0/grade_or_gpa"
+  },
+  {
+    "id": "f037",
+    "document": 2,
+    "collection": "education",
+    "selector": {
+      "degree": "Intermediate (PUC) – Science"
+    },
+    "field": "degree",
+    "expected": "Intermediate (PUC) – Science",
+    "source_ids": [
+      "e28:0:29"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Intermediate (PUC)",
+    "path": "/education/1/degree"
+  },
+  {
+    "id": "f038",
+    "document": 2,
+    "collection": "education",
+    "selector": {
+      "degree": "Intermediate (PUC) – Science"
+    },
+    "field": "institution",
+    "expected": "Sarvodaya PU College",
+    "source_ids": [
+      "e28:29:49"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Sarvodaya PU College",
+    "path": "/education/1/institution"
+  },
+  {
+    "id": "f039",
+    "document": 2,
+    "collection": "education",
+    "selector": {
+      "degree": "Intermediate (PUC) – Science"
+    },
+    "field": "graduation_year",
+    "expected": "2018",
+    "source_ids": [
+      "e29:0:21"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "May 2018",
+    "path": "/education/1/graduation_year"
+  },
+  {
+    "id": "f040",
+    "document": 2,
+    "collection": "education",
+    "selector": {
+      "degree": "Intermediate (PUC) – Science"
+    },
+    "field": "grade_or_gpa",
+    "expected": "89.83%",
+    "source_ids": [
+      "e29:21:39"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Percentage: 89.83%",
+    "path": "/education/1/grade_or_gpa"
+  },
+  {
+    "id": "f041",
+    "document": 2,
+    "collection": "projects",
+    "selector": {
+      "name": "Healthcare Patient Management System"
+    },
+    "field": "name",
+    "expected": "Healthcare Patient Management System",
+    "source_ids": [
+      "e16:13:52"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Healthcare Patient Management System",
+    "path": "/projects/0/name"
+  },
+  {
+    "id": "f042",
+    "document": 2,
+    "collection": "projects",
+    "selector": {
+      "name": "Hotel Rating Microservices Application"
+    },
+    "field": "name",
+    "expected": "Hotel Rating Microservices Application",
+    "source_ids": [
+      "e20:0:41"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Hotel Rating Microservices Application",
+    "path": "/projects/1/name"
+  },
+  {
+    "id": "f043",
+    "document": 2,
+    "collection": "projects",
+    "selector": {
+      "name": "Stock Market Investing Application"
+    },
+    "field": "name",
+    "expected": "Stock Market Investing Application",
+    "source_ids": [
+      "e24:0:37"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Stock Market Investing Application",
+    "path": "/projects/2/name"
+  },
+  {
+    "id": "f044",
+    "document": 2,
+    "collection": "certifications",
+    "selector": {
+      "name": "Java (Basic)"
+    },
+    "field": "issuer",
+    "expected": "HackerRank",
+    "source_ids": [
+      "e32:74:101"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "HackerRank",
+    "path": "/certifications/2/issuer"
+  },
+  {
+    "id": "f045",
+    "document": 3,
+    "collection": "root",
+    "selector": null,
+    "field": "contact.full_name",
+    "expected": "BOOVANESH KUMAR",
+    "source_ids": [
+      "e0:0:16"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "BOOVANESH KUMAR",
+    "path": "/contact/full_name"
+  },
+  {
+    "id": "f046",
+    "document": 3,
+    "collection": "root",
+    "selector": null,
+    "field": "contact.email",
+    "expected": "boovaneshbk123@gmail.com",
+    "source_ids": [
+      "e0:112:213"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "boovaneshbk123@gmail.com",
+    "path": "/contact/email"
+  },
+  {
+    "id": "f047",
+    "document": 3,
+    "collection": "root",
+    "selector": null,
+    "field": "contact.phone",
+    "expected": "7708126940",
+    "source_ids": [
+      "e0:112:213"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "7708126940",
+    "path": "/contact/phone"
+  },
+  {
+    "id": "f048",
+    "document": 3,
+    "collection": "root",
+    "selector": null,
+    "field": "total_experience_years",
+    "expected": 3,
+    "source_ids": [
+      "e1:21:155"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": 3.0,
+    "path": "/total_experience_years"
+  },
+  {
+    "id": "f049",
+    "document": 3,
+    "collection": "experience",
+    "selector": {
+      "company": "Mitrahsoft"
+    },
+    "field": "company",
+    "expected": "Mitrahsoft",
+    "source_ids": [
+      "e2:0:30"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Mitrahsoft",
+    "path": "/experience/0/company"
+  },
+  {
+    "id": "f050",
+    "document": 3,
+    "collection": "experience",
+    "selector": {
+      "company": "Mitrahsoft"
+    },
+    "field": "role",
+    "expected": "Software Engineer",
+    "source_ids": [
+      "e2:0:30"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Software Engineer",
+    "path": "/experience/0/role"
+  },
+  {
+    "id": "f051",
+    "document": 3,
+    "collection": "education",
+    "selector": {
+      "degree": "Bachelor of Engineering"
+    },
+    "field": "degree",
+    "expected": "Bachelor of Engineering",
+    "source_ids": [
+      "e22:10:76"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Bachelor of Engineering",
+    "path": "/education/0/degree"
+  },
+  {
+    "id": "f052",
+    "document": 3,
+    "collection": "education",
+    "selector": {
+      "degree": "Bachelor of Engineering"
+    },
+    "field": "institution",
+    "expected": "Kongu Engineering College",
+    "source_ids": [
+      "e22:10:76"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Kongu Engineering College",
+    "path": "/education/0/institution"
+  },
+  {
+    "id": "f053",
+    "document": 3,
+    "collection": "education",
+    "selector": {
+      "degree": "HSC"
+    },
+    "field": "degree",
+    "expected": "HSC",
+    "source_ids": [
+      "e22:76:123"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "HSC",
+    "path": "/education/1/degree"
+  },
+  {
+    "id": "f054",
+    "document": 3,
+    "collection": "education",
+    "selector": {
+      "degree": "HSC"
+    },
+    "field": "institution",
+    "expected": "St. Paul's Matriculation Hr. Sec. School",
+    "source_ids": [
+      "e22:76:123"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "St. Paul's Matriculation Hr. Sec. School",
+    "path": "/education/1/institution"
+  },
+  {
+    "id": "f055",
+    "document": 3,
+    "collection": "education",
+    "selector": {
+      "degree": "SSLC"
+    },
+    "field": "degree",
+    "expected": "SSLC",
+    "source_ids": [
+      "e22:123:170"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "SSLC",
+    "path": "/education/2/degree"
+  },
+  {
+    "id": "f056",
+    "document": 3,
+    "collection": "education",
+    "selector": {
+      "degree": "SSLC"
+    },
+    "field": "institution",
+    "expected": "St. Paul's Matriculation Hr. Sec. School",
+    "source_ids": [
+      "e22:123:170"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "St. Paul's Matriculation Hr. Sec. School",
+    "path": "/education/2/institution"
+  },
+  {
+    "id": "f057",
+    "document": 3,
+    "collection": "projects",
+    "selector": {
+      "name": "Ecommerce Application"
+    },
+    "field": "name",
+    "expected": "Ecommerce Application",
+    "source_ids": [
+      "e8:0:21"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Ecommerce Application",
+    "path": "/projects/0/name"
+  },
+  {
+    "id": "f058",
+    "document": 3,
+    "collection": "projects",
+    "selector": {
+      "name": "HRMS — Human Resource Management System"
+    },
+    "field": "name",
+    "expected": "HRMS — Human Resource Management System",
+    "source_ids": [
+      "e15:0:39"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "HRMS — Human Resource Management System",
+    "path": "/projects/1/name"
+  },
+  {
+    "id": "f059",
+    "document": 3,
+    "collection": "projects",
+    "selector": {
+      "name": "Freight Management System — Microservices"
+    },
+    "field": "name",
+    "expected": "Freight Management System — Microservices",
+    "source_ids": [
+      "e20:0:41"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Freight Management System — Microservices",
+    "path": "/projects/2/name"
+  },
+  {
+    "id": "f060",
+    "document": 3,
+    "collection": "certifications",
+    "selector": {
+      "name": "AWS Certified Solutions Architect – Associate"
+    },
+    "field": "issuer",
+    "expected": "Udemy",
+    "source_ids": [
+      "e24:2:55"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Udemy",
+    "path": "/certifications/0/issuer"
+  },
+  {
+    "id": "f061",
+    "document": 3,
+    "collection": "certifications",
+    "selector": {
+      "name": "Cyber Security From Beginner to Expert"
+    },
+    "field": "issuer",
+    "expected": "Udemy",
+    "source_ids": [
+      "e24:58:104"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Udemy",
+    "path": "/certifications/1/issuer"
+  },
+  {
+    "id": "f062",
+    "document": 3,
+    "collection": "certifications",
+    "selector": {
+      "name": "Software Architecture and Design of Modern Large Scale Systems"
+    },
+    "field": "issuer",
+    "expected": "Udemy",
+    "source_ids": [
+      "e24:107:177"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Udemy",
+    "path": "/certifications/2/issuer"
+  },
+  {
+    "id": "f063",
+    "document": 4,
+    "collection": "root",
+    "selector": null,
+    "field": "contact.full_name",
+    "expected": "A MADHAVI",
+    "source_ids": [
+      "e0:0:9"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "A MADHAVI",
+    "path": "/contact/full_name"
+  },
+  {
+    "id": "f064",
+    "document": 4,
+    "collection": "root",
+    "selector": null,
+    "field": "contact.email",
+    "expected": "madhavi.aradhyula03@gmail.com",
+    "source_ids": [
+      "e1:0:29"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "madhavi.aradhyula03@gmail.com",
+    "path": "/contact/email"
+  },
+  {
+    "id": "f065",
+    "document": 4,
+    "collection": "root",
+    "selector": null,
+    "field": "contact.phone",
+    "expected": "+91-9494916311",
+    "source_ids": [
+      "e2:0:14"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "+91-9494916311",
+    "path": "/contact/phone"
+  },
+  {
+    "id": "f066",
+    "document": 4,
+    "collection": "root",
+    "selector": null,
+    "field": "professional_title",
+    "expected": "Business Analyst",
+    "source_ids": [
+      "e4:0:22"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Business Analyst",
+    "path": "/professional_title"
+  },
+  {
+    "id": "f067",
+    "document": 4,
+    "collection": "root",
+    "selector": null,
+    "field": "total_experience_years",
+    "expected": 8,
+    "source_ids": [
+      "e5:21:139"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": 8.0,
+    "path": "/total_experience_years"
+  },
+  {
+    "id": "f068",
+    "document": 4,
+    "collection": "experience",
+    "selector": {
+      "company": "Tech Mahindra"
+    },
+    "field": "company",
+    "expected": "Tech Mahindra",
+    "source_ids": [
+      "e24:0:58"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Tech Mahindra",
+    "path": "/experience/0/company"
+  },
+  {
+    "id": "f069",
+    "document": 4,
+    "collection": "experience",
+    "selector": {
+      "company": "Tech Mahindra"
+    },
+    "field": "role",
+    "expected": "Business Analyst cum UAT Tester",
+    "source_ids": [
+      "e24:0:58"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Business Analyst cum UAT Tester",
+    "path": "/experience/0/role"
+  },
+  {
+    "id": "f070",
+    "document": 4,
+    "collection": "experience",
+    "selector": {
+      "company": "Tech Mahindra"
+    },
+    "field": "start_date",
+    "expected": "Aug 2022",
+    "source_ids": [
+      "e24:58:153"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Aug 2022",
+    "path": "/experience/0/start_date"
+  },
+  {
+    "id": "f071",
+    "document": 4,
+    "collection": "experience",
+    "selector": {
+      "company": "Tech Mahindra"
+    },
+    "field": "end_date",
+    "expected": "Present",
+    "source_ids": [
+      "e24:58:153"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Present",
+    "path": "/experience/0/end_date"
+  },
+  {
+    "id": "f072",
+    "document": 4,
+    "collection": "experience",
+    "selector": {
+      "company": "Tech Mahindra"
+    },
+    "field": "location",
+    "expected": "Hyderabad",
+    "source_ids": [
+      "e24:58:153"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Hyderabad",
+    "path": "/experience/0/location"
+  },
+  {
+    "id": "f073",
+    "document": 4,
+    "collection": "experience",
+    "selector": {
+      "company": "Pine Labs"
+    },
+    "field": "company",
+    "expected": "Pine Labs",
+    "source_ids": [
+      "e37:0:46"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Pine Labs",
+    "path": "/experience/1/company"
+  },
+  {
+    "id": "f074",
+    "document": 4,
+    "collection": "experience",
+    "selector": {
+      "company": "Pine Labs"
+    },
+    "field": "role",
+    "expected": "Sr QA Cum Product Owner",
+    "source_ids": [
+      "e37:0:46"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Sr QA Cum Product Owner",
+    "path": "/experience/1/role"
+  },
+  {
+    "id": "f075",
+    "document": 4,
+    "collection": "experience",
+    "selector": {
+      "company": "Pine Labs"
+    },
+    "field": "start_date",
+    "expected": "Jan 2022",
+    "source_ids": [
+      "e37:46:149"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Jan 2022",
+    "path": "/experience/1/start_date"
+  },
+  {
+    "id": "f076",
+    "document": 4,
+    "collection": "experience",
+    "selector": {
+      "company": "Pine Labs"
+    },
+    "field": "end_date",
+    "expected": "June 2022",
+    "source_ids": [
+      "e37:46:149"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "June 2022",
+    "path": "/experience/1/end_date"
+  },
+  {
+    "id": "f077",
+    "document": 4,
+    "collection": "experience",
+    "selector": {
+      "company": "Pine Labs"
+    },
+    "field": "location",
+    "expected": "Hyderabad",
+    "source_ids": [
+      "e37:46:149"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Hyderabad",
+    "path": "/experience/1/location"
+  },
+  {
+    "id": "f078",
+    "document": 4,
+    "collection": "experience",
+    "selector": {
+      "company": "Capgemini"
+    },
+    "field": "company",
+    "expected": "Capgemini",
+    "source_ids": [
+      "e45:0:33"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Capgemini",
+    "path": "/experience/2/company"
+  },
+  {
+    "id": "f079",
+    "document": 4,
+    "collection": "experience",
+    "selector": {
+      "company": "Capgemini"
+    },
+    "field": "role",
+    "expected": "Consultant",
+    "source_ids": [
+      "e45:0:33"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Consultant",
+    "path": "/experience/2/role"
+  },
+  {
+    "id": "f080",
+    "document": 4,
+    "collection": "experience",
+    "selector": {
+      "company": "Capgemini"
+    },
+    "field": "start_date",
+    "expected": "May 2021",
+    "source_ids": [
+      "e45:33:135"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "May 2021",
+    "path": "/experience/2/start_date"
+  },
+  {
+    "id": "f081",
+    "document": 4,
+    "collection": "experience",
+    "selector": {
+      "company": "Capgemini"
+    },
+    "field": "end_date",
+    "expected": "Dec 2021",
+    "source_ids": [
+      "e45:33:135"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Dec 2021",
+    "path": "/experience/2/end_date"
+  },
+  {
+    "id": "f082",
+    "document": 4,
+    "collection": "experience",
+    "selector": {
+      "company": "Capgemini"
+    },
+    "field": "location",
+    "expected": "Hyderabad",
+    "source_ids": [
+      "e45:33:135"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Hyderabad",
+    "path": "/experience/2/location"
+  },
+  {
+    "id": "f083",
+    "document": 4,
+    "collection": "experience",
+    "selector": {
+      "company": "National Payments Corporation of India"
+    },
+    "field": "company",
+    "expected": "National Payments Corporation of India",
+    "source_ids": [
+      "e52:0:68"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "National Payments Corporation of India",
+    "path": "/experience/3/company"
+  },
+  {
+    "id": "f084",
+    "document": 4,
+    "collection": "experience",
+    "selector": {
+      "company": "National Payments Corporation of India"
+    },
+    "field": "role",
+    "expected": "Senior Associate",
+    "source_ids": [
+      "e52:0:68"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Senior Associate",
+    "path": "/experience/3/role"
+  },
+  {
+    "id": "f085",
+    "document": 4,
+    "collection": "experience",
+    "selector": {
+      "company": "National Payments Corporation of India"
+    },
+    "field": "start_date",
+    "expected": "Jan 2017",
+    "source_ids": [
+      "e52:68:119"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Jan 2017",
+    "path": "/experience/3/start_date"
+  },
+  {
+    "id": "f086",
+    "document": 4,
+    "collection": "experience",
+    "selector": {
+      "company": "National Payments Corporation of India"
+    },
+    "field": "end_date",
+    "expected": "May 2021",
+    "source_ids": [
+      "e52:68:119"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "May 2021",
+    "path": "/experience/3/end_date"
+  },
+  {
+    "id": "f087",
+    "document": 4,
+    "collection": "experience",
+    "selector": {
+      "company": "National Payments Corporation of India"
+    },
+    "field": "location",
+    "expected": "Hyderabad",
+    "source_ids": [
+      "e52:68:119"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Hyderabad",
+    "path": "/experience/3/location"
+  },
+  {
+    "id": "f088",
+    "document": 4,
+    "collection": "education",
+    "selector": {
+      "degree": "Bachelor of Engineering in ECE"
+    },
+    "field": "degree",
+    "expected": "Bachelor of Engineering in ECE",
+    "source_ids": [
+      "e80:10:113"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Bachelor of Engineering",
+    "path": "/education/0/degree"
+  },
+  {
+    "id": "f089",
+    "document": 4,
+    "collection": "education",
+    "selector": {
+      "degree": "Bachelor of Engineering in ECE"
+    },
+    "field": "graduation_year",
+    "expected": "2015",
+    "source_ids": [
+      "e80:10:113"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "2015",
+    "path": "/education/0/graduation_year"
+  },
+  {
+    "id": "f090",
+    "document": 4,
+    "collection": "certifications",
+    "selector": {
+      "name": "Certified Scrum Product Owner (CSPO)"
+    },
+    "field": "issue_year",
+    "expected": "2025",
+    "source_ids": [
+      "e77:17:59"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "2025",
+    "path": "/certifications/0/issue_year"
+  },
+  {
+    "id": "f091",
+    "document": 4,
+    "collection": "certifications",
+    "selector": {
+      "name": "Fundamentals of SWIFT MT & ISO20022"
+    },
+    "field": "issue_year",
+    "expected": "2020",
+    "source_ids": [
+      "e78:0:49"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "2020",
+    "path": "/certifications/1/issue_year"
+  },
+  {
+    "id": "f092",
+    "document": 4,
+    "collection": "certifications",
+    "selector": {
+      "name": "Trained in Embedded Systems"
+    },
+    "field": "issue_year",
+    "expected": "2016",
+    "source_ids": [
+      "e79:0:48"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "2016",
+    "path": "/certifications/2/issue_year"
+  },
+  {
+    "id": "f093",
+    "document": 5,
+    "collection": "root",
+    "selector": null,
+    "field": "contact.full_name",
+    "expected": "NITHIN ESWARAPPA",
+    "source_ids": [
+      "e0:0:16"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "NITHIN ESWARAPPA",
+    "path": "/contact/full_name"
+  },
+  {
+    "id": "f094",
+    "document": 5,
+    "collection": "root",
+    "selector": null,
+    "field": "contact.phone",
+    "expected": "9916476627",
+    "source_ids": [
+      "e1:0:30"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "9916476627",
+    "path": "/contact/phone"
+  },
+  {
+    "id": "f095",
+    "document": 5,
+    "collection": "root",
+    "selector": null,
+    "field": "total_experience_years",
+    "expected": 7,
+    "source_ids": [
+      "e6:402:413"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": 7.0,
+    "path": "/total_experience_years"
+  },
+  {
+    "id": "f096",
+    "document": 5,
+    "collection": "experience",
+    "selector": {
+      "company": "GITAM University"
+    },
+    "field": "company",
+    "expected": "GITAM University",
+    "source_ids": [
+      "e28:0:80"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Multi Sensor Image Fusion Lab (DRDO grant), GITAM University",
+    "path": "/experience/0/company"
+  },
+  {
+    "id": "f097",
+    "document": 5,
+    "collection": "experience",
+    "selector": {
+      "company": "GITAM University"
+    },
+    "field": "role",
+    "expected": "RESEARCH ASSOCIATE",
+    "source_ids": [
+      "e28:0:80"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "RESEARCH ASSOCIATE",
+    "path": "/experience/0/role"
+  },
+  {
+    "id": "f098",
+    "document": 5,
+    "collection": "experience",
+    "selector": {
+      "company": "GITAM University"
+    },
+    "field": "start_date",
+    "expected": "Oct 2023",
+    "source_ids": [
+      "e29:0:14"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Oct 2023",
+    "path": "/experience/0/start_date"
+  },
+  {
+    "id": "f099",
+    "document": 5,
+    "collection": "experience",
+    "selector": {
+      "company": "GITAM University"
+    },
+    "field": "end_date",
+    "expected": "Now",
+    "source_ids": [
+      "e29:0:14"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Now",
+    "path": "/experience/0/end_date"
+  },
+  {
+    "id": "f100",
+    "document": 5,
+    "collection": "experience",
+    "selector": {
+      "company": "Vimaan.ai"
+    },
+    "field": "company",
+    "expected": "Vimaan.ai",
+    "source_ids": [
+      "e48:0:46"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Vimaan.ai",
+    "path": "/experience/2/company"
+  },
+  {
+    "id": "f101",
+    "document": 5,
+    "collection": "experience",
+    "selector": {
+      "company": "Vimaan.ai"
+    },
+    "field": "role",
+    "expected": "Senior Firmware Engineer - Robotics",
+    "source_ids": [
+      "e48:0:46"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Senior Firmware Engineer - Robotics",
+    "path": "/experience/2/role"
+  },
+  {
+    "id": "f102",
+    "document": 5,
+    "collection": "experience",
+    "selector": {
+      "company": "Vimaan.ai"
+    },
+    "field": "start_date",
+    "expected": "Apr 2020",
+    "source_ids": [
+      "e49:0:21"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Apr 2020",
+    "path": "/experience/2/start_date"
+  },
+  {
+    "id": "f103",
+    "document": 5,
+    "collection": "experience",
+    "selector": {
+      "company": "Vimaan.ai"
+    },
+    "field": "end_date",
+    "expected": "Jul 2022",
+    "source_ids": [
+      "e49:0:21"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Jul 2022",
+    "path": "/experience/2/end_date"
+  },
+  {
+    "id": "f104",
+    "document": 5,
+    "collection": "experience",
+    "selector": {
+      "company": "Tonbo Imaging"
+    },
+    "field": "company",
+    "expected": "Tonbo Imaging",
+    "source_ids": [
+      "e53:0:40"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Tonbo Imaging",
+    "path": "/experience/3/company"
+  },
+  {
+    "id": "f105",
+    "document": 5,
+    "collection": "experience",
+    "selector": {
+      "company": "Tonbo Imaging"
+    },
+    "field": "role",
+    "expected": "Member of Technical Staff",
+    "source_ids": [
+      "e53:0:40"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Member of Technical Staff",
+    "path": "/experience/3/role"
+  },
+  {
+    "id": "f106",
+    "document": 5,
+    "collection": "experience",
+    "selector": {
+      "company": "Tonbo Imaging"
+    },
+    "field": "start_date",
+    "expected": "Apr 2015",
+    "source_ids": [
+      "e54:0:21"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Apr 2015",
+    "path": "/experience/3/start_date"
+  },
+  {
+    "id": "f107",
+    "document": 5,
+    "collection": "experience",
+    "selector": {
+      "company": "Tonbo Imaging"
+    },
+    "field": "end_date",
+    "expected": "Jun 2018",
+    "source_ids": [
+      "e54:0:21"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Jun 2018",
+    "path": "/experience/3/end_date"
+  },
+  {
+    "id": "f108",
+    "document": 5,
+    "collection": "experience",
+    "selector": {
+      "company": "Siemens Information Systems Ltd."
+    },
+    "field": "company",
+    "expected": "Siemens Information Systems Ltd.",
+    "source_ids": [
+      "e67:0:50"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Siemens Information Systems Ltd.",
+    "path": "/experience/4/company"
+  },
+  {
+    "id": "f109",
+    "document": 5,
+    "collection": "experience",
+    "selector": {
+      "company": "Siemens Information Systems Ltd."
+    },
+    "field": "role",
+    "expected": "Systems Engineer",
+    "source_ids": [
+      "e67:0:50"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Systems Engineer",
+    "path": "/experience/4/role"
+  },
+  {
+    "id": "f110",
+    "document": 5,
+    "collection": "education",
+    "selector": {
+      "degree": "Master Of Technology In Intelligent Systems"
+    },
+    "field": "degree",
+    "expected": "Master Of Technology In Intelligent Systems",
+    "source_ids": [
+      "e8:38:82"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Master Of Technology In Intelligent Systems",
+    "path": "/education/0/degree"
+  },
+  {
+    "id": "f111",
+    "document": 5,
+    "collection": "education",
+    "selector": {
+      "degree": "Master Of Technology In Intelligent Systems"
+    },
+    "field": "institution",
+    "expected": "Visvesvaraya Technological University",
+    "source_ids": [
+      "e8:0:38"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Visvesvaraya Technological University",
+    "path": "/education/0/institution"
+  },
+  {
+    "id": "f112",
+    "document": 5,
+    "collection": "education",
+    "selector": {
+      "degree": "Bachelor of Engineering in Electronics and Communication"
+    },
+    "field": "degree",
+    "expected": "Bachelor of Engineering in Electronics and Communication",
+    "source_ids": [
+      "e8:120:176"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Bachelor of Engineering in Electronics and Communication",
+    "path": "/education/1/degree"
+  },
+  {
+    "id": "f113",
+    "document": 5,
+    "collection": "education",
+    "selector": {
+      "degree": "Bachelor of Engineering in Electronics and Communication"
+    },
+    "field": "institution",
+    "expected": "Visvesvaraya Technological University",
+    "source_ids": [
+      "e8:82:120"
+    ],
+    "reason": "Normalized source-fact agreement; degree/major splits, original month-year strings, label prefixes and enclosing organization context accepted",
+    "status": "correct_mapping",
+    "actual": "Visvesvaraya Technological University",
+    "path": "/education/1/institution"
+  }
+]

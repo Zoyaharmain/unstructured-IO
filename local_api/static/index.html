@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Resume Inspector · Extraction review</title><link rel="stylesheet" href="/static/styles.css"><script defer src="/static/app.js"></script><script defer src="/static/sections.js"></script></head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Resume Inspector · Extraction review</title><link rel="stylesheet" href="/static/styles.css"><script defer src="/static/app.js"></script><script defer src="/static/sections.js"></script><script defer src="/static/schema.js"></script></head>
 <body>
 <header class="topbar"><a class="brand" href="/" aria-label="Resume Inspector home"><span class="brand-icon">▤</span> Resume Inspector <span class="tag">LOCAL WORKSPACE</span></a><a class="docs" href="/docs" target="_blank" rel="noopener">API docs ↗</a></header>
 <main>
@@ -14,13 +14,18 @@
 <section id="view-text" role="tabpanel" aria-labelledby="tab-text" hidden><div class="text-toolbar"><span>Reading order as extracted</span><button id="copy" class="text-button" disabled>Copy text</button></div><pre id="plain-text" class="plain-text">Extracted plain text will appear here.</pre></section>
 <section id="view-compare" role="tabpanel" aria-labelledby="tab-compare" hidden class="compare-view"><div class="compare-intro"><h3>Check against the original text</h3><p>Copy text from the original resume and paste it below. Compare words in reading order to find omissions, additions, or rearranged text.</p></div><label for="reference" class="field-label">Reference text from the original resume</label><textarea id="reference" rows="6" placeholder="Paste the original resume text here. For scanned files, use a manually checked transcription."></textarea><div class="compare-controls"><label><input id="ignore-case" type="checkbox"> Ignore letter case</label><button id="compare" class="primary" disabled>Compare words</button></div><p class="comparison-note">Whitespace is normalized; punctuation is compared. Coverage is against your pasted reference, not a guarantee of document accuracy. Up to 5,000 words per text.</p><div id="comparison" aria-live="polite"></div></section>
 <section id="view-sections" role="tabpanel" aria-labelledby="tab-sections" hidden class="compare-view">
-<div class="compare-intro"><h3>Resume section blocks</h3><p>Your extracted resume is grouped automatically into Experience, Education, Skills and other sections.</p></div>
-<p id="llm-connection" class="comparison-note" role="status" aria-live="polite">Checking DeepSeek connection…</p><button id="check-llm-connection" class="text-button" type="button">Check DeepSeek connection</button>
+<div class="compare-intro"><h3>Inspect detected blocks</h3><p>Compare each numbered block with the original PDF. Local mode shows Sentence-BERT, K-means and local boundary rules before any DeepSeek review.</p></div>
+<label class="field-label" for="section-mode">Detection mode<select id="section-mode"><option value="local">Local model only · no DeepSeek</option><option value="reviewed">Local model + DeepSeek review</option></select></label>
+<p id="llm-connection" class="comparison-note" role="status" aria-live="polite">Local inspection uses no DeepSeek calls. Connection check is optional.</p><button id="check-llm-connection" class="text-button" type="button">Check DeepSeek connection</button>
 <label class="verification-check"><input id="verify-extraction" type="checkbox" disabled> I checked the extracted words against the original resume (optional).</label>
 <p class="comparison-note">Use Plain text and Word comparison to check extraction quality. Section grouping does not prove word accuracy.</p>
 <button id="detect-sections" class="primary" disabled>Regroup sections</button>
 <div id="section-status" class="status" role="status" aria-live="polite">Extract a resume to see its section blocks automatically.</div>
 <button id="download-sections" class="text-button" disabled>Download section JSON ↓</button><div id="section-results"></div>
+<div class="compare-intro"><h3>Map blocks to resume schema</h3><p>Build structured JSON from these section blocks. Missing and uncertain fields remain flagged.</p></div>
+<button id="map-schema" class="primary" disabled>Map to schema</button> <button id="download-schema" class="text-button" disabled>Download schema JSON ↓</button>
+<p id="schema-status" class="status" role="status" aria-live="polite">Group sections before mapping.</p>
+<details id="schema-preview" hidden><summary>Inspect schema and source evidence</summary><pre id="schema-json"></pre></details>
 </section>
 </article></section>
 <footer><span>Powered by Unstructured · Local extraction</span><span>Visual review + reference comparison. No automatic accuracy claims.</span></footer>

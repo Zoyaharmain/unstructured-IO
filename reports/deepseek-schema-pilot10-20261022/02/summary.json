@@ -1,0 +1,169 @@
+{
+  "document": 2,
+  "file": "A Lokhande.pdf",
+  "status": "flagged",
+  "schema_valid": true,
+  "reference_denominator": 12,
+  "reference_value_matches": 12,
+  "before_raw": {
+    "populated_fields": 102,
+    "citation_valid_fields": 92,
+    "citation_compliance_percent": 90.2,
+    "citation_contract_valid": false,
+    "evidence_backed_matches": 12,
+    "issue_kinds": {
+      "quote_not_in_cited_block": 2,
+      "value_not_supported_by_quotes": 9,
+      "missing_field_evidence": 1
+    }
+  },
+  "after_candidate": {
+    "populated_fields": 102,
+    "citation_valid_fields": 95,
+    "citation_compliance_percent": 93.14,
+    "citation_contract_valid": false,
+    "evidence_backed_matches": 12,
+    "issue_kinds": {
+      "quote_not_in_cited_block": 2,
+      "value_not_supported_by_quotes": 6,
+      "missing_field_evidence": 1
+    }
+  },
+  "normalizations": [],
+  "alignment_adjustments": [
+    {
+      "original_path": "/experience/1/technologies/2",
+      "normalized_path": "/experience/1/technologies/3",
+      "rule": "intra_array_index_alignment",
+      "citations_count": 1,
+      "origin": "deterministic intra-array citation re-indexing; target data untouched"
+    },
+    {
+      "original_path": "/experience/1/technologies/3",
+      "normalized_path": "/experience/1/technologies/4",
+      "rule": "intra_array_index_alignment",
+      "citations_count": 1,
+      "origin": "deterministic intra-array citation re-indexing; target data untouched"
+    },
+    {
+      "original_path": "/experience/1/technologies/4",
+      "normalized_path": "/experience/1/technologies/5",
+      "rule": "intra_array_index_alignment",
+      "citations_count": 1,
+      "origin": "deterministic intra-array citation re-indexing; target data untouched"
+    }
+  ],
+  "omission_repairs": [],
+  "rejections": [],
+  "uncertainty_flags": [
+    {
+      "path": "/education/0/degree",
+      "kind": "upstream_defect",
+      "detail": "Education degree text is split across garbled blocks including 'Softwa' fragments; specialization read as 'Engineering', not clearly software engineering.",
+      "source_ids": [
+        "e37:0:17",
+        "e38:0:11",
+        "e39:0:7",
+        "e39:7:13"
+      ]
+    },
+    {
+      "path": "/contact/full_name",
+      "kind": "ambiguous_source",
+      "detail": "Detected name text is 'A A Lokhande'; email username suggests 'Ashish' but name was not inferred from email per rules.",
+      "source_ids": [
+        "e1:0:4",
+        "e1:4:13",
+        "e7:0:30"
+      ]
+    },
+    {
+      "path": "/experience/0/responsibilities",
+      "kind": "ambiguous_source",
+      "detail": "Client line 'Client Barclays – Java Developer' is preserved as a responsibility-like item since employer is Capgemini and client is Barclays; classification is uncertain.",
+      "source_ids": [
+        "e13:0:32"
+      ]
+    },
+    {
+      "path": "/experience/1/responsibilities",
+      "kind": "ambiguous_source",
+      "detail": "Client line 'Client JP Morgan Chase – Java Backend Developer' is preserved as a responsibility-like item; employer is Cognizant and client is JP Morgan Chase.",
+      "source_ids": [
+        "e21:0:47"
+      ]
+    },
+    {
+      "path": "/experience/2/responsibilities",
+      "kind": "ambiguous_source",
+      "detail": "Client line 'Client BestBuy and Schnucks' names clients; employer is Aurus Inc. Retained as a separate item.",
+      "source_ids": [
+        "e29:0:27"
+      ]
+    },
+    {
+      "path": "/summary",
+      "kind": "upstream_defect",
+      "detail": "Original text has ligature/garbling in 'Proficient' rendered as 'Pro\u0000cient'; corrected only for whitespace/ligature artifact.",
+      "source_ids": [
+        "e3:0:108"
+      ]
+    },
+    {
+      "path": "/contact/full_name",
+      "kind": "garbled_source",
+      "detail": "Name blocks read 'A A Lokhande' with spacing artifacts; full legal name could not be reliably determined beyond detected text.",
+      "source_ids": [
+        "e1:0:4",
+        "e1:4:13"
+      ]
+    },
+    {
+      "path": "/experience/1/responsibilities/0",
+      "kind": "text_join_artifact",
+      "detail": "Source text 'DesignedandoptimizedRESTfulAPIsusingSpringBootandJava8.' is missing spaces in the original; whitespace normalized only.",
+      "source_ids": [
+        "e22:0:74"
+      ]
+    },
+    {
+      "path": "/skills/all_skills/8",
+      "kind": "ambiguous_source",
+      "detail": "Skill 'API' appears as a standalone skills token; may be fragment of 'RESTful APIs'.",
+      "source_ids": [
+        "e48:0:3"
+      ]
+    },
+    {
+      "path": "/experience/0/start_date",
+      "kind": "date_precedes_employer_anchor",
+      "detail": "Association requires source/layout review; literal date presence is insufficient."
+    },
+    {
+      "path": "/experience/0/end_date",
+      "kind": "date_precedes_employer_anchor",
+      "detail": "Association requires source/layout review; literal date presence is insufficient."
+    },
+    {
+      "path": "/experience/1/start_date",
+      "kind": "date_precedes_employer_anchor",
+      "detail": "Association requires source/layout review; literal date presence is insufficient."
+    },
+    {
+      "path": "/experience/1/end_date",
+      "kind": "date_precedes_employer_anchor",
+      "detail": "Association requires source/layout review; literal date presence is insufficient."
+    },
+    {
+      "path": "/experience/2/start_date",
+      "kind": "date_precedes_employer_anchor",
+      "detail": "Association requires source/layout review; literal date presence is insufficient."
+    },
+    {
+      "path": "/experience/2/end_date",
+      "kind": "date_precedes_employer_anchor",
+      "detail": "Association requires source/layout review; literal date presence is insufficient."
+    }
+  ],
+  "accepted": false
+}

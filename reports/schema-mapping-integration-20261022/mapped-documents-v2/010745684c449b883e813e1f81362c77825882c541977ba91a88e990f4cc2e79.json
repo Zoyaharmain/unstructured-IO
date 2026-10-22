@@ -1,0 +1,614 @@
+{
+  "success": true,
+  "source": "Assignment.pdf",
+  "extraction_mode": "existing_blocks_schema_mapping",
+  "data": {
+    "contact": {
+      "full_name": "",
+      "email": "",
+      "phone": "",
+      "location": null,
+      "linkedin_url": null,
+      "github_url": null,
+      "portfolio_url": null
+    },
+    "professional_title": null,
+    "summary": null,
+    "total_experience_years": null,
+    "skills": {
+      "technical_skills": [],
+      "tools_and_platforms": [],
+      "domain_and_functional": [],
+      "soft_skills": [],
+      "all_skills": []
+    },
+    "experience": [],
+    "education": [],
+    "certifications": [],
+    "projects": [],
+    "languages": []
+  },
+  "schema_mapping": {
+    "fields_populated": 0,
+    "total_fields": 16,
+    "completion_percentage": 0.0,
+    "field_details": [
+      {
+        "field_name": "contact.full_name",
+        "target_type": "string",
+        "is_required": true,
+        "is_extracted": false,
+        "source_section": "Header / Personal Details",
+        "confidence_score": 0.0,
+        "description": "Candidate's full name, extracted from the top header of the resume."
+      },
+      {
+        "field_name": "contact.email",
+        "target_type": "string (email)",
+        "is_required": true,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's primary contact email address."
+      },
+      {
+        "field_name": "contact.phone",
+        "target_type": "string (phone)",
+        "is_required": true,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's telephone / mobile phone number."
+      },
+      {
+        "field_name": "contact.location",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's residential location or work city."
+      },
+      {
+        "field_name": "contact.linkedin_url",
+        "target_type": "string (url) | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "URL to candidate's LinkedIn profile."
+      },
+      {
+        "field_name": "professional_title",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Subtitle",
+        "confidence_score": 0.0,
+        "description": "Candidate's target headline or most recent job title."
+      },
+      {
+        "field_name": "summary",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Professional Summary / Profile / Objective",
+        "confidence_score": 0.0,
+        "description": "Executive bio, professional overview, or career objective."
+      },
+      {
+        "field_name": "total_experience_years",
+        "target_type": "float | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Summary / Experience Calculation",
+        "confidence_score": 0.0,
+        "description": "Total professional experience in years."
+      },
+      {
+        "field_name": "skills.technical_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Technical Competencies",
+        "confidence_score": 0.0,
+        "description": "Technical programming languages and core software competencies."
+      },
+      {
+        "field_name": "skills.tools_and_platforms",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Tools & Technologies",
+        "confidence_score": 0.0,
+        "description": "Software platforms, developer tools, and operational systems."
+      },
+      {
+        "field_name": "skills.domain_and_functional",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Domain Expertise",
+        "confidence_score": 0.0,
+        "description": "Functional domain knowledge (e.g. Hedge Funds, KYC, NAV, Derivatives)."
+      },
+      {
+        "field_name": "skills.all_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills (Aggregated)",
+        "confidence_score": 0.0,
+        "description": "Complete list of candidate skills across all categories."
+      },
+      {
+        "field_name": "experience",
+        "target_type": "array[WorkExperience]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Professional Experience / Work History",
+        "confidence_score": 0.0,
+        "description": "Complete chronological employment records with bullet points."
+      },
+      {
+        "field_name": "education",
+        "target_type": "array[Education]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Education / Academic Qualifications",
+        "confidence_score": 0.0,
+        "description": "University, college, and higher education degree qualifications."
+      },
+      {
+        "field_name": "certifications",
+        "target_type": "array[Certification]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Certifications / Licenses",
+        "confidence_score": 0.0,
+        "description": "Professional accreditations and credentials."
+      },
+      {
+        "field_name": "projects",
+        "target_type": "array[Project]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Projects / Key Engagements",
+        "confidence_score": 0.0,
+        "description": "Major projects or strategic initiatives led by candidate."
+      }
+    ]
+  },
+  "raw_sections": {
+    "projects": "Detailed Critique on DoRight website\nUpon reviewing the website, I noticed the following things:\n1. The first thing which I observed was the color palette\nand typography which is consistent throughout the site which makes it look more professional and highlights the brand identity.\n2. Even though the first impression of the website is usually the color theme and look of the site, the content also plays a crucial role in grabbing the attention of the visitors. The website lacks in detail information related to their clients and successful projects, including which would result in more registrations of new clients.\n3. Although the colour palette of the website is consistent it can use more of visual elements to make the website more attractive and engaging for the users.\n4. The website can also incorporate SEO to improve the\nsite's visibility in search engine results.\n5. The site performs well on mobile devices, making it\neasier for users to access the website according to their convenience.\n6. The subtle effects like animation and hovering on the buttons and links makes the site more interactable.\n7. The search bar feature is missing from the website which\nwould make it easier to access.\n8. Overall the website is fine, but it can definitely use more colour and visual elements to make it more impressive."
+  },
+  "meta": {
+    "status": "needs_review",
+    "human_verified": false,
+    "provider_calls": 0,
+    "source_accounting": {
+      "all_source_text_preserved": true,
+      "total_spans": 26,
+      "assigned_meaningful_spans": 26,
+      "unresolved_meaningful_spans": 0,
+      "non_content_artifacts": 0,
+      "duplicates_excluded": 0,
+      "all_meaningful_text_assigned": true,
+      "semantic_correctness_verified": false,
+      "outcomes": [
+        {
+          "source_id": "e0:0:36",
+          "source_element_index": 0,
+          "start": 0,
+          "end": 36,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e1:0:59",
+          "source_element_index": 1,
+          "start": 0,
+          "end": 59,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e2:0:57",
+          "source_element_index": 2,
+          "start": 0,
+          "end": 57,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e3:0:55",
+          "source_element_index": 3,
+          "start": 0,
+          "end": 55,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e3:55:112",
+          "source_element_index": 3,
+          "start": 55,
+          "end": 112,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e3:112:127",
+          "source_element_index": 3,
+          "start": 112,
+          "end": 127,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e4:0:62",
+          "source_element_index": 4,
+          "start": 0,
+          "end": 62,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e4:62:117",
+          "source_element_index": 4,
+          "start": 62,
+          "end": 117,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e4:117:171",
+          "source_element_index": 4,
+          "start": 117,
+          "end": 171,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e4:171:229",
+          "source_element_index": 4,
+          "start": 171,
+          "end": 229,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e4:229:287",
+          "source_element_index": 4,
+          "start": 229,
+          "end": 287,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: BERT embedding assigned to a labeled K-means centroid"
+        },
+        {
+          "source_id": "e4:287:337",
+          "source_element_index": 4,
+          "start": 287,
+          "end": 337,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e5:0:60",
+          "source_element_index": 5,
+          "start": 0,
+          "end": 60,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e5:60:115",
+          "source_element_index": 5,
+          "start": 60,
+          "end": 115,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e5:115:158",
+          "source_element_index": 5,
+          "start": 115,
+          "end": 158,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e6:0:54",
+          "source_element_index": 6,
+          "start": 0,
+          "end": 54,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e7:0:43",
+          "source_element_index": 7,
+          "start": 0,
+          "end": 43,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e8:0:54",
+          "source_element_index": 8,
+          "start": 0,
+          "end": 54,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e9:0:58",
+          "source_element_index": 9,
+          "start": 0,
+          "end": 58,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e9:58:70",
+          "source_element_index": 9,
+          "start": 58,
+          "end": 70,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e10:0:57",
+          "source_element_index": 10,
+          "start": 0,
+          "end": 57,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e10:57:108",
+          "source_element_index": 10,
+          "start": 57,
+          "end": 108,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e11:0:59",
+          "source_element_index": 11,
+          "start": 0,
+          "end": 59,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e12:0:31",
+          "source_element_index": 12,
+          "start": 0,
+          "end": 31,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e13:0:63",
+          "source_element_index": 13,
+          "start": 0,
+          "end": 63,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e13:63:117",
+          "source_element_index": 13,
+          "start": 63,
+          "end": 117,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Insufficient separation between semantic clusters"
+        }
+      ]
+    },
+    "document_scope": {
+      "kind": "website_critique",
+      "candidate_resume": false,
+      "reason": "Explicit website-critique title and document-purpose statement"
+    },
+    "source_inventory_sha256": "cfdb292d64f49aabc92d0f6dd127ecec66d5ee00ae3d32f1f6588f55d9747fad",
+    "field_evidence": {},
+    "record_reviews": [],
+    "missing_required_fields": [
+      "contact.full_name",
+      "contact.email",
+      "contact.phone"
+    ],
+    "warnings": [
+      "Document scope is non-resume; candidate fields were left empty and source sections retained.",
+      "Schema validity and field completion do not establish extraction or relationship accuracy.",
+      "Handoff confidence scores are fixed heuristics, not calibrated probabilities.",
+      "Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields."
+    ],
+    "unmapped_blocks": [
+      {
+        "source_id": "e0:0:36",
+        "category": "projects",
+        "text": "Detailed Critique on DoRight website",
+        "page_number": 1
+      },
+      {
+        "source_id": "e1:0:59",
+        "category": "projects",
+        "text": "Upon reviewing the website, I noticed the following things:",
+        "page_number": 1
+      },
+      {
+        "source_id": "e2:0:57",
+        "category": "projects",
+        "text": "1. The first thing which I observed was the color palette",
+        "page_number": 1
+      },
+      {
+        "source_id": "e3:0:55",
+        "category": "projects",
+        "text": "and typography which is consistent throughout the site ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e3:55:112",
+        "category": "projects",
+        "text": "which makes it look more professional and highlights the ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e3:112:127",
+        "category": "projects",
+        "text": "brand identity.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e4:0:62",
+        "category": "projects",
+        "text": "2. Even though the first impression of the website is usually ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e4:62:117",
+        "category": "projects",
+        "text": "the color theme and look of the site, the content also ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e4:117:171",
+        "category": "projects",
+        "text": "plays a crucial role in grabbing the attention of the ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e4:171:229",
+        "category": "projects",
+        "text": "visitors. The website lacks in detail information related ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e4:229:287",
+        "category": "projects",
+        "text": "to their clients and successful projects, including which ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e4:287:337",
+        "category": "projects",
+        "text": "would result in more registrations of new clients.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:0:60",
+        "category": "projects",
+        "text": "3. Although the colour palette of the website is consistent ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:60:115",
+        "category": "projects",
+        "text": "it can use more of visual elements to make the website ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:115:158",
+        "category": "projects",
+        "text": "more attractive and engaging for the users.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e6:0:54",
+        "category": "projects",
+        "text": "4. The website can also incorporate SEO to improve the",
+        "page_number": 1
+      },
+      {
+        "source_id": "e7:0:43",
+        "category": "projects",
+        "text": "site's visibility in search engine results.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:0:54",
+        "category": "projects",
+        "text": "5. The site performs well on mobile devices, making it",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:0:58",
+        "category": "projects",
+        "text": "easier for users to access the website according to their ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:58:70",
+        "category": "projects",
+        "text": "convenience.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e10:0:57",
+        "category": "projects",
+        "text": "6. The subtle effects like animation and hovering on the ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e10:57:108",
+        "category": "projects",
+        "text": "buttons and links makes the site more interactable.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e11:0:59",
+        "category": "projects",
+        "text": "7. The search bar feature is missing from the website which",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:0:31",
+        "category": "projects",
+        "text": "would make it easier to access.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e13:0:63",
+        "category": "projects",
+        "text": "8. Overall the website is fine, but it can definitely use more ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e13:63:117",
+        "category": "projects",
+        "text": "colour and visual elements to make it more impressive.",
+        "page_number": 1
+      }
+    ],
+    "needs_review": []
+  }
+}

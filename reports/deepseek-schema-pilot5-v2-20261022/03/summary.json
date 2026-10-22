@@ -1,0 +1,101 @@
+{
+  "document": 3,
+  "file": "A Suribhotla.pdf",
+  "status": "flagged",
+  "schema_valid": true,
+  "reference_denominator": 17,
+  "reference_value_matches": 17,
+  "before_raw": {
+    "populated_fields": 100,
+    "citation_valid_fields": 100,
+    "citation_compliance_percent": 100.0,
+    "citation_contract_valid": true,
+    "evidence_backed_matches": 17,
+    "issue_kinds": {}
+  },
+  "after_candidate": {
+    "populated_fields": 100,
+    "citation_valid_fields": 100,
+    "citation_compliance_percent": 100.0,
+    "citation_contract_valid": true,
+    "evidence_backed_matches": 17,
+    "issue_kinds": {}
+  },
+  "normalizations": [],
+  "omission_repairs": [],
+  "rejections": [],
+  "uncertainty_flags": [
+    {
+      "path": "/experience/0",
+      "kind": "ambiguous_source",
+      "detail": "Client: HSBC (Financial Services) is explicitly a client of Virtusa, not the employer; client relationship retained only in notes/uncertainties, not as company.",
+      "source_ids": [
+        "e34:40:74"
+      ]
+    },
+    {
+      "path": "/experience/1",
+      "kind": "ambiguous_source",
+      "detail": "Client: L&T Metro Rail Limited is explicitly a client of Keolis Hyderabad Mass Rapid Transit System Ltd; not used as employer.",
+      "source_ids": [
+        "e60:59:90"
+      ]
+    },
+    {
+      "path": "/experience/2",
+      "kind": "ambiguous_source",
+      "detail": "Client: Uber International is explicitly a client of Concentrix; not used as employer.",
+      "source_ids": [
+        "e77:27:54"
+      ]
+    },
+    {
+      "path": "/contact/full_name",
+      "kind": "ambiguous_source",
+      "detail": "Name appears only as 'A Suribhotla'; email local part suggests 'Abhishek' but was not used to infer the name.",
+      "source_ids": [
+        "e0:0:12",
+        "e2:27:63"
+      ]
+    },
+    {
+      "path": "/contact/full_name",
+      "kind": "garbled_header",
+      "detail": "Header block 'A Suribhotla' may be a truncated or initial-only rendering of the candidate name; email username not used to expand it.",
+      "source_ids": [
+        "e0:0:12",
+        "e2:27:63"
+      ]
+    },
+    {
+      "path": "/experience/0/role",
+      "kind": "dual_title",
+      "detail": "Two titles listed together as 'Senior Software Engineer / Senior Data Analyst'; not split or selected.",
+      "source_ids": [
+        "e33:0:46"
+      ]
+    },
+    {
+      "path": "/experience/1/role",
+      "kind": "dual_title",
+      "detail": "Two titles listed together as 'Senior Data Analyst / BI Analyst'; not split or selected.",
+      "source_ids": [
+        "e59:0:32"
+      ]
+    },
+    {
+      "path": "/total_experience_years",
+      "kind": "stated_experience",
+      "detail": "8+ years is an explicitly stated qualifier from the summary; the number 8 is used without calculating tenure from dates.",
+      "source_ids": [
+        "e4:0:84"
+      ]
+    },
+    {
+      "path": "/total_experience_years",
+      "kind": "approximate_experience",
+      "detail": "Numeric schema loses a source qualification; preserve it in metadata."
+    }
+  ],
+  "accepted": false
+}

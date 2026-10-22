@@ -1,0 +1,87 @@
+{
+  "document": 5,
+  "file": "AswathyRajagopal.pdf",
+  "status": "flagged",
+  "schema_valid": true,
+  "reference_denominator": 18,
+  "reference_value_matches": 17,
+  "before_raw": {
+    "populated_fields": 93,
+    "citation_valid_fields": 93,
+    "citation_compliance_percent": 100.0,
+    "citation_contract_valid": true,
+    "evidence_backed_matches": 17,
+    "issue_kinds": {}
+  },
+  "after_candidate": {
+    "populated_fields": 93,
+    "citation_valid_fields": 93,
+    "citation_compliance_percent": 100.0,
+    "citation_contract_valid": true,
+    "evidence_backed_matches": 17,
+    "issue_kinds": {}
+  },
+  "normalizations": [],
+  "alignment_adjustments": [],
+  "omission_repairs": [],
+  "rejections": [],
+  "uncertainty_flags": [
+    {
+      "path": "total_experience_years",
+      "kind": "ambiguous_source",
+      "detail": "Summary states '8+ years of experience' but this is a qualitative statement not a precise tenure; no calculated tenure provided.",
+      "source_ids": [
+        "e2:0:134"
+      ]
+    },
+    {
+      "path": "experience/0/end_date",
+      "kind": "ambiguous_source",
+      "detail": "End date 'Aug 2026' is later than any plausible present; could be a typo or future-dated contract, ownership uncertain.",
+      "source_ids": [
+        "e15:0:110"
+      ]
+    },
+    {
+      "path": "experience/3/start_date",
+      "kind": "ambiguous_source",
+      "detail": "Header 'May 2017 | Nov 2020' uses pipe separator making start/end boundaries ambiguous.",
+      "source_ids": [
+        "e44:0:65"
+      ]
+    },
+    {
+      "path": "professional_title",
+      "kind": "upstream_defect",
+      "detail": "The professional title was derived from the summary opening text, not a dedicated headline field.",
+      "source_ids": [
+        "e2:0:134"
+      ]
+    },
+    {
+      "path": "experience/0/end_date",
+      "kind": "suspicious_date",
+      "detail": "End date Aug 2026 is in the future relative to a plausible present; may indicate 'Present' misparse or typo. Retained literal value.",
+      "source_ids": [
+        "e15:0:110"
+      ]
+    },
+    {
+      "path": "experience/3/duration",
+      "kind": "ambiguous_range",
+      "detail": "Date string 'May 2017 | Nov 2020' uses pipes rather than a dash; start/end assignment inferred from ordering.",
+      "source_ids": [
+        "e44:0:65"
+      ]
+    },
+    {
+      "path": "summary",
+      "kind": "qualitative_experience",
+      "detail": "Source says '8+ years of experience'; explicit number retained in summary text only, no computed tenure.",
+      "source_ids": [
+        "e2:0:134"
+      ]
+    }
+  ],
+  "accepted": false
+}

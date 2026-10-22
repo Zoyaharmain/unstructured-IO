@@ -54,11 +54,12 @@ paddleocr = ["paddlepaddle>=3.3.0,<4", "unstructured-paddleocr==2.10.0"]
 pdf-hires = "pdf_hires.__main__:main"
 
 [tool.setuptools]
-packages = ["local_api", "local_api.core", "local_api.routes", "local_api.schemas", "local_api.services", "local_api.utils", "local_api.vendor", "pdf_hires", "pdf_hires._vendor", "pdf_hires._vendor.cleaners", "pdf_hires._vendor.common", "pdf_hires._vendor.documents", "pdf_hires._vendor.file_utils", "pdf_hires._vendor.metrics", "pdf_hires._vendor.metrics.table", "pdf_hires._vendor.nlp", "pdf_hires._vendor.partition", "pdf_hires._vendor.partition.common", "pdf_hires._vendor.partition.pdf_image", "pdf_hires._vendor.partition.pdf_image.analysis", "pdf_hires._vendor.partition.utils", "pdf_hires._vendor.partition.utils.ocr_models", "pdf_hires._vendor.patches", "pdf_hires._vendor.staging"]
+packages = ["local_api", "local_api.core", "local_api.routes", "local_api.schemas", "local_api.services", "local_api.utils", "local_api.vendor", "local_api.vendor.handoff_schema", "pdf_hires", "pdf_hires._vendor", "pdf_hires._vendor.cleaners", "pdf_hires._vendor.common", "pdf_hires._vendor.documents", "pdf_hires._vendor.file_utils", "pdf_hires._vendor.metrics", "pdf_hires._vendor.metrics.table", "pdf_hires._vendor.nlp", "pdf_hires._vendor.partition", "pdf_hires._vendor.partition.common", "pdf_hires._vendor.partition.pdf_image", "pdf_hires._vendor.partition.pdf_image.analysis", "pdf_hires._vendor.partition.utils", "pdf_hires._vendor.partition.utils.ocr_models", "pdf_hires._vendor.patches", "pdf_hires._vendor.staging"]
 package-dir = {"" = "src", "local_api" = "local_api"}
 
 [tool.setuptools.package-data]
 "local_api" = ["static/*", "static/vendor/*", "data/*.json"]
+"local_api.vendor.handoff_schema" = ["README.md", "PROVENANCE.json"]
 "*" = ["*.txt", "*.json", "*.jsonl", "*.csv", "*.yaml", "*.yml", "py.typed"]
 
 [tool.pytest.ini_options]

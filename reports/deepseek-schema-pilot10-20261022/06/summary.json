@@ -1,0 +1,73 @@
+{
+  "document": 6,
+  "file": "Manisha Singh.pdf",
+  "status": "flagged",
+  "schema_valid": true,
+  "reference_denominator": 10,
+  "reference_value_matches": 10,
+  "before_raw": {
+    "populated_fields": 52,
+    "citation_valid_fields": 52,
+    "citation_compliance_percent": 100.0,
+    "citation_contract_valid": true,
+    "evidence_backed_matches": 10,
+    "issue_kinds": {}
+  },
+  "after_candidate": {
+    "populated_fields": 52,
+    "citation_valid_fields": 52,
+    "citation_compliance_percent": 100.0,
+    "citation_contract_valid": true,
+    "evidence_backed_matches": 10,
+    "issue_kinds": {}
+  },
+  "normalizations": [],
+  "alignment_adjustments": [],
+  "omission_repairs": [],
+  "rejections": [],
+  "uncertainty_flags": [
+    {
+      "path": "/experience/1/responsibilities/1",
+      "kind": "upstream_defect",
+      "detail": "Responsibility sentence appears truncated ('ensuring') and continuation appears as detached block 'compliance with company policies and regulatory requirements.' mapped as separate item.",
+      "source_ids": [
+        "e14:166:247",
+        "e17:0:61"
+      ]
+    },
+    {
+      "path": "/experience/0/role",
+      "kind": "classification",
+      "detail": "'Barista Trainer' includes trainee/trainer qualifier; role title retained verbatim without assuming additional responsibilities.",
+      "source_ids": [
+        "e5:0:39"
+      ]
+    },
+    {
+      "path": "/experience/1/end_date",
+      "kind": "date_anomaly",
+      "detail": "End date '2 July 2026' is in the future; retained verbatim without inferring current employment status.",
+      "source_ids": [
+        "e12:0:23"
+      ]
+    },
+    {
+      "path": "/experience/1/responsibilities/1",
+      "kind": "garbled_text",
+      "detail": "Sentence fragment 'ensuring' lacks completion; following block about compliance may belong to this item but association is uncertain.",
+      "source_ids": [
+        "e14:166:247",
+        "e17:0:61"
+      ]
+    },
+    {
+      "path": "/contact/full_name",
+      "kind": "header_formatting",
+      "detail": "Name block was locally categorized as needs_review; treated as candidate name from explicit heading text only.",
+      "source_ids": [
+        "e0:0:13"
+      ]
+    }
+  ],
+  "accepted": false
+}

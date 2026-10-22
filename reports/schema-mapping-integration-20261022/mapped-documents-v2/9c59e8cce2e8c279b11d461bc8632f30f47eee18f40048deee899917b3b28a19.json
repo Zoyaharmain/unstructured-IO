@@ -1,0 +1,1201 @@
+{
+  "success": true,
+  "source": "Abhishek Barnwa.pdf",
+  "extraction_mode": "existing_blocks_schema_mapping",
+  "data": {
+    "contact": {
+      "full_name": "Abhishek Barnwal",
+      "email": "tech.abhishek.barnwal@gmail.com",
+      "phone": "+91 7004885397",
+      "location": "Bengaluru",
+      "linkedin_url": "linkedin.com/in/abhishek-barnwal",
+      "github_url": null,
+      "portfolio_url": null
+    },
+    "professional_title": null,
+    "summary": "ServiceNow Developer with 4 years of experience at Virtusa Pvt Ltd, specializing in ITSM module development, workflow automation, and platform customization. Skilled in gathering client requirements, translating business needs into scalable technical solutions, and delivering high-quality results. Proven ability to enhance operational efficiency through automation and cross-functional collaboration.",
+    "total_experience_years": 4.0,
+    "skills": {
+      "technical_skills": [
+        "SQL",
+        "Java",
+        "JavaScript"
+      ],
+      "tools_and_platforms": [
+        "Git",
+        "Postman"
+      ],
+      "domain_and_functional": [],
+      "soft_skills": [],
+      "all_skills": [
+        "SQL",
+        "Java",
+        "JavaScript",
+        "Git",
+        "Postman",
+        "JavaScript (JS)",
+        "Java 11",
+        "HTML",
+        "CSS",
+        "ServiceNow: ITSM",
+        "ACLs",
+        "SLAs",
+        "Flow or Workflow Designer",
+        "Service Portal",
+        "App Engine Studio",
+        "UI Builder",
+        "Scripting",
+        "Integration",
+        "Spring Boot",
+        "Spring Framework",
+        "Hibernate-JPA",
+        "RESTful",
+        "Maven",
+        "SQL Workbench",
+        "ServiceNow"
+      ]
+    },
+    "experience": [
+      {
+        "company": "",
+        "role": "Software Engineer",
+        "start_date": "May 2022",
+        "end_date": "Present",
+        "duration": "May 2022 – Present",
+        "location": null,
+        "responsibilities": [
+          "Developed interactive ServiceNow dashboards and reports with dynamic content blocks and filters, enabling real-time data analysis ",
+          "Designed and enforced data validation rules and transformation logic to implement bulk data import solutions using Import Sets and ",
+          "Managed roles and access controls, developed and deployed user surveys.Contributed to seamless ServiceNow operations, enhancing ",
+          "Led end-to-end client engagement, from requirement gathering to designing and delivering effective technical solutions."
+        ],
+        "technologies": []
+      },
+      {
+        "company": "Comcast (Mass Media Corporation)",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [
+          "Designed and implemented Flows and Sub-Flows using Flow Designer, automated tasks using Background Scripts, managed data "
+        ],
+        "technologies": []
+      }
+    ],
+    "education": [
+      {
+        "institution": "Techno Main Salt Lake College",
+        "degree": "B.Tech in Computer Science | 8.9 CGPA",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      }
+    ],
+    "certifications": [
+      {
+        "name": "CERTIFICATIONS & TRAININGS\nServiceNow CSA – View Certificate\nOracle Certified Java Associate (OCJA) – View Certificate\nNPTEL – Programming and Data Structures – View Certificate",
+        "issuer": null,
+        "issue_year": null
+      }
+    ],
+    "projects": [],
+    "languages": []
+  },
+  "schema_mapping": {
+    "fields_populated": 13,
+    "total_fields": 16,
+    "completion_percentage": 81.2,
+    "field_details": [
+      {
+        "field_name": "contact.full_name",
+        "target_type": "string",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Personal Details",
+        "confidence_score": 0.95,
+        "description": "Candidate's full name, extracted from the top header of the resume."
+      },
+      {
+        "field_name": "contact.email",
+        "target_type": "string (email)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.98,
+        "description": "Candidate's primary contact email address."
+      },
+      {
+        "field_name": "contact.phone",
+        "target_type": "string (phone)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.95,
+        "description": "Candidate's telephone / mobile phone number."
+      },
+      {
+        "field_name": "contact.location",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.85,
+        "description": "Candidate's residential location or work city."
+      },
+      {
+        "field_name": "contact.linkedin_url",
+        "target_type": "string (url) | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.9,
+        "description": "URL to candidate's LinkedIn profile."
+      },
+      {
+        "field_name": "professional_title",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Subtitle",
+        "confidence_score": 0.0,
+        "description": "Candidate's target headline or most recent job title."
+      },
+      {
+        "field_name": "summary",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Summary / Profile / Objective",
+        "confidence_score": 0.85,
+        "description": "Executive bio, professional overview, or career objective."
+      },
+      {
+        "field_name": "total_experience_years",
+        "target_type": "float | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Summary / Experience Calculation",
+        "confidence_score": 0.9,
+        "description": "Total professional experience in years."
+      },
+      {
+        "field_name": "skills.technical_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills / Technical Competencies",
+        "confidence_score": 0.92,
+        "description": "Technical programming languages and core software competencies."
+      },
+      {
+        "field_name": "skills.tools_and_platforms",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills / Tools & Technologies",
+        "confidence_score": 0.9,
+        "description": "Software platforms, developer tools, and operational systems."
+      },
+      {
+        "field_name": "skills.domain_and_functional",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Domain Expertise",
+        "confidence_score": 0.0,
+        "description": "Functional domain knowledge (e.g. Hedge Funds, KYC, NAV, Derivatives)."
+      },
+      {
+        "field_name": "skills.all_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills (Aggregated)",
+        "confidence_score": 0.95,
+        "description": "Complete list of candidate skills across all categories."
+      },
+      {
+        "field_name": "experience",
+        "target_type": "array[WorkExperience]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Experience / Work History",
+        "confidence_score": 0.92,
+        "description": "Complete chronological employment records with bullet points."
+      },
+      {
+        "field_name": "education",
+        "target_type": "array[Education]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Education / Academic Qualifications",
+        "confidence_score": 0.9,
+        "description": "University, college, and higher education degree qualifications."
+      },
+      {
+        "field_name": "certifications",
+        "target_type": "array[Certification]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Certifications / Licenses",
+        "confidence_score": 0.8,
+        "description": "Professional accreditations and credentials."
+      },
+      {
+        "field_name": "projects",
+        "target_type": "array[Project]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Projects / Key Engagements",
+        "confidence_score": 0.0,
+        "description": "Major projects or strategic initiatives led by candidate."
+      }
+    ]
+  },
+  "raw_sections": {
+    "personal_information": "Abhishek Barnwal\n(cid:131) +91 7004885397 # tech.abhishek.barnwal@gmail.com * Bengaluru, India (cid:239) linkedin.com/in/abhishek-barnwal",
+    "experience": "ServiceNow Developer \nPROJECT EXPERIENCE\nVirtusa Pvt. Ltd. Software Engineer\nMay 2022 – Present Bengaluru, India\nSiemens Healthineers Technology Used: ServiceNow and SAP Integration – Integrated SAP systems with ServiceNow using OAuth 2.0 authentication and REST APIs to securely retrieve and provide seamless\ndata flow between SAP and ServiceNow platforms.\nDeveloped interactive ServiceNow dashboards and reports with dynamic content blocks and filters, enabling real-time data analysis and decision-making.\nDesigned and enforced data validation rules and transformation logic to implement bulk data import solutions using Import Sets and Transform Maps to process Excel data into ServiceNow tables.\nManaged roles and access controls, developed and deployed user surveys.Contributed to seamless ServiceNow operations, enhancing platform performance, user experience, and workflow automation. Created Scheduled Job for emails and reports.\nLed end-to-end client engagement, from requirement gathering to designing and delivering effective technical solutions.\nComcast (Mass Media Corporation) Technology Used: ServiceNow Platform • Delivered end-to-end development and support across core ServiceNow ITSM modules including Incident, Problem, Change, Knowl-\nedge Management, Service Catalog, Request Fulfillment, and Self-Service Portal also worked on creating users, roles, groups.\nProficient in ServiceNow development with strong hands-on experience in App Engine Studio, including designing and building scoped/ custom applications tailored to business needs.\nCustomized and maintained Client Scripts, Business Rules, Script Includes, UI Actions, UI Policies, Notifications, ACLs, and SLAs to align with business processes. Configured Record Producers for Incident to be raised via portal.\nDesigned and implemented Flows and Sub-Flows using Flow Designer, automated tasks using Background Scripts, managed data imports via Import Sets and Transform Maps, ensuring accurate and efficient data transformation into ServiceNow tables.",
+    "summary": "PROFESSIONAL SUMMARY\nServiceNow Developer with 4 years of experience at Virtusa Pvt Ltd, specializing in ITSM module development, workflow automation, and platform customization. Skilled in gathering client requirements, translating business needs into scalable technical solutions, and delivering high-quality results. Proven ability to enhance operational efficiency through automation and cross-functional collaboration. ",
+    "skills": "TECHNICAL SKILLS\nLanguages: JavaScript (JS), Java 11, SQL, HTML, CSS\nServiceNow: ITSM, ACLs, SLAs, Flow or Workflow Designer, Service Portal, App Engine Studio, UI Builder, Scripting, Integration\nFrameworks: Spring Boot, Spring Framework, Hibernate-JPA, RESTful\nTools: Git, Maven, Postman, SQL Workbench, ServiceNow",
+    "certifications": "CERTIFICATIONS & TRAININGS\nServiceNow CSA – View Certificate\nOracle Certified Java Associate (OCJA) – View Certificate\nNPTEL – Programming and Data Structures – View Certificate",
+    "awards": "Runner-up – Virtusa ServiceNow Hackathon won cash prize",
+    "education": "EDUCATION\nTechno Main Salt Lake College B.Tech in Computer Science | 8.9 CGPA\n2018 – 2022 Kolkata, West Bengal",
+    "interests": "HOBBIES\nCricket, Coding, Watching Movies"
+  },
+  "meta": {
+    "status": "needs_review",
+    "human_verified": false,
+    "provider_calls": 0,
+    "source_accounting": {
+      "all_source_text_preserved": true,
+      "total_spans": 54,
+      "assigned_meaningful_spans": 53,
+      "unresolved_meaningful_spans": 0,
+      "non_content_artifacts": 1,
+      "duplicates_excluded": 0,
+      "all_meaningful_text_assigned": true,
+      "semantic_correctness_verified": false,
+      "outcomes": [
+        {
+          "source_id": "e0:0:16",
+          "source_element_index": 0,
+          "start": 0,
+          "end": 16,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e1:0:21",
+          "source_element_index": 1,
+          "start": 0,
+          "end": 21,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: BERT embedding assigned to a labeled K-means centroid"
+        },
+        {
+          "source_id": "e1:21:141",
+          "source_element_index": 1,
+          "start": 21,
+          "end": 141,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e2:0:20",
+          "source_element_index": 2,
+          "start": 0,
+          "end": 20,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e3:0:118",
+          "source_element_index": 3,
+          "start": 0,
+          "end": 118,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:118:241",
+          "source_element_index": 3,
+          "start": 118,
+          "end": 241,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:241:367",
+          "source_element_index": 3,
+          "start": 241,
+          "end": 367,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:367:403",
+          "source_element_index": 3,
+          "start": 367,
+          "end": 403,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:403:421",
+          "source_element_index": 3,
+          "start": 403,
+          "end": 421,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e4:0:18",
+          "source_element_index": 4,
+          "start": 0,
+          "end": 18,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e4:18:35",
+          "source_element_index": 4,
+          "start": 18,
+          "end": 35,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e5:0:19",
+          "source_element_index": 5,
+          "start": 0,
+          "end": 19,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e5:19:35",
+          "source_element_index": 5,
+          "start": 19,
+          "end": 35,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e6:0:21",
+          "source_element_index": 6,
+          "start": 0,
+          "end": 21,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e6:21:68",
+          "source_element_index": 6,
+          "start": 21,
+          "end": 68,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e6:68:71",
+          "source_element_index": 6,
+          "start": 68,
+          "end": 71,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e6:71:196",
+          "source_element_index": 6,
+          "start": 71,
+          "end": 196,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e7:0:47",
+          "source_element_index": 7,
+          "start": 0,
+          "end": 47,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:0:130",
+          "source_element_index": 8,
+          "start": 0,
+          "end": 130,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:130:150",
+          "source_element_index": 8,
+          "start": 130,
+          "end": 150,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:0:131",
+          "source_element_index": 9,
+          "start": 0,
+          "end": 131,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:131:191",
+          "source_element_index": 9,
+          "start": 131,
+          "end": 191,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e10:0:128",
+          "source_element_index": 10,
+          "start": 0,
+          "end": 128,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e10:128:237",
+          "source_element_index": 10,
+          "start": 128,
+          "end": 237,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e11:0:119",
+          "source_element_index": 11,
+          "start": 0,
+          "end": 119,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:0:33",
+          "source_element_index": 12,
+          "start": 0,
+          "end": 33,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:33:69",
+          "source_element_index": 12,
+          "start": 33,
+          "end": 69,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:69:72",
+          "source_element_index": 12,
+          "start": 69,
+          "end": 72,
+          "section": "experience",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e12:72:196",
+          "source_element_index": 12,
+          "start": 72,
+          "end": 196,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e13:0:124",
+          "source_element_index": 13,
+          "start": 0,
+          "end": 124,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e14:0:132",
+          "source_element_index": 14,
+          "start": 0,
+          "end": 132,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e14:132:179",
+          "source_element_index": 14,
+          "start": 132,
+          "end": 179,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e15:0:133",
+          "source_element_index": 15,
+          "start": 0,
+          "end": 133,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e15:133:229",
+          "source_element_index": 15,
+          "start": 133,
+          "end": 229,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e16:0:121",
+          "source_element_index": 16,
+          "start": 0,
+          "end": 121,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e16:121:240",
+          "source_element_index": 16,
+          "start": 121,
+          "end": 240,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e17:0:16",
+          "source_element_index": 17,
+          "start": 0,
+          "end": 16,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e18:0:10",
+          "source_element_index": 18,
+          "start": 0,
+          "end": 10,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e18:10:51",
+          "source_element_index": 18,
+          "start": 10,
+          "end": 51,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e19:0:126",
+          "source_element_index": 19,
+          "start": 0,
+          "end": 126,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e20:0:65",
+          "source_element_index": 20,
+          "start": 0,
+          "end": 65,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e21:0:53",
+          "source_element_index": 21,
+          "start": 0,
+          "end": 53,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e22:0:26",
+          "source_element_index": 22,
+          "start": 0,
+          "end": 26,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e23:0:33",
+          "source_element_index": 23,
+          "start": 0,
+          "end": 33,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e24:0:57",
+          "source_element_index": 24,
+          "start": 0,
+          "end": 57,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e25:0:55",
+          "source_element_index": 25,
+          "start": 0,
+          "end": 55,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e26:0:58",
+          "source_element_index": 26,
+          "start": 0,
+          "end": 58,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e27:0:9",
+          "source_element_index": 27,
+          "start": 0,
+          "end": 9,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e28:0:30",
+          "source_element_index": 28,
+          "start": 0,
+          "end": 30,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e28:30:67",
+          "source_element_index": 28,
+          "start": 30,
+          "end": 67,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e29:0:12",
+          "source_element_index": 29,
+          "start": 0,
+          "end": 12,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e29:12:32",
+          "source_element_index": 29,
+          "start": 12,
+          "end": 32,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e30:0:7",
+          "source_element_index": 30,
+          "start": 0,
+          "end": 7,
+          "section": "interests",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e31:0:32",
+          "source_element_index": 31,
+          "start": 0,
+          "end": 32,
+          "section": "interests",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        }
+      ]
+    },
+    "document_scope": {
+      "kind": "likely_resume",
+      "candidate_resume": true,
+      "reason": "Contact details, multiple resume section families and dated history; provisional scope only",
+      "human_verified": false
+    },
+    "source_inventory_sha256": "ae2f8e6029ceb6ca4f7af21666d4147869aed05fece654c0c3ab04a182753aa1",
+    "field_evidence": {
+      "contact.full_name": [
+        "e0:0:16",
+        "e1:21:141"
+      ],
+      "contact.email": [
+        "e0:0:16",
+        "e1:21:141"
+      ],
+      "contact.phone": [
+        "e0:0:16",
+        "e1:21:141"
+      ],
+      "contact.location": [
+        "e0:0:16",
+        "e1:21:141"
+      ],
+      "contact.linkedin_url": [
+        "e0:0:16",
+        "e1:21:141"
+      ],
+      "summary": [
+        "e3:0:118",
+        "e3:118:241",
+        "e3:241:367",
+        "e3:367:403"
+      ],
+      "total_experience_years": [
+        "e3:0:118"
+      ],
+      "skills.technical_skills[0]": [
+        "e18:10:51",
+        "e21:0:53"
+      ],
+      "skills.technical_skills[1]": [
+        "e18:10:51"
+      ],
+      "skills.technical_skills[2]": [
+        "e18:10:51"
+      ],
+      "skills.tools_and_platforms[0]": [
+        "e21:0:53"
+      ],
+      "skills.tools_and_platforms[1]": [
+        "e21:0:53"
+      ],
+      "skills.all_skills[0]": [
+        "e18:10:51",
+        "e21:0:53"
+      ],
+      "skills.all_skills[1]": [
+        "e18:10:51"
+      ],
+      "skills.all_skills[2]": [
+        "e18:10:51"
+      ],
+      "skills.all_skills[3]": [
+        "e21:0:53"
+      ],
+      "skills.all_skills[4]": [
+        "e21:0:53"
+      ],
+      "skills.all_skills[5]": [
+        "e18:10:51"
+      ],
+      "skills.all_skills[6]": [
+        "e18:10:51"
+      ],
+      "skills.all_skills[7]": [
+        "e18:10:51"
+      ],
+      "skills.all_skills[8]": [
+        "e18:10:51"
+      ],
+      "skills.all_skills[9]": [
+        "e19:0:126"
+      ],
+      "skills.all_skills[10]": [
+        "e19:0:126"
+      ],
+      "skills.all_skills[11]": [
+        "e19:0:126"
+      ],
+      "skills.all_skills[12]": [
+        "e19:0:126"
+      ],
+      "skills.all_skills[13]": [
+        "e19:0:126"
+      ],
+      "skills.all_skills[14]": [
+        "e19:0:126"
+      ],
+      "skills.all_skills[15]": [
+        "e19:0:126"
+      ],
+      "skills.all_skills[16]": [
+        "e19:0:126"
+      ],
+      "skills.all_skills[17]": [
+        "e19:0:126"
+      ],
+      "skills.all_skills[18]": [
+        "e20:0:65"
+      ],
+      "skills.all_skills[19]": [
+        "e20:0:65"
+      ],
+      "skills.all_skills[20]": [
+        "e20:0:65"
+      ],
+      "skills.all_skills[21]": [
+        "e20:0:65"
+      ],
+      "skills.all_skills[22]": [
+        "e21:0:53"
+      ],
+      "skills.all_skills[23]": [
+        "e21:0:53"
+      ],
+      "skills.all_skills[24]": [
+        "e19:0:126",
+        "e21:0:53"
+      ],
+      "experience[0].role": [
+        "e4:18:35"
+      ],
+      "experience[0].start_date": [
+        "e5:0:19"
+      ],
+      "experience[0].end_date": [
+        "e5:0:19"
+      ],
+      "experience[0].duration": [
+        "e5:0:19"
+      ],
+      "experience[0].responsibilities[0]": [
+        "e8:0:130"
+      ],
+      "experience[0].responsibilities[1]": [
+        "e9:0:131"
+      ],
+      "experience[0].responsibilities[2]": [
+        "e10:0:128"
+      ],
+      "experience[0].responsibilities[3]": [
+        "e11:0:119"
+      ],
+      "experience[1].company": [
+        "e12:0:33"
+      ],
+      "experience[1].responsibilities[0]": [
+        "e16:0:121"
+      ],
+      "education[0].degree": [
+        "e28:30:67"
+      ],
+      "education[0].institution": [
+        "e28:0:30"
+      ],
+      "certifications[0].name": [
+        "e22:0:26",
+        "e23:0:33",
+        "e24:0:57",
+        "e26:0:58"
+      ]
+    },
+    "record_reviews": [
+      {
+        "category": "experience",
+        "entry_id": "experience-1",
+        "source_ids": [
+          "e4:0:18",
+          "e4:18:35",
+          "e5:0:19",
+          "e5:19:35",
+          "e6:0:21",
+          "e6:21:68",
+          "e6:71:196",
+          "e7:0:47",
+          "e8:0:130",
+          "e8:130:150",
+          "e9:0:131",
+          "e9:131:191",
+          "e10:0:128",
+          "e10:128:237",
+          "e11:0:119"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-2",
+        "source_ids": [
+          "e12:0:33",
+          "e12:33:69",
+          "e12:72:196",
+          "e13:0:124",
+          "e14:0:132",
+          "e14:132:179",
+          "e15:0:133",
+          "e15:133:229",
+          "e16:0:121",
+          "e16:121:240"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "education",
+        "entry_id": "education-1",
+        "source_ids": [
+          "e28:0:30",
+          "e28:30:67"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "certifications",
+        "entry_id": "certifications-1",
+        "source_ids": [
+          "e22:0:26",
+          "e23:0:33",
+          "e24:0:57",
+          "e26:0:58"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      }
+    ],
+    "missing_required_fields": [
+      "experience[0].company",
+      "experience[1].role"
+    ],
+    "warnings": [
+      "Schema validity and field completion do not establish extraction or relationship accuracy.",
+      "Handoff confidence scores are fixed heuristics, not calibrated probabilities.",
+      "Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields."
+    ],
+    "unmapped_blocks": [
+      {
+        "source_id": "e1:0:21",
+        "category": "experience",
+        "text": "ServiceNow Developer ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e3:403:421",
+        "category": "experience",
+        "text": "PROJECT EXPERIENCE",
+        "page_number": 1
+      },
+      {
+        "source_id": "e4:0:18",
+        "category": "experience",
+        "text": "Virtusa Pvt. Ltd. ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:19:35",
+        "category": "experience",
+        "text": "Bengaluru, India",
+        "page_number": 1
+      },
+      {
+        "source_id": "e6:0:21",
+        "category": "experience",
+        "text": "Siemens Healthineers ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e6:21:68",
+        "category": "experience",
+        "text": "Technology Used: ServiceNow and SAP Integration",
+        "page_number": 1
+      },
+      {
+        "source_id": "e6:68:71",
+        "category": "experience",
+        "text": " – ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e6:71:196",
+        "category": "experience",
+        "text": "Integrated SAP systems with ServiceNow using OAuth 2.0 authentication and REST APIs to securely retrieve and provide seamless",
+        "page_number": 1
+      },
+      {
+        "source_id": "e7:0:47",
+        "category": "experience",
+        "text": "data flow between SAP and ServiceNow platforms.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:130:150",
+        "category": "experience",
+        "text": "and decision-making.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:131:191",
+        "category": "experience",
+        "text": "Transform Maps to process Excel data into ServiceNow tables.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e10:128:237",
+        "category": "experience",
+        "text": "platform performance, user experience, and workflow automation. Created Scheduled Job for emails and reports.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:33:69",
+        "category": "experience",
+        "text": "Technology Used: ServiceNow Platform",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:69:72",
+        "category": "experience",
+        "text": " • ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:72:196",
+        "category": "experience",
+        "text": "Delivered end-to-end development and support across core ServiceNow ITSM modules including Incident, Problem, Change, Knowl-",
+        "page_number": 1
+      },
+      {
+        "source_id": "e13:0:124",
+        "category": "experience",
+        "text": "edge Management, Service Catalog, Request Fulfillment, and Self-Service Portal also worked on creating users, roles, groups.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e14:0:132",
+        "category": "experience",
+        "text": "Proficient in ServiceNow development with strong hands-on experience in App Engine Studio, including designing and building scoped/ ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e14:132:179",
+        "category": "experience",
+        "text": "custom applications tailored to business needs.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e15:0:133",
+        "category": "experience",
+        "text": "Customized and maintained Client Scripts, Business Rules, Script Includes, UI Actions, UI Policies, Notifications, ACLs, and SLAs to ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e15:133:229",
+        "category": "experience",
+        "text": "align with business processes. Configured Record Producers for Incident to be raised via portal.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e16:121:240",
+        "category": "experience",
+        "text": "imports via Import Sets and Transform Maps, ensuring accurate and efficient data transformation into ServiceNow tables.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e2:0:20",
+        "category": "summary",
+        "text": "PROFESSIONAL SUMMARY",
+        "page_number": 1
+      },
+      {
+        "source_id": "e17:0:16",
+        "category": "skills",
+        "text": "TECHNICAL SKILLS",
+        "page_number": 1
+      },
+      {
+        "source_id": "e18:0:10",
+        "category": "skills",
+        "text": "Languages:",
+        "page_number": 1
+      },
+      {
+        "source_id": "e25:0:55",
+        "category": "awards",
+        "text": "Runner-up – Virtusa ServiceNow Hackathon won cash prize",
+        "page_number": 1
+      },
+      {
+        "source_id": "e27:0:9",
+        "category": "education",
+        "text": "EDUCATION",
+        "page_number": 1
+      },
+      {
+        "source_id": "e29:0:12",
+        "category": "education",
+        "text": "2018 – 2022 ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e29:12:32",
+        "category": "education",
+        "text": "Kolkata, West Bengal",
+        "page_number": 1
+      },
+      {
+        "source_id": "e30:0:7",
+        "category": "interests",
+        "text": "HOBBIES",
+        "page_number": 1
+      },
+      {
+        "source_id": "e31:0:32",
+        "category": "interests",
+        "text": "Cricket, Coding, Watching Movies",
+        "page_number": 1
+      }
+    ],
+    "needs_review": []
+  }
+}

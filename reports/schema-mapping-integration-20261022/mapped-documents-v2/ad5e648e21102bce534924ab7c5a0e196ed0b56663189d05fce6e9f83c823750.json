@@ -1,0 +1,717 @@
+{
+  "success": true,
+  "source": "Keerthi_SAPresume.pdf",
+  "extraction_mode": "existing_blocks_schema_mapping",
+  "data": {
+    "contact": {
+      "full_name": "G Keerthi Reddy",
+      "email": "keerthireddy9980@pmail.com",
+      "phone": "",
+      "location": "Bengaluru",
+      "linkedin_url": null,
+      "github_url": null,
+      "portfolio_url": null
+    },
+    "professional_title": null,
+    "summary": "Linked_ In Professional Summary\nA highly motivated and detail-oriented BCA graduate with a passion for software development, web technologics, and problem-solving. Secking a challenging entry-level\nposition in a dynamic organization where I can utilize my skills and knowledge in computer applications to contribute to business growth and personal developmen",
+    "total_experience_years": null,
+    "skills": {
+      "technical_skills": [],
+      "tools_and_platforms": [],
+      "domain_and_functional": [],
+      "soft_skills": [],
+      "all_skills": [
+        "e SAP EWM structure andS/4HANA Embedded +» Hands-on experience with key processes EWM such as POSC and LOSC",
+        "+ Proficient in business processes related to + Experience in configuring and managing the inbound (Goods Receipt)",
+        "outbound (Goods physical inventory process.",
+        "[ssuc}",
+        "+ Responsible for configuring storage types",
+        "+ Having capacity of configuring and sections",
+        "and defining putaway and stock optimizing Packaging Specifications in SAP removal strategics. EWM to enhance packing processes and",
+        "improve warchouse cfficiency"
+      ]
+    },
+    "experience": [
+      {
+        "company": "",
+        "role": "",
+        "start_date": "November 2024",
+        "end_date": "March 2025",
+        "duration": "November 2024 to March 2025",
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      }
+    ],
+    "education": [
+      {
+        "institution": "",
+        "degree": "BCA : Computer Applications, October 2024 BEH Memorial Institute - Siruguppa",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": "2024",
+        "grade_or_gpa": null
+      }
+    ],
+    "certifications": [
+      {
+        "name": "Certifications e",
+        "issuer": null,
+        "issue_year": null
+      }
+    ],
+    "projects": [
+      {
+        "name": "IBM Al FOUNDATIONS Project",
+        "description": "IBM Al FOUNDATIONS Project",
+        "role": null,
+        "technologies": [],
+        "url": null
+      },
+      {
+        "name": "Project - Created E Learning Website",
+        "description": "Project - Created E Learning Website\nsoftware tools used:",
+        "role": null,
+        "technologies": [],
+        "url": null
+      },
+      {
+        "name": "Operating System: OS windows 7 or Linux",
+        "description": "Operating System: OS windows 7 or Linux",
+        "role": null,
+        "technologies": [],
+        "url": null
+      },
+      {
+        "name": "Application Server: Apche XAMPP",
+        "description": "Application Server: Apche XAMPP",
+        "role": null,
+        "technologies": [],
+        "url": null
+      },
+      {
+        "name": "Database: MySQL",
+        "description": "Database: MySQL",
+        "role": null,
+        "technologies": [],
+        "url": null
+      },
+      {
+        "name": "Technology: HTML, CSS, JAVASCRIPT, BOOTSTAP, PHP",
+        "description": "Technology: HTML, CSS, JAVASCRIPT, BOOTSTAP, PHP",
+        "role": null,
+        "technologies": [],
+        "url": null
+      }
+    ],
+    "languages": []
+  },
+  "schema_mapping": {
+    "fields_populated": 9,
+    "total_fields": 16,
+    "completion_percentage": 56.2,
+    "field_details": [
+      {
+        "field_name": "contact.full_name",
+        "target_type": "string",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Personal Details",
+        "confidence_score": 0.95,
+        "description": "Candidate's full name, extracted from the top header of the resume."
+      },
+      {
+        "field_name": "contact.email",
+        "target_type": "string (email)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.98,
+        "description": "Candidate's primary contact email address."
+      },
+      {
+        "field_name": "contact.phone",
+        "target_type": "string (phone)",
+        "is_required": true,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's telephone / mobile phone number."
+      },
+      {
+        "field_name": "contact.location",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.85,
+        "description": "Candidate's residential location or work city."
+      },
+      {
+        "field_name": "contact.linkedin_url",
+        "target_type": "string (url) | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "URL to candidate's LinkedIn profile."
+      },
+      {
+        "field_name": "professional_title",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Subtitle",
+        "confidence_score": 0.0,
+        "description": "Candidate's target headline or most recent job title."
+      },
+      {
+        "field_name": "summary",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Summary / Profile / Objective",
+        "confidence_score": 0.85,
+        "description": "Executive bio, professional overview, or career objective."
+      },
+      {
+        "field_name": "total_experience_years",
+        "target_type": "float | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Summary / Experience Calculation",
+        "confidence_score": 0.0,
+        "description": "Total professional experience in years."
+      },
+      {
+        "field_name": "skills.technical_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Technical Competencies",
+        "confidence_score": 0.0,
+        "description": "Technical programming languages and core software competencies."
+      },
+      {
+        "field_name": "skills.tools_and_platforms",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Tools & Technologies",
+        "confidence_score": 0.0,
+        "description": "Software platforms, developer tools, and operational systems."
+      },
+      {
+        "field_name": "skills.domain_and_functional",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Domain Expertise",
+        "confidence_score": 0.0,
+        "description": "Functional domain knowledge (e.g. Hedge Funds, KYC, NAV, Derivatives)."
+      },
+      {
+        "field_name": "skills.all_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills (Aggregated)",
+        "confidence_score": 0.95,
+        "description": "Complete list of candidate skills across all categories."
+      },
+      {
+        "field_name": "experience",
+        "target_type": "array[WorkExperience]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Experience / Work History",
+        "confidence_score": 0.92,
+        "description": "Complete chronological employment records with bullet points."
+      },
+      {
+        "field_name": "education",
+        "target_type": "array[Education]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Education / Academic Qualifications",
+        "confidence_score": 0.9,
+        "description": "University, college, and higher education degree qualifications."
+      },
+      {
+        "field_name": "certifications",
+        "target_type": "array[Certification]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Certifications / Licenses",
+        "confidence_score": 0.8,
+        "description": "Professional accreditations and credentials."
+      },
+      {
+        "field_name": "projects",
+        "target_type": "array[Project]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Projects / Key Engagements",
+        "confidence_score": 0.8,
+        "description": "Major projects or strategic initiatives led by candidate."
+      }
+    ]
+  },
+  "raw_sections": {
+    "personal_information": "G Keerthi Reddy\nAddress: Bengaluru, Karnataka Phone: +91 80730 86526 - Email: keerthireddy9980@pmail.com - LinkedIn: https: //clik.now/",
+    "summary": "Linked_ In Professional Summary\nA highly motivated and detail-oriented BCA graduate with a passion for software development, web technologics, and problem-solving. Secking a challenging entry-level\nposition in a dynamic organization where I can utilize my skills and knowledge in computer applications to contribute to business growth and personal developmen",
+    "experience": "Experience SAP EWM Consultant November 2024 to March 2025 ROHELA TECH ~- Bengaluru, Karnataka * Configured master data clements such as material masters, storage locations, resources in the system. * Developed strategies to improve the overall performance of Warchouse Management operations, including inventory accuracy and cycle count optimization.",
+    "education": "Education\nBCA : Computer Applications, October 2024 BEH Memorial Institute - Siruguppa",
+    "skills": "Skills\ne SAP EWM structure andS/4HANA Embedded +» Hands-on experience with key processes EWM such as POSC and LOSC,\n+ Proficient in business processes related to + Experience in configuring and managing the inbound (Goods Receipt), outbound (Goods physical inventory process.\n[ssuc},\n+ Responsible for configuring storage types, + Having capacity of configuring and sections, and defining putaway and stock optimizing Packaging Specifications in SAP removal strategics. EWM to enhance packing processes and\nimprove warchouse cfficiency ",
+    "certifications": "Certifications e ",
+    "projects": "IBM Al FOUNDATIONS Project\nProject - Created E Learning Website\nsoftware tools used:\nOperating System: OS windows 7 or Linux\nApplication Server: Apche XAMPP\nDatabase: MySQL\nTechnology: HTML, CSS, JAVASCRIPT, BOOTSTAP, PHP"
+  },
+  "meta": {
+    "status": "needs_review",
+    "human_verified": false,
+    "provider_calls": 0,
+    "source_accounting": {
+      "all_source_text_preserved": true,
+      "total_spans": 23,
+      "assigned_meaningful_spans": 23,
+      "unresolved_meaningful_spans": 0,
+      "non_content_artifacts": 0,
+      "duplicates_excluded": 0,
+      "all_meaningful_text_assigned": true,
+      "semantic_correctness_verified": false,
+      "outcomes": [
+        {
+          "source_id": "e0:0:15",
+          "source_element_index": 0,
+          "start": 0,
+          "end": 15,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e1:0:119",
+          "source_element_index": 1,
+          "start": 0,
+          "end": 119,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e1:119:150",
+          "source_element_index": 1,
+          "start": 119,
+          "end": 150,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e2:0:165",
+          "source_element_index": 2,
+          "start": 0,
+          "end": 165,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: BERT embedding assigned to a labeled K-means centroid"
+        },
+        {
+          "source_id": "e3:0:160",
+          "source_element_index": 3,
+          "start": 0,
+          "end": 160,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: BERT embedding assigned to a labeled K-means centroid"
+        },
+        {
+          "source_id": "e4:0:11",
+          "source_element_index": 4,
+          "start": 0,
+          "end": 11,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e4:11:350",
+          "source_element_index": 4,
+          "start": 11,
+          "end": 350,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e5:0:9",
+          "source_element_index": 5,
+          "start": 0,
+          "end": 9,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e6:0:76",
+          "source_element_index": 6,
+          "start": 0,
+          "end": 76,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e7:0:6",
+          "source_element_index": 7,
+          "start": 0,
+          "end": 6,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e8:0:108",
+          "source_element_index": 8,
+          "start": 0,
+          "end": 108,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:0:159",
+          "source_element_index": 9,
+          "start": 0,
+          "end": 159,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e10:0:7",
+          "source_element_index": 10,
+          "start": 0,
+          "end": 7,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e11:0:222",
+          "source_element_index": 11,
+          "start": 0,
+          "end": 222,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:0:29",
+          "source_element_index": 12,
+          "start": 0,
+          "end": 29,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:29:46",
+          "source_element_index": 12,
+          "start": 29,
+          "end": 46,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:46:72",
+          "source_element_index": 12,
+          "start": 46,
+          "end": 72,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e13:0:36",
+          "source_element_index": 13,
+          "start": 0,
+          "end": 36,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e14:0:20",
+          "source_element_index": 14,
+          "start": 0,
+          "end": 20,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e15:0:39",
+          "source_element_index": 15,
+          "start": 0,
+          "end": 39,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e16:0:31",
+          "source_element_index": 16,
+          "start": 0,
+          "end": 31,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e17:0:15",
+          "source_element_index": 17,
+          "start": 0,
+          "end": 15,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e18:0:48",
+          "source_element_index": 18,
+          "start": 0,
+          "end": 48,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        }
+      ]
+    },
+    "document_scope": {
+      "kind": "likely_resume",
+      "candidate_resume": true,
+      "reason": "Contact details, multiple resume section families and dated history; provisional scope only",
+      "human_verified": false
+    },
+    "source_inventory_sha256": "41c57a83d3921466457be887ad6fbd94b49b5b71b6be1045f5a9f04cc21f33fa",
+    "field_evidence": {
+      "contact.full_name": [
+        "e0:0:15",
+        "e1:0:119"
+      ],
+      "contact.email": [
+        "e0:0:15",
+        "e1:0:119"
+      ],
+      "contact.location": [
+        "e0:0:15",
+        "e1:0:119"
+      ],
+      "summary": [
+        "e1:119:150",
+        "e2:0:165",
+        "e3:0:160"
+      ],
+      "skills.all_skills[0]": [
+        "e8:0:108"
+      ],
+      "skills.all_skills[1]": [
+        "e9:0:159"
+      ],
+      "skills.all_skills[2]": [
+        "e9:0:159"
+      ],
+      "skills.all_skills[3]": [
+        "e10:0:7"
+      ],
+      "skills.all_skills[4]": [
+        "e11:0:222"
+      ],
+      "skills.all_skills[5]": [
+        "e11:0:222"
+      ],
+      "skills.all_skills[6]": [
+        "e11:0:222"
+      ],
+      "skills.all_skills[7]": [
+        "e12:0:29"
+      ],
+      "experience[0].start_date": [
+        "e4:11:350"
+      ],
+      "experience[0].end_date": [
+        "e4:11:350"
+      ],
+      "experience[0].duration": [
+        "e4:11:350"
+      ],
+      "education[0].degree": [
+        "e6:0:76"
+      ],
+      "education[0].graduation_year": [
+        "e6:0:76"
+      ],
+      "projects[0].name": [
+        "e12:46:72"
+      ],
+      "projects[0].description": [
+        "e12:46:72"
+      ],
+      "projects[1].name": [
+        "e13:0:36",
+        "e14:0:20"
+      ],
+      "projects[1].description": [
+        "e13:0:36",
+        "e14:0:20"
+      ],
+      "projects[2].name": [
+        "e15:0:39"
+      ],
+      "projects[2].description": [
+        "e15:0:39"
+      ],
+      "projects[3].name": [
+        "e16:0:31"
+      ],
+      "projects[3].description": [
+        "e16:0:31"
+      ],
+      "projects[4].name": [
+        "e17:0:15"
+      ],
+      "projects[4].description": [
+        "e17:0:15"
+      ],
+      "projects[5].name": [
+        "e18:0:48"
+      ],
+      "projects[5].description": [
+        "e18:0:48"
+      ],
+      "certifications[0].name": [
+        "e12:29:46"
+      ]
+    },
+    "record_reviews": [
+      {
+        "category": "experience",
+        "entry_id": "experience-1",
+        "source_ids": [
+          "e4:11:350"
+        ],
+        "relationship_status": "needs_review",
+        "review_reasons": [
+          "employer_not_established_from_supported_fields"
+        ]
+      },
+      {
+        "category": "education",
+        "entry_id": "education-1",
+        "source_ids": [
+          "e6:0:76"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "projects",
+        "entry_id": "projects-1",
+        "source_ids": [
+          "e12:46:72"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "projects",
+        "entry_id": "projects-2",
+        "source_ids": [
+          "e13:0:36",
+          "e14:0:20"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "projects",
+        "entry_id": "projects-3",
+        "source_ids": [
+          "e15:0:39"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "projects",
+        "entry_id": "projects-4",
+        "source_ids": [
+          "e16:0:31"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "projects",
+        "entry_id": "projects-5",
+        "source_ids": [
+          "e17:0:15"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "projects",
+        "entry_id": "projects-6",
+        "source_ids": [
+          "e18:0:48"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "certifications",
+        "entry_id": "certifications-1",
+        "source_ids": [
+          "e12:29:46"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      }
+    ],
+    "missing_required_fields": [
+      "contact.phone",
+      "experience[0].company",
+      "experience[0].role",
+      "education[0].institution"
+    ],
+    "warnings": [
+      "Schema validity and field completion do not establish extraction or relationship accuracy.",
+      "Handoff confidence scores are fixed heuristics, not calibrated probabilities.",
+      "Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields."
+    ],
+    "unmapped_blocks": [
+      {
+        "source_id": "e4:0:11",
+        "category": "experience",
+        "text": "Experience ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:0:9",
+        "category": "education",
+        "text": "Education",
+        "page_number": 1
+      },
+      {
+        "source_id": "e7:0:6",
+        "category": "skills",
+        "text": "Skills",
+        "page_number": 1
+      }
+    ],
+    "needs_review": []
+  }
+}

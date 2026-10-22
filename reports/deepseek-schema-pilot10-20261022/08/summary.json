@@ -1,0 +1,78 @@
+{
+  "document": 8,
+  "file": "RAMU AKKENAPALLY.pdf",
+  "status": "flagged",
+  "schema_valid": true,
+  "reference_denominator": 16,
+  "reference_value_matches": 12,
+  "before_raw": {
+    "populated_fields": 132,
+    "citation_valid_fields": 119,
+    "citation_compliance_percent": 90.15,
+    "citation_contract_valid": false,
+    "evidence_backed_matches": 12,
+    "issue_kinds": {
+      "no_valid_supporting_quote": 10,
+      "quote_not_in_cited_block": 10,
+      "missing_field_evidence": 3
+    }
+  },
+  "after_candidate": {
+    "populated_fields": 132,
+    "citation_valid_fields": 119,
+    "citation_compliance_percent": 90.15,
+    "citation_contract_valid": false,
+    "evidence_backed_matches": 12,
+    "issue_kinds": {
+      "no_valid_supporting_quote": 10,
+      "quote_not_in_cited_block": 10,
+      "missing_field_evidence": 3
+    }
+  },
+  "normalizations": [],
+  "alignment_adjustments": [],
+  "omission_repairs": [],
+  "rejections": [],
+  "uncertainty_flags": [
+    {
+      "path": "/certifications/2/issuer",
+      "kind": "missing_issuer",
+      "detail": "Issuer for SIP Sense not stated in source; left empty rather than inferred.",
+      "source_ids": [
+        "e30:136:218"
+      ]
+    },
+    {
+      "path": "/certifications/3/issuer",
+      "kind": "missing_issuer",
+      "detail": "Issuer for Avaya Aura Implementation not explicitly stated; left empty.",
+      "source_ids": [
+        "e30:218:244"
+      ]
+    },
+    {
+      "path": "/experience/2/role",
+      "kind": "garbled_source",
+      "detail": "HCL, Wipro 3D Networks and HTMT entries appear packed into a single source block e24; employer/role/date boundaries parsed by exact substrings, ownership of any hidden bullets cannot be confirmed.",
+      "source_ids": [
+        "e24:0:79",
+        "e24:79:149",
+        "e24:149:207"
+      ]
+    },
+    {
+      "path": "/total_experience_years",
+      "kind": "approximate_qualifier",
+      "detail": "Source states \"17+ years\"; numeric field uses 17 while the plus qualifier is retained here.",
+      "source_ids": [
+        "e3:0:86"
+      ]
+    },
+    {
+      "path": "/total_experience_years",
+      "kind": "approximate_experience",
+      "detail": "Numeric schema loses a source qualification; preserve it in metadata."
+    }
+  ],
+  "accepted": false
+}

@@ -1,0 +1,85 @@
+{
+  "document": 5,
+  "file": "AswathyRajagopal.pdf",
+  "status": "flagged",
+  "schema_valid": true,
+  "reference_denominator": 18,
+  "reference_value_matches": 18,
+  "before_raw": {
+    "populated_fields": 93,
+    "citation_valid_fields": 93,
+    "citation_compliance_percent": 100.0,
+    "citation_contract_valid": true,
+    "evidence_backed_matches": 18,
+    "issue_kinds": {}
+  },
+  "after_candidate": {
+    "populated_fields": 93,
+    "citation_valid_fields": 93,
+    "citation_compliance_percent": 100.0,
+    "citation_contract_valid": true,
+    "evidence_backed_matches": 18,
+    "issue_kinds": {}
+  },
+  "normalizations": [],
+  "omission_repairs": [],
+  "rejections": [],
+  "uncertainty_flags": [
+    {
+      "path": "/experience/0/end_date",
+      "kind": "ambiguous_source",
+      "detail": "End date 'Aug 2026' is later than the summary's 8+ years experience and normal chronology; retained verbatim as stated but may be an upstream OCR/date defect.",
+      "source_ids": [
+        "e15:0:110"
+      ]
+    },
+    {
+      "path": "/experience/3/duration",
+      "kind": "upstream_defect",
+      "detail": "State Street Syntel date range has a pipe separator 'May 2017 | Nov 2020' instead of a dash; retained verbatim.",
+      "source_ids": [
+        "e44:0:65"
+      ]
+    },
+    {
+      "path": "/experience/0/end_date",
+      "kind": "ambiguous_date",
+      "detail": "Stated 'Aug 2026' is in the future relative to conventional resume chronology; retained literal but ownership/year reliability is uncertain.",
+      "source_ids": [
+        "e15:0:110"
+      ]
+    },
+    {
+      "path": "/experience/3/responsibilities",
+      "kind": "section_attribution",
+      "detail": "State Street Syntel block lists multiple team sub-sections (Performance and Attribution Team, Index data Management and reporting Team, Transaction management Team); all preserved under this single employer record, but internal team-to-duty mapping is inferred only from ordering.",
+      "source_ids": [
+        "e45:0:33",
+        "e49:0:40",
+        "e53:0:27"
+      ]
+    },
+    {
+      "path": "/skills/domain_and_functional/0",
+      "kind": "qualifier",
+      "detail": "MiFID II is explicitly marked 'exposure' only, not full experience.",
+      "source_ids": [
+        "e5:0:54"
+      ]
+    },
+    {
+      "path": "/total_experience_years",
+      "kind": "derived",
+      "detail": "8+ years reflects the stated summary figure, not a calculated tenure.",
+      "source_ids": [
+        "e2:0:134"
+      ]
+    },
+    {
+      "path": "/total_experience_years",
+      "kind": "approximate_experience",
+      "detail": "Numeric schema loses a source qualification; preserve it in metadata."
+    }
+  ],
+  "accepted": false
+}

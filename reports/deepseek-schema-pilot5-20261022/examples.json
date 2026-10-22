@@ -1,0 +1,324 @@
+[
+  {
+    "document": 1,
+    "field": "/experience/0/company",
+    "source": [
+      {
+        "source_id": "e6:0:36",
+        "quote": "Vigocare Private Limited | Hyderabad"
+      }
+    ],
+    "mapped_value": "Vigocare Private Limited",
+    "mapping_status": "correct_mapping",
+    "raw_citation_status": "citation_supported",
+    "raw_provider_evidence": [
+      {
+        "source_id": "e6:0:36",
+        "quote": "Vigocare Private Limited"
+      }
+    ],
+    "evaluation": "Correct employer, independently separable from location in the block. Raw field citation is exact."
+  },
+  {
+    "document": 1,
+    "field": "/experience/1/start_date",
+    "source": [
+      {
+        "source_id": "e9:1360:1379",
+        "quote": "Feb 2023 - Dec 2023"
+      },
+      {
+        "source_id": "e10:0:25",
+        "quote": "Godavari Cuts | Hyderabad"
+      }
+    ],
+    "mapped_value": null,
+    "mapping_status": "not_populated",
+    "raw_citation_status": "not_populated",
+    "raw_provider_evidence": [],
+    "evaluation": "The date range precedes Godavari Cuts but is attached to the prior responsibilities element. Null is a defensible abstention; not counted as a confirmed mapping omission. The separate end_date/duration are populated from that same uncertain association, which is inconsistent."
+  },
+  {
+    "document": 1,
+    "field": "/education/0/graduation_year",
+    "source": [
+      {
+        "source_id": "e17:0:53",
+        "quote": "July 2024 - Pursuing | Expected Completion: June 2026"
+      }
+    ],
+    "mapped_value": "June 2026",
+    "mapping_status": "correct_mapping",
+    "raw_citation_status": "citation_supported",
+    "raw_provider_evidence": [
+      {
+        "source_id": "e17:0:53",
+        "quote": "June 2026"
+      }
+    ],
+    "evaluation": "Source explicitly says Pursuing / Expected Completion. The output carries June 2026 and its missing_information explains the in-progress qualification. This is not proof the degree was already earned; year formatting needs normalization policy."
+  },
+  {
+    "document": 2,
+    "field": "/skills/technical_skills/7",
+    "source": [
+      {
+        "source_id": "e12:25:139",
+        "quote": "Built scalable microservices with Spring Boot & Spring Security (JWT, Okta OAuth2), and containerized applications"
+      }
+    ],
+    "mapped_value": "Spring Security",
+    "mapping_status": "correct_mapping",
+    "raw_citation_status": "citation_error",
+    "raw_provider_evidence": [
+      {
+        "source_id": "e15:0:111",
+        "quote": "Angular"
+      }
+    ],
+    "evaluation": "Spring Security is present in the freelance source, but its raw citation points to an unrelated skills line. Value support and citation correctness are separate."
+  },
+  {
+    "document": 2,
+    "field": "/education/0/grade_or_gpa",
+    "source": [
+      {
+        "source_id": "e27:24:37",
+        "quote": "CGPA: 7.85/10"
+      }
+    ],
+    "mapped_value": "CGPA: 7.85/10",
+    "mapping_status": "correct_mapping",
+    "raw_citation_status": "citation_supported",
+    "raw_provider_evidence": [
+      {
+        "source_id": "e27:24:37",
+        "quote": "CGPA: 7.85/10"
+      }
+    ],
+    "evaluation": "Correctly preserves CGPA from its academic source despite local language/project category mistakes elsewhere."
+  },
+  {
+    "document": 2,
+    "field": "/projects/0/name",
+    "source": [
+      {
+        "source_id": "e16:13:52",
+        "quote": "1. Healthcare Patient Management System"
+      }
+    ],
+    "mapped_value": "Healthcare Patient Management System",
+    "mapping_status": "correct_mapping",
+    "raw_citation_status": "citation_supported",
+    "raw_provider_evidence": [
+      {
+        "source_id": "e16:13:52",
+        "quote": "Healthcare Patient Management System"
+      }
+    ],
+    "evaluation": "Correct project recovered even though the local block category is experience. Existing local category errors were not treated as authoritative."
+  },
+  {
+    "document": 3,
+    "field": "/skills/technical_skills/0",
+    "source": [
+      {
+        "source_id": "e1:551:598",
+        "quote": "Languages: Go (Golang), JavaScript, TypeScript "
+      }
+    ],
+    "mapped_value": "Go (Golang)",
+    "mapping_status": "correct_mapping",
+    "raw_citation_status": "citation_error",
+    "raw_provider_evidence": [],
+    "evaluation": "Go (Golang) is in source. The provider cites its parent technical_skills array, not the required per-item pointer; strict raw per-field evidence fails. Analyst-derived evidence is separate."
+  },
+  {
+    "document": 3,
+    "field": "/education/0/graduation_year",
+    "source": [
+      {
+        "source_id": "e23:0:5",
+        "quote": "2022 "
+      },
+      {
+        "source_id": "e23:5:10",
+        "quote": "2018 "
+      },
+      {
+        "source_id": "e23:10:14",
+        "quote": "2016"
+      }
+    ],
+    "mapped_value": null,
+    "mapping_status": "not_populated",
+    "raw_citation_status": "not_populated",
+    "raw_provider_evidence": [],
+    "evaluation": "Detached 2022/2018/2016 are not safely associated from block labels alone. Leaving graduation year null is appropriate uncertainty, not a confirmed schema-mapping miss."
+  },
+  {
+    "document": 3,
+    "field": "/experience/1/role",
+    "source": [
+      {
+        "source_id": "e5:0:51",
+        "quote": "Front-End Development Trainee — Besant Technologies"
+      }
+    ],
+    "mapped_value": "Front-End Development Trainee",
+    "mapping_status": "ambiguous",
+    "raw_citation_status": "citation_supported",
+    "raw_provider_evidence": [
+      {
+        "source_id": "e5:0:51",
+        "quote": "Front-End Development Trainee — Besant Technologies"
+      }
+    ],
+    "evaluation": "Front-End Development Trainee is literal source text. Whether a training program belongs under employment requires a policy; no fabricated job title is established."
+  },
+  {
+    "document": 4,
+    "field": "/experience/0/company",
+    "source": [
+      {
+        "source_id": "e24:0:58",
+        "quote": "Company : Tech Mahindra | Business Analyst cum UAT Tester "
+      }
+    ],
+    "mapped_value": "Tech Mahindra",
+    "mapping_status": "correct_mapping",
+    "raw_citation_status": "citation_supported",
+    "raw_provider_evidence": [
+      {
+        "source_id": "e24:0:58",
+        "quote": "Company : Tech Mahindra"
+      }
+    ],
+    "evaluation": "Employer is Tech Mahindra; the client Mastercard is not fabricated as a separate employer. The schema has no client field."
+  },
+  {
+    "document": 4,
+    "field": "/experience/3/responsibilities/0",
+    "source": [
+      {
+        "source_id": "e63:0:103",
+        "quote": "Gathered, analyzed, and documented business, functional, and technical requirements for payment switch "
+      },
+      {
+        "source_id": "e63:103:122",
+        "quote": "migration projects."
+      }
+    ],
+    "mapped_value": "Gathered, analyzed, and documented business, functional, and technical requirements for payment switch migration projects.",
+    "mapping_status": "correct_mapping",
+    "raw_citation_status": "citation_supported",
+    "raw_provider_evidence": [
+      {
+        "source_id": "e63:0:103",
+        "quote": "Gathered, analyzed, and documented business, functional, and technical requirements for payment switch "
+      },
+      {
+        "source_id": "e63:103:122",
+        "quote": "migration projects."
+      }
+    ],
+    "evaluation": "NPCI responsibility recovered from locally labeled projects blocks and attached to the source-supported employer. This corrects a local label problem during mapping without rerunning block detection."
+  },
+  {
+    "document": 4,
+    "field": "/experience/3/responsibilities/-",
+    "source": [
+      {
+        "source_id": "e61:0:56",
+        "quote": "Worked on Tag Mapping to Element level mapping for IMPS."
+      }
+    ],
+    "mapped_value": null,
+    "mapping_status": "missing_assignment",
+    "raw_citation_status": "not_emitted",
+    "raw_provider_evidence": [],
+    "evaluation": "The source work item Worked on Tag Mapping to Element level mapping for IMPS is absent from both mapped responsibilities and projects. This is a source-supported target omission, not absent PDF text."
+  },
+  {
+    "document": 4,
+    "field": "/skills/all_skills/0",
+    "source": [
+      {
+        "source_id": "e71:0:111",
+        "quote": "Designed and executed functional and integration test cases, validating ISO8583 message formats and end-to-end "
+      }
+    ],
+    "mapped_value": "ISO8583",
+    "mapping_status": "correct_mapping",
+    "raw_citation_status": "citation_error",
+    "raw_provider_evidence": [],
+    "evaluation": "ISO8583 is source-supported, but no raw citation is supplied for this duplicate flat-list item. Schema validity alone does not enforce provenance."
+  },
+  {
+    "document": 5,
+    "field": "/education/0/field_of_study",
+    "source": [
+      {
+        "source_id": "e8:38:82",
+        "quote": "Master Of Technology In Intelligent Systems "
+      }
+    ],
+    "mapped_value": null,
+    "mapping_status": "missing_assignment",
+    "raw_citation_status": "not_populated",
+    "raw_provider_evidence": [],
+    "evaluation": "Intelligent Systems is explicit in the degree text but this available schema field is null. Classified as a mapping omission; the degree itself remains populated."
+  },
+  {
+    "document": 5,
+    "field": "/experience/1/responsibilities/0",
+    "source": [
+      {
+        "source_id": "e34:58:163",
+        "quote": "Master’s Thesis: “Appearance based terrain learning and classification for"
+      },
+      {
+        "source_id": "e34:58:163",
+        "quote": "autonomous"
+      },
+      {
+        "source_id": "e35:0:76",
+        "quote": "mobile robot navigation”, advised by Prof Prabhakar Mishra."
+      }
+    ],
+    "mapped_value": "Master’s Thesis: “Appearance based terrain learning and classification for autonomous mobile robot navigation”, advised by Prof Prabhakar Mishra.",
+    "mapping_status": "ambiguous",
+    "raw_citation_status": "not_literal_in_source",
+    "raw_provider_evidence": [
+      {
+        "source_id": "e34:58:163",
+        "quote": "Master’s Thesis: “Appearance based terrain learning and classification for"
+      },
+      {
+        "source_id": "e35:0:76",
+        "quote": "autonomous mobile robot navigation”, advised by Prof Prabhakar Mishra."
+      }
+    ],
+    "evaluation": "Value can be reconstructed from e34 plus e35 after excluding interleaved dates. The provider quotes autonomous as if it were in e35; it is actually in e34. This is a concrete incorrect quotation, not evidence of an invented thesis."
+  },
+  {
+    "document": 5,
+    "field": "/education/0/graduation_year",
+    "source": [
+      {
+        "source_id": "e9:0:14",
+        "quote": "December 2015 "
+      }
+    ],
+    "mapped_value": "December 2015",
+    "mapping_status": "ambiguous",
+    "raw_citation_status": "citation_supported",
+    "raw_provider_evidence": [
+      {
+        "source_id": "e9:0:14",
+        "quote": "December 2015"
+      }
+    ],
+    "evaluation": "December 2015 is literal but detached from both degree rows. The association is ambiguous without PDF/layout review; literal support alone does not make it correct."
+  }
+]

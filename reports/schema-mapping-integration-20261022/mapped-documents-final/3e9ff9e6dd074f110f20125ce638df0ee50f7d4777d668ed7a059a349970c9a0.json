@@ -1,0 +1,2107 @@
+{
+  "success": true,
+  "source": "Adithya_M_Hegde.pdf",
+  "extraction_mode": "existing_blocks_schema_mapping",
+  "data": {
+    "contact": {
+      "full_name": "Phone +917022988469",
+      "email": "adithyah891@gmail.com",
+      "phone": "+917022988469",
+      "location": null,
+      "linkedin_url": null,
+      "github_url": null,
+      "portfolio_url": null
+    },
+    "professional_title": null,
+    "summary": "Senior Business Analyst with 6+ years of experience in Banking, Financial Services, Retail, and IT, specializing in business analysis, stakeholder management, KPI reporting, dashboard development, and process improvement. Experienced in gathering business requirements, translating them into analytical solutions, and delivering actionable insights using SQL, Power BI, Tableau, Python, Advanced Excel, and Snowflake. Proven ability to collaborate with cross-functional teams, optimize business processes, automate reporting, and support data-driven strategic decision-making.",
+    "total_experience_years": 6.0,
+    "skills": {
+      "technical_skills": [],
+      "tools_and_platforms": [
+        "JIRA"
+      ],
+      "domain_and_functional": [],
+      "soft_skills": [
+        "Process Improvement"
+      ],
+      "all_skills": [
+        "JIRA",
+        "Process Improvement",
+        "Business Analysis Skills",
+        "Business Requirement",
+        "Gathering",
+        "Stakeholder Management",
+        "Business Process Analysis",
+        "Gap Analysis",
+        "Root Cause Analysis",
+        "KPI Definition & Reporting",
+        "User Acceptance Testing (UAT)",
+        "Functional Requirement",
+        "Analysis",
+        "Data Analysis",
+        "Business Intelligence",
+        "Dashboard Development",
+        "Data Visualization",
+        "Executive Reporting",
+        "Cross-functional Collaboration",
+        "Sprint Planning",
+        "Sprint Review",
+        "Sprint Retrospective",
+        "Backlog Prioritization",
+        "Requirement Prioritization",
+        "Jira"
+      ]
+    },
+    "experience": [
+      {
+        "company": "Lytcone Technologies",
+        "role": "Senior Business Analyst\nWorking as a Business Analyst for Portland General Electric (PGE), partnering with\nDesign executive dashboards and KPI reports using Power BI, enabling data-driven\nSenior Data Management Analyst\nReporting Analyst\nDepartment Manager Trainee",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [
+          "Conducted business analysis across the complete trade lifecycle, including trade",
+          "Performed impact analysis and gap analysis for enhancements affecting fixed income,",
+          "Supported UAT planning,",
+          "Developed SQL queries to analyze financial datasets, validate trade data, reconcile",
+          "Built Power BI dashboards and MIS reports for trade monitoring, portfolio analytics,",
+          "Performed data lineage analysis, source-to-target mapping, and data validation to",
+          "Performed financial and operational data analysis to identify trends, variances, and",
+          "Conducted data validation and reconciliation to ensure the accuracy of payroll, GST,",
+          "Supported business operations by analyzing sales performance, inventory levels, and"
+        ],
+        "technologies": []
+      }
+    ],
+    "education": [
+      {
+        "institution": "Presidency University",
+        "degree": "Master of Business",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      }
+    ],
+    "certifications": [],
+    "projects": [],
+    "languages": [
+      "Language"
+    ]
+  },
+  "schema_mapping": {
+    "fields_populated": 9,
+    "total_fields": 16,
+    "completion_percentage": 56.2,
+    "field_details": [
+      {
+        "field_name": "contact.full_name",
+        "target_type": "string",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Personal Details",
+        "confidence_score": 0.95,
+        "description": "Candidate's full name, extracted from the top header of the resume."
+      },
+      {
+        "field_name": "contact.email",
+        "target_type": "string (email)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.98,
+        "description": "Candidate's primary contact email address."
+      },
+      {
+        "field_name": "contact.phone",
+        "target_type": "string (phone)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.95,
+        "description": "Candidate's telephone / mobile phone number."
+      },
+      {
+        "field_name": "contact.location",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's residential location or work city."
+      },
+      {
+        "field_name": "contact.linkedin_url",
+        "target_type": "string (url) | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "URL to candidate's LinkedIn profile."
+      },
+      {
+        "field_name": "professional_title",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Subtitle",
+        "confidence_score": 0.0,
+        "description": "Candidate's target headline or most recent job title."
+      },
+      {
+        "field_name": "summary",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Summary / Profile / Objective",
+        "confidence_score": 0.85,
+        "description": "Executive bio, professional overview, or career objective."
+      },
+      {
+        "field_name": "total_experience_years",
+        "target_type": "float | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Summary / Experience Calculation",
+        "confidence_score": 0.9,
+        "description": "Total professional experience in years."
+      },
+      {
+        "field_name": "skills.technical_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Technical Competencies",
+        "confidence_score": 0.0,
+        "description": "Technical programming languages and core software competencies."
+      },
+      {
+        "field_name": "skills.tools_and_platforms",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills / Tools & Technologies",
+        "confidence_score": 0.9,
+        "description": "Software platforms, developer tools, and operational systems."
+      },
+      {
+        "field_name": "skills.domain_and_functional",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Domain Expertise",
+        "confidence_score": 0.0,
+        "description": "Functional domain knowledge (e.g. Hedge Funds, KYC, NAV, Derivatives)."
+      },
+      {
+        "field_name": "skills.all_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills (Aggregated)",
+        "confidence_score": 0.95,
+        "description": "Complete list of candidate skills across all categories."
+      },
+      {
+        "field_name": "experience",
+        "target_type": "array[WorkExperience]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Experience / Work History",
+        "confidence_score": 0.92,
+        "description": "Complete chronological employment records with bullet points."
+      },
+      {
+        "field_name": "education",
+        "target_type": "array[Education]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Education / Academic Qualifications",
+        "confidence_score": 0.9,
+        "description": "University, college, and higher education degree qualifications."
+      },
+      {
+        "field_name": "certifications",
+        "target_type": "array[Certification]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Certifications / Licenses",
+        "confidence_score": 0.0,
+        "description": "Professional accreditations and credentials."
+      },
+      {
+        "field_name": "projects",
+        "target_type": "array[Project]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Projects / Key Engagements",
+        "confidence_score": 0.0,
+        "description": "Major projects or strategic initiatives led by candidate."
+      }
+    ]
+  },
+  "raw_sections": {
+    "personal_information": "Contact\nPhone +917022988469\nEmail\nadithyah891@gmail.com\nAdithya Hegde S e n i o r B u s i n e s s A n a l y s t",
+    "education": "Education\n2017 - 2019 Master of Business Administration Presidency University",
+    "skills": "Business Analysis Skills\nBusiness Requirement\nGathering\nStakeholder Management\nBusiness Process Analysis\nProcess Improvement\nGap Analysis\nRoot Cause Analysis\nKPI Definition & Reporting\nUser Acceptance Testing (UAT)\nFunctional Requirement\nAnalysis\nData Analysis\nBusiness Intelligence\nDashboard Development\nData Visualization\nExecutive Reporting\nCross-functional Collaboration\nSprint Planning\nSprint Review\nSprint Retrospective\nBacklog Prioritization\nRequirement Prioritization\nJira\nTechnical Skills",
+    "summary": "Senior Business Analyst with 6+ years of experience in Banking, Financial Services, Retail, and IT, specializing in business analysis, stakeholder management, KPI reporting, dashboard development, and process improvement. Experienced in gathering business requirements, translating them into analytical solutions, and delivering actionable insights using SQL, Power BI, Tableau, Python, Advanced Excel, and Snowflake. Proven ability to collaborate with cross-functional teams, optimize business processes, automate reporting, and support data-driven strategic decision-making.",
+    "experience": "Experience\nAug 2024 LTIMindtree | Bangalore Senior Business Analyst\nWorking as a Business Analyst for Portland General Electric (PGE), partnering with\nbusiness and technology stakeholders to deliver enterprise data and analytics\nsolutions supporting strategic business initiatives.\nGather and analyze business requirements, conduct stakeholder workshops, and\ntranslate business needs into BRDs, FRDs, user stories, and functional specifications. Collaborate with data engineering teams to design scalable data pipelines using\nSnowflake, SQL, AWS Glue, and AWS S3 for enterprise reporting and analytics.\nPerform data analysis, data mapping, source-to-target mapping, and impact analysis to\nsupport system enhancements and business transformation initiatives.\nDesign executive dashboards and KPI reports using Power BI, enabling data-driven\ndecision-making across business units.\nSupport Agile ceremonies\nincluding backlog grooming, sprint planning, UAT\ncoordination, and production deployments.\nEnsure data quality through reconciliation, validation, and defect analysis while\ncoordinating with cross-functional teams to deliver high-quality business solutions.\n04/2021 - 09/2023 Wells Fargo| Bangalore Senior Data Management Analyst\nCollaborated with Capital Markets and Investment Banking stakeholders to gather,\nanalyze, and document business requirements for securities trading, capital markets, and regulatory reporting initiatives.\nPrepared Business Requirement Documents\n(BRDs), Functional Requirement\nDocuments (FRDs), process flows, use cases, and user stories supporting investment banking applications.\nConducted business analysis across the complete trade lifecycle, including trade\ncapture, trade validation, settlement, reconciliations, and post-trade reporting.\nPerformed impact analysis and gap analysis for enhancements affecting fixed income,\nequities, derivatives, and securities processing platforms.\nWorked with traders, investment banking stakeholders, risk, finance, and technology\nteams to define functional requirements for strategic transformation initiatives.\nSupported UAT planning,\ntest scenario preparation, defect management, and\nproduction releases for capital markets applications.\nDeveloped SQL queries to analyze financial datasets, validate trade data, reconcile\nsecurities transactions, and support business reporting.\nBuilt Power BI dashboards and MIS reports for trade monitoring, portfolio analytics,\nexposure reporting, and regulatory compliance metrics.\nPerformed data lineage analysis, source-to-target mapping, and data validation to\nensure high-quality financial data across enterprise systems.\nParticipated in Agile ceremonies including sprint planning, backlog refinement,\nrequirement prioritization, sprint reviews, and stakeholder demonstrations.\n09/2019 - 03/2021\nLytcone Technologies| Bangalore Reporting Analyst\nWorked closely with Finance stakeholders to gather reporting requirements and\ndevelop monthly MIS reports and business dashboards.\nPerformed financial and operational data analysis to identify trends, variances, and\nopportunities for business improvement.\nAutomated recurring reporting processes using Power Query and Advanced Excel,\nsignificantly reducing manual reporting effort.\nConducted data validation and reconciliation to ensure the accuracy of payroll, GST,\nreceivables, and financial reports.\nDelivered ad hoc business reports and analytical insights to support financial planning\nand business decision-making.\nImproved reporting processes by standardizing templates and enhancing reporting\nquality.\n03/2019 - 09/2019\nReliance Retail | Bangalore Department Manager Trainee\nSupported business operations by analyzing sales performance, inventory levels, and\noperational KPIs.\nPrepared daily and monthly operational reports using Advanced Excel.\nAssisted managers in monitoring inventory movement and identifying opportunities to\nimprove operational efficiency.",
+    "languages": "Language",
+    "awards": "ACHIEVEMENTS\nImproved executive decision-making speed by 25% through interactive KPI\ndashboards and business intelligence reporting.\nReduced SQL query execution time by 35%, improving report performance and data\navailability.\nAutomated 15+ recurring business reports, saving 12+ hours per week in manual\nreporting effort.\nReduced reporting discrepancies by 18% through enhanced data validation and\nquality assurance processes.\nImproved operational turnaround time by 14% through business process analysis and\nworkflow optimization.\nIncreased reporting efficiency by 30% and operational processing accuracy by 22%\nthrough reporting automation and process improvements."
+  },
+  "meta": {
+    "status": "needs_review",
+    "human_verified": false,
+    "provider_calls": 0,
+    "source_accounting": {
+      "all_source_text_preserved": true,
+      "total_spans": 127,
+      "assigned_meaningful_spans": 127,
+      "unresolved_meaningful_spans": 0,
+      "non_content_artifacts": 0,
+      "duplicates_excluded": 0,
+      "all_meaningful_text_assigned": true,
+      "semantic_correctness_verified": false,
+      "outcomes": [
+        {
+          "source_id": "e0:0:7",
+          "source_element_index": 0,
+          "start": 0,
+          "end": 7,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e1:0:6",
+          "source_element_index": 1,
+          "start": 0,
+          "end": 6,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e1:6:19",
+          "source_element_index": 1,
+          "start": 6,
+          "end": 19,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e2:0:5",
+          "source_element_index": 2,
+          "start": 0,
+          "end": 5,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:0:21",
+          "source_element_index": 3,
+          "start": 0,
+          "end": 21,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e4:0:9",
+          "source_element_index": 4,
+          "start": 0,
+          "end": 9,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e5:0:12",
+          "source_element_index": 5,
+          "start": 0,
+          "end": 12,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e5:12:31",
+          "source_element_index": 5,
+          "start": 12,
+          "end": 31,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e5:31:46",
+          "source_element_index": 5,
+          "start": 31,
+          "end": 46,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e5:46:67",
+          "source_element_index": 5,
+          "start": 46,
+          "end": 67,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e6:0:24",
+          "source_element_index": 6,
+          "start": 0,
+          "end": 24,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e7:0:20",
+          "source_element_index": 7,
+          "start": 0,
+          "end": 20,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:0:9",
+          "source_element_index": 8,
+          "start": 0,
+          "end": 9,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:0:22",
+          "source_element_index": 9,
+          "start": 0,
+          "end": 22,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e10:0:25",
+          "source_element_index": 10,
+          "start": 0,
+          "end": 25,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e11:0:19",
+          "source_element_index": 11,
+          "start": 0,
+          "end": 19,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:0:12",
+          "source_element_index": 12,
+          "start": 0,
+          "end": 12,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e13:0:19",
+          "source_element_index": 13,
+          "start": 0,
+          "end": 19,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e14:0:26",
+          "source_element_index": 14,
+          "start": 0,
+          "end": 26,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e15:0:29",
+          "source_element_index": 15,
+          "start": 0,
+          "end": 29,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e16:0:22",
+          "source_element_index": 16,
+          "start": 0,
+          "end": 22,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e17:0:8",
+          "source_element_index": 17,
+          "start": 0,
+          "end": 8,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e18:0:13",
+          "source_element_index": 18,
+          "start": 0,
+          "end": 13,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e19:0:21",
+          "source_element_index": 19,
+          "start": 0,
+          "end": 21,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e20:0:21",
+          "source_element_index": 20,
+          "start": 0,
+          "end": 21,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e21:0:18",
+          "source_element_index": 21,
+          "start": 0,
+          "end": 18,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e22:0:19",
+          "source_element_index": 22,
+          "start": 0,
+          "end": 19,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e23:0:30",
+          "source_element_index": 23,
+          "start": 0,
+          "end": 30,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e24:0:15",
+          "source_element_index": 24,
+          "start": 0,
+          "end": 15,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e25:0:13",
+          "source_element_index": 25,
+          "start": 0,
+          "end": 13,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e26:0:20",
+          "source_element_index": 26,
+          "start": 0,
+          "end": 20,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e27:0:22",
+          "source_element_index": 27,
+          "start": 0,
+          "end": 22,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e28:0:26",
+          "source_element_index": 28,
+          "start": 0,
+          "end": 26,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e29:0:4",
+          "source_element_index": 29,
+          "start": 0,
+          "end": 4,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e30:0:14",
+          "source_element_index": 30,
+          "start": 0,
+          "end": 14,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e30:14:55",
+          "source_element_index": 30,
+          "start": 14,
+          "end": 55,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e31:0:100",
+          "source_element_index": 31,
+          "start": 0,
+          "end": 100,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e31:100:197",
+          "source_element_index": 31,
+          "start": 100,
+          "end": 197,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e31:197:292",
+          "source_element_index": 31,
+          "start": 197,
+          "end": 292,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e31:292:387",
+          "source_element_index": 31,
+          "start": 292,
+          "end": 387,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e31:387:486",
+          "source_element_index": 31,
+          "start": 387,
+          "end": 486,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e31:486:576",
+          "source_element_index": 31,
+          "start": 486,
+          "end": 576,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e32:0:10",
+          "source_element_index": 32,
+          "start": 0,
+          "end": 10,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e33:0:9",
+          "source_element_index": 33,
+          "start": 0,
+          "end": 9,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e33:9:33",
+          "source_element_index": 33,
+          "start": 9,
+          "end": 33,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e33:33:56",
+          "source_element_index": 33,
+          "start": 33,
+          "end": 56,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e34:0:82",
+          "source_element_index": 34,
+          "start": 0,
+          "end": 82,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e35:0:77",
+          "source_element_index": 35,
+          "start": 0,
+          "end": 77,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e36:0:52",
+          "source_element_index": 36,
+          "start": 0,
+          "end": 52,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e37:0:76",
+          "source_element_index": 37,
+          "start": 0,
+          "end": 76,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e38:0:87",
+          "source_element_index": 38,
+          "start": 0,
+          "end": 87,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e38:87:166",
+          "source_element_index": 38,
+          "start": 87,
+          "end": 166,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e39:0:76",
+          "source_element_index": 39,
+          "start": 0,
+          "end": 76,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e40:0:85",
+          "source_element_index": 40,
+          "start": 0,
+          "end": 85,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e41:0:68",
+          "source_element_index": 41,
+          "start": 0,
+          "end": 68,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e42:0:80",
+          "source_element_index": 42,
+          "start": 0,
+          "end": 80,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e43:0:38",
+          "source_element_index": 43,
+          "start": 0,
+          "end": 38,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e44:0:24",
+          "source_element_index": 44,
+          "start": 0,
+          "end": 24,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e45:0:48",
+          "source_element_index": 45,
+          "start": 0,
+          "end": 48,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e46:0:41",
+          "source_element_index": 46,
+          "start": 0,
+          "end": 41,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e47:0:81",
+          "source_element_index": 47,
+          "start": 0,
+          "end": 81,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e48:0:84",
+          "source_element_index": 48,
+          "start": 0,
+          "end": 84,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e49:0:18",
+          "source_element_index": 49,
+          "start": 0,
+          "end": 18,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e49:18:41",
+          "source_element_index": 49,
+          "start": 18,
+          "end": 41,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e49:41:71",
+          "source_element_index": 49,
+          "start": 41,
+          "end": 71,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e50:0:80",
+          "source_element_index": 50,
+          "start": 0,
+          "end": 80,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e51:0:85",
+          "source_element_index": 51,
+          "start": 0,
+          "end": 85,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e51:85:122",
+          "source_element_index": 51,
+          "start": 85,
+          "end": 122,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e52:0:39",
+          "source_element_index": 52,
+          "start": 0,
+          "end": 39,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e53:0:30",
+          "source_element_index": 53,
+          "start": 0,
+          "end": 30,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e54:0:83",
+          "source_element_index": 54,
+          "start": 0,
+          "end": 83,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e54:83:104",
+          "source_element_index": 54,
+          "start": 83,
+          "end": 104,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e55:0:80",
+          "source_element_index": 55,
+          "start": 0,
+          "end": 80,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e56:0:81",
+          "source_element_index": 56,
+          "start": 0,
+          "end": 81,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e57:0:83",
+          "source_element_index": 57,
+          "start": 0,
+          "end": 83,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e58:0:59",
+          "source_element_index": 58,
+          "start": 0,
+          "end": 59,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e59:0:83",
+          "source_element_index": 59,
+          "start": 0,
+          "end": 83,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e60:0:81",
+          "source_element_index": 60,
+          "start": 0,
+          "end": 81,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e61:0:23",
+          "source_element_index": 61,
+          "start": 0,
+          "end": 23,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e62:0:49",
+          "source_element_index": 62,
+          "start": 0,
+          "end": 49,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e63:0:53",
+          "source_element_index": 63,
+          "start": 0,
+          "end": 53,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e64:0:83",
+          "source_element_index": 64,
+          "start": 0,
+          "end": 83,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e65:0:56",
+          "source_element_index": 65,
+          "start": 0,
+          "end": 56,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e66:0:84",
+          "source_element_index": 66,
+          "start": 0,
+          "end": 84,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e67:0:54",
+          "source_element_index": 67,
+          "start": 0,
+          "end": 54,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e68:0:81",
+          "source_element_index": 68,
+          "start": 0,
+          "end": 81,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e69:0:61",
+          "source_element_index": 69,
+          "start": 0,
+          "end": 61,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e70:0:79",
+          "source_element_index": 70,
+          "start": 0,
+          "end": 79,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e71:0:75",
+          "source_element_index": 71,
+          "start": 0,
+          "end": 75,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e72:0:16",
+          "source_element_index": 72,
+          "start": 0,
+          "end": 16,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e73:0:8",
+          "source_element_index": 73,
+          "start": 0,
+          "end": 8,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e74:0:17",
+          "source_element_index": 74,
+          "start": 0,
+          "end": 17,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e75:0:32",
+          "source_element_index": 75,
+          "start": 0,
+          "end": 32,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e75:32:49",
+          "source_element_index": 75,
+          "start": 32,
+          "end": 49,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e76:0:77",
+          "source_element_index": 76,
+          "start": 0,
+          "end": 77,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e77:0:52",
+          "source_element_index": 77,
+          "start": 0,
+          "end": 52,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e78:0:84",
+          "source_element_index": 78,
+          "start": 0,
+          "end": 84,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e79:0:39",
+          "source_element_index": 79,
+          "start": 0,
+          "end": 39,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e80:0:77",
+          "source_element_index": 80,
+          "start": 0,
+          "end": 77,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e81:0:47",
+          "source_element_index": 81,
+          "start": 0,
+          "end": 47,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e82:0:84",
+          "source_element_index": 82,
+          "start": 0,
+          "end": 84,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e83:0:35",
+          "source_element_index": 83,
+          "start": 0,
+          "end": 35,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e84:0:87",
+          "source_element_index": 84,
+          "start": 0,
+          "end": 87,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e85:0:29",
+          "source_element_index": 85,
+          "start": 0,
+          "end": 29,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e86:0:79",
+          "source_element_index": 86,
+          "start": 0,
+          "end": 79,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e87:0:8",
+          "source_element_index": 87,
+          "start": 0,
+          "end": 8,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e88:0:17",
+          "source_element_index": 88,
+          "start": 0,
+          "end": 17,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e89:0:28",
+          "source_element_index": 89,
+          "start": 0,
+          "end": 28,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e89:28:54",
+          "source_element_index": 89,
+          "start": 28,
+          "end": 54,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e90:0:83",
+          "source_element_index": 90,
+          "start": 0,
+          "end": 83,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e91:0:17",
+          "source_element_index": 91,
+          "start": 0,
+          "end": 17,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e92:0:68",
+          "source_element_index": 92,
+          "start": 0,
+          "end": 68,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e93:0:83",
+          "source_element_index": 93,
+          "start": 0,
+          "end": 83,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e94:0:31",
+          "source_element_index": 94,
+          "start": 0,
+          "end": 31,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e95:0:12",
+          "source_element_index": 95,
+          "start": 0,
+          "end": 12,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e96:0:71",
+          "source_element_index": 96,
+          "start": 0,
+          "end": 71,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e97:0:47",
+          "source_element_index": 97,
+          "start": 0,
+          "end": 47,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e98:0:78",
+          "source_element_index": 98,
+          "start": 0,
+          "end": 78,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e99:0:13",
+          "source_element_index": 99,
+          "start": 0,
+          "end": 13,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e100:0:77",
+          "source_element_index": 100,
+          "start": 0,
+          "end": 77,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e101:0:17",
+          "source_element_index": 101,
+          "start": 0,
+          "end": 17,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e102:0:75",
+          "source_element_index": 102,
+          "start": 0,
+          "end": 75,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e103:0:28",
+          "source_element_index": 103,
+          "start": 0,
+          "end": 28,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e104:0:81",
+          "source_element_index": 104,
+          "start": 0,
+          "end": 81,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e105:0:22",
+          "source_element_index": 105,
+          "start": 0,
+          "end": 22,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e106:0:80",
+          "source_element_index": 106,
+          "start": 0,
+          "end": 80,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e107:0:54",
+          "source_element_index": 107,
+          "start": 0,
+          "end": 54,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        }
+      ]
+    },
+    "document_scope": {
+      "kind": "likely_resume",
+      "candidate_resume": true,
+      "reason": "Contact details, multiple resume section families and dated history; provisional scope only",
+      "human_verified": false
+    },
+    "source_inventory_sha256": "9714e2d72de95ed3da849e382d88f6f00200db0de33c299554fe7545beb841ee",
+    "field_evidence": {
+      "contact.full_name": [
+        "e1:0:6",
+        "e1:6:19",
+        "e2:0:5",
+        "e3:0:21",
+        "e30:0:14",
+        "e30:14:55"
+      ],
+      "contact.email": [
+        "e1:0:6",
+        "e1:6:19",
+        "e2:0:5",
+        "e3:0:21",
+        "e30:0:14",
+        "e30:14:55"
+      ],
+      "contact.phone": [
+        "e1:0:6",
+        "e1:6:19",
+        "e2:0:5",
+        "e3:0:21",
+        "e30:0:14",
+        "e30:14:55"
+      ],
+      "summary": [
+        "e31:0:100",
+        "e31:100:197",
+        "e31:197:292",
+        "e31:292:387",
+        "e31:387:486",
+        "e31:486:576"
+      ],
+      "total_experience_years": [
+        "e31:0:100"
+      ],
+      "skills.tools_and_platforms[0]": [
+        "e29:0:4"
+      ],
+      "skills.soft_skills[0]": [
+        "e11:0:19"
+      ],
+      "skills.all_skills[0]": [
+        "e29:0:4"
+      ],
+      "skills.all_skills[1]": [
+        "e11:0:19"
+      ],
+      "skills.all_skills[2]": [
+        "e6:0:24"
+      ],
+      "skills.all_skills[3]": [
+        "e7:0:20"
+      ],
+      "skills.all_skills[4]": [
+        "e8:0:9"
+      ],
+      "skills.all_skills[5]": [
+        "e9:0:22"
+      ],
+      "skills.all_skills[6]": [
+        "e10:0:25"
+      ],
+      "skills.all_skills[7]": [
+        "e12:0:12"
+      ],
+      "skills.all_skills[8]": [
+        "e13:0:19"
+      ],
+      "skills.all_skills[9]": [
+        "e14:0:26"
+      ],
+      "skills.all_skills[10]": [
+        "e15:0:29"
+      ],
+      "skills.all_skills[11]": [
+        "e16:0:22"
+      ],
+      "skills.all_skills[12]": [
+        "e6:0:24",
+        "e10:0:25",
+        "e12:0:12",
+        "e13:0:19",
+        "e17:0:8",
+        "e18:0:13"
+      ],
+      "skills.all_skills[13]": [
+        "e18:0:13"
+      ],
+      "skills.all_skills[14]": [
+        "e19:0:21"
+      ],
+      "skills.all_skills[15]": [
+        "e20:0:21"
+      ],
+      "skills.all_skills[16]": [
+        "e21:0:18"
+      ],
+      "skills.all_skills[17]": [
+        "e22:0:19"
+      ],
+      "skills.all_skills[18]": [
+        "e23:0:30"
+      ],
+      "skills.all_skills[19]": [
+        "e24:0:15"
+      ],
+      "skills.all_skills[20]": [
+        "e25:0:13"
+      ],
+      "skills.all_skills[21]": [
+        "e26:0:20"
+      ],
+      "skills.all_skills[22]": [
+        "e27:0:22"
+      ],
+      "skills.all_skills[23]": [
+        "e28:0:26"
+      ],
+      "skills.all_skills[24]": [
+        "e29:0:4"
+      ],
+      "experience[0].company": [
+        "e36:0:52",
+        "e48:0:84",
+        "e69:0:61",
+        "e75:0:32"
+      ],
+      "experience[0].role": [
+        "e33:33:56",
+        "e34:0:82",
+        "e42:0:80",
+        "e49:41:71",
+        "e75:32:49",
+        "e89:28:54"
+      ],
+      "experience[0].responsibilities[0]": [
+        "e55:0:80"
+      ],
+      "experience[0].responsibilities[1]": [
+        "e57:0:83"
+      ],
+      "experience[0].responsibilities[2]": [
+        "e61:0:23"
+      ],
+      "experience[0].responsibilities[3]": [
+        "e64:0:83"
+      ],
+      "experience[0].responsibilities[4]": [
+        "e66:0:84"
+      ],
+      "experience[0].responsibilities[5]": [
+        "e68:0:81"
+      ],
+      "experience[0].responsibilities[6]": [
+        "e78:0:84"
+      ],
+      "experience[0].responsibilities[7]": [
+        "e82:0:84"
+      ],
+      "experience[0].responsibilities[8]": [
+        "e90:0:83"
+      ],
+      "education[0].degree": [
+        "e5:12:31"
+      ],
+      "education[0].institution": [
+        "e5:46:67"
+      ],
+      "languages[0]": [
+        "e73:0:8"
+      ]
+    },
+    "record_reviews": [
+      {
+        "category": "experience",
+        "entry_id": "experience-1",
+        "source_ids": [
+          "e33:0:9",
+          "e33:9:33",
+          "e33:33:56",
+          "e34:0:82",
+          "e35:0:77",
+          "e36:0:52",
+          "e37:0:76",
+          "e38:0:87",
+          "e38:87:166",
+          "e39:0:76",
+          "e40:0:85",
+          "e41:0:68",
+          "e42:0:80",
+          "e43:0:38",
+          "e44:0:24",
+          "e45:0:48",
+          "e46:0:41",
+          "e47:0:81",
+          "e48:0:84",
+          "e49:0:18",
+          "e49:18:41",
+          "e49:41:71",
+          "e50:0:80",
+          "e51:0:85",
+          "e51:85:122",
+          "e52:0:39",
+          "e53:0:30",
+          "e54:0:83",
+          "e54:83:104",
+          "e55:0:80",
+          "e56:0:81",
+          "e57:0:83",
+          "e58:0:59",
+          "e59:0:83",
+          "e60:0:81",
+          "e61:0:23",
+          "e62:0:49",
+          "e63:0:53",
+          "e64:0:83",
+          "e65:0:56",
+          "e66:0:84",
+          "e67:0:54",
+          "e68:0:81",
+          "e69:0:61",
+          "e70:0:79",
+          "e71:0:75",
+          "e74:0:17",
+          "e75:0:32",
+          "e75:32:49",
+          "e76:0:77",
+          "e77:0:52",
+          "e78:0:84",
+          "e79:0:39",
+          "e80:0:77",
+          "e81:0:47",
+          "e82:0:84",
+          "e83:0:35",
+          "e84:0:87",
+          "e85:0:29",
+          "e86:0:79",
+          "e87:0:8",
+          "e88:0:17",
+          "e89:0:28",
+          "e89:28:54",
+          "e90:0:83",
+          "e91:0:17",
+          "e92:0:68",
+          "e93:0:83",
+          "e94:0:31"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "education",
+        "entry_id": "education-1",
+        "source_ids": [
+          "e5:0:12",
+          "e5:12:31",
+          "e5:31:46",
+          "e5:46:67"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      }
+    ],
+    "missing_required_fields": [],
+    "warnings": [
+      "Schema validity and field completion do not establish extraction or relationship accuracy.",
+      "Handoff confidence scores are fixed heuristics, not calibrated probabilities.",
+      "Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields."
+    ],
+    "unmapped_blocks": [
+      {
+        "source_id": "e0:0:7",
+        "category": "personal_information",
+        "text": "Contact",
+        "page_number": 1
+      },
+      {
+        "source_id": "e4:0:9",
+        "category": "education",
+        "text": "Education",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:0:12",
+        "category": "education",
+        "text": "2017 - 2019 ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:31:46",
+        "category": "education",
+        "text": "Administration ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e72:0:16",
+        "category": "skills",
+        "text": "Technical Skills",
+        "page_number": 2
+      },
+      {
+        "source_id": "e32:0:10",
+        "category": "experience",
+        "text": "Experience",
+        "page_number": 1
+      },
+      {
+        "source_id": "e33:0:9",
+        "category": "experience",
+        "text": "Aug 2024 ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e33:9:33",
+        "category": "experience",
+        "text": "LTIMindtree | Bangalore ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e35:0:77",
+        "category": "experience",
+        "text": "business and technology stakeholders to deliver enterprise data and analytics",
+        "page_number": 1
+      },
+      {
+        "source_id": "e37:0:76",
+        "category": "experience",
+        "text": "Gather and analyze business requirements, conduct stakeholder workshops, and",
+        "page_number": 1
+      },
+      {
+        "source_id": "e38:0:87",
+        "category": "experience",
+        "text": "translate business needs into BRDs, FRDs, user stories, and functional specifications. ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e38:87:166",
+        "category": "experience",
+        "text": "Collaborate with data engineering teams to design scalable data pipelines using",
+        "page_number": 1
+      },
+      {
+        "source_id": "e39:0:76",
+        "category": "experience",
+        "text": "Snowflake, SQL, AWS Glue, and AWS S3 for enterprise reporting and analytics.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e40:0:85",
+        "category": "experience",
+        "text": "Perform data analysis, data mapping, source-to-target mapping, and impact analysis to",
+        "page_number": 1
+      },
+      {
+        "source_id": "e41:0:68",
+        "category": "experience",
+        "text": "support system enhancements and business transformation initiatives.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e43:0:38",
+        "category": "experience",
+        "text": "decision-making across business units.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e44:0:24",
+        "category": "experience",
+        "text": "Support Agile ceremonies",
+        "page_number": 1
+      },
+      {
+        "source_id": "e45:0:48",
+        "category": "experience",
+        "text": "including backlog grooming, sprint planning, UAT",
+        "page_number": 1
+      },
+      {
+        "source_id": "e46:0:41",
+        "category": "experience",
+        "text": "coordination, and production deployments.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e47:0:81",
+        "category": "experience",
+        "text": "Ensure data quality through reconciliation, validation, and defect analysis while",
+        "page_number": 1
+      },
+      {
+        "source_id": "e49:0:18",
+        "category": "experience",
+        "text": "04/2021 - 09/2023 ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e49:18:41",
+        "category": "experience",
+        "text": "Wells Fargo| Bangalore ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e50:0:80",
+        "category": "experience",
+        "text": "Collaborated with Capital Markets and Investment Banking stakeholders to gather,",
+        "page_number": 1
+      },
+      {
+        "source_id": "e51:0:85",
+        "category": "experience",
+        "text": "analyze, and document business requirements for securities trading, capital markets, ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e51:85:122",
+        "category": "experience",
+        "text": "and regulatory reporting initiatives.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e52:0:39",
+        "category": "experience",
+        "text": "Prepared Business Requirement Documents",
+        "page_number": 1
+      },
+      {
+        "source_id": "e53:0:30",
+        "category": "experience",
+        "text": "(BRDs), Functional Requirement",
+        "page_number": 1
+      },
+      {
+        "source_id": "e54:0:83",
+        "category": "experience",
+        "text": "Documents (FRDs), process flows, use cases, and user stories supporting investment ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e54:83:104",
+        "category": "experience",
+        "text": "banking applications.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e56:0:81",
+        "category": "experience",
+        "text": "capture, trade validation, settlement, reconciliations, and post-trade reporting.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e58:0:59",
+        "category": "experience",
+        "text": "equities, derivatives, and securities processing platforms.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e59:0:83",
+        "category": "experience",
+        "text": "Worked with traders, investment banking stakeholders, risk, finance, and technology",
+        "page_number": 1
+      },
+      {
+        "source_id": "e60:0:81",
+        "category": "experience",
+        "text": "teams to define functional requirements for strategic transformation initiatives.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e62:0:49",
+        "category": "experience",
+        "text": "test scenario preparation, defect management, and",
+        "page_number": 1
+      },
+      {
+        "source_id": "e63:0:53",
+        "category": "experience",
+        "text": "production releases for capital markets applications.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e65:0:56",
+        "category": "experience",
+        "text": "securities transactions, and support business reporting.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e67:0:54",
+        "category": "experience",
+        "text": "exposure reporting, and regulatory compliance metrics.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e70:0:79",
+        "category": "experience",
+        "text": "Participated in Agile ceremonies including sprint planning, backlog refinement,",
+        "page_number": 1
+      },
+      {
+        "source_id": "e71:0:75",
+        "category": "experience",
+        "text": "requirement prioritization, sprint reviews, and stakeholder demonstrations.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e74:0:17",
+        "category": "experience",
+        "text": "09/2019 - 03/2021",
+        "page_number": 2
+      },
+      {
+        "source_id": "e76:0:77",
+        "category": "experience",
+        "text": "Worked closely with Finance stakeholders to gather reporting requirements and",
+        "page_number": 2
+      },
+      {
+        "source_id": "e77:0:52",
+        "category": "experience",
+        "text": "develop monthly MIS reports and business dashboards.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e79:0:39",
+        "category": "experience",
+        "text": "opportunities for business improvement.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e80:0:77",
+        "category": "experience",
+        "text": "Automated recurring reporting processes using Power Query and Advanced Excel,",
+        "page_number": 2
+      },
+      {
+        "source_id": "e81:0:47",
+        "category": "experience",
+        "text": "significantly reducing manual reporting effort.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e83:0:35",
+        "category": "experience",
+        "text": "receivables, and financial reports.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e84:0:87",
+        "category": "experience",
+        "text": "Delivered ad hoc business reports and analytical insights to support financial planning",
+        "page_number": 2
+      },
+      {
+        "source_id": "e85:0:29",
+        "category": "experience",
+        "text": "and business decision-making.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e86:0:79",
+        "category": "experience",
+        "text": "Improved reporting processes by standardizing templates and enhancing reporting",
+        "page_number": 2
+      },
+      {
+        "source_id": "e87:0:8",
+        "category": "experience",
+        "text": "quality.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e88:0:17",
+        "category": "experience",
+        "text": "03/2019 - 09/2019",
+        "page_number": 2
+      },
+      {
+        "source_id": "e89:0:28",
+        "category": "experience",
+        "text": "Reliance Retail | Bangalore ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e91:0:17",
+        "category": "experience",
+        "text": "operational KPIs.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e92:0:68",
+        "category": "experience",
+        "text": "Prepared daily and monthly operational reports using Advanced Excel.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e93:0:83",
+        "category": "experience",
+        "text": "Assisted managers in monitoring inventory movement and identifying opportunities to",
+        "page_number": 2
+      },
+      {
+        "source_id": "e94:0:31",
+        "category": "experience",
+        "text": "improve operational efficiency.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e95:0:12",
+        "category": "awards",
+        "text": "ACHIEVEMENTS",
+        "page_number": 2
+      },
+      {
+        "source_id": "e96:0:71",
+        "category": "awards",
+        "text": "Improved executive decision-making speed by 25% through interactive KPI",
+        "page_number": 2
+      },
+      {
+        "source_id": "e97:0:47",
+        "category": "awards",
+        "text": "dashboards and business intelligence reporting.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e98:0:78",
+        "category": "awards",
+        "text": "Reduced SQL query execution time by 35%, improving report performance and data",
+        "page_number": 2
+      },
+      {
+        "source_id": "e99:0:13",
+        "category": "awards",
+        "text": "availability.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e100:0:77",
+        "category": "awards",
+        "text": "Automated 15+ recurring business reports, saving 12+ hours per week in manual",
+        "page_number": 2
+      },
+      {
+        "source_id": "e101:0:17",
+        "category": "awards",
+        "text": "reporting effort.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e102:0:75",
+        "category": "awards",
+        "text": "Reduced reporting discrepancies by 18% through enhanced data validation and",
+        "page_number": 2
+      },
+      {
+        "source_id": "e103:0:28",
+        "category": "awards",
+        "text": "quality assurance processes.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e104:0:81",
+        "category": "awards",
+        "text": "Improved operational turnaround time by 14% through business process analysis and",
+        "page_number": 2
+      },
+      {
+        "source_id": "e105:0:22",
+        "category": "awards",
+        "text": "workflow optimization.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e106:0:80",
+        "category": "awards",
+        "text": "Increased reporting efficiency by 30% and operational processing accuracy by 22%",
+        "page_number": 2
+      },
+      {
+        "source_id": "e107:0:54",
+        "category": "awards",
+        "text": "through reporting automation and process improvements.",
+        "page_number": 2
+      }
+    ],
+    "needs_review": []
+  }
+}

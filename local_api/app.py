@@ -16,6 +16,7 @@ from local_api.errors import error_status
 from local_api.routes.extraction import router
 from local_api.routes.comparison import router as comparison_router
 from local_api.routes.sections import router as sections_router
+from local_api.routes.schema_mapping import router as schema_mapping_router
 
 logger = logging.getLogger(__name__)
 MAX_UPLOAD_BYTES = 25 * 1024 * 1024
@@ -32,6 +33,7 @@ async def validation_error(request: Request, exc: RequestValidationError):
 app.include_router(router)
 app.include_router(comparison_router)
 app.include_router(sections_router)
+app.include_router(schema_mapping_router)
 STATIC_DIR = Path(__file__).parent / 'static'
 app.mount('/static', StaticFiles(directory=STATIC_DIR), name='static')
 

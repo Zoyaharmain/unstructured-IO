@@ -1,0 +1,1557 @@
+{
+  "success": true,
+  "source": "AkshayPatni (1).pdf",
+  "extraction_mode": "existing_blocks_schema_mapping",
+  "data": {
+    "contact": {
+      "full_name": "AKSHAY PATNI",
+      "email": "akshaypatni2026@gmail.com",
+      "phone": "7597883905",
+      "location": null,
+      "linkedin_url": "linkedin.com/in/akshaypatni-55549516b",
+      "github_url": null,
+      "portfolio_url": null
+    },
+    "professional_title": null,
+    "summary": "Finance professional with 3+ years of experience across investment operations, middle office, and\nderivatives trade support at global banks and fund administrators. Strong expertise in OTC derivatives,\nprime brokerage, NAV support, T+1 settlements, and end-to-end trade lifecycle management. Proven\nability to analyze and resolve complex trade, cash, and position breaks, reduce operational risk, and\ndrive automation-led efficiency improvements. Actively upskilling in Python, SQL, and Power BI to\ntransition into data-driven investment operations and risk analytics roles.",
+    "total_experience_years": 3.0,
+    "skills": {
+      "technical_skills": [
+        "Python",
+        "SQL"
+      ],
+      "tools_and_platforms": [
+        "Power BI",
+        "Excel"
+      ],
+      "domain_and_functional": [
+        "Corporate Actions"
+      ],
+      "soft_skills": [],
+      "all_skills": [
+        "Python",
+        "SQL",
+        "Power BI",
+        "Excel",
+        "Corporate Actions",
+        "& Middle Office & Fund Ops: Trade booking & validation",
+        "affirmation",
+        "lifecycle events",
+        "NAV support",
+        "pricing checks",
+        "cash &",
+        "position reconciliation",
+        "break investigation",
+        "corporate actions",
+        "exception management",
+        "settlement processing",
+        "SLA",
+        "adherence",
+        "operational risk controls",
+        "& Products: TRS",
+        "IRS",
+        "CDS",
+        "Equity Swaps",
+        "Bonds",
+        "Repos",
+        "Equities",
+        "& Tools: Triana",
+        "MarkitWire",
+        "IceLink",
+        "MS Excel (Pivot",
+        "VLOOKUP)",
+        "Python (basic automation)",
+        "SQL (basic)",
+        "Power BI (basic)"
+      ]
+    },
+    "experience": [
+      {
+        "company": "",
+        "role": "",
+        "start_date": "Dec 2024",
+        "end_date": "Present",
+        "duration": "Dec 2024 – Present",
+        "location": null,
+        "responsibilities": [
+          "Implemented automation of manual fund processing activities, achieving 30–50% reduction in processing time, and"
+        ],
+        "technologies": []
+      },
+      {
+        "company": "",
+        "role": "",
+        "start_date": "May 2024",
+        "end_date": "Dec 2024",
+        "duration": "May 2024 – Dec 2024",
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "",
+        "role": "",
+        "start_date": "Mar 2022",
+        "end_date": "Dec 2023",
+        "duration": "Mar 2022 – Dec 2023",
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      }
+    ],
+    "education": [
+      {
+        "institution": "Ahmedabad University, 2021",
+        "degree": "",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": "2021",
+        "grade_or_gpa": null
+      }
+    ],
+    "certifications": [],
+    "projects": [],
+    "languages": []
+  },
+  "schema_mapping": {
+    "fields_populated": 12,
+    "total_fields": 16,
+    "completion_percentage": 75.0,
+    "field_details": [
+      {
+        "field_name": "contact.full_name",
+        "target_type": "string",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Personal Details",
+        "confidence_score": 0.95,
+        "description": "Candidate's full name, extracted from the top header of the resume."
+      },
+      {
+        "field_name": "contact.email",
+        "target_type": "string (email)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.98,
+        "description": "Candidate's primary contact email address."
+      },
+      {
+        "field_name": "contact.phone",
+        "target_type": "string (phone)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.95,
+        "description": "Candidate's telephone / mobile phone number."
+      },
+      {
+        "field_name": "contact.location",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's residential location or work city."
+      },
+      {
+        "field_name": "contact.linkedin_url",
+        "target_type": "string (url) | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.9,
+        "description": "URL to candidate's LinkedIn profile."
+      },
+      {
+        "field_name": "professional_title",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Subtitle",
+        "confidence_score": 0.0,
+        "description": "Candidate's target headline or most recent job title."
+      },
+      {
+        "field_name": "summary",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Summary / Profile / Objective",
+        "confidence_score": 0.85,
+        "description": "Executive bio, professional overview, or career objective."
+      },
+      {
+        "field_name": "total_experience_years",
+        "target_type": "float | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Summary / Experience Calculation",
+        "confidence_score": 0.9,
+        "description": "Total professional experience in years."
+      },
+      {
+        "field_name": "skills.technical_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills / Technical Competencies",
+        "confidence_score": 0.92,
+        "description": "Technical programming languages and core software competencies."
+      },
+      {
+        "field_name": "skills.tools_and_platforms",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills / Tools & Technologies",
+        "confidence_score": 0.9,
+        "description": "Software platforms, developer tools, and operational systems."
+      },
+      {
+        "field_name": "skills.domain_and_functional",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills / Domain Expertise",
+        "confidence_score": 0.9,
+        "description": "Functional domain knowledge (e.g. Hedge Funds, KYC, NAV, Derivatives)."
+      },
+      {
+        "field_name": "skills.all_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills (Aggregated)",
+        "confidence_score": 0.95,
+        "description": "Complete list of candidate skills across all categories."
+      },
+      {
+        "field_name": "experience",
+        "target_type": "array[WorkExperience]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Experience / Work History",
+        "confidence_score": 0.92,
+        "description": "Complete chronological employment records with bullet points."
+      },
+      {
+        "field_name": "education",
+        "target_type": "array[Education]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Education / Academic Qualifications",
+        "confidence_score": 0.9,
+        "description": "University, college, and higher education degree qualifications."
+      },
+      {
+        "field_name": "certifications",
+        "target_type": "array[Certification]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Certifications / Licenses",
+        "confidence_score": 0.0,
+        "description": "Professional accreditations and credentials."
+      },
+      {
+        "field_name": "projects",
+        "target_type": "array[Project]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Projects / Key Engagements",
+        "confidence_score": 0.0,
+        "description": "Major projects or strategic initiatives led by candidate."
+      }
+    ]
+  },
+  "raw_sections": {
+    "personal_information": "AKSHAY PATNI\nSENIOR ASSOCIATE – FUND ADMINISTRATION | MIDDLE OFFICE | TRADE SUPPORT\n+91- Alter Phone no.: 7597883905| akshaypatni2026@gmail.com | linkedin.com/in/akshaypatni-55549516b",
+    "summary": "SUMMARY\nFinance professional with 3+ years of experience across investment operations, middle office, and\nderivatives trade support at global banks and fund administrators. Strong expertise in OTC derivatives,\nprime brokerage, NAV support, T+1 settlements, and end-to-end trade lifecycle management. Proven\nability to analyze and resolve complex trade, cash, and position breaks, reduce operational risk, and\ndrive automation-led efficiency improvements. Actively upskilling in Python, SQL, and Power BI to\ntransition into data-driven investment operations and risk analytics roles.",
+    "skills": "CORE SKILLS\n& Middle Office & Fund Ops: Trade booking & validation, affirmation, lifecycle events, NAV support, pricing checks, cash &\nposition reconciliation, break investigation, corporate actions, exception management, settlement processing, SLA\nadherence, operational risk controls\n& Products: TRS, IRS, CDS, Equity Swaps, Bonds, Repos, Equities\n& Tools: Triana, MarkitWire, IceLink, MS Excel (Pivot, VLOOKUP), Python (basic automation), SQL (basic), Power BI (basic)",
+    "experience": "PROFESSIONAL EXPERIENCE\nSenior Associate – Fund Administration NAV Fund Administration, Jaipur | Dec 2024 – Present\n& Managed portfolio services for hedge fund clients, including trade mapping, cash flow identification, pricing validation, and\ndaily cash & position reconciliations.\n& Verified OTC and fixed-income valuations (coupons, accruals, interest, independent price sources) and supported NAV\nproduction through position checks, exception handling, and break investigation.\n& Resolved trade, cash, and position breaks to ensure accurate T+1 reporting across weekly, bi-monthly, and monthly cycles.\n&\nImplemented automation of manual fund processing activities, achieving 30–50% reduction in processing time, and\nensured accurate cash processing and reconciliation between internal books and bank statements.\n& Managed end-to-end Fund Administration activities for Hedge Fund clients including trade processing, cash & position\nreconciliation, pricing validation, and NAV support.\n& Performed trade enrichment, trade mapping, and pre-processing validation for OTC and Fixed Income securities prior to NAV\nproduction.\n& Executed daily trade processing, cash flow identification, pricing verification, and exception management across multiple\nportfolios.\n& Performed cash, position and trade reconciliations, investigated breaks, completed root cause analysis, and ensured timely\nresolution within SLA.\n& Supported trade lifecycle management from trade capture through reconciliation, settlement support, and reporting.\n& Performed pre-upload validation of trade and pricing data before fund accounting processing.\n& Processed bulk trade uploads and validated portfolio data to ensure accurate downstream processing.\n& Supported NAV validation, pricing checks, accrual verification, and exception handling for hedge fund portfolios.\n& Automated manual fund administration processes using Python, reducing processing time by 30–50%.\nSenior Analyst – Trade Support s Prime Brokerage BNP Paribas ISPL, Mumbai | May 2024 – Dec 2024 & Validated and booked swaps and exotic derivatives across SPB and Delta One desks, ensuring alignment with term sheets and\nbroker feeds.\n& Managed trade lifecycle events including amendments, corporate actions, and option assignments. & Resolved delta and economic breaks between swap and hedge legs, working with SPB and Delta One trading desks to mitigate\noperational and market risk.\n& Supported the US T+1 settlement transition, contributing to process and control enhancements.\n& Executed trade capture, trade validation, and booking of OTC derivatives across Prime Brokerage and Delta One desks. & Managed complete trade lifecycle events including amendments, novations, corporate actions, option assignments, resets, and\nterminations.\n& Performed trade enrichment, ensuring trade attributes matched term sheets and broker confirmations. & Conducted STP break investigation, resolving trade, cash, and economic breaks through root cause analysis. & Supported T+1 settlement initiatives and coordinated with Front Office, Operations, and Technology teams to improve STP\nefficiency.\n& Performed pre-upload validation of trade data before booking into downstream systems. & Supported bulk trade processing for high-volume OTC transactions.\nAnalyst – HFS OTC Northern Trust, Pune | Mar 2022 – Dec 2023\n& Executed trade affirmation and reconciliation for TRS, IRS, and CDS, including resets and unwinds, using\nTriana, MarkitWire, and IceLink to resolve breaks efficiently.\n& Automated broker processing workflows, delivering operational efficiency equivalent to 0.3 FTE savings. & Recognized by onshore stakeholders for accuracy, responsiveness, and operational excellence.\n& Executed OTC derivative trade affirmation, trade confirmation, and reconciliation for TRS, IRS, and CDS products. Performed\n&\ntrade enrichment, validation, and lifecycle management using Triana, MarkitWire, and IceLink. Investigated STP exceptions, trade breaks, cash breaks, and position breaks while coordinating with counterparties for timely resolution.\n& Managed trade confirmations, resets, unwinds, and lifecycle events for OTC derivative products. & Performed bulk trade uploads and validation activities to support high-volume OTC processing. & Validated trade economics and pricing prior to downstream processing and reconciliation. & Automated broker processing workflows, reducing manual intervention and improving operational efficiency.",
+    "education": "EDUCATION\nBBA (Finance s Marketing) Ahmedabad University, 2021"
+  },
+  "meta": {
+    "status": "needs_review",
+    "human_verified": false,
+    "provider_calls": 0,
+    "source_accounting": {
+      "all_source_text_preserved": true,
+      "total_spans": 72,
+      "assigned_meaningful_spans": 72,
+      "unresolved_meaningful_spans": 0,
+      "non_content_artifacts": 0,
+      "duplicates_excluded": 0,
+      "all_meaningful_text_assigned": true,
+      "semantic_correctness_verified": false,
+      "outcomes": [
+        {
+          "source_id": "e0:0:12",
+          "source_element_index": 0,
+          "start": 0,
+          "end": 12,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "DeepSeek split or reassigned placement. Local evidence: Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e1:0:70",
+          "source_element_index": 1,
+          "start": 0,
+          "end": 70,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e2:0:99",
+          "source_element_index": 2,
+          "start": 0,
+          "end": 99,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e3:0:7",
+          "source_element_index": 3,
+          "start": 0,
+          "end": 7,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e4:0:97",
+          "source_element_index": 4,
+          "start": 0,
+          "end": 97,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e5:0:103",
+          "source_element_index": 5,
+          "start": 0,
+          "end": 103,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e6:0:96",
+          "source_element_index": 6,
+          "start": 0,
+          "end": 96,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e7:0:101",
+          "source_element_index": 7,
+          "start": 0,
+          "end": 101,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:0:97",
+          "source_element_index": 8,
+          "start": 0,
+          "end": 97,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:0:75",
+          "source_element_index": 9,
+          "start": 0,
+          "end": 75,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e10:0:11",
+          "source_element_index": 10,
+          "start": 0,
+          "end": 11,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e11:0:122",
+          "source_element_index": 11,
+          "start": 0,
+          "end": 122,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:0:113",
+          "source_element_index": 12,
+          "start": 0,
+          "end": 113,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e13:0:36",
+          "source_element_index": 13,
+          "start": 0,
+          "end": 36,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e14:0:63",
+          "source_element_index": 14,
+          "start": 0,
+          "end": 63,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e15:0:121",
+          "source_element_index": 15,
+          "start": 0,
+          "end": 121,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e16:0:23",
+          "source_element_index": 16,
+          "start": 0,
+          "end": 23,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e17:0:91",
+          "source_element_index": 17,
+          "start": 0,
+          "end": 91,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Explicit dated employer starts or continues Experience across layout changes"
+        },
+        {
+          "source_id": "e18:0:127",
+          "source_element_index": 18,
+          "start": 0,
+          "end": 127,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e19:0:38",
+          "source_element_index": 19,
+          "start": 0,
+          "end": 38,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e20:0:117",
+          "source_element_index": 20,
+          "start": 0,
+          "end": 117,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e21:0:80",
+          "source_element_index": 21,
+          "start": 0,
+          "end": 80,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e22:0:123",
+          "source_element_index": 22,
+          "start": 0,
+          "end": 123,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e23:0:1",
+          "source_element_index": 23,
+          "start": 0,
+          "end": 1,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e24:0:111",
+          "source_element_index": 24,
+          "start": 0,
+          "end": 111,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e25:0:95",
+          "source_element_index": 25,
+          "start": 0,
+          "end": 95,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e26:0:118",
+          "source_element_index": 26,
+          "start": 0,
+          "end": 118,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e27:0:52",
+          "source_element_index": 27,
+          "start": 0,
+          "end": 52,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e28:0:123",
+          "source_element_index": 28,
+          "start": 0,
+          "end": 123,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e29:0:11",
+          "source_element_index": 29,
+          "start": 0,
+          "end": 11,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e30:0:123",
+          "source_element_index": 30,
+          "start": 0,
+          "end": 123,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e31:0:11",
+          "source_element_index": 31,
+          "start": 0,
+          "end": 11,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e32:0:124",
+          "source_element_index": 32,
+          "start": 0,
+          "end": 124,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e33:0:22",
+          "source_element_index": 33,
+          "start": 0,
+          "end": 22,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e34:0:116",
+          "source_element_index": 34,
+          "start": 0,
+          "end": 116,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e35:0:94",
+          "source_element_index": 35,
+          "start": 0,
+          "end": 94,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e36:0:101",
+          "source_element_index": 36,
+          "start": 0,
+          "end": 101,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e37:0:115",
+          "source_element_index": 37,
+          "start": 0,
+          "end": 115,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e38:0:98",
+          "source_element_index": 38,
+          "start": 0,
+          "end": 98,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e39:0:96",
+          "source_element_index": 39,
+          "start": 0,
+          "end": 96,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Explicit dated employer starts or continues Experience across layout changes"
+        },
+        {
+          "source_id": "e39:96:219",
+          "source_element_index": 39,
+          "start": 96,
+          "end": 219,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e40:0:13",
+          "source_element_index": 40,
+          "start": 0,
+          "end": 13,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e41:0:98",
+          "source_element_index": 41,
+          "start": 0,
+          "end": 98,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e41:98:220",
+          "source_element_index": 41,
+          "start": 98,
+          "end": 220,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e42:0:28",
+          "source_element_index": 42,
+          "start": 0,
+          "end": 28,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e43:0:95",
+          "source_element_index": 43,
+          "start": 0,
+          "end": 95,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e44:0:119",
+          "source_element_index": 44,
+          "start": 0,
+          "end": 119,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e44:119:244",
+          "source_element_index": 44,
+          "start": 119,
+          "end": 244,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e45:0:13",
+          "source_element_index": 45,
+          "start": 0,
+          "end": 13,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e46:0:102",
+          "source_element_index": 46,
+          "start": 0,
+          "end": 102,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e46:102:211",
+          "source_element_index": 46,
+          "start": 102,
+          "end": 211,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e46:211:332",
+          "source_element_index": 46,
+          "start": 211,
+          "end": 332,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e47:0:11",
+          "source_element_index": 47,
+          "start": 0,
+          "end": 11,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e48:0:88",
+          "source_element_index": 48,
+          "start": 0,
+          "end": 88,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e48:88:155",
+          "source_element_index": 48,
+          "start": 88,
+          "end": 155,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e49:0:60",
+          "source_element_index": 49,
+          "start": 0,
+          "end": 60,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e50:0:106",
+          "source_element_index": 50,
+          "start": 0,
+          "end": 106,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e51:0:62",
+          "source_element_index": 51,
+          "start": 0,
+          "end": 62,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e52:0:106",
+          "source_element_index": 52,
+          "start": 0,
+          "end": 106,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e52:106:200",
+          "source_element_index": 52,
+          "start": 106,
+          "end": 200,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e53:0:125",
+          "source_element_index": 53,
+          "start": 0,
+          "end": 125,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e54:0:1",
+          "source_element_index": 54,
+          "start": 0,
+          "end": 1,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e55:0:94",
+          "source_element_index": 55,
+          "start": 0,
+          "end": 94,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e55:94:220",
+          "source_element_index": 55,
+          "start": 94,
+          "end": 220,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e55:220:231",
+          "source_element_index": 55,
+          "start": 220,
+          "end": 231,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e56:0:98",
+          "source_element_index": 56,
+          "start": 0,
+          "end": 98,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e56:98:194",
+          "source_element_index": 56,
+          "start": 98,
+          "end": 194,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e56:194:285",
+          "source_element_index": 56,
+          "start": 194,
+          "end": 285,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e56:285:392",
+          "source_element_index": 56,
+          "start": 285,
+          "end": 392,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e57:0:9",
+          "source_element_index": 57,
+          "start": 0,
+          "end": 9,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e58:0:26",
+          "source_element_index": 58,
+          "start": 0,
+          "end": 26,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e58:26:52",
+          "source_element_index": 58,
+          "start": 26,
+          "end": 52,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "DeepSeek confirmed placement. Local evidence: Follows a detected heading in the same layout lane; verify visually"
+        }
+      ]
+    },
+    "document_scope": {
+      "kind": "likely_resume",
+      "candidate_resume": true,
+      "reason": "Contact details, multiple resume section families and dated history; provisional scope only",
+      "human_verified": false
+    },
+    "source_inventory_sha256": "27c1306e6e8229804a4162fbd68881e41edeef4dae5a3de72ceec36f67da325c",
+    "field_evidence": {
+      "contact.full_name": [
+        "e0:0:12",
+        "e1:0:70",
+        "e2:0:99"
+      ],
+      "contact.email": [
+        "e0:0:12",
+        "e1:0:70",
+        "e2:0:99"
+      ],
+      "contact.phone": [
+        "e0:0:12",
+        "e1:0:70",
+        "e2:0:99"
+      ],
+      "contact.linkedin_url": [
+        "e0:0:12",
+        "e1:0:70",
+        "e2:0:99"
+      ],
+      "summary": [
+        "e4:0:97",
+        "e5:0:103",
+        "e6:0:96",
+        "e7:0:101",
+        "e8:0:97",
+        "e9:0:75"
+      ],
+      "total_experience_years": [
+        "e4:0:97"
+      ],
+      "skills.technical_skills[0]": [
+        "e15:0:121"
+      ],
+      "skills.technical_skills[1]": [
+        "e15:0:121"
+      ],
+      "skills.tools_and_platforms[0]": [
+        "e15:0:121"
+      ],
+      "skills.tools_and_platforms[1]": [
+        "e15:0:121"
+      ],
+      "skills.domain_and_functional[0]": [
+        "e12:0:113"
+      ],
+      "skills.all_skills[0]": [
+        "e15:0:121"
+      ],
+      "skills.all_skills[1]": [
+        "e15:0:121"
+      ],
+      "skills.all_skills[2]": [
+        "e15:0:121"
+      ],
+      "skills.all_skills[3]": [
+        "e15:0:121"
+      ],
+      "skills.all_skills[4]": [
+        "e12:0:113"
+      ],
+      "skills.all_skills[5]": [
+        "e11:0:122"
+      ],
+      "skills.all_skills[6]": [
+        "e11:0:122"
+      ],
+      "skills.all_skills[7]": [
+        "e11:0:122"
+      ],
+      "skills.all_skills[8]": [
+        "e11:0:122"
+      ],
+      "skills.all_skills[9]": [
+        "e11:0:122"
+      ],
+      "skills.all_skills[10]": [
+        "e11:0:122"
+      ],
+      "skills.all_skills[11]": [
+        "e12:0:113"
+      ],
+      "skills.all_skills[12]": [
+        "e12:0:113"
+      ],
+      "skills.all_skills[13]": [
+        "e12:0:113"
+      ],
+      "skills.all_skills[14]": [
+        "e12:0:113"
+      ],
+      "skills.all_skills[15]": [
+        "e12:0:113"
+      ],
+      "skills.all_skills[16]": [
+        "e12:0:113"
+      ],
+      "skills.all_skills[17]": [
+        "e13:0:36"
+      ],
+      "skills.all_skills[18]": [
+        "e13:0:36"
+      ],
+      "skills.all_skills[19]": [
+        "e14:0:63"
+      ],
+      "skills.all_skills[20]": [
+        "e14:0:63"
+      ],
+      "skills.all_skills[21]": [
+        "e14:0:63"
+      ],
+      "skills.all_skills[22]": [
+        "e14:0:63"
+      ],
+      "skills.all_skills[23]": [
+        "e14:0:63"
+      ],
+      "skills.all_skills[24]": [
+        "e14:0:63"
+      ],
+      "skills.all_skills[25]": [
+        "e14:0:63"
+      ],
+      "skills.all_skills[26]": [
+        "e15:0:121"
+      ],
+      "skills.all_skills[27]": [
+        "e15:0:121"
+      ],
+      "skills.all_skills[28]": [
+        "e15:0:121"
+      ],
+      "skills.all_skills[29]": [
+        "e15:0:121"
+      ],
+      "skills.all_skills[30]": [
+        "e15:0:121"
+      ],
+      "skills.all_skills[31]": [
+        "e15:0:121"
+      ],
+      "skills.all_skills[32]": [
+        "e15:0:121"
+      ],
+      "skills.all_skills[33]": [
+        "e15:0:121"
+      ],
+      "experience[0].start_date": [
+        "e17:0:91"
+      ],
+      "experience[0].end_date": [
+        "e17:0:91"
+      ],
+      "experience[0].duration": [
+        "e17:0:91"
+      ],
+      "experience[0].responsibilities[0]": [
+        "e24:0:111"
+      ],
+      "experience[1].start_date": [
+        "e39:0:96"
+      ],
+      "experience[1].end_date": [
+        "e39:0:96"
+      ],
+      "experience[1].duration": [
+        "e39:0:96"
+      ],
+      "experience[2].start_date": [
+        "e49:0:60"
+      ],
+      "experience[2].end_date": [
+        "e49:0:60"
+      ],
+      "experience[2].duration": [
+        "e49:0:60"
+      ],
+      "education[0].institution": [
+        "e58:26:52"
+      ],
+      "education[0].graduation_year": [
+        "e58:26:52"
+      ]
+    },
+    "record_reviews": [
+      {
+        "category": "experience",
+        "entry_id": "experience-1",
+        "source_ids": [
+          "e17:0:91",
+          "e18:0:127",
+          "e19:0:38",
+          "e20:0:117",
+          "e21:0:80",
+          "e22:0:123",
+          "e24:0:111",
+          "e25:0:95",
+          "e26:0:118",
+          "e27:0:52",
+          "e28:0:123",
+          "e29:0:11",
+          "e30:0:123",
+          "e31:0:11",
+          "e32:0:124",
+          "e33:0:22",
+          "e34:0:116",
+          "e35:0:94",
+          "e36:0:101",
+          "e37:0:115",
+          "e38:0:98"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-2",
+        "source_ids": [
+          "e39:0:96",
+          "e39:96:219",
+          "e40:0:13",
+          "e41:0:98",
+          "e41:98:220",
+          "e42:0:28",
+          "e43:0:95",
+          "e44:0:119",
+          "e44:119:244",
+          "e45:0:13",
+          "e46:0:102",
+          "e46:102:211",
+          "e46:211:332",
+          "e47:0:11",
+          "e48:0:88",
+          "e48:88:155"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-3",
+        "source_ids": [
+          "e49:0:60",
+          "e50:0:106",
+          "e51:0:62",
+          "e52:0:106",
+          "e52:106:200",
+          "e53:0:125",
+          "e55:0:94",
+          "e55:94:220",
+          "e55:220:231",
+          "e56:0:98",
+          "e56:98:194",
+          "e56:194:285",
+          "e56:285:392"
+        ],
+        "relationship_status": "needs_review",
+        "review_reasons": [
+          "employer_not_established_from_supported_fields"
+        ]
+      },
+      {
+        "category": "education",
+        "entry_id": "education-1",
+        "source_ids": [
+          "e58:0:26",
+          "e58:26:52"
+        ],
+        "relationship_status": "needs_review",
+        "review_reasons": [
+          "qualification_not_established"
+        ]
+      }
+    ],
+    "missing_required_fields": [
+      "experience[0].company",
+      "experience[0].role",
+      "experience[1].company",
+      "experience[1].role",
+      "experience[2].company",
+      "experience[2].role",
+      "education[0].degree"
+    ],
+    "warnings": [
+      "Schema validity and field completion do not establish extraction or relationship accuracy.",
+      "Handoff confidence scores are fixed heuristics, not calibrated probabilities.",
+      "Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields."
+    ],
+    "unmapped_blocks": [
+      {
+        "source_id": "e3:0:7",
+        "category": "summary",
+        "text": "SUMMARY",
+        "page_number": 1
+      },
+      {
+        "source_id": "e10:0:11",
+        "category": "skills",
+        "text": "CORE SKILLS",
+        "page_number": 1
+      },
+      {
+        "source_id": "e16:0:23",
+        "category": "experience",
+        "text": "PROFESSIONAL EXPERIENCE",
+        "page_number": 1
+      },
+      {
+        "source_id": "e18:0:127",
+        "category": "experience",
+        "text": "& Managed portfolio services for hedge fund clients, including trade mapping, cash flow identification, pricing validation, and",
+        "page_number": 1
+      },
+      {
+        "source_id": "e19:0:38",
+        "category": "experience",
+        "text": "daily cash & position reconciliations.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e20:0:117",
+        "category": "experience",
+        "text": "& Verified OTC and fixed-income valuations (coupons, accruals, interest, independent price sources) and supported NAV",
+        "page_number": 1
+      },
+      {
+        "source_id": "e21:0:80",
+        "category": "experience",
+        "text": "production through position checks, exception handling, and break investigation.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e22:0:123",
+        "category": "experience",
+        "text": "& Resolved trade, cash, and position breaks to ensure accurate T+1 reporting across weekly, bi-monthly, and monthly cycles.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e23:0:1",
+        "category": "experience",
+        "text": "&",
+        "page_number": 1
+      },
+      {
+        "source_id": "e25:0:95",
+        "category": "experience",
+        "text": "ensured accurate cash processing and reconciliation between internal books and bank statements.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e26:0:118",
+        "category": "experience",
+        "text": "& Managed end-to-end Fund Administration activities for Hedge Fund clients including trade processing, cash & position",
+        "page_number": 1
+      },
+      {
+        "source_id": "e27:0:52",
+        "category": "experience",
+        "text": "reconciliation, pricing validation, and NAV support.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e28:0:123",
+        "category": "experience",
+        "text": "& Performed trade enrichment, trade mapping, and pre-processing validation for OTC and Fixed Income securities prior to NAV",
+        "page_number": 1
+      },
+      {
+        "source_id": "e29:0:11",
+        "category": "experience",
+        "text": "production.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e30:0:123",
+        "category": "experience",
+        "text": "& Executed daily trade processing, cash flow identification, pricing verification, and exception management across multiple",
+        "page_number": 1
+      },
+      {
+        "source_id": "e31:0:11",
+        "category": "experience",
+        "text": "portfolios.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e32:0:124",
+        "category": "experience",
+        "text": "& Performed cash, position and trade reconciliations, investigated breaks, completed root cause analysis, and ensured timely",
+        "page_number": 1
+      },
+      {
+        "source_id": "e33:0:22",
+        "category": "experience",
+        "text": "resolution within SLA.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e34:0:116",
+        "category": "experience",
+        "text": "& Supported trade lifecycle management from trade capture through reconciliation, settlement support, and reporting.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e35:0:94",
+        "category": "experience",
+        "text": "& Performed pre-upload validation of trade and pricing data before fund accounting processing.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e36:0:101",
+        "category": "experience",
+        "text": "& Processed bulk trade uploads and validated portfolio data to ensure accurate downstream processing.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e37:0:115",
+        "category": "experience",
+        "text": "& Supported NAV validation, pricing checks, accrual verification, and exception handling for hedge fund portfolios.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e38:0:98",
+        "category": "experience",
+        "text": "& Automated manual fund administration processes using Python, reducing processing time by 30–50%.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e39:96:219",
+        "category": "experience",
+        "text": "& Validated and booked swaps and exotic derivatives across SPB and Delta One desks, ensuring alignment with term sheets and",
+        "page_number": 1
+      },
+      {
+        "source_id": "e40:0:13",
+        "category": "experience",
+        "text": "broker feeds.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e41:0:98",
+        "category": "experience",
+        "text": "& Managed trade lifecycle events including amendments, corporate actions, and option assignments. ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e41:98:220",
+        "category": "experience",
+        "text": "& Resolved delta and economic breaks between swap and hedge legs, working with SPB and Delta One trading desks to mitigate",
+        "page_number": 1
+      },
+      {
+        "source_id": "e42:0:28",
+        "category": "experience",
+        "text": "operational and market risk.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e43:0:95",
+        "category": "experience",
+        "text": "& Supported the US T+1 settlement transition, contributing to process and control enhancements.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e44:0:119",
+        "category": "experience",
+        "text": "& Executed trade capture, trade validation, and booking of OTC derivatives across Prime Brokerage and Delta One desks. ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e44:119:244",
+        "category": "experience",
+        "text": "& Managed complete trade lifecycle events including amendments, novations, corporate actions, option assignments, resets, and",
+        "page_number": 2
+      },
+      {
+        "source_id": "e45:0:13",
+        "category": "experience",
+        "text": "terminations.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e46:0:102",
+        "category": "experience",
+        "text": "& Performed trade enrichment, ensuring trade attributes matched term sheets and broker confirmations. ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e46:102:211",
+        "category": "experience",
+        "text": "& Conducted STP break investigation, resolving trade, cash, and economic breaks through root cause analysis. ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e46:211:332",
+        "category": "experience",
+        "text": "& Supported T+1 settlement initiatives and coordinated with Front Office, Operations, and Technology teams to improve STP",
+        "page_number": 2
+      },
+      {
+        "source_id": "e47:0:11",
+        "category": "experience",
+        "text": "efficiency.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e48:0:88",
+        "category": "experience",
+        "text": "& Performed pre-upload validation of trade data before booking into downstream systems. ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e48:88:155",
+        "category": "experience",
+        "text": "& Supported bulk trade processing for high-volume OTC transactions.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e50:0:106",
+        "category": "experience",
+        "text": "& Executed trade affirmation and reconciliation for TRS, IRS, and CDS, including resets and unwinds, using",
+        "page_number": 2
+      },
+      {
+        "source_id": "e51:0:62",
+        "category": "experience",
+        "text": "Triana, MarkitWire, and IceLink to resolve breaks efficiently.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e52:0:106",
+        "category": "experience",
+        "text": "& Automated broker processing workflows, delivering operational efficiency equivalent to 0.3 FTE savings. ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e52:106:200",
+        "category": "experience",
+        "text": "& Recognized by onshore stakeholders for accuracy, responsiveness, and operational excellence.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e53:0:125",
+        "category": "experience",
+        "text": "& Executed OTC derivative trade affirmation, trade confirmation, and reconciliation for TRS, IRS, and CDS products. Performed",
+        "page_number": 2
+      },
+      {
+        "source_id": "e54:0:1",
+        "category": "experience",
+        "text": "&",
+        "page_number": 2
+      },
+      {
+        "source_id": "e55:0:94",
+        "category": "experience",
+        "text": "trade enrichment, validation, and lifecycle management using Triana, MarkitWire, and IceLink. ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e55:94:220",
+        "category": "experience",
+        "text": "Investigated STP exceptions, trade breaks, cash breaks, and position breaks while coordinating with counterparties for timely ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e55:220:231",
+        "category": "experience",
+        "text": "resolution.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e56:0:98",
+        "category": "experience",
+        "text": "& Managed trade confirmations, resets, unwinds, and lifecycle events for OTC derivative products. ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e56:98:194",
+        "category": "experience",
+        "text": "& Performed bulk trade uploads and validation activities to support high-volume OTC processing. ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e56:194:285",
+        "category": "experience",
+        "text": "& Validated trade economics and pricing prior to downstream processing and reconciliation. ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e56:285:392",
+        "category": "experience",
+        "text": "& Automated broker processing workflows, reducing manual intervention and improving operational efficiency.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e57:0:9",
+        "category": "education",
+        "text": "EDUCATION",
+        "page_number": 2
+      },
+      {
+        "source_id": "e58:0:26",
+        "category": "education",
+        "text": "BBA (Finance s Marketing) ",
+        "page_number": 2
+      }
+    ],
+    "needs_review": []
+  }
+}
