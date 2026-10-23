@@ -423,3 +423,83 @@ def test_pdf_line_spaces_stay_with_text_without_becoming_review_items(engine):
     assert not result.needs_review
     assert result.sections[0].category=='skills'
     assert_preserved(req,result)
+
+
+def test_saved_french_resume_header_maps_across_layout_lanes(engine):
+    from local_api.schemas.mapping import SchemaMappingRequest
+    from local_api.services.schema_mapping import map_schema
+    source = Path('reports/hierarchical-schema-all1541-20261023/documents/992b24993690cf1665a3/source.json')
+    if not source.exists():
+        pytest.skip('Saved PDF extraction fixture unavailable')
+    elements = json.loads(source.read_text())['extraction']['elements']
+    req = SectionRequest(elements=elements, extraction_verified=True)
+    sections = engine.detect(req)
+    out = map_schema(SchemaMappingRequest(elements=req.elements, sections=sections))
+    assert out.data.contact.full_name == 'Manjunath MURUGAN'
+    assert out.data.contact.location == 'Noisy-le-Grand, France'
+    assert out.data.professional_title == 'Senior Business Analyst | Financial Markets'
+    personal = next(s for s in out.section_schemas if s.category == 'personal_information')
+    attrs = {a.name: a for a in personal.records[0].attributes}
+    assert attrs['full_name'].status == attrs['location'].status == 'mapped'
+    assert_preserved(req, sections)
+
+
+@pytest.mark.parametrize('text,category', [
+    ('P R O F E S S I O NA L E X P E R I E N C E', 'experience'),
+    ('P R O F I L E S U M M A R Y', 'summary'),
+    ('E D U C A TI O N', 'education'),
+    ('Career History', 'experience'),
+    ('PROJECT 1', 'projects'),
+    ('KEY PROJECTS (Beyond my work)', 'projects'),
+    ('Comp\u00e9tences', 'skills'),
+    ('Langues', 'languages'),
+])
+def test_exact_heading_variants(text, category):
+    from local_api.services.resume_structure import heading_boundary
+    assert heading_boundary(text, service.ALIASES) == (category, None)
+
+
+def test_known_heading_is_not_split_by_pdf_word_hints(engine):
+    req = request(['Career History'])
+    req.elements[0].metadata['pdf_source_lines'] = [
+        {'start': 0, 'end': 7, 'bbox': [.1, .2, .2, .22]},
+        {'start': 7, 'end': 14, 'bbox': [.1, .23, .2, .25]}]
+    units, _ = engine.units(req.elements)
+    assert [u.text for u in units] == ['Career History']
+
+
+def test_project_objective_and_tools_keep_their_record_context(engine):
+    req = request(['Projects', 'PROJECT 1', 'Project Name: Search Console',
+                   'Objective: Build a search tool', 'Tools and Technology: Python, SQL',
+                   'Education', 'Bachelor of Science, Example University, 2022'])
+    out = engine.detect(req)
+    projects = next(s for s in out.sections if s.category == 'projects')
+    assert all(text in projects.text for text in [e.text for e in req.elements[1:5]])
+    assert_preserved(req, out)
+
+
+def test_noisy_pdf_titles_do_not_create_jobs_for_responsibility_fragments():
+    from local_api.services.resume_structure import entry_groups
+    from local_api.schemas.sections import SectionBlock
+    req = request(['Engineer | Acme Ltd | 2020 - 2023', 'Developed tools for engineers',
+                   'and delivered the solution.', 'Consultant | Beta Ltd | 2023 - Present'],
+                  types=['Title'] * 4)
+    blocks = [SectionBlock(source_element_index=i, start=0, end=len(e.text), text=e.text,
+        page_number=1, assignment='semantic', lane='source', reason='fixture') for i, e in enumerate(req.elements)]
+    groups = entry_groups(blocks, 'experience', req.elements)
+    assert [g['block_indices'] for g in groups] == [[0, 1, 2], [3]]
+
+
+
+def test_explicit_context_survives_lane_changes_inside_one_element(engine):
+    req = request(['Technical Skills', 'Programming Languages: Python, SQL and C++'])
+    text = req.elements[1].text
+    cut = text.index('SQL')
+    req.elements[1].metadata['pdf_source_lines'] = [
+        {'start': 0, 'end': cut, 'bbox': [.1, .2, .4, .22]},
+        {'start': cut, 'end': len(text), 'bbox': [.7, .23, .95, .25]}]
+    out = engine.detect(req)
+    skills = next(s for s in out.sections if s.category == 'skills')
+    assert ''.join(b.text for b in skills.blocks if b.source_element_index == 1) == text
+    assert not out.needs_review
+    assert_preserved(req, out)

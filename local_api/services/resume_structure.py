@@ -29,14 +29,20 @@ def word_safe_cut(text, cut):
 RECORD_FIELDS = {'technologies', 'technology', 'tools', 'tool', 'tech stack',
                  'description', 'project description', 'project title', 'project name',
                  'role', 'job title', 'designation', 'client', 'duration', 'period',
-                 'achievement', 'accomplishment'}
+                 'achievement', 'accomplishment', 'responsibilities', 'key responsibilities',
+                 'roles and responsibilities', 'job responsibilities', 'key achievements',
+                 'environment', 'client name', 'work base location'}
 EXTRA_HEADINGS = {
     'personal_information': ['contact', 'personal info'],
     'summary': ['objective', 'career summary', 'executive summary', 'profile snapshot', 'profile summary'],
     'projects': ['key projects', 'project highlights'],
-    'experience': ['employment', 'professional background', 'work history'],
-    'education': ['qualifications', 'educational background'],
-    'skills': ['skill set', 'skill sets', 'skillset', 'key strengths', 'technical competencies', 'core skills', 'domain expertise', 'business analysis and product management', 'tools and technology'],
+    'experience': ['employment', 'professional background', 'work history', 'career history',
+                   'role history', 'employment history', 'experience summary', 'professional employment'],
+    'languages': ['spoken languages', 'language proficiency', 'langues'],
+    'education': ['qualifications', 'educational background', 'academic qualifications', 'formation', 'formations'],
+    'skills': ['competences', 'comp\u00e9tences', 'languages and platforms', 'programming languages',
+               'tools and platforms', 'core programming and frameworks', 'cloud and devops',
+               'testing and development practices', 'skill set', 'skill sets', 'skillset', 'key strengths', 'technical competencies', 'core skills', 'domain expertise', 'business analysis and product management', 'tools and technology'],
     'certifications': ['certificates', 'training'],
 }
 
@@ -45,7 +51,7 @@ def normalized_heading(text):
     value = text.strip()
     value = re.sub(r'^\s*(?:\d+[.)]|[•▪●*#])\s*', '', value)
     value = value.strip(' |–—_-:.\t\r\n')
-    if re.fullmatch(r'(?:[A-Za-z]\s+){2,}[A-Za-z]', value):
+    if re.fullmatch(r'(?:[A-Za-z]{1,2}\s+){3,}[A-Za-z]{1,2}', value):
         value = re.sub(r'\s+', '', value)
     return ' '.join(value.casefold().replace('&', ' and ').split())
 
@@ -58,11 +64,22 @@ def heading_aliases(anchors):
 def heading_boundary(text, aliases):
     """Return (category, exact split offset or None) for explicit heading syntax."""
     normalized = normalized_heading(text)
+    if re.fullmatch(r'project\s*#?\s*\d+\s*[:.)-]?', normalized):
+        return 'projects', None
     if normalized in RECORD_FIELDS:
         return None, None
     category = aliases.get(normalized)
+    # Letter spacing in PDFs is often inconsistent (e.g. 'PRO F E SS I O N A L').
+    # Compare with exact known headings; never compact arbitrary body prose.
+    if not category and sum(len(word) == 1 for word in text.split()) >= 3 and re.fullmatch(r'[a-z ]+', normalized):
+        compact = normalized.replace(' ', '')
+        category = next((owner for alias, owner in aliases.items() if alias.replace(' ', '') == compact), None)
     if category:
         return category, None
+    # A heading may include a short parenthetical qualifier.
+    qualified = re.fullmatch(r'(.+?)\s*\([^()]{1,80}\)\s*', text)
+    if qualified and normalized_heading(qualified.group(1)) in aliases:
+        return aliases[normalized_heading(qualified.group(1))], None
     if ':' in text:
         prefix, body = text.split(':', 1)
         # Numbered Project: is an entry, not a new section.
@@ -94,7 +111,22 @@ def entry_groups(blocks, category, elements):
     These are structural proposals, not invented company/degree records. Without
     a visible entry boundary, retain one group rather than guess from similarity.
     """
-    if category=='experience' and blocks and all(b.reviewed_by_llm for b in blocks):
+    if category == 'projects':
+        geometric = project_source_groups(blocks,elements)
+        if geometric:return geometric
+    if category == 'certifications':
+        # A certificate name cannot silently become a newline-joined name of
+        # several unrelated source elements. Keep each source-backed card local.
+        cards=[]
+        for index,b in enumerate(blocks):
+            if b.assignment in {'section_heading','structural_heading'} or not any(c.isalnum() for c in b.text):continue
+            if not cards or blocks[cards[-1]['block_indices'][-1]].source_element_index != b.source_element_index:
+                cards.append({'entry_id':f'certifications-{len(cards)+1}','block_indices':[],
+                              'lane':b.lane,'boundary_reason':'source-local certification card; source text retained'})
+            cards[-1]['block_indices'].append(index)
+        return cards
+    if category=='experience' and blocks and (all(b.reviewed_by_llm for b in blocks) or
+            any(elements[b.source_element_index].metadata.get('pdf_source_lines') for b in blocks)):
         geometry_groups=reviewed_employment_groups(blocks,elements)
         if geometry_groups:return geometry_groups
     if category=='education' and blocks and all(b.reviewed_by_llm for b in blocks):
@@ -117,6 +149,12 @@ def entry_groups(blocks, category, elements):
         element = elements[block.source_element_index]
         explicit_title = (element.type == 'Title' and block.start == 0 and
                           0 < len(text.split()) <= 18 and not re.match(r'^[•▪●*\-]', text))
+        if category == 'experience' and explicit_title:
+            from local_api.services.record_relationships import field_kinds
+            kinds = field_kinds(text, category)
+            explicit_title = (len(text.split()) <= 18 and not re.search(
+                r'\b(?:developed|implemented|configured|responsible|supported|designed|built|managed|led|worked|performed)\b', text, re.I)
+                and bool(set(kinds) & {'title', 'employer'}))
         labeled_entry = bool(re.match(r'^\s*(?:\d+[.)]\s*)?(?:project(?: name| title)?|company|employer|institution)\s*:', text, re.I))
         if block.reviewed_by_llm:
             # A title detector's field labels and embedded project titles are not
@@ -285,35 +323,31 @@ def reviewed_education_groups(blocks,elements):
         if not any(blocks[j].page_number==blocks[i].page_number and abs(rows[j][0]-rows[i][0])<.006 and abs(rows[j][1]-rows[i][1])<.25 for j in unique):unique.append(i)
     anchors=unique
     groups=[{'entry_id':f'education-{i+1}','block_indices':[],'lane':'source_geometry','boundary_reason':'visible qualification anchor and nearby source rows; field values remain unverified'} for i in range(len(anchors))]
+    header_names = {'education','qualifications','academic credentials','educational background','qualification','college/university/institution','academic profile','college/school','university/board','degree','year of passing'}
+    institution_rows = [i for i,b in enumerate(blocks) if i in rows and 'institution' in field_kinds(b.text,'education') and normalized_heading(b.text) not in header_names]
+    first = min(anchors, key=lambda i:(blocks[i].page_number or 0, rows[i][0]))
+    before = any(blocks[i].page_number == blocks[first].page_number and 0 < rows[first][0] - rows[i][0] < .05 for i in institution_rows)
+    table = any(blocks[i].page_number == blocks[a].page_number and abs(rows[i][0]-rows[a][0]) < .008 and rows[i][1]-rows[a][1] > .2 for i in institution_rows for a in anchors)
     for i,b in enumerate(blocks):
-        if not re.search(r'[A-Za-z0-9]',b.text) or normalized_heading(b.text) in {'education','qualifications','academic credentials','educational background','qualification','college/university/institution','academic profile'}:continue
-        candidates=[]
-        if i in rows:
-            top,x=rows[i]
-            for group_index,a in enumerate(anchors):
-                if blocks[a].page_number!=b.page_number:continue
-                ay,ax=rows[a]
-                distance=abs(ay-top)
-                semantic=bool(field_kinds(b.text,'education'))
-                same_source=b.source_element_index==blocks[a].source_element_index
-                same_row=abs(ay-top)<=.008
-                aligned=same_row or abs(ax-x)<=.18
-                if distance<=.065 and aligned and (same_row or semantic or same_source):
-                    candidates.append((0 if same_row else distance,abs(ax-x),group_index))
+        if not re.search(r'[A-Za-z0-9]',b.text) or b.assignment in {'section_heading','structural_heading'} or normalized_heading(b.text) in header_names:continue
         if i in anchors:
-            owner=anchors.index(i)
-        elif candidates:
-            candidates.sort();best=candidates[0]
-            if len(candidates)>1 and abs(candidates[1][0]-best[0])<.002 and abs(candidates[1][1]-best[1])<.02:
-                c1_a=anchors[candidates[0][2]]
-                c2_a=anchors[candidates[1][2]]
-                if abs(rows[c1_a][0]-rows[c2_a][0])<.008:
-                    return [] # True horizontal column ambiguity: leave fallback proposals intact.
-            owner=best[2]
-        else:
-            # Section text stays visible but entry ownership is unestablished.
-            # Never attach an unrelated institution/date by source order alone.
+            owner = anchors.index(i)
+        elif i not in rows:
             continue
+        else:
+            top,x = rows[i]
+            same_source = [j for j,a in enumerate(anchors) if b.source_element_index == blocks[a].source_element_index]
+            same_row = [j for j,a in enumerate(anchors) if b.page_number == blocks[a].page_number and abs(rows[a][0]-top) < .008]
+            if len(same_row) == 1:owner = same_row[0]
+            elif len(same_source) == 1:owner = same_source[0]
+            elif table:continue
+            else:
+                candidates = [(abs(rows[a][0]-top),j) for j,a in enumerate(anchors) if b.page_number == blocks[a].page_number and abs(rows[a][1]-x)<.2 and abs(rows[a][0]-top)<.09 and
+                              (rows[a][0]>=top if before and 'grade' not in field_kinds(b.text,'education') else rows[a][0]<=top)]
+                if not candidates:continue
+                candidates.sort()
+                if len(candidates)>1 and abs(candidates[0][0]-candidates[1][0])<.002:continue
+                owner=candidates[0][1]
         groups[owner]['block_indices'].append(i)
     return [g for g in groups if g['block_indices']]
 
@@ -334,3 +368,50 @@ def employment_start(text):
     role=re.search(r'\b(?:engineer|developer|analyst|associate|consultant|manager|architect|intern|specialist|director|officer|executive|lead|administrator)\b',prefix,re.I)
     has_delim=bool(re.search(r'[,|–—\-/]',raw_prefix))
     return bool(employment_header(lookup) or business or stated or (role and (has_delim or len(prefix.split())<=4)))
+
+
+def project_source_groups(blocks,elements):
+    """Project ownership from visible title rows or source bullet markers only."""
+    from local_api.services.record_subfields import ACTION
+    rows={};bold=[];bullet=[];stops=[]
+    marker_rows=[]
+    for el in elements:
+        if el.type!='ListItem' or el.text.strip():continue
+        c=el.metadata.get('coordinates',{});points=c.get('points',[]);height=c.get('layout_height')
+        if points and height:marker_rows.append((el.page_number,min(p[1] for p in points)/height))
+    for i,b in enumerate(blocks):
+        hints=[h for h in elements[b.source_element_index].metadata.get('pdf_source_lines',[]) if len(h.get('bbox',[]))==4 and min(b.end,h.get('end',0))>max(b.start,h.get('start',0))]
+        if not hints:continue
+        top=min(h['bbox'][1] for h in hints)
+        if max(h['bbox'][1] for h in hints)-top>.025:continue
+        rows[i]=(b.page_number or 0,top)
+        name=normalized_heading(b.text)
+        if name in {'domain experience','technical skills','personal details','education'}:stops.append(i);continue
+        if b.assignment in {'section_heading','structural_heading'} or not b.text.strip():continue
+        if len(b.text.split())<=18 and ':' not in b.text and not ACTION.search(b.text) and any(h.get('bold') for h in hints):bold.append(i)
+        el=elements[b.source_element_index]
+        if el.type=='ListItem' and b.start==0 or any(page==b.page_number and abs(y-top)<.008 for page,y in marker_rows):bullet.append(i)
+    anchors=bold if len(bold)>=2 else bullet
+    if stops:
+        cutoff=min(rows[i] for i in stops)
+        anchors=[i for i in anchors if rows[i]<cutoff]
+    if len(anchors)<2:return []
+    outline=sorted([(rows[i], 'start',j) for j,i in enumerate(anchors)]+[(rows[i],'stop',None) for i in stops])
+    groups=[{'entry_id':f'projects-{j+1}','block_indices':[],'lane':'source_geometry',
+             'boundary_reason':'visible project title/bullet and source page rows'} for j in range(len(anchors))]
+    for i,b in enumerate(blocks):
+        if i not in rows or b.assignment in {'section_heading','structural_heading'}:continue
+        page,top=rows[i]
+        eligible=[event for event in outline if event[0][0]<page or event[0][0]==page and event[0][1]<=top+.006]
+        if not eligible or eligible[-1][1]=='stop':continue
+        groups[eligible[-1][2]]['block_indices'].append(i)
+    # Hyperlink labels/targets sometimes lack PDF row hints. Attach only when
+    # an immediately contiguous span of the SAME element establishes one owner.
+    ownership={i:j for j,g in enumerate(groups) for i in g['block_indices']}
+    for i,b in enumerate(blocks):
+        if i in ownership or i in rows or b.assignment in {'section_heading','structural_heading'}:continue
+        neighbors={ownership[k] for k,other in enumerate(blocks) if k in ownership and other.source_element_index==b.source_element_index and (other.end==b.start or other.start==b.end)}
+        if len(neighbors)==1:
+            owner=next(iter(neighbors));groups[owner]['block_indices'].append(i);ownership[i]=owner
+    for group in groups:group['block_indices'].sort()
+    return [g for g in groups if g['block_indices']]

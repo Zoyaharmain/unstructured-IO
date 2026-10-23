@@ -1,0 +1,266 @@
+[
+  {
+    "file": "_ManjunathMurugan.pdf",
+    "field": "experience[0].role / company",
+    "observed": {
+      "role": "PwC",
+      "company": ""
+    },
+    "source_based_expected_or_concern": "The source header identifies Senior Business Analyst as role and PwC as employer.",
+    "classification": "observed_incorrect_assignment",
+    "basis": "Analyst source inspection; not an exhaustive human-approved field reference",
+    "likely_root_cause_inference": "The legacy fallback assumes company-first pipe order; the shared header refinement only handles exactly three pipe components, while this header has role/company/location/dates.",
+    "evidence": [
+      {
+        "source_id": "e13:0:65",
+        "quote": "Senior Business Analyst | PwC | Chennai | May 2022 - January 2024"
+      }
+    ]
+  },
+  {
+    "file": "_ManjunathMurugan.pdf",
+    "field": "experience[3].company",
+    "observed": "Senior Associate Intraday Pricing",
+    "source_based_expected_or_concern": "Senior Associate Intraday Pricing is the title; BNP Paribas GSO is the employer.",
+    "classification": "observed_incorrect_assignment",
+    "basis": "Analyst source inspection; not an exhaustive human-approved field reference",
+    "likely_root_cause_inference": "Role/company parsing does not robustly separate role-first financial-market headers.",
+    "evidence": [
+      {
+        "source_id": "e42:0:81",
+        "quote": "Senior Associate Intraday Pricing | BNP Paribas GSO | Chennai | September 2011 - "
+      }
+    ]
+  },
+  {
+    "file": "_ManjunathMurugan.pdf",
+    "field": "experience[2].start_date",
+    "observed": "2015",
+    "source_based_expected_or_concern": "Source states October 2015; the month is missing from the mapped date.",
+    "classification": "observed_truncation",
+    "basis": "Analyst source inspection; not an exhaustive human-approved field reference",
+    "likely_root_cause_inference": "Date matching is block-local and does not join adjacent source fragments for a single date.",
+    "evidence": [
+      {
+        "source_id": "e32:0:77",
+        "quote": "Senior Reference Data Analyst | Barclays Shared Services | Chennai | October "
+      },
+      {
+        "source_id": "e32:77:93",
+        "quote": "2015 - June 2019"
+      }
+    ]
+  },
+  {
+    "file": "_Levi Arbole.pdf",
+    "field": "contact.email",
+    "observed": "arbole60@gmail.com | 9823506339",
+    "source_based_expected_or_concern": "arbole60@gmail.com",
+    "classification": "observed_regression_from_saved_baseline",
+    "basis": "Analyst source inspection; not an exhaustive human-approved field reference",
+    "likely_root_cause_inference": "labelled_fields reads until the next recognized label; a following unlabeled pipe-separated phone is included in the email and overrides the correct token extractor.",
+    "evidence": [
+      {
+        "source_id": "e1:0:38",
+        "quote": "Email: arbole60@gmail.com | 9823506339"
+      }
+    ]
+  },
+  {
+    "file": "Aditya vashisth.pdf",
+    "field": "data.contact.full_name",
+    "observed": "Engineering LeadAditya VashisthTechnical",
+    "source_based_expected_or_concern": "Aditya Vashisth",
+    "classification": "new_incorrect_legacy_population_from_previously_empty_field",
+    "basis": "Analyst source inspection; not an exhaustive human-approved field reference",
+    "likely_root_cause_inference": "Merged PDF reading order combines title, candidate name and skills heading; literal substring matching does not establish name identity.",
+    "evidence": [
+      {
+        "source_id": "e0:0:22",
+        "quote": "Engineering LeadAditya"
+      },
+      {
+        "source_id": "e0:22:41",
+        "quote": " VashisthTechnical "
+      }
+    ]
+  },
+  {
+    "file": "Aditya vashisth.pdf",
+    "field": "data.contact.email / links",
+    "observed": {
+      "full_name": "Engineering LeadAditya VashisthTechnical",
+      "email": "7982016518avmsv1996@gmail.com",
+      "phone": "+91 7982016518",
+      "location": null,
+      "linkedin_url": "linkedin.com/in/aditya-vashisthgithub",
+      "github_url": "github.com/av525CertificationsGoogle",
+      "portfolio_url": null
+    },
+    "source_based_expected_or_concern": "Rendered first page and independent layout text show avmsv1996@gmail.com, github.com/av525, and linkedin.com/in/aditya-vashisth as separate contact fields.",
+    "classification": "observed_merged_contact_fields",
+    "basis": "Analyst source inspection; not an exhaustive human-approved field reference",
+    "likely_root_cause_inference": "Contact regexes operate over concatenated PDF text with insufficient token boundaries; raw legacy and hierarchical fields disagree.",
+    "evidence": [
+      {
+        "source_id": "e20:150:173",
+        "quote": "+91 7982016518avmsv1996"
+      },
+      {
+        "source_id": "e20:173:184",
+        "quote": "@gmail.com."
+      },
+      {
+        "source_id": "e21:0:37",
+        "quote": "linkedin.com/in/aditya-vashisthgithub"
+      },
+      {
+        "source_id": "e21:37:67",
+        "quote": ".com/av525CertificationsGoogle"
+      }
+    ]
+  },
+  {
+    "file": "Aditya vashisth.pdf",
+    "field": "education",
+    "observed": [
+      {
+        "institution": "",
+        "degree": "Bachelor of Technology (Computer Science)",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      }
+    ],
+    "source_based_expected_or_concern": "The original first page lists separate M.Tech (2018-21) and B.Tech (2013-17) rows at Guru Gobind Singh Indraprastha University; only one education record survives.",
+    "classification": "observed_missing_record_and_association",
+    "basis": "Analyst source inspection; not an exhaustive human-approved field reference",
+    "likely_root_cause_inference": "Two-column source fragments are not fully routed and grouped into separate education records.",
+    "evidence": []
+  },
+  {
+    "file": "_Aashish Golhani.pdf",
+    "field": "experience[2].role",
+    "observed": "Senior Business Analyst\nPrepared executive dashboards, project status reports, RAID logs, and stakeholder presentations.",
+    "source_based_expected_or_concern": "Senior Business Analyst is the title; the dashboard/report responsibility must remain a responsibility, not part of the role.",
+    "classification": "observed_legacy_field_contamination",
+    "basis": "Analyst source inspection; not an exhaustive human-approved field reference",
+    "likely_root_cause_inference": "Title field ownership includes a responsibility span; canonical joins are accepted by the legacy value path while the nested exact per-block filter suppresses that role.",
+    "evidence": [
+      {
+        "source_id": "e74:38:61",
+        "quote": "Senior Business Analyst"
+      },
+      {
+        "source_id": "e81:652:748",
+        "quote": "Prepared executive dashboards, project status reports, RAID logs, and stakeholder presentations."
+      }
+    ]
+  },
+  {
+    "file": "_Aashish Golhani.pdf",
+    "field": "education",
+    "observed": [
+      {
+        "institution": "Pune University",
+        "degree": "Diploma in Information Technology from",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      },
+      {
+        "institution": "Amravati University",
+        "degree": "Bachelor of Pharmacy",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": "2003",
+        "grade_or_gpa": null
+      }
+    ],
+    "source_based_expected_or_concern": "The source Education section includes a 2008 PG Certificate in addition to the diploma and bachelor record; that education record is absent.",
+    "classification": "observed_missing_education_record",
+    "basis": "Analyst source inspection; not an exhaustive human-approved field reference",
+    "likely_root_cause_inference": "Qualification-anchor grouping and the degree recognizer do not cover the certificate row reliably.",
+    "evidence": []
+  },
+  {
+    "file": "_Levi Arbole.pdf",
+    "field": "languages",
+    "observed": [
+      "●"
+    ],
+    "source_based_expected_or_concern": "Original Personal Details states Languages: English, Hindi; the hierarchy has zero language records and the legacy list contains only a bullet.",
+    "classification": "observed_parent_child_omission",
+    "basis": "Analyst source inspection; not an exhaustive human-approved field reference",
+    "likely_root_cause_inference": "A labeled language row within personal information does not establish two language records; the legacy language list also retains punctuation artifacts.",
+    "evidence": [
+      {
+        "source_id": "e109:32:58",
+        "quote": "Languages: English, Hindi,"
+      },
+      {
+        "source_id": "e109:58:61",
+        "quote": " ● "
+      }
+    ]
+  },
+  {
+    "file": "_Rachana.pdf",
+    "field": "experience[0].role",
+    "observed": "Tieto HealthCare — Bangalore, India",
+    "source_based_expected_or_concern": "Source title is Senior Business Analyst / Scrum Master; Tieto HealthCare and Bangalore, India are employer/location.",
+    "classification": "observed_incorrect_assignment",
+    "basis": "Analyst source inspection; not an exhaustive human-approved field reference",
+    "likely_root_cause_inference": "Role-first combined header fallback returns the employer/location fragment as the role.",
+    "evidence": [
+      {
+        "source_id": "e18:0:98",
+        "quote": "Senior Business Analyst / Scrum Master | Tieto HealthCare — Bangalore, India | July 2024 – Present"
+      }
+    ]
+  },
+  {
+    "file": "_Rachana.pdf",
+    "field": "experience[0].responsibilities",
+    "observed": [],
+    "source_based_expected_or_concern": "Original PDF contains numerous explicit responsibilities under the first job; none are retained in that record.",
+    "classification": "observed_missing_responsibilities",
+    "basis": "Analyst source inspection; not an exhaustive human-approved field reference",
+    "likely_root_cause_inference": "Responsibility field detection relies on selected action verbs/source fragments and misses continuation/other action blocks.",
+    "evidence": [
+      {
+        "source_id": "e19:0:123",
+        "quote": "Work with US healthcare and life sciences stakeholders across payer and provider environments to understand business needs,"
+      },
+      {
+        "source_id": "e21:0:125",
+        "quote": "Lead requirement workshops, interviews, process discussions and interface analysis; document BRDs, FRDs, URS, use cases, user"
+      },
+      {
+        "source_id": "e25:0:126",
+        "quote": "Work hands-on with healthcare data exchange requirements involving X12 EDI transactions such as 834 Enrollment, 835 Remittance"
+      }
+    ]
+  },
+  {
+    "file": "_Rachana.pdf",
+    "field": "professional_title",
+    "observed": "Senior Business Analyst | Scrum Master | US",
+    "source_based_expected_or_concern": "Senior Business Analyst | Scrum Master | US Healthcare",
+    "classification": "observed_truncation",
+    "basis": "Analyst source inspection; not an exhaustive human-approved field reference",
+    "likely_root_cause_inference": "Professional title takes only one source block; the Healthcare continuation is not joined.",
+    "evidence": [
+      {
+        "source_id": "e1:0:44",
+        "quote": "Senior Business Analyst | Scrum Master | US "
+      },
+      {
+        "source_id": "e1:44:54",
+        "quote": "Healthcare"
+      }
+    ]
+  }
+]

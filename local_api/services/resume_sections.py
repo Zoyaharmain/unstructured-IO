@@ -32,6 +32,8 @@ _engine = None
 
 
 def build_sections(grouped, elements):
+    from local_api.services.source_rows import refine_rows
+    grouped = refine_rows(grouped, elements)
     sections = [ResumeSection(category=key, label=ANCHORS[key]['label'], blocks=blocks, entries=entry_groups(blocks, key, elements)) for key, blocks in grouped.items()]
     for section in sections:
         from local_api.services.record_relationships import annotate_relationships
@@ -127,10 +129,14 @@ class SectionEngine:
             for line in element.text.splitlines(keepends=True) or ['']:
                 encoded = self.encoder.tokenizer(line, add_special_tokens=False, return_offsets_mapping=True, truncation=False)
                 offsets = encoded['offset_mapping']
-                _, inline_cut = heading_boundary(line, ALIASES)
+                line_category, inline_cut = heading_boundary(line, ALIASES)
                 line_hints = element.metadata.get('pdf_source_lines', [])
                 hint_cuts = [max(0, min(len(line), hint[key] - offset)) for hint in line_hints for key in ('start', 'end') if isinstance(hint.get(key), int) and offset <= hint[key] <= offset + len(line)]
                 recovery_cuts = [cut-offset for cut in element.metadata.get('recovery_cuts', []) if isinstance(cut,int) and offset <= cut <= offset+len(line)]
+                # A known heading is one unit even when PDF hints split its words.
+                if line_category and inline_cut is None:
+                    hint_cuts = []
+                    recovery_cuts = []
                 mechanical_cuts = hint_cuts + [offsets[i][0] for i in range(200, len(offsets), 200)]
                 cuts = sorted(set(recovery_cuts + [word_safe_cut(line, cut) for cut in mechanical_cuts] + [0] + ([inline_cut] if inline_cut else []) + [len(line)]))
                 if not line:
@@ -196,6 +202,7 @@ class SectionEngine:
             if heading_boundary(unit.text, ALIASES)[0]:
                 page_heading_lanes.setdefault(request.elements[unit.index].page_number, set()).add(unit.lane)
         grouped, review, contexts = {}, [], {}
+        element_contexts = {}
         first_heading = next((i for i, (_, _, score, margin) in enumerate(headers)
                               if request.elements[units[i].index].type not in {'Footer', 'PageBreak'} and
                               (heading_boundary(units[i].text, ALIASES)[0] is not None or
@@ -206,20 +213,33 @@ class SectionEngine:
             label, cluster, similarity, margin = content
             candidate = label
             context_source = None
-            context = contexts.get(unit.lane)
+            context = element_contexts.get(unit.index) or contexts.get(unit.lane)
+            if context is None and unit.lane == 'wide' and contexts:
+                owners = {item[0] for item in contexts.values()}
+                if len(owners) == 1:
+                    context = next(iter(contexts.values()))
             short = len(unit.text.split()) <= 12
             structural_label, _ = heading_boundary(unit.text, ALIASES)
+            # 'Languages' in a technology list means programming languages.
+            if structural_label == 'languages' and re.search(
+                    r'(?<!\w)(?:C\#|C\+\+|Java|Python|SQL|JavaScript|TypeScript|Linq)(?!\w)',
+                    element.text, re.I):
+                structural_label = 'skills'
+
             if unit.heading_style and re.search(r'\b(?:domain|technical) expertise$', normalized_heading(unit.text)):
                 structural_label = 'skills'
             following = next((contents[j] for j in range(position+1,min(len(contents),position+6)) if units[j].text.strip()), None)
             if structural_label == 'languages' and context and context[0] == 'skills' and following and following[0] == 'skills' and following[2] >= .4:
                 structural_label = 'skills'
-            record_field = ':' in unit.text and normalized_heading(unit.text.split(':', 1)[0]) in RECORD_FIELDS
+            prefix = normalized_heading(unit.text.split(':', 1)[0])
+            record_field = ':' in unit.text and (prefix in RECORD_FIELDS or (
+                context and context[0] in {'experience', 'projects'} and prefix in {'objective', 'summary', 'skills', 'technologies used', 'tools and technology', 'tools and technologies', 'programming languages'}))
+            if record_field:structural_label = None
             alternatives = sorted(compounds.get(position, set()))
-            compound = len(alternatives) > 1
+            compound = len(alternatives) > 1 and structural_label is None
             employer_boundary = employment_start(unit.text)
             page_artifact = element.type == 'PageBreak' or (element.type == 'Footer' and bool(re.fullmatch(r'\s*(?:page\s*)?\d+(?:\s*(?:of|/)\s*\d+)?\s*', unit.text, flags=re.I)))
-            is_heading = (structural_label is not None or (short and hscore >= .72 and hmargin >= .09 and (not context or not context[2] or unit.heading_style or (not element.metadata.get('pdf_source_lines') and element.type in {'Title', 'Header'})))) and not compound and not record_field and not page_artifact and not employer_boundary
+            is_heading = (structural_label is not None or (short and hscore >= .72 and hmargin >= .09 and (not context or not context[2] or unit.heading_style))) and not compound and not record_field and not page_artifact and not employer_boundary
             assignment, reason = 'semantic', 'BERT embedding assigned to a labeled K-means centroid'
             if compound:
                 contexts.pop(unit.lane, None)
@@ -253,7 +273,8 @@ class SectionEngine:
                 assignment, reason = 'contact_context', 'Opening identity/headline before the contact section'
             elif not context and position < first_heading and len(unit.text.split()) <= 18 and not unit.text.rstrip().endswith(('.', '!', '?')) and any(
                     re.search(r'[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}', units[j].text)
-                    for j in range(max(0, position - 2), min(first_heading, position + 3)) if units[j].lane == unit.lane):
+                    for j in range(max(0, position - 2), min(first_heading, position + 3))
+                    if units[j].lane == unit.lane or (position <= 2 and request.elements[units[j].index].page_number == element.page_number)):
                 label = 'personal_information'
                 assignment, reason = 'contact_context', 'Opening identity/headline adjacent to an explicit email address'
             elif (not context or not context[2] or not element.metadata.get('pdf_source_lines')) and not record_field and short and element.type in {'Title', 'Header'} and hscore >= .50 and (hmargin < .09 or similarity < .35):
@@ -281,6 +302,14 @@ class SectionEngine:
                     assignment, reason = 'needs_review', 'Insufficient semantic evidence for this preamble text'
             elif similarity < .44 or margin < .07:
                 assignment, reason = 'needs_review', 'Insufficient separation between semantic clusters'
+            # Physical line hints can change lanes within one extracted paragraph.
+            # Retain its explicit owning section until a new heading overrides it.
+            if assignment == 'needs_review':
+                element_contexts.pop(unit.index, None)
+            elif assignment in {'structural_heading', 'section_heading', 'employment_boundary'}:
+                element_contexts[unit.index] = (label, unit.index, True)
+            elif context and context[2] and assignment == 'heading_context':
+                element_contexts[unit.index] = context
             block = SectionBlock(source_element_index=unit.index, start=unit.start, end=unit.end,
                                  text=unit.text, page_number=element.page_number, cluster_id=cluster,
                                  candidate_section=candidate, alternatives=alternatives if compound else [], assignment=assignment,

@@ -15,6 +15,11 @@ from local_api.services.record_relationships import dated_organization_header
 from local_api.services.source_validation import validate_result
 from local_api.schemas.mapping import SchemaMappingResponse
 from local_api.services.section_subschemas import build_subschemas
+from local_api.services.record_subfields import refine_record
+from local_api.services.source_fragments import texts, citations, runs, contiguous_support
+from local_api.schemas.subschemas import SourceQuote
+from local_api.services.education_subfields import refine_education
+from local_api.services.list_fields import skill_candidates, unique, language_rows
 
 
 def source_id(block):
@@ -43,6 +48,12 @@ def map_schema(request):
     sections={s.category:s for s in request.sections.sections}
     raw={key:canonical(s.blocks) for key,s in sections.items()}
     evidence={};warnings=[];record_reviews=[];used=set()
+    inventory={source_id(b):b.text for section in request.sections.sections for b in section.blocks}
+    inventory.update({source_id(b):b.text for b in request.sections.needs_review})
+    def field_quotes(value, bs):
+        refs=citations(value,bs)
+        if any(str(value).casefold() in r['quote'].casefold() for r in refs) or contiguous_support(value,[SourceQuote(**r) for r in refs],inventory):return refs
+        return []
     def blocks(category):
         return [b for b in sections[category].blocks if b.assignment not in {'section_heading','structural_heading'} and b.text.strip()] if category in sections else []
     def remember(path,value,bs):
@@ -56,7 +67,7 @@ def map_schema(request):
     empty=ContactInfo(full_name='',email='',phone='')
     data=ResumeSchema(contact=empty)
     if scope['candidate_resume'] is not False:
-        header=blocks('personal_information');text=canonical(header)
+        header=blocks('personal_information');text='\n'.join(b.text for b in header)
         guessed=extract_contact_info(text,text)
         for field in type(guessed).model_fields:
             value=getattr(guessed,field)
@@ -64,9 +75,25 @@ def map_schema(request):
             value=literal(value,header)
             if field in {'full_name','email','phone'}:value=value or ''
             setattr(data.contact,field,remember('contact.'+field,value,header))
-        for b in header:
-            if len(b.text.split())<=12 and '@' not in b.text and re.search(r'\b(?:engineer|developer|analyst|consultant|architect|manager|specialist|scientist)\b',b.text,re.I):
-                data.professional_title=remember('professional_title',b.text.strip(),[b]);break
+        title_candidates = [(text, run) for run in runs(header) for text in [''.join(b.text for b in run)]
+                            if len(text.split())<=12 and not re.search(r'@|Technical Skills|Core AI|linkedin|github',text,re.I)]
+        title_candidates += [(b.text,[b]) for b in header]
+        for title, refs in title_candidates:
+            if len(title.split())<=12 and '@' not in title and re.search(r'\b(?:engineer|engineering lead|developer|analyst|consultant|architect|manager|specialist|scientist)\b',title,re.I):
+                title=title.strip()
+                if data.contact.full_name and title.startswith(data.contact.full_name + ' '):title=title[len(data.contact.full_name):].strip()
+                data.professional_title=remember('professional_title',title,refs);break
+        contact_values, contact_reasons = refine_record('personal_information',
+            data.contact.model_dump() | {'professional_title': data.professional_title}, header)
+        warnings.extend(contact_reasons)
+        for key, value in contact_values.items():
+            target = data if key == 'professional_title' else data.contact
+            value = literal(value, header)
+            if key in {'full_name', 'email', 'phone'}:value = value or ''
+            setattr(target, key, value)
+            path = key if key == 'professional_title' else 'contact.' + key
+            evidence.pop(path, None)
+            remember(path, value, [b for b in header if any(r['source_id']==source_id(b) for r in field_quotes(value,header))])
         summary=blocks('summary')
         data.summary=remember('summary',canonical(summary).strip() or None,summary)
         # Never infer experience from education, birth years or a whole-document span.
@@ -80,16 +107,12 @@ def map_schema(request):
         for skill in ('C#','C++'):
             if re.search(r'(?<!\w)'+re.escape(skill)+r'(?!\w)',skill_text,re.I) and skill not in data.skills.technical_skills:
                 data.skills.technical_skills.append(skill)
-        flat=[]
-        for b in skill_blocks:
-            value=re.sub(r'^\s*[•▪●*\-]\s*','',b.text).strip()
-            if ':' in value and re.fullmatch(r'(?:technical skills|skills|languages|tools|platforms|frameworks|databases|programming)',value.split(':',1)[0].strip(),re.I):value=value.split(':',1)[1].strip()
-            flat.extend(piece.strip() for piece in re.split(r'[,;|\n]',value) if piece.strip())
-        data.skills.all_skills=list(dict.fromkeys(data.skills.technical_skills+data.skills.tools_and_platforms+data.skills.domain_and_functional+data.skills.soft_skills+flat))
+        flat=skill_candidates(skill_blocks)
+        data.skills.all_skills=unique(data.skills.technical_skills+data.skills.tools_and_platforms+data.skills.domain_and_functional+data.skills.soft_skills+flat)
         for field in type(data.skills).model_fields:
             values=getattr(data.skills,field)
             # Dictionary recognition must still have literal evidence in skills.
-            values=[value for value in values if supported(value,skill_blocks)]
+            values=unique(value for value in values if supported(value,skill_blocks))
             setattr(data.skills,field,values)
             for i,value in enumerate(values):remember(f'skills.{field}[{i}]',value,[b for b in skill_blocks if norm(value) in norm(b.text)])
         for category in ('experience','education','projects','certifications'):
@@ -112,7 +135,7 @@ def map_schema(request):
                     company=literal(candidate.company,refs('employer')) if candidate else None
                     role=literal(candidate.role,refs('title')) if candidate else None
                     role_pattern=r'\b(?:engineer|developer|analyst|consultant|architect|manager|specialist|director|lead)\b'
-                    company_pattern=r'\b(?:ltd|limited|inc|llc|corp|corporation|systems|services|bank|technolog(?:y|ies)|solutions|company)\b'
+                    company_pattern=r'\b(?:ltd|limited|inc|llc|corp|corporation|systems|services|bank|technolog(?:y|ies)|solutions|company|ispl|paribas|bnp|pvt|private)\b'
                     if company and re.search(role_pattern,company,re.I) and not re.search(company_pattern,company,re.I):company=None
                     if role and re.search(company_pattern,role,re.I):role=None
                     if not company:
@@ -131,7 +154,7 @@ def map_schema(request):
                     # Isolated source fields may map directly; combined lines remain uncertain.
                     if not company and sole('employer') and not re.search(r'\d|\||\b(?:engineer|developer|consultant|manager)\b',field('employer'),re.I):company=field('employer')
                     if not role and sole('title') and not re.search(r'\d|\||\b(?:ltd|inc|corporation|company)\b',field('title'),re.I):role=field('title')
-                    record=WorkExperience(company=company or '',role=role or '',responsibilities=[b.text for b in refs('responsibilities')])
+                    record=WorkExperience(company=company or '',role=role or '',responsibilities=[part.strip() for text in texts(refs('responsibilities')) for part in re.split(r'[\u2022\u25cf\u25aa]',text) if part.strip()])
                     dates=field('dates')
                     date=r'(?:\b(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s+)?\b(?:19|20)\d{2}\b'
                     matches=list(re.finditer('('+date+r')\s*(?:[-–—]|\bto\b|\btill\b)\s*('+date+r'|Currently working|Present|Current|Till Date)(?!\w)',dates,re.I))
@@ -160,9 +183,31 @@ def map_schema(request):
                 else:
                     contents=[b for b in bs if b.assignment not in {'section_heading','structural_heading'}]
                     if contents:
-                        i=len(data.certifications);value=canonical(contents).strip();data.certifications.append(Certification(name=value));remember(f'certifications[{i}].name',value,contents)
-        for b in blocks('languages'):
-            i=len(data.languages);data.languages.append(b.text.strip());remember(f'languages[{i}]',b.text.strip(),[b])
+                        i=len(data.certifications);value=canonical(contents).strip();record=Certification(name=value);data.certifications.append(record);remember(f'certifications[{i}].name',value,contents)
+                if category == 'certifications' and not contents:
+                    continue
+                original = record.model_dump()
+                base, education_reasons = refine_education(original, bs) if category == 'education' else (original, [])
+                refined, reasons = refine_record(category, base, bs, header_fields=(
+                    {'company' if field == 'employer' else 'role' if field == 'title' else field for field in entry.fields}
+                    if entry.fields else None))
+                review['review_reasons'] = list(dict.fromkeys(review['review_reasons'] + education_reasons + reasons))
+                if reasons or education_reasons:review['relationship_status'] = 'needs_review'
+                for key, value in refined.items():
+                    if value is None:
+                        value = [] if isinstance(original[key], list) else '' if key in {'company','role','degree','institution','name'} else None
+                    if isinstance(value,list):value=[item for item in value if field_quotes(item,bs)]
+                    elif value and not field_quotes(value,bs):value='' if key in {'company','role','degree','institution','name'} else None
+                    setattr(record, key, value)
+                    path = f'{category}[{i}].{key}'
+                    for old_path in list(evidence):
+                        if old_path == path or old_path.startswith(path + '['):evidence.pop(old_path)
+                    for j, item in enumerate(value if isinstance(value, list) else [value]):
+                        remember(f'{path}[{j}]' if isinstance(value, list) else path, item,
+                                 [b for b in bs if any(r['source_id']==source_id(b) for r in field_quotes(item,bs))])
+        for language, level, b in language_rows(blocks('languages')):
+            value=language if level is None else next((part.strip() for part in re.split(r'[\u2022\u25cf\n]',b.text) if language in part and level in part),language)
+            i=len(data.languages);data.languages.append(value);remember(f'languages[{i}]',value,[b])
     else:warnings.append('Document scope is non-resume; candidate fields were left empty and source sections retained.')
     missing=['contact.'+f for f in ('full_name','email','phone') if not getattr(data.contact,f)]
     for category,fields in [('experience',('company','role')),('education',('institution','degree')),('projects',('name',)),('certifications',('name',))]:

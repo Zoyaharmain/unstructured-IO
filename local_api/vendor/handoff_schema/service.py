@@ -101,11 +101,17 @@ def extract_contact_info(header_text: str, full_text: str) -> ContactInfo:
         if re.search(r"\b(curriculum|resume|biodata|profile|contact|location)\b", line, re.I):
             continue
         cleaned = re.sub(r"^[^\w]+", "", line)
-        if 2 <= len(cleaned.split()) <= 5 and len(cleaned) < 50:
+        cleaned = re.sub(r"^(?:full name|candidate name|name)\s*:\s*", "", cleaned, flags=re.I)
+        # PDF extraction may join the candidate name and professional title.
+        cleaned = re.split(
+            r"\s+(?=(?:(?:Senior|Junior|Lead|Principal|Business|Financial|Software|Data|Technical)\s+)*(?:Analyst|Engineer|Developer|Consultant|Architect|Manager|Specialist|Scientist)\b)",
+            cleaned, maxsplit=1, flags=re.I,
+        )[0].strip()
+        if (1 <= len(cleaned.split()) <= 6 and len(cleaned) < 70
+                and re.fullmatch(r"[^\W\d_][^\d@:/|,;]*", cleaned)
+                and not re.search(r"\b(?:senior|junior|engineering|lead|engineer|developer|analyst|consultant|architect|manager|specialist|scientist|authorized|availability|linkedin|github|professional|curriculum)\b", cleaned, re.I)) :
             full_name = cleaned
             break
-    if full_name == "Candidate" and header_lines:
-        full_name = header_lines[0]
 
     # Location heuristic
     loc_match = re.search(
@@ -113,7 +119,18 @@ def extract_contact_info(header_text: str, full_text: str) -> ContactInfo:
         header_text or full_text[:1000],
         re.I,
     )
-    location = loc_match.group(0).title() if loc_match else "Not specified"
+    location = loc_match.group(0) if loc_match else "Not specified"
+    # An explicit city/region pair in a contact row takes precedence over the dictionary.
+    for line in header_lines:
+        for part in line.split("|"):
+            part = re.sub(r"^(?:location|address)\s*:\s*", "", part.strip(), flags=re.I)
+            if re.fullmatch(r"[^\W\d_][^\d@:/|\n]{1,60},\s*[^\W\d_][^\d@:/|\n]{1,40}", part) and (
+                "@" in line or re.search(r"\b\d{10}\b|\b(?:location|address)\s*:", line, re.I)
+            ):
+                location = part
+                break
+        if location != "Not specified" and "," in location:
+            break
 
     return ContactInfo(
         full_name=full_name,
@@ -150,7 +167,7 @@ def extract_work_experience(exp_text: str, full_text: str) -> list[WorkExperienc
         date_match = date_range_regex.search(cleaned_line)
         # Check if line contains a company or date boundary
         if date_match and (
-            re.search(r"\b(Ltd|Bank|Services|Systems|Corp|Inc|Technologies|Solutions|Arcesium|ICE|NYSE|Company|Homeward|Enterprises)\b", cleaned_line, re.I)
+            re.search(r"\b(Ltd|Bank|Services|Systems|Corp|Inc|Technologies|Solutions|Arcesium|ICE|NYSE|Company|Homeward|Enterprises|ISPL|Paribas|BNP|Pvt|Private)\b", cleaned_line, re.I)
             or "|" in cleaned_line
         ):
             # Save previous experience record

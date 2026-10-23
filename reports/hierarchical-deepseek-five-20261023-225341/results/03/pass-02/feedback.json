@@ -1,0 +1,246 @@
+{
+  "pass": 2,
+  "section_review": {
+    "provider": "DeepSeek",
+    "status": "complete",
+    "reviewed_units": 126,
+    "changed_units": 1,
+    "resolved_units": 0,
+    "local_result_retained": false,
+    "provider_calls": 1,
+    "model": "deepseek-flash",
+    "invalid_response_attempts": [],
+    "resolution_status": "all_meaningful_text_assigned",
+    "all_meaningful_text_assigned": true,
+    "remaining_meaningful_review_units": 0,
+    "pass_count": 1,
+    "split_units": 0,
+    "remaining_review_units": 0
+  },
+  "audit_status": "complete",
+  "unresolved_meaningful_spans": 0,
+  "missing_required_fields": [
+    "education[0].institution"
+  ],
+  "schema_findings": [
+    {
+      "field": "contact.full_name",
+      "issue": "Full name is a corrupted concatenation including title and section heading text ('Engineering LeadAditya VashisthTechnical') rather than the candidate's name alone.",
+      "source_ids": [
+        "e0:0:22",
+        "e0:22:41"
+      ]
+    },
+    {
+      "field": "contact.email",
+      "issue": "Email value is malformed by concatenating the phone digits with the email local part ('7982016518avmsv1996@gmail.com'); source shows phone then email fragments, address cannot be cleanly confirmed.",
+      "source_ids": [
+        "e20:150:173",
+        "e20:173:184"
+      ]
+    },
+    {
+      "field": "contact.phone",
+      "issue": "Phone value derived from a source block that also contains the email local part; the phone itself matches but the block spans phone+email fragments.",
+      "source_ids": [
+        "e20:150:173"
+      ]
+    },
+    {
+      "field": "contact.linkedin_url",
+      "issue": "LinkedIn URL is corrupted by merging with the following GitHub fragment ('linkedin.com/in/aditya-vashisthgithub'); the actual GitHub URL handle appears at e21:37:67 ('.../av525'), so github_url is unresolved and the LinkedIn value is not source-accurate.",
+      "source_ids": [
+        "e21:0:37",
+        "e21:37:67"
+      ]
+    },
+    {
+      "field": "contact.github_url",
+      "issue": "GitHub profile URL is present in the source ('github.com/av525' from the merged block) but is left unresolved/null in the schema.",
+      "source_ids": [
+        "e21:0:37",
+        "e21:37:67"
+      ]
+    },
+    {
+      "field": "education",
+      "issue": "Education record only captures 'Bachelor of Technology'; the source also lists 'Master of Technology (Computer Science)' (2018-21) and a separate B.Tech (2013-17). The Master's degree is omitted and degree/institution/year relationships are misassigned.",
+      "source_ids": [
+        "e12:573:606",
+        "e12:606:647",
+        "e20:90:150",
+        "e12:511:573"
+      ]
+    },
+    {
+      "field": "education[0].institution",
+      "issue": "Institution is empty even though source explicitly names 'Guru Gobind Singh Indraprastha University, Delhi'.",
+      "source_ids": [
+        "e12:511:573",
+        "e20:90:150"
+      ]
+    },
+    {
+      "field": "education[0].start_year",
+      "issue": "Start year omitted; source provides 2018-21 (Master) and 2013-17 (Bachelor) ranges.",
+      "source_ids": [
+        "e12:511:573",
+        "e20:90:150"
+      ]
+    },
+    {
+      "field": "education[0].graduation_year",
+      "issue": "Graduation year omitted; source provides '2018 - 21' and '2013 - 17'.",
+      "source_ids": [
+        "e12:511:573",
+        "e20:90:150"
+      ]
+    },
+    {
+      "field": "experience[0].responsibilities",
+      "issue": "Engineering Lead responsibilities at Persistent Systems are empty; source contains detailed bullets (Generative AI leadership, multi-agent systems, RAG with FAISS/Azure AI Search, middleware, pipelines, vector search).",
+      "source_ids": [
+        "e13:0:81",
+        "e14:0:86",
+        "e15:0:84",
+        "e16:0:81",
+        "e17:0:79",
+        "e18:0:88",
+        "e19:0:88",
+        "e20:0:89"
+      ]
+    },
+    {
+      "field": "experience[0].technologies",
+      "issue": "Technologies for Persistent Systems role are empty despite explicit mention of OpenAI GPT-3.5-Turbo, LangChain, LangGraph, AutoGen, FAISS, Azure AI Search.",
+      "source_ids": [
+        "e13:0:81",
+        "e15:0:84",
+        "e16:81:143"
+      ]
+    },
+    {
+      "field": "experience[1].responsibilities",
+      "issue": "TechTree IT Systems responsibilities are empty; source bullet ('Engineered features and enhancements... performance optimization and cross-platform compatibility') is unassigned.",
+      "source_ids": [
+        "e27:0:91",
+        "e27:91:138"
+      ]
+    },
+    {
+      "field": "experience[2].responsibilities[0]",
+      "issue": "Only the first half of the Sagar Info. bullet was captured; the continuation ('optimization and user experience improvements.') is omitted and merged incorrectly as 'applicationperformance'.",
+      "source_ids": [
+        "e28:0:86",
+        "e28:86:133"
+      ]
+    },
+    {
+      "field": "skills.all_skills",
+      "issue": "Many 'skills' entries are corrupted concatenations of section headings and adjacent items (e.g., 'GCP Vector SearchProfileInnovative', 'Tool IntegrationProgramming', '& Development', 'AWS and OpenAI API.'), not discrete skills.",
+      "source_ids": [
+        "e6:99:113",
+        "e9:40:59",
+        "e12:40:74"
+      ]
+    },
+    {
+      "field": "skills.all_skills",
+      "issue": "'Core' and 'AI/ML & Agentic AI' are category headings, not skills, and are included as skill values.",
+      "source_ids": [
+        "e0:47:51",
+        "e0:51:70"
+      ]
+    },
+    {
+      "field": "skills.technical_skills",
+      "issue": "'React' and 'Node.js' were extracted from merged block but the value is a fragment 'Web Technologies: React.js, Node.js' — categorical heading merged into skill name; 'MySQL' derived from 'MySQL and Firestore.' fragment.",
+      "source_ids": [
+        "e8:0:36",
+        "e10:39:69"
+      ]
+    },
+    {
+      "field": "certifications",
+      "issue": "Certifications are duplicated (same 5 Google Cloud certs appear three times) and names are corrupted concatenations rather than five discrete certification records; issuer and issue year unresolved despite 'Google Cloud Certified' prefixes indicating issuer.",
+      "source_ids": [
+        "e21:67:311",
+        "e22:0:50",
+        "e23:0:60",
+        "e24:0:48",
+        "e25:0:46",
+        "e26:0:50"
+      ]
+    },
+    {
+      "field": "certifications[2].name",
+      "issue": "Certification name 'Google Cloud Certified-Cloud DigitalLeaderSoftware' is corrupted by appending the following section word 'Software'.",
+      "source_ids": [
+        "e26:0:50"
+      ]
+    },
+    {
+      "field": "projects[0].name",
+      "issue": "Project name 'Key ProjectsHeart' is a corrupted concatenation of section heading 'Key Projects' and project name 'Heart Flow'; correct project name is 'Heart Flow - Contract Intelligence Agent'.",
+      "source_ids": [
+        "e29:0:17",
+        "e29:17:81"
+      ]
+    },
+    {
+      "field": "projects[1].name",
+      "issue": "Project 'name' is actually the project description sentence ('a sophisticated contract analysis...'), not the project title; the real title fragment is embedded elsewhere.",
+      "source_ids": [
+        "e29:81:200"
+      ]
+    },
+    {
+      "field": "projects[2].name",
+      "issue": "Project 'name' is a responsibility bullet ('Engineered Node.js middleware...') rather than a project title; project boundaries are misaligned so HealthEdge, Regeneron PPM, Essay Writer, and AutoGen Support projects are not correctly delineated.",
+      "source_ids": [
+        "e38:0:91",
+        "e35:143:182",
+        "e40:95:131",
+        "e44:78:119",
+        "e48:88:148"
+      ]
+    },
+    {
+      "field": "projects",
+      "issue": "Distinct projects (HealthEdge Guiding Care Bot, Regeneron Target PPM Bot, Essay Writer, AI Customer Support AutoGen) are not separated into individual project records; GitHub URLs for Essay Writer and AI Customer Support are present in source but left unresolved.",
+      "source_ids": [
+        "e35:143:182",
+        "e40:131:198",
+        "e45:0:48",
+        "e49:0:47"
+      ]
+    },
+    {
+      "field": "summary",
+      "issue": "Summary contains OCR spacing errors ('inGenerative', 'inbuilding', 'indesigning', 'andorchestrating', 'enterpriseapplications') reproduced verbatim; text is fragmented but semantically faithful — flagged for normalization.",
+      "source_ids": [
+        "e12:74:148",
+        "e12:148:218",
+        "e12:341:353",
+        "e12:353:424",
+        "e12:424:497"
+      ]
+    },
+    {
+      "field": "total_experience_years",
+      "issue": "Value 8.0 taken from '8+ years' qualifier in summary; note this is a lower bound, not an exact computed value.",
+      "source_ids": [
+        "e12:74:148"
+      ]
+    },
+    {
+      "field": "professional_title",
+      "issue": "Professional title left null though source header contains 'Engineering Lead' as the title.",
+      "source_ids": [
+        "e0:0:22"
+      ]
+    }
+  ],
+  "fingerprint": "98746834a9df127ae9b914fd828e628662be6cf305e73abf2a892148469b3db0",
+  "previous_valid_result_retained": false
+}

@@ -1,5 +1,6 @@
 """Source-aware hierarchy validation and deterministic record-preserving queries."""
 import re
+from local_api.services.source_fragments import contiguous_support
 from local_api.schemas.subschemas import SectionSchema
 from local_api.schemas.subschema_spec import SUBSCHEMAS, REPEATED
 
@@ -14,6 +15,8 @@ def validate_hierarchy(hierarchy, sections):
     if len({s.category for s in parsed}) != len(parsed):
         raise ValueError('Duplicate parent schema')
     parents = {s.category: s for s in sections.sections}
+    global_inventory={source_id(b):b.text for s in sections.sections for b in s.blocks}
+    global_inventory.update({source_id(b):b.text for b in sections.needs_review})
     for parent in parsed:
         section = parents.get(parent.category)
         blocks = section.blocks if section else sections.needs_review if parent.category == 'needs_review' else []
@@ -34,7 +37,7 @@ def validate_hierarchy(hierarchy, sections):
                         if ref.source_id not in allowed or ref.quote not in inventory[ref.source_id]:
                             raise ValueError('Invalid or cross-record quote')
                     if isinstance(item.value, str):
-                        if not any(item.value.casefold() in ref.quote.casefold() for ref in item.evidence):
+                        if not any(item.value.casefold() in ref.quote.casefold() for ref in item.evidence) and not contiguous_support(item.value, item.evidence, global_inventory):
                             raise ValueError('Value is unsupported by its own evidence')
                     else:
                         if not any(re.search(r'(?<![\d.])'+re.escape(format(item.value, 'g'))+r'(?![\d.])', ref.quote) for ref in item.evidence):

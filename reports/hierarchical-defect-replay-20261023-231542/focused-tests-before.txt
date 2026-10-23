@@ -1,0 +1,148 @@
+FFFFFFFFFFF                                                              [100%]
+=================================== FAILURES ===================================
+_______________ test_levi_email_token_is_not_overridden_by_phone _______________
+
+    def test_levi_email_token_is_not_overridden_by_phone():
+        out = replay(4)
+>       assert out.data.contact.email == 'arbole60@gmail.com'
+E       AssertionError: assert 'arbole60@gma... | 9823506339' == 'arbole60@gmail.com'
+E         
+E         - arbole60@gmail.com
+E         + arbole60@gmail.com | 9823506339
+
+tests/test_saved_hierarchical_defects.py:32: AssertionError
+_______ test_manjunath_four_part_headers_keep_role_employer_and_location _______
+
+    def test_manjunath_four_part_headers_keep_role_employer_and_location():
+        jobs = replay(2).data.experience
+>       assert (jobs[0].company, jobs[0].role, jobs[0].location) == ('PwC', 'Senior Business Analyst', 'Chennai')
+E       AssertionError: assert ('', 'PwC', None) == ('PwC', 'Seni...t', 'Chennai')
+E         
+E         At index 0 diff: '' != 'PwC'
+E         Use -v to get more diff
+
+tests/test_saved_hierarchical_defects.py:38: AssertionError
+______________________ test_rachana_header_and_full_title ______________________
+
+    def test_rachana_header_and_full_title():
+        out = replay(5)
+>       assert out.data.experience[0].company == 'Tieto HealthCare'
+E       AssertionError: assert 'Tieto Health...galore, India' == 'Tieto HealthCare'
+E         
+E         - Tieto HealthCare
+E         + Tieto HealthCare — Bangalore, India
+
+tests/test_saved_hierarchical_defects.py:45: AssertionError
+_____________ test_split_month_and_year_are_one_source_backed_date _____________
+
+    def test_split_month_and_year_are_one_source_backed_date():
+>       assert replay(2).data.experience[2].start_date == 'October 2015'
+E       AssertionError: assert '2015' == 'October 2015'
+E         
+E         - October 2015
+E         + 2015
+
+tests/test_saved_hierarchical_defects.py:52: AssertionError
+___ test_aditya_geometry_recovers_separate_degrees_and_clean_contact_tokens ____
+
+    def test_aditya_geometry_recovers_separate_degrees_and_clean_contact_tokens():
+        out = replay(3)
+>       assert len(out.data.education) == 2
+E       AssertionError: assert 1 == 2
+E        +  where 1 = len([Education(institution='', degree='Bachelor of Technology (Computer Science)', field_of_study=None, start_year=None, graduation_year=None, grade_or_gpa=None)])
+E        +    where [Education(institution='', degree='Bachelor of Technology (Computer Science)', field_of_study=None, start_year=None, graduation_year=None, grade_or_gpa=None)] = ResumeSchema(contact=ContactInfo(full_name='Engineering LeadAditya VashisthTechnical', email='7982016518avmsv1996@gmai...zation with live agent flow tracking and performance monitoring', role=None, technologies=[], url=None)], languages=[]).education
+E        +      where ResumeSchema(contact=ContactInfo(full_name='Engineering LeadAditya VashisthTechnical', email='7982016518avmsv1996@gmai...zation with live agent flow tracking and performance monitoring', role=None, technologies=[], url=None)], languages=[]) = SchemaMappingResponse(success=True, source='Aditya vashisth.pdf', extraction_mode='existing_blocks_schema_mapping', da...ip': [], 'references.organization': [], 'references.email': [], 'references.phone': [], 'references.availability': []}).data
+
+tests/test_saved_hierarchical_defects.py:57: AssertionError
+___________ test_aashish_postgraduate_certificate_stays_in_education ___________
+
+    def test_aashish_postgraduate_certificate_stays_in_education():
+        out = replay(1)
+>       assert len(out.data.education) == 3
+E       AssertionError: assert 2 == 3
+E        +  where 2 = len([Education(institution='Pune University', degree='Diploma in Information Technology from', field_of_study=None, start_...sity', degree='Bachelor of Pharmacy', field_of_study=None, start_year=None, graduation_year='2003', grade_or_gpa=None)])
+E        +    where [Education(institution='Pune University', degree='Diploma in Information Technology from', field_of_study=None, start_...sity', degree='Bachelor of Pharmacy', field_of_study=None, start_year=None, graduation_year='2003', grade_or_gpa=None)] = ResumeSchema(contact=ContactInfo(full_name='AASHISH GOLHANI', email='madhuaashishg@gmail.com', phone='9993340671', loc...ence Fundamentals, GenAI for Executives & Business Leaders', issuer=None, issue_year=None)], projects=[], languages=[]).education
+E        +      where ResumeSchema(contact=ContactInfo(full_name='AASHISH GOLHANI', email='madhuaashishg@gmail.com', phone='9993340671', loc...ence Fundamentals, GenAI for Executives & Business Leaders', issuer=None, issue_year=None)], projects=[], languages=[]) = SchemaMappingResponse(success=True, source='_Aashish Golhani.pdf', extraction_mode='existing_blocks_schema_mapping', d...ip': [], 'references.organization': [], 'references.email': [], 'references.phone': [], 'references.availability': []}).data
+
+tests/test_saved_hierarchical_defects.py:68: AssertionError
+______________ test_combined_education_lines_recover_institutions ______________
+
+    def test_combined_education_lines_recover_institutions():
+>       assert [e.institution for e in replay(2).data.education] == ['SRM University', 'Madras University']
+E       AssertionError: assert ['', ''] == ['SRM Univers...s University']
+E         
+E         At index 0 diff: '' != 'SRM University'
+E         Use -v to get more diff
+
+tests/test_saved_hierarchical_defects.py:75: AssertionError
+______ test_responsibility_blocks_do_not_contaminate_titles_or_disappear _______
+
+    def test_responsibility_blocks_do_not_contaminate_titles_or_disappear():
+        out = replay(1)
+>       assert out.data.experience[2].role == 'Senior Business Analyst'
+E       AssertionError: assert 'Senior Busin...resentations.' == 'Senior Business Analyst'
+E         
+E         - Senior Business Analyst
+E         + Senior Business Analyst
+E         ?                        +
+E         + Prepared executive dashboards, project status reports, RAID logs, and stakeholder presentations.
+
+tests/test_saved_hierarchical_defects.py:81: AssertionError
+_ test_spoken_language_list_inside_personal_details_is_routed_and_bullets_removed _
+
+    def test_spoken_language_list_inside_personal_details_is_routed_and_bullets_removed():
+        out = replay(4)
+        parent = next(p for p in out.section_schemas if p.category == 'languages')
+        languages = [i.value for r in parent.records for a in r.attributes if a.name == 'language' for i in a.items]
+>       assert languages == ['English', 'Hindi']
+E       AssertionError: assert [] == ['English', 'Hindi']
+E         
+E         Right contains 2 more items, first extra item: 'English'
+E         Use -v to get more diff
+
+tests/test_saved_hierarchical_defects.py:92: AssertionError
+____________ test_skill_fragments_and_case_duplicates_are_filtered _____________
+
+    def test_skill_fragments_and_case_duplicates_are_filtered():
+        for index in (1, 2, 3, 4, 5):
+            values = replay(index).data.skills.all_skills
+>           assert len(values) == len({v.casefold() for v in values})
+E           AssertionError: assert 145 == 144
+E            +  where 145 = len(['SQL', 'Angular', 'ETL', 'Airflow', 'Kafka', 'Spark', ...])
+E            +  and   144 = len({'15+)', 'agile', 'agile & waterfall', 'agile (scrum) model', 'agile metrics and', 'agile scrum & safe delivery', ...})
+
+tests/test_saved_hierarchical_defects.py:100: AssertionError
+_ test_legacy_and_hierarchy_agree_for_shared_record_fields_with_exact_evidence _
+
+    def test_legacy_and_hierarchy_agree_for_shared_record_fields_with_exact_evidence():
+        from local_api.services.subschema_validation import validate_hierarchy
+        for index in range(1, 6):
+            out = replay(index)
+            for parent in out.section_schemas:
+                if parent.category not in {'experience', 'education'}:continue
+                legacy = getattr(out.data, parent.category)
+                assert len(legacy) == len(parent.records)
+                for old, record in zip(legacy, parent.records):
+                    for attr in record.attributes:
+                        value = getattr(old, attr.name)
+                        expected = value if isinstance(value, list) else [value] if value else []
+>                       assert [i.value for i in attr.items] == expected
+E                       AssertionError: assert [] == ['Senior Busi...esentations.']
+E                         
+E                         Right contains one more item: 'Senior Business Analyst\nPrepared executive dashboards, project status reports, RAID logs, and stakeholder presentations.'
+E                         Use -v to get more diff
+
+tests/test_saved_hierarchical_defects.py:116: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_saved_hierarchical_defects.py::test_levi_email_token_is_not_overridden_by_phone
+FAILED tests/test_saved_hierarchical_defects.py::test_manjunath_four_part_headers_keep_role_employer_and_location
+FAILED tests/test_saved_hierarchical_defects.py::test_rachana_header_and_full_title
+FAILED tests/test_saved_hierarchical_defects.py::test_split_month_and_year_are_one_source_backed_date
+FAILED tests/test_saved_hierarchical_defects.py::test_aditya_geometry_recovers_separate_degrees_and_clean_contact_tokens
+FAILED tests/test_saved_hierarchical_defects.py::test_aashish_postgraduate_certificate_stays_in_education
+FAILED tests/test_saved_hierarchical_defects.py::test_combined_education_lines_recover_institutions
+FAILED tests/test_saved_hierarchical_defects.py::test_responsibility_blocks_do_not_contaminate_titles_or_disappear
+FAILED tests/test_saved_hierarchical_defects.py::test_spoken_language_list_inside_personal_details_is_routed_and_bullets_removed
+FAILED tests/test_saved_hierarchical_defects.py::test_skill_fragments_and_case_duplicates_are_filtered
+FAILED tests/test_saved_hierarchical_defects.py::test_legacy_and_hierarchy_agree_for_shared_record_fields_with_exact_evidence
+11 failed in 0.85s

@@ -47,7 +47,7 @@ def test_registry_covers_all_detected_parents_and_legacy_children():
             assert field in SUBSCHEMAS
 
 
-def test_combined_education_decomposes_without_changing_legacy_or_source():
+def test_combined_education_decomposes_consistently_without_changing_source():
     request = example(); before = deepcopy(request.model_dump())
     mapped = map_schema(request)
     assert request.model_dump() == before
@@ -60,8 +60,9 @@ def test_combined_education_decomposes_without_changing_legacy_or_source():
     assert values(first)['grade_or_gpa'] == ['8.5']
     assert values(second)['institution'] == ['Second University']
     assert values(second)['degree'] == ['B.Sc.']
-    # The additive refinement does not rewrite the existing raw/legacy mapping.
-    assert mapped.data.education[0].degree == request.elements[0].text
+    # Shared-field consistency now applies the same source-backed decomposition
+    # to legacy and hierarchical values; original source/request remains unchanged.
+    assert mapped.data.education[0].degree == values(first)['degree'][0]
     assert ResumeSchema.model_validate(mapped.data.model_dump()) == mapped.data
     assert {ref.source_id for a in first.attributes for item in a.items for ref in item.evidence} == {f'e0:0:{len(request.elements[0].text)}'}
 

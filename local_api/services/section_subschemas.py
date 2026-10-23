@@ -6,6 +6,9 @@ Unsupported values remain absent from the nested representation.
 import re
 from local_api.schemas.subschema_spec import SUBSCHEMAS, REPEATED, valid_field_shape
 from local_api.services.education_subfields import refine_education
+from local_api.services.record_subfields import refine_record
+from local_api.services.source_fragments import citations, contiguous_support
+from local_api.services.list_fields import language_rows
 from local_api.services.subschema_validation import validate_hierarchy
 from local_api.schemas.subschemas import (
     SourceQuote, AttributeValue, Attribute, SubschemaRecord, SectionSchema,
@@ -18,6 +21,8 @@ def sid(block):
 
 def build_subschemas(sections, data, scope):
     output = []
+    inventory={sid(b):b.text for s in sections.sections for b in s.blocks}
+    inventory.update({sid(b):b.text for b in sections.needs_review})
     grouped = REPEATED
     extra_fields = {k: tuple(v) for k, v in SUBSCHEMAS.items() if k not in grouped | {'personal_information', 'summary', 'skills', 'needs_review'}}
     for section in sections.sections:
@@ -37,12 +42,8 @@ def build_subschemas(sections, data, scope):
                     continue
                 # Each scalar/list item gets its own exact source match and quote.
                 literal = format(item, 'g') if isinstance(item, (int, float)) else str(item)
-                pattern = re.compile(re.escape(literal), re.I)
-                refs = []
-                for block in allowed:
-                    match = pattern.search(block.text)
-                    if match:
-                        refs.append(SourceQuote(source_id=sid(block), quote=match.group()))
+                refs = [SourceQuote(**ref) for ref in citations(item, allowed)]
+                if refs and not any(str(item).casefold() in r.quote.casefold() for r in refs) and not contiguous_support(item,refs,inventory):refs=[]
                 if refs:
                     # A cited fragment does not consume the rest of its source block.
                     used.update(sid(b) for b in allowed if any(
@@ -61,29 +62,16 @@ def build_subschemas(sections, data, scope):
                     allowed = [section.blocks[i] for i in entry.block_indices]
                     uncertain = entry.relationship_status == 'needs_review' or bool(entry.review_reasons)
                     values = record.model_dump()
-                    # Explicit attribute labels refine a record without regrouping it.
-                    aliases = {'specialization': 'field_of_study', 'major': 'field_of_study',
-                               'gpa': 'grade_or_gpa', 'grade': 'grade_or_gpa'}
                     reasons = list(entry.review_reasons)
                     if category == 'education':
-                        values, refinement_reasons = refine_education(values, allowed)
+                        _, refinement_reasons = refine_education(values, allowed)
                         reasons.extend(refinement_reasons)
                     if category == 'experience' and re.search(r'\b(?:trainee|research|training)\b', '\n'.join(b.text for b in allowed), re.I):
                         reasons.append('Training/research content requires employment association review.')
-                    labelled = {}
-                    for block in allowed:
-                        match = re.fullmatch(r'\s*([A-Za-z_ ]+):\s*(.+)\s*', block.text)
-                        if match:
-                            name = match.group(1).strip().lower().replace(' ', '_')
-                            name = aliases.get(name, name)
-                            if name in values:
-                                labelled.setdefault(name, []).append(match.group(2).strip())
-                    for name, labels in labelled.items():
-                        if len(set(labels)) > 1:
-                            values[name] = None
-                            reasons.append(f'Conflicting explicit labels for {name}.')
-                        elif not values[name] and SUBSCHEMAS[category][name]['type'] == 'string':
-                            values[name] = labels if SUBSCHEMAS[category][name]['multiple'] else labels[0]
+                    _, refinement_reasons = refine_record(category, values, allowed, header_fields=(
+                        {'company' if field == 'employer' else 'role' if field == 'title' else field for field in entry.fields}
+                        if entry.fields else None))
+                    reasons.extend(refinement_reasons)
                     uncertain = uncertain or bool(reasons)
                     attrs = [attribute(name, value, allowed, uncertain) for name, value in values.items()]
                     records.append(SubschemaRecord(record_id=entry.entry_id, source_ids=[sid(b) for b in allowed], attributes=attrs,
@@ -101,6 +89,17 @@ def build_subschemas(sections, data, scope):
                 if candidates:
                     records.append(SubschemaRecord(record_id=category, source_ids=[sid(b) for b in candidates],
                         attributes=[attribute(k, v, candidates, bool(reasons)) for k, v in values.items()], review_reasons=reasons))
+            elif category == 'languages':
+                for language, level, block in language_rows(candidates):
+                    records.append(SubschemaRecord(record_id=f'languages-{len(records)+1}', source_ids=[sid(block)],
+                        attributes=[attribute('language',language,[block]),attribute('proficiency',level,[block])],
+                        review_reasons=[] if level else ['Proficiency is not stated; no level inferred.']))
+                for block in candidates:
+                    remainder = re.sub(r'^\s*(?:spoken\s+)?languages?\s*:\s*', '', block.text, flags=re.I)
+                    for language, level, source in language_rows([block]):
+                        for value in (language,level):
+                            if value:remainder = re.sub(re.escape(value),'',remainder,count=1,flags=re.I)
+                    if not re.sub(r'[\s\u2022\u25cf\u25aa*,:;|()\-\u2013\u2014]', '', remainder):used.add(sid(block))
             elif category in extra_fields:
                 # Preserve supplied record boundaries. Without boundaries, each block is
                 # an independent item; adjacency alone does not establish association.
@@ -113,12 +112,8 @@ def build_subschemas(sections, data, scope):
                     # A simple item is a literal statement; compound records need labels.
                     if category == 'interests':
                         values['interest'] = [b.text for b in allowed]
-                    for block in allowed:
-                        match = re.fullmatch(r'\s*([A-Za-z ]+):\s*(.+)\s*', block.text)
-                        if match:
-                            name = match.group(1).strip().lower().replace(' ', '_')
-                            if name in values:
-                                values[name] = match.group(2).strip()
+                    values, refinement_reasons = refine_record(category, values, allowed)
+                    reasons.extend(refinement_reasons)
                     if any(v is None for v in values.values()):
                         reasons.append('Unlabelled compound information requires source review.')
                     records.append(SubschemaRecord(record_id=record_id, source_ids=[sid(b) for b in allowed],

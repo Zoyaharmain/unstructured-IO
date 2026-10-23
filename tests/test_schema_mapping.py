@@ -101,3 +101,28 @@ def test_dated_organization_without_suffix_maps_own_employer_and_current_date():
  out=map_schema(req)
  assert out.data.experience[0].company=='NTT Data'
  assert out.data.experience[0].end_date=='Currently working'
+
+
+@pytest.mark.parametrize('merged', [False, True])
+def test_candidate_name_and_french_location_have_schema_evidence(merged):
+ name = 'Manjunath MURUGAN'
+ title = 'Senior Business Analyst | Financial Markets'
+ lines = ([name + ' ' + title] if merged else [name, title]) + [
+  'Noisy-le-Grand, France | 9176398910 | manjunathmurugan50@gmail.com LinkedIn:',
+  'www.linkedin.com/in/profilemanjunathmurugan',
+  'Fully Authorized to work in France | Availability - Immediate']
+ elements = [ExtractedElement(type='NarrativeText', text=text, page_number=1, metadata={}) for text in lines]
+ blocks = [SectionBlock(source_element_index=i, start=0, end=len(text), text=text, page_number=1, lane='source', assignment='semantic', reason='source') for i, text in enumerate(lines)]
+ req = SchemaMappingRequest(elements=elements, sections=SectionResponse(status='provisional', sections=[ResumeSection(category='personal_information', label='Personal information', blocks=blocks, text='\n'.join(lines))], needs_review=[], metadata={}, warnings=[]))
+ out = map_schema(req)
+ assert out.data.contact.full_name == name
+ assert out.data.professional_title == title
+ assert out.data.contact.location == 'Noisy-le-Grand, France'
+ assert out.data.contact.email == 'manjunathmurugan50@gmail.com'
+ assert out.data.contact.phone == '9176398910'
+ assert out.data.contact.linkedin_url == 'www.linkedin.com/in/profilemanjunathmurugan'
+ attrs = {a.name: a for a in out.section_schemas[0].records[0].attributes}
+ for field, expected in [('full_name', name), ('location', 'Noisy-le-Grand, France')]:
+  assert attrs[field].status == 'mapped'
+  assert attrs[field].items[0].evidence[0].quote == expected
+ assert attrs['github_url'].status == attrs['portfolio_url'].status == 'unresolved'

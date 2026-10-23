@@ -70,3 +70,48 @@ def test_nested_contract_is_returned_by_http_and_has_discoverable_definition():
         assert response.status_code == 200
         assert response.json()['section_schemas'][0]['records'][0]['attributes']
         assert client.get('/api/v1/resume/schema/subschema-definition').json()['title'] == 'SectionSchema'
+
+
+def test_bulleted_languages_map_separately_with_exact_unicode_evidence():
+    from local_api.schemas.sections import SectionResponse, ResumeSection, SectionBlock
+    from local_api.vendor.handoff_schema.models import ResumeSchema, ContactInfo
+    texts = ['LANGUAGES', 'English - Full Professional Proficiency (C1)', '\u2022',
+             'Fran\u00e7ais - D\u00e9butant (cours intensif en cours)']
+    blocks = [SectionBlock(source_element_index=i, start=0, end=len(text), text=text,
+              page_number=1, lane='source', assignment='section_heading' if i == 0 else 'semantic',
+              reason='source') for i, text in enumerate(texts)]
+    sections = SectionResponse(status='provisional', sections=[ResumeSection(category='languages',
+               label='Languages', blocks=blocks, text='\n'.join(texts))], needs_review=[], metadata={}, warnings=[])
+    data = ResumeSchema(contact=ContactInfo(full_name='', email='', phone=''))
+    before = deepcopy(sections.model_dump())
+    for combined in (False, True):
+        if combined:
+            text = '\u2022 ' + texts[1] + ' \u2022 ' + texts[3]
+            sections.sections[0].blocks = [blocks[0], blocks[1].model_copy(update={'text': text, 'end': len(text)})]
+            sections.sections[0].text = texts[0] + '\n' + text
+        result = build_subschemas(sections, data, {'candidate_resume': True})[0]
+        assert len(result.records) == 2
+        for record, expected in zip(result.records, [('English', 'Full Professional Proficiency (C1)'),
+                                      ('Fran\u00e7ais', 'D\u00e9butant (cours intensif en cours)')]):
+            assert not record.review_reasons
+            for attr, value in zip(record.attributes, expected):
+                assert attr.status == 'mapped'
+                assert attr.items[0].value == value
+                assert attr.items[0].status == 'source_supported'
+                assert attr.items[0].evidence[0].quote == value
+        assert all(b.quote in {'LANGUAGES', '\u2022'} for b in result.residual_blocks)
+        if not combined:
+            assert sections.model_dump() == before
+
+
+def test_language_without_proficiency_does_not_invent_a_level():
+    from local_api.schemas.sections import SectionResponse, ResumeSection, SectionBlock
+    data = map_schema(sample()).data
+    block = SectionBlock(source_element_index=0, start=0, end=7, text='English',
+                         page_number=1, lane='source', assignment='semantic', reason='source')
+    sections = SectionResponse(status='provisional', sections=[ResumeSection(category='languages',
+        label='Languages', blocks=[block], text='English')], needs_review=[], metadata={}, warnings=[])
+    record = build_subschemas(sections, data, {'candidate_resume': True})[0].records[0]
+    assert record.attributes[0].items[0].value == 'English'
+    assert record.attributes[1].status == 'unresolved'
+    assert record.review_reasons

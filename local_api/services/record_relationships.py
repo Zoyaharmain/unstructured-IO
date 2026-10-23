@@ -7,6 +7,7 @@ import re
 DEGREE_FAMILIES={
  'bachelor':r'\bbachelor\b|\bb\s?(?:com|tech|sc|ca|e|s|a)\b',
  'master':r'\bmaster(?:s)?\b|\bm\s?(?:com|tech|sc|ca|ba|e|s|a)\b',
+ 'postgraduate_certificate':r'\b(?:pg|postgraduate)\s+certificate\b',
  'diploma':r'\bdiploma\b|\bpgdca\b',
  'doctorate':r'\bphd\b|\bdoctorate\b',
  'secondary':r'\b(?:ssc|sslc|10th|class\s+x|schooling|matric(?:ulation)?)\b',
@@ -44,11 +45,14 @@ def field_kinds(text,category):
         if re.search(r'\b(?:cgpa|gpa|grade|distinction|percentage)\b|\d\s*%',text,re.I):kinds.append('grade')
         if re.search(r'\b(?:computer science|engineering|finance|commerce|accountancy|artificial intelligence|mathematics|business administration)\b',text,re.I):kinds.append('field_of_study')
     else:
-        if re.search(r'\b(?:engineer|developer|analyst|associate|consultant|manager|architect|intern|specialist|director|officer|executive|practitioner|lead|administrator)\b',text,re.I):kinds.append('title')
-        if dated_organization_header(text) or re.search(r'\b(?:ltd|limited|inc|llc|corp|corporation|systems|services|bank|technolog(?:y|ies|ie)|solutions)\b|\b(?:company|employer)\s*:',text,re.I):kinds.append('employer')
+        from local_api.services.record_subfields import employment_header_fields, ACTION, ROLE
+        if ACTION.search(text):return [*kinds, 'responsibilities']
+        if employment_header_fields(text):kinds.extend(['employer', 'title'])
+        if len(text.split()) <= 18 and re.search(r'\b(?:engineer|developer|analyst|associate|consultant|manager|architect|intern|specialist|director|officer|executive|practitioner|lead|administrator|underwriter)\b',text,re.I):kinds.append('title')
+        if dated_organization_header(text) or re.search(r'\b(?:ltd|limited|inc|llc|corp|corporation|systems|services|bank|technolog(?:y|ies|ie)|solutions|ispl|paribas|bnp|pvt|private)\b|\b(?:company|employer)\s*:',text,re.I):kinds.append('employer')
         if re.match(r'^\s*[•▪●\-]?\s*(?:led|built|developed|managed|implemented|responsib|worked on|configured|designed|achieved|supported|created|performed|conducted)',text,re.I):kinds.append('responsibilities')
     if re.match(r'^\s*(?:location|work base)\s*:',text,re.I):kinds.append('location')
-    return kinds
+    return list(dict.fromkeys(kinds))
 
 
 def annotate_relationships(section):
@@ -61,7 +65,10 @@ def annotate_relationships(section):
             if index in assigned:reasons.append('source_block_owned_by_multiple_entries')
             assigned.add(index)
             text=section.blocks[index].text
-            for kind in field_kinds(text,section.category):fields.setdefault(kind,[]).append(index)
+            kinds = field_kinds(text,section.category)
+            if section.category == 'experience' and not kinds and fields.get('responsibilities') and section.blocks[index].assignment not in {'structural_heading','section_heading'} and text.strip() and not re.match(r'\s*(?:tools|technology|environment|skills|client|project)\b', text, re.I):
+                kinds = ['responsibilities']
+            for kind in kinds:fields.setdefault(kind,[]).append(index)
             if section.category=='education' and len(degree_families(text))>1:reasons.append('multiple_qualifications_in_one_source_span')
         if section.category=='education' and not fields.get('qualification'):reasons.append('qualification_not_established')
         if section.category=='experience' and not fields.get('employer'):reasons.append('employer_not_established_from_supported_fields')

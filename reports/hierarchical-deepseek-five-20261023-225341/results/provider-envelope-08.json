@@ -1,0 +1,28 @@
+{
+  "id": "8d1518da-a10e-46ae-bd3b-63832ee102d2",
+  "object": "chat.completion",
+  "created": 1792776812,
+  "model": "deepseek-flash",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"findings\":[{\"field\":\"experience[0].role\",\"issue\":\"Role is populated with 'PwC', which is the employer in the header 'Senior Business Analyst | PwC | Chennai'; role and company are swapped/mis-assigned.\",\"source_ids\":[\"e13:0:65\"]},{\"field\":\"experience[0].company\",\"issue\":\"Company left unresolved even though 'PwC' appears in source header; employer not extracted.\",\"source_ids\":[\"e13:0:65\"]},{\"field\":\"experience[0].location\",\"issue\":\"Location 'Chennai' present in source header but not captured.\",\"source_ids\":[\"e13:0:65\"]},{\"field\":\"experience[2].company\",\"issue\":\"Company left unresolved even though 'Barclays Shared Services' appears in source header.\",\"source_ids\":[\"e32:0:77\"]},{\"field\":\"experience[2].start_date\",\"issue\":\"Start month 'October' present in source ('October 2015') but start_date only '2015'.\",\"source_ids\":[\"e32:0:77\",\"e32:77:93\"]},{\"field\":\"experience[3].company\",\"issue\":\"Company field populated with 'Senior Associate Intraday Pricing', which is the job title, not the employer; actual employer 'BNP Paribas GSO' in same header.\",\"source_ids\":[\"e42:0:81\"]},{\"field\":\"experience[3].role\",\"issue\":\"Role left unresolved though title 'Senior Associate Intraday Pricing' appears in source header.\",\"source_ids\":[\"e42:0:81\"]},{\"field\":\"experience[3].duration\",\"issue\":\"Duration unresolved though source header contains 'September 2011 - October 2015'.\",\"source_ids\":[\"e42:0:81\",\"e42:81:93\"]},{\"field\":\"experience[1].responsibilities\",\"issue\":\"Only one of five bullet responsibilities captured; source bullets on UAT/NRT, SQL validation, and 25% automation reduction omitted.\",\"source_ids\":[\"e23:0:78\",\"e27:0:80\",\"e29:0:78\",\"e31:0:81\"]},{\"field\":\"experience[2].responsibilities\",\"issue\":\"Responsibilities unresolved though source contains four bullet points under Barclays role.\",\"source_ids\":[\"e37:0:68\",\"e38:0:83\",\"e39:0:81\",\"e41:0:81\"]},{\"field\":\"education[0].institution\",\"issue\":\"Institution left unresolved though 'SRM University, India' appears in source line.\",\"source_ids\":[\"e50:0:44\"]},{\"field\":\"education[1].institution\",\"issue\":\"Institution left unresolved though 'Madras University, India' appears in source line.\",\"source_ids\":[\"e50:47:109\"]},{\"field\":\"skills.domain_and_functional\",\"issue\":\"Domain expertise items are truncated/mis-split fragments ('actions', 'clearing', 'custody and settlement processes.') rather than clean terms; 'Trade Lifecycle', 'Reference Data Management', 'Pricing' from e8:67:148 omitted.\",\"source_ids\":[\"e8:67:148\",\"e8:148:231\",\"e8:231:274\"]},{\"field\":\"skills.all_skills\",\"issue\":\"Contains heading/label fragments ('Methodology: Agile Methodology (Scrum) & Backlog Prioritization.', 'Technical & Data Tools: ...', 'Standards: ...') as skills rather than discrete skill values; also split 'MT541'/'MT543' awkwardly.\",\"source_ids\":[\"e8:0:64\",\"e9:0:83\",\"e11:0:55\"]},{\"field\":\"skills.tools_and_platforms\",\"issue\":\"Refinitiv (Reuters), SharePoint, and HP ALM listed in source e10:0:66 but omitted from tools.\",\"source_ids\":[\"e10:0:66\"]},{\"field\":\"languages\",\"issue\":\"Separator '•' artifact included as a language entry.\",\"source_ids\":[\"e52:44:47\"]}]}"
+      },
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 35075,
+    "completion_tokens": 860,
+    "total_tokens": 35935,
+    "prompt_tokens_details": {
+      "cached_tokens": 4864
+    },
+    "prompt_cache_hit_tokens": 4864,
+    "prompt_cache_miss_tokens": 30211
+  },
+  "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+}

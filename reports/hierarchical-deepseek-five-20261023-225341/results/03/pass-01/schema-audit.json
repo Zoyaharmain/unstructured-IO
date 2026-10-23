@@ -1,0 +1,190 @@
+{
+  "status": "complete",
+  "findings": [
+    {
+      "field": "contact.full_name",
+      "issue": "full_name is 'VashisthTechnical', merging the surname 'Vashisth' with the 'Technical' skills section header; the given name appears as 'Aditya' in e0:0:22",
+      "source_ids": [
+        "e0:0:22",
+        "e0:22:41"
+      ]
+    },
+    {
+      "field": "contact.email",
+      "issue": "email is populated as '7982016518avmsv1996@gmail.com' but evidence field_evidence.contact.email is empty; source text only supports fragments '+91 7982016518avmsv1996' and '@gmail.com.'",
+      "source_ids": [
+        "e20:150:173",
+        "e20:173:184"
+      ]
+    },
+    {
+      "field": "contact.linkedin_url",
+      "issue": "linkedin_url merges 'linkedin.com/in/aditya-vashisth' with the start of the GitHub URL 'github'; the 'github' fragment is not part of the LinkedIn URL",
+      "source_ids": [
+        "e21:0:37"
+      ]
+    },
+    {
+      "field": "contact.github_url",
+      "issue": "github_url is populated as 'github.com/av525CertificationsGoogle' but evidence field_evidence.contact.github_url is empty; source only shows '.com/av525CertificationsGoogle' fragment",
+      "source_ids": [
+        "e21:37:67"
+      ]
+    },
+    {
+      "field": "professional_title",
+      "issue": "professional_title is null but source indicates 'Engineering Lead' as the current role",
+      "source_ids": [
+        "e0:0:22",
+        "e12:647:706"
+      ]
+    },
+    {
+      "field": "experience[0].responsibilities",
+      "issue": "Persistent Systems responsibilities are empty although source bullets exist (e.g. Lead development of Generative AI applications, Architect multi-agent systems, RAG with FAISS)",
+      "source_ids": [
+        "e13:0:81",
+        "e14:0:86",
+        "e16:0:81",
+        "e17:0:79",
+        "e18:0:88"
+      ]
+    },
+    {
+      "field": "experience[1].responsibilities",
+      "issue": "TechTree IT Systems responsibilities are empty although source bullet exists (Engineered features and enhancements for enterprise applications)",
+      "source_ids": [
+        "e27:0:91",
+        "e27:91:138"
+      ]
+    },
+    {
+      "field": "experience[2].responsibilities[0]",
+      "issue": "responsibility value truncates the sentence, dropping the trailing ' optimization and user experience improvements.' from source",
+      "source_ids": [
+        "e28:0:86",
+        "e28:86:133"
+      ]
+    },
+    {
+      "field": "experience[1].role",
+      "issue": "role is 'Engineer' but the source text segment reads ' Engineer | TechTree IT Systems'; could be a truncated title (e.g. 'Software Engineer')",
+      "source_ids": [
+        "e26:50:103"
+      ]
+    },
+    {
+      "field": "education[0].institution",
+      "issue": "institution is empty but source names 'Guru Gobind Singh Indraprastha University, Delhi' for both the Master's (2018-21) and Bachelor's (2013-17) entries",
+      "source_ids": [
+        "e12:511:573",
+        "e20:90:150"
+      ]
+    },
+    {
+      "field": "education[0].degree",
+      "issue": "single education record collapses two degrees; source has Master of Technology (Computer Science) 2018-21 and Bachelor of Technology (Computer Science) 2013-17, and the record captures only the Bachelor",
+      "source_ids": [
+        "e12:511:573",
+        "e12:573:606",
+        "e12:606:647",
+        "e20:90:150"
+      ]
+    },
+    {
+      "field": "education[0].graduation_year",
+      "issue": "graduation_year is null although source shows '2013 - 17' for the Bachelor's",
+      "source_ids": [
+        "e20:90:150"
+      ]
+    },
+    {
+      "field": "certifications[0].name",
+      "issue": "all five Google Cloud certifications are concatenated into a single name string rather than separate entries",
+      "source_ids": [
+        "e21:67:311",
+        "e22:0:50",
+        "e23:0:60",
+        "e24:0:48",
+        "e25:0:46"
+      ]
+    },
+    {
+      "field": "certifications[1].name",
+      "issue": "certifications[1].name is unresolved/empty although source blocks e22-e25 each list a distinct certification",
+      "source_ids": [
+        "e22:0:50",
+        "e23:0:60",
+        "e24:0:48",
+        "e25:0:46"
+      ]
+    },
+    {
+      "field": "certifications[]",
+      "issue": "certification names consistently drop the 'Google' prefix (e.g. 'Cloud Certified-ProfessionalCloud Architect' instead of 'Google Cloud Certified-Professional Cloud Architect') and mangle 'Cloud DigitalLeader'",
+      "source_ids": [
+        "e21:67:311",
+        "e22:0:50",
+        "e26:0:50"
+      ]
+    },
+    {
+      "field": "projects[0].name",
+      "issue": "project name 'Key ProjectsHeart' merges the section header 'Key Projects' with the 'Heart' of 'Heart Flow'; actual project is 'Heart Flow - Contract Intelligence Agent'",
+      "source_ids": [
+        "e29:0:17",
+        "e29:17:81"
+      ]
+    },
+    {
+      "field": "projects[1].name",
+      "issue": "project name is a sentence fragment ('a sophisticated contract analysis...forenterprise') rather than the project title 'Heart Flow - Contract Intelligence Agent'",
+      "source_ids": [
+        "e29:17:81",
+        "e29:81:200"
+      ]
+    },
+    {
+      "field": "projects[2].name",
+      "issue": "project name is a bullet ('Engineered Node.js middleware...') not a project title; there are no distinct records for HealthEdge Guiding Care Bot, Regeneron Target PPM Bot, Essay Writer, or AI Customer Support projects",
+      "source_ids": [
+        "e38:0:91",
+        "e35:143:182",
+        "e40:95:131",
+        "e44:78:119",
+        "e48:88:148"
+      ]
+    },
+    {
+      "field": "projects[].description",
+      "issue": "project descriptions are all unresolved/empty although source contains extensive per-project detail",
+      "source_ids": [
+        "e30:0:116",
+        "e31:0:126",
+        "e35:182:299",
+        "e41:0:92",
+        "e45:48:153"
+      ]
+    },
+    {
+      "field": "projects[].url",
+      "issue": "project URLs (github.com/av525/essay-writer-langgraph, github.com/av525/ai-customer-support) are present in source but url is unresolved",
+      "source_ids": [
+        "e45:0:48",
+        "e49:0:47"
+      ]
+    },
+    {
+      "field": "skills.domain_and_functional",
+      "issue": "domain_and_functional is empty although the resume has an 'AI/ML & Agentic AI' domain block; also many all_skills entries contain concatenated category headers and fragmented values (e.g. 'RAG Systems: VectorDB(FAISS', 'Pinecone)', 'Tool IntegrationProgramming', '& Development', 'GCP Vector SearchProfileInnovative')",
+      "source_ids": [
+        "e0:51:70",
+        "e5:0:36",
+        "e5:36:76",
+        "e6:70:99",
+        "e6:99:113",
+        "e12:40:74"
+      ]
+    }
+  ]
+}

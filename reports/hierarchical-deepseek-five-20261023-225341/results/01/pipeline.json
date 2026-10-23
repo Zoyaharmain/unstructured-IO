@@ -1,0 +1,402 @@
+{
+  "passes": [
+    {
+      "pass": 1,
+      "section_review": {
+        "provider": "DeepSeek",
+        "status": "complete",
+        "reviewed_units": 338,
+        "changed_units": 5,
+        "resolved_units": 0,
+        "local_result_retained": false,
+        "provider_calls": 1,
+        "model": "deepseek-flash",
+        "invalid_response_attempts": [],
+        "resolution_status": "all_meaningful_text_assigned",
+        "all_meaningful_text_assigned": true,
+        "remaining_meaningful_review_units": 0,
+        "pass_count": 1,
+        "split_units": 0,
+        "remaining_review_units": 0
+      },
+      "audit_status": "complete",
+      "unresolved_meaningful_spans": 0,
+      "missing_required_fields": [
+        "experience[4].role"
+      ],
+      "schema_findings": [
+        {
+          "field": "experience[2].role",
+          "issue": "Role is populated with 'Senior Business Analyst\\nPrepared executive dashboards, project status reports, RAID logs, and stakeholder presentations.', which merges a responsibility bullet into the job title; source shows role as 'Senior Business Analyst' only",
+          "source_ids": [
+            "e74:38:61",
+            "e81:652:748"
+          ]
+        },
+        {
+          "field": "experience[2].role",
+          "issue": "Internal inconsistency: field_index reports experience[2].role as unresolved/empty while schema data holds a value",
+          "source_ids": [
+            "e74:38:61"
+          ]
+        },
+        {
+          "field": "experience[4].role",
+          "issue": "Role is empty; source states 'Underwriter' for American Home Mortgage Services/Homeward but this is not captured",
+          "source_ids": [
+            "e103:63:74"
+          ]
+        },
+        {
+          "field": "experience[0].responsibilities",
+          "issue": "Responsibility list is incomplete/truncated relative to source; multiple bullets (e.g., SME for banking domains, guided BAs, validated BRDs) are omitted and captured items cut mid-sentence",
+          "source_ids": [
+            "e49:0:70",
+            "e49:70:131",
+            "e50:0:68",
+            "e51:0:32",
+            "e52:0:66"
+          ]
+        },
+        {
+          "field": "experience[1].responsibilities",
+          "issue": "Only 2 of many Bandhan bullets captured; core bullets (product vision/roadmap/backlog, product strategy, Epics/Features, API integrations, compliance) are omitted",
+          "source_ids": [
+            "e70:2:116",
+            "e72:0:107",
+            "e72:112:190",
+            "e72:440:549",
+            "e72:1018:1095",
+            "e73:0:118"
+          ]
+        },
+        {
+          "field": "experience[3].responsibilities",
+          "issue": "Several responsibilities are captured as truncated fragments ending mid-sentence (e.g., 'Process Analysis to ', 'sequence diagrams, wireframes,', 'Customer Onboarding')",
+          "source_ids": [
+            "e91:0:129",
+            "e92:0:122",
+            "e100:0:118"
+          ]
+        },
+        {
+          "field": "skills.technical_skills",
+          "issue": "Classified as technical skills a set of data/AI tool names (SQL, ETL, Airflow, Kafka, Spark, Kubernetes, C#, Angular) that in source appear under a 'Beginner' tools list; category assignment may misrepresent proficiency/level",
+          "source_ids": [
+            "e112:0:8",
+            "e113:0:102",
+            "e114:0:94"
+          ]
+        },
+        {
+          "field": "skills.all_skills",
+          "issue": "Contains concatenated source fragments and bullet artifacts ('Agile & Waterfall methodologies and frameworks', '• • • • •', '•', 'Beginner', 'Kafka.') as standalone skills rather than normalized skill entries",
+          "source_ids": [
+            "e13:0:17",
+            "e15:0:18",
+            "e31:0:12",
+            "e39:345:354",
+            "e112:0:8",
+            "e115:0:42"
+          ]
+        },
+        {
+          "field": "skills.tools_and_platforms",
+          "issue": "'Azure' evidence cites e43 which contains 'Azure DevOps' (a platform), while the source tools list includes 'Aure Dev Ops'; also 'Splunk'/'AWS' derived from Beginner list not clearly tools proficiency",
+          "source_ids": [
+            "e43:0:48",
+            "e113:0:102",
+            "e114:0:94"
+          ]
+        },
+        {
+          "field": "education[0].institution",
+          "issue": "Education 0 institution set to 'Pune University', but source shows the 2008 PG Certificate in Data Management & Clinical Research entry associated with 'Pune University' and the 2004 Diploma in IT from 'ACTS, Pune'; degree text and institution appear mismatched between the two entries",
+          "source_ids": [
+            "e118:0:36",
+            "e118:36:60",
+            "e118:60:75",
+            "e120:0:39",
+            "e120:39:49",
+            "e121:0:15"
+          ]
+        },
+        {
+          "field": "education[0].degree",
+          "issue": "Degree value includes trailing preposition 'Diploma in Information Technology from' and omits the awarding institution 'ACTS, Pune'",
+          "source_ids": [
+            "e120:0:39",
+            "e120:39:49"
+          ]
+        },
+        {
+          "field": "education[0].graduation_year",
+          "issue": "Graduation year is empty for the Diploma entry; source shows year '2004' preceding it",
+          "source_ids": [
+            "e119:0:4",
+            "e120:0:39"
+          ]
+        },
+        {
+          "field": "education[0].institution",
+          "issue": "Ambiguity: the 2008 PG Certificate entry references 'Pune University' and the 2004 Diploma entry also references 'Pune University' (e121); mapping attributes only one to Pune University and associates the Diploma degree with the wrong institution",
+          "source_ids": [
+            "e118:60:75",
+            "e121:0:15"
+          ]
+        },
+        {
+          "field": "education[1].institution",
+          "issue": "Bachelor of Pharmacy mapped to 'Amravati University' with 2003; source ordering shows 2003 year before degree, relationship appears plausible but institution/year association should be verified against block order",
+          "source_ids": [
+            "e122:0:4",
+            "e123:0:20",
+            "e124:0:19"
+          ]
+        },
+        {
+          "field": "certifications[0].name",
+          "issue": "Entire certifications section collapsed into a single name string with embedded bullet and newlines; source enumerates multiple certifications (PSM-I, COEPD, A to Z, Agile Coaching, Design Thinking, Agile Metrics, PMO, MS Project, Program Mgmt, DevOps Foundation, Cloud Architecture, Cybersecurity Analyst, Digital Transformation, IBM AI Fundamentals, GenAI) that are not split into records",
+          "source_ids": [
+            "e27:27:49",
+            "e30:30:52",
+            "e37:58:77",
+            "e38:28:56"
+          ]
+        },
+        {
+          "field": "summary.total_experience_years",
+          "issue": "Null although source summary explicitly states '14+ years of Banking & Financial Services experience'",
+          "source_ids": [
+            "e12:73:149"
+          ]
+        },
+        {
+          "field": "experience[0].end_date",
+          "issue": "End date 'June 2026' is a future date relative to typical current timeline; reflects source text but warrants verification as a possible typo in source or future-dated role",
+          "source_ids": [
+            "e45:0:47"
+          ]
+        }
+      ],
+      "fingerprint": "71705e2dd4ac94b9676043608804a2e6574a99f074e65576ac6af041ab64faa1",
+      "previous_valid_result_retained": false
+    },
+    {
+      "pass": 2,
+      "section_review": {
+        "provider": "DeepSeek",
+        "status": "complete",
+        "reviewed_units": 338,
+        "changed_units": 1,
+        "resolved_units": 0,
+        "local_result_retained": false,
+        "provider_calls": 1,
+        "model": "deepseek-flash",
+        "invalid_response_attempts": [],
+        "resolution_status": "all_meaningful_text_assigned",
+        "all_meaningful_text_assigned": true,
+        "remaining_meaningful_review_units": 0,
+        "pass_count": 1,
+        "split_units": 0,
+        "remaining_review_units": 0
+      },
+      "audit_status": "complete",
+      "unresolved_meaningful_spans": 0,
+      "missing_required_fields": [
+        "experience[4].role"
+      ],
+      "schema_findings": [
+        {
+          "field": "experience[2].role",
+          "issue": "Role contains a merged responsibility bullet ('Senior Business Analyst\\nPrepared executive dashboards, project status reports, RAID logs, and stakeholder presentations.') beyond the source title 'Senior Business Analyst'; the schema's separate role attribute is unresolved while this concatenation is unsupported.",
+          "source_ids": [
+            "e74:38:61",
+            "e81:652:748"
+          ]
+        },
+        {
+          "field": "experience[4].role",
+          "issue": "Source states role 'Underwriter' but schema role is empty; required field missing and value omitted.",
+          "source_ids": [
+            "e103:63:74"
+          ]
+        },
+        {
+          "field": "experience[0].end_date",
+          "issue": "End date 'June 2026' is in the future relative to a current resume; value mirrors source text but may be aspirational/erroneous—worth verifying as sourced rather than corrected.",
+          "source_ids": [
+            "e45:0:47"
+          ]
+        },
+        {
+          "field": "experience[1].responsibilities",
+          "issue": "Only two of the many Bandhan Bank responsibility bullets were captured (e.g., product vision/roadmap, Epics/User Stories, API integrations, KYC/AML compliance bullets omitted); substantial omissions in responsibilities.",
+          "source_ids": [
+            "e70:2:116",
+            "e72:112:190",
+            "e72:440:549",
+            "e72:1018:1095",
+            "e73:0:118"
+          ]
+        },
+        {
+          "field": "experience[0].responsibilities",
+          "issue": "Responsibilities are truncated fragments cut mid-sentence (e.g., 'Conducted stakeholder workshops to identify business needs, process', 'Supported Credit Risk...PD, LGD, EAD,') and omit the qualifying continuation text from the same block.",
+          "source_ids": [
+            "e55:0:67",
+            "e59:282:356",
+            "e63:45:109"
+          ]
+        },
+        {
+          "field": "experience[2].responsibilities",
+          "issue": "Responsibilities truncated mid-sentence ('...compliance teams, and ', '...Treasury, and Risk ') losing the continuation 'development teams.' and 'Management projects.'.",
+          "source_ids": [
+            "e77:0:115",
+            "e79:360:481",
+            "e77:115:133",
+            "e79:481:501"
+          ]
+        },
+        {
+          "field": "experience[3].role",
+          "issue": "Role 'Business Analyst' stated in source at e82:38:54 is supported, but note experience[2] (Axis) role conflated with a bullet; here role is fine—contextual cross-check for consistency.",
+          "source_ids": [
+            "e82:38:54"
+          ]
+        },
+        {
+          "field": "education[0]",
+          "issue": "Education entry associates 'Pune University' institution with 'Diploma in Information Technology from ACTS, Pune'; the source places the Diploma with ACTS, Pune (2004) and Pune University appears tied to the 2008 PG Certificate. Degree/institution/year relationships are misaligned: 2008 and PG Certificate in Data Management & Clinical Research with Pune University were dropped, and graduation_year is empty.",
+          "source_ids": [
+            "e118:0:36",
+            "e118:36:60",
+            "e118:60:75",
+            "e117:0:4",
+            "e119:0:4",
+            "e120:0:39",
+            "e120:39:49"
+          ]
+        },
+        {
+          "field": "education[0].degree",
+          "issue": "Degree value includes dangling preposition 'from' ('Diploma in Information Technology from') concatenated without the institution ACTS, Pune; institution field also points to a different source than the degree.",
+          "source_ids": [
+            "e120:0:39",
+            "e120:39:49",
+            "e118:60:75"
+          ]
+        },
+        {
+          "field": "education[1].graduation_year",
+          "issue": "Year '2003' mapped to Bachelor of Pharmacy (Amravati University), but source education block lists 2008 (PG Cert), 2004 (Diploma), 2003 (Bachelor) with the university lines ambiguous; verify 2003 indeed belongs to Bachelor of Pharmacy and not another entry.",
+          "source_ids": [
+            "e122:0:4",
+            "e123:0:20",
+            "e124:0:19"
+          ]
+        },
+        {
+          "field": "certifications[0].name",
+          "issue": "All certification groups collapsed into a single name string including section headers and a stray bullet; individual certifications (PSM-I, PMO Certification, DevOps Foundation, IBM AI Fundamentals, etc.) not separated, and issuer/issue_year unresolved.",
+          "source_ids": [
+            "e27:27:49",
+            "e30:30:52",
+            "e37:58:77",
+            "e38:28:56",
+            "e36:0:1"
+          ]
+        },
+        {
+          "field": "skills.all_skills",
+          "issue": "List is polluted with non-skill artifacts: bullet glyph fragments ('• • • • •', '•'), section headers ('Professional', 'Core Banking & Domain Expertise' omitted but 'Business Analysis & Product Management' header not included), and broken phrases ('methodologies and', 'frameworks', 'techniques') split from their source phrases.",
+          "source_ids": [
+            "e31:0:12",
+            "e31:41:44",
+            "e32:0:12",
+            "e15:0:18",
+            "e15:18:29",
+            "e108:0:12"
+          ]
+        },
+        {
+          "field": "skills.soft_skills",
+          "issue": "Soft-skill entries contain unattributed fragments split across source blocks; 'Team Management' appears in schema soft_skills without direct evidence, and 'Project Management' evidences only 'Project management' from a sentence fragment.",
+          "source_ids": [
+            "e15:29:48",
+            "e17:59:88",
+            "e17:88:93"
+          ]
+        },
+        {
+          "field": "skills.domain_and_functional",
+          "issue": "Domain skill coverage is far narrower than source; many domain items (Corporate & Wholesale Lending, Cash Credit, Overdraft, Syndicated Loans, Trade Finance, LC/BG, UPI, NACHA, Risk/Basel/IFRS) omitted from domain_and_functional despite source support.",
+          "source_ids": [
+            "e31:12:41",
+            "e31:135:151",
+            "e31:367:389",
+            "e31:389:408",
+            "e39:244:294",
+            "e41:0:35"
+          ]
+        },
+        {
+          "field": "skills.tools_and_platforms",
+          "issue": "Tool list conflates items and drops named platforms (Oracle Flexcube, Finacle, Newgen, FinOne, SoapUI, Tableau) and mislabels 'Azure' whose source spelling is 'Aure Dev Ops'; also 'AWS' sourced from a line listing many items—verify per-item presence.",
+          "source_ids": [
+            "e109:0:96",
+            "e110:0:104",
+            "e111:0:65",
+            "e113:0:102"
+          ]
+        },
+        {
+          "field": "professional_title",
+          "issue": "A clear headline/title exists in source ('Banking Transformation SME | Lending/LOS/LMS/ KYC/ Payments Expert | Lead BA/Product/Functional Consultant') but professional_title is null; the value was instead folded into summary.",
+          "source_ids": [
+            "e1:0:106"
+          ]
+        },
+        {
+          "field": "total_experience_years",
+          "issue": "Source states '14+ years of Banking & Financial Services experience' yet total_experience_years is null; the figure is present in summary text and could be captured (or explicitly flagged as approximate).",
+          "source_ids": [
+            "e12:73:149"
+          ]
+        },
+        {
+          "field": "summary",
+          "issue": "Premium title line and profile snapshot merged with no separator fidelity; leading headline duplicated into summary rather than isolated; acceptable but note explicit source boundary between title and 'Profile Snapshot'.",
+          "source_ids": [
+            "e1:0:106",
+            "e3:0:16",
+            "e12:0:73"
+          ]
+        },
+        {
+          "field": "experience[3].responsibilities",
+          "issue": "HDFC responsibilities omit several source bullets (RTM traceability, SQL queries, UAT test scenarios, Agile ceremonies detail) though these exist in source; partial coverage.",
+          "source_ids": [
+            "e97:138:251",
+            "e97:254:350",
+            "e99:84:210",
+            "e97:0:122"
+          ]
+        },
+        {
+          "field": "experience[1].company",
+          "issue": "Company value 'Bandhan Bank Ltd.,' retains trailing comma from source; minor normalization but not an accuracy error—flagged for cleanliness consistency across entries.",
+          "source_ids": [
+            "e68:0:41"
+          ]
+        }
+      ],
+      "fingerprint": "e8765d27ec426b6b837c8708dd7f3158d2fb26a8057db8665131c09aef2cdbdf",
+      "previous_valid_result_retained": false
+    }
+  ],
+  "stop_reason": "recovery_budget_exhausted",
+  "original_pdf_verified": false,
+  "status": "needs_review"
+}
