@@ -1,0 +1,2512 @@
+{
+  "success": true,
+  "source": "Akshay Anvekar.docx",
+  "extraction_mode": "existing_blocks_schema_mapping",
+  "data": {
+    "contact": {
+      "full_name": "",
+      "email": "",
+      "phone": "",
+      "location": null,
+      "linkedin_url": null,
+      "github_url": null,
+      "portfolio_url": null
+    },
+    "professional_title": null,
+    "summary": null,
+    "total_experience_years": null,
+    "skills": {
+      "technical_skills": [
+        "Python",
+        "Java",
+        "React",
+        "Node.js"
+      ],
+      "tools_and_platforms": [
+        "AWS",
+        "GCP"
+      ],
+      "domain_and_functional": [],
+      "soft_skills": [],
+      "all_skills": [
+        "Python",
+        "Java",
+        "React",
+        "Node.js",
+        "AWS",
+        "GCP",
+        "Skilled in Python",
+        "and infrastructure automation."
+      ]
+    },
+    "experience": [
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      }
+    ],
+    "education": [
+      {
+        "institution": "",
+        "degree": "",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      },
+      {
+        "institution": "",
+        "degree": "",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      }
+    ],
+    "certifications": [
+      {
+        "name": "Certified Google Cloud Architect.",
+        "issuer": null,
+        "issue_year": null
+      },
+      {
+        "name": "Google Cloud Certified - Professional Cloud Architect | ID - 74961",
+        "issuer": null,
+        "issue_year": null
+      }
+    ],
+    "projects": [],
+    "languages": [
+      "Python, NodeJs, React, JavaScript, Flutter, Terraform, CFN, Java, and Git",
+      "Tools and Platforms\tAWS, Google Cloud Platform (GCP), PTC ThingWorx, Jira, ServiceNow, and Oracle EBS"
+    ]
+  },
+  "schema_mapping": {
+    "fields_populated": 6,
+    "total_fields": 16,
+    "completion_percentage": 37.5,
+    "field_details": [
+      {
+        "field_name": "contact.full_name",
+        "target_type": "string",
+        "is_required": true,
+        "is_extracted": false,
+        "source_section": "Header / Personal Details",
+        "confidence_score": 0.0,
+        "description": "Candidate's full name, extracted from the top header of the resume."
+      },
+      {
+        "field_name": "contact.email",
+        "target_type": "string (email)",
+        "is_required": true,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's primary contact email address."
+      },
+      {
+        "field_name": "contact.phone",
+        "target_type": "string (phone)",
+        "is_required": true,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's telephone / mobile phone number."
+      },
+      {
+        "field_name": "contact.location",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's residential location or work city."
+      },
+      {
+        "field_name": "contact.linkedin_url",
+        "target_type": "string (url) | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "URL to candidate's LinkedIn profile."
+      },
+      {
+        "field_name": "professional_title",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Subtitle",
+        "confidence_score": 0.0,
+        "description": "Candidate's target headline or most recent job title."
+      },
+      {
+        "field_name": "summary",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Professional Summary / Profile / Objective",
+        "confidence_score": 0.0,
+        "description": "Executive bio, professional overview, or career objective."
+      },
+      {
+        "field_name": "total_experience_years",
+        "target_type": "float | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Summary / Experience Calculation",
+        "confidence_score": 0.0,
+        "description": "Total professional experience in years."
+      },
+      {
+        "field_name": "skills.technical_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills / Technical Competencies",
+        "confidence_score": 0.92,
+        "description": "Technical programming languages and core software competencies."
+      },
+      {
+        "field_name": "skills.tools_and_platforms",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills / Tools & Technologies",
+        "confidence_score": 0.9,
+        "description": "Software platforms, developer tools, and operational systems."
+      },
+      {
+        "field_name": "skills.domain_and_functional",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Domain Expertise",
+        "confidence_score": 0.0,
+        "description": "Functional domain knowledge (e.g. Hedge Funds, KYC, NAV, Derivatives)."
+      },
+      {
+        "field_name": "skills.all_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills (Aggregated)",
+        "confidence_score": 0.95,
+        "description": "Complete list of candidate skills across all categories."
+      },
+      {
+        "field_name": "experience",
+        "target_type": "array[WorkExperience]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Experience / Work History",
+        "confidence_score": 0.92,
+        "description": "Complete chronological employment records with bullet points."
+      },
+      {
+        "field_name": "education",
+        "target_type": "array[Education]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Education / Academic Qualifications",
+        "confidence_score": 0.9,
+        "description": "University, college, and higher education degree qualifications."
+      },
+      {
+        "field_name": "certifications",
+        "target_type": "array[Certification]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Certifications / Licenses",
+        "confidence_score": 0.8,
+        "description": "Professional accreditations and credentials."
+      },
+      {
+        "field_name": "projects",
+        "target_type": "array[Project]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Projects / Key Engagements",
+        "confidence_score": 0.0,
+        "description": "Major projects or strategic initiatives led by candidate."
+      }
+    ]
+  },
+  "raw_sections": {
+    "certifications": "Certified Google Cloud Architect.\nCertifications\tGoogle Cloud Certified - Professional Cloud Architect | ID - 74961",
+    "skills": "Skilled in Python, Java, Node.js, React, AWS, GCP, and infrastructure automation.\nSKILLS\t",
+    "languages": "Languages\tPython, NodeJs, React, JavaScript, Flutter, Terraform, CFN, Java, and Git\nTools and Platforms\tAWS, Google Cloud Platform (GCP), PTC ThingWorx, Jira, ServiceNow, and Oracle EBS",
+    "experience": "AI Developer | DADB\tFeb 2025 — Present\nDADB\tBengaluru, Karnataka\nAI/LLM Development: Leading the design and implementation of Large Language Model (LLM) applications, including\nfine-tuning, embeddings, prompt engineering, and Retrieval-Augmented Generation (RAG) for enterprise use cases.\nFull-Stack Applications: Building end-to-end Application using Node.js for backend, with React/Next.js for frontend integration.\nAI Integration & APIs: Exposing models as REST APIs to enable seamless adoption across business units.\nCloud Deployment: Architecting and deploying solutions on AWS and GCP. GitHub Actions for scalable and automated releases.\nData Engineering for AI: Collecting, preprocessing, and managing structured/unstructured datasets to support training, evaluation, and production deployment of AI models.\nCross-Functional Collaboration: Working with stakeholders across multiple business units to identify, prioritize, and deliver\nimpactful AI solutions that improve business efficiency.\nInfrastructure & Automation: Implementing Infrastructure-as-Code (Terraform) and cloud-native best practices to standardize deployments and reduce system downtime.\nSecurity & Compliance: Embedding security, privacy, and compliance guidelines into AI systems and APIs.\nTech Stack: Python, HuggingFace, LangChain, Java, Node.js, React, Next.js, FastAPI, Flask, PostgreSQL, AWS, GCP, Docker, GitHub Actions, Terraform.\nCloud Engineer | GE Appliances\tJan 2021 — Feb 2025\nGE Appliances\tBengaluru, Karnataka\nCloud-Native Development: Designed and developed scalable backend services using Java (Spring Boot) and frontend applications using ReactJS and Next.js to support enterprise-level digital platforms.\nCloud Infrastructure Management: Administered and optimized AWS and GCP resources, ensuring performance, cost efficiency, and security best practices.\nCI/CD Automation: Built and maintained automated pipelines with GitHub Actions, reducing release cycle time and ensuring faster deployments with minimal downtime.\nRPA Development: Designed and governed UiPath-based RPA architecture, ensuring reliability, scalability, and compliance; standardized automation frameworks across business units.\nData Engineering: Migrated enterprise data warehouse from Vertica to BigQuery, implemented ETL processes with Striim, and built real-time data workflows for analytics.\nAnalytics & Dashboards: Designed interactive dashboards with Tableau and developed ML-driven insights for business decision-making.\nMobile Development: Built a ride-hailing style app in Flutter, integrating APIs for authentication, payments, and real-time location tracking.\nOracle EBS Development: Automated key business workflows by building concurrent programs in Oracle EBS, improving system efficiency and reporting accuracy.\nCross-Functional Collaboration: Partnered with product, QA, and operations teams to deliver cloud-based solutions aligned with business needs.\nTech Stack: Java, ReactJS, Next.js, AWS, GCP, Terraform, UiPath, Tableau, Striim, Oracle EBS, PostgreSQL, Python.\nSoftware Engineer | Simplifi Commerce\tApril 2020 — JAN 2021\nSimplifi Commerce\tBengaluru, Karnataka\nAPI Development: Designed and developed REST APIs for dashboards, reporting, data exports, and mobile app features (authentication, payments, and notifications) using Node.js (Express, Koa).\nData Engineering & ETL: Built and maintained ETL pipelines using Singer.io and Meltano for integrating structured and unstructured data sources.\nDatabase Management: Designed schemas and optimized queries for both SQL (PostgreSQL) and NoSQL (MongoDB)\ndatabases to support high-performance applications.\nCloud & DevOps: Managed AWS infrastructure for application deployment, CI/CD pipelines, and monitoring to ensure availability and scalability.\nFrontend Development: Developed customer-facing applications using React, React Native, and Ant Design, ensuring responsive design and seamless user experience.\nCross-Functional Delivery: Collaborated with product managers and clients to align requirements, delivered rapid prototypes, and iterated to meet business objectives.\nTech Stack: Node.js, Python, React, React Native, Ant Design, PostgreSQL, MongoDB, AWS, Singer.io, Meltano.\nSoftware Engineer | AnsrSource\tDec 2017 — April 2020\nAnsrSource\tBengaluru, Karnataka\nDeveloped in-house applications to improve workflow and productivity.\nActed as a subject matter expert for Mechanical Engineering subjects.\nDemonstrated strong project management skills in executing projects and client interactions.\nWorked on Python, JavaScript, and VBA/Macros for productivity improvements and task automation.",
+    "education": "EDUCATION\nM. E. in Thermal Science & Engineering, University Visvesvaraya College of Engineering, Bangalore\tDec 2016 Percentage – 82.2% Aggregate. | Master’s Thesis – A DSMC Analysis of Gas Flows in Microchannel Using OpenFOAM.\nB. E. in Mechanical Engineering, Acharya Institute of Technology, Bangalore\tAug 2014 Percentage – 70.49% Aggregate. | Project – Tree Climber Mechanism.\nACTIVITIES AND REWARDS\nBest Outgoing Student in the Mechanical Department. Best Engineering Project in the Mechanical Department. District Level winners in ESIC 2014 conducted by ISSRD.\nPresented Thesis at ICAMES-17 (International Conference on Advances in Mechanical Engineering Sciences).",
+    "interests": "HOBBIES AND INTEREST\nRiding/Travelling, DIY Projects, Badminton."
+  },
+  "meta": {
+    "status": "needs_review",
+    "human_verified": false,
+    "provider_calls": 0,
+    "source_accounting": {
+      "all_source_text_preserved": true,
+      "total_spans": 65,
+      "assigned_meaningful_spans": 58,
+      "unresolved_meaningful_spans": 6,
+      "non_content_artifacts": 1,
+      "duplicates_excluded": 0,
+      "all_meaningful_text_assigned": false,
+      "semantic_correctness_verified": false,
+      "outcomes": [
+        {
+          "source_id": "e0:0:33",
+          "source_element_index": 0,
+          "start": 0,
+          "end": 33,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "BERT embedding assigned to a labeled K-means centroid"
+        },
+        {
+          "source_id": "e1:0:88",
+          "source_element_index": 1,
+          "start": 0,
+          "end": 88,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e2:0:126",
+          "source_element_index": 2,
+          "start": 0,
+          "end": 126,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e3:0:81",
+          "source_element_index": 3,
+          "start": 0,
+          "end": 81,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "BERT embedding assigned to a labeled K-means centroid"
+        },
+        {
+          "source_id": "e4:0:125",
+          "source_element_index": 4,
+          "start": 0,
+          "end": 125,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e5:0:129",
+          "source_element_index": 5,
+          "start": 0,
+          "end": 129,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e6:0:85",
+          "source_element_index": 6,
+          "start": 0,
+          "end": 85,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e7:0:7",
+          "source_element_index": 7,
+          "start": 0,
+          "end": 7,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e8:0:15",
+          "source_element_index": 8,
+          "start": 0,
+          "end": 15,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e8:15:81",
+          "source_element_index": 8,
+          "start": 15,
+          "end": 81,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:0:10",
+          "source_element_index": 9,
+          "start": 0,
+          "end": 10,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e9:10:83",
+          "source_element_index": 9,
+          "start": 10,
+          "end": 83,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e10:0:101",
+          "source_element_index": 10,
+          "start": 0,
+          "end": 101,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e11:0:21",
+          "source_element_index": 11,
+          "start": 0,
+          "end": 21,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Possible ambiguous or unsupported heading; section context stopped"
+        },
+        {
+          "source_id": "e12:0:38",
+          "source_element_index": 12,
+          "start": 0,
+          "end": 38,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit dated employer starts or continues Experience across layout changes"
+        },
+        {
+          "source_id": "e13:0:25",
+          "source_element_index": 13,
+          "start": 0,
+          "end": 25,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e14:0:111",
+          "source_element_index": 14,
+          "start": 0,
+          "end": 111,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e15:0:111",
+          "source_element_index": 15,
+          "start": 0,
+          "end": 111,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e16:0:128",
+          "source_element_index": 16,
+          "start": 0,
+          "end": 128,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e17:0:102",
+          "source_element_index": 17,
+          "start": 0,
+          "end": 102,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e18:0:122",
+          "source_element_index": 18,
+          "start": 0,
+          "end": 122,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e19:0:170",
+          "source_element_index": 19,
+          "start": 0,
+          "end": 170,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e20:0:125",
+          "source_element_index": 20,
+          "start": 0,
+          "end": 125,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e21:0:56",
+          "source_element_index": 21,
+          "start": 0,
+          "end": 56,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e22:0:163",
+          "source_element_index": 22,
+          "start": 0,
+          "end": 163,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e23:0:103",
+          "source_element_index": 23,
+          "start": 0,
+          "end": 103,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e24:0:147",
+          "source_element_index": 24,
+          "start": 0,
+          "end": 147,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e25:0:50",
+          "source_element_index": 25,
+          "start": 0,
+          "end": 50,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit dated employer starts or continues Experience across layout changes"
+        },
+        {
+          "source_id": "e26:0:34",
+          "source_element_index": 26,
+          "start": 0,
+          "end": 34,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e27:0:198",
+          "source_element_index": 27,
+          "start": 0,
+          "end": 198,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e28:0:150",
+          "source_element_index": 28,
+          "start": 0,
+          "end": 150,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e29:0:162",
+          "source_element_index": 29,
+          "start": 0,
+          "end": 162,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e30:0:178",
+          "source_element_index": 30,
+          "start": 0,
+          "end": 178,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e31:0:167",
+          "source_element_index": 31,
+          "start": 0,
+          "end": 167,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e32:0:131",
+          "source_element_index": 32,
+          "start": 0,
+          "end": 131,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e33:0:142",
+          "source_element_index": 33,
+          "start": 0,
+          "end": 142,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e34:0:155",
+          "source_element_index": 34,
+          "start": 0,
+          "end": 155,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e35:0:142",
+          "source_element_index": 35,
+          "start": 0,
+          "end": 142,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e36:0:113",
+          "source_element_index": 36,
+          "start": 0,
+          "end": 113,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e37:0:0",
+          "source_element_index": 37,
+          "start": 0,
+          "end": 0,
+          "section": null,
+          "outcome": "non_content_artifact",
+          "reason": "Whitespace retained in source inventory"
+        },
+        {
+          "source_id": "e38:0:59",
+          "source_element_index": 38,
+          "start": 0,
+          "end": 59,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit dated employer starts or continues Experience across layout changes"
+        },
+        {
+          "source_id": "e39:0:38",
+          "source_element_index": 39,
+          "start": 0,
+          "end": 38,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e40:0:190",
+          "source_element_index": 40,
+          "start": 0,
+          "end": 190,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e41:0:144",
+          "source_element_index": 41,
+          "start": 0,
+          "end": 144,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e42:0:105",
+          "source_element_index": 42,
+          "start": 0,
+          "end": 105,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e43:0:51",
+          "source_element_index": 43,
+          "start": 0,
+          "end": 51,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e44:0:142",
+          "source_element_index": 44,
+          "start": 0,
+          "end": 142,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e45:0:160",
+          "source_element_index": 45,
+          "start": 0,
+          "end": 160,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e46:0:166",
+          "source_element_index": 46,
+          "start": 0,
+          "end": 166,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e47:0:107",
+          "source_element_index": 47,
+          "start": 0,
+          "end": 107,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e48:0:52",
+          "source_element_index": 48,
+          "start": 0,
+          "end": 52,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit dated employer starts or continues Experience across layout changes"
+        },
+        {
+          "source_id": "e49:0:31",
+          "source_element_index": 49,
+          "start": 0,
+          "end": 31,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e50:0:69",
+          "source_element_index": 50,
+          "start": 0,
+          "end": 69,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e51:0:69",
+          "source_element_index": 51,
+          "start": 0,
+          "end": 69,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e52:0:92",
+          "source_element_index": 52,
+          "start": 0,
+          "end": 92,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e53:0:95",
+          "source_element_index": 53,
+          "start": 0,
+          "end": 95,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e54:0:9",
+          "source_element_index": 54,
+          "start": 0,
+          "end": 9,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e55:0:217",
+          "source_element_index": 55,
+          "start": 0,
+          "end": 217,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e56:0:151",
+          "source_element_index": 56,
+          "start": 0,
+          "end": 151,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e57:0:22",
+          "source_element_index": 57,
+          "start": 0,
+          "end": 22,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e58:0:162",
+          "source_element_index": 58,
+          "start": 0,
+          "end": 162,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e59:0:104",
+          "source_element_index": 59,
+          "start": 0,
+          "end": 104,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e60:0:8",
+          "source_element_index": 60,
+          "start": 0,
+          "end": 8,
+          "section": "interests",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e60:8:20",
+          "source_element_index": 60,
+          "start": 8,
+          "end": 20,
+          "section": "interests",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e61:0:43",
+          "source_element_index": 61,
+          "start": 0,
+          "end": 43,
+          "section": "interests",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        }
+      ]
+    },
+    "document_scope": {
+      "kind": "candidate_or_unknown",
+      "candidate_resume": null,
+      "requires_scope_review": true
+    },
+    "source_inventory_sha256": "4db76b0ea2ca6c894149d24521a93426f77ce939d5576ef44ed405c01a3401ab",
+    "field_evidence": {
+      "skills.technical_skills[0]": [
+        "e3:0:81"
+      ],
+      "skills.technical_skills[1]": [
+        "e3:0:81"
+      ],
+      "skills.technical_skills[2]": [
+        "e3:0:81"
+      ],
+      "skills.technical_skills[3]": [
+        "e3:0:81"
+      ],
+      "skills.tools_and_platforms[0]": [
+        "e3:0:81"
+      ],
+      "skills.tools_and_platforms[1]": [
+        "e3:0:81"
+      ],
+      "skills.all_skills[0]": [
+        "e3:0:81"
+      ],
+      "skills.all_skills[1]": [
+        "e3:0:81"
+      ],
+      "skills.all_skills[2]": [
+        "e3:0:81"
+      ],
+      "skills.all_skills[3]": [
+        "e3:0:81"
+      ],
+      "skills.all_skills[4]": [
+        "e3:0:81"
+      ],
+      "skills.all_skills[5]": [
+        "e3:0:81"
+      ],
+      "skills.all_skills[6]": [
+        "e3:0:81"
+      ],
+      "skills.all_skills[7]": [
+        "e3:0:81"
+      ],
+      "certifications[0].name": [
+        "e0:0:33"
+      ],
+      "certifications[1].name": [
+        "e8:15:81"
+      ],
+      "languages[0]": [
+        "e9:10:83"
+      ],
+      "languages[1]": [
+        "e10:0:101"
+      ]
+    },
+    "record_reviews": [
+      {
+        "category": "experience",
+        "entry_id": "experience-1",
+        "source_ids": [
+          "e12:0:38",
+          "e13:0:25",
+          "e14:0:111",
+          "e15:0:111",
+          "e16:0:128",
+          "e17:0:102",
+          "e18:0:122",
+          "e19:0:170",
+          "e20:0:125",
+          "e21:0:56",
+          "e22:0:163",
+          "e23:0:103",
+          "e24:0:147"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-2",
+        "source_ids": [
+          "e25:0:50",
+          "e26:0:34",
+          "e27:0:198",
+          "e28:0:150",
+          "e29:0:162",
+          "e30:0:178",
+          "e31:0:167",
+          "e32:0:131",
+          "e33:0:142",
+          "e34:0:155",
+          "e35:0:142",
+          "e36:0:113"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-3",
+        "source_ids": [
+          "e38:0:59",
+          "e39:0:38",
+          "e40:0:190",
+          "e41:0:144",
+          "e42:0:105",
+          "e43:0:51",
+          "e44:0:142",
+          "e45:0:160",
+          "e46:0:166",
+          "e47:0:107"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-4",
+        "source_ids": [
+          "e48:0:52",
+          "e49:0:31",
+          "e50:0:69",
+          "e51:0:69",
+          "e52:0:92",
+          "e53:0:95"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "education",
+        "entry_id": "education-1",
+        "source_ids": [
+          "e55:0:217",
+          "e56:0:151"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "education",
+        "entry_id": "education-2",
+        "source_ids": [
+          "e57:0:22",
+          "e58:0:162",
+          "e59:0:104"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "certifications",
+        "entry_id": "certifications-1",
+        "source_ids": [
+          "e0:0:33"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "certifications",
+        "entry_id": "certifications-2",
+        "source_ids": [
+          "e8:15:81"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      }
+    ],
+    "missing_required_fields": [
+      "contact.full_name",
+      "contact.email",
+      "contact.phone",
+      "experience[0].company",
+      "experience[0].role",
+      "experience[1].company",
+      "experience[1].role",
+      "experience[2].company",
+      "experience[2].role",
+      "experience[3].company",
+      "experience[3].role",
+      "education[0].institution",
+      "education[0].degree",
+      "education[1].institution",
+      "education[1].degree"
+    ],
+    "warnings": [
+      "Schema validity and field completion do not establish extraction or relationship accuracy.",
+      "Handoff confidence scores are fixed heuristics, not calibrated probabilities.",
+      "Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields."
+    ],
+    "unmapped_blocks": [
+      {
+        "source_id": "e8:0:15",
+        "category": "certifications",
+        "text": "Certifications\t",
+        "page_number": 1
+      },
+      {
+        "source_id": "e7:0:7",
+        "category": "skills",
+        "text": "SKILLS\t",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:0:10",
+        "category": "languages",
+        "text": "Languages\t",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:0:38",
+        "category": "experience",
+        "text": "AI Developer | DADB\tFeb 2025 — Present",
+        "page_number": 1
+      },
+      {
+        "source_id": "e13:0:25",
+        "category": "experience",
+        "text": "DADB\tBengaluru, Karnataka",
+        "page_number": 1
+      },
+      {
+        "source_id": "e14:0:111",
+        "category": "experience",
+        "text": "AI/LLM Development: Leading the design and implementation of Large Language Model (LLM) applications, including",
+        "page_number": 1
+      },
+      {
+        "source_id": "e15:0:111",
+        "category": "experience",
+        "text": "fine-tuning, embeddings, prompt engineering, and Retrieval-Augmented Generation (RAG) for enterprise use cases.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e16:0:128",
+        "category": "experience",
+        "text": "Full-Stack Applications: Building end-to-end Application using Node.js for backend, with React/Next.js for frontend integration.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e17:0:102",
+        "category": "experience",
+        "text": "AI Integration & APIs: Exposing models as REST APIs to enable seamless adoption across business units.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e18:0:122",
+        "category": "experience",
+        "text": "Cloud Deployment: Architecting and deploying solutions on AWS and GCP. GitHub Actions for scalable and automated releases.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e19:0:170",
+        "category": "experience",
+        "text": "Data Engineering for AI: Collecting, preprocessing, and managing structured/unstructured datasets to support training, evaluation, and production deployment of AI models.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e20:0:125",
+        "category": "experience",
+        "text": "Cross-Functional Collaboration: Working with stakeholders across multiple business units to identify, prioritize, and deliver",
+        "page_number": 1
+      },
+      {
+        "source_id": "e21:0:56",
+        "category": "experience",
+        "text": "impactful AI solutions that improve business efficiency.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e22:0:163",
+        "category": "experience",
+        "text": "Infrastructure & Automation: Implementing Infrastructure-as-Code (Terraform) and cloud-native best practices to standardize deployments and reduce system downtime.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e23:0:103",
+        "category": "experience",
+        "text": "Security & Compliance: Embedding security, privacy, and compliance guidelines into AI systems and APIs.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e24:0:147",
+        "category": "experience",
+        "text": "Tech Stack: Python, HuggingFace, LangChain, Java, Node.js, React, Next.js, FastAPI, Flask, PostgreSQL, AWS, GCP, Docker, GitHub Actions, Terraform.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e25:0:50",
+        "category": "experience",
+        "text": "Cloud Engineer | GE Appliances\tJan 2021 — Feb 2025",
+        "page_number": 1
+      },
+      {
+        "source_id": "e26:0:34",
+        "category": "experience",
+        "text": "GE Appliances\tBengaluru, Karnataka",
+        "page_number": 1
+      },
+      {
+        "source_id": "e27:0:198",
+        "category": "experience",
+        "text": "Cloud-Native Development: Designed and developed scalable backend services using Java (Spring Boot) and frontend applications using ReactJS and Next.js to support enterprise-level digital platforms.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e28:0:150",
+        "category": "experience",
+        "text": "Cloud Infrastructure Management: Administered and optimized AWS and GCP resources, ensuring performance, cost efficiency, and security best practices.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e29:0:162",
+        "category": "experience",
+        "text": "CI/CD Automation: Built and maintained automated pipelines with GitHub Actions, reducing release cycle time and ensuring faster deployments with minimal downtime.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e30:0:178",
+        "category": "experience",
+        "text": "RPA Development: Designed and governed UiPath-based RPA architecture, ensuring reliability, scalability, and compliance; standardized automation frameworks across business units.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e31:0:167",
+        "category": "experience",
+        "text": "Data Engineering: Migrated enterprise data warehouse from Vertica to BigQuery, implemented ETL processes with Striim, and built real-time data workflows for analytics.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e32:0:131",
+        "category": "experience",
+        "text": "Analytics & Dashboards: Designed interactive dashboards with Tableau and developed ML-driven insights for business decision-making.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e33:0:142",
+        "category": "experience",
+        "text": "Mobile Development: Built a ride-hailing style app in Flutter, integrating APIs for authentication, payments, and real-time location tracking.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e34:0:155",
+        "category": "experience",
+        "text": "Oracle EBS Development: Automated key business workflows by building concurrent programs in Oracle EBS, improving system efficiency and reporting accuracy.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e35:0:142",
+        "category": "experience",
+        "text": "Cross-Functional Collaboration: Partnered with product, QA, and operations teams to deliver cloud-based solutions aligned with business needs.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e36:0:113",
+        "category": "experience",
+        "text": "Tech Stack: Java, ReactJS, Next.js, AWS, GCP, Terraform, UiPath, Tableau, Striim, Oracle EBS, PostgreSQL, Python.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e38:0:59",
+        "category": "experience",
+        "text": "Software Engineer | Simplifi Commerce\tApril 2020 — JAN 2021",
+        "page_number": 2
+      },
+      {
+        "source_id": "e39:0:38",
+        "category": "experience",
+        "text": "Simplifi Commerce\tBengaluru, Karnataka",
+        "page_number": 2
+      },
+      {
+        "source_id": "e40:0:190",
+        "category": "experience",
+        "text": "API Development: Designed and developed REST APIs for dashboards, reporting, data exports, and mobile app features (authentication, payments, and notifications) using Node.js (Express, Koa).",
+        "page_number": 2
+      },
+      {
+        "source_id": "e41:0:144",
+        "category": "experience",
+        "text": "Data Engineering & ETL: Built and maintained ETL pipelines using Singer.io and Meltano for integrating structured and unstructured data sources.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e42:0:105",
+        "category": "experience",
+        "text": "Database Management: Designed schemas and optimized queries for both SQL (PostgreSQL) and NoSQL (MongoDB)",
+        "page_number": 2
+      },
+      {
+        "source_id": "e43:0:51",
+        "category": "experience",
+        "text": "databases to support high-performance applications.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e44:0:142",
+        "category": "experience",
+        "text": "Cloud & DevOps: Managed AWS infrastructure for application deployment, CI/CD pipelines, and monitoring to ensure availability and scalability.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e45:0:160",
+        "category": "experience",
+        "text": "Frontend Development: Developed customer-facing applications using React, React Native, and Ant Design, ensuring responsive design and seamless user experience.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e46:0:166",
+        "category": "experience",
+        "text": "Cross-Functional Delivery: Collaborated with product managers and clients to align requirements, delivered rapid prototypes, and iterated to meet business objectives.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e47:0:107",
+        "category": "experience",
+        "text": "Tech Stack: Node.js, Python, React, React Native, Ant Design, PostgreSQL, MongoDB, AWS, Singer.io, Meltano.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e48:0:52",
+        "category": "experience",
+        "text": "Software Engineer | AnsrSource\tDec 2017 — April 2020",
+        "page_number": 2
+      },
+      {
+        "source_id": "e49:0:31",
+        "category": "experience",
+        "text": "AnsrSource\tBengaluru, Karnataka",
+        "page_number": 2
+      },
+      {
+        "source_id": "e50:0:69",
+        "category": "experience",
+        "text": "Developed in-house applications to improve workflow and productivity.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e51:0:69",
+        "category": "experience",
+        "text": "Acted as a subject matter expert for Mechanical Engineering subjects.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e52:0:92",
+        "category": "experience",
+        "text": "Demonstrated strong project management skills in executing projects and client interactions.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e53:0:95",
+        "category": "experience",
+        "text": "Worked on Python, JavaScript, and VBA/Macros for productivity improvements and task automation.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e54:0:9",
+        "category": "education",
+        "text": "EDUCATION",
+        "page_number": 2
+      },
+      {
+        "source_id": "e55:0:217",
+        "category": "education",
+        "text": "M. E. in Thermal Science & Engineering, University Visvesvaraya College of Engineering, Bangalore\tDec 2016 Percentage – 82.2% Aggregate. | Master’s Thesis – A DSMC Analysis of Gas Flows in Microchannel Using OpenFOAM.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e56:0:151",
+        "category": "education",
+        "text": "B. E. in Mechanical Engineering, Acharya Institute of Technology, Bangalore\tAug 2014 Percentage – 70.49% Aggregate. | Project – Tree Climber Mechanism.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e57:0:22",
+        "category": "education",
+        "text": "ACTIVITIES AND REWARDS",
+        "page_number": 2
+      },
+      {
+        "source_id": "e58:0:162",
+        "category": "education",
+        "text": "Best Outgoing Student in the Mechanical Department. Best Engineering Project in the Mechanical Department. District Level winners in ESIC 2014 conducted by ISSRD.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e59:0:104",
+        "category": "education",
+        "text": "Presented Thesis at ICAMES-17 (International Conference on Advances in Mechanical Engineering Sciences).",
+        "page_number": 2
+      },
+      {
+        "source_id": "e60:0:8",
+        "category": "interests",
+        "text": "HOBBIES ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e60:8:20",
+        "category": "interests",
+        "text": "AND INTEREST",
+        "page_number": 2
+      },
+      {
+        "source_id": "e61:0:43",
+        "category": "interests",
+        "text": "Riding/Travelling, DIY Projects, Badminton.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e1:0:88",
+        "category": null,
+        "text": "7+ years of experience in full-stack application development and cloud-native solutions.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e2:0:126",
+        "category": null,
+        "text": "Currently at DADB, leading enterprise AI initiatives including LLM development, application integration, and cloud deployment.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e4:0:125",
+        "category": null,
+        "text": "Expertise in building, fine-tuning, and deploying LLMs with HuggingFace, LangChain, and Retrieval-Augmented Generation (RAG).",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:0:129",
+        "category": null,
+        "text": "Strong background in end-to-end solution delivery: data pipelines, model development, API integration, and production deployment.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e6:0:85",
+        "category": null,
+        "text": "Proven ability to design scalable AI-driven applications from ideation to production.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e11:0:21",
+        "category": null,
+        "text": "TECHNICAL EXPERIENCE\t",
+        "page_number": 1
+      },
+      {
+        "source_id": "e37:0:0",
+        "category": null,
+        "text": "",
+        "page_number": null
+      }
+    ],
+    "needs_review": [
+      {
+        "source_element_index": 1,
+        "start": 0,
+        "end": 88,
+        "text": "7+ years of experience in full-stack application development and cloud-native solutions.",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3458,
+        "margin": -0.0065,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 2,
+        "start": 0,
+        "end": 126,
+        "text": "Currently at DADB, leading enterprise AI initiatives including LLM development, application integration, and cloud deployment.",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.4375,
+        "margin": 0.0146,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 4,
+        "start": 0,
+        "end": 125,
+        "text": "Expertise in building, fine-tuning, and deploying LLMs with HuggingFace, LangChain, and Retrieval-Augmented Generation (RAG).",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2284,
+        "margin": 0.0102,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 5,
+        "start": 0,
+        "end": 129,
+        "text": "Strong background in end-to-end solution delivery: data pipelines, model development, API integration, and production deployment.",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3373,
+        "margin": 0.0013,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 6,
+        "start": 0,
+        "end": 85,
+        "text": "Proven ability to design scalable AI-driven applications from ideation to production.",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3312,
+        "margin": -0.0024,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 11,
+        "start": 0,
+        "end": 21,
+        "text": "TECHNICAL EXPERIENCE\t",
+        "page_number": 1,
+        "cluster_id": 1,
+        "candidate_section": "summary",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.6104,
+        "margin": 0.0559,
+        "lane": "main",
+        "reason": "Possible ambiguous or unsupported heading; section context stopped",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 37,
+        "start": 0,
+        "end": 0,
+        "text": "",
+        "page_number": null,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1867,
+        "margin": -0.0366,
+        "lane": "main",
+        "reason": "Layout footer or page separator retained outside semantic sections",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      }
+    ]
+  },
+  "section_schemas": [
+    {
+      "category": "certifications",
+      "label": "Certifications",
+      "records": [
+        {
+          "record_id": "certifications-1",
+          "source_ids": [
+            "e0:0:33"
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "items": [
+                {
+                  "value": "Certified Google Cloud Architect.",
+                  "evidence": [
+                    {
+                      "source_id": "e0:0:33",
+                      "quote": "Certified Google Cloud Architect."
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "issuer",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "issue_year",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "certifications-2",
+          "source_ids": [
+            "e8:15:81"
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "items": [
+                {
+                  "value": "Google Cloud Certified - Professional Cloud Architect | ID - 74961",
+                  "evidence": [
+                    {
+                      "source_id": "e8:15:81",
+                      "quote": "Google Cloud Certified - Professional Cloud Architect | ID - 74961"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "issuer",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "issue_year",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e8:0:15",
+          "quote": "Certifications\t"
+        }
+      ]
+    },
+    {
+      "category": "skills",
+      "label": "Skills",
+      "records": [
+        {
+          "record_id": "skills",
+          "source_ids": [
+            "e3:0:81"
+          ],
+          "attributes": [
+            {
+              "name": "technical_skills",
+              "items": [
+                {
+                  "value": "Python",
+                  "evidence": [
+                    {
+                      "source_id": "e3:0:81",
+                      "quote": "Python"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Java",
+                  "evidence": [
+                    {
+                      "source_id": "e3:0:81",
+                      "quote": "Java"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "React",
+                  "evidence": [
+                    {
+                      "source_id": "e3:0:81",
+                      "quote": "React"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Node.js",
+                  "evidence": [
+                    {
+                      "source_id": "e3:0:81",
+                      "quote": "Node.js"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "tools_and_platforms",
+              "items": [
+                {
+                  "value": "AWS",
+                  "evidence": [
+                    {
+                      "source_id": "e3:0:81",
+                      "quote": "AWS"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "GCP",
+                  "evidence": [
+                    {
+                      "source_id": "e3:0:81",
+                      "quote": "GCP"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "domain_and_functional",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "soft_skills",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "all_skills",
+              "items": [
+                {
+                  "value": "Python",
+                  "evidence": [
+                    {
+                      "source_id": "e3:0:81",
+                      "quote": "Python"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Java",
+                  "evidence": [
+                    {
+                      "source_id": "e3:0:81",
+                      "quote": "Java"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "React",
+                  "evidence": [
+                    {
+                      "source_id": "e3:0:81",
+                      "quote": "React"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Node.js",
+                  "evidence": [
+                    {
+                      "source_id": "e3:0:81",
+                      "quote": "Node.js"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "AWS",
+                  "evidence": [
+                    {
+                      "source_id": "e3:0:81",
+                      "quote": "AWS"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "GCP",
+                  "evidence": [
+                    {
+                      "source_id": "e3:0:81",
+                      "quote": "GCP"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Skilled in Python",
+                  "evidence": [
+                    {
+                      "source_id": "e3:0:81",
+                      "quote": "Skilled in Python"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "and infrastructure automation.",
+                  "evidence": [
+                    {
+                      "source_id": "e3:0:81",
+                      "quote": "and infrastructure automation."
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e3:0:81",
+          "quote": "Skilled in Python, Java, Node.js, React, AWS, GCP, and infrastructure automation."
+        },
+        {
+          "source_id": "e7:0:7",
+          "quote": "SKILLS\t"
+        }
+      ]
+    },
+    {
+      "category": "languages",
+      "label": "Languages",
+      "records": [
+        {
+          "record_id": "languages-1",
+          "source_ids": [
+            "e9:10:83",
+            "e10:0:101"
+          ],
+          "attributes": [
+            {
+              "name": "language",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "proficiency",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "Unlabelled compound information requires source review."
+          ]
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e9:0:10",
+          "quote": "Languages\t"
+        },
+        {
+          "source_id": "e9:10:83",
+          "quote": "Python, NodeJs, React, JavaScript, Flutter, Terraform, CFN, Java, and Git"
+        },
+        {
+          "source_id": "e10:0:101",
+          "quote": "Tools and Platforms\tAWS, Google Cloud Platform (GCP), PTC ThingWorx, Jira, ServiceNow, and Oracle EBS"
+        }
+      ]
+    },
+    {
+      "category": "experience",
+      "label": "Experience",
+      "records": [
+        {
+          "record_id": "experience-1",
+          "source_ids": [
+            "e12:0:38",
+            "e13:0:25",
+            "e14:0:111",
+            "e15:0:111",
+            "e16:0:128",
+            "e17:0:102",
+            "e18:0:122",
+            "e19:0:170",
+            "e20:0:125",
+            "e21:0:56",
+            "e22:0:163",
+            "e23:0:103",
+            "e24:0:147"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "Training/research content requires employment association review."
+          ]
+        },
+        {
+          "record_id": "experience-2",
+          "source_ids": [
+            "e25:0:50",
+            "e26:0:34",
+            "e27:0:198",
+            "e28:0:150",
+            "e29:0:162",
+            "e30:0:178",
+            "e31:0:167",
+            "e32:0:131",
+            "e33:0:142",
+            "e34:0:155",
+            "e35:0:142",
+            "e36:0:113"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "experience-3",
+          "source_ids": [
+            "e38:0:59",
+            "e39:0:38",
+            "e40:0:190",
+            "e41:0:144",
+            "e42:0:105",
+            "e43:0:51",
+            "e44:0:142",
+            "e45:0:160",
+            "e46:0:166",
+            "e47:0:107"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "experience-4",
+          "source_ids": [
+            "e48:0:52",
+            "e49:0:31",
+            "e50:0:69",
+            "e51:0:69",
+            "e52:0:92",
+            "e53:0:95"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e12:0:38",
+          "quote": "AI Developer | DADB\tFeb 2025 — Present"
+        },
+        {
+          "source_id": "e13:0:25",
+          "quote": "DADB\tBengaluru, Karnataka"
+        },
+        {
+          "source_id": "e14:0:111",
+          "quote": "AI/LLM Development: Leading the design and implementation of Large Language Model (LLM) applications, including"
+        },
+        {
+          "source_id": "e15:0:111",
+          "quote": "fine-tuning, embeddings, prompt engineering, and Retrieval-Augmented Generation (RAG) for enterprise use cases."
+        },
+        {
+          "source_id": "e16:0:128",
+          "quote": "Full-Stack Applications: Building end-to-end Application using Node.js for backend, with React/Next.js for frontend integration."
+        },
+        {
+          "source_id": "e17:0:102",
+          "quote": "AI Integration & APIs: Exposing models as REST APIs to enable seamless adoption across business units."
+        },
+        {
+          "source_id": "e18:0:122",
+          "quote": "Cloud Deployment: Architecting and deploying solutions on AWS and GCP. GitHub Actions for scalable and automated releases."
+        },
+        {
+          "source_id": "e19:0:170",
+          "quote": "Data Engineering for AI: Collecting, preprocessing, and managing structured/unstructured datasets to support training, evaluation, and production deployment of AI models."
+        },
+        {
+          "source_id": "e20:0:125",
+          "quote": "Cross-Functional Collaboration: Working with stakeholders across multiple business units to identify, prioritize, and deliver"
+        },
+        {
+          "source_id": "e21:0:56",
+          "quote": "impactful AI solutions that improve business efficiency."
+        },
+        {
+          "source_id": "e22:0:163",
+          "quote": "Infrastructure & Automation: Implementing Infrastructure-as-Code (Terraform) and cloud-native best practices to standardize deployments and reduce system downtime."
+        },
+        {
+          "source_id": "e23:0:103",
+          "quote": "Security & Compliance: Embedding security, privacy, and compliance guidelines into AI systems and APIs."
+        },
+        {
+          "source_id": "e24:0:147",
+          "quote": "Tech Stack: Python, HuggingFace, LangChain, Java, Node.js, React, Next.js, FastAPI, Flask, PostgreSQL, AWS, GCP, Docker, GitHub Actions, Terraform."
+        },
+        {
+          "source_id": "e25:0:50",
+          "quote": "Cloud Engineer | GE Appliances\tJan 2021 — Feb 2025"
+        },
+        {
+          "source_id": "e26:0:34",
+          "quote": "GE Appliances\tBengaluru, Karnataka"
+        },
+        {
+          "source_id": "e27:0:198",
+          "quote": "Cloud-Native Development: Designed and developed scalable backend services using Java (Spring Boot) and frontend applications using ReactJS and Next.js to support enterprise-level digital platforms."
+        },
+        {
+          "source_id": "e28:0:150",
+          "quote": "Cloud Infrastructure Management: Administered and optimized AWS and GCP resources, ensuring performance, cost efficiency, and security best practices."
+        },
+        {
+          "source_id": "e29:0:162",
+          "quote": "CI/CD Automation: Built and maintained automated pipelines with GitHub Actions, reducing release cycle time and ensuring faster deployments with minimal downtime."
+        },
+        {
+          "source_id": "e30:0:178",
+          "quote": "RPA Development: Designed and governed UiPath-based RPA architecture, ensuring reliability, scalability, and compliance; standardized automation frameworks across business units."
+        },
+        {
+          "source_id": "e31:0:167",
+          "quote": "Data Engineering: Migrated enterprise data warehouse from Vertica to BigQuery, implemented ETL processes with Striim, and built real-time data workflows for analytics."
+        },
+        {
+          "source_id": "e32:0:131",
+          "quote": "Analytics & Dashboards: Designed interactive dashboards with Tableau and developed ML-driven insights for business decision-making."
+        },
+        {
+          "source_id": "e33:0:142",
+          "quote": "Mobile Development: Built a ride-hailing style app in Flutter, integrating APIs for authentication, payments, and real-time location tracking."
+        },
+        {
+          "source_id": "e34:0:155",
+          "quote": "Oracle EBS Development: Automated key business workflows by building concurrent programs in Oracle EBS, improving system efficiency and reporting accuracy."
+        },
+        {
+          "source_id": "e35:0:142",
+          "quote": "Cross-Functional Collaboration: Partnered with product, QA, and operations teams to deliver cloud-based solutions aligned with business needs."
+        },
+        {
+          "source_id": "e36:0:113",
+          "quote": "Tech Stack: Java, ReactJS, Next.js, AWS, GCP, Terraform, UiPath, Tableau, Striim, Oracle EBS, PostgreSQL, Python."
+        },
+        {
+          "source_id": "e38:0:59",
+          "quote": "Software Engineer | Simplifi Commerce\tApril 2020 — JAN 2021"
+        },
+        {
+          "source_id": "e39:0:38",
+          "quote": "Simplifi Commerce\tBengaluru, Karnataka"
+        },
+        {
+          "source_id": "e40:0:190",
+          "quote": "API Development: Designed and developed REST APIs for dashboards, reporting, data exports, and mobile app features (authentication, payments, and notifications) using Node.js (Express, Koa)."
+        },
+        {
+          "source_id": "e41:0:144",
+          "quote": "Data Engineering & ETL: Built and maintained ETL pipelines using Singer.io and Meltano for integrating structured and unstructured data sources."
+        },
+        {
+          "source_id": "e42:0:105",
+          "quote": "Database Management: Designed schemas and optimized queries for both SQL (PostgreSQL) and NoSQL (MongoDB)"
+        },
+        {
+          "source_id": "e43:0:51",
+          "quote": "databases to support high-performance applications."
+        },
+        {
+          "source_id": "e44:0:142",
+          "quote": "Cloud & DevOps: Managed AWS infrastructure for application deployment, CI/CD pipelines, and monitoring to ensure availability and scalability."
+        },
+        {
+          "source_id": "e45:0:160",
+          "quote": "Frontend Development: Developed customer-facing applications using React, React Native, and Ant Design, ensuring responsive design and seamless user experience."
+        },
+        {
+          "source_id": "e46:0:166",
+          "quote": "Cross-Functional Delivery: Collaborated with product managers and clients to align requirements, delivered rapid prototypes, and iterated to meet business objectives."
+        },
+        {
+          "source_id": "e47:0:107",
+          "quote": "Tech Stack: Node.js, Python, React, React Native, Ant Design, PostgreSQL, MongoDB, AWS, Singer.io, Meltano."
+        },
+        {
+          "source_id": "e48:0:52",
+          "quote": "Software Engineer | AnsrSource\tDec 2017 — April 2020"
+        },
+        {
+          "source_id": "e49:0:31",
+          "quote": "AnsrSource\tBengaluru, Karnataka"
+        },
+        {
+          "source_id": "e50:0:69",
+          "quote": "Developed in-house applications to improve workflow and productivity."
+        },
+        {
+          "source_id": "e51:0:69",
+          "quote": "Acted as a subject matter expert for Mechanical Engineering subjects."
+        },
+        {
+          "source_id": "e52:0:92",
+          "quote": "Demonstrated strong project management skills in executing projects and client interactions."
+        },
+        {
+          "source_id": "e53:0:95",
+          "quote": "Worked on Python, JavaScript, and VBA/Macros for productivity improvements and task automation."
+        }
+      ]
+    },
+    {
+      "category": "education",
+      "label": "Education",
+      "records": [
+        {
+          "record_id": "education-1",
+          "source_ids": [
+            "e55:0:217",
+            "e56:0:151"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "degree",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "education-2",
+          "source_ids": [
+            "e57:0:22",
+            "e58:0:162",
+            "e59:0:104"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "degree",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e54:0:9",
+          "quote": "EDUCATION"
+        },
+        {
+          "source_id": "e55:0:217",
+          "quote": "M. E. in Thermal Science & Engineering, University Visvesvaraya College of Engineering, Bangalore\tDec 2016 Percentage – 82.2% Aggregate. | Master’s Thesis – A DSMC Analysis of Gas Flows in Microchannel Using OpenFOAM."
+        },
+        {
+          "source_id": "e56:0:151",
+          "quote": "B. E. in Mechanical Engineering, Acharya Institute of Technology, Bangalore\tAug 2014 Percentage – 70.49% Aggregate. | Project – Tree Climber Mechanism."
+        },
+        {
+          "source_id": "e57:0:22",
+          "quote": "ACTIVITIES AND REWARDS"
+        },
+        {
+          "source_id": "e58:0:162",
+          "quote": "Best Outgoing Student in the Mechanical Department. Best Engineering Project in the Mechanical Department. District Level winners in ESIC 2014 conducted by ISSRD."
+        },
+        {
+          "source_id": "e59:0:104",
+          "quote": "Presented Thesis at ICAMES-17 (International Conference on Advances in Mechanical Engineering Sciences)."
+        }
+      ]
+    },
+    {
+      "category": "interests",
+      "label": "Interests",
+      "records": [
+        {
+          "record_id": "interests-1",
+          "source_ids": [
+            "e60:8:20",
+            "e61:0:43"
+          ],
+          "attributes": [
+            {
+              "name": "interest",
+              "items": [
+                {
+                  "value": "AND INTEREST",
+                  "evidence": [
+                    {
+                      "source_id": "e60:8:20",
+                      "quote": "AND INTEREST"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Riding/Travelling, DIY Projects, Badminton.",
+                  "evidence": [
+                    {
+                      "source_id": "e61:0:43",
+                      "quote": "Riding/Travelling, DIY Projects, Badminton."
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e60:0:8",
+          "quote": "HOBBIES "
+        }
+      ]
+    },
+    {
+      "category": "needs_review",
+      "label": "Unassigned source blocks",
+      "records": [],
+      "residual_blocks": [
+        {
+          "source_id": "e1:0:88",
+          "quote": "7+ years of experience in full-stack application development and cloud-native solutions."
+        },
+        {
+          "source_id": "e2:0:126",
+          "quote": "Currently at DADB, leading enterprise AI initiatives including LLM development, application integration, and cloud deployment."
+        },
+        {
+          "source_id": "e4:0:125",
+          "quote": "Expertise in building, fine-tuning, and deploying LLMs with HuggingFace, LangChain, and Retrieval-Augmented Generation (RAG)."
+        },
+        {
+          "source_id": "e5:0:129",
+          "quote": "Strong background in end-to-end solution delivery: data pipelines, model development, API integration, and production deployment."
+        },
+        {
+          "source_id": "e6:0:85",
+          "quote": "Proven ability to design scalable AI-driven applications from ideation to production."
+        },
+        {
+          "source_id": "e11:0:21",
+          "quote": "TECHNICAL EXPERIENCE\t"
+        },
+        {
+          "source_id": "e37:0:0",
+          "quote": ""
+        }
+      ]
+    }
+  ]
+}

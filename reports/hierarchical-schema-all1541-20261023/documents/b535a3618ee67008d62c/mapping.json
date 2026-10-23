@@ -1,0 +1,3054 @@
+{
+  "success": true,
+  "source": "K PRADEEP.docx",
+  "extraction_mode": "existing_blocks_schema_mapping",
+  "data": {
+    "contact": {
+      "full_name": "Address Chennai, TN 600094",
+      "email": "p703468@gmail.com",
+      "phone": "+919176120261",
+      "location": "Chennai",
+      "linkedin_url": "www.linkedin.com/in/pradeep-kumar-",
+      "github_url": null,
+      "portfolio_url": null
+    },
+    "professional_title": null,
+    "summary": null,
+    "total_experience_years": null,
+    "skills": {
+      "technical_skills": [
+        "SQL"
+      ],
+      "tools_and_platforms": [],
+      "domain_and_functional": [],
+      "soft_skills": [
+        "Agile",
+        "Project Management",
+        "Communication"
+      ],
+      "all_skills": [
+        "SQL",
+        "Agile",
+        "Project Management",
+        "Communication",
+        "Effective communication Proficient in SQL for data analysis Problem-solving expertise",
+        "Skilled in project and product coordination Requirements analysis",
+        "Proficient in AI tools",
+        "Agile project management"
+      ]
+    },
+    "experience": [
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      }
+    ],
+    "education": [
+      {
+        "institution": "",
+        "degree": "",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      }
+    ],
+    "certifications": [
+      {
+        "name": "English, Tamil and Hindi.\nAdvanced\n2025-04 CSPO® 2025-04 CSM® 2025-08 Lean Six Sigma Master Black Belt 2022-12 PMP® 2024-03 SAFe® 6 Agilist 2025-03 Google Project Management Professional® 2025-05 5S Auditor 2025-06 Lean Champion",
+        "issuer": null,
+        "issue_year": null
+      }
+    ],
+    "projects": [],
+    "languages": []
+  },
+  "schema_mapping": {
+    "fields_populated": 10,
+    "total_fields": 16,
+    "completion_percentage": 62.5,
+    "field_details": [
+      {
+        "field_name": "contact.full_name",
+        "target_type": "string",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Personal Details",
+        "confidence_score": 0.95,
+        "description": "Candidate's full name, extracted from the top header of the resume."
+      },
+      {
+        "field_name": "contact.email",
+        "target_type": "string (email)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.98,
+        "description": "Candidate's primary contact email address."
+      },
+      {
+        "field_name": "contact.phone",
+        "target_type": "string (phone)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.95,
+        "description": "Candidate's telephone / mobile phone number."
+      },
+      {
+        "field_name": "contact.location",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.85,
+        "description": "Candidate's residential location or work city."
+      },
+      {
+        "field_name": "contact.linkedin_url",
+        "target_type": "string (url) | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.9,
+        "description": "URL to candidate's LinkedIn profile."
+      },
+      {
+        "field_name": "professional_title",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Subtitle",
+        "confidence_score": 0.0,
+        "description": "Candidate's target headline or most recent job title."
+      },
+      {
+        "field_name": "summary",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Professional Summary / Profile / Objective",
+        "confidence_score": 0.0,
+        "description": "Executive bio, professional overview, or career objective."
+      },
+      {
+        "field_name": "total_experience_years",
+        "target_type": "float | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Summary / Experience Calculation",
+        "confidence_score": 0.0,
+        "description": "Total professional experience in years."
+      },
+      {
+        "field_name": "skills.technical_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills / Technical Competencies",
+        "confidence_score": 0.92,
+        "description": "Technical programming languages and core software competencies."
+      },
+      {
+        "field_name": "skills.tools_and_platforms",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Tools & Technologies",
+        "confidence_score": 0.0,
+        "description": "Software platforms, developer tools, and operational systems."
+      },
+      {
+        "field_name": "skills.domain_and_functional",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Domain Expertise",
+        "confidence_score": 0.0,
+        "description": "Functional domain knowledge (e.g. Hedge Funds, KYC, NAV, Derivatives)."
+      },
+      {
+        "field_name": "skills.all_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills (Aggregated)",
+        "confidence_score": 0.95,
+        "description": "Complete list of candidate skills across all categories."
+      },
+      {
+        "field_name": "experience",
+        "target_type": "array[WorkExperience]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Experience / Work History",
+        "confidence_score": 0.92,
+        "description": "Complete chronological employment records with bullet points."
+      },
+      {
+        "field_name": "education",
+        "target_type": "array[Education]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Education / Academic Qualifications",
+        "confidence_score": 0.9,
+        "description": "University, college, and higher education degree qualifications."
+      },
+      {
+        "field_name": "certifications",
+        "target_type": "array[Certification]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Certifications / Licenses",
+        "confidence_score": 0.8,
+        "description": "Professional accreditations and credentials."
+      },
+      {
+        "field_name": "projects",
+        "target_type": "array[Project]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Projects / Key Engagements",
+        "confidence_score": 0.0,
+        "description": "Major projects or strategic initiatives led by candidate."
+      }
+    ]
+  },
+  "raw_sections": {
+    "experience": "Team Lead - Product Owner/Senior Business Analyst\nWork History\n2025-08 - Current\tTeam Lead II - Product Owner\nMastek, Chennai, India\nCollaborated with stakeholders from Capital Markets, Wealth Advisory, and Compliance to define and prioritize product features, aligning with business goals and regulatory requirements (e.g., KYC, suitability, data privacy).\nExposure to client onboarding, portfolio analysis, goal-based investing, and\ndocument security modules. Expertise in the preparation of BRD, FRD/FSD, and user stories.\nPartnered with UX and engineering teams to deliver intuitive dashboards that\nprovided consolidated portfolio insights, performance analytics, and goal progress tracking.\nTranslated complex business requirements into user stories, acceptance\ncriteria, and process flows for agile delivery teams.\nOversaw API integrations with custodians, CRM, and trading platforms to enable real-time account data synchronization and transaction updates.\nWorked closely with QA teams to define UAT scenarios, validate business logic, and ensure the delivery of high-quality releases.\n2024-05 - 2025-08\tSenior Business Analyst/Product Owner\nThinkPalm Technologies Pvt Ltd, Chennai, India\nFacilitated PI Planning under the SAFe Agile framework, aligning product features and delivery milestones with program-level OKRs and ART commitments.\nMaintained stakeholder alignment through regular demos, roadmap\npresentations, and agile reporting, improving trust and engagement with senior leadership.\nCollaborated closely with Data Architects and Developers; utilized SQL to perform data analysis, validate business requirements, troubleshoot data issues, align feasibility of proposed solutions, support API integration efforts, prepare documentation such as BRD and FRD, and derive actionable insights to support effective decision-making.\nDrove agile ceremonies including sprint reviews, retrospectives, and daily standups to foster transparency, accountability, and continuous improvement.\nProficient in leveraging tools such as JIRA, Miro, Draw.io, Cursor, and Microsoft Visio to effectively gather requirements, map processes, create visual workflows, and enhance cross-functional collaboration.\nLed cross-domain platform modernization efforts, managing the replacement of legacy systems with scalable, modular digital solutions.\nOwned product lifecycle management for ship management ERP modules, ensuring usability, integration, and compliance with maritime industry standards.\nIntroduced structured acceptance criteria using BDD (Behavior-Driven\nDevelopment) practices to improve testability and business traceability of user stories.\n2023-06 - 2024-03\tLead Analyst(Business Analyst/Product Manager)\nGopik Connect Pvt.Ltd, Chennai, India\nOwned and prioritized product backlog across cross-functional teams, ensuring optimal alignment with business goals and technical capabilities in banking and NBFC systems, while preparing documentation such as BRD and FRD to support requirement clarity and development.\nGuided teams and refined Agile techniques throughout journey and\nevolution of delivery cycles, establishing documentation framework to support Agile methodology implementation with Waterfall-centric delivery team.\nCollaborated closely with IT teams, solution architects, and QA to translate\nbusiness needs into technical specifications, align feasibility of proposed solutions, and ensure delivery accuracy, including support for API integration using QR code functionalities.\nWorked in banking and financial systems such as CMS, LMS and LOS.\nManaged API integration and testing.\nOversaw the end-to-end implementation of Digital lending solutions, aligning them with client goals and reducing manual intervention by 30%.\nReviewed test plans and use cases to verify compliance with established business requirements.\nLed backlog grooming sessions and sprint planning with cross-functional agile teams, ensuring timely delivery of high-value features and technical enhancements.\n2021-11 - 2023-01\tAssistant Manager(Business Analyst/Product Owner)\nCAMS, Chennai, TamilNadu\nLed requirement gathering and analysis for Virtual Accounts modules, enhancing real-time KYC and centralized control.\nFacilitated Business Case Analysis for digitization of Centralized KYC processes, contributing to a 25% reduction in manual processing time.\nCollaborated with QA and development teams to define test cases, align feasibility of third-party vendor service usage, and validate key business scenarios through SIT/UAT phases, including API integration to enable third- party services.\nAccurately determine, assign, track and manage project tasks and Change\nRequests, prepare documentation such as BRD and FRD, and capture details for Sprint Retrospectives and Backlog refinement as per internal standards.\nSupported go-live and post-release activities, including UAT sign-off, user\ntraining, and issue triaging for internal stakeholders and external clients.\n2018-11 - 2021-05\tSenior Analyst(Business Analyst)\nRoyal Bank Of Scotland, Chennai, TamilNadu\nPlayed a pivotal role in stakeholder management, coordinating with business, technology, and operations teams to deliver seamless banking solutions.\nDesigned and implemented workflow automation solutions for mortgage\napplication intake, underwriting, and approval stages, aligning feasibility and enabling API integration to use various third-party vendor services, while ensuring regulatory compliance and enhanced customer experience.\nLed requirement gathering and stakeholder workshops to digitize mortgage\norigination and servicing processes, reducing manual intervention and improving turnaround time by 30%.\nPerformed internal system acceptance to deliver well-tested enhancements\nand meet business requirements\nWorked with CMS, LMS and LOS. Performed API integration and testing.\nMet with clients to understand business requirements, perform gap analysis, create BPMN flowcharts, prepare BRD/FRD, and translate them into technical requirements.\n2017-08 - 2018-09\tExecutive\nCITI BANK INDIA, Chennai, TamilNadu\nCollaborated with stakeholders to gather and analyze requirements for credit, debit, and prepaid card issuance workflows, ensuring alignment with business goals and regulatory standards (e.g., PCI DSS, EMV).\nConducted gap analysis and process mapping for existing card issuance\nsystems, identifying automation opportunities and reducing issuance turnaround time by 25%.\nPartnered with product, operations, and IT teams to streamline end-to-end\ncard lifecycle processes including application, approval, personalization, dispatch, and activation.\nSupported the implementation and integration of card management\nsystems (CMS) and third-party vendors (e.g., personalization bureaus, card embossing services).\nDefined and validated functional requirements, created user stories and test\ncases, and facilitated UAT to ensure seamless customer onboarding and improved cardholder experience.\n2015-03 - 2017-06\tSenior Customer Service Executive\nIntelenet Global Services, Chennai, TamilNadu\nCreated debt analysis and comparison reports contrasting different debt products, including various conventional and government-backed financing options.\nOversaw quality control of tax credit financial models, including\nmanagement of models involving underwriting integrity and project budgets.\nAssisted senior executives with final loan closings and underwriting, coordination and submission of high-profile loan conversion packages.",
+    "personal_information": "Address Chennai, TN 600094\nPhone +919176120261\nE-mail p703468@gmail.com\nLinkedIn www.linkedin.com/in/pradeep-kumar- 02779b10b",
+    "education": "Education\n2014-08\tBachelor of Engineering: Electrical, Electronics And Communications Engineering\nLoyola Institute Of Technology - Chennai",
+    "skills": "Skills\nEffective communication Proficient in SQL for data analysis Problem-solving expertise\nSkilled in project and product coordination Requirements analysis\nProficient in AI tools\nAgile project management",
+    "awards": "Accomplishments\nDocumented and resolved performance issues of employees which led to 45% increase in efficiency of the unit.\nSupervised 5 teams of 25+ staff members.\nResolved product issue through consumer testing.\nImplemented AI-driven analytics tools, resulting in a 30% reduction in time spent on manual data processing and significantly improving the accuracy of predictive business insights.",
+    "languages": "Languages",
+    "certifications": "Certifications\nEnglish, Tamil and Hindi.\nAdvanced\n2025-04 CSPO® 2025-04 CSM® 2025-08 Lean Six Sigma Master Black Belt 2022-12 PMP® 2024-03 SAFe® 6 Agilist 2025-03 Google Project Management Professional® 2025-05 5S Auditor 2025-06 Lean Champion"
+  },
+  "meta": {
+    "status": "needs_review",
+    "human_verified": false,
+    "provider_calls": 0,
+    "source_accounting": {
+      "all_source_text_preserved": true,
+      "total_spans": 102,
+      "assigned_meaningful_spans": 96,
+      "unresolved_meaningful_spans": 3,
+      "non_content_artifacts": 3,
+      "duplicates_excluded": 0,
+      "all_meaningful_text_assigned": false,
+      "semantic_correctness_verified": false,
+      "outcomes": [
+        {
+          "source_id": "e0:0:9",
+          "source_element_index": 0,
+          "start": 0,
+          "end": 9,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e1:0:49",
+          "source_element_index": 1,
+          "start": 0,
+          "end": 49,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "BERT embedding assigned to a labeled K-means centroid"
+        },
+        {
+          "source_id": "e2:0:26",
+          "source_element_index": 2,
+          "start": 0,
+          "end": 26,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e3:0:19",
+          "source_element_index": 3,
+          "start": 0,
+          "end": 19,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e4:0:24",
+          "source_element_index": 4,
+          "start": 0,
+          "end": 24,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e5:0:53",
+          "source_element_index": 5,
+          "start": 0,
+          "end": 53,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e6:0:283",
+          "source_element_index": 6,
+          "start": 0,
+          "end": 283,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e7:0:457",
+          "source_element_index": 7,
+          "start": 0,
+          "end": 457,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e8:0:12",
+          "source_element_index": 8,
+          "start": 0,
+          "end": 12,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e9:0:46",
+          "source_element_index": 9,
+          "start": 0,
+          "end": 46,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e10:0:22",
+          "source_element_index": 10,
+          "start": 0,
+          "end": 22,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e11:0:224",
+          "source_element_index": 11,
+          "start": 0,
+          "end": 224,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:0:76",
+          "source_element_index": 12,
+          "start": 0,
+          "end": 76,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e13:0:90",
+          "source_element_index": 13,
+          "start": 0,
+          "end": 90,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e14:0:76",
+          "source_element_index": 14,
+          "start": 0,
+          "end": 76,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e15:0:92",
+          "source_element_index": 15,
+          "start": 0,
+          "end": 92,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e16:0:70",
+          "source_element_index": 16,
+          "start": 0,
+          "end": 70,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e17:0:53",
+          "source_element_index": 17,
+          "start": 0,
+          "end": 53,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e18:0:142",
+          "source_element_index": 18,
+          "start": 0,
+          "end": 142,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e19:0:128",
+          "source_element_index": 19,
+          "start": 0,
+          "end": 128,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e20:0:55",
+          "source_element_index": 20,
+          "start": 0,
+          "end": 55,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e21:0:46",
+          "source_element_index": 21,
+          "start": 0,
+          "end": 46,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e22:0:150",
+          "source_element_index": 22,
+          "start": 0,
+          "end": 150,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e23:0:63",
+          "source_element_index": 23,
+          "start": 0,
+          "end": 63,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e24:0:90",
+          "source_element_index": 24,
+          "start": 0,
+          "end": 90,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e25:0:0",
+          "source_element_index": 25,
+          "start": 0,
+          "end": 0,
+          "section": null,
+          "outcome": "non_content_artifact",
+          "reason": "Whitespace retained in source inventory"
+        },
+        {
+          "source_id": "e26:0:340",
+          "source_element_index": 26,
+          "start": 0,
+          "end": 340,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e27:0:151",
+          "source_element_index": 27,
+          "start": 0,
+          "end": 151,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e28:0:207",
+          "source_element_index": 28,
+          "start": 0,
+          "end": 207,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e29:0:133",
+          "source_element_index": 29,
+          "start": 0,
+          "end": 133,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e30:0:149",
+          "source_element_index": 30,
+          "start": 0,
+          "end": 149,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e31:0:68",
+          "source_element_index": 31,
+          "start": 0,
+          "end": 68,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e32:0:88",
+          "source_element_index": 32,
+          "start": 0,
+          "end": 88,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e33:0:64",
+          "source_element_index": 33,
+          "start": 0,
+          "end": 64,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e34:0:37",
+          "source_element_index": 34,
+          "start": 0,
+          "end": 37,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e35:0:269",
+          "source_element_index": 35,
+          "start": 0,
+          "end": 269,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e36:0:64",
+          "source_element_index": 36,
+          "start": 0,
+          "end": 64,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e37:0:148",
+          "source_element_index": 37,
+          "start": 0,
+          "end": 148,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e38:0:76",
+          "source_element_index": 38,
+          "start": 0,
+          "end": 76,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e39:0:185",
+          "source_element_index": 39,
+          "start": 0,
+          "end": 185,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e40:0:65",
+          "source_element_index": 40,
+          "start": 0,
+          "end": 65,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e41:0:36",
+          "source_element_index": 41,
+          "start": 0,
+          "end": 36,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e42:0:140",
+          "source_element_index": 42,
+          "start": 0,
+          "end": 140,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e43:0:94",
+          "source_element_index": 43,
+          "start": 0,
+          "end": 94,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e44:0:160",
+          "source_element_index": 44,
+          "start": 0,
+          "end": 160,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e45:0:67",
+          "source_element_index": 45,
+          "start": 0,
+          "end": 67,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e46:0:24",
+          "source_element_index": 46,
+          "start": 0,
+          "end": 24,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e47:0:117",
+          "source_element_index": 47,
+          "start": 0,
+          "end": 117,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e48:0:0",
+          "source_element_index": 48,
+          "start": 0,
+          "end": 0,
+          "section": null,
+          "outcome": "non_content_artifact",
+          "reason": "Whitespace retained in source inventory"
+        },
+        {
+          "source_id": "e49:0:140",
+          "source_element_index": 49,
+          "start": 0,
+          "end": 140,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e50:0:238",
+          "source_element_index": 50,
+          "start": 0,
+          "end": 238,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e51:0:71",
+          "source_element_index": 51,
+          "start": 0,
+          "end": 71,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e52:0:148",
+          "source_element_index": 52,
+          "start": 0,
+          "end": 148,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e53:0:75",
+          "source_element_index": 53,
+          "start": 0,
+          "end": 75,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e54:0:76",
+          "source_element_index": 54,
+          "start": 0,
+          "end": 76,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e55:0:50",
+          "source_element_index": 55,
+          "start": 0,
+          "end": 50,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e56:0:42",
+          "source_element_index": 56,
+          "start": 0,
+          "end": 42,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e57:0:148",
+          "source_element_index": 57,
+          "start": 0,
+          "end": 148,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e58:0:67",
+          "source_element_index": 58,
+          "start": 0,
+          "end": 67,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e59:0:219",
+          "source_element_index": 59,
+          "start": 0,
+          "end": 219,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e60:0:72",
+          "source_element_index": 60,
+          "start": 0,
+          "end": 72,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e61:0:103",
+          "source_element_index": 61,
+          "start": 0,
+          "end": 103,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e62:0:72",
+          "source_element_index": 62,
+          "start": 0,
+          "end": 72,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e63:0:30",
+          "source_element_index": 63,
+          "start": 0,
+          "end": 30,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e64:0:68",
+          "source_element_index": 64,
+          "start": 0,
+          "end": 68,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e65:0:164",
+          "source_element_index": 65,
+          "start": 0,
+          "end": 164,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e66:0:27",
+          "source_element_index": 66,
+          "start": 0,
+          "end": 27,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e67:0:35",
+          "source_element_index": 67,
+          "start": 0,
+          "end": 35,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e68:0:207",
+          "source_element_index": 68,
+          "start": 0,
+          "end": 207,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e69:0:69",
+          "source_element_index": 69,
+          "start": 0,
+          "end": 69,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e70:0:91",
+          "source_element_index": 70,
+          "start": 0,
+          "end": 91,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e71:0:73",
+          "source_element_index": 71,
+          "start": 0,
+          "end": 73,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e72:0:100",
+          "source_element_index": 72,
+          "start": 0,
+          "end": 100,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e73:0:63",
+          "source_element_index": 73,
+          "start": 0,
+          "end": 63,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e74:0:95",
+          "source_element_index": 74,
+          "start": 0,
+          "end": 95,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e75:0:76",
+          "source_element_index": 75,
+          "start": 0,
+          "end": 76,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e76:0:101",
+          "source_element_index": 76,
+          "start": 0,
+          "end": 101,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e77:0:0",
+          "source_element_index": 77,
+          "start": 0,
+          "end": 0,
+          "section": null,
+          "outcome": "non_content_artifact",
+          "reason": "Whitespace retained in source inventory"
+        },
+        {
+          "source_id": "e78:0:51",
+          "source_element_index": 78,
+          "start": 0,
+          "end": 51,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e79:0:45",
+          "source_element_index": 79,
+          "start": 0,
+          "end": 45,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e80:0:153",
+          "source_element_index": 80,
+          "start": 0,
+          "end": 153,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e81:0:65",
+          "source_element_index": 81,
+          "start": 0,
+          "end": 65,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e82:0:74",
+          "source_element_index": 82,
+          "start": 0,
+          "end": 74,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e83:0:139",
+          "source_element_index": 83,
+          "start": 0,
+          "end": 139,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e84:0:9",
+          "source_element_index": 84,
+          "start": 0,
+          "end": 9,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e85:0:87",
+          "source_element_index": 85,
+          "start": 0,
+          "end": 87,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e86:0:40",
+          "source_element_index": 86,
+          "start": 0,
+          "end": 40,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e87:0:6",
+          "source_element_index": 87,
+          "start": 0,
+          "end": 6,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e88:0:85",
+          "source_element_index": 88,
+          "start": 0,
+          "end": 85,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e89:0:65",
+          "source_element_index": 89,
+          "start": 0,
+          "end": 65,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e90:0:22",
+          "source_element_index": 90,
+          "start": 0,
+          "end": 22,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e91:0:24",
+          "source_element_index": 91,
+          "start": 0,
+          "end": 24,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e92:0:15",
+          "source_element_index": 92,
+          "start": 0,
+          "end": 15,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Distinct BERT heading match with a K-means section label"
+        },
+        {
+          "source_id": "e93:0:108",
+          "source_element_index": 93,
+          "start": 0,
+          "end": 108,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e94:0:40",
+          "source_element_index": 94,
+          "start": 0,
+          "end": 40,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e95:0:48",
+          "source_element_index": 95,
+          "start": 0,
+          "end": 48,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e96:0:181",
+          "source_element_index": 96,
+          "start": 0,
+          "end": 181,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e97:0:9",
+          "source_element_index": 97,
+          "start": 0,
+          "end": 9,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e98:0:14",
+          "source_element_index": 98,
+          "start": 0,
+          "end": 14,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e99:0:25",
+          "source_element_index": 99,
+          "start": 0,
+          "end": 25,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e100:0:8",
+          "source_element_index": 100,
+          "start": 0,
+          "end": 8,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e101:0:193",
+          "source_element_index": 101,
+          "start": 0,
+          "end": 193,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        }
+      ]
+    },
+    "document_scope": {
+      "kind": "likely_resume",
+      "candidate_resume": true,
+      "reason": "Contact details, multiple resume section families and dated history; provisional scope only",
+      "human_verified": false
+    },
+    "source_inventory_sha256": "3b58fd5a61f03f42a2ee4ad59ff6b4023911f5c6ae9ab7a18fc1f4a8e1e7792f",
+    "field_evidence": {
+      "contact.full_name": [
+        "e2:0:26",
+        "e3:0:19",
+        "e4:0:24",
+        "e5:0:53"
+      ],
+      "contact.email": [
+        "e2:0:26",
+        "e3:0:19",
+        "e4:0:24",
+        "e5:0:53"
+      ],
+      "contact.phone": [
+        "e2:0:26",
+        "e3:0:19",
+        "e4:0:24",
+        "e5:0:53"
+      ],
+      "contact.location": [
+        "e2:0:26",
+        "e3:0:19",
+        "e4:0:24",
+        "e5:0:53"
+      ],
+      "contact.linkedin_url": [
+        "e2:0:26",
+        "e3:0:19",
+        "e4:0:24",
+        "e5:0:53"
+      ],
+      "skills.technical_skills[0]": [
+        "e88:0:85"
+      ],
+      "skills.soft_skills[0]": [
+        "e91:0:24"
+      ],
+      "skills.soft_skills[1]": [
+        "e91:0:24"
+      ],
+      "skills.soft_skills[2]": [
+        "e88:0:85"
+      ],
+      "skills.all_skills[0]": [
+        "e88:0:85"
+      ],
+      "skills.all_skills[1]": [
+        "e91:0:24"
+      ],
+      "skills.all_skills[2]": [
+        "e91:0:24"
+      ],
+      "skills.all_skills[3]": [
+        "e88:0:85"
+      ],
+      "skills.all_skills[4]": [
+        "e88:0:85"
+      ],
+      "skills.all_skills[5]": [
+        "e89:0:65"
+      ],
+      "skills.all_skills[6]": [
+        "e90:0:22"
+      ],
+      "skills.all_skills[7]": [
+        "e91:0:24"
+      ],
+      "certifications[0].name": [
+        "e99:0:25",
+        "e100:0:8",
+        "e101:0:193"
+      ]
+    },
+    "record_reviews": [
+      {
+        "category": "experience",
+        "entry_id": "experience-1",
+        "source_ids": [
+          "e1:0:49"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-2",
+        "source_ids": [
+          "e9:0:46",
+          "e10:0:22",
+          "e11:0:224",
+          "e12:0:76",
+          "e13:0:90",
+          "e14:0:76",
+          "e15:0:92",
+          "e16:0:70",
+          "e17:0:53",
+          "e18:0:142",
+          "e19:0:128",
+          "e20:0:55",
+          "e21:0:46",
+          "e22:0:150",
+          "e23:0:63",
+          "e24:0:90",
+          "e26:0:340",
+          "e27:0:151",
+          "e28:0:207",
+          "e29:0:133",
+          "e30:0:149",
+          "e31:0:68",
+          "e32:0:88",
+          "e33:0:64",
+          "e34:0:37",
+          "e35:0:269",
+          "e36:0:64",
+          "e37:0:148",
+          "e38:0:76",
+          "e39:0:185",
+          "e40:0:65",
+          "e41:0:36",
+          "e42:0:140",
+          "e43:0:94",
+          "e44:0:160",
+          "e45:0:67",
+          "e46:0:24",
+          "e47:0:117",
+          "e49:0:140",
+          "e50:0:238",
+          "e51:0:71",
+          "e52:0:148",
+          "e53:0:75",
+          "e54:0:76",
+          "e55:0:50",
+          "e56:0:42",
+          "e57:0:148",
+          "e58:0:67",
+          "e59:0:219",
+          "e60:0:72",
+          "e61:0:103",
+          "e62:0:72",
+          "e63:0:30",
+          "e64:0:68",
+          "e65:0:164",
+          "e66:0:27",
+          "e67:0:35",
+          "e68:0:207",
+          "e69:0:69",
+          "e70:0:91",
+          "e71:0:73",
+          "e72:0:100",
+          "e73:0:63",
+          "e74:0:95",
+          "e75:0:76",
+          "e76:0:101",
+          "e78:0:51",
+          "e79:0:45",
+          "e80:0:153",
+          "e81:0:65",
+          "e82:0:74",
+          "e83:0:139"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "education",
+        "entry_id": "education-1",
+        "source_ids": [
+          "e85:0:87",
+          "e86:0:40"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "certifications",
+        "entry_id": "certifications-1",
+        "source_ids": [
+          "e99:0:25",
+          "e100:0:8",
+          "e101:0:193"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      }
+    ],
+    "missing_required_fields": [
+      "experience[0].company",
+      "experience[0].role",
+      "experience[1].company",
+      "experience[1].role",
+      "education[0].institution",
+      "education[0].degree"
+    ],
+    "warnings": [
+      "Schema validity and field completion do not establish extraction or relationship accuracy.",
+      "Handoff confidence scores are fixed heuristics, not calibrated probabilities.",
+      "Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields."
+    ],
+    "unmapped_blocks": [
+      {
+        "source_id": "e1:0:49",
+        "category": "experience",
+        "text": "Team Lead - Product Owner/Senior Business Analyst",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:0:12",
+        "category": "experience",
+        "text": "Work History",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:0:46",
+        "category": "experience",
+        "text": "2025-08 - Current\tTeam Lead II - Product Owner",
+        "page_number": 1
+      },
+      {
+        "source_id": "e10:0:22",
+        "category": "experience",
+        "text": "Mastek, Chennai, India",
+        "page_number": 1
+      },
+      {
+        "source_id": "e11:0:224",
+        "category": "experience",
+        "text": "Collaborated with stakeholders from Capital Markets, Wealth Advisory, and Compliance to define and prioritize product features, aligning with business goals and regulatory requirements (e.g., KYC, suitability, data privacy).",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:0:76",
+        "category": "experience",
+        "text": "Exposure to client onboarding, portfolio analysis, goal-based investing, and",
+        "page_number": 1
+      },
+      {
+        "source_id": "e13:0:90",
+        "category": "experience",
+        "text": "document security modules. Expertise in the preparation of BRD, FRD/FSD, and user stories.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e14:0:76",
+        "category": "experience",
+        "text": "Partnered with UX and engineering teams to deliver intuitive dashboards that",
+        "page_number": 1
+      },
+      {
+        "source_id": "e15:0:92",
+        "category": "experience",
+        "text": "provided consolidated portfolio insights, performance analytics, and goal progress tracking.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e16:0:70",
+        "category": "experience",
+        "text": "Translated complex business requirements into user stories, acceptance",
+        "page_number": 1
+      },
+      {
+        "source_id": "e17:0:53",
+        "category": "experience",
+        "text": "criteria, and process flows for agile delivery teams.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e18:0:142",
+        "category": "experience",
+        "text": "Oversaw API integrations with custodians, CRM, and trading platforms to enable real-time account data synchronization and transaction updates.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e19:0:128",
+        "category": "experience",
+        "text": "Worked closely with QA teams to define UAT scenarios, validate business logic, and ensure the delivery of high-quality releases.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e20:0:55",
+        "category": "experience",
+        "text": "2024-05 - 2025-08\tSenior Business Analyst/Product Owner",
+        "page_number": 1
+      },
+      {
+        "source_id": "e21:0:46",
+        "category": "experience",
+        "text": "ThinkPalm Technologies Pvt Ltd, Chennai, India",
+        "page_number": 1
+      },
+      {
+        "source_id": "e22:0:150",
+        "category": "experience",
+        "text": "Facilitated PI Planning under the SAFe Agile framework, aligning product features and delivery milestones with program-level OKRs and ART commitments.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e23:0:63",
+        "category": "experience",
+        "text": "Maintained stakeholder alignment through regular demos, roadmap",
+        "page_number": 1
+      },
+      {
+        "source_id": "e24:0:90",
+        "category": "experience",
+        "text": "presentations, and agile reporting, improving trust and engagement with senior leadership.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e26:0:340",
+        "category": "experience",
+        "text": "Collaborated closely with Data Architects and Developers; utilized SQL to perform data analysis, validate business requirements, troubleshoot data issues, align feasibility of proposed solutions, support API integration efforts, prepare documentation such as BRD and FRD, and derive actionable insights to support effective decision-making.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e27:0:151",
+        "category": "experience",
+        "text": "Drove agile ceremonies including sprint reviews, retrospectives, and daily standups to foster transparency, accountability, and continuous improvement.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e28:0:207",
+        "category": "experience",
+        "text": "Proficient in leveraging tools such as JIRA, Miro, Draw.io, Cursor, and Microsoft Visio to effectively gather requirements, map processes, create visual workflows, and enhance cross-functional collaboration.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e29:0:133",
+        "category": "experience",
+        "text": "Led cross-domain platform modernization efforts, managing the replacement of legacy systems with scalable, modular digital solutions.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e30:0:149",
+        "category": "experience",
+        "text": "Owned product lifecycle management for ship management ERP modules, ensuring usability, integration, and compliance with maritime industry standards.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e31:0:68",
+        "category": "experience",
+        "text": "Introduced structured acceptance criteria using BDD (Behavior-Driven",
+        "page_number": 2
+      },
+      {
+        "source_id": "e32:0:88",
+        "category": "experience",
+        "text": "Development) practices to improve testability and business traceability of user stories.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e33:0:64",
+        "category": "experience",
+        "text": "2023-06 - 2024-03\tLead Analyst(Business Analyst/Product Manager)",
+        "page_number": 2
+      },
+      {
+        "source_id": "e34:0:37",
+        "category": "experience",
+        "text": "Gopik Connect Pvt.Ltd, Chennai, India",
+        "page_number": 2
+      },
+      {
+        "source_id": "e35:0:269",
+        "category": "experience",
+        "text": "Owned and prioritized product backlog across cross-functional teams, ensuring optimal alignment with business goals and technical capabilities in banking and NBFC systems, while preparing documentation such as BRD and FRD to support requirement clarity and development.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e36:0:64",
+        "category": "experience",
+        "text": "Guided teams and refined Agile techniques throughout journey and",
+        "page_number": 2
+      },
+      {
+        "source_id": "e37:0:148",
+        "category": "experience",
+        "text": "evolution of delivery cycles, establishing documentation framework to support Agile methodology implementation with Waterfall-centric delivery team.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e38:0:76",
+        "category": "experience",
+        "text": "Collaborated closely with IT teams, solution architects, and QA to translate",
+        "page_number": 2
+      },
+      {
+        "source_id": "e39:0:185",
+        "category": "experience",
+        "text": "business needs into technical specifications, align feasibility of proposed solutions, and ensure delivery accuracy, including support for API integration using QR code functionalities.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e40:0:65",
+        "category": "experience",
+        "text": "Worked in banking and financial systems such as CMS, LMS and LOS.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e41:0:36",
+        "category": "experience",
+        "text": "Managed API integration and testing.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e42:0:140",
+        "category": "experience",
+        "text": "Oversaw the end-to-end implementation of Digital lending solutions, aligning them with client goals and reducing manual intervention by 30%.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e43:0:94",
+        "category": "experience",
+        "text": "Reviewed test plans and use cases to verify compliance with established business requirements.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e44:0:160",
+        "category": "experience",
+        "text": "Led backlog grooming sessions and sprint planning with cross-functional agile teams, ensuring timely delivery of high-value features and technical enhancements.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e45:0:67",
+        "category": "experience",
+        "text": "2021-11 - 2023-01\tAssistant Manager(Business Analyst/Product Owner)",
+        "page_number": 2
+      },
+      {
+        "source_id": "e46:0:24",
+        "category": "experience",
+        "text": "CAMS, Chennai, TamilNadu",
+        "page_number": 2
+      },
+      {
+        "source_id": "e47:0:117",
+        "category": "experience",
+        "text": "Led requirement gathering and analysis for Virtual Accounts modules, enhancing real-time KYC and centralized control.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e49:0:140",
+        "category": "experience",
+        "text": "Facilitated Business Case Analysis for digitization of Centralized KYC processes, contributing to a 25% reduction in manual processing time.",
+        "page_number": 3
+      },
+      {
+        "source_id": "e50:0:238",
+        "category": "experience",
+        "text": "Collaborated with QA and development teams to define test cases, align feasibility of third-party vendor service usage, and validate key business scenarios through SIT/UAT phases, including API integration to enable third- party services.",
+        "page_number": 3
+      },
+      {
+        "source_id": "e51:0:71",
+        "category": "experience",
+        "text": "Accurately determine, assign, track and manage project tasks and Change",
+        "page_number": 3
+      },
+      {
+        "source_id": "e52:0:148",
+        "category": "experience",
+        "text": "Requests, prepare documentation such as BRD and FRD, and capture details for Sprint Retrospectives and Backlog refinement as per internal standards.",
+        "page_number": 3
+      },
+      {
+        "source_id": "e53:0:75",
+        "category": "experience",
+        "text": "Supported go-live and post-release activities, including UAT sign-off, user",
+        "page_number": 3
+      },
+      {
+        "source_id": "e54:0:76",
+        "category": "experience",
+        "text": "training, and issue triaging for internal stakeholders and external clients.",
+        "page_number": 3
+      },
+      {
+        "source_id": "e55:0:50",
+        "category": "experience",
+        "text": "2018-11 - 2021-05\tSenior Analyst(Business Analyst)",
+        "page_number": 3
+      },
+      {
+        "source_id": "e56:0:42",
+        "category": "experience",
+        "text": "Royal Bank Of Scotland, Chennai, TamilNadu",
+        "page_number": 3
+      },
+      {
+        "source_id": "e57:0:148",
+        "category": "experience",
+        "text": "Played a pivotal role in stakeholder management, coordinating with business, technology, and operations teams to deliver seamless banking solutions.",
+        "page_number": 3
+      },
+      {
+        "source_id": "e58:0:67",
+        "category": "experience",
+        "text": "Designed and implemented workflow automation solutions for mortgage",
+        "page_number": 3
+      },
+      {
+        "source_id": "e59:0:219",
+        "category": "experience",
+        "text": "application intake, underwriting, and approval stages, aligning feasibility and enabling API integration to use various third-party vendor services, while ensuring regulatory compliance and enhanced customer experience.",
+        "page_number": 3
+      },
+      {
+        "source_id": "e60:0:72",
+        "category": "experience",
+        "text": "Led requirement gathering and stakeholder workshops to digitize mortgage",
+        "page_number": 3
+      },
+      {
+        "source_id": "e61:0:103",
+        "category": "experience",
+        "text": "origination and servicing processes, reducing manual intervention and improving turnaround time by 30%.",
+        "page_number": 3
+      },
+      {
+        "source_id": "e62:0:72",
+        "category": "experience",
+        "text": "Performed internal system acceptance to deliver well-tested enhancements",
+        "page_number": 3
+      },
+      {
+        "source_id": "e63:0:30",
+        "category": "experience",
+        "text": "and meet business requirements",
+        "page_number": 3
+      },
+      {
+        "source_id": "e64:0:68",
+        "category": "experience",
+        "text": "Worked with CMS, LMS and LOS. Performed API integration and testing.",
+        "page_number": 3
+      },
+      {
+        "source_id": "e65:0:164",
+        "category": "experience",
+        "text": "Met with clients to understand business requirements, perform gap analysis, create BPMN flowcharts, prepare BRD/FRD, and translate them into technical requirements.",
+        "page_number": 3
+      },
+      {
+        "source_id": "e66:0:27",
+        "category": "experience",
+        "text": "2017-08 - 2018-09\tExecutive",
+        "page_number": 3
+      },
+      {
+        "source_id": "e67:0:35",
+        "category": "experience",
+        "text": "CITI BANK INDIA, Chennai, TamilNadu",
+        "page_number": 3
+      },
+      {
+        "source_id": "e68:0:207",
+        "category": "experience",
+        "text": "Collaborated with stakeholders to gather and analyze requirements for credit, debit, and prepaid card issuance workflows, ensuring alignment with business goals and regulatory standards (e.g., PCI DSS, EMV).",
+        "page_number": 3
+      },
+      {
+        "source_id": "e69:0:69",
+        "category": "experience",
+        "text": "Conducted gap analysis and process mapping for existing card issuance",
+        "page_number": 3
+      },
+      {
+        "source_id": "e70:0:91",
+        "category": "experience",
+        "text": "systems, identifying automation opportunities and reducing issuance turnaround time by 25%.",
+        "page_number": 3
+      },
+      {
+        "source_id": "e71:0:73",
+        "category": "experience",
+        "text": "Partnered with product, operations, and IT teams to streamline end-to-end",
+        "page_number": 3
+      },
+      {
+        "source_id": "e72:0:100",
+        "category": "experience",
+        "text": "card lifecycle processes including application, approval, personalization, dispatch, and activation.",
+        "page_number": 3
+      },
+      {
+        "source_id": "e73:0:63",
+        "category": "experience",
+        "text": "Supported the implementation and integration of card management",
+        "page_number": 3
+      },
+      {
+        "source_id": "e74:0:95",
+        "category": "experience",
+        "text": "systems (CMS) and third-party vendors (e.g., personalization bureaus, card embossing services).",
+        "page_number": 3
+      },
+      {
+        "source_id": "e75:0:76",
+        "category": "experience",
+        "text": "Defined and validated functional requirements, created user stories and test",
+        "page_number": 3
+      },
+      {
+        "source_id": "e76:0:101",
+        "category": "experience",
+        "text": "cases, and facilitated UAT to ensure seamless customer onboarding and improved cardholder experience.",
+        "page_number": 3
+      },
+      {
+        "source_id": "e78:0:51",
+        "category": "experience",
+        "text": "2015-03 - 2017-06\tSenior Customer Service Executive",
+        "page_number": 4
+      },
+      {
+        "source_id": "e79:0:45",
+        "category": "experience",
+        "text": "Intelenet Global Services, Chennai, TamilNadu",
+        "page_number": 4
+      },
+      {
+        "source_id": "e80:0:153",
+        "category": "experience",
+        "text": "Created debt analysis and comparison reports contrasting different debt products, including various conventional and government-backed financing options.",
+        "page_number": 4
+      },
+      {
+        "source_id": "e81:0:65",
+        "category": "experience",
+        "text": "Oversaw quality control of tax credit financial models, including",
+        "page_number": 4
+      },
+      {
+        "source_id": "e82:0:74",
+        "category": "experience",
+        "text": "management of models involving underwriting integrity and project budgets.",
+        "page_number": 4
+      },
+      {
+        "source_id": "e83:0:139",
+        "category": "experience",
+        "text": "Assisted senior executives with final loan closings and underwriting, coordination and submission of high-profile loan conversion packages.",
+        "page_number": 4
+      },
+      {
+        "source_id": "e84:0:9",
+        "category": "education",
+        "text": "Education",
+        "page_number": 4
+      },
+      {
+        "source_id": "e85:0:87",
+        "category": "education",
+        "text": "2014-08\tBachelor of Engineering: Electrical, Electronics And Communications Engineering",
+        "page_number": 4
+      },
+      {
+        "source_id": "e86:0:40",
+        "category": "education",
+        "text": "Loyola Institute Of Technology - Chennai",
+        "page_number": 4
+      },
+      {
+        "source_id": "e87:0:6",
+        "category": "skills",
+        "text": "Skills",
+        "page_number": 4
+      },
+      {
+        "source_id": "e92:0:15",
+        "category": "awards",
+        "text": "Accomplishments",
+        "page_number": 4
+      },
+      {
+        "source_id": "e93:0:108",
+        "category": "awards",
+        "text": "Documented and resolved performance issues of employees which led to 45% increase in efficiency of the unit.",
+        "page_number": 4
+      },
+      {
+        "source_id": "e94:0:40",
+        "category": "awards",
+        "text": "Supervised 5 teams of 25+ staff members.",
+        "page_number": 4
+      },
+      {
+        "source_id": "e95:0:48",
+        "category": "awards",
+        "text": "Resolved product issue through consumer testing.",
+        "page_number": 4
+      },
+      {
+        "source_id": "e96:0:181",
+        "category": "awards",
+        "text": "Implemented AI-driven analytics tools, resulting in a 30% reduction in time spent on manual data processing and significantly improving the accuracy of predictive business insights.",
+        "page_number": 4
+      },
+      {
+        "source_id": "e97:0:9",
+        "category": "languages",
+        "text": "Languages",
+        "page_number": 4
+      },
+      {
+        "source_id": "e98:0:14",
+        "category": "certifications",
+        "text": "Certifications",
+        "page_number": 4
+      },
+      {
+        "source_id": "e0:0:9",
+        "category": null,
+        "text": "K PRADEEP",
+        "page_number": 1
+      },
+      {
+        "source_id": "e6:0:283",
+        "category": null,
+        "text": "Experienced professional with over 10+ years in the Banking domain and 7+ years in IT as a Senior Business Analyst/Product Owner, specializing in Retail Banking and E-Channels. Demonstrated expertise in Digital solutions including Banking, Capital Markets, NBFC, and Ship Management.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e7:0:457",
+        "category": null,
+        "text": "Expertise in preparation of BRD, FRD/FSD and user stories. Adept in driving end-to-end Business Analysis Lifecycle, from business case preparation and requirement elicitation to functional design, feasibility alignment, API integration, and stakeholder alignment. Proven ability to collaborate with cross- functional teams including Product Managers, Technical Architects, QA, and Operations to deliver scalable and regulatory-compliant financial solutions.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e25:0:0",
+        "category": null,
+        "text": "",
+        "page_number": null
+      },
+      {
+        "source_id": "e48:0:0",
+        "category": null,
+        "text": "",
+        "page_number": null
+      },
+      {
+        "source_id": "e77:0:0",
+        "category": null,
+        "text": "",
+        "page_number": null
+      }
+    ],
+    "needs_review": [
+      {
+        "source_element_index": 0,
+        "start": 0,
+        "end": 9,
+        "text": "K PRADEEP",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1532,
+        "margin": -0.0564,
+        "lane": "main",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 6,
+        "start": 0,
+        "end": 283,
+        "text": "Experienced professional with over 10+ years in the Banking domain and 7+ years in IT as a Senior Business Analyst/Product Owner, specializing in Retail Banking and E-Channels. Demonstrated expertise in Digital solutions including Banking, Capital Markets, NBFC, and Ship Management.",
+        "page_number": 1,
+        "cluster_id": 1,
+        "candidate_section": "summary",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.6088,
+        "margin": 0.0389,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 7,
+        "start": 0,
+        "end": 457,
+        "text": "Expertise in preparation of BRD, FRD/FSD and user stories. Adept in driving end-to-end Business Analysis Lifecycle, from business case preparation and requirement elicitation to functional design, feasibility alignment, API integration, and stakeholder alignment. Proven ability to collaborate with cross- functional teams including Product Managers, Technical Architects, QA, and Operations to deliver scalable and regulatory-compliant financial solutions.",
+        "page_number": 1,
+        "cluster_id": 1,
+        "candidate_section": "summary",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.5295,
+        "margin": 0.04,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 25,
+        "start": 0,
+        "end": 0,
+        "text": "",
+        "page_number": null,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1867,
+        "margin": -0.0366,
+        "lane": "main",
+        "reason": "Layout footer or page separator retained outside semantic sections",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 48,
+        "start": 0,
+        "end": 0,
+        "text": "",
+        "page_number": null,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1867,
+        "margin": -0.0366,
+        "lane": "main",
+        "reason": "Layout footer or page separator retained outside semantic sections",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 77,
+        "start": 0,
+        "end": 0,
+        "text": "",
+        "page_number": null,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1867,
+        "margin": -0.0366,
+        "lane": "main",
+        "reason": "Layout footer or page separator retained outside semantic sections",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      }
+    ]
+  },
+  "section_schemas": [
+    {
+      "category": "experience",
+      "label": "Experience",
+      "records": [
+        {
+          "record_id": "experience-1",
+          "source_ids": [
+            "e1:0:49"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "experience-2",
+          "source_ids": [
+            "e9:0:46",
+            "e10:0:22",
+            "e11:0:224",
+            "e12:0:76",
+            "e13:0:90",
+            "e14:0:76",
+            "e15:0:92",
+            "e16:0:70",
+            "e17:0:53",
+            "e18:0:142",
+            "e19:0:128",
+            "e20:0:55",
+            "e21:0:46",
+            "e22:0:150",
+            "e23:0:63",
+            "e24:0:90",
+            "e26:0:340",
+            "e27:0:151",
+            "e28:0:207",
+            "e29:0:133",
+            "e30:0:149",
+            "e31:0:68",
+            "e32:0:88",
+            "e33:0:64",
+            "e34:0:37",
+            "e35:0:269",
+            "e36:0:64",
+            "e37:0:148",
+            "e38:0:76",
+            "e39:0:185",
+            "e40:0:65",
+            "e41:0:36",
+            "e42:0:140",
+            "e43:0:94",
+            "e44:0:160",
+            "e45:0:67",
+            "e46:0:24",
+            "e47:0:117",
+            "e49:0:140",
+            "e50:0:238",
+            "e51:0:71",
+            "e52:0:148",
+            "e53:0:75",
+            "e54:0:76",
+            "e55:0:50",
+            "e56:0:42",
+            "e57:0:148",
+            "e58:0:67",
+            "e59:0:219",
+            "e60:0:72",
+            "e61:0:103",
+            "e62:0:72",
+            "e63:0:30",
+            "e64:0:68",
+            "e65:0:164",
+            "e66:0:27",
+            "e67:0:35",
+            "e68:0:207",
+            "e69:0:69",
+            "e70:0:91",
+            "e71:0:73",
+            "e72:0:100",
+            "e73:0:63",
+            "e74:0:95",
+            "e75:0:76",
+            "e76:0:101",
+            "e78:0:51",
+            "e79:0:45",
+            "e80:0:153",
+            "e81:0:65",
+            "e82:0:74",
+            "e83:0:139"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "Training/research content requires employment association review."
+          ]
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e1:0:49",
+          "quote": "Team Lead - Product Owner/Senior Business Analyst"
+        },
+        {
+          "source_id": "e8:0:12",
+          "quote": "Work History"
+        },
+        {
+          "source_id": "e9:0:46",
+          "quote": "2025-08 - Current\tTeam Lead II - Product Owner"
+        },
+        {
+          "source_id": "e10:0:22",
+          "quote": "Mastek, Chennai, India"
+        },
+        {
+          "source_id": "e11:0:224",
+          "quote": "Collaborated with stakeholders from Capital Markets, Wealth Advisory, and Compliance to define and prioritize product features, aligning with business goals and regulatory requirements (e.g., KYC, suitability, data privacy)."
+        },
+        {
+          "source_id": "e12:0:76",
+          "quote": "Exposure to client onboarding, portfolio analysis, goal-based investing, and"
+        },
+        {
+          "source_id": "e13:0:90",
+          "quote": "document security modules. Expertise in the preparation of BRD, FRD/FSD, and user stories."
+        },
+        {
+          "source_id": "e14:0:76",
+          "quote": "Partnered with UX and engineering teams to deliver intuitive dashboards that"
+        },
+        {
+          "source_id": "e15:0:92",
+          "quote": "provided consolidated portfolio insights, performance analytics, and goal progress tracking."
+        },
+        {
+          "source_id": "e16:0:70",
+          "quote": "Translated complex business requirements into user stories, acceptance"
+        },
+        {
+          "source_id": "e17:0:53",
+          "quote": "criteria, and process flows for agile delivery teams."
+        },
+        {
+          "source_id": "e18:0:142",
+          "quote": "Oversaw API integrations with custodians, CRM, and trading platforms to enable real-time account data synchronization and transaction updates."
+        },
+        {
+          "source_id": "e19:0:128",
+          "quote": "Worked closely with QA teams to define UAT scenarios, validate business logic, and ensure the delivery of high-quality releases."
+        },
+        {
+          "source_id": "e20:0:55",
+          "quote": "2024-05 - 2025-08\tSenior Business Analyst/Product Owner"
+        },
+        {
+          "source_id": "e21:0:46",
+          "quote": "ThinkPalm Technologies Pvt Ltd, Chennai, India"
+        },
+        {
+          "source_id": "e22:0:150",
+          "quote": "Facilitated PI Planning under the SAFe Agile framework, aligning product features and delivery milestones with program-level OKRs and ART commitments."
+        },
+        {
+          "source_id": "e23:0:63",
+          "quote": "Maintained stakeholder alignment through regular demos, roadmap"
+        },
+        {
+          "source_id": "e24:0:90",
+          "quote": "presentations, and agile reporting, improving trust and engagement with senior leadership."
+        },
+        {
+          "source_id": "e26:0:340",
+          "quote": "Collaborated closely with Data Architects and Developers; utilized SQL to perform data analysis, validate business requirements, troubleshoot data issues, align feasibility of proposed solutions, support API integration efforts, prepare documentation such as BRD and FRD, and derive actionable insights to support effective decision-making."
+        },
+        {
+          "source_id": "e27:0:151",
+          "quote": "Drove agile ceremonies including sprint reviews, retrospectives, and daily standups to foster transparency, accountability, and continuous improvement."
+        },
+        {
+          "source_id": "e28:0:207",
+          "quote": "Proficient in leveraging tools such as JIRA, Miro, Draw.io, Cursor, and Microsoft Visio to effectively gather requirements, map processes, create visual workflows, and enhance cross-functional collaboration."
+        },
+        {
+          "source_id": "e29:0:133",
+          "quote": "Led cross-domain platform modernization efforts, managing the replacement of legacy systems with scalable, modular digital solutions."
+        },
+        {
+          "source_id": "e30:0:149",
+          "quote": "Owned product lifecycle management for ship management ERP modules, ensuring usability, integration, and compliance with maritime industry standards."
+        },
+        {
+          "source_id": "e31:0:68",
+          "quote": "Introduced structured acceptance criteria using BDD (Behavior-Driven"
+        },
+        {
+          "source_id": "e32:0:88",
+          "quote": "Development) practices to improve testability and business traceability of user stories."
+        },
+        {
+          "source_id": "e33:0:64",
+          "quote": "2023-06 - 2024-03\tLead Analyst(Business Analyst/Product Manager)"
+        },
+        {
+          "source_id": "e34:0:37",
+          "quote": "Gopik Connect Pvt.Ltd, Chennai, India"
+        },
+        {
+          "source_id": "e35:0:269",
+          "quote": "Owned and prioritized product backlog across cross-functional teams, ensuring optimal alignment with business goals and technical capabilities in banking and NBFC systems, while preparing documentation such as BRD and FRD to support requirement clarity and development."
+        },
+        {
+          "source_id": "e36:0:64",
+          "quote": "Guided teams and refined Agile techniques throughout journey and"
+        },
+        {
+          "source_id": "e37:0:148",
+          "quote": "evolution of delivery cycles, establishing documentation framework to support Agile methodology implementation with Waterfall-centric delivery team."
+        },
+        {
+          "source_id": "e38:0:76",
+          "quote": "Collaborated closely with IT teams, solution architects, and QA to translate"
+        },
+        {
+          "source_id": "e39:0:185",
+          "quote": "business needs into technical specifications, align feasibility of proposed solutions, and ensure delivery accuracy, including support for API integration using QR code functionalities."
+        },
+        {
+          "source_id": "e40:0:65",
+          "quote": "Worked in banking and financial systems such as CMS, LMS and LOS."
+        },
+        {
+          "source_id": "e41:0:36",
+          "quote": "Managed API integration and testing."
+        },
+        {
+          "source_id": "e42:0:140",
+          "quote": "Oversaw the end-to-end implementation of Digital lending solutions, aligning them with client goals and reducing manual intervention by 30%."
+        },
+        {
+          "source_id": "e43:0:94",
+          "quote": "Reviewed test plans and use cases to verify compliance with established business requirements."
+        },
+        {
+          "source_id": "e44:0:160",
+          "quote": "Led backlog grooming sessions and sprint planning with cross-functional agile teams, ensuring timely delivery of high-value features and technical enhancements."
+        },
+        {
+          "source_id": "e45:0:67",
+          "quote": "2021-11 - 2023-01\tAssistant Manager(Business Analyst/Product Owner)"
+        },
+        {
+          "source_id": "e46:0:24",
+          "quote": "CAMS, Chennai, TamilNadu"
+        },
+        {
+          "source_id": "e47:0:117",
+          "quote": "Led requirement gathering and analysis for Virtual Accounts modules, enhancing real-time KYC and centralized control."
+        },
+        {
+          "source_id": "e49:0:140",
+          "quote": "Facilitated Business Case Analysis for digitization of Centralized KYC processes, contributing to a 25% reduction in manual processing time."
+        },
+        {
+          "source_id": "e50:0:238",
+          "quote": "Collaborated with QA and development teams to define test cases, align feasibility of third-party vendor service usage, and validate key business scenarios through SIT/UAT phases, including API integration to enable third- party services."
+        },
+        {
+          "source_id": "e51:0:71",
+          "quote": "Accurately determine, assign, track and manage project tasks and Change"
+        },
+        {
+          "source_id": "e52:0:148",
+          "quote": "Requests, prepare documentation such as BRD and FRD, and capture details for Sprint Retrospectives and Backlog refinement as per internal standards."
+        },
+        {
+          "source_id": "e53:0:75",
+          "quote": "Supported go-live and post-release activities, including UAT sign-off, user"
+        },
+        {
+          "source_id": "e54:0:76",
+          "quote": "training, and issue triaging for internal stakeholders and external clients."
+        },
+        {
+          "source_id": "e55:0:50",
+          "quote": "2018-11 - 2021-05\tSenior Analyst(Business Analyst)"
+        },
+        {
+          "source_id": "e56:0:42",
+          "quote": "Royal Bank Of Scotland, Chennai, TamilNadu"
+        },
+        {
+          "source_id": "e57:0:148",
+          "quote": "Played a pivotal role in stakeholder management, coordinating with business, technology, and operations teams to deliver seamless banking solutions."
+        },
+        {
+          "source_id": "e58:0:67",
+          "quote": "Designed and implemented workflow automation solutions for mortgage"
+        },
+        {
+          "source_id": "e59:0:219",
+          "quote": "application intake, underwriting, and approval stages, aligning feasibility and enabling API integration to use various third-party vendor services, while ensuring regulatory compliance and enhanced customer experience."
+        },
+        {
+          "source_id": "e60:0:72",
+          "quote": "Led requirement gathering and stakeholder workshops to digitize mortgage"
+        },
+        {
+          "source_id": "e61:0:103",
+          "quote": "origination and servicing processes, reducing manual intervention and improving turnaround time by 30%."
+        },
+        {
+          "source_id": "e62:0:72",
+          "quote": "Performed internal system acceptance to deliver well-tested enhancements"
+        },
+        {
+          "source_id": "e63:0:30",
+          "quote": "and meet business requirements"
+        },
+        {
+          "source_id": "e64:0:68",
+          "quote": "Worked with CMS, LMS and LOS. Performed API integration and testing."
+        },
+        {
+          "source_id": "e65:0:164",
+          "quote": "Met with clients to understand business requirements, perform gap analysis, create BPMN flowcharts, prepare BRD/FRD, and translate them into technical requirements."
+        },
+        {
+          "source_id": "e66:0:27",
+          "quote": "2017-08 - 2018-09\tExecutive"
+        },
+        {
+          "source_id": "e67:0:35",
+          "quote": "CITI BANK INDIA, Chennai, TamilNadu"
+        },
+        {
+          "source_id": "e68:0:207",
+          "quote": "Collaborated with stakeholders to gather and analyze requirements for credit, debit, and prepaid card issuance workflows, ensuring alignment with business goals and regulatory standards (e.g., PCI DSS, EMV)."
+        },
+        {
+          "source_id": "e69:0:69",
+          "quote": "Conducted gap analysis and process mapping for existing card issuance"
+        },
+        {
+          "source_id": "e70:0:91",
+          "quote": "systems, identifying automation opportunities and reducing issuance turnaround time by 25%."
+        },
+        {
+          "source_id": "e71:0:73",
+          "quote": "Partnered with product, operations, and IT teams to streamline end-to-end"
+        },
+        {
+          "source_id": "e72:0:100",
+          "quote": "card lifecycle processes including application, approval, personalization, dispatch, and activation."
+        },
+        {
+          "source_id": "e73:0:63",
+          "quote": "Supported the implementation and integration of card management"
+        },
+        {
+          "source_id": "e74:0:95",
+          "quote": "systems (CMS) and third-party vendors (e.g., personalization bureaus, card embossing services)."
+        },
+        {
+          "source_id": "e75:0:76",
+          "quote": "Defined and validated functional requirements, created user stories and test"
+        },
+        {
+          "source_id": "e76:0:101",
+          "quote": "cases, and facilitated UAT to ensure seamless customer onboarding and improved cardholder experience."
+        },
+        {
+          "source_id": "e78:0:51",
+          "quote": "2015-03 - 2017-06\tSenior Customer Service Executive"
+        },
+        {
+          "source_id": "e79:0:45",
+          "quote": "Intelenet Global Services, Chennai, TamilNadu"
+        },
+        {
+          "source_id": "e80:0:153",
+          "quote": "Created debt analysis and comparison reports contrasting different debt products, including various conventional and government-backed financing options."
+        },
+        {
+          "source_id": "e81:0:65",
+          "quote": "Oversaw quality control of tax credit financial models, including"
+        },
+        {
+          "source_id": "e82:0:74",
+          "quote": "management of models involving underwriting integrity and project budgets."
+        },
+        {
+          "source_id": "e83:0:139",
+          "quote": "Assisted senior executives with final loan closings and underwriting, coordination and submission of high-profile loan conversion packages."
+        }
+      ]
+    },
+    {
+      "category": "personal_information",
+      "label": "Personal information",
+      "records": [
+        {
+          "record_id": "personal_information",
+          "source_ids": [
+            "e2:0:26",
+            "e3:0:19",
+            "e4:0:24",
+            "e5:0:53"
+          ],
+          "attributes": [
+            {
+              "name": "full_name",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "email",
+              "items": [
+                {
+                  "value": "p703468@gmail.com",
+                  "evidence": [
+                    {
+                      "source_id": "e4:0:24",
+                      "quote": "p703468@gmail.com"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "phone",
+              "items": [
+                {
+                  "value": "+919176120261",
+                  "evidence": [
+                    {
+                      "source_id": "e3:0:19",
+                      "quote": "+919176120261"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "location",
+              "items": [
+                {
+                  "value": "Chennai",
+                  "evidence": [
+                    {
+                      "source_id": "e2:0:26",
+                      "quote": "Chennai"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "linkedin_url",
+              "items": [
+                {
+                  "value": "www.linkedin.com/in/pradeep-kumar-",
+                  "evidence": [
+                    {
+                      "source_id": "e5:0:53",
+                      "quote": "www.linkedin.com/in/pradeep-kumar-"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "github_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "portfolio_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "professional_title",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e2:0:26",
+          "quote": "Address Chennai, TN 600094"
+        },
+        {
+          "source_id": "e3:0:19",
+          "quote": "Phone +919176120261"
+        },
+        {
+          "source_id": "e4:0:24",
+          "quote": "E-mail p703468@gmail.com"
+        },
+        {
+          "source_id": "e5:0:53",
+          "quote": "LinkedIn www.linkedin.com/in/pradeep-kumar- 02779b10b"
+        }
+      ]
+    },
+    {
+      "category": "education",
+      "label": "Education",
+      "records": [
+        {
+          "record_id": "education-1",
+          "source_ids": [
+            "e85:0:87",
+            "e86:0:40"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [
+                {
+                  "value": "Loyola Institute Of Technology - Chennai",
+                  "evidence": [
+                    {
+                      "source_id": "e86:0:40",
+                      "quote": "Loyola Institute Of Technology - Chennai"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "degree",
+              "items": [
+                {
+                  "value": "Bachelor of Engineering",
+                  "evidence": [
+                    {
+                      "source_id": "e85:0:87",
+                      "quote": "Bachelor of Engineering"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e84:0:9",
+          "quote": "Education"
+        },
+        {
+          "source_id": "e85:0:87",
+          "quote": "2014-08\tBachelor of Engineering: Electrical, Electronics And Communications Engineering"
+        }
+      ]
+    },
+    {
+      "category": "skills",
+      "label": "Skills",
+      "records": [
+        {
+          "record_id": "skills",
+          "source_ids": [
+            "e88:0:85",
+            "e89:0:65",
+            "e90:0:22",
+            "e91:0:24"
+          ],
+          "attributes": [
+            {
+              "name": "technical_skills",
+              "items": [
+                {
+                  "value": "SQL",
+                  "evidence": [
+                    {
+                      "source_id": "e88:0:85",
+                      "quote": "SQL"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "tools_and_platforms",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "domain_and_functional",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "soft_skills",
+              "items": [
+                {
+                  "value": "Agile",
+                  "evidence": [
+                    {
+                      "source_id": "e91:0:24",
+                      "quote": "Agile"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Project Management",
+                  "evidence": [
+                    {
+                      "source_id": "e91:0:24",
+                      "quote": "project management"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Communication",
+                  "evidence": [
+                    {
+                      "source_id": "e88:0:85",
+                      "quote": "communication"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "all_skills",
+              "items": [
+                {
+                  "value": "SQL",
+                  "evidence": [
+                    {
+                      "source_id": "e88:0:85",
+                      "quote": "SQL"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Agile",
+                  "evidence": [
+                    {
+                      "source_id": "e91:0:24",
+                      "quote": "Agile"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Project Management",
+                  "evidence": [
+                    {
+                      "source_id": "e91:0:24",
+                      "quote": "project management"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Communication",
+                  "evidence": [
+                    {
+                      "source_id": "e88:0:85",
+                      "quote": "communication"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Effective communication Proficient in SQL for data analysis Problem-solving expertise",
+                  "evidence": [
+                    {
+                      "source_id": "e88:0:85",
+                      "quote": "Effective communication Proficient in SQL for data analysis Problem-solving expertise"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Skilled in project and product coordination Requirements analysis",
+                  "evidence": [
+                    {
+                      "source_id": "e89:0:65",
+                      "quote": "Skilled in project and product coordination Requirements analysis"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Proficient in AI tools",
+                  "evidence": [
+                    {
+                      "source_id": "e90:0:22",
+                      "quote": "Proficient in AI tools"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Agile project management",
+                  "evidence": [
+                    {
+                      "source_id": "e91:0:24",
+                      "quote": "Agile project management"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e87:0:6",
+          "quote": "Skills"
+        }
+      ]
+    },
+    {
+      "category": "awards",
+      "label": "Awards and achievements",
+      "records": [
+        {
+          "record_id": "awards-1",
+          "source_ids": [
+            "e93:0:108",
+            "e94:0:40",
+            "e95:0:48",
+            "e96:0:181"
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "issuer",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "date",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "Unlabelled compound information requires source review."
+          ]
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e92:0:15",
+          "quote": "Accomplishments"
+        },
+        {
+          "source_id": "e93:0:108",
+          "quote": "Documented and resolved performance issues of employees which led to 45% increase in efficiency of the unit."
+        },
+        {
+          "source_id": "e94:0:40",
+          "quote": "Supervised 5 teams of 25+ staff members."
+        },
+        {
+          "source_id": "e95:0:48",
+          "quote": "Resolved product issue through consumer testing."
+        },
+        {
+          "source_id": "e96:0:181",
+          "quote": "Implemented AI-driven analytics tools, resulting in a 30% reduction in time spent on manual data processing and significantly improving the accuracy of predictive business insights."
+        }
+      ]
+    },
+    {
+      "category": "languages",
+      "label": "Languages",
+      "records": [],
+      "residual_blocks": [
+        {
+          "source_id": "e97:0:9",
+          "quote": "Languages"
+        }
+      ]
+    },
+    {
+      "category": "certifications",
+      "label": "Certifications",
+      "records": [
+        {
+          "record_id": "certifications-1",
+          "source_ids": [
+            "e99:0:25",
+            "e100:0:8",
+            "e101:0:193"
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "issuer",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "issue_year",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e98:0:14",
+          "quote": "Certifications"
+        },
+        {
+          "source_id": "e99:0:25",
+          "quote": "English, Tamil and Hindi."
+        },
+        {
+          "source_id": "e100:0:8",
+          "quote": "Advanced"
+        },
+        {
+          "source_id": "e101:0:193",
+          "quote": "2025-04 CSPO® 2025-04 CSM® 2025-08 Lean Six Sigma Master Black Belt 2022-12 PMP® 2024-03 SAFe® 6 Agilist 2025-03 Google Project Management Professional® 2025-05 5S Auditor 2025-06 Lean Champion"
+        }
+      ]
+    },
+    {
+      "category": "needs_review",
+      "label": "Unassigned source blocks",
+      "records": [],
+      "residual_blocks": [
+        {
+          "source_id": "e0:0:9",
+          "quote": "K PRADEEP"
+        },
+        {
+          "source_id": "e6:0:283",
+          "quote": "Experienced professional with over 10+ years in the Banking domain and 7+ years in IT as a Senior Business Analyst/Product Owner, specializing in Retail Banking and E-Channels. Demonstrated expertise in Digital solutions including Banking, Capital Markets, NBFC, and Ship Management."
+        },
+        {
+          "source_id": "e7:0:457",
+          "quote": "Expertise in preparation of BRD, FRD/FSD and user stories. Adept in driving end-to-end Business Analysis Lifecycle, from business case preparation and requirement elicitation to functional design, feasibility alignment, API integration, and stakeholder alignment. Proven ability to collaborate with cross- functional teams including Product Managers, Technical Architects, QA, and Operations to deliver scalable and regulatory-compliant financial solutions."
+        },
+        {
+          "source_id": "e25:0:0",
+          "quote": ""
+        },
+        {
+          "source_id": "e48:0:0",
+          "quote": ""
+        },
+        {
+          "source_id": "e77:0:0",
+          "quote": ""
+        }
+      ]
+    }
+  ]
+}

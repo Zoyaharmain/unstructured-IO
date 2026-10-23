@@ -1,0 +1,3294 @@
+{
+  "success": true,
+  "source": "AnkitSabinkar.docx",
+  "extraction_mode": "existing_blocks_schema_mapping",
+  "data": {
+    "contact": {
+      "full_name": "ANKIT SABINKAR",
+      "email": "ankitaurora@gmail.com",
+      "phone": "+91-8867701487",
+      "location": "Hyderabad",
+      "linkedin_url": "linkedin.com/in/ankit-sabinkar",
+      "github_url": null,
+      "portfolio_url": null
+    },
+    "professional_title": null,
+    "summary": "Data Engineering Leader with 14+ years in IT and 7+ years specializing in data platform architecture. Architected and delivered end-to-end data warehouse solutions processing 10,000+ assets daily across Snowflake, Databricks, AWS, and Azure. Led dbt adoption for 40+ engineers with CI/CD automation, reducing deployment errors by 80%. Designed medallion architectures with SCD Type 2 modeling, row-level security, and dynamic data masking for regulated industries. Experienced across HR Analytics, Manufacturing, Digital Asset Management, and Financial Services domains with global stakeholder collaboration.\nKEY ACHIEVEMENTS\nArchitected dbt infrastructure adopted by 40+ engineers as the standard transformation layer, with CI/CD, coding standards, and comprehensive documentation\nDesigned 5-stage serverless pipeline processing 10,000+ digital assets daily with 99.9% uptime and zero data loss over 12 months\nRecovered production SCD Type 2 data after accidental full refresh using Snowflake Time Travel with zero data loss within 1 hour\nMigrated 200+ Informatica PowerCenter workflows to Snowflake/dbt with automated reconciliation framework validating transformation accuracy\nReduced dbt build times by 60% through slim CI with state:modified selectors and incremental modeling strategies",
+    "total_experience_years": null,
+    "skills": {
+      "technical_skills": [],
+      "tools_and_platforms": [],
+      "domain_and_functional": [],
+      "soft_skills": [],
+      "all_skills": [
+        "Data Platforms: Snowflake",
+        "Databricks",
+        "Redshift",
+        "BigQuery",
+        "Transformation & Modeling: dbt (Core & Cloud)",
+        "Medallion Architecture",
+        "SCD Type 2",
+        "Dimensional Modeling",
+        "Fivetran",
+        "HR / People Analytics (SuccessFactors",
+        "Talent Acquisition",
+        "Employee Lifecycle)",
+        "Manufacturing (ERP Systems",
+        "Legacy Migration)",
+        "Digital Asset Management (AEM",
+        "Salesforce Data Cloud)",
+        "Financial Services (Investment Banking",
+        "Equities Research)",
+        "Customer Master Data Management"
+      ]
+    },
+    "experience": [
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      }
+    ],
+    "education": [
+      {
+        "institution": "",
+        "degree": "",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      }
+    ],
+    "certifications": [
+      {
+        "name": "dbt Certified Analytics Engineer — dbt Labs | May 2026",
+        "issuer": null,
+        "issue_year": null
+      }
+    ],
+    "projects": [],
+    "languages": [
+      "SQL, Python, PySpark, SparkSQL, Unix Shell Scripting",
+      "AWS: S3, Glue, Lambda, Redshift, Athena, DynamoDB, CloudWatch, CloudFormation, Secrets Manager, Step Functions, SNS, SQS, EC2, RDS, DataSync, VPC",
+      "Azure: Databricks, DevOps (CI/CD pipelines)",
+      "GCP: BigQuery, Dataflow, Dataproc, Cloud Storage, Pub/Sub, Cloud Composer",
+      "Orchestration: Apache Airflow, MWAA, Astronomer, Autosys",
+      "Data Governance: Collibra, Row-Level Security, Dynamic Data Masking, RBAC",
+      "DevOps & Tools: GitHub, Git, Jira, VS Code, Notion, CI/CD Pipelines",
+      "Databases: Oracle, MySQL, MongoDB, PostgreSQL, DB2"
+    ]
+  },
+  "schema_mapping": {
+    "fields_populated": 10,
+    "total_fields": 16,
+    "completion_percentage": 62.5,
+    "field_details": [
+      {
+        "field_name": "contact.full_name",
+        "target_type": "string",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Personal Details",
+        "confidence_score": 0.95,
+        "description": "Candidate's full name, extracted from the top header of the resume."
+      },
+      {
+        "field_name": "contact.email",
+        "target_type": "string (email)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.98,
+        "description": "Candidate's primary contact email address."
+      },
+      {
+        "field_name": "contact.phone",
+        "target_type": "string (phone)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.95,
+        "description": "Candidate's telephone / mobile phone number."
+      },
+      {
+        "field_name": "contact.location",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.85,
+        "description": "Candidate's residential location or work city."
+      },
+      {
+        "field_name": "contact.linkedin_url",
+        "target_type": "string (url) | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.9,
+        "description": "URL to candidate's LinkedIn profile."
+      },
+      {
+        "field_name": "professional_title",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Subtitle",
+        "confidence_score": 0.0,
+        "description": "Candidate's target headline or most recent job title."
+      },
+      {
+        "field_name": "summary",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Summary / Profile / Objective",
+        "confidence_score": 0.85,
+        "description": "Executive bio, professional overview, or career objective."
+      },
+      {
+        "field_name": "total_experience_years",
+        "target_type": "float | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Summary / Experience Calculation",
+        "confidence_score": 0.0,
+        "description": "Total professional experience in years."
+      },
+      {
+        "field_name": "skills.technical_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Technical Competencies",
+        "confidence_score": 0.0,
+        "description": "Technical programming languages and core software competencies."
+      },
+      {
+        "field_name": "skills.tools_and_platforms",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Tools & Technologies",
+        "confidence_score": 0.0,
+        "description": "Software platforms, developer tools, and operational systems."
+      },
+      {
+        "field_name": "skills.domain_and_functional",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Domain Expertise",
+        "confidence_score": 0.0,
+        "description": "Functional domain knowledge (e.g. Hedge Funds, KYC, NAV, Derivatives)."
+      },
+      {
+        "field_name": "skills.all_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills (Aggregated)",
+        "confidence_score": 0.95,
+        "description": "Complete list of candidate skills across all categories."
+      },
+      {
+        "field_name": "experience",
+        "target_type": "array[WorkExperience]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Experience / Work History",
+        "confidence_score": 0.92,
+        "description": "Complete chronological employment records with bullet points."
+      },
+      {
+        "field_name": "education",
+        "target_type": "array[Education]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Education / Academic Qualifications",
+        "confidence_score": 0.9,
+        "description": "University, college, and higher education degree qualifications."
+      },
+      {
+        "field_name": "certifications",
+        "target_type": "array[Certification]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Certifications / Licenses",
+        "confidence_score": 0.8,
+        "description": "Professional accreditations and credentials."
+      },
+      {
+        "field_name": "projects",
+        "target_type": "array[Project]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Projects / Key Engagements",
+        "confidence_score": 0.0,
+        "description": "Major projects or strategic initiatives led by candidate."
+      }
+    ]
+  },
+  "raw_sections": {
+    "personal_information": "ANKIT SABINKAR\n+91-8867701487 | ankitaurora@gmail.com | Hyderabad, India\nLinkedIn: linkedin.com/in/ankit-sabinkar",
+    "summary": "PROFESSIONAL SUMMARY\nData Engineering Leader with 14+ years in IT and 7+ years specializing in data platform architecture. Architected and delivered end-to-end data warehouse solutions processing 10,000+ assets daily across Snowflake, Databricks, AWS, and Azure. Led dbt adoption for 40+ engineers with CI/CD automation, reducing deployment errors by 80%. Designed medallion architectures with SCD Type 2 modeling, row-level security, and dynamic data masking for regulated industries. Experienced across HR Analytics, Manufacturing, Digital Asset Management, and Financial Services domains with global stakeholder collaboration.\nKEY ACHIEVEMENTS\nArchitected dbt infrastructure adopted by 40+ engineers as the standard transformation layer, with CI/CD, coding standards, and comprehensive documentation\nDesigned 5-stage serverless pipeline processing 10,000+ digital assets daily with 99.9% uptime and zero data loss over 12 months\nRecovered production SCD Type 2 data after accidental full refresh using Snowflake Time Travel with zero data loss within 1 hour\nMigrated 200+ Informatica PowerCenter workflows to Snowflake/dbt with automated reconciliation framework validating transformation accuracy\nReduced dbt build times by 60% through slim CI with state:modified selectors and incremental modeling strategies",
+    "skills": "TECHNICAL SKILLS\nData Platforms: Snowflake, Databricks, Redshift, BigQuery\nTransformation & Modeling: dbt (Core & Cloud), Medallion Architecture, SCD Type 2, Dimensional Modeling, Fivetran\nDOMAIN EXPERTISE\nHR / People Analytics (SuccessFactors, Talent Acquisition, Employee Lifecycle) | Manufacturing (ERP Systems, Legacy Migration) | Digital Asset Management (AEM, Salesforce Data Cloud) | Financial Services (Investment Banking, Equities Research) | Customer Master Data Management",
+    "languages": "Languages: SQL, Python, PySpark, SparkSQL, Unix Shell Scripting\nAWS: S3, Glue, Lambda, Redshift, Athena, DynamoDB, CloudWatch, CloudFormation, Secrets Manager, Step Functions, SNS, SQS, EC2, RDS, DataSync, VPC\nAzure: Databricks, DevOps (CI/CD pipelines)\nGCP: BigQuery, Dataflow, Dataproc, Cloud Storage, Pub/Sub, Cloud Composer\nOrchestration: Apache Airflow, MWAA, Astronomer, Autosys\nData Governance: Collibra, Row-Level Security, Dynamic Data Masking, RBAC\nDevOps & Tools: GitHub, Git, Jira, VS Code, Notion, CI/CD Pipelines\nDatabases: Oracle, MySQL, MongoDB, PostgreSQL, DB2",
+    "experience": "PROFESSIONAL EXPERIENCE\nLead Data Engineer, Data Engineering | AuxoAI\t   Dec 2024 – Present\nOURA — Enterprise Bulk Order Data Platform (May 2026 – Present)\nArchitecting a unified data platform integrating CRM, CPQ, contracts, fulfillment, and ERP systems to enable end-to-end order tracking and revenue reconciliation for OURA's enterprise bulk order business (corporate wellness and insurance partners).\nDesigning integration architecture connecting HubSpot (CRM), DealHub (CPQ), Ironclad (contract management), Bulk Order Portal (fulfillment), and NetSuite (ERP/revenue recognition) into a unified analytical platform on Snowflake\nBuilding end-to-end order tracking models that follow each enterprise deal from sales opportunity through quote, contract, customer-driven fulfillment data, and final revenue recognition in NetSuite\nDeveloping revenue reconciliation framework comparing NetSuite revenue postings against originating contracts and deals to surface discrepancies before financial close\nModeling deal lifecycle stages across heterogeneous source systems (HubSpot pipeline, DealHub quote states, Ironclad contract status, NetSuite order states) into a unified state machine for cross-functional reporting\nImplementing dbt-based transformation layer on Snowflake with source-aligned staging, conformed dimensions, and incremental marts powering operations and finance dashboards\nManufacturing Domain — Legacy Migration (DB2/Informatica to Snowflake)\nMigrated 200+ legacy ETL workflows from DB2/Informatica PowerCenter to Snowflake + dbt, with Fivetran for automated source synchronization.\nConverted Informatica PowerCenter XML-based workflow mappings to dbt SQL models, mapping each transformation type (Expression, Joiner, Lookup, Aggregator, Router, SCD) to its SQL equivalent\nConfigured Fivetran source connectors with CDC to sync data from DB2 into Snowflake, eliminating manual extraction processes\nBuilt automated reconciliation framework comparing row counts, key aggregates, and hash checks between legacy and dbt outputs, catching discrepancies before UAT\nLeveraged AI-assisted code generation to accelerate conversion of straightforward mappings, allowing team to focus on complex transformation validation\nVentura Foods — People Analytics Data Warehouse\nArchitected a People Analytics warehouse for ~11,000 employees on Snowflake + dbt, integrating SuccessFactors via Fivetran.\nDesigned Bronze/Silver/Gold medallion architecture processing employee lifecycle, talent acquisition, and workforce planning data\nImplemented SCD Type 2 dimension models with hash-based change detection, tracking employee promotions, transfers, and title changes over time\nSet up dbt CI/CD pipeline with GitHub PR validation using state:modified selectors, reducing build times by 60%\nImplemented row-level security (business unit isolation) and dynamic data masking (salary, SSN, PII) across Snowflake\nRecovered production SCD2 data after accidental full refresh using Snowflake Time Travel (CREATE TABLE CLONE AT), ensuring zero data loss within 1 hour\nResolved Iceberg table metadata staleness issues with Fivetran integration by adjusting catalog refresh intervals\nADI — dbt Infrastructure & Adoption (40+ Engineers)\nBuilt dbt infrastructure from scratch and drove organization-wide adoption across 40+ engineers.\nDesigned project structure (staging/intermediate/marts), source configurations, directory layout, and multi-environment setup\nConfigured slim CI pipelines per environment using state:modified selectors, enabling targeted PR validation and reducing CI run times\nIntegrated Snowflake using key-pair authentication per environment for secure, passwordless connectivity\nDeveloped reusable macros (surrogate keys, audit columns, incremental helpers) reducing boilerplate by 40% across teams\nAuthored comprehensive Confluence documentation covering incremental models, snapshots, deferral strategies, and dbt contracts with real-world examples\nDefined coding standards and naming conventions; trained and onboarded 40+ engineers on dbt workflows and best practices\nLead Data Engineer | Genpact (Enquero)\tDec 2021 – Dec 2024\nAEM Digital Assets Pipeline — Salesforce Data Cloud\nDesigned and built a 5-stage serverless data ingestion pipeline processing digital assets from Adobe Experience Manager into Salesforce Data Cloud.\nArchitected end-to-end pipeline (get, load, transform, deactivate, export) orchestrated by Airflow on Astronomer, executed via AWS Lambda\nDesigned security classification engine categorizing assets into distinct S3 tiers (Partners, PTAC, Distributors, Public) using path-based rules and metadata analysis\nEngineered date-range chunking (30-day windows) and batch processing (25 assets/batch) to handle large-scale AEM queries within Lambda timeout constraints\nImplemented dynamic task mapping with expand_kwargs for parallel processing across 4 content types, with TaskGroups for logical grouping\nBuilt database-driven configuration model — adding new pipeline objects required only a SQL INSERT, zero code deployment\nIdentified and resolved silent Lambda failures by implementing explicit FunctionError checking in Airflow DAG, preventing false-positive task successes\nLed UAT deployment including CloudFormation stack configuration, AWS Secrets Manager integration, and cross-account troubleshooting\nFluidTopics-to-DataCloud Pipeline\nBuilt automated ingestion pipeline on the Enterprise Data Platform for enterprise content discovery and access control.\nArchitected pipeline using AWS Lambda, S3 (L1/L2 pattern), Airflow, and Athena following the AEM reference architecture\nImplemented cumulative security-level duplication model with composite metadata keys for referential integrity across access tiers\nBuilt MySQL-backed metadata layer for incremental processing, offset tracking, and export orchestration\nExternalized security hierarchy into deployable JSON artifact, decoupling business rules from pipeline logic\nHeineken — Harmonized Data Pipelines (HDP)\nDesigned ETL pipelines harmonizing ERP data from multiple global locations for a leading brewery on Azure Databricks + dbt.\nHarmonized ERP data from multiple regional schemas into one unified analytical model, enabling consistent cross-region reporting\nImplemented incremental modeling strategies in dbt, reducing pipeline run times from 30+ minutes to 3-5 minutes on large ERP tables\nBuilt reusable macros and managed dbt contracts/versions to protect downstream consumers from breaking schema changes\nSet up CI/CD through Azure DevOps — PR-triggered slim CI against UAT, merge-to-main deployed to production automatically\nUtilized Collibra for data governance and business terminology standardization across global teams\nCollaborated with global stakeholders in Amsterdam for on-site data mapping requirements gathering\nOptimized long-running Databricks jobs through OPTIMIZE, ZORDER, and cluster sizing recommendations\nData Engineer | Cognizant\tJun 2014 – Dec 2021\nInvestment Bank — AWS ETL Pipeline (Dec 2018 – Dec 2021)\nDesigned and built ETL pipelines for equities and trading data on AWS using Glue, PySpark, and DynamoDB.\nBuilt PySpark transformations in AWS Glue processing multi-region trading data (AEJ, EMEA, US) with currency exchange rate joins and null handling\nLeveraged DynamoDB to store ETL configuration and business logic as dynamic content, enabling rule changes without code redeployment\nAutomated file arrival from remote Unix machines to EC2/S3 using Unix scripting and DataSync\nValidated ETL logic in Athena and built data quality scripts comparing legacy and new system outputs using statistical analysis\nMonitored pipeline health using CloudWatch; orchestrated file arrival processes using Autosys\nEurope Investment Bank — Database Development (Jun 2014 – Dec 2018)\nDesigned databases for Equities Quantitative Research linking data from Worldscope, Reuters, Factset, and Bloomberg.\nDeveloped stored procedures for data access and loading across multiple financial data providers\nAutomated client reporting by connecting Excel with Oracle Database using ODBC\nSenior Business Analyst | Altisource Business Solutions\tFeb 2012 – Jun 2014\nProvided business analysis for Mortgage Banking applications; validated claims data using SQL",
+    "certifications": "CERTIFICATIONS\ndbt Certified Analytics Engineer — dbt Labs | May 2026",
+    "education": "EDUCATION\nBachelor of Technology — Computer Science and Information Technology\nAurora's Engineering College, JNTU Hyderabad | 2011"
+  },
+  "meta": {
+    "status": "needs_review",
+    "human_verified": false,
+    "provider_calls": 0,
+    "source_accounting": {
+      "all_source_text_preserved": true,
+      "total_spans": 100,
+      "assigned_meaningful_spans": 100,
+      "unresolved_meaningful_spans": 0,
+      "non_content_artifacts": 0,
+      "duplicates_excluded": 0,
+      "all_meaningful_text_assigned": true,
+      "semantic_correctness_verified": false,
+      "outcomes": [
+        {
+          "source_id": "e0:0:14",
+          "source_element_index": 0,
+          "start": 0,
+          "end": 14,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e1:0:57",
+          "source_element_index": 1,
+          "start": 0,
+          "end": 57,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e2:0:40",
+          "source_element_index": 2,
+          "start": 0,
+          "end": 40,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e3:0:20",
+          "source_element_index": 3,
+          "start": 0,
+          "end": 20,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e4:0:608",
+          "source_element_index": 4,
+          "start": 0,
+          "end": 608,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e5:0:16",
+          "source_element_index": 5,
+          "start": 0,
+          "end": 16,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e6:0:155",
+          "source_element_index": 6,
+          "start": 0,
+          "end": 155,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e7:0:128",
+          "source_element_index": 7,
+          "start": 0,
+          "end": 128,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:0:128",
+          "source_element_index": 8,
+          "start": 0,
+          "end": 128,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:0:139",
+          "source_element_index": 9,
+          "start": 0,
+          "end": 139,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e10:0:112",
+          "source_element_index": 10,
+          "start": 0,
+          "end": 112,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e11:0:16",
+          "source_element_index": 11,
+          "start": 0,
+          "end": 16,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e12:0:57",
+          "source_element_index": 12,
+          "start": 0,
+          "end": 57,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e13:0:113",
+          "source_element_index": 13,
+          "start": 0,
+          "end": 113,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e14:0:10",
+          "source_element_index": 14,
+          "start": 0,
+          "end": 10,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e14:10:63",
+          "source_element_index": 14,
+          "start": 10,
+          "end": 63,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e15:0:145",
+          "source_element_index": 15,
+          "start": 0,
+          "end": 145,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e16:0:43",
+          "source_element_index": 16,
+          "start": 0,
+          "end": 43,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e17:0:73",
+          "source_element_index": 17,
+          "start": 0,
+          "end": 73,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e18:0:56",
+          "source_element_index": 18,
+          "start": 0,
+          "end": 56,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e19:0:73",
+          "source_element_index": 19,
+          "start": 0,
+          "end": 73,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e20:0:67",
+          "source_element_index": 20,
+          "start": 0,
+          "end": 67,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e21:0:50",
+          "source_element_index": 21,
+          "start": 0,
+          "end": 50,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e22:0:16",
+          "source_element_index": 22,
+          "start": 0,
+          "end": 16,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e23:0:277",
+          "source_element_index": 23,
+          "start": 0,
+          "end": 277,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e24:0:23",
+          "source_element_index": 24,
+          "start": 0,
+          "end": 23,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e25:0:67",
+          "source_element_index": 25,
+          "start": 0,
+          "end": 67,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e26:0:63",
+          "source_element_index": 26,
+          "start": 0,
+          "end": 63,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e27:0:248",
+          "source_element_index": 27,
+          "start": 0,
+          "end": 248,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e28:0:227",
+          "source_element_index": 28,
+          "start": 0,
+          "end": 227,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e29:0:198",
+          "source_element_index": 29,
+          "start": 0,
+          "end": 198,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e30:0:167",
+          "source_element_index": 30,
+          "start": 0,
+          "end": 167,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e31:0:216",
+          "source_element_index": 31,
+          "start": 0,
+          "end": 216,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e32:0:172",
+          "source_element_index": 32,
+          "start": 0,
+          "end": 172,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e33:0:70",
+          "source_element_index": 33,
+          "start": 0,
+          "end": 70,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e34:0:139",
+          "source_element_index": 34,
+          "start": 0,
+          "end": 139,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e35:0:189",
+          "source_element_index": 35,
+          "start": 0,
+          "end": 189,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e36:0:124",
+          "source_element_index": 36,
+          "start": 0,
+          "end": 124,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e37:0:160",
+          "source_element_index": 37,
+          "start": 0,
+          "end": 160,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e38:0:151",
+          "source_element_index": 38,
+          "start": 0,
+          "end": 151,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e39:0:47",
+          "source_element_index": 39,
+          "start": 0,
+          "end": 47,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e40:0:123",
+          "source_element_index": 40,
+          "start": 0,
+          "end": 123,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e41:0:129",
+          "source_element_index": 41,
+          "start": 0,
+          "end": 129,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e42:0:142",
+          "source_element_index": 42,
+          "start": 0,
+          "end": 142,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e43:0:111",
+          "source_element_index": 43,
+          "start": 0,
+          "end": 111,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e44:0:117",
+          "source_element_index": 44,
+          "start": 0,
+          "end": 117,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e45:0:151",
+          "source_element_index": 45,
+          "start": 0,
+          "end": 151,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e46:0:113",
+          "source_element_index": 46,
+          "start": 0,
+          "end": 113,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e47:0:51",
+          "source_element_index": 47,
+          "start": 0,
+          "end": 51,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e48:0:96",
+          "source_element_index": 48,
+          "start": 0,
+          "end": 96,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e49:0:125",
+          "source_element_index": 49,
+          "start": 0,
+          "end": 125,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e50:0:134",
+          "source_element_index": 50,
+          "start": 0,
+          "end": 134,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e51:0:104",
+          "source_element_index": 51,
+          "start": 0,
+          "end": 104,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e52:0:119",
+          "source_element_index": 52,
+          "start": 0,
+          "end": 119,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e53:0:151",
+          "source_element_index": 53,
+          "start": 0,
+          "end": 151,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e54:0:120",
+          "source_element_index": 54,
+          "start": 0,
+          "end": 120,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e55:0:58",
+          "source_element_index": 55,
+          "start": 0,
+          "end": 58,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e56:0:51",
+          "source_element_index": 56,
+          "start": 0,
+          "end": 51,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e57:0:147",
+          "source_element_index": 57,
+          "start": 0,
+          "end": 147,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e58:0:137",
+          "source_element_index": 58,
+          "start": 0,
+          "end": 137,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e59:0:166",
+          "source_element_index": 59,
+          "start": 0,
+          "end": 166,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e60:0:154",
+          "source_element_index": 60,
+          "start": 0,
+          "end": 154,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e61:0:136",
+          "source_element_index": 61,
+          "start": 0,
+          "end": 136,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e62:0:120",
+          "source_element_index": 62,
+          "start": 0,
+          "end": 120,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e63:0:151",
+          "source_element_index": 63,
+          "start": 0,
+          "end": 151,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e64:0:131",
+          "source_element_index": 64,
+          "start": 0,
+          "end": 131,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e65:0:33",
+          "source_element_index": 65,
+          "start": 0,
+          "end": 33,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e66:0:119",
+          "source_element_index": 66,
+          "start": 0,
+          "end": 119,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e67:0:119",
+          "source_element_index": 67,
+          "start": 0,
+          "end": 119,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e68:0:130",
+          "source_element_index": 68,
+          "start": 0,
+          "end": 130,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e69:0:103",
+          "source_element_index": 69,
+          "start": 0,
+          "end": 103,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e70:0:108",
+          "source_element_index": 70,
+          "start": 0,
+          "end": 108,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e71:0:42",
+          "source_element_index": 71,
+          "start": 0,
+          "end": 42,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e72:0:123",
+          "source_element_index": 72,
+          "start": 0,
+          "end": 123,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e73:0:128",
+          "source_element_index": 73,
+          "start": 0,
+          "end": 128,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e74:0:131",
+          "source_element_index": 74,
+          "start": 0,
+          "end": 131,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e75:0:117",
+          "source_element_index": 75,
+          "start": 0,
+          "end": 117,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e76:0:120",
+          "source_element_index": 76,
+          "start": 0,
+          "end": 120,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e77:0:98",
+          "source_element_index": 77,
+          "start": 0,
+          "end": 98,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e78:0:98",
+          "source_element_index": 78,
+          "start": 0,
+          "end": 98,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e79:0:99",
+          "source_element_index": 79,
+          "start": 0,
+          "end": 99,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e80:0:45",
+          "source_element_index": 80,
+          "start": 0,
+          "end": 45,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit dated employer starts or continues Experience across layout changes"
+        },
+        {
+          "source_id": "e81:0:56",
+          "source_element_index": 81,
+          "start": 0,
+          "end": 56,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit dated employer starts or continues Experience across layout changes"
+        },
+        {
+          "source_id": "e82:0:104",
+          "source_element_index": 82,
+          "start": 0,
+          "end": 104,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e83:0:146",
+          "source_element_index": 83,
+          "start": 0,
+          "end": 146,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e84:0:132",
+          "source_element_index": 84,
+          "start": 0,
+          "end": 132,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e85:0:92",
+          "source_element_index": 85,
+          "start": 0,
+          "end": 92,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e86:0:127",
+          "source_element_index": 86,
+          "start": 0,
+          "end": 127,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e87:0:93",
+          "source_element_index": 87,
+          "start": 0,
+          "end": 93,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e88:0:67",
+          "source_element_index": 88,
+          "start": 0,
+          "end": 67,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit dated employer starts or continues Experience across layout changes"
+        },
+        {
+          "source_id": "e89:0:116",
+          "source_element_index": 89,
+          "start": 0,
+          "end": 116,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e90:0:96",
+          "source_element_index": 90,
+          "start": 0,
+          "end": 96,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e91:0:78",
+          "source_element_index": 91,
+          "start": 0,
+          "end": 78,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e92:0:75",
+          "source_element_index": 92,
+          "start": 0,
+          "end": 75,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit dated employer starts or continues Experience across layout changes"
+        },
+        {
+          "source_id": "e93:0:93",
+          "source_element_index": 93,
+          "start": 0,
+          "end": 93,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e94:0:14",
+          "source_element_index": 94,
+          "start": 0,
+          "end": 14,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e95:0:54",
+          "source_element_index": 95,
+          "start": 0,
+          "end": 54,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e96:0:9",
+          "source_element_index": 96,
+          "start": 0,
+          "end": 9,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e97:0:68",
+          "source_element_index": 97,
+          "start": 0,
+          "end": 68,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e98:0:51",
+          "source_element_index": 98,
+          "start": 0,
+          "end": 51,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        }
+      ]
+    },
+    "document_scope": {
+      "kind": "likely_resume",
+      "candidate_resume": true,
+      "reason": "Contact details, multiple resume section families and dated history; provisional scope only",
+      "human_verified": false
+    },
+    "source_inventory_sha256": "d28b82093ee5c8aab077e0d7e53dd0f36618c446fcf9cf7183f02086805ec8c8",
+    "field_evidence": {
+      "contact.full_name": [
+        "e0:0:14",
+        "e1:0:57",
+        "e2:0:40"
+      ],
+      "contact.email": [
+        "e0:0:14",
+        "e1:0:57",
+        "e2:0:40"
+      ],
+      "contact.phone": [
+        "e0:0:14",
+        "e1:0:57",
+        "e2:0:40"
+      ],
+      "contact.location": [
+        "e0:0:14",
+        "e1:0:57",
+        "e2:0:40"
+      ],
+      "contact.linkedin_url": [
+        "e0:0:14",
+        "e1:0:57",
+        "e2:0:40"
+      ],
+      "summary": [
+        "e4:0:608",
+        "e5:0:16",
+        "e6:0:155",
+        "e7:0:128",
+        "e8:0:128",
+        "e9:0:139",
+        "e10:0:112"
+      ],
+      "skills.all_skills[0]": [
+        "e12:0:57"
+      ],
+      "skills.all_skills[1]": [
+        "e12:0:57"
+      ],
+      "skills.all_skills[2]": [
+        "e12:0:57"
+      ],
+      "skills.all_skills[3]": [
+        "e12:0:57"
+      ],
+      "skills.all_skills[4]": [
+        "e13:0:113"
+      ],
+      "skills.all_skills[5]": [
+        "e13:0:113"
+      ],
+      "skills.all_skills[6]": [
+        "e13:0:113"
+      ],
+      "skills.all_skills[7]": [
+        "e13:0:113"
+      ],
+      "skills.all_skills[8]": [
+        "e13:0:113"
+      ],
+      "skills.all_skills[9]": [
+        "e23:0:277"
+      ],
+      "skills.all_skills[10]": [
+        "e23:0:277"
+      ],
+      "skills.all_skills[11]": [
+        "e23:0:277"
+      ],
+      "skills.all_skills[12]": [
+        "e23:0:277"
+      ],
+      "skills.all_skills[13]": [
+        "e23:0:277"
+      ],
+      "skills.all_skills[14]": [
+        "e23:0:277"
+      ],
+      "skills.all_skills[15]": [
+        "e23:0:277"
+      ],
+      "skills.all_skills[16]": [
+        "e23:0:277"
+      ],
+      "skills.all_skills[17]": [
+        "e23:0:277"
+      ],
+      "skills.all_skills[18]": [
+        "e23:0:277"
+      ],
+      "certifications[0].name": [
+        "e95:0:54"
+      ],
+      "languages[0]": [
+        "e14:10:63"
+      ],
+      "languages[1]": [
+        "e15:0:145"
+      ],
+      "languages[2]": [
+        "e16:0:43"
+      ],
+      "languages[3]": [
+        "e17:0:73"
+      ],
+      "languages[4]": [
+        "e18:0:56"
+      ],
+      "languages[5]": [
+        "e19:0:73"
+      ],
+      "languages[6]": [
+        "e20:0:67"
+      ],
+      "languages[7]": [
+        "e21:0:50"
+      ]
+    },
+    "record_reviews": [
+      {
+        "category": "experience",
+        "entry_id": "experience-1",
+        "source_ids": [
+          "e25:0:67"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-2",
+        "source_ids": [
+          "e26:0:63",
+          "e27:0:248",
+          "e28:0:227",
+          "e29:0:198",
+          "e30:0:167",
+          "e31:0:216",
+          "e32:0:172",
+          "e33:0:70",
+          "e34:0:139",
+          "e35:0:189",
+          "e36:0:124",
+          "e37:0:160",
+          "e38:0:151",
+          "e39:0:47",
+          "e40:0:123",
+          "e41:0:129",
+          "e42:0:142",
+          "e43:0:111",
+          "e44:0:117",
+          "e45:0:151",
+          "e46:0:113",
+          "e47:0:51",
+          "e48:0:96",
+          "e49:0:125",
+          "e50:0:134",
+          "e51:0:104",
+          "e52:0:119",
+          "e53:0:151",
+          "e54:0:120",
+          "e55:0:58",
+          "e56:0:51",
+          "e57:0:147",
+          "e58:0:137",
+          "e59:0:166",
+          "e60:0:154",
+          "e61:0:136",
+          "e62:0:120",
+          "e63:0:151",
+          "e64:0:131",
+          "e65:0:33",
+          "e66:0:119",
+          "e67:0:119",
+          "e68:0:130",
+          "e69:0:103",
+          "e70:0:108",
+          "e71:0:42",
+          "e72:0:123",
+          "e73:0:128",
+          "e74:0:131",
+          "e75:0:117",
+          "e76:0:120",
+          "e77:0:98",
+          "e78:0:98",
+          "e79:0:99"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-3",
+        "source_ids": [
+          "e80:0:45"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-4",
+        "source_ids": [
+          "e81:0:56",
+          "e82:0:104",
+          "e83:0:146",
+          "e84:0:132",
+          "e85:0:92",
+          "e86:0:127",
+          "e87:0:93"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-5",
+        "source_ids": [
+          "e88:0:67",
+          "e89:0:116",
+          "e90:0:96",
+          "e91:0:78"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-6",
+        "source_ids": [
+          "e92:0:75",
+          "e93:0:93"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "education",
+        "entry_id": "education-1",
+        "source_ids": [
+          "e97:0:68",
+          "e98:0:51"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "certifications",
+        "entry_id": "certifications-1",
+        "source_ids": [
+          "e95:0:54"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      }
+    ],
+    "missing_required_fields": [
+      "experience[0].company",
+      "experience[0].role",
+      "experience[1].company",
+      "experience[1].role",
+      "experience[2].company",
+      "experience[2].role",
+      "experience[3].company",
+      "experience[3].role",
+      "experience[4].company",
+      "experience[4].role",
+      "experience[5].company",
+      "experience[5].role",
+      "education[0].institution",
+      "education[0].degree"
+    ],
+    "warnings": [
+      "Schema validity and field completion do not establish extraction or relationship accuracy.",
+      "Handoff confidence scores are fixed heuristics, not calibrated probabilities.",
+      "Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields."
+    ],
+    "unmapped_blocks": [
+      {
+        "source_id": "e3:0:20",
+        "category": "summary",
+        "text": "PROFESSIONAL SUMMARY",
+        "page_number": null
+      },
+      {
+        "source_id": "e11:0:16",
+        "category": "skills",
+        "text": "TECHNICAL SKILLS",
+        "page_number": null
+      },
+      {
+        "source_id": "e22:0:16",
+        "category": "skills",
+        "text": "DOMAIN EXPERTISE",
+        "page_number": null
+      },
+      {
+        "source_id": "e14:0:10",
+        "category": "languages",
+        "text": "Languages:",
+        "page_number": null
+      },
+      {
+        "source_id": "e24:0:23",
+        "category": "experience",
+        "text": "PROFESSIONAL EXPERIENCE",
+        "page_number": null
+      },
+      {
+        "source_id": "e25:0:67",
+        "category": "experience",
+        "text": "Lead Data Engineer, Data Engineering | AuxoAI\t   Dec 2024 – Present",
+        "page_number": null
+      },
+      {
+        "source_id": "e26:0:63",
+        "category": "experience",
+        "text": "OURA — Enterprise Bulk Order Data Platform (May 2026 – Present)",
+        "page_number": null
+      },
+      {
+        "source_id": "e27:0:248",
+        "category": "experience",
+        "text": "Architecting a unified data platform integrating CRM, CPQ, contracts, fulfillment, and ERP systems to enable end-to-end order tracking and revenue reconciliation for OURA's enterprise bulk order business (corporate wellness and insurance partners).",
+        "page_number": null
+      },
+      {
+        "source_id": "e28:0:227",
+        "category": "experience",
+        "text": "Designing integration architecture connecting HubSpot (CRM), DealHub (CPQ), Ironclad (contract management), Bulk Order Portal (fulfillment), and NetSuite (ERP/revenue recognition) into a unified analytical platform on Snowflake",
+        "page_number": null
+      },
+      {
+        "source_id": "e29:0:198",
+        "category": "experience",
+        "text": "Building end-to-end order tracking models that follow each enterprise deal from sales opportunity through quote, contract, customer-driven fulfillment data, and final revenue recognition in NetSuite",
+        "page_number": null
+      },
+      {
+        "source_id": "e30:0:167",
+        "category": "experience",
+        "text": "Developing revenue reconciliation framework comparing NetSuite revenue postings against originating contracts and deals to surface discrepancies before financial close",
+        "page_number": null
+      },
+      {
+        "source_id": "e31:0:216",
+        "category": "experience",
+        "text": "Modeling deal lifecycle stages across heterogeneous source systems (HubSpot pipeline, DealHub quote states, Ironclad contract status, NetSuite order states) into a unified state machine for cross-functional reporting",
+        "page_number": null
+      },
+      {
+        "source_id": "e32:0:172",
+        "category": "experience",
+        "text": "Implementing dbt-based transformation layer on Snowflake with source-aligned staging, conformed dimensions, and incremental marts powering operations and finance dashboards",
+        "page_number": null
+      },
+      {
+        "source_id": "e33:0:70",
+        "category": "experience",
+        "text": "Manufacturing Domain — Legacy Migration (DB2/Informatica to Snowflake)",
+        "page_number": null
+      },
+      {
+        "source_id": "e34:0:139",
+        "category": "experience",
+        "text": "Migrated 200+ legacy ETL workflows from DB2/Informatica PowerCenter to Snowflake + dbt, with Fivetran for automated source synchronization.",
+        "page_number": null
+      },
+      {
+        "source_id": "e35:0:189",
+        "category": "experience",
+        "text": "Converted Informatica PowerCenter XML-based workflow mappings to dbt SQL models, mapping each transformation type (Expression, Joiner, Lookup, Aggregator, Router, SCD) to its SQL equivalent",
+        "page_number": null
+      },
+      {
+        "source_id": "e36:0:124",
+        "category": "experience",
+        "text": "Configured Fivetran source connectors with CDC to sync data from DB2 into Snowflake, eliminating manual extraction processes",
+        "page_number": null
+      },
+      {
+        "source_id": "e37:0:160",
+        "category": "experience",
+        "text": "Built automated reconciliation framework comparing row counts, key aggregates, and hash checks between legacy and dbt outputs, catching discrepancies before UAT",
+        "page_number": null
+      },
+      {
+        "source_id": "e38:0:151",
+        "category": "experience",
+        "text": "Leveraged AI-assisted code generation to accelerate conversion of straightforward mappings, allowing team to focus on complex transformation validation",
+        "page_number": null
+      },
+      {
+        "source_id": "e39:0:47",
+        "category": "experience",
+        "text": "Ventura Foods — People Analytics Data Warehouse",
+        "page_number": null
+      },
+      {
+        "source_id": "e40:0:123",
+        "category": "experience",
+        "text": "Architected a People Analytics warehouse for ~11,000 employees on Snowflake + dbt, integrating SuccessFactors via Fivetran.",
+        "page_number": null
+      },
+      {
+        "source_id": "e41:0:129",
+        "category": "experience",
+        "text": "Designed Bronze/Silver/Gold medallion architecture processing employee lifecycle, talent acquisition, and workforce planning data",
+        "page_number": null
+      },
+      {
+        "source_id": "e42:0:142",
+        "category": "experience",
+        "text": "Implemented SCD Type 2 dimension models with hash-based change detection, tracking employee promotions, transfers, and title changes over time",
+        "page_number": null
+      },
+      {
+        "source_id": "e43:0:111",
+        "category": "experience",
+        "text": "Set up dbt CI/CD pipeline with GitHub PR validation using state:modified selectors, reducing build times by 60%",
+        "page_number": null
+      },
+      {
+        "source_id": "e44:0:117",
+        "category": "experience",
+        "text": "Implemented row-level security (business unit isolation) and dynamic data masking (salary, SSN, PII) across Snowflake",
+        "page_number": null
+      },
+      {
+        "source_id": "e45:0:151",
+        "category": "experience",
+        "text": "Recovered production SCD2 data after accidental full refresh using Snowflake Time Travel (CREATE TABLE CLONE AT), ensuring zero data loss within 1 hour",
+        "page_number": null
+      },
+      {
+        "source_id": "e46:0:113",
+        "category": "experience",
+        "text": "Resolved Iceberg table metadata staleness issues with Fivetran integration by adjusting catalog refresh intervals",
+        "page_number": null
+      },
+      {
+        "source_id": "e47:0:51",
+        "category": "experience",
+        "text": "ADI — dbt Infrastructure & Adoption (40+ Engineers)",
+        "page_number": null
+      },
+      {
+        "source_id": "e48:0:96",
+        "category": "experience",
+        "text": "Built dbt infrastructure from scratch and drove organization-wide adoption across 40+ engineers.",
+        "page_number": null
+      },
+      {
+        "source_id": "e49:0:125",
+        "category": "experience",
+        "text": "Designed project structure (staging/intermediate/marts), source configurations, directory layout, and multi-environment setup",
+        "page_number": null
+      },
+      {
+        "source_id": "e50:0:134",
+        "category": "experience",
+        "text": "Configured slim CI pipelines per environment using state:modified selectors, enabling targeted PR validation and reducing CI run times",
+        "page_number": null
+      },
+      {
+        "source_id": "e51:0:104",
+        "category": "experience",
+        "text": "Integrated Snowflake using key-pair authentication per environment for secure, passwordless connectivity",
+        "page_number": null
+      },
+      {
+        "source_id": "e52:0:119",
+        "category": "experience",
+        "text": "Developed reusable macros (surrogate keys, audit columns, incremental helpers) reducing boilerplate by 40% across teams",
+        "page_number": null
+      },
+      {
+        "source_id": "e53:0:151",
+        "category": "experience",
+        "text": "Authored comprehensive Confluence documentation covering incremental models, snapshots, deferral strategies, and dbt contracts with real-world examples",
+        "page_number": null
+      },
+      {
+        "source_id": "e54:0:120",
+        "category": "experience",
+        "text": "Defined coding standards and naming conventions; trained and onboarded 40+ engineers on dbt workflows and best practices",
+        "page_number": null
+      },
+      {
+        "source_id": "e55:0:58",
+        "category": "experience",
+        "text": "Lead Data Engineer | Genpact (Enquero)\tDec 2021 – Dec 2024",
+        "page_number": null
+      },
+      {
+        "source_id": "e56:0:51",
+        "category": "experience",
+        "text": "AEM Digital Assets Pipeline — Salesforce Data Cloud",
+        "page_number": null
+      },
+      {
+        "source_id": "e57:0:147",
+        "category": "experience",
+        "text": "Designed and built a 5-stage serverless data ingestion pipeline processing digital assets from Adobe Experience Manager into Salesforce Data Cloud.",
+        "page_number": null
+      },
+      {
+        "source_id": "e58:0:137",
+        "category": "experience",
+        "text": "Architected end-to-end pipeline (get, load, transform, deactivate, export) orchestrated by Airflow on Astronomer, executed via AWS Lambda",
+        "page_number": null
+      },
+      {
+        "source_id": "e59:0:166",
+        "category": "experience",
+        "text": "Designed security classification engine categorizing assets into distinct S3 tiers (Partners, PTAC, Distributors, Public) using path-based rules and metadata analysis",
+        "page_number": null
+      },
+      {
+        "source_id": "e60:0:154",
+        "category": "experience",
+        "text": "Engineered date-range chunking (30-day windows) and batch processing (25 assets/batch) to handle large-scale AEM queries within Lambda timeout constraints",
+        "page_number": null
+      },
+      {
+        "source_id": "e61:0:136",
+        "category": "experience",
+        "text": "Implemented dynamic task mapping with expand_kwargs for parallel processing across 4 content types, with TaskGroups for logical grouping",
+        "page_number": null
+      },
+      {
+        "source_id": "e62:0:120",
+        "category": "experience",
+        "text": "Built database-driven configuration model — adding new pipeline objects required only a SQL INSERT, zero code deployment",
+        "page_number": null
+      },
+      {
+        "source_id": "e63:0:151",
+        "category": "experience",
+        "text": "Identified and resolved silent Lambda failures by implementing explicit FunctionError checking in Airflow DAG, preventing false-positive task successes",
+        "page_number": null
+      },
+      {
+        "source_id": "e64:0:131",
+        "category": "experience",
+        "text": "Led UAT deployment including CloudFormation stack configuration, AWS Secrets Manager integration, and cross-account troubleshooting",
+        "page_number": null
+      },
+      {
+        "source_id": "e65:0:33",
+        "category": "experience",
+        "text": "FluidTopics-to-DataCloud Pipeline",
+        "page_number": null
+      },
+      {
+        "source_id": "e66:0:119",
+        "category": "experience",
+        "text": "Built automated ingestion pipeline on the Enterprise Data Platform for enterprise content discovery and access control.",
+        "page_number": null
+      },
+      {
+        "source_id": "e67:0:119",
+        "category": "experience",
+        "text": "Architected pipeline using AWS Lambda, S3 (L1/L2 pattern), Airflow, and Athena following the AEM reference architecture",
+        "page_number": null
+      },
+      {
+        "source_id": "e68:0:130",
+        "category": "experience",
+        "text": "Implemented cumulative security-level duplication model with composite metadata keys for referential integrity across access tiers",
+        "page_number": null
+      },
+      {
+        "source_id": "e69:0:103",
+        "category": "experience",
+        "text": "Built MySQL-backed metadata layer for incremental processing, offset tracking, and export orchestration",
+        "page_number": null
+      },
+      {
+        "source_id": "e70:0:108",
+        "category": "experience",
+        "text": "Externalized security hierarchy into deployable JSON artifact, decoupling business rules from pipeline logic",
+        "page_number": null
+      },
+      {
+        "source_id": "e71:0:42",
+        "category": "experience",
+        "text": "Heineken — Harmonized Data Pipelines (HDP)",
+        "page_number": null
+      },
+      {
+        "source_id": "e72:0:123",
+        "category": "experience",
+        "text": "Designed ETL pipelines harmonizing ERP data from multiple global locations for a leading brewery on Azure Databricks + dbt.",
+        "page_number": null
+      },
+      {
+        "source_id": "e73:0:128",
+        "category": "experience",
+        "text": "Harmonized ERP data from multiple regional schemas into one unified analytical model, enabling consistent cross-region reporting",
+        "page_number": null
+      },
+      {
+        "source_id": "e74:0:131",
+        "category": "experience",
+        "text": "Implemented incremental modeling strategies in dbt, reducing pipeline run times from 30+ minutes to 3-5 minutes on large ERP tables",
+        "page_number": null
+      },
+      {
+        "source_id": "e75:0:117",
+        "category": "experience",
+        "text": "Built reusable macros and managed dbt contracts/versions to protect downstream consumers from breaking schema changes",
+        "page_number": null
+      },
+      {
+        "source_id": "e76:0:120",
+        "category": "experience",
+        "text": "Set up CI/CD through Azure DevOps — PR-triggered slim CI against UAT, merge-to-main deployed to production automatically",
+        "page_number": null
+      },
+      {
+        "source_id": "e77:0:98",
+        "category": "experience",
+        "text": "Utilized Collibra for data governance and business terminology standardization across global teams",
+        "page_number": null
+      },
+      {
+        "source_id": "e78:0:98",
+        "category": "experience",
+        "text": "Collaborated with global stakeholders in Amsterdam for on-site data mapping requirements gathering",
+        "page_number": null
+      },
+      {
+        "source_id": "e79:0:99",
+        "category": "experience",
+        "text": "Optimized long-running Databricks jobs through OPTIMIZE, ZORDER, and cluster sizing recommendations",
+        "page_number": null
+      },
+      {
+        "source_id": "e80:0:45",
+        "category": "experience",
+        "text": "Data Engineer | Cognizant\tJun 2014 – Dec 2021",
+        "page_number": null
+      },
+      {
+        "source_id": "e81:0:56",
+        "category": "experience",
+        "text": "Investment Bank — AWS ETL Pipeline (Dec 2018 – Dec 2021)",
+        "page_number": null
+      },
+      {
+        "source_id": "e82:0:104",
+        "category": "experience",
+        "text": "Designed and built ETL pipelines for equities and trading data on AWS using Glue, PySpark, and DynamoDB.",
+        "page_number": null
+      },
+      {
+        "source_id": "e83:0:146",
+        "category": "experience",
+        "text": "Built PySpark transformations in AWS Glue processing multi-region trading data (AEJ, EMEA, US) with currency exchange rate joins and null handling",
+        "page_number": null
+      },
+      {
+        "source_id": "e84:0:132",
+        "category": "experience",
+        "text": "Leveraged DynamoDB to store ETL configuration and business logic as dynamic content, enabling rule changes without code redeployment",
+        "page_number": null
+      },
+      {
+        "source_id": "e85:0:92",
+        "category": "experience",
+        "text": "Automated file arrival from remote Unix machines to EC2/S3 using Unix scripting and DataSync",
+        "page_number": null
+      },
+      {
+        "source_id": "e86:0:127",
+        "category": "experience",
+        "text": "Validated ETL logic in Athena and built data quality scripts comparing legacy and new system outputs using statistical analysis",
+        "page_number": null
+      },
+      {
+        "source_id": "e87:0:93",
+        "category": "experience",
+        "text": "Monitored pipeline health using CloudWatch; orchestrated file arrival processes using Autosys",
+        "page_number": null
+      },
+      {
+        "source_id": "e88:0:67",
+        "category": "experience",
+        "text": "Europe Investment Bank — Database Development (Jun 2014 – Dec 2018)",
+        "page_number": null
+      },
+      {
+        "source_id": "e89:0:116",
+        "category": "experience",
+        "text": "Designed databases for Equities Quantitative Research linking data from Worldscope, Reuters, Factset, and Bloomberg.",
+        "page_number": null
+      },
+      {
+        "source_id": "e90:0:96",
+        "category": "experience",
+        "text": "Developed stored procedures for data access and loading across multiple financial data providers",
+        "page_number": null
+      },
+      {
+        "source_id": "e91:0:78",
+        "category": "experience",
+        "text": "Automated client reporting by connecting Excel with Oracle Database using ODBC",
+        "page_number": null
+      },
+      {
+        "source_id": "e92:0:75",
+        "category": "experience",
+        "text": "Senior Business Analyst | Altisource Business Solutions\tFeb 2012 – Jun 2014",
+        "page_number": null
+      },
+      {
+        "source_id": "e93:0:93",
+        "category": "experience",
+        "text": "Provided business analysis for Mortgage Banking applications; validated claims data using SQL",
+        "page_number": null
+      },
+      {
+        "source_id": "e94:0:14",
+        "category": "certifications",
+        "text": "CERTIFICATIONS",
+        "page_number": null
+      },
+      {
+        "source_id": "e96:0:9",
+        "category": "education",
+        "text": "EDUCATION",
+        "page_number": null
+      },
+      {
+        "source_id": "e97:0:68",
+        "category": "education",
+        "text": "Bachelor of Technology — Computer Science and Information Technology",
+        "page_number": null
+      },
+      {
+        "source_id": "e98:0:51",
+        "category": "education",
+        "text": "Aurora's Engineering College, JNTU Hyderabad | 2011",
+        "page_number": null
+      }
+    ],
+    "needs_review": []
+  },
+  "section_schemas": [
+    {
+      "category": "personal_information",
+      "label": "Personal information",
+      "records": [
+        {
+          "record_id": "personal_information",
+          "source_ids": [
+            "e0:0:14",
+            "e1:0:57",
+            "e2:0:40"
+          ],
+          "attributes": [
+            {
+              "name": "full_name",
+              "items": [
+                {
+                  "value": "ANKIT SABINKAR",
+                  "evidence": [
+                    {
+                      "source_id": "e0:0:14",
+                      "quote": "ANKIT SABINKAR"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "email",
+              "items": [
+                {
+                  "value": "ankitaurora@gmail.com",
+                  "evidence": [
+                    {
+                      "source_id": "e1:0:57",
+                      "quote": "ankitaurora@gmail.com"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "phone",
+              "items": [
+                {
+                  "value": "+91-8867701487",
+                  "evidence": [
+                    {
+                      "source_id": "e1:0:57",
+                      "quote": "+91-8867701487"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "location",
+              "items": [
+                {
+                  "value": "Hyderabad",
+                  "evidence": [
+                    {
+                      "source_id": "e1:0:57",
+                      "quote": "Hyderabad"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "linkedin_url",
+              "items": [
+                {
+                  "value": "linkedin.com/in/ankit-sabinkar",
+                  "evidence": [
+                    {
+                      "source_id": "e2:0:40",
+                      "quote": "linkedin.com/in/ankit-sabinkar"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "github_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "portfolio_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "professional_title",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e1:0:57",
+          "quote": "+91-8867701487 | ankitaurora@gmail.com | Hyderabad, India"
+        },
+        {
+          "source_id": "e2:0:40",
+          "quote": "LinkedIn: linkedin.com/in/ankit-sabinkar"
+        }
+      ]
+    },
+    {
+      "category": "summary",
+      "label": "Summary",
+      "records": [
+        {
+          "record_id": "summary",
+          "source_ids": [
+            "e4:0:608",
+            "e5:0:16",
+            "e6:0:155",
+            "e7:0:128",
+            "e8:0:128",
+            "e9:0:139",
+            "e10:0:112"
+          ],
+          "attributes": [
+            {
+              "name": "statements",
+              "items": [
+                {
+                  "value": "Data Engineering Leader with 14+ years in IT and 7+ years specializing in data platform architecture. Architected and delivered end-to-end data warehouse solutions processing 10,000+ assets daily across Snowflake, Databricks, AWS, and Azure. Led dbt adoption for 40+ engineers with CI/CD automation, reducing deployment errors by 80%. Designed medallion architectures with SCD Type 2 modeling, row-level security, and dynamic data masking for regulated industries. Experienced across HR Analytics, Manufacturing, Digital Asset Management, and Financial Services domains with global stakeholder collaboration.",
+                  "evidence": [
+                    {
+                      "source_id": "e4:0:608",
+                      "quote": "Data Engineering Leader with 14+ years in IT and 7+ years specializing in data platform architecture. Architected and delivered end-to-end data warehouse solutions processing 10,000+ assets daily across Snowflake, Databricks, AWS, and Azure. Led dbt adoption for 40+ engineers with CI/CD automation, reducing deployment errors by 80%. Designed medallion architectures with SCD Type 2 modeling, row-level security, and dynamic data masking for regulated industries. Experienced across HR Analytics, Manufacturing, Digital Asset Management, and Financial Services domains with global stakeholder collaboration."
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "KEY ACHIEVEMENTS",
+                  "evidence": [
+                    {
+                      "source_id": "e5:0:16",
+                      "quote": "KEY ACHIEVEMENTS"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Architected dbt infrastructure adopted by 40+ engineers as the standard transformation layer, with CI/CD, coding standards, and comprehensive documentation",
+                  "evidence": [
+                    {
+                      "source_id": "e6:0:155",
+                      "quote": "Architected dbt infrastructure adopted by 40+ engineers as the standard transformation layer, with CI/CD, coding standards, and comprehensive documentation"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Designed 5-stage serverless pipeline processing 10,000+ digital assets daily with 99.9% uptime and zero data loss over 12 months",
+                  "evidence": [
+                    {
+                      "source_id": "e7:0:128",
+                      "quote": "Designed 5-stage serverless pipeline processing 10,000+ digital assets daily with 99.9% uptime and zero data loss over 12 months"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Recovered production SCD Type 2 data after accidental full refresh using Snowflake Time Travel with zero data loss within 1 hour",
+                  "evidence": [
+                    {
+                      "source_id": "e8:0:128",
+                      "quote": "Recovered production SCD Type 2 data after accidental full refresh using Snowflake Time Travel with zero data loss within 1 hour"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Migrated 200+ Informatica PowerCenter workflows to Snowflake/dbt with automated reconciliation framework validating transformation accuracy",
+                  "evidence": [
+                    {
+                      "source_id": "e9:0:139",
+                      "quote": "Migrated 200+ Informatica PowerCenter workflows to Snowflake/dbt with automated reconciliation framework validating transformation accuracy"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Reduced dbt build times by 60% through slim CI with state:modified selectors and incremental modeling strategies",
+                  "evidence": [
+                    {
+                      "source_id": "e10:0:112",
+                      "quote": "Reduced dbt build times by 60% through slim CI with state:modified selectors and incremental modeling strategies"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "total_experience_years",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e3:0:20",
+          "quote": "PROFESSIONAL SUMMARY"
+        }
+      ]
+    },
+    {
+      "category": "skills",
+      "label": "Skills",
+      "records": [
+        {
+          "record_id": "skills",
+          "source_ids": [
+            "e12:0:57",
+            "e13:0:113",
+            "e23:0:277"
+          ],
+          "attributes": [
+            {
+              "name": "technical_skills",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "tools_and_platforms",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "domain_and_functional",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "soft_skills",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "all_skills",
+              "items": [
+                {
+                  "value": "Data Platforms: Snowflake",
+                  "evidence": [
+                    {
+                      "source_id": "e12:0:57",
+                      "quote": "Data Platforms: Snowflake"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Databricks",
+                  "evidence": [
+                    {
+                      "source_id": "e12:0:57",
+                      "quote": "Databricks"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Redshift",
+                  "evidence": [
+                    {
+                      "source_id": "e12:0:57",
+                      "quote": "Redshift"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "BigQuery",
+                  "evidence": [
+                    {
+                      "source_id": "e12:0:57",
+                      "quote": "BigQuery"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Transformation & Modeling: dbt (Core & Cloud)",
+                  "evidence": [
+                    {
+                      "source_id": "e13:0:113",
+                      "quote": "Transformation & Modeling: dbt (Core & Cloud)"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Medallion Architecture",
+                  "evidence": [
+                    {
+                      "source_id": "e13:0:113",
+                      "quote": "Medallion Architecture"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "SCD Type 2",
+                  "evidence": [
+                    {
+                      "source_id": "e13:0:113",
+                      "quote": "SCD Type 2"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Dimensional Modeling",
+                  "evidence": [
+                    {
+                      "source_id": "e13:0:113",
+                      "quote": "Dimensional Modeling"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Fivetran",
+                  "evidence": [
+                    {
+                      "source_id": "e13:0:113",
+                      "quote": "Fivetran"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "HR / People Analytics (SuccessFactors",
+                  "evidence": [
+                    {
+                      "source_id": "e23:0:277",
+                      "quote": "HR / People Analytics (SuccessFactors"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Talent Acquisition",
+                  "evidence": [
+                    {
+                      "source_id": "e23:0:277",
+                      "quote": "Talent Acquisition"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Employee Lifecycle)",
+                  "evidence": [
+                    {
+                      "source_id": "e23:0:277",
+                      "quote": "Employee Lifecycle)"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Manufacturing (ERP Systems",
+                  "evidence": [
+                    {
+                      "source_id": "e23:0:277",
+                      "quote": "Manufacturing (ERP Systems"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Legacy Migration)",
+                  "evidence": [
+                    {
+                      "source_id": "e23:0:277",
+                      "quote": "Legacy Migration)"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Digital Asset Management (AEM",
+                  "evidence": [
+                    {
+                      "source_id": "e23:0:277",
+                      "quote": "Digital Asset Management (AEM"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Salesforce Data Cloud)",
+                  "evidence": [
+                    {
+                      "source_id": "e23:0:277",
+                      "quote": "Salesforce Data Cloud)"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Financial Services (Investment Banking",
+                  "evidence": [
+                    {
+                      "source_id": "e23:0:277",
+                      "quote": "Financial Services (Investment Banking"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Equities Research)",
+                  "evidence": [
+                    {
+                      "source_id": "e23:0:277",
+                      "quote": "Equities Research)"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Customer Master Data Management",
+                  "evidence": [
+                    {
+                      "source_id": "e23:0:277",
+                      "quote": "Customer Master Data Management"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e11:0:16",
+          "quote": "TECHNICAL SKILLS"
+        },
+        {
+          "source_id": "e12:0:57",
+          "quote": "Data Platforms: Snowflake, Databricks, Redshift, BigQuery"
+        },
+        {
+          "source_id": "e13:0:113",
+          "quote": "Transformation & Modeling: dbt (Core & Cloud), Medallion Architecture, SCD Type 2, Dimensional Modeling, Fivetran"
+        },
+        {
+          "source_id": "e22:0:16",
+          "quote": "DOMAIN EXPERTISE"
+        },
+        {
+          "source_id": "e23:0:277",
+          "quote": "HR / People Analytics (SuccessFactors, Talent Acquisition, Employee Lifecycle) | Manufacturing (ERP Systems, Legacy Migration) | Digital Asset Management (AEM, Salesforce Data Cloud) | Financial Services (Investment Banking, Equities Research) | Customer Master Data Management"
+        }
+      ]
+    },
+    {
+      "category": "languages",
+      "label": "Languages",
+      "records": [
+        {
+          "record_id": "languages-1",
+          "source_ids": [
+            "e14:10:63",
+            "e15:0:145",
+            "e16:0:43",
+            "e17:0:73",
+            "e18:0:56",
+            "e19:0:73",
+            "e20:0:67",
+            "e21:0:50"
+          ],
+          "attributes": [
+            {
+              "name": "language",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "proficiency",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "Unlabelled compound information requires source review."
+          ]
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e14:0:10",
+          "quote": "Languages:"
+        },
+        {
+          "source_id": "e14:10:63",
+          "quote": " SQL, Python, PySpark, SparkSQL, Unix Shell Scripting"
+        },
+        {
+          "source_id": "e15:0:145",
+          "quote": "AWS: S3, Glue, Lambda, Redshift, Athena, DynamoDB, CloudWatch, CloudFormation, Secrets Manager, Step Functions, SNS, SQS, EC2, RDS, DataSync, VPC"
+        },
+        {
+          "source_id": "e16:0:43",
+          "quote": "Azure: Databricks, DevOps (CI/CD pipelines)"
+        },
+        {
+          "source_id": "e17:0:73",
+          "quote": "GCP: BigQuery, Dataflow, Dataproc, Cloud Storage, Pub/Sub, Cloud Composer"
+        },
+        {
+          "source_id": "e18:0:56",
+          "quote": "Orchestration: Apache Airflow, MWAA, Astronomer, Autosys"
+        },
+        {
+          "source_id": "e19:0:73",
+          "quote": "Data Governance: Collibra, Row-Level Security, Dynamic Data Masking, RBAC"
+        },
+        {
+          "source_id": "e20:0:67",
+          "quote": "DevOps & Tools: GitHub, Git, Jira, VS Code, Notion, CI/CD Pipelines"
+        },
+        {
+          "source_id": "e21:0:50",
+          "quote": "Databases: Oracle, MySQL, MongoDB, PostgreSQL, DB2"
+        }
+      ]
+    },
+    {
+      "category": "experience",
+      "label": "Experience",
+      "records": [
+        {
+          "record_id": "experience-1",
+          "source_ids": [
+            "e25:0:67"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "experience-2",
+          "source_ids": [
+            "e26:0:63",
+            "e27:0:248",
+            "e28:0:227",
+            "e29:0:198",
+            "e30:0:167",
+            "e31:0:216",
+            "e32:0:172",
+            "e33:0:70",
+            "e34:0:139",
+            "e35:0:189",
+            "e36:0:124",
+            "e37:0:160",
+            "e38:0:151",
+            "e39:0:47",
+            "e40:0:123",
+            "e41:0:129",
+            "e42:0:142",
+            "e43:0:111",
+            "e44:0:117",
+            "e45:0:151",
+            "e46:0:113",
+            "e47:0:51",
+            "e48:0:96",
+            "e49:0:125",
+            "e50:0:134",
+            "e51:0:104",
+            "e52:0:119",
+            "e53:0:151",
+            "e54:0:120",
+            "e55:0:58",
+            "e56:0:51",
+            "e57:0:147",
+            "e58:0:137",
+            "e59:0:166",
+            "e60:0:154",
+            "e61:0:136",
+            "e62:0:120",
+            "e63:0:151",
+            "e64:0:131",
+            "e65:0:33",
+            "e66:0:119",
+            "e67:0:119",
+            "e68:0:130",
+            "e69:0:103",
+            "e70:0:108",
+            "e71:0:42",
+            "e72:0:123",
+            "e73:0:128",
+            "e74:0:131",
+            "e75:0:117",
+            "e76:0:120",
+            "e77:0:98",
+            "e78:0:98",
+            "e79:0:99"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "experience-3",
+          "source_ids": [
+            "e80:0:45"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "experience-4",
+          "source_ids": [
+            "e81:0:56",
+            "e82:0:104",
+            "e83:0:146",
+            "e84:0:132",
+            "e85:0:92",
+            "e86:0:127",
+            "e87:0:93"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "experience-5",
+          "source_ids": [
+            "e88:0:67",
+            "e89:0:116",
+            "e90:0:96",
+            "e91:0:78"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "Training/research content requires employment association review."
+          ]
+        },
+        {
+          "record_id": "experience-6",
+          "source_ids": [
+            "e92:0:75",
+            "e93:0:93"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e24:0:23",
+          "quote": "PROFESSIONAL EXPERIENCE"
+        },
+        {
+          "source_id": "e25:0:67",
+          "quote": "Lead Data Engineer, Data Engineering | AuxoAI\t   Dec 2024 – Present"
+        },
+        {
+          "source_id": "e26:0:63",
+          "quote": "OURA — Enterprise Bulk Order Data Platform (May 2026 – Present)"
+        },
+        {
+          "source_id": "e27:0:248",
+          "quote": "Architecting a unified data platform integrating CRM, CPQ, contracts, fulfillment, and ERP systems to enable end-to-end order tracking and revenue reconciliation for OURA's enterprise bulk order business (corporate wellness and insurance partners)."
+        },
+        {
+          "source_id": "e28:0:227",
+          "quote": "Designing integration architecture connecting HubSpot (CRM), DealHub (CPQ), Ironclad (contract management), Bulk Order Portal (fulfillment), and NetSuite (ERP/revenue recognition) into a unified analytical platform on Snowflake"
+        },
+        {
+          "source_id": "e29:0:198",
+          "quote": "Building end-to-end order tracking models that follow each enterprise deal from sales opportunity through quote, contract, customer-driven fulfillment data, and final revenue recognition in NetSuite"
+        },
+        {
+          "source_id": "e30:0:167",
+          "quote": "Developing revenue reconciliation framework comparing NetSuite revenue postings against originating contracts and deals to surface discrepancies before financial close"
+        },
+        {
+          "source_id": "e31:0:216",
+          "quote": "Modeling deal lifecycle stages across heterogeneous source systems (HubSpot pipeline, DealHub quote states, Ironclad contract status, NetSuite order states) into a unified state machine for cross-functional reporting"
+        },
+        {
+          "source_id": "e32:0:172",
+          "quote": "Implementing dbt-based transformation layer on Snowflake with source-aligned staging, conformed dimensions, and incremental marts powering operations and finance dashboards"
+        },
+        {
+          "source_id": "e33:0:70",
+          "quote": "Manufacturing Domain — Legacy Migration (DB2/Informatica to Snowflake)"
+        },
+        {
+          "source_id": "e34:0:139",
+          "quote": "Migrated 200+ legacy ETL workflows from DB2/Informatica PowerCenter to Snowflake + dbt, with Fivetran for automated source synchronization."
+        },
+        {
+          "source_id": "e35:0:189",
+          "quote": "Converted Informatica PowerCenter XML-based workflow mappings to dbt SQL models, mapping each transformation type (Expression, Joiner, Lookup, Aggregator, Router, SCD) to its SQL equivalent"
+        },
+        {
+          "source_id": "e36:0:124",
+          "quote": "Configured Fivetran source connectors with CDC to sync data from DB2 into Snowflake, eliminating manual extraction processes"
+        },
+        {
+          "source_id": "e37:0:160",
+          "quote": "Built automated reconciliation framework comparing row counts, key aggregates, and hash checks between legacy and dbt outputs, catching discrepancies before UAT"
+        },
+        {
+          "source_id": "e38:0:151",
+          "quote": "Leveraged AI-assisted code generation to accelerate conversion of straightforward mappings, allowing team to focus on complex transformation validation"
+        },
+        {
+          "source_id": "e39:0:47",
+          "quote": "Ventura Foods — People Analytics Data Warehouse"
+        },
+        {
+          "source_id": "e40:0:123",
+          "quote": "Architected a People Analytics warehouse for ~11,000 employees on Snowflake + dbt, integrating SuccessFactors via Fivetran."
+        },
+        {
+          "source_id": "e41:0:129",
+          "quote": "Designed Bronze/Silver/Gold medallion architecture processing employee lifecycle, talent acquisition, and workforce planning data"
+        },
+        {
+          "source_id": "e42:0:142",
+          "quote": "Implemented SCD Type 2 dimension models with hash-based change detection, tracking employee promotions, transfers, and title changes over time"
+        },
+        {
+          "source_id": "e43:0:111",
+          "quote": "Set up dbt CI/CD pipeline with GitHub PR validation using state:modified selectors, reducing build times by 60%"
+        },
+        {
+          "source_id": "e44:0:117",
+          "quote": "Implemented row-level security (business unit isolation) and dynamic data masking (salary, SSN, PII) across Snowflake"
+        },
+        {
+          "source_id": "e45:0:151",
+          "quote": "Recovered production SCD2 data after accidental full refresh using Snowflake Time Travel (CREATE TABLE CLONE AT), ensuring zero data loss within 1 hour"
+        },
+        {
+          "source_id": "e46:0:113",
+          "quote": "Resolved Iceberg table metadata staleness issues with Fivetran integration by adjusting catalog refresh intervals"
+        },
+        {
+          "source_id": "e47:0:51",
+          "quote": "ADI — dbt Infrastructure & Adoption (40+ Engineers)"
+        },
+        {
+          "source_id": "e48:0:96",
+          "quote": "Built dbt infrastructure from scratch and drove organization-wide adoption across 40+ engineers."
+        },
+        {
+          "source_id": "e49:0:125",
+          "quote": "Designed project structure (staging/intermediate/marts), source configurations, directory layout, and multi-environment setup"
+        },
+        {
+          "source_id": "e50:0:134",
+          "quote": "Configured slim CI pipelines per environment using state:modified selectors, enabling targeted PR validation and reducing CI run times"
+        },
+        {
+          "source_id": "e51:0:104",
+          "quote": "Integrated Snowflake using key-pair authentication per environment for secure, passwordless connectivity"
+        },
+        {
+          "source_id": "e52:0:119",
+          "quote": "Developed reusable macros (surrogate keys, audit columns, incremental helpers) reducing boilerplate by 40% across teams"
+        },
+        {
+          "source_id": "e53:0:151",
+          "quote": "Authored comprehensive Confluence documentation covering incremental models, snapshots, deferral strategies, and dbt contracts with real-world examples"
+        },
+        {
+          "source_id": "e54:0:120",
+          "quote": "Defined coding standards and naming conventions; trained and onboarded 40+ engineers on dbt workflows and best practices"
+        },
+        {
+          "source_id": "e55:0:58",
+          "quote": "Lead Data Engineer | Genpact (Enquero)\tDec 2021 – Dec 2024"
+        },
+        {
+          "source_id": "e56:0:51",
+          "quote": "AEM Digital Assets Pipeline — Salesforce Data Cloud"
+        },
+        {
+          "source_id": "e57:0:147",
+          "quote": "Designed and built a 5-stage serverless data ingestion pipeline processing digital assets from Adobe Experience Manager into Salesforce Data Cloud."
+        },
+        {
+          "source_id": "e58:0:137",
+          "quote": "Architected end-to-end pipeline (get, load, transform, deactivate, export) orchestrated by Airflow on Astronomer, executed via AWS Lambda"
+        },
+        {
+          "source_id": "e59:0:166",
+          "quote": "Designed security classification engine categorizing assets into distinct S3 tiers (Partners, PTAC, Distributors, Public) using path-based rules and metadata analysis"
+        },
+        {
+          "source_id": "e60:0:154",
+          "quote": "Engineered date-range chunking (30-day windows) and batch processing (25 assets/batch) to handle large-scale AEM queries within Lambda timeout constraints"
+        },
+        {
+          "source_id": "e61:0:136",
+          "quote": "Implemented dynamic task mapping with expand_kwargs for parallel processing across 4 content types, with TaskGroups for logical grouping"
+        },
+        {
+          "source_id": "e62:0:120",
+          "quote": "Built database-driven configuration model — adding new pipeline objects required only a SQL INSERT, zero code deployment"
+        },
+        {
+          "source_id": "e63:0:151",
+          "quote": "Identified and resolved silent Lambda failures by implementing explicit FunctionError checking in Airflow DAG, preventing false-positive task successes"
+        },
+        {
+          "source_id": "e64:0:131",
+          "quote": "Led UAT deployment including CloudFormation stack configuration, AWS Secrets Manager integration, and cross-account troubleshooting"
+        },
+        {
+          "source_id": "e65:0:33",
+          "quote": "FluidTopics-to-DataCloud Pipeline"
+        },
+        {
+          "source_id": "e66:0:119",
+          "quote": "Built automated ingestion pipeline on the Enterprise Data Platform for enterprise content discovery and access control."
+        },
+        {
+          "source_id": "e67:0:119",
+          "quote": "Architected pipeline using AWS Lambda, S3 (L1/L2 pattern), Airflow, and Athena following the AEM reference architecture"
+        },
+        {
+          "source_id": "e68:0:130",
+          "quote": "Implemented cumulative security-level duplication model with composite metadata keys for referential integrity across access tiers"
+        },
+        {
+          "source_id": "e69:0:103",
+          "quote": "Built MySQL-backed metadata layer for incremental processing, offset tracking, and export orchestration"
+        },
+        {
+          "source_id": "e70:0:108",
+          "quote": "Externalized security hierarchy into deployable JSON artifact, decoupling business rules from pipeline logic"
+        },
+        {
+          "source_id": "e71:0:42",
+          "quote": "Heineken — Harmonized Data Pipelines (HDP)"
+        },
+        {
+          "source_id": "e72:0:123",
+          "quote": "Designed ETL pipelines harmonizing ERP data from multiple global locations for a leading brewery on Azure Databricks + dbt."
+        },
+        {
+          "source_id": "e73:0:128",
+          "quote": "Harmonized ERP data from multiple regional schemas into one unified analytical model, enabling consistent cross-region reporting"
+        },
+        {
+          "source_id": "e74:0:131",
+          "quote": "Implemented incremental modeling strategies in dbt, reducing pipeline run times from 30+ minutes to 3-5 minutes on large ERP tables"
+        },
+        {
+          "source_id": "e75:0:117",
+          "quote": "Built reusable macros and managed dbt contracts/versions to protect downstream consumers from breaking schema changes"
+        },
+        {
+          "source_id": "e76:0:120",
+          "quote": "Set up CI/CD through Azure DevOps — PR-triggered slim CI against UAT, merge-to-main deployed to production automatically"
+        },
+        {
+          "source_id": "e77:0:98",
+          "quote": "Utilized Collibra for data governance and business terminology standardization across global teams"
+        },
+        {
+          "source_id": "e78:0:98",
+          "quote": "Collaborated with global stakeholders in Amsterdam for on-site data mapping requirements gathering"
+        },
+        {
+          "source_id": "e79:0:99",
+          "quote": "Optimized long-running Databricks jobs through OPTIMIZE, ZORDER, and cluster sizing recommendations"
+        },
+        {
+          "source_id": "e80:0:45",
+          "quote": "Data Engineer | Cognizant\tJun 2014 – Dec 2021"
+        },
+        {
+          "source_id": "e81:0:56",
+          "quote": "Investment Bank — AWS ETL Pipeline (Dec 2018 – Dec 2021)"
+        },
+        {
+          "source_id": "e82:0:104",
+          "quote": "Designed and built ETL pipelines for equities and trading data on AWS using Glue, PySpark, and DynamoDB."
+        },
+        {
+          "source_id": "e83:0:146",
+          "quote": "Built PySpark transformations in AWS Glue processing multi-region trading data (AEJ, EMEA, US) with currency exchange rate joins and null handling"
+        },
+        {
+          "source_id": "e84:0:132",
+          "quote": "Leveraged DynamoDB to store ETL configuration and business logic as dynamic content, enabling rule changes without code redeployment"
+        },
+        {
+          "source_id": "e85:0:92",
+          "quote": "Automated file arrival from remote Unix machines to EC2/S3 using Unix scripting and DataSync"
+        },
+        {
+          "source_id": "e86:0:127",
+          "quote": "Validated ETL logic in Athena and built data quality scripts comparing legacy and new system outputs using statistical analysis"
+        },
+        {
+          "source_id": "e87:0:93",
+          "quote": "Monitored pipeline health using CloudWatch; orchestrated file arrival processes using Autosys"
+        },
+        {
+          "source_id": "e88:0:67",
+          "quote": "Europe Investment Bank — Database Development (Jun 2014 – Dec 2018)"
+        },
+        {
+          "source_id": "e89:0:116",
+          "quote": "Designed databases for Equities Quantitative Research linking data from Worldscope, Reuters, Factset, and Bloomberg."
+        },
+        {
+          "source_id": "e90:0:96",
+          "quote": "Developed stored procedures for data access and loading across multiple financial data providers"
+        },
+        {
+          "source_id": "e91:0:78",
+          "quote": "Automated client reporting by connecting Excel with Oracle Database using ODBC"
+        },
+        {
+          "source_id": "e92:0:75",
+          "quote": "Senior Business Analyst | Altisource Business Solutions\tFeb 2012 – Jun 2014"
+        },
+        {
+          "source_id": "e93:0:93",
+          "quote": "Provided business analysis for Mortgage Banking applications; validated claims data using SQL"
+        }
+      ]
+    },
+    {
+      "category": "certifications",
+      "label": "Certifications",
+      "records": [
+        {
+          "record_id": "certifications-1",
+          "source_ids": [
+            "e95:0:54"
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "items": [
+                {
+                  "value": "dbt Certified Analytics Engineer — dbt Labs | May 2026",
+                  "evidence": [
+                    {
+                      "source_id": "e95:0:54",
+                      "quote": "dbt Certified Analytics Engineer — dbt Labs | May 2026"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "issuer",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "issue_year",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e94:0:14",
+          "quote": "CERTIFICATIONS"
+        }
+      ]
+    },
+    {
+      "category": "education",
+      "label": "Education",
+      "records": [
+        {
+          "record_id": "education-1",
+          "source_ids": [
+            "e97:0:68",
+            "e98:0:51"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "degree",
+              "items": [
+                {
+                  "value": "Bachelor of Technology",
+                  "evidence": [
+                    {
+                      "source_id": "e97:0:68",
+                      "quote": "Bachelor of Technology"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e96:0:9",
+          "quote": "EDUCATION"
+        },
+        {
+          "source_id": "e97:0:68",
+          "quote": "Bachelor of Technology — Computer Science and Information Technology"
+        },
+        {
+          "source_id": "e98:0:51",
+          "quote": "Aurora's Engineering College, JNTU Hyderabad | 2011"
+        }
+      ]
+    }
+  ]
+}

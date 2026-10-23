@@ -1,0 +1,2469 @@
+{
+  "success": true,
+  "source": "Jayesh Gagnani.docx",
+  "extraction_mode": "existing_blocks_schema_mapping",
+  "data": {
+    "contact": {
+      "full_name": "Pune, India 411057",
+      "email": "gis.jayu@gmail.com",
+      "phone": "+919033611954",
+      "location": "Pune",
+      "linkedin_url": "www.linkedin.com/in/jay-gagnani-",
+      "github_url": null,
+      "portfolio_url": null
+    },
+    "professional_title": null,
+    "summary": "10 years of professional IT experience in Java/J2EE technologies, web application development, and implementation, as well as technical PROD support.\nI am a strong believer in continuous process improvement, a quick learner, and I have immense professional experience working collaboratively with a team to design, develop solutions, and troubleshoot complex issues.\nExpertise in the development of Spring Restful Services, Spring Boot, Spring JDBC, JPA, Hibernate, Maven, Solace, and used SVN for version control.\nExpertise in databases such as Oracle, DB2, MySQL, MS SQL, and MongoDB, including analyzing and optimizing complex queries, and working closely with DBAs. Expertise in JENKINS (automation), Shell/Python scripts, logs, Cron schedulers, and troubleshooting performance issues in the app server. Used the app Grafana tools. Knowledge of microservices architecture and in-depth knowledge of microservices design patterns, as well as data consistency patterns (distributed transactions).\nExperience in building microservices with Spring Boot for a self-designed project.\nI used application servers like Tomcat, JBOSS, and Glassfish in building and deploying applications, and troubleshooting problems.\nExpert in handling critical outages and critical issues, leading the team to resolve issues against a tight deadline.\nStrong hold in ticketing systems and dashboard metrics (JIRA), and expert in documenting key solutions and configurations in Confluence.",
+    "total_experience_years": null,
+    "skills": {
+      "technical_skills": [
+        "Python",
+        "SQL",
+        "Java",
+        "JavaScript",
+        "PostgreSQL",
+        "MongoDB",
+        "Docker"
+      ],
+      "tools_and_platforms": [
+        "JIRA",
+        "Git"
+      ],
+      "domain_and_functional": [],
+      "soft_skills": [],
+      "all_skills": [
+        "Python",
+        "SQL",
+        "Java",
+        "JavaScript",
+        "PostgreSQL",
+        "MongoDB",
+        "Docker",
+        "JIRA",
+        "Git",
+        "Java 8",
+        "Spring Boot",
+        "Hibernate",
+        "JPA",
+        "Microservices",
+        "REST APIs",
+        "and Multithreading",
+        "Data manipulation:",
+        "Pandas",
+        "Database Management",
+        "Oracle",
+        "Microsoft SQL Server",
+        "Miscellaneous",
+        "GIT",
+        "Nginx",
+        "and Cloud Deployment"
+      ]
+    },
+    "experience": [
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      }
+    ],
+    "education": [],
+    "certifications": [],
+    "projects": [],
+    "languages": [
+      "English: First Language",
+      "Hindi:",
+      "Advanced (C1)",
+      "C1\tGujarati:\tC1",
+      "Advanced (C1)"
+    ]
+  },
+  "schema_mapping": {
+    "fields_populated": 10,
+    "total_fields": 16,
+    "completion_percentage": 62.5,
+    "field_details": [
+      {
+        "field_name": "contact.full_name",
+        "target_type": "string",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Personal Details",
+        "confidence_score": 0.95,
+        "description": "Candidate's full name, extracted from the top header of the resume."
+      },
+      {
+        "field_name": "contact.email",
+        "target_type": "string (email)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.98,
+        "description": "Candidate's primary contact email address."
+      },
+      {
+        "field_name": "contact.phone",
+        "target_type": "string (phone)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.95,
+        "description": "Candidate's telephone / mobile phone number."
+      },
+      {
+        "field_name": "contact.location",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.85,
+        "description": "Candidate's residential location or work city."
+      },
+      {
+        "field_name": "contact.linkedin_url",
+        "target_type": "string (url) | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.9,
+        "description": "URL to candidate's LinkedIn profile."
+      },
+      {
+        "field_name": "professional_title",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Subtitle",
+        "confidence_score": 0.0,
+        "description": "Candidate's target headline or most recent job title."
+      },
+      {
+        "field_name": "summary",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Summary / Profile / Objective",
+        "confidence_score": 0.85,
+        "description": "Executive bio, professional overview, or career objective."
+      },
+      {
+        "field_name": "total_experience_years",
+        "target_type": "float | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Summary / Experience Calculation",
+        "confidence_score": 0.0,
+        "description": "Total professional experience in years."
+      },
+      {
+        "field_name": "skills.technical_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills / Technical Competencies",
+        "confidence_score": 0.92,
+        "description": "Technical programming languages and core software competencies."
+      },
+      {
+        "field_name": "skills.tools_and_platforms",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills / Tools & Technologies",
+        "confidence_score": 0.9,
+        "description": "Software platforms, developer tools, and operational systems."
+      },
+      {
+        "field_name": "skills.domain_and_functional",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Domain Expertise",
+        "confidence_score": 0.0,
+        "description": "Functional domain knowledge (e.g. Hedge Funds, KYC, NAV, Derivatives)."
+      },
+      {
+        "field_name": "skills.all_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills (Aggregated)",
+        "confidence_score": 0.95,
+        "description": "Complete list of candidate skills across all categories."
+      },
+      {
+        "field_name": "experience",
+        "target_type": "array[WorkExperience]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Experience / Work History",
+        "confidence_score": 0.92,
+        "description": "Complete chronological employment records with bullet points."
+      },
+      {
+        "field_name": "education",
+        "target_type": "array[Education]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Education / Academic Qualifications",
+        "confidence_score": 0.0,
+        "description": "University, college, and higher education degree qualifications."
+      },
+      {
+        "field_name": "certifications",
+        "target_type": "array[Certification]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Certifications / Licenses",
+        "confidence_score": 0.0,
+        "description": "Professional accreditations and credentials."
+      },
+      {
+        "field_name": "projects",
+        "target_type": "array[Project]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Projects / Key Engagements",
+        "confidence_score": 0.0,
+        "description": "Major projects or strategic initiatives led by candidate."
+      }
+    ]
+  },
+  "raw_sections": {
+    "personal_information": "  Pune, India 411057\n+919033611954\ngis.jayu@gmail.com\nwww.linkedin.com/in/jay-gagnani-",
+    "summary": "SUMMARY\n10 years of professional IT experience in Java/J2EE technologies, web application development, and implementation, as well as technical PROD support.\nI am a strong believer in continuous process improvement, a quick learner, and I have immense professional experience working collaboratively with a team to design, develop solutions, and troubleshoot complex issues.\nExpertise in the development of Spring Restful Services, Spring Boot, Spring JDBC, JPA, Hibernate, Maven, Solace, and used SVN for version control.\nExpertise in databases such as Oracle, DB2, MySQL, MS SQL, and MongoDB, including analyzing and optimizing complex queries, and working closely with DBAs. Expertise in JENKINS (automation), Shell/Python scripts, logs, Cron schedulers, and troubleshooting performance issues in the app server. Used the app Grafana tools. Knowledge of microservices architecture and in-depth knowledge of microservices design patterns, as well as data consistency patterns (distributed transactions).\nExperience in building microservices with Spring Boot for a self-designed project.\nI used application servers like Tomcat, JBOSS, and Glassfish in building and deploying applications, and troubleshooting problems.\nExpert in handling critical outages and critical issues, leading the team to resolve issues against a tight deadline.\nStrong hold in ticketing systems and dashboard metrics (JIRA), and expert in documenting key solutions and configurations in Confluence.",
+    "skills": "SKILLS\nProgramming and tools\nJava 8, Spring Boot, Hibernate, JPA, Microservices, Python, JavaScript, REST APIs, and Multithreading\nData manipulation:\nPandas\nDatabase Management\nSQL, PostgreSQL, Oracle, MongoDB, Microsoft SQL Server\nMiscellaneous\nJIRA, GIT, Docker, Nginx, and Cloud Deployment",
+    "experience": "EXPERIENCE\nASSOCIATE SPECIALIST, 11/2020 - Current\nSynechron Technology (HSBC Client) – Banking Domain, Pune, India Handled 15 people in a team, and managed 2 projects.\nImplemented 10 new microservices.\nIntroduced load balancer, Grafana, Solace, Swagger.\nImproved 80% of the performance issues during the use of multithreading. Resolved to accept multiple requests at a time in Vert.x functionality.\nIntroduced event-driven architecture using Solace. Conducted code review.\nDeveloped a retry mechanism in the microservice circuit breaker. Built multithreading using a service executor.\nSENIOR SOFTWARE DEVELOPER, 03/2020 - 10/2020\nMvp1 Venture, Ahmedabad, India\nMigrated to a cloud-based application using AWS.\nDeveloped a Spring Boot application with event-driven design using SQS and S3. Conducted proof of concepts (POCs) and optimized SQL queries, resulting in a 30% improvement in API response time and data retrieval speed for large databases.\nDeveloped a Python script to merge two large CSV files using Pandas to reduce performance by 80%.\nSENIOR JAVA DEVELOPER, 08/2019 - 12/2019\nGlobalVox Pvt Ltd – Security Domain, Ahmedabad, India\nMigrated the organization's current application from a conventional .NET backend to a Spring Boot backend, resulting in reduced maintenance costs and improved performance metrics.\nImplemented face reorganization and palm vein algorithm.\nSENIOR SOFTWARE DEVELOPER, 06/2017 - 08/2019\nTalent Anywhere – Telecom Domain, Vadodara, India\nMigrated the organization's current application from .NET to a Java application using Spring MVC.\nDeveloped the Angular and Node application.\nStarted to use procedures and triggers in Oracle DB to avoid the use of big queries. Reduced the performance issue by 60%.\nResolved transaction management issue. Reduced 90% of DB connections in each process.\nSOFTWARE DEVELOPER, 10/2014 - 11/2016\nQuix Creation – Insurance Domain, Vadodara, India Implemented a J2EE-based application with JSP and servlet. Started to implement the REST API/SOAP API.\nOnsite work for AIA Group Insurance Company in Shanghai (China).",
+    "education": "EDUCATION ",
+    "awards": "ACCOMPLISHMENTS\nReceived the 'Employee of the Month' award three times from 2022 to 2024 for outstanding contributions to the company.\nWon the 'Surpass Award' in 2023 for developing a new product.",
+    "languages": "LANGUAGES\tEnglish: First Language\nHindi:\nAdvanced (C1)\nC1\tGujarati:\tC1\nAdvanced (C1)"
+  },
+  "meta": {
+    "status": "needs_review",
+    "human_verified": false,
+    "provider_calls": 0,
+    "source_accounting": {
+      "all_source_text_preserved": true,
+      "total_spans": 66,
+      "assigned_meaningful_spans": 58,
+      "unresolved_meaningful_spans": 6,
+      "non_content_artifacts": 2,
+      "duplicates_excluded": 0,
+      "all_meaningful_text_assigned": false,
+      "semantic_correctness_verified": false,
+      "outcomes": [
+        {
+          "source_id": "e0:0:14",
+          "source_element_index": 0,
+          "start": 0,
+          "end": 14,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e1:0:20",
+          "source_element_index": 1,
+          "start": 0,
+          "end": 20,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e2:0:13",
+          "source_element_index": 2,
+          "start": 0,
+          "end": 13,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e3:0:18",
+          "source_element_index": 3,
+          "start": 0,
+          "end": 18,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e4:0:32",
+          "source_element_index": 4,
+          "start": 0,
+          "end": 32,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e5:0:7",
+          "source_element_index": 5,
+          "start": 0,
+          "end": 7,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e6:0:149",
+          "source_element_index": 6,
+          "start": 0,
+          "end": 149,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e7:0:216",
+          "source_element_index": 7,
+          "start": 0,
+          "end": 216,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:0:147",
+          "source_element_index": 8,
+          "start": 0,
+          "end": 147,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:0:482",
+          "source_element_index": 9,
+          "start": 0,
+          "end": 482,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e10:0:82",
+          "source_element_index": 10,
+          "start": 0,
+          "end": 82,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e11:0:130",
+          "source_element_index": 11,
+          "start": 0,
+          "end": 130,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:0:117",
+          "source_element_index": 12,
+          "start": 0,
+          "end": 117,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e13:0:136",
+          "source_element_index": 13,
+          "start": 0,
+          "end": 136,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e14:0:6",
+          "source_element_index": 14,
+          "start": 0,
+          "end": 6,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e15:0:21",
+          "source_element_index": 15,
+          "start": 0,
+          "end": 21,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Distinct BERT heading match with a K-means section label"
+        },
+        {
+          "source_id": "e16:0:101",
+          "source_element_index": 16,
+          "start": 0,
+          "end": 101,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e17:0:18",
+          "source_element_index": 17,
+          "start": 0,
+          "end": 18,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e18:0:6",
+          "source_element_index": 18,
+          "start": 0,
+          "end": 6,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e19:0:19",
+          "source_element_index": 19,
+          "start": 0,
+          "end": 19,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e20:0:54",
+          "source_element_index": 20,
+          "start": 0,
+          "end": 54,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e21:0:13",
+          "source_element_index": 21,
+          "start": 0,
+          "end": 13,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e22:0:46",
+          "source_element_index": 22,
+          "start": 0,
+          "end": 46,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e23:0:10",
+          "source_element_index": 23,
+          "start": 0,
+          "end": 10,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e24:0:39",
+          "source_element_index": 24,
+          "start": 0,
+          "end": 39,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e25:0:117",
+          "source_element_index": 25,
+          "start": 0,
+          "end": 117,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e26:0:33",
+          "source_element_index": 26,
+          "start": 0,
+          "end": 33,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e27:0:0",
+          "source_element_index": 27,
+          "start": 0,
+          "end": 0,
+          "section": null,
+          "outcome": "non_content_artifact",
+          "reason": "Whitespace retained in source inventory"
+        },
+        {
+          "source_id": "e28:0:51",
+          "source_element_index": 28,
+          "start": 0,
+          "end": 51,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e29:0:144",
+          "source_element_index": 29,
+          "start": 0,
+          "end": 144,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e30:0:73",
+          "source_element_index": 30,
+          "start": 0,
+          "end": 73,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e31:0:111",
+          "source_element_index": 31,
+          "start": 0,
+          "end": 111,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e32:0:44",
+          "source_element_index": 32,
+          "start": 0,
+          "end": 44,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e33:0:30",
+          "source_element_index": 33,
+          "start": 0,
+          "end": 30,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e34:0:48",
+          "source_element_index": 34,
+          "start": 0,
+          "end": 48,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e35:0:238",
+          "source_element_index": 35,
+          "start": 0,
+          "end": 238,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e36:0:97",
+          "source_element_index": 36,
+          "start": 0,
+          "end": 97,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e37:0:40",
+          "source_element_index": 37,
+          "start": 0,
+          "end": 40,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e38:0:53",
+          "source_element_index": 38,
+          "start": 0,
+          "end": 53,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e39:0:179",
+          "source_element_index": 39,
+          "start": 0,
+          "end": 179,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e40:0:56",
+          "source_element_index": 40,
+          "start": 0,
+          "end": 56,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e41:0:44",
+          "source_element_index": 41,
+          "start": 0,
+          "end": 44,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e42:0:49",
+          "source_element_index": 42,
+          "start": 0,
+          "end": 49,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e43:0:97",
+          "source_element_index": 43,
+          "start": 0,
+          "end": 97,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e44:0:43",
+          "source_element_index": 44,
+          "start": 0,
+          "end": 43,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e45:0:122",
+          "source_element_index": 45,
+          "start": 0,
+          "end": 122,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e46:0:85",
+          "source_element_index": 46,
+          "start": 0,
+          "end": 85,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e47:0:37",
+          "source_element_index": 47,
+          "start": 0,
+          "end": 37,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e48:0:152",
+          "source_element_index": 48,
+          "start": 0,
+          "end": 152,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e49:0:64",
+          "source_element_index": 49,
+          "start": 0,
+          "end": 64,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e50:0:10",
+          "source_element_index": 50,
+          "start": 0,
+          "end": 10,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e50:10:22",
+          "source_element_index": 50,
+          "start": 10,
+          "end": 22,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Possible ambiguous or unsupported heading; section context stopped"
+        },
+        {
+          "source_id": "e51:0:29",
+          "source_element_index": 51,
+          "start": 0,
+          "end": 29,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e52:0:66",
+          "source_element_index": 52,
+          "start": 0,
+          "end": 66,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e53:0:31",
+          "source_element_index": 53,
+          "start": 0,
+          "end": 31,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e54:0:68",
+          "source_element_index": 54,
+          "start": 0,
+          "end": 68,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e55:0:0",
+          "source_element_index": 55,
+          "start": 0,
+          "end": 0,
+          "section": null,
+          "outcome": "non_content_artifact",
+          "reason": "Whitespace retained in source inventory"
+        },
+        {
+          "source_id": "e56:0:15",
+          "source_element_index": 56,
+          "start": 0,
+          "end": 15,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Distinct BERT heading match with a K-means section label"
+        },
+        {
+          "source_id": "e57:0:118",
+          "source_element_index": 57,
+          "start": 0,
+          "end": 118,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e58:0:61",
+          "source_element_index": 58,
+          "start": 0,
+          "end": 61,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e59:0:10",
+          "source_element_index": 59,
+          "start": 0,
+          "end": 10,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e59:10:33",
+          "source_element_index": 59,
+          "start": 10,
+          "end": 33,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e60:0:6",
+          "source_element_index": 60,
+          "start": 0,
+          "end": 6,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e61:0:13",
+          "source_element_index": 61,
+          "start": 0,
+          "end": 13,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e62:0:15",
+          "source_element_index": 62,
+          "start": 0,
+          "end": 15,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e63:0:13",
+          "source_element_index": 63,
+          "start": 0,
+          "end": 13,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        }
+      ]
+    },
+    "document_scope": {
+      "kind": "likely_resume",
+      "candidate_resume": true,
+      "reason": "Contact details, multiple resume section families and dated history; provisional scope only",
+      "human_verified": false
+    },
+    "source_inventory_sha256": "89f50b35923dda4fe65080674c55c086bf0451c66c88e4734452799e39ead88b",
+    "field_evidence": {
+      "contact.full_name": [
+        "e1:0:20",
+        "e2:0:13",
+        "e3:0:18",
+        "e4:0:32"
+      ],
+      "contact.email": [
+        "e1:0:20",
+        "e2:0:13",
+        "e3:0:18",
+        "e4:0:32"
+      ],
+      "contact.phone": [
+        "e1:0:20",
+        "e2:0:13",
+        "e3:0:18",
+        "e4:0:32"
+      ],
+      "contact.location": [
+        "e1:0:20",
+        "e2:0:13",
+        "e3:0:18",
+        "e4:0:32"
+      ],
+      "contact.linkedin_url": [
+        "e1:0:20",
+        "e2:0:13",
+        "e3:0:18",
+        "e4:0:32"
+      ],
+      "summary": [
+        "e6:0:149",
+        "e7:0:216",
+        "e8:0:147",
+        "e9:0:482",
+        "e10:0:82",
+        "e11:0:130",
+        "e12:0:117",
+        "e13:0:136"
+      ],
+      "skills.technical_skills[0]": [
+        "e16:0:101"
+      ],
+      "skills.technical_skills[1]": [
+        "e20:0:54"
+      ],
+      "skills.technical_skills[2]": [
+        "e16:0:101"
+      ],
+      "skills.technical_skills[3]": [
+        "e16:0:101"
+      ],
+      "skills.technical_skills[4]": [
+        "e20:0:54"
+      ],
+      "skills.technical_skills[5]": [
+        "e20:0:54"
+      ],
+      "skills.technical_skills[6]": [
+        "e22:0:46"
+      ],
+      "skills.tools_and_platforms[0]": [
+        "e22:0:46"
+      ],
+      "skills.tools_and_platforms[1]": [
+        "e22:0:46"
+      ],
+      "skills.all_skills[0]": [
+        "e16:0:101"
+      ],
+      "skills.all_skills[1]": [
+        "e20:0:54"
+      ],
+      "skills.all_skills[2]": [
+        "e16:0:101"
+      ],
+      "skills.all_skills[3]": [
+        "e16:0:101"
+      ],
+      "skills.all_skills[4]": [
+        "e20:0:54"
+      ],
+      "skills.all_skills[5]": [
+        "e20:0:54"
+      ],
+      "skills.all_skills[6]": [
+        "e22:0:46"
+      ],
+      "skills.all_skills[7]": [
+        "e22:0:46"
+      ],
+      "skills.all_skills[8]": [
+        "e22:0:46"
+      ],
+      "skills.all_skills[9]": [
+        "e16:0:101"
+      ],
+      "skills.all_skills[10]": [
+        "e16:0:101"
+      ],
+      "skills.all_skills[11]": [
+        "e16:0:101"
+      ],
+      "skills.all_skills[12]": [
+        "e16:0:101"
+      ],
+      "skills.all_skills[13]": [
+        "e16:0:101"
+      ],
+      "skills.all_skills[14]": [
+        "e16:0:101"
+      ],
+      "skills.all_skills[15]": [
+        "e16:0:101"
+      ],
+      "skills.all_skills[16]": [
+        "e17:0:18"
+      ],
+      "skills.all_skills[17]": [
+        "e18:0:6"
+      ],
+      "skills.all_skills[18]": [
+        "e19:0:19"
+      ],
+      "skills.all_skills[19]": [
+        "e20:0:54"
+      ],
+      "skills.all_skills[20]": [
+        "e20:0:54"
+      ],
+      "skills.all_skills[21]": [
+        "e21:0:13"
+      ],
+      "skills.all_skills[22]": [
+        "e22:0:46"
+      ],
+      "skills.all_skills[23]": [
+        "e22:0:46"
+      ],
+      "skills.all_skills[24]": [
+        "e22:0:46"
+      ],
+      "languages[0]": [
+        "e59:10:33"
+      ],
+      "languages[1]": [
+        "e60:0:6"
+      ],
+      "languages[2]": [
+        "e61:0:13"
+      ],
+      "languages[3]": [
+        "e62:0:15"
+      ],
+      "languages[4]": [
+        "e63:0:13"
+      ]
+    },
+    "record_reviews": [
+      {
+        "category": "experience",
+        "entry_id": "experience-1",
+        "source_ids": [
+          "e24:0:39",
+          "e25:0:117",
+          "e26:0:33",
+          "e28:0:51",
+          "e29:0:144",
+          "e30:0:73",
+          "e31:0:111",
+          "e32:0:44",
+          "e33:0:30",
+          "e34:0:48",
+          "e35:0:238",
+          "e36:0:97",
+          "e37:0:40",
+          "e38:0:53",
+          "e39:0:179",
+          "e40:0:56",
+          "e41:0:44",
+          "e42:0:49",
+          "e43:0:97",
+          "e44:0:43",
+          "e45:0:122",
+          "e46:0:85",
+          "e47:0:37",
+          "e48:0:152",
+          "e49:0:64"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      }
+    ],
+    "missing_required_fields": [
+      "experience[0].company",
+      "experience[0].role"
+    ],
+    "warnings": [
+      "Schema validity and field completion do not establish extraction or relationship accuracy.",
+      "Handoff confidence scores are fixed heuristics, not calibrated probabilities.",
+      "Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields."
+    ],
+    "unmapped_blocks": [
+      {
+        "source_id": "e5:0:7",
+        "category": "summary",
+        "text": "SUMMARY",
+        "page_number": 1
+      },
+      {
+        "source_id": "e14:0:6",
+        "category": "skills",
+        "text": "SKILLS",
+        "page_number": 1
+      },
+      {
+        "source_id": "e15:0:21",
+        "category": "skills",
+        "text": "Programming and tools",
+        "page_number": 1
+      },
+      {
+        "source_id": "e23:0:10",
+        "category": "experience",
+        "text": "EXPERIENCE",
+        "page_number": 1
+      },
+      {
+        "source_id": "e24:0:39",
+        "category": "experience",
+        "text": "ASSOCIATE SPECIALIST, 11/2020 - Current",
+        "page_number": 1
+      },
+      {
+        "source_id": "e25:0:117",
+        "category": "experience",
+        "text": "Synechron Technology (HSBC Client) – Banking Domain, Pune, India Handled 15 people in a team, and managed 2 projects.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e26:0:33",
+        "category": "experience",
+        "text": "Implemented 10 new microservices.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e28:0:51",
+        "category": "experience",
+        "text": "Introduced load balancer, Grafana, Solace, Swagger.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e29:0:144",
+        "category": "experience",
+        "text": "Improved 80% of the performance issues during the use of multithreading. Resolved to accept multiple requests at a time in Vert.x functionality.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e30:0:73",
+        "category": "experience",
+        "text": "Introduced event-driven architecture using Solace. Conducted code review.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e31:0:111",
+        "category": "experience",
+        "text": "Developed a retry mechanism in the microservice circuit breaker. Built multithreading using a service executor.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e32:0:44",
+        "category": "experience",
+        "text": "SENIOR SOFTWARE DEVELOPER, 03/2020 - 10/2020",
+        "page_number": 2
+      },
+      {
+        "source_id": "e33:0:30",
+        "category": "experience",
+        "text": "Mvp1 Venture, Ahmedabad, India",
+        "page_number": 2
+      },
+      {
+        "source_id": "e34:0:48",
+        "category": "experience",
+        "text": "Migrated to a cloud-based application using AWS.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e35:0:238",
+        "category": "experience",
+        "text": "Developed a Spring Boot application with event-driven design using SQS and S3. Conducted proof of concepts (POCs) and optimized SQL queries, resulting in a 30% improvement in API response time and data retrieval speed for large databases.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e36:0:97",
+        "category": "experience",
+        "text": "Developed a Python script to merge two large CSV files using Pandas to reduce performance by 80%.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e37:0:40",
+        "category": "experience",
+        "text": "SENIOR JAVA DEVELOPER, 08/2019 - 12/2019",
+        "page_number": 2
+      },
+      {
+        "source_id": "e38:0:53",
+        "category": "experience",
+        "text": "GlobalVox Pvt Ltd – Security Domain, Ahmedabad, India",
+        "page_number": 2
+      },
+      {
+        "source_id": "e39:0:179",
+        "category": "experience",
+        "text": "Migrated the organization's current application from a conventional .NET backend to a Spring Boot backend, resulting in reduced maintenance costs and improved performance metrics.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e40:0:56",
+        "category": "experience",
+        "text": "Implemented face reorganization and palm vein algorithm.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e41:0:44",
+        "category": "experience",
+        "text": "SENIOR SOFTWARE DEVELOPER, 06/2017 - 08/2019",
+        "page_number": 2
+      },
+      {
+        "source_id": "e42:0:49",
+        "category": "experience",
+        "text": "Talent Anywhere – Telecom Domain, Vadodara, India",
+        "page_number": 2
+      },
+      {
+        "source_id": "e43:0:97",
+        "category": "experience",
+        "text": "Migrated the organization's current application from .NET to a Java application using Spring MVC.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e44:0:43",
+        "category": "experience",
+        "text": "Developed the Angular and Node application.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e45:0:122",
+        "category": "experience",
+        "text": "Started to use procedures and triggers in Oracle DB to avoid the use of big queries. Reduced the performance issue by 60%.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e46:0:85",
+        "category": "experience",
+        "text": "Resolved transaction management issue. Reduced 90% of DB connections in each process.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e47:0:37",
+        "category": "experience",
+        "text": "SOFTWARE DEVELOPER, 10/2014 - 11/2016",
+        "page_number": 2
+      },
+      {
+        "source_id": "e48:0:152",
+        "category": "experience",
+        "text": "Quix Creation – Insurance Domain, Vadodara, India Implemented a J2EE-based application with JSP and servlet. Started to implement the REST API/SOAP API.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e49:0:64",
+        "category": "experience",
+        "text": "Onsite work for AIA Group Insurance Company in Shanghai (China).",
+        "page_number": 2
+      },
+      {
+        "source_id": "e50:0:10",
+        "category": "education",
+        "text": "EDUCATION ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e56:0:15",
+        "category": "awards",
+        "text": "ACCOMPLISHMENTS",
+        "page_number": 3
+      },
+      {
+        "source_id": "e57:0:118",
+        "category": "awards",
+        "text": "Received the 'Employee of the Month' award three times from 2022 to 2024 for outstanding contributions to the company.",
+        "page_number": 3
+      },
+      {
+        "source_id": "e58:0:61",
+        "category": "awards",
+        "text": "Won the 'Surpass Award' in 2023 for developing a new product.",
+        "page_number": 3
+      },
+      {
+        "source_id": "e59:0:10",
+        "category": "languages",
+        "text": "LANGUAGES\t",
+        "page_number": 3
+      },
+      {
+        "source_id": "e0:0:14",
+        "category": null,
+        "text": "JAYESH GAGNANI",
+        "page_number": 1
+      },
+      {
+        "source_id": "e27:0:0",
+        "category": null,
+        "text": "",
+        "page_number": null
+      },
+      {
+        "source_id": "e50:10:22",
+        "category": null,
+        "text": "AND TRAINING",
+        "page_number": 2
+      },
+      {
+        "source_id": "e51:0:29",
+        "category": null,
+        "text": "AIIS, Anand, Gujarat, 06/2011",
+        "page_number": 2
+      },
+      {
+        "source_id": "e52:0:66",
+        "category": null,
+        "text": "Master of Computer Applications: Computer Applications Development",
+        "page_number": 2
+      },
+      {
+        "source_id": "e53:0:31",
+        "category": null,
+        "text": "AMCOST, Anand, Gujarat, 05/2010",
+        "page_number": 2
+      },
+      {
+        "source_id": "e54:0:68",
+        "category": null,
+        "text": "Bachelor of Computer Applications: Computer Applications Development",
+        "page_number": 2
+      },
+      {
+        "source_id": "e55:0:0",
+        "category": null,
+        "text": "",
+        "page_number": null
+      }
+    ],
+    "needs_review": [
+      {
+        "source_element_index": 0,
+        "start": 0,
+        "end": 14,
+        "text": "JAYESH GAGNANI",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1869,
+        "margin": -0.043,
+        "lane": "main",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 27,
+        "start": 0,
+        "end": 0,
+        "text": "",
+        "page_number": null,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1867,
+        "margin": -0.0366,
+        "lane": "main",
+        "reason": "Layout footer or page separator retained outside semantic sections",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 50,
+        "start": 10,
+        "end": 22,
+        "text": "AND TRAINING",
+        "page_number": 2,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3594,
+        "margin": 0.0257,
+        "lane": "main",
+        "reason": "Possible ambiguous or unsupported heading; section context stopped",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 51,
+        "start": 0,
+        "end": 29,
+        "text": "AIIS, Anand, Gujarat, 06/2011",
+        "page_number": 2,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2604,
+        "margin": -0.0555,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 52,
+        "start": 0,
+        "end": 66,
+        "text": "Master of Computer Applications: Computer Applications Development",
+        "page_number": 2,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.4303,
+        "margin": 0.016,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 53,
+        "start": 0,
+        "end": 31,
+        "text": "AMCOST, Anand, Gujarat, 05/2010",
+        "page_number": 2,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2923,
+        "margin": -0.0511,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 54,
+        "start": 0,
+        "end": 68,
+        "text": "Bachelor of Computer Applications: Computer Applications Development",
+        "page_number": 2,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.446,
+        "margin": 0.0165,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 55,
+        "start": 0,
+        "end": 0,
+        "text": "",
+        "page_number": null,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1867,
+        "margin": -0.0366,
+        "lane": "main",
+        "reason": "Layout footer or page separator retained outside semantic sections",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      }
+    ]
+  },
+  "section_schemas": [
+    {
+      "category": "personal_information",
+      "label": "Personal information",
+      "records": [
+        {
+          "record_id": "personal_information",
+          "source_ids": [
+            "e1:0:20",
+            "e2:0:13",
+            "e3:0:18",
+            "e4:0:32"
+          ],
+          "attributes": [
+            {
+              "name": "full_name",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "email",
+              "items": [
+                {
+                  "value": "gis.jayu@gmail.com",
+                  "evidence": [
+                    {
+                      "source_id": "e3:0:18",
+                      "quote": "gis.jayu@gmail.com"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "phone",
+              "items": [
+                {
+                  "value": "+919033611954",
+                  "evidence": [
+                    {
+                      "source_id": "e2:0:13",
+                      "quote": "+919033611954"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "location",
+              "items": [
+                {
+                  "value": "Pune",
+                  "evidence": [
+                    {
+                      "source_id": "e1:0:20",
+                      "quote": "Pune"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "linkedin_url",
+              "items": [
+                {
+                  "value": "www.linkedin.com/in/jay-gagnani-",
+                  "evidence": [
+                    {
+                      "source_id": "e4:0:32",
+                      "quote": "www.linkedin.com/in/jay-gagnani-"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "github_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "portfolio_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "professional_title",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e1:0:20",
+          "quote": "  Pune, India 411057"
+        }
+      ]
+    },
+    {
+      "category": "summary",
+      "label": "Summary",
+      "records": [
+        {
+          "record_id": "summary",
+          "source_ids": [
+            "e6:0:149",
+            "e7:0:216",
+            "e8:0:147",
+            "e9:0:482",
+            "e10:0:82",
+            "e11:0:130",
+            "e12:0:117",
+            "e13:0:136"
+          ],
+          "attributes": [
+            {
+              "name": "statements",
+              "items": [
+                {
+                  "value": "10 years of professional IT experience in Java/J2EE technologies, web application development, and implementation, as well as technical PROD support.",
+                  "evidence": [
+                    {
+                      "source_id": "e6:0:149",
+                      "quote": "10 years of professional IT experience in Java/J2EE technologies, web application development, and implementation, as well as technical PROD support."
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "I am a strong believer in continuous process improvement, a quick learner, and I have immense professional experience working collaboratively with a team to design, develop solutions, and troubleshoot complex issues.",
+                  "evidence": [
+                    {
+                      "source_id": "e7:0:216",
+                      "quote": "I am a strong believer in continuous process improvement, a quick learner, and I have immense professional experience working collaboratively with a team to design, develop solutions, and troubleshoot complex issues."
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Expertise in the development of Spring Restful Services, Spring Boot, Spring JDBC, JPA, Hibernate, Maven, Solace, and used SVN for version control.",
+                  "evidence": [
+                    {
+                      "source_id": "e8:0:147",
+                      "quote": "Expertise in the development of Spring Restful Services, Spring Boot, Spring JDBC, JPA, Hibernate, Maven, Solace, and used SVN for version control."
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Expertise in databases such as Oracle, DB2, MySQL, MS SQL, and MongoDB, including analyzing and optimizing complex queries, and working closely with DBAs. Expertise in JENKINS (automation), Shell/Python scripts, logs, Cron schedulers, and troubleshooting performance issues in the app server. Used the app Grafana tools. Knowledge of microservices architecture and in-depth knowledge of microservices design patterns, as well as data consistency patterns (distributed transactions).",
+                  "evidence": [
+                    {
+                      "source_id": "e9:0:482",
+                      "quote": "Expertise in databases such as Oracle, DB2, MySQL, MS SQL, and MongoDB, including analyzing and optimizing complex queries, and working closely with DBAs. Expertise in JENKINS (automation), Shell/Python scripts, logs, Cron schedulers, and troubleshooting performance issues in the app server. Used the app Grafana tools. Knowledge of microservices architecture and in-depth knowledge of microservices design patterns, as well as data consistency patterns (distributed transactions)."
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Experience in building microservices with Spring Boot for a self-designed project.",
+                  "evidence": [
+                    {
+                      "source_id": "e10:0:82",
+                      "quote": "Experience in building microservices with Spring Boot for a self-designed project."
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "I used application servers like Tomcat, JBOSS, and Glassfish in building and deploying applications, and troubleshooting problems.",
+                  "evidence": [
+                    {
+                      "source_id": "e11:0:130",
+                      "quote": "I used application servers like Tomcat, JBOSS, and Glassfish in building and deploying applications, and troubleshooting problems."
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Expert in handling critical outages and critical issues, leading the team to resolve issues against a tight deadline.",
+                  "evidence": [
+                    {
+                      "source_id": "e12:0:117",
+                      "quote": "Expert in handling critical outages and critical issues, leading the team to resolve issues against a tight deadline."
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Strong hold in ticketing systems and dashboard metrics (JIRA), and expert in documenting key solutions and configurations in Confluence.",
+                  "evidence": [
+                    {
+                      "source_id": "e13:0:136",
+                      "quote": "Strong hold in ticketing systems and dashboard metrics (JIRA), and expert in documenting key solutions and configurations in Confluence."
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "total_experience_years",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e5:0:7",
+          "quote": "SUMMARY"
+        }
+      ]
+    },
+    {
+      "category": "skills",
+      "label": "Skills",
+      "records": [
+        {
+          "record_id": "skills",
+          "source_ids": [
+            "e16:0:101",
+            "e17:0:18",
+            "e18:0:6",
+            "e19:0:19",
+            "e20:0:54",
+            "e21:0:13",
+            "e22:0:46"
+          ],
+          "attributes": [
+            {
+              "name": "technical_skills",
+              "items": [
+                {
+                  "value": "Python",
+                  "evidence": [
+                    {
+                      "source_id": "e16:0:101",
+                      "quote": "Python"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "SQL",
+                  "evidence": [
+                    {
+                      "source_id": "e20:0:54",
+                      "quote": "SQL"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Java",
+                  "evidence": [
+                    {
+                      "source_id": "e16:0:101",
+                      "quote": "Java"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "JavaScript",
+                  "evidence": [
+                    {
+                      "source_id": "e16:0:101",
+                      "quote": "JavaScript"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "PostgreSQL",
+                  "evidence": [
+                    {
+                      "source_id": "e20:0:54",
+                      "quote": "PostgreSQL"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "MongoDB",
+                  "evidence": [
+                    {
+                      "source_id": "e20:0:54",
+                      "quote": "MongoDB"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Docker",
+                  "evidence": [
+                    {
+                      "source_id": "e22:0:46",
+                      "quote": "Docker"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "tools_and_platforms",
+              "items": [
+                {
+                  "value": "JIRA",
+                  "evidence": [
+                    {
+                      "source_id": "e22:0:46",
+                      "quote": "JIRA"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Git",
+                  "evidence": [
+                    {
+                      "source_id": "e22:0:46",
+                      "quote": "GIT"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "domain_and_functional",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "soft_skills",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "all_skills",
+              "items": [
+                {
+                  "value": "Python",
+                  "evidence": [
+                    {
+                      "source_id": "e16:0:101",
+                      "quote": "Python"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "SQL",
+                  "evidence": [
+                    {
+                      "source_id": "e20:0:54",
+                      "quote": "SQL"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Java",
+                  "evidence": [
+                    {
+                      "source_id": "e16:0:101",
+                      "quote": "Java"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "JavaScript",
+                  "evidence": [
+                    {
+                      "source_id": "e16:0:101",
+                      "quote": "JavaScript"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "PostgreSQL",
+                  "evidence": [
+                    {
+                      "source_id": "e20:0:54",
+                      "quote": "PostgreSQL"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "MongoDB",
+                  "evidence": [
+                    {
+                      "source_id": "e20:0:54",
+                      "quote": "MongoDB"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Docker",
+                  "evidence": [
+                    {
+                      "source_id": "e22:0:46",
+                      "quote": "Docker"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "JIRA",
+                  "evidence": [
+                    {
+                      "source_id": "e22:0:46",
+                      "quote": "JIRA"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Git",
+                  "evidence": [
+                    {
+                      "source_id": "e22:0:46",
+                      "quote": "GIT"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Java 8",
+                  "evidence": [
+                    {
+                      "source_id": "e16:0:101",
+                      "quote": "Java 8"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Spring Boot",
+                  "evidence": [
+                    {
+                      "source_id": "e16:0:101",
+                      "quote": "Spring Boot"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Hibernate",
+                  "evidence": [
+                    {
+                      "source_id": "e16:0:101",
+                      "quote": "Hibernate"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "JPA",
+                  "evidence": [
+                    {
+                      "source_id": "e16:0:101",
+                      "quote": "JPA"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Microservices",
+                  "evidence": [
+                    {
+                      "source_id": "e16:0:101",
+                      "quote": "Microservices"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "REST APIs",
+                  "evidence": [
+                    {
+                      "source_id": "e16:0:101",
+                      "quote": "REST APIs"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "and Multithreading",
+                  "evidence": [
+                    {
+                      "source_id": "e16:0:101",
+                      "quote": "and Multithreading"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Data manipulation:",
+                  "evidence": [
+                    {
+                      "source_id": "e17:0:18",
+                      "quote": "Data manipulation:"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Pandas",
+                  "evidence": [
+                    {
+                      "source_id": "e18:0:6",
+                      "quote": "Pandas"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Database Management",
+                  "evidence": [
+                    {
+                      "source_id": "e19:0:19",
+                      "quote": "Database Management"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Oracle",
+                  "evidence": [
+                    {
+                      "source_id": "e20:0:54",
+                      "quote": "Oracle"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Microsoft SQL Server",
+                  "evidence": [
+                    {
+                      "source_id": "e20:0:54",
+                      "quote": "Microsoft SQL Server"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Miscellaneous",
+                  "evidence": [
+                    {
+                      "source_id": "e21:0:13",
+                      "quote": "Miscellaneous"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "GIT",
+                  "evidence": [
+                    {
+                      "source_id": "e22:0:46",
+                      "quote": "GIT"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Nginx",
+                  "evidence": [
+                    {
+                      "source_id": "e22:0:46",
+                      "quote": "Nginx"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "and Cloud Deployment",
+                  "evidence": [
+                    {
+                      "source_id": "e22:0:46",
+                      "quote": "and Cloud Deployment"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e14:0:6",
+          "quote": "SKILLS"
+        },
+        {
+          "source_id": "e15:0:21",
+          "quote": "Programming and tools"
+        },
+        {
+          "source_id": "e16:0:101",
+          "quote": "Java 8, Spring Boot, Hibernate, JPA, Microservices, Python, JavaScript, REST APIs, and Multithreading"
+        },
+        {
+          "source_id": "e20:0:54",
+          "quote": "SQL, PostgreSQL, Oracle, MongoDB, Microsoft SQL Server"
+        },
+        {
+          "source_id": "e22:0:46",
+          "quote": "JIRA, GIT, Docker, Nginx, and Cloud Deployment"
+        }
+      ]
+    },
+    {
+      "category": "experience",
+      "label": "Experience",
+      "records": [
+        {
+          "record_id": "experience-1",
+          "source_ids": [
+            "e24:0:39",
+            "e25:0:117",
+            "e26:0:33",
+            "e28:0:51",
+            "e29:0:144",
+            "e30:0:73",
+            "e31:0:111",
+            "e32:0:44",
+            "e33:0:30",
+            "e34:0:48",
+            "e35:0:238",
+            "e36:0:97",
+            "e37:0:40",
+            "e38:0:53",
+            "e39:0:179",
+            "e40:0:56",
+            "e41:0:44",
+            "e42:0:49",
+            "e43:0:97",
+            "e44:0:43",
+            "e45:0:122",
+            "e46:0:85",
+            "e47:0:37",
+            "e48:0:152",
+            "e49:0:64"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e23:0:10",
+          "quote": "EXPERIENCE"
+        },
+        {
+          "source_id": "e24:0:39",
+          "quote": "ASSOCIATE SPECIALIST, 11/2020 - Current"
+        },
+        {
+          "source_id": "e25:0:117",
+          "quote": "Synechron Technology (HSBC Client) – Banking Domain, Pune, India Handled 15 people in a team, and managed 2 projects."
+        },
+        {
+          "source_id": "e26:0:33",
+          "quote": "Implemented 10 new microservices."
+        },
+        {
+          "source_id": "e28:0:51",
+          "quote": "Introduced load balancer, Grafana, Solace, Swagger."
+        },
+        {
+          "source_id": "e29:0:144",
+          "quote": "Improved 80% of the performance issues during the use of multithreading. Resolved to accept multiple requests at a time in Vert.x functionality."
+        },
+        {
+          "source_id": "e30:0:73",
+          "quote": "Introduced event-driven architecture using Solace. Conducted code review."
+        },
+        {
+          "source_id": "e31:0:111",
+          "quote": "Developed a retry mechanism in the microservice circuit breaker. Built multithreading using a service executor."
+        },
+        {
+          "source_id": "e32:0:44",
+          "quote": "SENIOR SOFTWARE DEVELOPER, 03/2020 - 10/2020"
+        },
+        {
+          "source_id": "e33:0:30",
+          "quote": "Mvp1 Venture, Ahmedabad, India"
+        },
+        {
+          "source_id": "e34:0:48",
+          "quote": "Migrated to a cloud-based application using AWS."
+        },
+        {
+          "source_id": "e35:0:238",
+          "quote": "Developed a Spring Boot application with event-driven design using SQS and S3. Conducted proof of concepts (POCs) and optimized SQL queries, resulting in a 30% improvement in API response time and data retrieval speed for large databases."
+        },
+        {
+          "source_id": "e36:0:97",
+          "quote": "Developed a Python script to merge two large CSV files using Pandas to reduce performance by 80%."
+        },
+        {
+          "source_id": "e37:0:40",
+          "quote": "SENIOR JAVA DEVELOPER, 08/2019 - 12/2019"
+        },
+        {
+          "source_id": "e38:0:53",
+          "quote": "GlobalVox Pvt Ltd – Security Domain, Ahmedabad, India"
+        },
+        {
+          "source_id": "e39:0:179",
+          "quote": "Migrated the organization's current application from a conventional .NET backend to a Spring Boot backend, resulting in reduced maintenance costs and improved performance metrics."
+        },
+        {
+          "source_id": "e40:0:56",
+          "quote": "Implemented face reorganization and palm vein algorithm."
+        },
+        {
+          "source_id": "e41:0:44",
+          "quote": "SENIOR SOFTWARE DEVELOPER, 06/2017 - 08/2019"
+        },
+        {
+          "source_id": "e42:0:49",
+          "quote": "Talent Anywhere – Telecom Domain, Vadodara, India"
+        },
+        {
+          "source_id": "e43:0:97",
+          "quote": "Migrated the organization's current application from .NET to a Java application using Spring MVC."
+        },
+        {
+          "source_id": "e44:0:43",
+          "quote": "Developed the Angular and Node application."
+        },
+        {
+          "source_id": "e45:0:122",
+          "quote": "Started to use procedures and triggers in Oracle DB to avoid the use of big queries. Reduced the performance issue by 60%."
+        },
+        {
+          "source_id": "e46:0:85",
+          "quote": "Resolved transaction management issue. Reduced 90% of DB connections in each process."
+        },
+        {
+          "source_id": "e47:0:37",
+          "quote": "SOFTWARE DEVELOPER, 10/2014 - 11/2016"
+        },
+        {
+          "source_id": "e48:0:152",
+          "quote": "Quix Creation – Insurance Domain, Vadodara, India Implemented a J2EE-based application with JSP and servlet. Started to implement the REST API/SOAP API."
+        },
+        {
+          "source_id": "e49:0:64",
+          "quote": "Onsite work for AIA Group Insurance Company in Shanghai (China)."
+        }
+      ]
+    },
+    {
+      "category": "education",
+      "label": "Education",
+      "records": [],
+      "residual_blocks": [
+        {
+          "source_id": "e50:0:10",
+          "quote": "EDUCATION "
+        }
+      ]
+    },
+    {
+      "category": "awards",
+      "label": "Awards and achievements",
+      "records": [
+        {
+          "record_id": "awards-1",
+          "source_ids": [
+            "e57:0:118",
+            "e58:0:61"
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "issuer",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "date",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "Unlabelled compound information requires source review."
+          ]
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e56:0:15",
+          "quote": "ACCOMPLISHMENTS"
+        },
+        {
+          "source_id": "e57:0:118",
+          "quote": "Received the 'Employee of the Month' award three times from 2022 to 2024 for outstanding contributions to the company."
+        },
+        {
+          "source_id": "e58:0:61",
+          "quote": "Won the 'Surpass Award' in 2023 for developing a new product."
+        }
+      ]
+    },
+    {
+      "category": "languages",
+      "label": "Languages",
+      "records": [
+        {
+          "record_id": "languages-1",
+          "source_ids": [
+            "e59:10:33",
+            "e60:0:6",
+            "e61:0:13",
+            "e62:0:15",
+            "e63:0:13"
+          ],
+          "attributes": [
+            {
+              "name": "language",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "proficiency",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "Unlabelled compound information requires source review."
+          ]
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e59:0:10",
+          "quote": "LANGUAGES\t"
+        },
+        {
+          "source_id": "e59:10:33",
+          "quote": "English: First Language"
+        },
+        {
+          "source_id": "e60:0:6",
+          "quote": "Hindi:"
+        },
+        {
+          "source_id": "e61:0:13",
+          "quote": "Advanced (C1)"
+        },
+        {
+          "source_id": "e62:0:15",
+          "quote": "C1\tGujarati:\tC1"
+        },
+        {
+          "source_id": "e63:0:13",
+          "quote": "Advanced (C1)"
+        }
+      ]
+    },
+    {
+      "category": "needs_review",
+      "label": "Unassigned source blocks",
+      "records": [],
+      "residual_blocks": [
+        {
+          "source_id": "e0:0:14",
+          "quote": "JAYESH GAGNANI"
+        },
+        {
+          "source_id": "e27:0:0",
+          "quote": ""
+        },
+        {
+          "source_id": "e50:10:22",
+          "quote": "AND TRAINING"
+        },
+        {
+          "source_id": "e51:0:29",
+          "quote": "AIIS, Anand, Gujarat, 06/2011"
+        },
+        {
+          "source_id": "e52:0:66",
+          "quote": "Master of Computer Applications: Computer Applications Development"
+        },
+        {
+          "source_id": "e53:0:31",
+          "quote": "AMCOST, Anand, Gujarat, 05/2010"
+        },
+        {
+          "source_id": "e54:0:68",
+          "quote": "Bachelor of Computer Applications: Computer Applications Development"
+        },
+        {
+          "source_id": "e55:0:0",
+          "quote": ""
+        }
+      ]
+    }
+  ]
+}

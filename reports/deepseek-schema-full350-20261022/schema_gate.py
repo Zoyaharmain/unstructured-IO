@@ -444,13 +444,12 @@ def align_array_and_span_evidence(candidate, blocks):
 
 
 def prepare_candidate_mapping(raw, blocks):
-    """Applies local provably equivalent pointer normalizations and confirmed omission repairs.
-    Never fabricates citations or modifies data values without source derivation.
+    """Applies local provably equivalent pointer normalizations and evidence alignments.
+    Never fabricates citations, never repairs omissions heuristically, and never modifies data values.
     Returns (candidate, all_changes, rejections).
     """
     candidate, normalizations, rejections = normalize_evidence_pointers(raw, blocks)
-    candidate, omission_repairs = repair_confirmed_omissions(candidate, blocks)
     candidate, alignment_changes = align_array_and_span_evidence(candidate, blocks)
-    all_changes = normalizations + omission_repairs + alignment_changes
+    all_changes = normalizations + alignment_changes
     return candidate, all_changes, rejections
 

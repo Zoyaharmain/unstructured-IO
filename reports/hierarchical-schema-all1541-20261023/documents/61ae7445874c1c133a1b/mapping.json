@@ -1,0 +1,2752 @@
+{
+  "success": true,
+  "source": "KPavanKumarReddy (1).docx",
+  "extraction_mode": "existing_blocks_schema_mapping",
+  "data": {
+    "contact": {
+      "full_name": "PAVAN KUMAR REDDY KANAKANTI\tPHONE: (+91) 9676827221",
+      "email": "kpavan1299.it@gmail.com",
+      "phone": "9676827221",
+      "location": null,
+      "linkedin_url": null,
+      "github_url": null,
+      "portfolio_url": null
+    },
+    "professional_title": null,
+    "summary": "Highly motivated IT professional with 5 years of experience specializing in Microsoft Power Platform (Power Apps, Power Automate, Dataverse), SharePoint, and RPA tools (UiPath, Automation Anywhere). Proven ability to design, develop, and implement efficient solutions to streamline business processes and drive automation.\nPHONEBOOK APP - KohuTech\nProblem:\nContractors and guest users couldn’t access internal staff details due to the absence of a secure directory, causing communication delays, manual information requests, and risk of exposing sensitive data without proper access controls.\nSolution:\nBuilt a secure Power Apps directory using Dataverse as the single source of truth.\nSync AAD data to Dataverse every day using Power Automate\nEnabled fast search, sorting, and filtering with optimized UI components.\nImplemented role-based access to ensure privacy and compliance.\nAdded dual view modes, org-chart visualization, and daily automated data syncs.\nMY PBI PORTAL - KohuTech Problem:\nEmbedding Power BI dashboards through third-party domains created governance issues, required duplicate development, lacked user registration and approvals, and offered no scalable security model for external audiences. Solution:\nImplemented a Power Pages portal with secure Power BI Embedded integration.\nDesigned role-based access for anonymous, registered, and admin users.\nUsed Dataverse for user/company attributes with dynamic RLS filtering.\nAutomated registration, approval, and access workflows for simplified governance.\nCreated MDA and Canvas App for Admins\nWLP EOL / EOL & EOSL - Birlasoft Problem:\nSales teams depended on large, outdated Excel files to check warranty and lifecycle data, making it difficult to search thousands of serial numbers, leading to days of manual effort, delays in client responses, and lack of a unified system. Solution:\nCreated a centralized automation solution using Power Apps and Power Automate.\nIntegrated UiPath (later migrated to Automation Anywhere) to pull data from legacy UI sources.\nAutomated bulk serial-number processing, email notifications, and live status tracking.\nReused fetched data to reduce repeated lookups and improve response times for sales teams.\nAUTOMATION HUB - PersollKelly Problem:\nInternal AutoCAD training projects lacked a unified system to track project details, employee hours, knowledge sharing, KPIs, action items, and audit data—resulting in manual tracking and limited visibility.\nSolution:\nDeveloped Power Apps modules for project tracking and activity logging.\nAutomated task updates, schedules, and data workflows using Power Automate.\nImplemented centralized data storage for employees, projects, and KPIs.\nBuilt Power BI dashboards for audit reporting and performance insights.",
+    "total_experience_years": 5.0,
+    "skills": {
+      "technical_skills": [
+        "SQL",
+        "JavaScript"
+      ],
+      "tools_and_platforms": [
+        "Power BI",
+        "Azure"
+      ],
+      "domain_and_functional": [],
+      "soft_skills": [],
+      "all_skills": [
+        "SQL",
+        "JavaScript",
+        "Power BI",
+        "Azure",
+        "Primary",
+        "Power Apps",
+        "Power Automate",
+        "Copilot Studio",
+        "Power Platform Admin",
+        "Dataverse",
+        "Graph API",
+        "Secondary",
+        "SharePoint",
+        "UiPath",
+        "Automation Anywhere",
+        "Html",
+        "CSS",
+        "Azure Logic Apps",
+        "AI Foundry",
+        "Others",
+        "Power Platform Strategy",
+        "XRM",
+        "CoE tool",
+        "Azure ML Studio",
+        "SPFx",
+        "PowerShell",
+        "Exchange Online"
+      ]
+    },
+    "experience": [
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      }
+    ],
+    "education": [
+      {
+        "institution": "",
+        "degree": "",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      }
+    ],
+    "certifications": [],
+    "projects": [],
+    "languages": []
+  },
+  "schema_mapping": {
+    "fields_populated": 10,
+    "total_fields": 16,
+    "completion_percentage": 62.5,
+    "field_details": [
+      {
+        "field_name": "contact.full_name",
+        "target_type": "string",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Personal Details",
+        "confidence_score": 0.95,
+        "description": "Candidate's full name, extracted from the top header of the resume."
+      },
+      {
+        "field_name": "contact.email",
+        "target_type": "string (email)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.98,
+        "description": "Candidate's primary contact email address."
+      },
+      {
+        "field_name": "contact.phone",
+        "target_type": "string (phone)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.95,
+        "description": "Candidate's telephone / mobile phone number."
+      },
+      {
+        "field_name": "contact.location",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's residential location or work city."
+      },
+      {
+        "field_name": "contact.linkedin_url",
+        "target_type": "string (url) | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "URL to candidate's LinkedIn profile."
+      },
+      {
+        "field_name": "professional_title",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Subtitle",
+        "confidence_score": 0.0,
+        "description": "Candidate's target headline or most recent job title."
+      },
+      {
+        "field_name": "summary",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Summary / Profile / Objective",
+        "confidence_score": 0.85,
+        "description": "Executive bio, professional overview, or career objective."
+      },
+      {
+        "field_name": "total_experience_years",
+        "target_type": "float | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Summary / Experience Calculation",
+        "confidence_score": 0.9,
+        "description": "Total professional experience in years."
+      },
+      {
+        "field_name": "skills.technical_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills / Technical Competencies",
+        "confidence_score": 0.92,
+        "description": "Technical programming languages and core software competencies."
+      },
+      {
+        "field_name": "skills.tools_and_platforms",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills / Tools & Technologies",
+        "confidence_score": 0.9,
+        "description": "Software platforms, developer tools, and operational systems."
+      },
+      {
+        "field_name": "skills.domain_and_functional",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Domain Expertise",
+        "confidence_score": 0.0,
+        "description": "Functional domain knowledge (e.g. Hedge Funds, KYC, NAV, Derivatives)."
+      },
+      {
+        "field_name": "skills.all_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills (Aggregated)",
+        "confidence_score": 0.95,
+        "description": "Complete list of candidate skills across all categories."
+      },
+      {
+        "field_name": "experience",
+        "target_type": "array[WorkExperience]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Experience / Work History",
+        "confidence_score": 0.92,
+        "description": "Complete chronological employment records with bullet points."
+      },
+      {
+        "field_name": "education",
+        "target_type": "array[Education]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Education / Academic Qualifications",
+        "confidence_score": 0.9,
+        "description": "University, college, and higher education degree qualifications."
+      },
+      {
+        "field_name": "certifications",
+        "target_type": "array[Certification]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Certifications / Licenses",
+        "confidence_score": 0.0,
+        "description": "Professional accreditations and credentials."
+      },
+      {
+        "field_name": "projects",
+        "target_type": "array[Project]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Projects / Key Engagements",
+        "confidence_score": 0.0,
+        "description": "Major projects or strategic initiatives led by candidate."
+      }
+    ]
+  },
+  "raw_sections": {
+    "personal_information": "PAVAN KUMAR REDDY KANAKANTI\tPHONE: (+91) 9676827221\nEmail: kpavan1299.it@gmail.com",
+    "summary": "PROFESSIONAL SUMMARY\nHighly motivated IT professional with 5 years of experience specializing in Microsoft Power Platform (Power Apps, Power Automate, Dataverse), SharePoint, and RPA tools (UiPath, Automation Anywhere). Proven ability to design, develop, and implement efficient solutions to streamline business processes and drive automation.\nSUMMARY\nPHONEBOOK APP - KohuTech\nProblem:\nContractors and guest users couldn’t access internal staff details due to the absence of a secure directory, causing communication delays, manual information requests, and risk of exposing sensitive data without proper access controls.\nSolution:\nBuilt a secure Power Apps directory using Dataverse as the single source of truth.\nSync AAD data to Dataverse every day using Power Automate\nEnabled fast search, sorting, and filtering with optimized UI components.\nImplemented role-based access to ensure privacy and compliance.\nAdded dual view modes, org-chart visualization, and daily automated data syncs.\nMY PBI PORTAL - KohuTech Problem:\nEmbedding Power BI dashboards through third-party domains created governance issues, required duplicate development, lacked user registration and approvals, and offered no scalable security model for external audiences. Solution:\nImplemented a Power Pages portal with secure Power BI Embedded integration.\nDesigned role-based access for anonymous, registered, and admin users.\nUsed Dataverse for user/company attributes with dynamic RLS filtering.\nAutomated registration, approval, and access workflows for simplified governance.\nCreated MDA and Canvas App for Admins\nWLP EOL / EOL & EOSL - Birlasoft Problem:\nSales teams depended on large, outdated Excel files to check warranty and lifecycle data, making it difficult to search thousands of serial numbers, leading to days of manual effort, delays in client responses, and lack of a unified system. Solution:\nCreated a centralized automation solution using Power Apps and Power Automate.\nIntegrated UiPath (later migrated to Automation Anywhere) to pull data from legacy UI sources.\nAutomated bulk serial-number processing, email notifications, and live status tracking.\nReused fetched data to reduce repeated lookups and improve response times for sales teams.\nAUTOMATION HUB - PersollKelly Problem:\nInternal AutoCAD training projects lacked a unified system to track project details, employee hours, knowledge sharing, KPIs, action items, and audit data—resulting in manual tracking and limited visibility.\nSolution:\nDeveloped Power Apps modules for project tracking and activity logging.\nAutomated task updates, schedules, and data workflows using Power Automate.\nImplemented centralized data storage for employees, projects, and KPIs.\nBuilt Power BI dashboards for audit reporting and performance insights.",
+    "skills": "SKILLS\nPrimary\nPower Apps\nPower Automate\nCopilot Studio\nPower BI\nPower Platform Admin\nDataverse\nGraph API\nSecondary\nSharePoint\nUiPath\nAutomation Anywhere\nSQL\nHtml, CSS, JavaScript\nAzure Logic Apps, AI Foundry\nOthers\nPower Platform Strategy\nXRM, CoE tool\nAzure ML Studio\nSPFx\nPowerShell\nExchange Online",
+    "experience": "Experience working with the XRM Tool for data management, configuration, and integration within the Power Platform ecosystem, improving solution customization and performance.\nCoE Tool Kit: Proficient in using the Center of Excellence (CoE) Tool Kit to monitor, govern, and manage Power Platform environments and solutions across organizations, ensuring compliance and best practices.\nRPA Tools: Skilled in UiPath and Automation Anywhere for robotic process automation (RPA), automating repetitive tasks, and optimizing operational workflows.\nPower Platform Governance: Managed and governed Microsoft Power Platform environments using the Power Platform Admin Center, ensuring security, compliance, and efficient user access through role-based access control (RBAC), data loss prevention (DLP) policies, and performance monitoring\nTeam Collaboration: Strong team player with excellent organizational, analytical, and problem-solving skills, delivering effective automation solutions within Agile teams.\nJIRA, Azure DevOps, Visio: Experienced in using tools like JIRA, Azure DevOps, and Visio for project management, issue tracking, and team collaboration, ensuring seamless integration and workflow management across development and operational teams. Proficient in managing agile methodologies, tracking progress, and visualizing project timelines and processes.\nEXPERIENCE Company Period Location Position KohuTech (Origo) Apr 2025 to Feb 2026 Bangalore Technical Lead Birlasoft Ind (HP) Jun 2023 to Apr 2025 Bangalore Sr Application Developer PersolKelly (Autodesk) Nov 2021 to May 2023 Bangalore Power Apps Developer",
+    "education": "EDUCATION\nSchool/University Period Grade Branch Place JNTUA College of Engineering 2017-2020 7.8/10 ECE Anantapur, Andhra Pradesh SV Govt Polytechnic 2014-2017 9.2/10 ECE Tirupati, Andhra Pradesh ZP Govt High School 2013 9.8/10 SSC Peddamandem, Andhra Pradesh\nCERTIFICATIONS & ACHIEVEMNETS\nPL-600(N12594-0F0070), PL-400, PL-200, PL-100\nUdemy (Copilot Studio, Power BI, Gen AI Apps and Solutions)\nPower Platform Trainer\nECET AP 8th & TS 10th Rank -2017\nJNTUA ECHO – Treasurer",
+    "projects": "PROJECTS "
+  },
+  "meta": {
+    "status": "needs_review",
+    "human_verified": false,
+    "provider_calls": 0,
+    "source_accounting": {
+      "all_source_text_preserved": true,
+      "total_spans": 83,
+      "assigned_meaningful_spans": 75,
+      "unresolved_meaningful_spans": 8,
+      "non_content_artifacts": 0,
+      "duplicates_excluded": 0,
+      "all_meaningful_text_assigned": false,
+      "semantic_correctness_verified": false,
+      "outcomes": [
+        {
+          "source_id": "e0:0:51",
+          "source_element_index": 0,
+          "start": 0,
+          "end": 51,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e1:0:30",
+          "source_element_index": 1,
+          "start": 0,
+          "end": 30,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e2:0:20",
+          "source_element_index": 2,
+          "start": 0,
+          "end": 20,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e3:0:322",
+          "source_element_index": 3,
+          "start": 0,
+          "end": 322,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e4:0:6",
+          "source_element_index": 4,
+          "start": 0,
+          "end": 6,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e5:0:7",
+          "source_element_index": 5,
+          "start": 0,
+          "end": 7,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e6:0:10",
+          "source_element_index": 6,
+          "start": 0,
+          "end": 10,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e7:0:14",
+          "source_element_index": 7,
+          "start": 0,
+          "end": 14,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:0:14",
+          "source_element_index": 8,
+          "start": 0,
+          "end": 14,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:0:8",
+          "source_element_index": 9,
+          "start": 0,
+          "end": 8,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e10:0:20",
+          "source_element_index": 10,
+          "start": 0,
+          "end": 20,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e11:0:9",
+          "source_element_index": 11,
+          "start": 0,
+          "end": 9,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:0:9",
+          "source_element_index": 12,
+          "start": 0,
+          "end": 9,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e13:0:9",
+          "source_element_index": 13,
+          "start": 0,
+          "end": 9,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e14:0:10",
+          "source_element_index": 14,
+          "start": 0,
+          "end": 10,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e15:0:6",
+          "source_element_index": 15,
+          "start": 0,
+          "end": 6,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e16:0:19",
+          "source_element_index": 16,
+          "start": 0,
+          "end": 19,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e17:0:3",
+          "source_element_index": 17,
+          "start": 0,
+          "end": 3,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e18:0:21",
+          "source_element_index": 18,
+          "start": 0,
+          "end": 21,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e19:0:28",
+          "source_element_index": 19,
+          "start": 0,
+          "end": 28,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e20:0:6",
+          "source_element_index": 20,
+          "start": 0,
+          "end": 6,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e21:0:23",
+          "source_element_index": 21,
+          "start": 0,
+          "end": 23,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e22:0:13",
+          "source_element_index": 22,
+          "start": 0,
+          "end": 13,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e23:0:15",
+          "source_element_index": 23,
+          "start": 0,
+          "end": 15,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e24:0:4",
+          "source_element_index": 24,
+          "start": 0,
+          "end": 4,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e25:0:10",
+          "source_element_index": 25,
+          "start": 0,
+          "end": 10,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e26:0:15",
+          "source_element_index": 26,
+          "start": 0,
+          "end": 15,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e27:0:17",
+          "source_element_index": 27,
+          "start": 0,
+          "end": 17,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Possible ambiguous or unsupported heading; section context stopped"
+        },
+        {
+          "source_id": "e28:0:168",
+          "source_element_index": 28,
+          "start": 0,
+          "end": 168,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e29:0:183",
+          "source_element_index": 29,
+          "start": 0,
+          "end": 183,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e30:0:210",
+          "source_element_index": 30,
+          "start": 0,
+          "end": 210,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e31:0:175",
+          "source_element_index": 31,
+          "start": 0,
+          "end": 175,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e32:0:199",
+          "source_element_index": 32,
+          "start": 0,
+          "end": 199,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e33:0:127",
+          "source_element_index": 33,
+          "start": 0,
+          "end": 127,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e34:0:10",
+          "source_element_index": 34,
+          "start": 0,
+          "end": 10,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e34:10:20",
+          "source_element_index": 34,
+          "start": 10,
+          "end": 20,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e34:20:185",
+          "source_element_index": 34,
+          "start": 20,
+          "end": 185,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e35:0:208",
+          "source_element_index": 35,
+          "start": 0,
+          "end": 208,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e36:0:157",
+          "source_element_index": 36,
+          "start": 0,
+          "end": 157,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e37:0:287",
+          "source_element_index": 37,
+          "start": 0,
+          "end": 287,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e38:0:171",
+          "source_element_index": 38,
+          "start": 0,
+          "end": 171,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e39:0:360",
+          "source_element_index": 39,
+          "start": 0,
+          "end": 360,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e40:0:11",
+          "source_element_index": 40,
+          "start": 0,
+          "end": 11,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e40:11:256",
+          "source_element_index": 40,
+          "start": 11,
+          "end": 256,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e41:0:9",
+          "source_element_index": 41,
+          "start": 0,
+          "end": 9,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e42:0:249",
+          "source_element_index": 42,
+          "start": 0,
+          "end": 249,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e43:0:29",
+          "source_element_index": 43,
+          "start": 0,
+          "end": 29,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e44:0:45",
+          "source_element_index": 44,
+          "start": 0,
+          "end": 45,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e45:0:59",
+          "source_element_index": 45,
+          "start": 0,
+          "end": 59,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e46:0:22",
+          "source_element_index": 46,
+          "start": 0,
+          "end": 22,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e47:0:32",
+          "source_element_index": 47,
+          "start": 0,
+          "end": 32,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e48:0:22",
+          "source_element_index": 48,
+          "start": 0,
+          "end": 22,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e49:0:9",
+          "source_element_index": 49,
+          "start": 0,
+          "end": 9,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e49:9:16",
+          "source_element_index": 49,
+          "start": 9,
+          "end": 16,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e50:0:24",
+          "source_element_index": 50,
+          "start": 0,
+          "end": 24,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e51:0:8",
+          "source_element_index": 51,
+          "start": 0,
+          "end": 8,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e52:0:235",
+          "source_element_index": 52,
+          "start": 0,
+          "end": 235,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e53:0:9",
+          "source_element_index": 53,
+          "start": 0,
+          "end": 9,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e54:0:82",
+          "source_element_index": 54,
+          "start": 0,
+          "end": 82,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e55:0:57",
+          "source_element_index": 55,
+          "start": 0,
+          "end": 57,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e56:0:73",
+          "source_element_index": 56,
+          "start": 0,
+          "end": 73,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e57:0:63",
+          "source_element_index": 57,
+          "start": 0,
+          "end": 63,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e58:0:79",
+          "source_element_index": 58,
+          "start": 0,
+          "end": 79,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e59:0:33",
+          "source_element_index": 59,
+          "start": 0,
+          "end": 33,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e60:0:229",
+          "source_element_index": 60,
+          "start": 0,
+          "end": 229,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e61:0:75",
+          "source_element_index": 61,
+          "start": 0,
+          "end": 75,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e62:0:70",
+          "source_element_index": 62,
+          "start": 0,
+          "end": 70,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e63:0:70",
+          "source_element_index": 63,
+          "start": 0,
+          "end": 70,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e64:0:81",
+          "source_element_index": 64,
+          "start": 0,
+          "end": 81,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e65:0:37",
+          "source_element_index": 65,
+          "start": 0,
+          "end": 37,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e66:0:41",
+          "source_element_index": 66,
+          "start": 0,
+          "end": 41,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e67:0:250",
+          "source_element_index": 67,
+          "start": 0,
+          "end": 250,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e68:0:78",
+          "source_element_index": 68,
+          "start": 0,
+          "end": 78,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e69:0:94",
+          "source_element_index": 69,
+          "start": 0,
+          "end": 94,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e70:0:87",
+          "source_element_index": 70,
+          "start": 0,
+          "end": 87,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e71:0:90",
+          "source_element_index": 71,
+          "start": 0,
+          "end": 90,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e72:0:38",
+          "source_element_index": 72,
+          "start": 0,
+          "end": 38,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e73:0:207",
+          "source_element_index": 73,
+          "start": 0,
+          "end": 207,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e74:0:9",
+          "source_element_index": 74,
+          "start": 0,
+          "end": 9,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e75:0:71",
+          "source_element_index": 75,
+          "start": 0,
+          "end": 71,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e76:0:75",
+          "source_element_index": 76,
+          "start": 0,
+          "end": 75,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e77:0:71",
+          "source_element_index": 77,
+          "start": 0,
+          "end": 71,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e78:0:71",
+          "source_element_index": 78,
+          "start": 0,
+          "end": 71,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        }
+      ]
+    },
+    "document_scope": {
+      "kind": "likely_resume",
+      "candidate_resume": true,
+      "reason": "Contact details, multiple resume section families and dated history; provisional scope only",
+      "human_verified": false
+    },
+    "source_inventory_sha256": "d5748f5790c936f6085c5ba2076aa60674dcaef3a68ddc6a36f4a9041eb7c774",
+    "field_evidence": {
+      "contact.full_name": [
+        "e0:0:51",
+        "e1:0:30"
+      ],
+      "contact.email": [
+        "e0:0:51",
+        "e1:0:30"
+      ],
+      "contact.phone": [
+        "e0:0:51",
+        "e1:0:30"
+      ],
+      "summary": [
+        "e3:0:322",
+        "e50:0:24",
+        "e51:0:8",
+        "e52:0:235",
+        "e53:0:9",
+        "e54:0:82",
+        "e55:0:57",
+        "e56:0:73",
+        "e57:0:63",
+        "e58:0:79",
+        "e59:0:33",
+        "e60:0:229",
+        "e61:0:75",
+        "e62:0:70",
+        "e63:0:70",
+        "e64:0:81",
+        "e65:0:37",
+        "e66:0:41",
+        "e67:0:250",
+        "e68:0:78",
+        "e69:0:94",
+        "e70:0:87",
+        "e71:0:90",
+        "e72:0:38",
+        "e73:0:207",
+        "e74:0:9",
+        "e75:0:71",
+        "e76:0:75",
+        "e77:0:71",
+        "e78:0:71"
+      ],
+      "total_experience_years": [
+        "e3:0:322"
+      ],
+      "skills.technical_skills[0]": [
+        "e17:0:3"
+      ],
+      "skills.technical_skills[1]": [
+        "e18:0:21"
+      ],
+      "skills.tools_and_platforms[0]": [
+        "e9:0:8"
+      ],
+      "skills.tools_and_platforms[1]": [
+        "e19:0:28",
+        "e23:0:15"
+      ],
+      "skills.all_skills[0]": [
+        "e17:0:3"
+      ],
+      "skills.all_skills[1]": [
+        "e18:0:21"
+      ],
+      "skills.all_skills[2]": [
+        "e9:0:8"
+      ],
+      "skills.all_skills[3]": [
+        "e19:0:28",
+        "e23:0:15"
+      ],
+      "skills.all_skills[4]": [
+        "e5:0:7"
+      ],
+      "skills.all_skills[5]": [
+        "e6:0:10"
+      ],
+      "skills.all_skills[6]": [
+        "e7:0:14"
+      ],
+      "skills.all_skills[7]": [
+        "e8:0:14"
+      ],
+      "skills.all_skills[8]": [
+        "e10:0:20"
+      ],
+      "skills.all_skills[9]": [
+        "e11:0:9"
+      ],
+      "skills.all_skills[10]": [
+        "e12:0:9"
+      ],
+      "skills.all_skills[11]": [
+        "e13:0:9"
+      ],
+      "skills.all_skills[12]": [
+        "e14:0:10"
+      ],
+      "skills.all_skills[13]": [
+        "e15:0:6"
+      ],
+      "skills.all_skills[14]": [
+        "e16:0:19"
+      ],
+      "skills.all_skills[15]": [
+        "e18:0:21"
+      ],
+      "skills.all_skills[16]": [
+        "e18:0:21"
+      ],
+      "skills.all_skills[17]": [
+        "e19:0:28"
+      ],
+      "skills.all_skills[18]": [
+        "e19:0:28"
+      ],
+      "skills.all_skills[19]": [
+        "e20:0:6"
+      ],
+      "skills.all_skills[20]": [
+        "e21:0:23"
+      ],
+      "skills.all_skills[21]": [
+        "e22:0:13"
+      ],
+      "skills.all_skills[22]": [
+        "e22:0:13"
+      ],
+      "skills.all_skills[23]": [
+        "e23:0:15"
+      ],
+      "skills.all_skills[24]": [
+        "e24:0:4"
+      ],
+      "skills.all_skills[25]": [
+        "e25:0:10"
+      ],
+      "skills.all_skills[26]": [
+        "e26:0:15"
+      ]
+    },
+    "record_reviews": [
+      {
+        "category": "experience",
+        "entry_id": "experience-1",
+        "source_ids": [
+          "e34:20:185",
+          "e35:0:208",
+          "e36:0:157",
+          "e37:0:287",
+          "e38:0:171",
+          "e39:0:360"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-2",
+        "source_ids": [
+          "e40:11:256"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "education",
+        "entry_id": "education-1",
+        "source_ids": [
+          "e42:0:249",
+          "e43:0:29",
+          "e44:0:45",
+          "e45:0:59",
+          "e46:0:22",
+          "e47:0:32",
+          "e48:0:22"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      }
+    ],
+    "missing_required_fields": [
+      "experience[0].company",
+      "experience[0].role",
+      "experience[1].company",
+      "experience[1].role",
+      "education[0].institution",
+      "education[0].degree"
+    ],
+    "warnings": [
+      "Schema validity and field completion do not establish extraction or relationship accuracy.",
+      "Handoff confidence scores are fixed heuristics, not calibrated probabilities.",
+      "Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields."
+    ],
+    "unmapped_blocks": [
+      {
+        "source_id": "e2:0:20",
+        "category": "summary",
+        "text": "PROFESSIONAL SUMMARY",
+        "page_number": null
+      },
+      {
+        "source_id": "e49:9:16",
+        "category": "summary",
+        "text": "SUMMARY",
+        "page_number": null
+      },
+      {
+        "source_id": "e4:0:6",
+        "category": "skills",
+        "text": "SKILLS",
+        "page_number": null
+      },
+      {
+        "source_id": "e34:10:20",
+        "category": "experience",
+        "text": "Experience",
+        "page_number": null
+      },
+      {
+        "source_id": "e34:20:185",
+        "category": "experience",
+        "text": " working with the XRM Tool for data management, configuration, and integration within the Power Platform ecosystem, improving solution customization and performance.",
+        "page_number": null
+      },
+      {
+        "source_id": "e35:0:208",
+        "category": "experience",
+        "text": "CoE Tool Kit: Proficient in using the Center of Excellence (CoE) Tool Kit to monitor, govern, and manage Power Platform environments and solutions across organizations, ensuring compliance and best practices.",
+        "page_number": null
+      },
+      {
+        "source_id": "e36:0:157",
+        "category": "experience",
+        "text": "RPA Tools: Skilled in UiPath and Automation Anywhere for robotic process automation (RPA), automating repetitive tasks, and optimizing operational workflows.",
+        "page_number": null
+      },
+      {
+        "source_id": "e37:0:287",
+        "category": "experience",
+        "text": "Power Platform Governance: Managed and governed Microsoft Power Platform environments using the Power Platform Admin Center, ensuring security, compliance, and efficient user access through role-based access control (RBAC), data loss prevention (DLP) policies, and performance monitoring",
+        "page_number": null
+      },
+      {
+        "source_id": "e38:0:171",
+        "category": "experience",
+        "text": "Team Collaboration: Strong team player with excellent organizational, analytical, and problem-solving skills, delivering effective automation solutions within Agile teams.",
+        "page_number": null
+      },
+      {
+        "source_id": "e39:0:360",
+        "category": "experience",
+        "text": "JIRA, Azure DevOps, Visio: Experienced in using tools like JIRA, Azure DevOps, and Visio for project management, issue tracking, and team collaboration, ensuring seamless integration and workflow management across development and operational teams. Proficient in managing agile methodologies, tracking progress, and visualizing project timelines and processes.",
+        "page_number": null
+      },
+      {
+        "source_id": "e40:0:11",
+        "category": "experience",
+        "text": "EXPERIENCE ",
+        "page_number": null
+      },
+      {
+        "source_id": "e40:11:256",
+        "category": "experience",
+        "text": "Company Period Location Position KohuTech (Origo) Apr 2025 to Feb 2026 Bangalore Technical Lead Birlasoft Ind (HP) Jun 2023 to Apr 2025 Bangalore Sr Application Developer PersolKelly (Autodesk) Nov 2021 to May 2023 Bangalore Power Apps Developer",
+        "page_number": null
+      },
+      {
+        "source_id": "e41:0:9",
+        "category": "education",
+        "text": "EDUCATION",
+        "page_number": null
+      },
+      {
+        "source_id": "e42:0:249",
+        "category": "education",
+        "text": "School/University Period Grade Branch Place JNTUA College of Engineering 2017-2020 7.8/10 ECE Anantapur, Andhra Pradesh SV Govt Polytechnic 2014-2017 9.2/10 ECE Tirupati, Andhra Pradesh ZP Govt High School 2013 9.8/10 SSC Peddamandem, Andhra Pradesh",
+        "page_number": null
+      },
+      {
+        "source_id": "e43:0:29",
+        "category": "education",
+        "text": "CERTIFICATIONS & ACHIEVEMNETS",
+        "page_number": null
+      },
+      {
+        "source_id": "e44:0:45",
+        "category": "education",
+        "text": "PL-600(N12594-0F0070), PL-400, PL-200, PL-100",
+        "page_number": null
+      },
+      {
+        "source_id": "e45:0:59",
+        "category": "education",
+        "text": "Udemy (Copilot Studio, Power BI, Gen AI Apps and Solutions)",
+        "page_number": null
+      },
+      {
+        "source_id": "e46:0:22",
+        "category": "education",
+        "text": "Power Platform Trainer",
+        "page_number": null
+      },
+      {
+        "source_id": "e47:0:32",
+        "category": "education",
+        "text": "ECET AP 8th & TS 10th Rank -2017",
+        "page_number": null
+      },
+      {
+        "source_id": "e48:0:22",
+        "category": "education",
+        "text": "JNTUA ECHO – Treasurer",
+        "page_number": null
+      },
+      {
+        "source_id": "e49:0:9",
+        "category": "projects",
+        "text": "PROJECTS ",
+        "page_number": null
+      },
+      {
+        "source_id": "e27:0:17",
+        "category": null,
+        "text": "TECHNICAL SUMMARY",
+        "page_number": null
+      },
+      {
+        "source_id": "e28:0:168",
+        "category": null,
+        "text": "Requirement Analysis & Documentation: Participated in requirement analysis and documentation for client requirements related to Power Platform and automation solutions.",
+        "page_number": null
+      },
+      {
+        "source_id": "e29:0:183",
+        "category": null,
+        "text": "Power Platform Expertise: Experienced professional specialized in Power Platform (Power Apps, Power Automate, Copilot Studio) for developing custom solutions and automating workflows.",
+        "page_number": null
+      },
+      {
+        "source_id": "e30:0:210",
+        "category": null,
+        "text": "Power Apps Development: Extensive experience in designing and developing custom solutions using Power Apps (Canvas, Model Driven, Power Pages) for low-code application development, enhancing business processes.",
+        "page_number": null
+      },
+      {
+        "source_id": "e31:0:175",
+        "category": null,
+        "text": "Power Automate Workflow: Proficient in creating and managing automated workflows using Power Automate, integrating with third-party services and automating business processes.",
+        "page_number": null
+      },
+      {
+        "source_id": "e32:0:199",
+        "category": null,
+        "text": "Power BI Dashboards: Proficient in designing and developing interactive Power BI dashboards for data visualization, enabling real-time insights and informed decision-making across business processes.",
+        "page_number": null
+      },
+      {
+        "source_id": "e33:0:127",
+        "category": null,
+        "text": "Copilot Studio: Skilled in utilizing Copilot Studio to enhance development efficiency, leveraging its AI- powered capabilities.",
+        "page_number": null
+      },
+      {
+        "source_id": "e34:0:10",
+        "category": null,
+        "text": "XRM Tool: ",
+        "page_number": null
+      }
+    ],
+    "needs_review": [
+      {
+        "source_element_index": 27,
+        "start": 0,
+        "end": 17,
+        "text": "TECHNICAL SUMMARY",
+        "page_number": null,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.325,
+        "margin": 0.0249,
+        "lane": "main",
+        "reason": "Possible ambiguous or unsupported heading; section context stopped",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 28,
+        "start": 0,
+        "end": 168,
+        "text": "Requirement Analysis & Documentation: Participated in requirement analysis and documentation for client requirements related to Power Platform and automation solutions.",
+        "page_number": null,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3504,
+        "margin": -0.0125,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 29,
+        "start": 0,
+        "end": 183,
+        "text": "Power Platform Expertise: Experienced professional specialized in Power Platform (Power Apps, Power Automate, Copilot Studio) for developing custom solutions and automating workflows.",
+        "page_number": null,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.4437,
+        "margin": 0.0399,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 30,
+        "start": 0,
+        "end": 210,
+        "text": "Power Apps Development: Extensive experience in designing and developing custom solutions using Power Apps (Canvas, Model Driven, Power Pages) for low-code application development, enhancing business processes.",
+        "page_number": null,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3599,
+        "margin": 0.1352,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 31,
+        "start": 0,
+        "end": 175,
+        "text": "Power Automate Workflow: Proficient in creating and managing automated workflows using Power Automate, integrating with third-party services and automating business processes.",
+        "page_number": null,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3182,
+        "margin": 0.0453,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 32,
+        "start": 0,
+        "end": 199,
+        "text": "Power BI Dashboards: Proficient in designing and developing interactive Power BI dashboards for data visualization, enabling real-time insights and informed decision-making across business processes.",
+        "page_number": null,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3329,
+        "margin": 0.0814,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 33,
+        "start": 0,
+        "end": 127,
+        "text": "Copilot Studio: Skilled in utilizing Copilot Studio to enhance development efficiency, leveraging its AI- powered capabilities.",
+        "page_number": null,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.4159,
+        "margin": 0.0793,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 34,
+        "start": 0,
+        "end": 10,
+        "text": "XRM Tool: ",
+        "page_number": null,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2242,
+        "margin": 0.0576,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      }
+    ]
+  },
+  "section_schemas": [
+    {
+      "category": "personal_information",
+      "label": "Personal information",
+      "records": [
+        {
+          "record_id": "personal_information",
+          "source_ids": [
+            "e0:0:51",
+            "e1:0:30"
+          ],
+          "attributes": [
+            {
+              "name": "full_name",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "email",
+              "items": [
+                {
+                  "value": "kpavan1299.it@gmail.com",
+                  "evidence": [
+                    {
+                      "source_id": "e1:0:30",
+                      "quote": "kpavan1299.it@gmail.com"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "phone",
+              "items": [
+                {
+                  "value": "9676827221",
+                  "evidence": [
+                    {
+                      "source_id": "e0:0:51",
+                      "quote": "9676827221"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "linkedin_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "github_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "portfolio_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "professional_title",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e0:0:51",
+          "quote": "PAVAN KUMAR REDDY KANAKANTI\tPHONE: (+91) 9676827221"
+        },
+        {
+          "source_id": "e1:0:30",
+          "quote": "Email: kpavan1299.it@gmail.com"
+        }
+      ]
+    },
+    {
+      "category": "summary",
+      "label": "Summary",
+      "records": [
+        {
+          "record_id": "summary",
+          "source_ids": [
+            "e3:0:322",
+            "e50:0:24",
+            "e51:0:8",
+            "e52:0:235",
+            "e53:0:9",
+            "e54:0:82",
+            "e55:0:57",
+            "e56:0:73",
+            "e57:0:63",
+            "e58:0:79",
+            "e59:0:33",
+            "e60:0:229",
+            "e61:0:75",
+            "e62:0:70",
+            "e63:0:70",
+            "e64:0:81",
+            "e65:0:37",
+            "e66:0:41",
+            "e67:0:250",
+            "e68:0:78",
+            "e69:0:94",
+            "e70:0:87",
+            "e71:0:90",
+            "e72:0:38",
+            "e73:0:207",
+            "e74:0:9",
+            "e75:0:71",
+            "e76:0:75",
+            "e77:0:71",
+            "e78:0:71"
+          ],
+          "attributes": [
+            {
+              "name": "statements",
+              "items": [
+                {
+                  "value": "Highly motivated IT professional with 5 years of experience specializing in Microsoft Power Platform (Power Apps, Power Automate, Dataverse), SharePoint, and RPA tools (UiPath, Automation Anywhere). Proven ability to design, develop, and implement efficient solutions to streamline business processes and drive automation.",
+                  "evidence": [
+                    {
+                      "source_id": "e3:0:322",
+                      "quote": "Highly motivated IT professional with 5 years of experience specializing in Microsoft Power Platform (Power Apps, Power Automate, Dataverse), SharePoint, and RPA tools (UiPath, Automation Anywhere). Proven ability to design, develop, and implement efficient solutions to streamline business processes and drive automation."
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "PHONEBOOK APP - KohuTech",
+                  "evidence": [
+                    {
+                      "source_id": "e50:0:24",
+                      "quote": "PHONEBOOK APP - KohuTech"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Problem:",
+                  "evidence": [
+                    {
+                      "source_id": "e51:0:8",
+                      "quote": "Problem:"
+                    },
+                    {
+                      "source_id": "e59:0:33",
+                      "quote": "Problem:"
+                    },
+                    {
+                      "source_id": "e66:0:41",
+                      "quote": "Problem:"
+                    },
+                    {
+                      "source_id": "e72:0:38",
+                      "quote": "Problem:"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Contractors and guest users couldn’t access internal staff details due to the absence of a secure directory, causing communication delays, manual information requests, and risk of exposing sensitive data without proper access controls.",
+                  "evidence": [
+                    {
+                      "source_id": "e52:0:235",
+                      "quote": "Contractors and guest users couldn’t access internal staff details due to the absence of a secure directory, causing communication delays, manual information requests, and risk of exposing sensitive data without proper access controls."
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Solution:",
+                  "evidence": [
+                    {
+                      "source_id": "e53:0:9",
+                      "quote": "Solution:"
+                    },
+                    {
+                      "source_id": "e60:0:229",
+                      "quote": "Solution:"
+                    },
+                    {
+                      "source_id": "e67:0:250",
+                      "quote": "Solution:"
+                    },
+                    {
+                      "source_id": "e74:0:9",
+                      "quote": "Solution:"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Built a secure Power Apps directory using Dataverse as the single source of truth.",
+                  "evidence": [
+                    {
+                      "source_id": "e54:0:82",
+                      "quote": "Built a secure Power Apps directory using Dataverse as the single source of truth."
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Sync AAD data to Dataverse every day using Power Automate",
+                  "evidence": [
+                    {
+                      "source_id": "e55:0:57",
+                      "quote": "Sync AAD data to Dataverse every day using Power Automate"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Enabled fast search, sorting, and filtering with optimized UI components.",
+                  "evidence": [
+                    {
+                      "source_id": "e56:0:73",
+                      "quote": "Enabled fast search, sorting, and filtering with optimized UI components."
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Implemented role-based access to ensure privacy and compliance.",
+                  "evidence": [
+                    {
+                      "source_id": "e57:0:63",
+                      "quote": "Implemented role-based access to ensure privacy and compliance."
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Added dual view modes, org-chart visualization, and daily automated data syncs.",
+                  "evidence": [
+                    {
+                      "source_id": "e58:0:79",
+                      "quote": "Added dual view modes, org-chart visualization, and daily automated data syncs."
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "MY PBI PORTAL - KohuTech Problem:",
+                  "evidence": [
+                    {
+                      "source_id": "e59:0:33",
+                      "quote": "MY PBI PORTAL - KohuTech Problem:"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Embedding Power BI dashboards through third-party domains created governance issues, required duplicate development, lacked user registration and approvals, and offered no scalable security model for external audiences. Solution:",
+                  "evidence": [
+                    {
+                      "source_id": "e60:0:229",
+                      "quote": "Embedding Power BI dashboards through third-party domains created governance issues, required duplicate development, lacked user registration and approvals, and offered no scalable security model for external audiences. Solution:"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Implemented a Power Pages portal with secure Power BI Embedded integration.",
+                  "evidence": [
+                    {
+                      "source_id": "e61:0:75",
+                      "quote": "Implemented a Power Pages portal with secure Power BI Embedded integration."
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Designed role-based access for anonymous, registered, and admin users.",
+                  "evidence": [
+                    {
+                      "source_id": "e62:0:70",
+                      "quote": "Designed role-based access for anonymous, registered, and admin users."
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Used Dataverse for user/company attributes with dynamic RLS filtering.",
+                  "evidence": [
+                    {
+                      "source_id": "e63:0:70",
+                      "quote": "Used Dataverse for user/company attributes with dynamic RLS filtering."
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Automated registration, approval, and access workflows for simplified governance.",
+                  "evidence": [
+                    {
+                      "source_id": "e64:0:81",
+                      "quote": "Automated registration, approval, and access workflows for simplified governance."
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Created MDA and Canvas App for Admins",
+                  "evidence": [
+                    {
+                      "source_id": "e65:0:37",
+                      "quote": "Created MDA and Canvas App for Admins"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "WLP EOL / EOL & EOSL - Birlasoft Problem:",
+                  "evidence": [
+                    {
+                      "source_id": "e66:0:41",
+                      "quote": "WLP EOL / EOL & EOSL - Birlasoft Problem:"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Sales teams depended on large, outdated Excel files to check warranty and lifecycle data, making it difficult to search thousands of serial numbers, leading to days of manual effort, delays in client responses, and lack of a unified system. Solution:",
+                  "evidence": [
+                    {
+                      "source_id": "e67:0:250",
+                      "quote": "Sales teams depended on large, outdated Excel files to check warranty and lifecycle data, making it difficult to search thousands of serial numbers, leading to days of manual effort, delays in client responses, and lack of a unified system. Solution:"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Created a centralized automation solution using Power Apps and Power Automate.",
+                  "evidence": [
+                    {
+                      "source_id": "e68:0:78",
+                      "quote": "Created a centralized automation solution using Power Apps and Power Automate."
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Integrated UiPath (later migrated to Automation Anywhere) to pull data from legacy UI sources.",
+                  "evidence": [
+                    {
+                      "source_id": "e69:0:94",
+                      "quote": "Integrated UiPath (later migrated to Automation Anywhere) to pull data from legacy UI sources."
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Automated bulk serial-number processing, email notifications, and live status tracking.",
+                  "evidence": [
+                    {
+                      "source_id": "e70:0:87",
+                      "quote": "Automated bulk serial-number processing, email notifications, and live status tracking."
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Reused fetched data to reduce repeated lookups and improve response times for sales teams.",
+                  "evidence": [
+                    {
+                      "source_id": "e71:0:90",
+                      "quote": "Reused fetched data to reduce repeated lookups and improve response times for sales teams."
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "AUTOMATION HUB - PersollKelly Problem:",
+                  "evidence": [
+                    {
+                      "source_id": "e72:0:38",
+                      "quote": "AUTOMATION HUB - PersollKelly Problem:"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Internal AutoCAD training projects lacked a unified system to track project details, employee hours, knowledge sharing, KPIs, action items, and audit data—resulting in manual tracking and limited visibility.",
+                  "evidence": [
+                    {
+                      "source_id": "e73:0:207",
+                      "quote": "Internal AutoCAD training projects lacked a unified system to track project details, employee hours, knowledge sharing, KPIs, action items, and audit data—resulting in manual tracking and limited visibility."
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Solution:",
+                  "evidence": [
+                    {
+                      "source_id": "e53:0:9",
+                      "quote": "Solution:"
+                    },
+                    {
+                      "source_id": "e60:0:229",
+                      "quote": "Solution:"
+                    },
+                    {
+                      "source_id": "e67:0:250",
+                      "quote": "Solution:"
+                    },
+                    {
+                      "source_id": "e74:0:9",
+                      "quote": "Solution:"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Developed Power Apps modules for project tracking and activity logging.",
+                  "evidence": [
+                    {
+                      "source_id": "e75:0:71",
+                      "quote": "Developed Power Apps modules for project tracking and activity logging."
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Automated task updates, schedules, and data workflows using Power Automate.",
+                  "evidence": [
+                    {
+                      "source_id": "e76:0:75",
+                      "quote": "Automated task updates, schedules, and data workflows using Power Automate."
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Implemented centralized data storage for employees, projects, and KPIs.",
+                  "evidence": [
+                    {
+                      "source_id": "e77:0:71",
+                      "quote": "Implemented centralized data storage for employees, projects, and KPIs."
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Built Power BI dashboards for audit reporting and performance insights.",
+                  "evidence": [
+                    {
+                      "source_id": "e78:0:71",
+                      "quote": "Built Power BI dashboards for audit reporting and performance insights."
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "total_experience_years",
+              "items": [
+                {
+                  "value": 5.0,
+                  "evidence": [
+                    {
+                      "source_id": "e3:0:322",
+                      "quote": "5"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e2:0:20",
+          "quote": "PROFESSIONAL SUMMARY"
+        },
+        {
+          "source_id": "e49:9:16",
+          "quote": "SUMMARY"
+        }
+      ]
+    },
+    {
+      "category": "skills",
+      "label": "Skills",
+      "records": [
+        {
+          "record_id": "skills",
+          "source_ids": [
+            "e5:0:7",
+            "e6:0:10",
+            "e7:0:14",
+            "e8:0:14",
+            "e9:0:8",
+            "e10:0:20",
+            "e11:0:9",
+            "e12:0:9",
+            "e13:0:9",
+            "e14:0:10",
+            "e15:0:6",
+            "e16:0:19",
+            "e17:0:3",
+            "e18:0:21",
+            "e19:0:28",
+            "e20:0:6",
+            "e21:0:23",
+            "e22:0:13",
+            "e23:0:15",
+            "e24:0:4",
+            "e25:0:10",
+            "e26:0:15"
+          ],
+          "attributes": [
+            {
+              "name": "technical_skills",
+              "items": [
+                {
+                  "value": "SQL",
+                  "evidence": [
+                    {
+                      "source_id": "e17:0:3",
+                      "quote": "SQL"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "JavaScript",
+                  "evidence": [
+                    {
+                      "source_id": "e18:0:21",
+                      "quote": "JavaScript"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "tools_and_platforms",
+              "items": [
+                {
+                  "value": "Power BI",
+                  "evidence": [
+                    {
+                      "source_id": "e9:0:8",
+                      "quote": "Power BI"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Azure",
+                  "evidence": [
+                    {
+                      "source_id": "e19:0:28",
+                      "quote": "Azure"
+                    },
+                    {
+                      "source_id": "e23:0:15",
+                      "quote": "Azure"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "domain_and_functional",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "soft_skills",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "all_skills",
+              "items": [
+                {
+                  "value": "SQL",
+                  "evidence": [
+                    {
+                      "source_id": "e17:0:3",
+                      "quote": "SQL"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "JavaScript",
+                  "evidence": [
+                    {
+                      "source_id": "e18:0:21",
+                      "quote": "JavaScript"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Power BI",
+                  "evidence": [
+                    {
+                      "source_id": "e9:0:8",
+                      "quote": "Power BI"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Azure",
+                  "evidence": [
+                    {
+                      "source_id": "e19:0:28",
+                      "quote": "Azure"
+                    },
+                    {
+                      "source_id": "e23:0:15",
+                      "quote": "Azure"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Primary",
+                  "evidence": [
+                    {
+                      "source_id": "e5:0:7",
+                      "quote": "Primary"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Power Apps",
+                  "evidence": [
+                    {
+                      "source_id": "e6:0:10",
+                      "quote": "Power Apps"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Power Automate",
+                  "evidence": [
+                    {
+                      "source_id": "e7:0:14",
+                      "quote": "Power Automate"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Copilot Studio",
+                  "evidence": [
+                    {
+                      "source_id": "e8:0:14",
+                      "quote": "Copilot Studio"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Power Platform Admin",
+                  "evidence": [
+                    {
+                      "source_id": "e10:0:20",
+                      "quote": "Power Platform Admin"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Dataverse",
+                  "evidence": [
+                    {
+                      "source_id": "e11:0:9",
+                      "quote": "Dataverse"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Graph API",
+                  "evidence": [
+                    {
+                      "source_id": "e12:0:9",
+                      "quote": "Graph API"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Secondary",
+                  "evidence": [
+                    {
+                      "source_id": "e13:0:9",
+                      "quote": "Secondary"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "SharePoint",
+                  "evidence": [
+                    {
+                      "source_id": "e14:0:10",
+                      "quote": "SharePoint"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "UiPath",
+                  "evidence": [
+                    {
+                      "source_id": "e15:0:6",
+                      "quote": "UiPath"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Automation Anywhere",
+                  "evidence": [
+                    {
+                      "source_id": "e16:0:19",
+                      "quote": "Automation Anywhere"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Html",
+                  "evidence": [
+                    {
+                      "source_id": "e18:0:21",
+                      "quote": "Html"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "CSS",
+                  "evidence": [
+                    {
+                      "source_id": "e18:0:21",
+                      "quote": "CSS"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Azure Logic Apps",
+                  "evidence": [
+                    {
+                      "source_id": "e19:0:28",
+                      "quote": "Azure Logic Apps"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "AI Foundry",
+                  "evidence": [
+                    {
+                      "source_id": "e19:0:28",
+                      "quote": "AI Foundry"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Others",
+                  "evidence": [
+                    {
+                      "source_id": "e20:0:6",
+                      "quote": "Others"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Power Platform Strategy",
+                  "evidence": [
+                    {
+                      "source_id": "e21:0:23",
+                      "quote": "Power Platform Strategy"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "XRM",
+                  "evidence": [
+                    {
+                      "source_id": "e22:0:13",
+                      "quote": "XRM"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "CoE tool",
+                  "evidence": [
+                    {
+                      "source_id": "e22:0:13",
+                      "quote": "CoE tool"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Azure ML Studio",
+                  "evidence": [
+                    {
+                      "source_id": "e23:0:15",
+                      "quote": "Azure ML Studio"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "SPFx",
+                  "evidence": [
+                    {
+                      "source_id": "e24:0:4",
+                      "quote": "SPFx"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "PowerShell",
+                  "evidence": [
+                    {
+                      "source_id": "e25:0:10",
+                      "quote": "PowerShell"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Exchange Online",
+                  "evidence": [
+                    {
+                      "source_id": "e26:0:15",
+                      "quote": "Exchange Online"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e4:0:6",
+          "quote": "SKILLS"
+        },
+        {
+          "source_id": "e18:0:21",
+          "quote": "Html, CSS, JavaScript"
+        },
+        {
+          "source_id": "e19:0:28",
+          "quote": "Azure Logic Apps, AI Foundry"
+        },
+        {
+          "source_id": "e22:0:13",
+          "quote": "XRM, CoE tool"
+        }
+      ]
+    },
+    {
+      "category": "experience",
+      "label": "Experience",
+      "records": [
+        {
+          "record_id": "experience-1",
+          "source_ids": [
+            "e34:20:185",
+            "e35:0:208",
+            "e36:0:157",
+            "e37:0:287",
+            "e38:0:171",
+            "e39:0:360"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "experience-2",
+          "source_ids": [
+            "e40:11:256"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e34:10:20",
+          "quote": "Experience"
+        },
+        {
+          "source_id": "e34:20:185",
+          "quote": " working with the XRM Tool for data management, configuration, and integration within the Power Platform ecosystem, improving solution customization and performance."
+        },
+        {
+          "source_id": "e35:0:208",
+          "quote": "CoE Tool Kit: Proficient in using the Center of Excellence (CoE) Tool Kit to monitor, govern, and manage Power Platform environments and solutions across organizations, ensuring compliance and best practices."
+        },
+        {
+          "source_id": "e36:0:157",
+          "quote": "RPA Tools: Skilled in UiPath and Automation Anywhere for robotic process automation (RPA), automating repetitive tasks, and optimizing operational workflows."
+        },
+        {
+          "source_id": "e37:0:287",
+          "quote": "Power Platform Governance: Managed and governed Microsoft Power Platform environments using the Power Platform Admin Center, ensuring security, compliance, and efficient user access through role-based access control (RBAC), data loss prevention (DLP) policies, and performance monitoring"
+        },
+        {
+          "source_id": "e38:0:171",
+          "quote": "Team Collaboration: Strong team player with excellent organizational, analytical, and problem-solving skills, delivering effective automation solutions within Agile teams."
+        },
+        {
+          "source_id": "e39:0:360",
+          "quote": "JIRA, Azure DevOps, Visio: Experienced in using tools like JIRA, Azure DevOps, and Visio for project management, issue tracking, and team collaboration, ensuring seamless integration and workflow management across development and operational teams. Proficient in managing agile methodologies, tracking progress, and visualizing project timelines and processes."
+        },
+        {
+          "source_id": "e40:0:11",
+          "quote": "EXPERIENCE "
+        },
+        {
+          "source_id": "e40:11:256",
+          "quote": "Company Period Location Position KohuTech (Origo) Apr 2025 to Feb 2026 Bangalore Technical Lead Birlasoft Ind (HP) Jun 2023 to Apr 2025 Bangalore Sr Application Developer PersolKelly (Autodesk) Nov 2021 to May 2023 Bangalore Power Apps Developer"
+        }
+      ]
+    },
+    {
+      "category": "education",
+      "label": "Education",
+      "records": [
+        {
+          "record_id": "education-1",
+          "source_ids": [
+            "e42:0:249",
+            "e43:0:29",
+            "e44:0:45",
+            "e45:0:59",
+            "e46:0:22",
+            "e47:0:32",
+            "e48:0:22"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "degree",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e41:0:9",
+          "quote": "EDUCATION"
+        },
+        {
+          "source_id": "e42:0:249",
+          "quote": "School/University Period Grade Branch Place JNTUA College of Engineering 2017-2020 7.8/10 ECE Anantapur, Andhra Pradesh SV Govt Polytechnic 2014-2017 9.2/10 ECE Tirupati, Andhra Pradesh ZP Govt High School 2013 9.8/10 SSC Peddamandem, Andhra Pradesh"
+        },
+        {
+          "source_id": "e43:0:29",
+          "quote": "CERTIFICATIONS & ACHIEVEMNETS"
+        },
+        {
+          "source_id": "e44:0:45",
+          "quote": "PL-600(N12594-0F0070), PL-400, PL-200, PL-100"
+        },
+        {
+          "source_id": "e45:0:59",
+          "quote": "Udemy (Copilot Studio, Power BI, Gen AI Apps and Solutions)"
+        },
+        {
+          "source_id": "e46:0:22",
+          "quote": "Power Platform Trainer"
+        },
+        {
+          "source_id": "e47:0:32",
+          "quote": "ECET AP 8th & TS 10th Rank -2017"
+        },
+        {
+          "source_id": "e48:0:22",
+          "quote": "JNTUA ECHO – Treasurer"
+        }
+      ]
+    },
+    {
+      "category": "projects",
+      "label": "Projects",
+      "records": [],
+      "residual_blocks": [
+        {
+          "source_id": "e49:0:9",
+          "quote": "PROJECTS "
+        }
+      ]
+    },
+    {
+      "category": "needs_review",
+      "label": "Unassigned source blocks",
+      "records": [],
+      "residual_blocks": [
+        {
+          "source_id": "e27:0:17",
+          "quote": "TECHNICAL SUMMARY"
+        },
+        {
+          "source_id": "e28:0:168",
+          "quote": "Requirement Analysis & Documentation: Participated in requirement analysis and documentation for client requirements related to Power Platform and automation solutions."
+        },
+        {
+          "source_id": "e29:0:183",
+          "quote": "Power Platform Expertise: Experienced professional specialized in Power Platform (Power Apps, Power Automate, Copilot Studio) for developing custom solutions and automating workflows."
+        },
+        {
+          "source_id": "e30:0:210",
+          "quote": "Power Apps Development: Extensive experience in designing and developing custom solutions using Power Apps (Canvas, Model Driven, Power Pages) for low-code application development, enhancing business processes."
+        },
+        {
+          "source_id": "e31:0:175",
+          "quote": "Power Automate Workflow: Proficient in creating and managing automated workflows using Power Automate, integrating with third-party services and automating business processes."
+        },
+        {
+          "source_id": "e32:0:199",
+          "quote": "Power BI Dashboards: Proficient in designing and developing interactive Power BI dashboards for data visualization, enabling real-time insights and informed decision-making across business processes."
+        },
+        {
+          "source_id": "e33:0:127",
+          "quote": "Copilot Studio: Skilled in utilizing Copilot Studio to enhance development efficiency, leveraging its AI- powered capabilities."
+        },
+        {
+          "source_id": "e34:0:10",
+          "quote": "XRM Tool: "
+        }
+      ]
+    }
+  ]
+}

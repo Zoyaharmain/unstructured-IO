@@ -1,0 +1,2000 @@
+{
+  "success": true,
+  "source": "GOWTHAM..SARAVANAN.docx",
+  "extraction_mode": "existing_blocks_schema_mapping",
+  "data": {
+    "contact": {
+      "full_name": "GOWTHAM SARAVANAN",
+      "email": "Gowthamsaravanan.r@gmail.com",
+      "phone": "",
+      "location": "Chennai",
+      "linkedin_url": "www.linkedin.com/in/gowtham-saravanan25031991",
+      "github_url": null,
+      "portfolio_url": null
+    },
+    "professional_title": null,
+    "summary": "Dynamic Lead Business Analyst with capital markets/Investment Banking expertise at Neurealm, adept at optimizing reference data and enhancing accuracy through innovative solutions. Proven track record in change management and agile project delivery, leveraging strong communication skills to drive successful implementations and improve data governance practices. Passionate about delivering impactful results in fast-paced environments.",
+    "total_experience_years": null,
+    "skills": {
+      "technical_skills": [
+        "SQL"
+      ],
+      "tools_and_platforms": [
+        "Power BI",
+        "Tableau",
+        "JIRA"
+      ],
+      "domain_and_functional": [],
+      "soft_skills": [
+        "Agile",
+        "Communication",
+        "Change Management",
+        "Process Improvement"
+      ],
+      "all_skills": [
+        "SQL",
+        "Power BI",
+        "Tableau",
+        "JIRA",
+        "Agile",
+        "Communication",
+        "Change Management",
+        "Process Improvement",
+        "Capital markets expertise Investment Banking Change management strategies Strong communication skills Business analysis methodologies Agile project delivery Reference data oversight Requirement elicitation techniques Process improvement initiatives Stakeholder Management Data governance practices Data validation",
+        "APPLICATIONS & PLATFORMS",
+        "Collibra Enterprise Catalog",
+        "Snowflake/Data Mesh",
+        "Figma",
+        "ADO/JIRA",
+        "SQL - Beginner",
+        "Power BI /Tableau - intermediate",
+        "Vermilion"
+      ]
+    },
+    "experience": [
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      }
+    ],
+    "education": [
+      {
+        "institution": "",
+        "degree": "",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      }
+    ],
+    "certifications": [],
+    "projects": [
+      {
+        "name": "",
+        "description": "ABSL AMC Web Application Development - Developed business requirements and user stories for a web-based investment platform by collaborating with Product Owners and stakeholders.\nEnterprise reference data - internal/external reference data analyzing and implementing within Collibra after the refinement as per regulatory standards\nData taxonomy - analyzing the subdomains, as well as generating business terms for each subdomain under different asset classes like equity, derivatives, CA and FI.\nDakar reengineering - reconstructing the Dakar database, eliminating the legacy applications from Middle Office Client Reporting; this resulted in FTE realization.",
+        "role": null,
+        "technologies": [],
+        "url": null
+      }
+    ],
+    "languages": [
+      "Received the Customer Delight Award for best client service within Neurealm",
+      "Successfully completed the Data Taxonomy Project for the Northern Trust client, populating around 1,700 business terms across three subdomains: Asset, Transaction, and Event",
+      "Successfully implemented the Process Control Tool within the Client Reporting Operations to reduce mail tracking and manual errors, which resulted in timely sign-offs.",
+      "Tamil: First Language English:\tC2 Proficient (C2) Hindi:\tC2 Proficient (C2)"
+    ]
+  },
+  "schema_mapping": {
+    "fields_populated": 11,
+    "total_fields": 16,
+    "completion_percentage": 68.8,
+    "field_details": [
+      {
+        "field_name": "contact.full_name",
+        "target_type": "string",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Personal Details",
+        "confidence_score": 0.95,
+        "description": "Candidate's full name, extracted from the top header of the resume."
+      },
+      {
+        "field_name": "contact.email",
+        "target_type": "string (email)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.98,
+        "description": "Candidate's primary contact email address."
+      },
+      {
+        "field_name": "contact.phone",
+        "target_type": "string (phone)",
+        "is_required": true,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's telephone / mobile phone number."
+      },
+      {
+        "field_name": "contact.location",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.85,
+        "description": "Candidate's residential location or work city."
+      },
+      {
+        "field_name": "contact.linkedin_url",
+        "target_type": "string (url) | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.9,
+        "description": "URL to candidate's LinkedIn profile."
+      },
+      {
+        "field_name": "professional_title",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Subtitle",
+        "confidence_score": 0.0,
+        "description": "Candidate's target headline or most recent job title."
+      },
+      {
+        "field_name": "summary",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Summary / Profile / Objective",
+        "confidence_score": 0.85,
+        "description": "Executive bio, professional overview, or career objective."
+      },
+      {
+        "field_name": "total_experience_years",
+        "target_type": "float | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Summary / Experience Calculation",
+        "confidence_score": 0.0,
+        "description": "Total professional experience in years."
+      },
+      {
+        "field_name": "skills.technical_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills / Technical Competencies",
+        "confidence_score": 0.92,
+        "description": "Technical programming languages and core software competencies."
+      },
+      {
+        "field_name": "skills.tools_and_platforms",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills / Tools & Technologies",
+        "confidence_score": 0.9,
+        "description": "Software platforms, developer tools, and operational systems."
+      },
+      {
+        "field_name": "skills.domain_and_functional",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Domain Expertise",
+        "confidence_score": 0.0,
+        "description": "Functional domain knowledge (e.g. Hedge Funds, KYC, NAV, Derivatives)."
+      },
+      {
+        "field_name": "skills.all_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills (Aggregated)",
+        "confidence_score": 0.95,
+        "description": "Complete list of candidate skills across all categories."
+      },
+      {
+        "field_name": "experience",
+        "target_type": "array[WorkExperience]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Experience / Work History",
+        "confidence_score": 0.92,
+        "description": "Complete chronological employment records with bullet points."
+      },
+      {
+        "field_name": "education",
+        "target_type": "array[Education]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Education / Academic Qualifications",
+        "confidence_score": 0.9,
+        "description": "University, college, and higher education degree qualifications."
+      },
+      {
+        "field_name": "certifications",
+        "target_type": "array[Certification]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Certifications / Licenses",
+        "confidence_score": 0.0,
+        "description": "Professional accreditations and credentials."
+      },
+      {
+        "field_name": "projects",
+        "target_type": "array[Project]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Projects / Key Engagements",
+        "confidence_score": 0.8,
+        "description": "Major projects or strategic initiatives led by candidate."
+      }
+    ]
+  },
+  "raw_sections": {
+    "personal_information": "GOWTHAM SARAVANAN\nRAMACHANDRAN\nChennai, TN 600087 |99407 09068| Gowthamsaravanan.r@gmail.com\nWWW: www.linkedin.com/in/gowtham-saravanan25031991",
+    "summary": "SUMMARY\nDynamic Lead Business Analyst with capital markets/Investment Banking expertise at Neurealm, adept at optimizing reference data and enhancing accuracy through innovative solutions. Proven track record in change management and agile project delivery, leveraging strong communication skills to drive successful implementations and improve data governance practices. Passionate about delivering impactful results in fast-paced environments.",
+    "skills": "SKILLS\nCapital markets expertise Investment Banking Change management strategies Strong communication skills Business analysis methodologies Agile project delivery Reference data oversight Requirement elicitation techniques Process improvement initiatives Stakeholder Management Data governance practices Data validation\nAPPLICATIONS & PLATFORMS\nCollibra Enterprise Catalog\nSnowflake/Data Mesh\nFigma\nADO/JIRA\nSQL - Beginner\nPower BI /Tableau - intermediate\nVermilion",
+    "experience": "EXPERIENCE\n01/2026 – 07/2026 Lead Business Analyst Neurealm (Client: Aditya Birla Sunlife AMC)- Chennai, India Authored User Stories with detailed system behavior, business validations, acceptance criteria, and functional requirements for web application development. Collaborated with Product Owners and business stakeholders to gather and analyze requirements through module walkthrough sessions. Worked closely with Development and QA teams to clarify requirements, resolve functional queries, and support successful feature delivery. Managed and prioritized requirements using Jira. Participated in Agile Scrum ceremonies. Reviewed Figma designs to ensure UI/UX alignment with business requirements and user stories.\nFacilitated stakeholder review sessions, incorporated feedback, and obtained business sign-offs before development. 07/2024 – 01/2026 Lead Business Analyst Neurealm (Client: Northern Trust)- Chennai, India Improved clarity and accuracy by identifying reliable sources for reference data within enterprise data domain. Facilitated Collibra implementation of reference data code sets, validating processes from development through production. Developed efficient procedures enabling users to implement changes seamlessly. Created comprehensive notification change documents to keep users informed on updates. Engaged in data taxonomy projects, defining subdomains and business terms for diverse asset classes in Collibra. Analyzed both internal and external reference data to ensure adherence to regulatory requirements. Crafted user stories in ADO, maintaining oversight until successful implementation. Reference data is a Risk control Enhancement project which focuses on introducing new data sets to reduce data related risk in Capital Market Operations. Contributed to product backlog grooming sessions, effectively prioritizing tasks for streamlined execution.\n12/2015 - 01/2024 Assistant Manager Lead BNP Paribas Securities Services - Chennai, TN BA RESPONSIBILITIES: Middle office - Change Management responsibilities: Coordinating client onboarding projects with requirement gathering, BRD and FRD. Preparation of test cases and carry down end to end testing (Smoke, regression and UAT) according to the need. Involved in Dakar re-engineering project – Decommission of ODW with FTE realization. Involved in Global PME migration project from Legacy release structure. Coordinating with the Development team to implement and test the new client requirement. Working on post implementation requirements from client – Configuration changes, involvement in critical incidents, fixing bugs and providing client with RCA.\nOPERATIONAL RESPONSIBILITIES\nMiddle office - Client Reporting responsibilities:\nHigh level monthly report prepared for multiple client / portfolios ABOR reporting.\nMonth end positions are reconciled against transaction to ensure the consistency of report.\nIssues are highlighted with Ops team if month end reconciliation fails due to invalid trade posted, booked trade with insufficient information, incorrect cancel/rebook, etc.\nIdentifying the solution to the STP fails by doing RCA for the failure.\nPreparation of Vermilion reporting – Detailed reporting detailing cash balances, income details, withdrawals etc.\nMiddle office - Treasury Cash Management:\nInvolved in FX repatriation through non-preferred ccy to preferred ccy in order maintain cash balances in client account.\nAll non-trade related activities like Derivatives, Income (Dividend, coupons), Corporate Actions are FXed.\nEnsure to provide Cash forecast of all accounts to the client at start of the day by which client is aware of the available cash.\nInvolved in preparation of Investment balances to the client post repatriating FX to preferred ccy.\n06/2014 - 12/2015 Associate Wipro LTD - Chennai, CHENNAI OPERATIONAL RESPONSIBILITIES: Letter of credit responsibilities: Reconciliation of letters of credit on critical portfolios. Clearing the matured letter of credits by following up with the issuing banks/agent banks. Identifying the solution to the STP fails by investigating the root cause for the failure. Ensure that the team's critical KPI's have been met.",
+    "projects": "RECENT PROJECTS\nABSL AMC Web Application Development - Developed business requirements and user stories for a web-based investment platform by collaborating with Product Owners and stakeholders.\nEnterprise reference data - internal/external reference data analyzing and implementing within Collibra after the refinement as per regulatory standards\nData taxonomy - analyzing the subdomains, as well as generating business terms for each subdomain under different asset classes like equity, derivatives, CA and FI.\nDakar reengineering - reconstructing the Dakar database, eliminating the legacy applications from Middle Office Client Reporting; this resulted in FTE realization.",
+    "education": "EDUCATION\n01/2013 MBA: Finance and Marketing SRM University - Kattankulathur, Chennai Graduated with 7.5 GPA GPA: 7.5 GPA\n01/2011 BBM: Business Management Kongu Arts & Science College - Erode Graduated with 6.8 GPA GPA: 6.8 GPA",
+    "awards": "ACCOMPLISHMENTS",
+    "languages": "LANGUAGES\nReceived the Customer Delight Award for best client service within Neurealm\nSuccessfully completed the Data Taxonomy Project for the Northern Trust client, populating around 1,700 business terms across three subdomains: Asset, Transaction, and Event\nSuccessfully implemented the Process Control Tool within the Client Reporting Operations to reduce mail tracking and manual errors, which resulted in timely sign-offs.\nTamil: First Language English:\tC2 Proficient (C2) Hindi:\tC2 Proficient (C2)"
+  },
+  "meta": {
+    "status": "needs_review",
+    "human_verified": false,
+    "provider_calls": 0,
+    "source_accounting": {
+      "all_source_text_preserved": true,
+      "total_spans": 49,
+      "assigned_meaningful_spans": 47,
+      "unresolved_meaningful_spans": 0,
+      "non_content_artifacts": 2,
+      "duplicates_excluded": 0,
+      "all_meaningful_text_assigned": true,
+      "semantic_correctness_verified": false,
+      "outcomes": [
+        {
+          "source_id": "e0:0:17",
+          "source_element_index": 0,
+          "start": 0,
+          "end": 17,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e1:0:12",
+          "source_element_index": 1,
+          "start": 0,
+          "end": 12,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e2:0:61",
+          "source_element_index": 2,
+          "start": 0,
+          "end": 61,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e3:0:50",
+          "source_element_index": 3,
+          "start": 0,
+          "end": 50,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e4:0:7",
+          "source_element_index": 4,
+          "start": 0,
+          "end": 7,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e5:0:437",
+          "source_element_index": 5,
+          "start": 0,
+          "end": 437,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e6:0:6",
+          "source_element_index": 6,
+          "start": 0,
+          "end": 6,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e7:0:313",
+          "source_element_index": 7,
+          "start": 0,
+          "end": 313,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:0:24",
+          "source_element_index": 8,
+          "start": 0,
+          "end": 24,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:0:27",
+          "source_element_index": 9,
+          "start": 0,
+          "end": 27,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e10:0:19",
+          "source_element_index": 10,
+          "start": 0,
+          "end": 19,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e11:0:5",
+          "source_element_index": 11,
+          "start": 0,
+          "end": 5,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:0:8",
+          "source_element_index": 12,
+          "start": 0,
+          "end": 8,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e13:0:14",
+          "source_element_index": 13,
+          "start": 0,
+          "end": 14,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e14:0:32",
+          "source_element_index": 14,
+          "start": 0,
+          "end": 32,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e15:0:9",
+          "source_element_index": 15,
+          "start": 0,
+          "end": 9,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e16:0:10",
+          "source_element_index": 16,
+          "start": 0,
+          "end": 10,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e17:0:709",
+          "source_element_index": 17,
+          "start": 0,
+          "end": 709,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e18:0:1164",
+          "source_element_index": 18,
+          "start": 0,
+          "end": 1164,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e19:0:756",
+          "source_element_index": 19,
+          "start": 0,
+          "end": 756,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e20:0:0",
+          "source_element_index": 20,
+          "start": 0,
+          "end": 0,
+          "section": null,
+          "outcome": "non_content_artifact",
+          "reason": "Whitespace retained in source inventory"
+        },
+        {
+          "source_id": "e21:0:28",
+          "source_element_index": 21,
+          "start": 0,
+          "end": 28,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e22:0:50",
+          "source_element_index": 22,
+          "start": 0,
+          "end": 50,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e23:0:83",
+          "source_element_index": 23,
+          "start": 0,
+          "end": 83,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e24:0:91",
+          "source_element_index": 24,
+          "start": 0,
+          "end": 91,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e25:0:173",
+          "source_element_index": 25,
+          "start": 0,
+          "end": 173,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e26:0:71",
+          "source_element_index": 26,
+          "start": 0,
+          "end": 71,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e27:0:113",
+          "source_element_index": 27,
+          "start": 0,
+          "end": 113,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e28:0:41",
+          "source_element_index": 28,
+          "start": 0,
+          "end": 41,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e29:0:121",
+          "source_element_index": 29,
+          "start": 0,
+          "end": 121,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e30:0:106",
+          "source_element_index": 30,
+          "start": 0,
+          "end": 106,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e31:0:129",
+          "source_element_index": 31,
+          "start": 0,
+          "end": 129,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e32:0:99",
+          "source_element_index": 32,
+          "start": 0,
+          "end": 99,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e33:0:416",
+          "source_element_index": 33,
+          "start": 0,
+          "end": 416,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e34:0:15",
+          "source_element_index": 34,
+          "start": 0,
+          "end": 15,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Distinct BERT heading match with a K-means section label"
+        },
+        {
+          "source_id": "e35:0:178",
+          "source_element_index": 35,
+          "start": 0,
+          "end": 178,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e36:0:152",
+          "source_element_index": 36,
+          "start": 0,
+          "end": 152,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e37:0:164",
+          "source_element_index": 37,
+          "start": 0,
+          "end": 164,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e38:0:163",
+          "source_element_index": 38,
+          "start": 0,
+          "end": 163,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e39:0:0",
+          "source_element_index": 39,
+          "start": 0,
+          "end": 0,
+          "section": null,
+          "outcome": "non_content_artifact",
+          "reason": "Whitespace retained in source inventory"
+        },
+        {
+          "source_id": "e40:0:9",
+          "source_element_index": 40,
+          "start": 0,
+          "end": 9,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e41:0:111",
+          "source_element_index": 41,
+          "start": 0,
+          "end": 111,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e42:0:105",
+          "source_element_index": 42,
+          "start": 0,
+          "end": 105,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e43:0:15",
+          "source_element_index": 43,
+          "start": 0,
+          "end": 15,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Distinct BERT heading match with a K-means section label"
+        },
+        {
+          "source_id": "e44:0:9",
+          "source_element_index": 44,
+          "start": 0,
+          "end": 9,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e45:0:75",
+          "source_element_index": 45,
+          "start": 0,
+          "end": 75,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e46:0:173",
+          "source_element_index": 46,
+          "start": 0,
+          "end": 173,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e47:0:167",
+          "source_element_index": 47,
+          "start": 0,
+          "end": 167,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e48:0:75",
+          "source_element_index": 48,
+          "start": 0,
+          "end": 75,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        }
+      ]
+    },
+    "document_scope": {
+      "kind": "likely_resume",
+      "candidate_resume": true,
+      "reason": "Contact details, multiple resume section families and dated history; provisional scope only",
+      "human_verified": false
+    },
+    "source_inventory_sha256": "7418031e848f28c64bef3a7dfe4f350ccaeec938846cdfe3a99be6be7fbe3244",
+    "field_evidence": {
+      "contact.full_name": [
+        "e0:0:17",
+        "e1:0:12",
+        "e2:0:61",
+        "e3:0:50"
+      ],
+      "contact.email": [
+        "e0:0:17",
+        "e1:0:12",
+        "e2:0:61",
+        "e3:0:50"
+      ],
+      "contact.location": [
+        "e0:0:17",
+        "e1:0:12",
+        "e2:0:61",
+        "e3:0:50"
+      ],
+      "contact.linkedin_url": [
+        "e0:0:17",
+        "e1:0:12",
+        "e2:0:61",
+        "e3:0:50"
+      ],
+      "summary": [
+        "e5:0:437"
+      ],
+      "skills.technical_skills[0]": [
+        "e13:0:14"
+      ],
+      "skills.tools_and_platforms[0]": [
+        "e14:0:32"
+      ],
+      "skills.tools_and_platforms[1]": [
+        "e14:0:32"
+      ],
+      "skills.tools_and_platforms[2]": [
+        "e12:0:8"
+      ],
+      "skills.soft_skills[0]": [
+        "e7:0:313"
+      ],
+      "skills.soft_skills[1]": [
+        "e7:0:313"
+      ],
+      "skills.soft_skills[2]": [
+        "e7:0:313"
+      ],
+      "skills.soft_skills[3]": [
+        "e7:0:313"
+      ],
+      "skills.all_skills[0]": [
+        "e13:0:14"
+      ],
+      "skills.all_skills[1]": [
+        "e14:0:32"
+      ],
+      "skills.all_skills[2]": [
+        "e14:0:32"
+      ],
+      "skills.all_skills[3]": [
+        "e12:0:8"
+      ],
+      "skills.all_skills[4]": [
+        "e7:0:313"
+      ],
+      "skills.all_skills[5]": [
+        "e7:0:313"
+      ],
+      "skills.all_skills[6]": [
+        "e7:0:313"
+      ],
+      "skills.all_skills[7]": [
+        "e7:0:313"
+      ],
+      "skills.all_skills[8]": [
+        "e7:0:313"
+      ],
+      "skills.all_skills[9]": [
+        "e8:0:24"
+      ],
+      "skills.all_skills[10]": [
+        "e9:0:27"
+      ],
+      "skills.all_skills[11]": [
+        "e10:0:19"
+      ],
+      "skills.all_skills[12]": [
+        "e11:0:5"
+      ],
+      "skills.all_skills[13]": [
+        "e12:0:8"
+      ],
+      "skills.all_skills[14]": [
+        "e13:0:14"
+      ],
+      "skills.all_skills[15]": [
+        "e14:0:32"
+      ],
+      "skills.all_skills[16]": [
+        "e15:0:9"
+      ],
+      "projects[0].description": [
+        "e35:0:178",
+        "e36:0:152",
+        "e37:0:164",
+        "e38:0:163"
+      ],
+      "languages[0]": [
+        "e45:0:75"
+      ],
+      "languages[1]": [
+        "e46:0:173"
+      ],
+      "languages[2]": [
+        "e47:0:167"
+      ],
+      "languages[3]": [
+        "e48:0:75"
+      ]
+    },
+    "record_reviews": [
+      {
+        "category": "experience",
+        "entry_id": "experience-1",
+        "source_ids": [
+          "e17:0:709",
+          "e18:0:1164",
+          "e19:0:756"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-2",
+        "source_ids": [
+          "e21:0:28",
+          "e22:0:50",
+          "e23:0:83",
+          "e24:0:91",
+          "e25:0:173",
+          "e26:0:71",
+          "e27:0:113",
+          "e28:0:41",
+          "e29:0:121",
+          "e30:0:106",
+          "e31:0:129",
+          "e32:0:99",
+          "e33:0:416"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "education",
+        "entry_id": "education-1",
+        "source_ids": [
+          "e41:0:111",
+          "e42:0:105"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "projects",
+        "entry_id": "projects-1",
+        "source_ids": [
+          "e35:0:178",
+          "e36:0:152",
+          "e37:0:164",
+          "e38:0:163"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      }
+    ],
+    "missing_required_fields": [
+      "contact.phone",
+      "experience[0].company",
+      "experience[0].role",
+      "experience[1].company",
+      "experience[1].role",
+      "education[0].institution",
+      "education[0].degree",
+      "projects[0].name"
+    ],
+    "warnings": [
+      "Schema validity and field completion do not establish extraction or relationship accuracy.",
+      "Handoff confidence scores are fixed heuristics, not calibrated probabilities.",
+      "Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields."
+    ],
+    "unmapped_blocks": [
+      {
+        "source_id": "e4:0:7",
+        "category": "summary",
+        "text": "SUMMARY",
+        "page_number": 1
+      },
+      {
+        "source_id": "e6:0:6",
+        "category": "skills",
+        "text": "SKILLS",
+        "page_number": 1
+      },
+      {
+        "source_id": "e16:0:10",
+        "category": "experience",
+        "text": "EXPERIENCE",
+        "page_number": 1
+      },
+      {
+        "source_id": "e17:0:709",
+        "category": "experience",
+        "text": "01/2026 – 07/2026 Lead Business Analyst Neurealm (Client: Aditya Birla Sunlife AMC)- Chennai, India Authored User Stories with detailed system behavior, business validations, acceptance criteria, and functional requirements for web application development. Collaborated with Product Owners and business stakeholders to gather and analyze requirements through module walkthrough sessions. Worked closely with Development and QA teams to clarify requirements, resolve functional queries, and support successful feature delivery. Managed and prioritized requirements using Jira. Participated in Agile Scrum ceremonies. Reviewed Figma designs to ensure UI/UX alignment with business requirements and user stories.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e18:0:1164",
+        "category": "experience",
+        "text": "Facilitated stakeholder review sessions, incorporated feedback, and obtained business sign-offs before development. 07/2024 – 01/2026 Lead Business Analyst Neurealm (Client: Northern Trust)- Chennai, India Improved clarity and accuracy by identifying reliable sources for reference data within enterprise data domain. Facilitated Collibra implementation of reference data code sets, validating processes from development through production. Developed efficient procedures enabling users to implement changes seamlessly. Created comprehensive notification change documents to keep users informed on updates. Engaged in data taxonomy projects, defining subdomains and business terms for diverse asset classes in Collibra. Analyzed both internal and external reference data to ensure adherence to regulatory requirements. Crafted user stories in ADO, maintaining oversight until successful implementation. Reference data is a Risk control Enhancement project which focuses on introducing new data sets to reduce data related risk in Capital Market Operations. Contributed to product backlog grooming sessions, effectively prioritizing tasks for streamlined execution.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e19:0:756",
+        "category": "experience",
+        "text": "12/2015 - 01/2024 Assistant Manager Lead BNP Paribas Securities Services - Chennai, TN BA RESPONSIBILITIES: Middle office - Change Management responsibilities: Coordinating client onboarding projects with requirement gathering, BRD and FRD. Preparation of test cases and carry down end to end testing (Smoke, regression and UAT) according to the need. Involved in Dakar re-engineering project – Decommission of ODW with FTE realization. Involved in Global PME migration project from Legacy release structure. Coordinating with the Development team to implement and test the new client requirement. Working on post implementation requirements from client – Configuration changes, involvement in critical incidents, fixing bugs and providing client with RCA.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e21:0:28",
+        "category": "experience",
+        "text": "OPERATIONAL RESPONSIBILITIES",
+        "page_number": 2
+      },
+      {
+        "source_id": "e22:0:50",
+        "category": "experience",
+        "text": "Middle office - Client Reporting responsibilities:",
+        "page_number": 2
+      },
+      {
+        "source_id": "e23:0:83",
+        "category": "experience",
+        "text": "High level monthly report prepared for multiple client / portfolios ABOR reporting.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e24:0:91",
+        "category": "experience",
+        "text": "Month end positions are reconciled against transaction to ensure the consistency of report.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e25:0:173",
+        "category": "experience",
+        "text": "Issues are highlighted with Ops team if month end reconciliation fails due to invalid trade posted, booked trade with insufficient information, incorrect cancel/rebook, etc.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e26:0:71",
+        "category": "experience",
+        "text": "Identifying the solution to the STP fails by doing RCA for the failure.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e27:0:113",
+        "category": "experience",
+        "text": "Preparation of Vermilion reporting – Detailed reporting detailing cash balances, income details, withdrawals etc.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e28:0:41",
+        "category": "experience",
+        "text": "Middle office - Treasury Cash Management:",
+        "page_number": 2
+      },
+      {
+        "source_id": "e29:0:121",
+        "category": "experience",
+        "text": "Involved in FX repatriation through non-preferred ccy to preferred ccy in order maintain cash balances in client account.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e30:0:106",
+        "category": "experience",
+        "text": "All non-trade related activities like Derivatives, Income (Dividend, coupons), Corporate Actions are FXed.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e31:0:129",
+        "category": "experience",
+        "text": "Ensure to provide Cash forecast of all accounts to the client at start of the day by which client is aware of the available cash.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e32:0:99",
+        "category": "experience",
+        "text": "Involved in preparation of Investment balances to the client post repatriating FX to preferred ccy.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e33:0:416",
+        "category": "experience",
+        "text": "06/2014 - 12/2015 Associate Wipro LTD - Chennai, CHENNAI OPERATIONAL RESPONSIBILITIES: Letter of credit responsibilities: Reconciliation of letters of credit on critical portfolios. Clearing the matured letter of credits by following up with the issuing banks/agent banks. Identifying the solution to the STP fails by investigating the root cause for the failure. Ensure that the team's critical KPI's have been met.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e34:0:15",
+        "category": "projects",
+        "text": "RECENT PROJECTS",
+        "page_number": 2
+      },
+      {
+        "source_id": "e40:0:9",
+        "category": "education",
+        "text": "EDUCATION",
+        "page_number": 3
+      },
+      {
+        "source_id": "e41:0:111",
+        "category": "education",
+        "text": "01/2013 MBA: Finance and Marketing SRM University - Kattankulathur, Chennai Graduated with 7.5 GPA GPA: 7.5 GPA",
+        "page_number": 3
+      },
+      {
+        "source_id": "e42:0:105",
+        "category": "education",
+        "text": "01/2011 BBM: Business Management Kongu Arts & Science College - Erode Graduated with 6.8 GPA GPA: 6.8 GPA",
+        "page_number": 3
+      },
+      {
+        "source_id": "e43:0:15",
+        "category": "awards",
+        "text": "ACCOMPLISHMENTS",
+        "page_number": 3
+      },
+      {
+        "source_id": "e44:0:9",
+        "category": "languages",
+        "text": "LANGUAGES",
+        "page_number": 3
+      },
+      {
+        "source_id": "e20:0:0",
+        "category": null,
+        "text": "",
+        "page_number": null
+      },
+      {
+        "source_id": "e39:0:0",
+        "category": null,
+        "text": "",
+        "page_number": null
+      }
+    ],
+    "needs_review": [
+      {
+        "source_element_index": 20,
+        "start": 0,
+        "end": 0,
+        "text": "",
+        "page_number": null,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1867,
+        "margin": -0.0366,
+        "lane": "main",
+        "reason": "Layout footer or page separator retained outside semantic sections",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 39,
+        "start": 0,
+        "end": 0,
+        "text": "",
+        "page_number": null,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1867,
+        "margin": -0.0366,
+        "lane": "main",
+        "reason": "Layout footer or page separator retained outside semantic sections",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      }
+    ]
+  },
+  "section_schemas": [
+    {
+      "category": "personal_information",
+      "label": "Personal information",
+      "records": [
+        {
+          "record_id": "personal_information",
+          "source_ids": [
+            "e0:0:17",
+            "e1:0:12",
+            "e2:0:61",
+            "e3:0:50"
+          ],
+          "attributes": [
+            {
+              "name": "full_name",
+              "items": [
+                {
+                  "value": "GOWTHAM SARAVANAN",
+                  "evidence": [
+                    {
+                      "source_id": "e0:0:17",
+                      "quote": "GOWTHAM SARAVANAN"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "email",
+              "items": [
+                {
+                  "value": "Gowthamsaravanan.r@gmail.com",
+                  "evidence": [
+                    {
+                      "source_id": "e2:0:61",
+                      "quote": "Gowthamsaravanan.r@gmail.com"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "phone",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [
+                {
+                  "value": "Chennai",
+                  "evidence": [
+                    {
+                      "source_id": "e2:0:61",
+                      "quote": "Chennai"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "linkedin_url",
+              "items": [
+                {
+                  "value": "www.linkedin.com/in/gowtham-saravanan25031991",
+                  "evidence": [
+                    {
+                      "source_id": "e3:0:50",
+                      "quote": "www.linkedin.com/in/gowtham-saravanan25031991"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "github_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "portfolio_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "professional_title",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e1:0:12",
+          "quote": "RAMACHANDRAN"
+        },
+        {
+          "source_id": "e2:0:61",
+          "quote": "Chennai, TN 600087 |99407 09068| Gowthamsaravanan.r@gmail.com"
+        },
+        {
+          "source_id": "e3:0:50",
+          "quote": "WWW: www.linkedin.com/in/gowtham-saravanan25031991"
+        }
+      ]
+    },
+    {
+      "category": "summary",
+      "label": "Summary",
+      "records": [
+        {
+          "record_id": "summary",
+          "source_ids": [
+            "e5:0:437"
+          ],
+          "attributes": [
+            {
+              "name": "statements",
+              "items": [
+                {
+                  "value": "Dynamic Lead Business Analyst with capital markets/Investment Banking expertise at Neurealm, adept at optimizing reference data and enhancing accuracy through innovative solutions. Proven track record in change management and agile project delivery, leveraging strong communication skills to drive successful implementations and improve data governance practices. Passionate about delivering impactful results in fast-paced environments.",
+                  "evidence": [
+                    {
+                      "source_id": "e5:0:437",
+                      "quote": "Dynamic Lead Business Analyst with capital markets/Investment Banking expertise at Neurealm, adept at optimizing reference data and enhancing accuracy through innovative solutions. Proven track record in change management and agile project delivery, leveraging strong communication skills to drive successful implementations and improve data governance practices. Passionate about delivering impactful results in fast-paced environments."
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "total_experience_years",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e4:0:7",
+          "quote": "SUMMARY"
+        }
+      ]
+    },
+    {
+      "category": "skills",
+      "label": "Skills",
+      "records": [
+        {
+          "record_id": "skills",
+          "source_ids": [
+            "e7:0:313",
+            "e8:0:24",
+            "e9:0:27",
+            "e10:0:19",
+            "e11:0:5",
+            "e12:0:8",
+            "e13:0:14",
+            "e14:0:32",
+            "e15:0:9"
+          ],
+          "attributes": [
+            {
+              "name": "technical_skills",
+              "items": [
+                {
+                  "value": "SQL",
+                  "evidence": [
+                    {
+                      "source_id": "e13:0:14",
+                      "quote": "SQL"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "tools_and_platforms",
+              "items": [
+                {
+                  "value": "Power BI",
+                  "evidence": [
+                    {
+                      "source_id": "e14:0:32",
+                      "quote": "Power BI"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Tableau",
+                  "evidence": [
+                    {
+                      "source_id": "e14:0:32",
+                      "quote": "Tableau"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "JIRA",
+                  "evidence": [
+                    {
+                      "source_id": "e12:0:8",
+                      "quote": "JIRA"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "domain_and_functional",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "soft_skills",
+              "items": [
+                {
+                  "value": "Agile",
+                  "evidence": [
+                    {
+                      "source_id": "e7:0:313",
+                      "quote": "Agile"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Communication",
+                  "evidence": [
+                    {
+                      "source_id": "e7:0:313",
+                      "quote": "communication"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Change Management",
+                  "evidence": [
+                    {
+                      "source_id": "e7:0:313",
+                      "quote": "Change management"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Process Improvement",
+                  "evidence": [
+                    {
+                      "source_id": "e7:0:313",
+                      "quote": "Process improvement"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "all_skills",
+              "items": [
+                {
+                  "value": "SQL",
+                  "evidence": [
+                    {
+                      "source_id": "e13:0:14",
+                      "quote": "SQL"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Power BI",
+                  "evidence": [
+                    {
+                      "source_id": "e14:0:32",
+                      "quote": "Power BI"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Tableau",
+                  "evidence": [
+                    {
+                      "source_id": "e14:0:32",
+                      "quote": "Tableau"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "JIRA",
+                  "evidence": [
+                    {
+                      "source_id": "e12:0:8",
+                      "quote": "JIRA"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Agile",
+                  "evidence": [
+                    {
+                      "source_id": "e7:0:313",
+                      "quote": "Agile"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Communication",
+                  "evidence": [
+                    {
+                      "source_id": "e7:0:313",
+                      "quote": "communication"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Change Management",
+                  "evidence": [
+                    {
+                      "source_id": "e7:0:313",
+                      "quote": "Change management"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Process Improvement",
+                  "evidence": [
+                    {
+                      "source_id": "e7:0:313",
+                      "quote": "Process improvement"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Capital markets expertise Investment Banking Change management strategies Strong communication skills Business analysis methodologies Agile project delivery Reference data oversight Requirement elicitation techniques Process improvement initiatives Stakeholder Management Data governance practices Data validation",
+                  "evidence": [
+                    {
+                      "source_id": "e7:0:313",
+                      "quote": "Capital markets expertise Investment Banking Change management strategies Strong communication skills Business analysis methodologies Agile project delivery Reference data oversight Requirement elicitation techniques Process improvement initiatives Stakeholder Management Data governance practices Data validation"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "APPLICATIONS & PLATFORMS",
+                  "evidence": [
+                    {
+                      "source_id": "e8:0:24",
+                      "quote": "APPLICATIONS & PLATFORMS"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Collibra Enterprise Catalog",
+                  "evidence": [
+                    {
+                      "source_id": "e9:0:27",
+                      "quote": "Collibra Enterprise Catalog"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Snowflake/Data Mesh",
+                  "evidence": [
+                    {
+                      "source_id": "e10:0:19",
+                      "quote": "Snowflake/Data Mesh"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Figma",
+                  "evidence": [
+                    {
+                      "source_id": "e11:0:5",
+                      "quote": "Figma"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "ADO/JIRA",
+                  "evidence": [
+                    {
+                      "source_id": "e12:0:8",
+                      "quote": "ADO/JIRA"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "SQL - Beginner",
+                  "evidence": [
+                    {
+                      "source_id": "e13:0:14",
+                      "quote": "SQL - Beginner"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Power BI /Tableau - intermediate",
+                  "evidence": [
+                    {
+                      "source_id": "e14:0:32",
+                      "quote": "Power BI /Tableau - intermediate"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Vermilion",
+                  "evidence": [
+                    {
+                      "source_id": "e15:0:9",
+                      "quote": "Vermilion"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e6:0:6",
+          "quote": "SKILLS"
+        }
+      ]
+    },
+    {
+      "category": "experience",
+      "label": "Experience",
+      "records": [
+        {
+          "record_id": "experience-1",
+          "source_ids": [
+            "e17:0:709",
+            "e18:0:1164",
+            "e19:0:756"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "experience-2",
+          "source_ids": [
+            "e21:0:28",
+            "e22:0:50",
+            "e23:0:83",
+            "e24:0:91",
+            "e25:0:173",
+            "e26:0:71",
+            "e27:0:113",
+            "e28:0:41",
+            "e29:0:121",
+            "e30:0:106",
+            "e31:0:129",
+            "e32:0:99",
+            "e33:0:416"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e16:0:10",
+          "quote": "EXPERIENCE"
+        },
+        {
+          "source_id": "e17:0:709",
+          "quote": "01/2026 – 07/2026 Lead Business Analyst Neurealm (Client: Aditya Birla Sunlife AMC)- Chennai, India Authored User Stories with detailed system behavior, business validations, acceptance criteria, and functional requirements for web application development. Collaborated with Product Owners and business stakeholders to gather and analyze requirements through module walkthrough sessions. Worked closely with Development and QA teams to clarify requirements, resolve functional queries, and support successful feature delivery. Managed and prioritized requirements using Jira. Participated in Agile Scrum ceremonies. Reviewed Figma designs to ensure UI/UX alignment with business requirements and user stories."
+        },
+        {
+          "source_id": "e18:0:1164",
+          "quote": "Facilitated stakeholder review sessions, incorporated feedback, and obtained business sign-offs before development. 07/2024 – 01/2026 Lead Business Analyst Neurealm (Client: Northern Trust)- Chennai, India Improved clarity and accuracy by identifying reliable sources for reference data within enterprise data domain. Facilitated Collibra implementation of reference data code sets, validating processes from development through production. Developed efficient procedures enabling users to implement changes seamlessly. Created comprehensive notification change documents to keep users informed on updates. Engaged in data taxonomy projects, defining subdomains and business terms for diverse asset classes in Collibra. Analyzed both internal and external reference data to ensure adherence to regulatory requirements. Crafted user stories in ADO, maintaining oversight until successful implementation. Reference data is a Risk control Enhancement project which focuses on introducing new data sets to reduce data related risk in Capital Market Operations. Contributed to product backlog grooming sessions, effectively prioritizing tasks for streamlined execution."
+        },
+        {
+          "source_id": "e19:0:756",
+          "quote": "12/2015 - 01/2024 Assistant Manager Lead BNP Paribas Securities Services - Chennai, TN BA RESPONSIBILITIES: Middle office - Change Management responsibilities: Coordinating client onboarding projects with requirement gathering, BRD and FRD. Preparation of test cases and carry down end to end testing (Smoke, regression and UAT) according to the need. Involved in Dakar re-engineering project – Decommission of ODW with FTE realization. Involved in Global PME migration project from Legacy release structure. Coordinating with the Development team to implement and test the new client requirement. Working on post implementation requirements from client – Configuration changes, involvement in critical incidents, fixing bugs and providing client with RCA."
+        },
+        {
+          "source_id": "e21:0:28",
+          "quote": "OPERATIONAL RESPONSIBILITIES"
+        },
+        {
+          "source_id": "e22:0:50",
+          "quote": "Middle office - Client Reporting responsibilities:"
+        },
+        {
+          "source_id": "e23:0:83",
+          "quote": "High level monthly report prepared for multiple client / portfolios ABOR reporting."
+        },
+        {
+          "source_id": "e24:0:91",
+          "quote": "Month end positions are reconciled against transaction to ensure the consistency of report."
+        },
+        {
+          "source_id": "e25:0:173",
+          "quote": "Issues are highlighted with Ops team if month end reconciliation fails due to invalid trade posted, booked trade with insufficient information, incorrect cancel/rebook, etc."
+        },
+        {
+          "source_id": "e26:0:71",
+          "quote": "Identifying the solution to the STP fails by doing RCA for the failure."
+        },
+        {
+          "source_id": "e27:0:113",
+          "quote": "Preparation of Vermilion reporting – Detailed reporting detailing cash balances, income details, withdrawals etc."
+        },
+        {
+          "source_id": "e28:0:41",
+          "quote": "Middle office - Treasury Cash Management:"
+        },
+        {
+          "source_id": "e29:0:121",
+          "quote": "Involved in FX repatriation through non-preferred ccy to preferred ccy in order maintain cash balances in client account."
+        },
+        {
+          "source_id": "e30:0:106",
+          "quote": "All non-trade related activities like Derivatives, Income (Dividend, coupons), Corporate Actions are FXed."
+        },
+        {
+          "source_id": "e31:0:129",
+          "quote": "Ensure to provide Cash forecast of all accounts to the client at start of the day by which client is aware of the available cash."
+        },
+        {
+          "source_id": "e32:0:99",
+          "quote": "Involved in preparation of Investment balances to the client post repatriating FX to preferred ccy."
+        },
+        {
+          "source_id": "e33:0:416",
+          "quote": "06/2014 - 12/2015 Associate Wipro LTD - Chennai, CHENNAI OPERATIONAL RESPONSIBILITIES: Letter of credit responsibilities: Reconciliation of letters of credit on critical portfolios. Clearing the matured letter of credits by following up with the issuing banks/agent banks. Identifying the solution to the STP fails by investigating the root cause for the failure. Ensure that the team's critical KPI's have been met."
+        }
+      ]
+    },
+    {
+      "category": "projects",
+      "label": "Projects",
+      "records": [
+        {
+          "record_id": "projects-1",
+          "source_ids": [
+            "e35:0:178",
+            "e36:0:152",
+            "e37:0:164",
+            "e38:0:163"
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "description",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "url",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e34:0:15",
+          "quote": "RECENT PROJECTS"
+        },
+        {
+          "source_id": "e35:0:178",
+          "quote": "ABSL AMC Web Application Development - Developed business requirements and user stories for a web-based investment platform by collaborating with Product Owners and stakeholders."
+        },
+        {
+          "source_id": "e36:0:152",
+          "quote": "Enterprise reference data - internal/external reference data analyzing and implementing within Collibra after the refinement as per regulatory standards"
+        },
+        {
+          "source_id": "e37:0:164",
+          "quote": "Data taxonomy - analyzing the subdomains, as well as generating business terms for each subdomain under different asset classes like equity, derivatives, CA and FI."
+        },
+        {
+          "source_id": "e38:0:163",
+          "quote": "Dakar reengineering - reconstructing the Dakar database, eliminating the legacy applications from Middle Office Client Reporting; this resulted in FTE realization."
+        }
+      ]
+    },
+    {
+      "category": "education",
+      "label": "Education",
+      "records": [
+        {
+          "record_id": "education-1",
+          "source_ids": [
+            "e41:0:111",
+            "e42:0:105"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "degree",
+              "items": [
+                {
+                  "value": "MBA",
+                  "evidence": [
+                    {
+                      "source_id": "e41:0:111",
+                      "quote": "MBA"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e40:0:9",
+          "quote": "EDUCATION"
+        },
+        {
+          "source_id": "e41:0:111",
+          "quote": "01/2013 MBA: Finance and Marketing SRM University - Kattankulathur, Chennai Graduated with 7.5 GPA GPA: 7.5 GPA"
+        },
+        {
+          "source_id": "e42:0:105",
+          "quote": "01/2011 BBM: Business Management Kongu Arts & Science College - Erode Graduated with 6.8 GPA GPA: 6.8 GPA"
+        }
+      ]
+    },
+    {
+      "category": "awards",
+      "label": "Awards and achievements",
+      "records": [],
+      "residual_blocks": [
+        {
+          "source_id": "e43:0:15",
+          "quote": "ACCOMPLISHMENTS"
+        }
+      ]
+    },
+    {
+      "category": "languages",
+      "label": "Languages",
+      "records": [
+        {
+          "record_id": "languages-1",
+          "source_ids": [
+            "e45:0:75",
+            "e46:0:173",
+            "e47:0:167",
+            "e48:0:75"
+          ],
+          "attributes": [
+            {
+              "name": "language",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "proficiency",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "Unlabelled compound information requires source review."
+          ]
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e44:0:9",
+          "quote": "LANGUAGES"
+        },
+        {
+          "source_id": "e45:0:75",
+          "quote": "Received the Customer Delight Award for best client service within Neurealm"
+        },
+        {
+          "source_id": "e46:0:173",
+          "quote": "Successfully completed the Data Taxonomy Project for the Northern Trust client, populating around 1,700 business terms across three subdomains: Asset, Transaction, and Event"
+        },
+        {
+          "source_id": "e47:0:167",
+          "quote": "Successfully implemented the Process Control Tool within the Client Reporting Operations to reduce mail tracking and manual errors, which resulted in timely sign-offs."
+        },
+        {
+          "source_id": "e48:0:75",
+          "quote": "Tamil: First Language English:\tC2 Proficient (C2) Hindi:\tC2 Proficient (C2)"
+        }
+      ]
+    },
+    {
+      "category": "needs_review",
+      "label": "Unassigned source blocks",
+      "records": [],
+      "residual_blocks": [
+        {
+          "source_id": "e20:0:0",
+          "quote": ""
+        },
+        {
+          "source_id": "e39:0:0",
+          "quote": ""
+        }
+      ]
+    }
+  ]
+}

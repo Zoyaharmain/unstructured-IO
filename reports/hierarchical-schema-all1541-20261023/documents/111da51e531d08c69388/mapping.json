@@ -1,0 +1,1622 @@
+{
+  "success": true,
+  "source": "Anil Kumar.pdf",
+  "extraction_mode": "existing_blocks_schema_mapping",
+  "data": {
+    "contact": {
+      "full_name": "",
+      "email": "",
+      "phone": "",
+      "location": null,
+      "linkedin_url": null,
+      "github_url": null,
+      "portfolio_url": null
+    },
+    "professional_title": null,
+    "summary": null,
+    "total_experience_years": null,
+    "skills": {
+      "technical_skills": [],
+      "tools_and_platforms": [],
+      "domain_and_functional": [],
+      "soft_skills": [],
+      "all_skills": []
+    },
+    "experience": [
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      }
+    ],
+    "education": [
+      {
+        "institution": "",
+        "degree": "",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      },
+      {
+        "institution": "",
+        "degree": "",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      }
+    ],
+    "certifications": [],
+    "projects": [],
+    "languages": []
+  },
+  "schema_mapping": {
+    "fields_populated": 2,
+    "total_fields": 16,
+    "completion_percentage": 12.5,
+    "field_details": [
+      {
+        "field_name": "contact.full_name",
+        "target_type": "string",
+        "is_required": true,
+        "is_extracted": false,
+        "source_section": "Header / Personal Details",
+        "confidence_score": 0.0,
+        "description": "Candidate's full name, extracted from the top header of the resume."
+      },
+      {
+        "field_name": "contact.email",
+        "target_type": "string (email)",
+        "is_required": true,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's primary contact email address."
+      },
+      {
+        "field_name": "contact.phone",
+        "target_type": "string (phone)",
+        "is_required": true,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's telephone / mobile phone number."
+      },
+      {
+        "field_name": "contact.location",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's residential location or work city."
+      },
+      {
+        "field_name": "contact.linkedin_url",
+        "target_type": "string (url) | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "URL to candidate's LinkedIn profile."
+      },
+      {
+        "field_name": "professional_title",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Subtitle",
+        "confidence_score": 0.0,
+        "description": "Candidate's target headline or most recent job title."
+      },
+      {
+        "field_name": "summary",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Professional Summary / Profile / Objective",
+        "confidence_score": 0.0,
+        "description": "Executive bio, professional overview, or career objective."
+      },
+      {
+        "field_name": "total_experience_years",
+        "target_type": "float | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Summary / Experience Calculation",
+        "confidence_score": 0.0,
+        "description": "Total professional experience in years."
+      },
+      {
+        "field_name": "skills.technical_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Technical Competencies",
+        "confidence_score": 0.0,
+        "description": "Technical programming languages and core software competencies."
+      },
+      {
+        "field_name": "skills.tools_and_platforms",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Tools & Technologies",
+        "confidence_score": 0.0,
+        "description": "Software platforms, developer tools, and operational systems."
+      },
+      {
+        "field_name": "skills.domain_and_functional",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Domain Expertise",
+        "confidence_score": 0.0,
+        "description": "Functional domain knowledge (e.g. Hedge Funds, KYC, NAV, Derivatives)."
+      },
+      {
+        "field_name": "skills.all_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills (Aggregated)",
+        "confidence_score": 0.0,
+        "description": "Complete list of candidate skills across all categories."
+      },
+      {
+        "field_name": "experience",
+        "target_type": "array[WorkExperience]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Experience / Work History",
+        "confidence_score": 0.92,
+        "description": "Complete chronological employment records with bullet points."
+      },
+      {
+        "field_name": "education",
+        "target_type": "array[Education]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Education / Academic Qualifications",
+        "confidence_score": 0.9,
+        "description": "University, college, and higher education degree qualifications."
+      },
+      {
+        "field_name": "certifications",
+        "target_type": "array[Certification]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Certifications / Licenses",
+        "confidence_score": 0.0,
+        "description": "Professional accreditations and credentials."
+      },
+      {
+        "field_name": "projects",
+        "target_type": "array[Project]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Projects / Key Engagements",
+        "confidence_score": 0.0,
+        "description": "Major projects or strategic initiatives led by candidate."
+      }
+    ]
+  },
+  "raw_sections": {
+    "experience": "Radical minds PVT LTD | SEP 2022 - OCT 2023 -Prospected and generated new business leads through cold calling, networking, andsocial media. -Built and nurtured client relationships, identifying upselling opportunities driverevenue growth. -Managed existing client accounts and ensured high level of customer satisfaction. -Developed and implemented sales strategies to enhance client retention and expand market presence. -Analyzed sales data to refine marketing strategies and improve sales performance. Innova Diesel Generators PVT LTD | DEC 2023 - FEB 2025 -Generated leadsthrough coldcalling, networking, andfieldvisits.-Delivered presentations to stakeholders at all levels, from entry-level management to CEOs.-Successfully closed deals by building strong, long-term relationships with key decision-makers. -Conducted rigorous follow-ups to clear blockers and stay ahead of the competition. -Negotiated contracts, addressed objections, and achieved sales targets. -Ensured excellent post-sales service, fostering client satisfaction and generating referrals Business Development Manager Control Print PVT LTD – The Mask Lab | FEB 2025 – March 2026 Teleperformance Global Services PVT LTD | JULY 2021 - AUG 2022 -Engaged in direct sales, handling customer inquiries and offering tailored solutions. -Developed persuasive sales pitches and successfully converted leads to customers. -Providedexceptional customer service, ensuring client satisfaction and retention. MPCS (Andhra University) | 2022 - 2025 Andhra Board of Secondary Education |2016 Pre University (Karnataka Board) - PCMC | 2018 hanumankar.anil7204864002@gmail.com EXPERTISE WORK EXPERIENCES Business Development Executive Sales ExecutiveField sales Engineer Here I wasresponsibleforidentifyingand approachingindustrial areas, and pitching our PPE solutions and effectively converting leads in to confirmed orders. Have built andmaintained strong client relationships to ensure consistent repeat business under long-term partnerships, while consistently meeting sales targets and contributing to overallbusiness growth. ",
+    "education": "EDUCATION Bachelor of Science. 10Th - SSCL Intermediate Kannada"
+  },
+  "meta": {
+    "status": "needs_review",
+    "human_verified": false,
+    "provider_calls": 0,
+    "source_accounting": {
+      "all_source_text_preserved": true,
+      "total_spans": 47,
+      "assigned_meaningful_spans": 44,
+      "unresolved_meaningful_spans": 3,
+      "non_content_artifacts": 0,
+      "duplicates_excluded": 0,
+      "all_meaningful_text_assigned": false,
+      "semantic_correctness_verified": false,
+      "outcomes": [
+        {
+          "source_id": "e0:0:16",
+          "source_element_index": 0,
+          "start": 0,
+          "end": 16,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e0:16:47",
+          "source_element_index": 0,
+          "start": 16,
+          "end": 47,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e0:47:62",
+          "source_element_index": 0,
+          "start": 47,
+          "end": 62,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e0:62:106",
+          "source_element_index": 0,
+          "start": 62,
+          "end": 106,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit dated employer starts or continues Experience across layout changes"
+        },
+        {
+          "source_id": "e0:106:188",
+          "source_element_index": 0,
+          "start": 106,
+          "end": 188,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:188:202",
+          "source_element_index": 0,
+          "start": 188,
+          "end": 202,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:202:285",
+          "source_element_index": 0,
+          "start": 202,
+          "end": 285,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:285:301",
+          "source_element_index": 0,
+          "start": 285,
+          "end": 301,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:301:384",
+          "source_element_index": 0,
+          "start": 301,
+          "end": 384,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:384:460",
+          "source_element_index": 0,
+          "start": 384,
+          "end": 460,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:460:484",
+          "source_element_index": 0,
+          "start": 460,
+          "end": 484,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:484:567",
+          "source_element_index": 0,
+          "start": 484,
+          "end": 567,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:567:622",
+          "source_element_index": 0,
+          "start": 567,
+          "end": 622,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit dated employer starts or continues Experience across layout changes"
+        },
+        {
+          "source_id": "e0:622:686",
+          "source_element_index": 0,
+          "start": 622,
+          "end": 686,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:686:778",
+          "source_element_index": 0,
+          "start": 686,
+          "end": 778,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:778:867",
+          "source_element_index": 0,
+          "start": 778,
+          "end": 867,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:867:875",
+          "source_element_index": 0,
+          "start": 867,
+          "end": 875,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:875:959",
+          "source_element_index": 0,
+          "start": 875,
+          "end": 959,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:959:1032",
+          "source_element_index": 0,
+          "start": 959,
+          "end": 1032,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:1032:1126",
+          "source_element_index": 0,
+          "start": 1032,
+          "end": 1126,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:1126:1155",
+          "source_element_index": 0,
+          "start": 1126,
+          "end": 1155,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:1155:1216",
+          "source_element_index": 0,
+          "start": 1155,
+          "end": 1216,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit dated employer starts or continues Experience across layout changes"
+        },
+        {
+          "source_id": "e0:1216:1279",
+          "source_element_index": 0,
+          "start": 1216,
+          "end": 1279,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit dated employer starts or continues Experience across layout changes"
+        },
+        {
+          "source_id": "e0:1279:1367",
+          "source_element_index": 0,
+          "start": 1279,
+          "end": 1367,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:1367:1458",
+          "source_element_index": 0,
+          "start": 1367,
+          "end": 1458,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:1458:1532",
+          "source_element_index": 0,
+          "start": 1458,
+          "end": 1532,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:1532:1571",
+          "source_element_index": 0,
+          "start": 1532,
+          "end": 1571,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit dated employer starts or continues Experience across layout changes"
+        },
+        {
+          "source_id": "e0:1571:1608",
+          "source_element_index": 0,
+          "start": 1571,
+          "end": 1608,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:1608:1613",
+          "source_element_index": 0,
+          "start": 1608,
+          "end": 1613,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:1613:1660",
+          "source_element_index": 0,
+          "start": 1613,
+          "end": 1660,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:1660:1696",
+          "source_element_index": 0,
+          "start": 1660,
+          "end": 1696,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:1696:1706",
+          "source_element_index": 0,
+          "start": 1696,
+          "end": 1706,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:1706:1723",
+          "source_element_index": 0,
+          "start": 1706,
+          "end": 1723,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:1723:1754",
+          "source_element_index": 0,
+          "start": 1723,
+          "end": 1754,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:1754:1769",
+          "source_element_index": 0,
+          "start": 1754,
+          "end": 1769,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:1769:1790",
+          "source_element_index": 0,
+          "start": 1769,
+          "end": 1790,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:1790:1871",
+          "source_element_index": 0,
+          "start": 1790,
+          "end": 1871,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:1871:1951",
+          "source_element_index": 0,
+          "start": 1871,
+          "end": 1951,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:1951:1960",
+          "source_element_index": 0,
+          "start": 1951,
+          "end": 1960,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:1960:2047",
+          "source_element_index": 0,
+          "start": 1960,
+          "end": 2047,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:2047:2134",
+          "source_element_index": 0,
+          "start": 2047,
+          "end": 2134,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:2134:2151",
+          "source_element_index": 0,
+          "start": 2134,
+          "end": 2151,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:2151:2161",
+          "source_element_index": 0,
+          "start": 2151,
+          "end": 2161,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e0:2161:2182",
+          "source_element_index": 0,
+          "start": 2161,
+          "end": 2182,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:2182:2194",
+          "source_element_index": 0,
+          "start": 2182,
+          "end": 2194,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:2194:2207",
+          "source_element_index": 0,
+          "start": 2194,
+          "end": 2207,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:2207:2214",
+          "source_element_index": 0,
+          "start": 2207,
+          "end": 2214,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        }
+      ]
+    },
+    "document_scope": {
+      "kind": "candidate_or_unknown",
+      "candidate_resume": null,
+      "requires_scope_review": true
+    },
+    "source_inventory_sha256": "8b4917475105c743a2c5a32d5c728ec1fc5696882f9903773cd3dbe94a48b857",
+    "field_evidence": {},
+    "record_reviews": [
+      {
+        "category": "experience",
+        "entry_id": "experience-1",
+        "source_ids": [
+          "e0:62:106",
+          "e0:106:188",
+          "e0:188:202",
+          "e0:202:285",
+          "e0:285:301",
+          "e0:301:384",
+          "e0:384:460",
+          "e0:460:484",
+          "e0:484:567",
+          "e0:567:622",
+          "e0:622:686",
+          "e0:686:778",
+          "e0:778:867",
+          "e0:867:875",
+          "e0:875:959",
+          "e0:959:1032",
+          "e0:1032:1126",
+          "e0:1126:1155",
+          "e0:1155:1216",
+          "e0:1216:1279",
+          "e0:1279:1367",
+          "e0:1367:1458",
+          "e0:1458:1532"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-2",
+        "source_ids": [
+          "e0:1532:1571",
+          "e0:1571:1608",
+          "e0:1608:1613",
+          "e0:1613:1660",
+          "e0:1660:1696",
+          "e0:1706:1723",
+          "e0:1723:1754",
+          "e0:1754:1769",
+          "e0:1769:1790",
+          "e0:1790:1871",
+          "e0:1871:1951",
+          "e0:1951:1960",
+          "e0:1960:2047",
+          "e0:2047:2134",
+          "e0:2134:2151"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-3",
+        "source_ids": [
+          "e0:1696:1706"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "education",
+        "entry_id": "education-1",
+        "source_ids": [
+          "e0:2161:2182",
+          "e0:2182:2194",
+          "e0:2194:2207"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "education",
+        "entry_id": "education-2",
+        "source_ids": [
+          "e0:2207:2214"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      }
+    ],
+    "missing_required_fields": [
+      "contact.full_name",
+      "contact.email",
+      "contact.phone",
+      "experience[0].company",
+      "experience[0].role",
+      "experience[1].company",
+      "experience[1].role",
+      "experience[2].company",
+      "experience[2].role",
+      "education[0].institution",
+      "education[0].degree",
+      "education[1].institution",
+      "education[1].degree"
+    ],
+    "warnings": [
+      "Schema validity and field completion do not establish extraction or relationship accuracy.",
+      "Handoff confidence scores are fixed heuristics, not calibrated probabilities.",
+      "Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields."
+    ],
+    "unmapped_blocks": [
+      {
+        "source_id": "e0:62:106",
+        "category": "experience",
+        "text": "Radical minds PVT LTD | SEP 2022 - OCT 2023 ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:106:188",
+        "category": "experience",
+        "text": "-Prospected and generated new business leads through cold calling, networking, and",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:188:202",
+        "category": "experience",
+        "text": "social media. ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:202:285",
+        "category": "experience",
+        "text": "-Built and nurtured client relationships, identifying upselling opportunities drive",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:285:301",
+        "category": "experience",
+        "text": "revenue growth. ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:301:384",
+        "category": "experience",
+        "text": "-Managed existing client accounts and ensured high level of customer satisfaction. ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:384:460",
+        "category": "experience",
+        "text": "-Developed and implemented sales strategies to enhance client retention and ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:460:484",
+        "category": "experience",
+        "text": "expand market presence. ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:484:567",
+        "category": "experience",
+        "text": "-Analyzed sales data to refine marketing strategies and improve sales performance. ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:567:622",
+        "category": "experience",
+        "text": "Innova Diesel Generators PVT LTD | DEC 2023 - FEB 2025 ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:622:686",
+        "category": "experience",
+        "text": "-Generated leadsthrough coldcalling, networking, andfieldvisits.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:686:778",
+        "category": "experience",
+        "text": "-Delivered presentations to stakeholders at all levels, from entry-level management to CEOs.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:778:867",
+        "category": "experience",
+        "text": "-Successfully closed deals by building strong, long-term relationships with key decision-",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:867:875",
+        "category": "experience",
+        "text": "makers. ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:875:959",
+        "category": "experience",
+        "text": "-Conducted rigorous follow-ups to clear blockers and stay ahead of the competition. ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:959:1032",
+        "category": "experience",
+        "text": "-Negotiated contracts, addressed objections, and achieved sales targets. ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:1032:1126",
+        "category": "experience",
+        "text": "-Ensured excellent post-sales service, fostering client satisfaction and generating referrals ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:1126:1155",
+        "category": "experience",
+        "text": "Business Development Manager ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:1155:1216",
+        "category": "experience",
+        "text": "Control Print PVT LTD – The Mask Lab | FEB 2025 – March 2026 ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:1216:1279",
+        "category": "experience",
+        "text": "Teleperformance Global Services PVT LTD | JULY 2021 - AUG 2022 ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:1279:1367",
+        "category": "experience",
+        "text": "-Engaged in direct sales, handling customer inquiries and offering tailored solutions. -",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:1367:1458",
+        "category": "experience",
+        "text": "Developed persuasive sales pitches and successfully converted leads to customers. -Provided",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:1458:1532",
+        "category": "experience",
+        "text": "exceptional customer service, ensuring client satisfaction and retention. ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:1532:1571",
+        "category": "experience",
+        "text": "MPCS (Andhra University) | 2022 - 2025 ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:1571:1608",
+        "category": "experience",
+        "text": "Andhra Board of Secondary Education |",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:1608:1613",
+        "category": "experience",
+        "text": "2016 ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:1613:1660",
+        "category": "experience",
+        "text": "Pre University (Karnataka Board) - PCMC | 2018 ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:1660:1696",
+        "category": "experience",
+        "text": "hanumankar.anil7204864002@gmail.com ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:1696:1706",
+        "category": "experience",
+        "text": "EXPERTISE ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:1706:1723",
+        "category": "experience",
+        "text": "WORK EXPERIENCES ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:1723:1754",
+        "category": "experience",
+        "text": "Business Development Executive ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:1754:1769",
+        "category": "experience",
+        "text": "Sales Executive",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:1769:1790",
+        "category": "experience",
+        "text": "Field sales Engineer ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:1790:1871",
+        "category": "experience",
+        "text": "Here I wasresponsibleforidentifyingand approachingindustrial areas, and pitching ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:1871:1951",
+        "category": "experience",
+        "text": "our PPE solutions and effectively converting leads in to confirmed orders. Have ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:1951:1960",
+        "category": "experience",
+        "text": "built and",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:1960:2047",
+        "category": "experience",
+        "text": "maintained strong client relationships to ensure consistent repeat business under long-",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:2047:2134",
+        "category": "experience",
+        "text": "term partnerships, while consistently meeting sales targets and contributing to overall",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:2134:2151",
+        "category": "experience",
+        "text": "business growth. ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:2151:2161",
+        "category": "education",
+        "text": "EDUCATION ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:2161:2182",
+        "category": "education",
+        "text": "Bachelor of Science. ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:2182:2194",
+        "category": "education",
+        "text": "10Th - SSCL ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:2194:2207",
+        "category": "education",
+        "text": "Intermediate ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:2207:2214",
+        "category": "education",
+        "text": "Kannada",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:0:16",
+        "category": null,
+        "text": "H.K. ANIL KUMAR ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:16:47",
+        "category": null,
+        "text": "FIELD SALES ENGINEER -MARKETING",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:47:62",
+        "category": null,
+        "text": "+91 8073987692 ",
+        "page_number": 1
+      }
+    ],
+    "needs_review": [
+      {
+        "source_element_index": 0,
+        "start": 0,
+        "end": 16,
+        "text": "H.K. ANIL KUMAR ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2901,
+        "margin": 0.035,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 0,
+        "start": 16,
+        "end": 47,
+        "text": "FIELD SALES ENGINEER -MARKETING",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.5352,
+        "margin": -0.0032,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 0,
+        "start": 47,
+        "end": 62,
+        "text": "+91 8073987692 ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.0923,
+        "margin": -0.0448,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      }
+    ]
+  },
+  "section_schemas": [
+    {
+      "category": "experience",
+      "label": "Experience",
+      "records": [
+        {
+          "record_id": "experience-1",
+          "source_ids": [
+            "e0:62:106",
+            "e0:106:188",
+            "e0:188:202",
+            "e0:202:285",
+            "e0:285:301",
+            "e0:301:384",
+            "e0:384:460",
+            "e0:460:484",
+            "e0:484:567",
+            "e0:567:622",
+            "e0:622:686",
+            "e0:686:778",
+            "e0:778:867",
+            "e0:867:875",
+            "e0:875:959",
+            "e0:959:1032",
+            "e0:1032:1126",
+            "e0:1126:1155",
+            "e0:1155:1216",
+            "e0:1216:1279",
+            "e0:1279:1367",
+            "e0:1367:1458",
+            "e0:1458:1532"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "experience-2",
+          "source_ids": [
+            "e0:1532:1571",
+            "e0:1571:1608",
+            "e0:1608:1613",
+            "e0:1613:1660",
+            "e0:1660:1696",
+            "e0:1706:1723",
+            "e0:1723:1754",
+            "e0:1754:1769",
+            "e0:1769:1790",
+            "e0:1790:1871",
+            "e0:1871:1951",
+            "e0:1951:1960",
+            "e0:1960:2047",
+            "e0:2047:2134",
+            "e0:2134:2151"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "experience-3",
+          "source_ids": [
+            "e0:1696:1706"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e0:62:106",
+          "quote": "Radical minds PVT LTD | SEP 2022 - OCT 2023 "
+        },
+        {
+          "source_id": "e0:106:188",
+          "quote": "-Prospected and generated new business leads through cold calling, networking, and"
+        },
+        {
+          "source_id": "e0:188:202",
+          "quote": "social media. "
+        },
+        {
+          "source_id": "e0:202:285",
+          "quote": "-Built and nurtured client relationships, identifying upselling opportunities drive"
+        },
+        {
+          "source_id": "e0:285:301",
+          "quote": "revenue growth. "
+        },
+        {
+          "source_id": "e0:301:384",
+          "quote": "-Managed existing client accounts and ensured high level of customer satisfaction. "
+        },
+        {
+          "source_id": "e0:384:460",
+          "quote": "-Developed and implemented sales strategies to enhance client retention and "
+        },
+        {
+          "source_id": "e0:460:484",
+          "quote": "expand market presence. "
+        },
+        {
+          "source_id": "e0:484:567",
+          "quote": "-Analyzed sales data to refine marketing strategies and improve sales performance. "
+        },
+        {
+          "source_id": "e0:567:622",
+          "quote": "Innova Diesel Generators PVT LTD | DEC 2023 - FEB 2025 "
+        },
+        {
+          "source_id": "e0:622:686",
+          "quote": "-Generated leadsthrough coldcalling, networking, andfieldvisits."
+        },
+        {
+          "source_id": "e0:686:778",
+          "quote": "-Delivered presentations to stakeholders at all levels, from entry-level management to CEOs."
+        },
+        {
+          "source_id": "e0:778:867",
+          "quote": "-Successfully closed deals by building strong, long-term relationships with key decision-"
+        },
+        {
+          "source_id": "e0:867:875",
+          "quote": "makers. "
+        },
+        {
+          "source_id": "e0:875:959",
+          "quote": "-Conducted rigorous follow-ups to clear blockers and stay ahead of the competition. "
+        },
+        {
+          "source_id": "e0:959:1032",
+          "quote": "-Negotiated contracts, addressed objections, and achieved sales targets. "
+        },
+        {
+          "source_id": "e0:1032:1126",
+          "quote": "-Ensured excellent post-sales service, fostering client satisfaction and generating referrals "
+        },
+        {
+          "source_id": "e0:1126:1155",
+          "quote": "Business Development Manager "
+        },
+        {
+          "source_id": "e0:1155:1216",
+          "quote": "Control Print PVT LTD – The Mask Lab | FEB 2025 – March 2026 "
+        },
+        {
+          "source_id": "e0:1216:1279",
+          "quote": "Teleperformance Global Services PVT LTD | JULY 2021 - AUG 2022 "
+        },
+        {
+          "source_id": "e0:1279:1367",
+          "quote": "-Engaged in direct sales, handling customer inquiries and offering tailored solutions. -"
+        },
+        {
+          "source_id": "e0:1367:1458",
+          "quote": "Developed persuasive sales pitches and successfully converted leads to customers. -Provided"
+        },
+        {
+          "source_id": "e0:1458:1532",
+          "quote": "exceptional customer service, ensuring client satisfaction and retention. "
+        },
+        {
+          "source_id": "e0:1532:1571",
+          "quote": "MPCS (Andhra University) | 2022 - 2025 "
+        },
+        {
+          "source_id": "e0:1571:1608",
+          "quote": "Andhra Board of Secondary Education |"
+        },
+        {
+          "source_id": "e0:1608:1613",
+          "quote": "2016 "
+        },
+        {
+          "source_id": "e0:1613:1660",
+          "quote": "Pre University (Karnataka Board) - PCMC | 2018 "
+        },
+        {
+          "source_id": "e0:1660:1696",
+          "quote": "hanumankar.anil7204864002@gmail.com "
+        },
+        {
+          "source_id": "e0:1696:1706",
+          "quote": "EXPERTISE "
+        },
+        {
+          "source_id": "e0:1706:1723",
+          "quote": "WORK EXPERIENCES "
+        },
+        {
+          "source_id": "e0:1723:1754",
+          "quote": "Business Development Executive "
+        },
+        {
+          "source_id": "e0:1754:1769",
+          "quote": "Sales Executive"
+        },
+        {
+          "source_id": "e0:1769:1790",
+          "quote": "Field sales Engineer "
+        },
+        {
+          "source_id": "e0:1790:1871",
+          "quote": "Here I wasresponsibleforidentifyingand approachingindustrial areas, and pitching "
+        },
+        {
+          "source_id": "e0:1871:1951",
+          "quote": "our PPE solutions and effectively converting leads in to confirmed orders. Have "
+        },
+        {
+          "source_id": "e0:1951:1960",
+          "quote": "built and"
+        },
+        {
+          "source_id": "e0:1960:2047",
+          "quote": "maintained strong client relationships to ensure consistent repeat business under long-"
+        },
+        {
+          "source_id": "e0:2047:2134",
+          "quote": "term partnerships, while consistently meeting sales targets and contributing to overall"
+        },
+        {
+          "source_id": "e0:2134:2151",
+          "quote": "business growth. "
+        }
+      ]
+    },
+    {
+      "category": "education",
+      "label": "Education",
+      "records": [
+        {
+          "record_id": "education-1",
+          "source_ids": [
+            "e0:2161:2182",
+            "e0:2182:2194",
+            "e0:2194:2207"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "degree",
+              "items": [
+                {
+                  "value": "Bachelor of Science",
+                  "evidence": [
+                    {
+                      "source_id": "e0:2161:2182",
+                      "quote": "Bachelor of Science"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "education-2",
+          "source_ids": [
+            "e0:2207:2214"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "degree",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e0:2151:2161",
+          "quote": "EDUCATION "
+        },
+        {
+          "source_id": "e0:2161:2182",
+          "quote": "Bachelor of Science. "
+        },
+        {
+          "source_id": "e0:2182:2194",
+          "quote": "10Th - SSCL "
+        },
+        {
+          "source_id": "e0:2194:2207",
+          "quote": "Intermediate "
+        },
+        {
+          "source_id": "e0:2207:2214",
+          "quote": "Kannada"
+        }
+      ]
+    },
+    {
+      "category": "needs_review",
+      "label": "Unassigned source blocks",
+      "records": [],
+      "residual_blocks": [
+        {
+          "source_id": "e0:0:16",
+          "quote": "H.K. ANIL KUMAR "
+        },
+        {
+          "source_id": "e0:16:47",
+          "quote": "FIELD SALES ENGINEER -MARKETING"
+        },
+        {
+          "source_id": "e0:47:62",
+          "quote": "+91 8073987692 "
+        }
+      ]
+    }
+  ]
+}

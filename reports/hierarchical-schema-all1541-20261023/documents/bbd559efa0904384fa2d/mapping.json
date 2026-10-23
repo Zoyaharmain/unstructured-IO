@@ -1,0 +1,2382 @@
+{
+  "success": true,
+  "source": "Chandan Kumar BV.pdf",
+  "extraction_mode": "existing_blocks_schema_mapping",
+  "data": {
+    "contact": {
+      "full_name": "City",
+      "email": "chandans1437@gmail.co",
+      "phone": "",
+      "location": "Bengaluru",
+      "linkedin_url": null,
+      "github_url": null,
+      "portfolio_url": null
+    },
+    "professional_title": null,
+    "summary": "Results-oriented Senior Executive with over 1 year and 5 months of professional experience in field sales and back-office operations. Proven track record in B2B client acquisition, lead management, and conducting face-to-face meetings to onboard manufacturers, traders, and wholesalers. Possesses a solid academic foundation with an MBA/PGDM (2025) and comprehensive skills in data entry, Excel, Tally software, and MS Office. Seeking to leverage expertise in client relations and operational support within a dynamic and challenging business environment.",
+    "total_experience_years": null,
+    "skills": {
+      "technical_skills": [],
+      "tools_and_platforms": [
+        "Excel"
+      ],
+      "domain_and_functional": [],
+      "soft_skills": [],
+      "all_skills": [
+        "Excel",
+        "English Typing",
+        "Email Support",
+        "Data Entry Operation",
+        "Non Voice",
+        "Back Office Operations",
+        "Back Office",
+        "Internet",
+        "Tally Software",
+        "Data Entry",
+        "MS Office",
+        "Computer Skills",
+        "Accounting"
+      ]
+    },
+    "experience": [
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      }
+    ],
+    "education": [
+      {
+        "institution": "",
+        "degree": "",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      },
+      {
+        "institution": "",
+        "degree": "",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      },
+      {
+        "institution": "",
+        "degree": "",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      },
+      {
+        "institution": "",
+        "degree": "",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      },
+      {
+        "institution": "",
+        "degree": "",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      }
+    ],
+    "certifications": [],
+    "projects": [],
+    "languages": [
+      "Kannada",
+      "English",
+      "Telugu",
+      "Hindi"
+    ]
+  },
+  "schema_mapping": {
+    "fields_populated": 8,
+    "total_fields": 16,
+    "completion_percentage": 50.0,
+    "field_details": [
+      {
+        "field_name": "contact.full_name",
+        "target_type": "string",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Personal Details",
+        "confidence_score": 0.95,
+        "description": "Candidate's full name, extracted from the top header of the resume."
+      },
+      {
+        "field_name": "contact.email",
+        "target_type": "string (email)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.98,
+        "description": "Candidate's primary contact email address."
+      },
+      {
+        "field_name": "contact.phone",
+        "target_type": "string (phone)",
+        "is_required": true,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's telephone / mobile phone number."
+      },
+      {
+        "field_name": "contact.location",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.85,
+        "description": "Candidate's residential location or work city."
+      },
+      {
+        "field_name": "contact.linkedin_url",
+        "target_type": "string (url) | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "URL to candidate's LinkedIn profile."
+      },
+      {
+        "field_name": "professional_title",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Subtitle",
+        "confidence_score": 0.0,
+        "description": "Candidate's target headline or most recent job title."
+      },
+      {
+        "field_name": "summary",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Summary / Profile / Objective",
+        "confidence_score": 0.85,
+        "description": "Executive bio, professional overview, or career objective."
+      },
+      {
+        "field_name": "total_experience_years",
+        "target_type": "float | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Summary / Experience Calculation",
+        "confidence_score": 0.0,
+        "description": "Total professional experience in years."
+      },
+      {
+        "field_name": "skills.technical_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Technical Competencies",
+        "confidence_score": 0.0,
+        "description": "Technical programming languages and core software competencies."
+      },
+      {
+        "field_name": "skills.tools_and_platforms",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills / Tools & Technologies",
+        "confidence_score": 0.9,
+        "description": "Software platforms, developer tools, and operational systems."
+      },
+      {
+        "field_name": "skills.domain_and_functional",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Domain Expertise",
+        "confidence_score": 0.0,
+        "description": "Functional domain knowledge (e.g. Hedge Funds, KYC, NAV, Derivatives)."
+      },
+      {
+        "field_name": "skills.all_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills (Aggregated)",
+        "confidence_score": 0.95,
+        "description": "Complete list of candidate skills across all categories."
+      },
+      {
+        "field_name": "experience",
+        "target_type": "array[WorkExperience]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Experience / Work History",
+        "confidence_score": 0.92,
+        "description": "Complete chronological employment records with bullet points."
+      },
+      {
+        "field_name": "education",
+        "target_type": "array[Education]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Education / Academic Qualifications",
+        "confidence_score": 0.9,
+        "description": "University, college, and higher education degree qualifications."
+      },
+      {
+        "field_name": "certifications",
+        "target_type": "array[Certification]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Certifications / Licenses",
+        "confidence_score": 0.0,
+        "description": "Professional accreditations and credentials."
+      },
+      {
+        "field_name": "projects",
+        "target_type": "array[Project]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Projects / Key Engagements",
+        "confidence_score": 0.0,
+        "description": "Major projects or strategic initiatives led by candidate."
+      }
+    ]
+  },
+  "raw_sections": {
+    "skills": "Key skills\nEnglish Typing Email Support Data Entry Operation Non Voice Back Office Operations Back Office Excel Internet Tally Software Data Entry MS Office Computer Skills Accounting",
+    "personal_information": "Personal Information\nCity\nBengaluru\nCountry\nINDIA\nchandans1437@gmail.co",
+    "languages": "Languages\nKannada English Telugu Hindi",
+    "experience": "Senior Executive\nWork Experience\nJan 2025 - Present\nSenior Executive\nIndiaMART\nIndiaMart is a B2B platform which provides the customer in the form of leads to the manufacturer, traders and wholesaler. My role is senior sales executive, It is a field sales job role, the company will provide some data I have to do calls in that data and fix the meeting with that clients, and meet them face to face, explain about IndiaMart subscription plans and services and I have to convince them to onboard on IndiaMart plans I used to meet 3 to 4 clients daily who are all manufacturers, traders, wholesalers and distributors.",
+    "summary": "Profile Summary\nResults-oriented Senior Executive with over 1 year and 5 months of professional experience in field sales and back-office operations. Proven track record in B2B client acquisition, lead management, and conducting face-to-face meetings to onboard manufacturers, traders, and wholesalers. Possesses a solid academic foundation with an MBA/PGDM (2025) and comprehensive skills in data entry, Excel, Tally software, and MS Office. Seeking to leverage expertise in client relations and operational support within a dynamic and challenging business environment.",
+    "education": "Education\nMBA/PGDM, 2025\nDhanwantari academy For Management Studies\nB.Com, 2022\nRoyal degree college chintamani\n12th, 2019\nKarnataka, Kannada\n10th, 2016\nKarnataka, Kannada"
+  },
+  "meta": {
+    "status": "needs_review",
+    "human_verified": false,
+    "provider_calls": 0,
+    "source_accounting": {
+      "all_source_text_preserved": true,
+      "total_spans": 61,
+      "assigned_meaningful_spans": 57,
+      "unresolved_meaningful_spans": 4,
+      "non_content_artifacts": 0,
+      "duplicates_excluded": 0,
+      "all_meaningful_text_assigned": false,
+      "semantic_correctness_verified": false,
+      "outcomes": [
+        {
+          "source_id": "e0:0:10",
+          "source_element_index": 0,
+          "start": 0,
+          "end": 10,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e1:0:15",
+          "source_element_index": 1,
+          "start": 0,
+          "end": 15,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e1:15:29",
+          "source_element_index": 1,
+          "start": 15,
+          "end": 29,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e1:29:50",
+          "source_element_index": 1,
+          "start": 29,
+          "end": 50,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e1:50:60",
+          "source_element_index": 1,
+          "start": 50,
+          "end": 60,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e1:60:83",
+          "source_element_index": 1,
+          "start": 60,
+          "end": 83,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e1:83:95",
+          "source_element_index": 1,
+          "start": 83,
+          "end": 95,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e1:95:101",
+          "source_element_index": 1,
+          "start": 95,
+          "end": 101,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e1:101:110",
+          "source_element_index": 1,
+          "start": 101,
+          "end": 110,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e1:110:125",
+          "source_element_index": 1,
+          "start": 110,
+          "end": 125,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e1:125:136",
+          "source_element_index": 1,
+          "start": 125,
+          "end": 136,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e1:136:146",
+          "source_element_index": 1,
+          "start": 136,
+          "end": 146,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e1:146:162",
+          "source_element_index": 1,
+          "start": 146,
+          "end": 162,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e1:162:172",
+          "source_element_index": 1,
+          "start": 162,
+          "end": 172,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e2:0:20",
+          "source_element_index": 2,
+          "start": 0,
+          "end": 20,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e3:0:4",
+          "source_element_index": 3,
+          "start": 0,
+          "end": 4,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e4:0:9",
+          "source_element_index": 4,
+          "start": 0,
+          "end": 9,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e5:0:7",
+          "source_element_index": 5,
+          "start": 0,
+          "end": 7,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e6:0:5",
+          "source_element_index": 6,
+          "start": 0,
+          "end": 5,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e7:0:9",
+          "source_element_index": 7,
+          "start": 0,
+          "end": 9,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e8:0:8",
+          "source_element_index": 8,
+          "start": 0,
+          "end": 8,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:8:16",
+          "source_element_index": 8,
+          "start": 8,
+          "end": 16,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:16:23",
+          "source_element_index": 8,
+          "start": 16,
+          "end": 23,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:23:28",
+          "source_element_index": 8,
+          "start": 23,
+          "end": 28,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:0:17",
+          "source_element_index": 9,
+          "start": 0,
+          "end": 17,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e10:0:16",
+          "source_element_index": 10,
+          "start": 0,
+          "end": 16,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "BERT embedding assigned to a labeled K-means centroid"
+        },
+        {
+          "source_id": "e11:0:15",
+          "source_element_index": 11,
+          "start": 0,
+          "end": 15,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e12:0:16",
+          "source_element_index": 12,
+          "start": 0,
+          "end": 16,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e13:0:21",
+          "source_element_index": 13,
+          "start": 0,
+          "end": 21,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "BERT embedding assigned to a labeled K-means centroid"
+        },
+        {
+          "source_id": "e13:21:23",
+          "source_element_index": 13,
+          "start": 21,
+          "end": 23,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e14:0:15",
+          "source_element_index": 14,
+          "start": 0,
+          "end": 15,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e15:0:67",
+          "source_element_index": 15,
+          "start": 0,
+          "end": 67,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e15:67:134",
+          "source_element_index": 15,
+          "start": 67,
+          "end": 134,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e15:134:202",
+          "source_element_index": 15,
+          "start": 134,
+          "end": 202,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e15:202:270",
+          "source_element_index": 15,
+          "start": 202,
+          "end": 270,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e15:270:333",
+          "source_element_index": 15,
+          "start": 270,
+          "end": 333,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e15:333:402",
+          "source_element_index": 15,
+          "start": 333,
+          "end": 402,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e15:402:467",
+          "source_element_index": 15,
+          "start": 402,
+          "end": 467,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e15:467:534",
+          "source_element_index": 15,
+          "start": 467,
+          "end": 534,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e15:534:555",
+          "source_element_index": 15,
+          "start": 534,
+          "end": 555,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e16:0:9",
+          "source_element_index": 16,
+          "start": 0,
+          "end": 9,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e17:0:14",
+          "source_element_index": 17,
+          "start": 0,
+          "end": 14,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e18:0:42",
+          "source_element_index": 18,
+          "start": 0,
+          "end": 42,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e19:0:11",
+          "source_element_index": 19,
+          "start": 0,
+          "end": 11,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e20:0:31",
+          "source_element_index": 20,
+          "start": 0,
+          "end": 31,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e21:0:10",
+          "source_element_index": 21,
+          "start": 0,
+          "end": 10,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e22:0:18",
+          "source_element_index": 22,
+          "start": 0,
+          "end": 18,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e23:0:10",
+          "source_element_index": 23,
+          "start": 0,
+          "end": 10,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e24:0:18",
+          "source_element_index": 24,
+          "start": 0,
+          "end": 18,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e25:0:15",
+          "source_element_index": 25,
+          "start": 0,
+          "end": 15,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e26:0:18",
+          "source_element_index": 26,
+          "start": 0,
+          "end": 18,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e27:0:16",
+          "source_element_index": 27,
+          "start": 0,
+          "end": 16,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e28:0:9",
+          "source_element_index": 28,
+          "start": 0,
+          "end": 9,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e29:0:71",
+          "source_element_index": 29,
+          "start": 0,
+          "end": 71,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e29:71:146",
+          "source_element_index": 29,
+          "start": 71,
+          "end": 146,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e29:146:224",
+          "source_element_index": 29,
+          "start": 146,
+          "end": 224,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e29:224:302",
+          "source_element_index": 29,
+          "start": 224,
+          "end": 302,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e29:302:377",
+          "source_element_index": 29,
+          "start": 302,
+          "end": 377,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e29:377:452",
+          "source_element_index": 29,
+          "start": 377,
+          "end": 452,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e29:452:523",
+          "source_element_index": 29,
+          "start": 452,
+          "end": 523,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e29:523:536",
+          "source_element_index": 29,
+          "start": 523,
+          "end": 536,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        }
+      ]
+    },
+    "document_scope": {
+      "kind": "likely_resume",
+      "candidate_resume": true,
+      "reason": "Contact details, multiple resume section families and dated history; provisional scope only",
+      "human_verified": false
+    },
+    "source_inventory_sha256": "56d9f9849526e6c3d999f367f0bcd03456d909f83b36789df6f10b0824582c9e",
+    "field_evidence": {
+      "contact.full_name": [
+        "e3:0:4",
+        "e4:0:9",
+        "e5:0:7",
+        "e6:0:5",
+        "e13:0:21"
+      ],
+      "contact.email": [
+        "e3:0:4",
+        "e4:0:9",
+        "e5:0:7",
+        "e6:0:5",
+        "e13:0:21"
+      ],
+      "contact.location": [
+        "e3:0:4",
+        "e4:0:9",
+        "e5:0:7",
+        "e6:0:5",
+        "e13:0:21"
+      ],
+      "summary": [
+        "e15:0:67",
+        "e15:67:134",
+        "e15:134:202",
+        "e15:202:270",
+        "e15:270:333",
+        "e15:333:402",
+        "e15:402:467",
+        "e15:467:534",
+        "e15:534:555"
+      ],
+      "skills.tools_and_platforms[0]": [
+        "e1:95:101"
+      ],
+      "skills.all_skills[0]": [
+        "e1:95:101"
+      ],
+      "skills.all_skills[1]": [
+        "e1:0:15"
+      ],
+      "skills.all_skills[2]": [
+        "e1:15:29"
+      ],
+      "skills.all_skills[3]": [
+        "e1:29:50"
+      ],
+      "skills.all_skills[4]": [
+        "e1:50:60"
+      ],
+      "skills.all_skills[5]": [
+        "e1:60:83"
+      ],
+      "skills.all_skills[6]": [
+        "e1:60:83",
+        "e1:83:95"
+      ],
+      "skills.all_skills[7]": [
+        "e1:101:110"
+      ],
+      "skills.all_skills[8]": [
+        "e1:110:125"
+      ],
+      "skills.all_skills[9]": [
+        "e1:29:50",
+        "e1:125:136"
+      ],
+      "skills.all_skills[10]": [
+        "e1:136:146"
+      ],
+      "skills.all_skills[11]": [
+        "e1:146:162"
+      ],
+      "skills.all_skills[12]": [
+        "e1:162:172"
+      ],
+      "languages[0]": [
+        "e8:0:8"
+      ],
+      "languages[1]": [
+        "e8:8:16"
+      ],
+      "languages[2]": [
+        "e8:16:23"
+      ],
+      "languages[3]": [
+        "e8:23:28"
+      ]
+    },
+    "record_reviews": [
+      {
+        "category": "experience",
+        "entry_id": "experience-1",
+        "source_ids": [
+          "e10:0:16"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-2",
+        "source_ids": [
+          "e26:0:18"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-3",
+        "source_ids": [
+          "e27:0:16"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-4",
+        "source_ids": [
+          "e28:0:9",
+          "e29:0:71",
+          "e29:71:146",
+          "e29:146:224",
+          "e29:224:302",
+          "e29:302:377",
+          "e29:377:452",
+          "e29:452:523",
+          "e29:523:536"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "education",
+        "entry_id": "education-1",
+        "source_ids": [
+          "e17:0:14"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "education",
+        "entry_id": "education-2",
+        "source_ids": [
+          "e18:0:42",
+          "e19:0:11"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "education",
+        "entry_id": "education-3",
+        "source_ids": [
+          "e20:0:31",
+          "e21:0:10"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "education",
+        "entry_id": "education-4",
+        "source_ids": [
+          "e22:0:18",
+          "e23:0:10"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "education",
+        "entry_id": "education-5",
+        "source_ids": [
+          "e24:0:18"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      }
+    ],
+    "missing_required_fields": [
+      "contact.phone",
+      "experience[0].company",
+      "experience[0].role",
+      "experience[1].company",
+      "experience[1].role",
+      "experience[2].company",
+      "experience[2].role",
+      "experience[3].company",
+      "experience[3].role",
+      "education[0].institution",
+      "education[0].degree",
+      "education[1].institution",
+      "education[1].degree",
+      "education[2].institution",
+      "education[2].degree",
+      "education[3].institution",
+      "education[3].degree",
+      "education[4].institution",
+      "education[4].degree"
+    ],
+    "warnings": [
+      "Schema validity and field completion do not establish extraction or relationship accuracy.",
+      "Handoff confidence scores are fixed heuristics, not calibrated probabilities.",
+      "Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields."
+    ],
+    "unmapped_blocks": [
+      {
+        "source_id": "e0:0:10",
+        "category": "skills",
+        "text": "Key skills",
+        "page_number": 1
+      },
+      {
+        "source_id": "e2:0:20",
+        "category": "personal_information",
+        "text": "Personal Information",
+        "page_number": 1
+      },
+      {
+        "source_id": "e7:0:9",
+        "category": "languages",
+        "text": "Languages",
+        "page_number": 1
+      },
+      {
+        "source_id": "e10:0:16",
+        "category": "experience",
+        "text": "Senior Executive",
+        "page_number": 1
+      },
+      {
+        "source_id": "e25:0:15",
+        "category": "experience",
+        "text": "Work Experience",
+        "page_number": 1
+      },
+      {
+        "source_id": "e26:0:18",
+        "category": "experience",
+        "text": "Jan 2025 - Present",
+        "page_number": 1
+      },
+      {
+        "source_id": "e27:0:16",
+        "category": "experience",
+        "text": "Senior Executive",
+        "page_number": 1
+      },
+      {
+        "source_id": "e28:0:9",
+        "category": "experience",
+        "text": "IndiaMART",
+        "page_number": 1
+      },
+      {
+        "source_id": "e29:0:71",
+        "category": "experience",
+        "text": "IndiaMart is a B2B platform which provides the customer in the form of ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e29:71:146",
+        "category": "experience",
+        "text": "leads to the manufacturer, traders and wholesaler. My role is senior sales ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e29:146:224",
+        "category": "experience",
+        "text": "executive, It is a field sales job role, the company will provide some data I ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e29:224:302",
+        "category": "experience",
+        "text": "have to do calls in that data and fix the meeting with that clients, and meet ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e29:302:377",
+        "category": "experience",
+        "text": "them face to face, explain about IndiaMart subscription plans and services ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e29:377:452",
+        "category": "experience",
+        "text": "and I have to convince them to onboard on IndiaMart plans I used to meet 3 ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e29:452:523",
+        "category": "experience",
+        "text": "to 4 clients daily who are all manufacturers, traders, wholesalers and ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e29:523:536",
+        "category": "experience",
+        "text": "distributors.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e14:0:15",
+        "category": "summary",
+        "text": "Profile Summary",
+        "page_number": 1
+      },
+      {
+        "source_id": "e16:0:9",
+        "category": "education",
+        "text": "Education",
+        "page_number": 1
+      },
+      {
+        "source_id": "e17:0:14",
+        "category": "education",
+        "text": "MBA/PGDM, 2025",
+        "page_number": 1
+      },
+      {
+        "source_id": "e18:0:42",
+        "category": "education",
+        "text": "Dhanwantari academy For Management Studies",
+        "page_number": 1
+      },
+      {
+        "source_id": "e19:0:11",
+        "category": "education",
+        "text": "B.Com, 2022",
+        "page_number": 1
+      },
+      {
+        "source_id": "e20:0:31",
+        "category": "education",
+        "text": "Royal degree college chintamani",
+        "page_number": 1
+      },
+      {
+        "source_id": "e21:0:10",
+        "category": "education",
+        "text": "12th, 2019",
+        "page_number": 1
+      },
+      {
+        "source_id": "e22:0:18",
+        "category": "education",
+        "text": "Karnataka, Kannada",
+        "page_number": 1
+      },
+      {
+        "source_id": "e23:0:10",
+        "category": "education",
+        "text": "10th, 2016",
+        "page_number": 1
+      },
+      {
+        "source_id": "e24:0:18",
+        "category": "education",
+        "text": "Karnataka, Kannada",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:0:17",
+        "category": null,
+        "text": "Chandan kumar B V",
+        "page_number": 1
+      },
+      {
+        "source_id": "e11:0:15",
+        "category": null,
+        "text": "1 Year 5 Months",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:0:16",
+        "category": null,
+        "text": "(+91) 9164256967",
+        "page_number": 1
+      },
+      {
+        "source_id": "e13:21:23",
+        "category": null,
+        "text": " m",
+        "page_number": 1
+      }
+    ],
+    "needs_review": [
+      {
+        "source_element_index": 9,
+        "start": 0,
+        "end": 17,
+        "text": "Chandan kumar B V",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1987,
+        "margin": 0.0411,
+        "lane": "right",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 11,
+        "start": 0,
+        "end": 15,
+        "text": "1 Year 5 Months",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2113,
+        "margin": -0.0074,
+        "lane": "right",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 12,
+        "start": 0,
+        "end": 16,
+        "text": "(+91) 9164256967",
+        "page_number": 1,
+        "cluster_id": 7,
+        "candidate_section": "awards",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1703,
+        "margin": 0.0654,
+        "lane": "right",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 13,
+        "start": 21,
+        "end": 23,
+        "text": " m",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1241,
+        "margin": -0.0425,
+        "lane": "right",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      }
+    ]
+  },
+  "section_schemas": [
+    {
+      "category": "skills",
+      "label": "Skills",
+      "records": [
+        {
+          "record_id": "skills",
+          "source_ids": [
+            "e1:0:15",
+            "e1:15:29",
+            "e1:29:50",
+            "e1:50:60",
+            "e1:60:83",
+            "e1:83:95",
+            "e1:95:101",
+            "e1:101:110",
+            "e1:110:125",
+            "e1:125:136",
+            "e1:136:146",
+            "e1:146:162",
+            "e1:162:172"
+          ],
+          "attributes": [
+            {
+              "name": "technical_skills",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "tools_and_platforms",
+              "items": [
+                {
+                  "value": "Excel",
+                  "evidence": [
+                    {
+                      "source_id": "e1:95:101",
+                      "quote": "Excel"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "domain_and_functional",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "soft_skills",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "all_skills",
+              "items": [
+                {
+                  "value": "Excel",
+                  "evidence": [
+                    {
+                      "source_id": "e1:95:101",
+                      "quote": "Excel"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "English Typing",
+                  "evidence": [
+                    {
+                      "source_id": "e1:0:15",
+                      "quote": "English Typing"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Email Support",
+                  "evidence": [
+                    {
+                      "source_id": "e1:15:29",
+                      "quote": "Email Support"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Data Entry Operation",
+                  "evidence": [
+                    {
+                      "source_id": "e1:29:50",
+                      "quote": "Data Entry Operation"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Non Voice",
+                  "evidence": [
+                    {
+                      "source_id": "e1:50:60",
+                      "quote": "Non Voice"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Back Office Operations",
+                  "evidence": [
+                    {
+                      "source_id": "e1:60:83",
+                      "quote": "Back Office Operations"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Back Office",
+                  "evidence": [
+                    {
+                      "source_id": "e1:60:83",
+                      "quote": "Back Office"
+                    },
+                    {
+                      "source_id": "e1:83:95",
+                      "quote": "Back Office"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Internet",
+                  "evidence": [
+                    {
+                      "source_id": "e1:101:110",
+                      "quote": "Internet"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Tally Software",
+                  "evidence": [
+                    {
+                      "source_id": "e1:110:125",
+                      "quote": "Tally Software"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Data Entry",
+                  "evidence": [
+                    {
+                      "source_id": "e1:29:50",
+                      "quote": "Data Entry"
+                    },
+                    {
+                      "source_id": "e1:125:136",
+                      "quote": "Data Entry"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "MS Office",
+                  "evidence": [
+                    {
+                      "source_id": "e1:136:146",
+                      "quote": "MS Office"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Computer Skills",
+                  "evidence": [
+                    {
+                      "source_id": "e1:146:162",
+                      "quote": "Computer Skills"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Accounting",
+                  "evidence": [
+                    {
+                      "source_id": "e1:162:172",
+                      "quote": "Accounting"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e0:0:10",
+          "quote": "Key skills"
+        }
+      ]
+    },
+    {
+      "category": "personal_information",
+      "label": "Personal information",
+      "records": [
+        {
+          "record_id": "personal_information",
+          "source_ids": [
+            "e3:0:4",
+            "e4:0:9",
+            "e5:0:7",
+            "e6:0:5",
+            "e13:0:21"
+          ],
+          "attributes": [
+            {
+              "name": "full_name",
+              "items": [
+                {
+                  "value": "City",
+                  "evidence": [
+                    {
+                      "source_id": "e3:0:4",
+                      "quote": "City"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "email",
+              "items": [
+                {
+                  "value": "chandans1437@gmail.co",
+                  "evidence": [
+                    {
+                      "source_id": "e13:0:21",
+                      "quote": "chandans1437@gmail.co"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "phone",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [
+                {
+                  "value": "Bengaluru",
+                  "evidence": [
+                    {
+                      "source_id": "e4:0:9",
+                      "quote": "Bengaluru"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "linkedin_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "github_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "portfolio_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "professional_title",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e2:0:20",
+          "quote": "Personal Information"
+        },
+        {
+          "source_id": "e5:0:7",
+          "quote": "Country"
+        },
+        {
+          "source_id": "e6:0:5",
+          "quote": "INDIA"
+        }
+      ]
+    },
+    {
+      "category": "languages",
+      "label": "Languages",
+      "records": [
+        {
+          "record_id": "languages-1",
+          "source_ids": [
+            "e8:0:8",
+            "e8:8:16",
+            "e8:16:23",
+            "e8:23:28"
+          ],
+          "attributes": [
+            {
+              "name": "language",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "proficiency",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "Unlabelled compound information requires source review."
+          ]
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e7:0:9",
+          "quote": "Languages"
+        },
+        {
+          "source_id": "e8:0:8",
+          "quote": "Kannada "
+        },
+        {
+          "source_id": "e8:8:16",
+          "quote": "English "
+        },
+        {
+          "source_id": "e8:16:23",
+          "quote": "Telugu "
+        },
+        {
+          "source_id": "e8:23:28",
+          "quote": "Hindi"
+        }
+      ]
+    },
+    {
+      "category": "experience",
+      "label": "Experience",
+      "records": [
+        {
+          "record_id": "experience-1",
+          "source_ids": [
+            "e10:0:16"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "experience-2",
+          "source_ids": [
+            "e26:0:18"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "experience-3",
+          "source_ids": [
+            "e27:0:16"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "experience-4",
+          "source_ids": [
+            "e28:0:9",
+            "e29:0:71",
+            "e29:71:146",
+            "e29:146:224",
+            "e29:224:302",
+            "e29:302:377",
+            "e29:377:452",
+            "e29:452:523",
+            "e29:523:536"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e10:0:16",
+          "quote": "Senior Executive"
+        },
+        {
+          "source_id": "e25:0:15",
+          "quote": "Work Experience"
+        },
+        {
+          "source_id": "e26:0:18",
+          "quote": "Jan 2025 - Present"
+        },
+        {
+          "source_id": "e27:0:16",
+          "quote": "Senior Executive"
+        },
+        {
+          "source_id": "e28:0:9",
+          "quote": "IndiaMART"
+        },
+        {
+          "source_id": "e29:0:71",
+          "quote": "IndiaMart is a B2B platform which provides the customer in the form of "
+        },
+        {
+          "source_id": "e29:71:146",
+          "quote": "leads to the manufacturer, traders and wholesaler. My role is senior sales "
+        },
+        {
+          "source_id": "e29:146:224",
+          "quote": "executive, It is a field sales job role, the company will provide some data I "
+        },
+        {
+          "source_id": "e29:224:302",
+          "quote": "have to do calls in that data and fix the meeting with that clients, and meet "
+        },
+        {
+          "source_id": "e29:302:377",
+          "quote": "them face to face, explain about IndiaMart subscription plans and services "
+        },
+        {
+          "source_id": "e29:377:452",
+          "quote": "and I have to convince them to onboard on IndiaMart plans I used to meet 3 "
+        },
+        {
+          "source_id": "e29:452:523",
+          "quote": "to 4 clients daily who are all manufacturers, traders, wholesalers and "
+        },
+        {
+          "source_id": "e29:523:536",
+          "quote": "distributors."
+        }
+      ]
+    },
+    {
+      "category": "summary",
+      "label": "Summary",
+      "records": [
+        {
+          "record_id": "summary",
+          "source_ids": [
+            "e15:0:67",
+            "e15:67:134",
+            "e15:134:202",
+            "e15:202:270",
+            "e15:270:333",
+            "e15:333:402",
+            "e15:402:467",
+            "e15:467:534",
+            "e15:534:555"
+          ],
+          "attributes": [
+            {
+              "name": "statements",
+              "items": [
+                {
+                  "value": "Results-oriented Senior Executive with over 1 year and 5 months of ",
+                  "evidence": [
+                    {
+                      "source_id": "e15:0:67",
+                      "quote": "Results-oriented Senior Executive with over 1 year and 5 months of "
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "professional experience in field sales and back-office operations. ",
+                  "evidence": [
+                    {
+                      "source_id": "e15:67:134",
+                      "quote": "professional experience in field sales and back-office operations. "
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Proven track record in B2B client acquisition, lead management, and ",
+                  "evidence": [
+                    {
+                      "source_id": "e15:134:202",
+                      "quote": "Proven track record in B2B client acquisition, lead management, and "
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "conducting face-to-face meetings to onboard manufacturers, traders, ",
+                  "evidence": [
+                    {
+                      "source_id": "e15:202:270",
+                      "quote": "conducting face-to-face meetings to onboard manufacturers, traders, "
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "and wholesalers. Possesses a solid academic foundation with an ",
+                  "evidence": [
+                    {
+                      "source_id": "e15:270:333",
+                      "quote": "and wholesalers. Possesses a solid academic foundation with an "
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "MBA/PGDM (2025) and comprehensive skills in data entry, Excel, Tally ",
+                  "evidence": [
+                    {
+                      "source_id": "e15:333:402",
+                      "quote": "MBA/PGDM (2025) and comprehensive skills in data entry, Excel, Tally "
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "software, and MS Office. Seeking to leverage expertise in client ",
+                  "evidence": [
+                    {
+                      "source_id": "e15:402:467",
+                      "quote": "software, and MS Office. Seeking to leverage expertise in client "
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "relations and operational support within a dynamic and challenging ",
+                  "evidence": [
+                    {
+                      "source_id": "e15:467:534",
+                      "quote": "relations and operational support within a dynamic and challenging "
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "business environment.",
+                  "evidence": [
+                    {
+                      "source_id": "e15:534:555",
+                      "quote": "business environment."
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "total_experience_years",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e14:0:15",
+          "quote": "Profile Summary"
+        }
+      ]
+    },
+    {
+      "category": "education",
+      "label": "Education",
+      "records": [
+        {
+          "record_id": "education-1",
+          "source_ids": [
+            "e17:0:14"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "degree",
+              "items": [
+                {
+                  "value": "MBA",
+                  "evidence": [
+                    {
+                      "source_id": "e17:0:14",
+                      "quote": "MBA"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "education-2",
+          "source_ids": [
+            "e18:0:42",
+            "e19:0:11"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "degree",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "education-3",
+          "source_ids": [
+            "e20:0:31",
+            "e21:0:10"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "degree",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "education-4",
+          "source_ids": [
+            "e22:0:18",
+            "e23:0:10"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "degree",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "education-5",
+          "source_ids": [
+            "e24:0:18"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "degree",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e16:0:9",
+          "quote": "Education"
+        },
+        {
+          "source_id": "e17:0:14",
+          "quote": "MBA/PGDM, 2025"
+        },
+        {
+          "source_id": "e18:0:42",
+          "quote": "Dhanwantari academy For Management Studies"
+        },
+        {
+          "source_id": "e19:0:11",
+          "quote": "B.Com, 2022"
+        },
+        {
+          "source_id": "e20:0:31",
+          "quote": "Royal degree college chintamani"
+        },
+        {
+          "source_id": "e21:0:10",
+          "quote": "12th, 2019"
+        },
+        {
+          "source_id": "e22:0:18",
+          "quote": "Karnataka, Kannada"
+        },
+        {
+          "source_id": "e23:0:10",
+          "quote": "10th, 2016"
+        },
+        {
+          "source_id": "e24:0:18",
+          "quote": "Karnataka, Kannada"
+        }
+      ]
+    },
+    {
+      "category": "needs_review",
+      "label": "Unassigned source blocks",
+      "records": [],
+      "residual_blocks": [
+        {
+          "source_id": "e9:0:17",
+          "quote": "Chandan kumar B V"
+        },
+        {
+          "source_id": "e11:0:15",
+          "quote": "1 Year 5 Months"
+        },
+        {
+          "source_id": "e12:0:16",
+          "quote": "(+91) 9164256967"
+        },
+        {
+          "source_id": "e13:21:23",
+          "quote": " m"
+        }
+      ]
+    }
+  ]
+}

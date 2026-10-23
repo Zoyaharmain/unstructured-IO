@@ -33,6 +33,7 @@ code update, then open http://127.0.0.1:8000/docs.
 | Method | Path | Input / result |
 |---|---|---|
 | GET | `/api/v1/resume/schema/definition` | Handoff `ResumeSchema` JSON Schema |
+| GET | `/api/v1/resume/schema/subschema-definition` | Section → record → attribute and evidence contract |
 | GET | `/api/v1/resume/schema/mapping` | Handoff mapping specification plus integration details |
 | POST | `/api/v1/resume/schema` | Existing `elements` and `sections`; mapped response |
 
@@ -90,6 +91,36 @@ The envelope uses the handoff contract: `success`, `source`, `extraction_mode`,
 `existing_blocks_schema_mapping`. `data` contains contact, title, summary,
 explicitly stated experience years, skills, employment, education, certifications,
 projects and languages.
+
+The additive `section_schemas` property exposes the next level of structure.
+Each detected section has `records`, each record has named `attributes`, and
+each attribute contains individually cited `items`. For example, personal
+information exposes `full_name`, `email`, `phone`, `location`, `linkedin_url`,
+`github_url`, `portfolio_url` and `professional_title`. Employment records expose
+company, role, dates, location, responsibilities and technologies; education
+records expose institution, degree, field of study, years and grade.
+
+Each populated item contains a value and its own `evidence` list with a
+`source_id` and exact `quote` from that block. Values without a literal,
+case-insensitive source match are omitted from this nested view. No citation is
+inherited from another record. An `unresolved` attribute means this mapper did
+not establish the value; it does **not** prove the information is absent from
+the PDF. Source-supported text alone does not prove the association is correct.
+Existing relationship warnings mark populated record attributes `needs_review`.
+
+Projects, certifications, skills, summary statements, languages, awards,
+publications, volunteering and interests also have section records. Categories
+outside the legacy schema use conservative explicit labels for compound
+attributes. Unlabelled compound information stays in `residual_blocks` rather
+than being guessed. A fragment citation does not discard the rest of its block;
+partially consumed blocks remain available for review. Summary statements and
+responsibility bullets intentionally remain source text within typed lists.
+
+In the interface, **Map to schema** now displays expandable section records and
+attributes with source evidence, followed by the complete downloadable JSON.
+The mapping uses existing blocks locally. It does not recursively call the LLM,
+re-extract the PDF, or rerun block detection. The separate DeepSeek evaluation
+scripts under `reports/` are not the implementation of this API endpoint.
 
 - `meta.field_evidence` maps populated fields to exact source IDs such as
   `e12:0:24`; offsets refer to the supplied extraction.
@@ -248,3 +279,61 @@ with the PDF to judge reading order, missing passages, inappropriate splits and
 wrong section ownership. A local result remains provisional until that comparison.
 Changing modes invalidates the preceding schema result and regenerates sections.
 The UI does not automatically perform a DeepSeek connection check in local mode.
+
+## Predefined child registry and queries
+
+`local_api/schemas/subschema_spec.py` derives the primary child names and list
+cardinality from the existing handoff models and defines the remaining detected
+categories explicitly, including references. Existing names are preserved:
+`education.institution`, `education.degree`, `experience.company` and
+`experience.role` are the actual paths, rather than renamed aliases from examples.
+The `/subschema-definition` response includes this registry under `x-hierarchy`.
+Unknown parents, children, extra keys, wrong value types and duplicate/missing
+child definitions are rejected. Source-aware validation additionally checks
+record ownership, real source IDs, exact quotes and per-item value support.
+
+The query interface is a Python function and a source-bound HTTP endpoint:
+
+```python
+from local_api.services.subschema_validation import query_subschemas
+matches = query_subschemas(mapped.section_schemas, 'education.institution',
+                           record_id='education-1')
+```
+
+```text
+POST /api/v1/resume/schema/query
+{
+  "elements": [...same source elements...],
+  "sections": {...same section response...},
+  "query_path": "education.institution",
+  "record_id": "education-1"
+}
+```
+
+`record_id` is optional. Results preserve records and include `parent`, `child`,
+`field_path`, `record_id`, `status`, `review_reasons`, and individually cited
+`items`. The `pointer` on each item resolves to its value in the corresponding
+mapping response's `section_schemas` array. The HTTP endpoint remaps the supplied
+source-bound blocks locally; it does not accept unverified mapped citations or
+call DeepSeek. An unresolved field returns an empty item list; an absent parent
+or unmatched record returns no matches. Unknown field paths return HTTP 422.
+
+The nested education view can refine a single combined qualification into its
+literal degree, institution, field of study, explicit year range and GPA.
+It never merges entries or pairs multiple qualifications by proximity. Expected
+completion and merged qualification ambiguities remain review warnings. Explicit
+labels refine unresolved attributes only within that record. Source content that
+cannot be decomposed safely remains in residual blocks. These refinements affect
+`section_schemas` only, preserving the original `data` contract and its values.
+
+No LLM response is rewritten or normalized by this endpoint. The separate
+DeepSeek evaluation gate retains its raw/candidate separation, auditable pointer
+normalization and malformed-response quarantine. Previously frozen production
+hashes in old evaluation runs describe those runs; they must not be bypassed to
+resume them with modified production code.
+
+To retrieve related fields, retain the returned record ID. For example, query
+`experience.company`, then query `experience.role` with the selected result's
+`record_id`. Do not zip values from independent field lists: unresolved values
+and differing record counts make positional joins unsafe. The item pointer is a
+JSON Pointer into the complete mapping response, not into the query response.

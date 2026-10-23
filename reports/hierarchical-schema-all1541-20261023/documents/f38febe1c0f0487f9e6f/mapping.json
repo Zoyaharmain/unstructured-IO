@@ -1,0 +1,5178 @@
+{
+  "success": true,
+  "source": "SidharthPanigrahy.pdf",
+  "extraction_mode": "existing_blocks_schema_mapping",
+  "data": {
+    "contact": {
+      "full_name": "+91 8431975931 • sid.thehlr@yahoo.com • linkedin.com/in/sidharth-panigrahy",
+      "email": "sid.thehlr@yahoo.com",
+      "phone": "+91 8431975931",
+      "location": null,
+      "linkedin_url": "linkedin.com/in/sidharth-panigrahy",
+      "github_url": null,
+      "portfolio_url": null
+    },
+    "professional_title": null,
+    "summary": null,
+    "total_experience_years": null,
+    "skills": {
+      "technical_skills": [],
+      "tools_and_platforms": [],
+      "domain_and_functional": [],
+      "soft_skills": [],
+      "all_skills": []
+    },
+    "experience": [],
+    "education": [
+      {
+        "institution": "Bachelor's Degree in Accounting & Economics: Khalikote University, Berhampur",
+        "degree": "",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      }
+    ],
+    "certifications": [
+      {
+        "name": "Certification: IIBA-Business Analyst Professional | NISM Schedule–VIII (equity & derivatives) |\nSQL Certification from Skill Nation | Advance Data Analytics(TCS) | Six Sigma greenbelt(TCS) |",
+        "issuer": null,
+        "issue_year": null
+      }
+    ],
+    "projects": [],
+    "languages": []
+  },
+  "schema_mapping": {
+    "fields_populated": 6,
+    "total_fields": 16,
+    "completion_percentage": 37.5,
+    "field_details": [
+      {
+        "field_name": "contact.full_name",
+        "target_type": "string",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Personal Details",
+        "confidence_score": 0.95,
+        "description": "Candidate's full name, extracted from the top header of the resume."
+      },
+      {
+        "field_name": "contact.email",
+        "target_type": "string (email)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.98,
+        "description": "Candidate's primary contact email address."
+      },
+      {
+        "field_name": "contact.phone",
+        "target_type": "string (phone)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.95,
+        "description": "Candidate's telephone / mobile phone number."
+      },
+      {
+        "field_name": "contact.location",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's residential location or work city."
+      },
+      {
+        "field_name": "contact.linkedin_url",
+        "target_type": "string (url) | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.9,
+        "description": "URL to candidate's LinkedIn profile."
+      },
+      {
+        "field_name": "professional_title",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Subtitle",
+        "confidence_score": 0.0,
+        "description": "Candidate's target headline or most recent job title."
+      },
+      {
+        "field_name": "summary",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Professional Summary / Profile / Objective",
+        "confidence_score": 0.0,
+        "description": "Executive bio, professional overview, or career objective."
+      },
+      {
+        "field_name": "total_experience_years",
+        "target_type": "float | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Summary / Experience Calculation",
+        "confidence_score": 0.0,
+        "description": "Total professional experience in years."
+      },
+      {
+        "field_name": "skills.technical_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Technical Competencies",
+        "confidence_score": 0.0,
+        "description": "Technical programming languages and core software competencies."
+      },
+      {
+        "field_name": "skills.tools_and_platforms",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Tools & Technologies",
+        "confidence_score": 0.0,
+        "description": "Software platforms, developer tools, and operational systems."
+      },
+      {
+        "field_name": "skills.domain_and_functional",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Domain Expertise",
+        "confidence_score": 0.0,
+        "description": "Functional domain knowledge (e.g. Hedge Funds, KYC, NAV, Derivatives)."
+      },
+      {
+        "field_name": "skills.all_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills (Aggregated)",
+        "confidence_score": 0.0,
+        "description": "Complete list of candidate skills across all categories."
+      },
+      {
+        "field_name": "experience",
+        "target_type": "array[WorkExperience]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Professional Experience / Work History",
+        "confidence_score": 0.0,
+        "description": "Complete chronological employment records with bullet points."
+      },
+      {
+        "field_name": "education",
+        "target_type": "array[Education]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Education / Academic Qualifications",
+        "confidence_score": 0.9,
+        "description": "University, college, and higher education degree qualifications."
+      },
+      {
+        "field_name": "certifications",
+        "target_type": "array[Certification]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Certifications / Licenses",
+        "confidence_score": 0.8,
+        "description": "Professional accreditations and credentials."
+      },
+      {
+        "field_name": "projects",
+        "target_type": "array[Project]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Projects / Key Engagements",
+        "confidence_score": 0.0,
+        "description": "Major projects or strategic initiatives led by candidate."
+      }
+    ]
+  },
+  "raw_sections": {
+    "personal_information": "+91 8431975931 • sid.thehlr@yahoo.com • linkedin.com/in/sidharth-panigrahy",
+    "education": "Master's in Finance: SSIM, Hyderabad Bachelor's Degree in Accounting & Economics: Khalikote University, Berhampur",
+    "certifications": "Certification: IIBA-Business Analyst Professional | NISM Schedule–VIII (equity & derivatives) |\nSQL Certification from Skill Nation | Advance Data Analytics(TCS) | Six Sigma greenbelt(TCS) |"
+  },
+  "meta": {
+    "status": "needs_review",
+    "human_verified": false,
+    "provider_calls": 0,
+    "source_accounting": {
+      "all_source_text_preserved": true,
+      "total_spans": 121,
+      "assigned_meaningful_spans": 5,
+      "unresolved_meaningful_spans": 116,
+      "non_content_artifacts": 0,
+      "duplicates_excluded": 0,
+      "all_meaningful_text_assigned": false,
+      "semantic_correctness_verified": false,
+      "outcomes": [
+        {
+          "source_id": "e0:0:19",
+          "source_element_index": 0,
+          "start": 0,
+          "end": 19,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e0:19:114",
+          "source_element_index": 0,
+          "start": 19,
+          "end": 114,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e0:114:134",
+          "source_element_index": 0,
+          "start": 114,
+          "end": 134,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e1:0:74",
+          "source_element_index": 1,
+          "start": 0,
+          "end": 74,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e2:0:37",
+          "source_element_index": 2,
+          "start": 0,
+          "end": 37,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e3:0:105",
+          "source_element_index": 3,
+          "start": 0,
+          "end": 105,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e3:105:205",
+          "source_element_index": 3,
+          "start": 105,
+          "end": 205,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e3:205:313",
+          "source_element_index": 3,
+          "start": 205,
+          "end": 313,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e3:313:418",
+          "source_element_index": 3,
+          "start": 313,
+          "end": 418,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e3:418:523",
+          "source_element_index": 3,
+          "start": 418,
+          "end": 523,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e3:523:622",
+          "source_element_index": 3,
+          "start": 523,
+          "end": 622,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e3:622:673",
+          "source_element_index": 3,
+          "start": 622,
+          "end": 673,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e4:0:31",
+          "source_element_index": 4,
+          "start": 0,
+          "end": 31,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e5:0:26",
+          "source_element_index": 5,
+          "start": 0,
+          "end": 26,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e5:26:47",
+          "source_element_index": 5,
+          "start": 26,
+          "end": 47,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e5:47:77",
+          "source_element_index": 5,
+          "start": 47,
+          "end": 77,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e6:0:22",
+          "source_element_index": 6,
+          "start": 0,
+          "end": 22,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e7:0:11",
+          "source_element_index": 7,
+          "start": 0,
+          "end": 11,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Possible ambiguous or unsupported heading; section context stopped"
+        },
+        {
+          "source_id": "e8:0:23",
+          "source_element_index": 8,
+          "start": 0,
+          "end": 23,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e9:0:10",
+          "source_element_index": 9,
+          "start": 0,
+          "end": 10,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Possible ambiguous or unsupported heading; section context stopped"
+        },
+        {
+          "source_id": "e10:0:21",
+          "source_element_index": 10,
+          "start": 0,
+          "end": 21,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e11:0:31",
+          "source_element_index": 11,
+          "start": 0,
+          "end": 31,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e12:0:29",
+          "source_element_index": 12,
+          "start": 0,
+          "end": 29,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e12:29:56",
+          "source_element_index": 12,
+          "start": 29,
+          "end": 56,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e12:56:67",
+          "source_element_index": 12,
+          "start": 56,
+          "end": 67,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e13:0:24",
+          "source_element_index": 13,
+          "start": 0,
+          "end": 24,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e14:0:19",
+          "source_element_index": 14,
+          "start": 0,
+          "end": 19,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e15:0:8",
+          "source_element_index": 15,
+          "start": 0,
+          "end": 8,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e16:0:27",
+          "source_element_index": 16,
+          "start": 0,
+          "end": 27,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e17:0:30",
+          "source_element_index": 17,
+          "start": 0,
+          "end": 30,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e18:0:29",
+          "source_element_index": 18,
+          "start": 0,
+          "end": 29,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e19:0:24",
+          "source_element_index": 19,
+          "start": 0,
+          "end": 24,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e20:0:31",
+          "source_element_index": 20,
+          "start": 0,
+          "end": 31,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e21:0:13",
+          "source_element_index": 21,
+          "start": 0,
+          "end": 13,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e22:0:27",
+          "source_element_index": 22,
+          "start": 0,
+          "end": 27,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e23:0:12",
+          "source_element_index": 23,
+          "start": 0,
+          "end": 12,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e24:0:15",
+          "source_element_index": 24,
+          "start": 0,
+          "end": 15,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e25:0:14",
+          "source_element_index": 25,
+          "start": 0,
+          "end": 14,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e26:0:25",
+          "source_element_index": 26,
+          "start": 0,
+          "end": 25,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e27:0:20",
+          "source_element_index": 27,
+          "start": 0,
+          "end": 20,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e28:0:19",
+          "source_element_index": 28,
+          "start": 0,
+          "end": 19,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e29:0:9",
+          "source_element_index": 29,
+          "start": 0,
+          "end": 9,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e30:0:10",
+          "source_element_index": 30,
+          "start": 0,
+          "end": 10,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e31:0:28",
+          "source_element_index": 31,
+          "start": 0,
+          "end": 28,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e32:0:43",
+          "source_element_index": 32,
+          "start": 0,
+          "end": 43,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e33:0:34",
+          "source_element_index": 33,
+          "start": 0,
+          "end": 34,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e33:34:140",
+          "source_element_index": 33,
+          "start": 34,
+          "end": 140,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e33:140:180",
+          "source_element_index": 33,
+          "start": 140,
+          "end": 180,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e34:0:18",
+          "source_element_index": 34,
+          "start": 0,
+          "end": 18,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e35:0:103",
+          "source_element_index": 35,
+          "start": 0,
+          "end": 103,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e36:0:95",
+          "source_element_index": 36,
+          "start": 0,
+          "end": 95,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e36:95:111",
+          "source_element_index": 36,
+          "start": 95,
+          "end": 111,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e37:0:95",
+          "source_element_index": 37,
+          "start": 0,
+          "end": 95,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e38:0:83",
+          "source_element_index": 38,
+          "start": 0,
+          "end": 83,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e38:83:177",
+          "source_element_index": 38,
+          "start": 83,
+          "end": 177,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e39:0:82",
+          "source_element_index": 39,
+          "start": 0,
+          "end": 82,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e40:0:87",
+          "source_element_index": 40,
+          "start": 0,
+          "end": 87,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e40:87:122",
+          "source_element_index": 40,
+          "start": 87,
+          "end": 122,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e41:0:94",
+          "source_element_index": 41,
+          "start": 0,
+          "end": 94,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e41:94:189",
+          "source_element_index": 41,
+          "start": 94,
+          "end": 189,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e41:189:210",
+          "source_element_index": 41,
+          "start": 189,
+          "end": 210,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e42:0:95",
+          "source_element_index": 42,
+          "start": 0,
+          "end": 95,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e42:95:186",
+          "source_element_index": 42,
+          "start": 95,
+          "end": 186,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e43:0:90",
+          "source_element_index": 43,
+          "start": 0,
+          "end": 90,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e44:0:91",
+          "source_element_index": 44,
+          "start": 0,
+          "end": 91,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e45:0:95",
+          "source_element_index": 45,
+          "start": 0,
+          "end": 95,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e46:0:30",
+          "source_element_index": 46,
+          "start": 0,
+          "end": 30,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e47:0:1",
+          "source_element_index": 47,
+          "start": 0,
+          "end": 1,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e48:0:94",
+          "source_element_index": 48,
+          "start": 0,
+          "end": 94,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e48:94:179",
+          "source_element_index": 48,
+          "start": 94,
+          "end": 179,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e49:0:92",
+          "source_element_index": 49,
+          "start": 0,
+          "end": 92,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e49:92:185",
+          "source_element_index": 49,
+          "start": 92,
+          "end": 185,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e50:0:88",
+          "source_element_index": 50,
+          "start": 0,
+          "end": 88,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e51:0:46",
+          "source_element_index": 51,
+          "start": 0,
+          "end": 46,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e52:0:33",
+          "source_element_index": 52,
+          "start": 0,
+          "end": 33,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e52:33:83",
+          "source_element_index": 52,
+          "start": 33,
+          "end": 83,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e53:0:19",
+          "source_element_index": 53,
+          "start": 0,
+          "end": 19,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e54:0:97",
+          "source_element_index": 54,
+          "start": 0,
+          "end": 97,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e55:0:77",
+          "source_element_index": 55,
+          "start": 0,
+          "end": 77,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e56:0:92",
+          "source_element_index": 56,
+          "start": 0,
+          "end": 92,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e57:0:99",
+          "source_element_index": 57,
+          "start": 0,
+          "end": 99,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e57:99:161",
+          "source_element_index": 57,
+          "start": 99,
+          "end": 161,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e58:0:93",
+          "source_element_index": 58,
+          "start": 0,
+          "end": 93,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e59:0:1",
+          "source_element_index": 59,
+          "start": 0,
+          "end": 1,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e60:0:72",
+          "source_element_index": 60,
+          "start": 0,
+          "end": 72,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e60:72:173",
+          "source_element_index": 60,
+          "start": 72,
+          "end": 173,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e60:173:257",
+          "source_element_index": 60,
+          "start": 173,
+          "end": 257,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e61:0:51",
+          "source_element_index": 61,
+          "start": 0,
+          "end": 51,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e61:51:126",
+          "source_element_index": 61,
+          "start": 51,
+          "end": 126,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e62:0:19",
+          "source_element_index": 62,
+          "start": 0,
+          "end": 19,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e63:0:98",
+          "source_element_index": 63,
+          "start": 0,
+          "end": 98,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e64:0:64",
+          "source_element_index": 64,
+          "start": 0,
+          "end": 64,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e65:0:95",
+          "source_element_index": 65,
+          "start": 0,
+          "end": 95,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e65:95:179",
+          "source_element_index": 65,
+          "start": 95,
+          "end": 179,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e66:0:41",
+          "source_element_index": 66,
+          "start": 0,
+          "end": 41,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e67:0:20",
+          "source_element_index": 67,
+          "start": 0,
+          "end": 20,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e68:0:63",
+          "source_element_index": 68,
+          "start": 0,
+          "end": 63,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e68:63:85",
+          "source_element_index": 68,
+          "start": 63,
+          "end": 85,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e69:0:16",
+          "source_element_index": 69,
+          "start": 0,
+          "end": 16,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e70:0:75",
+          "source_element_index": 70,
+          "start": 0,
+          "end": 75,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e70:75:92",
+          "source_element_index": 70,
+          "start": 75,
+          "end": 92,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e71:0:14",
+          "source_element_index": 71,
+          "start": 0,
+          "end": 14,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e72:0:65",
+          "source_element_index": 72,
+          "start": 0,
+          "end": 65,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e72:65:98",
+          "source_element_index": 72,
+          "start": 65,
+          "end": 98,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e73:0:16",
+          "source_element_index": 73,
+          "start": 0,
+          "end": 16,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e74:0:67",
+          "source_element_index": 74,
+          "start": 0,
+          "end": 67,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e74:67:83",
+          "source_element_index": 74,
+          "start": 67,
+          "end": 83,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e75:0:22",
+          "source_element_index": 75,
+          "start": 0,
+          "end": 22,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e76:0:65",
+          "source_element_index": 76,
+          "start": 0,
+          "end": 65,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e76:65:89",
+          "source_element_index": 76,
+          "start": 65,
+          "end": 89,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e77:0:16",
+          "source_element_index": 77,
+          "start": 0,
+          "end": 16,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e78:0:66",
+          "source_element_index": 78,
+          "start": 0,
+          "end": 66,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e78:66:92",
+          "source_element_index": 78,
+          "start": 66,
+          "end": 92,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e79:0:24",
+          "source_element_index": 79,
+          "start": 0,
+          "end": 24,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e80:0:69",
+          "source_element_index": 80,
+          "start": 0,
+          "end": 69,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e81:0:45",
+          "source_element_index": 81,
+          "start": 0,
+          "end": 45,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e82:0:37",
+          "source_element_index": 82,
+          "start": 0,
+          "end": 37,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "BERT embedding assigned to a labeled K-means centroid"
+        },
+        {
+          "source_id": "e82:37:113",
+          "source_element_index": 82,
+          "start": 37,
+          "end": 113,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "BERT embedding assigned to a labeled K-means centroid"
+        },
+        {
+          "source_id": "e83:0:95",
+          "source_element_index": 83,
+          "start": 0,
+          "end": 95,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "BERT embedding assigned to a labeled K-means centroid"
+        },
+        {
+          "source_id": "e84:0:94",
+          "source_element_index": 84,
+          "start": 0,
+          "end": 94,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "BERT embedding assigned to a labeled K-means centroid"
+        },
+        {
+          "source_id": "e85:0:70",
+          "source_element_index": 85,
+          "start": 0,
+          "end": 70,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        }
+      ]
+    },
+    "document_scope": {
+      "kind": "candidate_or_unknown",
+      "candidate_resume": null,
+      "requires_scope_review": true
+    },
+    "source_inventory_sha256": "9cd5b449335966f5d71cf7a859b2823cf8ac80682df5a2281a20c004af848d14",
+    "field_evidence": {
+      "contact.full_name": [
+        "e1:0:74"
+      ],
+      "contact.email": [
+        "e1:0:74"
+      ],
+      "contact.phone": [
+        "e1:0:74"
+      ],
+      "contact.linkedin_url": [
+        "e1:0:74"
+      ],
+      "education[0].institution": [
+        "e82:37:113"
+      ],
+      "certifications[0].name": [
+        "e83:0:95",
+        "e84:0:94"
+      ]
+    },
+    "record_reviews": [
+      {
+        "category": "education",
+        "entry_id": "education-1",
+        "source_ids": [
+          "e82:0:37",
+          "e82:37:113"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "certifications",
+        "entry_id": "certifications-1",
+        "source_ids": [
+          "e83:0:95",
+          "e84:0:94"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      }
+    ],
+    "missing_required_fields": [
+      "education[0].degree"
+    ],
+    "warnings": [
+      "Schema validity and field completion do not establish extraction or relationship accuracy.",
+      "Handoff confidence scores are fixed heuristics, not calibrated probabilities.",
+      "Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields."
+    ],
+    "unmapped_blocks": [
+      {
+        "source_id": "e82:0:37",
+        "category": "education",
+        "text": "Master's in Finance: SSIM, Hyderabad ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e0:0:19",
+        "category": null,
+        "text": "SIDHARTH PANIGRAHY ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:19:114",
+        "category": null,
+        "text": "Senior Business Analyst | Capital Markets | Trade Lifecycle, Corporate Actions, Middle office| ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:114:134",
+        "category": null,
+        "text": "SQL & Reconciliation",
+        "page_number": 1
+      },
+      {
+        "source_id": "e2:0:37",
+        "category": null,
+        "text": "P R O F E S S I O N A L S U M M A R Y",
+        "page_number": 1
+      },
+      {
+        "source_id": "e3:0:105",
+        "category": null,
+        "text": "IIBA-certified Business Analyst with 8+ years of experience in trade lifecycle, middle-office operations ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e3:105:205",
+        "category": null,
+        "text": "and reconciliation transformation across Capital Markets and Wealth Management, specializing in AI- ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e3:205:313",
+        "category": null,
+        "text": "driven initiatives and Agile Program Increment (PI) planning. Proven expertise in requirements elicitation, ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e3:313:418",
+        "category": null,
+        "text": "process mapping, and stakeholder engagement across front-office, risk, custody, and IT. Delivered large- ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e3:418:523",
+        "category": null,
+        "text": "scale reconciliation and data migration programs with high accuracy, while driving automation through AI ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e3:523:622",
+        "category": null,
+        "text": "tools such as Microsoft Copilot and Friday.AI. Adept at bridging business needs with IT solutions, ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e3:622:673",
+        "category": null,
+        "text": "managing resource effort and accelerating delivery.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e4:0:31",
+        "category": null,
+        "text": "C O R E C O M P E T E N C I E S",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:0:26",
+        "category": null,
+        "text": "✦ Capital Markets Product ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:26:47",
+        "category": null,
+        "text": "Knowledge (Equities, ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:47:77",
+        "category": null,
+        "text": "Derivatives, Fixed Income, FX)",
+        "page_number": 1
+      },
+      {
+        "source_id": "e6:0:22",
+        "category": null,
+        "text": "✦ Business Process Re-",
+        "page_number": 1
+      },
+      {
+        "source_id": "e7:0:11",
+        "category": null,
+        "text": "engineering",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:0:23",
+        "category": null,
+        "text": "✦ UAT Planning & Defect",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:0:10",
+        "category": null,
+        "text": "Management",
+        "page_number": 1
+      },
+      {
+        "source_id": "e10:0:21",
+        "category": null,
+        "text": "✦ Business Analysis &",
+        "page_number": 1
+      },
+      {
+        "source_id": "e11:0:31",
+        "category": null,
+        "text": "✦ User Story Creation & Backlog",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:0:29",
+        "category": null,
+        "text": "✦ Trade Lifecycle Management ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:29:56",
+        "category": null,
+        "text": "(Enrichment, Confirmation, ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:56:67",
+        "category": null,
+        "text": "Settlement)",
+        "page_number": 1
+      },
+      {
+        "source_id": "e13:0:24",
+        "category": null,
+        "text": "Requirements Elicitation",
+        "page_number": 1
+      },
+      {
+        "source_id": "e14:0:19",
+        "category": null,
+        "text": "✦ BRD/FRD Authoring",
+        "page_number": 1
+      },
+      {
+        "source_id": "e15:0:8",
+        "category": null,
+        "text": "Grooming",
+        "page_number": 1
+      },
+      {
+        "source_id": "e16:0:27",
+        "category": null,
+        "text": "✦ Agile (Scrum) & Waterfall",
+        "page_number": 1
+      },
+      {
+        "source_id": "e17:0:30",
+        "category": null,
+        "text": "✦ Corporate Actions Processing",
+        "page_number": 1
+      },
+      {
+        "source_id": "e18:0:29",
+        "category": null,
+        "text": "✦ Benchmark & Index Reference",
+        "page_number": 1
+      },
+      {
+        "source_id": "e19:0:24",
+        "category": null,
+        "text": "✦ Stakeholder Management",
+        "page_number": 1
+      },
+      {
+        "source_id": "e20:0:31",
+        "category": null,
+        "text": "✦ Process Mapping (As-Is/To-Be)",
+        "page_number": 1
+      },
+      {
+        "source_id": "e21:0:13",
+        "category": null,
+        "text": "Methodologies",
+        "page_number": 1
+      },
+      {
+        "source_id": "e22:0:27",
+        "category": null,
+        "text": "✦ Software Development Life",
+        "page_number": 1
+      },
+      {
+        "source_id": "e23:0:12",
+        "category": null,
+        "text": "Cycle (SDLC)",
+        "page_number": 1
+      },
+      {
+        "source_id": "e24:0:15",
+        "category": null,
+        "text": "Data Management",
+        "page_number": 1
+      },
+      {
+        "source_id": "e25:0:14",
+        "category": null,
+        "text": "✦ Gap Analysis",
+        "page_number": 1
+      },
+      {
+        "source_id": "e26:0:25",
+        "category": null,
+        "text": "✦ Compliance & Regulatory",
+        "page_number": 1
+      },
+      {
+        "source_id": "e27:0:20",
+        "category": null,
+        "text": "✦ SQL Data Mapping &",
+        "page_number": 1
+      },
+      {
+        "source_id": "e28:0:19",
+        "category": null,
+        "text": "✦ Change Management",
+        "page_number": 1
+      },
+      {
+        "source_id": "e29:0:9",
+        "category": null,
+        "text": "Reporting",
+        "page_number": 1
+      },
+      {
+        "source_id": "e30:0:10",
+        "category": null,
+        "text": "Validation",
+        "page_number": 1
+      },
+      {
+        "source_id": "e31:0:28",
+        "category": null,
+        "text": "✦ Data Analysis & Validation",
+        "page_number": 1
+      },
+      {
+        "source_id": "e32:0:43",
+        "category": null,
+        "text": "P R O F E S S I O N A L E X P E R I E N C E",
+        "page_number": 1
+      },
+      {
+        "source_id": "e33:0:34",
+        "category": null,
+        "text": "Business Process Lead | TCS, Pune ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e33:34:140",
+        "category": null,
+        "text": "Business Analyst, Trade Lifecycle & Middle Office | Capital Markets | GoldenSource | Custody | Enrichment ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e33:140:180",
+        "category": null,
+        "text": "Clients - Goldman Sachs Group, Citi Bank",
+        "page_number": 1
+      },
+      {
+        "source_id": "e34:0:18",
+        "category": null,
+        "text": "Apr 2021 – Present",
+        "page_number": 1
+      },
+      {
+        "source_id": "e35:0:103",
+        "category": null,
+        "text": "◗ Led end-to-end delivery of 3 middle-office transformation initiatives spanning version upgrades, data",
+        "page_number": 1
+      },
+      {
+        "source_id": "e36:0:95",
+        "category": null,
+        "text": "migration, and process automation, coordinating 10-20+ stakeholders across Agile and Waterfall ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e36:95:111",
+        "category": null,
+        "text": "delivery models.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e37:0:95",
+        "category": null,
+        "text": "◗ Operated as functional Business Analyst bridging business requirements with IT solutions, re-",
+        "page_number": 1
+      },
+      {
+        "source_id": "e38:0:83",
+        "category": null,
+        "text": "engineering transaction workflows across enrichment, confirmation, settlement, and ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e38:83:177",
+        "category": null,
+        "text": "reconciliation for Equities, Derivatives, Fixed Income, and FX to lift operational efficiency.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e39:0:82",
+        "category": null,
+        "text": "◗ Managed reference data within the GoldenSource EDM platform, supporting security",
+        "page_number": 1
+      },
+      {
+        "source_id": "e40:0:87",
+        "category": null,
+        "text": "master, corporate actions, and benchmark/index data accuracy for downstream valuation, ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e40:87:122",
+        "category": null,
+        "text": "risk, and reconciliation processes.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e41:0:94",
+        "category": null,
+        "text": "◗ Performed requirements elicitation techniques, gap analysis, and process mapping (As-Is/To- ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e41:94:189",
+        "category": null,
+        "text": "Be) to translate business needs into BRD/FRDs and functional specifications for delivery teams ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e41:189:210",
+        "category": null,
+        "text": "with design solution.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e42:0:95",
+        "category": null,
+        "text": "◗ Adopted AI tooling (Friday.AI, Microsoft Copilot) to accelerate epic-to-user-story breakdown ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e42:95:186",
+        "category": null,
+        "text": "and automate documentation; via Jira and Confluence to sustain delivery across workstreams.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e43:0:90",
+        "category": null,
+        "text": "◗ Directed data validation and reconciliation in Microsoft SQL Server (SQL queries) during",
+        "page_number": 1
+      },
+      {
+        "source_id": "e44:0:91",
+        "category": null,
+        "text": "system migration, achieving 98% data accuracy and minimizing post-migration defect leakage.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e45:0:95",
+        "category": null,
+        "text": "◗ Facilitated PI planning sessions and Agile ceremonies, backlog grooming, and sprint readiness",
+        "page_number": 1
+      },
+      {
+        "source_id": "e46:0:30",
+        "category": null,
+        "text": "with 100% Definition of Ready.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e47:0:1",
+        "category": null,
+        "text": ".",
+        "page_number": 1
+      },
+      {
+        "source_id": "e48:0:94",
+        "category": null,
+        "text": "◗ Chaired recurring stakeholder forums with front-office, risk, custody, and IT teams (10-20+ ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e48:94:179",
+        "category": null,
+        "text": "participants) to drive requirement sign-off, reducing rework from late-stage changes.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e49:0:92",
+        "category": null,
+        "text": "◗ Raised sprint readiness to 100% Definition of Ready by standardizing user story templates ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e49:92:185",
+        "category": null,
+        "text": "and acceptance criteria, reducing in-sprint clarification cycles and supporting UAT planning.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e50:0:88",
+        "category": null,
+        "text": "◗ Orchestrated UAT execution and defect management cycles, ensuring 90% of high-priority",
+        "page_number": 2
+      },
+      {
+        "source_id": "e51:0:46",
+        "category": null,
+        "text": "bugs were resolved prior to production launch.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e52:0:33",
+        "category": null,
+        "text": "Financial Analyst | Eclerx, Pune ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e52:33:83",
+        "category": null,
+        "text": "Trade Confirmation & Documentation | Middle office",
+        "page_number": 2
+      },
+      {
+        "source_id": "e53:0:19",
+        "category": null,
+        "text": "Mar 2019 – Mar 2021",
+        "page_number": 2
+      },
+      {
+        "source_id": "e54:0:97",
+        "category": null,
+        "text": "◗ Managed trade confirmations and ISDA bilateral documentation across OTC equity, FX, and options",
+        "page_number": 2
+      },
+      {
+        "source_id": "e55:0:77",
+        "category": null,
+        "text": "products, ensuring contractual accuracy across high-volume daily trade flows.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e56:0:92",
+        "category": null,
+        "text": "◗ Performed gap analysis and SQL-based data checks on documentation discrepancies, resolving",
+        "page_number": 2
+      },
+      {
+        "source_id": "e57:0:99",
+        "category": null,
+        "text": "issues with traders, middle office, and legal teams to prevent settlement delays; produced MIS and ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e57:99:161",
+        "category": null,
+        "text": "control reports for management visibility into process health.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e58:0:93",
+        "category": null,
+        "text": "◗ Partnered with collateral teams on margining and documentation workflows, supporting timely",
+        "page_number": 2
+      },
+      {
+        "source_id": "e59:0:1",
+        "category": null,
+        "text": "◗",
+        "page_number": 2
+      },
+      {
+        "source_id": "e60:0:72",
+        "category": null,
+        "text": "collateral calls and reducing documentation-driven settlement friction. ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e60:72:173",
+        "category": null,
+        "text": "Initiated process re-engineering that improved trade confirmation turnaround time and reduced client ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e60:173:257",
+        "category": null,
+        "text": "query volume by an estimated 20-30%, easing pressure on downstream operations teams.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e61:0:51",
+        "category": null,
+        "text": "Financial Advisor | Karvy Stock Broking, Hyderabad ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e61:51:126",
+        "category": null,
+        "text": "Financial Advisor, Client Analytics & Portfolio Servicing | Capital Markets",
+        "page_number": 2
+      },
+      {
+        "source_id": "e62:0:19",
+        "category": null,
+        "text": "Mar 2017 – Mar 2018",
+        "page_number": 2
+      },
+      {
+        "source_id": "e63:0:98",
+        "category": null,
+        "text": "◗ Analyzed customer trading behavior using advanced Excel modeling to surface patterns and trends,",
+        "page_number": 2
+      },
+      {
+        "source_id": "e64:0:64",
+        "category": null,
+        "text": "informing targeted sales outreach and client retention strategy.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e65:0:95",
+        "category": null,
+        "text": "◗ Partnered with the Sales Team and Portfolio Manager to monitor trade service performance and ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e65:95:179",
+        "category": null,
+        "text": "Supported wealth management journeys and RM functionalities in digital environments.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e66:0:41",
+        "category": null,
+        "text": "T O O L S & T E C H N I C A L S K I L L S",
+        "page_number": 2
+      },
+      {
+        "source_id": "e67:0:20",
+        "category": null,
+        "text": "Reference Data / EDM",
+        "page_number": 2
+      },
+      {
+        "source_id": "e68:0:63",
+        "category": null,
+        "text": "Golden Source EDM | Security Master Data | Corporate Actions | ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e68:63:85",
+        "category": null,
+        "text": "Benchmark & Index Data",
+        "page_number": 2
+      },
+      {
+        "source_id": "e69:0:16",
+        "category": null,
+        "text": "BA Documentation",
+        "page_number": 2
+      },
+      {
+        "source_id": "e70:0:75",
+        "category": null,
+        "text": "BRD | FRD | Functional Specifications | User Stories | Acceptance Criteria ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e70:75:92",
+        "category": null,
+        "text": "| Solution Design",
+        "page_number": 2
+      },
+      {
+        "source_id": "e71:0:14",
+        "category": null,
+        "text": "Req. Gathering",
+        "page_number": 2
+      },
+      {
+        "source_id": "e72:0:65",
+        "category": null,
+        "text": "Elicitation techniques | Gap Analysis | Workshops | interviews | ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e72:65:98",
+        "category": null,
+        "text": "Process Mapping | Solution Design",
+        "page_number": 2
+      },
+      {
+        "source_id": "e73:0:16",
+        "category": null,
+        "text": "Agile & Delivery",
+        "page_number": 2
+      },
+      {
+        "source_id": "e74:0:67",
+        "category": null,
+        "text": "Scrum | Sprint Planning | Backlog Grooming | Definition of Ready | ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e74:67:83",
+        "category": null,
+        "text": "Waterfall | Jira",
+        "page_number": 2
+      },
+      {
+        "source_id": "e75:0:22",
+        "category": null,
+        "text": "Capital Markets Domain",
+        "page_number": 2
+      },
+      {
+        "source_id": "e76:0:65",
+        "category": null,
+        "text": "Equities | Derivatives | Fixed Income | FX | Corporate Actions | ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e76:65:89",
+        "category": null,
+        "text": "Reference Data | Custody",
+        "page_number": 2
+      },
+      {
+        "source_id": "e77:0:16",
+        "category": null,
+        "text": "Data & Reporting",
+        "page_number": 2
+      },
+      {
+        "source_id": "e78:0:66",
+        "category": null,
+        "text": "SQL (Microsoft SQL Server – Data Mapping & Validation) | MS Excel ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e78:66:92",
+        "category": null,
+        "text": "(Advanced) | MS PowerPoint",
+        "page_number": 2
+      },
+      {
+        "source_id": "e79:0:24",
+        "category": null,
+        "text": "Collaboration & AI Tools",
+        "page_number": 2
+      },
+      {
+        "source_id": "e80:0:69",
+        "category": null,
+        "text": "Jira | Confluence | Microsoft Copilot (AI) | Friday.AI (AI) | Draw.io",
+        "page_number": 2
+      },
+      {
+        "source_id": "e81:0:45",
+        "category": null,
+        "text": "E D U C A T I O N & C E R T I F I C A T I O N",
+        "page_number": 2
+      },
+      {
+        "source_id": "e85:0:70",
+        "category": null,
+        "text": "Generative AI: Revolutionizing Business Analysis Techniques (Coursera)",
+        "page_number": 2
+      }
+    ],
+    "needs_review": [
+      {
+        "source_element_index": 0,
+        "start": 0,
+        "end": 19,
+        "text": "SIDHARTH PANIGRAHY ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1236,
+        "margin": -0.0193,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 0,
+        "start": 19,
+        "end": 114,
+        "text": "Senior Business Analyst | Capital Markets | Trade Lifecycle, Corporate Actions, Middle office| ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.4074,
+        "margin": 0.0789,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 0,
+        "start": 114,
+        "end": 134,
+        "text": "SQL & Reconciliation",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.155,
+        "margin": -0.0217,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 2,
+        "start": 0,
+        "end": 37,
+        "text": "P R O F E S S I O N A L S U M M A R Y",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1164,
+        "margin": -0.0279,
+        "lane": "left",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 3,
+        "start": 0,
+        "end": 105,
+        "text": "IIBA-certified Business Analyst with 8+ years of experience in trade lifecycle, middle-office operations ",
+        "page_number": 1,
+        "cluster_id": 1,
+        "candidate_section": "summary",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.5339,
+        "margin": 0.0381,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 3,
+        "start": 105,
+        "end": 205,
+        "text": "and reconciliation transformation across Capital Markets and Wealth Management, specializing in AI- ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3176,
+        "margin": 0.0255,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 3,
+        "start": 205,
+        "end": 313,
+        "text": "driven initiatives and Agile Program Increment (PI) planning. Proven expertise in requirements elicitation, ",
+        "page_number": 1,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2761,
+        "margin": -0.0252,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 3,
+        "start": 313,
+        "end": 418,
+        "text": "process mapping, and stakeholder engagement across front-office, risk, custody, and IT. Delivered large- ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2533,
+        "margin": -0.0003,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 3,
+        "start": 418,
+        "end": 523,
+        "text": "scale reconciliation and data migration programs with high accuracy, while driving automation through AI ",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2039,
+        "margin": 0.0139,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 3,
+        "start": 523,
+        "end": 622,
+        "text": "tools such as Microsoft Copilot and Friday.AI. Adept at bridging business needs with IT solutions, ",
+        "page_number": 1,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.4342,
+        "margin": 0.0525,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 3,
+        "start": 622,
+        "end": 673,
+        "text": "managing resource effort and accelerating delivery.",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2712,
+        "margin": 0.032,
+        "lane": "left",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 4,
+        "start": 0,
+        "end": 31,
+        "text": "C O R E C O M P E T E N C I E S",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1113,
+        "margin": -0.0132,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 5,
+        "start": 0,
+        "end": 26,
+        "text": "✦ Capital Markets Product ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1971,
+        "margin": 0.0105,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 5,
+        "start": 26,
+        "end": 47,
+        "text": "Knowledge (Equities, ",
+        "page_number": 1,
+        "cluster_id": 1,
+        "candidate_section": "summary",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3676,
+        "margin": 0.0302,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 5,
+        "start": 47,
+        "end": 77,
+        "text": "Derivatives, Fixed Income, FX)",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2232,
+        "margin": 0.0225,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 6,
+        "start": 0,
+        "end": 22,
+        "text": "✦ Business Process Re-",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3044,
+        "margin": 0.0224,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 7,
+        "start": 0,
+        "end": 11,
+        "text": "engineering",
+        "page_number": 1,
+        "cluster_id": 1,
+        "candidate_section": "summary",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.481,
+        "margin": 0.0205,
+        "lane": "right",
+        "reason": "Possible ambiguous or unsupported heading; section context stopped",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 8,
+        "start": 0,
+        "end": 23,
+        "text": "✦ UAT Planning & Defect",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2427,
+        "margin": -0.0004,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 9,
+        "start": 0,
+        "end": 10,
+        "text": "Management",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.4987,
+        "margin": 0.0952,
+        "lane": "right",
+        "reason": "Possible ambiguous or unsupported heading; section context stopped",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 10,
+        "start": 0,
+        "end": 21,
+        "text": "✦ Business Analysis &",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3889,
+        "margin": 0.0644,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 11,
+        "start": 0,
+        "end": 31,
+        "text": "✦ User Story Creation & Backlog",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2076,
+        "margin": 0.026,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 12,
+        "start": 0,
+        "end": 29,
+        "text": "✦ Trade Lifecycle Management ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3048,
+        "margin": 0.0541,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 12,
+        "start": 29,
+        "end": 56,
+        "text": "(Enrichment, Confirmation, ",
+        "page_number": 1,
+        "cluster_id": 8,
+        "candidate_section": "publications",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1681,
+        "margin": 0.0021,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 12,
+        "start": 56,
+        "end": 67,
+        "text": "Settlement)",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2359,
+        "margin": -0.0071,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 13,
+        "start": 0,
+        "end": 24,
+        "text": "Requirements Elicitation",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3844,
+        "margin": 0.0234,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 14,
+        "start": 0,
+        "end": 19,
+        "text": "✦ BRD/FRD Authoring",
+        "page_number": 1,
+        "cluster_id": 8,
+        "candidate_section": "publications",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2758,
+        "margin": 0.0735,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 15,
+        "start": 0,
+        "end": 8,
+        "text": "Grooming",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1851,
+        "margin": -0.0418,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 16,
+        "start": 0,
+        "end": 27,
+        "text": "✦ Agile (Scrum) & Waterfall",
+        "page_number": 1,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2497,
+        "margin": 0.0339,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 17,
+        "start": 0,
+        "end": 30,
+        "text": "✦ Corporate Actions Processing",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3673,
+        "margin": 0.1384,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 18,
+        "start": 0,
+        "end": 29,
+        "text": "✦ Benchmark & Index Reference",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.269,
+        "margin": 0.0897,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 19,
+        "start": 0,
+        "end": 24,
+        "text": "✦ Stakeholder Management",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3319,
+        "margin": 0.0642,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 20,
+        "start": 0,
+        "end": 31,
+        "text": "✦ Process Mapping (As-Is/To-Be)",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1044,
+        "margin": -0.0042,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 21,
+        "start": 0,
+        "end": 13,
+        "text": "Methodologies",
+        "page_number": 1,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3095,
+        "margin": 0.014,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 22,
+        "start": 0,
+        "end": 27,
+        "text": "✦ Software Development Life",
+        "page_number": 1,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.4697,
+        "margin": -0.0068,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 23,
+        "start": 0,
+        "end": 12,
+        "text": "Cycle (SDLC)",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1121,
+        "margin": -0.01,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 24,
+        "start": 0,
+        "end": 15,
+        "text": "Data Management",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3822,
+        "margin": 0.0347,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 25,
+        "start": 0,
+        "end": 14,
+        "text": "✦ Gap Analysis",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.0114,
+        "margin": -0.0676,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 26,
+        "start": 0,
+        "end": 25,
+        "text": "✦ Compliance & Regulatory",
+        "page_number": 1,
+        "cluster_id": 6,
+        "candidate_section": "certifications",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3857,
+        "margin": 0.1021,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 27,
+        "start": 0,
+        "end": 20,
+        "text": "✦ SQL Data Mapping &",
+        "page_number": 1,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1875,
+        "margin": 0.0147,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 28,
+        "start": 0,
+        "end": 19,
+        "text": "✦ Change Management",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3377,
+        "margin": 0.1036,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 29,
+        "start": 0,
+        "end": 9,
+        "text": "Reporting",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3282,
+        "margin": -0.0064,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 30,
+        "start": 0,
+        "end": 10,
+        "text": "Validation",
+        "page_number": 1,
+        "cluster_id": 6,
+        "candidate_section": "certifications",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2157,
+        "margin": 0.0375,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 31,
+        "start": 0,
+        "end": 28,
+        "text": "✦ Data Analysis & Validation",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1533,
+        "margin": -0.0101,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 32,
+        "start": 0,
+        "end": 43,
+        "text": "P R O F E S S I O N A L E X P E R I E N C E",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.0897,
+        "margin": -0.0391,
+        "lane": "left",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 33,
+        "start": 0,
+        "end": 34,
+        "text": "Business Process Lead | TCS, Pune ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3734,
+        "margin": 0.0824,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 33,
+        "start": 34,
+        "end": 140,
+        "text": "Business Analyst, Trade Lifecycle & Middle Office | Capital Markets | GoldenSource | Custody | Enrichment ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3957,
+        "margin": 0.0322,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 33,
+        "start": 140,
+        "end": 180,
+        "text": "Clients - Goldman Sachs Group, Citi Bank",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.343,
+        "margin": 0.0652,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 34,
+        "start": 0,
+        "end": 18,
+        "text": "Apr 2021 – Present",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3472,
+        "margin": -0.0022,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 35,
+        "start": 0,
+        "end": 103,
+        "text": "◗ Led end-to-end delivery of 3 middle-office transformation initiatives spanning version upgrades, data",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3384,
+        "margin": 0.1194,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 36,
+        "start": 0,
+        "end": 95,
+        "text": "migration, and process automation, coordinating 10-20+ stakeholders across Agile and Waterfall ",
+        "page_number": 1,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3047,
+        "margin": 0.019,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 36,
+        "start": 95,
+        "end": 111,
+        "text": "delivery models.",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3476,
+        "margin": 0.06,
+        "lane": "left",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 37,
+        "start": 0,
+        "end": 95,
+        "text": "◗ Operated as functional Business Analyst bridging business requirements with IT solutions, re-",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.4388,
+        "margin": -0.0264,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 38,
+        "start": 0,
+        "end": 83,
+        "text": "engineering transaction workflows across enrichment, confirmation, settlement, and ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2443,
+        "margin": 0.015,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 38,
+        "start": 83,
+        "end": 177,
+        "text": "reconciliation for Equities, Derivatives, Fixed Income, and FX to lift operational efficiency.",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2342,
+        "margin": 0.0322,
+        "lane": "wide",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 39,
+        "start": 0,
+        "end": 82,
+        "text": "◗ Managed reference data within the GoldenSource EDM platform, supporting security",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3133,
+        "margin": 0.0149,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 40,
+        "start": 0,
+        "end": 87,
+        "text": "master, corporate actions, and benchmark/index data accuracy for downstream valuation, ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.189,
+        "margin": -0.0172,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 40,
+        "start": 87,
+        "end": 122,
+        "text": "risk, and reconciliation processes.",
+        "page_number": 1,
+        "cluster_id": 12,
+        "candidate_section": "references",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2504,
+        "margin": 0.0182,
+        "lane": "left",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 41,
+        "start": 0,
+        "end": 94,
+        "text": "◗ Performed requirements elicitation techniques, gap analysis, and process mapping (As-Is/To- ",
+        "page_number": 1,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3383,
+        "margin": -0.0152,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 41,
+        "start": 94,
+        "end": 189,
+        "text": "Be) to translate business needs into BRD/FRDs and functional specifications for delivery teams ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3894,
+        "margin": 0.0477,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 41,
+        "start": 189,
+        "end": 210,
+        "text": "with design solution.",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2922,
+        "margin": 0.0766,
+        "lane": "left",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 42,
+        "start": 0,
+        "end": 95,
+        "text": "◗ Adopted AI tooling (Friday.AI, Microsoft Copilot) to accelerate epic-to-user-story breakdown ",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2351,
+        "margin": -0.0062,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 42,
+        "start": 95,
+        "end": 186,
+        "text": "and automate documentation; via Jira and Confluence to sustain delivery across workstreams.",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3969,
+        "margin": 0.0662,
+        "lane": "wide",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 43,
+        "start": 0,
+        "end": 90,
+        "text": "◗ Directed data validation and reconciliation in Microsoft SQL Server (SQL queries) during",
+        "page_number": 1,
+        "cluster_id": 12,
+        "candidate_section": "references",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1852,
+        "margin": 0.0627,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 44,
+        "start": 0,
+        "end": 91,
+        "text": "system migration, achieving 98% data accuracy and minimizing post-migration defect leakage.",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1732,
+        "margin": 0.0111,
+        "lane": "wide",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 45,
+        "start": 0,
+        "end": 95,
+        "text": "◗ Facilitated PI planning sessions and Agile ceremonies, backlog grooming, and sprint readiness",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2882,
+        "margin": 0.0031,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 46,
+        "start": 0,
+        "end": 30,
+        "text": "with 100% Definition of Ready.",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1682,
+        "margin": -0.0289,
+        "lane": "left",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 47,
+        "start": 0,
+        "end": 1,
+        "text": ".",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1498,
+        "margin": -0.0296,
+        "lane": "left",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 48,
+        "start": 0,
+        "end": 94,
+        "text": "◗ Chaired recurring stakeholder forums with front-office, risk, custody, and IT teams (10-20+ ",
+        "page_number": 2,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3546,
+        "margin": 0.0762,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 48,
+        "start": 94,
+        "end": 179,
+        "text": "participants) to drive requirement sign-off, reducing rework from late-stage changes.",
+        "page_number": 2,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2887,
+        "margin": 0.0709,
+        "lane": "left",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 49,
+        "start": 0,
+        "end": 92,
+        "text": "◗ Raised sprint readiness to 100% Definition of Ready by standardizing user story templates ",
+        "page_number": 2,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1674,
+        "margin": -0.0395,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 49,
+        "start": 92,
+        "end": 185,
+        "text": "and acceptance criteria, reducing in-sprint clarification cycles and supporting UAT planning.",
+        "page_number": 2,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2615,
+        "margin": 0.0044,
+        "lane": "wide",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 50,
+        "start": 0,
+        "end": 88,
+        "text": "◗ Orchestrated UAT execution and defect management cycles, ensuring 90% of high-priority",
+        "page_number": 2,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1784,
+        "margin": 0.0233,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 51,
+        "start": 0,
+        "end": 46,
+        "text": "bugs were resolved prior to production launch.",
+        "page_number": 2,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1188,
+        "margin": 0.0344,
+        "lane": "left",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 52,
+        "start": 0,
+        "end": 33,
+        "text": "Financial Analyst | Eclerx, Pune ",
+        "page_number": 2,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3637,
+        "margin": 0.0076,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 52,
+        "start": 33,
+        "end": 83,
+        "text": "Trade Confirmation & Documentation | Middle office",
+        "page_number": 2,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2809,
+        "margin": -0.0426,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 53,
+        "start": 0,
+        "end": 19,
+        "text": "Mar 2019 – Mar 2021",
+        "page_number": 2,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2985,
+        "margin": -0.0203,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 54,
+        "start": 0,
+        "end": 97,
+        "text": "◗ Managed trade confirmations and ISDA bilateral documentation across OTC equity, FX, and options",
+        "page_number": 2,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1813,
+        "margin": -0.0161,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 55,
+        "start": 0,
+        "end": 77,
+        "text": "products, ensuring contractual accuracy across high-volume daily trade flows.",
+        "page_number": 2,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2737,
+        "margin": 0.0061,
+        "lane": "left",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 56,
+        "start": 0,
+        "end": 92,
+        "text": "◗ Performed gap analysis and SQL-based data checks on documentation discrepancies, resolving",
+        "page_number": 2,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1699,
+        "margin": -0.0214,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 57,
+        "start": 0,
+        "end": 99,
+        "text": "issues with traders, middle office, and legal teams to prevent settlement delays; produced MIS and ",
+        "page_number": 2,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2104,
+        "margin": 0.0452,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 57,
+        "start": 99,
+        "end": 161,
+        "text": "control reports for management visibility into process health.",
+        "page_number": 2,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2789,
+        "margin": 0.0238,
+        "lane": "left",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 58,
+        "start": 0,
+        "end": 93,
+        "text": "◗ Partnered with collateral teams on margining and documentation workflows, supporting timely",
+        "page_number": 2,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.316,
+        "margin": 0.0321,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 59,
+        "start": 0,
+        "end": 1,
+        "text": "◗",
+        "page_number": 2,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1058,
+        "margin": -0.0381,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 60,
+        "start": 0,
+        "end": 72,
+        "text": "collateral calls and reducing documentation-driven settlement friction. ",
+        "page_number": 2,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1755,
+        "margin": -0.0216,
+        "lane": "left",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 60,
+        "start": 72,
+        "end": 173,
+        "text": "Initiated process re-engineering that improved trade confirmation turnaround time and reduced client ",
+        "page_number": 2,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.228,
+        "margin": 0.0374,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 60,
+        "start": 173,
+        "end": 257,
+        "text": "query volume by an estimated 20-30%, easing pressure on downstream operations teams.",
+        "page_number": 2,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2747,
+        "margin": 0.0319,
+        "lane": "wide",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 61,
+        "start": 0,
+        "end": 51,
+        "text": "Financial Advisor | Karvy Stock Broking, Hyderabad ",
+        "page_number": 2,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3273,
+        "margin": -0.0029,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 61,
+        "start": 51,
+        "end": 126,
+        "text": "Financial Advisor, Client Analytics & Portfolio Servicing | Capital Markets",
+        "page_number": 2,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3357,
+        "margin": 0.0017,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 62,
+        "start": 0,
+        "end": 19,
+        "text": "Mar 2017 – Mar 2018",
+        "page_number": 2,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2285,
+        "margin": -0.002,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 63,
+        "start": 0,
+        "end": 98,
+        "text": "◗ Analyzed customer trading behavior using advanced Excel modeling to surface patterns and trends,",
+        "page_number": 2,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2016,
+        "margin": 0.0429,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 64,
+        "start": 0,
+        "end": 64,
+        "text": "informing targeted sales outreach and client retention strategy.",
+        "page_number": 2,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3836,
+        "margin": 0.0856,
+        "lane": "left",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 65,
+        "start": 0,
+        "end": 95,
+        "text": "◗ Partnered with the Sales Team and Portfolio Manager to monitor trade service performance and ",
+        "page_number": 2,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3941,
+        "margin": 0.0996,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 65,
+        "start": 95,
+        "end": 179,
+        "text": "Supported wealth management journeys and RM functionalities in digital environments.",
+        "page_number": 2,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2625,
+        "margin": -0.0277,
+        "lane": "wide",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 66,
+        "start": 0,
+        "end": 41,
+        "text": "T O O L S & T E C H N I C A L S K I L L S",
+        "page_number": 2,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1023,
+        "margin": -0.0158,
+        "lane": "left",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 67,
+        "start": 0,
+        "end": 20,
+        "text": "Reference Data / EDM",
+        "page_number": 2,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.379,
+        "margin": 0.0093,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 68,
+        "start": 0,
+        "end": 63,
+        "text": "Golden Source EDM | Security Master Data | Corporate Actions | ",
+        "page_number": 2,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.4076,
+        "margin": 0.027,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 68,
+        "start": 63,
+        "end": 85,
+        "text": "Benchmark & Index Data",
+        "page_number": 2,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2471,
+        "margin": 0.1117,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 69,
+        "start": 0,
+        "end": 16,
+        "text": "BA Documentation",
+        "page_number": 2,
+        "cluster_id": 6,
+        "candidate_section": "certifications",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3909,
+        "margin": 0.0405,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 70,
+        "start": 0,
+        "end": 75,
+        "text": "BRD | FRD | Functional Specifications | User Stories | Acceptance Criteria ",
+        "page_number": 2,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2965,
+        "margin": -0.005,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 70,
+        "start": 75,
+        "end": 92,
+        "text": "| Solution Design",
+        "page_number": 2,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3041,
+        "margin": 0.0805,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 71,
+        "start": 0,
+        "end": 14,
+        "text": "Req. Gathering",
+        "page_number": 2,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1307,
+        "margin": -0.0941,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 72,
+        "start": 0,
+        "end": 65,
+        "text": "Elicitation techniques | Gap Analysis | Workshops | interviews | ",
+        "page_number": 2,
+        "cluster_id": 1,
+        "candidate_section": "summary",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.5069,
+        "margin": 0.0585,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 72,
+        "start": 65,
+        "end": 98,
+        "text": "Process Mapping | Solution Design",
+        "page_number": 2,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.223,
+        "margin": 0.013,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 73,
+        "start": 0,
+        "end": 16,
+        "text": "Agile & Delivery",
+        "page_number": 2,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.353,
+        "margin": 0.0159,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 74,
+        "start": 0,
+        "end": 67,
+        "text": "Scrum | Sprint Planning | Backlog Grooming | Definition of Ready | ",
+        "page_number": 2,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2425,
+        "margin": -0.0207,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 74,
+        "start": 67,
+        "end": 83,
+        "text": "Waterfall | Jira",
+        "page_number": 2,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.141,
+        "margin": 0.0215,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 75,
+        "start": 0,
+        "end": 22,
+        "text": "Capital Markets Domain",
+        "page_number": 2,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1917,
+        "margin": -0.0329,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 76,
+        "start": 0,
+        "end": 65,
+        "text": "Equities | Derivatives | Fixed Income | FX | Corporate Actions | ",
+        "page_number": 2,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2496,
+        "margin": 0.0323,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 76,
+        "start": 65,
+        "end": 89,
+        "text": "Reference Data | Custody",
+        "page_number": 2,
+        "cluster_id": 12,
+        "candidate_section": "references",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3724,
+        "margin": 0.1826,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 77,
+        "start": 0,
+        "end": 16,
+        "text": "Data & Reporting",
+        "page_number": 2,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3631,
+        "margin": 0.0433,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 78,
+        "start": 0,
+        "end": 66,
+        "text": "SQL (Microsoft SQL Server – Data Mapping & Validation) | MS Excel ",
+        "page_number": 2,
+        "cluster_id": 6,
+        "candidate_section": "certifications",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1952,
+        "margin": 0.0298,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 78,
+        "start": 66,
+        "end": 92,
+        "text": "(Advanced) | MS PowerPoint",
+        "page_number": 2,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3327,
+        "margin": 0.1024,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 79,
+        "start": 0,
+        "end": 24,
+        "text": "Collaboration & AI Tools",
+        "page_number": 2,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3942,
+        "margin": 0.0193,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 80,
+        "start": 0,
+        "end": 69,
+        "text": "Jira | Confluence | Microsoft Copilot (AI) | Friday.AI (AI) | Draw.io",
+        "page_number": 2,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3287,
+        "margin": 0.0208,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 81,
+        "start": 0,
+        "end": 45,
+        "text": "E D U C A T I O N & C E R T I F I C A T I O N",
+        "page_number": 2,
+        "cluster_id": 11,
+        "candidate_section": "interests",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1376,
+        "margin": 0.0374,
+        "lane": "left",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 85,
+        "start": 0,
+        "end": 70,
+        "text": "Generative AI: Revolutionizing Business Analysis Techniques (Coursera)",
+        "page_number": 2,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2569,
+        "margin": -0.0209,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      }
+    ]
+  },
+  "section_schemas": [
+    {
+      "category": "personal_information",
+      "label": "Personal information",
+      "records": [
+        {
+          "record_id": "personal_information",
+          "source_ids": [
+            "e1:0:74"
+          ],
+          "attributes": [
+            {
+              "name": "full_name",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "email",
+              "items": [
+                {
+                  "value": "sid.thehlr@yahoo.com",
+                  "evidence": [
+                    {
+                      "source_id": "e1:0:74",
+                      "quote": "sid.thehlr@yahoo.com"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "phone",
+              "items": [
+                {
+                  "value": "+91 8431975931",
+                  "evidence": [
+                    {
+                      "source_id": "e1:0:74",
+                      "quote": "+91 8431975931"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "linkedin_url",
+              "items": [
+                {
+                  "value": "linkedin.com/in/sidharth-panigrahy",
+                  "evidence": [
+                    {
+                      "source_id": "e1:0:74",
+                      "quote": "linkedin.com/in/sidharth-panigrahy"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "github_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "portfolio_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "professional_title",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e1:0:74",
+          "quote": "+91 8431975931 • sid.thehlr@yahoo.com • linkedin.com/in/sidharth-panigrahy"
+        }
+      ]
+    },
+    {
+      "category": "education",
+      "label": "Education",
+      "records": [
+        {
+          "record_id": "education-1",
+          "source_ids": [
+            "e82:0:37",
+            "e82:37:113"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [
+                {
+                  "value": "Bachelor's Degree in Accounting & Economics: Khalikote University, Berhampur",
+                  "evidence": [
+                    {
+                      "source_id": "e82:37:113",
+                      "quote": "Bachelor's Degree in Accounting & Economics: Khalikote University, Berhampur"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "degree",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e82:0:37",
+          "quote": "Master's in Finance: SSIM, Hyderabad "
+        }
+      ]
+    },
+    {
+      "category": "certifications",
+      "label": "Certifications",
+      "records": [
+        {
+          "record_id": "certifications-1",
+          "source_ids": [
+            "e83:0:95",
+            "e84:0:94"
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "issuer",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "issue_year",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e83:0:95",
+          "quote": "Certification: IIBA-Business Analyst Professional | NISM Schedule–VIII (equity & derivatives) |"
+        },
+        {
+          "source_id": "e84:0:94",
+          "quote": "SQL Certification from Skill Nation | Advance Data Analytics(TCS) | Six Sigma greenbelt(TCS) |"
+        }
+      ]
+    },
+    {
+      "category": "needs_review",
+      "label": "Unassigned source blocks",
+      "records": [],
+      "residual_blocks": [
+        {
+          "source_id": "e0:0:19",
+          "quote": "SIDHARTH PANIGRAHY "
+        },
+        {
+          "source_id": "e0:19:114",
+          "quote": "Senior Business Analyst | Capital Markets | Trade Lifecycle, Corporate Actions, Middle office| "
+        },
+        {
+          "source_id": "e0:114:134",
+          "quote": "SQL & Reconciliation"
+        },
+        {
+          "source_id": "e2:0:37",
+          "quote": "P R O F E S S I O N A L S U M M A R Y"
+        },
+        {
+          "source_id": "e3:0:105",
+          "quote": "IIBA-certified Business Analyst with 8+ years of experience in trade lifecycle, middle-office operations "
+        },
+        {
+          "source_id": "e3:105:205",
+          "quote": "and reconciliation transformation across Capital Markets and Wealth Management, specializing in AI- "
+        },
+        {
+          "source_id": "e3:205:313",
+          "quote": "driven initiatives and Agile Program Increment (PI) planning. Proven expertise in requirements elicitation, "
+        },
+        {
+          "source_id": "e3:313:418",
+          "quote": "process mapping, and stakeholder engagement across front-office, risk, custody, and IT. Delivered large- "
+        },
+        {
+          "source_id": "e3:418:523",
+          "quote": "scale reconciliation and data migration programs with high accuracy, while driving automation through AI "
+        },
+        {
+          "source_id": "e3:523:622",
+          "quote": "tools such as Microsoft Copilot and Friday.AI. Adept at bridging business needs with IT solutions, "
+        },
+        {
+          "source_id": "e3:622:673",
+          "quote": "managing resource effort and accelerating delivery."
+        },
+        {
+          "source_id": "e4:0:31",
+          "quote": "C O R E C O M P E T E N C I E S"
+        },
+        {
+          "source_id": "e5:0:26",
+          "quote": "✦ Capital Markets Product "
+        },
+        {
+          "source_id": "e5:26:47",
+          "quote": "Knowledge (Equities, "
+        },
+        {
+          "source_id": "e5:47:77",
+          "quote": "Derivatives, Fixed Income, FX)"
+        },
+        {
+          "source_id": "e6:0:22",
+          "quote": "✦ Business Process Re-"
+        },
+        {
+          "source_id": "e7:0:11",
+          "quote": "engineering"
+        },
+        {
+          "source_id": "e8:0:23",
+          "quote": "✦ UAT Planning & Defect"
+        },
+        {
+          "source_id": "e9:0:10",
+          "quote": "Management"
+        },
+        {
+          "source_id": "e10:0:21",
+          "quote": "✦ Business Analysis &"
+        },
+        {
+          "source_id": "e11:0:31",
+          "quote": "✦ User Story Creation & Backlog"
+        },
+        {
+          "source_id": "e12:0:29",
+          "quote": "✦ Trade Lifecycle Management "
+        },
+        {
+          "source_id": "e12:29:56",
+          "quote": "(Enrichment, Confirmation, "
+        },
+        {
+          "source_id": "e12:56:67",
+          "quote": "Settlement)"
+        },
+        {
+          "source_id": "e13:0:24",
+          "quote": "Requirements Elicitation"
+        },
+        {
+          "source_id": "e14:0:19",
+          "quote": "✦ BRD/FRD Authoring"
+        },
+        {
+          "source_id": "e15:0:8",
+          "quote": "Grooming"
+        },
+        {
+          "source_id": "e16:0:27",
+          "quote": "✦ Agile (Scrum) & Waterfall"
+        },
+        {
+          "source_id": "e17:0:30",
+          "quote": "✦ Corporate Actions Processing"
+        },
+        {
+          "source_id": "e18:0:29",
+          "quote": "✦ Benchmark & Index Reference"
+        },
+        {
+          "source_id": "e19:0:24",
+          "quote": "✦ Stakeholder Management"
+        },
+        {
+          "source_id": "e20:0:31",
+          "quote": "✦ Process Mapping (As-Is/To-Be)"
+        },
+        {
+          "source_id": "e21:0:13",
+          "quote": "Methodologies"
+        },
+        {
+          "source_id": "e22:0:27",
+          "quote": "✦ Software Development Life"
+        },
+        {
+          "source_id": "e23:0:12",
+          "quote": "Cycle (SDLC)"
+        },
+        {
+          "source_id": "e24:0:15",
+          "quote": "Data Management"
+        },
+        {
+          "source_id": "e25:0:14",
+          "quote": "✦ Gap Analysis"
+        },
+        {
+          "source_id": "e26:0:25",
+          "quote": "✦ Compliance & Regulatory"
+        },
+        {
+          "source_id": "e27:0:20",
+          "quote": "✦ SQL Data Mapping &"
+        },
+        {
+          "source_id": "e28:0:19",
+          "quote": "✦ Change Management"
+        },
+        {
+          "source_id": "e29:0:9",
+          "quote": "Reporting"
+        },
+        {
+          "source_id": "e30:0:10",
+          "quote": "Validation"
+        },
+        {
+          "source_id": "e31:0:28",
+          "quote": "✦ Data Analysis & Validation"
+        },
+        {
+          "source_id": "e32:0:43",
+          "quote": "P R O F E S S I O N A L E X P E R I E N C E"
+        },
+        {
+          "source_id": "e33:0:34",
+          "quote": "Business Process Lead | TCS, Pune "
+        },
+        {
+          "source_id": "e33:34:140",
+          "quote": "Business Analyst, Trade Lifecycle & Middle Office | Capital Markets | GoldenSource | Custody | Enrichment "
+        },
+        {
+          "source_id": "e33:140:180",
+          "quote": "Clients - Goldman Sachs Group, Citi Bank"
+        },
+        {
+          "source_id": "e34:0:18",
+          "quote": "Apr 2021 – Present"
+        },
+        {
+          "source_id": "e35:0:103",
+          "quote": "◗ Led end-to-end delivery of 3 middle-office transformation initiatives spanning version upgrades, data"
+        },
+        {
+          "source_id": "e36:0:95",
+          "quote": "migration, and process automation, coordinating 10-20+ stakeholders across Agile and Waterfall "
+        },
+        {
+          "source_id": "e36:95:111",
+          "quote": "delivery models."
+        },
+        {
+          "source_id": "e37:0:95",
+          "quote": "◗ Operated as functional Business Analyst bridging business requirements with IT solutions, re-"
+        },
+        {
+          "source_id": "e38:0:83",
+          "quote": "engineering transaction workflows across enrichment, confirmation, settlement, and "
+        },
+        {
+          "source_id": "e38:83:177",
+          "quote": "reconciliation for Equities, Derivatives, Fixed Income, and FX to lift operational efficiency."
+        },
+        {
+          "source_id": "e39:0:82",
+          "quote": "◗ Managed reference data within the GoldenSource EDM platform, supporting security"
+        },
+        {
+          "source_id": "e40:0:87",
+          "quote": "master, corporate actions, and benchmark/index data accuracy for downstream valuation, "
+        },
+        {
+          "source_id": "e40:87:122",
+          "quote": "risk, and reconciliation processes."
+        },
+        {
+          "source_id": "e41:0:94",
+          "quote": "◗ Performed requirements elicitation techniques, gap analysis, and process mapping (As-Is/To- "
+        },
+        {
+          "source_id": "e41:94:189",
+          "quote": "Be) to translate business needs into BRD/FRDs and functional specifications for delivery teams "
+        },
+        {
+          "source_id": "e41:189:210",
+          "quote": "with design solution."
+        },
+        {
+          "source_id": "e42:0:95",
+          "quote": "◗ Adopted AI tooling (Friday.AI, Microsoft Copilot) to accelerate epic-to-user-story breakdown "
+        },
+        {
+          "source_id": "e42:95:186",
+          "quote": "and automate documentation; via Jira and Confluence to sustain delivery across workstreams."
+        },
+        {
+          "source_id": "e43:0:90",
+          "quote": "◗ Directed data validation and reconciliation in Microsoft SQL Server (SQL queries) during"
+        },
+        {
+          "source_id": "e44:0:91",
+          "quote": "system migration, achieving 98% data accuracy and minimizing post-migration defect leakage."
+        },
+        {
+          "source_id": "e45:0:95",
+          "quote": "◗ Facilitated PI planning sessions and Agile ceremonies, backlog grooming, and sprint readiness"
+        },
+        {
+          "source_id": "e46:0:30",
+          "quote": "with 100% Definition of Ready."
+        },
+        {
+          "source_id": "e47:0:1",
+          "quote": "."
+        },
+        {
+          "source_id": "e48:0:94",
+          "quote": "◗ Chaired recurring stakeholder forums with front-office, risk, custody, and IT teams (10-20+ "
+        },
+        {
+          "source_id": "e48:94:179",
+          "quote": "participants) to drive requirement sign-off, reducing rework from late-stage changes."
+        },
+        {
+          "source_id": "e49:0:92",
+          "quote": "◗ Raised sprint readiness to 100% Definition of Ready by standardizing user story templates "
+        },
+        {
+          "source_id": "e49:92:185",
+          "quote": "and acceptance criteria, reducing in-sprint clarification cycles and supporting UAT planning."
+        },
+        {
+          "source_id": "e50:0:88",
+          "quote": "◗ Orchestrated UAT execution and defect management cycles, ensuring 90% of high-priority"
+        },
+        {
+          "source_id": "e51:0:46",
+          "quote": "bugs were resolved prior to production launch."
+        },
+        {
+          "source_id": "e52:0:33",
+          "quote": "Financial Analyst | Eclerx, Pune "
+        },
+        {
+          "source_id": "e52:33:83",
+          "quote": "Trade Confirmation & Documentation | Middle office"
+        },
+        {
+          "source_id": "e53:0:19",
+          "quote": "Mar 2019 – Mar 2021"
+        },
+        {
+          "source_id": "e54:0:97",
+          "quote": "◗ Managed trade confirmations and ISDA bilateral documentation across OTC equity, FX, and options"
+        },
+        {
+          "source_id": "e55:0:77",
+          "quote": "products, ensuring contractual accuracy across high-volume daily trade flows."
+        },
+        {
+          "source_id": "e56:0:92",
+          "quote": "◗ Performed gap analysis and SQL-based data checks on documentation discrepancies, resolving"
+        },
+        {
+          "source_id": "e57:0:99",
+          "quote": "issues with traders, middle office, and legal teams to prevent settlement delays; produced MIS and "
+        },
+        {
+          "source_id": "e57:99:161",
+          "quote": "control reports for management visibility into process health."
+        },
+        {
+          "source_id": "e58:0:93",
+          "quote": "◗ Partnered with collateral teams on margining and documentation workflows, supporting timely"
+        },
+        {
+          "source_id": "e59:0:1",
+          "quote": "◗"
+        },
+        {
+          "source_id": "e60:0:72",
+          "quote": "collateral calls and reducing documentation-driven settlement friction. "
+        },
+        {
+          "source_id": "e60:72:173",
+          "quote": "Initiated process re-engineering that improved trade confirmation turnaround time and reduced client "
+        },
+        {
+          "source_id": "e60:173:257",
+          "quote": "query volume by an estimated 20-30%, easing pressure on downstream operations teams."
+        },
+        {
+          "source_id": "e61:0:51",
+          "quote": "Financial Advisor | Karvy Stock Broking, Hyderabad "
+        },
+        {
+          "source_id": "e61:51:126",
+          "quote": "Financial Advisor, Client Analytics & Portfolio Servicing | Capital Markets"
+        },
+        {
+          "source_id": "e62:0:19",
+          "quote": "Mar 2017 – Mar 2018"
+        },
+        {
+          "source_id": "e63:0:98",
+          "quote": "◗ Analyzed customer trading behavior using advanced Excel modeling to surface patterns and trends,"
+        },
+        {
+          "source_id": "e64:0:64",
+          "quote": "informing targeted sales outreach and client retention strategy."
+        },
+        {
+          "source_id": "e65:0:95",
+          "quote": "◗ Partnered with the Sales Team and Portfolio Manager to monitor trade service performance and "
+        },
+        {
+          "source_id": "e65:95:179",
+          "quote": "Supported wealth management journeys and RM functionalities in digital environments."
+        },
+        {
+          "source_id": "e66:0:41",
+          "quote": "T O O L S & T E C H N I C A L S K I L L S"
+        },
+        {
+          "source_id": "e67:0:20",
+          "quote": "Reference Data / EDM"
+        },
+        {
+          "source_id": "e68:0:63",
+          "quote": "Golden Source EDM | Security Master Data | Corporate Actions | "
+        },
+        {
+          "source_id": "e68:63:85",
+          "quote": "Benchmark & Index Data"
+        },
+        {
+          "source_id": "e69:0:16",
+          "quote": "BA Documentation"
+        },
+        {
+          "source_id": "e70:0:75",
+          "quote": "BRD | FRD | Functional Specifications | User Stories | Acceptance Criteria "
+        },
+        {
+          "source_id": "e70:75:92",
+          "quote": "| Solution Design"
+        },
+        {
+          "source_id": "e71:0:14",
+          "quote": "Req. Gathering"
+        },
+        {
+          "source_id": "e72:0:65",
+          "quote": "Elicitation techniques | Gap Analysis | Workshops | interviews | "
+        },
+        {
+          "source_id": "e72:65:98",
+          "quote": "Process Mapping | Solution Design"
+        },
+        {
+          "source_id": "e73:0:16",
+          "quote": "Agile & Delivery"
+        },
+        {
+          "source_id": "e74:0:67",
+          "quote": "Scrum | Sprint Planning | Backlog Grooming | Definition of Ready | "
+        },
+        {
+          "source_id": "e74:67:83",
+          "quote": "Waterfall | Jira"
+        },
+        {
+          "source_id": "e75:0:22",
+          "quote": "Capital Markets Domain"
+        },
+        {
+          "source_id": "e76:0:65",
+          "quote": "Equities | Derivatives | Fixed Income | FX | Corporate Actions | "
+        },
+        {
+          "source_id": "e76:65:89",
+          "quote": "Reference Data | Custody"
+        },
+        {
+          "source_id": "e77:0:16",
+          "quote": "Data & Reporting"
+        },
+        {
+          "source_id": "e78:0:66",
+          "quote": "SQL (Microsoft SQL Server – Data Mapping & Validation) | MS Excel "
+        },
+        {
+          "source_id": "e78:66:92",
+          "quote": "(Advanced) | MS PowerPoint"
+        },
+        {
+          "source_id": "e79:0:24",
+          "quote": "Collaboration & AI Tools"
+        },
+        {
+          "source_id": "e80:0:69",
+          "quote": "Jira | Confluence | Microsoft Copilot (AI) | Friday.AI (AI) | Draw.io"
+        },
+        {
+          "source_id": "e81:0:45",
+          "quote": "E D U C A T I O N & C E R T I F I C A T I O N"
+        },
+        {
+          "source_id": "e85:0:70",
+          "quote": "Generative AI: Revolutionizing Business Analysis Techniques (Coursera)"
+        }
+      ]
+    }
+  ]
+}

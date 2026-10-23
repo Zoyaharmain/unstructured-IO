@@ -1,0 +1,1373 @@
+{
+  "success": true,
+  "source": "Nagendra.docx",
+  "extraction_mode": "existing_blocks_schema_mapping",
+  "data": {
+    "contact": {
+      "full_name": "",
+      "email": "",
+      "phone": "",
+      "location": null,
+      "linkedin_url": null,
+      "github_url": null,
+      "portfolio_url": null
+    },
+    "professional_title": null,
+    "summary": null,
+    "total_experience_years": null,
+    "skills": {
+      "technical_skills": [
+        "SQL"
+      ],
+      "tools_and_platforms": [
+        "Power BI",
+        "Bloomberg",
+        "JIRA",
+        "Confluence",
+        "Excel"
+      ],
+      "domain_and_functional": [],
+      "soft_skills": [
+        "Agile",
+        "Waterfall",
+        "Leadership",
+        "Stakeholder Engagement"
+      ],
+      "all_skills": [
+        "SQL",
+        "Power BI",
+        "Bloomberg",
+        "JIRA",
+        "Confluence",
+        "Excel",
+        "Agile",
+        "Waterfall",
+        "Leadership",
+        "Stakeholder Engagement",
+        "Frameworks- Regulatory & Audit Readiness",
+        "Basel III & Financial Regulations Leadership: Executive Stakeholder Engagement",
+        "Global / Offshore Team Leadership",
+        "Financial & P&L Oversight",
+        "Organizational Change & Adoption Banking & Delivery Tools: Clarity",
+        "MS Project",
+        "Service Now",
+        "ARIS Data Analysis & Visualization: Power BI",
+        "Basic SQL",
+        "Visio",
+        "Excel Financial Platforms: Bloomberg Terminal",
+        "Reuters Delivery Models: Agile",
+        "Hybrid Freelance"
+      ]
+    },
+    "experience": [
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      }
+    ],
+    "education": [
+      {
+        "institution": "",
+        "degree": "",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      }
+    ],
+    "certifications": [
+      {
+        "name": "MBA – Jawaharlal Nehru Technological University (JNTU), Hyderabad. Six Sigma Yellow Belt Certified & Six Sigma Green Belt Trained.",
+        "issuer": null,
+        "issue_year": null
+      }
+    ],
+    "projects": [
+      {
+        "name": "",
+        "description": " Apartment Management Suite | Multi-Tenant SaaS Platform Product Owner Led product ownership and end-to-end digital transformation for a multi-tenant SaaS platform, architecting scalable solutions for apartment management operations. Designed business processes, data models, and governance frameworks emphasizing data integrity and automated workflows. Managed full project lifecycle as Product Owner, from requirements gathering and architecture to development, testing, and deployment using Agile practices. Oversaw technical architecture and delivery of cloud-based responsive applications. Utilized Generative AI tools to enhance program delivery efficiency in analysis, design, and validation phases. Financial Reporting Automation & Process Transformation Led automation initiatives for financial reporting processes, integrating data governance best practices to ensure accuracy and compliance. Designed a reusable reporting engine to dynamically process supplier data and generate standardized financial reports. Developed batch-processing automation to generate, consolidate, and validate monthly financial reports with minimal manual intervention. Built dynamic data extraction and transformation logic to automate report generation across varying workbook structures. Improved reporting efficiency and data quality by replacing repetitive spreadsheet processes with scalable automation. ",
+        "role": null,
+        "technologies": [],
+        "url": null
+      }
+    ],
+    "languages": []
+  },
+  "schema_mapping": {
+    "fields_populated": 7,
+    "total_fields": 16,
+    "completion_percentage": 43.8,
+    "field_details": [
+      {
+        "field_name": "contact.full_name",
+        "target_type": "string",
+        "is_required": true,
+        "is_extracted": false,
+        "source_section": "Header / Personal Details",
+        "confidence_score": 0.0,
+        "description": "Candidate's full name, extracted from the top header of the resume."
+      },
+      {
+        "field_name": "contact.email",
+        "target_type": "string (email)",
+        "is_required": true,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's primary contact email address."
+      },
+      {
+        "field_name": "contact.phone",
+        "target_type": "string (phone)",
+        "is_required": true,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's telephone / mobile phone number."
+      },
+      {
+        "field_name": "contact.location",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's residential location or work city."
+      },
+      {
+        "field_name": "contact.linkedin_url",
+        "target_type": "string (url) | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "URL to candidate's LinkedIn profile."
+      },
+      {
+        "field_name": "professional_title",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Subtitle",
+        "confidence_score": 0.0,
+        "description": "Candidate's target headline or most recent job title."
+      },
+      {
+        "field_name": "summary",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Professional Summary / Profile / Objective",
+        "confidence_score": 0.0,
+        "description": "Executive bio, professional overview, or career objective."
+      },
+      {
+        "field_name": "total_experience_years",
+        "target_type": "float | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Summary / Experience Calculation",
+        "confidence_score": 0.0,
+        "description": "Total professional experience in years."
+      },
+      {
+        "field_name": "skills.technical_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills / Technical Competencies",
+        "confidence_score": 0.92,
+        "description": "Technical programming languages and core software competencies."
+      },
+      {
+        "field_name": "skills.tools_and_platforms",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills / Tools & Technologies",
+        "confidence_score": 0.9,
+        "description": "Software platforms, developer tools, and operational systems."
+      },
+      {
+        "field_name": "skills.domain_and_functional",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Domain Expertise",
+        "confidence_score": 0.0,
+        "description": "Functional domain knowledge (e.g. Hedge Funds, KYC, NAV, Derivatives)."
+      },
+      {
+        "field_name": "skills.all_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills (Aggregated)",
+        "confidence_score": 0.95,
+        "description": "Complete list of candidate skills across all categories."
+      },
+      {
+        "field_name": "experience",
+        "target_type": "array[WorkExperience]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Experience / Work History",
+        "confidence_score": 0.92,
+        "description": "Complete chronological employment records with bullet points."
+      },
+      {
+        "field_name": "education",
+        "target_type": "array[Education]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Education / Academic Qualifications",
+        "confidence_score": 0.9,
+        "description": "University, college, and higher education degree qualifications."
+      },
+      {
+        "field_name": "certifications",
+        "target_type": "array[Certification]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Certifications / Licenses",
+        "confidence_score": 0.8,
+        "description": "Professional accreditations and credentials."
+      },
+      {
+        "field_name": "projects",
+        "target_type": "array[Project]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Projects / Key Engagements",
+        "confidence_score": 0.8,
+        "description": "Major projects or strategic initiatives led by candidate."
+      }
+    ]
+  },
+  "raw_sections": {
+    "experience": "Nagendra +91  9989100797| nxx.jobs@gmail.com Professional Summary Strategic Digital Transformation Program Manager with 17+ years of Financial Services experience across Wealth Management, Investment Banking, Prime Brokerage and Banking Operations. Proven track record leading global transformation, modernization, migration and transition programmes, with end-to-end ownership of delivery, governance, RAID, dependencies, budgets and controls. Experienced in senior stakeholder management, executive reporting, legacy decommissioning, process transformation and regulatory compliance, leading cross-functional teams of 120+ resources across global locations. Competencies Transformation & Delivery: Enterprise Digital Transformation, Global Program Leadership, Platform Modernization- Legacy Decommissioning, Operational Transformation, Strategic Initiatives, Process Optimization, Enterprise Process Design, Workflow Optimization Data & Reporting: Data Governance & Reporting Controls, Data Quality & Traceability, Operational Transparency, Business & Regulatory Reporting Governance, Risk & Regulatory: Program Governance & Operating Models, Risk & Control \nExperience Cognizant Technology Solutions Pvt Ltd | Feb 2019 - Apr 2024 | Hyderabad Senior Manager / Digital Transformation Lead Led a $15M digital transformation portfolio across Wealth Management, delivering platform modernization, scalable digital solutions, legacy decommissioning and process transformation initiatives focused on operational efficiency and reporting transparency. Directed global, multi-region transformation programmes, coordinating business, technology and operations stakeholders and leading cross-functional teams of 120+ resources across onshore and offshore locations. Owned end-to-end programme delivery, covering strategic planning, roadmap development, integrated delivery planning, resource allocation, risk management, UAT coordination, implementation, stakeholder adoption and operational transition. Established and operated programme governance frameworks and PMO operating models, including steering committees, governance forums, working groups, executive dashboards and structured decision-making mechanisms. Managed programme RAID, risks, issues, dependencies and delivery constraints, ensuring timely escalation, ownership and resolution across business and technology work-streams. Established clear ownership and accountability across programme work-streams, using RACI-based approaches to clarify responsibilities, decision rights, stakeholder ownership and delivery dependencies. Partnered with senior executives to prioritize transformation initiatives, drive timely decisions and align programme roadmaps with business objectives, regulatory requirements and enterprise standards. Acted as the key liaison between executive leadership and delivery teams, providing visibility of programme progress, risks, dependencies, issues and delivery priorities. Led platform modernization and legacy system decommissioning initiatives, coordinating technology, operational and business dependencies to support transition toward scalable digital platforms. Managed delivery across multiple work-streams and stakeholder groups, maintaining alignment of scope, milestones, dependencies, resources and programme outcomes. Provided executive-level reporting through structured dashboards and governance mechanisms, enabling senior stakeholders to monitor progress, risks, dependencies and key delivery decisions. Held full financial and budget oversight, managing resource capacity, delivery performance and cost optimization across the programme portfolio. Led large global delivery teams across onshore and offshore locations, ensuring effective coordination, delivery performance and operational continuity. Implemented comprehensive data governance and reporting controls, improving data quality, traceability, transparency and regulatory compliance within transformation programmes. Enhanced programme control environments through process improvements, governance mechanisms and data-integrity controls. Collaborated with senior business and technology stakeholders to prioritize backlogs and ensure transformation initiatives remained aligned with enterprise standards and regulatory expectations. Wipro Ltd | Nov 2014 – Jun 2017 | Hyderabad Project Manager Directed digital transformation projects for banking sales and service platforms, implementing front-to-back operating models to improve client experience and operational efficiency. Managed complete project lifecycles covering planning, governance, risk management, stakeholder engagement, delivery execution and implementation. Established governance structures and delivery controls across project work-streams, ensuring effective management of risks, issues, dependencies and delivery priorities. Worked with cross-functional business and technology teams to translate requirements into digital solutions and optimize business processes and workflows. Coordinated stakeholders across functions to resolve delivery constraints, clarify ownership and maintain alignment with project objectives. Implemented quality assurance and governance processes across SDLC phases to support controlled and predictable delivery. Oversaw project budgets, financials and KPIs, providing management visibility into delivery performance and project objectives. Cognizant Technology Solutions Pvt Ltd |  Aug 2007 – Oct 2014 | Hyderabad Team Manager  Service Delivery Management – Digital Operations & Change Managed large-scale operational transformation and transition programmes for Prime Brokerage operations across global regions. Led Change-the-Bank digital initiatives alongside BAU operations, coordinating transformation activity while maintaining operational continuity and regulatory requirements. Designed enterprise processes and operating models supported by strong governance, KPIs, controls and accountability frameworks. Managed shared-resource disentanglement and re-alignment, clarifying ownership, responsibilities, dependencies and resource allocation across transitioning business and operational areas. Contributed to data governance and regulatory reporting enhancements aligned with Basel III requirements. Led data governance and process transformation initiatives, chairing Data Working Groups focused on improving data quality, automating cleansing activities and enhancing accuracy across client services. Implemented risk management frameworks as part of broader governance enhancements across transformation programmes. Coordinated global operational teams and stakeholders through transformation and transition activities, managing dependencies between change initiatives and BAU operations. Supported process redesign and operational improvements across global regions, strengthening governance and control mechanisms. ADP India Pvt Ltd | Jan 2006 – Aug 2007 | Hyderabad Process Executive/ Data Management Analyst Supported data management and process improvement activities focused on quality, accuracy and operational efficiency. Improved reference data management processes to strengthen data integrity, reconciliation accuracy and operational controls. Implemented operational controls supporting regulatory-compliant financial transaction processing. ",
+    "skills": "Frameworks- Regulatory & Audit Readiness, Basel III & Financial Regulations Leadership: Executive Stakeholder Engagement, Global / Offshore Team Leadership, Financial & P&L Oversight, Organizational Change & Adoption Banking & Delivery Tools: Clarity, JIRA, Confluence, MS Project, Service Now, ARIS Data Analysis & Visualization: Power BI, Basic SQL, Visio, Excel Financial Platforms: Bloomberg Terminal, Reuters Delivery Models: Agile, Waterfall, Hybrid Freelance ",
+    "projects": "Projects Apartment Management Suite | Multi-Tenant SaaS Platform Product Owner Led product ownership and end-to-end digital transformation for a multi-tenant SaaS platform, architecting scalable solutions for apartment management operations. Designed business processes, data models, and governance frameworks emphasizing data integrity and automated workflows. Managed full project lifecycle as Product Owner, from requirements gathering and architecture to development, testing, and deployment using Agile practices. Oversaw technical architecture and delivery of cloud-based responsive applications. Utilized Generative AI tools to enhance program delivery efficiency in analysis, design, and validation phases. Financial Reporting Automation & Process Transformation Led automation initiatives for financial reporting processes, integrating data governance best practices to ensure accuracy and compliance. Designed a reusable reporting engine to dynamically process supplier data and generate standardized financial reports. Developed batch-processing automation to generate, consolidate, and validate monthly financial reports with minimal manual intervention. Built dynamic data extraction and transformation logic to automate report generation across varying workbook structures. Improved reporting efficiency and data quality by replacing repetitive spreadsheet processes with scalable automation. ",
+    "education": "Education & ",
+    "certifications": "Certifications MBA – Jawaharlal Nehru Technological University (JNTU), Hyderabad. Six Sigma Yellow Belt Certified & Six Sigma Green Belt Trained."
+  },
+  "meta": {
+    "status": "needs_review",
+    "human_verified": false,
+    "provider_calls": 0,
+    "source_accounting": {
+      "all_source_text_preserved": true,
+      "total_spans": 16,
+      "assigned_meaningful_spans": 16,
+      "unresolved_meaningful_spans": 0,
+      "non_content_artifacts": 0,
+      "duplicates_excluded": 0,
+      "all_meaningful_text_assigned": true,
+      "semantic_correctness_verified": false,
+      "outcomes": [
+        {
+          "source_id": "e0:0:1160",
+          "source_element_index": 0,
+          "start": 0,
+          "end": 1160,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "BERT embedding assigned to a labeled K-means centroid"
+        },
+        {
+          "source_id": "e0:1160:1626",
+          "source_element_index": 0,
+          "start": 1160,
+          "end": 1626,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "BERT embedding assigned to a labeled K-means centroid"
+        },
+        {
+          "source_id": "e0:1626:1634",
+          "source_element_index": 0,
+          "start": 1626,
+          "end": 1634,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e0:1634:2300",
+          "source_element_index": 0,
+          "start": 1634,
+          "end": 2300,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:2300:3033",
+          "source_element_index": 0,
+          "start": 2300,
+          "end": 3033,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:3033:3043",
+          "source_element_index": 0,
+          "start": 3033,
+          "end": 3043,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e0:3043:3598",
+          "source_element_index": 0,
+          "start": 3043,
+          "end": 3598,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:3598:4830",
+          "source_element_index": 0,
+          "start": 3598,
+          "end": 4830,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:4830:6179",
+          "source_element_index": 0,
+          "start": 4830,
+          "end": 6179,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:6179:7469",
+          "source_element_index": 0,
+          "start": 6179,
+          "end": 7469,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:7469:8800",
+          "source_element_index": 0,
+          "start": 7469,
+          "end": 8800,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:8800:9202",
+          "source_element_index": 0,
+          "start": 8800,
+          "end": 9202,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:9202:9211",
+          "source_element_index": 0,
+          "start": 9202,
+          "end": 9211,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e0:9211:9214",
+          "source_element_index": 0,
+          "start": 9211,
+          "end": 9214,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:9214:9228",
+          "source_element_index": 0,
+          "start": 9214,
+          "end": 9228,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e0:9228:9359",
+          "source_element_index": 0,
+          "start": 9228,
+          "end": 9359,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        }
+      ]
+    },
+    "document_scope": {
+      "kind": "likely_resume",
+      "candidate_resume": true,
+      "reason": "Contact details, multiple resume section families and dated history; provisional scope only",
+      "human_verified": false
+    },
+    "source_inventory_sha256": "397eb753be76fc83106c53bf8602b91f13b07c67b0f414ef607a1607ac75329e",
+    "field_evidence": {
+      "skills.technical_skills[0]": [
+        "e0:1160:1626"
+      ],
+      "skills.tools_and_platforms[0]": [
+        "e0:1160:1626"
+      ],
+      "skills.tools_and_platforms[1]": [
+        "e0:1160:1626"
+      ],
+      "skills.tools_and_platforms[2]": [
+        "e0:1160:1626"
+      ],
+      "skills.tools_and_platforms[3]": [
+        "e0:1160:1626"
+      ],
+      "skills.tools_and_platforms[4]": [
+        "e0:1160:1626"
+      ],
+      "skills.soft_skills[0]": [
+        "e0:1160:1626"
+      ],
+      "skills.soft_skills[1]": [
+        "e0:1160:1626"
+      ],
+      "skills.soft_skills[2]": [
+        "e0:1160:1626"
+      ],
+      "skills.soft_skills[3]": [
+        "e0:1160:1626"
+      ],
+      "skills.all_skills[0]": [
+        "e0:1160:1626"
+      ],
+      "skills.all_skills[1]": [
+        "e0:1160:1626"
+      ],
+      "skills.all_skills[2]": [
+        "e0:1160:1626"
+      ],
+      "skills.all_skills[3]": [
+        "e0:1160:1626"
+      ],
+      "skills.all_skills[4]": [
+        "e0:1160:1626"
+      ],
+      "skills.all_skills[5]": [
+        "e0:1160:1626"
+      ],
+      "skills.all_skills[6]": [
+        "e0:1160:1626"
+      ],
+      "skills.all_skills[7]": [
+        "e0:1160:1626"
+      ],
+      "skills.all_skills[8]": [
+        "e0:1160:1626"
+      ],
+      "skills.all_skills[9]": [
+        "e0:1160:1626"
+      ],
+      "skills.all_skills[10]": [
+        "e0:1160:1626"
+      ],
+      "skills.all_skills[11]": [
+        "e0:1160:1626"
+      ],
+      "skills.all_skills[12]": [
+        "e0:1160:1626"
+      ],
+      "skills.all_skills[13]": [
+        "e0:1160:1626"
+      ],
+      "skills.all_skills[14]": [
+        "e0:1160:1626"
+      ],
+      "skills.all_skills[15]": [
+        "e0:1160:1626"
+      ],
+      "skills.all_skills[16]": [
+        "e0:1160:1626"
+      ],
+      "skills.all_skills[17]": [
+        "e0:1160:1626"
+      ],
+      "skills.all_skills[18]": [
+        "e0:1160:1626"
+      ],
+      "skills.all_skills[19]": [
+        "e0:1160:1626"
+      ],
+      "skills.all_skills[20]": [
+        "e0:1160:1626"
+      ],
+      "skills.all_skills[21]": [
+        "e0:1160:1626"
+      ],
+      "skills.all_skills[22]": [
+        "e0:1160:1626"
+      ],
+      "projects[0].description": [
+        "e0:1634:2300",
+        "e0:2300:3033"
+      ],
+      "certifications[0].name": [
+        "e0:9228:9359"
+      ]
+    },
+    "record_reviews": [
+      {
+        "category": "experience",
+        "entry_id": "experience-1",
+        "source_ids": [
+          "e0:0:1160"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-2",
+        "source_ids": [
+          "e0:3043:3598",
+          "e0:3598:4830",
+          "e0:4830:6179",
+          "e0:6179:7469",
+          "e0:7469:8800",
+          "e0:8800:9202"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "education",
+        "entry_id": "education-1",
+        "source_ids": [
+          "e0:9211:9214"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "projects",
+        "entry_id": "projects-1",
+        "source_ids": [
+          "e0:1634:2300",
+          "e0:2300:3033"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "certifications",
+        "entry_id": "certifications-1",
+        "source_ids": [
+          "e0:9228:9359"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      }
+    ],
+    "missing_required_fields": [
+      "contact.full_name",
+      "contact.email",
+      "contact.phone",
+      "experience[0].company",
+      "experience[0].role",
+      "experience[1].company",
+      "experience[1].role",
+      "education[0].institution",
+      "education[0].degree",
+      "projects[0].name"
+    ],
+    "warnings": [
+      "Schema validity and field completion do not establish extraction or relationship accuracy.",
+      "Handoff confidence scores are fixed heuristics, not calibrated probabilities.",
+      "Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields."
+    ],
+    "unmapped_blocks": [
+      {
+        "source_id": "e0:0:1160",
+        "category": "experience",
+        "text": "Nagendra +91  9989100797| nxx.jobs@gmail.com Professional Summary Strategic Digital Transformation Program Manager with 17+ years of Financial Services experience across Wealth Management, Investment Banking, Prime Brokerage and Banking Operations. Proven track record leading global transformation, modernization, migration and transition programmes, with end-to-end ownership of delivery, governance, RAID, dependencies, budgets and controls. Experienced in senior stakeholder management, executive reporting, legacy decommissioning, process transformation and regulatory compliance, leading cross-functional teams of 120+ resources across global locations. Competencies Transformation & Delivery: Enterprise Digital Transformation, Global Program Leadership, Platform Modernization- Legacy Decommissioning, Operational Transformation, Strategic Initiatives, Process Optimization, Enterprise Process Design, Workflow Optimization Data & Reporting: Data Governance & Reporting Controls, Data Quality & Traceability, Operational Transparency, Business & Regulatory Reporting Governance, Risk & Regulatory: Program Governance & Operating Models, Risk & Control ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:3033:3043",
+        "category": "experience",
+        "text": "Experience",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:3043:3598",
+        "category": "experience",
+        "text": " Cognizant Technology Solutions Pvt Ltd | Feb 2019 - Apr 2024 | Hyderabad Senior Manager / Digital Transformation Lead Led a $15M digital transformation portfolio across Wealth Management, delivering platform modernization, scalable digital solutions, legacy decommissioning and process transformation initiatives focused on operational efficiency and reporting transparency. Directed global, multi-region transformation programmes, coordinating business, technology and operations stakeholders and leading cross-functional teams of 120+ resources across ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:3598:4830",
+        "category": "experience",
+        "text": "onshore and offshore locations. Owned end-to-end programme delivery, covering strategic planning, roadmap development, integrated delivery planning, resource allocation, risk management, UAT coordination, implementation, stakeholder adoption and operational transition. Established and operated programme governance frameworks and PMO operating models, including steering committees, governance forums, working groups, executive dashboards and structured decision-making mechanisms. Managed programme RAID, risks, issues, dependencies and delivery constraints, ensuring timely escalation, ownership and resolution across business and technology work-streams. Established clear ownership and accountability across programme work-streams, using RACI-based approaches to clarify responsibilities, decision rights, stakeholder ownership and delivery dependencies. Partnered with senior executives to prioritize transformation initiatives, drive timely decisions and align programme roadmaps with business objectives, regulatory requirements and enterprise standards. Acted as the key liaison between executive leadership and delivery teams, providing visibility of programme progress, risks, dependencies, issues and delivery priorities",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:4830:6179",
+        "category": "experience",
+        "text": ". Led platform modernization and legacy system decommissioning initiatives, coordinating technology, operational and business dependencies to support transition toward scalable digital platforms. Managed delivery across multiple work-streams and stakeholder groups, maintaining alignment of scope, milestones, dependencies, resources and programme outcomes. Provided executive-level reporting through structured dashboards and governance mechanisms, enabling senior stakeholders to monitor progress, risks, dependencies and key delivery decisions. Held full financial and budget oversight, managing resource capacity, delivery performance and cost optimization across the programme portfolio. Led large global delivery teams across onshore and offshore locations, ensuring effective coordination, delivery performance and operational continuity. Implemented comprehensive data governance and reporting controls, improving data quality, traceability, transparency and regulatory compliance within transformation programmes. Enhanced programme control environments through process improvements, governance mechanisms and data-integrity controls. Collaborated with senior business and technology stakeholders to prioritize backlogs and ensure transformation initiatives remained aligned with enterprise standards and regulatory expectations. Wipro Ltd ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:6179:7469",
+        "category": "experience",
+        "text": "| Nov 2014 – Jun 2017 | Hyderabad Project Manager Directed digital transformation projects for banking sales and service platforms, implementing front-to-back operating models to improve client experience and operational efficiency. Managed complete project lifecycles covering planning, governance, risk management, stakeholder engagement, delivery execution and implementation. Established governance structures and delivery controls across project work-streams, ensuring effective management of risks, issues, dependencies and delivery priorities. Worked with cross-functional business and technology teams to translate requirements into digital solutions and optimize business processes and workflows. Coordinated stakeholders across functions to resolve delivery constraints, clarify ownership and maintain alignment with project objectives. Implemented quality assurance and governance processes across SDLC phases to support controlled and predictable delivery. Oversaw project budgets, financials and KPIs, providing management visibility into delivery performance and project objectives. Cognizant Technology Solutions Pvt Ltd |  Aug 2007 – Oct 2014 | Hyderabad Team Manager  Service Delivery Management – Digital Operations & Change Managed large-scale operational transformation ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:7469:8800",
+        "category": "experience",
+        "text": "and transition programmes for Prime Brokerage operations across global regions. Led Change-the-Bank digital initiatives alongside BAU operations, coordinating transformation activity while maintaining operational continuity and regulatory requirements. Designed enterprise processes and operating models supported by strong governance, KPIs, controls and accountability frameworks. Managed shared-resource disentanglement and re-alignment, clarifying ownership, responsibilities, dependencies and resource allocation across transitioning business and operational areas. Contributed to data governance and regulatory reporting enhancements aligned with Basel III requirements. Led data governance and process transformation initiatives, chairing Data Working Groups focused on improving data quality, automating cleansing activities and enhancing accuracy across client services. Implemented risk management frameworks as part of broader governance enhancements across transformation programmes. Coordinated global operational teams and stakeholders through transformation and transition activities, managing dependencies between change initiatives and BAU operations. Supported process redesign and operational improvements across global regions, strengthening governance and control mechanisms. ADP India Pvt Ltd | Jan 2006 – Aug ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:8800:9202",
+        "category": "experience",
+        "text": "2007 | Hyderabad Process Executive/ Data Management Analyst Supported data management and process improvement activities focused on quality, accuracy and operational efficiency. Improved reference data management processes to strengthen data integrity, reconciliation accuracy and operational controls. Implemented operational controls supporting regulatory-compliant financial transaction processing. ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:1626:1634",
+        "category": "projects",
+        "text": "Projects",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:9202:9211",
+        "category": "education",
+        "text": "Education",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:9211:9214",
+        "category": "education",
+        "text": " & ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:9214:9228",
+        "category": "certifications",
+        "text": "Certifications",
+        "page_number": 1
+      }
+    ],
+    "needs_review": []
+  },
+  "section_schemas": [
+    {
+      "category": "experience",
+      "label": "Experience",
+      "records": [
+        {
+          "record_id": "experience-1",
+          "source_ids": [
+            "e0:0:1160"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "experience-2",
+          "source_ids": [
+            "e0:3043:3598",
+            "e0:3598:4830",
+            "e0:4830:6179",
+            "e0:6179:7469",
+            "e0:7469:8800",
+            "e0:8800:9202"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e0:0:1160",
+          "quote": "Nagendra +91  9989100797| nxx.jobs@gmail.com Professional Summary Strategic Digital Transformation Program Manager with 17+ years of Financial Services experience across Wealth Management, Investment Banking, Prime Brokerage and Banking Operations. Proven track record leading global transformation, modernization, migration and transition programmes, with end-to-end ownership of delivery, governance, RAID, dependencies, budgets and controls. Experienced in senior stakeholder management, executive reporting, legacy decommissioning, process transformation and regulatory compliance, leading cross-functional teams of 120+ resources across global locations. Competencies Transformation & Delivery: Enterprise Digital Transformation, Global Program Leadership, Platform Modernization- Legacy Decommissioning, Operational Transformation, Strategic Initiatives, Process Optimization, Enterprise Process Design, Workflow Optimization Data & Reporting: Data Governance & Reporting Controls, Data Quality & Traceability, Operational Transparency, Business & Regulatory Reporting Governance, Risk & Regulatory: Program Governance & Operating Models, Risk & Control "
+        },
+        {
+          "source_id": "e0:3033:3043",
+          "quote": "Experience"
+        },
+        {
+          "source_id": "e0:3043:3598",
+          "quote": " Cognizant Technology Solutions Pvt Ltd | Feb 2019 - Apr 2024 | Hyderabad Senior Manager / Digital Transformation Lead Led a $15M digital transformation portfolio across Wealth Management, delivering platform modernization, scalable digital solutions, legacy decommissioning and process transformation initiatives focused on operational efficiency and reporting transparency. Directed global, multi-region transformation programmes, coordinating business, technology and operations stakeholders and leading cross-functional teams of 120+ resources across "
+        },
+        {
+          "source_id": "e0:3598:4830",
+          "quote": "onshore and offshore locations. Owned end-to-end programme delivery, covering strategic planning, roadmap development, integrated delivery planning, resource allocation, risk management, UAT coordination, implementation, stakeholder adoption and operational transition. Established and operated programme governance frameworks and PMO operating models, including steering committees, governance forums, working groups, executive dashboards and structured decision-making mechanisms. Managed programme RAID, risks, issues, dependencies and delivery constraints, ensuring timely escalation, ownership and resolution across business and technology work-streams. Established clear ownership and accountability across programme work-streams, using RACI-based approaches to clarify responsibilities, decision rights, stakeholder ownership and delivery dependencies. Partnered with senior executives to prioritize transformation initiatives, drive timely decisions and align programme roadmaps with business objectives, regulatory requirements and enterprise standards. Acted as the key liaison between executive leadership and delivery teams, providing visibility of programme progress, risks, dependencies, issues and delivery priorities"
+        },
+        {
+          "source_id": "e0:4830:6179",
+          "quote": ". Led platform modernization and legacy system decommissioning initiatives, coordinating technology, operational and business dependencies to support transition toward scalable digital platforms. Managed delivery across multiple work-streams and stakeholder groups, maintaining alignment of scope, milestones, dependencies, resources and programme outcomes. Provided executive-level reporting through structured dashboards and governance mechanisms, enabling senior stakeholders to monitor progress, risks, dependencies and key delivery decisions. Held full financial and budget oversight, managing resource capacity, delivery performance and cost optimization across the programme portfolio. Led large global delivery teams across onshore and offshore locations, ensuring effective coordination, delivery performance and operational continuity. Implemented comprehensive data governance and reporting controls, improving data quality, traceability, transparency and regulatory compliance within transformation programmes. Enhanced programme control environments through process improvements, governance mechanisms and data-integrity controls. Collaborated with senior business and technology stakeholders to prioritize backlogs and ensure transformation initiatives remained aligned with enterprise standards and regulatory expectations. Wipro Ltd "
+        },
+        {
+          "source_id": "e0:6179:7469",
+          "quote": "| Nov 2014 – Jun 2017 | Hyderabad Project Manager Directed digital transformation projects for banking sales and service platforms, implementing front-to-back operating models to improve client experience and operational efficiency. Managed complete project lifecycles covering planning, governance, risk management, stakeholder engagement, delivery execution and implementation. Established governance structures and delivery controls across project work-streams, ensuring effective management of risks, issues, dependencies and delivery priorities. Worked with cross-functional business and technology teams to translate requirements into digital solutions and optimize business processes and workflows. Coordinated stakeholders across functions to resolve delivery constraints, clarify ownership and maintain alignment with project objectives. Implemented quality assurance and governance processes across SDLC phases to support controlled and predictable delivery. Oversaw project budgets, financials and KPIs, providing management visibility into delivery performance and project objectives. Cognizant Technology Solutions Pvt Ltd |  Aug 2007 – Oct 2014 | Hyderabad Team Manager  Service Delivery Management – Digital Operations & Change Managed large-scale operational transformation "
+        },
+        {
+          "source_id": "e0:7469:8800",
+          "quote": "and transition programmes for Prime Brokerage operations across global regions. Led Change-the-Bank digital initiatives alongside BAU operations, coordinating transformation activity while maintaining operational continuity and regulatory requirements. Designed enterprise processes and operating models supported by strong governance, KPIs, controls and accountability frameworks. Managed shared-resource disentanglement and re-alignment, clarifying ownership, responsibilities, dependencies and resource allocation across transitioning business and operational areas. Contributed to data governance and regulatory reporting enhancements aligned with Basel III requirements. Led data governance and process transformation initiatives, chairing Data Working Groups focused on improving data quality, automating cleansing activities and enhancing accuracy across client services. Implemented risk management frameworks as part of broader governance enhancements across transformation programmes. Coordinated global operational teams and stakeholders through transformation and transition activities, managing dependencies between change initiatives and BAU operations. Supported process redesign and operational improvements across global regions, strengthening governance and control mechanisms. ADP India Pvt Ltd | Jan 2006 – Aug "
+        },
+        {
+          "source_id": "e0:8800:9202",
+          "quote": "2007 | Hyderabad Process Executive/ Data Management Analyst Supported data management and process improvement activities focused on quality, accuracy and operational efficiency. Improved reference data management processes to strengthen data integrity, reconciliation accuracy and operational controls. Implemented operational controls supporting regulatory-compliant financial transaction processing. "
+        }
+      ]
+    },
+    {
+      "category": "skills",
+      "label": "Skills",
+      "records": [
+        {
+          "record_id": "skills",
+          "source_ids": [
+            "e0:1160:1626"
+          ],
+          "attributes": [
+            {
+              "name": "technical_skills",
+              "items": [
+                {
+                  "value": "SQL",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1160:1626",
+                      "quote": "SQL"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "tools_and_platforms",
+              "items": [
+                {
+                  "value": "Power BI",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1160:1626",
+                      "quote": "Power BI"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Bloomberg",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1160:1626",
+                      "quote": "Bloomberg"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "JIRA",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1160:1626",
+                      "quote": "JIRA"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Confluence",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1160:1626",
+                      "quote": "Confluence"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Excel",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1160:1626",
+                      "quote": "Excel"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "domain_and_functional",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "soft_skills",
+              "items": [
+                {
+                  "value": "Agile",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1160:1626",
+                      "quote": "Agile"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Waterfall",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1160:1626",
+                      "quote": "Waterfall"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Leadership",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1160:1626",
+                      "quote": "Leadership"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Stakeholder Engagement",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1160:1626",
+                      "quote": "Stakeholder Engagement"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "all_skills",
+              "items": [
+                {
+                  "value": "SQL",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1160:1626",
+                      "quote": "SQL"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Power BI",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1160:1626",
+                      "quote": "Power BI"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Bloomberg",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1160:1626",
+                      "quote": "Bloomberg"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "JIRA",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1160:1626",
+                      "quote": "JIRA"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Confluence",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1160:1626",
+                      "quote": "Confluence"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Excel",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1160:1626",
+                      "quote": "Excel"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Agile",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1160:1626",
+                      "quote": "Agile"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Waterfall",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1160:1626",
+                      "quote": "Waterfall"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Leadership",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1160:1626",
+                      "quote": "Leadership"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Stakeholder Engagement",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1160:1626",
+                      "quote": "Stakeholder Engagement"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Frameworks- Regulatory & Audit Readiness",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1160:1626",
+                      "quote": "Frameworks- Regulatory & Audit Readiness"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Basel III & Financial Regulations Leadership: Executive Stakeholder Engagement",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1160:1626",
+                      "quote": "Basel III & Financial Regulations Leadership: Executive Stakeholder Engagement"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Global / Offshore Team Leadership",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1160:1626",
+                      "quote": "Global / Offshore Team Leadership"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Financial & P&L Oversight",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1160:1626",
+                      "quote": "Financial & P&L Oversight"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Organizational Change & Adoption Banking & Delivery Tools: Clarity",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1160:1626",
+                      "quote": "Organizational Change & Adoption Banking & Delivery Tools: Clarity"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "MS Project",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1160:1626",
+                      "quote": "MS Project"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Service Now",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1160:1626",
+                      "quote": "Service Now"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "ARIS Data Analysis & Visualization: Power BI",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1160:1626",
+                      "quote": "ARIS Data Analysis & Visualization: Power BI"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Basic SQL",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1160:1626",
+                      "quote": "Basic SQL"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Visio",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1160:1626",
+                      "quote": "Visio"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Excel Financial Platforms: Bloomberg Terminal",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1160:1626",
+                      "quote": "Excel Financial Platforms: Bloomberg Terminal"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Reuters Delivery Models: Agile",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1160:1626",
+                      "quote": "Reuters Delivery Models: Agile"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Hybrid Freelance",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1160:1626",
+                      "quote": "Hybrid Freelance"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e0:1160:1626",
+          "quote": "Frameworks- Regulatory & Audit Readiness, Basel III & Financial Regulations Leadership: Executive Stakeholder Engagement, Global / Offshore Team Leadership, Financial & P&L Oversight, Organizational Change & Adoption Banking & Delivery Tools: Clarity, JIRA, Confluence, MS Project, Service Now, ARIS Data Analysis & Visualization: Power BI, Basic SQL, Visio, Excel Financial Platforms: Bloomberg Terminal, Reuters Delivery Models: Agile, Waterfall, Hybrid Freelance "
+        }
+      ]
+    },
+    {
+      "category": "projects",
+      "label": "Projects",
+      "records": [
+        {
+          "record_id": "projects-1",
+          "source_ids": [
+            "e0:1634:2300",
+            "e0:2300:3033"
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "description",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "url",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e0:1626:1634",
+          "quote": "Projects"
+        },
+        {
+          "source_id": "e0:1634:2300",
+          "quote": " Apartment Management Suite | Multi-Tenant SaaS Platform Product Owner Led product ownership and end-to-end digital transformation for a multi-tenant SaaS platform, architecting scalable solutions for apartment management operations. Designed business processes, data models, and governance frameworks emphasizing data integrity and automated workflows. Managed full project lifecycle as Product Owner, from requirements gathering and architecture to development, testing, and deployment using Agile practices. Oversaw technical architecture and delivery of cloud-based responsive applications. Utilized Generative AI tools to enhance program delivery efficiency in "
+        },
+        {
+          "source_id": "e0:2300:3033",
+          "quote": "analysis, design, and validation phases. Financial Reporting Automation & Process Transformation Led automation initiatives for financial reporting processes, integrating data governance best practices to ensure accuracy and compliance. Designed a reusable reporting engine to dynamically process supplier data and generate standardized financial reports. Developed batch-processing automation to generate, consolidate, and validate monthly financial reports with minimal manual intervention. Built dynamic data extraction and transformation logic to automate report generation across varying workbook structures. Improved reporting efficiency and data quality by replacing repetitive spreadsheet processes with scalable automation. "
+        }
+      ]
+    },
+    {
+      "category": "education",
+      "label": "Education",
+      "records": [
+        {
+          "record_id": "education-1",
+          "source_ids": [
+            "e0:9211:9214"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "degree",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e0:9202:9211",
+          "quote": "Education"
+        },
+        {
+          "source_id": "e0:9211:9214",
+          "quote": " & "
+        }
+      ]
+    },
+    {
+      "category": "certifications",
+      "label": "Certifications",
+      "records": [
+        {
+          "record_id": "certifications-1",
+          "source_ids": [
+            "e0:9228:9359"
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "items": [
+                {
+                  "value": "MBA – Jawaharlal Nehru Technological University (JNTU), Hyderabad. Six Sigma Yellow Belt Certified & Six Sigma Green Belt Trained.",
+                  "evidence": [
+                    {
+                      "source_id": "e0:9228:9359",
+                      "quote": "MBA – Jawaharlal Nehru Technological University (JNTU), Hyderabad. Six Sigma Yellow Belt Certified & Six Sigma Green Belt Trained."
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "issuer",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "issue_year",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e0:9214:9228",
+          "quote": "Certifications"
+        }
+      ]
+    }
+  ]
+}

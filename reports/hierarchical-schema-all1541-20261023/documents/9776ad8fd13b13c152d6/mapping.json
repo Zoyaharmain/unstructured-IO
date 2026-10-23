@@ -1,0 +1,2379 @@
+{
+  "success": true,
+  "source": "BalChandraJha.docx",
+  "extraction_mode": "existing_blocks_schema_mapping",
+  "data": {
+    "contact": {
+      "full_name": "Bal Chandra Jha",
+      "email": "balagiftian@gmail.com",
+      "phone": "+91-9590858952",
+      "location": null,
+      "linkedin_url": null,
+      "github_url": null,
+      "portfolio_url": null
+    },
+    "professional_title": "Manager-Data Scientist | ML Engineer | GenAI Engineer",
+    "summary": null,
+    "total_experience_years": null,
+    "skills": {
+      "technical_skills": [
+        "Python",
+        "SQL",
+        "FastAPI",
+        "Flask",
+        "Docker",
+        "Kubernetes"
+      ],
+      "tools_and_platforms": [
+        "Power BI",
+        "Tableau",
+        "Git",
+        "AWS",
+        "Azure",
+        "GCP"
+      ],
+      "domain_and_functional": [],
+      "soft_skills": [],
+      "all_skills": [
+        "Python",
+        "SQL",
+        "FastAPI",
+        "Flask",
+        "Docker",
+        "Kubernetes",
+        "Power BI",
+        "Tableau",
+        "Git",
+        "AWS",
+        "Azure",
+        "GCP",
+        "Programming & Scripting: Python",
+        "PySpark",
+        "Pandas",
+        "NumPy",
+        "Scikit-learn",
+        "Machine Learning & Deep Learning: Supervised & Unsupervised Learning",
+        "Classification",
+        "Regression",
+        "Clustering",
+        "Recommendation Systems",
+        "CNN",
+        "RNN",
+        "Transformers",
+        "LLMs (BERT",
+        "GPT)",
+        "Generative AI & LLMs: OpenAI APIs",
+        "Azure OpenAI",
+        "LangChain",
+        "LangGraph",
+        "LangSmith",
+        "Huggingface Transformers",
+        "RAG",
+        "Prompt Engineering",
+        "Agents",
+        "FAISS",
+        "ChromaDB",
+        "Vector DBs (Pinecone",
+        "Weaviate)",
+        "Crew AI",
+        "MLOps & Deployment: MLflow",
+        "DVC",
+        "CI/CD Pipelines",
+        "Streamlit",
+        "Cloud & Platforms: Azure Databricks",
+        "Unity Catalog",
+        "AWS (SageMaker",
+        "EC2",
+        "S3",
+        "Lambda)",
+        "Dataiku",
+        "Visualization & Monitoring: Tableau",
+        "Jupyter",
+        "VS Code"
+      ]
+    },
+    "experience": [
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      }
+    ],
+    "education": [],
+    "certifications": [
+      {
+        "name": "PG Diploma in Data Science — IMS Proschool, MU (2018–2019)\nBTech in Electrical & Electronics — BPUT (2007–2011)\nDataiku (ML, MLOps, Developer, Advanced Designer)\nAWS ML on Cloud | DeepLearning.AI Prompt Engineering (Ongoing)\nGenAI",
+        "issuer": null,
+        "issue_year": null
+      }
+    ],
+    "projects": [
+      {
+        "name": "Delivered RAG-based document intelligence pipeline for fraud detection.",
+        "description": "Delivered RAG-based document intelligence pipeline for fraud detection.\nDeveloped Chabot with LangChain + OpenAI + FAISS for internal Q&A system.\nBuilt Huggingface-powered resume classifier for talent screening automation.",
+        "role": null,
+        "technologies": [],
+        "url": null
+      }
+    ],
+    "languages": []
+  },
+  "schema_mapping": {
+    "fields_populated": 10,
+    "total_fields": 16,
+    "completion_percentage": 62.5,
+    "field_details": [
+      {
+        "field_name": "contact.full_name",
+        "target_type": "string",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Personal Details",
+        "confidence_score": 0.95,
+        "description": "Candidate's full name, extracted from the top header of the resume."
+      },
+      {
+        "field_name": "contact.email",
+        "target_type": "string (email)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.98,
+        "description": "Candidate's primary contact email address."
+      },
+      {
+        "field_name": "contact.phone",
+        "target_type": "string (phone)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.95,
+        "description": "Candidate's telephone / mobile phone number."
+      },
+      {
+        "field_name": "contact.location",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's residential location or work city."
+      },
+      {
+        "field_name": "contact.linkedin_url",
+        "target_type": "string (url) | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "URL to candidate's LinkedIn profile."
+      },
+      {
+        "field_name": "professional_title",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Header / Subtitle",
+        "confidence_score": 0.88,
+        "description": "Candidate's target headline or most recent job title."
+      },
+      {
+        "field_name": "summary",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Professional Summary / Profile / Objective",
+        "confidence_score": 0.0,
+        "description": "Executive bio, professional overview, or career objective."
+      },
+      {
+        "field_name": "total_experience_years",
+        "target_type": "float | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Summary / Experience Calculation",
+        "confidence_score": 0.0,
+        "description": "Total professional experience in years."
+      },
+      {
+        "field_name": "skills.technical_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills / Technical Competencies",
+        "confidence_score": 0.92,
+        "description": "Technical programming languages and core software competencies."
+      },
+      {
+        "field_name": "skills.tools_and_platforms",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills / Tools & Technologies",
+        "confidence_score": 0.9,
+        "description": "Software platforms, developer tools, and operational systems."
+      },
+      {
+        "field_name": "skills.domain_and_functional",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Domain Expertise",
+        "confidence_score": 0.0,
+        "description": "Functional domain knowledge (e.g. Hedge Funds, KYC, NAV, Derivatives)."
+      },
+      {
+        "field_name": "skills.all_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills (Aggregated)",
+        "confidence_score": 0.95,
+        "description": "Complete list of candidate skills across all categories."
+      },
+      {
+        "field_name": "experience",
+        "target_type": "array[WorkExperience]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Experience / Work History",
+        "confidence_score": 0.92,
+        "description": "Complete chronological employment records with bullet points."
+      },
+      {
+        "field_name": "education",
+        "target_type": "array[Education]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Education / Academic Qualifications",
+        "confidence_score": 0.0,
+        "description": "University, college, and higher education degree qualifications."
+      },
+      {
+        "field_name": "certifications",
+        "target_type": "array[Certification]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Certifications / Licenses",
+        "confidence_score": 0.8,
+        "description": "Professional accreditations and credentials."
+      },
+      {
+        "field_name": "projects",
+        "target_type": "array[Project]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Projects / Key Engagements",
+        "confidence_score": 0.8,
+        "description": "Major projects or strategic initiatives led by candidate."
+      }
+    ]
+  },
+  "raw_sections": {
+    "personal_information": "Bal Chandra Jha\nEmail: balagiftian@gmail.com| M: +91-9590858952\nManager-Data Scientist | ML Engineer | GenAI Engineer",
+    "skills": "Skill\nProgramming & Scripting: Python | PySpark | SQL | Pandas | NumPy | Scikit-learn\nMachine Learning & Deep Learning: Supervised & Unsupervised Learning | Classification | Regression | Clustering | Recommendation Systems | CNN | RNN | Transformers | LLMs (BERT, GPT)\nGenerative AI & LLMs: OpenAI APIs | Azure OpenAI | LangChain | LangGraph | LangSmith | Huggingface Transformers | RAG | Prompt Engineering | Agents | FAISS | ChromaDB | Vector DBs (Pinecone, Weaviate) | Crew AI\nMLOps & Deployment: MLflow | DVC | Docker | Kubernetes | CI/CD Pipelines | FastAPI | Streamlit | Flask | Git \nCloud & Platforms: Azure Databricks | Unity Catalog | AWS (SageMaker, EC2, S3, Lambda) | Dataiku | GCP\nVisualization & Monitoring: Tableau | Power BI | Jupyter | VS Code",
+    "experience": "Professional Experience\nCapgemini — Manager, Data Science   \t\t\t\t\t       \t\t\t             Mar 2019 – Present\nBuilt & deployed ML traditional and GenAI-enhanced fraud models for Client(HP) using Azure Databricks, MLflow, and feature store, reducing false positives by 35%.\nLeveraged the Dataiku platform to build, deploy, and manage models as API endpoints, ensuring efficient integration with business processes\nLed the migration of the fraud detection model from DSS to Databricks.\nDesigned multi-tier (global to local) fraud architecture improving detection coverage across geographies.\nCreated HR attrition model saving ₹2.3 Cr/year, enabling targeted retention strategies.\nDeveloped a predictive tool to analyze employee attrition within the I&D departments with 85% accuracy,\nLed the development of roadmaps, prepared data dictionaries, and documented processes to ensure clarity and consistency across teams.\nConducted testing of various classification machine learning algorithms, optimizing and tuning\nBoosted reporting efficiency by 70% with auto-generated analytics dashboards for turbine performance (GE Renewables).\nCollaborated with the 'Turbine Performance Analysis' team to deliver actionable insights based on power curve and performance ratio data, driving performance improvements.\nEnhanced data mining processes, reducing the time required to extract actionable insights from SCADA data by 20%.\nLeveraged data-driven insights to significantly improve on-time delivery, increasing it from 65% to 95%.\nPontoon Solutions — HR Analyst\t\t\t\t\t\t                                                  Jun 2015 – May 2017\nConducted sourcing channel analytics and no-show churn forecasting to improve recruitment ROI.\nMeeting hiring Stakeholders to understand the staffing needs and niche skills profiles to have capacity analytics\nMindlance — Sr. Talent Acquisition Specialist\t\t\t\t      \t\t\t             Sep 2012 – May 2015\nLed tech hiring campaigns and data-driven sourcing for niche skill profiles across US clients.\nEducation & ",
+    "certifications": "Certifications\nPG Diploma in Data Science — IMS Proschool, MU (2018–2019)\nBTech in Electrical & Electronics — BPUT (2007–2011)\nDataiku (ML, MLOps, Developer, Advanced Designer)\nAWS ML on Cloud | DeepLearning.AI Prompt Engineering (Ongoing)\nGenAI ",
+    "projects": "Project Highlights\nDelivered RAG-based document intelligence pipeline for fraud detection.\nDeveloped Chabot with LangChain + OpenAI + FAISS for internal Q&A system.\nBuilt Huggingface-powered resume classifier for talent screening automation."
+  },
+  "meta": {
+    "status": "needs_review",
+    "human_verified": false,
+    "provider_calls": 0,
+    "source_accounting": {
+      "all_source_text_preserved": true,
+      "total_spans": 41,
+      "assigned_meaningful_spans": 40,
+      "unresolved_meaningful_spans": 1,
+      "non_content_artifacts": 0,
+      "duplicates_excluded": 0,
+      "all_meaningful_text_assigned": false,
+      "semantic_correctness_verified": false,
+      "outcomes": [
+        {
+          "source_id": "e0:0:15",
+          "source_element_index": 0,
+          "start": 0,
+          "end": 15,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e1:0:47",
+          "source_element_index": 1,
+          "start": 0,
+          "end": 47,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e2:0:53",
+          "source_element_index": 2,
+          "start": 0,
+          "end": 53,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e3:0:439",
+          "source_element_index": 3,
+          "start": 0,
+          "end": 439,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e4:0:5",
+          "source_element_index": 4,
+          "start": 0,
+          "end": 5,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Distinct BERT heading match with a K-means section label"
+        },
+        {
+          "source_id": "e5:0:79",
+          "source_element_index": 5,
+          "start": 0,
+          "end": 79,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e6:0:182",
+          "source_element_index": 6,
+          "start": 0,
+          "end": 182,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e7:0:210",
+          "source_element_index": 7,
+          "start": 0,
+          "end": 210,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:0:109",
+          "source_element_index": 8,
+          "start": 0,
+          "end": 109,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:0:102",
+          "source_element_index": 9,
+          "start": 0,
+          "end": 102,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e10:0:66",
+          "source_element_index": 10,
+          "start": 0,
+          "end": 66,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e11:0:23",
+          "source_element_index": 11,
+          "start": 0,
+          "end": 23,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e12:0:82",
+          "source_element_index": 12,
+          "start": 0,
+          "end": 82,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e13:0:162",
+          "source_element_index": 13,
+          "start": 0,
+          "end": 162,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e14:0:139",
+          "source_element_index": 14,
+          "start": 0,
+          "end": 139,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e15:0:70",
+          "source_element_index": 15,
+          "start": 0,
+          "end": 70,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e16:0:105",
+          "source_element_index": 16,
+          "start": 0,
+          "end": 105,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e17:0:87",
+          "source_element_index": 17,
+          "start": 0,
+          "end": 87,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e18:0:103",
+          "source_element_index": 18,
+          "start": 0,
+          "end": 103,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e19:0:133",
+          "source_element_index": 19,
+          "start": 0,
+          "end": 133,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e20:0:94",
+          "source_element_index": 20,
+          "start": 0,
+          "end": 94,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e21:0:117",
+          "source_element_index": 21,
+          "start": 0,
+          "end": 117,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e22:0:171",
+          "source_element_index": 22,
+          "start": 0,
+          "end": 171,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e23:0:113",
+          "source_element_index": 23,
+          "start": 0,
+          "end": 113,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e24:0:104",
+          "source_element_index": 24,
+          "start": 0,
+          "end": 104,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e25:0:105",
+          "source_element_index": 25,
+          "start": 0,
+          "end": 105,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit dated employer starts or continues Experience across layout changes"
+        },
+        {
+          "source_id": "e26:0:94",
+          "source_element_index": 26,
+          "start": 0,
+          "end": 94,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e27:0:113",
+          "source_element_index": 27,
+          "start": 0,
+          "end": 113,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e28:0:90",
+          "source_element_index": 28,
+          "start": 0,
+          "end": 90,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e29:0:94",
+          "source_element_index": 29,
+          "start": 0,
+          "end": 94,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e30:0:12",
+          "source_element_index": 30,
+          "start": 0,
+          "end": 12,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e30:12:26",
+          "source_element_index": 30,
+          "start": 12,
+          "end": 26,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e31:0:58",
+          "source_element_index": 31,
+          "start": 0,
+          "end": 58,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e32:0:52",
+          "source_element_index": 32,
+          "start": 0,
+          "end": 52,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e33:0:49",
+          "source_element_index": 33,
+          "start": 0,
+          "end": 49,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e34:0:62",
+          "source_element_index": 34,
+          "start": 0,
+          "end": 62,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e35:0:6",
+          "source_element_index": 35,
+          "start": 0,
+          "end": 6,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e35:6:24",
+          "source_element_index": 35,
+          "start": 6,
+          "end": 24,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e36:0:71",
+          "source_element_index": 36,
+          "start": 0,
+          "end": 71,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e37:0:73",
+          "source_element_index": 37,
+          "start": 0,
+          "end": 73,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e38:0:76",
+          "source_element_index": 38,
+          "start": 0,
+          "end": 76,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        }
+      ]
+    },
+    "document_scope": {
+      "kind": "likely_resume",
+      "candidate_resume": true,
+      "reason": "Contact details, multiple resume section families and dated history; provisional scope only",
+      "human_verified": false
+    },
+    "source_inventory_sha256": "8126532590d90dce9a6543697752de92972bccc44f680752b7d65e70c0ac79fa",
+    "field_evidence": {
+      "contact.full_name": [
+        "e0:0:15",
+        "e1:0:47",
+        "e2:0:53"
+      ],
+      "contact.email": [
+        "e0:0:15",
+        "e1:0:47",
+        "e2:0:53"
+      ],
+      "contact.phone": [
+        "e0:0:15",
+        "e1:0:47",
+        "e2:0:53"
+      ],
+      "professional_title": [
+        "e2:0:53"
+      ],
+      "skills.technical_skills[0]": [
+        "e5:0:79"
+      ],
+      "skills.technical_skills[1]": [
+        "e5:0:79"
+      ],
+      "skills.technical_skills[2]": [
+        "e8:0:109"
+      ],
+      "skills.technical_skills[3]": [
+        "e8:0:109"
+      ],
+      "skills.technical_skills[4]": [
+        "e8:0:109"
+      ],
+      "skills.technical_skills[5]": [
+        "e8:0:109"
+      ],
+      "skills.tools_and_platforms[0]": [
+        "e10:0:66"
+      ],
+      "skills.tools_and_platforms[1]": [
+        "e10:0:66"
+      ],
+      "skills.tools_and_platforms[2]": [
+        "e8:0:109"
+      ],
+      "skills.tools_and_platforms[3]": [
+        "e9:0:102"
+      ],
+      "skills.tools_and_platforms[4]": [
+        "e7:0:210",
+        "e9:0:102"
+      ],
+      "skills.tools_and_platforms[5]": [
+        "e9:0:102"
+      ],
+      "skills.all_skills[0]": [
+        "e5:0:79"
+      ],
+      "skills.all_skills[1]": [
+        "e5:0:79"
+      ],
+      "skills.all_skills[2]": [
+        "e8:0:109"
+      ],
+      "skills.all_skills[3]": [
+        "e8:0:109"
+      ],
+      "skills.all_skills[4]": [
+        "e8:0:109"
+      ],
+      "skills.all_skills[5]": [
+        "e8:0:109"
+      ],
+      "skills.all_skills[6]": [
+        "e10:0:66"
+      ],
+      "skills.all_skills[7]": [
+        "e10:0:66"
+      ],
+      "skills.all_skills[8]": [
+        "e8:0:109"
+      ],
+      "skills.all_skills[9]": [
+        "e9:0:102"
+      ],
+      "skills.all_skills[10]": [
+        "e7:0:210",
+        "e9:0:102"
+      ],
+      "skills.all_skills[11]": [
+        "e9:0:102"
+      ],
+      "skills.all_skills[12]": [
+        "e5:0:79"
+      ],
+      "skills.all_skills[13]": [
+        "e5:0:79"
+      ],
+      "skills.all_skills[14]": [
+        "e5:0:79"
+      ],
+      "skills.all_skills[15]": [
+        "e5:0:79"
+      ],
+      "skills.all_skills[16]": [
+        "e5:0:79"
+      ],
+      "skills.all_skills[17]": [
+        "e6:0:182"
+      ],
+      "skills.all_skills[18]": [
+        "e6:0:182"
+      ],
+      "skills.all_skills[19]": [
+        "e6:0:182"
+      ],
+      "skills.all_skills[20]": [
+        "e6:0:182"
+      ],
+      "skills.all_skills[21]": [
+        "e6:0:182"
+      ],
+      "skills.all_skills[22]": [
+        "e6:0:182"
+      ],
+      "skills.all_skills[23]": [
+        "e6:0:182"
+      ],
+      "skills.all_skills[24]": [
+        "e6:0:182",
+        "e7:0:210"
+      ],
+      "skills.all_skills[25]": [
+        "e6:0:182"
+      ],
+      "skills.all_skills[26]": [
+        "e6:0:182"
+      ],
+      "skills.all_skills[27]": [
+        "e7:0:210"
+      ],
+      "skills.all_skills[28]": [
+        "e7:0:210"
+      ],
+      "skills.all_skills[29]": [
+        "e7:0:210"
+      ],
+      "skills.all_skills[30]": [
+        "e7:0:210"
+      ],
+      "skills.all_skills[31]": [
+        "e7:0:210"
+      ],
+      "skills.all_skills[32]": [
+        "e7:0:210"
+      ],
+      "skills.all_skills[33]": [
+        "e7:0:210"
+      ],
+      "skills.all_skills[34]": [
+        "e7:0:210"
+      ],
+      "skills.all_skills[35]": [
+        "e7:0:210"
+      ],
+      "skills.all_skills[36]": [
+        "e7:0:210"
+      ],
+      "skills.all_skills[37]": [
+        "e7:0:210"
+      ],
+      "skills.all_skills[38]": [
+        "e7:0:210"
+      ],
+      "skills.all_skills[39]": [
+        "e7:0:210"
+      ],
+      "skills.all_skills[40]": [
+        "e7:0:210"
+      ],
+      "skills.all_skills[41]": [
+        "e8:0:109"
+      ],
+      "skills.all_skills[42]": [
+        "e8:0:109"
+      ],
+      "skills.all_skills[43]": [
+        "e8:0:109"
+      ],
+      "skills.all_skills[44]": [
+        "e8:0:109"
+      ],
+      "skills.all_skills[45]": [
+        "e9:0:102"
+      ],
+      "skills.all_skills[46]": [
+        "e9:0:102"
+      ],
+      "skills.all_skills[47]": [
+        "e9:0:102"
+      ],
+      "skills.all_skills[48]": [
+        "e9:0:102"
+      ],
+      "skills.all_skills[49]": [
+        "e9:0:102"
+      ],
+      "skills.all_skills[50]": [
+        "e9:0:102"
+      ],
+      "skills.all_skills[51]": [
+        "e9:0:102"
+      ],
+      "skills.all_skills[52]": [
+        "e10:0:66"
+      ],
+      "skills.all_skills[53]": [
+        "e10:0:66"
+      ],
+      "skills.all_skills[54]": [
+        "e10:0:66"
+      ],
+      "projects[0].name": [
+        "e36:0:71",
+        "e37:0:73",
+        "e38:0:76"
+      ],
+      "projects[0].description": [
+        "e36:0:71",
+        "e37:0:73",
+        "e38:0:76"
+      ],
+      "certifications[0].name": [
+        "e31:0:58",
+        "e32:0:52",
+        "e33:0:49",
+        "e34:0:62",
+        "e35:0:6"
+      ]
+    },
+    "record_reviews": [
+      {
+        "category": "experience",
+        "entry_id": "experience-1",
+        "source_ids": [
+          "e12:0:82",
+          "e13:0:162",
+          "e14:0:139",
+          "e15:0:70",
+          "e16:0:105",
+          "e17:0:87",
+          "e18:0:103",
+          "e19:0:133",
+          "e20:0:94",
+          "e21:0:117",
+          "e22:0:171",
+          "e23:0:113",
+          "e24:0:104"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-2",
+        "source_ids": [
+          "e25:0:105",
+          "e26:0:94",
+          "e27:0:113",
+          "e28:0:90",
+          "e29:0:94",
+          "e30:0:12"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "projects",
+        "entry_id": "projects-1",
+        "source_ids": [
+          "e36:0:71",
+          "e37:0:73",
+          "e38:0:76"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "certifications",
+        "entry_id": "certifications-1",
+        "source_ids": [
+          "e31:0:58",
+          "e32:0:52",
+          "e33:0:49",
+          "e34:0:62",
+          "e35:0:6"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      }
+    ],
+    "missing_required_fields": [
+      "experience[0].company",
+      "experience[0].role",
+      "experience[1].company",
+      "experience[1].role"
+    ],
+    "warnings": [
+      "Schema validity and field completion do not establish extraction or relationship accuracy.",
+      "Handoff confidence scores are fixed heuristics, not calibrated probabilities.",
+      "Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields."
+    ],
+    "unmapped_blocks": [
+      {
+        "source_id": "e4:0:5",
+        "category": "skills",
+        "text": "Skill",
+        "page_number": null
+      },
+      {
+        "source_id": "e11:0:23",
+        "category": "experience",
+        "text": "Professional Experience",
+        "page_number": null
+      },
+      {
+        "source_id": "e12:0:82",
+        "category": "experience",
+        "text": "Capgemini — Manager, Data Science   \t\t\t\t\t       \t\t\t             Mar 2019 – Present",
+        "page_number": null
+      },
+      {
+        "source_id": "e13:0:162",
+        "category": "experience",
+        "text": "Built & deployed ML traditional and GenAI-enhanced fraud models for Client(HP) using Azure Databricks, MLflow, and feature store, reducing false positives by 35%.",
+        "page_number": null
+      },
+      {
+        "source_id": "e14:0:139",
+        "category": "experience",
+        "text": "Leveraged the Dataiku platform to build, deploy, and manage models as API endpoints, ensuring efficient integration with business processes",
+        "page_number": null
+      },
+      {
+        "source_id": "e15:0:70",
+        "category": "experience",
+        "text": "Led the migration of the fraud detection model from DSS to Databricks.",
+        "page_number": null
+      },
+      {
+        "source_id": "e16:0:105",
+        "category": "experience",
+        "text": "Designed multi-tier (global to local) fraud architecture improving detection coverage across geographies.",
+        "page_number": null
+      },
+      {
+        "source_id": "e17:0:87",
+        "category": "experience",
+        "text": "Created HR attrition model saving ₹2.3 Cr/year, enabling targeted retention strategies.",
+        "page_number": null
+      },
+      {
+        "source_id": "e18:0:103",
+        "category": "experience",
+        "text": "Developed a predictive tool to analyze employee attrition within the I&D departments with 85% accuracy,",
+        "page_number": null
+      },
+      {
+        "source_id": "e19:0:133",
+        "category": "experience",
+        "text": "Led the development of roadmaps, prepared data dictionaries, and documented processes to ensure clarity and consistency across teams.",
+        "page_number": null
+      },
+      {
+        "source_id": "e20:0:94",
+        "category": "experience",
+        "text": "Conducted testing of various classification machine learning algorithms, optimizing and tuning",
+        "page_number": null
+      },
+      {
+        "source_id": "e21:0:117",
+        "category": "experience",
+        "text": "Boosted reporting efficiency by 70% with auto-generated analytics dashboards for turbine performance (GE Renewables).",
+        "page_number": null
+      },
+      {
+        "source_id": "e22:0:171",
+        "category": "experience",
+        "text": "Collaborated with the 'Turbine Performance Analysis' team to deliver actionable insights based on power curve and performance ratio data, driving performance improvements.",
+        "page_number": null
+      },
+      {
+        "source_id": "e23:0:113",
+        "category": "experience",
+        "text": "Enhanced data mining processes, reducing the time required to extract actionable insights from SCADA data by 20%.",
+        "page_number": null
+      },
+      {
+        "source_id": "e24:0:104",
+        "category": "experience",
+        "text": "Leveraged data-driven insights to significantly improve on-time delivery, increasing it from 65% to 95%.",
+        "page_number": null
+      },
+      {
+        "source_id": "e25:0:105",
+        "category": "experience",
+        "text": "Pontoon Solutions — HR Analyst\t\t\t\t\t\t                                                  Jun 2015 – May 2017",
+        "page_number": null
+      },
+      {
+        "source_id": "e26:0:94",
+        "category": "experience",
+        "text": "Conducted sourcing channel analytics and no-show churn forecasting to improve recruitment ROI.",
+        "page_number": null
+      },
+      {
+        "source_id": "e27:0:113",
+        "category": "experience",
+        "text": "Meeting hiring Stakeholders to understand the staffing needs and niche skills profiles to have capacity analytics",
+        "page_number": null
+      },
+      {
+        "source_id": "e28:0:90",
+        "category": "experience",
+        "text": "Mindlance — Sr. Talent Acquisition Specialist\t\t\t\t      \t\t\t             Sep 2012 – May 2015",
+        "page_number": null
+      },
+      {
+        "source_id": "e29:0:94",
+        "category": "experience",
+        "text": "Led tech hiring campaigns and data-driven sourcing for niche skill profiles across US clients.",
+        "page_number": null
+      },
+      {
+        "source_id": "e30:0:12",
+        "category": "experience",
+        "text": "Education & ",
+        "page_number": null
+      },
+      {
+        "source_id": "e30:12:26",
+        "category": "certifications",
+        "text": "Certifications",
+        "page_number": null
+      },
+      {
+        "source_id": "e35:6:24",
+        "category": "projects",
+        "text": "Project Highlights",
+        "page_number": null
+      },
+      {
+        "source_id": "e3:0:439",
+        "category": null,
+        "text": "AI/ML leader with 11+ years’ experience delivering measurable business value through end-to-end machine learning systems, MLOps, and Generative AI solutions. Proven track record in designing scalable pipelines, architecting LLM-driven applications, and leading full-lifecycle deployments in enterprise environments. Adept at translating business goals into data-driven solutions that scale and evolve with rapidly changing AI advancements.",
+        "page_number": null
+      }
+    ],
+    "needs_review": [
+      {
+        "source_element_index": 3,
+        "start": 0,
+        "end": 439,
+        "text": "AI/ML leader with 11+ years’ experience delivering measurable business value through end-to-end machine learning systems, MLOps, and Generative AI solutions. Proven track record in designing scalable pipelines, architecting LLM-driven applications, and leading full-lifecycle deployments in enterprise environments. Adept at translating business goals into data-driven solutions that scale and evolve with rapidly changing AI advancements.",
+        "page_number": null,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3698,
+        "margin": -0.0289,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      }
+    ]
+  },
+  "section_schemas": [
+    {
+      "category": "personal_information",
+      "label": "Personal information",
+      "records": [
+        {
+          "record_id": "personal_information",
+          "source_ids": [
+            "e0:0:15",
+            "e1:0:47",
+            "e2:0:53"
+          ],
+          "attributes": [
+            {
+              "name": "full_name",
+              "items": [
+                {
+                  "value": "Bal Chandra Jha",
+                  "evidence": [
+                    {
+                      "source_id": "e0:0:15",
+                      "quote": "Bal Chandra Jha"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "email",
+              "items": [
+                {
+                  "value": "balagiftian@gmail.com",
+                  "evidence": [
+                    {
+                      "source_id": "e1:0:47",
+                      "quote": "balagiftian@gmail.com"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "phone",
+              "items": [
+                {
+                  "value": "+91-9590858952",
+                  "evidence": [
+                    {
+                      "source_id": "e1:0:47",
+                      "quote": "+91-9590858952"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "linkedin_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "github_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "portfolio_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "professional_title",
+              "items": [
+                {
+                  "value": "Manager-Data Scientist | ML Engineer | GenAI Engineer",
+                  "evidence": [
+                    {
+                      "source_id": "e2:0:53",
+                      "quote": "Manager-Data Scientist | ML Engineer | GenAI Engineer"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e1:0:47",
+          "quote": "Email: balagiftian@gmail.com| M: +91-9590858952"
+        }
+      ]
+    },
+    {
+      "category": "skills",
+      "label": "Skills",
+      "records": [
+        {
+          "record_id": "skills",
+          "source_ids": [
+            "e5:0:79",
+            "e6:0:182",
+            "e7:0:210",
+            "e8:0:109",
+            "e9:0:102",
+            "e10:0:66"
+          ],
+          "attributes": [
+            {
+              "name": "technical_skills",
+              "items": [
+                {
+                  "value": "Python",
+                  "evidence": [
+                    {
+                      "source_id": "e5:0:79",
+                      "quote": "Python"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "SQL",
+                  "evidence": [
+                    {
+                      "source_id": "e5:0:79",
+                      "quote": "SQL"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "FastAPI",
+                  "evidence": [
+                    {
+                      "source_id": "e8:0:109",
+                      "quote": "FastAPI"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Flask",
+                  "evidence": [
+                    {
+                      "source_id": "e8:0:109",
+                      "quote": "Flask"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Docker",
+                  "evidence": [
+                    {
+                      "source_id": "e8:0:109",
+                      "quote": "Docker"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Kubernetes",
+                  "evidence": [
+                    {
+                      "source_id": "e8:0:109",
+                      "quote": "Kubernetes"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "tools_and_platforms",
+              "items": [
+                {
+                  "value": "Power BI",
+                  "evidence": [
+                    {
+                      "source_id": "e10:0:66",
+                      "quote": "Power BI"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Tableau",
+                  "evidence": [
+                    {
+                      "source_id": "e10:0:66",
+                      "quote": "Tableau"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Git",
+                  "evidence": [
+                    {
+                      "source_id": "e8:0:109",
+                      "quote": "Git"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "AWS",
+                  "evidence": [
+                    {
+                      "source_id": "e9:0:102",
+                      "quote": "AWS"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Azure",
+                  "evidence": [
+                    {
+                      "source_id": "e7:0:210",
+                      "quote": "Azure"
+                    },
+                    {
+                      "source_id": "e9:0:102",
+                      "quote": "Azure"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "GCP",
+                  "evidence": [
+                    {
+                      "source_id": "e9:0:102",
+                      "quote": "GCP"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "domain_and_functional",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "soft_skills",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "all_skills",
+              "items": [
+                {
+                  "value": "Python",
+                  "evidence": [
+                    {
+                      "source_id": "e5:0:79",
+                      "quote": "Python"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "SQL",
+                  "evidence": [
+                    {
+                      "source_id": "e5:0:79",
+                      "quote": "SQL"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "FastAPI",
+                  "evidence": [
+                    {
+                      "source_id": "e8:0:109",
+                      "quote": "FastAPI"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Flask",
+                  "evidence": [
+                    {
+                      "source_id": "e8:0:109",
+                      "quote": "Flask"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Docker",
+                  "evidence": [
+                    {
+                      "source_id": "e8:0:109",
+                      "quote": "Docker"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Kubernetes",
+                  "evidence": [
+                    {
+                      "source_id": "e8:0:109",
+                      "quote": "Kubernetes"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Power BI",
+                  "evidence": [
+                    {
+                      "source_id": "e10:0:66",
+                      "quote": "Power BI"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Tableau",
+                  "evidence": [
+                    {
+                      "source_id": "e10:0:66",
+                      "quote": "Tableau"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Git",
+                  "evidence": [
+                    {
+                      "source_id": "e8:0:109",
+                      "quote": "Git"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "AWS",
+                  "evidence": [
+                    {
+                      "source_id": "e9:0:102",
+                      "quote": "AWS"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Azure",
+                  "evidence": [
+                    {
+                      "source_id": "e7:0:210",
+                      "quote": "Azure"
+                    },
+                    {
+                      "source_id": "e9:0:102",
+                      "quote": "Azure"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "GCP",
+                  "evidence": [
+                    {
+                      "source_id": "e9:0:102",
+                      "quote": "GCP"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Programming & Scripting: Python",
+                  "evidence": [
+                    {
+                      "source_id": "e5:0:79",
+                      "quote": "Programming & Scripting: Python"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "PySpark",
+                  "evidence": [
+                    {
+                      "source_id": "e5:0:79",
+                      "quote": "PySpark"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Pandas",
+                  "evidence": [
+                    {
+                      "source_id": "e5:0:79",
+                      "quote": "Pandas"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "NumPy",
+                  "evidence": [
+                    {
+                      "source_id": "e5:0:79",
+                      "quote": "NumPy"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Scikit-learn",
+                  "evidence": [
+                    {
+                      "source_id": "e5:0:79",
+                      "quote": "Scikit-learn"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Machine Learning & Deep Learning: Supervised & Unsupervised Learning",
+                  "evidence": [
+                    {
+                      "source_id": "e6:0:182",
+                      "quote": "Machine Learning & Deep Learning: Supervised & Unsupervised Learning"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Classification",
+                  "evidence": [
+                    {
+                      "source_id": "e6:0:182",
+                      "quote": "Classification"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Regression",
+                  "evidence": [
+                    {
+                      "source_id": "e6:0:182",
+                      "quote": "Regression"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Clustering",
+                  "evidence": [
+                    {
+                      "source_id": "e6:0:182",
+                      "quote": "Clustering"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Recommendation Systems",
+                  "evidence": [
+                    {
+                      "source_id": "e6:0:182",
+                      "quote": "Recommendation Systems"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "CNN",
+                  "evidence": [
+                    {
+                      "source_id": "e6:0:182",
+                      "quote": "CNN"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "RNN",
+                  "evidence": [
+                    {
+                      "source_id": "e6:0:182",
+                      "quote": "RNN"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Transformers",
+                  "evidence": [
+                    {
+                      "source_id": "e6:0:182",
+                      "quote": "Transformers"
+                    },
+                    {
+                      "source_id": "e7:0:210",
+                      "quote": "Transformers"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "LLMs (BERT",
+                  "evidence": [
+                    {
+                      "source_id": "e6:0:182",
+                      "quote": "LLMs (BERT"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "GPT)",
+                  "evidence": [
+                    {
+                      "source_id": "e6:0:182",
+                      "quote": "GPT)"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Generative AI & LLMs: OpenAI APIs",
+                  "evidence": [
+                    {
+                      "source_id": "e7:0:210",
+                      "quote": "Generative AI & LLMs: OpenAI APIs"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Azure OpenAI",
+                  "evidence": [
+                    {
+                      "source_id": "e7:0:210",
+                      "quote": "Azure OpenAI"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "LangChain",
+                  "evidence": [
+                    {
+                      "source_id": "e7:0:210",
+                      "quote": "LangChain"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "LangGraph",
+                  "evidence": [
+                    {
+                      "source_id": "e7:0:210",
+                      "quote": "LangGraph"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "LangSmith",
+                  "evidence": [
+                    {
+                      "source_id": "e7:0:210",
+                      "quote": "LangSmith"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Huggingface Transformers",
+                  "evidence": [
+                    {
+                      "source_id": "e7:0:210",
+                      "quote": "Huggingface Transformers"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "RAG",
+                  "evidence": [
+                    {
+                      "source_id": "e7:0:210",
+                      "quote": "RAG"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Prompt Engineering",
+                  "evidence": [
+                    {
+                      "source_id": "e7:0:210",
+                      "quote": "Prompt Engineering"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Agents",
+                  "evidence": [
+                    {
+                      "source_id": "e7:0:210",
+                      "quote": "Agents"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "FAISS",
+                  "evidence": [
+                    {
+                      "source_id": "e7:0:210",
+                      "quote": "FAISS"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "ChromaDB",
+                  "evidence": [
+                    {
+                      "source_id": "e7:0:210",
+                      "quote": "ChromaDB"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Vector DBs (Pinecone",
+                  "evidence": [
+                    {
+                      "source_id": "e7:0:210",
+                      "quote": "Vector DBs (Pinecone"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Weaviate)",
+                  "evidence": [
+                    {
+                      "source_id": "e7:0:210",
+                      "quote": "Weaviate)"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Crew AI",
+                  "evidence": [
+                    {
+                      "source_id": "e7:0:210",
+                      "quote": "Crew AI"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "MLOps & Deployment: MLflow",
+                  "evidence": [
+                    {
+                      "source_id": "e8:0:109",
+                      "quote": "MLOps & Deployment: MLflow"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "DVC",
+                  "evidence": [
+                    {
+                      "source_id": "e8:0:109",
+                      "quote": "DVC"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "CI/CD Pipelines",
+                  "evidence": [
+                    {
+                      "source_id": "e8:0:109",
+                      "quote": "CI/CD Pipelines"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Streamlit",
+                  "evidence": [
+                    {
+                      "source_id": "e8:0:109",
+                      "quote": "Streamlit"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Cloud & Platforms: Azure Databricks",
+                  "evidence": [
+                    {
+                      "source_id": "e9:0:102",
+                      "quote": "Cloud & Platforms: Azure Databricks"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Unity Catalog",
+                  "evidence": [
+                    {
+                      "source_id": "e9:0:102",
+                      "quote": "Unity Catalog"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "AWS (SageMaker",
+                  "evidence": [
+                    {
+                      "source_id": "e9:0:102",
+                      "quote": "AWS (SageMaker"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "EC2",
+                  "evidence": [
+                    {
+                      "source_id": "e9:0:102",
+                      "quote": "EC2"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "S3",
+                  "evidence": [
+                    {
+                      "source_id": "e9:0:102",
+                      "quote": "S3"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Lambda)",
+                  "evidence": [
+                    {
+                      "source_id": "e9:0:102",
+                      "quote": "Lambda)"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Dataiku",
+                  "evidence": [
+                    {
+                      "source_id": "e9:0:102",
+                      "quote": "Dataiku"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Visualization & Monitoring: Tableau",
+                  "evidence": [
+                    {
+                      "source_id": "e10:0:66",
+                      "quote": "Visualization & Monitoring: Tableau"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Jupyter",
+                  "evidence": [
+                    {
+                      "source_id": "e10:0:66",
+                      "quote": "Jupyter"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "VS Code",
+                  "evidence": [
+                    {
+                      "source_id": "e10:0:66",
+                      "quote": "VS Code"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e4:0:5",
+          "quote": "Skill"
+        },
+        {
+          "source_id": "e5:0:79",
+          "quote": "Programming & Scripting: Python | PySpark | SQL | Pandas | NumPy | Scikit-learn"
+        },
+        {
+          "source_id": "e6:0:182",
+          "quote": "Machine Learning & Deep Learning: Supervised & Unsupervised Learning | Classification | Regression | Clustering | Recommendation Systems | CNN | RNN | Transformers | LLMs (BERT, GPT)"
+        },
+        {
+          "source_id": "e7:0:210",
+          "quote": "Generative AI & LLMs: OpenAI APIs | Azure OpenAI | LangChain | LangGraph | LangSmith | Huggingface Transformers | RAG | Prompt Engineering | Agents | FAISS | ChromaDB | Vector DBs (Pinecone, Weaviate) | Crew AI"
+        },
+        {
+          "source_id": "e8:0:109",
+          "quote": "MLOps & Deployment: MLflow | DVC | Docker | Kubernetes | CI/CD Pipelines | FastAPI | Streamlit | Flask | Git "
+        },
+        {
+          "source_id": "e9:0:102",
+          "quote": "Cloud & Platforms: Azure Databricks | Unity Catalog | AWS (SageMaker, EC2, S3, Lambda) | Dataiku | GCP"
+        },
+        {
+          "source_id": "e10:0:66",
+          "quote": "Visualization & Monitoring: Tableau | Power BI | Jupyter | VS Code"
+        }
+      ]
+    },
+    {
+      "category": "experience",
+      "label": "Experience",
+      "records": [
+        {
+          "record_id": "experience-1",
+          "source_ids": [
+            "e12:0:82",
+            "e13:0:162",
+            "e14:0:139",
+            "e15:0:70",
+            "e16:0:105",
+            "e17:0:87",
+            "e18:0:103",
+            "e19:0:133",
+            "e20:0:94",
+            "e21:0:117",
+            "e22:0:171",
+            "e23:0:113",
+            "e24:0:104"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "experience-2",
+          "source_ids": [
+            "e25:0:105",
+            "e26:0:94",
+            "e27:0:113",
+            "e28:0:90",
+            "e29:0:94",
+            "e30:0:12"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e11:0:23",
+          "quote": "Professional Experience"
+        },
+        {
+          "source_id": "e12:0:82",
+          "quote": "Capgemini — Manager, Data Science   \t\t\t\t\t       \t\t\t             Mar 2019 – Present"
+        },
+        {
+          "source_id": "e13:0:162",
+          "quote": "Built & deployed ML traditional and GenAI-enhanced fraud models for Client(HP) using Azure Databricks, MLflow, and feature store, reducing false positives by 35%."
+        },
+        {
+          "source_id": "e14:0:139",
+          "quote": "Leveraged the Dataiku platform to build, deploy, and manage models as API endpoints, ensuring efficient integration with business processes"
+        },
+        {
+          "source_id": "e15:0:70",
+          "quote": "Led the migration of the fraud detection model from DSS to Databricks."
+        },
+        {
+          "source_id": "e16:0:105",
+          "quote": "Designed multi-tier (global to local) fraud architecture improving detection coverage across geographies."
+        },
+        {
+          "source_id": "e17:0:87",
+          "quote": "Created HR attrition model saving ₹2.3 Cr/year, enabling targeted retention strategies."
+        },
+        {
+          "source_id": "e18:0:103",
+          "quote": "Developed a predictive tool to analyze employee attrition within the I&D departments with 85% accuracy,"
+        },
+        {
+          "source_id": "e19:0:133",
+          "quote": "Led the development of roadmaps, prepared data dictionaries, and documented processes to ensure clarity and consistency across teams."
+        },
+        {
+          "source_id": "e20:0:94",
+          "quote": "Conducted testing of various classification machine learning algorithms, optimizing and tuning"
+        },
+        {
+          "source_id": "e21:0:117",
+          "quote": "Boosted reporting efficiency by 70% with auto-generated analytics dashboards for turbine performance (GE Renewables)."
+        },
+        {
+          "source_id": "e22:0:171",
+          "quote": "Collaborated with the 'Turbine Performance Analysis' team to deliver actionable insights based on power curve and performance ratio data, driving performance improvements."
+        },
+        {
+          "source_id": "e23:0:113",
+          "quote": "Enhanced data mining processes, reducing the time required to extract actionable insights from SCADA data by 20%."
+        },
+        {
+          "source_id": "e24:0:104",
+          "quote": "Leveraged data-driven insights to significantly improve on-time delivery, increasing it from 65% to 95%."
+        },
+        {
+          "source_id": "e25:0:105",
+          "quote": "Pontoon Solutions — HR Analyst\t\t\t\t\t\t                                                  Jun 2015 – May 2017"
+        },
+        {
+          "source_id": "e26:0:94",
+          "quote": "Conducted sourcing channel analytics and no-show churn forecasting to improve recruitment ROI."
+        },
+        {
+          "source_id": "e27:0:113",
+          "quote": "Meeting hiring Stakeholders to understand the staffing needs and niche skills profiles to have capacity analytics"
+        },
+        {
+          "source_id": "e28:0:90",
+          "quote": "Mindlance — Sr. Talent Acquisition Specialist\t\t\t\t      \t\t\t             Sep 2012 – May 2015"
+        },
+        {
+          "source_id": "e29:0:94",
+          "quote": "Led tech hiring campaigns and data-driven sourcing for niche skill profiles across US clients."
+        },
+        {
+          "source_id": "e30:0:12",
+          "quote": "Education & "
+        }
+      ]
+    },
+    {
+      "category": "certifications",
+      "label": "Certifications",
+      "records": [
+        {
+          "record_id": "certifications-1",
+          "source_ids": [
+            "e31:0:58",
+            "e32:0:52",
+            "e33:0:49",
+            "e34:0:62",
+            "e35:0:6"
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "issuer",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "issue_year",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e30:12:26",
+          "quote": "Certifications"
+        },
+        {
+          "source_id": "e31:0:58",
+          "quote": "PG Diploma in Data Science — IMS Proschool, MU (2018–2019)"
+        },
+        {
+          "source_id": "e32:0:52",
+          "quote": "BTech in Electrical & Electronics — BPUT (2007–2011)"
+        },
+        {
+          "source_id": "e33:0:49",
+          "quote": "Dataiku (ML, MLOps, Developer, Advanced Designer)"
+        },
+        {
+          "source_id": "e34:0:62",
+          "quote": "AWS ML on Cloud | DeepLearning.AI Prompt Engineering (Ongoing)"
+        },
+        {
+          "source_id": "e35:0:6",
+          "quote": "GenAI "
+        }
+      ]
+    },
+    {
+      "category": "projects",
+      "label": "Projects",
+      "records": [
+        {
+          "record_id": "projects-1",
+          "source_ids": [
+            "e36:0:71",
+            "e37:0:73",
+            "e38:0:76"
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "items": [
+                {
+                  "value": "Delivered RAG-based document intelligence pipeline for fraud detection.",
+                  "evidence": [
+                    {
+                      "source_id": "e36:0:71",
+                      "quote": "Delivered RAG-based document intelligence pipeline for fraud detection."
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "description",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "url",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e35:6:24",
+          "quote": "Project Highlights"
+        },
+        {
+          "source_id": "e37:0:73",
+          "quote": "Developed Chabot with LangChain + OpenAI + FAISS for internal Q&A system."
+        },
+        {
+          "source_id": "e38:0:76",
+          "quote": "Built Huggingface-powered resume classifier for talent screening automation."
+        }
+      ]
+    },
+    {
+      "category": "needs_review",
+      "label": "Unassigned source blocks",
+      "records": [],
+      "residual_blocks": [
+        {
+          "source_id": "e3:0:439",
+          "quote": "AI/ML leader with 11+ years’ experience delivering measurable business value through end-to-end machine learning systems, MLOps, and Generative AI solutions. Proven track record in designing scalable pipelines, architecting LLM-driven applications, and leading full-lifecycle deployments in enterprise environments. Adept at translating business goals into data-driven solutions that scale and evolve with rapidly changing AI advancements."
+        }
+      ]
+    }
+  ]
+}

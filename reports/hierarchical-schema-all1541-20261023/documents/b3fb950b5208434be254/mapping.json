@@ -1,0 +1,2185 @@
+{
+  "success": true,
+  "source": "Manikanta.docx",
+  "extraction_mode": "existing_blocks_schema_mapping",
+  "data": {
+    "contact": {
+      "full_name": "",
+      "email": "",
+      "phone": "",
+      "location": null,
+      "linkedin_url": null,
+      "github_url": null,
+      "portfolio_url": null
+    },
+    "professional_title": null,
+    "summary": "Data Scientist focused on Gen AI, ML & Computer Vision 6 years of experience skilled in Python, creating ML and AI models to train and transform data science prototypes into production-grade solutions.\nI am currently working at Kipi.ai  as a Senior Data Scientist.\nI have completed the PGP in Artificial Intelligence and Machine Learning from the Great Learning Institute in collaboration with UT Austin.\nProgramming Language\nPython\nExploratory Data Analysis (EDA)\nText Pre-processing, Pandas, Matplotlib, Seaborn, Excel\nHands-on\nMachine Learning, Deep Learning, Gen AI, NLP, Computer Vision\nWeb Technology & User Interface\nStreamlit, TKinter, PySimpleGUI\nTools & Framworks Jupyter, Pycharm, VS code, Databricks, Scikit-learn, Xgboost\nScripting Language and Cloud\nLinux,\nAzure, IBM Cloud and AWS",
+    "total_experience_years": 6.0,
+    "skills": {
+      "technical_skills": [],
+      "tools_and_platforms": [],
+      "domain_and_functional": [],
+      "soft_skills": [],
+      "all_skills": []
+    },
+    "experience": [
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      }
+    ],
+    "education": [
+      {
+        "institution": "",
+        "degree": "",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      },
+      {
+        "institution": "",
+        "degree": "",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      },
+      {
+        "institution": "",
+        "degree": "",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      }
+    ],
+    "certifications": [],
+    "projects": [],
+    "languages": []
+  },
+  "schema_mapping": {
+    "fields_populated": 4,
+    "total_fields": 16,
+    "completion_percentage": 25.0,
+    "field_details": [
+      {
+        "field_name": "contact.full_name",
+        "target_type": "string",
+        "is_required": true,
+        "is_extracted": false,
+        "source_section": "Header / Personal Details",
+        "confidence_score": 0.0,
+        "description": "Candidate's full name, extracted from the top header of the resume."
+      },
+      {
+        "field_name": "contact.email",
+        "target_type": "string (email)",
+        "is_required": true,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's primary contact email address."
+      },
+      {
+        "field_name": "contact.phone",
+        "target_type": "string (phone)",
+        "is_required": true,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's telephone / mobile phone number."
+      },
+      {
+        "field_name": "contact.location",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's residential location or work city."
+      },
+      {
+        "field_name": "contact.linkedin_url",
+        "target_type": "string (url) | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "URL to candidate's LinkedIn profile."
+      },
+      {
+        "field_name": "professional_title",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Subtitle",
+        "confidence_score": 0.0,
+        "description": "Candidate's target headline or most recent job title."
+      },
+      {
+        "field_name": "summary",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Summary / Profile / Objective",
+        "confidence_score": 0.85,
+        "description": "Executive bio, professional overview, or career objective."
+      },
+      {
+        "field_name": "total_experience_years",
+        "target_type": "float | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Summary / Experience Calculation",
+        "confidence_score": 0.9,
+        "description": "Total professional experience in years."
+      },
+      {
+        "field_name": "skills.technical_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Technical Competencies",
+        "confidence_score": 0.0,
+        "description": "Technical programming languages and core software competencies."
+      },
+      {
+        "field_name": "skills.tools_and_platforms",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Tools & Technologies",
+        "confidence_score": 0.0,
+        "description": "Software platforms, developer tools, and operational systems."
+      },
+      {
+        "field_name": "skills.domain_and_functional",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Domain Expertise",
+        "confidence_score": 0.0,
+        "description": "Functional domain knowledge (e.g. Hedge Funds, KYC, NAV, Derivatives)."
+      },
+      {
+        "field_name": "skills.all_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills (Aggregated)",
+        "confidence_score": 0.0,
+        "description": "Complete list of candidate skills across all categories."
+      },
+      {
+        "field_name": "experience",
+        "target_type": "array[WorkExperience]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Experience / Work History",
+        "confidence_score": 0.92,
+        "description": "Complete chronological employment records with bullet points."
+      },
+      {
+        "field_name": "education",
+        "target_type": "array[Education]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Education / Academic Qualifications",
+        "confidence_score": 0.9,
+        "description": "University, college, and higher education degree qualifications."
+      },
+      {
+        "field_name": "certifications",
+        "target_type": "array[Certification]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Certifications / Licenses",
+        "confidence_score": 0.0,
+        "description": "Professional accreditations and credentials."
+      },
+      {
+        "field_name": "projects",
+        "target_type": "array[Project]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Projects / Key Engagements",
+        "confidence_score": 0.0,
+        "description": "Major projects or strategic initiatives led by candidate."
+      }
+    ]
+  },
+  "raw_sections": {
+    "summary": " Summary\nData Scientist focused on Gen AI, ML & Computer Vision 6 years of experience skilled in Python, creating ML and AI models to train and transform data science prototypes into production-grade solutions.\nI am currently working at Kipi.ai  as a Senior Data Scientist.\nI have completed the PGP in Artificial Intelligence and Machine Learning from the Great Learning Institute in collaboration with UT Austin.\nProgramming Language\nPython\nExploratory Data Analysis (EDA)\nText Pre-processing, Pandas, Matplotlib, Seaborn, Excel\nHands-on\nMachine Learning, Deep Learning, Gen AI, NLP, Computer Vision\nWeb Technology & User Interface\nStreamlit, TKinter, PySimpleGUI\nTools & Framworks Jupyter, Pycharm, VS code, Databricks, Scikit-learn, Xgboost\nScripting Language and Cloud\nLinux,\nAzure, IBM Cloud and AWS",
+    "education": " Education\nPost Graduate Program in AIML, Great Learning\t2020 – 2021\nBachelorʼs Degree in Computer Applications,\nBangalore Central University\n2016 – 2019\nMicrosoft Azure AI Fundamentals (AI- 900) \nMicrosoft Azure Fundamentals (AZ- 900) \nMLOPS Training Certification - Internal\nMicrosoft Azure Data Scientist Associate (DP-100) ",
+    "experience": "Work Experience\nKipi.ai, Senior Data Scientist\tApr 2025 | Remote\n Built and deployed customer churn prediction models and product analytics solutions using Snowflake native features, with real-time inference via Snowflakeʼs model registry.\n Extracted and prepared data from large databases, and developed Streamlit dashboards for business teams.\n Developed an internal RAG pipeline for a knowledge center, enabling users to upload documents and perform question answering.\nIBM, Data Scientist\tDec 2023 – Mar 2025 | Bangalore\nGen AI Engineer, IBM Automation\n Working as a Data Scientist, developing solutions with Gen AI and agentic frameworks like LangChain and CrewAI for internal automation project using python.\n Developed and tested a RAG solution using multiple LLMs to generate SQL queries given a user queries.\n Created and tested various prompt templates, worked on creating the vector database using Weaviate\nfor dynamically fetching the context and examples from vector search service.\n Created solution helped to improve the accuracy from 70% to 85% accurately in generating the SQL queries for a project.\n Used machine learning models such as Random Forest Classifier for incident priority classification.\nIBM's Internal, Time Series Analysis\n Trained and tested the IBM's in-house model PatchTST  model on various domains of datasets, including Market Data, VIX Index, Retail Data, Well Production data, Electricity data, Production unit data, and Weather data.\n Evaluations were performed in terms of short-term and long-term series with different frequency intervals like monthly, daily, and hourly. The model performed better on long-term series and when the data distribution was normal.\n Fine-tuning involved specific hyperparameters for each dataset, demonstrating the modelʼs adaptability across diverse time series domains.\nCapgemini, Associate Consultant\tJul 2021 – Dec 2023 | Bangalore\n1. DOT Code Recognition: Michelin\n I worked as a Data Scientist for a Tire Manufacturing client to detect the DOT characters from a guided tire image using object detection models such as Yolov5 and mask-RCNN running entirely on the Azure ML Studio. Created the web interfaces for multiple use-cases to showcase the results of models.\n Also tried and tested Azure OCR and Google OCR for text extraction.\n This solution is part of the project to give users a more convenient way to enter the DOT code, which has a universal nomenclature, by simply uploading a picture.\n The DOT training dataset has about 3000 images and dedicated production benchmark data to test accuracy.\n2. Abbott Healthcare, Sales Forecasting: Time Series Modeling\n I worked as a Data Scientist for a pharmaceutical client where I was responsible for working on forecasting long-range and short-term sales of medical data using historical sales.\n Used Facebook's Prophet for long-range forecasting and Exponential Smoothing for short-term forecasting using python.\n Created the automated flow for running the models using AWS SageMaker and storing the output on AWS S3.\n The objective was to make it easier to recommend sales and marketing strategies based on trend and seasonality effects for the various groups of pharmaceutical products.\n Generated reports and continuously reviewed forecasts, understanding sales trends and patterns across different therapy areas to determine future demand through detailed statistical analysis using advanced Excel techniques..\n2. UBS, AI-Driven Inventory Management: Object Detection\n I worked as an AI engineer with python language to build an end-to-end custom object detection engine with the ability to recognize various different types of assets in data centers.\n Trained various State-Of-The-Art (SOTA) pre-trained object detection models such as Yolo, R-CNN, and Retinanet using the Deep Learning frameworks PyTorch and Tensorflow. The models enabled to scale across multiple data centers.\n Designed a custom interface using the Streamilt framework to test and validate images.\n Increased operational efficiency of the audit process by reducing the average time for a data center from 4 months to 15 days and reducing costs by over $1 million per data center every year through this automated audit.\n Attended Databricks in-class training and worked on multiple hands-on projects using pyspark in Azure Databricks.\nTata Consultancy Services Ltd, Programmer\tSep 2019 – Jul 2021 | Bangalore\nRoyal Dutch Shell\n Collaborated with the TCS IGNIO automation team on automating catalogs, with a focus on efficiently handling detected incidents through accurate diagnosis and prompt action prescription.\n Applied machine learning techniques to extract insights from support ticket data, to drive better decision making.\n Implemented a clustering algorithm to optimize the customer experience by directing a portion of requests directly to the responsible team for resolution, leading to faster issue resolution."
+  },
+  "meta": {
+    "status": "needs_review",
+    "human_verified": false,
+    "provider_calls": 0,
+    "source_accounting": {
+      "all_source_text_preserved": true,
+      "total_spans": 67,
+      "assigned_meaningful_spans": 65,
+      "unresolved_meaningful_spans": 0,
+      "non_content_artifacts": 2,
+      "duplicates_excluded": 0,
+      "all_meaningful_text_assigned": true,
+      "semantic_correctness_verified": false,
+      "outcomes": [
+        {
+          "source_id": "e0:0:8",
+          "source_element_index": 0,
+          "start": 0,
+          "end": 8,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e1:0:201",
+          "source_element_index": 1,
+          "start": 0,
+          "end": 201,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e2:0:62",
+          "source_element_index": 2,
+          "start": 0,
+          "end": 62,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:0:139",
+          "source_element_index": 3,
+          "start": 0,
+          "end": 139,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e4:0:20",
+          "source_element_index": 4,
+          "start": 0,
+          "end": 20,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e5:0:6",
+          "source_element_index": 5,
+          "start": 0,
+          "end": 6,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e6:0:31",
+          "source_element_index": 6,
+          "start": 0,
+          "end": 31,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e7:0:55",
+          "source_element_index": 7,
+          "start": 0,
+          "end": 55,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:0:8",
+          "source_element_index": 8,
+          "start": 0,
+          "end": 8,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:0:61",
+          "source_element_index": 9,
+          "start": 0,
+          "end": 61,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e10:0:31",
+          "source_element_index": 10,
+          "start": 0,
+          "end": 31,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e11:0:31",
+          "source_element_index": 11,
+          "start": 0,
+          "end": 31,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:0:78",
+          "source_element_index": 12,
+          "start": 0,
+          "end": 78,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e13:0:28",
+          "source_element_index": 13,
+          "start": 0,
+          "end": 28,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e14:0:6",
+          "source_element_index": 14,
+          "start": 0,
+          "end": 6,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e15:0:24",
+          "source_element_index": 15,
+          "start": 0,
+          "end": 24,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e16:0:10",
+          "source_element_index": 16,
+          "start": 0,
+          "end": 10,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e17:0:57",
+          "source_element_index": 17,
+          "start": 0,
+          "end": 57,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e18:0:43",
+          "source_element_index": 18,
+          "start": 0,
+          "end": 43,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e19:0:28",
+          "source_element_index": 19,
+          "start": 0,
+          "end": 28,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e20:0:11",
+          "source_element_index": 20,
+          "start": 0,
+          "end": 11,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e21:0:42",
+          "source_element_index": 21,
+          "start": 0,
+          "end": 42,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e22:0:39",
+          "source_element_index": 22,
+          "start": 0,
+          "end": 39,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e23:0:39",
+          "source_element_index": 23,
+          "start": 0,
+          "end": 39,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e24:0:50",
+          "source_element_index": 24,
+          "start": 0,
+          "end": 50,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e25:0:15",
+          "source_element_index": 25,
+          "start": 0,
+          "end": 15,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e26:0:48",
+          "source_element_index": 26,
+          "start": 0,
+          "end": 48,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e27:0:174",
+          "source_element_index": 27,
+          "start": 0,
+          "end": 174,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e28:0:105",
+          "source_element_index": 28,
+          "start": 0,
+          "end": 105,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e29:0:0",
+          "source_element_index": 29,
+          "start": 0,
+          "end": 0,
+          "section": null,
+          "outcome": "non_content_artifact",
+          "reason": "Whitespace retained in source inventory"
+        },
+        {
+          "source_id": "e30:0:126",
+          "source_element_index": 30,
+          "start": 0,
+          "end": 126,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e31:0:51",
+          "source_element_index": 31,
+          "start": 0,
+          "end": 51,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e32:0:31",
+          "source_element_index": 32,
+          "start": 0,
+          "end": 31,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e33:0:157",
+          "source_element_index": 33,
+          "start": 0,
+          "end": 157,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e34:0:102",
+          "source_element_index": 34,
+          "start": 0,
+          "end": 102,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e35:0:99",
+          "source_element_index": 35,
+          "start": 0,
+          "end": 99,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e36:0:77",
+          "source_element_index": 36,
+          "start": 0,
+          "end": 77,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e37:0:120",
+          "source_element_index": 37,
+          "start": 0,
+          "end": 120,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e38:0:100",
+          "source_element_index": 38,
+          "start": 0,
+          "end": 100,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e39:0:36",
+          "source_element_index": 39,
+          "start": 0,
+          "end": 36,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e40:0:219",
+          "source_element_index": 40,
+          "start": 0,
+          "end": 219,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e41:0:229",
+          "source_element_index": 41,
+          "start": 0,
+          "end": 229,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e42:0:139",
+          "source_element_index": 42,
+          "start": 0,
+          "end": 139,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e43:0:63",
+          "source_element_index": 43,
+          "start": 0,
+          "end": 63,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e44:0:33",
+          "source_element_index": 44,
+          "start": 0,
+          "end": 33,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e45:0:300",
+          "source_element_index": 45,
+          "start": 0,
+          "end": 300,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e46:0:68",
+          "source_element_index": 46,
+          "start": 0,
+          "end": 68,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e47:0:163",
+          "source_element_index": 47,
+          "start": 0,
+          "end": 163,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e48:0:105",
+          "source_element_index": 48,
+          "start": 0,
+          "end": 105,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e49:0:61",
+          "source_element_index": 49,
+          "start": 0,
+          "end": 61,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e50:0:180",
+          "source_element_index": 50,
+          "start": 0,
+          "end": 180,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e51:0:118",
+          "source_element_index": 51,
+          "start": 0,
+          "end": 118,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e52:0:104",
+          "source_element_index": 52,
+          "start": 0,
+          "end": 104,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e53:0:170",
+          "source_element_index": 53,
+          "start": 0,
+          "end": 170,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e54:0:225",
+          "source_element_index": 54,
+          "start": 0,
+          "end": 225,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e55:0:56",
+          "source_element_index": 55,
+          "start": 0,
+          "end": 56,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e56:0:183",
+          "source_element_index": 56,
+          "start": 0,
+          "end": 183,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e57:0:228",
+          "source_element_index": 57,
+          "start": 0,
+          "end": 228,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e58:0:87",
+          "source_element_index": 58,
+          "start": 0,
+          "end": 87,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e59:0:221",
+          "source_element_index": 59,
+          "start": 0,
+          "end": 221,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e60:0:0",
+          "source_element_index": 60,
+          "start": 0,
+          "end": 0,
+          "section": null,
+          "outcome": "non_content_artifact",
+          "reason": "Whitespace retained in source inventory"
+        },
+        {
+          "source_id": "e61:0:114",
+          "source_element_index": 61,
+          "start": 0,
+          "end": 114,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e62:0:73",
+          "source_element_index": 62,
+          "start": 0,
+          "end": 73,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit dated employer starts or continues Experience across layout changes"
+        },
+        {
+          "source_id": "e63:0:17",
+          "source_element_index": 63,
+          "start": 0,
+          "end": 17,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e64:0:187",
+          "source_element_index": 64,
+          "start": 0,
+          "end": 187,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e65:0:115",
+          "source_element_index": 65,
+          "start": 0,
+          "end": 115,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e66:0:191",
+          "source_element_index": 66,
+          "start": 0,
+          "end": 191,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        }
+      ]
+    },
+    "document_scope": {
+      "kind": "candidate_or_unknown",
+      "candidate_resume": null,
+      "requires_scope_review": true
+    },
+    "source_inventory_sha256": "1aeb8b78a10d6810bb328b30c85b2b217a8cc4646ee64acaf67b539666f2706f",
+    "field_evidence": {
+      "summary": [
+        "e1:0:201",
+        "e2:0:62",
+        "e3:0:139",
+        "e4:0:20",
+        "e5:0:6",
+        "e6:0:31",
+        "e7:0:55",
+        "e8:0:8",
+        "e9:0:61",
+        "e10:0:31",
+        "e11:0:31",
+        "e12:0:78",
+        "e13:0:28",
+        "e14:0:6",
+        "e15:0:24"
+      ],
+      "total_experience_years": [
+        "e1:0:201"
+      ]
+    },
+    "record_reviews": [
+      {
+        "category": "experience",
+        "entry_id": "experience-1",
+        "source_ids": [
+          "e26:0:48",
+          "e27:0:174",
+          "e28:0:105",
+          "e30:0:126",
+          "e31:0:51",
+          "e32:0:31",
+          "e33:0:157",
+          "e34:0:102",
+          "e35:0:99",
+          "e36:0:77",
+          "e37:0:120",
+          "e38:0:100",
+          "e39:0:36",
+          "e40:0:219",
+          "e41:0:229",
+          "e42:0:139",
+          "e43:0:63",
+          "e44:0:33",
+          "e45:0:300",
+          "e46:0:68",
+          "e47:0:163",
+          "e48:0:105",
+          "e49:0:61",
+          "e50:0:180",
+          "e51:0:118",
+          "e52:0:104",
+          "e53:0:170",
+          "e54:0:225"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-2",
+        "source_ids": [
+          "e55:0:56",
+          "e56:0:183",
+          "e57:0:228",
+          "e58:0:87",
+          "e59:0:221",
+          "e61:0:114"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-3",
+        "source_ids": [
+          "e62:0:73"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-4",
+        "source_ids": [
+          "e63:0:17",
+          "e64:0:187",
+          "e65:0:115",
+          "e66:0:191"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "education",
+        "entry_id": "education-1",
+        "source_ids": [
+          "e17:0:57"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "education",
+        "entry_id": "education-2",
+        "source_ids": [
+          "e18:0:43",
+          "e19:0:28"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "education",
+        "entry_id": "education-3",
+        "source_ids": [
+          "e20:0:11",
+          "e21:0:42",
+          "e22:0:39",
+          "e23:0:39",
+          "e24:0:50"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      }
+    ],
+    "missing_required_fields": [
+      "contact.full_name",
+      "contact.email",
+      "contact.phone",
+      "experience[0].company",
+      "experience[0].role",
+      "experience[1].company",
+      "experience[1].role",
+      "experience[2].company",
+      "experience[2].role",
+      "experience[3].company",
+      "experience[3].role",
+      "education[0].institution",
+      "education[0].degree",
+      "education[1].institution",
+      "education[1].degree",
+      "education[2].institution",
+      "education[2].degree"
+    ],
+    "warnings": [
+      "Schema validity and field completion do not establish extraction or relationship accuracy.",
+      "Handoff confidence scores are fixed heuristics, not calibrated probabilities.",
+      "Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields."
+    ],
+    "unmapped_blocks": [
+      {
+        "source_id": "e0:0:8",
+        "category": "summary",
+        "text": " Summary",
+        "page_number": 1
+      },
+      {
+        "source_id": "e16:0:10",
+        "category": "education",
+        "text": " Education",
+        "page_number": 1
+      },
+      {
+        "source_id": "e17:0:57",
+        "category": "education",
+        "text": "Post Graduate Program in AIML, Great Learning\t2020 – 2021",
+        "page_number": 1
+      },
+      {
+        "source_id": "e18:0:43",
+        "category": "education",
+        "text": "Bachelorʼs Degree in Computer Applications,",
+        "page_number": 1
+      },
+      {
+        "source_id": "e19:0:28",
+        "category": "education",
+        "text": "Bangalore Central University",
+        "page_number": 1
+      },
+      {
+        "source_id": "e20:0:11",
+        "category": "education",
+        "text": "2016 – 2019",
+        "page_number": 1
+      },
+      {
+        "source_id": "e21:0:42",
+        "category": "education",
+        "text": "Microsoft Azure AI Fundamentals (AI- 900) ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e22:0:39",
+        "category": "education",
+        "text": "Microsoft Azure Fundamentals (AZ- 900) ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e23:0:39",
+        "category": "education",
+        "text": "MLOPS Training Certification - Internal",
+        "page_number": 1
+      },
+      {
+        "source_id": "e24:0:50",
+        "category": "education",
+        "text": "Microsoft Azure Data Scientist Associate (DP-100) ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e25:0:15",
+        "category": "experience",
+        "text": "Work Experience",
+        "page_number": 1
+      },
+      {
+        "source_id": "e26:0:48",
+        "category": "experience",
+        "text": "Kipi.ai, Senior Data Scientist\tApr 2025 | Remote",
+        "page_number": 1
+      },
+      {
+        "source_id": "e27:0:174",
+        "category": "experience",
+        "text": " Built and deployed customer churn prediction models and product analytics solutions using Snowflake native features, with real-time inference via Snowflakeʼs model registry.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e28:0:105",
+        "category": "experience",
+        "text": " Extracted and prepared data from large databases, and developed Streamlit dashboards for business teams.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e30:0:126",
+        "category": "experience",
+        "text": " Developed an internal RAG pipeline for a knowledge center, enabling users to upload documents and perform question answering.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e31:0:51",
+        "category": "experience",
+        "text": "IBM, Data Scientist\tDec 2023 – Mar 2025 | Bangalore",
+        "page_number": 2
+      },
+      {
+        "source_id": "e32:0:31",
+        "category": "experience",
+        "text": "Gen AI Engineer, IBM Automation",
+        "page_number": 2
+      },
+      {
+        "source_id": "e33:0:157",
+        "category": "experience",
+        "text": " Working as a Data Scientist, developing solutions with Gen AI and agentic frameworks like LangChain and CrewAI for internal automation project using python.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e34:0:102",
+        "category": "experience",
+        "text": " Developed and tested a RAG solution using multiple LLMs to generate SQL queries given a user queries.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e35:0:99",
+        "category": "experience",
+        "text": " Created and tested various prompt templates, worked on creating the vector database using Weaviate",
+        "page_number": 2
+      },
+      {
+        "source_id": "e36:0:77",
+        "category": "experience",
+        "text": "for dynamically fetching the context and examples from vector search service.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e37:0:120",
+        "category": "experience",
+        "text": " Created solution helped to improve the accuracy from 70% to 85% accurately in generating the SQL queries for a project.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e38:0:100",
+        "category": "experience",
+        "text": " Used machine learning models such as Random Forest Classifier for incident priority classification.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e39:0:36",
+        "category": "experience",
+        "text": "IBM's Internal, Time Series Analysis",
+        "page_number": 2
+      },
+      {
+        "source_id": "e40:0:219",
+        "category": "experience",
+        "text": " Trained and tested the IBM's in-house model PatchTST  model on various domains of datasets, including Market Data, VIX Index, Retail Data, Well Production data, Electricity data, Production unit data, and Weather data.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e41:0:229",
+        "category": "experience",
+        "text": " Evaluations were performed in terms of short-term and long-term series with different frequency intervals like monthly, daily, and hourly. The model performed better on long-term series and when the data distribution was normal.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e42:0:139",
+        "category": "experience",
+        "text": " Fine-tuning involved specific hyperparameters for each dataset, demonstrating the modelʼs adaptability across diverse time series domains.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e43:0:63",
+        "category": "experience",
+        "text": "Capgemini, Associate Consultant\tJul 2021 – Dec 2023 | Bangalore",
+        "page_number": 2
+      },
+      {
+        "source_id": "e44:0:33",
+        "category": "experience",
+        "text": "1. DOT Code Recognition: Michelin",
+        "page_number": 2
+      },
+      {
+        "source_id": "e45:0:300",
+        "category": "experience",
+        "text": " I worked as a Data Scientist for a Tire Manufacturing client to detect the DOT characters from a guided tire image using object detection models such as Yolov5 and mask-RCNN running entirely on the Azure ML Studio. Created the web interfaces for multiple use-cases to showcase the results of models.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e46:0:68",
+        "category": "experience",
+        "text": " Also tried and tested Azure OCR and Google OCR for text extraction.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e47:0:163",
+        "category": "experience",
+        "text": " This solution is part of the project to give users a more convenient way to enter the DOT code, which has a universal nomenclature, by simply uploading a picture.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e48:0:105",
+        "category": "experience",
+        "text": " The DOT training dataset has about 3000 images and dedicated production benchmark data to test accuracy.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e49:0:61",
+        "category": "experience",
+        "text": "2. Abbott Healthcare, Sales Forecasting: Time Series Modeling",
+        "page_number": 2
+      },
+      {
+        "source_id": "e50:0:180",
+        "category": "experience",
+        "text": " I worked as a Data Scientist for a pharmaceutical client where I was responsible for working on forecasting long-range and short-term sales of medical data using historical sales.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e51:0:118",
+        "category": "experience",
+        "text": " Used Facebook's Prophet for long-range forecasting and Exponential Smoothing for short-term forecasting using python.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e52:0:104",
+        "category": "experience",
+        "text": " Created the automated flow for running the models using AWS SageMaker and storing the output on AWS S3.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e53:0:170",
+        "category": "experience",
+        "text": " The objective was to make it easier to recommend sales and marketing strategies based on trend and seasonality effects for the various groups of pharmaceutical products.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e54:0:225",
+        "category": "experience",
+        "text": " Generated reports and continuously reviewed forecasts, understanding sales trends and patterns across different therapy areas to determine future demand through detailed statistical analysis using advanced Excel techniques..",
+        "page_number": 2
+      },
+      {
+        "source_id": "e55:0:56",
+        "category": "experience",
+        "text": "2. UBS, AI-Driven Inventory Management: Object Detection",
+        "page_number": 2
+      },
+      {
+        "source_id": "e56:0:183",
+        "category": "experience",
+        "text": " I worked as an AI engineer with python language to build an end-to-end custom object detection engine with the ability to recognize various different types of assets in data centers.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e57:0:228",
+        "category": "experience",
+        "text": " Trained various State-Of-The-Art (SOTA) pre-trained object detection models such as Yolo, R-CNN, and Retinanet using the Deep Learning frameworks PyTorch and Tensorflow. The models enabled to scale across multiple data centers.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e58:0:87",
+        "category": "experience",
+        "text": " Designed a custom interface using the Streamilt framework to test and validate images.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e59:0:221",
+        "category": "experience",
+        "text": " Increased operational efficiency of the audit process by reducing the average time for a data center from 4 months to 15 days and reducing costs by over $1 million per data center every year through this automated audit.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e61:0:114",
+        "category": "experience",
+        "text": " Attended Databricks in-class training and worked on multiple hands-on projects using pyspark in Azure Databricks.",
+        "page_number": 3
+      },
+      {
+        "source_id": "e62:0:73",
+        "category": "experience",
+        "text": "Tata Consultancy Services Ltd, Programmer\tSep 2019 – Jul 2021 | Bangalore",
+        "page_number": 3
+      },
+      {
+        "source_id": "e63:0:17",
+        "category": "experience",
+        "text": "Royal Dutch Shell",
+        "page_number": 3
+      },
+      {
+        "source_id": "e64:0:187",
+        "category": "experience",
+        "text": " Collaborated with the TCS IGNIO automation team on automating catalogs, with a focus on efficiently handling detected incidents through accurate diagnosis and prompt action prescription.",
+        "page_number": 3
+      },
+      {
+        "source_id": "e65:0:115",
+        "category": "experience",
+        "text": " Applied machine learning techniques to extract insights from support ticket data, to drive better decision making.",
+        "page_number": 3
+      },
+      {
+        "source_id": "e66:0:191",
+        "category": "experience",
+        "text": " Implemented a clustering algorithm to optimize the customer experience by directing a portion of requests directly to the responsible team for resolution, leading to faster issue resolution.",
+        "page_number": 3
+      },
+      {
+        "source_id": "e29:0:0",
+        "category": null,
+        "text": "",
+        "page_number": null
+      },
+      {
+        "source_id": "e60:0:0",
+        "category": null,
+        "text": "",
+        "page_number": null
+      }
+    ],
+    "needs_review": [
+      {
+        "source_element_index": 29,
+        "start": 0,
+        "end": 0,
+        "text": "",
+        "page_number": null,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1867,
+        "margin": -0.0366,
+        "lane": "main",
+        "reason": "Layout footer or page separator retained outside semantic sections",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 60,
+        "start": 0,
+        "end": 0,
+        "text": "",
+        "page_number": null,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1867,
+        "margin": -0.0366,
+        "lane": "main",
+        "reason": "Layout footer or page separator retained outside semantic sections",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      }
+    ]
+  },
+  "section_schemas": [
+    {
+      "category": "summary",
+      "label": "Summary",
+      "records": [
+        {
+          "record_id": "summary",
+          "source_ids": [
+            "e1:0:201",
+            "e2:0:62",
+            "e3:0:139",
+            "e4:0:20",
+            "e5:0:6",
+            "e6:0:31",
+            "e7:0:55",
+            "e8:0:8",
+            "e9:0:61",
+            "e10:0:31",
+            "e11:0:31",
+            "e12:0:78",
+            "e13:0:28",
+            "e14:0:6",
+            "e15:0:24"
+          ],
+          "attributes": [
+            {
+              "name": "statements",
+              "items": [
+                {
+                  "value": "Data Scientist focused on Gen AI, ML & Computer Vision 6 years of experience skilled in Python, creating ML and AI models to train and transform data science prototypes into production-grade solutions.",
+                  "evidence": [
+                    {
+                      "source_id": "e1:0:201",
+                      "quote": "Data Scientist focused on Gen AI, ML & Computer Vision 6 years of experience skilled in Python, creating ML and AI models to train and transform data science prototypes into production-grade solutions."
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "I am currently working at Kipi.ai  as a Senior Data Scientist.",
+                  "evidence": [
+                    {
+                      "source_id": "e2:0:62",
+                      "quote": "I am currently working at Kipi.ai  as a Senior Data Scientist."
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "I have completed the PGP in Artificial Intelligence and Machine Learning from the Great Learning Institute in collaboration with UT Austin.",
+                  "evidence": [
+                    {
+                      "source_id": "e3:0:139",
+                      "quote": "I have completed the PGP in Artificial Intelligence and Machine Learning from the Great Learning Institute in collaboration with UT Austin."
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Programming Language",
+                  "evidence": [
+                    {
+                      "source_id": "e4:0:20",
+                      "quote": "Programming Language"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Python",
+                  "evidence": [
+                    {
+                      "source_id": "e1:0:201",
+                      "quote": "Python"
+                    },
+                    {
+                      "source_id": "e5:0:6",
+                      "quote": "Python"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Exploratory Data Analysis (EDA)",
+                  "evidence": [
+                    {
+                      "source_id": "e6:0:31",
+                      "quote": "Exploratory Data Analysis (EDA)"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Text Pre-processing, Pandas, Matplotlib, Seaborn, Excel",
+                  "evidence": [
+                    {
+                      "source_id": "e7:0:55",
+                      "quote": "Text Pre-processing, Pandas, Matplotlib, Seaborn, Excel"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Hands-on",
+                  "evidence": [
+                    {
+                      "source_id": "e8:0:8",
+                      "quote": "Hands-on"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Machine Learning, Deep Learning, Gen AI, NLP, Computer Vision",
+                  "evidence": [
+                    {
+                      "source_id": "e9:0:61",
+                      "quote": "Machine Learning, Deep Learning, Gen AI, NLP, Computer Vision"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Web Technology & User Interface",
+                  "evidence": [
+                    {
+                      "source_id": "e10:0:31",
+                      "quote": "Web Technology & User Interface"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Streamlit, TKinter, PySimpleGUI",
+                  "evidence": [
+                    {
+                      "source_id": "e11:0:31",
+                      "quote": "Streamlit, TKinter, PySimpleGUI"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Tools & Framworks Jupyter, Pycharm, VS code, Databricks, Scikit-learn, Xgboost",
+                  "evidence": [
+                    {
+                      "source_id": "e12:0:78",
+                      "quote": "Tools & Framworks Jupyter, Pycharm, VS code, Databricks, Scikit-learn, Xgboost"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Scripting Language and Cloud",
+                  "evidence": [
+                    {
+                      "source_id": "e13:0:28",
+                      "quote": "Scripting Language and Cloud"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Linux,",
+                  "evidence": [
+                    {
+                      "source_id": "e14:0:6",
+                      "quote": "Linux,"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Azure, IBM Cloud and AWS",
+                  "evidence": [
+                    {
+                      "source_id": "e15:0:24",
+                      "quote": "Azure, IBM Cloud and AWS"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "total_experience_years",
+              "items": [
+                {
+                  "value": 6.0,
+                  "evidence": [
+                    {
+                      "source_id": "e1:0:201",
+                      "quote": "6"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e0:0:8",
+          "quote": " Summary"
+        }
+      ]
+    },
+    {
+      "category": "education",
+      "label": "Education",
+      "records": [
+        {
+          "record_id": "education-1",
+          "source_ids": [
+            "e17:0:57"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "degree",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "education-2",
+          "source_ids": [
+            "e18:0:43",
+            "e19:0:28"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "degree",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "education-3",
+          "source_ids": [
+            "e20:0:11",
+            "e21:0:42",
+            "e22:0:39",
+            "e23:0:39",
+            "e24:0:50"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "degree",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e16:0:10",
+          "quote": " Education"
+        },
+        {
+          "source_id": "e17:0:57",
+          "quote": "Post Graduate Program in AIML, Great Learning\t2020 – 2021"
+        },
+        {
+          "source_id": "e18:0:43",
+          "quote": "Bachelorʼs Degree in Computer Applications,"
+        },
+        {
+          "source_id": "e19:0:28",
+          "quote": "Bangalore Central University"
+        },
+        {
+          "source_id": "e20:0:11",
+          "quote": "2016 – 2019"
+        },
+        {
+          "source_id": "e21:0:42",
+          "quote": "Microsoft Azure AI Fundamentals (AI- 900) "
+        },
+        {
+          "source_id": "e22:0:39",
+          "quote": "Microsoft Azure Fundamentals (AZ- 900) "
+        },
+        {
+          "source_id": "e23:0:39",
+          "quote": "MLOPS Training Certification - Internal"
+        },
+        {
+          "source_id": "e24:0:50",
+          "quote": "Microsoft Azure Data Scientist Associate (DP-100) "
+        }
+      ]
+    },
+    {
+      "category": "experience",
+      "label": "Experience",
+      "records": [
+        {
+          "record_id": "experience-1",
+          "source_ids": [
+            "e26:0:48",
+            "e27:0:174",
+            "e28:0:105",
+            "e30:0:126",
+            "e31:0:51",
+            "e32:0:31",
+            "e33:0:157",
+            "e34:0:102",
+            "e35:0:99",
+            "e36:0:77",
+            "e37:0:120",
+            "e38:0:100",
+            "e39:0:36",
+            "e40:0:219",
+            "e41:0:229",
+            "e42:0:139",
+            "e43:0:63",
+            "e44:0:33",
+            "e45:0:300",
+            "e46:0:68",
+            "e47:0:163",
+            "e48:0:105",
+            "e49:0:61",
+            "e50:0:180",
+            "e51:0:118",
+            "e52:0:104",
+            "e53:0:170",
+            "e54:0:225"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "Training/research content requires employment association review."
+          ]
+        },
+        {
+          "record_id": "experience-2",
+          "source_ids": [
+            "e55:0:56",
+            "e56:0:183",
+            "e57:0:228",
+            "e58:0:87",
+            "e59:0:221",
+            "e61:0:114"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "Training/research content requires employment association review."
+          ]
+        },
+        {
+          "record_id": "experience-3",
+          "source_ids": [
+            "e62:0:73"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "experience-4",
+          "source_ids": [
+            "e63:0:17",
+            "e64:0:187",
+            "e65:0:115",
+            "e66:0:191"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e25:0:15",
+          "quote": "Work Experience"
+        },
+        {
+          "source_id": "e26:0:48",
+          "quote": "Kipi.ai, Senior Data Scientist\tApr 2025 | Remote"
+        },
+        {
+          "source_id": "e27:0:174",
+          "quote": " Built and deployed customer churn prediction models and product analytics solutions using Snowflake native features, with real-time inference via Snowflakeʼs model registry."
+        },
+        {
+          "source_id": "e28:0:105",
+          "quote": " Extracted and prepared data from large databases, and developed Streamlit dashboards for business teams."
+        },
+        {
+          "source_id": "e30:0:126",
+          "quote": " Developed an internal RAG pipeline for a knowledge center, enabling users to upload documents and perform question answering."
+        },
+        {
+          "source_id": "e31:0:51",
+          "quote": "IBM, Data Scientist\tDec 2023 – Mar 2025 | Bangalore"
+        },
+        {
+          "source_id": "e32:0:31",
+          "quote": "Gen AI Engineer, IBM Automation"
+        },
+        {
+          "source_id": "e33:0:157",
+          "quote": " Working as a Data Scientist, developing solutions with Gen AI and agentic frameworks like LangChain and CrewAI for internal automation project using python."
+        },
+        {
+          "source_id": "e34:0:102",
+          "quote": " Developed and tested a RAG solution using multiple LLMs to generate SQL queries given a user queries."
+        },
+        {
+          "source_id": "e35:0:99",
+          "quote": " Created and tested various prompt templates, worked on creating the vector database using Weaviate"
+        },
+        {
+          "source_id": "e36:0:77",
+          "quote": "for dynamically fetching the context and examples from vector search service."
+        },
+        {
+          "source_id": "e37:0:120",
+          "quote": " Created solution helped to improve the accuracy from 70% to 85% accurately in generating the SQL queries for a project."
+        },
+        {
+          "source_id": "e38:0:100",
+          "quote": " Used machine learning models such as Random Forest Classifier for incident priority classification."
+        },
+        {
+          "source_id": "e39:0:36",
+          "quote": "IBM's Internal, Time Series Analysis"
+        },
+        {
+          "source_id": "e40:0:219",
+          "quote": " Trained and tested the IBM's in-house model PatchTST  model on various domains of datasets, including Market Data, VIX Index, Retail Data, Well Production data, Electricity data, Production unit data, and Weather data."
+        },
+        {
+          "source_id": "e41:0:229",
+          "quote": " Evaluations were performed in terms of short-term and long-term series with different frequency intervals like monthly, daily, and hourly. The model performed better on long-term series and when the data distribution was normal."
+        },
+        {
+          "source_id": "e42:0:139",
+          "quote": " Fine-tuning involved specific hyperparameters for each dataset, demonstrating the modelʼs adaptability across diverse time series domains."
+        },
+        {
+          "source_id": "e43:0:63",
+          "quote": "Capgemini, Associate Consultant\tJul 2021 – Dec 2023 | Bangalore"
+        },
+        {
+          "source_id": "e44:0:33",
+          "quote": "1. DOT Code Recognition: Michelin"
+        },
+        {
+          "source_id": "e45:0:300",
+          "quote": " I worked as a Data Scientist for a Tire Manufacturing client to detect the DOT characters from a guided tire image using object detection models such as Yolov5 and mask-RCNN running entirely on the Azure ML Studio. Created the web interfaces for multiple use-cases to showcase the results of models."
+        },
+        {
+          "source_id": "e46:0:68",
+          "quote": " Also tried and tested Azure OCR and Google OCR for text extraction."
+        },
+        {
+          "source_id": "e47:0:163",
+          "quote": " This solution is part of the project to give users a more convenient way to enter the DOT code, which has a universal nomenclature, by simply uploading a picture."
+        },
+        {
+          "source_id": "e48:0:105",
+          "quote": " The DOT training dataset has about 3000 images and dedicated production benchmark data to test accuracy."
+        },
+        {
+          "source_id": "e49:0:61",
+          "quote": "2. Abbott Healthcare, Sales Forecasting: Time Series Modeling"
+        },
+        {
+          "source_id": "e50:0:180",
+          "quote": " I worked as a Data Scientist for a pharmaceutical client where I was responsible for working on forecasting long-range and short-term sales of medical data using historical sales."
+        },
+        {
+          "source_id": "e51:0:118",
+          "quote": " Used Facebook's Prophet for long-range forecasting and Exponential Smoothing for short-term forecasting using python."
+        },
+        {
+          "source_id": "e52:0:104",
+          "quote": " Created the automated flow for running the models using AWS SageMaker and storing the output on AWS S3."
+        },
+        {
+          "source_id": "e53:0:170",
+          "quote": " The objective was to make it easier to recommend sales and marketing strategies based on trend and seasonality effects for the various groups of pharmaceutical products."
+        },
+        {
+          "source_id": "e54:0:225",
+          "quote": " Generated reports and continuously reviewed forecasts, understanding sales trends and patterns across different therapy areas to determine future demand through detailed statistical analysis using advanced Excel techniques.."
+        },
+        {
+          "source_id": "e55:0:56",
+          "quote": "2. UBS, AI-Driven Inventory Management: Object Detection"
+        },
+        {
+          "source_id": "e56:0:183",
+          "quote": " I worked as an AI engineer with python language to build an end-to-end custom object detection engine with the ability to recognize various different types of assets in data centers."
+        },
+        {
+          "source_id": "e57:0:228",
+          "quote": " Trained various State-Of-The-Art (SOTA) pre-trained object detection models such as Yolo, R-CNN, and Retinanet using the Deep Learning frameworks PyTorch and Tensorflow. The models enabled to scale across multiple data centers."
+        },
+        {
+          "source_id": "e58:0:87",
+          "quote": " Designed a custom interface using the Streamilt framework to test and validate images."
+        },
+        {
+          "source_id": "e59:0:221",
+          "quote": " Increased operational efficiency of the audit process by reducing the average time for a data center from 4 months to 15 days and reducing costs by over $1 million per data center every year through this automated audit."
+        },
+        {
+          "source_id": "e61:0:114",
+          "quote": " Attended Databricks in-class training and worked on multiple hands-on projects using pyspark in Azure Databricks."
+        },
+        {
+          "source_id": "e62:0:73",
+          "quote": "Tata Consultancy Services Ltd, Programmer\tSep 2019 – Jul 2021 | Bangalore"
+        },
+        {
+          "source_id": "e63:0:17",
+          "quote": "Royal Dutch Shell"
+        },
+        {
+          "source_id": "e64:0:187",
+          "quote": " Collaborated with the TCS IGNIO automation team on automating catalogs, with a focus on efficiently handling detected incidents through accurate diagnosis and prompt action prescription."
+        },
+        {
+          "source_id": "e65:0:115",
+          "quote": " Applied machine learning techniques to extract insights from support ticket data, to drive better decision making."
+        },
+        {
+          "source_id": "e66:0:191",
+          "quote": " Implemented a clustering algorithm to optimize the customer experience by directing a portion of requests directly to the responsible team for resolution, leading to faster issue resolution."
+        }
+      ]
+    },
+    {
+      "category": "needs_review",
+      "label": "Unassigned source blocks",
+      "records": [],
+      "residual_blocks": [
+        {
+          "source_id": "e29:0:0",
+          "quote": ""
+        },
+        {
+          "source_id": "e60:0:0",
+          "quote": ""
+        }
+      ]
+    }
+  ]
+}

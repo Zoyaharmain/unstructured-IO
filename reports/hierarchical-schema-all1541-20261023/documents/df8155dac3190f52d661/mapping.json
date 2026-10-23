@@ -1,0 +1,1177 @@
+{
+  "success": true,
+  "source": "Java Developer & Angular_sanjeev.pdf",
+  "extraction_mode": "existing_blocks_schema_mapping",
+  "data": {
+    "contact": {
+      "full_name": "",
+      "email": "",
+      "phone": "",
+      "location": null,
+      "linkedin_url": null,
+      "github_url": null,
+      "portfolio_url": null
+    },
+    "professional_title": null,
+    "summary": null,
+    "total_experience_years": null,
+    "skills": {
+      "technical_skills": [],
+      "tools_and_platforms": [],
+      "domain_and_functional": [],
+      "soft_skills": [],
+      "all_skills": []
+    },
+    "experience": [],
+    "education": [],
+    "certifications": [],
+    "projects": [],
+    "languages": []
+  },
+  "schema_mapping": {
+    "fields_populated": 0,
+    "total_fields": 16,
+    "completion_percentage": 0.0,
+    "field_details": [
+      {
+        "field_name": "contact.full_name",
+        "target_type": "string",
+        "is_required": true,
+        "is_extracted": false,
+        "source_section": "Header / Personal Details",
+        "confidence_score": 0.0,
+        "description": "Candidate's full name, extracted from the top header of the resume."
+      },
+      {
+        "field_name": "contact.email",
+        "target_type": "string (email)",
+        "is_required": true,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's primary contact email address."
+      },
+      {
+        "field_name": "contact.phone",
+        "target_type": "string (phone)",
+        "is_required": true,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's telephone / mobile phone number."
+      },
+      {
+        "field_name": "contact.location",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's residential location or work city."
+      },
+      {
+        "field_name": "contact.linkedin_url",
+        "target_type": "string (url) | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "URL to candidate's LinkedIn profile."
+      },
+      {
+        "field_name": "professional_title",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Subtitle",
+        "confidence_score": 0.0,
+        "description": "Candidate's target headline or most recent job title."
+      },
+      {
+        "field_name": "summary",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Professional Summary / Profile / Objective",
+        "confidence_score": 0.0,
+        "description": "Executive bio, professional overview, or career objective."
+      },
+      {
+        "field_name": "total_experience_years",
+        "target_type": "float | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Summary / Experience Calculation",
+        "confidence_score": 0.0,
+        "description": "Total professional experience in years."
+      },
+      {
+        "field_name": "skills.technical_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Technical Competencies",
+        "confidence_score": 0.0,
+        "description": "Technical programming languages and core software competencies."
+      },
+      {
+        "field_name": "skills.tools_and_platforms",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Tools & Technologies",
+        "confidence_score": 0.0,
+        "description": "Software platforms, developer tools, and operational systems."
+      },
+      {
+        "field_name": "skills.domain_and_functional",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Domain Expertise",
+        "confidence_score": 0.0,
+        "description": "Functional domain knowledge (e.g. Hedge Funds, KYC, NAV, Derivatives)."
+      },
+      {
+        "field_name": "skills.all_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills (Aggregated)",
+        "confidence_score": 0.0,
+        "description": "Complete list of candidate skills across all categories."
+      },
+      {
+        "field_name": "experience",
+        "target_type": "array[WorkExperience]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Professional Experience / Work History",
+        "confidence_score": 0.0,
+        "description": "Complete chronological employment records with bullet points."
+      },
+      {
+        "field_name": "education",
+        "target_type": "array[Education]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Education / Academic Qualifications",
+        "confidence_score": 0.0,
+        "description": "University, college, and higher education degree qualifications."
+      },
+      {
+        "field_name": "certifications",
+        "target_type": "array[Certification]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Certifications / Licenses",
+        "confidence_score": 0.0,
+        "description": "Professional accreditations and credentials."
+      },
+      {
+        "field_name": "projects",
+        "target_type": "array[Project]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Projects / Key Engagements",
+        "confidence_score": 0.0,
+        "description": "Major projects or strategic initiatives led by candidate."
+      }
+    ]
+  },
+  "raw_sections": {
+    "skills": "For the UI&UX skills basic knowledge should be there.",
+    "experience": "Experience with state management solutions (e.g., NgRx) and reactive forms o Familiarity with common front-end tooling (Webpack, Angular CLI) and best practices\nWeb UI & UX Skills:\no Solid grasp of HTML5, CSS3, and responsive design principles o Experience integrating front-end design frameworks (e.g., Bootstrap, Material Design) o Knowledge of cross-browser compatibility and accessibility standards\n\nJava & Spring Boot Back-End Expertise:\no Strong foundation in Java and object-oriented programming concepts o Experience developing RESTful APIs using Spring Boot, Spring MVC, and Spring Data\nJPA/Hibernate\no Knowledge of Spring Security for authentication and authorization o Familiarity with microservices architecture and domain-driven design principles\nDatabase & Persistence Layer:\no Proficiency with relational databases (e.g., MySQL, PostgreSQL) and SQL o Experience with JPA/Hibernate and database schema design o Basic knowledge of NoSQL databases (e.g., MongoDB) is a plus\nTesting & Quality Assurance:\no Experience with unit testing (JUnit, Mockito) and integration testing on the back-end o Familiarity with front-end testing frameworks o Adherence to code quality standards, including code reviews, linting, and static analysis\ntools"
+  },
+  "meta": {
+    "status": "needs_review",
+    "human_verified": false,
+    "provider_calls": 0,
+    "source_accounting": {
+      "all_source_text_preserved": true,
+      "total_spans": 40,
+      "assigned_meaningful_spans": 31,
+      "unresolved_meaningful_spans": 8,
+      "non_content_artifacts": 1,
+      "duplicates_excluded": 0,
+      "all_meaningful_text_assigned": false,
+      "semantic_correctness_verified": false,
+      "outcomes": [
+        {
+          "source_id": "e0:0:64",
+          "source_element_index": 0,
+          "start": 0,
+          "end": 64,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e1:0:104",
+          "source_element_index": 1,
+          "start": 0,
+          "end": 104,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e1:104:129",
+          "source_element_index": 1,
+          "start": 104,
+          "end": 129,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e1:129:182",
+          "source_element_index": 1,
+          "start": 129,
+          "end": 182,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "BERT embedding assigned to a labeled K-means centroid"
+        },
+        {
+          "source_id": "e2:0:28",
+          "source_element_index": 2,
+          "start": 0,
+          "end": 28,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e3:0:67",
+          "source_element_index": 3,
+          "start": 0,
+          "end": 67,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e3:67:148",
+          "source_element_index": 3,
+          "start": 67,
+          "end": 148,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e4:0:9",
+          "source_element_index": 4,
+          "start": 0,
+          "end": 9,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e5:0:2",
+          "source_element_index": 5,
+          "start": 0,
+          "end": 2,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e5:2:12",
+          "source_element_index": 5,
+          "start": 2,
+          "end": 12,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e5:12:77",
+          "source_element_index": 5,
+          "start": 12,
+          "end": 77,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e5:77:162",
+          "source_element_index": 5,
+          "start": 77,
+          "end": 162,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e6:0:19",
+          "source_element_index": 6,
+          "start": 0,
+          "end": 19,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e7:0:63",
+          "source_element_index": 7,
+          "start": 0,
+          "end": 63,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e7:63:65",
+          "source_element_index": 7,
+          "start": 63,
+          "end": 65,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e7:65:75",
+          "source_element_index": 7,
+          "start": 65,
+          "end": 75,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e7:75:151",
+          "source_element_index": 7,
+          "start": 75,
+          "end": 151,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e7:151:221",
+          "source_element_index": 7,
+          "start": 151,
+          "end": 221,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:0:0",
+          "source_element_index": 8,
+          "start": 0,
+          "end": 0,
+          "section": "experience",
+          "outcome": "non_content_artifact",
+          "reason": "Whitespace retained in source inventory"
+        },
+        {
+          "source_id": "e9:0:38",
+          "source_element_index": 9,
+          "start": 0,
+          "end": 38,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e10:0:69",
+          "source_element_index": 10,
+          "start": 0,
+          "end": 69,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e10:69:71",
+          "source_element_index": 10,
+          "start": 69,
+          "end": 71,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e10:71:81",
+          "source_element_index": 10,
+          "start": 71,
+          "end": 81,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e10:81:152",
+          "source_element_index": 10,
+          "start": 81,
+          "end": 152,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e11:0:13",
+          "source_element_index": 11,
+          "start": 0,
+          "end": 13,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:0:68",
+          "source_element_index": 12,
+          "start": 0,
+          "end": 68,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:68:149",
+          "source_element_index": 12,
+          "start": 68,
+          "end": 149,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e13:0:29",
+          "source_element_index": 13,
+          "start": 0,
+          "end": 29,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e14:0:74",
+          "source_element_index": 14,
+          "start": 0,
+          "end": 74,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e14:74:76",
+          "source_element_index": 14,
+          "start": 74,
+          "end": 76,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e14:76:86",
+          "source_element_index": 14,
+          "start": 76,
+          "end": 86,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e14:86:133",
+          "source_element_index": 14,
+          "start": 86,
+          "end": 133,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e14:133:195",
+          "source_element_index": 14,
+          "start": 133,
+          "end": 195,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e15:0:28",
+          "source_element_index": 15,
+          "start": 0,
+          "end": 28,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e16:0:2",
+          "source_element_index": 16,
+          "start": 0,
+          "end": 2,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e16:2:12",
+          "source_element_index": 16,
+          "start": 2,
+          "end": 12,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e16:12:88",
+          "source_element_index": 16,
+          "start": 12,
+          "end": 88,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e16:88:136",
+          "source_element_index": 16,
+          "start": 88,
+          "end": 136,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e16:136:227",
+          "source_element_index": 16,
+          "start": 136,
+          "end": 227,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e17:0:5",
+          "source_element_index": 17,
+          "start": 0,
+          "end": 5,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        }
+      ]
+    },
+    "document_scope": {
+      "kind": "job_description",
+      "candidate_resume": false,
+      "reason": "Explicit hiring request and job-description declaration, not candidate history"
+    },
+    "source_inventory_sha256": "6c2f2a45abf0ea279e6bc9f89fd87723a45adf110c9abbb7cbd608649bceaf72",
+    "field_evidence": {},
+    "record_reviews": [],
+    "missing_required_fields": [
+      "contact.full_name",
+      "contact.email",
+      "contact.phone"
+    ],
+    "warnings": [
+      "Document scope is non-resume; candidate fields were left empty and source sections retained.",
+      "Schema validity and field completion do not establish extraction or relationship accuracy.",
+      "Handoff confidence scores are fixed heuristics, not calibrated probabilities.",
+      "Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields."
+    ],
+    "unmapped_blocks": [
+      {
+        "source_id": "e1:129:182",
+        "category": "skills",
+        "text": "For the UI&UX skills basic knowledge should be there.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:2:12",
+        "category": "experience",
+        "text": "Experience",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:12:77",
+        "category": "experience",
+        "text": " with state management solutions (e.g., NgRx) and reactive forms ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:77:162",
+        "category": "experience",
+        "text": "o Familiarity with common front-end tooling (Webpack, Angular CLI) and best practices",
+        "page_number": 1
+      },
+      {
+        "source_id": "e6:0:19",
+        "category": "experience",
+        "text": "Web UI & UX Skills:",
+        "page_number": 1
+      },
+      {
+        "source_id": "e7:0:63",
+        "category": "experience",
+        "text": "o Solid grasp of HTML5, CSS3, and responsive design principles ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e7:63:65",
+        "category": "experience",
+        "text": "o ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e7:65:75",
+        "category": "experience",
+        "text": "Experience",
+        "page_number": 1
+      },
+      {
+        "source_id": "e7:75:151",
+        "category": "experience",
+        "text": " integrating front-end design frameworks (e.g., Bootstrap, Material Design) ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e7:151:221",
+        "category": "experience",
+        "text": "o Knowledge of cross-browser compatibility and accessibility standards",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:0:0",
+        "category": "experience",
+        "text": "",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:0:38",
+        "category": "experience",
+        "text": "Java & Spring Boot Back-End Expertise:",
+        "page_number": 1
+      },
+      {
+        "source_id": "e10:0:69",
+        "category": "experience",
+        "text": "o Strong foundation in Java and object-oriented programming concepts ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e10:69:71",
+        "category": "experience",
+        "text": "o ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e10:71:81",
+        "category": "experience",
+        "text": "Experience",
+        "page_number": 1
+      },
+      {
+        "source_id": "e10:81:152",
+        "category": "experience",
+        "text": " developing RESTful APIs using Spring Boot, Spring MVC, and Spring Data",
+        "page_number": 1
+      },
+      {
+        "source_id": "e11:0:13",
+        "category": "experience",
+        "text": "JPA/Hibernate",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:0:68",
+        "category": "experience",
+        "text": "o Knowledge of Spring Security for authentication and authorization ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:68:149",
+        "category": "experience",
+        "text": "o Familiarity with microservices architecture and domain-driven design principles",
+        "page_number": 1
+      },
+      {
+        "source_id": "e13:0:29",
+        "category": "experience",
+        "text": "Database & Persistence Layer:",
+        "page_number": 1
+      },
+      {
+        "source_id": "e14:0:74",
+        "category": "experience",
+        "text": "o Proficiency with relational databases (e.g., MySQL, PostgreSQL) and SQL ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e14:74:76",
+        "category": "experience",
+        "text": "o ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e14:76:86",
+        "category": "experience",
+        "text": "Experience",
+        "page_number": 1
+      },
+      {
+        "source_id": "e14:86:133",
+        "category": "experience",
+        "text": " with JPA/Hibernate and database schema design ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e14:133:195",
+        "category": "experience",
+        "text": "o Basic knowledge of NoSQL databases (e.g., MongoDB) is a plus",
+        "page_number": 1
+      },
+      {
+        "source_id": "e15:0:28",
+        "category": "experience",
+        "text": "Testing & Quality Assurance:",
+        "page_number": 1
+      },
+      {
+        "source_id": "e16:0:2",
+        "category": "experience",
+        "text": "o ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e16:2:12",
+        "category": "experience",
+        "text": "Experience",
+        "page_number": 1
+      },
+      {
+        "source_id": "e16:12:88",
+        "category": "experience",
+        "text": " with unit testing (JUnit, Mockito) and integration testing on the back-end ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e16:88:136",
+        "category": "experience",
+        "text": "o Familiarity with front-end testing frameworks ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e16:136:227",
+        "category": "experience",
+        "text": "o Adherence to code quality standards, including code reviews, linting, and static analysis",
+        "page_number": 1
+      },
+      {
+        "source_id": "e17:0:5",
+        "category": "experience",
+        "text": "tools",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:0:64",
+        "category": null,
+        "text": "I need two senior Angular resources as per the below defined JD.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e1:0:104",
+        "category": null,
+        "text": "Mainly we are looking for an experienced (6-10 years) Java developer and if possible also experience in ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e1:104:129",
+        "category": null,
+        "text": "FE development is there. ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e2:0:28",
+        "category": null,
+        "text": "Angular Front-End Expertise:",
+        "page_number": 1
+      },
+      {
+        "source_id": "e3:0:67",
+        "category": null,
+        "text": "o Proficiency with Angular (latest versions), TypeScript, and RxJS ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e3:67:148",
+        "category": null,
+        "text": "o Strong understanding of Angular component architecture, modules, and dependency",
+        "page_number": 1
+      },
+      {
+        "source_id": "e4:0:9",
+        "category": null,
+        "text": "injection",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:0:2",
+        "category": null,
+        "text": "o ",
+        "page_number": 1
+      }
+    ],
+    "needs_review": [
+      {
+        "source_element_index": 0,
+        "start": 0,
+        "end": 64,
+        "text": "I need two senior Angular resources as per the below defined JD.",
+        "page_number": 1,
+        "cluster_id": 12,
+        "candidate_section": "references",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3251,
+        "margin": 0.0492,
+        "lane": "left",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 1,
+        "start": 0,
+        "end": 104,
+        "text": "Mainly we are looking for an experienced (6-10 years) Java developer and if possible also experience in ",
+        "page_number": 1,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.5154,
+        "margin": 0.0014,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 1,
+        "start": 104,
+        "end": 129,
+        "text": "FE development is there. ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3201,
+        "margin": 0.0368,
+        "lane": "left",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 2,
+        "start": 0,
+        "end": 28,
+        "text": "Angular Front-End Expertise:",
+        "page_number": 1,
+        "cluster_id": 1,
+        "candidate_section": "summary",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3547,
+        "margin": 0.0432,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 3,
+        "start": 0,
+        "end": 67,
+        "text": "o Proficiency with Angular (latest versions), TypeScript, and RxJS ",
+        "page_number": 1,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2615,
+        "margin": -0.028,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 3,
+        "start": 67,
+        "end": 148,
+        "text": "o Strong understanding of Angular component architecture, modules, and dependency",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.194,
+        "margin": 0.0674,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 4,
+        "start": 0,
+        "end": 9,
+        "text": "injection",
+        "page_number": 1,
+        "cluster_id": 8,
+        "candidate_section": "publications",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1751,
+        "margin": 0.0434,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 5,
+        "start": 0,
+        "end": 2,
+        "text": "o ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1288,
+        "margin": -0.0576,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      }
+    ]
+  },
+  "section_schemas": [
+    {
+      "category": "skills",
+      "label": "Skills",
+      "records": [],
+      "residual_blocks": [
+        {
+          "source_id": "e1:129:182",
+          "quote": "For the UI&UX skills basic knowledge should be there."
+        }
+      ]
+    },
+    {
+      "category": "experience",
+      "label": "Experience",
+      "records": [],
+      "residual_blocks": [
+        {
+          "source_id": "e5:2:12",
+          "quote": "Experience"
+        },
+        {
+          "source_id": "e5:12:77",
+          "quote": " with state management solutions (e.g., NgRx) and reactive forms "
+        },
+        {
+          "source_id": "e5:77:162",
+          "quote": "o Familiarity with common front-end tooling (Webpack, Angular CLI) and best practices"
+        },
+        {
+          "source_id": "e6:0:19",
+          "quote": "Web UI & UX Skills:"
+        },
+        {
+          "source_id": "e7:0:63",
+          "quote": "o Solid grasp of HTML5, CSS3, and responsive design principles "
+        },
+        {
+          "source_id": "e7:63:65",
+          "quote": "o "
+        },
+        {
+          "source_id": "e7:65:75",
+          "quote": "Experience"
+        },
+        {
+          "source_id": "e7:75:151",
+          "quote": " integrating front-end design frameworks (e.g., Bootstrap, Material Design) "
+        },
+        {
+          "source_id": "e7:151:221",
+          "quote": "o Knowledge of cross-browser compatibility and accessibility standards"
+        },
+        {
+          "source_id": "e8:0:0",
+          "quote": ""
+        },
+        {
+          "source_id": "e9:0:38",
+          "quote": "Java & Spring Boot Back-End Expertise:"
+        },
+        {
+          "source_id": "e10:0:69",
+          "quote": "o Strong foundation in Java and object-oriented programming concepts "
+        },
+        {
+          "source_id": "e10:69:71",
+          "quote": "o "
+        },
+        {
+          "source_id": "e10:71:81",
+          "quote": "Experience"
+        },
+        {
+          "source_id": "e10:81:152",
+          "quote": " developing RESTful APIs using Spring Boot, Spring MVC, and Spring Data"
+        },
+        {
+          "source_id": "e11:0:13",
+          "quote": "JPA/Hibernate"
+        },
+        {
+          "source_id": "e12:0:68",
+          "quote": "o Knowledge of Spring Security for authentication and authorization "
+        },
+        {
+          "source_id": "e12:68:149",
+          "quote": "o Familiarity with microservices architecture and domain-driven design principles"
+        },
+        {
+          "source_id": "e13:0:29",
+          "quote": "Database & Persistence Layer:"
+        },
+        {
+          "source_id": "e14:0:74",
+          "quote": "o Proficiency with relational databases (e.g., MySQL, PostgreSQL) and SQL "
+        },
+        {
+          "source_id": "e14:74:76",
+          "quote": "o "
+        },
+        {
+          "source_id": "e14:76:86",
+          "quote": "Experience"
+        },
+        {
+          "source_id": "e14:86:133",
+          "quote": " with JPA/Hibernate and database schema design "
+        },
+        {
+          "source_id": "e14:133:195",
+          "quote": "o Basic knowledge of NoSQL databases (e.g., MongoDB) is a plus"
+        },
+        {
+          "source_id": "e15:0:28",
+          "quote": "Testing & Quality Assurance:"
+        },
+        {
+          "source_id": "e16:0:2",
+          "quote": "o "
+        },
+        {
+          "source_id": "e16:2:12",
+          "quote": "Experience"
+        },
+        {
+          "source_id": "e16:12:88",
+          "quote": " with unit testing (JUnit, Mockito) and integration testing on the back-end "
+        },
+        {
+          "source_id": "e16:88:136",
+          "quote": "o Familiarity with front-end testing frameworks "
+        },
+        {
+          "source_id": "e16:136:227",
+          "quote": "o Adherence to code quality standards, including code reviews, linting, and static analysis"
+        },
+        {
+          "source_id": "e17:0:5",
+          "quote": "tools"
+        }
+      ]
+    },
+    {
+      "category": "needs_review",
+      "label": "Unassigned source blocks",
+      "records": [],
+      "residual_blocks": [
+        {
+          "source_id": "e0:0:64",
+          "quote": "I need two senior Angular resources as per the below defined JD."
+        },
+        {
+          "source_id": "e1:0:104",
+          "quote": "Mainly we are looking for an experienced (6-10 years) Java developer and if possible also experience in "
+        },
+        {
+          "source_id": "e1:104:129",
+          "quote": "FE development is there. "
+        },
+        {
+          "source_id": "e2:0:28",
+          "quote": "Angular Front-End Expertise:"
+        },
+        {
+          "source_id": "e3:0:67",
+          "quote": "o Proficiency with Angular (latest versions), TypeScript, and RxJS "
+        },
+        {
+          "source_id": "e3:67:148",
+          "quote": "o Strong understanding of Angular component architecture, modules, and dependency"
+        },
+        {
+          "source_id": "e4:0:9",
+          "quote": "injection"
+        },
+        {
+          "source_id": "e5:0:2",
+          "quote": "o "
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,3329 @@
+{
+  "success": true,
+  "source": "Bhakti Anum.docx",
+  "extraction_mode": "existing_blocks_schema_mapping",
+  "data": {
+    "contact": {
+      "full_name": "",
+      "email": "",
+      "phone": "",
+      "location": null,
+      "linkedin_url": null,
+      "github_url": null,
+      "portfolio_url": null
+    },
+    "professional_title": null,
+    "summary": "7.6+ years of related experience to a challenging position.",
+    "total_experience_years": null,
+    "skills": {
+      "technical_skills": [],
+      "tools_and_platforms": [],
+      "domain_and_functional": [],
+      "soft_skills": [],
+      "all_skills": []
+    },
+    "experience": [
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      }
+    ],
+    "education": [
+      {
+        "institution": "",
+        "degree": "",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      },
+      {
+        "institution": "",
+        "degree": "",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      }
+    ],
+    "certifications": [
+      {
+        "name": "2015-03\tCore Java\n2017-01\tAdvance Java + Spring Framework\n2018-04\tSAFe Practisioner\n2022-06\tFull stack Developer from IIT Mandi",
+        "issuer": null,
+        "issue_year": null
+      }
+    ],
+    "projects": [],
+    "languages": []
+  },
+  "schema_mapping": {
+    "fields_populated": 4,
+    "total_fields": 16,
+    "completion_percentage": 25.0,
+    "field_details": [
+      {
+        "field_name": "contact.full_name",
+        "target_type": "string",
+        "is_required": true,
+        "is_extracted": false,
+        "source_section": "Header / Personal Details",
+        "confidence_score": 0.0,
+        "description": "Candidate's full name, extracted from the top header of the resume."
+      },
+      {
+        "field_name": "contact.email",
+        "target_type": "string (email)",
+        "is_required": true,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's primary contact email address."
+      },
+      {
+        "field_name": "contact.phone",
+        "target_type": "string (phone)",
+        "is_required": true,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's telephone / mobile phone number."
+      },
+      {
+        "field_name": "contact.location",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's residential location or work city."
+      },
+      {
+        "field_name": "contact.linkedin_url",
+        "target_type": "string (url) | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "URL to candidate's LinkedIn profile."
+      },
+      {
+        "field_name": "professional_title",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Subtitle",
+        "confidence_score": 0.0,
+        "description": "Candidate's target headline or most recent job title."
+      },
+      {
+        "field_name": "summary",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Summary / Profile / Objective",
+        "confidence_score": 0.85,
+        "description": "Executive bio, professional overview, or career objective."
+      },
+      {
+        "field_name": "total_experience_years",
+        "target_type": "float | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Summary / Experience Calculation",
+        "confidence_score": 0.0,
+        "description": "Total professional experience in years."
+      },
+      {
+        "field_name": "skills.technical_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Technical Competencies",
+        "confidence_score": 0.0,
+        "description": "Technical programming languages and core software competencies."
+      },
+      {
+        "field_name": "skills.tools_and_platforms",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Tools & Technologies",
+        "confidence_score": 0.0,
+        "description": "Software platforms, developer tools, and operational systems."
+      },
+      {
+        "field_name": "skills.domain_and_functional",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Domain Expertise",
+        "confidence_score": 0.0,
+        "description": "Functional domain knowledge (e.g. Hedge Funds, KYC, NAV, Derivatives)."
+      },
+      {
+        "field_name": "skills.all_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills (Aggregated)",
+        "confidence_score": 0.0,
+        "description": "Complete list of candidate skills across all categories."
+      },
+      {
+        "field_name": "experience",
+        "target_type": "array[WorkExperience]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Experience / Work History",
+        "confidence_score": 0.92,
+        "description": "Complete chronological employment records with bullet points."
+      },
+      {
+        "field_name": "education",
+        "target_type": "array[Education]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Education / Academic Qualifications",
+        "confidence_score": 0.9,
+        "description": "University, college, and higher education degree qualifications."
+      },
+      {
+        "field_name": "certifications",
+        "target_type": "array[Certification]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Certifications / Licenses",
+        "confidence_score": 0.8,
+        "description": "Professional accreditations and credentials."
+      },
+      {
+        "field_name": "projects",
+        "target_type": "array[Project]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Projects / Key Engagements",
+        "confidence_score": 0.0,
+        "description": "Major projects or strategic initiatives led by candidate."
+      }
+    ]
+  },
+  "raw_sections": {
+    "summary": "7.6+ years of related experience to a challenging position.",
+    "experience": "Work History\nAddress\nRaipur, IN 492001\nPhone\n8602819331\nE-mail\nbhaktianum250325@gmail.com\nLinkedIn\nhttps://www.linkedin.com\n/in/bhakti-\nanum-4b18b5173?\nCore Java\nUpper intermediate Advance Java\nUpper intermediate\nSpring Boot Framework\nUpper intermediate Spring Webflux\nIntermediate\nMicroservice\nIntermediate\nSQL\nIntermediate\n2024-03 -\nCurrent\n2021-06 -\n2024-03\nSoftware Development Engineer 2\nTEKsystems, Gurgaon, India\nExpedia Group\nDevelop and manage APIs for the Cars module, enabling seamless car search functionality on the Expedia platform.\nUtilize Scala, Java, and Kotlin to build microservices aimed at creating LOB-agnostic platforms.\nLead the One-Pricing Project, a unified platform for applying taxes and prices across all Expedia Lines of Business (LOBs).\nImplemented a proxy layer for the primary Cars project to ensure smooth integration and data flow.\nDesigned a mapping and logic layer for seamless downstream service integration to standardize tax and pricing applications.\nCollaborate in an Agile environment, ensuring high performance, scalability, and alignment with domain- specific requirements.\nTechnology used: Java, Kotlin, Scala, Splunk, Redis, Microservices, Design Pattern, Spring boot\nAssociate Technology L2\nPublicis Sapient, Gurgaon, India\nDollarTree Ibotta (07/23-03/24)\nThis is a Webflux Spring application which uses third party api's to fetch a data and show as a coupon detail in their retailer website and mobile application. It uses router to handle multiple API and as a return Flux/Mono for their request. It is a webflux and functional reactive application with java 17 which\nMongoDB\nAWS\nKubernetes\nDocker\nNewRelic\nGrafana\nIntermediate\nIntermediate\nIntermediate\nIntermediate\nIntermediate\ndoesn't use the annotation and implemented the business logic in functional way.\nTechnology used: Java-8, Webflux,Reactive Programming,Spring Boot,Docker,Kubernetes,Redis,Caching,AWS- Cloudwatch,Athena,S3,Microservices,Design Pattern.\nMcDonald's Value Creation Engine (03/2023-06/2023) This is a nodejs and reactjs microservice project which consist of 8 orchestration services and PostgreSQL. This app is used by McDonald's clients to create campaigns/Offer which McDonald's uses for their outlets. This application has an UI which was\ndeveloped in react JS which give a functionality to user to add the campaigns details which include images, product description,location,React Big Calender.\nUpper intermediate Promentheus\nIntermediate\nJAVA 8,11,17\nUpper intermediate Microservice Design Pattern\nIntermediate\nRedis Caching\nIntermediate\nTechnology used: NodeJS,ReactJS,MongoDb,Docker,Kubernetes,NewReli c.\nMcDonald's Error Budget (06/2021- 12/2022) This is a Spring Boot application with Java version 8 which is used as an exporter application in monitoring process. Here all the data come from mongo DB where all the job details are present. Error Budget is used to manipulate the data as per the business need and generate the Prometheus supported output. EB is using two data sources to maintain the backward development and new clients.\nBelow is the functionality present in Error Budget tool:\nPick data from MongoDB and generate a Prometheus supported output.\nPrometheus supported output is then used in Grafana to show graphs and status of the jobs.\nTechnology used: Java8,SpringBoot,Microservices,MongoDb,MySQL,Desig n Pattern,AWS-Cloudwatch,Athena,S3.\nMcDonald's Automation Monitoring(06/2021- 12/2022): This Spring Boot application is used to pick the data from Grafana dashboards which EB generated and compare the data from MySql / MongoDB and then it generate the automated report file to send it to client to compare the EB functionality and client need. Here\n2018-02 -\n2021-06\nwe have used Cron Scheduler to run this application daily in particular schedule. RestAPI is also used to get the data from different API and put it in report.\nTechnology used: Java 8,SpringBoot,Microservices,MongoDb,MySQL,Design Pattern.",
+    "education": "Education\n2012-06 -\n2016-06\nBachelor of Engineering: Computer Science & Engineering\nShri Shankaracharya Engineering College(CSVTU) - Bhilai\nGPA: 7.5",
+    "certifications": "Certifications\n2015-03\tCore Java\n2017-01\tAdvance Java + Spring Framework\n2018-04\tSAFe Practisioner\n2022-06\tFull stack Developer from IIT Mandi",
+    "awards": "Accomplishments\nAchieved Champion of the Months from McDonald's Client through effectively delivering high quality code and understanding the client requirement.\nAchieved Star of the Sprints multiple times by completing high priority tasks with accuracy and efficiency.\nCollaborated with team of 5 in the development of Error Bugdet."
+  },
+  "meta": {
+    "status": "needs_review",
+    "human_verified": false,
+    "provider_calls": 0,
+    "source_accounting": {
+      "all_source_text_preserved": true,
+      "total_spans": 98,
+      "assigned_meaningful_spans": 88,
+      "unresolved_meaningful_spans": 9,
+      "non_content_artifacts": 1,
+      "duplicates_excluded": 0,
+      "all_meaningful_text_assigned": false,
+      "semantic_correctness_verified": false,
+      "outcomes": [
+        {
+          "source_id": "e0:0:11",
+          "source_element_index": 0,
+          "start": 0,
+          "end": 11,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e1:0:31",
+          "source_element_index": 1,
+          "start": 0,
+          "end": 31,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e2:0:258",
+          "source_element_index": 2,
+          "start": 0,
+          "end": 258,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e3:0:59",
+          "source_element_index": 3,
+          "start": 0,
+          "end": 59,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "BERT embedding assigned to a labeled K-means centroid"
+        },
+        {
+          "source_id": "e4:0:12",
+          "source_element_index": 4,
+          "start": 0,
+          "end": 12,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e5:0:7",
+          "source_element_index": 5,
+          "start": 0,
+          "end": 7,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e6:0:17",
+          "source_element_index": 6,
+          "start": 0,
+          "end": 17,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e7:0:5",
+          "source_element_index": 7,
+          "start": 0,
+          "end": 5,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:0:10",
+          "source_element_index": 8,
+          "start": 0,
+          "end": 10,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:0:6",
+          "source_element_index": 9,
+          "start": 0,
+          "end": 6,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e10:0:26",
+          "source_element_index": 10,
+          "start": 0,
+          "end": 26,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e11:0:8",
+          "source_element_index": 11,
+          "start": 0,
+          "end": 8,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:0:24",
+          "source_element_index": 12,
+          "start": 0,
+          "end": 24,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e13:0:11",
+          "source_element_index": 13,
+          "start": 0,
+          "end": 11,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e14:0:15",
+          "source_element_index": 14,
+          "start": 0,
+          "end": 15,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e15:0:9",
+          "source_element_index": 15,
+          "start": 0,
+          "end": 9,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e16:0:31",
+          "source_element_index": 16,
+          "start": 0,
+          "end": 31,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e17:0:18",
+          "source_element_index": 17,
+          "start": 0,
+          "end": 18,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e18:0:21",
+          "source_element_index": 18,
+          "start": 0,
+          "end": 21,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e19:0:33",
+          "source_element_index": 19,
+          "start": 0,
+          "end": 33,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e20:0:12",
+          "source_element_index": 20,
+          "start": 0,
+          "end": 12,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e21:0:12",
+          "source_element_index": 21,
+          "start": 0,
+          "end": 12,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e22:0:12",
+          "source_element_index": 22,
+          "start": 0,
+          "end": 12,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e23:0:3",
+          "source_element_index": 23,
+          "start": 0,
+          "end": 3,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e24:0:12",
+          "source_element_index": 24,
+          "start": 0,
+          "end": 12,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e25:0:9",
+          "source_element_index": 25,
+          "start": 0,
+          "end": 9,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e26:0:7",
+          "source_element_index": 26,
+          "start": 0,
+          "end": 7,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e27:0:9",
+          "source_element_index": 27,
+          "start": 0,
+          "end": 9,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e28:0:7",
+          "source_element_index": 28,
+          "start": 0,
+          "end": 7,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e29:0:31",
+          "source_element_index": 29,
+          "start": 0,
+          "end": 31,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e30:0:26",
+          "source_element_index": 30,
+          "start": 0,
+          "end": 26,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e31:0:13",
+          "source_element_index": 31,
+          "start": 0,
+          "end": 13,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e32:0:112",
+          "source_element_index": 32,
+          "start": 0,
+          "end": 112,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e33:0:96",
+          "source_element_index": 33,
+          "start": 0,
+          "end": 96,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e34:0:123",
+          "source_element_index": 34,
+          "start": 0,
+          "end": 123,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e35:0:98",
+          "source_element_index": 35,
+          "start": 0,
+          "end": 98,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e36:0:123",
+          "source_element_index": 36,
+          "start": 0,
+          "end": 123,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e37:0:126",
+          "source_element_index": 37,
+          "start": 0,
+          "end": 126,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e38:0:95",
+          "source_element_index": 38,
+          "start": 0,
+          "end": 95,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e39:0:23",
+          "source_element_index": 39,
+          "start": 0,
+          "end": 23,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e40:0:32",
+          "source_element_index": 40,
+          "start": 0,
+          "end": 32,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e41:0:31",
+          "source_element_index": 41,
+          "start": 0,
+          "end": 31,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e42:0:313",
+          "source_element_index": 42,
+          "start": 0,
+          "end": 313,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e43:0:7",
+          "source_element_index": 43,
+          "start": 0,
+          "end": 7,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e44:0:3",
+          "source_element_index": 44,
+          "start": 0,
+          "end": 3,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e45:0:10",
+          "source_element_index": 45,
+          "start": 0,
+          "end": 10,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e46:0:6",
+          "source_element_index": 46,
+          "start": 0,
+          "end": 6,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e47:0:8",
+          "source_element_index": 47,
+          "start": 0,
+          "end": 8,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e48:0:7",
+          "source_element_index": 48,
+          "start": 0,
+          "end": 7,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e49:0:12",
+          "source_element_index": 49,
+          "start": 0,
+          "end": 12,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e50:0:12",
+          "source_element_index": 50,
+          "start": 0,
+          "end": 12,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e51:0:12",
+          "source_element_index": 51,
+          "start": 0,
+          "end": 12,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e52:0:12",
+          "source_element_index": 52,
+          "start": 0,
+          "end": 12,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e53:0:12",
+          "source_element_index": 53,
+          "start": 0,
+          "end": 12,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e54:0:80",
+          "source_element_index": 54,
+          "start": 0,
+          "end": 80,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e55:0:153",
+          "source_element_index": 55,
+          "start": 0,
+          "end": 153,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e56:0:301",
+          "source_element_index": 56,
+          "start": 0,
+          "end": 301,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e57:0:156",
+          "source_element_index": 57,
+          "start": 0,
+          "end": 156,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e58:0:30",
+          "source_element_index": 58,
+          "start": 0,
+          "end": 30,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e59:0:12",
+          "source_element_index": 59,
+          "start": 0,
+          "end": 12,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e60:0:12",
+          "source_element_index": 60,
+          "start": 0,
+          "end": 12,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e61:0:46",
+          "source_element_index": 61,
+          "start": 0,
+          "end": 46,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e62:0:12",
+          "source_element_index": 62,
+          "start": 0,
+          "end": 12,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e63:0:13",
+          "source_element_index": 63,
+          "start": 0,
+          "end": 13,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e64:0:12",
+          "source_element_index": 64,
+          "start": 0,
+          "end": 12,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e65:0:68",
+          "source_element_index": 65,
+          "start": 0,
+          "end": 68,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e66:0:434",
+          "source_element_index": 66,
+          "start": 0,
+          "end": 434,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e67:0:56",
+          "source_element_index": 67,
+          "start": 0,
+          "end": 56,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e68:0:66",
+          "source_element_index": 68,
+          "start": 0,
+          "end": 66,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e69:0:90",
+          "source_element_index": 69,
+          "start": 0,
+          "end": 90,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e70:0:103",
+          "source_element_index": 70,
+          "start": 0,
+          "end": 103,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e71:0:312",
+          "source_element_index": 71,
+          "start": 0,
+          "end": 312,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e72:0:9",
+          "source_element_index": 72,
+          "start": 0,
+          "end": 9,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e73:0:7",
+          "source_element_index": 73,
+          "start": 0,
+          "end": 7,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e74:0:159",
+          "source_element_index": 74,
+          "start": 0,
+          "end": 159,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e75:0:78",
+          "source_element_index": 75,
+          "start": 0,
+          "end": 78,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e76:0:29",
+          "source_element_index": 76,
+          "start": 0,
+          "end": 29,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Possible ambiguous or unsupported heading; section context stopped"
+        },
+        {
+          "source_id": "e77:0:30",
+          "source_element_index": 77,
+          "start": 0,
+          "end": 30,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e78:0:410",
+          "source_element_index": 78,
+          "start": 0,
+          "end": 410,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e79:0:65",
+          "source_element_index": 79,
+          "start": 0,
+          "end": 65,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e80:0:267",
+          "source_element_index": 80,
+          "start": 0,
+          "end": 267,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e81:0:48",
+          "source_element_index": 81,
+          "start": 0,
+          "end": 48,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e82:0:9",
+          "source_element_index": 82,
+          "start": 0,
+          "end": 9,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e83:0:9",
+          "source_element_index": 83,
+          "start": 0,
+          "end": 9,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e84:0:7",
+          "source_element_index": 84,
+          "start": 0,
+          "end": 7,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e85:0:55",
+          "source_element_index": 85,
+          "start": 0,
+          "end": 55,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e86:0:55",
+          "source_element_index": 86,
+          "start": 0,
+          "end": 55,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e87:0:8",
+          "source_element_index": 87,
+          "start": 0,
+          "end": 8,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e88:0:14",
+          "source_element_index": 88,
+          "start": 0,
+          "end": 14,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e89:0:17",
+          "source_element_index": 89,
+          "start": 0,
+          "end": 17,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e90:0:39",
+          "source_element_index": 90,
+          "start": 0,
+          "end": 39,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e91:0:0",
+          "source_element_index": 91,
+          "start": 0,
+          "end": 0,
+          "section": null,
+          "outcome": "non_content_artifact",
+          "reason": "Whitespace retained in source inventory"
+        },
+        {
+          "source_id": "e92:0:25",
+          "source_element_index": 92,
+          "start": 0,
+          "end": 25,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e93:0:43",
+          "source_element_index": 93,
+          "start": 0,
+          "end": 43,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e94:0:15",
+          "source_element_index": 94,
+          "start": 0,
+          "end": 15,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Distinct BERT heading match with a K-means section label"
+        },
+        {
+          "source_id": "e95:0:145",
+          "source_element_index": 95,
+          "start": 0,
+          "end": 145,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e96:0:107",
+          "source_element_index": 96,
+          "start": 0,
+          "end": 107,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e97:0:63",
+          "source_element_index": 97,
+          "start": 0,
+          "end": 63,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        }
+      ]
+    },
+    "document_scope": {
+      "kind": "likely_resume",
+      "candidate_resume": true,
+      "reason": "Contact details, multiple resume section families and dated history; provisional scope only",
+      "human_verified": false
+    },
+    "source_inventory_sha256": "4e73b34e870d716ae90b3e4da09032c0263ceb5dbe9c094468764f218f4cf4d6",
+    "field_evidence": {
+      "summary": [
+        "e3:0:59"
+      ],
+      "certifications[0].name": [
+        "e89:0:17",
+        "e90:0:39",
+        "e92:0:25",
+        "e93:0:43"
+      ]
+    },
+    "record_reviews": [
+      {
+        "category": "experience",
+        "entry_id": "experience-1",
+        "source_ids": [
+          "e5:0:7",
+          "e6:0:17"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-2",
+        "source_ids": [
+          "e7:0:5",
+          "e8:0:10"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-3",
+        "source_ids": [
+          "e9:0:6"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-4",
+        "source_ids": [
+          "e10:0:26"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-5",
+        "source_ids": [
+          "e11:0:8",
+          "e12:0:24",
+          "e13:0:11",
+          "e14:0:15",
+          "e15:0:9",
+          "e16:0:31",
+          "e17:0:18",
+          "e18:0:21",
+          "e19:0:33",
+          "e20:0:12",
+          "e21:0:12",
+          "e22:0:12",
+          "e23:0:3",
+          "e24:0:12",
+          "e25:0:9",
+          "e26:0:7",
+          "e27:0:9",
+          "e28:0:7"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-6",
+        "source_ids": [
+          "e29:0:31",
+          "e30:0:26"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-7",
+        "source_ids": [
+          "e31:0:13",
+          "e32:0:112",
+          "e33:0:96",
+          "e34:0:123",
+          "e35:0:98",
+          "e36:0:123",
+          "e37:0:126",
+          "e38:0:95"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-8",
+        "source_ids": [
+          "e39:0:23",
+          "e40:0:32"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-9",
+        "source_ids": [
+          "e41:0:31",
+          "e42:0:313",
+          "e43:0:7",
+          "e44:0:3",
+          "e45:0:10",
+          "e46:0:6",
+          "e47:0:8",
+          "e48:0:7",
+          "e49:0:12",
+          "e50:0:12",
+          "e51:0:12",
+          "e52:0:12",
+          "e53:0:12",
+          "e54:0:80",
+          "e55:0:153",
+          "e56:0:301",
+          "e57:0:156",
+          "e58:0:30",
+          "e59:0:12",
+          "e60:0:12",
+          "e61:0:46",
+          "e62:0:12",
+          "e63:0:13",
+          "e64:0:12",
+          "e65:0:68",
+          "e66:0:434",
+          "e67:0:56",
+          "e68:0:66",
+          "e69:0:90",
+          "e70:0:103",
+          "e71:0:312",
+          "e72:0:9",
+          "e73:0:7",
+          "e74:0:159",
+          "e75:0:78"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "education",
+        "entry_id": "education-1",
+        "source_ids": [
+          "e83:0:9",
+          "e84:0:7"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "education",
+        "entry_id": "education-2",
+        "source_ids": [
+          "e85:0:55",
+          "e86:0:55",
+          "e87:0:8"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "certifications",
+        "entry_id": "certifications-1",
+        "source_ids": [
+          "e89:0:17",
+          "e90:0:39",
+          "e92:0:25",
+          "e93:0:43"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      }
+    ],
+    "missing_required_fields": [
+      "contact.full_name",
+      "contact.email",
+      "contact.phone",
+      "experience[0].company",
+      "experience[0].role",
+      "experience[1].company",
+      "experience[1].role",
+      "experience[2].company",
+      "experience[2].role",
+      "experience[3].company",
+      "experience[3].role",
+      "experience[4].company",
+      "experience[4].role",
+      "experience[5].company",
+      "experience[5].role",
+      "experience[6].company",
+      "experience[6].role",
+      "experience[7].company",
+      "experience[7].role",
+      "experience[8].company",
+      "experience[8].role",
+      "education[0].institution",
+      "education[0].degree",
+      "education[1].institution",
+      "education[1].degree"
+    ],
+    "warnings": [
+      "Schema validity and field completion do not establish extraction or relationship accuracy.",
+      "Handoff confidence scores are fixed heuristics, not calibrated probabilities.",
+      "Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields."
+    ],
+    "unmapped_blocks": [
+      {
+        "source_id": "e4:0:12",
+        "category": "experience",
+        "text": "Work History",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:0:7",
+        "category": "experience",
+        "text": "Address",
+        "page_number": 1
+      },
+      {
+        "source_id": "e6:0:17",
+        "category": "experience",
+        "text": "Raipur, IN 492001",
+        "page_number": 1
+      },
+      {
+        "source_id": "e7:0:5",
+        "category": "experience",
+        "text": "Phone",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:0:10",
+        "category": "experience",
+        "text": "8602819331",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:0:6",
+        "category": "experience",
+        "text": "E-mail",
+        "page_number": 1
+      },
+      {
+        "source_id": "e10:0:26",
+        "category": "experience",
+        "text": "bhaktianum250325@gmail.com",
+        "page_number": 1
+      },
+      {
+        "source_id": "e11:0:8",
+        "category": "experience",
+        "text": "LinkedIn",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:0:24",
+        "category": "experience",
+        "text": "https://www.linkedin.com",
+        "page_number": 1
+      },
+      {
+        "source_id": "e13:0:11",
+        "category": "experience",
+        "text": "/in/bhakti-",
+        "page_number": 1
+      },
+      {
+        "source_id": "e14:0:15",
+        "category": "experience",
+        "text": "anum-4b18b5173?",
+        "page_number": 1
+      },
+      {
+        "source_id": "e15:0:9",
+        "category": "experience",
+        "text": "Core Java",
+        "page_number": 1
+      },
+      {
+        "source_id": "e16:0:31",
+        "category": "experience",
+        "text": "Upper intermediate Advance Java",
+        "page_number": 1
+      },
+      {
+        "source_id": "e17:0:18",
+        "category": "experience",
+        "text": "Upper intermediate",
+        "page_number": 1
+      },
+      {
+        "source_id": "e18:0:21",
+        "category": "experience",
+        "text": "Spring Boot Framework",
+        "page_number": 1
+      },
+      {
+        "source_id": "e19:0:33",
+        "category": "experience",
+        "text": "Upper intermediate Spring Webflux",
+        "page_number": 1
+      },
+      {
+        "source_id": "e20:0:12",
+        "category": "experience",
+        "text": "Intermediate",
+        "page_number": 1
+      },
+      {
+        "source_id": "e21:0:12",
+        "category": "experience",
+        "text": "Microservice",
+        "page_number": 1
+      },
+      {
+        "source_id": "e22:0:12",
+        "category": "experience",
+        "text": "Intermediate",
+        "page_number": 1
+      },
+      {
+        "source_id": "e23:0:3",
+        "category": "experience",
+        "text": "SQL",
+        "page_number": 1
+      },
+      {
+        "source_id": "e24:0:12",
+        "category": "experience",
+        "text": "Intermediate",
+        "page_number": 1
+      },
+      {
+        "source_id": "e25:0:9",
+        "category": "experience",
+        "text": "2024-03 -",
+        "page_number": 1
+      },
+      {
+        "source_id": "e26:0:7",
+        "category": "experience",
+        "text": "Current",
+        "page_number": 1
+      },
+      {
+        "source_id": "e27:0:9",
+        "category": "experience",
+        "text": "2021-06 -",
+        "page_number": 1
+      },
+      {
+        "source_id": "e28:0:7",
+        "category": "experience",
+        "text": "2024-03",
+        "page_number": 1
+      },
+      {
+        "source_id": "e29:0:31",
+        "category": "experience",
+        "text": "Software Development Engineer 2",
+        "page_number": 1
+      },
+      {
+        "source_id": "e30:0:26",
+        "category": "experience",
+        "text": "TEKsystems, Gurgaon, India",
+        "page_number": 1
+      },
+      {
+        "source_id": "e31:0:13",
+        "category": "experience",
+        "text": "Expedia Group",
+        "page_number": 1
+      },
+      {
+        "source_id": "e32:0:112",
+        "category": "experience",
+        "text": "Develop and manage APIs for the Cars module, enabling seamless car search functionality on the Expedia platform.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e33:0:96",
+        "category": "experience",
+        "text": "Utilize Scala, Java, and Kotlin to build microservices aimed at creating LOB-agnostic platforms.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e34:0:123",
+        "category": "experience",
+        "text": "Lead the One-Pricing Project, a unified platform for applying taxes and prices across all Expedia Lines of Business (LOBs).",
+        "page_number": 1
+      },
+      {
+        "source_id": "e35:0:98",
+        "category": "experience",
+        "text": "Implemented a proxy layer for the primary Cars project to ensure smooth integration and data flow.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e36:0:123",
+        "category": "experience",
+        "text": "Designed a mapping and logic layer for seamless downstream service integration to standardize tax and pricing applications.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e37:0:126",
+        "category": "experience",
+        "text": "Collaborate in an Agile environment, ensuring high performance, scalability, and alignment with domain- specific requirements.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e38:0:95",
+        "category": "experience",
+        "text": "Technology used: Java, Kotlin, Scala, Splunk, Redis, Microservices, Design Pattern, Spring boot",
+        "page_number": 1
+      },
+      {
+        "source_id": "e39:0:23",
+        "category": "experience",
+        "text": "Associate Technology L2",
+        "page_number": 1
+      },
+      {
+        "source_id": "e40:0:32",
+        "category": "experience",
+        "text": "Publicis Sapient, Gurgaon, India",
+        "page_number": 1
+      },
+      {
+        "source_id": "e41:0:31",
+        "category": "experience",
+        "text": "DollarTree Ibotta (07/23-03/24)",
+        "page_number": 1
+      },
+      {
+        "source_id": "e42:0:313",
+        "category": "experience",
+        "text": "This is a Webflux Spring application which uses third party api's to fetch a data and show as a coupon detail in their retailer website and mobile application. It uses router to handle multiple API and as a return Flux/Mono for their request. It is a webflux and functional reactive application with java 17 which",
+        "page_number": 1
+      },
+      {
+        "source_id": "e43:0:7",
+        "category": "experience",
+        "text": "MongoDB",
+        "page_number": 1
+      },
+      {
+        "source_id": "e44:0:3",
+        "category": "experience",
+        "text": "AWS",
+        "page_number": 1
+      },
+      {
+        "source_id": "e45:0:10",
+        "category": "experience",
+        "text": "Kubernetes",
+        "page_number": 1
+      },
+      {
+        "source_id": "e46:0:6",
+        "category": "experience",
+        "text": "Docker",
+        "page_number": 1
+      },
+      {
+        "source_id": "e47:0:8",
+        "category": "experience",
+        "text": "NewRelic",
+        "page_number": 1
+      },
+      {
+        "source_id": "e48:0:7",
+        "category": "experience",
+        "text": "Grafana",
+        "page_number": 1
+      },
+      {
+        "source_id": "e49:0:12",
+        "category": "experience",
+        "text": "Intermediate",
+        "page_number": 1
+      },
+      {
+        "source_id": "e50:0:12",
+        "category": "experience",
+        "text": "Intermediate",
+        "page_number": 1
+      },
+      {
+        "source_id": "e51:0:12",
+        "category": "experience",
+        "text": "Intermediate",
+        "page_number": 1
+      },
+      {
+        "source_id": "e52:0:12",
+        "category": "experience",
+        "text": "Intermediate",
+        "page_number": 1
+      },
+      {
+        "source_id": "e53:0:12",
+        "category": "experience",
+        "text": "Intermediate",
+        "page_number": 1
+      },
+      {
+        "source_id": "e54:0:80",
+        "category": "experience",
+        "text": "doesn't use the annotation and implemented the business logic in functional way.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e55:0:153",
+        "category": "experience",
+        "text": "Technology used: Java-8, Webflux,Reactive Programming,Spring Boot,Docker,Kubernetes,Redis,Caching,AWS- Cloudwatch,Athena,S3,Microservices,Design Pattern.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e56:0:301",
+        "category": "experience",
+        "text": "McDonald's Value Creation Engine (03/2023-06/2023) This is a nodejs and reactjs microservice project which consist of 8 orchestration services and PostgreSQL. This app is used by McDonald's clients to create campaigns/Offer which McDonald's uses for their outlets. This application has an UI which was",
+        "page_number": 1
+      },
+      {
+        "source_id": "e57:0:156",
+        "category": "experience",
+        "text": "developed in react JS which give a functionality to user to add the campaigns details which include images, product description,location,React Big Calender.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e58:0:30",
+        "category": "experience",
+        "text": "Upper intermediate Promentheus",
+        "page_number": 1
+      },
+      {
+        "source_id": "e59:0:12",
+        "category": "experience",
+        "text": "Intermediate",
+        "page_number": 1
+      },
+      {
+        "source_id": "e60:0:12",
+        "category": "experience",
+        "text": "JAVA 8,11,17",
+        "page_number": 1
+      },
+      {
+        "source_id": "e61:0:46",
+        "category": "experience",
+        "text": "Upper intermediate Microservice Design Pattern",
+        "page_number": 1
+      },
+      {
+        "source_id": "e62:0:12",
+        "category": "experience",
+        "text": "Intermediate",
+        "page_number": 1
+      },
+      {
+        "source_id": "e63:0:13",
+        "category": "experience",
+        "text": "Redis Caching",
+        "page_number": 1
+      },
+      {
+        "source_id": "e64:0:12",
+        "category": "experience",
+        "text": "Intermediate",
+        "page_number": 1
+      },
+      {
+        "source_id": "e65:0:68",
+        "category": "experience",
+        "text": "Technology used: NodeJS,ReactJS,MongoDb,Docker,Kubernetes,NewReli c.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e66:0:434",
+        "category": "experience",
+        "text": "McDonald's Error Budget (06/2021- 12/2022) This is a Spring Boot application with Java version 8 which is used as an exporter application in monitoring process. Here all the data come from mongo DB where all the job details are present. Error Budget is used to manipulate the data as per the business need and generate the Prometheus supported output. EB is using two data sources to maintain the backward development and new clients.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e67:0:56",
+        "category": "experience",
+        "text": "Below is the functionality present in Error Budget tool:",
+        "page_number": 1
+      },
+      {
+        "source_id": "e68:0:66",
+        "category": "experience",
+        "text": "Pick data from MongoDB and generate a Prometheus supported output.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e69:0:90",
+        "category": "experience",
+        "text": "Prometheus supported output is then used in Grafana to show graphs and status of the jobs.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e70:0:103",
+        "category": "experience",
+        "text": "Technology used: Java8,SpringBoot,Microservices,MongoDb,MySQL,Desig n Pattern,AWS-Cloudwatch,Athena,S3.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e71:0:312",
+        "category": "experience",
+        "text": "McDonald's Automation Monitoring(06/2021- 12/2022): This Spring Boot application is used to pick the data from Grafana dashboards which EB generated and compare the data from MySql / MongoDB and then it generate the automated report file to send it to client to compare the EB functionality and client need. Here",
+        "page_number": 1
+      },
+      {
+        "source_id": "e72:0:9",
+        "category": "experience",
+        "text": "2018-02 -",
+        "page_number": 1
+      },
+      {
+        "source_id": "e73:0:7",
+        "category": "experience",
+        "text": "2021-06",
+        "page_number": 1
+      },
+      {
+        "source_id": "e74:0:159",
+        "category": "experience",
+        "text": "we have used Cron Scheduler to run this application daily in particular schedule. RestAPI is also used to get the data from different API and put it in report.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e75:0:78",
+        "category": "experience",
+        "text": "Technology used: Java 8,SpringBoot,Microservices,MongoDb,MySQL,Design Pattern.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e82:0:9",
+        "category": "education",
+        "text": "Education",
+        "page_number": 1
+      },
+      {
+        "source_id": "e83:0:9",
+        "category": "education",
+        "text": "2012-06 -",
+        "page_number": 1
+      },
+      {
+        "source_id": "e84:0:7",
+        "category": "education",
+        "text": "2016-06",
+        "page_number": 1
+      },
+      {
+        "source_id": "e85:0:55",
+        "category": "education",
+        "text": "Bachelor of Engineering: Computer Science & Engineering",
+        "page_number": 1
+      },
+      {
+        "source_id": "e86:0:55",
+        "category": "education",
+        "text": "Shri Shankaracharya Engineering College(CSVTU) - Bhilai",
+        "page_number": 1
+      },
+      {
+        "source_id": "e87:0:8",
+        "category": "education",
+        "text": "GPA: 7.5",
+        "page_number": 1
+      },
+      {
+        "source_id": "e88:0:14",
+        "category": "certifications",
+        "text": "Certifications",
+        "page_number": 1
+      },
+      {
+        "source_id": "e94:0:15",
+        "category": "awards",
+        "text": "Accomplishments",
+        "page_number": 2
+      },
+      {
+        "source_id": "e95:0:145",
+        "category": "awards",
+        "text": "Achieved Champion of the Months from McDonald's Client through effectively delivering high quality code and understanding the client requirement.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e96:0:107",
+        "category": "awards",
+        "text": "Achieved Star of the Sprints multiple times by completing high priority tasks with accuracy and efficiency.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e97:0:63",
+        "category": "awards",
+        "text": "Collaborated with team of 5 in the development of Error Bugdet.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e0:0:11",
+        "category": null,
+        "text": "Bhakti Anum",
+        "page_number": 1
+      },
+      {
+        "source_id": "e1:0:31",
+        "category": null,
+        "text": "Software Development Engineer 2",
+        "page_number": 1
+      },
+      {
+        "source_id": "e2:0:258",
+        "category": null,
+        "text": "Versatile Senior Java Developer experienced with the full software development lifecycle and comfortable working within Agile development frameworks. Organized and hardworking team player with strong verbal and written communication skills. Prepared to bring",
+        "page_number": 1
+      },
+      {
+        "source_id": "e76:0:29",
+        "category": null,
+        "text": "Software Engineer - Developer",
+        "page_number": 1
+      },
+      {
+        "source_id": "e77:0:30",
+        "category": null,
+        "text": "Guardian India, Gurgoan, India",
+        "page_number": 1
+      },
+      {
+        "source_id": "e78:0:410",
+        "category": null,
+        "text": "OFA (Outbound Feed Automation) (05/2019 - 06/2021) OFA is tool that works on automating outbound feeds for a client for keeping records on Employee Leave Status, Payment during absence & time duration while on leave using Web application and standalone application. This tool provides rule engine to application which depends on client requirement to distinguish between employee leaves and plans(paid/unpaid).",
+        "page_number": 1
+      },
+      {
+        "source_id": "e79:0:65",
+        "category": null,
+        "text": "Technology: Java 8 ,SpringBoot, MySQL,MultiThreading,Microservice",
+        "page_number": 1
+      },
+      {
+        "source_id": "e80:0:267",
+        "category": null,
+        "text": "AM360: Amazon Hartford Feed (03/2018-04/2019) Amazon Hartford Feed is a module under Leave Absence Management System named AM360 which include feed file type to maintain leave related data. This app is basically used to apply a leave type as per a client requirement.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e81:0:48",
+        "category": null,
+        "text": "Technology used: SpringBoot,Microservices,MySQL.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e91:0:0",
+        "category": null,
+        "text": "",
+        "page_number": null
+      }
+    ],
+    "needs_review": [
+      {
+        "source_element_index": 0,
+        "start": 0,
+        "end": 11,
+        "text": "Bhakti Anum",
+        "page_number": 1,
+        "cluster_id": 7,
+        "candidate_section": "awards",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1664,
+        "margin": 0.0253,
+        "lane": "main",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 1,
+        "start": 0,
+        "end": 31,
+        "text": "Software Development Engineer 2",
+        "page_number": 1,
+        "cluster_id": 1,
+        "candidate_section": "summary",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.5948,
+        "margin": 0.032,
+        "lane": "main",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 2,
+        "start": 0,
+        "end": 258,
+        "text": "Versatile Senior Java Developer experienced with the full software development lifecycle and comfortable working within Agile development frameworks. Organized and hardworking team player with strong verbal and written communication skills. Prepared to bring",
+        "page_number": 1,
+        "cluster_id": 1,
+        "candidate_section": "summary",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.53,
+        "margin": 0.0196,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 76,
+        "start": 0,
+        "end": 29,
+        "text": "Software Engineer - Developer",
+        "page_number": 1,
+        "cluster_id": 1,
+        "candidate_section": "summary",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.6681,
+        "margin": 0.0798,
+        "lane": "main",
+        "reason": "Possible ambiguous or unsupported heading; section context stopped",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 77,
+        "start": 0,
+        "end": 30,
+        "text": "Guardian India, Gurgoan, India",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2964,
+        "margin": 0.0107,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 78,
+        "start": 0,
+        "end": 410,
+        "text": "OFA (Outbound Feed Automation) (05/2019 - 06/2021) OFA is tool that works on automating outbound feeds for a client for keeping records on Employee Leave Status, Payment during absence & time duration while on leave using Web application and standalone application. This tool provides rule engine to application which depends on client requirement to distinguish between employee leaves and plans(paid/unpaid).",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2825,
+        "margin": 0.0824,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 79,
+        "start": 0,
+        "end": 65,
+        "text": "Technology: Java 8 ,SpringBoot, MySQL,MultiThreading,Microservice",
+        "page_number": 1,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3261,
+        "margin": 0.054,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 80,
+        "start": 0,
+        "end": 267,
+        "text": "AM360: Amazon Hartford Feed (03/2018-04/2019) Amazon Hartford Feed is a module under Leave Absence Management System named AM360 which include feed file type to maintain leave related data. This app is basically used to apply a leave type as per a client requirement.",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1753,
+        "margin": 0.003,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 81,
+        "start": 0,
+        "end": 48,
+        "text": "Technology used: SpringBoot,Microservices,MySQL.",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3623,
+        "margin": 0.0281,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 91,
+        "start": 0,
+        "end": 0,
+        "text": "",
+        "page_number": null,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1867,
+        "margin": -0.0366,
+        "lane": "main",
+        "reason": "Layout footer or page separator retained outside semantic sections",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      }
+    ]
+  },
+  "section_schemas": [
+    {
+      "category": "summary",
+      "label": "Summary",
+      "records": [
+        {
+          "record_id": "summary",
+          "source_ids": [
+            "e3:0:59"
+          ],
+          "attributes": [
+            {
+              "name": "statements",
+              "items": [
+                {
+                  "value": "7.6+ years of related experience to a challenging position.",
+                  "evidence": [
+                    {
+                      "source_id": "e3:0:59",
+                      "quote": "7.6+ years of related experience to a challenging position."
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "total_experience_years",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": []
+    },
+    {
+      "category": "experience",
+      "label": "Experience",
+      "records": [
+        {
+          "record_id": "experience-1",
+          "source_ids": [
+            "e5:0:7",
+            "e6:0:17"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "experience-2",
+          "source_ids": [
+            "e7:0:5",
+            "e8:0:10"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "experience-3",
+          "source_ids": [
+            "e9:0:6"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "experience-4",
+          "source_ids": [
+            "e10:0:26"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "experience-5",
+          "source_ids": [
+            "e11:0:8",
+            "e12:0:24",
+            "e13:0:11",
+            "e14:0:15",
+            "e15:0:9",
+            "e16:0:31",
+            "e17:0:18",
+            "e18:0:21",
+            "e19:0:33",
+            "e20:0:12",
+            "e21:0:12",
+            "e22:0:12",
+            "e23:0:3",
+            "e24:0:12",
+            "e25:0:9",
+            "e26:0:7",
+            "e27:0:9",
+            "e28:0:7"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "experience-6",
+          "source_ids": [
+            "e29:0:31",
+            "e30:0:26"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "experience-7",
+          "source_ids": [
+            "e31:0:13",
+            "e32:0:112",
+            "e33:0:96",
+            "e34:0:123",
+            "e35:0:98",
+            "e36:0:123",
+            "e37:0:126",
+            "e38:0:95"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "experience-8",
+          "source_ids": [
+            "e39:0:23",
+            "e40:0:32"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "experience-9",
+          "source_ids": [
+            "e41:0:31",
+            "e42:0:313",
+            "e43:0:7",
+            "e44:0:3",
+            "e45:0:10",
+            "e46:0:6",
+            "e47:0:8",
+            "e48:0:7",
+            "e49:0:12",
+            "e50:0:12",
+            "e51:0:12",
+            "e52:0:12",
+            "e53:0:12",
+            "e54:0:80",
+            "e55:0:153",
+            "e56:0:301",
+            "e57:0:156",
+            "e58:0:30",
+            "e59:0:12",
+            "e60:0:12",
+            "e61:0:46",
+            "e62:0:12",
+            "e63:0:13",
+            "e64:0:12",
+            "e65:0:68",
+            "e66:0:434",
+            "e67:0:56",
+            "e68:0:66",
+            "e69:0:90",
+            "e70:0:103",
+            "e71:0:312",
+            "e72:0:9",
+            "e73:0:7",
+            "e74:0:159",
+            "e75:0:78"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e4:0:12",
+          "quote": "Work History"
+        },
+        {
+          "source_id": "e5:0:7",
+          "quote": "Address"
+        },
+        {
+          "source_id": "e6:0:17",
+          "quote": "Raipur, IN 492001"
+        },
+        {
+          "source_id": "e7:0:5",
+          "quote": "Phone"
+        },
+        {
+          "source_id": "e8:0:10",
+          "quote": "8602819331"
+        },
+        {
+          "source_id": "e9:0:6",
+          "quote": "E-mail"
+        },
+        {
+          "source_id": "e10:0:26",
+          "quote": "bhaktianum250325@gmail.com"
+        },
+        {
+          "source_id": "e11:0:8",
+          "quote": "LinkedIn"
+        },
+        {
+          "source_id": "e12:0:24",
+          "quote": "https://www.linkedin.com"
+        },
+        {
+          "source_id": "e13:0:11",
+          "quote": "/in/bhakti-"
+        },
+        {
+          "source_id": "e14:0:15",
+          "quote": "anum-4b18b5173?"
+        },
+        {
+          "source_id": "e15:0:9",
+          "quote": "Core Java"
+        },
+        {
+          "source_id": "e16:0:31",
+          "quote": "Upper intermediate Advance Java"
+        },
+        {
+          "source_id": "e17:0:18",
+          "quote": "Upper intermediate"
+        },
+        {
+          "source_id": "e18:0:21",
+          "quote": "Spring Boot Framework"
+        },
+        {
+          "source_id": "e19:0:33",
+          "quote": "Upper intermediate Spring Webflux"
+        },
+        {
+          "source_id": "e20:0:12",
+          "quote": "Intermediate"
+        },
+        {
+          "source_id": "e21:0:12",
+          "quote": "Microservice"
+        },
+        {
+          "source_id": "e22:0:12",
+          "quote": "Intermediate"
+        },
+        {
+          "source_id": "e23:0:3",
+          "quote": "SQL"
+        },
+        {
+          "source_id": "e24:0:12",
+          "quote": "Intermediate"
+        },
+        {
+          "source_id": "e25:0:9",
+          "quote": "2024-03 -"
+        },
+        {
+          "source_id": "e26:0:7",
+          "quote": "Current"
+        },
+        {
+          "source_id": "e27:0:9",
+          "quote": "2021-06 -"
+        },
+        {
+          "source_id": "e28:0:7",
+          "quote": "2024-03"
+        },
+        {
+          "source_id": "e29:0:31",
+          "quote": "Software Development Engineer 2"
+        },
+        {
+          "source_id": "e30:0:26",
+          "quote": "TEKsystems, Gurgaon, India"
+        },
+        {
+          "source_id": "e31:0:13",
+          "quote": "Expedia Group"
+        },
+        {
+          "source_id": "e32:0:112",
+          "quote": "Develop and manage APIs for the Cars module, enabling seamless car search functionality on the Expedia platform."
+        },
+        {
+          "source_id": "e33:0:96",
+          "quote": "Utilize Scala, Java, and Kotlin to build microservices aimed at creating LOB-agnostic platforms."
+        },
+        {
+          "source_id": "e34:0:123",
+          "quote": "Lead the One-Pricing Project, a unified platform for applying taxes and prices across all Expedia Lines of Business (LOBs)."
+        },
+        {
+          "source_id": "e35:0:98",
+          "quote": "Implemented a proxy layer for the primary Cars project to ensure smooth integration and data flow."
+        },
+        {
+          "source_id": "e36:0:123",
+          "quote": "Designed a mapping and logic layer for seamless downstream service integration to standardize tax and pricing applications."
+        },
+        {
+          "source_id": "e37:0:126",
+          "quote": "Collaborate in an Agile environment, ensuring high performance, scalability, and alignment with domain- specific requirements."
+        },
+        {
+          "source_id": "e38:0:95",
+          "quote": "Technology used: Java, Kotlin, Scala, Splunk, Redis, Microservices, Design Pattern, Spring boot"
+        },
+        {
+          "source_id": "e39:0:23",
+          "quote": "Associate Technology L2"
+        },
+        {
+          "source_id": "e40:0:32",
+          "quote": "Publicis Sapient, Gurgaon, India"
+        },
+        {
+          "source_id": "e41:0:31",
+          "quote": "DollarTree Ibotta (07/23-03/24)"
+        },
+        {
+          "source_id": "e42:0:313",
+          "quote": "This is a Webflux Spring application which uses third party api's to fetch a data and show as a coupon detail in their retailer website and mobile application. It uses router to handle multiple API and as a return Flux/Mono for their request. It is a webflux and functional reactive application with java 17 which"
+        },
+        {
+          "source_id": "e43:0:7",
+          "quote": "MongoDB"
+        },
+        {
+          "source_id": "e44:0:3",
+          "quote": "AWS"
+        },
+        {
+          "source_id": "e45:0:10",
+          "quote": "Kubernetes"
+        },
+        {
+          "source_id": "e46:0:6",
+          "quote": "Docker"
+        },
+        {
+          "source_id": "e47:0:8",
+          "quote": "NewRelic"
+        },
+        {
+          "source_id": "e48:0:7",
+          "quote": "Grafana"
+        },
+        {
+          "source_id": "e49:0:12",
+          "quote": "Intermediate"
+        },
+        {
+          "source_id": "e50:0:12",
+          "quote": "Intermediate"
+        },
+        {
+          "source_id": "e51:0:12",
+          "quote": "Intermediate"
+        },
+        {
+          "source_id": "e52:0:12",
+          "quote": "Intermediate"
+        },
+        {
+          "source_id": "e53:0:12",
+          "quote": "Intermediate"
+        },
+        {
+          "source_id": "e54:0:80",
+          "quote": "doesn't use the annotation and implemented the business logic in functional way."
+        },
+        {
+          "source_id": "e55:0:153",
+          "quote": "Technology used: Java-8, Webflux,Reactive Programming,Spring Boot,Docker,Kubernetes,Redis,Caching,AWS- Cloudwatch,Athena,S3,Microservices,Design Pattern."
+        },
+        {
+          "source_id": "e56:0:301",
+          "quote": "McDonald's Value Creation Engine (03/2023-06/2023) This is a nodejs and reactjs microservice project which consist of 8 orchestration services and PostgreSQL. This app is used by McDonald's clients to create campaigns/Offer which McDonald's uses for their outlets. This application has an UI which was"
+        },
+        {
+          "source_id": "e57:0:156",
+          "quote": "developed in react JS which give a functionality to user to add the campaigns details which include images, product description,location,React Big Calender."
+        },
+        {
+          "source_id": "e58:0:30",
+          "quote": "Upper intermediate Promentheus"
+        },
+        {
+          "source_id": "e59:0:12",
+          "quote": "Intermediate"
+        },
+        {
+          "source_id": "e60:0:12",
+          "quote": "JAVA 8,11,17"
+        },
+        {
+          "source_id": "e61:0:46",
+          "quote": "Upper intermediate Microservice Design Pattern"
+        },
+        {
+          "source_id": "e62:0:12",
+          "quote": "Intermediate"
+        },
+        {
+          "source_id": "e63:0:13",
+          "quote": "Redis Caching"
+        },
+        {
+          "source_id": "e64:0:12",
+          "quote": "Intermediate"
+        },
+        {
+          "source_id": "e65:0:68",
+          "quote": "Technology used: NodeJS,ReactJS,MongoDb,Docker,Kubernetes,NewReli c."
+        },
+        {
+          "source_id": "e66:0:434",
+          "quote": "McDonald's Error Budget (06/2021- 12/2022) This is a Spring Boot application with Java version 8 which is used as an exporter application in monitoring process. Here all the data come from mongo DB where all the job details are present. Error Budget is used to manipulate the data as per the business need and generate the Prometheus supported output. EB is using two data sources to maintain the backward development and new clients."
+        },
+        {
+          "source_id": "e67:0:56",
+          "quote": "Below is the functionality present in Error Budget tool:"
+        },
+        {
+          "source_id": "e68:0:66",
+          "quote": "Pick data from MongoDB and generate a Prometheus supported output."
+        },
+        {
+          "source_id": "e69:0:90",
+          "quote": "Prometheus supported output is then used in Grafana to show graphs and status of the jobs."
+        },
+        {
+          "source_id": "e70:0:103",
+          "quote": "Technology used: Java8,SpringBoot,Microservices,MongoDb,MySQL,Desig n Pattern,AWS-Cloudwatch,Athena,S3."
+        },
+        {
+          "source_id": "e71:0:312",
+          "quote": "McDonald's Automation Monitoring(06/2021- 12/2022): This Spring Boot application is used to pick the data from Grafana dashboards which EB generated and compare the data from MySql / MongoDB and then it generate the automated report file to send it to client to compare the EB functionality and client need. Here"
+        },
+        {
+          "source_id": "e72:0:9",
+          "quote": "2018-02 -"
+        },
+        {
+          "source_id": "e73:0:7",
+          "quote": "2021-06"
+        },
+        {
+          "source_id": "e74:0:159",
+          "quote": "we have used Cron Scheduler to run this application daily in particular schedule. RestAPI is also used to get the data from different API and put it in report."
+        },
+        {
+          "source_id": "e75:0:78",
+          "quote": "Technology used: Java 8,SpringBoot,Microservices,MongoDb,MySQL,Design Pattern."
+        }
+      ]
+    },
+    {
+      "category": "education",
+      "label": "Education",
+      "records": [
+        {
+          "record_id": "education-1",
+          "source_ids": [
+            "e83:0:9",
+            "e84:0:7"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "degree",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "education-2",
+          "source_ids": [
+            "e85:0:55",
+            "e86:0:55",
+            "e87:0:8"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "degree",
+              "items": [
+                {
+                  "value": "Bachelor of Engineering",
+                  "evidence": [
+                    {
+                      "source_id": "e85:0:55",
+                      "quote": "Bachelor of Engineering"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [
+                {
+                  "value": "7.5",
+                  "evidence": [
+                    {
+                      "source_id": "e87:0:8",
+                      "quote": "7.5"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e82:0:9",
+          "quote": "Education"
+        },
+        {
+          "source_id": "e83:0:9",
+          "quote": "2012-06 -"
+        },
+        {
+          "source_id": "e84:0:7",
+          "quote": "2016-06"
+        },
+        {
+          "source_id": "e85:0:55",
+          "quote": "Bachelor of Engineering: Computer Science & Engineering"
+        },
+        {
+          "source_id": "e86:0:55",
+          "quote": "Shri Shankaracharya Engineering College(CSVTU) - Bhilai"
+        },
+        {
+          "source_id": "e87:0:8",
+          "quote": "GPA: 7.5"
+        }
+      ]
+    },
+    {
+      "category": "certifications",
+      "label": "Certifications",
+      "records": [
+        {
+          "record_id": "certifications-1",
+          "source_ids": [
+            "e89:0:17",
+            "e90:0:39",
+            "e92:0:25",
+            "e93:0:43"
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "issuer",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "issue_year",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e88:0:14",
+          "quote": "Certifications"
+        },
+        {
+          "source_id": "e89:0:17",
+          "quote": "2015-03\tCore Java"
+        },
+        {
+          "source_id": "e90:0:39",
+          "quote": "2017-01\tAdvance Java + Spring Framework"
+        },
+        {
+          "source_id": "e92:0:25",
+          "quote": "2018-04\tSAFe Practisioner"
+        },
+        {
+          "source_id": "e93:0:43",
+          "quote": "2022-06\tFull stack Developer from IIT Mandi"
+        }
+      ]
+    },
+    {
+      "category": "awards",
+      "label": "Awards and achievements",
+      "records": [
+        {
+          "record_id": "awards-1",
+          "source_ids": [
+            "e95:0:145",
+            "e96:0:107",
+            "e97:0:63"
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "issuer",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "date",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "Unlabelled compound information requires source review."
+          ]
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e94:0:15",
+          "quote": "Accomplishments"
+        },
+        {
+          "source_id": "e95:0:145",
+          "quote": "Achieved Champion of the Months from McDonald's Client through effectively delivering high quality code and understanding the client requirement."
+        },
+        {
+          "source_id": "e96:0:107",
+          "quote": "Achieved Star of the Sprints multiple times by completing high priority tasks with accuracy and efficiency."
+        },
+        {
+          "source_id": "e97:0:63",
+          "quote": "Collaborated with team of 5 in the development of Error Bugdet."
+        }
+      ]
+    },
+    {
+      "category": "needs_review",
+      "label": "Unassigned source blocks",
+      "records": [],
+      "residual_blocks": [
+        {
+          "source_id": "e0:0:11",
+          "quote": "Bhakti Anum"
+        },
+        {
+          "source_id": "e1:0:31",
+          "quote": "Software Development Engineer 2"
+        },
+        {
+          "source_id": "e2:0:258",
+          "quote": "Versatile Senior Java Developer experienced with the full software development lifecycle and comfortable working within Agile development frameworks. Organized and hardworking team player with strong verbal and written communication skills. Prepared to bring"
+        },
+        {
+          "source_id": "e76:0:29",
+          "quote": "Software Engineer - Developer"
+        },
+        {
+          "source_id": "e77:0:30",
+          "quote": "Guardian India, Gurgoan, India"
+        },
+        {
+          "source_id": "e78:0:410",
+          "quote": "OFA (Outbound Feed Automation) (05/2019 - 06/2021) OFA is tool that works on automating outbound feeds for a client for keeping records on Employee Leave Status, Payment during absence & time duration while on leave using Web application and standalone application. This tool provides rule engine to application which depends on client requirement to distinguish between employee leaves and plans(paid/unpaid)."
+        },
+        {
+          "source_id": "e79:0:65",
+          "quote": "Technology: Java 8 ,SpringBoot, MySQL,MultiThreading,Microservice"
+        },
+        {
+          "source_id": "e80:0:267",
+          "quote": "AM360: Amazon Hartford Feed (03/2018-04/2019) Amazon Hartford Feed is a module under Leave Absence Management System named AM360 which include feed file type to maintain leave related data. This app is basically used to apply a leave type as per a client requirement."
+        },
+        {
+          "source_id": "e81:0:48",
+          "quote": "Technology used: SpringBoot,Microservices,MySQL."
+        },
+        {
+          "source_id": "e91:0:0",
+          "quote": ""
+        }
+      ]
+    }
+  ]
+}

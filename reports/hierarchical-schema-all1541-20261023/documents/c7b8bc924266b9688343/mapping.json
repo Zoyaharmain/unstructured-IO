@@ -1,0 +1,2380 @@
+{
+  "success": true,
+  "source": "Tarun G.docx",
+  "extraction_mode": "existing_blocks_schema_mapping",
+  "data": {
+    "contact": {
+      "full_name": "Name                        : Tarun Gelli",
+      "email": "tarunrpa.uipath@gmail.com",
+      "phone": "9491355515",
+      "location": "Hyderabad",
+      "linkedin_url": null,
+      "github_url": null,
+      "portfolio_url": null
+    },
+    "professional_title": null,
+    "summary": null,
+    "total_experience_years": null,
+    "skills": {
+      "technical_skills": [
+        "SQL"
+      ],
+      "tools_and_platforms": [
+        "JIRA"
+      ],
+      "domain_and_functional": [],
+      "soft_skills": [],
+      "all_skills": [
+        "SQL",
+        "JIRA",
+        "Desktop Operating Systems   : Windows 7/8/10",
+        "Linux Primary Skill \t: Robotic Process Automation (RPA) using UiPath Programming Languages \t: VB.Net and ADO.Net Database \t: MS SQL Server",
+        "My SQL",
+        "Oracle & MS Access Bug Tracking Tool / Tools \t: ServiceNow",
+        "Jira tools"
+      ]
+    },
+    "experience": [
+      {
+        "company": "",
+        "role": "UiPath RPA Developer Advanced and Orchestrator, UiPath Agentic Automation Associate",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [
+          "Created Re-usable components for automating several application Login pages and knowledge on Version control system integrations like GIT HUB."
+        ],
+        "technologies": []
+      },
+      {
+        "company": "",
+        "role": "Designation: Consultant",
+        "start_date": "Jan 2022",
+        "end_date": "present",
+        "duration": "Jan 2022 to present",
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "Designed solutions utilizing RPA best practices and maintaining technical responsibility for project delivery.",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [
+          "Created PDD’s and SDD’s documents for automation.",
+          "Designed solutions utilizing RPA best practices and maintaining technical responsibility for project delivery."
+        ],
+        "technologies": []
+      }
+    ],
+    "education": [
+      {
+        "institution": "",
+        "degree": "Bachelor of Commerce, Indira Gandhi National University, New Delhi",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      }
+    ],
+    "certifications": [
+      {
+        "name": "UiPath Certifications: RPA Developer Advanced, Document Understanding, Action Center, AI Center, Agentic Associate Diploma and Orchestrator, AAAv1 UiPath Agentic Automation Associate",
+        "issuer": null,
+        "issue_year": null
+      }
+    ],
+    "projects": [],
+    "languages": []
+  },
+  "schema_mapping": {
+    "fields_populated": 10,
+    "total_fields": 16,
+    "completion_percentage": 62.5,
+    "field_details": [
+      {
+        "field_name": "contact.full_name",
+        "target_type": "string",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Personal Details",
+        "confidence_score": 0.95,
+        "description": "Candidate's full name, extracted from the top header of the resume."
+      },
+      {
+        "field_name": "contact.email",
+        "target_type": "string (email)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.98,
+        "description": "Candidate's primary contact email address."
+      },
+      {
+        "field_name": "contact.phone",
+        "target_type": "string (phone)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.95,
+        "description": "Candidate's telephone / mobile phone number."
+      },
+      {
+        "field_name": "contact.location",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.85,
+        "description": "Candidate's residential location or work city."
+      },
+      {
+        "field_name": "contact.linkedin_url",
+        "target_type": "string (url) | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "URL to candidate's LinkedIn profile."
+      },
+      {
+        "field_name": "professional_title",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Subtitle",
+        "confidence_score": 0.0,
+        "description": "Candidate's target headline or most recent job title."
+      },
+      {
+        "field_name": "summary",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Professional Summary / Profile / Objective",
+        "confidence_score": 0.0,
+        "description": "Executive bio, professional overview, or career objective."
+      },
+      {
+        "field_name": "total_experience_years",
+        "target_type": "float | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Summary / Experience Calculation",
+        "confidence_score": 0.0,
+        "description": "Total professional experience in years."
+      },
+      {
+        "field_name": "skills.technical_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills / Technical Competencies",
+        "confidence_score": 0.92,
+        "description": "Technical programming languages and core software competencies."
+      },
+      {
+        "field_name": "skills.tools_and_platforms",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills / Tools & Technologies",
+        "confidence_score": 0.9,
+        "description": "Software platforms, developer tools, and operational systems."
+      },
+      {
+        "field_name": "skills.domain_and_functional",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Domain Expertise",
+        "confidence_score": 0.0,
+        "description": "Functional domain knowledge (e.g. Hedge Funds, KYC, NAV, Derivatives)."
+      },
+      {
+        "field_name": "skills.all_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills (Aggregated)",
+        "confidence_score": 0.95,
+        "description": "Complete list of candidate skills across all categories."
+      },
+      {
+        "field_name": "experience",
+        "target_type": "array[WorkExperience]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Experience / Work History",
+        "confidence_score": 0.92,
+        "description": "Complete chronological employment records with bullet points."
+      },
+      {
+        "field_name": "education",
+        "target_type": "array[Education]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Education / Academic Qualifications",
+        "confidence_score": 0.9,
+        "description": "University, college, and higher education degree qualifications."
+      },
+      {
+        "field_name": "certifications",
+        "target_type": "array[Certification]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Certifications / Licenses",
+        "confidence_score": 0.8,
+        "description": "Professional accreditations and credentials."
+      },
+      {
+        "field_name": "projects",
+        "target_type": "array[Project]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Projects / Key Engagements",
+        "confidence_score": 0.0,
+        "description": "Major projects or strategic initiatives led by candidate."
+      }
+    ]
+  },
+  "raw_sections": {
+    "personal_information": "TARUN GELLI       tarunrpa.uipath@gmail.com  (+91)- 9491355515   \nPERSONAL DETAILS \n\t                       Name                        : Tarun Gelli\n                       Gender \t: Male \n\t                  Marital status         : Married \nDECLARATION \nI hereby declare that all above-mentioned information is in accordance with fact or truth up to my knowledge and I bear the responsibilities for the correctness of the above-mentioned particulars. \nDate: \n\tPlace: Hyderabad \tTarun Gelli ",
+    "experience": "PROFESSIONAL EXPERIENCE \nHaving total 4.2 years in RPA UiPath the RPA field majorly worked on Web-based, Desktop, Outlook and Excel automations.\nInvolved in different phases of process. Design, Development, Testing, Integration, Implementation and Maintenance.\nCertified on UiPath Foundation Course – Diploma, UiPath Advanced Automation Course – Diploma,\nUiPath RPA Developer Advanced and Orchestrator, UiPath Agentic Automation Associate\nHaving good exposure to UiPath Studio, Orchestrator, and RE Framework design.\nExperience of UiPath Document Understanding, Action Center, AI Center, and GEN AI Capabilities.\nKnowledge of SAP, Mainframe, CV Automation, WEB API Integration, Data base connection, Test suite.\nExperienced in automation of Work Queues, Exception Handling, Assets, Object repository, and Storage Buckets by using UiPath.\nInvolved in creating PDD’s and SDD’s for the processes.\nCreated Re-usable components for automating several application Login pages and knowledge on Version control system integrations like GIT HUB.\nHave end-to-end orchestrator experience on like Managing Robots, Jobs, Logs, Queues, Triggers, Assets, and Machines etc.\nProficient in deployment and debugging applications in all environments and maintaining environment up to time.\nKnowledge of UiPath Active Learning, Autopilot, UiPath Agentic automation.\nAutomated Web, Citrix, Webservices (REST API’s), OLEDB database, SQL database, Windows based applications and multiple excel operations using UiPath tool.\nExperience in UiPath Orchestrator, Work Queues, Exception handling, Calanders, Schedules, and Session management using UiPath tool.\nHaving a good understanding of Multi-Bot Architecture.\nWORK EXPERIENCE \n            Company Name: - Capgemini, Hyderabad                                  Duration: Since Jan 2022 to present \n                  Designation: Consultant\n                  Client: -Tetrapak, NatWest, Unilever, Fortive\nAUTOMATION PROJECTS AND DEVELOPMENT \nCompleting APRO Statements in Oracle (Web, Excel, Outlook, Oracle Data base - Applications)\nECM PO Load (PDF, Excel, Outlook, Word - Applications)\nAP PO and non-PO process (Outlook, Excel, Oracle web, Document understanding, Action Centre, AI Centre - Applications).\nCreate Remittance Process (MS Excel, Shared drive, and Agresso web - Applications)\nPOS & Inventory Process (Macro, Excel, share point, Share drive, Oracle Data base, Outlook -\nApplications)  \nEAMS TO FUZE (WEB, MS Excel - Applications)\nAMS Reactive Costing: (SAP, WEB API’S, MS Excel, Outlook -\nApplications) \n         ROLES AND RESPONSIBILITES \nInvolved in development based on client requirements by following design and operational documents.\nCreated PDD’s and SDD’s documents for automation.\nDevelopment and technical assistance on UiPath.\nDo feasibility study for automation with UiPath.\nInvolved in defect fixing that was assigned by QA/ UAT team.\nPrepared the documentation for UAT Test cases and Runbook.\nInvolved and provided Support/ Hyper care for production processes.\nDesigned solutions utilizing RPA best practices and maintaining technical responsibility for project delivery.\nAnalysed the feasibility of existing process suitable for automation.\nInvolved in managing BOT's workloads using Orchestrator Work Queues.\nCreating ODI (Object Design Instruction) and developing respective PDI (Process Design Instruction) when required for automation process.\nEfficiently handled monitoring and troubleshooting the UiPath environment through Orchestrator.",
+    "certifications": "CERTIFICATIONS & LEARNINGS \nUiPath Certifications: RPA Developer Advanced, Document Understanding, Action Center, AI Center, Agentic Associate Diploma and Orchestrator, AAAv1 UiPath Agentic Automation Associate",
+    "skills": "TECHNICAL SKILLS  \nDesktop Operating Systems   : Windows 7/8/10, Linux Primary Skill \t: Robotic Process Automation (RPA) using UiPath Programming Languages \t: VB.Net and ADO.Net Database \t: MS SQL Server, My SQL, Oracle & MS Access Bug Tracking Tool / Tools \t: ServiceNow, Jira tools",
+    "awards": "AWARDS AND RECOGNIGATION \nAce of Invent\nInnovation & Ideas\nXTRA Mile\nOutstanding Contribution in Delivery",
+    "education": "Bachelor of Commerce, Indira Gandhi National University, New Delhi"
+  },
+  "meta": {
+    "status": "needs_review",
+    "human_verified": false,
+    "provider_calls": 0,
+    "source_accounting": {
+      "all_source_text_preserved": true,
+      "total_spans": 65,
+      "assigned_meaningful_spans": 64,
+      "unresolved_meaningful_spans": 1,
+      "non_content_artifacts": 0,
+      "duplicates_excluded": 0,
+      "all_meaningful_text_assigned": false,
+      "semantic_correctness_verified": false,
+      "outcomes": [
+        {
+          "source_id": "e0:0:65",
+          "source_element_index": 0,
+          "start": 0,
+          "end": 65,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e1:0:24",
+          "source_element_index": 1,
+          "start": 0,
+          "end": 24,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e2:0:119",
+          "source_element_index": 2,
+          "start": 0,
+          "end": 119,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:0:115",
+          "source_element_index": 3,
+          "start": 0,
+          "end": 115,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e4:0:93",
+          "source_element_index": 4,
+          "start": 0,
+          "end": 93,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e5:0:83",
+          "source_element_index": 5,
+          "start": 0,
+          "end": 83,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e6:0:77",
+          "source_element_index": 6,
+          "start": 0,
+          "end": 77,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e7:0:95",
+          "source_element_index": 7,
+          "start": 0,
+          "end": 95,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:0:98",
+          "source_element_index": 8,
+          "start": 0,
+          "end": 98,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:0:125",
+          "source_element_index": 9,
+          "start": 0,
+          "end": 125,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e10:0:55",
+          "source_element_index": 10,
+          "start": 0,
+          "end": 55,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e11:0:142",
+          "source_element_index": 11,
+          "start": 0,
+          "end": 142,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:0:120",
+          "source_element_index": 12,
+          "start": 0,
+          "end": 120,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e13:0:111",
+          "source_element_index": 13,
+          "start": 0,
+          "end": 111,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e14:0:74",
+          "source_element_index": 14,
+          "start": 0,
+          "end": 74,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e15:0:154",
+          "source_element_index": 15,
+          "start": 0,
+          "end": 154,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e16:0:131",
+          "source_element_index": 16,
+          "start": 0,
+          "end": 131,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e17:0:54",
+          "source_element_index": 17,
+          "start": 0,
+          "end": 54,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e18:0:16",
+          "source_element_index": 18,
+          "start": 0,
+          "end": 16,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e19:0:118",
+          "source_element_index": 19,
+          "start": 0,
+          "end": 118,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e20:0:41",
+          "source_element_index": 20,
+          "start": 0,
+          "end": 41,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e21:0:63",
+          "source_element_index": 21,
+          "start": 0,
+          "end": 63,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e22:0:36",
+          "source_element_index": 22,
+          "start": 0,
+          "end": 36,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e23:0:91",
+          "source_element_index": 23,
+          "start": 0,
+          "end": 91,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e24:0:54",
+          "source_element_index": 24,
+          "start": 0,
+          "end": 54,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e25:0:119",
+          "source_element_index": 25,
+          "start": 0,
+          "end": 119,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e26:0:82",
+          "source_element_index": 26,
+          "start": 0,
+          "end": 82,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e27:0:92",
+          "source_element_index": 27,
+          "start": 0,
+          "end": 92,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e28:0:15",
+          "source_element_index": 28,
+          "start": 0,
+          "end": 15,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e29:0:43",
+          "source_element_index": 29,
+          "start": 0,
+          "end": 43,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e30:0:58",
+          "source_element_index": 30,
+          "start": 0,
+          "end": 58,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e31:0:14",
+          "source_element_index": 31,
+          "start": 0,
+          "end": 14,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e32:0:35",
+          "source_element_index": 32,
+          "start": 0,
+          "end": 35,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e33:0:99",
+          "source_element_index": 33,
+          "start": 0,
+          "end": 99,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e34:0:49",
+          "source_element_index": 34,
+          "start": 0,
+          "end": 49,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e35:0:47",
+          "source_element_index": 35,
+          "start": 0,
+          "end": 47,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e36:0:48",
+          "source_element_index": 36,
+          "start": 0,
+          "end": 48,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e37:0:60",
+          "source_element_index": 37,
+          "start": 0,
+          "end": 60,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e38:0:58",
+          "source_element_index": 38,
+          "start": 0,
+          "end": 58,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e39:0:67",
+          "source_element_index": 39,
+          "start": 0,
+          "end": 67,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e40:0:110",
+          "source_element_index": 40,
+          "start": 0,
+          "end": 110,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e41:0:69",
+          "source_element_index": 41,
+          "start": 0,
+          "end": 69,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e42:0:68",
+          "source_element_index": 42,
+          "start": 0,
+          "end": 68,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e43:0:137",
+          "source_element_index": 43,
+          "start": 0,
+          "end": 137,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e44:0:95",
+          "source_element_index": 44,
+          "start": 0,
+          "end": 95,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e45:0:27",
+          "source_element_index": 45,
+          "start": 0,
+          "end": 27,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "Distinct BERT heading match with a K-means section label"
+        },
+        {
+          "source_id": "e46:0:182",
+          "source_element_index": 46,
+          "start": 0,
+          "end": 182,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e47:0:18",
+          "source_element_index": 47,
+          "start": 0,
+          "end": 18,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e48:0:264",
+          "source_element_index": 48,
+          "start": 0,
+          "end": 264,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e49:0:7",
+          "source_element_index": 49,
+          "start": 0,
+          "end": 7,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e49:7:25",
+          "source_element_index": 49,
+          "start": 7,
+          "end": 25,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e50:0:13",
+          "source_element_index": 50,
+          "start": 0,
+          "end": 13,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e51:0:18",
+          "source_element_index": 51,
+          "start": 0,
+          "end": 18,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e52:0:9",
+          "source_element_index": 52,
+          "start": 0,
+          "end": 9,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e53:0:36",
+          "source_element_index": 53,
+          "start": 0,
+          "end": 36,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e54:0:29",
+          "source_element_index": 54,
+          "start": 0,
+          "end": 29,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Possible ambiguous or unsupported heading; section context stopped"
+        },
+        {
+          "source_id": "e55:0:66",
+          "source_element_index": 55,
+          "start": 0,
+          "end": 66,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "BERT embedding assigned to a labeled K-means centroid"
+        },
+        {
+          "source_id": "e56:0:17",
+          "source_element_index": 56,
+          "start": 0,
+          "end": 17,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e57:0:65",
+          "source_element_index": 57,
+          "start": 0,
+          "end": 65,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e58:0:38",
+          "source_element_index": 58,
+          "start": 0,
+          "end": 38,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e59:0:52",
+          "source_element_index": 59,
+          "start": 0,
+          "end": 52,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e60:0:12",
+          "source_element_index": 60,
+          "start": 0,
+          "end": 12,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e61:0:197",
+          "source_element_index": 61,
+          "start": 0,
+          "end": 197,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e62:0:6",
+          "source_element_index": 62,
+          "start": 0,
+          "end": 6,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e63:0:31",
+          "source_element_index": 63,
+          "start": 0,
+          "end": 31,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        }
+      ]
+    },
+    "document_scope": {
+      "kind": "likely_resume",
+      "candidate_resume": true,
+      "reason": "Contact details, multiple resume section families and dated history; provisional scope only",
+      "human_verified": false
+    },
+    "source_inventory_sha256": "1fe52e67b03e97bc79c71d89174551b13b11d04746bd79cbe86d564803b87c2d",
+    "field_evidence": {
+      "contact.full_name": [
+        "e0:0:65",
+        "e57:0:65",
+        "e58:0:38",
+        "e59:0:52",
+        "e60:0:12",
+        "e61:0:197",
+        "e62:0:6",
+        "e63:0:31"
+      ],
+      "contact.email": [
+        "e0:0:65",
+        "e57:0:65",
+        "e58:0:38",
+        "e59:0:52",
+        "e60:0:12",
+        "e61:0:197",
+        "e62:0:6",
+        "e63:0:31"
+      ],
+      "contact.phone": [
+        "e0:0:65",
+        "e57:0:65",
+        "e58:0:38",
+        "e59:0:52",
+        "e60:0:12",
+        "e61:0:197",
+        "e62:0:6",
+        "e63:0:31"
+      ],
+      "contact.location": [
+        "e0:0:65",
+        "e57:0:65",
+        "e58:0:38",
+        "e59:0:52",
+        "e60:0:12",
+        "e61:0:197",
+        "e62:0:6",
+        "e63:0:31"
+      ],
+      "skills.technical_skills[0]": [
+        "e48:0:264"
+      ],
+      "skills.tools_and_platforms[0]": [
+        "e48:0:264"
+      ],
+      "skills.all_skills[0]": [
+        "e48:0:264"
+      ],
+      "skills.all_skills[1]": [
+        "e48:0:264"
+      ],
+      "skills.all_skills[2]": [
+        "e48:0:264"
+      ],
+      "skills.all_skills[3]": [
+        "e48:0:264"
+      ],
+      "skills.all_skills[4]": [
+        "e48:0:264"
+      ],
+      "skills.all_skills[5]": [
+        "e48:0:264"
+      ],
+      "skills.all_skills[6]": [
+        "e48:0:264"
+      ],
+      "experience[0].role": [
+        "e5:0:83"
+      ],
+      "experience[0].responsibilities[0]": [
+        "e11:0:142"
+      ],
+      "experience[1].role": [
+        "e20:0:41"
+      ],
+      "experience[1].start_date": [
+        "e19:0:118"
+      ],
+      "experience[1].end_date": [
+        "e19:0:118"
+      ],
+      "experience[1].duration": [
+        "e19:0:118"
+      ],
+      "experience[3].company": [
+        "e40:0:110"
+      ],
+      "experience[3].responsibilities[0]": [
+        "e34:0:49"
+      ],
+      "experience[3].responsibilities[1]": [
+        "e40:0:110"
+      ],
+      "education[0].degree": [
+        "e55:0:66"
+      ],
+      "certifications[0].name": [
+        "e46:0:182"
+      ]
+    },
+    "record_reviews": [
+      {
+        "category": "experience",
+        "entry_id": "experience-1",
+        "source_ids": [
+          "e2:0:119",
+          "e3:0:115",
+          "e4:0:93",
+          "e5:0:83",
+          "e6:0:77",
+          "e7:0:95",
+          "e8:0:98",
+          "e9:0:125",
+          "e10:0:55",
+          "e11:0:142",
+          "e12:0:120",
+          "e13:0:111",
+          "e14:0:74",
+          "e15:0:154",
+          "e16:0:131",
+          "e17:0:54"
+        ],
+        "relationship_status": "needs_review",
+        "review_reasons": [
+          "employer_not_established_from_supported_fields"
+        ]
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-2",
+        "source_ids": [
+          "e19:0:118",
+          "e20:0:41",
+          "e21:0:63"
+        ],
+        "relationship_status": "needs_review",
+        "review_reasons": [
+          "employer_not_established_from_supported_fields"
+        ]
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-3",
+        "source_ids": [
+          "e22:0:36",
+          "e23:0:91",
+          "e24:0:54",
+          "e25:0:119",
+          "e26:0:82",
+          "e27:0:92",
+          "e28:0:15",
+          "e29:0:43",
+          "e30:0:58",
+          "e31:0:14"
+        ],
+        "relationship_status": "needs_review",
+        "review_reasons": [
+          "employer_not_established_from_supported_fields"
+        ]
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-4",
+        "source_ids": [
+          "e32:0:35",
+          "e33:0:99",
+          "e34:0:49",
+          "e35:0:47",
+          "e36:0:48",
+          "e37:0:60",
+          "e38:0:58",
+          "e39:0:67",
+          "e40:0:110",
+          "e41:0:69",
+          "e42:0:68",
+          "e43:0:137",
+          "e44:0:95"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "education",
+        "entry_id": "education-1",
+        "source_ids": [
+          "e55:0:66"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "certifications",
+        "entry_id": "certifications-1",
+        "source_ids": [
+          "e46:0:182"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      }
+    ],
+    "missing_required_fields": [
+      "experience[0].company",
+      "experience[1].company",
+      "experience[2].company",
+      "experience[2].role",
+      "experience[3].role",
+      "education[0].institution"
+    ],
+    "warnings": [
+      "Schema validity and field completion do not establish extraction or relationship accuracy.",
+      "Handoff confidence scores are fixed heuristics, not calibrated probabilities.",
+      "Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields."
+    ],
+    "unmapped_blocks": [
+      {
+        "source_id": "e56:0:17",
+        "category": "personal_information",
+        "text": "PERSONAL DETAILS ",
+        "page_number": null
+      },
+      {
+        "source_id": "e1:0:24",
+        "category": "experience",
+        "text": "PROFESSIONAL EXPERIENCE ",
+        "page_number": null
+      },
+      {
+        "source_id": "e2:0:119",
+        "category": "experience",
+        "text": "Having total 4.2 years in RPA UiPath the RPA field majorly worked on Web-based, Desktop, Outlook and Excel automations.",
+        "page_number": null
+      },
+      {
+        "source_id": "e3:0:115",
+        "category": "experience",
+        "text": "Involved in different phases of process. Design, Development, Testing, Integration, Implementation and Maintenance.",
+        "page_number": null
+      },
+      {
+        "source_id": "e4:0:93",
+        "category": "experience",
+        "text": "Certified on UiPath Foundation Course – Diploma, UiPath Advanced Automation Course – Diploma,",
+        "page_number": null
+      },
+      {
+        "source_id": "e6:0:77",
+        "category": "experience",
+        "text": "Having good exposure to UiPath Studio, Orchestrator, and RE Framework design.",
+        "page_number": null
+      },
+      {
+        "source_id": "e7:0:95",
+        "category": "experience",
+        "text": "Experience of UiPath Document Understanding, Action Center, AI Center, and GEN AI Capabilities.",
+        "page_number": null
+      },
+      {
+        "source_id": "e8:0:98",
+        "category": "experience",
+        "text": "Knowledge of SAP, Mainframe, CV Automation, WEB API Integration, Data base connection, Test suite.",
+        "page_number": null
+      },
+      {
+        "source_id": "e9:0:125",
+        "category": "experience",
+        "text": "Experienced in automation of Work Queues, Exception Handling, Assets, Object repository, and Storage Buckets by using UiPath.",
+        "page_number": null
+      },
+      {
+        "source_id": "e10:0:55",
+        "category": "experience",
+        "text": "Involved in creating PDD’s and SDD’s for the processes.",
+        "page_number": null
+      },
+      {
+        "source_id": "e12:0:120",
+        "category": "experience",
+        "text": "Have end-to-end orchestrator experience on like Managing Robots, Jobs, Logs, Queues, Triggers, Assets, and Machines etc.",
+        "page_number": null
+      },
+      {
+        "source_id": "e13:0:111",
+        "category": "experience",
+        "text": "Proficient in deployment and debugging applications in all environments and maintaining environment up to time.",
+        "page_number": null
+      },
+      {
+        "source_id": "e14:0:74",
+        "category": "experience",
+        "text": "Knowledge of UiPath Active Learning, Autopilot, UiPath Agentic automation.",
+        "page_number": null
+      },
+      {
+        "source_id": "e15:0:154",
+        "category": "experience",
+        "text": "Automated Web, Citrix, Webservices (REST API’s), OLEDB database, SQL database, Windows based applications and multiple excel operations using UiPath tool.",
+        "page_number": null
+      },
+      {
+        "source_id": "e16:0:131",
+        "category": "experience",
+        "text": "Experience in UiPath Orchestrator, Work Queues, Exception handling, Calanders, Schedules, and Session management using UiPath tool.",
+        "page_number": null
+      },
+      {
+        "source_id": "e17:0:54",
+        "category": "experience",
+        "text": "Having a good understanding of Multi-Bot Architecture.",
+        "page_number": null
+      },
+      {
+        "source_id": "e18:0:16",
+        "category": "experience",
+        "text": "WORK EXPERIENCE ",
+        "page_number": null
+      },
+      {
+        "source_id": "e21:0:63",
+        "category": "experience",
+        "text": "                  Client: -Tetrapak, NatWest, Unilever, Fortive",
+        "page_number": null
+      },
+      {
+        "source_id": "e22:0:36",
+        "category": "experience",
+        "text": "AUTOMATION PROJECTS AND DEVELOPMENT ",
+        "page_number": null
+      },
+      {
+        "source_id": "e23:0:91",
+        "category": "experience",
+        "text": "Completing APRO Statements in Oracle (Web, Excel, Outlook, Oracle Data base - Applications)",
+        "page_number": null
+      },
+      {
+        "source_id": "e24:0:54",
+        "category": "experience",
+        "text": "ECM PO Load (PDF, Excel, Outlook, Word - Applications)",
+        "page_number": null
+      },
+      {
+        "source_id": "e25:0:119",
+        "category": "experience",
+        "text": "AP PO and non-PO process (Outlook, Excel, Oracle web, Document understanding, Action Centre, AI Centre - Applications).",
+        "page_number": null
+      },
+      {
+        "source_id": "e26:0:82",
+        "category": "experience",
+        "text": "Create Remittance Process (MS Excel, Shared drive, and Agresso web - Applications)",
+        "page_number": null
+      },
+      {
+        "source_id": "e27:0:92",
+        "category": "experience",
+        "text": "POS & Inventory Process (Macro, Excel, share point, Share drive, Oracle Data base, Outlook -",
+        "page_number": null
+      },
+      {
+        "source_id": "e28:0:15",
+        "category": "experience",
+        "text": "Applications)  ",
+        "page_number": null
+      },
+      {
+        "source_id": "e29:0:43",
+        "category": "experience",
+        "text": "EAMS TO FUZE (WEB, MS Excel - Applications)",
+        "page_number": null
+      },
+      {
+        "source_id": "e30:0:58",
+        "category": "experience",
+        "text": "AMS Reactive Costing: (SAP, WEB API’S, MS Excel, Outlook -",
+        "page_number": null
+      },
+      {
+        "source_id": "e31:0:14",
+        "category": "experience",
+        "text": "Applications) ",
+        "page_number": null
+      },
+      {
+        "source_id": "e32:0:35",
+        "category": "experience",
+        "text": "         ROLES AND RESPONSIBILITES ",
+        "page_number": null
+      },
+      {
+        "source_id": "e33:0:99",
+        "category": "experience",
+        "text": "Involved in development based on client requirements by following design and operational documents.",
+        "page_number": null
+      },
+      {
+        "source_id": "e35:0:47",
+        "category": "experience",
+        "text": "Development and technical assistance on UiPath.",
+        "page_number": null
+      },
+      {
+        "source_id": "e36:0:48",
+        "category": "experience",
+        "text": "Do feasibility study for automation with UiPath.",
+        "page_number": null
+      },
+      {
+        "source_id": "e37:0:60",
+        "category": "experience",
+        "text": "Involved in defect fixing that was assigned by QA/ UAT team.",
+        "page_number": null
+      },
+      {
+        "source_id": "e38:0:58",
+        "category": "experience",
+        "text": "Prepared the documentation for UAT Test cases and Runbook.",
+        "page_number": null
+      },
+      {
+        "source_id": "e39:0:67",
+        "category": "experience",
+        "text": "Involved and provided Support/ Hyper care for production processes.",
+        "page_number": null
+      },
+      {
+        "source_id": "e41:0:69",
+        "category": "experience",
+        "text": "Analysed the feasibility of existing process suitable for automation.",
+        "page_number": null
+      },
+      {
+        "source_id": "e42:0:68",
+        "category": "experience",
+        "text": "Involved in managing BOT's workloads using Orchestrator Work Queues.",
+        "page_number": null
+      },
+      {
+        "source_id": "e43:0:137",
+        "category": "experience",
+        "text": "Creating ODI (Object Design Instruction) and developing respective PDI (Process Design Instruction) when required for automation process.",
+        "page_number": null
+      },
+      {
+        "source_id": "e44:0:95",
+        "category": "experience",
+        "text": "Efficiently handled monitoring and troubleshooting the UiPath environment through Orchestrator.",
+        "page_number": null
+      },
+      {
+        "source_id": "e45:0:27",
+        "category": "certifications",
+        "text": "CERTIFICATIONS & LEARNINGS ",
+        "page_number": null
+      },
+      {
+        "source_id": "e47:0:18",
+        "category": "skills",
+        "text": "TECHNICAL SKILLS  ",
+        "page_number": null
+      },
+      {
+        "source_id": "e49:0:7",
+        "category": "awards",
+        "text": "AWARDS ",
+        "page_number": null
+      },
+      {
+        "source_id": "e49:7:25",
+        "category": "awards",
+        "text": "AND RECOGNIGATION ",
+        "page_number": null
+      },
+      {
+        "source_id": "e50:0:13",
+        "category": "awards",
+        "text": "Ace of Invent",
+        "page_number": null
+      },
+      {
+        "source_id": "e51:0:18",
+        "category": "awards",
+        "text": "Innovation & Ideas",
+        "page_number": null
+      },
+      {
+        "source_id": "e52:0:9",
+        "category": "awards",
+        "text": "XTRA Mile",
+        "page_number": null
+      },
+      {
+        "source_id": "e53:0:36",
+        "category": "awards",
+        "text": "Outstanding Contribution in Delivery",
+        "page_number": null
+      },
+      {
+        "source_id": "e54:0:29",
+        "category": null,
+        "text": "  PROFESSIONAL QUALIFICATION ",
+        "page_number": null
+      }
+    ],
+    "needs_review": [
+      {
+        "source_element_index": 54,
+        "start": 0,
+        "end": 29,
+        "text": "  PROFESSIONAL QUALIFICATION ",
+        "page_number": null,
+        "cluster_id": 4,
+        "candidate_section": "education",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.6247,
+        "margin": 0.0154,
+        "lane": "main",
+        "reason": "Possible ambiguous or unsupported heading; section context stopped",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      }
+    ]
+  },
+  "section_schemas": [
+    {
+      "category": "personal_information",
+      "label": "Personal information",
+      "records": [
+        {
+          "record_id": "personal_information",
+          "source_ids": [
+            "e0:0:65",
+            "e57:0:65",
+            "e58:0:38",
+            "e59:0:52",
+            "e60:0:12",
+            "e61:0:197",
+            "e62:0:6",
+            "e63:0:31"
+          ],
+          "attributes": [
+            {
+              "name": "full_name",
+              "items": [
+                {
+                  "value": "Name                        : Tarun Gelli",
+                  "evidence": [
+                    {
+                      "source_id": "e57:0:65",
+                      "quote": "Name                        : Tarun Gelli"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "email",
+              "items": [
+                {
+                  "value": "tarunrpa.uipath@gmail.com",
+                  "evidence": [
+                    {
+                      "source_id": "e0:0:65",
+                      "quote": "tarunrpa.uipath@gmail.com"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "phone",
+              "items": [
+                {
+                  "value": "9491355515",
+                  "evidence": [
+                    {
+                      "source_id": "e0:0:65",
+                      "quote": "9491355515"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "location",
+              "items": [
+                {
+                  "value": "Hyderabad",
+                  "evidence": [
+                    {
+                      "source_id": "e63:0:31",
+                      "quote": "Hyderabad"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "linkedin_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "github_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "portfolio_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "professional_title",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e0:0:65",
+          "quote": "TARUN GELLI       tarunrpa.uipath@gmail.com  (+91)- 9491355515   "
+        },
+        {
+          "source_id": "e56:0:17",
+          "quote": "PERSONAL DETAILS "
+        },
+        {
+          "source_id": "e58:0:38",
+          "quote": "                       Gender \t: Male "
+        },
+        {
+          "source_id": "e59:0:52",
+          "quote": "\t                  Marital status         : Married "
+        },
+        {
+          "source_id": "e60:0:12",
+          "quote": "DECLARATION "
+        },
+        {
+          "source_id": "e61:0:197",
+          "quote": "I hereby declare that all above-mentioned information is in accordance with fact or truth up to my knowledge and I bear the responsibilities for the correctness of the above-mentioned particulars. "
+        },
+        {
+          "source_id": "e62:0:6",
+          "quote": "Date: "
+        },
+        {
+          "source_id": "e63:0:31",
+          "quote": "\tPlace: Hyderabad \tTarun Gelli "
+        }
+      ]
+    },
+    {
+      "category": "experience",
+      "label": "Experience",
+      "records": [
+        {
+          "record_id": "experience-1",
+          "source_ids": [
+            "e2:0:119",
+            "e3:0:115",
+            "e4:0:93",
+            "e5:0:83",
+            "e6:0:77",
+            "e7:0:95",
+            "e8:0:98",
+            "e9:0:125",
+            "e10:0:55",
+            "e11:0:142",
+            "e12:0:120",
+            "e13:0:111",
+            "e14:0:74",
+            "e15:0:154",
+            "e16:0:131",
+            "e17:0:54"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [
+                {
+                  "value": "UiPath RPA Developer Advanced and Orchestrator, UiPath Agentic Automation Associate",
+                  "evidence": [
+                    {
+                      "source_id": "e5:0:83",
+                      "quote": "UiPath RPA Developer Advanced and Orchestrator, UiPath Agentic Automation Associate"
+                    }
+                  ],
+                  "status": "needs_review"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [
+                {
+                  "value": "Created Re-usable components for automating several application Login pages and knowledge on Version control system integrations like GIT HUB.",
+                  "evidence": [
+                    {
+                      "source_id": "e11:0:142",
+                      "quote": "Created Re-usable components for automating several application Login pages and knowledge on Version control system integrations like GIT HUB."
+                    }
+                  ],
+                  "status": "needs_review"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "employer_not_established_from_supported_fields"
+          ]
+        },
+        {
+          "record_id": "experience-2",
+          "source_ids": [
+            "e19:0:118",
+            "e20:0:41",
+            "e21:0:63"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [
+                {
+                  "value": "Designation: Consultant",
+                  "evidence": [
+                    {
+                      "source_id": "e20:0:41",
+                      "quote": "Designation: Consultant"
+                    }
+                  ],
+                  "status": "needs_review"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "start_date",
+              "items": [
+                {
+                  "value": "Jan 2022",
+                  "evidence": [
+                    {
+                      "source_id": "e19:0:118",
+                      "quote": "Jan 2022"
+                    }
+                  ],
+                  "status": "needs_review"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "end_date",
+              "items": [
+                {
+                  "value": "present",
+                  "evidence": [
+                    {
+                      "source_id": "e19:0:118",
+                      "quote": "present"
+                    }
+                  ],
+                  "status": "needs_review"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "duration",
+              "items": [
+                {
+                  "value": "Jan 2022 to present",
+                  "evidence": [
+                    {
+                      "source_id": "e19:0:118",
+                      "quote": "Jan 2022 to present"
+                    }
+                  ],
+                  "status": "needs_review"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "employer_not_established_from_supported_fields"
+          ]
+        },
+        {
+          "record_id": "experience-3",
+          "source_ids": [
+            "e22:0:36",
+            "e23:0:91",
+            "e24:0:54",
+            "e25:0:119",
+            "e26:0:82",
+            "e27:0:92",
+            "e28:0:15",
+            "e29:0:43",
+            "e30:0:58",
+            "e31:0:14"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "employer_not_established_from_supported_fields"
+          ]
+        },
+        {
+          "record_id": "experience-4",
+          "source_ids": [
+            "e32:0:35",
+            "e33:0:99",
+            "e34:0:49",
+            "e35:0:47",
+            "e36:0:48",
+            "e37:0:60",
+            "e38:0:58",
+            "e39:0:67",
+            "e40:0:110",
+            "e41:0:69",
+            "e42:0:68",
+            "e43:0:137",
+            "e44:0:95"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [
+                {
+                  "value": "Designed solutions utilizing RPA best practices and maintaining technical responsibility for project delivery.",
+                  "evidence": [
+                    {
+                      "source_id": "e40:0:110",
+                      "quote": "Designed solutions utilizing RPA best practices and maintaining technical responsibility for project delivery."
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [
+                {
+                  "value": "Created PDD’s and SDD’s documents for automation.",
+                  "evidence": [
+                    {
+                      "source_id": "e34:0:49",
+                      "quote": "Created PDD’s and SDD’s documents for automation."
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Designed solutions utilizing RPA best practices and maintaining technical responsibility for project delivery.",
+                  "evidence": [
+                    {
+                      "source_id": "e40:0:110",
+                      "quote": "Designed solutions utilizing RPA best practices and maintaining technical responsibility for project delivery."
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e1:0:24",
+          "quote": "PROFESSIONAL EXPERIENCE "
+        },
+        {
+          "source_id": "e2:0:119",
+          "quote": "Having total 4.2 years in RPA UiPath the RPA field majorly worked on Web-based, Desktop, Outlook and Excel automations."
+        },
+        {
+          "source_id": "e3:0:115",
+          "quote": "Involved in different phases of process. Design, Development, Testing, Integration, Implementation and Maintenance."
+        },
+        {
+          "source_id": "e4:0:93",
+          "quote": "Certified on UiPath Foundation Course – Diploma, UiPath Advanced Automation Course – Diploma,"
+        },
+        {
+          "source_id": "e6:0:77",
+          "quote": "Having good exposure to UiPath Studio, Orchestrator, and RE Framework design."
+        },
+        {
+          "source_id": "e7:0:95",
+          "quote": "Experience of UiPath Document Understanding, Action Center, AI Center, and GEN AI Capabilities."
+        },
+        {
+          "source_id": "e8:0:98",
+          "quote": "Knowledge of SAP, Mainframe, CV Automation, WEB API Integration, Data base connection, Test suite."
+        },
+        {
+          "source_id": "e9:0:125",
+          "quote": "Experienced in automation of Work Queues, Exception Handling, Assets, Object repository, and Storage Buckets by using UiPath."
+        },
+        {
+          "source_id": "e10:0:55",
+          "quote": "Involved in creating PDD’s and SDD’s for the processes."
+        },
+        {
+          "source_id": "e12:0:120",
+          "quote": "Have end-to-end orchestrator experience on like Managing Robots, Jobs, Logs, Queues, Triggers, Assets, and Machines etc."
+        },
+        {
+          "source_id": "e13:0:111",
+          "quote": "Proficient in deployment and debugging applications in all environments and maintaining environment up to time."
+        },
+        {
+          "source_id": "e14:0:74",
+          "quote": "Knowledge of UiPath Active Learning, Autopilot, UiPath Agentic automation."
+        },
+        {
+          "source_id": "e15:0:154",
+          "quote": "Automated Web, Citrix, Webservices (REST API’s), OLEDB database, SQL database, Windows based applications and multiple excel operations using UiPath tool."
+        },
+        {
+          "source_id": "e16:0:131",
+          "quote": "Experience in UiPath Orchestrator, Work Queues, Exception handling, Calanders, Schedules, and Session management using UiPath tool."
+        },
+        {
+          "source_id": "e17:0:54",
+          "quote": "Having a good understanding of Multi-Bot Architecture."
+        },
+        {
+          "source_id": "e18:0:16",
+          "quote": "WORK EXPERIENCE "
+        },
+        {
+          "source_id": "e19:0:118",
+          "quote": "            Company Name: - Capgemini, Hyderabad                                  Duration: Since Jan 2022 to present "
+        },
+        {
+          "source_id": "e21:0:63",
+          "quote": "                  Client: -Tetrapak, NatWest, Unilever, Fortive"
+        },
+        {
+          "source_id": "e22:0:36",
+          "quote": "AUTOMATION PROJECTS AND DEVELOPMENT "
+        },
+        {
+          "source_id": "e23:0:91",
+          "quote": "Completing APRO Statements in Oracle (Web, Excel, Outlook, Oracle Data base - Applications)"
+        },
+        {
+          "source_id": "e24:0:54",
+          "quote": "ECM PO Load (PDF, Excel, Outlook, Word - Applications)"
+        },
+        {
+          "source_id": "e25:0:119",
+          "quote": "AP PO and non-PO process (Outlook, Excel, Oracle web, Document understanding, Action Centre, AI Centre - Applications)."
+        },
+        {
+          "source_id": "e26:0:82",
+          "quote": "Create Remittance Process (MS Excel, Shared drive, and Agresso web - Applications)"
+        },
+        {
+          "source_id": "e27:0:92",
+          "quote": "POS & Inventory Process (Macro, Excel, share point, Share drive, Oracle Data base, Outlook -"
+        },
+        {
+          "source_id": "e28:0:15",
+          "quote": "Applications)  "
+        },
+        {
+          "source_id": "e29:0:43",
+          "quote": "EAMS TO FUZE (WEB, MS Excel - Applications)"
+        },
+        {
+          "source_id": "e30:0:58",
+          "quote": "AMS Reactive Costing: (SAP, WEB API’S, MS Excel, Outlook -"
+        },
+        {
+          "source_id": "e31:0:14",
+          "quote": "Applications) "
+        },
+        {
+          "source_id": "e32:0:35",
+          "quote": "         ROLES AND RESPONSIBILITES "
+        },
+        {
+          "source_id": "e33:0:99",
+          "quote": "Involved in development based on client requirements by following design and operational documents."
+        },
+        {
+          "source_id": "e35:0:47",
+          "quote": "Development and technical assistance on UiPath."
+        },
+        {
+          "source_id": "e36:0:48",
+          "quote": "Do feasibility study for automation with UiPath."
+        },
+        {
+          "source_id": "e37:0:60",
+          "quote": "Involved in defect fixing that was assigned by QA/ UAT team."
+        },
+        {
+          "source_id": "e38:0:58",
+          "quote": "Prepared the documentation for UAT Test cases and Runbook."
+        },
+        {
+          "source_id": "e39:0:67",
+          "quote": "Involved and provided Support/ Hyper care for production processes."
+        },
+        {
+          "source_id": "e41:0:69",
+          "quote": "Analysed the feasibility of existing process suitable for automation."
+        },
+        {
+          "source_id": "e42:0:68",
+          "quote": "Involved in managing BOT's workloads using Orchestrator Work Queues."
+        },
+        {
+          "source_id": "e43:0:137",
+          "quote": "Creating ODI (Object Design Instruction) and developing respective PDI (Process Design Instruction) when required for automation process."
+        },
+        {
+          "source_id": "e44:0:95",
+          "quote": "Efficiently handled monitoring and troubleshooting the UiPath environment through Orchestrator."
+        }
+      ]
+    },
+    {
+      "category": "certifications",
+      "label": "Certifications",
+      "records": [
+        {
+          "record_id": "certifications-1",
+          "source_ids": [
+            "e46:0:182"
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "items": [
+                {
+                  "value": "UiPath Certifications: RPA Developer Advanced, Document Understanding, Action Center, AI Center, Agentic Associate Diploma and Orchestrator, AAAv1 UiPath Agentic Automation Associate",
+                  "evidence": [
+                    {
+                      "source_id": "e46:0:182",
+                      "quote": "UiPath Certifications: RPA Developer Advanced, Document Understanding, Action Center, AI Center, Agentic Associate Diploma and Orchestrator, AAAv1 UiPath Agentic Automation Associate"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "issuer",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "issue_year",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e45:0:27",
+          "quote": "CERTIFICATIONS & LEARNINGS "
+        }
+      ]
+    },
+    {
+      "category": "skills",
+      "label": "Skills",
+      "records": [
+        {
+          "record_id": "skills",
+          "source_ids": [
+            "e48:0:264"
+          ],
+          "attributes": [
+            {
+              "name": "technical_skills",
+              "items": [
+                {
+                  "value": "SQL",
+                  "evidence": [
+                    {
+                      "source_id": "e48:0:264",
+                      "quote": "SQL"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "tools_and_platforms",
+              "items": [
+                {
+                  "value": "JIRA",
+                  "evidence": [
+                    {
+                      "source_id": "e48:0:264",
+                      "quote": "Jira"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "domain_and_functional",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "soft_skills",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "all_skills",
+              "items": [
+                {
+                  "value": "SQL",
+                  "evidence": [
+                    {
+                      "source_id": "e48:0:264",
+                      "quote": "SQL"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "JIRA",
+                  "evidence": [
+                    {
+                      "source_id": "e48:0:264",
+                      "quote": "Jira"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Desktop Operating Systems   : Windows 7/8/10",
+                  "evidence": [
+                    {
+                      "source_id": "e48:0:264",
+                      "quote": "Desktop Operating Systems   : Windows 7/8/10"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Linux Primary Skill \t: Robotic Process Automation (RPA) using UiPath Programming Languages \t: VB.Net and ADO.Net Database \t: MS SQL Server",
+                  "evidence": [
+                    {
+                      "source_id": "e48:0:264",
+                      "quote": "Linux Primary Skill \t: Robotic Process Automation (RPA) using UiPath Programming Languages \t: VB.Net and ADO.Net Database \t: MS SQL Server"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "My SQL",
+                  "evidence": [
+                    {
+                      "source_id": "e48:0:264",
+                      "quote": "My SQL"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Oracle & MS Access Bug Tracking Tool / Tools \t: ServiceNow",
+                  "evidence": [
+                    {
+                      "source_id": "e48:0:264",
+                      "quote": "Oracle & MS Access Bug Tracking Tool / Tools \t: ServiceNow"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Jira tools",
+                  "evidence": [
+                    {
+                      "source_id": "e48:0:264",
+                      "quote": "Jira tools"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e47:0:18",
+          "quote": "TECHNICAL SKILLS  "
+        },
+        {
+          "source_id": "e48:0:264",
+          "quote": "Desktop Operating Systems   : Windows 7/8/10, Linux Primary Skill \t: Robotic Process Automation (RPA) using UiPath Programming Languages \t: VB.Net and ADO.Net Database \t: MS SQL Server, My SQL, Oracle & MS Access Bug Tracking Tool / Tools \t: ServiceNow, Jira tools"
+        }
+      ]
+    },
+    {
+      "category": "awards",
+      "label": "Awards and achievements",
+      "records": [
+        {
+          "record_id": "awards-1",
+          "source_ids": [
+            "e49:7:25",
+            "e50:0:13",
+            "e51:0:18",
+            "e52:0:9",
+            "e53:0:36"
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "issuer",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "date",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "Unlabelled compound information requires source review."
+          ]
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e49:0:7",
+          "quote": "AWARDS "
+        },
+        {
+          "source_id": "e49:7:25",
+          "quote": "AND RECOGNIGATION "
+        },
+        {
+          "source_id": "e50:0:13",
+          "quote": "Ace of Invent"
+        },
+        {
+          "source_id": "e51:0:18",
+          "quote": "Innovation & Ideas"
+        },
+        {
+          "source_id": "e52:0:9",
+          "quote": "XTRA Mile"
+        },
+        {
+          "source_id": "e53:0:36",
+          "quote": "Outstanding Contribution in Delivery"
+        }
+      ]
+    },
+    {
+      "category": "education",
+      "label": "Education",
+      "records": [
+        {
+          "record_id": "education-1",
+          "source_ids": [
+            "e55:0:66"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [
+                {
+                  "value": "Indira Gandhi National University",
+                  "evidence": [
+                    {
+                      "source_id": "e55:0:66",
+                      "quote": "Indira Gandhi National University"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "degree",
+              "items": [
+                {
+                  "value": "Bachelor of Commerce",
+                  "evidence": [
+                    {
+                      "source_id": "e55:0:66",
+                      "quote": "Bachelor of Commerce"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e55:0:66",
+          "quote": "Bachelor of Commerce, Indira Gandhi National University, New Delhi"
+        }
+      ]
+    },
+    {
+      "category": "needs_review",
+      "label": "Unassigned source blocks",
+      "records": [],
+      "residual_blocks": [
+        {
+          "source_id": "e54:0:29",
+          "quote": "  PROFESSIONAL QUALIFICATION "
+        }
+      ]
+    }
+  ]
+}

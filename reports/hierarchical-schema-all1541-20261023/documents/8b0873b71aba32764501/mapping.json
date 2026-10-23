@@ -1,0 +1,2193 @@
+{
+  "success": true,
+  "source": "VARUNMAHADEVAN.pdf",
+  "extraction_mode": "existing_blocks_schema_mapping",
+  "data": {
+    "contact": {
+      "full_name": "V A R U N M A H A D E V A N",
+      "email": "varunmahadevan@yahoo.com",
+      "phone": "",
+      "location": null,
+      "linkedin_url": null,
+      "github_url": null,
+      "portfolio_url": null
+    },
+    "professional_title": null,
+    "summary": null,
+    "total_experience_years": null,
+    "skills": {
+      "technical_skills": [],
+      "tools_and_platforms": [],
+      "domain_and_functional": [],
+      "soft_skills": [],
+      "all_skills": []
+    },
+    "experience": [
+      {
+        "company": "Barclays Global Service Centre Pvt Ltd",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "’ Drove cros-sfunctional collaboration betweefrnont -office quant teams, technology developers, and risk variance teams \n’ Validated pricing data sourced froBmloomberg and Refinitiv against fron-toffice systems, resolving trade booking \n’ ChampionedAgile best practiceswithin the risk technology team, managing sprint planning, backlog grooming, and \n’ Key Systems: Scenario Service (UAT/Prod/Dev), ESM, REST APIs, JIRA, Confluence, Bloomberg, Refinitiv.",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      }
+    ],
+    "education": [],
+    "certifications": [],
+    "projects": [],
+    "languages": []
+  },
+  "schema_mapping": {
+    "fields_populated": 3,
+    "total_fields": 16,
+    "completion_percentage": 18.8,
+    "field_details": [
+      {
+        "field_name": "contact.full_name",
+        "target_type": "string",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Personal Details",
+        "confidence_score": 0.95,
+        "description": "Candidate's full name, extracted from the top header of the resume."
+      },
+      {
+        "field_name": "contact.email",
+        "target_type": "string (email)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.98,
+        "description": "Candidate's primary contact email address."
+      },
+      {
+        "field_name": "contact.phone",
+        "target_type": "string (phone)",
+        "is_required": true,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's telephone / mobile phone number."
+      },
+      {
+        "field_name": "contact.location",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's residential location or work city."
+      },
+      {
+        "field_name": "contact.linkedin_url",
+        "target_type": "string (url) | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "URL to candidate's LinkedIn profile."
+      },
+      {
+        "field_name": "professional_title",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Subtitle",
+        "confidence_score": 0.0,
+        "description": "Candidate's target headline or most recent job title."
+      },
+      {
+        "field_name": "summary",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Professional Summary / Profile / Objective",
+        "confidence_score": 0.0,
+        "description": "Executive bio, professional overview, or career objective."
+      },
+      {
+        "field_name": "total_experience_years",
+        "target_type": "float | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Summary / Experience Calculation",
+        "confidence_score": 0.0,
+        "description": "Total professional experience in years."
+      },
+      {
+        "field_name": "skills.technical_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Technical Competencies",
+        "confidence_score": 0.0,
+        "description": "Technical programming languages and core software competencies."
+      },
+      {
+        "field_name": "skills.tools_and_platforms",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Tools & Technologies",
+        "confidence_score": 0.0,
+        "description": "Software platforms, developer tools, and operational systems."
+      },
+      {
+        "field_name": "skills.domain_and_functional",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Domain Expertise",
+        "confidence_score": 0.0,
+        "description": "Functional domain knowledge (e.g. Hedge Funds, KYC, NAV, Derivatives)."
+      },
+      {
+        "field_name": "skills.all_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills (Aggregated)",
+        "confidence_score": 0.0,
+        "description": "Complete list of candidate skills across all categories."
+      },
+      {
+        "field_name": "experience",
+        "target_type": "array[WorkExperience]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Experience / Work History",
+        "confidence_score": 0.92,
+        "description": "Complete chronological employment records with bullet points."
+      },
+      {
+        "field_name": "education",
+        "target_type": "array[Education]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Education / Academic Qualifications",
+        "confidence_score": 0.0,
+        "description": "University, college, and higher education degree qualifications."
+      },
+      {
+        "field_name": "certifications",
+        "target_type": "array[Certification]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Certifications / Licenses",
+        "confidence_score": 0.0,
+        "description": "Professional accreditations and credentials."
+      },
+      {
+        "field_name": "projects",
+        "target_type": "array[Project]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Projects / Key Engagements",
+        "confidence_score": 0.0,
+        "description": "Major projects or strategic initiatives led by candidate."
+      }
+    ]
+  },
+  "raw_sections": {
+    "personal_information": "V A R U N M A H A D E V A N\nSenior Market Risk & Investment Banking Professional\n. varunmahadevan@yahoo.com",
+    "experience": "Barclays Global Service Centre Pvt Ltd | August 2023 – M a y 2 0 2 6\n’ Led end-to-end requirements gathering and authored compreheBnRsiDves and FRDsfor theScenario Serviceunder the FRTB Internal Models Approach (IMA) regulatory framework, ensuring alignment wBithasel IV standards. ’ Executed rigorousVaR validation andback-testing routines using historical market data, identifying model inaccuracies and recommending enhancements to risk measurement methodologies. ’ Identified, classified, and modelleridsk factors across equity, FX, interest rates, and credit spread, supporting classification of trading book positions undFeRr TB sensitivity-based requirements. ’ Drove cros-sfunctional collaboration betweefrnont -office quant teams, technology developers, and risk variance teams to ensure robust implementation of risk models a cUr oAsTs, Dev, and Productionenvironments. ’ Designed and validaterdisk scenario generationworkflows andsensitivity analysesfor trading book exposures, supportingstress testingand capital adequacy assessments. ’ Validated pricing data sourced froBmloomberg and Refinitiv against fron-toffice systems, resolving trade booking discrepancies and ensuriPng&L accuracy. ’ Coordinated mul-tiworkstream project deliverables across release cycles, maintatriancinegability matrices and delivering full project documentation to senior stakeholders. ’ ChampionedAgile best practiceswithin the risk technology team, managing sprint planning, backlog grooming, and defect tracking viaJIRA and Confluence. ’ Key Systems: Scenario Service (UAT/Prod/Dev), ESM, REST APIs, JIRA, Confluence, Bloomberg, Refinitiv.\n’ Identified, classified, and modelleridsk factors across equity, FX, interest rates, and credit spread, ssupporting"
+  },
+  "meta": {
+    "status": "needs_review",
+    "human_verified": false,
+    "provider_calls": 0,
+    "source_accounting": {
+      "all_source_text_preserved": true,
+      "total_spans": 55,
+      "assigned_meaningful_spans": 23,
+      "unresolved_meaningful_spans": 32,
+      "non_content_artifacts": 0,
+      "duplicates_excluded": 0,
+      "all_meaningful_text_assigned": false,
+      "semantic_correctness_verified": false,
+      "outcomes": [
+        {
+          "source_id": "e0:0:27",
+          "source_element_index": 0,
+          "start": 0,
+          "end": 27,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e1:0:52",
+          "source_element_index": 1,
+          "start": 0,
+          "end": 52,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e2:0:26",
+          "source_element_index": 2,
+          "start": 0,
+          "end": 26,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e3:0:15",
+          "source_element_index": 3,
+          "start": 0,
+          "end": 15,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e4:0:26",
+          "source_element_index": 4,
+          "start": 0,
+          "end": 26,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e5:0:31",
+          "source_element_index": 5,
+          "start": 0,
+          "end": 31,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e6:0:118",
+          "source_element_index": 6,
+          "start": 0,
+          "end": 118,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e6:118:238",
+          "source_element_index": 6,
+          "start": 118,
+          "end": 238,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e6:238:350",
+          "source_element_index": 6,
+          "start": 238,
+          "end": 350,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e6:350:381",
+          "source_element_index": 6,
+          "start": 350,
+          "end": 381,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e6:381:504",
+          "source_element_index": 6,
+          "start": 381,
+          "end": 504,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e6:504:612",
+          "source_element_index": 6,
+          "start": 504,
+          "end": 612,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e6:612:695",
+          "source_element_index": 6,
+          "start": 612,
+          "end": 695,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e7:0:31",
+          "source_element_index": 7,
+          "start": 0,
+          "end": 31,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e8:0:22",
+          "source_element_index": 8,
+          "start": 0,
+          "end": 22,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e9:0:22",
+          "source_element_index": 9,
+          "start": 0,
+          "end": 22,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e9:22:29",
+          "source_element_index": 9,
+          "start": 22,
+          "end": 29,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e10:0:18",
+          "source_element_index": 10,
+          "start": 0,
+          "end": 18,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e10:18:27",
+          "source_element_index": 10,
+          "start": 18,
+          "end": 27,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e11:0:24",
+          "source_element_index": 11,
+          "start": 0,
+          "end": 24,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e11:24:33",
+          "source_element_index": 11,
+          "start": 24,
+          "end": 33,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e12:0:22",
+          "source_element_index": 12,
+          "start": 0,
+          "end": 22,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e12:22:26",
+          "source_element_index": 12,
+          "start": 22,
+          "end": 26,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e13:0:18",
+          "source_element_index": 13,
+          "start": 0,
+          "end": 18,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e13:18:29",
+          "source_element_index": 13,
+          "start": 18,
+          "end": 29,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e14:0:24",
+          "source_element_index": 14,
+          "start": 0,
+          "end": 24,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e14:24:28",
+          "source_element_index": 14,
+          "start": 24,
+          "end": 28,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e15:0:26",
+          "source_element_index": 15,
+          "start": 0,
+          "end": 26,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e15:26:30",
+          "source_element_index": 15,
+          "start": 26,
+          "end": 30,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e16:0:51",
+          "source_element_index": 16,
+          "start": 0,
+          "end": 51,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e17:0:23",
+          "source_element_index": 17,
+          "start": 0,
+          "end": 23,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e18:0:26",
+          "source_element_index": 18,
+          "start": 0,
+          "end": 26,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e19:0:9",
+          "source_element_index": 19,
+          "start": 0,
+          "end": 9,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e20:0:43",
+          "source_element_index": 20,
+          "start": 0,
+          "end": 43,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e21:0:29",
+          "source_element_index": 21,
+          "start": 0,
+          "end": 29,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e21:29:97",
+          "source_element_index": 21,
+          "start": 29,
+          "end": 97,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit dated employer starts or continues Experience across layout changes"
+        },
+        {
+          "source_id": "e22:0:108",
+          "source_element_index": 22,
+          "start": 0,
+          "end": 108,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e22:108:213",
+          "source_element_index": 22,
+          "start": 108,
+          "end": 213,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e22:213:320",
+          "source_element_index": 22,
+          "start": 213,
+          "end": 320,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e22:320:397",
+          "source_element_index": 22,
+          "start": 320,
+          "end": 397,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e22:397:514",
+          "source_element_index": 22,
+          "start": 397,
+          "end": 514,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e22:514:598",
+          "source_element_index": 22,
+          "start": 514,
+          "end": 598,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e22:598:718",
+          "source_element_index": 22,
+          "start": 598,
+          "end": 718,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e22:718:811",
+          "source_element_index": 22,
+          "start": 718,
+          "end": 811,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e22:811:920",
+          "source_element_index": 22,
+          "start": 811,
+          "end": 920,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e22:920:956",
+          "source_element_index": 22,
+          "start": 920,
+          "end": 956,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e22:956:978",
+          "source_element_index": 22,
+          "start": 956,
+          "end": 978,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e22:978:1093",
+          "source_element_index": 22,
+          "start": 978,
+          "end": 1093,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e22:1093:1133",
+          "source_element_index": 22,
+          "start": 1093,
+          "end": 1133,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e22:1133:1245",
+          "source_element_index": 22,
+          "start": 1133,
+          "end": 1245,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e22:1245:1307",
+          "source_element_index": 22,
+          "start": 1245,
+          "end": 1307,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e22:1307:1420",
+          "source_element_index": 22,
+          "start": 1307,
+          "end": 1420,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e22:1420:1460",
+          "source_element_index": 22,
+          "start": 1420,
+          "end": 1460,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e22:1460:1563",
+          "source_element_index": 22,
+          "start": 1460,
+          "end": 1563,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e23:0:116",
+          "source_element_index": 23,
+          "start": 0,
+          "end": 116,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        }
+      ]
+    },
+    "document_scope": {
+      "kind": "candidate_or_unknown",
+      "candidate_resume": null,
+      "requires_scope_review": true
+    },
+    "source_inventory_sha256": "64ec559142826139cecff3c107bbd9a484354fd8f39175879734d905f711bd6c",
+    "field_evidence": {
+      "contact.full_name": [
+        "e0:0:27",
+        "e1:0:52",
+        "e2:0:26"
+      ],
+      "contact.email": [
+        "e0:0:27",
+        "e1:0:52",
+        "e2:0:26"
+      ],
+      "experience[0].company": [
+        "e21:29:97"
+      ],
+      "experience[1].company": [
+        "e22:598:718",
+        "e22:978:1093",
+        "e22:1307:1420",
+        "e22:1460:1563"
+      ]
+    },
+    "record_reviews": [
+      {
+        "category": "experience",
+        "entry_id": "experience-1",
+        "source_ids": [
+          "e21:29:97",
+          "e22:320:397",
+          "e22:397:514",
+          "e22:514:598",
+          "e22:920:956",
+          "e22:956:978",
+          "e22:1093:1133",
+          "e22:1245:1307",
+          "e22:1420:1460"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-2",
+        "source_ids": [
+          "e22:0:108",
+          "e22:108:213",
+          "e22:213:320",
+          "e22:598:718",
+          "e22:718:811",
+          "e22:811:920",
+          "e22:978:1093",
+          "e22:1133:1245",
+          "e22:1307:1420",
+          "e22:1460:1563",
+          "e23:0:116"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      }
+    ],
+    "missing_required_fields": [
+      "contact.phone",
+      "experience[0].role",
+      "experience[1].role"
+    ],
+    "warnings": [
+      "Schema validity and field completion do not establish extraction or relationship accuracy.",
+      "Handoff confidence scores are fixed heuristics, not calibrated probabilities.",
+      "Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields."
+    ],
+    "unmapped_blocks": [
+      {
+        "source_id": "e22:0:108",
+        "category": "experience",
+        "text": "’ Led end-to-end requirements gathering and authored compreheBnRsiDves and FRDsfor theScenario Serviceunder ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e22:108:213",
+        "category": "experience",
+        "text": "the FRTB Internal Models Approach (IMA) regulatory framework, ensuring alignment wBithasel IV standards. ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e22:213:320",
+        "category": "experience",
+        "text": "’ Executed rigorousVaR validation andback-testing routines using historical market data, identifying model ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e22:320:397",
+        "category": "experience",
+        "text": "inaccuracies and recommending enhancements to risk measurement methodologies.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e22:397:514",
+        "category": "experience",
+        "text": " ’ Identified, classified, and modelleridsk factors across equity, FX, interest rates, and credit spread, supporting ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e22:514:598",
+        "category": "experience",
+        "text": "classification of trading book positions undFeRr TB sensitivity-based requirements. ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e22:718:811",
+        "category": "experience",
+        "text": "to ensure robust implementation of risk models a cUr oAsTs, Dev, and Productionenvironments. ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e22:811:920",
+        "category": "experience",
+        "text": "’ Designed and validaterdisk scenario generationworkflows andsensitivity analysesfor trading book exposures, ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e22:920:956",
+        "category": "experience",
+        "text": "supportingstress testingand capital ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e22:956:978",
+        "category": "experience",
+        "text": "adequacy assessments. ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e22:1093:1133",
+        "category": "experience",
+        "text": "discrepancies and ensuriPng&L accuracy. ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e22:1133:1245",
+        "category": "experience",
+        "text": "’ Coordinated mul-tiworkstream project deliverables across release cycles, maintatriancinegability matrices and ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e22:1245:1307",
+        "category": "experience",
+        "text": "delivering full project documentation to senior stakeholders. ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e22:1420:1460",
+        "category": "experience",
+        "text": "defect tracking viaJIRA and Confluence. ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e23:0:116",
+        "category": "experience",
+        "text": "’ Identified, classified, and modelleridsk factors across equity, FX, interest rates, and credit spread, ssupporting",
+        "page_number": 1
+      },
+      {
+        "source_id": "e3:0:15",
+        "category": null,
+        "text": "++91 9786618950",
+        "page_number": 1
+      },
+      {
+        "source_id": "e4:0:26",
+        "category": null,
+        "text": "P) une, Maharashtra, India",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:0:31",
+        "category": null,
+        "text": "E X E C U T I V E S U M M A R Y",
+        "page_number": 1
+      },
+      {
+        "source_id": "e6:0:118",
+        "category": null,
+        "text": "Results-driven Senior Market Risk and Investment Banking Professional with 13+ years of progressive experience across ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e6:118:238",
+        "category": null,
+        "text": "global financial institutions including Barclays, BNP Paribas, and Societe GeAnepreaxleFunds Services and RR Donne.lley ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e6:238:350",
+        "category": null,
+        "text": "Deep domain expertise in FRTB Internal Models Approach (IMA), V-altu-Reisk (VaR) modelling, stress testing, and ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e6:350:381",
+        "category": null,
+        "text": "regulatory capital frameworks. ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e6:381:504",
+        "category": null,
+        "text": "Demonstrated track record in translating complex regulatory requirements into actionable business so²luetaiodninsg end-to- ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e6:504:612",
+        "category": null,
+        "text": "end BRD/FRD documentation, UAT coordination, and c-rfousnsctional stakeholder engagement. Adept at bridging ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e6:612:695",
+        "category": null,
+        "text": "quantitative risk analsyis with strategic programme delivery in Agile environments.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e7:0:31",
+        "category": null,
+        "text": "C O R E C O M P E T E N C I E S",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:0:22",
+        "category": null,
+        "text": "Market Risk & FRTB IMA",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:0:22",
+        "category": null,
+        "text": "VaR Modeling & Stress ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:22:29",
+        "category": null,
+        "text": "Testing",
+        "page_number": 1
+      },
+      {
+        "source_id": "e10:0:18",
+        "category": null,
+        "text": "Business Analysis ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e10:18:27",
+        "category": null,
+        "text": "(BRD/FRD)",
+        "page_number": 1
+      },
+      {
+        "source_id": "e11:0:24",
+        "category": null,
+        "text": "Regulatory Compliance & ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e11:24:33",
+        "category": null,
+        "text": "Reporting",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:0:22",
+        "category": null,
+        "text": "Fund Accounting & NAV ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:22:26",
+        "category": null,
+        "text": "Mgmt",
+        "page_number": 1
+      },
+      {
+        "source_id": "e13:0:18",
+        "category": null,
+        "text": "Capital Markets & ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e13:18:29",
+        "category": null,
+        "text": "Derivatives",
+        "page_number": 1
+      },
+      {
+        "source_id": "e14:0:24",
+        "category": null,
+        "text": "Stakeholder & Programme ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e14:24:28",
+        "category": null,
+        "text": "Mgmt",
+        "page_number": 1
+      },
+      {
+        "source_id": "e15:0:26",
+        "category": null,
+        "text": "UAT Coordination & Defect ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e15:26:30",
+        "category": null,
+        "text": "Mgmt",
+        "page_number": 1
+      },
+      {
+        "source_id": "e16:0:51",
+        "category": null,
+        "text": "Agile / JIRA / Confluence Data Analysis & Financial",
+        "page_number": 1
+      },
+      {
+        "source_id": "e17:0:23",
+        "category": null,
+        "text": "Python & Advanced Excel",
+        "page_number": 1
+      },
+      {
+        "source_id": "e18:0:26",
+        "category": null,
+        "text": "Risk Factor Identification",
+        "page_number": 1
+      },
+      {
+        "source_id": "e19:0:9",
+        "category": null,
+        "text": "Modelling",
+        "page_number": 1
+      },
+      {
+        "source_id": "e20:0:43",
+        "category": null,
+        "text": "P R O F E S S I O N A L E X P E R I E N C E",
+        "page_number": 1
+      },
+      {
+        "source_id": "e21:0:29",
+        "category": null,
+        "text": "Market Risk Business Analyst ",
+        "page_number": 1
+      }
+    ],
+    "needs_review": [
+      {
+        "source_element_index": 3,
+        "start": 0,
+        "end": 15,
+        "text": "++91 9786618950",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.104,
+        "margin": -0.0437,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 4,
+        "start": 0,
+        "end": 26,
+        "text": "P) une, Maharashtra, India",
+        "page_number": 1,
+        "cluster_id": 4,
+        "candidate_section": "education",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3294,
+        "margin": 0.0582,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 5,
+        "start": 0,
+        "end": 31,
+        "text": "E X E C U T I V E S U M M A R Y",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.0939,
+        "margin": -0.0523,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 6,
+        "start": 0,
+        "end": 118,
+        "text": "Results-driven Senior Market Risk and Investment Banking Professional with 13+ years of progressive experience across ",
+        "page_number": 1,
+        "cluster_id": 1,
+        "candidate_section": "summary",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.4302,
+        "margin": 0.0577,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 6,
+        "start": 118,
+        "end": 238,
+        "text": "global financial institutions including Barclays, BNP Paribas, and Societe GeAnepreaxleFunds Services and RR Donne.lley ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2661,
+        "margin": -0.0043,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 6,
+        "start": 238,
+        "end": 350,
+        "text": "Deep domain expertise in FRTB Internal Models Approach (IMA), V-altu-Reisk (VaR) modelling, stress testing, and ",
+        "page_number": 1,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2841,
+        "margin": -0.0009,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 6,
+        "start": 350,
+        "end": 381,
+        "text": "regulatory capital frameworks. ",
+        "page_number": 1,
+        "cluster_id": 8,
+        "candidate_section": "publications",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2888,
+        "margin": 0.0037,
+        "lane": "left",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 6,
+        "start": 381,
+        "end": 504,
+        "text": "Demonstrated track record in translating complex regulatory requirements into actionable business so²luetaiodninsg end-to- ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3022,
+        "margin": 0.0599,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 6,
+        "start": 504,
+        "end": 612,
+        "text": "end BRD/FRD documentation, UAT coordination, and c-rfousnsctional stakeholder engagement. Adept at bridging ",
+        "page_number": 1,
+        "cluster_id": 6,
+        "candidate_section": "certifications",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3277,
+        "margin": 0.0475,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 6,
+        "start": 612,
+        "end": 695,
+        "text": "quantitative risk analsyis with strategic programme delivery in Agile environments.",
+        "page_number": 1,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2221,
+        "margin": 0.007,
+        "lane": "left",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 7,
+        "start": 0,
+        "end": 31,
+        "text": "C O R E C O M P E T E N C I E S",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1113,
+        "margin": -0.0132,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 8,
+        "start": 0,
+        "end": 22,
+        "text": "Market Risk & FRTB IMA",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1198,
+        "margin": -0.0361,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 9,
+        "start": 0,
+        "end": 22,
+        "text": "VaR Modeling & Stress ",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2038,
+        "margin": 0.0343,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 9,
+        "start": 22,
+        "end": 29,
+        "text": "Testing",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1967,
+        "margin": -0.0021,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 10,
+        "start": 0,
+        "end": 18,
+        "text": "Business Analysis ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3744,
+        "margin": 0.0625,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 10,
+        "start": 18,
+        "end": 27,
+        "text": "(BRD/FRD)",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1171,
+        "margin": -0.0424,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 11,
+        "start": 0,
+        "end": 24,
+        "text": "Regulatory Compliance & ",
+        "page_number": 1,
+        "cluster_id": 6,
+        "candidate_section": "certifications",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.416,
+        "margin": 0.0699,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 11,
+        "start": 24,
+        "end": 33,
+        "text": "Reporting",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3282,
+        "margin": -0.0064,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 12,
+        "start": 0,
+        "end": 22,
+        "text": "Fund Accounting & NAV ",
+        "page_number": 1,
+        "cluster_id": 6,
+        "candidate_section": "certifications",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2914,
+        "margin": 0.0508,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 12,
+        "start": 22,
+        "end": 26,
+        "text": "Mgmt",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3091,
+        "margin": 0.0901,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 13,
+        "start": 0,
+        "end": 18,
+        "text": "Capital Markets & ",
+        "page_number": 1,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2481,
+        "margin": 0.0248,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 13,
+        "start": 18,
+        "end": 29,
+        "text": "Derivatives",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1892,
+        "margin": 0.0687,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 14,
+        "start": 0,
+        "end": 24,
+        "text": "Stakeholder & Programme ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3589,
+        "margin": 0.0417,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 14,
+        "start": 24,
+        "end": 28,
+        "text": "Mgmt",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3091,
+        "margin": 0.0901,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 15,
+        "start": 0,
+        "end": 26,
+        "text": "UAT Coordination & Defect ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2133,
+        "margin": 0.0364,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 15,
+        "start": 26,
+        "end": 30,
+        "text": "Mgmt",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3091,
+        "margin": 0.0901,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 16,
+        "start": 0,
+        "end": 51,
+        "text": "Agile / JIRA / Confluence Data Analysis & Financial",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3315,
+        "margin": -0.0088,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 17,
+        "start": 0,
+        "end": 23,
+        "text": "Python & Advanced Excel",
+        "page_number": 1,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2507,
+        "margin": 0.0966,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 18,
+        "start": 0,
+        "end": 26,
+        "text": "Risk Factor Identification",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1814,
+        "margin": -0.0015,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 19,
+        "start": 0,
+        "end": 9,
+        "text": "Modelling",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3332,
+        "margin": 0.1047,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 20,
+        "start": 0,
+        "end": 43,
+        "text": "P R O F E S S I O N A L E X P E R I E N C E",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.0897,
+        "margin": -0.0391,
+        "lane": "left",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 21,
+        "start": 0,
+        "end": 29,
+        "text": "Market Risk Business Analyst ",
+        "page_number": 1,
+        "cluster_id": 1,
+        "candidate_section": "summary",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3557,
+        "margin": 0.0623,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      }
+    ]
+  },
+  "section_schemas": [
+    {
+      "category": "personal_information",
+      "label": "Personal information",
+      "records": [
+        {
+          "record_id": "personal_information",
+          "source_ids": [
+            "e0:0:27",
+            "e1:0:52",
+            "e2:0:26"
+          ],
+          "attributes": [
+            {
+              "name": "full_name",
+              "items": [
+                {
+                  "value": "V A R U N M A H A D E V A N",
+                  "evidence": [
+                    {
+                      "source_id": "e0:0:27",
+                      "quote": "V A R U N M A H A D E V A N"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "email",
+              "items": [
+                {
+                  "value": "varunmahadevan@yahoo.com",
+                  "evidence": [
+                    {
+                      "source_id": "e2:0:26",
+                      "quote": "varunmahadevan@yahoo.com"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "phone",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "linkedin_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "github_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "portfolio_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "professional_title",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e1:0:52",
+          "quote": "Senior Market Risk & Investment Banking Professional"
+        },
+        {
+          "source_id": "e2:0:26",
+          "quote": ". varunmahadevan@yahoo.com"
+        }
+      ]
+    },
+    {
+      "category": "experience",
+      "label": "Experience",
+      "records": [
+        {
+          "record_id": "experience-1",
+          "source_ids": [
+            "e21:29:97",
+            "e22:320:397",
+            "e22:397:514",
+            "e22:514:598",
+            "e22:920:956",
+            "e22:956:978",
+            "e22:1093:1133",
+            "e22:1245:1307",
+            "e22:1420:1460"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [
+                {
+                  "value": "Barclays Global Service Centre Pvt Ltd",
+                  "evidence": [
+                    {
+                      "source_id": "e21:29:97",
+                      "quote": "Barclays Global Service Centre Pvt Ltd"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "experience-2",
+          "source_ids": [
+            "e22:0:108",
+            "e22:108:213",
+            "e22:213:320",
+            "e22:598:718",
+            "e22:718:811",
+            "e22:811:920",
+            "e22:978:1093",
+            "e22:1133:1245",
+            "e22:1307:1420",
+            "e22:1460:1563",
+            "e23:0:116"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e21:29:97",
+          "quote": "Barclays Global Service Centre Pvt Ltd | August 2023 – M a y 2 0 2 6"
+        },
+        {
+          "source_id": "e22:0:108",
+          "quote": "’ Led end-to-end requirements gathering and authored compreheBnRsiDves and FRDsfor theScenario Serviceunder "
+        },
+        {
+          "source_id": "e22:108:213",
+          "quote": "the FRTB Internal Models Approach (IMA) regulatory framework, ensuring alignment wBithasel IV standards. "
+        },
+        {
+          "source_id": "e22:213:320",
+          "quote": "’ Executed rigorousVaR validation andback-testing routines using historical market data, identifying model "
+        },
+        {
+          "source_id": "e22:320:397",
+          "quote": "inaccuracies and recommending enhancements to risk measurement methodologies."
+        },
+        {
+          "source_id": "e22:397:514",
+          "quote": " ’ Identified, classified, and modelleridsk factors across equity, FX, interest rates, and credit spread, supporting "
+        },
+        {
+          "source_id": "e22:514:598",
+          "quote": "classification of trading book positions undFeRr TB sensitivity-based requirements. "
+        },
+        {
+          "source_id": "e22:598:718",
+          "quote": "’ Drove cros-sfunctional collaboration betweefrnont -office quant teams, technology developers, and risk variance teams "
+        },
+        {
+          "source_id": "e22:718:811",
+          "quote": "to ensure robust implementation of risk models a cUr oAsTs, Dev, and Productionenvironments. "
+        },
+        {
+          "source_id": "e22:811:920",
+          "quote": "’ Designed and validaterdisk scenario generationworkflows andsensitivity analysesfor trading book exposures, "
+        },
+        {
+          "source_id": "e22:920:956",
+          "quote": "supportingstress testingand capital "
+        },
+        {
+          "source_id": "e22:956:978",
+          "quote": "adequacy assessments. "
+        },
+        {
+          "source_id": "e22:978:1093",
+          "quote": "’ Validated pricing data sourced froBmloomberg and Refinitiv against fron-toffice systems, resolving trade booking "
+        },
+        {
+          "source_id": "e22:1093:1133",
+          "quote": "discrepancies and ensuriPng&L accuracy. "
+        },
+        {
+          "source_id": "e22:1133:1245",
+          "quote": "’ Coordinated mul-tiworkstream project deliverables across release cycles, maintatriancinegability matrices and "
+        },
+        {
+          "source_id": "e22:1245:1307",
+          "quote": "delivering full project documentation to senior stakeholders. "
+        },
+        {
+          "source_id": "e22:1307:1420",
+          "quote": "’ ChampionedAgile best practiceswithin the risk technology team, managing sprint planning, backlog grooming, and "
+        },
+        {
+          "source_id": "e22:1420:1460",
+          "quote": "defect tracking viaJIRA and Confluence. "
+        },
+        {
+          "source_id": "e22:1460:1563",
+          "quote": "’ Key Systems: Scenario Service (UAT/Prod/Dev), ESM, REST APIs, JIRA, Confluence, Bloomberg, Refinitiv."
+        },
+        {
+          "source_id": "e23:0:116",
+          "quote": "’ Identified, classified, and modelleridsk factors across equity, FX, interest rates, and credit spread, ssupporting"
+        }
+      ]
+    },
+    {
+      "category": "needs_review",
+      "label": "Unassigned source blocks",
+      "records": [],
+      "residual_blocks": [
+        {
+          "source_id": "e3:0:15",
+          "quote": "++91 9786618950"
+        },
+        {
+          "source_id": "e4:0:26",
+          "quote": "P) une, Maharashtra, India"
+        },
+        {
+          "source_id": "e5:0:31",
+          "quote": "E X E C U T I V E S U M M A R Y"
+        },
+        {
+          "source_id": "e6:0:118",
+          "quote": "Results-driven Senior Market Risk and Investment Banking Professional with 13+ years of progressive experience across "
+        },
+        {
+          "source_id": "e6:118:238",
+          "quote": "global financial institutions including Barclays, BNP Paribas, and Societe GeAnepreaxleFunds Services and RR Donne.lley "
+        },
+        {
+          "source_id": "e6:238:350",
+          "quote": "Deep domain expertise in FRTB Internal Models Approach (IMA), V-altu-Reisk (VaR) modelling, stress testing, and "
+        },
+        {
+          "source_id": "e6:350:381",
+          "quote": "regulatory capital frameworks. "
+        },
+        {
+          "source_id": "e6:381:504",
+          "quote": "Demonstrated track record in translating complex regulatory requirements into actionable business so²luetaiodninsg end-to- "
+        },
+        {
+          "source_id": "e6:504:612",
+          "quote": "end BRD/FRD documentation, UAT coordination, and c-rfousnsctional stakeholder engagement. Adept at bridging "
+        },
+        {
+          "source_id": "e6:612:695",
+          "quote": "quantitative risk analsyis with strategic programme delivery in Agile environments."
+        },
+        {
+          "source_id": "e7:0:31",
+          "quote": "C O R E C O M P E T E N C I E S"
+        },
+        {
+          "source_id": "e8:0:22",
+          "quote": "Market Risk & FRTB IMA"
+        },
+        {
+          "source_id": "e9:0:22",
+          "quote": "VaR Modeling & Stress "
+        },
+        {
+          "source_id": "e9:22:29",
+          "quote": "Testing"
+        },
+        {
+          "source_id": "e10:0:18",
+          "quote": "Business Analysis "
+        },
+        {
+          "source_id": "e10:18:27",
+          "quote": "(BRD/FRD)"
+        },
+        {
+          "source_id": "e11:0:24",
+          "quote": "Regulatory Compliance & "
+        },
+        {
+          "source_id": "e11:24:33",
+          "quote": "Reporting"
+        },
+        {
+          "source_id": "e12:0:22",
+          "quote": "Fund Accounting & NAV "
+        },
+        {
+          "source_id": "e12:22:26",
+          "quote": "Mgmt"
+        },
+        {
+          "source_id": "e13:0:18",
+          "quote": "Capital Markets & "
+        },
+        {
+          "source_id": "e13:18:29",
+          "quote": "Derivatives"
+        },
+        {
+          "source_id": "e14:0:24",
+          "quote": "Stakeholder & Programme "
+        },
+        {
+          "source_id": "e14:24:28",
+          "quote": "Mgmt"
+        },
+        {
+          "source_id": "e15:0:26",
+          "quote": "UAT Coordination & Defect "
+        },
+        {
+          "source_id": "e15:26:30",
+          "quote": "Mgmt"
+        },
+        {
+          "source_id": "e16:0:51",
+          "quote": "Agile / JIRA / Confluence Data Analysis & Financial"
+        },
+        {
+          "source_id": "e17:0:23",
+          "quote": "Python & Advanced Excel"
+        },
+        {
+          "source_id": "e18:0:26",
+          "quote": "Risk Factor Identification"
+        },
+        {
+          "source_id": "e19:0:9",
+          "quote": "Modelling"
+        },
+        {
+          "source_id": "e20:0:43",
+          "quote": "P R O F E S S I O N A L E X P E R I E N C E"
+        },
+        {
+          "source_id": "e21:0:29",
+          "quote": "Market Risk Business Analyst "
+        }
+      ]
+    }
+  ]
+}

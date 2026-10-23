@@ -1,0 +1,2788 @@
+{
+  "success": true,
+  "source": "Deepak Malik.pdf",
+  "extraction_mode": "existing_blocks_schema_mapping",
+  "data": {
+    "contact": {
+      "full_name": "Navi Mumbai, 410208 * +91-9820688922 * deepakmalik21296@gmail.com",
+      "email": "deepakmalik21296@gmail.com",
+      "phone": "+91-9820688922",
+      "location": "Mumbai",
+      "linkedin_url": null,
+      "github_url": null,
+      "portfolio_url": null
+    },
+    "professional_title": null,
+    "summary": "Adaptable IT professional with 7.2 years of experience in the Workday and PeopleSoft ecosystem, including 4.4 years of hands-on expertise in designing, developing, and implementing robust integration solutions using Workday Integrations and Workday Extend. Skilled in integrating HR and Financial modules to streamline business processes, improve data accuracy, and enhance overall system efficiency.",
+    "total_experience_years": 7.2,
+    "skills": {
+      "technical_skills": [
+        "SQL",
+        "Java"
+      ],
+      "tools_and_platforms": [
+        "Excel",
+        "Postman"
+      ],
+      "domain_and_functional": [],
+      "soft_skills": [],
+      "all_skills": [
+        "SQL",
+        "Java",
+        "Excel",
+        "Postman",
+        "Programming Languages: JSON",
+        "XSLT 2.0",
+        "Fundamentals of XSLT 3.0",
+        "WQL",
+        "SOAP & REST",
+        "based APIs",
+        "PeopleCode and SQL",
+        "Workday Studio",
+        "Workday Extend",
+        "Workday Orchestration",
+        "SOAP UI",
+        "WinSCP",
+        "IPSwitch",
+        "Oxygen XML Editor",
+        "and PGP Encryption/Decryption",
+        "MS SQL Server and Oracle Database",
+        " Adept with Cisco Tidal Workload Automation tool (6.5.5).",
+        " Well versed with MS Office tools like MS Excel",
+        "MS Word",
+        "and MS PowerPoint.",
+        "CERTIFICATION",
+        "Workday HCM Essential Concepts Consulting Core",
+        " Workday Pro Integrations Certification",
+        " Workday Extend Consulting Core"
+      ]
+    },
+    "experience": [
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      }
+    ],
+    "education": [
+      {
+        "institution": "",
+        "degree": "",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      }
+    ],
+    "certifications": [],
+    "projects": [],
+    "languages": []
+  },
+  "schema_mapping": {
+    "fields_populated": 11,
+    "total_fields": 16,
+    "completion_percentage": 68.8,
+    "field_details": [
+      {
+        "field_name": "contact.full_name",
+        "target_type": "string",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Personal Details",
+        "confidence_score": 0.95,
+        "description": "Candidate's full name, extracted from the top header of the resume."
+      },
+      {
+        "field_name": "contact.email",
+        "target_type": "string (email)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.98,
+        "description": "Candidate's primary contact email address."
+      },
+      {
+        "field_name": "contact.phone",
+        "target_type": "string (phone)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.95,
+        "description": "Candidate's telephone / mobile phone number."
+      },
+      {
+        "field_name": "contact.location",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.85,
+        "description": "Candidate's residential location or work city."
+      },
+      {
+        "field_name": "contact.linkedin_url",
+        "target_type": "string (url) | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "URL to candidate's LinkedIn profile."
+      },
+      {
+        "field_name": "professional_title",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Subtitle",
+        "confidence_score": 0.0,
+        "description": "Candidate's target headline or most recent job title."
+      },
+      {
+        "field_name": "summary",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Summary / Profile / Objective",
+        "confidence_score": 0.85,
+        "description": "Executive bio, professional overview, or career objective."
+      },
+      {
+        "field_name": "total_experience_years",
+        "target_type": "float | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Summary / Experience Calculation",
+        "confidence_score": 0.9,
+        "description": "Total professional experience in years."
+      },
+      {
+        "field_name": "skills.technical_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills / Technical Competencies",
+        "confidence_score": 0.92,
+        "description": "Technical programming languages and core software competencies."
+      },
+      {
+        "field_name": "skills.tools_and_platforms",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills / Tools & Technologies",
+        "confidence_score": 0.9,
+        "description": "Software platforms, developer tools, and operational systems."
+      },
+      {
+        "field_name": "skills.domain_and_functional",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Domain Expertise",
+        "confidence_score": 0.0,
+        "description": "Functional domain knowledge (e.g. Hedge Funds, KYC, NAV, Derivatives)."
+      },
+      {
+        "field_name": "skills.all_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills (Aggregated)",
+        "confidence_score": 0.95,
+        "description": "Complete list of candidate skills across all categories."
+      },
+      {
+        "field_name": "experience",
+        "target_type": "array[WorkExperience]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Experience / Work History",
+        "confidence_score": 0.92,
+        "description": "Complete chronological employment records with bullet points."
+      },
+      {
+        "field_name": "education",
+        "target_type": "array[Education]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Education / Academic Qualifications",
+        "confidence_score": 0.9,
+        "description": "University, college, and higher education degree qualifications."
+      },
+      {
+        "field_name": "certifications",
+        "target_type": "array[Certification]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Certifications / Licenses",
+        "confidence_score": 0.0,
+        "description": "Professional accreditations and credentials."
+      },
+      {
+        "field_name": "projects",
+        "target_type": "array[Project]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Projects / Key Engagements",
+        "confidence_score": 0.0,
+        "description": "Major projects or strategic initiatives led by candidate."
+      }
+    ]
+  },
+  "raw_sections": {
+    "personal_information": "Navi Mumbai, 410208 * +91-9820688922 * deepakmalik21296@gmail.com",
+    "summary": "SUMMARY\nAdaptable IT professional with 7.2 years of experience in the Workday and PeopleSoft ecosystem, including 4.4 years of hands-on expertise in designing, developing, and implementing robust integration solutions using Workday Integrations and Workday Extend. Skilled in integrating HR and Financial modules to streamline business processes, improve data accuracy, and enhance overall system efficiency.",
+    "skills": "SKILLS\nProgramming Languages: JSON, XSLT 2.0, Fundamentals of XSLT 3.0, WQL, SOAP & REST based APIs, Java, PeopleCode and SQL\nTools: Workday Studio, Workday Extend, Workday Orchestration, Postman, SOAP UI, WinSCP, IPSwitch, Oxygen XML Editor, and PGP Encryption/Decryption\nDatabases: MS SQL Server and Oracle Database  Adept with Cisco Tidal Workload Automation tool (6.5.5).  Well versed with MS Office tools like MS Excel, MS Word, and MS PowerPoint.\nCERTIFICATION\nWorkday HCM Essential Concepts Consulting Core  Workday Pro Integrations Certification  Workday Extend Consulting Core",
+    "experience": "PROFESSIONAL EXPERIENCE\nAvalara Technologies, Pune (Remote) Applications Engineer, November 2024 – Present\nDeveloped and retrofitted integrations with third-party vendors such as Concur, Everbridge, ServiceNow, Okta, iCIMS, and Espresa to enable seamless data exchange and process automation.  Built and deployed a Workday Extend application to measure quality of hire through post-hire surveys, improving recruitment analytics and decision-making.\nDesigned a Workday Extend application to track worker promotion reviews and nominations within the talent performance cycle, enhancing visibility for HR and leadership teams.\nDeveloped and optimized integrations with global benefit providers to streamline Open Eligibility periods and ensure accurate employee benefits administration.\nEngineered API-based integrations to implement a centralized Vendor Management System with Staffing Nation, reducing vendor management overhead and improving data consistency.\nDesigning a Payroll Effective Change Interface (PECI) integration for a Brazilian third-party payroll vendor, ensuring compliance with local requirements.\nDeloitte Consulting India (Offices of the US), Mumbai Workday Integration Consultant, May 2021 – October 2024\nSpearheaded design, development, and hyper care for a Phase X Absence & Time Tracking implementation project, which was spread across two time zones for a fortune 500 pharmaceutical company. Implemented studio integrations involving RaaS calls and complex advanced reports.\n Design & developed PECI integrations for an Acquisition based project aimed at eliminating a middleware application, SnapLogic.\n Led the way to design & develop ~17 EIB integrations for a Russia based payroll provider which\nwere then configured on various business processes.\nExposure to BIRT & composite reports while assisting fellow peers for financial reporting.  Maintaining & enhancing key financial core-connector & studio integrations with Workday Web Services around journal loads, budget loads, etc.\nExperience in designing & developing following financial integrations- o Boomerang integrations to update customer & supplier invoices. o Implemented journal load & Ad Hoc Bank transaction integrations with a third-party system o Built an interface between Adaptive Planning & Workday to load budgets.\nSingle-handedly built dashboard capturing integration runs, health checks, and schedule statuses to showcase system insights to key decision makers.\nLeading India based offshore team & assisting wherever required.  Optimized critical integrations & business functions enhancing Workday experience for the client.  Designing an Extend application for existing customer which will influence subscription to the Extend services. In addition to project deliverables, involved in firm activities to add value for the organization.\n\nL&T Infotech, Navi Mumbai PeopleSoft Technical Consultant, July 2018 – May 2021\nExperience in third-party integrations- Concur, Guidewire, Vertex, Bank of America, and the US Bank.\nPropose technical solutions and possible workaround for the defects reported to the continuation of the business processes.\nKey Responsibilities: handling batch jobs scheduled through Cisco's scheduler- Tidal; performing enhancements as per business requirements; and providing estimates for a change request.\nControl over Application Designer, MS SQL Server 2012, SQR & PeopleCode. Closely worked on the component interface, application engine, ExcelToCI, PS Query, pivot grid, page field configurator, data migration workbench, business process weaver, data archive manager, application packages and integration broker.\nApart from an ongoing project, actively worked in the Centre of Excellence team for tools development. The task included creation and deployment of tools which facilitate support & maintenance projects and accelerate upgrade projects.",
+    "education": "EDUCATION\nUniversity Of Mumbai Bachelor of Engineering in Electronics & Telecommunication"
+  },
+  "meta": {
+    "status": "needs_review",
+    "human_verified": false,
+    "provider_calls": 0,
+    "source_accounting": {
+      "all_source_text_preserved": true,
+      "total_spans": 77,
+      "assigned_meaningful_spans": 75,
+      "unresolved_meaningful_spans": 1,
+      "non_content_artifacts": 1,
+      "duplicates_excluded": 0,
+      "all_meaningful_text_assigned": false,
+      "semantic_correctness_verified": false,
+      "outcomes": [
+        {
+          "source_id": "e0:0:12",
+          "source_element_index": 0,
+          "start": 0,
+          "end": 12,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e1:0:65",
+          "source_element_index": 1,
+          "start": 0,
+          "end": 65,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e2:0:7",
+          "source_element_index": 2,
+          "start": 0,
+          "end": 7,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e3:0:106",
+          "source_element_index": 3,
+          "start": 0,
+          "end": 106,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:106:210",
+          "source_element_index": 3,
+          "start": 106,
+          "end": 210,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:210:308",
+          "source_element_index": 3,
+          "start": 210,
+          "end": 308,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:308:400",
+          "source_element_index": 3,
+          "start": 308,
+          "end": 400,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e4:0:6",
+          "source_element_index": 4,
+          "start": 0,
+          "end": 6,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e5:0:82",
+          "source_element_index": 5,
+          "start": 0,
+          "end": 82,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e5:82:118",
+          "source_element_index": 5,
+          "start": 82,
+          "end": 118,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e6:0:80",
+          "source_element_index": 6,
+          "start": 0,
+          "end": 80,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e6:80:146",
+          "source_element_index": 6,
+          "start": 80,
+          "end": 146,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e7:0:45",
+          "source_element_index": 7,
+          "start": 0,
+          "end": 45,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e7:45:104",
+          "source_element_index": 7,
+          "start": 45,
+          "end": 104,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e7:104:181",
+          "source_element_index": 7,
+          "start": 104,
+          "end": 181,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:0:13",
+          "source_element_index": 8,
+          "start": 0,
+          "end": 13,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:0:47",
+          "source_element_index": 9,
+          "start": 0,
+          "end": 47,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:47:88",
+          "source_element_index": 9,
+          "start": 47,
+          "end": 88,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:88:120",
+          "source_element_index": 9,
+          "start": 88,
+          "end": 120,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e10:0:23",
+          "source_element_index": 10,
+          "start": 0,
+          "end": 23,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e11:0:36",
+          "source_element_index": 11,
+          "start": 0,
+          "end": 36,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e11:36:82",
+          "source_element_index": 11,
+          "start": 36,
+          "end": 82,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:0:92",
+          "source_element_index": 12,
+          "start": 0,
+          "end": 92,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:92:186",
+          "source_element_index": 12,
+          "start": 92,
+          "end": 186,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:186:281",
+          "source_element_index": 12,
+          "start": 186,
+          "end": 281,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:281:342",
+          "source_element_index": 12,
+          "start": 281,
+          "end": 342,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e13:0:95",
+          "source_element_index": 13,
+          "start": 0,
+          "end": 95,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e13:95:174",
+          "source_element_index": 13,
+          "start": 95,
+          "end": 174,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e14:0:98",
+          "source_element_index": 14,
+          "start": 0,
+          "end": 98,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e14:98:159",
+          "source_element_index": 14,
+          "start": 98,
+          "end": 159,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e15:0:91",
+          "source_element_index": 15,
+          "start": 0,
+          "end": 91,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e15:91:175",
+          "source_element_index": 15,
+          "start": 91,
+          "end": 175,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e16:0:94",
+          "source_element_index": 16,
+          "start": 0,
+          "end": 94,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e16:94:154",
+          "source_element_index": 16,
+          "start": 94,
+          "end": 154,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e17:0:54",
+          "source_element_index": 17,
+          "start": 0,
+          "end": 54,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e17:54:109",
+          "source_element_index": 17,
+          "start": 54,
+          "end": 109,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e18:0:86",
+          "source_element_index": 18,
+          "start": 0,
+          "end": 86,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e18:86:182",
+          "source_element_index": 18,
+          "start": 86,
+          "end": 182,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e18:182:191",
+          "source_element_index": 18,
+          "start": 182,
+          "end": 191,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e18:191:273",
+          "source_element_index": 18,
+          "start": 191,
+          "end": 273,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e19:0:95",
+          "source_element_index": 19,
+          "start": 0,
+          "end": 95,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e19:95:129",
+          "source_element_index": 19,
+          "start": 95,
+          "end": 129,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e20:0:96",
+          "source_element_index": 20,
+          "start": 0,
+          "end": 96,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e21:0:51",
+          "source_element_index": 21,
+          "start": 0,
+          "end": 51,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e22:0:91",
+          "source_element_index": 22,
+          "start": 0,
+          "end": 91,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e22:91:185",
+          "source_element_index": 22,
+          "start": 91,
+          "end": 185,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e22:185:234",
+          "source_element_index": 22,
+          "start": 185,
+          "end": 234,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e23:0:71",
+          "source_element_index": 23,
+          "start": 0,
+          "end": 71,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e23:71:136",
+          "source_element_index": 23,
+          "start": 71,
+          "end": 136,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e23:136:228",
+          "source_element_index": 23,
+          "start": 136,
+          "end": 228,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e23:228:301",
+          "source_element_index": 23,
+          "start": 228,
+          "end": 301,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e24:0:100",
+          "source_element_index": 24,
+          "start": 0,
+          "end": 100,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e24:100:148",
+          "source_element_index": 24,
+          "start": 100,
+          "end": 148,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e25:0:65",
+          "source_element_index": 25,
+          "start": 0,
+          "end": 65,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e25:65:165",
+          "source_element_index": 25,
+          "start": 65,
+          "end": 165,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e25:165:262",
+          "source_element_index": 25,
+          "start": 165,
+          "end": 262,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e25:262:279",
+          "source_element_index": 25,
+          "start": 262,
+          "end": 279,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e25:279:378",
+          "source_element_index": 25,
+          "start": 279,
+          "end": 378,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e26:0:0",
+          "source_element_index": 26,
+          "start": 0,
+          "end": 0,
+          "section": "experience",
+          "outcome": "non_content_artifact",
+          "reason": "Whitespace retained in source inventory"
+        },
+        {
+          "source_id": "e27:0:26",
+          "source_element_index": 27,
+          "start": 0,
+          "end": 26,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e27:26:79",
+          "source_element_index": 27,
+          "start": 26,
+          "end": 79,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e28:0:95",
+          "source_element_index": 28,
+          "start": 0,
+          "end": 95,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e28:95:100",
+          "source_element_index": 28,
+          "start": 95,
+          "end": 100,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e29:0:100",
+          "source_element_index": 29,
+          "start": 0,
+          "end": 100,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e29:100:123",
+          "source_element_index": 29,
+          "start": 100,
+          "end": 123,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e30:0:97",
+          "source_element_index": 30,
+          "start": 0,
+          "end": 97,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e30:97:185",
+          "source_element_index": 30,
+          "start": 97,
+          "end": 185,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e31:0:91",
+          "source_element_index": 31,
+          "start": 0,
+          "end": 91,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e31:91:180",
+          "source_element_index": 31,
+          "start": 91,
+          "end": 180,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e31:180:267",
+          "source_element_index": 31,
+          "start": 180,
+          "end": 267,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e31:267:311",
+          "source_element_index": 31,
+          "start": 267,
+          "end": 311,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e32:0:84",
+          "source_element_index": 32,
+          "start": 0,
+          "end": 84,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e32:84:179",
+          "source_element_index": 32,
+          "start": 84,
+          "end": 179,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e32:179:234",
+          "source_element_index": 32,
+          "start": 179,
+          "end": 234,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e33:0:9",
+          "source_element_index": 33,
+          "start": 0,
+          "end": 9,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e34:0:21",
+          "source_element_index": 34,
+          "start": 0,
+          "end": 21,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e34:21:79",
+          "source_element_index": 34,
+          "start": 21,
+          "end": 79,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        }
+      ]
+    },
+    "document_scope": {
+      "kind": "likely_resume",
+      "candidate_resume": true,
+      "reason": "Contact details, multiple resume section families and dated history; provisional scope only",
+      "human_verified": false
+    },
+    "source_inventory_sha256": "ceb78fd4f2a2b7e1430931f8ccc57490df66f937d2d1775861f2323305e5e202",
+    "field_evidence": {
+      "contact.full_name": [
+        "e1:0:65"
+      ],
+      "contact.email": [
+        "e1:0:65"
+      ],
+      "contact.phone": [
+        "e1:0:65"
+      ],
+      "contact.location": [
+        "e1:0:65"
+      ],
+      "summary": [
+        "e3:0:106",
+        "e3:106:210",
+        "e3:210:308",
+        "e3:308:400"
+      ],
+      "total_experience_years": [
+        "e3:0:106"
+      ],
+      "skills.technical_skills[0]": [
+        "e5:82:118",
+        "e7:0:45"
+      ],
+      "skills.technical_skills[1]": [
+        "e5:82:118"
+      ],
+      "skills.tools_and_platforms[0]": [
+        "e7:104:181"
+      ],
+      "skills.tools_and_platforms[1]": [
+        "e6:0:80"
+      ],
+      "skills.all_skills[0]": [
+        "e5:82:118",
+        "e7:0:45"
+      ],
+      "skills.all_skills[1]": [
+        "e5:82:118"
+      ],
+      "skills.all_skills[2]": [
+        "e7:104:181"
+      ],
+      "skills.all_skills[3]": [
+        "e6:0:80"
+      ],
+      "skills.all_skills[4]": [
+        "e5:0:82"
+      ],
+      "skills.all_skills[5]": [
+        "e5:0:82"
+      ],
+      "skills.all_skills[6]": [
+        "e5:0:82"
+      ],
+      "skills.all_skills[7]": [
+        "e5:0:82"
+      ],
+      "skills.all_skills[8]": [
+        "e5:0:82"
+      ],
+      "skills.all_skills[9]": [
+        "e5:82:118"
+      ],
+      "skills.all_skills[10]": [
+        "e5:82:118"
+      ],
+      "skills.all_skills[11]": [
+        "e6:0:80"
+      ],
+      "skills.all_skills[12]": [
+        "e6:0:80",
+        "e9:88:120"
+      ],
+      "skills.all_skills[13]": [
+        "e6:0:80"
+      ],
+      "skills.all_skills[14]": [
+        "e6:0:80"
+      ],
+      "skills.all_skills[15]": [
+        "e6:80:146"
+      ],
+      "skills.all_skills[16]": [
+        "e6:80:146"
+      ],
+      "skills.all_skills[17]": [
+        "e6:80:146"
+      ],
+      "skills.all_skills[18]": [
+        "e6:80:146"
+      ],
+      "skills.all_skills[19]": [
+        "e7:0:45"
+      ],
+      "skills.all_skills[20]": [
+        "e7:45:104"
+      ],
+      "skills.all_skills[21]": [
+        "e7:104:181"
+      ],
+      "skills.all_skills[22]": [
+        "e7:104:181"
+      ],
+      "skills.all_skills[23]": [
+        "e7:104:181"
+      ],
+      "skills.all_skills[24]": [
+        "e8:0:13",
+        "e9:47:88"
+      ],
+      "skills.all_skills[25]": [
+        "e9:0:47"
+      ],
+      "skills.all_skills[26]": [
+        "e9:47:88"
+      ],
+      "skills.all_skills[27]": [
+        "e9:88:120"
+      ]
+    },
+    "record_reviews": [
+      {
+        "category": "experience",
+        "entry_id": "experience-1",
+        "source_ids": [
+          "e11:0:36"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-2",
+        "source_ids": [
+          "e11:36:82",
+          "e12:281:342",
+          "e13:0:95",
+          "e13:95:174",
+          "e14:0:98",
+          "e14:98:159",
+          "e16:0:94",
+          "e16:94:154",
+          "e17:0:54",
+          "e17:54:109",
+          "e18:182:191",
+          "e19:95:129",
+          "e21:0:51",
+          "e22:185:234",
+          "e23:0:71",
+          "e23:71:136",
+          "e23:228:301",
+          "e24:0:100",
+          "e24:100:148",
+          "e25:262:279",
+          "e26:0:0"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-3",
+        "source_ids": [
+          "e12:0:92",
+          "e12:92:186",
+          "e12:186:281",
+          "e15:0:91",
+          "e15:91:175",
+          "e18:0:86",
+          "e18:86:182",
+          "e18:191:273",
+          "e19:0:95",
+          "e20:0:96",
+          "e22:0:91",
+          "e22:91:185",
+          "e23:136:228",
+          "e25:0:65",
+          "e25:65:165",
+          "e25:165:262",
+          "e25:279:378",
+          "e30:0:97",
+          "e30:97:185",
+          "e31:0:91",
+          "e31:91:180",
+          "e31:180:267",
+          "e32:0:84",
+          "e32:84:179"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-4",
+        "source_ids": [
+          "e27:0:26",
+          "e27:26:79",
+          "e28:0:95",
+          "e28:95:100",
+          "e29:0:100",
+          "e29:100:123",
+          "e31:267:311",
+          "e32:179:234"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "education",
+        "entry_id": "education-1",
+        "source_ids": [
+          "e34:0:21",
+          "e34:21:79"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      }
+    ],
+    "missing_required_fields": [
+      "experience[0].company",
+      "experience[0].role",
+      "experience[1].company",
+      "experience[1].role",
+      "experience[2].company",
+      "experience[2].role",
+      "experience[3].company",
+      "experience[3].role",
+      "education[0].institution",
+      "education[0].degree"
+    ],
+    "warnings": [
+      "Schema validity and field completion do not establish extraction or relationship accuracy.",
+      "Handoff confidence scores are fixed heuristics, not calibrated probabilities.",
+      "Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields."
+    ],
+    "unmapped_blocks": [
+      {
+        "source_id": "e2:0:7",
+        "category": "summary",
+        "text": "SUMMARY",
+        "page_number": 1
+      },
+      {
+        "source_id": "e4:0:6",
+        "category": "skills",
+        "text": "SKILLS",
+        "page_number": 1
+      },
+      {
+        "source_id": "e10:0:23",
+        "category": "experience",
+        "text": "PROFESSIONAL EXPERIENCE",
+        "page_number": 1
+      },
+      {
+        "source_id": "e11:0:36",
+        "category": "experience",
+        "text": "Avalara Technologies, Pune (Remote) ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e11:36:82",
+        "category": "experience",
+        "text": "Applications Engineer, November 2024 – Present",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:0:92",
+        "category": "experience",
+        "text": "Developed and retrofitted integrations with third-party vendors such as Concur, Everbridge, ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:92:186",
+        "category": "experience",
+        "text": "ServiceNow, Okta, iCIMS, and Espresa to enable seamless data exchange and process automation. ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:186:281",
+        "category": "experience",
+        "text": " Built and deployed a Workday Extend application to measure quality of hire through post-hire ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:281:342",
+        "category": "experience",
+        "text": "surveys, improving recruitment analytics and decision-making.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e13:0:95",
+        "category": "experience",
+        "text": "Designed a Workday Extend application to track worker promotion reviews and nominations within ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e13:95:174",
+        "category": "experience",
+        "text": "the talent performance cycle, enhancing visibility for HR and leadership teams.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e14:0:98",
+        "category": "experience",
+        "text": "Developed and optimized integrations with global benefit providers to streamline Open Eligibility ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e14:98:159",
+        "category": "experience",
+        "text": "periods and ensure accurate employee benefits administration.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e15:0:91",
+        "category": "experience",
+        "text": "Engineered API-based integrations to implement a centralized Vendor Management System with ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e15:91:175",
+        "category": "experience",
+        "text": "Staffing Nation, reducing vendor management overhead and improving data consistency.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e16:0:94",
+        "category": "experience",
+        "text": "Designing a Payroll Effective Change Interface (PECI) integration for a Brazilian third-party ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e16:94:154",
+        "category": "experience",
+        "text": "payroll vendor, ensuring compliance with local requirements.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e17:0:54",
+        "category": "experience",
+        "text": "Deloitte Consulting India (Offices of the US), Mumbai ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e17:54:109",
+        "category": "experience",
+        "text": "Workday Integration Consultant, May 2021 – October 2024",
+        "page_number": 1
+      },
+      {
+        "source_id": "e18:0:86",
+        "category": "experience",
+        "text": "Spearheaded design, development, and hyper care for a Phase X Absence & Time Tracking ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e18:86:182",
+        "category": "experience",
+        "text": "implementation project, which was spread across two time zones for a fortune 500 pharmaceutical ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e18:182:191",
+        "category": "experience",
+        "text": "company. ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e18:191:273",
+        "category": "experience",
+        "text": "Implemented studio integrations involving RaaS calls and complex advanced reports.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e19:0:95",
+        "category": "experience",
+        "text": " Design & developed PECI integrations for an Acquisition based project aimed at eliminating a ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e19:95:129",
+        "category": "experience",
+        "text": "middleware application, SnapLogic.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e20:0:96",
+        "category": "experience",
+        "text": " Led the way to design & develop ~17 EIB integrations for a Russia based payroll provider which",
+        "page_number": 2
+      },
+      {
+        "source_id": "e21:0:51",
+        "category": "experience",
+        "text": "were then configured on various business processes.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e22:0:91",
+        "category": "experience",
+        "text": "Exposure to BIRT & composite reports while assisting fellow peers for financial reporting. ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e22:91:185",
+        "category": "experience",
+        "text": " Maintaining & enhancing key financial core-connector & studio integrations with Workday Web ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e22:185:234",
+        "category": "experience",
+        "text": "Services around journal loads, budget loads, etc.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e23:0:71",
+        "category": "experience",
+        "text": "Experience in designing & developing following financial integrations- ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e23:71:136",
+        "category": "experience",
+        "text": "o Boomerang integrations to update customer & supplier invoices. ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e23:136:228",
+        "category": "experience",
+        "text": "o Implemented journal load & Ad Hoc Bank transaction integrations with a third-party system ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e23:228:301",
+        "category": "experience",
+        "text": "o Built an interface between Adaptive Planning & Workday to load budgets.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e24:0:100",
+        "category": "experience",
+        "text": "Single-handedly built dashboard capturing integration runs, health checks, and schedule statuses to ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e24:100:148",
+        "category": "experience",
+        "text": "showcase system insights to key decision makers.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e25:0:65",
+        "category": "experience",
+        "text": "Leading India based offshore team & assisting wherever required. ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e25:65:165",
+        "category": "experience",
+        "text": " Optimized critical integrations & business functions enhancing Workday experience for the client. ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e25:165:262",
+        "category": "experience",
+        "text": " Designing an Extend application for existing customer which will influence subscription to the ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e25:262:279",
+        "category": "experience",
+        "text": "Extend services. ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e25:279:378",
+        "category": "experience",
+        "text": "In addition to project deliverables, involved in firm activities to add value for the organization.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e26:0:0",
+        "category": "experience",
+        "text": "",
+        "page_number": 2
+      },
+      {
+        "source_id": "e27:0:26",
+        "category": "experience",
+        "text": "L&T Infotech, Navi Mumbai ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e27:26:79",
+        "category": "experience",
+        "text": "PeopleSoft Technical Consultant, July 2018 – May 2021",
+        "page_number": 2
+      },
+      {
+        "source_id": "e28:0:95",
+        "category": "experience",
+        "text": "Experience in third-party integrations- Concur, Guidewire, Vertex, Bank of America, and the US ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e28:95:100",
+        "category": "experience",
+        "text": "Bank.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e29:0:100",
+        "category": "experience",
+        "text": "Propose technical solutions and possible workaround for the defects reported to the continuation of ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e29:100:123",
+        "category": "experience",
+        "text": "the business processes.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e30:0:97",
+        "category": "experience",
+        "text": "Key Responsibilities: handling batch jobs scheduled through Cisco's scheduler- Tidal; performing ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e30:97:185",
+        "category": "experience",
+        "text": "enhancements as per business requirements; and providing estimates for a change request.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e31:0:91",
+        "category": "experience",
+        "text": "Control over Application Designer, MS SQL Server 2012, SQR & PeopleCode. Closely worked on ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e31:91:180",
+        "category": "experience",
+        "text": "the component interface, application engine, ExcelToCI, PS Query, pivot grid, page field ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e31:180:267",
+        "category": "experience",
+        "text": "configurator, data migration workbench, business process weaver, data archive manager, ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e31:267:311",
+        "category": "experience",
+        "text": "application packages and integration broker.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e32:0:84",
+        "category": "experience",
+        "text": "Apart from an ongoing project, actively worked in the Centre of Excellence team for ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e32:84:179",
+        "category": "experience",
+        "text": "tools development. The task included creation and deployment of tools which facilitate support ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e32:179:234",
+        "category": "experience",
+        "text": "& maintenance projects and accelerate upgrade projects.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e33:0:9",
+        "category": "education",
+        "text": "EDUCATION",
+        "page_number": 2
+      },
+      {
+        "source_id": "e34:0:21",
+        "category": "education",
+        "text": "University Of Mumbai ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e34:21:79",
+        "category": "education",
+        "text": "Bachelor of Engineering in Electronics & Telecommunication",
+        "page_number": 2
+      },
+      {
+        "source_id": "e0:0:12",
+        "category": null,
+        "text": "Deepak Malik",
+        "page_number": 1
+      }
+    ],
+    "needs_review": [
+      {
+        "source_element_index": 0,
+        "start": 0,
+        "end": 12,
+        "text": "Deepak Malik",
+        "page_number": 1,
+        "cluster_id": 7,
+        "candidate_section": "awards",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2408,
+        "margin": 0.0797,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      }
+    ]
+  },
+  "section_schemas": [
+    {
+      "category": "personal_information",
+      "label": "Personal information",
+      "records": [
+        {
+          "record_id": "personal_information",
+          "source_ids": [
+            "e1:0:65"
+          ],
+          "attributes": [
+            {
+              "name": "full_name",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "email",
+              "items": [
+                {
+                  "value": "deepakmalik21296@gmail.com",
+                  "evidence": [
+                    {
+                      "source_id": "e1:0:65",
+                      "quote": "deepakmalik21296@gmail.com"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "phone",
+              "items": [
+                {
+                  "value": "+91-9820688922",
+                  "evidence": [
+                    {
+                      "source_id": "e1:0:65",
+                      "quote": "+91-9820688922"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "location",
+              "items": [
+                {
+                  "value": "Mumbai",
+                  "evidence": [
+                    {
+                      "source_id": "e1:0:65",
+                      "quote": "Mumbai"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "linkedin_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "github_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "portfolio_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "professional_title",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e1:0:65",
+          "quote": "Navi Mumbai, 410208 * +91-9820688922 * deepakmalik21296@gmail.com"
+        }
+      ]
+    },
+    {
+      "category": "summary",
+      "label": "Summary",
+      "records": [
+        {
+          "record_id": "summary",
+          "source_ids": [
+            "e3:0:106",
+            "e3:106:210",
+            "e3:210:308",
+            "e3:308:400"
+          ],
+          "attributes": [
+            {
+              "name": "statements",
+              "items": [
+                {
+                  "value": "Adaptable IT professional with 7.2 years of experience in the Workday and PeopleSoft ecosystem, including ",
+                  "evidence": [
+                    {
+                      "source_id": "e3:0:106",
+                      "quote": "Adaptable IT professional with 7.2 years of experience in the Workday and PeopleSoft ecosystem, including "
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "4.4 years of hands-on expertise in designing, developing, and implementing robust integration solutions ",
+                  "evidence": [
+                    {
+                      "source_id": "e3:106:210",
+                      "quote": "4.4 years of hands-on expertise in designing, developing, and implementing robust integration solutions "
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "using Workday Integrations and Workday Extend. Skilled in integrating HR and Financial modules to ",
+                  "evidence": [
+                    {
+                      "source_id": "e3:210:308",
+                      "quote": "using Workday Integrations and Workday Extend. Skilled in integrating HR and Financial modules to "
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "streamline business processes, improve data accuracy, and enhance overall system efficiency.",
+                  "evidence": [
+                    {
+                      "source_id": "e3:308:400",
+                      "quote": "streamline business processes, improve data accuracy, and enhance overall system efficiency."
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "total_experience_years",
+              "items": [
+                {
+                  "value": 7.2,
+                  "evidence": [
+                    {
+                      "source_id": "e3:0:106",
+                      "quote": "7.2"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e2:0:7",
+          "quote": "SUMMARY"
+        }
+      ]
+    },
+    {
+      "category": "skills",
+      "label": "Skills",
+      "records": [
+        {
+          "record_id": "skills",
+          "source_ids": [
+            "e5:0:82",
+            "e5:82:118",
+            "e6:0:80",
+            "e6:80:146",
+            "e7:0:45",
+            "e7:45:104",
+            "e7:104:181",
+            "e8:0:13",
+            "e9:0:47",
+            "e9:47:88",
+            "e9:88:120"
+          ],
+          "attributes": [
+            {
+              "name": "technical_skills",
+              "items": [
+                {
+                  "value": "SQL",
+                  "evidence": [
+                    {
+                      "source_id": "e5:82:118",
+                      "quote": "SQL"
+                    },
+                    {
+                      "source_id": "e7:0:45",
+                      "quote": "SQL"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Java",
+                  "evidence": [
+                    {
+                      "source_id": "e5:82:118",
+                      "quote": "Java"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "tools_and_platforms",
+              "items": [
+                {
+                  "value": "Excel",
+                  "evidence": [
+                    {
+                      "source_id": "e7:104:181",
+                      "quote": "Excel"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Postman",
+                  "evidence": [
+                    {
+                      "source_id": "e6:0:80",
+                      "quote": "Postman"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "domain_and_functional",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "soft_skills",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "all_skills",
+              "items": [
+                {
+                  "value": "SQL",
+                  "evidence": [
+                    {
+                      "source_id": "e5:82:118",
+                      "quote": "SQL"
+                    },
+                    {
+                      "source_id": "e7:0:45",
+                      "quote": "SQL"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Java",
+                  "evidence": [
+                    {
+                      "source_id": "e5:82:118",
+                      "quote": "Java"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Excel",
+                  "evidence": [
+                    {
+                      "source_id": "e7:104:181",
+                      "quote": "Excel"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Postman",
+                  "evidence": [
+                    {
+                      "source_id": "e6:0:80",
+                      "quote": "Postman"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Programming Languages: JSON",
+                  "evidence": [
+                    {
+                      "source_id": "e5:0:82",
+                      "quote": "Programming Languages: JSON"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "XSLT 2.0",
+                  "evidence": [
+                    {
+                      "source_id": "e5:0:82",
+                      "quote": "XSLT 2.0"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Fundamentals of XSLT 3.0",
+                  "evidence": [
+                    {
+                      "source_id": "e5:0:82",
+                      "quote": "Fundamentals of XSLT 3.0"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "WQL",
+                  "evidence": [
+                    {
+                      "source_id": "e5:0:82",
+                      "quote": "WQL"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "SOAP & REST",
+                  "evidence": [
+                    {
+                      "source_id": "e5:0:82",
+                      "quote": "SOAP & REST"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "based APIs",
+                  "evidence": [
+                    {
+                      "source_id": "e5:82:118",
+                      "quote": "based APIs"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "PeopleCode and SQL",
+                  "evidence": [
+                    {
+                      "source_id": "e5:82:118",
+                      "quote": "PeopleCode and SQL"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Workday Studio",
+                  "evidence": [
+                    {
+                      "source_id": "e6:0:80",
+                      "quote": "Workday Studio"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Workday Extend",
+                  "evidence": [
+                    {
+                      "source_id": "e6:0:80",
+                      "quote": "Workday Extend"
+                    },
+                    {
+                      "source_id": "e9:88:120",
+                      "quote": "Workday Extend"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Workday Orchestration",
+                  "evidence": [
+                    {
+                      "source_id": "e6:0:80",
+                      "quote": "Workday Orchestration"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "SOAP UI",
+                  "evidence": [
+                    {
+                      "source_id": "e6:0:80",
+                      "quote": "SOAP UI"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "WinSCP",
+                  "evidence": [
+                    {
+                      "source_id": "e6:80:146",
+                      "quote": "WinSCP"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "IPSwitch",
+                  "evidence": [
+                    {
+                      "source_id": "e6:80:146",
+                      "quote": "IPSwitch"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Oxygen XML Editor",
+                  "evidence": [
+                    {
+                      "source_id": "e6:80:146",
+                      "quote": "Oxygen XML Editor"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "and PGP Encryption/Decryption",
+                  "evidence": [
+                    {
+                      "source_id": "e6:80:146",
+                      "quote": "and PGP Encryption/Decryption"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "MS SQL Server and Oracle Database",
+                  "evidence": [
+                    {
+                      "source_id": "e7:0:45",
+                      "quote": "MS SQL Server and Oracle Database"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": " Adept with Cisco Tidal Workload Automation tool (6.5.5).",
+                  "evidence": [
+                    {
+                      "source_id": "e7:45:104",
+                      "quote": " Adept with Cisco Tidal Workload Automation tool (6.5.5)."
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": " Well versed with MS Office tools like MS Excel",
+                  "evidence": [
+                    {
+                      "source_id": "e7:104:181",
+                      "quote": " Well versed with MS Office tools like MS Excel"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "MS Word",
+                  "evidence": [
+                    {
+                      "source_id": "e7:104:181",
+                      "quote": "MS Word"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "and MS PowerPoint.",
+                  "evidence": [
+                    {
+                      "source_id": "e7:104:181",
+                      "quote": "and MS PowerPoint."
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "CERTIFICATION",
+                  "evidence": [
+                    {
+                      "source_id": "e8:0:13",
+                      "quote": "CERTIFICATION"
+                    },
+                    {
+                      "source_id": "e9:47:88",
+                      "quote": "Certification"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Workday HCM Essential Concepts Consulting Core",
+                  "evidence": [
+                    {
+                      "source_id": "e9:0:47",
+                      "quote": "Workday HCM Essential Concepts Consulting Core"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": " Workday Pro Integrations Certification",
+                  "evidence": [
+                    {
+                      "source_id": "e9:47:88",
+                      "quote": " Workday Pro Integrations Certification"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": " Workday Extend Consulting Core",
+                  "evidence": [
+                    {
+                      "source_id": "e9:88:120",
+                      "quote": " Workday Extend Consulting Core"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e4:0:6",
+          "quote": "SKILLS"
+        },
+        {
+          "source_id": "e5:0:82",
+          "quote": "Programming Languages: JSON, XSLT 2.0, Fundamentals of XSLT 3.0, WQL, SOAP & REST "
+        },
+        {
+          "source_id": "e5:82:118",
+          "quote": "based APIs, Java, PeopleCode and SQL"
+        },
+        {
+          "source_id": "e6:0:80",
+          "quote": "Tools: Workday Studio, Workday Extend, Workday Orchestration, Postman, SOAP UI, "
+        },
+        {
+          "source_id": "e6:80:146",
+          "quote": "WinSCP, IPSwitch, Oxygen XML Editor, and PGP Encryption/Decryption"
+        },
+        {
+          "source_id": "e7:0:45",
+          "quote": "Databases: MS SQL Server and Oracle Database "
+        },
+        {
+          "source_id": "e7:104:181",
+          "quote": " Well versed with MS Office tools like MS Excel, MS Word, and MS PowerPoint."
+        }
+      ]
+    },
+    {
+      "category": "experience",
+      "label": "Experience",
+      "records": [
+        {
+          "record_id": "experience-1",
+          "source_ids": [
+            "e11:0:36"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "experience-2",
+          "source_ids": [
+            "e11:36:82",
+            "e12:281:342",
+            "e13:0:95",
+            "e13:95:174",
+            "e14:0:98",
+            "e14:98:159",
+            "e16:0:94",
+            "e16:94:154",
+            "e17:0:54",
+            "e17:54:109",
+            "e18:182:191",
+            "e19:95:129",
+            "e21:0:51",
+            "e22:185:234",
+            "e23:0:71",
+            "e23:71:136",
+            "e23:228:301",
+            "e24:0:100",
+            "e24:100:148",
+            "e25:262:279",
+            "e26:0:0"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "experience-3",
+          "source_ids": [
+            "e12:0:92",
+            "e12:92:186",
+            "e12:186:281",
+            "e15:0:91",
+            "e15:91:175",
+            "e18:0:86",
+            "e18:86:182",
+            "e18:191:273",
+            "e19:0:95",
+            "e20:0:96",
+            "e22:0:91",
+            "e22:91:185",
+            "e23:136:228",
+            "e25:0:65",
+            "e25:65:165",
+            "e25:165:262",
+            "e25:279:378",
+            "e30:0:97",
+            "e30:97:185",
+            "e31:0:91",
+            "e31:91:180",
+            "e31:180:267",
+            "e32:0:84",
+            "e32:84:179"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "experience-4",
+          "source_ids": [
+            "e27:0:26",
+            "e27:26:79",
+            "e28:0:95",
+            "e28:95:100",
+            "e29:0:100",
+            "e29:100:123",
+            "e31:267:311",
+            "e32:179:234"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e10:0:23",
+          "quote": "PROFESSIONAL EXPERIENCE"
+        },
+        {
+          "source_id": "e11:0:36",
+          "quote": "Avalara Technologies, Pune (Remote) "
+        },
+        {
+          "source_id": "e11:36:82",
+          "quote": "Applications Engineer, November 2024 – Present"
+        },
+        {
+          "source_id": "e12:0:92",
+          "quote": "Developed and retrofitted integrations with third-party vendors such as Concur, Everbridge, "
+        },
+        {
+          "source_id": "e12:92:186",
+          "quote": "ServiceNow, Okta, iCIMS, and Espresa to enable seamless data exchange and process automation. "
+        },
+        {
+          "source_id": "e12:186:281",
+          "quote": " Built and deployed a Workday Extend application to measure quality of hire through post-hire "
+        },
+        {
+          "source_id": "e12:281:342",
+          "quote": "surveys, improving recruitment analytics and decision-making."
+        },
+        {
+          "source_id": "e13:0:95",
+          "quote": "Designed a Workday Extend application to track worker promotion reviews and nominations within "
+        },
+        {
+          "source_id": "e13:95:174",
+          "quote": "the talent performance cycle, enhancing visibility for HR and leadership teams."
+        },
+        {
+          "source_id": "e14:0:98",
+          "quote": "Developed and optimized integrations with global benefit providers to streamline Open Eligibility "
+        },
+        {
+          "source_id": "e14:98:159",
+          "quote": "periods and ensure accurate employee benefits administration."
+        },
+        {
+          "source_id": "e15:0:91",
+          "quote": "Engineered API-based integrations to implement a centralized Vendor Management System with "
+        },
+        {
+          "source_id": "e15:91:175",
+          "quote": "Staffing Nation, reducing vendor management overhead and improving data consistency."
+        },
+        {
+          "source_id": "e16:0:94",
+          "quote": "Designing a Payroll Effective Change Interface (PECI) integration for a Brazilian third-party "
+        },
+        {
+          "source_id": "e16:94:154",
+          "quote": "payroll vendor, ensuring compliance with local requirements."
+        },
+        {
+          "source_id": "e17:0:54",
+          "quote": "Deloitte Consulting India (Offices of the US), Mumbai "
+        },
+        {
+          "source_id": "e17:54:109",
+          "quote": "Workday Integration Consultant, May 2021 – October 2024"
+        },
+        {
+          "source_id": "e18:0:86",
+          "quote": "Spearheaded design, development, and hyper care for a Phase X Absence & Time Tracking "
+        },
+        {
+          "source_id": "e18:86:182",
+          "quote": "implementation project, which was spread across two time zones for a fortune 500 pharmaceutical "
+        },
+        {
+          "source_id": "e18:182:191",
+          "quote": "company. "
+        },
+        {
+          "source_id": "e18:191:273",
+          "quote": "Implemented studio integrations involving RaaS calls and complex advanced reports."
+        },
+        {
+          "source_id": "e19:0:95",
+          "quote": " Design & developed PECI integrations for an Acquisition based project aimed at eliminating a "
+        },
+        {
+          "source_id": "e19:95:129",
+          "quote": "middleware application, SnapLogic."
+        },
+        {
+          "source_id": "e20:0:96",
+          "quote": " Led the way to design & develop ~17 EIB integrations for a Russia based payroll provider which"
+        },
+        {
+          "source_id": "e21:0:51",
+          "quote": "were then configured on various business processes."
+        },
+        {
+          "source_id": "e22:0:91",
+          "quote": "Exposure to BIRT & composite reports while assisting fellow peers for financial reporting. "
+        },
+        {
+          "source_id": "e22:91:185",
+          "quote": " Maintaining & enhancing key financial core-connector & studio integrations with Workday Web "
+        },
+        {
+          "source_id": "e22:185:234",
+          "quote": "Services around journal loads, budget loads, etc."
+        },
+        {
+          "source_id": "e23:0:71",
+          "quote": "Experience in designing & developing following financial integrations- "
+        },
+        {
+          "source_id": "e23:71:136",
+          "quote": "o Boomerang integrations to update customer & supplier invoices. "
+        },
+        {
+          "source_id": "e23:136:228",
+          "quote": "o Implemented journal load & Ad Hoc Bank transaction integrations with a third-party system "
+        },
+        {
+          "source_id": "e23:228:301",
+          "quote": "o Built an interface between Adaptive Planning & Workday to load budgets."
+        },
+        {
+          "source_id": "e24:0:100",
+          "quote": "Single-handedly built dashboard capturing integration runs, health checks, and schedule statuses to "
+        },
+        {
+          "source_id": "e24:100:148",
+          "quote": "showcase system insights to key decision makers."
+        },
+        {
+          "source_id": "e25:0:65",
+          "quote": "Leading India based offshore team & assisting wherever required. "
+        },
+        {
+          "source_id": "e25:65:165",
+          "quote": " Optimized critical integrations & business functions enhancing Workday experience for the client. "
+        },
+        {
+          "source_id": "e25:165:262",
+          "quote": " Designing an Extend application for existing customer which will influence subscription to the "
+        },
+        {
+          "source_id": "e25:262:279",
+          "quote": "Extend services. "
+        },
+        {
+          "source_id": "e25:279:378",
+          "quote": "In addition to project deliverables, involved in firm activities to add value for the organization."
+        },
+        {
+          "source_id": "e26:0:0",
+          "quote": ""
+        },
+        {
+          "source_id": "e27:0:26",
+          "quote": "L&T Infotech, Navi Mumbai "
+        },
+        {
+          "source_id": "e27:26:79",
+          "quote": "PeopleSoft Technical Consultant, July 2018 – May 2021"
+        },
+        {
+          "source_id": "e28:0:95",
+          "quote": "Experience in third-party integrations- Concur, Guidewire, Vertex, Bank of America, and the US "
+        },
+        {
+          "source_id": "e28:95:100",
+          "quote": "Bank."
+        },
+        {
+          "source_id": "e29:0:100",
+          "quote": "Propose technical solutions and possible workaround for the defects reported to the continuation of "
+        },
+        {
+          "source_id": "e29:100:123",
+          "quote": "the business processes."
+        },
+        {
+          "source_id": "e30:0:97",
+          "quote": "Key Responsibilities: handling batch jobs scheduled through Cisco's scheduler- Tidal; performing "
+        },
+        {
+          "source_id": "e30:97:185",
+          "quote": "enhancements as per business requirements; and providing estimates for a change request."
+        },
+        {
+          "source_id": "e31:0:91",
+          "quote": "Control over Application Designer, MS SQL Server 2012, SQR & PeopleCode. Closely worked on "
+        },
+        {
+          "source_id": "e31:91:180",
+          "quote": "the component interface, application engine, ExcelToCI, PS Query, pivot grid, page field "
+        },
+        {
+          "source_id": "e31:180:267",
+          "quote": "configurator, data migration workbench, business process weaver, data archive manager, "
+        },
+        {
+          "source_id": "e31:267:311",
+          "quote": "application packages and integration broker."
+        },
+        {
+          "source_id": "e32:0:84",
+          "quote": "Apart from an ongoing project, actively worked in the Centre of Excellence team for "
+        },
+        {
+          "source_id": "e32:84:179",
+          "quote": "tools development. The task included creation and deployment of tools which facilitate support "
+        },
+        {
+          "source_id": "e32:179:234",
+          "quote": "& maintenance projects and accelerate upgrade projects."
+        }
+      ]
+    },
+    {
+      "category": "education",
+      "label": "Education",
+      "records": [
+        {
+          "record_id": "education-1",
+          "source_ids": [
+            "e34:0:21",
+            "e34:21:79"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "degree",
+              "items": [
+                {
+                  "value": "Bachelor of Engineering",
+                  "evidence": [
+                    {
+                      "source_id": "e34:21:79",
+                      "quote": "Bachelor of Engineering"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "field_of_study",
+              "items": [
+                {
+                  "value": "Electronics & Telecommunication",
+                  "evidence": [
+                    {
+                      "source_id": "e34:21:79",
+                      "quote": "Electronics & Telecommunication"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e33:0:9",
+          "quote": "EDUCATION"
+        },
+        {
+          "source_id": "e34:0:21",
+          "quote": "University Of Mumbai "
+        },
+        {
+          "source_id": "e34:21:79",
+          "quote": "Bachelor of Engineering in Electronics & Telecommunication"
+        }
+      ]
+    },
+    {
+      "category": "needs_review",
+      "label": "Unassigned source blocks",
+      "records": [],
+      "residual_blocks": [
+        {
+          "source_id": "e0:0:12",
+          "quote": "Deepak Malik"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1811 @@
+{
+  "success": true,
+  "source": "Souparno Daripa.docx",
+  "extraction_mode": "existing_blocks_schema_mapping",
+  "data": {
+    "contact": {
+      "full_name": "SOUPARNO DARIPA",
+      "email": "souparnorbk2@gmail.com",
+      "phone": "+91 980 453 2096",
+      "location": null,
+      "linkedin_url": null,
+      "github_url": null,
+      "portfolio_url": null
+    },
+    "professional_title": null,
+    "summary": "Results-driven Software Engineer with 9 years’ experience architecting, building, and delivering scalable, high-performing distributed systems for healthcare, fintech, and customer success domains. Proficient in system design, migration from monolith to microservices, and team leadership. Interested in modern Java, Spring Boot. Passionate about designing reliable distributed systems, client-server solutions with optimizing team delivery using agile methodologies.",
+    "total_experience_years": null,
+    "skills": {
+      "technical_skills": [],
+      "tools_and_platforms": [],
+      "domain_and_functional": [],
+      "soft_skills": [],
+      "all_skills": []
+    },
+    "experience": [
+      {
+        "company": "",
+        "role": "Senior Software Engineer\nSenior Software Engineer\nSoftware Engineer",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [
+          "Designed and delivered a Rate Limit Service Notification Framework, launching a new pricing model (“pay- as-you-use”) that enabled dynamic scaling and enhanced monetization."
+        ],
+        "technologies": []
+      },
+      {
+        "company": "Nomura Research Institute Financial Technologies Pvt.  Ltd\tMarch 2020 - February 2021",
+        "role": "Software Engineer",
+        "start_date": "March 2020",
+        "end_date": "February 2021",
+        "duration": "March 2020 - February 2021",
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "Nomura Research Institute Financial Technologies Pvt.  Ltd\tAugust 2016 - March 2020",
+        "role": "Associate Software Engineer",
+        "start_date": "August 2016",
+        "end_date": "March 2020",
+        "duration": "August 2016 - March 2020",
+        "location": null,
+        "responsibilities": [
+          "Designed and released REST APIs for Front Office–Back Office sync in Sri Lankan trading project."
+        ],
+        "technologies": []
+      },
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      }
+    ],
+    "education": [
+      {
+        "institution": "West Bengal University of Technology, CGPA: 8.67/10.00",
+        "degree": "Bachelor of Technology in Computer Science and Engineering\tAugust 2012 - May 2016 Institute of Engineering and Management, Kolkata.",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      }
+    ],
+    "certifications": [],
+    "projects": [],
+    "languages": [
+      "JAVA 8, JAVA 17",
+      "Programming: Data Structures, Algorithms, Multi-Threading",
+      "Database: Postgres, MongoDB, Oracle, MySQL",
+      "Frameworks and Softwares: Spring, Spring Boot, Eclipse, SQL Developer, IntelliJ, Github Copilot, Cursor",
+      "Tools: DBQueue, RabbitMQ, Apache ActiveMQ, Apache Tomcat, Sumologic, DataDog",
+      "Methodologies: Agile, CI/CD"
+    ]
+  },
+  "schema_mapping": {
+    "fields_populated": 6,
+    "total_fields": 16,
+    "completion_percentage": 37.5,
+    "field_details": [
+      {
+        "field_name": "contact.full_name",
+        "target_type": "string",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Personal Details",
+        "confidence_score": 0.95,
+        "description": "Candidate's full name, extracted from the top header of the resume."
+      },
+      {
+        "field_name": "contact.email",
+        "target_type": "string (email)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.98,
+        "description": "Candidate's primary contact email address."
+      },
+      {
+        "field_name": "contact.phone",
+        "target_type": "string (phone)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.95,
+        "description": "Candidate's telephone / mobile phone number."
+      },
+      {
+        "field_name": "contact.location",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's residential location or work city."
+      },
+      {
+        "field_name": "contact.linkedin_url",
+        "target_type": "string (url) | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "URL to candidate's LinkedIn profile."
+      },
+      {
+        "field_name": "professional_title",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Subtitle",
+        "confidence_score": 0.0,
+        "description": "Candidate's target headline or most recent job title."
+      },
+      {
+        "field_name": "summary",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Summary / Profile / Objective",
+        "confidence_score": 0.85,
+        "description": "Executive bio, professional overview, or career objective."
+      },
+      {
+        "field_name": "total_experience_years",
+        "target_type": "float | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Summary / Experience Calculation",
+        "confidence_score": 0.0,
+        "description": "Total professional experience in years."
+      },
+      {
+        "field_name": "skills.technical_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Technical Competencies",
+        "confidence_score": 0.0,
+        "description": "Technical programming languages and core software competencies."
+      },
+      {
+        "field_name": "skills.tools_and_platforms",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Tools & Technologies",
+        "confidence_score": 0.0,
+        "description": "Software platforms, developer tools, and operational systems."
+      },
+      {
+        "field_name": "skills.domain_and_functional",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Domain Expertise",
+        "confidence_score": 0.0,
+        "description": "Functional domain knowledge (e.g. Hedge Funds, KYC, NAV, Derivatives)."
+      },
+      {
+        "field_name": "skills.all_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills (Aggregated)",
+        "confidence_score": 0.0,
+        "description": "Complete list of candidate skills across all categories."
+      },
+      {
+        "field_name": "experience",
+        "target_type": "array[WorkExperience]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Experience / Work History",
+        "confidence_score": 0.92,
+        "description": "Complete chronological employment records with bullet points."
+      },
+      {
+        "field_name": "education",
+        "target_type": "array[Education]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Education / Academic Qualifications",
+        "confidence_score": 0.9,
+        "description": "University, college, and higher education degree qualifications."
+      },
+      {
+        "field_name": "certifications",
+        "target_type": "array[Certification]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Certifications / Licenses",
+        "confidence_score": 0.0,
+        "description": "Professional accreditations and credentials."
+      },
+      {
+        "field_name": "projects",
+        "target_type": "array[Project]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Projects / Key Engagements",
+        "confidence_score": 0.0,
+        "description": "Major projects or strategic initiatives led by candidate."
+      }
+    ]
+  },
+  "raw_sections": {
+    "personal_information": "SOUPARNO DARIPA\nLinkedIn :  linkedin/souparno-daripa ⋄ GitHub :  github/souparno-daripa\n+91 980 453 2096 ⋄ Email : souparnorbk2@gmail.com ⋄ devfolio/souparno",
+    "summary": "PROFESSIONAL PROFILE\nResults-driven Software Engineer with 9 years’ experience architecting, building, and delivering scalable, high-performing distributed systems for healthcare, fintech, and customer success domains. Proficient in system design, migration from monolith to microservices, and team leadership. Interested in modern Java, Spring Boot. Passionate about designing reliable distributed systems, client-server solutions with optimizing team delivery using agile methodologies.",
+    "experience": "PROFESSIONAL EXPERIENCE\nCentral Data Storage(Stealth Startup)\tFebruary 2025 - Present\nSenior Software Engineer\nModernized and migrated the core healthcare data backup and restore system from a legacy socket-based JavaFX/JSP architecture to a robust, standards-compliant solution using Spring Boot (HTTP/WebSocket) and Flutter desktop, enhancing system scalability, data protection, and regulatory compliance.\nOptimized backup storage through de-duplication with Merkle tree-based data integrity checks, resulting in reduced storage costs and improved efficiency.\nDelivered new 3.0 MVP in 3 months by driving agile sprints, aligning product vision with engineering, and collaborating with cross-functional teams.\nEnhanced security via token-based authentication and dynamic protocol switching for secure data transfer between doctor’s offices and cloud storage.\nGainsight\tFebruary 2023 - February 2025\nSenior Software Engineer\nDesigned and delivered a Rate Limit Service Notification Framework, launching a new pricing model (“pay- as-you-use”) that enabled dynamic scaling and enhanced monetization.\nMentored junior developers and led code review initiatives, improving code quality, onboarding, and team efficiency.\nOrchestrated multiple cross-module projects by establishing clear collaboration channels and seamless service integrations.\nGainsight\tFebruary 2021 - February 2023\nSoftware Engineer\nContributed to designing and developing Simple Program and Dynamic Program features in Journey Orches- tration, significantly improving customer experience by simplifying the construction of complex use cases.\nKey contributor to the redesign and migration of Journey Orchestration from monolith to microservices (Spring Boot Java 8), improving system reliability and scalability by 30\nAutomated root cause classification for production issues with advanced query categorization in Sumologic, reducing triage time by 30-40\nNomura Research Institute Financial Technologies Pvt.  Ltd\tMarch 2020 - February 2021\nSoftware Engineer\nModernized and refactored batch processing software for Australian Stock Market integration using robust pub-sub architecture, handling high-throughput financial data with multi-threaded Java pipelines.\nDelivered key reporting and integration features under strict compliance requirements.\nNomura Research Institute Financial Technologies Pvt.  Ltd\tAugust 2016 - March 2020\nAssociate Software Engineer\nDesigned and released REST APIs for Front Office–Back Office sync in Sri Lankan trading project.\nIntegrated Azure SSO using ADAL4J for enterprise-grade authentication with no service downtime.\nADDITIONAL EXPERIENCE\nFinalist, Sahamati Hackathon 2021: Developed ”One Ledger Book” personal finance app with new account aggregation API\nAIESEC Egypt (2014): Led cultural tourism initiative to boost local engagement.\nAIESEC Thailand (2013): Taught English and cross-cultural skills in youth camps.",
+    "skills": "SKILLS",
+    "languages": "Languages: JAVA 8, JAVA 17\nProgramming: Data Structures, Algorithms, Multi-Threading\nDatabase: Postgres, MongoDB, Oracle, MySQL\nFrameworks and Softwares: Spring, Spring Boot, Eclipse, SQL Developer, IntelliJ, Github Copilot, Cursor\nTools: DBQueue, RabbitMQ, Apache ActiveMQ, Apache Tomcat, Sumologic, DataDog\nMethodologies: Agile, CI/CD",
+    "education": "EDUCATION\nBachelor of Technology in Computer Science and Engineering\tAugust 2012 - May 2016 Institute of Engineering and Management, Kolkata.\nWest Bengal University of Technology, CGPA: 8.67/10.00"
+  },
+  "meta": {
+    "status": "needs_review",
+    "human_verified": false,
+    "provider_calls": 0,
+    "source_accounting": {
+      "all_source_text_preserved": true,
+      "total_spans": 46,
+      "assigned_meaningful_spans": 45,
+      "unresolved_meaningful_spans": 0,
+      "non_content_artifacts": 1,
+      "duplicates_excluded": 0,
+      "all_meaningful_text_assigned": true,
+      "semantic_correctness_verified": false,
+      "outcomes": [
+        {
+          "source_id": "e0:0:15",
+          "source_element_index": 0,
+          "start": 0,
+          "end": 15,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e1:0:71",
+          "source_element_index": 1,
+          "start": 0,
+          "end": 71,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e2:0:69",
+          "source_element_index": 2,
+          "start": 0,
+          "end": 69,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e3:0:20",
+          "source_element_index": 3,
+          "start": 0,
+          "end": 20,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e4:0:467",
+          "source_element_index": 4,
+          "start": 0,
+          "end": 467,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e5:0:23",
+          "source_element_index": 5,
+          "start": 0,
+          "end": 23,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e6:0:61",
+          "source_element_index": 6,
+          "start": 0,
+          "end": 61,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e7:0:24",
+          "source_element_index": 7,
+          "start": 0,
+          "end": 24,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:0:297",
+          "source_element_index": 8,
+          "start": 0,
+          "end": 297,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:0:153",
+          "source_element_index": 9,
+          "start": 0,
+          "end": 153,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e10:0:148",
+          "source_element_index": 10,
+          "start": 0,
+          "end": 148,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e11:0:148",
+          "source_element_index": 11,
+          "start": 0,
+          "end": 148,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:0:39",
+          "source_element_index": 12,
+          "start": 0,
+          "end": 39,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e13:0:24",
+          "source_element_index": 13,
+          "start": 0,
+          "end": 24,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e14:0:173",
+          "source_element_index": 14,
+          "start": 0,
+          "end": 173,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e15:0:116",
+          "source_element_index": 15,
+          "start": 0,
+          "end": 116,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e16:0:123",
+          "source_element_index": 16,
+          "start": 0,
+          "end": 123,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e17:0:39",
+          "source_element_index": 17,
+          "start": 0,
+          "end": 39,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e18:0:17",
+          "source_element_index": 18,
+          "start": 0,
+          "end": 17,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e19:0:209",
+          "source_element_index": 19,
+          "start": 0,
+          "end": 209,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e20:0:174",
+          "source_element_index": 20,
+          "start": 0,
+          "end": 174,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e21:0:136",
+          "source_element_index": 21,
+          "start": 0,
+          "end": 136,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e22:0:85",
+          "source_element_index": 22,
+          "start": 0,
+          "end": 85,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit dated employer starts or continues Experience across layout changes"
+        },
+        {
+          "source_id": "e23:0:17",
+          "source_element_index": 23,
+          "start": 0,
+          "end": 17,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e24:0:202",
+          "source_element_index": 24,
+          "start": 0,
+          "end": 202,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e25:0:86",
+          "source_element_index": 25,
+          "start": 0,
+          "end": 86,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e26:0:0",
+          "source_element_index": 26,
+          "start": 0,
+          "end": 0,
+          "section": null,
+          "outcome": "non_content_artifact",
+          "reason": "Whitespace retained in source inventory"
+        },
+        {
+          "source_id": "e27:0:83",
+          "source_element_index": 27,
+          "start": 0,
+          "end": 83,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit dated employer starts or continues Experience across layout changes"
+        },
+        {
+          "source_id": "e28:0:27",
+          "source_element_index": 28,
+          "start": 0,
+          "end": 27,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e29:0:96",
+          "source_element_index": 29,
+          "start": 0,
+          "end": 96,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e30:0:95",
+          "source_element_index": 30,
+          "start": 0,
+          "end": 95,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e31:0:6",
+          "source_element_index": 31,
+          "start": 0,
+          "end": 6,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e32:0:10",
+          "source_element_index": 32,
+          "start": 0,
+          "end": 10,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e32:10:26",
+          "source_element_index": 32,
+          "start": 10,
+          "end": 26,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e33:0:57",
+          "source_element_index": 33,
+          "start": 0,
+          "end": 57,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e34:0:42",
+          "source_element_index": 34,
+          "start": 0,
+          "end": 42,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e35:0:103",
+          "source_element_index": 35,
+          "start": 0,
+          "end": 103,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e36:0:76",
+          "source_element_index": 36,
+          "start": 0,
+          "end": 76,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e37:0:27",
+          "source_element_index": 37,
+          "start": 0,
+          "end": 27,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e38:0:9",
+          "source_element_index": 38,
+          "start": 0,
+          "end": 9,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e39:0:131",
+          "source_element_index": 39,
+          "start": 0,
+          "end": 131,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e40:0:54",
+          "source_element_index": 40,
+          "start": 0,
+          "end": 54,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e41:0:21",
+          "source_element_index": 41,
+          "start": 0,
+          "end": 21,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Distinct BERT heading match with a K-means section label"
+        },
+        {
+          "source_id": "e42:0:116",
+          "source_element_index": 42,
+          "start": 0,
+          "end": 116,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e43:0:79",
+          "source_element_index": 43,
+          "start": 0,
+          "end": 79,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e44:0:80",
+          "source_element_index": 44,
+          "start": 0,
+          "end": 80,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        }
+      ]
+    },
+    "document_scope": {
+      "kind": "likely_resume",
+      "candidate_resume": true,
+      "reason": "Contact details, multiple resume section families and dated history; provisional scope only",
+      "human_verified": false
+    },
+    "source_inventory_sha256": "516a0b57b13a6178e746700d9bb30b22aaa7fc08474adc917733d4c7943b613f",
+    "field_evidence": {
+      "contact.full_name": [
+        "e0:0:15",
+        "e1:0:71",
+        "e2:0:69"
+      ],
+      "contact.email": [
+        "e0:0:15",
+        "e1:0:71",
+        "e2:0:69"
+      ],
+      "contact.phone": [
+        "e0:0:15",
+        "e1:0:71",
+        "e2:0:69"
+      ],
+      "summary": [
+        "e4:0:467"
+      ],
+      "experience[0].role": [
+        "e7:0:24",
+        "e13:0:24",
+        "e18:0:17"
+      ],
+      "experience[0].responsibilities[0]": [
+        "e14:0:173"
+      ],
+      "experience[1].company": [
+        "e22:0:85"
+      ],
+      "experience[1].role": [
+        "e23:0:17"
+      ],
+      "experience[1].start_date": [
+        "e22:0:85"
+      ],
+      "experience[1].end_date": [
+        "e22:0:85"
+      ],
+      "experience[1].duration": [
+        "e22:0:85"
+      ],
+      "experience[2].company": [
+        "e27:0:83"
+      ],
+      "experience[2].role": [
+        "e28:0:27"
+      ],
+      "experience[2].start_date": [
+        "e27:0:83"
+      ],
+      "experience[2].end_date": [
+        "e27:0:83"
+      ],
+      "experience[2].duration": [
+        "e27:0:83"
+      ],
+      "experience[2].responsibilities[0]": [
+        "e29:0:96"
+      ],
+      "education[0].degree": [
+        "e39:0:131"
+      ],
+      "education[0].institution": [
+        "e39:0:131",
+        "e40:0:54"
+      ],
+      "languages[0]": [
+        "e32:10:26"
+      ],
+      "languages[1]": [
+        "e33:0:57"
+      ],
+      "languages[2]": [
+        "e34:0:42"
+      ],
+      "languages[3]": [
+        "e35:0:103"
+      ],
+      "languages[4]": [
+        "e36:0:76"
+      ],
+      "languages[5]": [
+        "e37:0:27"
+      ]
+    },
+    "record_reviews": [
+      {
+        "category": "experience",
+        "entry_id": "experience-1",
+        "source_ids": [
+          "e6:0:61",
+          "e7:0:24",
+          "e8:0:297",
+          "e9:0:153",
+          "e10:0:148",
+          "e11:0:148",
+          "e12:0:39",
+          "e13:0:24",
+          "e14:0:173",
+          "e15:0:116",
+          "e16:0:123",
+          "e17:0:39",
+          "e18:0:17",
+          "e19:0:209",
+          "e20:0:174",
+          "e21:0:136"
+        ],
+        "relationship_status": "needs_review",
+        "review_reasons": [
+          "employer_not_established_from_supported_fields"
+        ]
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-2",
+        "source_ids": [
+          "e22:0:85",
+          "e23:0:17",
+          "e24:0:202",
+          "e25:0:86"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-3",
+        "source_ids": [
+          "e27:0:83",
+          "e28:0:27",
+          "e29:0:96",
+          "e30:0:95"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-4",
+        "source_ids": [
+          "e42:0:116",
+          "e43:0:79",
+          "e44:0:80"
+        ],
+        "relationship_status": "needs_review",
+        "review_reasons": [
+          "employer_not_established_from_supported_fields"
+        ]
+      },
+      {
+        "category": "education",
+        "entry_id": "education-1",
+        "source_ids": [
+          "e39:0:131",
+          "e40:0:54"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      }
+    ],
+    "missing_required_fields": [
+      "experience[0].company",
+      "experience[3].company",
+      "experience[3].role"
+    ],
+    "warnings": [
+      "Schema validity and field completion do not establish extraction or relationship accuracy.",
+      "Handoff confidence scores are fixed heuristics, not calibrated probabilities.",
+      "Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields."
+    ],
+    "unmapped_blocks": [
+      {
+        "source_id": "e3:0:20",
+        "category": "summary",
+        "text": "PROFESSIONAL PROFILE",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:0:23",
+        "category": "experience",
+        "text": "PROFESSIONAL EXPERIENCE",
+        "page_number": 1
+      },
+      {
+        "source_id": "e6:0:61",
+        "category": "experience",
+        "text": "Central Data Storage(Stealth Startup)\tFebruary 2025 - Present",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:0:297",
+        "category": "experience",
+        "text": "Modernized and migrated the core healthcare data backup and restore system from a legacy socket-based JavaFX/JSP architecture to a robust, standards-compliant solution using Spring Boot (HTTP/WebSocket) and Flutter desktop, enhancing system scalability, data protection, and regulatory compliance.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:0:153",
+        "category": "experience",
+        "text": "Optimized backup storage through de-duplication with Merkle tree-based data integrity checks, resulting in reduced storage costs and improved efficiency.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e10:0:148",
+        "category": "experience",
+        "text": "Delivered new 3.0 MVP in 3 months by driving agile sprints, aligning product vision with engineering, and collaborating with cross-functional teams.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e11:0:148",
+        "category": "experience",
+        "text": "Enhanced security via token-based authentication and dynamic protocol switching for secure data transfer between doctor’s offices and cloud storage.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:0:39",
+        "category": "experience",
+        "text": "Gainsight\tFebruary 2023 - February 2025",
+        "page_number": 1
+      },
+      {
+        "source_id": "e15:0:116",
+        "category": "experience",
+        "text": "Mentored junior developers and led code review initiatives, improving code quality, onboarding, and team efficiency.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e16:0:123",
+        "category": "experience",
+        "text": "Orchestrated multiple cross-module projects by establishing clear collaboration channels and seamless service integrations.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e17:0:39",
+        "category": "experience",
+        "text": "Gainsight\tFebruary 2021 - February 2023",
+        "page_number": 1
+      },
+      {
+        "source_id": "e19:0:209",
+        "category": "experience",
+        "text": "Contributed to designing and developing Simple Program and Dynamic Program features in Journey Orches- tration, significantly improving customer experience by simplifying the construction of complex use cases.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e20:0:174",
+        "category": "experience",
+        "text": "Key contributor to the redesign and migration of Journey Orchestration from monolith to microservices (Spring Boot Java 8), improving system reliability and scalability by 30",
+        "page_number": 1
+      },
+      {
+        "source_id": "e21:0:136",
+        "category": "experience",
+        "text": "Automated root cause classification for production issues with advanced query categorization in Sumologic, reducing triage time by 30-40",
+        "page_number": 1
+      },
+      {
+        "source_id": "e24:0:202",
+        "category": "experience",
+        "text": "Modernized and refactored batch processing software for Australian Stock Market integration using robust pub-sub architecture, handling high-throughput financial data with multi-threaded Java pipelines.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e25:0:86",
+        "category": "experience",
+        "text": "Delivered key reporting and integration features under strict compliance requirements.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e30:0:95",
+        "category": "experience",
+        "text": "Integrated Azure SSO using ADAL4J for enterprise-grade authentication with no service downtime.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e41:0:21",
+        "category": "experience",
+        "text": "ADDITIONAL EXPERIENCE",
+        "page_number": 2
+      },
+      {
+        "source_id": "e42:0:116",
+        "category": "experience",
+        "text": "Finalist, Sahamati Hackathon 2021: Developed ”One Ledger Book” personal finance app with new account aggregation API",
+        "page_number": 2
+      },
+      {
+        "source_id": "e43:0:79",
+        "category": "experience",
+        "text": "AIESEC Egypt (2014): Led cultural tourism initiative to boost local engagement.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e44:0:80",
+        "category": "experience",
+        "text": "AIESEC Thailand (2013): Taught English and cross-cultural skills in youth camps.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e31:0:6",
+        "category": "skills",
+        "text": "SKILLS",
+        "page_number": 2
+      },
+      {
+        "source_id": "e32:0:10",
+        "category": "languages",
+        "text": "Languages:",
+        "page_number": 2
+      },
+      {
+        "source_id": "e38:0:9",
+        "category": "education",
+        "text": "EDUCATION",
+        "page_number": 2
+      },
+      {
+        "source_id": "e26:0:0",
+        "category": null,
+        "text": "",
+        "page_number": null
+      }
+    ],
+    "needs_review": [
+      {
+        "source_element_index": 26,
+        "start": 0,
+        "end": 0,
+        "text": "",
+        "page_number": null,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1867,
+        "margin": -0.0366,
+        "lane": "main",
+        "reason": "Layout footer or page separator retained outside semantic sections",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      }
+    ]
+  },
+  "section_schemas": [
+    {
+      "category": "personal_information",
+      "label": "Personal information",
+      "records": [
+        {
+          "record_id": "personal_information",
+          "source_ids": [
+            "e0:0:15",
+            "e1:0:71",
+            "e2:0:69"
+          ],
+          "attributes": [
+            {
+              "name": "full_name",
+              "items": [
+                {
+                  "value": "SOUPARNO DARIPA",
+                  "evidence": [
+                    {
+                      "source_id": "e0:0:15",
+                      "quote": "SOUPARNO DARIPA"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "email",
+              "items": [
+                {
+                  "value": "souparnorbk2@gmail.com",
+                  "evidence": [
+                    {
+                      "source_id": "e2:0:69",
+                      "quote": "souparnorbk2@gmail.com"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "phone",
+              "items": [
+                {
+                  "value": "+91 980 453 2096",
+                  "evidence": [
+                    {
+                      "source_id": "e2:0:69",
+                      "quote": "+91 980 453 2096"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "linkedin_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "github_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "portfolio_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "professional_title",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e1:0:71",
+          "quote": "LinkedIn :  linkedin/souparno-daripa ⋄ GitHub :  github/souparno-daripa"
+        },
+        {
+          "source_id": "e2:0:69",
+          "quote": "+91 980 453 2096 ⋄ Email : souparnorbk2@gmail.com ⋄ devfolio/souparno"
+        }
+      ]
+    },
+    {
+      "category": "summary",
+      "label": "Summary",
+      "records": [
+        {
+          "record_id": "summary",
+          "source_ids": [
+            "e4:0:467"
+          ],
+          "attributes": [
+            {
+              "name": "statements",
+              "items": [
+                {
+                  "value": "Results-driven Software Engineer with 9 years’ experience architecting, building, and delivering scalable, high-performing distributed systems for healthcare, fintech, and customer success domains. Proficient in system design, migration from monolith to microservices, and team leadership. Interested in modern Java, Spring Boot. Passionate about designing reliable distributed systems, client-server solutions with optimizing team delivery using agile methodologies.",
+                  "evidence": [
+                    {
+                      "source_id": "e4:0:467",
+                      "quote": "Results-driven Software Engineer with 9 years’ experience architecting, building, and delivering scalable, high-performing distributed systems for healthcare, fintech, and customer success domains. Proficient in system design, migration from monolith to microservices, and team leadership. Interested in modern Java, Spring Boot. Passionate about designing reliable distributed systems, client-server solutions with optimizing team delivery using agile methodologies."
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "total_experience_years",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e3:0:20",
+          "quote": "PROFESSIONAL PROFILE"
+        }
+      ]
+    },
+    {
+      "category": "experience",
+      "label": "Experience",
+      "records": [
+        {
+          "record_id": "experience-1",
+          "source_ids": [
+            "e6:0:61",
+            "e7:0:24",
+            "e8:0:297",
+            "e9:0:153",
+            "e10:0:148",
+            "e11:0:148",
+            "e12:0:39",
+            "e13:0:24",
+            "e14:0:173",
+            "e15:0:116",
+            "e16:0:123",
+            "e17:0:39",
+            "e18:0:17",
+            "e19:0:209",
+            "e20:0:174",
+            "e21:0:136"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [
+                {
+                  "value": "Designed and delivered a Rate Limit Service Notification Framework, launching a new pricing model (“pay- as-you-use”) that enabled dynamic scaling and enhanced monetization.",
+                  "evidence": [
+                    {
+                      "source_id": "e14:0:173",
+                      "quote": "Designed and delivered a Rate Limit Service Notification Framework, launching a new pricing model (“pay- as-you-use”) that enabled dynamic scaling and enhanced monetization."
+                    }
+                  ],
+                  "status": "needs_review"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "employer_not_established_from_supported_fields"
+          ]
+        },
+        {
+          "record_id": "experience-2",
+          "source_ids": [
+            "e22:0:85",
+            "e23:0:17",
+            "e24:0:202",
+            "e25:0:86"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [
+                {
+                  "value": "Nomura Research Institute Financial Technologies Pvt.  Ltd\tMarch 2020 - February 2021",
+                  "evidence": [
+                    {
+                      "source_id": "e22:0:85",
+                      "quote": "Nomura Research Institute Financial Technologies Pvt.  Ltd\tMarch 2020 - February 2021"
+                    }
+                  ],
+                  "status": "needs_review"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "role",
+              "items": [
+                {
+                  "value": "Software Engineer",
+                  "evidence": [
+                    {
+                      "source_id": "e23:0:17",
+                      "quote": "Software Engineer"
+                    }
+                  ],
+                  "status": "needs_review"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "start_date",
+              "items": [
+                {
+                  "value": "March 2020",
+                  "evidence": [
+                    {
+                      "source_id": "e22:0:85",
+                      "quote": "March 2020"
+                    }
+                  ],
+                  "status": "needs_review"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "end_date",
+              "items": [
+                {
+                  "value": "February 2021",
+                  "evidence": [
+                    {
+                      "source_id": "e22:0:85",
+                      "quote": "February 2021"
+                    }
+                  ],
+                  "status": "needs_review"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "duration",
+              "items": [
+                {
+                  "value": "March 2020 - February 2021",
+                  "evidence": [
+                    {
+                      "source_id": "e22:0:85",
+                      "quote": "March 2020 - February 2021"
+                    }
+                  ],
+                  "status": "needs_review"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "Training/research content requires employment association review."
+          ]
+        },
+        {
+          "record_id": "experience-3",
+          "source_ids": [
+            "e27:0:83",
+            "e28:0:27",
+            "e29:0:96",
+            "e30:0:95"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [
+                {
+                  "value": "Nomura Research Institute Financial Technologies Pvt.  Ltd\tAugust 2016 - March 2020",
+                  "evidence": [
+                    {
+                      "source_id": "e27:0:83",
+                      "quote": "Nomura Research Institute Financial Technologies Pvt.  Ltd\tAugust 2016 - March 2020"
+                    }
+                  ],
+                  "status": "needs_review"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "role",
+              "items": [
+                {
+                  "value": "Associate Software Engineer",
+                  "evidence": [
+                    {
+                      "source_id": "e28:0:27",
+                      "quote": "Associate Software Engineer"
+                    }
+                  ],
+                  "status": "needs_review"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "start_date",
+              "items": [
+                {
+                  "value": "August 2016",
+                  "evidence": [
+                    {
+                      "source_id": "e27:0:83",
+                      "quote": "August 2016"
+                    }
+                  ],
+                  "status": "needs_review"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "end_date",
+              "items": [
+                {
+                  "value": "March 2020",
+                  "evidence": [
+                    {
+                      "source_id": "e27:0:83",
+                      "quote": "March 2020"
+                    }
+                  ],
+                  "status": "needs_review"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "duration",
+              "items": [
+                {
+                  "value": "August 2016 - March 2020",
+                  "evidence": [
+                    {
+                      "source_id": "e27:0:83",
+                      "quote": "August 2016 - March 2020"
+                    }
+                  ],
+                  "status": "needs_review"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [
+                {
+                  "value": "Designed and released REST APIs for Front Office–Back Office sync in Sri Lankan trading project.",
+                  "evidence": [
+                    {
+                      "source_id": "e29:0:96",
+                      "quote": "Designed and released REST APIs for Front Office–Back Office sync in Sri Lankan trading project."
+                    }
+                  ],
+                  "status": "needs_review"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "Training/research content requires employment association review."
+          ]
+        },
+        {
+          "record_id": "experience-4",
+          "source_ids": [
+            "e42:0:116",
+            "e43:0:79",
+            "e44:0:80"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "employer_not_established_from_supported_fields"
+          ]
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e5:0:23",
+          "quote": "PROFESSIONAL EXPERIENCE"
+        },
+        {
+          "source_id": "e6:0:61",
+          "quote": "Central Data Storage(Stealth Startup)\tFebruary 2025 - Present"
+        },
+        {
+          "source_id": "e7:0:24",
+          "quote": "Senior Software Engineer"
+        },
+        {
+          "source_id": "e8:0:297",
+          "quote": "Modernized and migrated the core healthcare data backup and restore system from a legacy socket-based JavaFX/JSP architecture to a robust, standards-compliant solution using Spring Boot (HTTP/WebSocket) and Flutter desktop, enhancing system scalability, data protection, and regulatory compliance."
+        },
+        {
+          "source_id": "e9:0:153",
+          "quote": "Optimized backup storage through de-duplication with Merkle tree-based data integrity checks, resulting in reduced storage costs and improved efficiency."
+        },
+        {
+          "source_id": "e10:0:148",
+          "quote": "Delivered new 3.0 MVP in 3 months by driving agile sprints, aligning product vision with engineering, and collaborating with cross-functional teams."
+        },
+        {
+          "source_id": "e11:0:148",
+          "quote": "Enhanced security via token-based authentication and dynamic protocol switching for secure data transfer between doctor’s offices and cloud storage."
+        },
+        {
+          "source_id": "e12:0:39",
+          "quote": "Gainsight\tFebruary 2023 - February 2025"
+        },
+        {
+          "source_id": "e13:0:24",
+          "quote": "Senior Software Engineer"
+        },
+        {
+          "source_id": "e15:0:116",
+          "quote": "Mentored junior developers and led code review initiatives, improving code quality, onboarding, and team efficiency."
+        },
+        {
+          "source_id": "e16:0:123",
+          "quote": "Orchestrated multiple cross-module projects by establishing clear collaboration channels and seamless service integrations."
+        },
+        {
+          "source_id": "e17:0:39",
+          "quote": "Gainsight\tFebruary 2021 - February 2023"
+        },
+        {
+          "source_id": "e18:0:17",
+          "quote": "Software Engineer"
+        },
+        {
+          "source_id": "e19:0:209",
+          "quote": "Contributed to designing and developing Simple Program and Dynamic Program features in Journey Orches- tration, significantly improving customer experience by simplifying the construction of complex use cases."
+        },
+        {
+          "source_id": "e20:0:174",
+          "quote": "Key contributor to the redesign and migration of Journey Orchestration from monolith to microservices (Spring Boot Java 8), improving system reliability and scalability by 30"
+        },
+        {
+          "source_id": "e21:0:136",
+          "quote": "Automated root cause classification for production issues with advanced query categorization in Sumologic, reducing triage time by 30-40"
+        },
+        {
+          "source_id": "e24:0:202",
+          "quote": "Modernized and refactored batch processing software for Australian Stock Market integration using robust pub-sub architecture, handling high-throughput financial data with multi-threaded Java pipelines."
+        },
+        {
+          "source_id": "e25:0:86",
+          "quote": "Delivered key reporting and integration features under strict compliance requirements."
+        },
+        {
+          "source_id": "e30:0:95",
+          "quote": "Integrated Azure SSO using ADAL4J for enterprise-grade authentication with no service downtime."
+        },
+        {
+          "source_id": "e41:0:21",
+          "quote": "ADDITIONAL EXPERIENCE"
+        },
+        {
+          "source_id": "e42:0:116",
+          "quote": "Finalist, Sahamati Hackathon 2021: Developed ”One Ledger Book” personal finance app with new account aggregation API"
+        },
+        {
+          "source_id": "e43:0:79",
+          "quote": "AIESEC Egypt (2014): Led cultural tourism initiative to boost local engagement."
+        },
+        {
+          "source_id": "e44:0:80",
+          "quote": "AIESEC Thailand (2013): Taught English and cross-cultural skills in youth camps."
+        }
+      ]
+    },
+    {
+      "category": "skills",
+      "label": "Skills",
+      "records": [],
+      "residual_blocks": [
+        {
+          "source_id": "e31:0:6",
+          "quote": "SKILLS"
+        }
+      ]
+    },
+    {
+      "category": "languages",
+      "label": "Languages",
+      "records": [
+        {
+          "record_id": "languages-1",
+          "source_ids": [
+            "e32:10:26",
+            "e33:0:57",
+            "e34:0:42",
+            "e35:0:103",
+            "e36:0:76",
+            "e37:0:27"
+          ],
+          "attributes": [
+            {
+              "name": "language",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "proficiency",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "Unlabelled compound information requires source review."
+          ]
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e32:0:10",
+          "quote": "Languages:"
+        },
+        {
+          "source_id": "e32:10:26",
+          "quote": " JAVA 8, JAVA 17"
+        },
+        {
+          "source_id": "e33:0:57",
+          "quote": "Programming: Data Structures, Algorithms, Multi-Threading"
+        },
+        {
+          "source_id": "e34:0:42",
+          "quote": "Database: Postgres, MongoDB, Oracle, MySQL"
+        },
+        {
+          "source_id": "e35:0:103",
+          "quote": "Frameworks and Softwares: Spring, Spring Boot, Eclipse, SQL Developer, IntelliJ, Github Copilot, Cursor"
+        },
+        {
+          "source_id": "e36:0:76",
+          "quote": "Tools: DBQueue, RabbitMQ, Apache ActiveMQ, Apache Tomcat, Sumologic, DataDog"
+        },
+        {
+          "source_id": "e37:0:27",
+          "quote": "Methodologies: Agile, CI/CD"
+        }
+      ]
+    },
+    {
+      "category": "education",
+      "label": "Education",
+      "records": [
+        {
+          "record_id": "education-1",
+          "source_ids": [
+            "e39:0:131",
+            "e40:0:54"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [
+                {
+                  "value": "West Bengal University of Technology, CGPA: 8.67/10.00",
+                  "evidence": [
+                    {
+                      "source_id": "e40:0:54",
+                      "quote": "West Bengal University of Technology, CGPA: 8.67/10.00"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "degree",
+              "items": [
+                {
+                  "value": "Bachelor of Technology",
+                  "evidence": [
+                    {
+                      "source_id": "e39:0:131",
+                      "quote": "Bachelor of Technology"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [
+                {
+                  "value": "8.67/10.00",
+                  "evidence": [
+                    {
+                      "source_id": "e40:0:54",
+                      "quote": "8.67/10.00"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e38:0:9",
+          "quote": "EDUCATION"
+        },
+        {
+          "source_id": "e39:0:131",
+          "quote": "Bachelor of Technology in Computer Science and Engineering\tAugust 2012 - May 2016 Institute of Engineering and Management, Kolkata."
+        }
+      ]
+    },
+    {
+      "category": "needs_review",
+      "label": "Unassigned source blocks",
+      "records": [],
+      "residual_blocks": [
+        {
+          "source_id": "e26:0:0",
+          "quote": ""
+        }
+      ]
+    }
+  ]
+}

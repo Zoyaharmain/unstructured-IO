@@ -1,0 +1,2384 @@
+{
+  "success": true,
+  "source": "S Ganesh Balaaji.docx",
+  "extraction_mode": "existing_blocks_schema_mapping",
+  "data": {
+    "contact": {
+      "full_name": "S. GANESH BALAAJI",
+      "email": "balaji_ganesh86@yahoomail.com",
+      "phone": "+91 9611320640",
+      "location": "Kolkata",
+      "linkedin_url": "linkedin.com/in/ganesh-balaji-aml-kyc",
+      "github_url": null,
+      "portfolio_url": null
+    },
+    "professional_title": null,
+    "summary": null,
+    "total_experience_years": null,
+    "skills": {
+      "technical_skills": [],
+      "tools_and_platforms": [
+        "Excel"
+      ],
+      "domain_and_functional": [
+        "KYC",
+        "AML"
+      ],
+      "soft_skills": [
+        "Leadership"
+      ],
+      "all_skills": [
+        "Excel",
+        "KYC",
+        "AML",
+        "Leadership",
+        "Programme Management • Business Transformation • Business Change • Client Lifecycle Management (CLM) • Client Onboarding (OBKYC) • AML/KYC Compliance • CDD / EDD • Financial Crime Compliance • Regulatory Change • Control Automation • Workflow Automation • Programme Governance • Operational Risk & Controls • Cost Optimisation • Strategic Planning • Stakeholder Management • Executive Reporting • MIS & KRI Reporting • People Leadership",
+        "Fenergo • World-Check • LexisNexis • Ripjar • KYC Workflow Tools • MS Excel • PowerPoint • MIS Reporting • KRI Dashboards • SharePoint"
+      ]
+    },
+    "experience": [
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      }
+    ],
+    "education": [
+      {
+        "institution": "",
+        "degree": "",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      }
+    ],
+    "certifications": [],
+    "projects": [],
+    "languages": []
+  },
+  "schema_mapping": {
+    "fields_populated": 10,
+    "total_fields": 16,
+    "completion_percentage": 62.5,
+    "field_details": [
+      {
+        "field_name": "contact.full_name",
+        "target_type": "string",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Personal Details",
+        "confidence_score": 0.95,
+        "description": "Candidate's full name, extracted from the top header of the resume."
+      },
+      {
+        "field_name": "contact.email",
+        "target_type": "string (email)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.98,
+        "description": "Candidate's primary contact email address."
+      },
+      {
+        "field_name": "contact.phone",
+        "target_type": "string (phone)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.95,
+        "description": "Candidate's telephone / mobile phone number."
+      },
+      {
+        "field_name": "contact.location",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.85,
+        "description": "Candidate's residential location or work city."
+      },
+      {
+        "field_name": "contact.linkedin_url",
+        "target_type": "string (url) | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.9,
+        "description": "URL to candidate's LinkedIn profile."
+      },
+      {
+        "field_name": "professional_title",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Subtitle",
+        "confidence_score": 0.0,
+        "description": "Candidate's target headline or most recent job title."
+      },
+      {
+        "field_name": "summary",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Professional Summary / Profile / Objective",
+        "confidence_score": 0.0,
+        "description": "Executive bio, professional overview, or career objective."
+      },
+      {
+        "field_name": "total_experience_years",
+        "target_type": "float | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Summary / Experience Calculation",
+        "confidence_score": 0.0,
+        "description": "Total professional experience in years."
+      },
+      {
+        "field_name": "skills.technical_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Technical Competencies",
+        "confidence_score": 0.0,
+        "description": "Technical programming languages and core software competencies."
+      },
+      {
+        "field_name": "skills.tools_and_platforms",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills / Tools & Technologies",
+        "confidence_score": 0.9,
+        "description": "Software platforms, developer tools, and operational systems."
+      },
+      {
+        "field_name": "skills.domain_and_functional",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills / Domain Expertise",
+        "confidence_score": 0.9,
+        "description": "Functional domain knowledge (e.g. Hedge Funds, KYC, NAV, Derivatives)."
+      },
+      {
+        "field_name": "skills.all_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills (Aggregated)",
+        "confidence_score": 0.95,
+        "description": "Complete list of candidate skills across all categories."
+      },
+      {
+        "field_name": "experience",
+        "target_type": "array[WorkExperience]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Experience / Work History",
+        "confidence_score": 0.92,
+        "description": "Complete chronological employment records with bullet points."
+      },
+      {
+        "field_name": "education",
+        "target_type": "array[Education]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Education / Academic Qualifications",
+        "confidence_score": 0.9,
+        "description": "University, college, and higher education degree qualifications."
+      },
+      {
+        "field_name": "certifications",
+        "target_type": "array[Certification]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Certifications / Licenses",
+        "confidence_score": 0.0,
+        "description": "Professional accreditations and credentials."
+      },
+      {
+        "field_name": "projects",
+        "target_type": "array[Project]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Projects / Key Engagements",
+        "confidence_score": 0.0,
+        "description": "Major projects or strategic initiatives led by candidate."
+      }
+    ]
+  },
+  "raw_sections": {
+    "personal_information": "S. GANESH BALAAJI\nAML/KYC Compliance | Financial Crime Compliance | Global KYC Operations Leadership\n+91 9611320640 | balaji_ganesh86@yahoomail.com | linkedin.com/in/ganesh-balaji-aml-kyc | Kolkata PROFESSIONAL PROFILE",
+    "skills": "CORE COMPETENCIES\nProgramme Management • Business Transformation • Business Change • Client Lifecycle Management (CLM) • Client Onboarding (OBKYC) • AML/KYC Compliance • CDD / EDD • Financial Crime Compliance • Regulatory Change • Control Automation • Workflow Automation • Programme Governance • Operational Risk & Controls • Cost Optimisation • Strategic Planning • Stakeholder Management • Executive Reporting • MIS & KRI Reporting • People Leadership\nSYSTEMS & TOOLS\nFenergo • World-Check • LexisNexis • Ripjar • KYC Workflow Tools • MS Excel • PowerPoint • MIS Reporting • KRI Dashboards • SharePoint",
+    "awards": "ACCOMPLISHMENTS\nLed a cross-functional KYC transformation programme migrating the Periodic Review process from Singapore to Pune, improving operational efficiency while ensuring delivery governance and regulatory compliance.\nDesigned and implemented a centralized outreach model for Agent/Indirect Principal and same-group relationships, reducing review turnaround time by 5 days and improving client experience.\nPartnered with Compliance, Front Office and Technology teams to implement workflow improvements and reliance-based review methodology, strengthening governance and operational efficiency.\nSupported workforce optimisation initiatives contributing to 10% contractor-to-FTE conversion aligned with long-term business strategy and cost optimisation.\nEnabled 60% FTE growth through structured governance, delivery excellence and stakeholder confidence.\nLed transition and operational readiness of the Trade Confirmation process from a third-party vendor, ensuring successful stabilisation and governance.",
+    "experience": "PROFESSIONAL EXPERIENCE\nAssistant Vice President, APAC, UK/US KYC Operations\nCredit Suisse India Services Pvt. Ltd | Pune, India | Dec 2019 – Feb 2026\nLed APAC Periodic Review operations managing 34+ FTEs across Private Banking and Institutional portfolios, driving programme governance, operational excellence and regulatory compliance.\nEstablished risk-based review strategies reducing high-risk backlog through structured remediation, prioritisation and stakeholder engagement.\nLed governance of adverse media reviews, regulatory escalations and financial crime risk assessments across high-risk client populations.\nImplemented enhanced control frameworks across maker-checker-reviewer processes resulting in zero audit findings for three consecutive years.\nManaged critical regulatory escalations, remediation workstreams and client risk reviews ensuring timely resolution.\nPartnered with Technology, Compliance and Operations teams to deliver workflow automation and process enhancement initiatives.\nManaged strategic KYC platform migration and operational readiness activities supporting business transformation.\nLed post-merger integration covering governance, control stabilisation, operating model alignment and delivery milestones.\nTeam Manager, APAC KYC Operations\nJ.P. Morgan India Services Pvt. Ltd | Bangalore, India | Dec 2017 - Dec 2019\nManaged APAC periodic review governance, ensuring adherence to regulatory deadlines, service-level expectations, quality standards, and operational risk controls.\nOwned operational risk metrics, control reports, and management dashboards to support leadership oversight and timely risk intervention.\nDrove remediation of aged and high-risk client populations through structured governance, prioritization, and stakeholder engagement.\nPartnered with Front Office and Compliance teams to resolve documentation gaps, risk classification issues, and review closure dependencies.\nImplemented population scoping and prioritization models to balance workload based on risk rating, regulatory urgency, and delivery timelines.\nTeam Leader, APAC + EMEA + US KYC Operations\nState Street Global Advisors Pvt. Ltd | Bangalore, India\t| Apr 2016 - Dec 2017\nDefined and enforced a global governance model for KYC operations across APAC, EMEA, and US regions.\nManaged 80+ FTEs and contractors across multiple shifts, ensuring delivery discipline, quality adherence, and operational stability.\nControlled operational risk through stakeholder governance, issue tracking, escalation management, and review closure oversight.\nStabilized the Alternative Investment Services KYC governance framework and improved review closure efficiency through structured monitoring and control routines.\nSupported cross-regional coordination to manage workload allocation, delivery timelines, and process adherence across global teams.\nAssistant Manager, Business Process Specialization & Consulting Accenture India Services Pvt. Ltd | Bangalore, India | Jul 2015 - Apr 2016\nBuilt an end-to-end operating governance model for an Irish mortgage banking client.\nEstablished risk-control documentation, KPI governance, resource-cost controls and training governance.\nSupported budgeting and resource planning, including FTE calculation, cost tracking and capacity planning.\nProcess Supervisor, KYC - Client Onboarding\nDeutsche Bank Group | Bangalore, India | Aug 2011 - Jul 2015\nSupported premium clients end-to-end across due diligence, extensions, SSI setup and suspension workflows.\nIdentified and classified clients based on FATCA, Dodd-Frank, EMIR, Singapore Classification and HKPI requirements.\nAnalyst, Ops Data Management & KYC Operations WIPRO | Bangalore, India | Dec 2008 - Aug 2011\nConducted KYC due diligence for clients booked under UK and US jurisdictions.\nSupported critical projects including Reporting Codes Mapping and data-management control activities.",
+    "education": "Master of Business Administration (MBA), Finance | NMIMS | 2024"
+  },
+  "meta": {
+    "status": "needs_review",
+    "human_verified": false,
+    "provider_calls": 0,
+    "source_accounting": {
+      "all_source_text_preserved": true,
+      "total_spans": 58,
+      "assigned_meaningful_spans": 51,
+      "unresolved_meaningful_spans": 5,
+      "non_content_artifacts": 2,
+      "duplicates_excluded": 0,
+      "all_meaningful_text_assigned": false,
+      "semantic_correctness_verified": false,
+      "outcomes": [
+        {
+          "source_id": "e0:0:17",
+          "source_element_index": 0,
+          "start": 0,
+          "end": 17,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e1:0:82",
+          "source_element_index": 1,
+          "start": 0,
+          "end": 82,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e2:0:117",
+          "source_element_index": 2,
+          "start": 0,
+          "end": 117,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e3:0:289",
+          "source_element_index": 3,
+          "start": 0,
+          "end": 289,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e4:0:369",
+          "source_element_index": 4,
+          "start": 0,
+          "end": 369,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e5:0:17",
+          "source_element_index": 5,
+          "start": 0,
+          "end": 17,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e6:0:436",
+          "source_element_index": 6,
+          "start": 0,
+          "end": 436,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e7:0:15",
+          "source_element_index": 7,
+          "start": 0,
+          "end": 15,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Distinct BERT heading match with a K-means section label"
+        },
+        {
+          "source_id": "e8:0:208",
+          "source_element_index": 8,
+          "start": 0,
+          "end": 208,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:0:187",
+          "source_element_index": 9,
+          "start": 0,
+          "end": 187,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e10:0:187",
+          "source_element_index": 10,
+          "start": 0,
+          "end": 187,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e11:0:157",
+          "source_element_index": 11,
+          "start": 0,
+          "end": 157,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:0:101",
+          "source_element_index": 12,
+          "start": 0,
+          "end": 101,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e13:0:151",
+          "source_element_index": 13,
+          "start": 0,
+          "end": 151,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e14:0:23",
+          "source_element_index": 14,
+          "start": 0,
+          "end": 23,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e15:0:52",
+          "source_element_index": 15,
+          "start": 0,
+          "end": 52,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e16:0:73",
+          "source_element_index": 16,
+          "start": 0,
+          "end": 73,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit dated employer starts or continues Experience across layout changes"
+        },
+        {
+          "source_id": "e17:0:186",
+          "source_element_index": 17,
+          "start": 0,
+          "end": 186,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e18:0:142",
+          "source_element_index": 18,
+          "start": 0,
+          "end": 142,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e19:0:137",
+          "source_element_index": 19,
+          "start": 0,
+          "end": 137,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e20:0:141",
+          "source_element_index": 20,
+          "start": 0,
+          "end": 141,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e21:0:116",
+          "source_element_index": 21,
+          "start": 0,
+          "end": 116,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e22:0:126",
+          "source_element_index": 22,
+          "start": 0,
+          "end": 126,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e23:0:113",
+          "source_element_index": 23,
+          "start": 0,
+          "end": 113,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e24:0:122",
+          "source_element_index": 24,
+          "start": 0,
+          "end": 122,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e25:0:0",
+          "source_element_index": 25,
+          "start": 0,
+          "end": 0,
+          "section": null,
+          "outcome": "non_content_artifact",
+          "reason": "Whitespace retained in source inventory"
+        },
+        {
+          "source_id": "e26:0:33",
+          "source_element_index": 26,
+          "start": 0,
+          "end": 33,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e27:0:76",
+          "source_element_index": 27,
+          "start": 0,
+          "end": 76,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit dated employer starts or continues Experience across layout changes"
+        },
+        {
+          "source_id": "e28:0:162",
+          "source_element_index": 28,
+          "start": 0,
+          "end": 162,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e29:0:136",
+          "source_element_index": 29,
+          "start": 0,
+          "end": 136,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e30:0:133",
+          "source_element_index": 30,
+          "start": 0,
+          "end": 133,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e31:0:140",
+          "source_element_index": 31,
+          "start": 0,
+          "end": 140,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e32:0:142",
+          "source_element_index": 32,
+          "start": 0,
+          "end": 142,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e33:0:44",
+          "source_element_index": 33,
+          "start": 0,
+          "end": 44,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e34:0:78",
+          "source_element_index": 34,
+          "start": 0,
+          "end": 78,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit dated employer starts or continues Experience across layout changes"
+        },
+        {
+          "source_id": "e35:0:100",
+          "source_element_index": 35,
+          "start": 0,
+          "end": 100,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e36:0:132",
+          "source_element_index": 36,
+          "start": 0,
+          "end": 132,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e37:0:128",
+          "source_element_index": 37,
+          "start": 0,
+          "end": 128,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e38:0:162",
+          "source_element_index": 38,
+          "start": 0,
+          "end": 162,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e39:0:131",
+          "source_element_index": 39,
+          "start": 0,
+          "end": 131,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e40:0:138",
+          "source_element_index": 40,
+          "start": 0,
+          "end": 138,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit dated employer starts or continues Experience across layout changes"
+        },
+        {
+          "source_id": "e41:0:84",
+          "source_element_index": 41,
+          "start": 0,
+          "end": 84,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e42:0:103",
+          "source_element_index": 42,
+          "start": 0,
+          "end": 103,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e43:0:106",
+          "source_element_index": 43,
+          "start": 0,
+          "end": 106,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e44:0:43",
+          "source_element_index": 44,
+          "start": 0,
+          "end": 43,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e45:0:0",
+          "source_element_index": 45,
+          "start": 0,
+          "end": 0,
+          "section": null,
+          "outcome": "non_content_artifact",
+          "reason": "Whitespace retained in source inventory"
+        },
+        {
+          "source_id": "e46:0:60",
+          "source_element_index": 46,
+          "start": 0,
+          "end": 60,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit dated employer starts or continues Experience across layout changes"
+        },
+        {
+          "source_id": "e47:0:106",
+          "source_element_index": 47,
+          "start": 0,
+          "end": 106,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e48:0:115",
+          "source_element_index": 48,
+          "start": 0,
+          "end": 115,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e49:0:92",
+          "source_element_index": 49,
+          "start": 0,
+          "end": 92,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e50:0:77",
+          "source_element_index": 50,
+          "start": 0,
+          "end": 77,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e51:0:101",
+          "source_element_index": 51,
+          "start": 0,
+          "end": 101,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e52:0:15",
+          "source_element_index": 52,
+          "start": 0,
+          "end": 15,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Distinct BERT heading match with a K-means section label"
+        },
+        {
+          "source_id": "e53:0:134",
+          "source_element_index": 53,
+          "start": 0,
+          "end": 134,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e54:0:26",
+          "source_element_index": 54,
+          "start": 0,
+          "end": 26,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Combined heading contains multiple BERT-recognized section families"
+        },
+        {
+          "source_id": "e55:0:63",
+          "source_element_index": 55,
+          "start": 0,
+          "end": 63,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "BERT embedding assigned to a labeled K-means centroid"
+        },
+        {
+          "source_id": "e56:0:75",
+          "source_element_index": 56,
+          "start": 0,
+          "end": 75,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e57:0:96",
+          "source_element_index": 57,
+          "start": 0,
+          "end": 96,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        }
+      ]
+    },
+    "document_scope": {
+      "kind": "likely_resume",
+      "candidate_resume": true,
+      "reason": "Contact details, multiple resume section families and dated history; provisional scope only",
+      "human_verified": false
+    },
+    "source_inventory_sha256": "93cf7ba33c4fb6216d3d96297c7e987c43e324951587cf44b372417c22060f38",
+    "field_evidence": {
+      "contact.full_name": [
+        "e0:0:17",
+        "e1:0:82",
+        "e2:0:117"
+      ],
+      "contact.email": [
+        "e0:0:17",
+        "e1:0:82",
+        "e2:0:117"
+      ],
+      "contact.phone": [
+        "e0:0:17",
+        "e1:0:82",
+        "e2:0:117"
+      ],
+      "contact.location": [
+        "e0:0:17",
+        "e1:0:82",
+        "e2:0:117"
+      ],
+      "contact.linkedin_url": [
+        "e0:0:17",
+        "e1:0:82",
+        "e2:0:117"
+      ],
+      "skills.tools_and_platforms[0]": [
+        "e53:0:134"
+      ],
+      "skills.domain_and_functional[0]": [
+        "e6:0:436",
+        "e53:0:134"
+      ],
+      "skills.domain_and_functional[1]": [
+        "e6:0:436"
+      ],
+      "skills.soft_skills[0]": [
+        "e6:0:436"
+      ],
+      "skills.all_skills[0]": [
+        "e53:0:134"
+      ],
+      "skills.all_skills[1]": [
+        "e6:0:436",
+        "e53:0:134"
+      ],
+      "skills.all_skills[2]": [
+        "e6:0:436"
+      ],
+      "skills.all_skills[3]": [
+        "e6:0:436"
+      ],
+      "skills.all_skills[4]": [
+        "e6:0:436"
+      ],
+      "skills.all_skills[5]": [
+        "e53:0:134"
+      ]
+    },
+    "record_reviews": [
+      {
+        "category": "experience",
+        "entry_id": "experience-1",
+        "source_ids": [
+          "e15:0:52"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-2",
+        "source_ids": [
+          "e16:0:73",
+          "e17:0:186",
+          "e18:0:142",
+          "e19:0:137",
+          "e20:0:141",
+          "e21:0:116",
+          "e22:0:126",
+          "e23:0:113",
+          "e24:0:122",
+          "e26:0:33"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-3",
+        "source_ids": [
+          "e27:0:76",
+          "e28:0:162",
+          "e29:0:136",
+          "e30:0:133",
+          "e31:0:140",
+          "e32:0:142",
+          "e33:0:44"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-4",
+        "source_ids": [
+          "e34:0:78",
+          "e35:0:100",
+          "e36:0:132",
+          "e37:0:128",
+          "e38:0:162",
+          "e39:0:131"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-5",
+        "source_ids": [
+          "e40:0:138",
+          "e41:0:84",
+          "e42:0:103",
+          "e43:0:106",
+          "e44:0:43"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-6",
+        "source_ids": [
+          "e46:0:60",
+          "e47:0:106",
+          "e48:0:115",
+          "e49:0:92",
+          "e50:0:77",
+          "e51:0:101"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "education",
+        "entry_id": "education-1",
+        "source_ids": [
+          "e55:0:63"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      }
+    ],
+    "missing_required_fields": [
+      "experience[0].company",
+      "experience[0].role",
+      "experience[1].company",
+      "experience[1].role",
+      "experience[2].company",
+      "experience[2].role",
+      "experience[3].company",
+      "experience[3].role",
+      "experience[4].company",
+      "experience[4].role",
+      "experience[5].company",
+      "experience[5].role",
+      "education[0].institution",
+      "education[0].degree"
+    ],
+    "warnings": [
+      "Schema validity and field completion do not establish extraction or relationship accuracy.",
+      "Handoff confidence scores are fixed heuristics, not calibrated probabilities.",
+      "Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields."
+    ],
+    "unmapped_blocks": [
+      {
+        "source_id": "e5:0:17",
+        "category": "skills",
+        "text": "CORE COMPETENCIES",
+        "page_number": 1
+      },
+      {
+        "source_id": "e52:0:15",
+        "category": "skills",
+        "text": "SYSTEMS & TOOLS",
+        "page_number": 3
+      },
+      {
+        "source_id": "e7:0:15",
+        "category": "awards",
+        "text": "ACCOMPLISHMENTS",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:0:208",
+        "category": "awards",
+        "text": "Led a cross-functional KYC transformation programme migrating the Periodic Review process from Singapore to Pune, improving operational efficiency while ensuring delivery governance and regulatory compliance.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:0:187",
+        "category": "awards",
+        "text": "Designed and implemented a centralized outreach model for Agent/Indirect Principal and same-group relationships, reducing review turnaround time by 5 days and improving client experience.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e10:0:187",
+        "category": "awards",
+        "text": "Partnered with Compliance, Front Office and Technology teams to implement workflow improvements and reliance-based review methodology, strengthening governance and operational efficiency.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e11:0:157",
+        "category": "awards",
+        "text": "Supported workforce optimisation initiatives contributing to 10% contractor-to-FTE conversion aligned with long-term business strategy and cost optimisation.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:0:101",
+        "category": "awards",
+        "text": "Enabled 60% FTE growth through structured governance, delivery excellence and stakeholder confidence.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e13:0:151",
+        "category": "awards",
+        "text": "Led transition and operational readiness of the Trade Confirmation process from a third-party vendor, ensuring successful stabilisation and governance.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e14:0:23",
+        "category": "experience",
+        "text": "PROFESSIONAL EXPERIENCE",
+        "page_number": 1
+      },
+      {
+        "source_id": "e15:0:52",
+        "category": "experience",
+        "text": "Assistant Vice President, APAC, UK/US KYC Operations",
+        "page_number": 1
+      },
+      {
+        "source_id": "e16:0:73",
+        "category": "experience",
+        "text": "Credit Suisse India Services Pvt. Ltd | Pune, India | Dec 2019 – Feb 2026",
+        "page_number": 1
+      },
+      {
+        "source_id": "e17:0:186",
+        "category": "experience",
+        "text": "Led APAC Periodic Review operations managing 34+ FTEs across Private Banking and Institutional portfolios, driving programme governance, operational excellence and regulatory compliance.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e18:0:142",
+        "category": "experience",
+        "text": "Established risk-based review strategies reducing high-risk backlog through structured remediation, prioritisation and stakeholder engagement.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e19:0:137",
+        "category": "experience",
+        "text": "Led governance of adverse media reviews, regulatory escalations and financial crime risk assessments across high-risk client populations.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e20:0:141",
+        "category": "experience",
+        "text": "Implemented enhanced control frameworks across maker-checker-reviewer processes resulting in zero audit findings for three consecutive years.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e21:0:116",
+        "category": "experience",
+        "text": "Managed critical regulatory escalations, remediation workstreams and client risk reviews ensuring timely resolution.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e22:0:126",
+        "category": "experience",
+        "text": "Partnered with Technology, Compliance and Operations teams to deliver workflow automation and process enhancement initiatives.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e23:0:113",
+        "category": "experience",
+        "text": "Managed strategic KYC platform migration and operational readiness activities supporting business transformation.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e24:0:122",
+        "category": "experience",
+        "text": "Led post-merger integration covering governance, control stabilisation, operating model alignment and delivery milestones.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e26:0:33",
+        "category": "experience",
+        "text": "Team Manager, APAC KYC Operations",
+        "page_number": 2
+      },
+      {
+        "source_id": "e27:0:76",
+        "category": "experience",
+        "text": "J.P. Morgan India Services Pvt. Ltd | Bangalore, India | Dec 2017 - Dec 2019",
+        "page_number": 2
+      },
+      {
+        "source_id": "e28:0:162",
+        "category": "experience",
+        "text": "Managed APAC periodic review governance, ensuring adherence to regulatory deadlines, service-level expectations, quality standards, and operational risk controls.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e29:0:136",
+        "category": "experience",
+        "text": "Owned operational risk metrics, control reports, and management dashboards to support leadership oversight and timely risk intervention.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e30:0:133",
+        "category": "experience",
+        "text": "Drove remediation of aged and high-risk client populations through structured governance, prioritization, and stakeholder engagement.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e31:0:140",
+        "category": "experience",
+        "text": "Partnered with Front Office and Compliance teams to resolve documentation gaps, risk classification issues, and review closure dependencies.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e32:0:142",
+        "category": "experience",
+        "text": "Implemented population scoping and prioritization models to balance workload based on risk rating, regulatory urgency, and delivery timelines.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e33:0:44",
+        "category": "experience",
+        "text": "Team Leader, APAC + EMEA + US KYC Operations",
+        "page_number": 2
+      },
+      {
+        "source_id": "e34:0:78",
+        "category": "experience",
+        "text": "State Street Global Advisors Pvt. Ltd | Bangalore, India\t| Apr 2016 - Dec 2017",
+        "page_number": 2
+      },
+      {
+        "source_id": "e35:0:100",
+        "category": "experience",
+        "text": "Defined and enforced a global governance model for KYC operations across APAC, EMEA, and US regions.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e36:0:132",
+        "category": "experience",
+        "text": "Managed 80+ FTEs and contractors across multiple shifts, ensuring delivery discipline, quality adherence, and operational stability.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e37:0:128",
+        "category": "experience",
+        "text": "Controlled operational risk through stakeholder governance, issue tracking, escalation management, and review closure oversight.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e38:0:162",
+        "category": "experience",
+        "text": "Stabilized the Alternative Investment Services KYC governance framework and improved review closure efficiency through structured monitoring and control routines.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e39:0:131",
+        "category": "experience",
+        "text": "Supported cross-regional coordination to manage workload allocation, delivery timelines, and process adherence across global teams.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e40:0:138",
+        "category": "experience",
+        "text": "Assistant Manager, Business Process Specialization & Consulting Accenture India Services Pvt. Ltd | Bangalore, India | Jul 2015 - Apr 2016",
+        "page_number": 2
+      },
+      {
+        "source_id": "e41:0:84",
+        "category": "experience",
+        "text": "Built an end-to-end operating governance model for an Irish mortgage banking client.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e42:0:103",
+        "category": "experience",
+        "text": "Established risk-control documentation, KPI governance, resource-cost controls and training governance.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e43:0:106",
+        "category": "experience",
+        "text": "Supported budgeting and resource planning, including FTE calculation, cost tracking and capacity planning.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e44:0:43",
+        "category": "experience",
+        "text": "Process Supervisor, KYC - Client Onboarding",
+        "page_number": 2
+      },
+      {
+        "source_id": "e46:0:60",
+        "category": "experience",
+        "text": "Deutsche Bank Group | Bangalore, India | Aug 2011 - Jul 2015",
+        "page_number": 3
+      },
+      {
+        "source_id": "e47:0:106",
+        "category": "experience",
+        "text": "Supported premium clients end-to-end across due diligence, extensions, SSI setup and suspension workflows.",
+        "page_number": 3
+      },
+      {
+        "source_id": "e48:0:115",
+        "category": "experience",
+        "text": "Identified and classified clients based on FATCA, Dodd-Frank, EMIR, Singapore Classification and HKPI requirements.",
+        "page_number": 3
+      },
+      {
+        "source_id": "e49:0:92",
+        "category": "experience",
+        "text": "Analyst, Ops Data Management & KYC Operations WIPRO | Bangalore, India | Dec 2008 - Aug 2011",
+        "page_number": 3
+      },
+      {
+        "source_id": "e50:0:77",
+        "category": "experience",
+        "text": "Conducted KYC due diligence for clients booked under UK and US jurisdictions.",
+        "page_number": 3
+      },
+      {
+        "source_id": "e51:0:101",
+        "category": "experience",
+        "text": "Supported critical projects including Reporting Codes Mapping and data-management control activities.",
+        "page_number": 3
+      },
+      {
+        "source_id": "e55:0:63",
+        "category": "education",
+        "text": "Master of Business Administration (MBA), Finance | NMIMS | 2024",
+        "page_number": 3
+      },
+      {
+        "source_id": "e3:0:289",
+        "category": null,
+        "text": "Results-driven Senior Programme Manager and AML/KYC Transformation leader with 17 years of experience delivering large-scale Client Lifecycle Management (CLM), Client Onboarding (OBKYC), regulatory remediation and business change initiatives across global Investment Banking organisations.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e4:0:369",
+        "category": null,
+        "text": "Extensive experience leading cross-functional transformation programmes across APAC, EMEA, UK and US, driving operational excellence, governance, control enhancements, workflow automation, risk reduction and stakeholder management. Proven track record of leading large teams, delivering strategic change, strengthening control frameworks and enabling cost optimisation.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e25:0:0",
+        "category": null,
+        "text": "",
+        "page_number": null
+      },
+      {
+        "source_id": "e45:0:0",
+        "category": null,
+        "text": "",
+        "page_number": null
+      },
+      {
+        "source_id": "e54:0:26",
+        "category": null,
+        "text": "EDUCATION & CERTIFICATIONS",
+        "page_number": 3
+      },
+      {
+        "source_id": "e56:0:75",
+        "category": null,
+        "text": "AML Transaction Monitoring & Suspicious Transaction Reporting | NISM | 2024",
+        "page_number": 3
+      },
+      {
+        "source_id": "e57:0:96",
+        "category": null,
+        "text": "Bachelor of Business Management (BBM) | M.S. Ramaiah Degree College, Bangalore University | 2008",
+        "page_number": 3
+      }
+    ],
+    "needs_review": [
+      {
+        "source_element_index": 3,
+        "start": 0,
+        "end": 289,
+        "text": "Results-driven Senior Programme Manager and AML/KYC Transformation leader with 17 years of experience delivering large-scale Client Lifecycle Management (CLM), Client Onboarding (OBKYC), regulatory remediation and business change initiatives across global Investment Banking organisations.",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.4999,
+        "margin": 0.0487,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 4,
+        "start": 0,
+        "end": 369,
+        "text": "Extensive experience leading cross-functional transformation programmes across APAC, EMEA, UK and US, driving operational excellence, governance, control enhancements, workflow automation, risk reduction and stakeholder management. Proven track record of leading large teams, delivering strategic change, strengthening control frameworks and enabling cost optimisation.",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.4368,
+        "margin": 0.0441,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 25,
+        "start": 0,
+        "end": 0,
+        "text": "",
+        "page_number": null,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1867,
+        "margin": -0.0366,
+        "lane": "main",
+        "reason": "Layout footer or page separator retained outside semantic sections",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 45,
+        "start": 0,
+        "end": 0,
+        "text": "",
+        "page_number": null,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1867,
+        "margin": -0.0366,
+        "lane": "main",
+        "reason": "Layout footer or page separator retained outside semantic sections",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 54,
+        "start": 0,
+        "end": 26,
+        "text": "EDUCATION & CERTIFICATIONS",
+        "page_number": 3,
+        "cluster_id": 6,
+        "candidate_section": null,
+        "alternatives": [
+          "certifications",
+          "education"
+        ],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.6845,
+        "margin": 0.1133,
+        "lane": "main",
+        "reason": "Combined heading contains multiple BERT-recognized section families",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 56,
+        "start": 0,
+        "end": 75,
+        "text": "AML Transaction Monitoring & Suspicious Transaction Reporting | NISM | 2024",
+        "page_number": 3,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1459,
+        "margin": -0.0055,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 57,
+        "start": 0,
+        "end": 96,
+        "text": "Bachelor of Business Management (BBM) | M.S. Ramaiah Degree College, Bangalore University | 2008",
+        "page_number": 3,
+        "cluster_id": 4,
+        "candidate_section": "education",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.4458,
+        "margin": 0.0558,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      }
+    ]
+  },
+  "section_schemas": [
+    {
+      "category": "personal_information",
+      "label": "Personal information",
+      "records": [
+        {
+          "record_id": "personal_information",
+          "source_ids": [
+            "e0:0:17",
+            "e1:0:82",
+            "e2:0:117"
+          ],
+          "attributes": [
+            {
+              "name": "full_name",
+              "items": [
+                {
+                  "value": "S. GANESH BALAAJI",
+                  "evidence": [
+                    {
+                      "source_id": "e0:0:17",
+                      "quote": "S. GANESH BALAAJI"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "email",
+              "items": [
+                {
+                  "value": "balaji_ganesh86@yahoomail.com",
+                  "evidence": [
+                    {
+                      "source_id": "e2:0:117",
+                      "quote": "balaji_ganesh86@yahoomail.com"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "phone",
+              "items": [
+                {
+                  "value": "+91 9611320640",
+                  "evidence": [
+                    {
+                      "source_id": "e2:0:117",
+                      "quote": "+91 9611320640"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "location",
+              "items": [
+                {
+                  "value": "Kolkata",
+                  "evidence": [
+                    {
+                      "source_id": "e2:0:117",
+                      "quote": "Kolkata"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "linkedin_url",
+              "items": [
+                {
+                  "value": "linkedin.com/in/ganesh-balaji-aml-kyc",
+                  "evidence": [
+                    {
+                      "source_id": "e2:0:117",
+                      "quote": "linkedin.com/in/ganesh-balaji-aml-kyc"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "github_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "portfolio_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "professional_title",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e1:0:82",
+          "quote": "AML/KYC Compliance | Financial Crime Compliance | Global KYC Operations Leadership"
+        },
+        {
+          "source_id": "e2:0:117",
+          "quote": "+91 9611320640 | balaji_ganesh86@yahoomail.com | linkedin.com/in/ganesh-balaji-aml-kyc | Kolkata PROFESSIONAL PROFILE"
+        }
+      ]
+    },
+    {
+      "category": "skills",
+      "label": "Skills",
+      "records": [
+        {
+          "record_id": "skills",
+          "source_ids": [
+            "e6:0:436",
+            "e53:0:134"
+          ],
+          "attributes": [
+            {
+              "name": "technical_skills",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "tools_and_platforms",
+              "items": [
+                {
+                  "value": "Excel",
+                  "evidence": [
+                    {
+                      "source_id": "e53:0:134",
+                      "quote": "Excel"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "domain_and_functional",
+              "items": [
+                {
+                  "value": "KYC",
+                  "evidence": [
+                    {
+                      "source_id": "e6:0:436",
+                      "quote": "KYC"
+                    },
+                    {
+                      "source_id": "e53:0:134",
+                      "quote": "KYC"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "AML",
+                  "evidence": [
+                    {
+                      "source_id": "e6:0:436",
+                      "quote": "AML"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "soft_skills",
+              "items": [
+                {
+                  "value": "Leadership",
+                  "evidence": [
+                    {
+                      "source_id": "e6:0:436",
+                      "quote": "Leadership"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "all_skills",
+              "items": [
+                {
+                  "value": "Excel",
+                  "evidence": [
+                    {
+                      "source_id": "e53:0:134",
+                      "quote": "Excel"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "KYC",
+                  "evidence": [
+                    {
+                      "source_id": "e6:0:436",
+                      "quote": "KYC"
+                    },
+                    {
+                      "source_id": "e53:0:134",
+                      "quote": "KYC"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "AML",
+                  "evidence": [
+                    {
+                      "source_id": "e6:0:436",
+                      "quote": "AML"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Leadership",
+                  "evidence": [
+                    {
+                      "source_id": "e6:0:436",
+                      "quote": "Leadership"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Programme Management • Business Transformation • Business Change • Client Lifecycle Management (CLM) • Client Onboarding (OBKYC) • AML/KYC Compliance • CDD / EDD • Financial Crime Compliance • Regulatory Change • Control Automation • Workflow Automation • Programme Governance • Operational Risk & Controls • Cost Optimisation • Strategic Planning • Stakeholder Management • Executive Reporting • MIS & KRI Reporting • People Leadership",
+                  "evidence": [
+                    {
+                      "source_id": "e6:0:436",
+                      "quote": "Programme Management • Business Transformation • Business Change • Client Lifecycle Management (CLM) • Client Onboarding (OBKYC) • AML/KYC Compliance • CDD / EDD • Financial Crime Compliance • Regulatory Change • Control Automation • Workflow Automation • Programme Governance • Operational Risk & Controls • Cost Optimisation • Strategic Planning • Stakeholder Management • Executive Reporting • MIS & KRI Reporting • People Leadership"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Fenergo • World-Check • LexisNexis • Ripjar • KYC Workflow Tools • MS Excel • PowerPoint • MIS Reporting • KRI Dashboards • SharePoint",
+                  "evidence": [
+                    {
+                      "source_id": "e53:0:134",
+                      "quote": "Fenergo • World-Check • LexisNexis • Ripjar • KYC Workflow Tools • MS Excel • PowerPoint • MIS Reporting • KRI Dashboards • SharePoint"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e5:0:17",
+          "quote": "CORE COMPETENCIES"
+        },
+        {
+          "source_id": "e52:0:15",
+          "quote": "SYSTEMS & TOOLS"
+        }
+      ]
+    },
+    {
+      "category": "awards",
+      "label": "Awards and achievements",
+      "records": [
+        {
+          "record_id": "awards-1",
+          "source_ids": [
+            "e8:0:208",
+            "e9:0:187",
+            "e10:0:187",
+            "e11:0:157",
+            "e12:0:101",
+            "e13:0:151"
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "issuer",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "date",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "Unlabelled compound information requires source review."
+          ]
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e7:0:15",
+          "quote": "ACCOMPLISHMENTS"
+        },
+        {
+          "source_id": "e8:0:208",
+          "quote": "Led a cross-functional KYC transformation programme migrating the Periodic Review process from Singapore to Pune, improving operational efficiency while ensuring delivery governance and regulatory compliance."
+        },
+        {
+          "source_id": "e9:0:187",
+          "quote": "Designed and implemented a centralized outreach model for Agent/Indirect Principal and same-group relationships, reducing review turnaround time by 5 days and improving client experience."
+        },
+        {
+          "source_id": "e10:0:187",
+          "quote": "Partnered with Compliance, Front Office and Technology teams to implement workflow improvements and reliance-based review methodology, strengthening governance and operational efficiency."
+        },
+        {
+          "source_id": "e11:0:157",
+          "quote": "Supported workforce optimisation initiatives contributing to 10% contractor-to-FTE conversion aligned with long-term business strategy and cost optimisation."
+        },
+        {
+          "source_id": "e12:0:101",
+          "quote": "Enabled 60% FTE growth through structured governance, delivery excellence and stakeholder confidence."
+        },
+        {
+          "source_id": "e13:0:151",
+          "quote": "Led transition and operational readiness of the Trade Confirmation process from a third-party vendor, ensuring successful stabilisation and governance."
+        }
+      ]
+    },
+    {
+      "category": "experience",
+      "label": "Experience",
+      "records": [
+        {
+          "record_id": "experience-1",
+          "source_ids": [
+            "e15:0:52"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "experience-2",
+          "source_ids": [
+            "e16:0:73",
+            "e17:0:186",
+            "e18:0:142",
+            "e19:0:137",
+            "e20:0:141",
+            "e21:0:116",
+            "e22:0:126",
+            "e23:0:113",
+            "e24:0:122",
+            "e26:0:33"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "experience-3",
+          "source_ids": [
+            "e27:0:76",
+            "e28:0:162",
+            "e29:0:136",
+            "e30:0:133",
+            "e31:0:140",
+            "e32:0:142",
+            "e33:0:44"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "experience-4",
+          "source_ids": [
+            "e34:0:78",
+            "e35:0:100",
+            "e36:0:132",
+            "e37:0:128",
+            "e38:0:162",
+            "e39:0:131"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "experience-5",
+          "source_ids": [
+            "e40:0:138",
+            "e41:0:84",
+            "e42:0:103",
+            "e43:0:106",
+            "e44:0:43"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "Training/research content requires employment association review."
+          ]
+        },
+        {
+          "record_id": "experience-6",
+          "source_ids": [
+            "e46:0:60",
+            "e47:0:106",
+            "e48:0:115",
+            "e49:0:92",
+            "e50:0:77",
+            "e51:0:101"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e14:0:23",
+          "quote": "PROFESSIONAL EXPERIENCE"
+        },
+        {
+          "source_id": "e15:0:52",
+          "quote": "Assistant Vice President, APAC, UK/US KYC Operations"
+        },
+        {
+          "source_id": "e16:0:73",
+          "quote": "Credit Suisse India Services Pvt. Ltd | Pune, India | Dec 2019 – Feb 2026"
+        },
+        {
+          "source_id": "e17:0:186",
+          "quote": "Led APAC Periodic Review operations managing 34+ FTEs across Private Banking and Institutional portfolios, driving programme governance, operational excellence and regulatory compliance."
+        },
+        {
+          "source_id": "e18:0:142",
+          "quote": "Established risk-based review strategies reducing high-risk backlog through structured remediation, prioritisation and stakeholder engagement."
+        },
+        {
+          "source_id": "e19:0:137",
+          "quote": "Led governance of adverse media reviews, regulatory escalations and financial crime risk assessments across high-risk client populations."
+        },
+        {
+          "source_id": "e20:0:141",
+          "quote": "Implemented enhanced control frameworks across maker-checker-reviewer processes resulting in zero audit findings for three consecutive years."
+        },
+        {
+          "source_id": "e21:0:116",
+          "quote": "Managed critical regulatory escalations, remediation workstreams and client risk reviews ensuring timely resolution."
+        },
+        {
+          "source_id": "e22:0:126",
+          "quote": "Partnered with Technology, Compliance and Operations teams to deliver workflow automation and process enhancement initiatives."
+        },
+        {
+          "source_id": "e23:0:113",
+          "quote": "Managed strategic KYC platform migration and operational readiness activities supporting business transformation."
+        },
+        {
+          "source_id": "e24:0:122",
+          "quote": "Led post-merger integration covering governance, control stabilisation, operating model alignment and delivery milestones."
+        },
+        {
+          "source_id": "e26:0:33",
+          "quote": "Team Manager, APAC KYC Operations"
+        },
+        {
+          "source_id": "e27:0:76",
+          "quote": "J.P. Morgan India Services Pvt. Ltd | Bangalore, India | Dec 2017 - Dec 2019"
+        },
+        {
+          "source_id": "e28:0:162",
+          "quote": "Managed APAC periodic review governance, ensuring adherence to regulatory deadlines, service-level expectations, quality standards, and operational risk controls."
+        },
+        {
+          "source_id": "e29:0:136",
+          "quote": "Owned operational risk metrics, control reports, and management dashboards to support leadership oversight and timely risk intervention."
+        },
+        {
+          "source_id": "e30:0:133",
+          "quote": "Drove remediation of aged and high-risk client populations through structured governance, prioritization, and stakeholder engagement."
+        },
+        {
+          "source_id": "e31:0:140",
+          "quote": "Partnered with Front Office and Compliance teams to resolve documentation gaps, risk classification issues, and review closure dependencies."
+        },
+        {
+          "source_id": "e32:0:142",
+          "quote": "Implemented population scoping and prioritization models to balance workload based on risk rating, regulatory urgency, and delivery timelines."
+        },
+        {
+          "source_id": "e33:0:44",
+          "quote": "Team Leader, APAC + EMEA + US KYC Operations"
+        },
+        {
+          "source_id": "e34:0:78",
+          "quote": "State Street Global Advisors Pvt. Ltd | Bangalore, India\t| Apr 2016 - Dec 2017"
+        },
+        {
+          "source_id": "e35:0:100",
+          "quote": "Defined and enforced a global governance model for KYC operations across APAC, EMEA, and US regions."
+        },
+        {
+          "source_id": "e36:0:132",
+          "quote": "Managed 80+ FTEs and contractors across multiple shifts, ensuring delivery discipline, quality adherence, and operational stability."
+        },
+        {
+          "source_id": "e37:0:128",
+          "quote": "Controlled operational risk through stakeholder governance, issue tracking, escalation management, and review closure oversight."
+        },
+        {
+          "source_id": "e38:0:162",
+          "quote": "Stabilized the Alternative Investment Services KYC governance framework and improved review closure efficiency through structured monitoring and control routines."
+        },
+        {
+          "source_id": "e39:0:131",
+          "quote": "Supported cross-regional coordination to manage workload allocation, delivery timelines, and process adherence across global teams."
+        },
+        {
+          "source_id": "e40:0:138",
+          "quote": "Assistant Manager, Business Process Specialization & Consulting Accenture India Services Pvt. Ltd | Bangalore, India | Jul 2015 - Apr 2016"
+        },
+        {
+          "source_id": "e41:0:84",
+          "quote": "Built an end-to-end operating governance model for an Irish mortgage banking client."
+        },
+        {
+          "source_id": "e42:0:103",
+          "quote": "Established risk-control documentation, KPI governance, resource-cost controls and training governance."
+        },
+        {
+          "source_id": "e43:0:106",
+          "quote": "Supported budgeting and resource planning, including FTE calculation, cost tracking and capacity planning."
+        },
+        {
+          "source_id": "e44:0:43",
+          "quote": "Process Supervisor, KYC - Client Onboarding"
+        },
+        {
+          "source_id": "e46:0:60",
+          "quote": "Deutsche Bank Group | Bangalore, India | Aug 2011 - Jul 2015"
+        },
+        {
+          "source_id": "e47:0:106",
+          "quote": "Supported premium clients end-to-end across due diligence, extensions, SSI setup and suspension workflows."
+        },
+        {
+          "source_id": "e48:0:115",
+          "quote": "Identified and classified clients based on FATCA, Dodd-Frank, EMIR, Singapore Classification and HKPI requirements."
+        },
+        {
+          "source_id": "e49:0:92",
+          "quote": "Analyst, Ops Data Management & KYC Operations WIPRO | Bangalore, India | Dec 2008 - Aug 2011"
+        },
+        {
+          "source_id": "e50:0:77",
+          "quote": "Conducted KYC due diligence for clients booked under UK and US jurisdictions."
+        },
+        {
+          "source_id": "e51:0:101",
+          "quote": "Supported critical projects including Reporting Codes Mapping and data-management control activities."
+        }
+      ]
+    },
+    {
+      "category": "education",
+      "label": "Education",
+      "records": [
+        {
+          "record_id": "education-1",
+          "source_ids": [
+            "e55:0:63"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "degree",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "Multiple qualifications in one supplied record; child associations unresolved."
+          ]
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e55:0:63",
+          "quote": "Master of Business Administration (MBA), Finance | NMIMS | 2024"
+        }
+      ]
+    },
+    {
+      "category": "needs_review",
+      "label": "Unassigned source blocks",
+      "records": [],
+      "residual_blocks": [
+        {
+          "source_id": "e3:0:289",
+          "quote": "Results-driven Senior Programme Manager and AML/KYC Transformation leader with 17 years of experience delivering large-scale Client Lifecycle Management (CLM), Client Onboarding (OBKYC), regulatory remediation and business change initiatives across global Investment Banking organisations."
+        },
+        {
+          "source_id": "e4:0:369",
+          "quote": "Extensive experience leading cross-functional transformation programmes across APAC, EMEA, UK and US, driving operational excellence, governance, control enhancements, workflow automation, risk reduction and stakeholder management. Proven track record of leading large teams, delivering strategic change, strengthening control frameworks and enabling cost optimisation."
+        },
+        {
+          "source_id": "e25:0:0",
+          "quote": ""
+        },
+        {
+          "source_id": "e45:0:0",
+          "quote": ""
+        },
+        {
+          "source_id": "e54:0:26",
+          "quote": "EDUCATION & CERTIFICATIONS"
+        },
+        {
+          "source_id": "e56:0:75",
+          "quote": "AML Transaction Monitoring & Suspicious Transaction Reporting | NISM | 2024"
+        },
+        {
+          "source_id": "e57:0:96",
+          "quote": "Bachelor of Business Management (BBM) | M.S. Ramaiah Degree College, Bangalore University | 2008"
+        }
+      ]
+    }
+  ]
+}

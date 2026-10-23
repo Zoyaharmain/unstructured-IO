@@ -1,0 +1,580 @@
+{
+  "success": true,
+  "source": "AruneshPandey.docx",
+  "extraction_mode": "existing_blocks_schema_mapping",
+  "data": {
+    "contact": {
+      "full_name": "",
+      "email": "",
+      "phone": "",
+      "location": null,
+      "linkedin_url": null,
+      "github_url": null,
+      "portfolio_url": null
+    },
+    "professional_title": null,
+    "summary": null,
+    "total_experience_years": null,
+    "skills": {
+      "technical_skills": [],
+      "tools_and_platforms": [],
+      "domain_and_functional": [],
+      "soft_skills": [],
+      "all_skills": []
+    },
+    "experience": [
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      }
+    ],
+    "education": [],
+    "certifications": [],
+    "projects": [],
+    "languages": []
+  },
+  "schema_mapping": {
+    "fields_populated": 1,
+    "total_fields": 16,
+    "completion_percentage": 6.2,
+    "field_details": [
+      {
+        "field_name": "contact.full_name",
+        "target_type": "string",
+        "is_required": true,
+        "is_extracted": false,
+        "source_section": "Header / Personal Details",
+        "confidence_score": 0.0,
+        "description": "Candidate's full name, extracted from the top header of the resume."
+      },
+      {
+        "field_name": "contact.email",
+        "target_type": "string (email)",
+        "is_required": true,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's primary contact email address."
+      },
+      {
+        "field_name": "contact.phone",
+        "target_type": "string (phone)",
+        "is_required": true,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's telephone / mobile phone number."
+      },
+      {
+        "field_name": "contact.location",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's residential location or work city."
+      },
+      {
+        "field_name": "contact.linkedin_url",
+        "target_type": "string (url) | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "URL to candidate's LinkedIn profile."
+      },
+      {
+        "field_name": "professional_title",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Subtitle",
+        "confidence_score": 0.0,
+        "description": "Candidate's target headline or most recent job title."
+      },
+      {
+        "field_name": "summary",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Professional Summary / Profile / Objective",
+        "confidence_score": 0.0,
+        "description": "Executive bio, professional overview, or career objective."
+      },
+      {
+        "field_name": "total_experience_years",
+        "target_type": "float | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Summary / Experience Calculation",
+        "confidence_score": 0.0,
+        "description": "Total professional experience in years."
+      },
+      {
+        "field_name": "skills.technical_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Technical Competencies",
+        "confidence_score": 0.0,
+        "description": "Technical programming languages and core software competencies."
+      },
+      {
+        "field_name": "skills.tools_and_platforms",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Tools & Technologies",
+        "confidence_score": 0.0,
+        "description": "Software platforms, developer tools, and operational systems."
+      },
+      {
+        "field_name": "skills.domain_and_functional",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Domain Expertise",
+        "confidence_score": 0.0,
+        "description": "Functional domain knowledge (e.g. Hedge Funds, KYC, NAV, Derivatives)."
+      },
+      {
+        "field_name": "skills.all_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills (Aggregated)",
+        "confidence_score": 0.0,
+        "description": "Complete list of candidate skills across all categories."
+      },
+      {
+        "field_name": "experience",
+        "target_type": "array[WorkExperience]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Experience / Work History",
+        "confidence_score": 0.92,
+        "description": "Complete chronological employment records with bullet points."
+      },
+      {
+        "field_name": "education",
+        "target_type": "array[Education]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Education / Academic Qualifications",
+        "confidence_score": 0.0,
+        "description": "University, college, and higher education degree qualifications."
+      },
+      {
+        "field_name": "certifications",
+        "target_type": "array[Certification]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Certifications / Licenses",
+        "confidence_score": 0.0,
+        "description": "Professional accreditations and credentials."
+      },
+      {
+        "field_name": "projects",
+        "target_type": "array[Project]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Projects / Key Engagements",
+        "confidence_score": 0.0,
+        "description": "Major projects or strategic initiatives led by candidate."
+      }
+    ]
+  },
+  "raw_sections": {
+    "experience": "Experience Design Stakeholder Engagement & Business Alignment Data-Driven Product Decision Making & Feature Prioritization TECHNICAL SKILLS Product Management & Collaboration: JIRA | Confluence | Azure DevOps | Aha | Productboard | Notion UX, Wireframing & Process Modeling: Figma | Balsamiq | Miro | Camunda BPMN | Bizagi | Lucidchart | Whimsical | Draw.io Analytics & Data Visualization: Tableau | Power BI | Mixpanel | Google Analytics | SQL API & Development: Postman | Swagger / OpenAPI | REST API Documentation GenAI & AI Tools: ChatGPT | Claude | Perplexity AI | Atlassian Intelligence | Napkin AI Enterprise Platforms: Salesforce CAREER HIGHLIGHTS Delivered enterprise-grade digital products across EdTech, US Healthcare, and Capital Markets, driving predictable Agile delivery and sustaining 95%+ sprint commitment accuracy through strategic backlog prioritization and disciplined sprint planning. Accelerated product discovery and requirements engineering by 50% by introducing AI-enabled requirement intelligence and automated user story generation, significantly improving backlog readiness and development velocity. Drove business process transformation initiatives that increased operational efficiency by 40%, optimizing workflows and eliminating process bottlenecks across cross-functional product and delivery teams. Led enterprise-scale digital transformation programs impacting 1,500+ users, orchestrating product rollout, stakeholder alignment, and change adoption strategies that achieved 95% user adoption within the first 90 days. Instituted enterprise backlog governance frameworks and Definition of Ready (DoR) standards, enhancing sprint predictability, improving requirement quality, and significantly reducing requirement rework across Agile product teams. WORK EXPERIENCE Product Owner | Cybage Software Pvt. Ltd. | Jan 2025 – Present Owned and managed the end-to-end product backlog across initiatives, epics, and user stories for two parallel product streams, maintaining 90%+ Definition of Ready (DoR) compliance through structured backlog refinement and sprint prioritization. Built an AI-augmented requirements intelligence workflow using Claude and Atlassian Intelligence to synthesize stakeholder inputs, auto-generate user stories, and identify requirement gaps, reducing backlog preparation time by 50%. Partnered with business stakeholders, SMEs, UX designers, and engineering teams to design customer journeys, wireframes, and interaction flows using Figma and Balsamiq, reducing design-to-development handoff time by 30%+. Led Agile Scrum ceremonies including sprint planning, backlog refinement, stand-ups, sprint reviews, and retrospectives for cross-functional teams of 10–15 members, consistently achieving 95%+ sprint commitment accuracy. Defined user stories and acceptance criteria using MoSCoW prioritization and Voice of Customer insights, leveraging AI-assisted tools to improve requirement quality and reduce rework. Acted as the key interface between business stakeholders and engineering teams, ensuring backlog priorities align with product roadmap, OKRs, and strategic objectives. Established GenAI governance practices for the product team, introducing guardrails for IP protection, output validation, and responsible AI usage in line with organizational AI policies. Product Owner | Kanini Software Solutions India Pvt. Ltd. | Apr 2023 – Dec 2024 Led product discovery and requirements engineering, translating business goals into well-defined epics, user stories, and acceptance criteria to support Agile development. Facilitated Scrum ceremonies including sprint planning, backlog refinement, and daily stand-ups, enabling cross-functional teams to maintain delivery focus and quickly address blockers. Owned the product backlog, prioritizing features based on business value, customer impact, and delivery feasibility while ensuring Definition of Ready compliance. Worked closely with UX/UI teams to convert requirements into high-fidelity prototypes and wireframes, leveraging customer feedback and analytics insights to improve usability and adoption. Coordinated product releases and stakeholder communication, ensuring feature delivery remained aligned with the product roadmap and business priorities. Senior Business Analyst | Arvind Technocrats & Engineers Pvt. Ltd. | Oct 2020 – Mar 2023 Performed business process analysis and gap assessments to identify improvement opportunities, delivering 40% operational efficiency gains through workflow optimization and automation initiatives. Partnered with cross-functional stakeholders to capture and document business and system requirements, producing structured BRD/FRD documentation and process models for implementation teams. Led enterprise process redesign and digital transformation initiatives impacting 1500+ users, achieving 95% adoption within 90 days through structured change management and training programs. Produced detailed process documentation including workflow diagrams, swimlane models, and operational guidelines, ensuring clarity across business and technical teams. Implemented Salesforce-based workflow automation, improving process visibility, compliance tracking, and operational efficiency. Maintained end-to-end requirement traceability, ensuring alignment b/w business requirements, development outputs & testing deliverables. Product Owner | Featherone Technologies Pvt. Ltd. | Feb 2020 – Sep 2020 Defined product vision and roadmap aligned with evolving business goals and customer needs. Managed product backlog and feature prioritization for Agile teams to ensure delivery of high-value features. Collaborated with stakeholders and UX teams to translate requirements into product features, prototypes, and functional specifications. Product Manager | Maxtra Technologies Pvt. Ltd. | Sep 2010 – Jan 2020 Career Progression: Associate Business Analyst → Senior Business Analyst → Product Manager Managed the full product lifecycle from concept to launch for multiple digital products across diverse domains. Led requirements analysis, stakeholder collaboration & Agile delivery, ensuring alignment b/w business objectives and technical execution. Conducted market research and product discovery to identify new opportunities and strengthen product offerings. Contributed to pre-sales engagements and solution discussions, supporting proposal development and client interactions. Requirement Analyst | HCL Technologies Ltd. | May 2009 – Aug 2010 Gathered and documented business and functional requirements to support product development initiatives. Collaborated with development and testing teams to clarify requirements and support successful product delivery. EDUCATION B. Tech in Computer Science & Engineering | Punjab Technical University | 2004 – 2008 CERTIFICATIONS & TRAININGS Agile & Product Management: Certified Scrum Product Owner (CSPO) – Scrum Alliance | Product Owner Fundamentals – IIBA Endorsed | Product Discovery & Prioritization – Product School | AI for Product Management – Pendo Business Analysis: Certified Business Analyst – QBI | Business Analysis Fundamentals – Jeremy Aschenbrenner AI & Technology: AI for Everyone – Google | Process Modelling Using AI – Udemy | SQL Certification – Oracle | Prompt Engineering – LearnPrompting.org"
+  },
+  "meta": {
+    "status": "needs_review",
+    "human_verified": false,
+    "provider_calls": 0,
+    "source_accounting": {
+      "all_source_text_preserved": true,
+      "total_spans": 11,
+      "assigned_meaningful_spans": 9,
+      "unresolved_meaningful_spans": 2,
+      "non_content_artifacts": 0,
+      "duplicates_excluded": 0,
+      "all_meaningful_text_assigned": false,
+      "semantic_correctness_verified": false,
+      "outcomes": [
+        {
+          "source_id": "e0:0:1151",
+          "source_element_index": 0,
+          "start": 0,
+          "end": 1151,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e0:1151:1846",
+          "source_element_index": 0,
+          "start": 1151,
+          "end": 1846,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e0:1846:1856",
+          "source_element_index": 0,
+          "start": 1846,
+          "end": 1856,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e0:1856:2246",
+          "source_element_index": 0,
+          "start": 1856,
+          "end": 2246,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:2246:3381",
+          "source_element_index": 0,
+          "start": 2246,
+          "end": 3381,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:3381:4396",
+          "source_element_index": 0,
+          "start": 3381,
+          "end": 4396,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:4396:5469",
+          "source_element_index": 0,
+          "start": 4396,
+          "end": 5469,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:5469:6635",
+          "source_element_index": 0,
+          "start": 5469,
+          "end": 6635,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:6635:7801",
+          "source_element_index": 0,
+          "start": 6635,
+          "end": 7801,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:7801:9004",
+          "source_element_index": 0,
+          "start": 7801,
+          "end": 9004,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:9004:9153",
+          "source_element_index": 0,
+          "start": 9004,
+          "end": 9153,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        }
+      ]
+    },
+    "document_scope": {
+      "kind": "candidate_or_unknown",
+      "candidate_resume": null,
+      "requires_scope_review": true
+    },
+    "source_inventory_sha256": "6039adad0b5fef20dd9ded81a3f32f28193adedc0b9fff0e66ae7a98080be16d",
+    "field_evidence": {},
+    "record_reviews": [
+      {
+        "category": "experience",
+        "entry_id": "experience-1",
+        "source_ids": [
+          "e0:1856:2246",
+          "e0:2246:3381",
+          "e0:3381:4396",
+          "e0:4396:5469",
+          "e0:5469:6635",
+          "e0:6635:7801",
+          "e0:7801:9004",
+          "e0:9004:9153"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      }
+    ],
+    "missing_required_fields": [
+      "contact.full_name",
+      "contact.email",
+      "contact.phone",
+      "experience[0].company",
+      "experience[0].role"
+    ],
+    "warnings": [
+      "Schema validity and field completion do not establish extraction or relationship accuracy.",
+      "Handoff confidence scores are fixed heuristics, not calibrated probabilities.",
+      "Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields."
+    ],
+    "unmapped_blocks": [
+      {
+        "source_id": "e0:1846:1856",
+        "category": "experience",
+        "text": "Experience",
+        "page_number": null
+      },
+      {
+        "source_id": "e0:1856:2246",
+        "category": "experience",
+        "text": " Design Stakeholder Engagement & Business Alignment Data-Driven Product Decision Making & Feature Prioritization TECHNICAL SKILLS Product Management & Collaboration: JIRA | Confluence | Azure DevOps | Aha | Productboard | Notion UX, Wireframing & Process Modeling: Figma | Balsamiq | Miro | Camunda BPMN | Bizagi | Lucidchart | Whimsical | Draw.io Analytics & Data Visualization: Tableau | ",
+        "page_number": null
+      },
+      {
+        "source_id": "e0:2246:3381",
+        "category": "experience",
+        "text": "Power BI | Mixpanel | Google Analytics | SQL API & Development: Postman | Swagger / OpenAPI | REST API Documentation GenAI & AI Tools: ChatGPT | Claude | Perplexity AI | Atlassian Intelligence | Napkin AI Enterprise Platforms: Salesforce CAREER HIGHLIGHTS Delivered enterprise-grade digital products across EdTech, US Healthcare, and Capital Markets, driving predictable Agile delivery and sustaining 95%+ sprint commitment accuracy through strategic backlog prioritization and disciplined sprint planning. Accelerated product discovery and requirements engineering by 50% by introducing AI-enabled requirement intelligence and automated user story generation, significantly improving backlog readiness and development velocity. Drove business process transformation initiatives that increased operational efficiency by 40%, optimizing workflows and eliminating process bottlenecks across cross-functional product and delivery teams. Led enterprise-scale digital transformation programs impacting 1,500+ users, orchestrating product rollout, stakeholder alignment, and change adoption strategies that achieved 95% user adoption within ",
+        "page_number": null
+      },
+      {
+        "source_id": "e0:3381:4396",
+        "category": "experience",
+        "text": "the first 90 days. Instituted enterprise backlog governance frameworks and Definition of Ready (DoR) standards, enhancing sprint predictability, improving requirement quality, and significantly reducing requirement rework across Agile product teams. WORK EXPERIENCE Product Owner | Cybage Software Pvt. Ltd. | Jan 2025 – Present Owned and managed the end-to-end product backlog across initiatives, epics, and user stories for two parallel product streams, maintaining 90%+ Definition of Ready (DoR) compliance through structured backlog refinement and sprint prioritization. Built an AI-augmented requirements intelligence workflow using Claude and Atlassian Intelligence to synthesize stakeholder inputs, auto-generate user stories, and identify requirement gaps, reducing backlog preparation time by 50%. Partnered with business stakeholders, SMEs, UX designers, and engineering teams to design customer journeys, wireframes, and interaction flows using Figma and Balsamiq, reducing design-to-development handoff ",
+        "page_number": null
+      },
+      {
+        "source_id": "e0:4396:5469",
+        "category": "experience",
+        "text": "time by 30%+. Led Agile Scrum ceremonies including sprint planning, backlog refinement, stand-ups, sprint reviews, and retrospectives for cross-functional teams of 10–15 members, consistently achieving 95%+ sprint commitment accuracy. Defined user stories and acceptance criteria using MoSCoW prioritization and Voice of Customer insights, leveraging AI-assisted tools to improve requirement quality and reduce rework. Acted as the key interface between business stakeholders and engineering teams, ensuring backlog priorities align with product roadmap, OKRs, and strategic objectives. Established GenAI governance practices for the product team, introducing guardrails for IP protection, output validation, and responsible AI usage in line with organizational AI policies. Product Owner | Kanini Software Solutions India Pvt. Ltd. | Apr 2023 – Dec 2024 Led product discovery and requirements engineering, translating business goals into well-defined epics, user stories, and acceptance criteria to support Agile development. Facilitated Scrum ceremonies including sprint ",
+        "page_number": null
+      },
+      {
+        "source_id": "e0:5469:6635",
+        "category": "experience",
+        "text": "planning, backlog refinement, and daily stand-ups, enabling cross-functional teams to maintain delivery focus and quickly address blockers. Owned the product backlog, prioritizing features based on business value, customer impact, and delivery feasibility while ensuring Definition of Ready compliance. Worked closely with UX/UI teams to convert requirements into high-fidelity prototypes and wireframes, leveraging customer feedback and analytics insights to improve usability and adoption. Coordinated product releases and stakeholder communication, ensuring feature delivery remained aligned with the product roadmap and business priorities. Senior Business Analyst | Arvind Technocrats & Engineers Pvt. Ltd. | Oct 2020 – Mar 2023 Performed business process analysis and gap assessments to identify improvement opportunities, delivering 40% operational efficiency gains through workflow optimization and automation initiatives. Partnered with cross-functional stakeholders to capture and document business and system requirements, producing structured BRD/FRD documentation and process models for implementation teams. Led enterprise process redesign and digital ",
+        "page_number": null
+      },
+      {
+        "source_id": "e0:6635:7801",
+        "category": "experience",
+        "text": "transformation initiatives impacting 1500+ users, achieving 95% adoption within 90 days through structured change management and training programs. Produced detailed process documentation including workflow diagrams, swimlane models, and operational guidelines, ensuring clarity across business and technical teams. Implemented Salesforce-based workflow automation, improving process visibility, compliance tracking, and operational efficiency. Maintained end-to-end requirement traceability, ensuring alignment b/w business requirements, development outputs & testing deliverables. Product Owner | Featherone Technologies Pvt. Ltd. | Feb 2020 – Sep 2020 Defined product vision and roadmap aligned with evolving business goals and customer needs. Managed product backlog and feature prioritization for Agile teams to ensure delivery of high-value features. Collaborated with stakeholders and UX teams to translate requirements into product features, prototypes, and functional specifications. Product Manager | Maxtra Technologies Pvt. Ltd. | Sep 2010 – Jan 2020 Career Progression: Associate Business Analyst → Senior Business Analyst → Product Manager Managed the ",
+        "page_number": null
+      },
+      {
+        "source_id": "e0:7801:9004",
+        "category": "experience",
+        "text": "full product lifecycle from concept to launch for multiple digital products across diverse domains. Led requirements analysis, stakeholder collaboration & Agile delivery, ensuring alignment b/w business objectives and technical execution. Conducted market research and product discovery to identify new opportunities and strengthen product offerings. Contributed to pre-sales engagements and solution discussions, supporting proposal development and client interactions. Requirement Analyst | HCL Technologies Ltd. | May 2009 – Aug 2010 Gathered and documented business and functional requirements to support product development initiatives. Collaborated with development and testing teams to clarify requirements and support successful product delivery. EDUCATION B. Tech in Computer Science & Engineering | Punjab Technical University | 2004 – 2008 CERTIFICATIONS & TRAININGS Agile & Product Management: Certified Scrum Product Owner (CSPO) – Scrum Alliance | Product Owner Fundamentals – IIBA Endorsed | Product Discovery & Prioritization – Product School | AI for Product Management – Pendo Business Analysis: Certified Business Analyst – QBI | Business Analysis Fundamentals – Jeremy Aschenbrenner ",
+        "page_number": null
+      },
+      {
+        "source_id": "e0:9004:9153",
+        "category": "experience",
+        "text": "AI & Technology: AI for Everyone – Google | Process Modelling Using AI – Udemy | SQL Certification – Oracle | Prompt Engineering – LearnPrompting.org",
+        "page_number": null
+      },
+      {
+        "source_id": "e0:0:1151",
+        "category": null,
+        "text": "EXECUTIVE PROFILE Senior Product Owner / Product Manager with 15+ years of experience delivering enterprise digital products across EdTech, US Healthcare, Capital Markets, BFSI, and Hi-Tech domains. Strong expertise in product discovery, backlog management, and roadmap execution, translating complex business requirements into well-structured epics, user stories, and deliverable product features. Experienced in leading Agile / Scrum product delivery, facilitating sprint planning, backlog refinement, and stakeholder collaboration to ensure predictable delivery and high sprint commitment accuracy. Proven ability to bridge business and engineering teams, driving requirement clarity, stakeholder alignment, and smooth execution across cross-functional product teams. Hands-on experience leveraging AI-enabled tools for requirement analysis, product discovery, and backlog preparation, improving efficiency and accelerating product delivery cycles. Skilled in collaborating with UX, engineering, and business stakeholders to design customer journeys, define product requirements, and deliver user-centric digital solutions. Adept at managing end-to",
+        "page_number": null
+      },
+      {
+        "source_id": "e0:1151:1846",
+        "category": null,
+        "text": "-end product lifecycle activities including requirement analysis, feature prioritization, release planning, and product delivery in Agile environments. Experienced in driving process improvements and digital transformation initiatives that enhance operational efficiency, product adoption, and overall business outcomes. STRATEGIC COMPETENCIES Product Strategy and Execution User Story Writing & Acceptance Criteria Definition Product Backlog Governance & Prioritization AI-Augmented Product Development & GenAI Enablement Agile Product Delivery (Scrum / SAFe) Cross-Functional Team Leadership & Agile Collaboration Product Discovery & Requirement Engineering Customer Journey Mapping & Product ",
+        "page_number": null
+      }
+    ],
+    "needs_review": [
+      {
+        "source_element_index": 0,
+        "start": 0,
+        "end": 1151,
+        "text": "EXECUTIVE PROFILE Senior Product Owner / Product Manager with 15+ years of experience delivering enterprise digital products across EdTech, US Healthcare, Capital Markets, BFSI, and Hi-Tech domains. Strong expertise in product discovery, backlog management, and roadmap execution, translating complex business requirements into well-structured epics, user stories, and deliverable product features. Experienced in leading Agile / Scrum product delivery, facilitating sprint planning, backlog refinement, and stakeholder collaboration to ensure predictable delivery and high sprint commitment accuracy. Proven ability to bridge business and engineering teams, driving requirement clarity, stakeholder alignment, and smooth execution across cross-functional product teams. Hands-on experience leveraging AI-enabled tools for requirement analysis, product discovery, and backlog preparation, improving efficiency and accelerating product delivery cycles. Skilled in collaborating with UX, engineering, and business stakeholders to design customer journeys, define product requirements, and deliver user-centric digital solutions. Adept at managing end-to",
+        "page_number": null,
+        "cluster_id": 1,
+        "candidate_section": "summary",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.4711,
+        "margin": 0.0487,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 0,
+        "start": 1151,
+        "end": 1846,
+        "text": "-end product lifecycle activities including requirement analysis, feature prioritization, release planning, and product delivery in Agile environments. Experienced in driving process improvements and digital transformation initiatives that enhance operational efficiency, product adoption, and overall business outcomes. STRATEGIC COMPETENCIES Product Strategy and Execution User Story Writing & Acceptance Criteria Definition Product Backlog Governance & Prioritization AI-Augmented Product Development & GenAI Enablement Agile Product Delivery (Scrum / SAFe) Cross-Functional Team Leadership & Agile Collaboration Product Discovery & Requirement Engineering Customer Journey Mapping & Product ",
+        "page_number": null,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3323,
+        "margin": -0.0097,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      }
+    ]
+  },
+  "section_schemas": [
+    {
+      "category": "experience",
+      "label": "Experience",
+      "records": [
+        {
+          "record_id": "experience-1",
+          "source_ids": [
+            "e0:1856:2246",
+            "e0:2246:3381",
+            "e0:3381:4396",
+            "e0:4396:5469",
+            "e0:5469:6635",
+            "e0:6635:7801",
+            "e0:7801:9004",
+            "e0:9004:9153"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "Training/research content requires employment association review."
+          ]
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e0:1846:1856",
+          "quote": "Experience"
+        },
+        {
+          "source_id": "e0:1856:2246",
+          "quote": " Design Stakeholder Engagement & Business Alignment Data-Driven Product Decision Making & Feature Prioritization TECHNICAL SKILLS Product Management & Collaboration: JIRA | Confluence | Azure DevOps | Aha | Productboard | Notion UX, Wireframing & Process Modeling: Figma | Balsamiq | Miro | Camunda BPMN | Bizagi | Lucidchart | Whimsical | Draw.io Analytics & Data Visualization: Tableau | "
+        },
+        {
+          "source_id": "e0:2246:3381",
+          "quote": "Power BI | Mixpanel | Google Analytics | SQL API & Development: Postman | Swagger / OpenAPI | REST API Documentation GenAI & AI Tools: ChatGPT | Claude | Perplexity AI | Atlassian Intelligence | Napkin AI Enterprise Platforms: Salesforce CAREER HIGHLIGHTS Delivered enterprise-grade digital products across EdTech, US Healthcare, and Capital Markets, driving predictable Agile delivery and sustaining 95%+ sprint commitment accuracy through strategic backlog prioritization and disciplined sprint planning. Accelerated product discovery and requirements engineering by 50% by introducing AI-enabled requirement intelligence and automated user story generation, significantly improving backlog readiness and development velocity. Drove business process transformation initiatives that increased operational efficiency by 40%, optimizing workflows and eliminating process bottlenecks across cross-functional product and delivery teams. Led enterprise-scale digital transformation programs impacting 1,500+ users, orchestrating product rollout, stakeholder alignment, and change adoption strategies that achieved 95% user adoption within "
+        },
+        {
+          "source_id": "e0:3381:4396",
+          "quote": "the first 90 days. Instituted enterprise backlog governance frameworks and Definition of Ready (DoR) standards, enhancing sprint predictability, improving requirement quality, and significantly reducing requirement rework across Agile product teams. WORK EXPERIENCE Product Owner | Cybage Software Pvt. Ltd. | Jan 2025 – Present Owned and managed the end-to-end product backlog across initiatives, epics, and user stories for two parallel product streams, maintaining 90%+ Definition of Ready (DoR) compliance through structured backlog refinement and sprint prioritization. Built an AI-augmented requirements intelligence workflow using Claude and Atlassian Intelligence to synthesize stakeholder inputs, auto-generate user stories, and identify requirement gaps, reducing backlog preparation time by 50%. Partnered with business stakeholders, SMEs, UX designers, and engineering teams to design customer journeys, wireframes, and interaction flows using Figma and Balsamiq, reducing design-to-development handoff "
+        },
+        {
+          "source_id": "e0:4396:5469",
+          "quote": "time by 30%+. Led Agile Scrum ceremonies including sprint planning, backlog refinement, stand-ups, sprint reviews, and retrospectives for cross-functional teams of 10–15 members, consistently achieving 95%+ sprint commitment accuracy. Defined user stories and acceptance criteria using MoSCoW prioritization and Voice of Customer insights, leveraging AI-assisted tools to improve requirement quality and reduce rework. Acted as the key interface between business stakeholders and engineering teams, ensuring backlog priorities align with product roadmap, OKRs, and strategic objectives. Established GenAI governance practices for the product team, introducing guardrails for IP protection, output validation, and responsible AI usage in line with organizational AI policies. Product Owner | Kanini Software Solutions India Pvt. Ltd. | Apr 2023 – Dec 2024 Led product discovery and requirements engineering, translating business goals into well-defined epics, user stories, and acceptance criteria to support Agile development. Facilitated Scrum ceremonies including sprint "
+        },
+        {
+          "source_id": "e0:5469:6635",
+          "quote": "planning, backlog refinement, and daily stand-ups, enabling cross-functional teams to maintain delivery focus and quickly address blockers. Owned the product backlog, prioritizing features based on business value, customer impact, and delivery feasibility while ensuring Definition of Ready compliance. Worked closely with UX/UI teams to convert requirements into high-fidelity prototypes and wireframes, leveraging customer feedback and analytics insights to improve usability and adoption. Coordinated product releases and stakeholder communication, ensuring feature delivery remained aligned with the product roadmap and business priorities. Senior Business Analyst | Arvind Technocrats & Engineers Pvt. Ltd. | Oct 2020 – Mar 2023 Performed business process analysis and gap assessments to identify improvement opportunities, delivering 40% operational efficiency gains through workflow optimization and automation initiatives. Partnered with cross-functional stakeholders to capture and document business and system requirements, producing structured BRD/FRD documentation and process models for implementation teams. Led enterprise process redesign and digital "
+        },
+        {
+          "source_id": "e0:6635:7801",
+          "quote": "transformation initiatives impacting 1500+ users, achieving 95% adoption within 90 days through structured change management and training programs. Produced detailed process documentation including workflow diagrams, swimlane models, and operational guidelines, ensuring clarity across business and technical teams. Implemented Salesforce-based workflow automation, improving process visibility, compliance tracking, and operational efficiency. Maintained end-to-end requirement traceability, ensuring alignment b/w business requirements, development outputs & testing deliverables. Product Owner | Featherone Technologies Pvt. Ltd. | Feb 2020 – Sep 2020 Defined product vision and roadmap aligned with evolving business goals and customer needs. Managed product backlog and feature prioritization for Agile teams to ensure delivery of high-value features. Collaborated with stakeholders and UX teams to translate requirements into product features, prototypes, and functional specifications. Product Manager | Maxtra Technologies Pvt. Ltd. | Sep 2010 – Jan 2020 Career Progression: Associate Business Analyst → Senior Business Analyst → Product Manager Managed the "
+        },
+        {
+          "source_id": "e0:7801:9004",
+          "quote": "full product lifecycle from concept to launch for multiple digital products across diverse domains. Led requirements analysis, stakeholder collaboration & Agile delivery, ensuring alignment b/w business objectives and technical execution. Conducted market research and product discovery to identify new opportunities and strengthen product offerings. Contributed to pre-sales engagements and solution discussions, supporting proposal development and client interactions. Requirement Analyst | HCL Technologies Ltd. | May 2009 – Aug 2010 Gathered and documented business and functional requirements to support product development initiatives. Collaborated with development and testing teams to clarify requirements and support successful product delivery. EDUCATION B. Tech in Computer Science & Engineering | Punjab Technical University | 2004 – 2008 CERTIFICATIONS & TRAININGS Agile & Product Management: Certified Scrum Product Owner (CSPO) – Scrum Alliance | Product Owner Fundamentals – IIBA Endorsed | Product Discovery & Prioritization – Product School | AI for Product Management – Pendo Business Analysis: Certified Business Analyst – QBI | Business Analysis Fundamentals – Jeremy Aschenbrenner "
+        },
+        {
+          "source_id": "e0:9004:9153",
+          "quote": "AI & Technology: AI for Everyone – Google | Process Modelling Using AI – Udemy | SQL Certification – Oracle | Prompt Engineering – LearnPrompting.org"
+        }
+      ]
+    },
+    {
+      "category": "needs_review",
+      "label": "Unassigned source blocks",
+      "records": [],
+      "residual_blocks": [
+        {
+          "source_id": "e0:0:1151",
+          "quote": "EXECUTIVE PROFILE Senior Product Owner / Product Manager with 15+ years of experience delivering enterprise digital products across EdTech, US Healthcare, Capital Markets, BFSI, and Hi-Tech domains. Strong expertise in product discovery, backlog management, and roadmap execution, translating complex business requirements into well-structured epics, user stories, and deliverable product features. Experienced in leading Agile / Scrum product delivery, facilitating sprint planning, backlog refinement, and stakeholder collaboration to ensure predictable delivery and high sprint commitment accuracy. Proven ability to bridge business and engineering teams, driving requirement clarity, stakeholder alignment, and smooth execution across cross-functional product teams. Hands-on experience leveraging AI-enabled tools for requirement analysis, product discovery, and backlog preparation, improving efficiency and accelerating product delivery cycles. Skilled in collaborating with UX, engineering, and business stakeholders to design customer journeys, define product requirements, and deliver user-centric digital solutions. Adept at managing end-to"
+        },
+        {
+          "source_id": "e0:1151:1846",
+          "quote": "-end product lifecycle activities including requirement analysis, feature prioritization, release planning, and product delivery in Agile environments. Experienced in driving process improvements and digital transformation initiatives that enhance operational efficiency, product adoption, and overall business outcomes. STRATEGIC COMPETENCIES Product Strategy and Execution User Story Writing & Acceptance Criteria Definition Product Backlog Governance & Prioritization AI-Augmented Product Development & GenAI Enablement Agile Product Delivery (Scrum / SAFe) Cross-Functional Team Leadership & Agile Collaboration Product Discovery & Requirement Engineering Customer Journey Mapping & Product "
+        }
+      ]
+    }
+  ]
+}

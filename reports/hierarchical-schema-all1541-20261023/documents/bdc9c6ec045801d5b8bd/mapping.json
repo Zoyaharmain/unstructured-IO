@@ -1,0 +1,2254 @@
+{
+  "success": true,
+  "source": "ShailjaThakur.pdf",
+  "extraction_mode": "existing_blocks_schema_mapping",
+  "data": {
+    "contact": {
+      "full_name": "",
+      "email": "",
+      "phone": "",
+      "location": null,
+      "linkedin_url": null,
+      "github_url": null,
+      "portfolio_url": null
+    },
+    "professional_title": null,
+    "summary": null,
+    "total_experience_years": null,
+    "skills": {
+      "technical_skills": [],
+      "tools_and_platforms": [],
+      "domain_and_functional": [],
+      "soft_skills": [],
+      "all_skills": []
+    },
+    "experience": [
+      {
+        "company": "",
+        "role": "AI Analyst",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [
+          "Developed an Enterprise Document Intelligence platform to extract,",
+          "Led and contributed to the development of the Container Gate",
+          "Developed an audience insights dashboard for Google and"
+        ],
+        "technologies": []
+      }
+    ],
+    "education": [
+      {
+        "institution": "Indian Institute of Information Technology,",
+        "degree": "Bachelor of Technology (CSE)",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      },
+      {
+        "institution": "",
+        "degree": "",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      },
+      {
+        "institution": "",
+        "degree": "",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      }
+    ],
+    "certifications": [],
+    "projects": [
+      {
+        "name": "Developed a predictive analytics model to understand user preferences",
+        "description": "Developed a predictive analytics model to understand user preferences\nbetween chatbot responses using data from the “Chatbot Arena.” Applied\nstatistical analysis and machine learning to identify key drivers of user\nchoices, improving predictive accuracy by 20% over baseline.\nDelivered insights on conversational quality and user engagement trends\nto inform product strategy.\nLLM-powered Search & Recommendation System\nBuilt a semantic search and recommendation engine leveraging LLM\nembeddings and hybrid retrieval (vector + keyword). Designed analytics\ndashboards to monitor search relevance, user engagement, and\nrecommendation performance, enabling datadriven improvements in\nknowledge management and personalization.",
+        "role": null,
+        "technologies": [],
+        "url": null
+      }
+    ],
+    "languages": []
+  },
+  "schema_mapping": {
+    "fields_populated": 3,
+    "total_fields": 16,
+    "completion_percentage": 18.8,
+    "field_details": [
+      {
+        "field_name": "contact.full_name",
+        "target_type": "string",
+        "is_required": true,
+        "is_extracted": false,
+        "source_section": "Header / Personal Details",
+        "confidence_score": 0.0,
+        "description": "Candidate's full name, extracted from the top header of the resume."
+      },
+      {
+        "field_name": "contact.email",
+        "target_type": "string (email)",
+        "is_required": true,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's primary contact email address."
+      },
+      {
+        "field_name": "contact.phone",
+        "target_type": "string (phone)",
+        "is_required": true,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's telephone / mobile phone number."
+      },
+      {
+        "field_name": "contact.location",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's residential location or work city."
+      },
+      {
+        "field_name": "contact.linkedin_url",
+        "target_type": "string (url) | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "URL to candidate's LinkedIn profile."
+      },
+      {
+        "field_name": "professional_title",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Subtitle",
+        "confidence_score": 0.0,
+        "description": "Candidate's target headline or most recent job title."
+      },
+      {
+        "field_name": "summary",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Professional Summary / Profile / Objective",
+        "confidence_score": 0.0,
+        "description": "Executive bio, professional overview, or career objective."
+      },
+      {
+        "field_name": "total_experience_years",
+        "target_type": "float | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Summary / Experience Calculation",
+        "confidence_score": 0.0,
+        "description": "Total professional experience in years."
+      },
+      {
+        "field_name": "skills.technical_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Technical Competencies",
+        "confidence_score": 0.0,
+        "description": "Technical programming languages and core software competencies."
+      },
+      {
+        "field_name": "skills.tools_and_platforms",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Tools & Technologies",
+        "confidence_score": 0.0,
+        "description": "Software platforms, developer tools, and operational systems."
+      },
+      {
+        "field_name": "skills.domain_and_functional",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Domain Expertise",
+        "confidence_score": 0.0,
+        "description": "Functional domain knowledge (e.g. Hedge Funds, KYC, NAV, Derivatives)."
+      },
+      {
+        "field_name": "skills.all_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills (Aggregated)",
+        "confidence_score": 0.0,
+        "description": "Complete list of candidate skills across all categories."
+      },
+      {
+        "field_name": "experience",
+        "target_type": "array[WorkExperience]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Experience / Work History",
+        "confidence_score": 0.92,
+        "description": "Complete chronological employment records with bullet points."
+      },
+      {
+        "field_name": "education",
+        "target_type": "array[Education]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Education / Academic Qualifications",
+        "confidence_score": 0.9,
+        "description": "University, college, and higher education degree qualifications."
+      },
+      {
+        "field_name": "certifications",
+        "target_type": "array[Certification]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Certifications / Licenses",
+        "confidence_score": 0.0,
+        "description": "Professional accreditations and credentials."
+      },
+      {
+        "field_name": "projects",
+        "target_type": "array[Project]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Projects / Key Engagements",
+        "confidence_score": 0.8,
+        "description": "Major projects or strategic initiatives led by candidate."
+      }
+    ]
+  },
+  "raw_sections": {
+    "experience": "WORK EXPERIENCE\nData Scientist\nMaersk\n03/2023 - 08/2025,\nAchievements/Tasks\nDeveloped an Enterprise Document Intelligence platform to extract,\nclassify, and structure insights from 35,000+ unstructured business\ndocuments. Designed analytics workflows to transform raw text into\nactionable intelligence, enabling faster decision-making and\nimproved reporting accuracy. Integrated advanced retrieval\nmechanisms for scalable access to key business information,\nreducing manual effort and enhancing operational efficiency.\nLed and contributed to the development of the Container Gate\nTime Prediction Model , collaborating across teams to enhance\ncontainer flow efficiency. The model delivered $1M in cost\nsavings.\nIntegrated MLOps best practices using Airflow, MLflow, and Azure ,\nreducing manual intervention and enhancing automation.\nAI Analyst\nPixis\n03/2022 - 01/2023,\nAchievements/Tasks\nDeveloped an audience insights dashboard for Google and\nFacebook Ads by aligning with product, marketing, and sales\nteams. Led discussions with stakeholders to define key metrics,\nimproving ad targeting by 20%.\nUsed GPT-3 model to develop an AI-driven advertisement generator\nfine-tuned pipelines, enabling the marketing team to create\nengaging, personalized ad campaigns that boosted customer\nengagement by 30% .\nPerson Tracking and Re-identification\nThe goal of the project was to uniquely identify a person in a video\nframe. Used YOLO algorithm to detect persons .\nSiamese Network to re-identify and track the person through unique\nfeatures from the body. Used MTCNN to extract face and Facenet model to\nre-identify through unique facial features.",
+    "awards": "Achievements/Tasks\nDeveloped a TOPSIS-based Driver Performance Model for route-\nspecific insights , enabling customer monitoring, rewarding, or\nwarning of drivers based on performance\nmetrics .\nEnhanced the Adblue tracking algorithm by 99%, allowing real-\ntime monitoring of thefts, refills, and breakpoints for\nOEM customers.\nACHIEVEMENTS\nN/Core Ideathon Winner (06/2018)\nProject Awaaz - One Lakh Seed Grant. From a total of 946 teams, we were\namong the top 10 and as well as the Winner. We received an offer of\nincubation as well as prize money of 1 Lakh.\nSmart India Hackathon - 2019 (Incubation offer)\nFrom a total of 1000+ ideas on the problem statement of 'PERSON\nTRACKING SYSTEM' given by HCL, our Team was chosen among the top 5, we\nalso received an offer to come onsite and implement our proposed solution.",
+    "skills": "SKILLS",
+    "projects": "PERSONAL PROJECTS\nDeveloped a predictive analytics model to understand user preferences\nbetween chatbot responses using data from the “Chatbot Arena.” Applied\nstatistical analysis and machine learning to identify key drivers of user\nchoices, improving predictive accuracy by 20% over baseline.\nDelivered insights on conversational quality and user engagement trends\nto inform product strategy.\nLLM-powered Search & Recommendation System\nBuilt a semantic search and recommendation engine leveraging LLM\nembeddings and hybrid retrieval (vector + keyword). Designed analytics\ndashboards to monitor search relevance, user engagement, and\nrecommendation performance, enabling datadriven improvements in\nknowledge management and personalization.",
+    "education": "EDUCATION\nBachelor of Technology (CSE)\nIndian Institute of Information Technology,\nKalyani\n8.24 CGPA\n2015 - 2019,"
+  },
+  "meta": {
+    "status": "needs_review",
+    "human_verified": false,
+    "provider_calls": 0,
+    "source_accounting": {
+      "all_source_text_preserved": true,
+      "total_spans": 76,
+      "assigned_meaningful_spans": 73,
+      "unresolved_meaningful_spans": 3,
+      "non_content_artifacts": 0,
+      "duplicates_excluded": 0,
+      "all_meaningful_text_assigned": false,
+      "semantic_correctness_verified": false,
+      "outcomes": [
+        {
+          "source_id": "e0:0:33",
+          "source_element_index": 0,
+          "start": 0,
+          "end": 33,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e1:0:15",
+          "source_element_index": 1,
+          "start": 0,
+          "end": 15,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e2:0:13",
+          "source_element_index": 2,
+          "start": 0,
+          "end": 13,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e3:0:18",
+          "source_element_index": 3,
+          "start": 0,
+          "end": 18,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e4:0:18",
+          "source_element_index": 4,
+          "start": 0,
+          "end": 18,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Distinct BERT heading match with a K-means section label"
+        },
+        {
+          "source_id": "e5:0:14",
+          "source_element_index": 5,
+          "start": 0,
+          "end": 14,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e6:0:6",
+          "source_element_index": 6,
+          "start": 0,
+          "end": 6,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e7:0:60",
+          "source_element_index": 7,
+          "start": 0,
+          "end": 60,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:0:18",
+          "source_element_index": 8,
+          "start": 0,
+          "end": 18,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:0:63",
+          "source_element_index": 9,
+          "start": 0,
+          "end": 63,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e10:0:18",
+          "source_element_index": 10,
+          "start": 0,
+          "end": 18,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e11:0:39",
+          "source_element_index": 11,
+          "start": 0,
+          "end": 39,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:0:9",
+          "source_element_index": 12,
+          "start": 0,
+          "end": 9,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e13:0:66",
+          "source_element_index": 13,
+          "start": 0,
+          "end": 66,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e14:0:67",
+          "source_element_index": 14,
+          "start": 0,
+          "end": 67,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e15:0:61",
+          "source_element_index": 15,
+          "start": 0,
+          "end": 61,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e16:0:66",
+          "source_element_index": 16,
+          "start": 0,
+          "end": 66,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e17:0:55",
+          "source_element_index": 17,
+          "start": 0,
+          "end": 55,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e18:0:60",
+          "source_element_index": 18,
+          "start": 0,
+          "end": 60,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e19:0:14",
+          "source_element_index": 19,
+          "start": 0,
+          "end": 14,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e20:0:58",
+          "source_element_index": 20,
+          "start": 0,
+          "end": 58,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e21:0:6",
+          "source_element_index": 21,
+          "start": 0,
+          "end": 6,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e22:0:59",
+          "source_element_index": 22,
+          "start": 0,
+          "end": 59,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e23:0:60",
+          "source_element_index": 23,
+          "start": 0,
+          "end": 60,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e24:0:60",
+          "source_element_index": 24,
+          "start": 0,
+          "end": 60,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e25:0:61",
+          "source_element_index": 25,
+          "start": 0,
+          "end": 61,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e26:0:58",
+          "source_element_index": 26,
+          "start": 0,
+          "end": 58,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e27:0:8",
+          "source_element_index": 27,
+          "start": 0,
+          "end": 8,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e28:0:66",
+          "source_element_index": 28,
+          "start": 0,
+          "end": 66,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e29:0:54",
+          "source_element_index": 29,
+          "start": 0,
+          "end": 54,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e30:0:17",
+          "source_element_index": 30,
+          "start": 0,
+          "end": 17,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e31:0:10",
+          "source_element_index": 31,
+          "start": 0,
+          "end": 10,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e32:0:5",
+          "source_element_index": 32,
+          "start": 0,
+          "end": 5,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e33:0:18",
+          "source_element_index": 33,
+          "start": 0,
+          "end": 18,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e34:0:69",
+          "source_element_index": 34,
+          "start": 0,
+          "end": 69,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e35:0:18",
+          "source_element_index": 35,
+          "start": 0,
+          "end": 18,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e36:0:70",
+          "source_element_index": 36,
+          "start": 0,
+          "end": 70,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e37:0:73",
+          "source_element_index": 37,
+          "start": 0,
+          "end": 73,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e38:0:60",
+          "source_element_index": 38,
+          "start": 0,
+          "end": 60,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e39:0:55",
+          "source_element_index": 39,
+          "start": 0,
+          "end": 55,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e40:0:59",
+          "source_element_index": 40,
+          "start": 0,
+          "end": 59,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e41:0:71",
+          "source_element_index": 41,
+          "start": 0,
+          "end": 71,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e42:0:63",
+          "source_element_index": 42,
+          "start": 0,
+          "end": 63,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e43:0:27",
+          "source_element_index": 43,
+          "start": 0,
+          "end": 27,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e44:0:30",
+          "source_element_index": 44,
+          "start": 0,
+          "end": 30,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e45:0:42",
+          "source_element_index": 45,
+          "start": 0,
+          "end": 42,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e46:0:64",
+          "source_element_index": 46,
+          "start": 0,
+          "end": 64,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e47:0:59",
+          "source_element_index": 47,
+          "start": 0,
+          "end": 59,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e48:0:64",
+          "source_element_index": 48,
+          "start": 0,
+          "end": 64,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e49:0:57",
+          "source_element_index": 49,
+          "start": 0,
+          "end": 57,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e50:0:70",
+          "source_element_index": 50,
+          "start": 0,
+          "end": 70,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e51:0:60",
+          "source_element_index": 51,
+          "start": 0,
+          "end": 60,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e52:0:19",
+          "source_element_index": 52,
+          "start": 0,
+          "end": 19,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e53:0:63",
+          "source_element_index": 53,
+          "start": 0,
+          "end": 63,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e54:0:41",
+          "source_element_index": 54,
+          "start": 0,
+          "end": 41,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e55:0:37",
+          "source_element_index": 55,
+          "start": 0,
+          "end": 37,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e56:0:68",
+          "source_element_index": 56,
+          "start": 0,
+          "end": 68,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e57:0:46",
+          "source_element_index": 57,
+          "start": 0,
+          "end": 46,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e58:0:66",
+          "source_element_index": 58,
+          "start": 0,
+          "end": 66,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e59:0:71",
+          "source_element_index": 59,
+          "start": 0,
+          "end": 71,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e60:0:43",
+          "source_element_index": 60,
+          "start": 0,
+          "end": 43,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e61:0:9",
+          "source_element_index": 61,
+          "start": 0,
+          "end": 9,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e62:0:28",
+          "source_element_index": 62,
+          "start": 0,
+          "end": 28,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e63:0:43",
+          "source_element_index": 63,
+          "start": 0,
+          "end": 43,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e64:0:7",
+          "source_element_index": 64,
+          "start": 0,
+          "end": 7,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e65:0:9",
+          "source_element_index": 65,
+          "start": 0,
+          "end": 9,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e66:0:12",
+          "source_element_index": 66,
+          "start": 0,
+          "end": 12,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e67:0:12",
+          "source_element_index": 67,
+          "start": 0,
+          "end": 12,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e68:0:32",
+          "source_element_index": 68,
+          "start": 0,
+          "end": 32,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e69:0:71",
+          "source_element_index": 69,
+          "start": 0,
+          "end": 71,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e70:0:67",
+          "source_element_index": 70,
+          "start": 0,
+          "end": 67,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e71:0:44",
+          "source_element_index": 71,
+          "start": 0,
+          "end": 44,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e72:0:47",
+          "source_element_index": 72,
+          "start": 0,
+          "end": 47,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e73:0:63",
+          "source_element_index": 73,
+          "start": 0,
+          "end": 63,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e74:0:70",
+          "source_element_index": 74,
+          "start": 0,
+          "end": 70,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e75:0:74",
+          "source_element_index": 75,
+          "start": 0,
+          "end": 74,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        }
+      ]
+    },
+    "document_scope": {
+      "kind": "candidate_or_unknown",
+      "candidate_resume": null,
+      "requires_scope_review": true
+    },
+    "source_inventory_sha256": "9509cf3327cc04eabbd7d711a585436cd470b62ff111daeb6cf80dc1e1623a00",
+    "field_evidence": {
+      "experience[0].role": [
+        "e31:0:10"
+      ],
+      "experience[0].responsibilities[0]": [
+        "e13:0:66"
+      ],
+      "experience[0].responsibilities[1]": [
+        "e24:0:60"
+      ],
+      "experience[0].responsibilities[2]": [
+        "e39:0:55"
+      ],
+      "education[0].degree": [
+        "e62:0:28"
+      ],
+      "education[0].institution": [
+        "e63:0:43"
+      ],
+      "projects[0].name": [
+        "e34:0:69",
+        "e36:0:70",
+        "e37:0:73",
+        "e38:0:60",
+        "e41:0:71",
+        "e43:0:27",
+        "e45:0:42",
+        "e48:0:64",
+        "e50:0:70",
+        "e51:0:60",
+        "e53:0:63",
+        "e54:0:41"
+      ],
+      "projects[0].description": [
+        "e34:0:69",
+        "e36:0:70",
+        "e37:0:73",
+        "e38:0:60",
+        "e41:0:71",
+        "e43:0:27",
+        "e45:0:42",
+        "e48:0:64",
+        "e50:0:70",
+        "e51:0:60",
+        "e53:0:63",
+        "e54:0:41"
+      ]
+    },
+    "record_reviews": [
+      {
+        "category": "experience",
+        "entry_id": "experience-1",
+        "source_ids": [
+          "e5:0:14",
+          "e6:0:6",
+          "e8:0:18",
+          "e10:0:18",
+          "e13:0:66",
+          "e14:0:67",
+          "e16:0:66",
+          "e18:0:60",
+          "e20:0:58",
+          "e22:0:59",
+          "e23:0:60",
+          "e24:0:60",
+          "e25:0:61",
+          "e26:0:58",
+          "e27:0:8",
+          "e28:0:66",
+          "e29:0:54",
+          "e31:0:10",
+          "e32:0:5",
+          "e33:0:18",
+          "e35:0:18",
+          "e39:0:55",
+          "e40:0:59",
+          "e42:0:63",
+          "e44:0:30",
+          "e46:0:64",
+          "e47:0:59",
+          "e49:0:57",
+          "e52:0:19",
+          "e55:0:37",
+          "e56:0:68",
+          "e57:0:46",
+          "e58:0:66",
+          "e59:0:71",
+          "e60:0:43"
+        ],
+        "relationship_status": "needs_review",
+        "review_reasons": [
+          "employer_not_established_from_supported_fields"
+        ]
+      },
+      {
+        "category": "education",
+        "entry_id": "education-1",
+        "source_ids": [
+          "e62:0:28",
+          "e63:0:43",
+          "e64:0:7"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "education",
+        "entry_id": "education-2",
+        "source_ids": [
+          "e65:0:9"
+        ],
+        "relationship_status": "needs_review",
+        "review_reasons": [
+          "qualification_not_established"
+        ]
+      },
+      {
+        "category": "education",
+        "entry_id": "education-3",
+        "source_ids": [
+          "e66:0:12"
+        ],
+        "relationship_status": "needs_review",
+        "review_reasons": [
+          "qualification_not_established"
+        ]
+      },
+      {
+        "category": "projects",
+        "entry_id": "projects-1",
+        "source_ids": [
+          "e34:0:69",
+          "e36:0:70",
+          "e37:0:73",
+          "e38:0:60",
+          "e41:0:71",
+          "e43:0:27",
+          "e45:0:42",
+          "e48:0:64",
+          "e50:0:70",
+          "e51:0:60",
+          "e53:0:63",
+          "e54:0:41"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      }
+    ],
+    "missing_required_fields": [
+      "contact.full_name",
+      "contact.email",
+      "contact.phone",
+      "experience[0].company",
+      "education[1].institution",
+      "education[1].degree",
+      "education[2].institution",
+      "education[2].degree"
+    ],
+    "warnings": [
+      "Schema validity and field completion do not establish extraction or relationship accuracy.",
+      "Handoff confidence scores are fixed heuristics, not calibrated probabilities.",
+      "Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields."
+    ],
+    "unmapped_blocks": [
+      {
+        "source_id": "e1:0:15",
+        "category": "experience",
+        "text": "WORK EXPERIENCE",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:0:14",
+        "category": "experience",
+        "text": "Data Scientist",
+        "page_number": 1
+      },
+      {
+        "source_id": "e6:0:6",
+        "category": "experience",
+        "text": "Maersk",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:0:18",
+        "category": "experience",
+        "text": "03/2023 - 08/2025,",
+        "page_number": 1
+      },
+      {
+        "source_id": "e10:0:18",
+        "category": "experience",
+        "text": "Achievements/Tasks",
+        "page_number": 1
+      },
+      {
+        "source_id": "e14:0:67",
+        "category": "experience",
+        "text": "classify, and structure insights from 35,000+ unstructured business",
+        "page_number": 1
+      },
+      {
+        "source_id": "e16:0:66",
+        "category": "experience",
+        "text": "documents. Designed analytics workflows to transform raw text into",
+        "page_number": 1
+      },
+      {
+        "source_id": "e18:0:60",
+        "category": "experience",
+        "text": "actionable intelligence, enabling faster decision-making and",
+        "page_number": 1
+      },
+      {
+        "source_id": "e20:0:58",
+        "category": "experience",
+        "text": "improved reporting accuracy. Integrated advanced retrieval",
+        "page_number": 1
+      },
+      {
+        "source_id": "e22:0:59",
+        "category": "experience",
+        "text": "mechanisms for scalable access to key business information,",
+        "page_number": 1
+      },
+      {
+        "source_id": "e23:0:60",
+        "category": "experience",
+        "text": "reducing manual effort and enhancing operational efficiency.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e25:0:61",
+        "category": "experience",
+        "text": "Time Prediction Model , collaborating across teams to enhance",
+        "page_number": 1
+      },
+      {
+        "source_id": "e26:0:58",
+        "category": "experience",
+        "text": "container flow efficiency. The model delivered $1M in cost",
+        "page_number": 1
+      },
+      {
+        "source_id": "e27:0:8",
+        "category": "experience",
+        "text": "savings.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e28:0:66",
+        "category": "experience",
+        "text": "Integrated MLOps best practices using Airflow, MLflow, and Azure ,",
+        "page_number": 1
+      },
+      {
+        "source_id": "e29:0:54",
+        "category": "experience",
+        "text": "reducing manual intervention and enhancing automation.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e32:0:5",
+        "category": "experience",
+        "text": "Pixis",
+        "page_number": 1
+      },
+      {
+        "source_id": "e33:0:18",
+        "category": "experience",
+        "text": "03/2022 - 01/2023,",
+        "page_number": 1
+      },
+      {
+        "source_id": "e35:0:18",
+        "category": "experience",
+        "text": "Achievements/Tasks",
+        "page_number": 1
+      },
+      {
+        "source_id": "e40:0:59",
+        "category": "experience",
+        "text": "Facebook Ads by aligning with product, marketing, and sales",
+        "page_number": 1
+      },
+      {
+        "source_id": "e42:0:63",
+        "category": "experience",
+        "text": "teams. Led discussions with stakeholders to define key metrics,",
+        "page_number": 1
+      },
+      {
+        "source_id": "e44:0:30",
+        "category": "experience",
+        "text": "improving ad targeting by 20%.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e46:0:64",
+        "category": "experience",
+        "text": "Used GPT-3 model to develop an AI-driven advertisement generator",
+        "page_number": 1
+      },
+      {
+        "source_id": "e47:0:59",
+        "category": "experience",
+        "text": "fine-tuned pipelines, enabling the marketing team to create",
+        "page_number": 1
+      },
+      {
+        "source_id": "e49:0:57",
+        "category": "experience",
+        "text": "engaging, personalized ad campaigns that boosted customer",
+        "page_number": 1
+      },
+      {
+        "source_id": "e52:0:19",
+        "category": "experience",
+        "text": "engagement by 30% .",
+        "page_number": 1
+      },
+      {
+        "source_id": "e55:0:37",
+        "category": "experience",
+        "text": "Person Tracking and Re-identification",
+        "page_number": 2
+      },
+      {
+        "source_id": "e56:0:68",
+        "category": "experience",
+        "text": "The goal of the project was to uniquely identify a person in a video",
+        "page_number": 2
+      },
+      {
+        "source_id": "e57:0:46",
+        "category": "experience",
+        "text": "frame. Used YOLO algorithm to detect persons .",
+        "page_number": 2
+      },
+      {
+        "source_id": "e58:0:66",
+        "category": "experience",
+        "text": "Siamese Network to re-identify and track the person through unique",
+        "page_number": 2
+      },
+      {
+        "source_id": "e59:0:71",
+        "category": "experience",
+        "text": "features from the body. Used MTCNN to extract face and Facenet model to",
+        "page_number": 2
+      },
+      {
+        "source_id": "e60:0:43",
+        "category": "experience",
+        "text": "re-identify through unique facial features.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e4:0:18",
+        "category": "awards",
+        "text": "Achievements/Tasks",
+        "page_number": 1
+      },
+      {
+        "source_id": "e7:0:60",
+        "category": "awards",
+        "text": "Developed a TOPSIS-based Driver Performance Model for route-",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:0:63",
+        "category": "awards",
+        "text": "specific insights , enabling customer monitoring, rewarding, or",
+        "page_number": 1
+      },
+      {
+        "source_id": "e11:0:39",
+        "category": "awards",
+        "text": "warning of drivers based on performance",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:0:9",
+        "category": "awards",
+        "text": "metrics .",
+        "page_number": 1
+      },
+      {
+        "source_id": "e15:0:61",
+        "category": "awards",
+        "text": "Enhanced the Adblue tracking algorithm by 99%, allowing real-",
+        "page_number": 1
+      },
+      {
+        "source_id": "e17:0:55",
+        "category": "awards",
+        "text": "time monitoring of thefts, refills, and breakpoints for",
+        "page_number": 1
+      },
+      {
+        "source_id": "e19:0:14",
+        "category": "awards",
+        "text": "OEM customers.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e67:0:12",
+        "category": "awards",
+        "text": "ACHIEVEMENTS",
+        "page_number": 2
+      },
+      {
+        "source_id": "e68:0:32",
+        "category": "awards",
+        "text": "N/Core Ideathon Winner (06/2018)",
+        "page_number": 2
+      },
+      {
+        "source_id": "e69:0:71",
+        "category": "awards",
+        "text": "Project Awaaz - One Lakh Seed Grant. From a total of 946 teams, we were",
+        "page_number": 2
+      },
+      {
+        "source_id": "e70:0:67",
+        "category": "awards",
+        "text": "among the top 10 and as well as the Winner. We received an offer of",
+        "page_number": 2
+      },
+      {
+        "source_id": "e71:0:44",
+        "category": "awards",
+        "text": "incubation as well as prize money of 1 Lakh.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e72:0:47",
+        "category": "awards",
+        "text": "Smart India Hackathon - 2019 (Incubation offer)",
+        "page_number": 2
+      },
+      {
+        "source_id": "e73:0:63",
+        "category": "awards",
+        "text": "From a total of 1000+ ideas on the problem statement of 'PERSON",
+        "page_number": 2
+      },
+      {
+        "source_id": "e74:0:70",
+        "category": "awards",
+        "text": "TRACKING SYSTEM' given by HCL, our Team was chosen among the top 5, we",
+        "page_number": 2
+      },
+      {
+        "source_id": "e75:0:74",
+        "category": "awards",
+        "text": "also received an offer to come onsite and implement our proposed solution.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e21:0:6",
+        "category": "skills",
+        "text": "SKILLS",
+        "page_number": 1
+      },
+      {
+        "source_id": "e30:0:17",
+        "category": "projects",
+        "text": "PERSONAL PROJECTS",
+        "page_number": 1
+      },
+      {
+        "source_id": "e61:0:9",
+        "category": "education",
+        "text": "EDUCATION",
+        "page_number": 2
+      },
+      {
+        "source_id": "e64:0:7",
+        "category": "education",
+        "text": "Kalyani",
+        "page_number": 2
+      },
+      {
+        "source_id": "e65:0:9",
+        "category": "education",
+        "text": "8.24 CGPA",
+        "page_number": 2
+      },
+      {
+        "source_id": "e66:0:12",
+        "category": "education",
+        "text": "2015 - 2019,",
+        "page_number": 2
+      },
+      {
+        "source_id": "e0:0:33",
+        "category": null,
+        "text": "Applied Machine Learning Engineer",
+        "page_number": 1
+      },
+      {
+        "source_id": "e2:0:13",
+        "category": null,
+        "text": "Intangles Lab",
+        "page_number": 1
+      },
+      {
+        "source_id": "e3:0:18",
+        "category": null,
+        "text": "11/2019 - 11/2021,",
+        "page_number": 1
+      }
+    ],
+    "needs_review": [
+      {
+        "source_element_index": 0,
+        "start": 0,
+        "end": 33,
+        "text": "Applied Machine Learning Engineer",
+        "page_number": 1,
+        "cluster_id": 1,
+        "candidate_section": "summary",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.4664,
+        "margin": 0.0244,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 2,
+        "start": 0,
+        "end": 13,
+        "text": "Intangles Lab",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2165,
+        "margin": -0.0086,
+        "lane": "right",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 3,
+        "start": 0,
+        "end": 18,
+        "text": "11/2019 - 11/2021,",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3154,
+        "margin": 0.025,
+        "lane": "right",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      }
+    ]
+  },
+  "section_schemas": [
+    {
+      "category": "experience",
+      "label": "Experience",
+      "records": [
+        {
+          "record_id": "experience-1",
+          "source_ids": [
+            "e5:0:14",
+            "e6:0:6",
+            "e8:0:18",
+            "e10:0:18",
+            "e13:0:66",
+            "e14:0:67",
+            "e16:0:66",
+            "e18:0:60",
+            "e20:0:58",
+            "e22:0:59",
+            "e23:0:60",
+            "e24:0:60",
+            "e25:0:61",
+            "e26:0:58",
+            "e27:0:8",
+            "e28:0:66",
+            "e29:0:54",
+            "e31:0:10",
+            "e32:0:5",
+            "e33:0:18",
+            "e35:0:18",
+            "e39:0:55",
+            "e40:0:59",
+            "e42:0:63",
+            "e44:0:30",
+            "e46:0:64",
+            "e47:0:59",
+            "e49:0:57",
+            "e52:0:19",
+            "e55:0:37",
+            "e56:0:68",
+            "e57:0:46",
+            "e58:0:66",
+            "e59:0:71",
+            "e60:0:43"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [
+                {
+                  "value": "AI Analyst",
+                  "evidence": [
+                    {
+                      "source_id": "e31:0:10",
+                      "quote": "AI Analyst"
+                    }
+                  ],
+                  "status": "needs_review"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [
+                {
+                  "value": "Developed an Enterprise Document Intelligence platform to extract,",
+                  "evidence": [
+                    {
+                      "source_id": "e13:0:66",
+                      "quote": "Developed an Enterprise Document Intelligence platform to extract,"
+                    }
+                  ],
+                  "status": "needs_review"
+                },
+                {
+                  "value": "Led and contributed to the development of the Container Gate",
+                  "evidence": [
+                    {
+                      "source_id": "e24:0:60",
+                      "quote": "Led and contributed to the development of the Container Gate"
+                    }
+                  ],
+                  "status": "needs_review"
+                },
+                {
+                  "value": "Developed an audience insights dashboard for Google and",
+                  "evidence": [
+                    {
+                      "source_id": "e39:0:55",
+                      "quote": "Developed an audience insights dashboard for Google and"
+                    }
+                  ],
+                  "status": "needs_review"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "employer_not_established_from_supported_fields"
+          ]
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e1:0:15",
+          "quote": "WORK EXPERIENCE"
+        },
+        {
+          "source_id": "e5:0:14",
+          "quote": "Data Scientist"
+        },
+        {
+          "source_id": "e6:0:6",
+          "quote": "Maersk"
+        },
+        {
+          "source_id": "e8:0:18",
+          "quote": "03/2023 - 08/2025,"
+        },
+        {
+          "source_id": "e10:0:18",
+          "quote": "Achievements/Tasks"
+        },
+        {
+          "source_id": "e14:0:67",
+          "quote": "classify, and structure insights from 35,000+ unstructured business"
+        },
+        {
+          "source_id": "e16:0:66",
+          "quote": "documents. Designed analytics workflows to transform raw text into"
+        },
+        {
+          "source_id": "e18:0:60",
+          "quote": "actionable intelligence, enabling faster decision-making and"
+        },
+        {
+          "source_id": "e20:0:58",
+          "quote": "improved reporting accuracy. Integrated advanced retrieval"
+        },
+        {
+          "source_id": "e22:0:59",
+          "quote": "mechanisms for scalable access to key business information,"
+        },
+        {
+          "source_id": "e23:0:60",
+          "quote": "reducing manual effort and enhancing operational efficiency."
+        },
+        {
+          "source_id": "e25:0:61",
+          "quote": "Time Prediction Model , collaborating across teams to enhance"
+        },
+        {
+          "source_id": "e26:0:58",
+          "quote": "container flow efficiency. The model delivered $1M in cost"
+        },
+        {
+          "source_id": "e27:0:8",
+          "quote": "savings."
+        },
+        {
+          "source_id": "e28:0:66",
+          "quote": "Integrated MLOps best practices using Airflow, MLflow, and Azure ,"
+        },
+        {
+          "source_id": "e29:0:54",
+          "quote": "reducing manual intervention and enhancing automation."
+        },
+        {
+          "source_id": "e32:0:5",
+          "quote": "Pixis"
+        },
+        {
+          "source_id": "e33:0:18",
+          "quote": "03/2022 - 01/2023,"
+        },
+        {
+          "source_id": "e35:0:18",
+          "quote": "Achievements/Tasks"
+        },
+        {
+          "source_id": "e40:0:59",
+          "quote": "Facebook Ads by aligning with product, marketing, and sales"
+        },
+        {
+          "source_id": "e42:0:63",
+          "quote": "teams. Led discussions with stakeholders to define key metrics,"
+        },
+        {
+          "source_id": "e44:0:30",
+          "quote": "improving ad targeting by 20%."
+        },
+        {
+          "source_id": "e46:0:64",
+          "quote": "Used GPT-3 model to develop an AI-driven advertisement generator"
+        },
+        {
+          "source_id": "e47:0:59",
+          "quote": "fine-tuned pipelines, enabling the marketing team to create"
+        },
+        {
+          "source_id": "e49:0:57",
+          "quote": "engaging, personalized ad campaigns that boosted customer"
+        },
+        {
+          "source_id": "e52:0:19",
+          "quote": "engagement by 30% ."
+        },
+        {
+          "source_id": "e55:0:37",
+          "quote": "Person Tracking and Re-identification"
+        },
+        {
+          "source_id": "e56:0:68",
+          "quote": "The goal of the project was to uniquely identify a person in a video"
+        },
+        {
+          "source_id": "e57:0:46",
+          "quote": "frame. Used YOLO algorithm to detect persons ."
+        },
+        {
+          "source_id": "e58:0:66",
+          "quote": "Siamese Network to re-identify and track the person through unique"
+        },
+        {
+          "source_id": "e59:0:71",
+          "quote": "features from the body. Used MTCNN to extract face and Facenet model to"
+        },
+        {
+          "source_id": "e60:0:43",
+          "quote": "re-identify through unique facial features."
+        }
+      ]
+    },
+    {
+      "category": "awards",
+      "label": "Awards and achievements",
+      "records": [
+        {
+          "record_id": "awards-1",
+          "source_ids": [
+            "e7:0:60",
+            "e9:0:63",
+            "e11:0:39",
+            "e12:0:9",
+            "e15:0:61",
+            "e17:0:55",
+            "e19:0:14"
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "issuer",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "date",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "Unlabelled compound information requires source review."
+          ]
+        },
+        {
+          "record_id": "awards-2",
+          "source_ids": [
+            "e68:0:32",
+            "e69:0:71",
+            "e70:0:67",
+            "e71:0:44",
+            "e72:0:47",
+            "e73:0:63",
+            "e74:0:70",
+            "e75:0:74"
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "issuer",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "date",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "Unlabelled compound information requires source review."
+          ]
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e4:0:18",
+          "quote": "Achievements/Tasks"
+        },
+        {
+          "source_id": "e7:0:60",
+          "quote": "Developed a TOPSIS-based Driver Performance Model for route-"
+        },
+        {
+          "source_id": "e9:0:63",
+          "quote": "specific insights , enabling customer monitoring, rewarding, or"
+        },
+        {
+          "source_id": "e11:0:39",
+          "quote": "warning of drivers based on performance"
+        },
+        {
+          "source_id": "e12:0:9",
+          "quote": "metrics ."
+        },
+        {
+          "source_id": "e15:0:61",
+          "quote": "Enhanced the Adblue tracking algorithm by 99%, allowing real-"
+        },
+        {
+          "source_id": "e17:0:55",
+          "quote": "time monitoring of thefts, refills, and breakpoints for"
+        },
+        {
+          "source_id": "e19:0:14",
+          "quote": "OEM customers."
+        },
+        {
+          "source_id": "e67:0:12",
+          "quote": "ACHIEVEMENTS"
+        },
+        {
+          "source_id": "e68:0:32",
+          "quote": "N/Core Ideathon Winner (06/2018)"
+        },
+        {
+          "source_id": "e69:0:71",
+          "quote": "Project Awaaz - One Lakh Seed Grant. From a total of 946 teams, we were"
+        },
+        {
+          "source_id": "e70:0:67",
+          "quote": "among the top 10 and as well as the Winner. We received an offer of"
+        },
+        {
+          "source_id": "e71:0:44",
+          "quote": "incubation as well as prize money of 1 Lakh."
+        },
+        {
+          "source_id": "e72:0:47",
+          "quote": "Smart India Hackathon - 2019 (Incubation offer)"
+        },
+        {
+          "source_id": "e73:0:63",
+          "quote": "From a total of 1000+ ideas on the problem statement of 'PERSON"
+        },
+        {
+          "source_id": "e74:0:70",
+          "quote": "TRACKING SYSTEM' given by HCL, our Team was chosen among the top 5, we"
+        },
+        {
+          "source_id": "e75:0:74",
+          "quote": "also received an offer to come onsite and implement our proposed solution."
+        }
+      ]
+    },
+    {
+      "category": "skills",
+      "label": "Skills",
+      "records": [],
+      "residual_blocks": [
+        {
+          "source_id": "e21:0:6",
+          "quote": "SKILLS"
+        }
+      ]
+    },
+    {
+      "category": "projects",
+      "label": "Projects",
+      "records": [
+        {
+          "record_id": "projects-1",
+          "source_ids": [
+            "e34:0:69",
+            "e36:0:70",
+            "e37:0:73",
+            "e38:0:60",
+            "e41:0:71",
+            "e43:0:27",
+            "e45:0:42",
+            "e48:0:64",
+            "e50:0:70",
+            "e51:0:60",
+            "e53:0:63",
+            "e54:0:41"
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "items": [
+                {
+                  "value": "Developed a predictive analytics model to understand user preferences",
+                  "evidence": [
+                    {
+                      "source_id": "e34:0:69",
+                      "quote": "Developed a predictive analytics model to understand user preferences"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "description",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "url",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e30:0:17",
+          "quote": "PERSONAL PROJECTS"
+        },
+        {
+          "source_id": "e36:0:70",
+          "quote": "between chatbot responses using data from the “Chatbot Arena.” Applied"
+        },
+        {
+          "source_id": "e37:0:73",
+          "quote": "statistical analysis and machine learning to identify key drivers of user"
+        },
+        {
+          "source_id": "e38:0:60",
+          "quote": "choices, improving predictive accuracy by 20% over baseline."
+        },
+        {
+          "source_id": "e41:0:71",
+          "quote": "Delivered insights on conversational quality and user engagement trends"
+        },
+        {
+          "source_id": "e43:0:27",
+          "quote": "to inform product strategy."
+        },
+        {
+          "source_id": "e45:0:42",
+          "quote": "LLM-powered Search & Recommendation System"
+        },
+        {
+          "source_id": "e48:0:64",
+          "quote": "Built a semantic search and recommendation engine leveraging LLM"
+        },
+        {
+          "source_id": "e50:0:70",
+          "quote": "embeddings and hybrid retrieval (vector + keyword). Designed analytics"
+        },
+        {
+          "source_id": "e51:0:60",
+          "quote": "dashboards to monitor search relevance, user engagement, and"
+        },
+        {
+          "source_id": "e53:0:63",
+          "quote": "recommendation performance, enabling datadriven improvements in"
+        },
+        {
+          "source_id": "e54:0:41",
+          "quote": "knowledge management and personalization."
+        }
+      ]
+    },
+    {
+      "category": "education",
+      "label": "Education",
+      "records": [
+        {
+          "record_id": "education-1",
+          "source_ids": [
+            "e62:0:28",
+            "e63:0:43",
+            "e64:0:7"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [
+                {
+                  "value": "Indian Institute of Information Technology,",
+                  "evidence": [
+                    {
+                      "source_id": "e63:0:43",
+                      "quote": "Indian Institute of Information Technology,"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "degree",
+              "items": [
+                {
+                  "value": "Bachelor of Technology",
+                  "evidence": [
+                    {
+                      "source_id": "e62:0:28",
+                      "quote": "Bachelor of Technology"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "field_of_study",
+              "items": [
+                {
+                  "value": "CSE",
+                  "evidence": [
+                    {
+                      "source_id": "e62:0:28",
+                      "quote": "CSE"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "education-2",
+          "source_ids": [
+            "e65:0:9"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "degree",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "qualification_not_established"
+          ]
+        },
+        {
+          "record_id": "education-3",
+          "source_ids": [
+            "e66:0:12"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "degree",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "qualification_not_established"
+          ]
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e61:0:9",
+          "quote": "EDUCATION"
+        },
+        {
+          "source_id": "e62:0:28",
+          "quote": "Bachelor of Technology (CSE)"
+        },
+        {
+          "source_id": "e64:0:7",
+          "quote": "Kalyani"
+        },
+        {
+          "source_id": "e65:0:9",
+          "quote": "8.24 CGPA"
+        },
+        {
+          "source_id": "e66:0:12",
+          "quote": "2015 - 2019,"
+        }
+      ]
+    },
+    {
+      "category": "needs_review",
+      "label": "Unassigned source blocks",
+      "records": [],
+      "residual_blocks": [
+        {
+          "source_id": "e0:0:33",
+          "quote": "Applied Machine Learning Engineer"
+        },
+        {
+          "source_id": "e2:0:13",
+          "quote": "Intangles Lab"
+        },
+        {
+          "source_id": "e3:0:18",
+          "quote": "11/2019 - 11/2021,"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,3283 @@
+{
+  "success": true,
+  "source": "Shraddha Patil.pdf",
+  "extraction_mode": "existing_blocks_schema_mapping",
+  "data": {
+    "contact": {
+      "full_name": "EXPERIENCEPune Maharashtra shraddhapatil28108@gmail.com+917448222344SHRADDHA",
+      "email": "shraddhapatil28108@gmail.com",
+      "phone": "+917448222344",
+      "location": null,
+      "linkedin_url": null,
+      "github_url": null,
+      "portfolio_url": null
+    },
+    "professional_title": null,
+    "summary": null,
+    "total_experience_years": null,
+    "skills": {
+      "technical_skills": [
+        "SQL"
+      ],
+      "tools_and_platforms": [
+        "Excel"
+      ],
+      "domain_and_functional": [],
+      "soft_skills": [],
+      "all_skills": [
+        "SQL",
+        "Excel",
+        "Dataverse",
+        "SQL Server",
+        "and Excel to build scalable",
+        "high-performance solutions. Proficient in UI/UX design",
+        "dataintegration"
+      ]
+    },
+    "experience": [
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "applications and services.",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      }
+    ],
+    "education": [],
+    "certifications": [],
+    "projects": [],
+    "languages": []
+  },
+  "schema_mapping": {
+    "fields_populated": 7,
+    "total_fields": 16,
+    "completion_percentage": 43.8,
+    "field_details": [
+      {
+        "field_name": "contact.full_name",
+        "target_type": "string",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Personal Details",
+        "confidence_score": 0.95,
+        "description": "Candidate's full name, extracted from the top header of the resume."
+      },
+      {
+        "field_name": "contact.email",
+        "target_type": "string (email)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.98,
+        "description": "Candidate's primary contact email address."
+      },
+      {
+        "field_name": "contact.phone",
+        "target_type": "string (phone)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.95,
+        "description": "Candidate's telephone / mobile phone number."
+      },
+      {
+        "field_name": "contact.location",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's residential location or work city."
+      },
+      {
+        "field_name": "contact.linkedin_url",
+        "target_type": "string (url) | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "URL to candidate's LinkedIn profile."
+      },
+      {
+        "field_name": "professional_title",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Subtitle",
+        "confidence_score": 0.0,
+        "description": "Candidate's target headline or most recent job title."
+      },
+      {
+        "field_name": "summary",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Professional Summary / Profile / Objective",
+        "confidence_score": 0.0,
+        "description": "Executive bio, professional overview, or career objective."
+      },
+      {
+        "field_name": "total_experience_years",
+        "target_type": "float | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Summary / Experience Calculation",
+        "confidence_score": 0.0,
+        "description": "Total professional experience in years."
+      },
+      {
+        "field_name": "skills.technical_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills / Technical Competencies",
+        "confidence_score": 0.92,
+        "description": "Technical programming languages and core software competencies."
+      },
+      {
+        "field_name": "skills.tools_and_platforms",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills / Tools & Technologies",
+        "confidence_score": 0.9,
+        "description": "Software platforms, developer tools, and operational systems."
+      },
+      {
+        "field_name": "skills.domain_and_functional",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Domain Expertise",
+        "confidence_score": 0.0,
+        "description": "Functional domain knowledge (e.g. Hedge Funds, KYC, NAV, Derivatives)."
+      },
+      {
+        "field_name": "skills.all_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills (Aggregated)",
+        "confidence_score": 0.95,
+        "description": "Complete list of candidate skills across all categories."
+      },
+      {
+        "field_name": "experience",
+        "target_type": "array[WorkExperience]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Experience / Work History",
+        "confidence_score": 0.92,
+        "description": "Complete chronological employment records with bullet points."
+      },
+      {
+        "field_name": "education",
+        "target_type": "array[Education]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Education / Academic Qualifications",
+        "confidence_score": 0.0,
+        "description": "University, college, and higher education degree qualifications."
+      },
+      {
+        "field_name": "certifications",
+        "target_type": "array[Certification]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Certifications / Licenses",
+        "confidence_score": 0.0,
+        "description": "Professional accreditations and credentials."
+      },
+      {
+        "field_name": "projects",
+        "target_type": "array[Project]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Projects / Key Engagements",
+        "confidence_score": 0.0,
+        "description": "Major projects or strategic initiatives led by candidate."
+      }
+    ]
+  },
+  "raw_sections": {
+    "skills": "Dataverse, SQL Server, and Excel to build scalable, high-performance solutions. Proficient in UI/UX design, dataintegration",
+    "personal_information": " EXPERIENCEPune Maharashtra shraddhapatil28108@gmail.com+917448222344SHRADDHA",
+    "experience": " IntegrationBusiness\n applications and services."
+  },
+  "meta": {
+    "status": "needs_review",
+    "human_verified": false,
+    "provider_calls": 0,
+    "source_accounting": {
+      "all_source_text_preserved": true,
+      "total_spans": 70,
+      "assigned_meaningful_spans": 7,
+      "unresolved_meaningful_spans": 63,
+      "non_content_artifacts": 0,
+      "duplicates_excluded": 0,
+      "all_meaningful_text_assigned": false,
+      "semantic_correctness_verified": false,
+      "outcomes": [
+        {
+          "source_id": "e0:0:16",
+          "source_element_index": 0,
+          "start": 0,
+          "end": 16,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e0:16:120",
+          "source_element_index": 0,
+          "start": 16,
+          "end": 120,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e0:120:226",
+          "source_element_index": 0,
+          "start": 120,
+          "end": 226,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e0:226:349",
+          "source_element_index": 0,
+          "start": 226,
+          "end": 349,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "BERT embedding assigned to a labeled K-means centroid"
+        },
+        {
+          "source_id": "e0:349:452",
+          "source_element_index": 0,
+          "start": 349,
+          "end": 452,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e0:452:506",
+          "source_element_index": 0,
+          "start": 452,
+          "end": 506,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e0:506:522",
+          "source_element_index": 0,
+          "start": 506,
+          "end": 522,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e0:522:552",
+          "source_element_index": 0,
+          "start": 522,
+          "end": 552,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e0:552:567",
+          "source_element_index": 0,
+          "start": 552,
+          "end": 567,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e0:567:580",
+          "source_element_index": 0,
+          "start": 567,
+          "end": 580,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e0:580:608",
+          "source_element_index": 0,
+          "start": 580,
+          "end": 608,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e0:608:629",
+          "source_element_index": 0,
+          "start": 608,
+          "end": 629,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e0:629:636",
+          "source_element_index": 0,
+          "start": 629,
+          "end": 636,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e0:636:658",
+          "source_element_index": 0,
+          "start": 636,
+          "end": 658,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e0:658:682",
+          "source_element_index": 0,
+          "start": 658,
+          "end": 682,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e0:682:692",
+          "source_element_index": 0,
+          "start": 682,
+          "end": 692,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e0:692:721",
+          "source_element_index": 0,
+          "start": 692,
+          "end": 721,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e0:721:753",
+          "source_element_index": 0,
+          "start": 721,
+          "end": 753,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e0:753:763",
+          "source_element_index": 0,
+          "start": 753,
+          "end": 763,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e0:763:779",
+          "source_element_index": 0,
+          "start": 763,
+          "end": 779,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e0:779:789",
+          "source_element_index": 0,
+          "start": 779,
+          "end": 789,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e0:789:814",
+          "source_element_index": 0,
+          "start": 789,
+          "end": 814,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e0:814:839",
+          "source_element_index": 0,
+          "start": 814,
+          "end": 839,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e0:839:859",
+          "source_element_index": 0,
+          "start": 839,
+          "end": 859,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "BERT embedding assigned to a labeled K-means centroid"
+        },
+        {
+          "source_id": "e0:859:879",
+          "source_element_index": 0,
+          "start": 859,
+          "end": 879,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e0:879:902",
+          "source_element_index": 0,
+          "start": 879,
+          "end": 902,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e0:902:929",
+          "source_element_index": 0,
+          "start": 902,
+          "end": 929,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e0:929:947",
+          "source_element_index": 0,
+          "start": 929,
+          "end": 947,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e0:947:963",
+          "source_element_index": 0,
+          "start": 947,
+          "end": 963,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e0:963:1005",
+          "source_element_index": 0,
+          "start": 963,
+          "end": 1005,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e0:1005:1034",
+          "source_element_index": 0,
+          "start": 1005,
+          "end": 1034,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e0:1034:1038",
+          "source_element_index": 0,
+          "start": 1034,
+          "end": 1038,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e1:0:65",
+          "source_element_index": 1,
+          "start": 0,
+          "end": 65,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e1:65:121",
+          "source_element_index": 1,
+          "start": 65,
+          "end": 121,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e1:121:167",
+          "source_element_index": 1,
+          "start": 121,
+          "end": 167,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e2:0:53",
+          "source_element_index": 2,
+          "start": 0,
+          "end": 53,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e2:53:117",
+          "source_element_index": 2,
+          "start": 53,
+          "end": 117,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e2:117:118",
+          "source_element_index": 2,
+          "start": 117,
+          "end": 118,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e3:0:72",
+          "source_element_index": 3,
+          "start": 0,
+          "end": 72,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e3:72:99",
+          "source_element_index": 3,
+          "start": 72,
+          "end": 99,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "BERT embedding assigned to a labeled K-means centroid"
+        },
+        {
+          "source_id": "e4:0:64",
+          "source_element_index": 4,
+          "start": 0,
+          "end": 64,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e4:64:119",
+          "source_element_index": 4,
+          "start": 64,
+          "end": 119,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e4:119:158",
+          "source_element_index": 4,
+          "start": 119,
+          "end": 158,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e4:158:194",
+          "source_element_index": 4,
+          "start": 158,
+          "end": 194,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e4:194:210",
+          "source_element_index": 4,
+          "start": 194,
+          "end": 210,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e4:210:250",
+          "source_element_index": 4,
+          "start": 210,
+          "end": 250,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e4:250:269",
+          "source_element_index": 4,
+          "start": 250,
+          "end": 269,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e4:269:293",
+          "source_element_index": 4,
+          "start": 269,
+          "end": 293,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e4:293:308",
+          "source_element_index": 4,
+          "start": 293,
+          "end": 308,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e5:0:69",
+          "source_element_index": 5,
+          "start": 0,
+          "end": 69,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e5:69:130",
+          "source_element_index": 5,
+          "start": 69,
+          "end": 130,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e5:130:172",
+          "source_element_index": 5,
+          "start": 130,
+          "end": 172,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e6:0:70",
+          "source_element_index": 6,
+          "start": 0,
+          "end": 70,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e6:70:134",
+          "source_element_index": 6,
+          "start": 70,
+          "end": 134,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e6:134:163",
+          "source_element_index": 6,
+          "start": 134,
+          "end": 163,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e7:0:73",
+          "source_element_index": 7,
+          "start": 0,
+          "end": 73,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e7:73:109",
+          "source_element_index": 7,
+          "start": 73,
+          "end": 109,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e8:0:72",
+          "source_element_index": 8,
+          "start": 0,
+          "end": 72,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e8:72:136",
+          "source_element_index": 8,
+          "start": 72,
+          "end": 136,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e8:136:187",
+          "source_element_index": 8,
+          "start": 136,
+          "end": 187,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e9:0:71",
+          "source_element_index": 9,
+          "start": 0,
+          "end": 71,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e9:71:133",
+          "source_element_index": 9,
+          "start": 71,
+          "end": 133,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e9:133:172",
+          "source_element_index": 9,
+          "start": 133,
+          "end": 172,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e10:0:70",
+          "source_element_index": 10,
+          "start": 0,
+          "end": 70,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e10:70:136",
+          "source_element_index": 10,
+          "start": 70,
+          "end": 136,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e10:136:205",
+          "source_element_index": 10,
+          "start": 136,
+          "end": 205,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e10:205:219",
+          "source_element_index": 10,
+          "start": 205,
+          "end": 219,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e11:0:69",
+          "source_element_index": 11,
+          "start": 0,
+          "end": 69,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e11:69:139",
+          "source_element_index": 11,
+          "start": 69,
+          "end": 139,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e11:139:158",
+          "source_element_index": 11,
+          "start": 139,
+          "end": 158,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        }
+      ]
+    },
+    "document_scope": {
+      "kind": "candidate_or_unknown",
+      "candidate_resume": null,
+      "requires_scope_review": true
+    },
+    "source_inventory_sha256": "15671a6a38ce5ffc47e96a00de7c5d247413f95a1ce2ad5f84571ac7d8604e8b",
+    "field_evidence": {
+      "contact.full_name": [
+        "e0:552:567",
+        "e0:567:580",
+        "e0:580:608",
+        "e0:608:629"
+      ],
+      "contact.email": [
+        "e0:552:567",
+        "e0:567:580",
+        "e0:580:608",
+        "e0:608:629"
+      ],
+      "contact.phone": [
+        "e0:552:567",
+        "e0:567:580",
+        "e0:580:608",
+        "e0:608:629"
+      ],
+      "skills.technical_skills[0]": [
+        "e0:226:349"
+      ],
+      "skills.tools_and_platforms[0]": [
+        "e0:226:349"
+      ],
+      "skills.all_skills[0]": [
+        "e0:226:349"
+      ],
+      "skills.all_skills[1]": [
+        "e0:226:349"
+      ],
+      "skills.all_skills[2]": [
+        "e0:226:349"
+      ],
+      "skills.all_skills[3]": [
+        "e0:226:349"
+      ],
+      "skills.all_skills[4]": [
+        "e0:226:349"
+      ],
+      "skills.all_skills[5]": [
+        "e0:226:349"
+      ],
+      "skills.all_skills[6]": [
+        "e0:226:349"
+      ],
+      "experience[1].company": [
+        "e3:72:99"
+      ]
+    },
+    "record_reviews": [
+      {
+        "category": "experience",
+        "entry_id": "experience-1",
+        "source_ids": [
+          "e0:839:859"
+        ],
+        "relationship_status": "needs_review",
+        "review_reasons": [
+          "employer_not_established_from_supported_fields"
+        ]
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-2",
+        "source_ids": [
+          "e3:72:99"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      }
+    ],
+    "missing_required_fields": [
+      "experience[0].company",
+      "experience[0].role",
+      "experience[1].role"
+    ],
+    "warnings": [
+      "Schema validity and field completion do not establish extraction or relationship accuracy.",
+      "Handoff confidence scores are fixed heuristics, not calibrated probabilities.",
+      "Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields."
+    ],
+    "unmapped_blocks": [
+      {
+        "source_id": "e0:839:859",
+        "category": "experience",
+        "text": " IntegrationBusiness",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:0:16",
+        "category": null,
+        "text": "SUMMARYMicrosoft",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:16:120",
+        "category": null,
+        "text": " Certified Power Platform Developer (PL-900) nearly 3 years’ experience in Canvas Apps, Model-DrivenApps",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:120:226",
+        "category": null,
+        "text": ", and Power Automate for enterprise process automation. Skilled in integrating Power Apps with SharePoint,",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:349:452",
+        "category": null,
+        "text": ", application optimization,Power BI dashboards,, ETL automation. Adept at delivering end-to-endprojects",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:452:506",
+        "category": null,
+        "text": ", reducing manual effort, and improving data accuracy.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:506:522",
+        "category": null,
+        "text": "SKILLSEDUCATIONM",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:522:552",
+        "category": null,
+        "text": ".C.ACERTIFICATIONSPROFESSIONAL",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:629:636",
+        "category": null,
+        "text": " PATIL ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:636:658",
+        "category": null,
+        "text": "Software EngineerPower",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:658:682",
+        "category": null,
+        "text": " PlatfromDeveloperCybage",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:682:692",
+        "category": null,
+        "text": " Software ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:692:721",
+        "category": null,
+        "text": "August 2024 -PresentMicrosoft",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:721:753",
+        "category": null,
+        "text": " Power Platform Power AppsCanvas",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:753:763",
+        "category": null,
+        "text": " AppsModel",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:763:779",
+        "category": null,
+        "text": " Driven AppPower",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:779:789",
+        "category": null,
+        "text": " Automate ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:789:814",
+        "category": null,
+        "text": "Power Virtual AgentsPower",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:814:839",
+        "category": null,
+        "text": " PagesDataverseSharepoint",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:859:879",
+        "category": null,
+        "text": " Process Automation ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:879:902",
+        "category": null,
+        "text": "Workflow OptimizationUI",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:902:929",
+        "category": null,
+        "text": "/UX Design for AppsWorkflow",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:929:947",
+        "category": null,
+        "text": " OptimizationPower",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:947:963",
+        "category": null,
+        "text": " AutomateProject",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:963:1005",
+        "category": null,
+        "text": " Name CSU-ENT-PowerAppsAutomationMicrosoft",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:1005:1034",
+        "category": null,
+        "text": " PowerPlatform FundamentalsPL",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:1034:1038",
+        "category": null,
+        "text": "-900",
+        "page_number": 1
+      },
+      {
+        "source_id": "e1:0:65",
+        "category": null,
+        "text": "Design and develop custom solutions using Microsoft PowerPlatform",
+        "page_number": 1
+      },
+      {
+        "source_id": "e1:65:121",
+        "category": null,
+        "text": " tools, including Power Apps & Power Automate, toaddress",
+        "page_number": 1
+      },
+      {
+        "source_id": "e1:121:167",
+        "category": null,
+        "text": " diverse business requirements and challenges.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e2:0:53",
+        "category": null,
+        "text": "Developed custom business apps including Canvas Apps,",
+        "page_number": 1
+      },
+      {
+        "source_id": "e2:53:117",
+        "category": null,
+        "text": "SharePoint Form Apps to meet specific organizationalrequirements",
+        "page_number": 1
+      },
+      {
+        "source_id": "e2:117:118",
+        "category": null,
+        "text": ".",
+        "page_number": 1
+      },
+      {
+        "source_id": "e3:0:72",
+        "category": null,
+        "text": "Created custom connectors and solutions to extend and customizeMicrosoft",
+        "page_number": 1
+      },
+      {
+        "source_id": "e4:0:64",
+        "category": null,
+        "text": "Collaborated with stakeholders and project team members todesign",
+        "page_number": 1
+      },
+      {
+        "source_id": "e4:64:119",
+        "category": null,
+        "text": " and implement enterprise Microsoft Dynamics solutions,",
+        "page_number": 1
+      },
+      {
+        "source_id": "e4:119:158",
+        "category": null,
+        "text": "ensuring high quality and reliability. ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e4:158:194",
+        "category": null,
+        "text": "NorthMaharashtra University Jalgaon.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e4:194:210",
+        "category": null,
+        "text": "2014-2017Project",
+        "page_number": 1
+      },
+      {
+        "source_id": "e4:210:250",
+        "category": null,
+        "text": " Name : HR & Admin ApplicationsAssociate",
+        "page_number": 1
+      },
+      {
+        "source_id": "e4:250:269",
+        "category": null,
+        "text": " Software Engineer ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e4:269:293",
+        "category": null,
+        "text": "Netlink SoftwareNovember",
+        "page_number": 1
+      },
+      {
+        "source_id": "e4:293:308",
+        "category": null,
+        "text": " 2022-July 2024",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:0:69",
+        "category": null,
+        "text": "Designed and developed a centralized licence allocation andmanagement",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:69:130",
+        "category": null,
+        "text": " application for HR & Admin teams using Canvas Appsintegrated",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:130:172",
+        "category": null,
+        "text": " with Dataverse as the backend data store.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e6:0:70",
+        "category": null,
+        "text": "Automated licence request approvals and allocation workflows withPower",
+        "page_number": 1
+      },
+      {
+        "source_id": "e6:70:134",
+        "category": null,
+        "text": " Automate, enabling real-time status updates, emailnotifications",
+        "page_number": 1
+      },
+      {
+        "source_id": "e6:134:163",
+        "category": null,
+        "text": ", and audit trail generation.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e7:0:73",
+        "category": null,
+        "text": "Reduced licence processing time from 3 days to 1 day by eliminatingmanual",
+        "page_number": 1
+      },
+      {
+        "source_id": "e7:73:109",
+        "category": null,
+        "text": " approvals and paper-based tracking.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:0:72",
+        "category": null,
+        "text": "Developed Canvas Apps and SharePoint-integrated apps to automateinternal",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:72:136",
+        "category": null,
+        "text": " workflows such as leave requests, asset allocation, andemployee",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:136:187",
+        "category": null,
+        "text": " onboarding, reducing manual processing time by 40%",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:0:71",
+        "category": null,
+        "text": "Integrated Power Apps with Dataverse and SQL Server for centralizeddata",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:71:133",
+        "category": null,
+        "text": " storage, ensuring consistency and reliability across systems.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:133:172",
+        "category": null,
+        "text": "Project: Employee Onboarding Automation",
+        "page_number": 1
+      },
+      {
+        "source_id": "e10:0:70",
+        "category": null,
+        "text": "Developed a fully automated onboarding solution where new employeedata",
+        "page_number": 1
+      },
+      {
+        "source_id": "e10:70:136",
+        "category": null,
+        "text": " entry in Power Apps triggered approval workflows in PowerAutomate",
+        "page_number": 1
+      },
+      {
+        "source_id": "e10:136:205",
+        "category": null,
+        "text": ", automatically creating user accounts, assigning assets, andupdating",
+        "page_number": 1
+      },
+      {
+        "source_id": "e10:205:219",
+        "category": null,
+        "text": " HR databases.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e11:0:69",
+        "category": null,
+        "text": "Integrated Power BI for onboarding status tracking and SLA reporting.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e11:69:139",
+        "category": null,
+        "text": "Reduced onboarding completion time from 5 days to 2 days andeliminated",
+        "page_number": 1
+      },
+      {
+        "source_id": "e11:139:158",
+        "category": null,
+        "text": " manual follow-ups.",
+        "page_number": 1
+      }
+    ],
+    "needs_review": [
+      {
+        "source_element_index": 0,
+        "start": 0,
+        "end": 16,
+        "text": "SUMMARYMicrosoft",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2592,
+        "margin": 0.0341,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 0,
+        "start": 16,
+        "end": 120,
+        "text": " Certified Power Platform Developer (PL-900) nearly 3 years’ experience in Canvas Apps, Model-DrivenApps",
+        "page_number": 1,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3552,
+        "margin": 0.0356,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 0,
+        "start": 120,
+        "end": 226,
+        "text": ", and Power Automate for enterprise process automation. Skilled in integrating Power Apps with SharePoint,",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.255,
+        "margin": -0.016,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 0,
+        "start": 349,
+        "end": 452,
+        "text": ", application optimization,Power BI dashboards,, ETL automation. Adept at delivering end-to-endprojects",
+        "page_number": 1,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.4496,
+        "margin": 0.0573,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 0,
+        "start": 452,
+        "end": 506,
+        "text": ", reducing manual effort, and improving data accuracy.",
+        "page_number": 1,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3597,
+        "margin": 0.0675,
+        "lane": "left",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 0,
+        "start": 506,
+        "end": 522,
+        "text": "SKILLSEDUCATIONM",
+        "page_number": 1,
+        "cluster_id": 1,
+        "candidate_section": "summary",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.5295,
+        "margin": 0.0171,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 0,
+        "start": 522,
+        "end": 552,
+        "text": ".C.ACERTIFICATIONSPROFESSIONAL",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3408,
+        "margin": -0.0343,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 0,
+        "start": 629,
+        "end": 636,
+        "text": " PATIL ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1756,
+        "margin": 0.0197,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 0,
+        "start": 636,
+        "end": 658,
+        "text": "Software EngineerPower",
+        "page_number": 1,
+        "cluster_id": 1,
+        "candidate_section": "summary",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.5721,
+        "margin": 0.0253,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 0,
+        "start": 658,
+        "end": 682,
+        "text": " PlatfromDeveloperCybage",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1499,
+        "margin": -0.0402,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 0,
+        "start": 682,
+        "end": 692,
+        "text": " Software ",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.423,
+        "margin": 0.0083,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 0,
+        "start": 692,
+        "end": 721,
+        "text": "August 2024 -PresentMicrosoft",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2793,
+        "margin": 0.0232,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 0,
+        "start": 721,
+        "end": 753,
+        "text": " Power Platform Power AppsCanvas",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1475,
+        "margin": 0.0738,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 0,
+        "start": 753,
+        "end": 763,
+        "text": " AppsModel",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2613,
+        "margin": 0.0615,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 0,
+        "start": 763,
+        "end": 779,
+        "text": " Driven AppPower",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2592,
+        "margin": 0.0603,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 0,
+        "start": 779,
+        "end": 789,
+        "text": " Automate ",
+        "page_number": 1,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3325,
+        "margin": 0.0183,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 0,
+        "start": 789,
+        "end": 814,
+        "text": "Power Virtual AgentsPower",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.193,
+        "margin": 0.0435,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 0,
+        "start": 814,
+        "end": 839,
+        "text": " PagesDataverseSharepoint",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.0883,
+        "margin": 0.0084,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 0,
+        "start": 859,
+        "end": 879,
+        "text": " Process Automation ",
+        "page_number": 1,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.24,
+        "margin": 0.0317,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 0,
+        "start": 879,
+        "end": 902,
+        "text": "Workflow OptimizationUI",
+        "page_number": 1,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1985,
+        "margin": 0.0256,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 0,
+        "start": 902,
+        "end": 929,
+        "text": "/UX Design for AppsWorkflow",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2609,
+        "margin": 0.0088,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 0,
+        "start": 929,
+        "end": 947,
+        "text": " OptimizationPower",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2003,
+        "margin": 0.0363,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 0,
+        "start": 947,
+        "end": 963,
+        "text": " AutomateProject",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2218,
+        "margin": 0.0096,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 0,
+        "start": 963,
+        "end": 1005,
+        "text": " Name CSU-ENT-PowerAppsAutomationMicrosoft",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2657,
+        "margin": -0.0378,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 0,
+        "start": 1005,
+        "end": 1034,
+        "text": " PowerPlatform FundamentalsPL",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.0714,
+        "margin": -0.0449,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 0,
+        "start": 1034,
+        "end": 1038,
+        "text": "-900",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1066,
+        "margin": -0.0513,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 1,
+        "start": 0,
+        "end": 65,
+        "text": "Design and develop custom solutions using Microsoft PowerPlatform",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2984,
+        "margin": 0.1261,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 1,
+        "start": 65,
+        "end": 121,
+        "text": " tools, including Power Apps & Power Automate, toaddress",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2794,
+        "margin": 0.0216,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 1,
+        "start": 121,
+        "end": 167,
+        "text": " diverse business requirements and challenges.",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3922,
+        "margin": 0.0378,
+        "lane": "right",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 2,
+        "start": 0,
+        "end": 53,
+        "text": "Developed custom business apps including Canvas Apps,",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3617,
+        "margin": 0.1047,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 2,
+        "start": 53,
+        "end": 117,
+        "text": "SharePoint Form Apps to meet specific organizationalrequirements",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3541,
+        "margin": 0.0024,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 2,
+        "start": 117,
+        "end": 118,
+        "text": ".",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1498,
+        "margin": -0.0296,
+        "lane": "right",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 3,
+        "start": 0,
+        "end": 72,
+        "text": "Created custom connectors and solutions to extend and customizeMicrosoft",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2096,
+        "margin": 0.0596,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 4,
+        "start": 0,
+        "end": 64,
+        "text": "Collaborated with stakeholders and project team members todesign",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.412,
+        "margin": 0.0421,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 4,
+        "start": 64,
+        "end": 119,
+        "text": " and implement enterprise Microsoft Dynamics solutions,",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.4052,
+        "margin": 0.015,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 4,
+        "start": 119,
+        "end": 158,
+        "text": "ensuring high quality and reliability. ",
+        "page_number": 1,
+        "cluster_id": 6,
+        "candidate_section": "certifications",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.382,
+        "margin": 0.0818,
+        "lane": "right",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 4,
+        "start": 158,
+        "end": 194,
+        "text": "NorthMaharashtra University Jalgaon.",
+        "page_number": 1,
+        "cluster_id": 4,
+        "candidate_section": "education",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.4311,
+        "margin": 0.1073,
+        "lane": "left",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 4,
+        "start": 194,
+        "end": 210,
+        "text": "2014-2017Project",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3246,
+        "margin": 0.0089,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 4,
+        "start": 210,
+        "end": 250,
+        "text": " Name : HR & Admin ApplicationsAssociate",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3393,
+        "margin": 0.0601,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 4,
+        "start": 250,
+        "end": 269,
+        "text": " Software Engineer ",
+        "page_number": 1,
+        "cluster_id": 1,
+        "candidate_section": "summary",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.6508,
+        "margin": 0.032,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 4,
+        "start": 269,
+        "end": 293,
+        "text": "Netlink SoftwareNovember",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2135,
+        "margin": 0.0231,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 4,
+        "start": 293,
+        "end": 308,
+        "text": " 2022-July 2024",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2513,
+        "margin": 0.0186,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 5,
+        "start": 0,
+        "end": 69,
+        "text": "Designed and developed a centralized licence allocation andmanagement",
+        "page_number": 1,
+        "cluster_id": 6,
+        "candidate_section": "certifications",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3893,
+        "margin": 0.0777,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 5,
+        "start": 69,
+        "end": 130,
+        "text": " application for HR & Admin teams using Canvas Appsintegrated",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2418,
+        "margin": 0.0277,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 5,
+        "start": 130,
+        "end": 172,
+        "text": " with Dataverse as the backend data store.",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3231,
+        "margin": 0.0746,
+        "lane": "right",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 6,
+        "start": 0,
+        "end": 70,
+        "text": "Automated licence request approvals and allocation workflows withPower",
+        "page_number": 1,
+        "cluster_id": 6,
+        "candidate_section": "certifications",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3494,
+        "margin": 0.1106,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 6,
+        "start": 70,
+        "end": 134,
+        "text": " Automate, enabling real-time status updates, emailnotifications",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2266,
+        "margin": 0.0031,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 6,
+        "start": 134,
+        "end": 163,
+        "text": ", and audit trail generation.",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3257,
+        "margin": 0.0403,
+        "lane": "right",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 7,
+        "start": 0,
+        "end": 73,
+        "text": "Reduced licence processing time from 3 days to 1 day by eliminatingmanual",
+        "page_number": 1,
+        "cluster_id": 6,
+        "candidate_section": "certifications",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2806,
+        "margin": 0.1186,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 7,
+        "start": 73,
+        "end": 109,
+        "text": " approvals and paper-based tracking.",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3135,
+        "margin": 0.0452,
+        "lane": "right",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 8,
+        "start": 0,
+        "end": 72,
+        "text": "Developed Canvas Apps and SharePoint-integrated apps to automateinternal",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3059,
+        "margin": 0.0128,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 8,
+        "start": 72,
+        "end": 136,
+        "text": " workflows such as leave requests, asset allocation, andemployee",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3234,
+        "margin": 0.0157,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 8,
+        "start": 136,
+        "end": 187,
+        "text": " onboarding, reducing manual processing time by 40%",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1892,
+        "margin": -0.0374,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 9,
+        "start": 0,
+        "end": 71,
+        "text": "Integrated Power Apps with Dataverse and SQL Server for centralizeddata",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1775,
+        "margin": 0.009,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 9,
+        "start": 71,
+        "end": 133,
+        "text": " storage, ensuring consistency and reliability across systems.",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.201,
+        "margin": 0.0059,
+        "lane": "right",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 9,
+        "start": 133,
+        "end": 172,
+        "text": "Project: Employee Onboarding Automation",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3978,
+        "margin": 0.0687,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 10,
+        "start": 0,
+        "end": 70,
+        "text": "Developed a fully automated onboarding solution where new employeedata",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.4307,
+        "margin": 0.1278,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 10,
+        "start": 70,
+        "end": 136,
+        "text": " entry in Power Apps triggered approval workflows in PowerAutomate",
+        "page_number": 1,
+        "cluster_id": 12,
+        "candidate_section": "references",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1845,
+        "margin": 0.016,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 10,
+        "start": 136,
+        "end": 205,
+        "text": ", automatically creating user accounts, assigning assets, andupdating",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3445,
+        "margin": 0.0591,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 10,
+        "start": 205,
+        "end": 219,
+        "text": " HR databases.",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.4488,
+        "margin": 0.0245,
+        "lane": "right",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 11,
+        "start": 0,
+        "end": 69,
+        "text": "Integrated Power BI for onboarding status tracking and SLA reporting.",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2557,
+        "margin": 0.0114,
+        "lane": "right",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 11,
+        "start": 69,
+        "end": 139,
+        "text": "Reduced onboarding completion time from 5 days to 2 days andeliminated",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1569,
+        "margin": -0.0053,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 11,
+        "start": 139,
+        "end": 158,
+        "text": " manual follow-ups.",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3181,
+        "margin": 0.0207,
+        "lane": "right",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      }
+    ]
+  },
+  "section_schemas": [
+    {
+      "category": "skills",
+      "label": "Skills",
+      "records": [
+        {
+          "record_id": "skills",
+          "source_ids": [
+            "e0:226:349"
+          ],
+          "attributes": [
+            {
+              "name": "technical_skills",
+              "items": [
+                {
+                  "value": "SQL",
+                  "evidence": [
+                    {
+                      "source_id": "e0:226:349",
+                      "quote": "SQL"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "tools_and_platforms",
+              "items": [
+                {
+                  "value": "Excel",
+                  "evidence": [
+                    {
+                      "source_id": "e0:226:349",
+                      "quote": "Excel"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "domain_and_functional",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "soft_skills",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "all_skills",
+              "items": [
+                {
+                  "value": "SQL",
+                  "evidence": [
+                    {
+                      "source_id": "e0:226:349",
+                      "quote": "SQL"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Excel",
+                  "evidence": [
+                    {
+                      "source_id": "e0:226:349",
+                      "quote": "Excel"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Dataverse",
+                  "evidence": [
+                    {
+                      "source_id": "e0:226:349",
+                      "quote": "Dataverse"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "SQL Server",
+                  "evidence": [
+                    {
+                      "source_id": "e0:226:349",
+                      "quote": "SQL Server"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "and Excel to build scalable",
+                  "evidence": [
+                    {
+                      "source_id": "e0:226:349",
+                      "quote": "and Excel to build scalable"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "high-performance solutions. Proficient in UI/UX design",
+                  "evidence": [
+                    {
+                      "source_id": "e0:226:349",
+                      "quote": "high-performance solutions. Proficient in UI/UX design"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "dataintegration",
+                  "evidence": [
+                    {
+                      "source_id": "e0:226:349",
+                      "quote": "dataintegration"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e0:226:349",
+          "quote": "Dataverse, SQL Server, and Excel to build scalable, high-performance solutions. Proficient in UI/UX design, dataintegration"
+        }
+      ]
+    },
+    {
+      "category": "personal_information",
+      "label": "Personal information",
+      "records": [
+        {
+          "record_id": "personal_information",
+          "source_ids": [
+            "e0:552:567",
+            "e0:567:580",
+            "e0:580:608",
+            "e0:608:629"
+          ],
+          "attributes": [
+            {
+              "name": "full_name",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "email",
+              "items": [
+                {
+                  "value": "shraddhapatil28108@gmail.com",
+                  "evidence": [
+                    {
+                      "source_id": "e0:580:608",
+                      "quote": "shraddhapatil28108@gmail.com"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "phone",
+              "items": [
+                {
+                  "value": "+917448222344",
+                  "evidence": [
+                    {
+                      "source_id": "e0:608:629",
+                      "quote": "+917448222344"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "linkedin_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "github_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "portfolio_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "professional_title",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e0:552:567",
+          "quote": " EXPERIENCEPune"
+        },
+        {
+          "source_id": "e0:567:580",
+          "quote": " Maharashtra "
+        },
+        {
+          "source_id": "e0:608:629",
+          "quote": "+917448222344SHRADDHA"
+        }
+      ]
+    },
+    {
+      "category": "experience",
+      "label": "Experience",
+      "records": [
+        {
+          "record_id": "experience-1",
+          "source_ids": [
+            "e0:839:859"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "employer_not_established_from_supported_fields"
+          ]
+        },
+        {
+          "record_id": "experience-2",
+          "source_ids": [
+            "e3:72:99"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [
+                {
+                  "value": "applications and services.",
+                  "evidence": [
+                    {
+                      "source_id": "e3:72:99",
+                      "quote": "applications and services."
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e0:839:859",
+          "quote": " IntegrationBusiness"
+        }
+      ]
+    },
+    {
+      "category": "needs_review",
+      "label": "Unassigned source blocks",
+      "records": [],
+      "residual_blocks": [
+        {
+          "source_id": "e0:0:16",
+          "quote": "SUMMARYMicrosoft"
+        },
+        {
+          "source_id": "e0:16:120",
+          "quote": " Certified Power Platform Developer (PL-900) nearly 3 years’ experience in Canvas Apps, Model-DrivenApps"
+        },
+        {
+          "source_id": "e0:120:226",
+          "quote": ", and Power Automate for enterprise process automation. Skilled in integrating Power Apps with SharePoint,"
+        },
+        {
+          "source_id": "e0:349:452",
+          "quote": ", application optimization,Power BI dashboards,, ETL automation. Adept at delivering end-to-endprojects"
+        },
+        {
+          "source_id": "e0:452:506",
+          "quote": ", reducing manual effort, and improving data accuracy."
+        },
+        {
+          "source_id": "e0:506:522",
+          "quote": "SKILLSEDUCATIONM"
+        },
+        {
+          "source_id": "e0:522:552",
+          "quote": ".C.ACERTIFICATIONSPROFESSIONAL"
+        },
+        {
+          "source_id": "e0:629:636",
+          "quote": " PATIL "
+        },
+        {
+          "source_id": "e0:636:658",
+          "quote": "Software EngineerPower"
+        },
+        {
+          "source_id": "e0:658:682",
+          "quote": " PlatfromDeveloperCybage"
+        },
+        {
+          "source_id": "e0:682:692",
+          "quote": " Software "
+        },
+        {
+          "source_id": "e0:692:721",
+          "quote": "August 2024 -PresentMicrosoft"
+        },
+        {
+          "source_id": "e0:721:753",
+          "quote": " Power Platform Power AppsCanvas"
+        },
+        {
+          "source_id": "e0:753:763",
+          "quote": " AppsModel"
+        },
+        {
+          "source_id": "e0:763:779",
+          "quote": " Driven AppPower"
+        },
+        {
+          "source_id": "e0:779:789",
+          "quote": " Automate "
+        },
+        {
+          "source_id": "e0:789:814",
+          "quote": "Power Virtual AgentsPower"
+        },
+        {
+          "source_id": "e0:814:839",
+          "quote": " PagesDataverseSharepoint"
+        },
+        {
+          "source_id": "e0:859:879",
+          "quote": " Process Automation "
+        },
+        {
+          "source_id": "e0:879:902",
+          "quote": "Workflow OptimizationUI"
+        },
+        {
+          "source_id": "e0:902:929",
+          "quote": "/UX Design for AppsWorkflow"
+        },
+        {
+          "source_id": "e0:929:947",
+          "quote": " OptimizationPower"
+        },
+        {
+          "source_id": "e0:947:963",
+          "quote": " AutomateProject"
+        },
+        {
+          "source_id": "e0:963:1005",
+          "quote": " Name CSU-ENT-PowerAppsAutomationMicrosoft"
+        },
+        {
+          "source_id": "e0:1005:1034",
+          "quote": " PowerPlatform FundamentalsPL"
+        },
+        {
+          "source_id": "e0:1034:1038",
+          "quote": "-900"
+        },
+        {
+          "source_id": "e1:0:65",
+          "quote": "Design and develop custom solutions using Microsoft PowerPlatform"
+        },
+        {
+          "source_id": "e1:65:121",
+          "quote": " tools, including Power Apps & Power Automate, toaddress"
+        },
+        {
+          "source_id": "e1:121:167",
+          "quote": " diverse business requirements and challenges."
+        },
+        {
+          "source_id": "e2:0:53",
+          "quote": "Developed custom business apps including Canvas Apps,"
+        },
+        {
+          "source_id": "e2:53:117",
+          "quote": "SharePoint Form Apps to meet specific organizationalrequirements"
+        },
+        {
+          "source_id": "e2:117:118",
+          "quote": "."
+        },
+        {
+          "source_id": "e3:0:72",
+          "quote": "Created custom connectors and solutions to extend and customizeMicrosoft"
+        },
+        {
+          "source_id": "e4:0:64",
+          "quote": "Collaborated with stakeholders and project team members todesign"
+        },
+        {
+          "source_id": "e4:64:119",
+          "quote": " and implement enterprise Microsoft Dynamics solutions,"
+        },
+        {
+          "source_id": "e4:119:158",
+          "quote": "ensuring high quality and reliability. "
+        },
+        {
+          "source_id": "e4:158:194",
+          "quote": "NorthMaharashtra University Jalgaon."
+        },
+        {
+          "source_id": "e4:194:210",
+          "quote": "2014-2017Project"
+        },
+        {
+          "source_id": "e4:210:250",
+          "quote": " Name : HR & Admin ApplicationsAssociate"
+        },
+        {
+          "source_id": "e4:250:269",
+          "quote": " Software Engineer "
+        },
+        {
+          "source_id": "e4:269:293",
+          "quote": "Netlink SoftwareNovember"
+        },
+        {
+          "source_id": "e4:293:308",
+          "quote": " 2022-July 2024"
+        },
+        {
+          "source_id": "e5:0:69",
+          "quote": "Designed and developed a centralized licence allocation andmanagement"
+        },
+        {
+          "source_id": "e5:69:130",
+          "quote": " application for HR & Admin teams using Canvas Appsintegrated"
+        },
+        {
+          "source_id": "e5:130:172",
+          "quote": " with Dataverse as the backend data store."
+        },
+        {
+          "source_id": "e6:0:70",
+          "quote": "Automated licence request approvals and allocation workflows withPower"
+        },
+        {
+          "source_id": "e6:70:134",
+          "quote": " Automate, enabling real-time status updates, emailnotifications"
+        },
+        {
+          "source_id": "e6:134:163",
+          "quote": ", and audit trail generation."
+        },
+        {
+          "source_id": "e7:0:73",
+          "quote": "Reduced licence processing time from 3 days to 1 day by eliminatingmanual"
+        },
+        {
+          "source_id": "e7:73:109",
+          "quote": " approvals and paper-based tracking."
+        },
+        {
+          "source_id": "e8:0:72",
+          "quote": "Developed Canvas Apps and SharePoint-integrated apps to automateinternal"
+        },
+        {
+          "source_id": "e8:72:136",
+          "quote": " workflows such as leave requests, asset allocation, andemployee"
+        },
+        {
+          "source_id": "e8:136:187",
+          "quote": " onboarding, reducing manual processing time by 40%"
+        },
+        {
+          "source_id": "e9:0:71",
+          "quote": "Integrated Power Apps with Dataverse and SQL Server for centralizeddata"
+        },
+        {
+          "source_id": "e9:71:133",
+          "quote": " storage, ensuring consistency and reliability across systems."
+        },
+        {
+          "source_id": "e9:133:172",
+          "quote": "Project: Employee Onboarding Automation"
+        },
+        {
+          "source_id": "e10:0:70",
+          "quote": "Developed a fully automated onboarding solution where new employeedata"
+        },
+        {
+          "source_id": "e10:70:136",
+          "quote": " entry in Power Apps triggered approval workflows in PowerAutomate"
+        },
+        {
+          "source_id": "e10:136:205",
+          "quote": ", automatically creating user accounts, assigning assets, andupdating"
+        },
+        {
+          "source_id": "e10:205:219",
+          "quote": " HR databases."
+        },
+        {
+          "source_id": "e11:0:69",
+          "quote": "Integrated Power BI for onboarding status tracking and SLA reporting."
+        },
+        {
+          "source_id": "e11:69:139",
+          "quote": "Reduced onboarding completion time from 5 days to 2 days andeliminated"
+        },
+        {
+          "source_id": "e11:139:158",
+          "quote": " manual follow-ups."
+        }
+      ]
+    }
+  ]
+}

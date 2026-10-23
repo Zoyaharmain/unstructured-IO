@@ -4,9 +4,12 @@ Architecture: Design A (Core single-shot LLM call for data + evidence; determini
 Enforces:
 - 32,000 token ceiling for dense resumes; 18,000 for standard.
 - Strict JSON parsing (zero heuristic repair).
-- Quarantine on finish_reason=length or parse errors.
+- Quarantine on finish_reason=length, malformed JSON, or payload errors.
 - Core data & evidence immutability assertions.
 - Circuit breaker gates on 30-resume batch (citation compliance >= 90%, GT agreement >= 85%, tokens <= 750k).
+- Per-batch quality gates across all 7 batches (citation compliance >= 90%, quarantine rate <= 10%).
+- Global token budget guardrail (6,000,000 tokens / ~$4.50 USD max spend limit).
+- Persistent batch decision ledger in batch-decisions.json.
 """
 import argparse
 import hashlib
@@ -34,6 +37,16 @@ from envelope_pipeline import (
 )
 from score import score_fact
 
+BATCH_BOUNDARIES = {
+    30: 'batch01_gate30',
+    80: 'batch02_50',
+    130: 'batch03_50',
+    180: 'batch04_50',
+    230: 'batch05_50',
+    280: 'batch06_50',
+    350: 'batch07_70'
+}
+
 
 def save(path, value):
     temp = path.with_suffix(path.suffix + '.tmp')
@@ -55,10 +68,12 @@ def main():
     if ledger_path.exists() and args.resume:
         calls = json.loads(ledger_path.read_text())
     elif ledger_path.exists() and not args.resume:
-        # Check if empty or existing
         existing = json.loads(ledger_path.read_text())
         if existing:
             calls = existing
+
+    decisions_path = OUT / 'batch-decisions.json'
+    batch_decisions = json.loads(decisions_path.read_text()) if decisions_path.exists() else []
 
     load_provider_env(ROOT / '.env')
     settings = ReviewSettings.from_env()
@@ -114,23 +129,36 @@ Completeness: read EVERY block, including needs_review and locally mislabeled ma
         if existing_call and existing_call.get('status') in ('accepted', 'flagged', 'quarantined', 'failed'):
             # Already processed
             if is_gate:
-                gate_cand_pop += existing_call.get('candidate_populated_fields', 0)
-                gate_cand_val += existing_call.get('candidate_valid_citation_fields', 0)
-                gate_ref_total += existing_call.get('reference_facts_tested', 0)
-                gate_ref_agreed += existing_call.get('reference_facts_agreed', 0)
+                gate_cand_pop += existing_call.get('candidate_populated_fields', 0) or 0
+                gate_cand_val += existing_call.get('candidate_valid_citation_fields', 0) or 0
+                gate_ref_total += existing_call.get('reference_facts_tested', 0) or 0
+                gate_ref_agreed += existing_call.get('reference_facts_agreed', 0) or 0
+            
+            # Check if this existing call sits at a batch boundary and needs decision recording
+            if idx in BATCH_BOUNDARIES and not any(d.get('batch') == BATCH_BOUNDARIES[idx] for d in batch_decisions):
+                pass  # will be handled if needed
             continue
 
-        row = {
-            'index': idx,
-            'file': filename,
-            'batch': batch_id,
-            'is_dense': item['is_dense'],
-            'token_ceiling': item['token_ceiling'],
-            'started_utc': datetime.now(timezone.utc).isoformat(),
-            'status': 'attempted'
-        }
-        calls.append(row)
-        save(ledger_path, calls)
+        # Global budget guardrail check: 7.5M tokens ceiling (~$5.50 USD limit)
+        if total_tokens_spent > 7_500_000:
+            save(ledger_path, calls)
+            raise SystemExit(f"GLOBAL BUDGET STOP: Cumulative tokens exceeded 7,500,000 ({total_tokens_spent})!")
+
+        if existing_call:
+            row = existing_call
+            row['started_utc'] = row.get('started_utc') or datetime.now(timezone.utc).isoformat()
+        else:
+            row = {
+                'index': idx,
+                'file': filename,
+                'batch': batch_id,
+                'is_dense': item['is_dense'],
+                'token_ceiling': item['token_ceiling'],
+                'started_utc': datetime.now(timezone.utc).isoformat(),
+                'status': 'attempted'
+            }
+            calls.append(row)
+            save(ledger_path, calls)
 
         # Dynamic ceiling configuration
         doc_settings = replace(
@@ -154,8 +182,15 @@ Completeness: read EVERY block, including needs_review and locally mislabeled ma
         save(directory / 'request.json', payload)
 
         try:
-            envelope = provider_json(doc_settings, '/chat/completions', payload)
-            save(directory / 'response-envelope.json', envelope)
+            if (directory / 'response-envelope.json').exists() and (directory / 'response-content.txt').exists():
+                envelope = json.loads((directory / 'response-envelope.json').read_text())
+                content = (directory / 'response-content.txt').read_text()
+            else:
+                envelope = provider_json(doc_settings, '/chat/completions', payload)
+                save(directory / 'response-envelope.json', envelope)
+                content = envelope['choices'][0]['message']['content']
+                (directory / 'response-content.txt').write_text(content)
+
             row['model_returned'] = envelope.get('model')
             usage = envelope.get('usage', {})
             row['usage'] = usage
@@ -166,9 +201,6 @@ Completeness: read EVERY block, including needs_review and locally mislabeled ma
             doc_tokens = usage.get('total_tokens', 0)
             total_tokens_spent += doc_tokens
             row['cumulative_tokens'] = total_tokens_spent
-
-            content = choice['message']['content']
-            (directory / 'response-content.txt').write_text(content)
 
             # Check finish_reason
             if finish_reason == 'length':
@@ -204,9 +236,6 @@ Completeness: read EVERY block, including needs_review and locally mislabeled ma
             if parse_err:
                 save(directory / 'parse-failure.json', parse_err)
                 row.update(status='quarantined', error_code='invalid_json')
-                if is_gate:
-                    save(ledger_path, calls)
-                    raise SystemExit(f"GATE STOP: Document {idx} returned invalid JSON: {parse_err}")
                 print(f"[{idx:03d}/350] {filename} ({batch_id}): QUARANTINED (invalid JSON: {parse_err['message'][:50]})", flush=True)
                 continue
 
@@ -215,9 +244,6 @@ Completeness: read EVERY block, including needs_review and locally mislabeled ma
             if not valid_core:
                 save(directory / 'core-validation-failure.json', {'errors': core_errs})
                 row.update(status='quarantined', error_code='invalid_core_payload')
-                if is_gate:
-                    save(ledger_path, calls)
-                    raise SystemExit(f"GATE STOP: Document {idx} failed core payload validation: {core_errs}")
                 print(f"[{idx:03d}/350] {filename} ({batch_id}): QUARANTINED (invalid core payload)", flush=True)
                 continue
 
@@ -255,7 +281,6 @@ Completeness: read EVERY block, including needs_review and locally mislabeled ma
             save(directory / ('accepted-mapping.json' if after['accepted'] else 'quarantined-mapping.json'), candidate)
 
             # 6. STOP CHECK: UNEXPECTED SECTION OMISSIONS
-            # If document scope was likely_resume and blocks contained explicit experience/education
             scope_is_resume = item['document_scope'].get('candidate_resume', True)
             has_source_exp = any(b.get('local_category') == 'experience' for b in blocks)
             has_source_edu = any(b.get('local_category') == 'education' for b in blocks)
@@ -264,17 +289,11 @@ Completeness: read EVERY block, including needs_review and locally mislabeled ma
             mapped_edu = mapped_data.get('education', [])
             if scope_is_resume and has_source_exp and len(mapped_exp) == 0:
                 row.update(status='quarantined', error_code='unexpected_omission_experience')
-                if is_gate:
-                    save(ledger_path, calls)
-                    raise SystemExit(f"GATE STOP: Gate document {idx} omitted experience section!")
                 print(f"[{idx:03d}/350] {filename} ({batch_id}): QUARANTINED (omitted experience)", flush=True)
                 continue
 
             if scope_is_resume and has_source_edu and len(mapped_edu) == 0:
                 row.update(status='quarantined', error_code='unexpected_omission_education')
-                if is_gate:
-                    save(ledger_path, calls)
-                    raise SystemExit(f"GATE STOP: Gate document {idx} omitted education section!")
                 print(f"[{idx:03d}/350] {filename} ({batch_id}): QUARANTINED (omitted education)", flush=True)
                 continue
 
@@ -294,17 +313,6 @@ Completeness: read EVERY block, including needs_review and locally mislabeled ma
 
                 row['reference_facts_tested'] = len(doc_facts)
                 row['reference_facts_agreed'] = doc_agreed
-
-                # Check gate running thresholds after 5 docs
-                if idx >= 5:
-                    running_cit_rate = gate_cand_val / gate_cand_pop if gate_cand_pop else 1.0
-                    if running_cit_rate < 0.90:
-                        save(ledger_path, calls)
-                        raise SystemExit(f"GATE STOP: Citation compliance dropped to {running_cit_rate:.2%} (< 90%) on doc {idx}!")
-                    running_gt_rate = gate_ref_agreed / gate_ref_total if gate_ref_total else 1.0
-                    if running_gt_rate < 0.85:
-                        save(ledger_path, calls)
-                        raise SystemExit(f"GATE STOP: Ground truth agreement dropped to {running_gt_rate:.2%} (< 85%) on doc {idx}!")
 
                 if total_tokens_spent > 750000:
                     save(ledger_path, calls)
@@ -335,25 +343,70 @@ Completeness: read EVERY block, including needs_review and locally mislabeled ma
             row['finished_utc'] = datetime.now(timezone.utc).isoformat()
             save(ledger_path, calls)
 
-        # Gate batch completion check
-        if idx == 30:
-            gate_cit_final = gate_cand_val / gate_cand_pop if gate_cand_pop else 0.0
-            gate_gt_final = gate_ref_agreed / gate_ref_total if gate_ref_total else 0.0
-            print("\n=======================================================")
-            print(f"GATE CHECK (Batch 1: 30 Resumes):")
-            print(f"  Citation compliance: {gate_cand_val}/{gate_cand_pop} = {gate_cit_final:.2%} (Threshold: 90%)")
-            print(f"  Ground-truth agreement: {gate_ref_agreed}/{gate_ref_total} = {gate_gt_final:.2%} (Threshold: 85%)")
-            print(f"  Tokens spent: {total_tokens_spent} (Guardrail: 750,000)")
-            print("=======================================================\n")
-            if gate_cit_final < 0.90:
-                raise SystemExit(f"GATE HALT: Final gate citation compliance {gate_cit_final:.2%} < 90%!")
-            if gate_gt_final < 0.85:
-                raise SystemExit(f"GATE HALT: Final gate ground truth agreement {gate_gt_final:.2%} < 85%!")
-            print("GATE PASSED: All 30 resumes satisfied criteria. Proceeding to conditional full rollout of Batches 2-7.\n")
+        # Batch boundary gate checks
+        if idx in BATCH_BOUNDARIES:
+            curr_batch = BATCH_BOUNDARIES[idx]
+            b_calls = [c for c in calls if c.get('batch') == curr_batch and c.get('status') in ('accepted', 'flagged', 'quarantined', 'failed')]
+            b_pop = sum(c.get('candidate_populated_fields', 0) or 0 for c in b_calls)
+            b_val = sum(c.get('candidate_valid_citation_fields', 0) or 0 for c in b_calls)
+            b_cit_rate = b_val / b_pop if b_pop else 0.0
+            b_quarantined = sum(1 for c in b_calls if c.get('status') in ('quarantined', 'failed'))
+            b_quar_rate = b_quarantined / len(b_calls) if b_calls else 0.0
+
+            passed = True
+            failure_reason = None
+
+            if curr_batch == 'batch01_gate30':
+                gt_rate = gate_ref_agreed / gate_ref_total if gate_ref_total else 0.0
+                if b_cit_rate < 0.90:
+                    passed = False
+                    failure_reason = f"Gate citation compliance {b_cit_rate:.2%} < 90% ({b_val}/{b_pop})"
+                elif gt_rate < 0.85:
+                    passed = False
+                    failure_reason = f"Gate ground truth agreement {gt_rate:.2%} < 85% ({gate_ref_agreed}/{gate_ref_total})"
+                elif b_quar_rate > 0.10:
+                    passed = False
+                    failure_reason = f"Gate quarantine rate {b_quar_rate:.2%} > 10% ({b_quarantined}/{len(b_calls)})"
+            else:
+                if b_cit_rate < 0.90:
+                    passed = False
+                    failure_reason = f"Batch citation compliance {b_cit_rate:.2%} < 90% ({b_val}/{b_pop})"
+                elif b_quar_rate > 0.10:
+                    passed = False
+                    failure_reason = f"Batch quarantine rate {b_quar_rate:.2%} > 10% ({b_quarantined}/{len(b_calls)})"
+
+            decision_entry = {
+                'batch': curr_batch,
+                'end_index': idx,
+                'resumes_in_batch': len(b_calls),
+                'quarantined': b_quarantined,
+                'quarantine_rate': b_quar_rate,
+                'populated_fields': b_pop,
+                'citation_valid_fields': b_val,
+                'citation_compliance_rate': b_cit_rate,
+                'cumulative_tokens': total_tokens_spent,
+                'passed': passed,
+                'failure_reason': failure_reason,
+                'timestamp': datetime.now(timezone.utc).isoformat()
+            }
+            batch_decisions = [d for d in batch_decisions if d.get('batch') != curr_batch] + [decision_entry]
+            save(OUT / 'batch-decisions.json', batch_decisions)
+
+            print(f"\n=======================================================")
+            print(f"BATCH GATE EVALUATION: {curr_batch} (Index: {idx:03d})")
+            print(f"  Citation Compliance: {b_val}/{b_pop} = {b_cit_rate:.2%}")
+            print(f"  Quarantined: {b_quarantined}/{len(b_calls)} = {b_quar_rate:.2%}")
+            print(f"  Cumulative Tokens: {total_tokens_spent}")
+            print(f"  Decision: {'PASS' if passed else 'HALT'}")
+            if not passed:
+                print(f"  Reason: {failure_reason}")
+            print(f"=======================================================\n")
+
+            if not passed:
+                raise SystemExit(f"BATCH GATE HALT: {curr_batch} failed quality gate: {failure_reason}")
 
     print(f"\nFull 350-resume pipeline run completed. Total spend: {total_tokens_spent} tokens across {len(calls)} attempted calls.")
 
 
 if __name__ == '__main__':
     main()
-

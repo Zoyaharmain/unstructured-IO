@@ -1,0 +1,4496 @@
+{
+  "success": true,
+  "source": "Vikas  Kumar Singh.pdf",
+  "extraction_mode": "existing_blocks_schema_mapping",
+  "data": {
+    "contact": {
+      "full_name": "Bangalore, India 560066+91 9980826502vikasbigdata03@gmail.com",
+      "email": "9980826502vikasbigdata03@gmail.com",
+      "phone": "+91 9980826502",
+      "location": "Bangalore",
+      "linkedin_url": null,
+      "github_url": null,
+      "portfolio_url": null
+    },
+    "professional_title": null,
+    "summary": "+ years of expertise designingand developing data applicationsusing PySpark, AWS, Databricks,AWS Glue,S3,Athena, and SparkSQL within the Hadoopecosystem.•14 years of total experienceacross Azure,AWS,DataBricks,SnowFlake, Hadoop, Big Data,Power BI, Talend ETL, andproduction support, with strongskills in building and optimizinglarge-scale data pipelines.•Led a 12-member team,managing project delivery,mentoring engineers, andensuring high-quality, scalabledata solutions.•\nSKILLSPySpark and Hadoop•Python programming•Cloud computing (Azure andAWS)•Databricks expertise•SnowFlake•Problem solving•Performance monitoring•Data modeling•Data migration strategies•Airflow orchestration•",
+    "total_experience_years": null,
+    "skills": {
+      "technical_skills": [],
+      "tools_and_platforms": [],
+      "domain_and_functional": [],
+      "soft_skills": [],
+      "all_skills": []
+    },
+    "experience": [],
+    "education": [],
+    "certifications": [
+      {
+        "name": "Data Analytics Specialty•AWS Certified Database - Specialty•GCP Professional Data Engineer•AZ-204: Azure Developing Solutions•Databricks Professional Data Engineer•\nEDUCATION2024M Tech| Data Science & Data EngineeringBITS Pilani2011B TECH| Electrical & Electronics EngineeringAmrita University, India",
+        "issuer": null,
+        "issue_year": null
+      }
+    ],
+    "projects": [
+      {
+        "name": "SQL proficiency",
+        "description": "SQL proficiency•Jira management•Machine learning fundamentals•\n•\n.•\n•\n.",
+        "role": null,
+        "technologies": [],
+        "url": null
+      },
+      {
+        "name": "VIKASKUMARSINGH",
+        "description": "VIKASKUMARSINGH\nEXPERIENCENovember 2020 - CurrentAssociate Manager| PySpark Lead |Cloud Migration|AccentureServices Pvt. Ltd. | BangaloreJune 2019 - October 2020Data Engineering Lead| AZURE Data Engineer|Accenture ServicePvt. Ltd.October 2017 - June 2019Lead Analyst |CGIBusiness StatementThe customer required a full migration of their on-premises data andanalytics platform to a scalable cloud environment. The objective wasto significantly enhance system performance, processing speed, andDesigned and executed scalable data pipelines using PySpark andDatabricks on AWS (EMR), boosting data processing performanceby 40% to enable real-time analytics and data-driven decision-making.\nDeveloped and maintained ETL workflows in AWS Glue, integratingdata from multiple on-premises sources into centralized datarepositories\nLed a team of 12–15 data engineers, optimizing end-to-end dataworkflows and significantly improving overall processing efficiency.\nCollaborated closely with business stakeholders to define datarequirements, ensure data accuracy, and maintain high data integritystandards",
+        "role": null,
+        "technologies": [],
+        "url": null
+      }
+    ],
+    "languages": []
+  },
+  "schema_mapping": {
+    "fields_populated": 7,
+    "total_fields": 16,
+    "completion_percentage": 43.8,
+    "field_details": [
+      {
+        "field_name": "contact.full_name",
+        "target_type": "string",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Personal Details",
+        "confidence_score": 0.95,
+        "description": "Candidate's full name, extracted from the top header of the resume."
+      },
+      {
+        "field_name": "contact.email",
+        "target_type": "string (email)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.98,
+        "description": "Candidate's primary contact email address."
+      },
+      {
+        "field_name": "contact.phone",
+        "target_type": "string (phone)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.95,
+        "description": "Candidate's telephone / mobile phone number."
+      },
+      {
+        "field_name": "contact.location",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.85,
+        "description": "Candidate's residential location or work city."
+      },
+      {
+        "field_name": "contact.linkedin_url",
+        "target_type": "string (url) | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "URL to candidate's LinkedIn profile."
+      },
+      {
+        "field_name": "professional_title",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Subtitle",
+        "confidence_score": 0.0,
+        "description": "Candidate's target headline or most recent job title."
+      },
+      {
+        "field_name": "summary",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Summary / Profile / Objective",
+        "confidence_score": 0.85,
+        "description": "Executive bio, professional overview, or career objective."
+      },
+      {
+        "field_name": "total_experience_years",
+        "target_type": "float | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Summary / Experience Calculation",
+        "confidence_score": 0.0,
+        "description": "Total professional experience in years."
+      },
+      {
+        "field_name": "skills.technical_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Technical Competencies",
+        "confidence_score": 0.0,
+        "description": "Technical programming languages and core software competencies."
+      },
+      {
+        "field_name": "skills.tools_and_platforms",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Tools & Technologies",
+        "confidence_score": 0.0,
+        "description": "Software platforms, developer tools, and operational systems."
+      },
+      {
+        "field_name": "skills.domain_and_functional",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Domain Expertise",
+        "confidence_score": 0.0,
+        "description": "Functional domain knowledge (e.g. Hedge Funds, KYC, NAV, Derivatives)."
+      },
+      {
+        "field_name": "skills.all_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills (Aggregated)",
+        "confidence_score": 0.0,
+        "description": "Complete list of candidate skills across all categories."
+      },
+      {
+        "field_name": "experience",
+        "target_type": "array[WorkExperience]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Professional Experience / Work History",
+        "confidence_score": 0.0,
+        "description": "Complete chronological employment records with bullet points."
+      },
+      {
+        "field_name": "education",
+        "target_type": "array[Education]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Education / Academic Qualifications",
+        "confidence_score": 0.0,
+        "description": "University, college, and higher education degree qualifications."
+      },
+      {
+        "field_name": "certifications",
+        "target_type": "array[Certification]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Certifications / Licenses",
+        "confidence_score": 0.8,
+        "description": "Professional accreditations and credentials."
+      },
+      {
+        "field_name": "projects",
+        "target_type": "array[Project]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Projects / Key Engagements",
+        "confidence_score": 0.8,
+        "description": "Major projects or strategic initiatives led by candidate."
+      }
+    ]
+  },
+  "raw_sections": {
+    "personal_information": "Bangalore, India 560066+91 9980826502vikasbigdata03@gmail.com",
+    "summary": "SUMMARY5+ years of expertise designingand developing data applicationsusing PySpark, AWS, Databricks,AWS Glue,S3,Athena, and SparkSQL within the Hadoopecosystem.•14 years of total experienceacross Azure,AWS,DataBricks,SnowFlake, Hadoop, Big Data,Power BI, Talend ETL, andproduction support, with strongskills in building and optimizinglarge-scale data pipelines.•Led a 12-member team,managing project delivery,mentoring engineers, andensuring high-quality, scalabledata solutions.•\nSKILLSPySpark and Hadoop•Python programming•Cloud computing (Azure andAWS)•Databricks expertise•SnowFlake•Problem solving•Performance monitoring•Data modeling•Data migration strategies•Airflow orchestration•",
+    "projects": "Project management•SQL proficiency•Jira management•Machine learning fundamentals•VIKASKUMARSINGH\nEXPERIENCENovember 2020 - CurrentAssociate Manager| PySpark Lead |Cloud Migration|AccentureServices Pvt. Ltd. | BangaloreJune 2019 - October 2020Data Engineering Lead| AZURE Data Engineer|Accenture ServicePvt. Ltd.October 2017 - June 2019Lead Analyst |CGIBusiness StatementThe customer required a full migration of their on-premises data andanalytics platform to a scalable cloud environment. The objective wasto significantly enhance system performance, processing speed, andDesigned and executed scalable data pipelines using PySpark andDatabricks on AWS (EMR), boosting data processing performanceby 40% to enable real-time analytics and data-driven decision-making.•Developed and maintained ETL workflows in AWS Glue, integratingdata from multiple on-premises sources into centralized datarepositories.•Led a team of 12–15 data engineers, optimizing end-to-end dataworkflows and significantly improving overall processing efficiency.•Collaborated closely with business stakeholders to define datarequirements, ensure data accuracy, and maintain high data integritystandards.",
+    "awards": "Key Achievements•Achieved a 40% reduction in data processing time by optimizingPySpark jobs and improving pipeline performance.•Directed the migration of a legacy data warehouse to AWS,enhancing system scalability, reliability, and maintainability whilerealizing a 30% reduction in operational costs and streamliningcross-departmental migration activities.•Possess extensive Azure-based data engineering expertise,covering end-to-end management of data pipelines, productionsupport, data modeling, and release management; successfullydelivered 20 major releases with an 80% on-time delivery rate.•Led Scrum-driven sprint teams, translating business requirementsinto precise user stories, coordinating development efforts, andensuring high-quality deliverables with over 95% defect-freeperformance.•Proficient in a wide range of Azure tools and services, includingAzure Data Lake Storage (ADLS Gen2), Azure Virtual Machines,Azure Synapse Analytics (Serverless & Dedicated SQL Pools),Azure Data Factory, Azure Databricks, Azure Functions, and PowerBI; highly skilled in Spark, Python, Scala, and workflow orchestrationplatforms such as Apache Airflow.•\ndelivery capacity while modernizing the existing data ecosystem.SolutionWe designed and developed a scalable, cloud-native data andanalytics platform on Microsoft Azure. The solution included buildingreusable PySpark-based data processing frameworks and executingthe end-to-end migration of workflows from the on-premises Hiveenvironment to Azure services. Leveraged Azure Data Lake Storage(ADLS Gen2) for scalable storage, Azure Databricks for distributedprocessing, and Azure Data Factory for orchestrating ingestion andtransformation pipelines.October 2015 - October 2017Senior Software Engineer|WiproJune 2011 - October 2015Production Support Engineer|Accenture Service Pvt Ltd.Gathered and analyzed business and technical requirements todesign the overall data ingestion and transformation solution.•Performed end-to-end data engineering activities, includingingestion, processing, transformation, and validation across the datalifecycle.•Collected data from RDBMS sources using Sqoop and ingested itinto HDFS for downstream processing.•Developed and optimized Hive scripts, queries, and action workflowsto implement transformation logic and ensure data quality.•Developed ETL jobs using Talend Studio, performed unit testing, anddeployed the jobs to the Talend Production Server following releasemanagement practices.•Configured and monitored job scheduling through Control-M,ensuring timely execution, handling reruns, and managing jobdependencies.•Collaborated with Business, QA, and Operations teams to supporttesting, perform defect resolution, and ensure smooth deploymentinto production.•",
+    "certifications": "CERTIFICATIONSAWS Data Analytics Specialty•AWS Certified Database - Specialty•GCP Professional Data Engineer•AZ-204: Azure Developing Solutions•Databricks Professional Data Engineer•\nEDUCATION2024M Tech| Data Science & Data EngineeringBITS Pilani2011B TECH| Electrical & Electronics EngineeringAmrita University, India"
+  },
+  "meta": {
+    "status": "needs_review",
+    "human_verified": false,
+    "provider_calls": 0,
+    "source_accounting": {
+      "all_source_text_preserved": true,
+      "total_spans": 170,
+      "assigned_meaningful_spans": 130,
+      "unresolved_meaningful_spans": 2,
+      "non_content_artifacts": 38,
+      "duplicates_excluded": 0,
+      "all_meaningful_text_assigned": false,
+      "semantic_correctness_verified": false,
+      "outcomes": [
+        {
+          "source_id": "e0:0:23",
+          "source_element_index": 0,
+          "start": 0,
+          "end": 23,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "BERT embedding assigned to a labeled K-means centroid"
+        },
+        {
+          "source_id": "e0:23:51",
+          "source_element_index": 0,
+          "start": 23,
+          "end": 51,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Short preamble beside BERT-detected contact details; verify visually"
+        },
+        {
+          "source_id": "e0:51:61",
+          "source_element_index": 0,
+          "start": 51,
+          "end": 61,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "BERT embedding assigned to a labeled K-means centroid"
+        },
+        {
+          "source_id": "e1:0:8",
+          "source_element_index": 1,
+          "start": 0,
+          "end": 8,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Distinct BERT heading match with a K-means section label"
+        },
+        {
+          "source_id": "e1:8:41",
+          "source_element_index": 1,
+          "start": 8,
+          "end": 41,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e1:41:75",
+          "source_element_index": 1,
+          "start": 41,
+          "end": 75,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e1:75:101",
+          "source_element_index": 1,
+          "start": 75,
+          "end": 101,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e1:101:133",
+          "source_element_index": 1,
+          "start": 101,
+          "end": 133,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e1:133:160",
+          "source_element_index": 1,
+          "start": 133,
+          "end": 160,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e1:160:161",
+          "source_element_index": 1,
+          "start": 160,
+          "end": 161,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e1:161:162",
+          "source_element_index": 1,
+          "start": 161,
+          "end": 162,
+          "section": "summary",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e1:162:196",
+          "source_element_index": 1,
+          "start": 162,
+          "end": 196,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e1:196:218",
+          "source_element_index": 1,
+          "start": 196,
+          "end": 218,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e1:218:246",
+          "source_element_index": 1,
+          "start": 218,
+          "end": 246,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e1:246:281",
+          "source_element_index": 1,
+          "start": 246,
+          "end": 281,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e1:281:308",
+          "source_element_index": 1,
+          "start": 281,
+          "end": 308,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e1:308:340",
+          "source_element_index": 1,
+          "start": 308,
+          "end": 340,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e1:340:362",
+          "source_element_index": 1,
+          "start": 340,
+          "end": 362,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e1:362:363",
+          "source_element_index": 1,
+          "start": 362,
+          "end": 363,
+          "section": "summary",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e1:363:384",
+          "source_element_index": 1,
+          "start": 363,
+          "end": 384,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e1:384:410",
+          "source_element_index": 1,
+          "start": 384,
+          "end": 410,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e1:410:442",
+          "source_element_index": 1,
+          "start": 410,
+          "end": 442,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e1:442:469",
+          "source_element_index": 1,
+          "start": 442,
+          "end": 469,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e1:469:480",
+          "source_element_index": 1,
+          "start": 469,
+          "end": 480,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e1:480:481",
+          "source_element_index": 1,
+          "start": 480,
+          "end": 481,
+          "section": "summary",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e2:0:13",
+          "source_element_index": 2,
+          "start": 0,
+          "end": 13,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e2:13:24",
+          "source_element_index": 2,
+          "start": 13,
+          "end": 24,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e2:24:25",
+          "source_element_index": 2,
+          "start": 24,
+          "end": 25,
+          "section": "summary",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e2:25:43",
+          "source_element_index": 2,
+          "start": 25,
+          "end": 43,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e2:43:44",
+          "source_element_index": 2,
+          "start": 43,
+          "end": 44,
+          "section": "summary",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e2:44:73",
+          "source_element_index": 2,
+          "start": 44,
+          "end": 73,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e2:73:74",
+          "source_element_index": 2,
+          "start": 73,
+          "end": 74,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e2:74:75",
+          "source_element_index": 2,
+          "start": 74,
+          "end": 75,
+          "section": "summary",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e2:75:95",
+          "source_element_index": 2,
+          "start": 75,
+          "end": 95,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e2:95:96",
+          "source_element_index": 2,
+          "start": 95,
+          "end": 96,
+          "section": "summary",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e2:96:105",
+          "source_element_index": 2,
+          "start": 96,
+          "end": 105,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e2:105:106",
+          "source_element_index": 2,
+          "start": 105,
+          "end": 106,
+          "section": "summary",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e2:106:121",
+          "source_element_index": 2,
+          "start": 106,
+          "end": 121,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e2:121:122",
+          "source_element_index": 2,
+          "start": 121,
+          "end": 122,
+          "section": "summary",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e2:122:144",
+          "source_element_index": 2,
+          "start": 122,
+          "end": 144,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e2:144:145",
+          "source_element_index": 2,
+          "start": 144,
+          "end": 145,
+          "section": "summary",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e2:145:158",
+          "source_element_index": 2,
+          "start": 145,
+          "end": 158,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e2:158:159",
+          "source_element_index": 2,
+          "start": 158,
+          "end": 159,
+          "section": "summary",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e2:159:184",
+          "source_element_index": 2,
+          "start": 159,
+          "end": 184,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e2:184:185",
+          "source_element_index": 2,
+          "start": 184,
+          "end": 185,
+          "section": "summary",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e2:185:206",
+          "source_element_index": 2,
+          "start": 185,
+          "end": 206,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e2:206:207",
+          "source_element_index": 2,
+          "start": 206,
+          "end": 207,
+          "section": "summary",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e2:207:225",
+          "source_element_index": 2,
+          "start": 207,
+          "end": 225,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Distinct BERT heading match with a K-means section label"
+        },
+        {
+          "source_id": "e2:225:226",
+          "source_element_index": 2,
+          "start": 225,
+          "end": 226,
+          "section": "projects",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e2:226:241",
+          "source_element_index": 2,
+          "start": 226,
+          "end": 241,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e2:241:242",
+          "source_element_index": 2,
+          "start": 241,
+          "end": 242,
+          "section": "projects",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e2:242:257",
+          "source_element_index": 2,
+          "start": 242,
+          "end": 257,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e2:257:258",
+          "source_element_index": 2,
+          "start": 257,
+          "end": 258,
+          "section": "projects",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e2:258:287",
+          "source_element_index": 2,
+          "start": 258,
+          "end": 287,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e2:287:288",
+          "source_element_index": 2,
+          "start": 287,
+          "end": 288,
+          "section": "projects",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e2:288:303",
+          "source_element_index": 2,
+          "start": 288,
+          "end": 303,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:0:18",
+          "source_element_index": 3,
+          "start": 0,
+          "end": 18,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:18:42",
+          "source_element_index": 3,
+          "start": 18,
+          "end": 42,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:42:99",
+          "source_element_index": 3,
+          "start": 42,
+          "end": 99,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:99:125",
+          "source_element_index": 3,
+          "start": 99,
+          "end": 125,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:125:149",
+          "source_element_index": 3,
+          "start": 125,
+          "end": 149,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:149:208",
+          "source_element_index": 3,
+          "start": 149,
+          "end": 208,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:208:214",
+          "source_element_index": 3,
+          "start": 208,
+          "end": 214,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:214:242",
+          "source_element_index": 3,
+          "start": 214,
+          "end": 242,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:242:263",
+          "source_element_index": 3,
+          "start": 242,
+          "end": 263,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:263:276",
+          "source_element_index": 3,
+          "start": 263,
+          "end": 276,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:276:350",
+          "source_element_index": 3,
+          "start": 276,
+          "end": 350,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:350:412",
+          "source_element_index": 3,
+          "start": 350,
+          "end": 412,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:412:484",
+          "source_element_index": 3,
+          "start": 412,
+          "end": 484,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:484:549",
+          "source_element_index": 3,
+          "start": 484,
+          "end": 549,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:549:602",
+          "source_element_index": 3,
+          "start": 549,
+          "end": 602,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:602:662",
+          "source_element_index": 3,
+          "start": 602,
+          "end": 662,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:662:669",
+          "source_element_index": 3,
+          "start": 662,
+          "end": 669,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:669:670",
+          "source_element_index": 3,
+          "start": 669,
+          "end": 670,
+          "section": "projects",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e3:670:737",
+          "source_element_index": 3,
+          "start": 670,
+          "end": 737,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:737:805",
+          "source_element_index": 3,
+          "start": 737,
+          "end": 805,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:805:806",
+          "source_element_index": 3,
+          "start": 805,
+          "end": 806,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:806:807",
+          "source_element_index": 3,
+          "start": 806,
+          "end": 807,
+          "section": "projects",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e3:807:853",
+          "source_element_index": 3,
+          "start": 807,
+          "end": 853,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:853:878",
+          "source_element_index": 3,
+          "start": 853,
+          "end": 878,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:878:937",
+          "source_element_index": 3,
+          "start": 878,
+          "end": 937,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:937:938",
+          "source_element_index": 3,
+          "start": 937,
+          "end": 938,
+          "section": "projects",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e3:938:1012",
+          "source_element_index": 3,
+          "start": 938,
+          "end": 1012,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:1012:1077",
+          "source_element_index": 3,
+          "start": 1012,
+          "end": 1077,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:1077:1078",
+          "source_element_index": 3,
+          "start": 1077,
+          "end": 1078,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:1078:1094",
+          "source_element_index": 3,
+          "start": 1078,
+          "end": 1094,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Distinct BERT heading match with a K-means section label"
+        },
+        {
+          "source_id": "e3:1094:1095",
+          "source_element_index": 3,
+          "start": 1094,
+          "end": 1095,
+          "section": "awards",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e3:1095:1164",
+          "source_element_index": 3,
+          "start": 1095,
+          "end": 1164,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:1164:1205",
+          "source_element_index": 3,
+          "start": 1164,
+          "end": 1205,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:1205:1206",
+          "source_element_index": 3,
+          "start": 1205,
+          "end": 1206,
+          "section": "awards",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e3:1206:1263",
+          "source_element_index": 3,
+          "start": 1206,
+          "end": 1263,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:1263:1340",
+          "source_element_index": 3,
+          "start": 1263,
+          "end": 1340,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:1340:1399",
+          "source_element_index": 3,
+          "start": 1340,
+          "end": 1399,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:1399:1434",
+          "source_element_index": 3,
+          "start": 1399,
+          "end": 1434,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:1434:1435",
+          "source_element_index": 3,
+          "start": 1434,
+          "end": 1435,
+          "section": "awards",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e3:1435:1492",
+          "source_element_index": 3,
+          "start": 1435,
+          "end": 1492,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:1492:1559",
+          "source_element_index": 3,
+          "start": 1492,
+          "end": 1559,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:1559:1621",
+          "source_element_index": 3,
+          "start": 1559,
+          "end": 1621,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:1621:1674",
+          "source_element_index": 3,
+          "start": 1621,
+          "end": 1674,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:1674:1675",
+          "source_element_index": 3,
+          "start": 1674,
+          "end": 1675,
+          "section": "awards",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e3:1675:1743",
+          "source_element_index": 3,
+          "start": 1675,
+          "end": 1743,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:1743:1811",
+          "source_element_index": 3,
+          "start": 1743,
+          "end": 1811,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:1811:1874",
+          "source_element_index": 3,
+          "start": 1811,
+          "end": 1874,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:1874:1875",
+          "source_element_index": 3,
+          "start": 1874,
+          "end": 1875,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:1875:1876",
+          "source_element_index": 3,
+          "start": 1875,
+          "end": 1876,
+          "section": "awards",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e3:1876:1946",
+          "source_element_index": 3,
+          "start": 1876,
+          "end": 1946,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:1946:2001",
+          "source_element_index": 3,
+          "start": 1946,
+          "end": 2001,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:2001:2060",
+          "source_element_index": 3,
+          "start": 2001,
+          "end": 2060,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:2060:2126",
+          "source_element_index": 3,
+          "start": 2060,
+          "end": 2126,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:2126:2203",
+          "source_element_index": 3,
+          "start": 2126,
+          "end": 2203,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:2203:2227",
+          "source_element_index": 3,
+          "start": 2203,
+          "end": 2227,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:2227:2228",
+          "source_element_index": 3,
+          "start": 2227,
+          "end": 2228,
+          "section": "awards",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e4:0:64",
+          "source_element_index": 4,
+          "start": 0,
+          "end": 64,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e4:64:74",
+          "source_element_index": 4,
+          "start": 64,
+          "end": 74,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e4:74:140",
+          "source_element_index": 4,
+          "start": 74,
+          "end": 140,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e4:140:208",
+          "source_element_index": 4,
+          "start": 140,
+          "end": 208,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e4:208:266",
+          "source_element_index": 4,
+          "start": 208,
+          "end": 266,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e4:266:337",
+          "source_element_index": 4,
+          "start": 266,
+          "end": 337,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e4:337:390",
+          "source_element_index": 4,
+          "start": 337,
+          "end": 390,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e4:390:466",
+          "source_element_index": 4,
+          "start": 390,
+          "end": 466,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e4:466:536",
+          "source_element_index": 4,
+          "start": 466,
+          "end": 536,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e4:536:547",
+          "source_element_index": 4,
+          "start": 536,
+          "end": 547,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e4:547:580",
+          "source_element_index": 4,
+          "start": 547,
+          "end": 580,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e4:580:608",
+          "source_element_index": 4,
+          "start": 580,
+          "end": 608,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e4:608:638",
+          "source_element_index": 4,
+          "start": 608,
+          "end": 638,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e4:638:682",
+          "source_element_index": 4,
+          "start": 638,
+          "end": 682,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e4:682:748",
+          "source_element_index": 4,
+          "start": 682,
+          "end": 748,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e4:748:804",
+          "source_element_index": 4,
+          "start": 748,
+          "end": 804,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e4:804:805",
+          "source_element_index": 4,
+          "start": 804,
+          "end": 805,
+          "section": "awards",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e4:805:873",
+          "source_element_index": 4,
+          "start": 805,
+          "end": 873,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e4:873:942",
+          "source_element_index": 4,
+          "start": 873,
+          "end": 942,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e4:942:943",
+          "source_element_index": 4,
+          "start": 942,
+          "end": 943,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e4:943:944",
+          "source_element_index": 4,
+          "start": 943,
+          "end": 944,
+          "section": "awards",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e4:944:959",
+          "source_element_index": 4,
+          "start": 944,
+          "end": 959,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e4:959:1009",
+          "source_element_index": 4,
+          "start": 959,
+          "end": 1009,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e4:1009:1041",
+          "source_element_index": 4,
+          "start": 1009,
+          "end": 1041,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e4:1041:1042",
+          "source_element_index": 4,
+          "start": 1041,
+          "end": 1042,
+          "section": "awards",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e4:1042:1111",
+          "source_element_index": 4,
+          "start": 1042,
+          "end": 1111,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e4:1111:1167",
+          "source_element_index": 4,
+          "start": 1111,
+          "end": 1167,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e4:1167:1168",
+          "source_element_index": 4,
+          "start": 1167,
+          "end": 1168,
+          "section": "awards",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e4:1168:1243",
+          "source_element_index": 4,
+          "start": 1168,
+          "end": 1243,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e4:1243:1312",
+          "source_element_index": 4,
+          "start": 1243,
+          "end": 1312,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e4:1312:1323",
+          "source_element_index": 4,
+          "start": 1312,
+          "end": 1323,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e4:1323:1324",
+          "source_element_index": 4,
+          "start": 1323,
+          "end": 1324,
+          "section": "awards",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e4:1324:1382",
+          "source_element_index": 4,
+          "start": 1324,
+          "end": 1382,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e4:1382:1454",
+          "source_element_index": 4,
+          "start": 1382,
+          "end": 1454,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e4:1454:1455",
+          "source_element_index": 4,
+          "start": 1454,
+          "end": 1455,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e4:1455:1456",
+          "source_element_index": 4,
+          "start": 1455,
+          "end": 1456,
+          "section": "awards",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e4:1456:1526",
+          "source_element_index": 4,
+          "start": 1456,
+          "end": 1526,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e4:1526:1587",
+          "source_element_index": 4,
+          "start": 1526,
+          "end": 1587,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e4:1587:1599",
+          "source_element_index": 4,
+          "start": 1587,
+          "end": 1599,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e4:1599:1600",
+          "source_element_index": 4,
+          "start": 1599,
+          "end": 1600,
+          "section": "awards",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e5:0:17",
+          "source_element_index": 5,
+          "start": 0,
+          "end": 17,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "Distinct BERT heading match with a K-means section label"
+        },
+        {
+          "source_id": "e5:17:42",
+          "source_element_index": 5,
+          "start": 17,
+          "end": 42,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e5:42:43",
+          "source_element_index": 5,
+          "start": 42,
+          "end": 43,
+          "section": "certifications",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e5:43:77",
+          "source_element_index": 5,
+          "start": 43,
+          "end": 77,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e5:77:78",
+          "source_element_index": 5,
+          "start": 77,
+          "end": 78,
+          "section": "certifications",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e5:78:108",
+          "source_element_index": 5,
+          "start": 78,
+          "end": 108,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e5:108:109",
+          "source_element_index": 5,
+          "start": 108,
+          "end": 109,
+          "section": "certifications",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e5:109:143",
+          "source_element_index": 5,
+          "start": 109,
+          "end": 143,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e5:143:144",
+          "source_element_index": 5,
+          "start": 143,
+          "end": 144,
+          "section": "certifications",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e5:144:181",
+          "source_element_index": 5,
+          "start": 144,
+          "end": 181,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e5:181:182",
+          "source_element_index": 5,
+          "start": 181,
+          "end": 182,
+          "section": "certifications",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e6:0:14",
+          "source_element_index": 6,
+          "start": 0,
+          "end": 14,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e6:14:56",
+          "source_element_index": 6,
+          "start": 14,
+          "end": 56,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e6:56:68",
+          "source_element_index": 6,
+          "start": 56,
+          "end": 68,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e6:68:117",
+          "source_element_index": 6,
+          "start": 68,
+          "end": 117,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e6:117:135",
+          "source_element_index": 6,
+          "start": 117,
+          "end": 135,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e7:0:33",
+          "source_element_index": 7,
+          "start": 0,
+          "end": 33,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Possible ambiguous or unsupported heading; section context stopped"
+        },
+        {
+          "source_id": "e8:0:55",
+          "source_element_index": 8,
+          "start": 0,
+          "end": 55,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        }
+      ]
+    },
+    "document_scope": {
+      "kind": "candidate_or_unknown",
+      "candidate_resume": null,
+      "requires_scope_review": true
+    },
+    "source_inventory_sha256": "7e32f3cca8bc963d455395e2b0b76d3f1af581579a2e3b89f3a2eef69653e02f",
+    "field_evidence": {
+      "contact.full_name": [
+        "e0:0:23",
+        "e0:23:51",
+        "e0:51:61"
+      ],
+      "contact.email": [
+        "e0:0:23",
+        "e0:23:51",
+        "e0:51:61"
+      ],
+      "contact.phone": [
+        "e0:0:23",
+        "e0:23:51",
+        "e0:51:61"
+      ],
+      "contact.location": [
+        "e0:0:23",
+        "e0:23:51",
+        "e0:51:61"
+      ],
+      "summary": [
+        "e1:8:41",
+        "e1:41:75",
+        "e1:75:101",
+        "e1:101:133",
+        "e1:133:160",
+        "e1:160:161",
+        "e1:161:162",
+        "e1:162:196",
+        "e1:196:218",
+        "e1:218:246",
+        "e1:246:281",
+        "e1:281:308",
+        "e1:308:340",
+        "e1:340:362",
+        "e1:362:363",
+        "e1:363:384",
+        "e1:384:410",
+        "e1:410:442",
+        "e1:442:469",
+        "e1:469:480",
+        "e1:480:481",
+        "e2:0:13",
+        "e2:13:24",
+        "e2:24:25",
+        "e2:25:43",
+        "e2:43:44",
+        "e2:44:73",
+        "e2:73:74",
+        "e2:74:75",
+        "e2:75:95",
+        "e2:95:96",
+        "e2:96:105",
+        "e2:105:106",
+        "e2:106:121",
+        "e2:121:122",
+        "e2:122:144",
+        "e2:144:145",
+        "e2:145:158",
+        "e2:158:159",
+        "e2:159:184",
+        "e2:184:185",
+        "e2:185:206",
+        "e2:206:207"
+      ],
+      "projects[0].name": [
+        "e2:226:241",
+        "e2:241:242",
+        "e2:242:257",
+        "e2:257:258",
+        "e2:258:287",
+        "e2:287:288",
+        "e3:669:670",
+        "e3:805:806",
+        "e3:806:807",
+        "e3:937:938",
+        "e3:1077:1078"
+      ],
+      "projects[0].description": [
+        "e2:226:241",
+        "e2:241:242",
+        "e2:242:257",
+        "e2:257:258",
+        "e2:258:287",
+        "e2:287:288",
+        "e3:669:670",
+        "e3:805:806",
+        "e3:806:807",
+        "e3:937:938",
+        "e3:1077:1078"
+      ],
+      "projects[1].name": [
+        "e2:288:303",
+        "e3:0:18",
+        "e3:18:42",
+        "e3:42:99",
+        "e3:99:125",
+        "e3:125:149",
+        "e3:149:208",
+        "e3:208:214",
+        "e3:214:242",
+        "e3:242:263",
+        "e3:263:276",
+        "e3:276:350",
+        "e3:350:412",
+        "e3:412:484",
+        "e3:484:549",
+        "e3:549:602",
+        "e3:602:662",
+        "e3:662:669",
+        "e3:670:737",
+        "e3:737:805",
+        "e3:807:853",
+        "e3:853:878",
+        "e3:878:937",
+        "e3:938:1012",
+        "e3:1012:1077"
+      ],
+      "projects[1].description": [
+        "e2:288:303",
+        "e3:0:18",
+        "e3:18:42",
+        "e3:42:99",
+        "e3:99:125",
+        "e3:125:149",
+        "e3:149:208",
+        "e3:208:214",
+        "e3:214:242",
+        "e3:242:263",
+        "e3:263:276",
+        "e3:276:350",
+        "e3:350:412",
+        "e3:412:484",
+        "e3:484:549",
+        "e3:549:602",
+        "e3:602:662",
+        "e3:662:669",
+        "e3:670:737",
+        "e3:737:805",
+        "e3:807:853",
+        "e3:853:878",
+        "e3:878:937",
+        "e3:938:1012",
+        "e3:1012:1077"
+      ],
+      "certifications[0].name": [
+        "e5:17:42",
+        "e5:42:43",
+        "e5:43:77",
+        "e5:77:78",
+        "e5:78:108",
+        "e5:108:109",
+        "e5:109:143",
+        "e5:143:144",
+        "e5:144:181",
+        "e5:181:182",
+        "e6:0:14",
+        "e6:14:56",
+        "e6:56:68",
+        "e6:68:117",
+        "e6:117:135"
+      ]
+    },
+    "record_reviews": [
+      {
+        "category": "projects",
+        "entry_id": "projects-1",
+        "source_ids": [
+          "e2:226:241",
+          "e2:241:242",
+          "e2:242:257",
+          "e2:257:258",
+          "e2:258:287",
+          "e2:287:288",
+          "e3:669:670",
+          "e3:805:806",
+          "e3:806:807",
+          "e3:937:938",
+          "e3:1077:1078"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "projects",
+        "entry_id": "projects-2",
+        "source_ids": [
+          "e2:288:303",
+          "e3:0:18",
+          "e3:18:42",
+          "e3:42:99",
+          "e3:99:125",
+          "e3:125:149",
+          "e3:149:208",
+          "e3:208:214",
+          "e3:214:242",
+          "e3:242:263",
+          "e3:263:276",
+          "e3:276:350",
+          "e3:350:412",
+          "e3:412:484",
+          "e3:484:549",
+          "e3:549:602",
+          "e3:602:662",
+          "e3:662:669",
+          "e3:670:737",
+          "e3:737:805",
+          "e3:807:853",
+          "e3:853:878",
+          "e3:878:937",
+          "e3:938:1012",
+          "e3:1012:1077"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "certifications",
+        "entry_id": "certifications-1",
+        "source_ids": [
+          "e5:17:42",
+          "e5:42:43",
+          "e5:43:77",
+          "e5:77:78",
+          "e5:78:108",
+          "e5:108:109",
+          "e5:109:143",
+          "e5:143:144",
+          "e5:144:181",
+          "e5:181:182",
+          "e6:0:14",
+          "e6:14:56",
+          "e6:56:68",
+          "e6:68:117",
+          "e6:117:135"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      }
+    ],
+    "missing_required_fields": [],
+    "warnings": [
+      "Schema validity and field completion do not establish extraction or relationship accuracy.",
+      "Handoff confidence scores are fixed heuristics, not calibrated probabilities.",
+      "Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields."
+    ],
+    "unmapped_blocks": [
+      {
+        "source_id": "e1:0:8",
+        "category": "summary",
+        "text": "SUMMARY5",
+        "page_number": 1
+      },
+      {
+        "source_id": "e2:207:225",
+        "category": "projects",
+        "text": "Project management",
+        "page_number": 1
+      },
+      {
+        "source_id": "e2:225:226",
+        "category": "projects",
+        "text": "•",
+        "page_number": 1
+      },
+      {
+        "source_id": "e3:1078:1094",
+        "category": "awards",
+        "text": "Key Achievements",
+        "page_number": 1
+      },
+      {
+        "source_id": "e3:1094:1095",
+        "category": "awards",
+        "text": "•",
+        "page_number": 1
+      },
+      {
+        "source_id": "e3:1095:1164",
+        "category": "awards",
+        "text": "Achieved a 40% reduction in data processing time by optimizingPySpark",
+        "page_number": 1
+      },
+      {
+        "source_id": "e3:1164:1205",
+        "category": "awards",
+        "text": " jobs and improving pipeline performance.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e3:1205:1206",
+        "category": "awards",
+        "text": "•",
+        "page_number": 1
+      },
+      {
+        "source_id": "e3:1206:1263",
+        "category": "awards",
+        "text": "Directed the migration of a legacy data warehouse to AWS,",
+        "page_number": 1
+      },
+      {
+        "source_id": "e3:1263:1340",
+        "category": "awards",
+        "text": "enhancing system scalability, reliability, and maintainability whilerealizing",
+        "page_number": 1
+      },
+      {
+        "source_id": "e3:1340:1399",
+        "category": "awards",
+        "text": " a 30% reduction in operational costs and streamliningcross",
+        "page_number": 1
+      },
+      {
+        "source_id": "e3:1399:1434",
+        "category": "awards",
+        "text": "-departmental migration activities.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e3:1434:1435",
+        "category": "awards",
+        "text": "•",
+        "page_number": 1
+      },
+      {
+        "source_id": "e3:1435:1492",
+        "category": "awards",
+        "text": "Possess extensive Azure-based data engineering expertise,",
+        "page_number": 1
+      },
+      {
+        "source_id": "e3:1492:1559",
+        "category": "awards",
+        "text": "covering end-to-end management of data pipelines, productionsupport",
+        "page_number": 1
+      },
+      {
+        "source_id": "e3:1559:1621",
+        "category": "awards",
+        "text": ", data modeling, and release management; successfullydelivered",
+        "page_number": 1
+      },
+      {
+        "source_id": "e3:1621:1674",
+        "category": "awards",
+        "text": " 20 major releases with an 80% on-time delivery rate.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e3:1674:1675",
+        "category": "awards",
+        "text": "•",
+        "page_number": 1
+      },
+      {
+        "source_id": "e3:1675:1743",
+        "category": "awards",
+        "text": "Led Scrum-driven sprint teams, translating business requirementsinto",
+        "page_number": 1
+      },
+      {
+        "source_id": "e3:1743:1811",
+        "category": "awards",
+        "text": " precise user stories, coordinating development efforts, andensuring",
+        "page_number": 1
+      },
+      {
+        "source_id": "e3:1811:1874",
+        "category": "awards",
+        "text": " high-quality deliverables with over 95% defect-freeperformance",
+        "page_number": 1
+      },
+      {
+        "source_id": "e3:1874:1875",
+        "category": "awards",
+        "text": ".",
+        "page_number": 1
+      },
+      {
+        "source_id": "e3:1875:1876",
+        "category": "awards",
+        "text": "•",
+        "page_number": 1
+      },
+      {
+        "source_id": "e3:1876:1946",
+        "category": "awards",
+        "text": "Proficient in a wide range of Azure tools and services, includingAzure",
+        "page_number": 1
+      },
+      {
+        "source_id": "e3:1946:2001",
+        "category": "awards",
+        "text": " Data Lake Storage (ADLS Gen2), Azure Virtual Machines,",
+        "page_number": 1
+      },
+      {
+        "source_id": "e3:2001:2060",
+        "category": "awards",
+        "text": "Azure Synapse Analytics (Serverless & Dedicated SQL Pools),",
+        "page_number": 1
+      },
+      {
+        "source_id": "e3:2060:2126",
+        "category": "awards",
+        "text": "Azure Data Factory, Azure Databricks, Azure Functions, and PowerBI",
+        "page_number": 1
+      },
+      {
+        "source_id": "e3:2126:2203",
+        "category": "awards",
+        "text": "; highly skilled in Spark, Python, Scala, and workflow orchestrationplatforms",
+        "page_number": 1
+      },
+      {
+        "source_id": "e3:2203:2227",
+        "category": "awards",
+        "text": " such as Apache Airflow.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e3:2227:2228",
+        "category": "awards",
+        "text": "•",
+        "page_number": 1
+      },
+      {
+        "source_id": "e4:0:64",
+        "category": "awards",
+        "text": "delivery capacity while modernizing the existing data ecosystem.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e4:64:74",
+        "category": "awards",
+        "text": "SolutionWe",
+        "page_number": 2
+      },
+      {
+        "source_id": "e4:74:140",
+        "category": "awards",
+        "text": " designed and developed a scalable, cloud-native data andanalytics",
+        "page_number": 2
+      },
+      {
+        "source_id": "e4:140:208",
+        "category": "awards",
+        "text": " platform on Microsoft Azure. The solution included buildingreusable",
+        "page_number": 2
+      },
+      {
+        "source_id": "e4:208:266",
+        "category": "awards",
+        "text": " PySpark-based data processing frameworks and executingthe",
+        "page_number": 2
+      },
+      {
+        "source_id": "e4:266:337",
+        "category": "awards",
+        "text": " end-to-end migration of workflows from the on-premises Hiveenvironment",
+        "page_number": 2
+      },
+      {
+        "source_id": "e4:337:390",
+        "category": "awards",
+        "text": " to Azure services. Leveraged Azure Data Lake Storage",
+        "page_number": 2
+      },
+      {
+        "source_id": "e4:390:466",
+        "category": "awards",
+        "text": "(ADLS Gen2) for scalable storage, Azure Databricks for distributedprocessing",
+        "page_number": 2
+      },
+      {
+        "source_id": "e4:466:536",
+        "category": "awards",
+        "text": ", and Azure Data Factory for orchestrating ingestion andtransformation",
+        "page_number": 2
+      },
+      {
+        "source_id": "e4:536:547",
+        "category": "awards",
+        "text": " pipelines.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e4:547:580",
+        "category": "awards",
+        "text": "October 2015 - October 2017Senior",
+        "page_number": 2
+      },
+      {
+        "source_id": "e4:580:608",
+        "category": "awards",
+        "text": " Software Engineer|WiproJune",
+        "page_number": 2
+      },
+      {
+        "source_id": "e4:608:638",
+        "category": "awards",
+        "text": " 2011 - October 2015Production",
+        "page_number": 2
+      },
+      {
+        "source_id": "e4:638:682",
+        "category": "awards",
+        "text": " Support Engineer|Accenture Service Pvt Ltd.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e4:682:748",
+        "category": "awards",
+        "text": "Gathered and analyzed business and technical requirements todesign",
+        "page_number": 2
+      },
+      {
+        "source_id": "e4:748:804",
+        "category": "awards",
+        "text": " the overall data ingestion and transformation solution.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e4:804:805",
+        "category": "awards",
+        "text": "•",
+        "page_number": 2
+      },
+      {
+        "source_id": "e4:805:873",
+        "category": "awards",
+        "text": "Performed end-to-end data engineering activities, includingingestion",
+        "page_number": 2
+      },
+      {
+        "source_id": "e4:873:942",
+        "category": "awards",
+        "text": ", processing, transformation, and validation across the datalifecycle",
+        "page_number": 2
+      },
+      {
+        "source_id": "e4:942:943",
+        "category": "awards",
+        "text": ".",
+        "page_number": 2
+      },
+      {
+        "source_id": "e4:943:944",
+        "category": "awards",
+        "text": "•",
+        "page_number": 2
+      },
+      {
+        "source_id": "e4:944:959",
+        "category": "awards",
+        "text": "Collected data ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e4:959:1009",
+        "category": "awards",
+        "text": "from RDBMS sources using Sqoop and ingested itinto",
+        "page_number": 2
+      },
+      {
+        "source_id": "e4:1009:1041",
+        "category": "awards",
+        "text": " HDFS for downstream processing.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e4:1041:1042",
+        "category": "awards",
+        "text": "•",
+        "page_number": 2
+      },
+      {
+        "source_id": "e4:1042:1111",
+        "category": "awards",
+        "text": "Developed and optimized Hive scripts, queries, and action workflowsto",
+        "page_number": 2
+      },
+      {
+        "source_id": "e4:1111:1167",
+        "category": "awards",
+        "text": " implement transformation logic and ensure data quality.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e4:1167:1168",
+        "category": "awards",
+        "text": "•",
+        "page_number": 2
+      },
+      {
+        "source_id": "e4:1168:1243",
+        "category": "awards",
+        "text": "Developed ETL jobs using Talend Studio, performed unit testing, anddeployed",
+        "page_number": 2
+      },
+      {
+        "source_id": "e4:1243:1312",
+        "category": "awards",
+        "text": " the jobs to the Talend Production Server following releasemanagement",
+        "page_number": 2
+      },
+      {
+        "source_id": "e4:1312:1323",
+        "category": "awards",
+        "text": " practices.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e4:1323:1324",
+        "category": "awards",
+        "text": "•",
+        "page_number": 2
+      },
+      {
+        "source_id": "e4:1324:1382",
+        "category": "awards",
+        "text": "Configured and monitored job scheduling through Control-M,",
+        "page_number": 2
+      },
+      {
+        "source_id": "e4:1382:1454",
+        "category": "awards",
+        "text": "ensuring timely execution, handling reruns, and managing jobdependencies",
+        "page_number": 2
+      },
+      {
+        "source_id": "e4:1454:1455",
+        "category": "awards",
+        "text": ".",
+        "page_number": 2
+      },
+      {
+        "source_id": "e4:1455:1456",
+        "category": "awards",
+        "text": "•",
+        "page_number": 2
+      },
+      {
+        "source_id": "e4:1456:1526",
+        "category": "awards",
+        "text": "Collaborated with Business, QA, and Operations teams to supporttesting",
+        "page_number": 2
+      },
+      {
+        "source_id": "e4:1526:1587",
+        "category": "awards",
+        "text": ", perform defect resolution, and ensure smooth deploymentinto",
+        "page_number": 2
+      },
+      {
+        "source_id": "e4:1587:1599",
+        "category": "awards",
+        "text": " production.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e4:1599:1600",
+        "category": "awards",
+        "text": "•",
+        "page_number": 2
+      },
+      {
+        "source_id": "e5:0:17",
+        "category": "certifications",
+        "text": "CERTIFICATIONSAWS",
+        "page_number": 2
+      },
+      {
+        "source_id": "e7:0:33",
+        "category": null,
+        "text": "WEBSITES, PORTFOLIOS AND PROFILES",
+        "page_number": 2
+      },
+      {
+        "source_id": "e8:0:55",
+        "category": null,
+        "text": "https://www.linkedin.com/in/vikas-kumar-singh-124b1085/",
+        "page_number": 3
+      }
+    ],
+    "needs_review": [
+      {
+        "source_element_index": 7,
+        "start": 0,
+        "end": 33,
+        "text": "WEBSITES, PORTFOLIOS AND PROFILES",
+        "page_number": 2,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.5659,
+        "margin": 0.244,
+        "lane": "right",
+        "reason": "Possible ambiguous or unsupported heading; section context stopped",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 8,
+        "start": 0,
+        "end": 55,
+        "text": "https://www.linkedin.com/in/vikas-kumar-singh-124b1085/",
+        "page_number": 3,
+        "cluster_id": 0,
+        "candidate_section": "personal_information",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3221,
+        "margin": 0.0327,
+        "lane": "right",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      }
+    ]
+  },
+  "section_schemas": [
+    {
+      "category": "personal_information",
+      "label": "Personal information",
+      "records": [
+        {
+          "record_id": "personal_information",
+          "source_ids": [
+            "e0:0:23",
+            "e0:23:51",
+            "e0:51:61"
+          ],
+          "attributes": [
+            {
+              "name": "full_name",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "email",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "phone",
+              "items": [
+                {
+                  "value": "+91 9980826502",
+                  "evidence": [
+                    {
+                      "source_id": "e0:23:51",
+                      "quote": "+91 9980826502"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "location",
+              "items": [
+                {
+                  "value": "Bangalore",
+                  "evidence": [
+                    {
+                      "source_id": "e0:0:23",
+                      "quote": "Bangalore"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "linkedin_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "github_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "portfolio_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "professional_title",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e0:0:23",
+          "quote": "Bangalore, India 560066"
+        },
+        {
+          "source_id": "e0:23:51",
+          "quote": "+91 9980826502vikasbigdata03"
+        },
+        {
+          "source_id": "e0:51:61",
+          "quote": "@gmail.com"
+        }
+      ]
+    },
+    {
+      "category": "summary",
+      "label": "Summary",
+      "records": [
+        {
+          "record_id": "summary",
+          "source_ids": [
+            "e1:8:41",
+            "e1:41:75",
+            "e1:75:101",
+            "e1:101:133",
+            "e1:133:160",
+            "e1:160:161",
+            "e1:161:162",
+            "e1:162:196",
+            "e1:196:218",
+            "e1:218:246",
+            "e1:246:281",
+            "e1:281:308",
+            "e1:308:340",
+            "e1:340:362",
+            "e1:362:363",
+            "e1:363:384",
+            "e1:384:410",
+            "e1:410:442",
+            "e1:442:469",
+            "e1:469:480",
+            "e1:480:481",
+            "e2:0:13",
+            "e2:13:24",
+            "e2:24:25",
+            "e2:25:43",
+            "e2:43:44",
+            "e2:44:73",
+            "e2:73:74",
+            "e2:74:75",
+            "e2:75:95",
+            "e2:95:96",
+            "e2:96:105",
+            "e2:105:106",
+            "e2:106:121",
+            "e2:121:122",
+            "e2:122:144",
+            "e2:144:145",
+            "e2:145:158",
+            "e2:158:159",
+            "e2:159:184",
+            "e2:184:185",
+            "e2:185:206",
+            "e2:206:207"
+          ],
+          "attributes": [
+            {
+              "name": "statements",
+              "items": [
+                {
+                  "value": "+ years of expertise designingand",
+                  "evidence": [
+                    {
+                      "source_id": "e1:8:41",
+                      "quote": "+ years of expertise designingand"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": " developing data applicationsusing",
+                  "evidence": [
+                    {
+                      "source_id": "e1:41:75",
+                      "quote": " developing data applicationsusing"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": " PySpark, AWS, Databricks,",
+                  "evidence": [
+                    {
+                      "source_id": "e1:75:101",
+                      "quote": " PySpark, AWS, Databricks,"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "AWS Glue,S3,Athena, and SparkSQL",
+                  "evidence": [
+                    {
+                      "source_id": "e1:101:133",
+                      "quote": "AWS Glue,S3,Athena, and SparkSQL"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": " within the Hadoopecosystem",
+                  "evidence": [
+                    {
+                      "source_id": "e1:133:160",
+                      "quote": " within the Hadoopecosystem"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": ".",
+                  "evidence": [
+                    {
+                      "source_id": "e1:160:161",
+                      "quote": "."
+                    },
+                    {
+                      "source_id": "e1:340:362",
+                      "quote": "."
+                    },
+                    {
+                      "source_id": "e1:469:480",
+                      "quote": "."
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "•",
+                  "evidence": [
+                    {
+                      "source_id": "e1:161:162",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e1:362:363",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e1:480:481",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:24:25",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:43:44",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:74:75",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:95:96",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:105:106",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:121:122",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:144:145",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:158:159",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:184:185",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:206:207",
+                      "quote": "•"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "14 years of total experienceacross",
+                  "evidence": [
+                    {
+                      "source_id": "e1:162:196",
+                      "quote": "14 years of total experienceacross"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": " Azure,AWS,DataBricks,",
+                  "evidence": [
+                    {
+                      "source_id": "e1:196:218",
+                      "quote": " Azure,AWS,DataBricks,"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "SnowFlake, Hadoop, Big Data,",
+                  "evidence": [
+                    {
+                      "source_id": "e1:218:246",
+                      "quote": "SnowFlake, Hadoop, Big Data,"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Power BI, Talend ETL, andproduction",
+                  "evidence": [
+                    {
+                      "source_id": "e1:246:281",
+                      "quote": "Power BI, Talend ETL, andproduction"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": " support, with strongskills",
+                  "evidence": [
+                    {
+                      "source_id": "e1:281:308",
+                      "quote": " support, with strongskills"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": " in building and optimizinglarge",
+                  "evidence": [
+                    {
+                      "source_id": "e1:308:340",
+                      "quote": " in building and optimizinglarge"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "-scale data pipelines.",
+                  "evidence": [
+                    {
+                      "source_id": "e1:340:362",
+                      "quote": "-scale data pipelines."
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "•",
+                  "evidence": [
+                    {
+                      "source_id": "e1:161:162",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e1:362:363",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e1:480:481",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:24:25",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:43:44",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:74:75",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:95:96",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:105:106",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:121:122",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:144:145",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:158:159",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:184:185",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:206:207",
+                      "quote": "•"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Led a 12-member team,",
+                  "evidence": [
+                    {
+                      "source_id": "e1:363:384",
+                      "quote": "Led a 12-member team,"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "managing project delivery,",
+                  "evidence": [
+                    {
+                      "source_id": "e1:384:410",
+                      "quote": "managing project delivery,"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "mentoring engineers, andensuring",
+                  "evidence": [
+                    {
+                      "source_id": "e1:410:442",
+                      "quote": "mentoring engineers, andensuring"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": " high-quality, scalabledata",
+                  "evidence": [
+                    {
+                      "source_id": "e1:442:469",
+                      "quote": " high-quality, scalabledata"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": " solutions.",
+                  "evidence": [
+                    {
+                      "source_id": "e1:469:480",
+                      "quote": " solutions."
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "•",
+                  "evidence": [
+                    {
+                      "source_id": "e1:161:162",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e1:362:363",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e1:480:481",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:24:25",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:43:44",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:74:75",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:95:96",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:105:106",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:121:122",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:144:145",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:158:159",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:184:185",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:206:207",
+                      "quote": "•"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "SKILLSPySpark",
+                  "evidence": [
+                    {
+                      "source_id": "e2:0:13",
+                      "quote": "SKILLSPySpark"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": " and Hadoop",
+                  "evidence": [
+                    {
+                      "source_id": "e2:13:24",
+                      "quote": " and Hadoop"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "•",
+                  "evidence": [
+                    {
+                      "source_id": "e1:161:162",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e1:362:363",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e1:480:481",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:24:25",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:43:44",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:74:75",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:95:96",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:105:106",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:121:122",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:144:145",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:158:159",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:184:185",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:206:207",
+                      "quote": "•"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Python programming",
+                  "evidence": [
+                    {
+                      "source_id": "e2:25:43",
+                      "quote": "Python programming"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "•",
+                  "evidence": [
+                    {
+                      "source_id": "e1:161:162",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e1:362:363",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e1:480:481",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:24:25",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:43:44",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:74:75",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:95:96",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:105:106",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:121:122",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:144:145",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:158:159",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:184:185",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:206:207",
+                      "quote": "•"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Cloud computing (Azure andAWS",
+                  "evidence": [
+                    {
+                      "source_id": "e2:44:73",
+                      "quote": "Cloud computing (Azure andAWS"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": ")",
+                  "evidence": [
+                    {
+                      "source_id": "e2:73:74",
+                      "quote": ")"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "•",
+                  "evidence": [
+                    {
+                      "source_id": "e1:161:162",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e1:362:363",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e1:480:481",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:24:25",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:43:44",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:74:75",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:95:96",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:105:106",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:121:122",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:144:145",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:158:159",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:184:185",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:206:207",
+                      "quote": "•"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Databricks expertise",
+                  "evidence": [
+                    {
+                      "source_id": "e2:75:95",
+                      "quote": "Databricks expertise"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "•",
+                  "evidence": [
+                    {
+                      "source_id": "e1:161:162",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e1:362:363",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e1:480:481",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:24:25",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:43:44",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:74:75",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:95:96",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:105:106",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:121:122",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:144:145",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:158:159",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:184:185",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:206:207",
+                      "quote": "•"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "SnowFlake",
+                  "evidence": [
+                    {
+                      "source_id": "e1:218:246",
+                      "quote": "SnowFlake"
+                    },
+                    {
+                      "source_id": "e2:96:105",
+                      "quote": "SnowFlake"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "•",
+                  "evidence": [
+                    {
+                      "source_id": "e1:161:162",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e1:362:363",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e1:480:481",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:24:25",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:43:44",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:74:75",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:95:96",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:105:106",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:121:122",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:144:145",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:158:159",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:184:185",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:206:207",
+                      "quote": "•"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Problem solving",
+                  "evidence": [
+                    {
+                      "source_id": "e2:106:121",
+                      "quote": "Problem solving"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "•",
+                  "evidence": [
+                    {
+                      "source_id": "e1:161:162",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e1:362:363",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e1:480:481",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:24:25",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:43:44",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:74:75",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:95:96",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:105:106",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:121:122",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:144:145",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:158:159",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:184:185",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:206:207",
+                      "quote": "•"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Performance monitoring",
+                  "evidence": [
+                    {
+                      "source_id": "e2:122:144",
+                      "quote": "Performance monitoring"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "•",
+                  "evidence": [
+                    {
+                      "source_id": "e1:161:162",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e1:362:363",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e1:480:481",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:24:25",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:43:44",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:74:75",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:95:96",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:105:106",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:121:122",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:144:145",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:158:159",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:184:185",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:206:207",
+                      "quote": "•"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Data modeling",
+                  "evidence": [
+                    {
+                      "source_id": "e2:145:158",
+                      "quote": "Data modeling"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "•",
+                  "evidence": [
+                    {
+                      "source_id": "e1:161:162",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e1:362:363",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e1:480:481",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:24:25",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:43:44",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:74:75",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:95:96",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:105:106",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:121:122",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:144:145",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:158:159",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:184:185",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:206:207",
+                      "quote": "•"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Data migration strategies",
+                  "evidence": [
+                    {
+                      "source_id": "e2:159:184",
+                      "quote": "Data migration strategies"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "•",
+                  "evidence": [
+                    {
+                      "source_id": "e1:161:162",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e1:362:363",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e1:480:481",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:24:25",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:43:44",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:74:75",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:95:96",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:105:106",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:121:122",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:144:145",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:158:159",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:184:185",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:206:207",
+                      "quote": "•"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Airflow orchestration",
+                  "evidence": [
+                    {
+                      "source_id": "e2:185:206",
+                      "quote": "Airflow orchestration"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "•",
+                  "evidence": [
+                    {
+                      "source_id": "e1:161:162",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e1:362:363",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e1:480:481",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:24:25",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:43:44",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:74:75",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:95:96",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:105:106",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:121:122",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:144:145",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:158:159",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:184:185",
+                      "quote": "•"
+                    },
+                    {
+                      "source_id": "e2:206:207",
+                      "quote": "•"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "total_experience_years",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e1:0:8",
+          "quote": "SUMMARY5"
+        }
+      ]
+    },
+    {
+      "category": "projects",
+      "label": "Projects",
+      "records": [
+        {
+          "record_id": "projects-1",
+          "source_ids": [
+            "e2:226:241",
+            "e2:241:242",
+            "e2:242:257",
+            "e2:257:258",
+            "e2:258:287",
+            "e2:287:288",
+            "e3:669:670",
+            "e3:805:806",
+            "e3:806:807",
+            "e3:937:938",
+            "e3:1077:1078"
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "items": [
+                {
+                  "value": "SQL proficiency",
+                  "evidence": [
+                    {
+                      "source_id": "e2:226:241",
+                      "quote": "SQL proficiency"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "description",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "url",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "projects-2",
+          "source_ids": [
+            "e2:288:303",
+            "e3:0:18",
+            "e3:18:42",
+            "e3:42:99",
+            "e3:99:125",
+            "e3:125:149",
+            "e3:149:208",
+            "e3:208:214",
+            "e3:214:242",
+            "e3:242:263",
+            "e3:263:276",
+            "e3:276:350",
+            "e3:350:412",
+            "e3:412:484",
+            "e3:484:549",
+            "e3:549:602",
+            "e3:602:662",
+            "e3:662:669",
+            "e3:670:737",
+            "e3:737:805",
+            "e3:807:853",
+            "e3:853:878",
+            "e3:878:937",
+            "e3:938:1012",
+            "e3:1012:1077"
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "items": [
+                {
+                  "value": "VIKASKUMARSINGH",
+                  "evidence": [
+                    {
+                      "source_id": "e2:288:303",
+                      "quote": "VIKASKUMARSINGH"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "description",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "url",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e2:207:225",
+          "quote": "Project management"
+        },
+        {
+          "source_id": "e2:225:226",
+          "quote": "•"
+        },
+        {
+          "source_id": "e2:241:242",
+          "quote": "•"
+        },
+        {
+          "source_id": "e2:242:257",
+          "quote": "Jira management"
+        },
+        {
+          "source_id": "e2:257:258",
+          "quote": "•"
+        },
+        {
+          "source_id": "e2:258:287",
+          "quote": "Machine learning fundamentals"
+        },
+        {
+          "source_id": "e2:287:288",
+          "quote": "•"
+        },
+        {
+          "source_id": "e3:0:18",
+          "quote": "EXPERIENCENovember"
+        },
+        {
+          "source_id": "e3:18:42",
+          "quote": " 2020 - CurrentAssociate"
+        },
+        {
+          "source_id": "e3:42:99",
+          "quote": " Manager| PySpark Lead |Cloud Migration|AccentureServices"
+        },
+        {
+          "source_id": "e3:99:125",
+          "quote": " Pvt. Ltd. | BangaloreJune"
+        },
+        {
+          "source_id": "e3:125:149",
+          "quote": " 2019 - October 2020Data"
+        },
+        {
+          "source_id": "e3:149:208",
+          "quote": " Engineering Lead| AZURE Data Engineer|Accenture ServicePvt"
+        },
+        {
+          "source_id": "e3:208:214",
+          "quote": ". Ltd."
+        },
+        {
+          "source_id": "e3:214:242",
+          "quote": "October 2017 - June 2019Lead"
+        },
+        {
+          "source_id": "e3:242:263",
+          "quote": " Analyst |CGIBusiness"
+        },
+        {
+          "source_id": "e3:263:276",
+          "quote": " StatementThe"
+        },
+        {
+          "source_id": "e3:276:350",
+          "quote": " customer required a full migration of their on-premises data andanalytics"
+        },
+        {
+          "source_id": "e3:350:412",
+          "quote": " platform to a scalable cloud environment. The objective wasto"
+        },
+        {
+          "source_id": "e3:412:484",
+          "quote": " significantly enhance system performance, processing speed, andDesigned"
+        },
+        {
+          "source_id": "e3:484:549",
+          "quote": " and executed scalable data pipelines using PySpark andDatabricks"
+        },
+        {
+          "source_id": "e3:549:602",
+          "quote": " on AWS (EMR), boosting data processing performanceby"
+        },
+        {
+          "source_id": "e3:602:662",
+          "quote": " 40% to enable real-time analytics and data-driven decision-"
+        },
+        {
+          "source_id": "e3:662:669",
+          "quote": "making."
+        },
+        {
+          "source_id": "e3:669:670",
+          "quote": "•"
+        },
+        {
+          "source_id": "e3:670:737",
+          "quote": "Developed and maintained ETL workflows in AWS Glue, integratingdata"
+        },
+        {
+          "source_id": "e3:737:805",
+          "quote": " from multiple on-premises sources into centralized datarepositories"
+        },
+        {
+          "source_id": "e3:805:806",
+          "quote": "."
+        },
+        {
+          "source_id": "e3:806:807",
+          "quote": "•"
+        },
+        {
+          "source_id": "e3:807:853",
+          "quote": "Led a team of 12–15 data engineers, optimizing"
+        },
+        {
+          "source_id": "e3:853:878",
+          "quote": " end-to-end dataworkflows"
+        },
+        {
+          "source_id": "e3:878:937",
+          "quote": " and significantly improving overall processing efficiency."
+        },
+        {
+          "source_id": "e3:937:938",
+          "quote": "•"
+        },
+        {
+          "source_id": "e3:938:1012",
+          "quote": "Collaborated closely with business stakeholders to define datarequirements"
+        },
+        {
+          "source_id": "e3:1012:1077",
+          "quote": ", ensure data accuracy, and maintain high data integritystandards"
+        },
+        {
+          "source_id": "e3:1077:1078",
+          "quote": "."
+        }
+      ]
+    },
+    {
+      "category": "awards",
+      "label": "Awards and achievements",
+      "records": [
+        {
+          "record_id": "awards-1",
+          "source_ids": [
+            "e3:1095:1164",
+            "e3:1164:1205",
+            "e3:1205:1206",
+            "e3:1206:1263",
+            "e3:1263:1340",
+            "e3:1340:1399",
+            "e3:1399:1434",
+            "e3:1434:1435",
+            "e3:1435:1492",
+            "e3:1492:1559",
+            "e3:1559:1621",
+            "e3:1621:1674",
+            "e3:1674:1675",
+            "e3:1675:1743",
+            "e3:1743:1811",
+            "e3:1811:1874",
+            "e3:1874:1875",
+            "e3:1875:1876",
+            "e3:1876:1946",
+            "e3:1946:2001",
+            "e3:2001:2060",
+            "e3:2060:2126",
+            "e3:2126:2203",
+            "e3:2203:2227",
+            "e3:2227:2228",
+            "e4:0:64",
+            "e4:64:74",
+            "e4:74:140",
+            "e4:140:208",
+            "e4:208:266",
+            "e4:266:337",
+            "e4:337:390",
+            "e4:390:466",
+            "e4:466:536",
+            "e4:536:547",
+            "e4:547:580",
+            "e4:580:608",
+            "e4:608:638",
+            "e4:638:682",
+            "e4:682:748",
+            "e4:748:804",
+            "e4:804:805",
+            "e4:805:873",
+            "e4:873:942",
+            "e4:942:943",
+            "e4:943:944",
+            "e4:944:959",
+            "e4:959:1009",
+            "e4:1009:1041",
+            "e4:1041:1042",
+            "e4:1042:1111",
+            "e4:1111:1167",
+            "e4:1167:1168",
+            "e4:1168:1243",
+            "e4:1243:1312",
+            "e4:1312:1323",
+            "e4:1323:1324",
+            "e4:1324:1382",
+            "e4:1382:1454",
+            "e4:1454:1455",
+            "e4:1455:1456",
+            "e4:1456:1526",
+            "e4:1526:1587",
+            "e4:1587:1599",
+            "e4:1599:1600"
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "issuer",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "date",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "Unlabelled compound information requires source review."
+          ]
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e3:1078:1094",
+          "quote": "Key Achievements"
+        },
+        {
+          "source_id": "e3:1094:1095",
+          "quote": "•"
+        },
+        {
+          "source_id": "e3:1095:1164",
+          "quote": "Achieved a 40% reduction in data processing time by optimizingPySpark"
+        },
+        {
+          "source_id": "e3:1164:1205",
+          "quote": " jobs and improving pipeline performance."
+        },
+        {
+          "source_id": "e3:1205:1206",
+          "quote": "•"
+        },
+        {
+          "source_id": "e3:1206:1263",
+          "quote": "Directed the migration of a legacy data warehouse to AWS,"
+        },
+        {
+          "source_id": "e3:1263:1340",
+          "quote": "enhancing system scalability, reliability, and maintainability whilerealizing"
+        },
+        {
+          "source_id": "e3:1340:1399",
+          "quote": " a 30% reduction in operational costs and streamliningcross"
+        },
+        {
+          "source_id": "e3:1399:1434",
+          "quote": "-departmental migration activities."
+        },
+        {
+          "source_id": "e3:1434:1435",
+          "quote": "•"
+        },
+        {
+          "source_id": "e3:1435:1492",
+          "quote": "Possess extensive Azure-based data engineering expertise,"
+        },
+        {
+          "source_id": "e3:1492:1559",
+          "quote": "covering end-to-end management of data pipelines, productionsupport"
+        },
+        {
+          "source_id": "e3:1559:1621",
+          "quote": ", data modeling, and release management; successfullydelivered"
+        },
+        {
+          "source_id": "e3:1621:1674",
+          "quote": " 20 major releases with an 80% on-time delivery rate."
+        },
+        {
+          "source_id": "e3:1674:1675",
+          "quote": "•"
+        },
+        {
+          "source_id": "e3:1675:1743",
+          "quote": "Led Scrum-driven sprint teams, translating business requirementsinto"
+        },
+        {
+          "source_id": "e3:1743:1811",
+          "quote": " precise user stories, coordinating development efforts, andensuring"
+        },
+        {
+          "source_id": "e3:1811:1874",
+          "quote": " high-quality deliverables with over 95% defect-freeperformance"
+        },
+        {
+          "source_id": "e3:1874:1875",
+          "quote": "."
+        },
+        {
+          "source_id": "e3:1875:1876",
+          "quote": "•"
+        },
+        {
+          "source_id": "e3:1876:1946",
+          "quote": "Proficient in a wide range of Azure tools and services, includingAzure"
+        },
+        {
+          "source_id": "e3:1946:2001",
+          "quote": " Data Lake Storage (ADLS Gen2), Azure Virtual Machines,"
+        },
+        {
+          "source_id": "e3:2001:2060",
+          "quote": "Azure Synapse Analytics (Serverless & Dedicated SQL Pools),"
+        },
+        {
+          "source_id": "e3:2060:2126",
+          "quote": "Azure Data Factory, Azure Databricks, Azure Functions, and PowerBI"
+        },
+        {
+          "source_id": "e3:2126:2203",
+          "quote": "; highly skilled in Spark, Python, Scala, and workflow orchestrationplatforms"
+        },
+        {
+          "source_id": "e3:2203:2227",
+          "quote": " such as Apache Airflow."
+        },
+        {
+          "source_id": "e3:2227:2228",
+          "quote": "•"
+        },
+        {
+          "source_id": "e4:0:64",
+          "quote": "delivery capacity while modernizing the existing data ecosystem."
+        },
+        {
+          "source_id": "e4:64:74",
+          "quote": "SolutionWe"
+        },
+        {
+          "source_id": "e4:74:140",
+          "quote": " designed and developed a scalable, cloud-native data andanalytics"
+        },
+        {
+          "source_id": "e4:140:208",
+          "quote": " platform on Microsoft Azure. The solution included buildingreusable"
+        },
+        {
+          "source_id": "e4:208:266",
+          "quote": " PySpark-based data processing frameworks and executingthe"
+        },
+        {
+          "source_id": "e4:266:337",
+          "quote": " end-to-end migration of workflows from the on-premises Hiveenvironment"
+        },
+        {
+          "source_id": "e4:337:390",
+          "quote": " to Azure services. Leveraged Azure Data Lake Storage"
+        },
+        {
+          "source_id": "e4:390:466",
+          "quote": "(ADLS Gen2) for scalable storage, Azure Databricks for distributedprocessing"
+        },
+        {
+          "source_id": "e4:466:536",
+          "quote": ", and Azure Data Factory for orchestrating ingestion andtransformation"
+        },
+        {
+          "source_id": "e4:536:547",
+          "quote": " pipelines."
+        },
+        {
+          "source_id": "e4:547:580",
+          "quote": "October 2015 - October 2017Senior"
+        },
+        {
+          "source_id": "e4:580:608",
+          "quote": " Software Engineer|WiproJune"
+        },
+        {
+          "source_id": "e4:608:638",
+          "quote": " 2011 - October 2015Production"
+        },
+        {
+          "source_id": "e4:638:682",
+          "quote": " Support Engineer|Accenture Service Pvt Ltd."
+        },
+        {
+          "source_id": "e4:682:748",
+          "quote": "Gathered and analyzed business and technical requirements todesign"
+        },
+        {
+          "source_id": "e4:748:804",
+          "quote": " the overall data ingestion and transformation solution."
+        },
+        {
+          "source_id": "e4:804:805",
+          "quote": "•"
+        },
+        {
+          "source_id": "e4:805:873",
+          "quote": "Performed end-to-end data engineering activities, includingingestion"
+        },
+        {
+          "source_id": "e4:873:942",
+          "quote": ", processing, transformation, and validation across the datalifecycle"
+        },
+        {
+          "source_id": "e4:942:943",
+          "quote": "."
+        },
+        {
+          "source_id": "e4:943:944",
+          "quote": "•"
+        },
+        {
+          "source_id": "e4:944:959",
+          "quote": "Collected data "
+        },
+        {
+          "source_id": "e4:959:1009",
+          "quote": "from RDBMS sources using Sqoop and ingested itinto"
+        },
+        {
+          "source_id": "e4:1009:1041",
+          "quote": " HDFS for downstream processing."
+        },
+        {
+          "source_id": "e4:1041:1042",
+          "quote": "•"
+        },
+        {
+          "source_id": "e4:1042:1111",
+          "quote": "Developed and optimized Hive scripts, queries, and action workflowsto"
+        },
+        {
+          "source_id": "e4:1111:1167",
+          "quote": " implement transformation logic and ensure data quality."
+        },
+        {
+          "source_id": "e4:1167:1168",
+          "quote": "•"
+        },
+        {
+          "source_id": "e4:1168:1243",
+          "quote": "Developed ETL jobs using Talend Studio, performed unit testing, anddeployed"
+        },
+        {
+          "source_id": "e4:1243:1312",
+          "quote": " the jobs to the Talend Production Server following releasemanagement"
+        },
+        {
+          "source_id": "e4:1312:1323",
+          "quote": " practices."
+        },
+        {
+          "source_id": "e4:1323:1324",
+          "quote": "•"
+        },
+        {
+          "source_id": "e4:1324:1382",
+          "quote": "Configured and monitored job scheduling through Control-M,"
+        },
+        {
+          "source_id": "e4:1382:1454",
+          "quote": "ensuring timely execution, handling reruns, and managing jobdependencies"
+        },
+        {
+          "source_id": "e4:1454:1455",
+          "quote": "."
+        },
+        {
+          "source_id": "e4:1455:1456",
+          "quote": "•"
+        },
+        {
+          "source_id": "e4:1456:1526",
+          "quote": "Collaborated with Business, QA, and Operations teams to supporttesting"
+        },
+        {
+          "source_id": "e4:1526:1587",
+          "quote": ", perform defect resolution, and ensure smooth deploymentinto"
+        },
+        {
+          "source_id": "e4:1587:1599",
+          "quote": " production."
+        },
+        {
+          "source_id": "e4:1599:1600",
+          "quote": "•"
+        }
+      ]
+    },
+    {
+      "category": "certifications",
+      "label": "Certifications",
+      "records": [
+        {
+          "record_id": "certifications-1",
+          "source_ids": [
+            "e5:17:42",
+            "e5:42:43",
+            "e5:43:77",
+            "e5:77:78",
+            "e5:78:108",
+            "e5:108:109",
+            "e5:109:143",
+            "e5:143:144",
+            "e5:144:181",
+            "e5:181:182",
+            "e6:0:14",
+            "e6:14:56",
+            "e6:56:68",
+            "e6:68:117",
+            "e6:117:135"
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "issuer",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "issue_year",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e5:0:17",
+          "quote": "CERTIFICATIONSAWS"
+        },
+        {
+          "source_id": "e5:17:42",
+          "quote": " Data Analytics Specialty"
+        },
+        {
+          "source_id": "e5:42:43",
+          "quote": "•"
+        },
+        {
+          "source_id": "e5:43:77",
+          "quote": "AWS Certified Database - Specialty"
+        },
+        {
+          "source_id": "e5:77:78",
+          "quote": "•"
+        },
+        {
+          "source_id": "e5:78:108",
+          "quote": "GCP Professional Data Engineer"
+        },
+        {
+          "source_id": "e5:108:109",
+          "quote": "•"
+        },
+        {
+          "source_id": "e5:109:143",
+          "quote": "AZ-204: Azure Developing Solutions"
+        },
+        {
+          "source_id": "e5:143:144",
+          "quote": "•"
+        },
+        {
+          "source_id": "e5:144:181",
+          "quote": "Databricks Professional Data Engineer"
+        },
+        {
+          "source_id": "e5:181:182",
+          "quote": "•"
+        },
+        {
+          "source_id": "e6:0:14",
+          "quote": "EDUCATION2024M"
+        },
+        {
+          "source_id": "e6:14:56",
+          "quote": " Tech| Data Science & Data EngineeringBITS"
+        },
+        {
+          "source_id": "e6:56:68",
+          "quote": " Pilani2011B"
+        },
+        {
+          "source_id": "e6:68:117",
+          "quote": " TECH| Electrical & Electronics EngineeringAmrita"
+        },
+        {
+          "source_id": "e6:117:135",
+          "quote": " University, India"
+        }
+      ]
+    },
+    {
+      "category": "needs_review",
+      "label": "Unassigned source blocks",
+      "records": [],
+      "residual_blocks": [
+        {
+          "source_id": "e7:0:33",
+          "quote": "WEBSITES, PORTFOLIOS AND PROFILES"
+        },
+        {
+          "source_id": "e8:0:55",
+          "quote": "https://www.linkedin.com/in/vikas-kumar-singh-124b1085/"
+        }
+      ]
+    }
+  ]
+}

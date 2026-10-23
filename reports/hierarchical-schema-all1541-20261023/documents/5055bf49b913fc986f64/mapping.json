@@ -1,0 +1,1329 @@
+{
+  "success": true,
+  "source": "Lavin Motwani.docx",
+  "extraction_mode": "existing_blocks_schema_mapping",
+  "data": {
+    "contact": {
+      "full_name": "Bangalore, KA 560087",
+      "email": "lavinmotwani132@gmail.com",
+      "phone": "8878977333",
+      "location": "Bangalore",
+      "linkedin_url": "https://www.linkedin.com/in/lavin-motwani",
+      "github_url": null,
+      "portfolio_url": null
+    },
+    "professional_title": null,
+    "summary": "8+ Years Result-oriented Software Engineer with 8.6 years of experience delivering end-to-end solutions in Automotive, Business Intelligence, and Hospitality domains. Experienced exclusively in product-based organizations, contributing to high-impact, customer-facing systems. Skilled in building scalable, cloud-native applications using Java, Spring Boot, AWS, and Microservices, with hands-on expertise in development, debugging, E2E testing, and deployment. Demonstrated ability to manage the full software development lifecycle, ensuring scalability and efficiency. Adept at gathering and analyzing customer requirements, translating them into actionable tasks, and leading projects through to successful delivery. Excel both as an individual contributor and in cross-functional collaboration, consistently driving quality and innovation.",
+    "total_experience_years": 8.6,
+    "skills": {
+      "technical_skills": [
+        "SQL",
+        "Java",
+        "Kafka",
+        "MongoDB",
+        "Redis",
+        "Docker",
+        "Kubernetes"
+      ],
+      "tools_and_platforms": [
+        "AWS"
+      ],
+      "domain_and_functional": [],
+      "soft_skills": [
+        "Agile"
+      ],
+      "all_skills": [
+        "SQL",
+        "Java",
+        "Kafka",
+        "MongoDB",
+        "Redis",
+        "Docker",
+        "Kubernetes",
+        "AWS",
+        "Agile",
+        "Programming Languages Java Web Technologies RESTful APIs Frameworks Spring Boot",
+        "JPA",
+        "Hibernate Data Management SQL",
+        "Elastic-search",
+        "REDIS Architecture/Design Pattern Micro-service Architecture",
+        "Event-Driven Architecture",
+        "API Gateway",
+        "MVC Build & CI/CD Tools Maven",
+        "Jenkins",
+        "Container",
+        "Bitbucket",
+        "GitHub Cloud Platforms AWS Other Skills/Technologies Kafka",
+        "JSON",
+        "IoT",
+        "Prometheus",
+        "Grafana",
+        "Test-Driven Development"
+      ]
+    },
+    "experience": [
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      }
+    ],
+    "education": [],
+    "certifications": [],
+    "projects": [],
+    "languages": []
+  },
+  "schema_mapping": {
+    "fields_populated": 11,
+    "total_fields": 16,
+    "completion_percentage": 68.8,
+    "field_details": [
+      {
+        "field_name": "contact.full_name",
+        "target_type": "string",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Personal Details",
+        "confidence_score": 0.95,
+        "description": "Candidate's full name, extracted from the top header of the resume."
+      },
+      {
+        "field_name": "contact.email",
+        "target_type": "string (email)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.98,
+        "description": "Candidate's primary contact email address."
+      },
+      {
+        "field_name": "contact.phone",
+        "target_type": "string (phone)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.95,
+        "description": "Candidate's telephone / mobile phone number."
+      },
+      {
+        "field_name": "contact.location",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.85,
+        "description": "Candidate's residential location or work city."
+      },
+      {
+        "field_name": "contact.linkedin_url",
+        "target_type": "string (url) | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.9,
+        "description": "URL to candidate's LinkedIn profile."
+      },
+      {
+        "field_name": "professional_title",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Subtitle",
+        "confidence_score": 0.0,
+        "description": "Candidate's target headline or most recent job title."
+      },
+      {
+        "field_name": "summary",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Summary / Profile / Objective",
+        "confidence_score": 0.85,
+        "description": "Executive bio, professional overview, or career objective."
+      },
+      {
+        "field_name": "total_experience_years",
+        "target_type": "float | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Summary / Experience Calculation",
+        "confidence_score": 0.9,
+        "description": "Total professional experience in years."
+      },
+      {
+        "field_name": "skills.technical_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills / Technical Competencies",
+        "confidence_score": 0.92,
+        "description": "Technical programming languages and core software competencies."
+      },
+      {
+        "field_name": "skills.tools_and_platforms",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills / Tools & Technologies",
+        "confidence_score": 0.9,
+        "description": "Software platforms, developer tools, and operational systems."
+      },
+      {
+        "field_name": "skills.domain_and_functional",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Domain Expertise",
+        "confidence_score": 0.0,
+        "description": "Functional domain knowledge (e.g. Hedge Funds, KYC, NAV, Derivatives)."
+      },
+      {
+        "field_name": "skills.all_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills (Aggregated)",
+        "confidence_score": 0.95,
+        "description": "Complete list of candidate skills across all categories."
+      },
+      {
+        "field_name": "experience",
+        "target_type": "array[WorkExperience]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Experience / Work History",
+        "confidence_score": 0.92,
+        "description": "Complete chronological employment records with bullet points."
+      },
+      {
+        "field_name": "education",
+        "target_type": "array[Education]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Education / Academic Qualifications",
+        "confidence_score": 0.0,
+        "description": "University, college, and higher education degree qualifications."
+      },
+      {
+        "field_name": "certifications",
+        "target_type": "array[Certification]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Certifications / Licenses",
+        "confidence_score": 0.0,
+        "description": "Professional accreditations and credentials."
+      },
+      {
+        "field_name": "projects",
+        "target_type": "array[Project]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Projects / Key Engagements",
+        "confidence_score": 0.0,
+        "description": "Major projects or strategic initiatives led by candidate."
+      }
+    ]
+  },
+  "raw_sections": {
+    "personal_information": "Bangalore, KA 560087\n8878977333\n                              lavinmotwani132@gmail.com\n https://www.linkedin.com/in/lavin-motwani",
+    "summary": "Summary\t8+ Years Result-oriented Software Engineer with 8.6 years of experience delivering end-to-end solutions in Automotive, Business Intelligence, and Hospitality domains. Experienced exclusively in product-based organizations, contributing to high-impact, customer-facing systems. Skilled in building scalable, cloud-native applications using Java, Spring Boot, AWS, and Microservices, with hands-on expertise in development, debugging, E2E testing, and deployment. Demonstrated ability to manage the full software development lifecycle, ensuring scalability and efficiency. Adept at gathering and analyzing customer requirements, translating them into actionable tasks, and leading projects through to successful delivery. Excel both as an individual contributor and in cross-functional collaboration, consistently driving quality and innovation.",
+    "skills": "TECHNICAL SKILLS Programming Languages Java Web Technologies RESTful APIs Frameworks Spring Boot, JPA, Hibernate Data Management SQL, Elastic-search, MongoDB, REDIS Architecture/Design Pattern Micro-service Architecture, Event-Driven Architecture, API Gateway, MVC Build & CI/CD Tools Maven, Jenkins, Docker, Container, Kubernetes, Bitbucket, GitHub Cloud Platforms AWS Other Skills/Technologies Kafka, JSON, IoT, Prometheus, Grafana, Agile, Test-Driven Development",
+    "experience": "Work Experience Harman Connected Services Technical Lead Feb 2021 – Present Automotive Domain (Connected Vehicle Platform) Kafka Data Delivery: Led the optimization of a multi-channel Kafka streaming pipeline (HTTP, Kafka, etc.), scaling throughput to 1M+ records/min in collaboration with performance engineers. Microservice Optimization: Applied Strategy Pattern to eliminate redundant processor initialization, reducing runtime overhead and simplifying the codebase. Alert System: Co-maintained an open-source, multi-channel alerting service (push, SMS, etc.); redesigned a core component using the Sidecar pattern for independent scalability. Data Aggregator: Reduced memory footprint by fixing inefficient logging; implemented payload chunking, enabling seamless processing of large payloads by downstream services. Production Reliability: Resolved critical incidents with 0.5h avg. MTTR, ensuring >99.9% service availability. SRE Collaboration: Authored detailed SOPs, reducing incident resolution dependency on the dev team and preventing SLA breaches. ClearTrail - Klera Software Engineer July 2019 – Feb 2021 Business Intelligence (No-code App Development Platform) Execution Engine: Built a real-time engine for user-defined operations & formulas with efficient state management, ensuring seamless user interaction. App Store: Designed a centralized platform to upload, download, and manage apps, assets, and resources with ease. Scheduler: Collaborated with team to develop a flexible scheduler automating timed and recurring tasks, improving efficiency and reducing manual effort for end users. Collaboration & Knowledge Sharing: Initiated ‘Share to Improve’ sessions, driving knowledge exchange, better requirement clarity, and stronger collaboration. Auditing: Created a reusable auditing library for microservices, ensuring consistent compliance and traceability. DigiValet Software Engineer Jan 2017 – July 2019 Hospitality Domain (Hotel Automation - IoT) Hospitality Service Integrations: Designed and implemented multiple microservices to enhance guest\nexperience and hotel operations: Room Automation Gateway: Built a RESTful service as a gateway between room hardware and mobile clients, enabling remote monitoring and control of appliances. Property Management System (PMS): Integrated automation with PMS to auto-adjust ambiance to guest preferences and sync billing updates, streamlining check-in and service management. Point of Sale (POS): Enabled mobile-based ordering of food and amenities, ensuring real-time, hassle- free interaction between guests and services. OAuth Server: Implemented custom OAuth 2.0 to secure service-to-service communication, ensuring trusted access and data security. Room Automation: Integrated thermostat, RMS, and TV for personalized, automated room environments and seamless entertainment control. Alexa Integration: Leveraged AWS Lambda and REST APIs to integrate Alexa, enabling voice-controlled management of room appliances for a hands-free guest experience.\nACADEMICS Year Degree University/Board 2017 B.E. (Computer Science) Rajiv Gandhi Proudyogiki Vishwavidyalaya 2013 12th Central Board of Secondary Education\nCERTIFICATIONS & RECOGNITIONS Recognized multiple times for excellence in Teamwork & Respect and Integrity\t2021-25 Earned certification in Software-Defined Vehicles by NIT Academy\t2024-25 Pursued “Aspire to Lead” program focused on leadership skills by Management Centre Europe\t2024 Completed the “Apache Kafka Series – Beginners” course by Stephane Maarek-Udemy\t2022 Achieved White Belt in the ‘Security Course’ by Security Journey Inc.\t2022"
+  },
+  "meta": {
+    "status": "needs_review",
+    "human_verified": false,
+    "provider_calls": 0,
+    "source_accounting": {
+      "all_source_text_preserved": true,
+      "total_spans": 16,
+      "assigned_meaningful_spans": 15,
+      "unresolved_meaningful_spans": 1,
+      "non_content_artifacts": 0,
+      "duplicates_excluded": 0,
+      "all_meaningful_text_assigned": false,
+      "semantic_correctness_verified": false,
+      "outcomes": [
+        {
+          "source_id": "e0:0:13",
+          "source_element_index": 0,
+          "start": 0,
+          "end": 13,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e1:0:20",
+          "source_element_index": 1,
+          "start": 0,
+          "end": 20,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e2:0:10",
+          "source_element_index": 2,
+          "start": 0,
+          "end": 10,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e3:0:55",
+          "source_element_index": 3,
+          "start": 0,
+          "end": 55,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e4:0:42",
+          "source_element_index": 4,
+          "start": 0,
+          "end": 42,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e5:0:8",
+          "source_element_index": 5,
+          "start": 0,
+          "end": 8,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e5:8:851",
+          "source_element_index": 5,
+          "start": 8,
+          "end": 851,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e6:0:17",
+          "source_element_index": 6,
+          "start": 0,
+          "end": 17,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e6:17:465",
+          "source_element_index": 6,
+          "start": 17,
+          "end": 465,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e7:0:16",
+          "source_element_index": 7,
+          "start": 0,
+          "end": 16,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e7:16:975",
+          "source_element_index": 7,
+          "start": 16,
+          "end": 975,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e7:975:2051",
+          "source_element_index": 7,
+          "start": 975,
+          "end": 2051,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e7:2051:2070",
+          "source_element_index": 7,
+          "start": 2051,
+          "end": 2070,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:0:949",
+          "source_element_index": 8,
+          "start": 0,
+          "end": 949,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:0:155",
+          "source_element_index": 9,
+          "start": 0,
+          "end": 155,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e10:0:442",
+          "source_element_index": 10,
+          "start": 0,
+          "end": 442,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        }
+      ]
+    },
+    "document_scope": {
+      "kind": "likely_resume",
+      "candidate_resume": true,
+      "reason": "Contact details, multiple resume section families and dated history; provisional scope only",
+      "human_verified": false
+    },
+    "source_inventory_sha256": "6e3b4cef0c3e8a0417bc91ba691d4bb408ea20c8b4c14a7808c58b824b92770d",
+    "field_evidence": {
+      "contact.full_name": [
+        "e1:0:20",
+        "e2:0:10",
+        "e3:0:55",
+        "e4:0:42"
+      ],
+      "contact.email": [
+        "e1:0:20",
+        "e2:0:10",
+        "e3:0:55",
+        "e4:0:42"
+      ],
+      "contact.phone": [
+        "e1:0:20",
+        "e2:0:10",
+        "e3:0:55",
+        "e4:0:42"
+      ],
+      "contact.location": [
+        "e1:0:20",
+        "e2:0:10",
+        "e3:0:55",
+        "e4:0:42"
+      ],
+      "contact.linkedin_url": [
+        "e1:0:20",
+        "e2:0:10",
+        "e3:0:55",
+        "e4:0:42"
+      ],
+      "summary": [
+        "e5:8:851"
+      ],
+      "total_experience_years": [
+        "e5:8:851"
+      ],
+      "skills.technical_skills[0]": [
+        "e6:17:465"
+      ],
+      "skills.technical_skills[1]": [
+        "e6:17:465"
+      ],
+      "skills.technical_skills[2]": [
+        "e6:17:465"
+      ],
+      "skills.technical_skills[3]": [
+        "e6:17:465"
+      ],
+      "skills.technical_skills[4]": [
+        "e6:17:465"
+      ],
+      "skills.technical_skills[5]": [
+        "e6:17:465"
+      ],
+      "skills.technical_skills[6]": [
+        "e6:17:465"
+      ],
+      "skills.tools_and_platforms[0]": [
+        "e6:17:465"
+      ],
+      "skills.soft_skills[0]": [
+        "e6:17:465"
+      ],
+      "skills.all_skills[0]": [
+        "e6:17:465"
+      ],
+      "skills.all_skills[1]": [
+        "e6:17:465"
+      ],
+      "skills.all_skills[2]": [
+        "e6:17:465"
+      ],
+      "skills.all_skills[3]": [
+        "e6:17:465"
+      ],
+      "skills.all_skills[4]": [
+        "e6:17:465"
+      ],
+      "skills.all_skills[5]": [
+        "e6:17:465"
+      ],
+      "skills.all_skills[6]": [
+        "e6:17:465"
+      ],
+      "skills.all_skills[7]": [
+        "e6:17:465"
+      ],
+      "skills.all_skills[8]": [
+        "e6:17:465"
+      ],
+      "skills.all_skills[9]": [
+        "e6:17:465"
+      ],
+      "skills.all_skills[10]": [
+        "e6:17:465"
+      ],
+      "skills.all_skills[11]": [
+        "e6:17:465"
+      ],
+      "skills.all_skills[12]": [
+        "e6:17:465"
+      ],
+      "skills.all_skills[13]": [
+        "e6:17:465"
+      ],
+      "skills.all_skills[14]": [
+        "e6:17:465"
+      ],
+      "skills.all_skills[15]": [
+        "e6:17:465"
+      ],
+      "skills.all_skills[16]": [
+        "e6:17:465"
+      ],
+      "skills.all_skills[17]": [
+        "e6:17:465"
+      ],
+      "skills.all_skills[18]": [
+        "e6:17:465"
+      ],
+      "skills.all_skills[19]": [
+        "e6:17:465"
+      ],
+      "skills.all_skills[20]": [
+        "e6:17:465"
+      ],
+      "skills.all_skills[21]": [
+        "e6:17:465"
+      ],
+      "skills.all_skills[22]": [
+        "e6:17:465"
+      ],
+      "skills.all_skills[23]": [
+        "e6:17:465"
+      ],
+      "skills.all_skills[24]": [
+        "e6:17:465"
+      ],
+      "skills.all_skills[25]": [
+        "e6:17:465"
+      ]
+    },
+    "record_reviews": [
+      {
+        "category": "experience",
+        "entry_id": "experience-1",
+        "source_ids": [
+          "e7:16:975",
+          "e7:975:2051",
+          "e7:2051:2070",
+          "e8:0:949",
+          "e9:0:155",
+          "e10:0:442"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      }
+    ],
+    "missing_required_fields": [
+      "experience[0].company",
+      "experience[0].role"
+    ],
+    "warnings": [
+      "Schema validity and field completion do not establish extraction or relationship accuracy.",
+      "Handoff confidence scores are fixed heuristics, not calibrated probabilities.",
+      "Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields."
+    ],
+    "unmapped_blocks": [
+      {
+        "source_id": "e5:0:8",
+        "category": "summary",
+        "text": "Summary\t",
+        "page_number": 1
+      },
+      {
+        "source_id": "e6:0:17",
+        "category": "skills",
+        "text": "TECHNICAL SKILLS ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e7:0:16",
+        "category": "experience",
+        "text": "Work Experience ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e7:16:975",
+        "category": "experience",
+        "text": "Harman Connected Services Technical Lead Feb 2021 – Present Automotive Domain (Connected Vehicle Platform) Kafka Data Delivery: Led the optimization of a multi-channel Kafka streaming pipeline (HTTP, Kafka, etc.), scaling throughput to 1M+ records/min in collaboration with performance engineers. Microservice Optimization: Applied Strategy Pattern to eliminate redundant processor initialization, reducing runtime overhead and simplifying the codebase. Alert System: Co-maintained an open-source, multi-channel alerting service (push, SMS, etc.); redesigned a core component using the Sidecar pattern for independent scalability. Data Aggregator: Reduced memory footprint by fixing inefficient logging; implemented payload chunking, enabling seamless processing of large payloads by downstream services. Production Reliability: Resolved critical incidents with 0.5h avg. MTTR, ensuring >99.9% service availability. SRE Collaboration: Authored detailed SOPs, ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e7:975:2051",
+        "category": "experience",
+        "text": "reducing incident resolution dependency on the dev team and preventing SLA breaches. ClearTrail - Klera Software Engineer July 2019 – Feb 2021 Business Intelligence (No-code App Development Platform) Execution Engine: Built a real-time engine for user-defined operations & formulas with efficient state management, ensuring seamless user interaction. App Store: Designed a centralized platform to upload, download, and manage apps, assets, and resources with ease. Scheduler: Collaborated with team to develop a flexible scheduler automating timed and recurring tasks, improving efficiency and reducing manual effort for end users. Collaboration & Knowledge Sharing: Initiated ‘Share to Improve’ sessions, driving knowledge exchange, better requirement clarity, and stronger collaboration. Auditing: Created a reusable auditing library for microservices, ensuring consistent compliance and traceability. DigiValet Software Engineer Jan 2017 – July 2019 Hospitality Domain (Hotel Automation - IoT) Hospitality Service Integrations: Designed and implemented multiple microservic",
+        "page_number": 1
+      },
+      {
+        "source_id": "e7:2051:2070",
+        "category": "experience",
+        "text": "es to enhance guest",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:0:949",
+        "category": "experience",
+        "text": "experience and hotel operations: Room Automation Gateway: Built a RESTful service as a gateway between room hardware and mobile clients, enabling remote monitoring and control of appliances. Property Management System (PMS): Integrated automation with PMS to auto-adjust ambiance to guest preferences and sync billing updates, streamlining check-in and service management. Point of Sale (POS): Enabled mobile-based ordering of food and amenities, ensuring real-time, hassle- free interaction between guests and services. OAuth Server: Implemented custom OAuth 2.0 to secure service-to-service communication, ensuring trusted access and data security. Room Automation: Integrated thermostat, RMS, and TV for personalized, automated room environments and seamless entertainment control. Alexa Integration: Leveraged AWS Lambda and REST APIs to integrate Alexa, enabling voice-controlled management of room appliances for a hands-free guest experience.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:0:155",
+        "category": "experience",
+        "text": "ACADEMICS Year Degree University/Board 2017 B.E. (Computer Science) Rajiv Gandhi Proudyogiki Vishwavidyalaya 2013 12th Central Board of Secondary Education",
+        "page_number": 1
+      },
+      {
+        "source_id": "e10:0:442",
+        "category": "experience",
+        "text": "CERTIFICATIONS & RECOGNITIONS Recognized multiple times for excellence in Teamwork & Respect and Integrity\t2021-25 Earned certification in Software-Defined Vehicles by NIT Academy\t2024-25 Pursued “Aspire to Lead” program focused on leadership skills by Management Centre Europe\t2024 Completed the “Apache Kafka Series – Beginners” course by Stephane Maarek-Udemy\t2022 Achieved White Belt in the ‘Security Course’ by Security Journey Inc.\t2022",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:0:13",
+        "category": null,
+        "text": "Lavin Motwani",
+        "page_number": 1
+      }
+    ],
+    "needs_review": [
+      {
+        "source_element_index": 0,
+        "start": 0,
+        "end": 13,
+        "text": "Lavin Motwani",
+        "page_number": 1,
+        "cluster_id": 7,
+        "candidate_section": "awards",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2414,
+        "margin": 0.0463,
+        "lane": "main",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      }
+    ]
+  },
+  "section_schemas": [
+    {
+      "category": "personal_information",
+      "label": "Personal information",
+      "records": [
+        {
+          "record_id": "personal_information",
+          "source_ids": [
+            "e1:0:20",
+            "e2:0:10",
+            "e3:0:55",
+            "e4:0:42"
+          ],
+          "attributes": [
+            {
+              "name": "full_name",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "email",
+              "items": [
+                {
+                  "value": "lavinmotwani132@gmail.com",
+                  "evidence": [
+                    {
+                      "source_id": "e3:0:55",
+                      "quote": "lavinmotwani132@gmail.com"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "phone",
+              "items": [
+                {
+                  "value": "8878977333",
+                  "evidence": [
+                    {
+                      "source_id": "e2:0:10",
+                      "quote": "8878977333"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "location",
+              "items": [
+                {
+                  "value": "Bangalore",
+                  "evidence": [
+                    {
+                      "source_id": "e1:0:20",
+                      "quote": "Bangalore"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "linkedin_url",
+              "items": [
+                {
+                  "value": "https://www.linkedin.com/in/lavin-motwani",
+                  "evidence": [
+                    {
+                      "source_id": "e4:0:42",
+                      "quote": "https://www.linkedin.com/in/lavin-motwani"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "github_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "portfolio_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "professional_title",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e1:0:20",
+          "quote": "Bangalore, KA 560087"
+        }
+      ]
+    },
+    {
+      "category": "summary",
+      "label": "Summary",
+      "records": [
+        {
+          "record_id": "summary",
+          "source_ids": [
+            "e5:8:851"
+          ],
+          "attributes": [
+            {
+              "name": "statements",
+              "items": [
+                {
+                  "value": "8+ Years Result-oriented Software Engineer with 8.6 years of experience delivering end-to-end solutions in Automotive, Business Intelligence, and Hospitality domains. Experienced exclusively in product-based organizations, contributing to high-impact, customer-facing systems. Skilled in building scalable, cloud-native applications using Java, Spring Boot, AWS, and Microservices, with hands-on expertise in development, debugging, E2E testing, and deployment. Demonstrated ability to manage the full software development lifecycle, ensuring scalability and efficiency. Adept at gathering and analyzing customer requirements, translating them into actionable tasks, and leading projects through to successful delivery. Excel both as an individual contributor and in cross-functional collaboration, consistently driving quality and innovation.",
+                  "evidence": [
+                    {
+                      "source_id": "e5:8:851",
+                      "quote": "8+ Years Result-oriented Software Engineer with 8.6 years of experience delivering end-to-end solutions in Automotive, Business Intelligence, and Hospitality domains. Experienced exclusively in product-based organizations, contributing to high-impact, customer-facing systems. Skilled in building scalable, cloud-native applications using Java, Spring Boot, AWS, and Microservices, with hands-on expertise in development, debugging, E2E testing, and deployment. Demonstrated ability to manage the full software development lifecycle, ensuring scalability and efficiency. Adept at gathering and analyzing customer requirements, translating them into actionable tasks, and leading projects through to successful delivery. Excel both as an individual contributor and in cross-functional collaboration, consistently driving quality and innovation."
+                    }
+                  ],
+                  "status": "needs_review"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "total_experience_years",
+              "items": [
+                {
+                  "value": 8.6,
+                  "evidence": [
+                    {
+                      "source_id": "e5:8:851",
+                      "quote": "8.6"
+                    }
+                  ],
+                  "status": "needs_review"
+                }
+              ],
+              "status": "mapped"
+            }
+          ],
+          "review_reasons": [
+            "Experience years are approximate or a lower bound; inspect the source qualifier."
+          ]
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e5:0:8",
+          "quote": "Summary\t"
+        }
+      ]
+    },
+    {
+      "category": "skills",
+      "label": "Skills",
+      "records": [
+        {
+          "record_id": "skills",
+          "source_ids": [
+            "e6:17:465"
+          ],
+          "attributes": [
+            {
+              "name": "technical_skills",
+              "items": [
+                {
+                  "value": "SQL",
+                  "evidence": [
+                    {
+                      "source_id": "e6:17:465",
+                      "quote": "SQL"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Java",
+                  "evidence": [
+                    {
+                      "source_id": "e6:17:465",
+                      "quote": "Java"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Kafka",
+                  "evidence": [
+                    {
+                      "source_id": "e6:17:465",
+                      "quote": "Kafka"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "MongoDB",
+                  "evidence": [
+                    {
+                      "source_id": "e6:17:465",
+                      "quote": "MongoDB"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Redis",
+                  "evidence": [
+                    {
+                      "source_id": "e6:17:465",
+                      "quote": "REDIS"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Docker",
+                  "evidence": [
+                    {
+                      "source_id": "e6:17:465",
+                      "quote": "Docker"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Kubernetes",
+                  "evidence": [
+                    {
+                      "source_id": "e6:17:465",
+                      "quote": "Kubernetes"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "tools_and_platforms",
+              "items": [
+                {
+                  "value": "AWS",
+                  "evidence": [
+                    {
+                      "source_id": "e6:17:465",
+                      "quote": "AWS"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "domain_and_functional",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "soft_skills",
+              "items": [
+                {
+                  "value": "Agile",
+                  "evidence": [
+                    {
+                      "source_id": "e6:17:465",
+                      "quote": "Agile"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "all_skills",
+              "items": [
+                {
+                  "value": "SQL",
+                  "evidence": [
+                    {
+                      "source_id": "e6:17:465",
+                      "quote": "SQL"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Java",
+                  "evidence": [
+                    {
+                      "source_id": "e6:17:465",
+                      "quote": "Java"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Kafka",
+                  "evidence": [
+                    {
+                      "source_id": "e6:17:465",
+                      "quote": "Kafka"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "MongoDB",
+                  "evidence": [
+                    {
+                      "source_id": "e6:17:465",
+                      "quote": "MongoDB"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Redis",
+                  "evidence": [
+                    {
+                      "source_id": "e6:17:465",
+                      "quote": "REDIS"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Docker",
+                  "evidence": [
+                    {
+                      "source_id": "e6:17:465",
+                      "quote": "Docker"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Kubernetes",
+                  "evidence": [
+                    {
+                      "source_id": "e6:17:465",
+                      "quote": "Kubernetes"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "AWS",
+                  "evidence": [
+                    {
+                      "source_id": "e6:17:465",
+                      "quote": "AWS"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Agile",
+                  "evidence": [
+                    {
+                      "source_id": "e6:17:465",
+                      "quote": "Agile"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Programming Languages Java Web Technologies RESTful APIs Frameworks Spring Boot",
+                  "evidence": [
+                    {
+                      "source_id": "e6:17:465",
+                      "quote": "Programming Languages Java Web Technologies RESTful APIs Frameworks Spring Boot"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "JPA",
+                  "evidence": [
+                    {
+                      "source_id": "e6:17:465",
+                      "quote": "JPA"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Hibernate Data Management SQL",
+                  "evidence": [
+                    {
+                      "source_id": "e6:17:465",
+                      "quote": "Hibernate Data Management SQL"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Elastic-search",
+                  "evidence": [
+                    {
+                      "source_id": "e6:17:465",
+                      "quote": "Elastic-search"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "REDIS Architecture/Design Pattern Micro-service Architecture",
+                  "evidence": [
+                    {
+                      "source_id": "e6:17:465",
+                      "quote": "REDIS Architecture/Design Pattern Micro-service Architecture"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Event-Driven Architecture",
+                  "evidence": [
+                    {
+                      "source_id": "e6:17:465",
+                      "quote": "Event-Driven Architecture"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "API Gateway",
+                  "evidence": [
+                    {
+                      "source_id": "e6:17:465",
+                      "quote": "API Gateway"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "MVC Build & CI/CD Tools Maven",
+                  "evidence": [
+                    {
+                      "source_id": "e6:17:465",
+                      "quote": "MVC Build & CI/CD Tools Maven"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Jenkins",
+                  "evidence": [
+                    {
+                      "source_id": "e6:17:465",
+                      "quote": "Jenkins"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Container",
+                  "evidence": [
+                    {
+                      "source_id": "e6:17:465",
+                      "quote": "Container"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Bitbucket",
+                  "evidence": [
+                    {
+                      "source_id": "e6:17:465",
+                      "quote": "Bitbucket"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "GitHub Cloud Platforms AWS Other Skills/Technologies Kafka",
+                  "evidence": [
+                    {
+                      "source_id": "e6:17:465",
+                      "quote": "GitHub Cloud Platforms AWS Other Skills/Technologies Kafka"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "JSON",
+                  "evidence": [
+                    {
+                      "source_id": "e6:17:465",
+                      "quote": "JSON"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "IoT",
+                  "evidence": [
+                    {
+                      "source_id": "e6:17:465",
+                      "quote": "IoT"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Prometheus",
+                  "evidence": [
+                    {
+                      "source_id": "e6:17:465",
+                      "quote": "Prometheus"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Grafana",
+                  "evidence": [
+                    {
+                      "source_id": "e6:17:465",
+                      "quote": "Grafana"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Test-Driven Development",
+                  "evidence": [
+                    {
+                      "source_id": "e6:17:465",
+                      "quote": "Test-Driven Development"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e6:0:17",
+          "quote": "TECHNICAL SKILLS "
+        },
+        {
+          "source_id": "e6:17:465",
+          "quote": "Programming Languages Java Web Technologies RESTful APIs Frameworks Spring Boot, JPA, Hibernate Data Management SQL, Elastic-search, MongoDB, REDIS Architecture/Design Pattern Micro-service Architecture, Event-Driven Architecture, API Gateway, MVC Build & CI/CD Tools Maven, Jenkins, Docker, Container, Kubernetes, Bitbucket, GitHub Cloud Platforms AWS Other Skills/Technologies Kafka, JSON, IoT, Prometheus, Grafana, Agile, Test-Driven Development"
+        }
+      ]
+    },
+    {
+      "category": "experience",
+      "label": "Experience",
+      "records": [
+        {
+          "record_id": "experience-1",
+          "source_ids": [
+            "e7:16:975",
+            "e7:975:2051",
+            "e7:2051:2070",
+            "e8:0:949",
+            "e9:0:155",
+            "e10:0:442"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e7:0:16",
+          "quote": "Work Experience "
+        },
+        {
+          "source_id": "e7:16:975",
+          "quote": "Harman Connected Services Technical Lead Feb 2021 – Present Automotive Domain (Connected Vehicle Platform) Kafka Data Delivery: Led the optimization of a multi-channel Kafka streaming pipeline (HTTP, Kafka, etc.), scaling throughput to 1M+ records/min in collaboration with performance engineers. Microservice Optimization: Applied Strategy Pattern to eliminate redundant processor initialization, reducing runtime overhead and simplifying the codebase. Alert System: Co-maintained an open-source, multi-channel alerting service (push, SMS, etc.); redesigned a core component using the Sidecar pattern for independent scalability. Data Aggregator: Reduced memory footprint by fixing inefficient logging; implemented payload chunking, enabling seamless processing of large payloads by downstream services. Production Reliability: Resolved critical incidents with 0.5h avg. MTTR, ensuring >99.9% service availability. SRE Collaboration: Authored detailed SOPs, "
+        },
+        {
+          "source_id": "e7:975:2051",
+          "quote": "reducing incident resolution dependency on the dev team and preventing SLA breaches. ClearTrail - Klera Software Engineer July 2019 – Feb 2021 Business Intelligence (No-code App Development Platform) Execution Engine: Built a real-time engine for user-defined operations & formulas with efficient state management, ensuring seamless user interaction. App Store: Designed a centralized platform to upload, download, and manage apps, assets, and resources with ease. Scheduler: Collaborated with team to develop a flexible scheduler automating timed and recurring tasks, improving efficiency and reducing manual effort for end users. Collaboration & Knowledge Sharing: Initiated ‘Share to Improve’ sessions, driving knowledge exchange, better requirement clarity, and stronger collaboration. Auditing: Created a reusable auditing library for microservices, ensuring consistent compliance and traceability. DigiValet Software Engineer Jan 2017 – July 2019 Hospitality Domain (Hotel Automation - IoT) Hospitality Service Integrations: Designed and implemented multiple microservic"
+        },
+        {
+          "source_id": "e7:2051:2070",
+          "quote": "es to enhance guest"
+        },
+        {
+          "source_id": "e8:0:949",
+          "quote": "experience and hotel operations: Room Automation Gateway: Built a RESTful service as a gateway between room hardware and mobile clients, enabling remote monitoring and control of appliances. Property Management System (PMS): Integrated automation with PMS to auto-adjust ambiance to guest preferences and sync billing updates, streamlining check-in and service management. Point of Sale (POS): Enabled mobile-based ordering of food and amenities, ensuring real-time, hassle- free interaction between guests and services. OAuth Server: Implemented custom OAuth 2.0 to secure service-to-service communication, ensuring trusted access and data security. Room Automation: Integrated thermostat, RMS, and TV for personalized, automated room environments and seamless entertainment control. Alexa Integration: Leveraged AWS Lambda and REST APIs to integrate Alexa, enabling voice-controlled management of room appliances for a hands-free guest experience."
+        },
+        {
+          "source_id": "e9:0:155",
+          "quote": "ACADEMICS Year Degree University/Board 2017 B.E. (Computer Science) Rajiv Gandhi Proudyogiki Vishwavidyalaya 2013 12th Central Board of Secondary Education"
+        },
+        {
+          "source_id": "e10:0:442",
+          "quote": "CERTIFICATIONS & RECOGNITIONS Recognized multiple times for excellence in Teamwork & Respect and Integrity\t2021-25 Earned certification in Software-Defined Vehicles by NIT Academy\t2024-25 Pursued “Aspire to Lead” program focused on leadership skills by Management Centre Europe\t2024 Completed the “Apache Kafka Series – Beginners” course by Stephane Maarek-Udemy\t2022 Achieved White Belt in the ‘Security Course’ by Security Journey Inc.\t2022"
+        }
+      ]
+    },
+    {
+      "category": "needs_review",
+      "label": "Unassigned source blocks",
+      "records": [],
+      "residual_blocks": [
+        {
+          "source_id": "e0:0:13",
+          "quote": "Lavin Motwani"
+        }
+      ]
+    }
+  ]
+}

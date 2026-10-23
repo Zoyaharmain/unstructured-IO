@@ -1,0 +1,2485 @@
+{
+  "success": true,
+  "source": "Zaved Ahmed.pdf",
+  "extraction_mode": "existing_blocks_schema_mapping",
+  "data": {
+    "contact": {
+      "full_name": "ZAVED A",
+      "email": "zavedhmd5@gmail.com",
+      "phone": "+91-9830367025",
+      "location": "Noida",
+      "linkedin_url": null,
+      "github_url": null,
+      "portfolio_url": null
+    },
+    "professional_title": "Java Backend & AWS Developer",
+    "summary": "A results-driven Backend Engineer with almost 7 years of experience, specializing in technologies such as Java, Spring Boot, Spring ORM, Hibernate, Apache Kafka, Spark, AWS (including EMR, ECS, S3, Lambda, IAM, EC2, MSK), Terraform, and PCF. Possesses strong expertise in the Telecom and Fintech industries.",
+    "total_experience_years": 7.0,
+    "skills": {
+      "technical_skills": [],
+      "tools_and_platforms": [],
+      "domain_and_functional": [],
+      "soft_skills": [],
+      "all_skills": []
+    },
+    "experience": [
+      {
+        "company": "their skills in various technologies and best practices.",
+        "role": "",
+        "start_date": "October 2021",
+        "end_date": "Present",
+        "duration": "October 2021 – Present",
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "Provided continuous maintenance and support for production services, ensuring high availability, optimal",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [
+          "Designed, developed, and deployed multiple Java and Springboot based high-volume streaming data pipelines ",
+          "Designed, developed, and deployed RESTful APIs using Java and Springboot to enable seamless ",
+          "Developed an AWS Lambda function to generate end-of-day reports by extracting data from a PostgreSQL ",
+          "Conducted a proof of concept (PoC) to implement SCRAM authentication on AWS MSK, enhancing secure "
+        ],
+        "technologies": []
+      },
+      {
+        "company": "",
+        "role": "",
+        "start_date": "May 2018",
+        "end_date": "October 2021",
+        "duration": "May 2018 – October 2021",
+        "location": null,
+        "responsibilities": [
+          "Designed and developed a UI application to fetch reports of past data requests."
+        ],
+        "technologies": []
+      },
+      {
+        "company": "Cloud Services: AWS (EC2, S3, Lambda, RDS, Codepipeline, EMR, IAM, Cloudwatch, VPC, MSK, SQS, ECS, ALB)",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [
+          "Developed backend automated mapping to duplicate records for Data Requests which are used for testing "
+        ],
+        "technologies": []
+      }
+    ],
+    "education": [
+      {
+        "institution": "West Bengal University of Technology",
+        "degree": "Bachelor Of Technology in Computer Science",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      },
+      {
+        "institution": "Kendriya Vidyalaya O.F Dum Dum, CBSE",
+        "degree": "XII - Higher Secondary",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      },
+      {
+        "institution": "",
+        "degree": "",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      }
+    ],
+    "certifications": [],
+    "projects": [],
+    "languages": []
+  },
+  "schema_mapping": {
+    "fields_populated": 9,
+    "total_fields": 16,
+    "completion_percentage": 56.2,
+    "field_details": [
+      {
+        "field_name": "contact.full_name",
+        "target_type": "string",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Personal Details",
+        "confidence_score": 0.95,
+        "description": "Candidate's full name, extracted from the top header of the resume."
+      },
+      {
+        "field_name": "contact.email",
+        "target_type": "string (email)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.98,
+        "description": "Candidate's primary contact email address."
+      },
+      {
+        "field_name": "contact.phone",
+        "target_type": "string (phone)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.95,
+        "description": "Candidate's telephone / mobile phone number."
+      },
+      {
+        "field_name": "contact.location",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.85,
+        "description": "Candidate's residential location or work city."
+      },
+      {
+        "field_name": "contact.linkedin_url",
+        "target_type": "string (url) | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "URL to candidate's LinkedIn profile."
+      },
+      {
+        "field_name": "professional_title",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Header / Subtitle",
+        "confidence_score": 0.88,
+        "description": "Candidate's target headline or most recent job title."
+      },
+      {
+        "field_name": "summary",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Summary / Profile / Objective",
+        "confidence_score": 0.85,
+        "description": "Executive bio, professional overview, or career objective."
+      },
+      {
+        "field_name": "total_experience_years",
+        "target_type": "float | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Summary / Experience Calculation",
+        "confidence_score": 0.9,
+        "description": "Total professional experience in years."
+      },
+      {
+        "field_name": "skills.technical_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Technical Competencies",
+        "confidence_score": 0.0,
+        "description": "Technical programming languages and core software competencies."
+      },
+      {
+        "field_name": "skills.tools_and_platforms",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Tools & Technologies",
+        "confidence_score": 0.0,
+        "description": "Software platforms, developer tools, and operational systems."
+      },
+      {
+        "field_name": "skills.domain_and_functional",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Domain Expertise",
+        "confidence_score": 0.0,
+        "description": "Functional domain knowledge (e.g. Hedge Funds, KYC, NAV, Derivatives)."
+      },
+      {
+        "field_name": "skills.all_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills (Aggregated)",
+        "confidence_score": 0.0,
+        "description": "Complete list of candidate skills across all categories."
+      },
+      {
+        "field_name": "experience",
+        "target_type": "array[WorkExperience]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Experience / Work History",
+        "confidence_score": 0.92,
+        "description": "Complete chronological employment records with bullet points."
+      },
+      {
+        "field_name": "education",
+        "target_type": "array[Education]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Education / Academic Qualifications",
+        "confidence_score": 0.9,
+        "description": "University, college, and higher education degree qualifications."
+      },
+      {
+        "field_name": "certifications",
+        "target_type": "array[Certification]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Certifications / Licenses",
+        "confidence_score": 0.0,
+        "description": "Professional accreditations and credentials."
+      },
+      {
+        "field_name": "projects",
+        "target_type": "array[Project]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Projects / Key Engagements",
+        "confidence_score": 0.0,
+        "description": "Major projects or strategic initiatives led by candidate."
+      }
+    ]
+  },
+  "raw_sections": {
+    "personal_information": "ZAVED A\nJava Backend & AWS Developer zavedhmd5@gmail.com\n+91-9830367025 @ Noida, India",
+    "summary": "Professional Summary\nA results-driven Backend Engineer with almost 7 years of experience, specializing in technologies such as Java, Spring Boot, Spring ORM, Hibernate, Apache Kafka, Spark, AWS (including EMR, ECS, S3, Lambda, IAM, EC2, MSK), Terraform, and PCF. Possesses strong expertise in the Telecom and Fintech industries.",
+    "experience": "Work Experience\nSenior Consultant at Ernst & Young LLP (October 2021 – Present)\nDesigned, developed, and deployed multiple Java and Springboot based high-volume streaming data pipelines on AWS EMR using Apache Spark, integrating seamlessly with Apache Kafka for real-time data processing in production environments.\nDesigned, developed, and deployed RESTful APIs using Java and Springboot to enable seamless communication between microservices within an ECS cluster.\nDeveloped an AWS Lambda function to generate end-of-day reports by extracting data from a PostgreSQL RDS database and transferring it to an S3 bucket in a cross-account setup. Additionally, authored Terraform code to automate the deployment and configuration of the Lambda function..\nContributed in developing a Kafka Consumer application and deploy it on AWS ECS with ALB.  Conducted a proof of concept (PoC) to implement SCRAM authentication on AWS MSK, enhancing secure access and authentication for Kafka clients.\nProvided continuous maintenance and support for production services, ensuring high availability, optimal performance, and quick resolution of issues.\nExperienced in system integration, including associated build and testing activities to ensure seamless functionality and reliability across integrated components.\nCollaborated closely with business analysts and product owners to gain a deep understanding of core service requirements and ensure alignment with business objectives.\nActively participated in sprint planning as part of Agile project implementation, contributing to task prioritization, estimation, and ensuring alignment with project goals.\nProvided ongoing mentorship to junior technical staff, fostering their professional development and enhancing their skills in various technologies and best practices.\nSoftware Engineer at Tech Mahindra (May 2018 – October 2021)\nDeveloped backend automated mapping to duplicate records for Data Requests which are used for testing applications with Springboot.\nContributed in writing stored procedures for retrieving records of data requests using PL/SQL.  Designed and developed a UI application to fetch reports of past data requests.  Debugged multiple applications and UI pages.\nProgramming Languages: Java, SQL, Typescript, Terraform - Frameworks: Spring, SpringBoot, JPA, Hibernate - Databases: Oracle, PostgreSQL, MySQL - Cloud Services: AWS (EC2, S3, Lambda, RDS, Codepipeline, EMR, IAM, Cloudwatch, VPC, MSK, SQS, ECS, ALB) - Version Control: Git, Github, Bitbucket - Tools: Maven, Jenkins, Postman, SQL Developer, PgAdmin",
+    "education": "Education\nBachelor Of Technology in Computer Science West Bengal University of Technology 2013– 2017 @ CGPA: 7.91\nXII - Higher Secondary Kendriya Vidyalaya O.F Dum Dum, CBSE 2013 @ 74.2%\nTrainings & Achievements\nAWS Certified Cloud Practitioner  Safe 5 Agilist  Client Extraordinaire Awardee (EY)  IAmExceptional Awardee (EY)  Kudos Awardee (EY)  Bravo Awardee (Tech Mahindra)"
+  },
+  "meta": {
+    "status": "needs_review",
+    "human_verified": false,
+    "provider_calls": 0,
+    "source_accounting": {
+      "all_source_text_preserved": true,
+      "total_spans": 71,
+      "assigned_meaningful_spans": 62,
+      "unresolved_meaningful_spans": 1,
+      "non_content_artifacts": 8,
+      "duplicates_excluded": 0,
+      "all_meaningful_text_assigned": false,
+      "semantic_correctness_verified": false,
+      "outcomes": [
+        {
+          "source_id": "e0:0:7",
+          "source_element_index": 0,
+          "start": 0,
+          "end": 7,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e1:0:29",
+          "source_element_index": 1,
+          "start": 0,
+          "end": 29,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e1:29:48",
+          "source_element_index": 1,
+          "start": 29,
+          "end": 48,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e2:0:29",
+          "source_element_index": 2,
+          "start": 0,
+          "end": 29,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e3:0:31",
+          "source_element_index": 3,
+          "start": 0,
+          "end": 31,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e4:0:20",
+          "source_element_index": 4,
+          "start": 0,
+          "end": 20,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e5:0:119",
+          "source_element_index": 5,
+          "start": 0,
+          "end": 119,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e5:119:222",
+          "source_element_index": 5,
+          "start": 119,
+          "end": 222,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e5:222:307",
+          "source_element_index": 5,
+          "start": 222,
+          "end": 307,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e6:0:15",
+          "source_element_index": 6,
+          "start": 0,
+          "end": 15,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e7:0:63",
+          "source_element_index": 7,
+          "start": 0,
+          "end": 63,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit dated employer starts or continues Experience across layout changes"
+        },
+        {
+          "source_id": "e8:0:106",
+          "source_element_index": 8,
+          "start": 0,
+          "end": 106,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:106:211",
+          "source_element_index": 8,
+          "start": 106,
+          "end": 211,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:211:236",
+          "source_element_index": 8,
+          "start": 211,
+          "end": 236,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:0:92",
+          "source_element_index": 9,
+          "start": 0,
+          "end": 92,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:92:151",
+          "source_element_index": 9,
+          "start": 92,
+          "end": 151,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e10:0:101",
+          "source_element_index": 10,
+          "start": 0,
+          "end": 101,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e10:101:209",
+          "source_element_index": 10,
+          "start": 101,
+          "end": 209,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e10:209:284",
+          "source_element_index": 10,
+          "start": 209,
+          "end": 284,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e11:0:90",
+          "source_element_index": 11,
+          "start": 0,
+          "end": 90,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e11:90:93",
+          "source_element_index": 11,
+          "start": 90,
+          "end": 93,
+          "section": "experience",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e11:93:191",
+          "source_element_index": 11,
+          "start": 93,
+          "end": 191,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e11:191:236",
+          "source_element_index": 11,
+          "start": 191,
+          "end": 236,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:0:105",
+          "source_element_index": 12,
+          "start": 0,
+          "end": 105,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:105:150",
+          "source_element_index": 12,
+          "start": 105,
+          "end": 150,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e13:0:104",
+          "source_element_index": 13,
+          "start": 0,
+          "end": 104,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e13:104:164",
+          "source_element_index": 13,
+          "start": 104,
+          "end": 164,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e14:0:108",
+          "source_element_index": 14,
+          "start": 0,
+          "end": 108,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e14:108:168",
+          "source_element_index": 14,
+          "start": 108,
+          "end": 168,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e15:0:103",
+          "source_element_index": 15,
+          "start": 0,
+          "end": 103,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e15:103:174",
+          "source_element_index": 15,
+          "start": 103,
+          "end": 174,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e16:0:110",
+          "source_element_index": 16,
+          "start": 0,
+          "end": 110,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e16:110:167",
+          "source_element_index": 16,
+          "start": 110,
+          "end": 167,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e17:0:60",
+          "source_element_index": 17,
+          "start": 0,
+          "end": 60,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit dated employer starts or continues Experience across layout changes"
+        },
+        {
+          "source_id": "e18:0:102",
+          "source_element_index": 18,
+          "start": 0,
+          "end": 102,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e18:102:132",
+          "source_element_index": 18,
+          "start": 102,
+          "end": 132,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e19:0:95",
+          "source_element_index": 19,
+          "start": 0,
+          "end": 95,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e19:95:98",
+          "source_element_index": 19,
+          "start": 95,
+          "end": 98,
+          "section": "experience",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e19:98:178",
+          "source_element_index": 19,
+          "start": 98,
+          "end": 178,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e19:178:181",
+          "source_element_index": 19,
+          "start": 178,
+          "end": 181,
+          "section": "experience",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e19:181:226",
+          "source_element_index": 19,
+          "start": 181,
+          "end": 226,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e20:0:55",
+          "source_element_index": 20,
+          "start": 0,
+          "end": 55,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e20:55:58",
+          "source_element_index": 20,
+          "start": 55,
+          "end": 58,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e20:58:104",
+          "source_element_index": 20,
+          "start": 58,
+          "end": 104,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e20:104:107",
+          "source_element_index": 20,
+          "start": 104,
+          "end": 107,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e20:107:143",
+          "source_element_index": 20,
+          "start": 107,
+          "end": 143,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e20:143:146",
+          "source_element_index": 20,
+          "start": 143,
+          "end": 146,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e20:146:249",
+          "source_element_index": 20,
+          "start": 146,
+          "end": 249,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e20:249:252",
+          "source_element_index": 20,
+          "start": 249,
+          "end": 252,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e20:252:291",
+          "source_element_index": 20,
+          "start": 252,
+          "end": 291,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e20:291:294",
+          "source_element_index": 20,
+          "start": 291,
+          "end": 294,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e20:294:348",
+          "source_element_index": 20,
+          "start": 294,
+          "end": 348,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e21:0:9",
+          "source_element_index": 21,
+          "start": 0,
+          "end": 9,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e22:0:43",
+          "source_element_index": 22,
+          "start": 0,
+          "end": 43,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e22:43:80",
+          "source_element_index": 22,
+          "start": 43,
+          "end": 80,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e22:80:103",
+          "source_element_index": 22,
+          "start": 80,
+          "end": 103,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e23:0:23",
+          "source_element_index": 23,
+          "start": 0,
+          "end": 23,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e23:23:60",
+          "source_element_index": 23,
+          "start": 23,
+          "end": 60,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e23:60:72",
+          "source_element_index": 23,
+          "start": 60,
+          "end": 72,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e24:0:24",
+          "source_element_index": 24,
+          "start": 0,
+          "end": 24,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e25:0:32",
+          "source_element_index": 25,
+          "start": 0,
+          "end": 32,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e25:32:35",
+          "source_element_index": 25,
+          "start": 32,
+          "end": 35,
+          "section": "education",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e25:35:49",
+          "source_element_index": 25,
+          "start": 35,
+          "end": 49,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e25:49:52",
+          "source_element_index": 25,
+          "start": 49,
+          "end": 52,
+          "section": "education",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e25:52:86",
+          "source_element_index": 25,
+          "start": 52,
+          "end": 86,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e25:86:89",
+          "source_element_index": 25,
+          "start": 86,
+          "end": 89,
+          "section": "education",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e25:89:116",
+          "source_element_index": 25,
+          "start": 89,
+          "end": 116,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e25:116:119",
+          "source_element_index": 25,
+          "start": 116,
+          "end": 119,
+          "section": "education",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e25:119:137",
+          "source_element_index": 25,
+          "start": 119,
+          "end": 137,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e25:137:140",
+          "source_element_index": 25,
+          "start": 137,
+          "end": 140,
+          "section": "education",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e25:140:169",
+          "source_element_index": 25,
+          "start": 140,
+          "end": 169,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        }
+      ]
+    },
+    "document_scope": {
+      "kind": "likely_resume",
+      "candidate_resume": true,
+      "reason": "Contact details, multiple resume section families and dated history; provisional scope only",
+      "human_verified": false
+    },
+    "source_inventory_sha256": "1987a320370ec523adf85be3cb86d98e3698c44bce9af56749499eb03eb1e8bd",
+    "field_evidence": {
+      "contact.full_name": [
+        "e0:0:7",
+        "e1:0:29",
+        "e1:29:48",
+        "e2:0:29"
+      ],
+      "contact.email": [
+        "e0:0:7",
+        "e1:0:29",
+        "e1:29:48",
+        "e2:0:29"
+      ],
+      "contact.phone": [
+        "e0:0:7",
+        "e1:0:29",
+        "e1:29:48",
+        "e2:0:29"
+      ],
+      "contact.location": [
+        "e0:0:7",
+        "e1:0:29",
+        "e1:29:48",
+        "e2:0:29"
+      ],
+      "professional_title": [
+        "e1:0:29"
+      ],
+      "summary": [
+        "e5:0:119",
+        "e5:119:222",
+        "e5:222:307"
+      ],
+      "total_experience_years": [
+        "e5:0:119"
+      ],
+      "experience[0].company": [
+        "e16:110:167"
+      ],
+      "experience[0].start_date": [
+        "e7:0:63"
+      ],
+      "experience[0].end_date": [
+        "e7:0:63"
+      ],
+      "experience[0].duration": [
+        "e7:0:63"
+      ],
+      "experience[1].company": [
+        "e12:0:105"
+      ],
+      "experience[1].responsibilities[0]": [
+        "e8:0:106"
+      ],
+      "experience[1].responsibilities[1]": [
+        "e9:0:92"
+      ],
+      "experience[1].responsibilities[2]": [
+        "e10:0:101"
+      ],
+      "experience[1].responsibilities[3]": [
+        "e11:93:191"
+      ],
+      "experience[2].start_date": [
+        "e17:0:60"
+      ],
+      "experience[2].end_date": [
+        "e17:0:60"
+      ],
+      "experience[2].duration": [
+        "e17:0:60"
+      ],
+      "experience[2].responsibilities[0]": [
+        "e19:98:178"
+      ],
+      "experience[3].company": [
+        "e20:146:249"
+      ],
+      "experience[3].responsibilities[0]": [
+        "e18:0:102"
+      ],
+      "education[0].degree": [
+        "e22:0:43"
+      ],
+      "education[0].institution": [
+        "e22:43:80"
+      ],
+      "education[1].degree": [
+        "e23:0:23"
+      ],
+      "education[1].institution": [
+        "e23:23:60"
+      ]
+    },
+    "record_reviews": [
+      {
+        "category": "experience",
+        "entry_id": "experience-1",
+        "source_ids": [
+          "e7:0:63",
+          "e8:211:236",
+          "e9:92:151",
+          "e10:209:284",
+          "e11:90:93",
+          "e11:191:236",
+          "e12:105:150",
+          "e13:104:164",
+          "e14:108:168",
+          "e15:103:174",
+          "e16:110:167",
+          "e19:95:98",
+          "e19:178:181",
+          "e20:55:58",
+          "e20:104:107",
+          "e20:143:146",
+          "e20:249:252",
+          "e20:291:294"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-2",
+        "source_ids": [
+          "e8:0:106",
+          "e8:106:211",
+          "e9:0:92",
+          "e10:0:101",
+          "e10:101:209",
+          "e11:0:90",
+          "e11:93:191",
+          "e12:0:105",
+          "e13:0:104",
+          "e14:0:108",
+          "e15:0:103",
+          "e16:0:110"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-3",
+        "source_ids": [
+          "e17:0:60",
+          "e18:102:132",
+          "e19:98:178",
+          "e19:181:226",
+          "e20:0:55",
+          "e20:58:104",
+          "e20:107:143",
+          "e20:252:291",
+          "e20:294:348"
+        ],
+        "relationship_status": "needs_review",
+        "review_reasons": [
+          "employer_not_established_from_supported_fields"
+        ]
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-4",
+        "source_ids": [
+          "e18:0:102",
+          "e19:0:95",
+          "e20:146:249"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "education",
+        "entry_id": "education-1",
+        "source_ids": [
+          "e22:0:43",
+          "e22:43:80"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "education",
+        "entry_id": "education-2",
+        "source_ids": [
+          "e22:80:103",
+          "e23:0:23",
+          "e23:23:60",
+          "e23:60:72"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "education",
+        "entry_id": "education-3",
+        "source_ids": [
+          "e24:0:24",
+          "e25:0:32",
+          "e25:32:35",
+          "e25:35:49",
+          "e25:49:52",
+          "e25:52:86",
+          "e25:86:89",
+          "e25:89:116",
+          "e25:116:119",
+          "e25:119:137",
+          "e25:137:140",
+          "e25:140:169"
+        ],
+        "relationship_status": "needs_review",
+        "review_reasons": [
+          "qualification_not_established"
+        ]
+      }
+    ],
+    "missing_required_fields": [
+      "experience[0].role",
+      "experience[1].role",
+      "experience[2].company",
+      "experience[2].role",
+      "experience[3].role",
+      "education[2].institution",
+      "education[2].degree"
+    ],
+    "warnings": [
+      "Schema validity and field completion do not establish extraction or relationship accuracy.",
+      "Handoff confidence scores are fixed heuristics, not calibrated probabilities.",
+      "Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields."
+    ],
+    "unmapped_blocks": [
+      {
+        "source_id": "e4:0:20",
+        "category": "summary",
+        "text": "Professional Summary",
+        "page_number": 1
+      },
+      {
+        "source_id": "e6:0:15",
+        "category": "experience",
+        "text": "Work Experience",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:106:211",
+        "category": "experience",
+        "text": "on AWS EMR using Apache Spark, integrating seamlessly with Apache Kafka for real-time data processing in ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:211:236",
+        "category": "experience",
+        "text": "production environments.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:92:151",
+        "category": "experience",
+        "text": "communication between microservices within an ECS cluster.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e10:101:209",
+        "category": "experience",
+        "text": "RDS database and transferring it to an S3 bucket in a cross-account setup. Additionally, authored Terraform ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e10:209:284",
+        "category": "experience",
+        "text": "code to automate the deployment and configuration of the Lambda function..",
+        "page_number": 1
+      },
+      {
+        "source_id": "e11:0:90",
+        "category": "experience",
+        "text": "Contributed in developing a Kafka Consumer application and deploy it on AWS ECS with ALB.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e11:90:93",
+        "category": "experience",
+        "text": "  ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e11:191:236",
+        "category": "experience",
+        "text": "access and authentication for Kafka clients.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:105:150",
+        "category": "experience",
+        "text": "performance, and quick resolution of issues.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e13:0:104",
+        "category": "experience",
+        "text": "Experienced in system integration, including associated build and testing activities to ensure seamless ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e13:104:164",
+        "category": "experience",
+        "text": "functionality and reliability across integrated components.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e14:0:108",
+        "category": "experience",
+        "text": "Collaborated closely with business analysts and product owners to gain a deep understanding of core service ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e14:108:168",
+        "category": "experience",
+        "text": "requirements and ensure alignment with business objectives.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e15:0:103",
+        "category": "experience",
+        "text": "Actively participated in sprint planning as part of Agile project implementation, contributing to task ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e15:103:174",
+        "category": "experience",
+        "text": "prioritization, estimation, and ensuring alignment with project goals.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e16:0:110",
+        "category": "experience",
+        "text": "Provided ongoing mentorship to junior technical staff, fostering their professional development and enhancing ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e18:102:132",
+        "category": "experience",
+        "text": "applications with Springboot.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e19:0:95",
+        "category": "experience",
+        "text": "Contributed in writing stored procedures for retrieving records of data requests using PL/SQL.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e19:95:98",
+        "category": "experience",
+        "text": "  ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e19:178:181",
+        "category": "experience",
+        "text": "  ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e19:181:226",
+        "category": "experience",
+        "text": "Debugged multiple applications and UI pages.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e20:0:55",
+        "category": "experience",
+        "text": "Programming Languages: Java, SQL, Typescript, Terraform",
+        "page_number": 1
+      },
+      {
+        "source_id": "e20:55:58",
+        "category": "experience",
+        "text": " - ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e20:58:104",
+        "category": "experience",
+        "text": "Frameworks: Spring, SpringBoot, JPA, Hibernate",
+        "page_number": 1
+      },
+      {
+        "source_id": "e20:104:107",
+        "category": "experience",
+        "text": " - ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e20:107:143",
+        "category": "experience",
+        "text": "Databases: Oracle, PostgreSQL, MySQL",
+        "page_number": 1
+      },
+      {
+        "source_id": "e20:143:146",
+        "category": "experience",
+        "text": " - ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e20:249:252",
+        "category": "experience",
+        "text": " - ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e20:252:291",
+        "category": "experience",
+        "text": "Version Control: Git, Github, Bitbucket",
+        "page_number": 1
+      },
+      {
+        "source_id": "e20:291:294",
+        "category": "experience",
+        "text": " - ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e20:294:348",
+        "category": "experience",
+        "text": "Tools: Maven, Jenkins, Postman, SQL Developer, PgAdmin",
+        "page_number": 1
+      },
+      {
+        "source_id": "e21:0:9",
+        "category": "education",
+        "text": "Education",
+        "page_number": 2
+      },
+      {
+        "source_id": "e22:80:103",
+        "category": "education",
+        "text": "2013– 2017 @ CGPA: 7.91",
+        "page_number": 2
+      },
+      {
+        "source_id": "e23:60:72",
+        "category": "education",
+        "text": "2013 @ 74.2%",
+        "page_number": 2
+      },
+      {
+        "source_id": "e24:0:24",
+        "category": "education",
+        "text": "Trainings & Achievements",
+        "page_number": 2
+      },
+      {
+        "source_id": "e25:0:32",
+        "category": "education",
+        "text": "AWS Certified Cloud Practitioner",
+        "page_number": 2
+      },
+      {
+        "source_id": "e25:32:35",
+        "category": "education",
+        "text": "  ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e25:35:49",
+        "category": "education",
+        "text": "Safe 5 Agilist",
+        "page_number": 2
+      },
+      {
+        "source_id": "e25:49:52",
+        "category": "education",
+        "text": "  ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e25:52:86",
+        "category": "education",
+        "text": "Client Extraordinaire Awardee (EY)",
+        "page_number": 2
+      },
+      {
+        "source_id": "e25:86:89",
+        "category": "education",
+        "text": "  ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e25:89:116",
+        "category": "education",
+        "text": "IAmExceptional Awardee (EY)",
+        "page_number": 2
+      },
+      {
+        "source_id": "e25:116:119",
+        "category": "education",
+        "text": "  ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e25:119:137",
+        "category": "education",
+        "text": "Kudos Awardee (EY)",
+        "page_number": 2
+      },
+      {
+        "source_id": "e25:137:140",
+        "category": "education",
+        "text": "  ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e25:140:169",
+        "category": "education",
+        "text": "Bravo Awardee (Tech Mahindra)",
+        "page_number": 2
+      },
+      {
+        "source_id": "e3:0:31",
+        "category": null,
+        "text": "LinkedIn - http://goo.gl/kJzNrm",
+        "page_number": 1
+      }
+    ],
+    "needs_review": [
+      {
+        "source_element_index": 3,
+        "start": 0,
+        "end": 31,
+        "text": "LinkedIn - http://goo.gl/kJzNrm",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.4278,
+        "margin": 0.0032,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      }
+    ]
+  },
+  "section_schemas": [
+    {
+      "category": "personal_information",
+      "label": "Personal information",
+      "records": [
+        {
+          "record_id": "personal_information",
+          "source_ids": [
+            "e0:0:7",
+            "e1:0:29",
+            "e1:29:48",
+            "e2:0:29"
+          ],
+          "attributes": [
+            {
+              "name": "full_name",
+              "items": [
+                {
+                  "value": "ZAVED A",
+                  "evidence": [
+                    {
+                      "source_id": "e0:0:7",
+                      "quote": "ZAVED A"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "email",
+              "items": [
+                {
+                  "value": "zavedhmd5@gmail.com",
+                  "evidence": [
+                    {
+                      "source_id": "e1:29:48",
+                      "quote": "zavedhmd5@gmail.com"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "phone",
+              "items": [
+                {
+                  "value": "+91-9830367025",
+                  "evidence": [
+                    {
+                      "source_id": "e2:0:29",
+                      "quote": "+91-9830367025"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "location",
+              "items": [
+                {
+                  "value": "Noida",
+                  "evidence": [
+                    {
+                      "source_id": "e2:0:29",
+                      "quote": "Noida"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "linkedin_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "github_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "portfolio_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "professional_title",
+              "items": [
+                {
+                  "value": "Java Backend & AWS Developer",
+                  "evidence": [
+                    {
+                      "source_id": "e1:0:29",
+                      "quote": "Java Backend & AWS Developer"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e2:0:29",
+          "quote": "+91-9830367025 @ Noida, India"
+        }
+      ]
+    },
+    {
+      "category": "summary",
+      "label": "Summary",
+      "records": [
+        {
+          "record_id": "summary",
+          "source_ids": [
+            "e5:0:119",
+            "e5:119:222",
+            "e5:222:307"
+          ],
+          "attributes": [
+            {
+              "name": "statements",
+              "items": [
+                {
+                  "value": "A results-driven Backend Engineer with almost 7 years of experience, specializing in technologies such as Java, Spring ",
+                  "evidence": [
+                    {
+                      "source_id": "e5:0:119",
+                      "quote": "A results-driven Backend Engineer with almost 7 years of experience, specializing in technologies such as Java, Spring "
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Boot, Spring ORM, Hibernate, Apache Kafka, Spark, AWS (including EMR, ECS, S3, Lambda, IAM, EC2, MSK), ",
+                  "evidence": [
+                    {
+                      "source_id": "e5:119:222",
+                      "quote": "Boot, Spring ORM, Hibernate, Apache Kafka, Spark, AWS (including EMR, ECS, S3, Lambda, IAM, EC2, MSK), "
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Terraform, and PCF. Possesses strong expertise in the Telecom and Fintech industries.",
+                  "evidence": [
+                    {
+                      "source_id": "e5:222:307",
+                      "quote": "Terraform, and PCF. Possesses strong expertise in the Telecom and Fintech industries."
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "total_experience_years",
+              "items": [
+                {
+                  "value": 7.0,
+                  "evidence": [
+                    {
+                      "source_id": "e5:0:119",
+                      "quote": "7"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e4:0:20",
+          "quote": "Professional Summary"
+        }
+      ]
+    },
+    {
+      "category": "experience",
+      "label": "Experience",
+      "records": [
+        {
+          "record_id": "experience-1",
+          "source_ids": [
+            "e7:0:63",
+            "e8:211:236",
+            "e9:92:151",
+            "e10:209:284",
+            "e11:90:93",
+            "e11:191:236",
+            "e12:105:150",
+            "e13:104:164",
+            "e14:108:168",
+            "e15:103:174",
+            "e16:110:167",
+            "e19:95:98",
+            "e19:178:181",
+            "e20:55:58",
+            "e20:104:107",
+            "e20:143:146",
+            "e20:249:252",
+            "e20:291:294"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [
+                {
+                  "value": "their skills in various technologies and best practices.",
+                  "evidence": [
+                    {
+                      "source_id": "e16:110:167",
+                      "quote": "their skills in various technologies and best practices."
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [
+                {
+                  "value": "October 2021",
+                  "evidence": [
+                    {
+                      "source_id": "e7:0:63",
+                      "quote": "October 2021"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "end_date",
+              "items": [
+                {
+                  "value": "Present",
+                  "evidence": [
+                    {
+                      "source_id": "e7:0:63",
+                      "quote": "Present"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "duration",
+              "items": [
+                {
+                  "value": "October 2021 – Present",
+                  "evidence": [
+                    {
+                      "source_id": "e7:0:63",
+                      "quote": "October 2021 – Present"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "experience-2",
+          "source_ids": [
+            "e8:0:106",
+            "e8:106:211",
+            "e9:0:92",
+            "e10:0:101",
+            "e10:101:209",
+            "e11:0:90",
+            "e11:93:191",
+            "e12:0:105",
+            "e13:0:104",
+            "e14:0:108",
+            "e15:0:103",
+            "e16:0:110"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [
+                {
+                  "value": "Provided continuous maintenance and support for production services, ensuring high availability, optimal",
+                  "evidence": [
+                    {
+                      "source_id": "e12:0:105",
+                      "quote": "Provided continuous maintenance and support for production services, ensuring high availability, optimal"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [
+                {
+                  "value": "Designed, developed, and deployed multiple Java and Springboot based high-volume streaming data pipelines ",
+                  "evidence": [
+                    {
+                      "source_id": "e8:0:106",
+                      "quote": "Designed, developed, and deployed multiple Java and Springboot based high-volume streaming data pipelines "
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Designed, developed, and deployed RESTful APIs using Java and Springboot to enable seamless ",
+                  "evidence": [
+                    {
+                      "source_id": "e9:0:92",
+                      "quote": "Designed, developed, and deployed RESTful APIs using Java and Springboot to enable seamless "
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Developed an AWS Lambda function to generate end-of-day reports by extracting data from a PostgreSQL ",
+                  "evidence": [
+                    {
+                      "source_id": "e10:0:101",
+                      "quote": "Developed an AWS Lambda function to generate end-of-day reports by extracting data from a PostgreSQL "
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Conducted a proof of concept (PoC) to implement SCRAM authentication on AWS MSK, enhancing secure ",
+                  "evidence": [
+                    {
+                      "source_id": "e11:93:191",
+                      "quote": "Conducted a proof of concept (PoC) to implement SCRAM authentication on AWS MSK, enhancing secure "
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "experience-3",
+          "source_ids": [
+            "e17:0:60",
+            "e18:102:132",
+            "e19:98:178",
+            "e19:181:226",
+            "e20:0:55",
+            "e20:58:104",
+            "e20:107:143",
+            "e20:252:291",
+            "e20:294:348"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [
+                {
+                  "value": "May 2018",
+                  "evidence": [
+                    {
+                      "source_id": "e17:0:60",
+                      "quote": "May 2018"
+                    }
+                  ],
+                  "status": "needs_review"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "end_date",
+              "items": [
+                {
+                  "value": "October 2021",
+                  "evidence": [
+                    {
+                      "source_id": "e17:0:60",
+                      "quote": "October 2021"
+                    }
+                  ],
+                  "status": "needs_review"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "duration",
+              "items": [
+                {
+                  "value": "May 2018 – October 2021",
+                  "evidence": [
+                    {
+                      "source_id": "e17:0:60",
+                      "quote": "May 2018 – October 2021"
+                    }
+                  ],
+                  "status": "needs_review"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [
+                {
+                  "value": "Designed and developed a UI application to fetch reports of past data requests.",
+                  "evidence": [
+                    {
+                      "source_id": "e19:98:178",
+                      "quote": "Designed and developed a UI application to fetch reports of past data requests."
+                    }
+                  ],
+                  "status": "needs_review"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "employer_not_established_from_supported_fields"
+          ]
+        },
+        {
+          "record_id": "experience-4",
+          "source_ids": [
+            "e18:0:102",
+            "e19:0:95",
+            "e20:146:249"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [
+                {
+                  "value": "Cloud Services: AWS (EC2, S3, Lambda, RDS, Codepipeline, EMR, IAM, Cloudwatch, VPC, MSK, SQS, ECS, ALB)",
+                  "evidence": [
+                    {
+                      "source_id": "e20:146:249",
+                      "quote": "Cloud Services: AWS (EC2, S3, Lambda, RDS, Codepipeline, EMR, IAM, Cloudwatch, VPC, MSK, SQS, ECS, ALB)"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [
+                {
+                  "value": "Developed backend automated mapping to duplicate records for Data Requests which are used for testing ",
+                  "evidence": [
+                    {
+                      "source_id": "e18:0:102",
+                      "quote": "Developed backend automated mapping to duplicate records for Data Requests which are used for testing "
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e6:0:15",
+          "quote": "Work Experience"
+        },
+        {
+          "source_id": "e7:0:63",
+          "quote": "Senior Consultant at Ernst & Young LLP (October 2021 – Present)"
+        },
+        {
+          "source_id": "e8:106:211",
+          "quote": "on AWS EMR using Apache Spark, integrating seamlessly with Apache Kafka for real-time data processing in "
+        },
+        {
+          "source_id": "e8:211:236",
+          "quote": "production environments."
+        },
+        {
+          "source_id": "e9:92:151",
+          "quote": "communication between microservices within an ECS cluster."
+        },
+        {
+          "source_id": "e10:101:209",
+          "quote": "RDS database and transferring it to an S3 bucket in a cross-account setup. Additionally, authored Terraform "
+        },
+        {
+          "source_id": "e10:209:284",
+          "quote": "code to automate the deployment and configuration of the Lambda function.."
+        },
+        {
+          "source_id": "e11:0:90",
+          "quote": "Contributed in developing a Kafka Consumer application and deploy it on AWS ECS with ALB."
+        },
+        {
+          "source_id": "e11:90:93",
+          "quote": "  "
+        },
+        {
+          "source_id": "e11:191:236",
+          "quote": "access and authentication for Kafka clients."
+        },
+        {
+          "source_id": "e12:105:150",
+          "quote": "performance, and quick resolution of issues."
+        },
+        {
+          "source_id": "e13:0:104",
+          "quote": "Experienced in system integration, including associated build and testing activities to ensure seamless "
+        },
+        {
+          "source_id": "e13:104:164",
+          "quote": "functionality and reliability across integrated components."
+        },
+        {
+          "source_id": "e14:0:108",
+          "quote": "Collaborated closely with business analysts and product owners to gain a deep understanding of core service "
+        },
+        {
+          "source_id": "e14:108:168",
+          "quote": "requirements and ensure alignment with business objectives."
+        },
+        {
+          "source_id": "e15:0:103",
+          "quote": "Actively participated in sprint planning as part of Agile project implementation, contributing to task "
+        },
+        {
+          "source_id": "e15:103:174",
+          "quote": "prioritization, estimation, and ensuring alignment with project goals."
+        },
+        {
+          "source_id": "e16:0:110",
+          "quote": "Provided ongoing mentorship to junior technical staff, fostering their professional development and enhancing "
+        },
+        {
+          "source_id": "e17:0:60",
+          "quote": "Software Engineer at Tech Mahindra (May 2018 – October 2021)"
+        },
+        {
+          "source_id": "e18:102:132",
+          "quote": "applications with Springboot."
+        },
+        {
+          "source_id": "e19:0:95",
+          "quote": "Contributed in writing stored procedures for retrieving records of data requests using PL/SQL."
+        },
+        {
+          "source_id": "e19:95:98",
+          "quote": "  "
+        },
+        {
+          "source_id": "e19:178:181",
+          "quote": "  "
+        },
+        {
+          "source_id": "e19:181:226",
+          "quote": "Debugged multiple applications and UI pages."
+        },
+        {
+          "source_id": "e20:0:55",
+          "quote": "Programming Languages: Java, SQL, Typescript, Terraform"
+        },
+        {
+          "source_id": "e20:55:58",
+          "quote": " - "
+        },
+        {
+          "source_id": "e20:58:104",
+          "quote": "Frameworks: Spring, SpringBoot, JPA, Hibernate"
+        },
+        {
+          "source_id": "e20:104:107",
+          "quote": " - "
+        },
+        {
+          "source_id": "e20:107:143",
+          "quote": "Databases: Oracle, PostgreSQL, MySQL"
+        },
+        {
+          "source_id": "e20:143:146",
+          "quote": " - "
+        },
+        {
+          "source_id": "e20:249:252",
+          "quote": " - "
+        },
+        {
+          "source_id": "e20:252:291",
+          "quote": "Version Control: Git, Github, Bitbucket"
+        },
+        {
+          "source_id": "e20:291:294",
+          "quote": " - "
+        },
+        {
+          "source_id": "e20:294:348",
+          "quote": "Tools: Maven, Jenkins, Postman, SQL Developer, PgAdmin"
+        }
+      ]
+    },
+    {
+      "category": "education",
+      "label": "Education",
+      "records": [
+        {
+          "record_id": "education-1",
+          "source_ids": [
+            "e22:0:43",
+            "e22:43:80"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [
+                {
+                  "value": "West Bengal University of Technology",
+                  "evidence": [
+                    {
+                      "source_id": "e22:43:80",
+                      "quote": "West Bengal University of Technology"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "degree",
+              "items": [
+                {
+                  "value": "Bachelor Of Technology",
+                  "evidence": [
+                    {
+                      "source_id": "e22:0:43",
+                      "quote": "Bachelor Of Technology"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "field_of_study",
+              "items": [
+                {
+                  "value": "Computer Science",
+                  "evidence": [
+                    {
+                      "source_id": "e22:0:43",
+                      "quote": "Computer Science"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "education-2",
+          "source_ids": [
+            "e22:80:103",
+            "e23:0:23",
+            "e23:23:60",
+            "e23:60:72"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [
+                {
+                  "value": "Kendriya Vidyalaya O.F Dum Dum, CBSE",
+                  "evidence": [
+                    {
+                      "source_id": "e23:23:60",
+                      "quote": "Kendriya Vidyalaya O.F Dum Dum, CBSE"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "degree",
+              "items": [
+                {
+                  "value": "XII - Higher Secondary",
+                  "evidence": [
+                    {
+                      "source_id": "e23:0:23",
+                      "quote": "XII - Higher Secondary"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "education-3",
+          "source_ids": [
+            "e24:0:24",
+            "e25:0:32",
+            "e25:32:35",
+            "e25:35:49",
+            "e25:49:52",
+            "e25:52:86",
+            "e25:86:89",
+            "e25:89:116",
+            "e25:116:119",
+            "e25:119:137",
+            "e25:137:140",
+            "e25:140:169"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "degree",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "qualification_not_established"
+          ]
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e21:0:9",
+          "quote": "Education"
+        },
+        {
+          "source_id": "e22:0:43",
+          "quote": "Bachelor Of Technology in Computer Science "
+        },
+        {
+          "source_id": "e22:80:103",
+          "quote": "2013– 2017 @ CGPA: 7.91"
+        },
+        {
+          "source_id": "e23:60:72",
+          "quote": "2013 @ 74.2%"
+        },
+        {
+          "source_id": "e24:0:24",
+          "quote": "Trainings & Achievements"
+        },
+        {
+          "source_id": "e25:0:32",
+          "quote": "AWS Certified Cloud Practitioner"
+        },
+        {
+          "source_id": "e25:32:35",
+          "quote": "  "
+        },
+        {
+          "source_id": "e25:35:49",
+          "quote": "Safe 5 Agilist"
+        },
+        {
+          "source_id": "e25:49:52",
+          "quote": "  "
+        },
+        {
+          "source_id": "e25:52:86",
+          "quote": "Client Extraordinaire Awardee (EY)"
+        },
+        {
+          "source_id": "e25:86:89",
+          "quote": "  "
+        },
+        {
+          "source_id": "e25:89:116",
+          "quote": "IAmExceptional Awardee (EY)"
+        },
+        {
+          "source_id": "e25:116:119",
+          "quote": "  "
+        },
+        {
+          "source_id": "e25:119:137",
+          "quote": "Kudos Awardee (EY)"
+        },
+        {
+          "source_id": "e25:137:140",
+          "quote": "  "
+        },
+        {
+          "source_id": "e25:140:169",
+          "quote": "Bravo Awardee (Tech Mahindra)"
+        }
+      ]
+    },
+    {
+      "category": "needs_review",
+      "label": "Unassigned source blocks",
+      "records": [],
+      "residual_blocks": [
+        {
+          "source_id": "e3:0:31",
+          "quote": "LinkedIn - http://goo.gl/kJzNrm"
+        }
+      ]
+    }
+  ]
+}

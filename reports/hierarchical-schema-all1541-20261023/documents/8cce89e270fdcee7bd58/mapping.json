@@ -1,0 +1,2781 @@
+{
+  "success": true,
+  "source": "Sagunthala N_1.docx",
+  "extraction_mode": "existing_blocks_schema_mapping",
+  "data": {
+    "contact": {
+      "full_name": "Phone no: 9677221075",
+      "email": "shakunthala_natraj@yahoo.in",
+      "phone": "9677221075",
+      "location": null,
+      "linkedin_url": null,
+      "github_url": null,
+      "portfolio_url": null
+    },
+    "professional_title": null,
+    "summary": null,
+    "total_experience_years": null,
+    "skills": {
+      "technical_skills": [],
+      "tools_and_platforms": [],
+      "domain_and_functional": [],
+      "soft_skills": [],
+      "all_skills": []
+    },
+    "experience": [],
+    "education": [
+      {
+        "institution": "",
+        "degree": "",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      }
+    ],
+    "certifications": [],
+    "projects": [],
+    "languages": [
+      "Known Language: Tamil, English"
+    ]
+  },
+  "schema_mapping": {
+    "fields_populated": 4,
+    "total_fields": 16,
+    "completion_percentage": 25.0,
+    "field_details": [
+      {
+        "field_name": "contact.full_name",
+        "target_type": "string",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Personal Details",
+        "confidence_score": 0.95,
+        "description": "Candidate's full name, extracted from the top header of the resume."
+      },
+      {
+        "field_name": "contact.email",
+        "target_type": "string (email)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.98,
+        "description": "Candidate's primary contact email address."
+      },
+      {
+        "field_name": "contact.phone",
+        "target_type": "string (phone)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.95,
+        "description": "Candidate's telephone / mobile phone number."
+      },
+      {
+        "field_name": "contact.location",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's residential location or work city."
+      },
+      {
+        "field_name": "contact.linkedin_url",
+        "target_type": "string (url) | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "URL to candidate's LinkedIn profile."
+      },
+      {
+        "field_name": "professional_title",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Subtitle",
+        "confidence_score": 0.0,
+        "description": "Candidate's target headline or most recent job title."
+      },
+      {
+        "field_name": "summary",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Professional Summary / Profile / Objective",
+        "confidence_score": 0.0,
+        "description": "Executive bio, professional overview, or career objective."
+      },
+      {
+        "field_name": "total_experience_years",
+        "target_type": "float | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Summary / Experience Calculation",
+        "confidence_score": 0.0,
+        "description": "Total professional experience in years."
+      },
+      {
+        "field_name": "skills.technical_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Technical Competencies",
+        "confidence_score": 0.0,
+        "description": "Technical programming languages and core software competencies."
+      },
+      {
+        "field_name": "skills.tools_and_platforms",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Tools & Technologies",
+        "confidence_score": 0.0,
+        "description": "Software platforms, developer tools, and operational systems."
+      },
+      {
+        "field_name": "skills.domain_and_functional",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Domain Expertise",
+        "confidence_score": 0.0,
+        "description": "Functional domain knowledge (e.g. Hedge Funds, KYC, NAV, Derivatives)."
+      },
+      {
+        "field_name": "skills.all_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills (Aggregated)",
+        "confidence_score": 0.0,
+        "description": "Complete list of candidate skills across all categories."
+      },
+      {
+        "field_name": "experience",
+        "target_type": "array[WorkExperience]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Professional Experience / Work History",
+        "confidence_score": 0.0,
+        "description": "Complete chronological employment records with bullet points."
+      },
+      {
+        "field_name": "education",
+        "target_type": "array[Education]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Education / Academic Qualifications",
+        "confidence_score": 0.9,
+        "description": "University, college, and higher education degree qualifications."
+      },
+      {
+        "field_name": "certifications",
+        "target_type": "array[Certification]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Certifications / Licenses",
+        "confidence_score": 0.0,
+        "description": "Professional accreditations and credentials."
+      },
+      {
+        "field_name": "projects",
+        "target_type": "array[Project]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Projects / Key Engagements",
+        "confidence_score": 0.0,
+        "description": "Major projects or strategic initiatives led by candidate."
+      }
+    ]
+  },
+  "raw_sections": {
+    "languages": "Known Language: Tamil, English",
+    "personal_information": "Phone no: 9677221075 \nEmail Id: shakunthala_natraj@yahoo.in",
+    "education": "Education details:\nPG: Master of Business Administration (MBA) Finance \nUNIVERSITY YEAR PASSED AGGREATE PONDICHERRY UNIV (LOYOLA COLLEGE) 2012 61%\nUG: Bachelor of Commerce \nUNIVERSITY YEAR PASSED AGGREATE ANNA UNIVERSITY (ETHIRAJ COLLEGE FOR WOMEN) 2010 79%\nStrengths:\nGood team player\nQuick Learner\nLeadership skills\nFlexibility\nLogical and creative thinker, with a niche to produce effective solutions.\nEnergetic, dynamic, good coordinator and decision-making capacity.\nExecutive profile:\nProven experience in handling transition process and leading teams towards successful process operations.\nDemonstrated ability in ensuring adherence to quality, service level agreements, and compliance parameters.\nAdept in developing and ensuring client satisfaction by maintaining excellent Turnaround Time (TAT) for delivery & service quality norms.\nLTIMINDTREE - Specialist – CITI projects (TLM):                                                   \n Mar’22 – till date\t\nHave worked for PP (Product Processor) remediation into FFS (Finance Full suite) as legacy GL system decommission\nHave worked on GMI/Non-GMI segregation at source feed- FFS (Finance Full suite) wherein feed delays impacting reconciliations on the back of late comer PP-GMI thereby reconciliation process streamlined in TLM platform\nHave worked for Recs Transformation Program – SSO, Manual recon automation into TLM platform, there by reduction of manual touch points and achieving standard reconciliation model reconciling balances/transactions in automated tool.\nThe above-mentioned project cycle includes requirements gathering; POC (proof of concept); source feed analysis; BRD preparation; UAT testing phase; Production Go-Live and Postproduction support.\nEach migration is tracked under JIRA platform where all artefacts of the automation are documented for future references.\nApplications/Tools used: TLM; Recon Catalogue; QuickRec; Tectia; Autosys\nHave received appreciation emails from stakeholders/Citi managers for my deliverables within timelines and errorless.\nHave been rated 4 – Outstanding performer in the last performance cycle.\nSCB - Team Lead – Business Configuration Team (TLM):                                                  \n  Oct’16 – Feb’22\t\nHave performed configurations for Nostro/Suspense/Stock reconciliations to reduce manual intervention thereby increasing the overall auto match percentage across all the accounts. It includes auto match and auto coding using edit events where the possible references are identified for perfect matches and rules were set accordingly.\nHave performed Manual to TLM migrations for Suspense reconciliations as part of (i) New migration from country (ii) Manually performed reconciliations on boarded to auto mated recon tool TLM (iii) Automating input files for existing reconciliations.\nHave prepared BI (Business Informatics); Static report; CM (Centralized Module) creation as part of BRD (Business Requirements Document) for all the reconciliations that are automated into TLM platform.\nHave worked for and introduced Casing Module for UAE countries to eradicate email traffic between Operations and BAU teams to ease matching/coding advises action on time and present correct stats of outstanding items to top management for fast resolution of breaks.\nProduction issues/TLM queries with respect to auto match/reason for breaks raised from BAU teams were addressed and effective fix were put in place within TAT.\nHave supported Post go-live issues if any for the accounts auto mated into TLM as part of projects for Nostro/Suspense/FM reconciliations.\nEach account has been migrated into TLM post analysis of the requirements whether as per the process standards; Impact analysis; end to end UAT testing; regression testing as\napplicable; prior communication on the application changes if any to respective stakeholders.\nHave worked for resolutions for major exception issues encountered across reconciliations in FM instance mitigating risk of genuine breaks not getting escalated/loss of age of breaks. This was tested and fixed as part of FMO patch deployment.\nHave worked for automation of CDU (Client Data Unit) migration which reduced huge manual effort involved for paper confirmation of trades booked in TP system SCRITTURA and as part of this automation its sub products: FXO(Forex Options); NDF (Non-Deliverable Futures); COM (Commodities) were successfully introduced into reconciliations which enabled all genuine trades were reconciled by respective BAU team.\nHave worked for FM forced matches, wherein breaks are investigated and arranged calls with respective Operations; Technology and TP system support teams to discuss on the ideal approach for logical closure of breaks. As part of this activity, around 7k+ breaks were resolved mitigating risk and effective reconciliations.\nProjects that are delivered from my end were part of monthly internal audit which are acknowledged with nil deviations as per the process standards.\nHave worked on one of the critical project: STRIDE (Securities Transformation In Design and Evolution). It is related to the decommission of a major settlement system- OPICS and replaced with GPTM. It involves (i) Impact analysis of the accounts in scope (ii) BI mapping details for input files of new system (iii) Migration of existing accounts into GPTM (iii)End to end UAT testing to understand whether results as expected from new system (iv) Auto match configuration to match trades by system as per the requirements/ booking model (v) Negative testing to identify impact if any for other existing reconciliations not in scope.\nHave worked for PB OPICS decommission project. It is related to decommission of Private Banking OPICS and replaced with T24, carried out UAT testing for impacted accounts in FM/Suspense/Nostro reconciliations involving respective BAU & Operations team with adequate test cases in scope.\nRBS - Process lead – Reconciliations – (Intellimatch):                                                    \nSep’15-Oct’16\t\t\nInvolved in preparing various MI reports.\nHave successfully implemented Intelliweb 9.2 application (primary reconciliation tool) for NL region.\nHave performed analysis of intraday SLAs across RECs NV resulted in smooth transition of users as part of project brown and received silver ovation for the same.\nHave performed account review for reconciliations in order to have check over the dormant accounts and work closely with stakeholders to close the same.\nHave performed User Access review for the team to have checked on incorrect assigned to reconciliations and highlight the line manager for UER review.\nHave performed Service Schedule reviews for timely signoff.\nHave reviewed error logs and discussed among the team on how to reduce it to increase accuracy.\nHave worked under PLC reconciliations based out of UK covering Wealth, Ulster, Corporate reconciliations.\nSr. Analyst – Asia Reconciliations:\t\t\t\t\t\nOct ’13- Aug'15\nHandled Nostro, Suspense, Equity, Stock, Intercompany, and Client trust reconciliations for ASPAC countries.\nPreparation of journal vouchers for various accounts.\nCreated new auto-match rules to increase efficiency in the matching of entries in Intellimatch.\nFrequent review of wrong auto-match rules in order to eliminate them thereby saving manual workaround time.\nPreparation of Monthly & Weekly MI reports to control team and to head of the branch to substantiate the outstanding breaks in the respective accounts.\nHandled various escalations from the front and team and resolved them at the earliest possible time.\nPreparation of value balance report of the nostro accounts on a daily basis to ensure the accounts short positions are covered on a daily basis.\nParticipated in periodical process review meetings which evaluate the performance of team members and offered suggestions for betterment.\nAttested Nostro & Suspense accounts as part of substantiation of balance sheet in clarity tool.\nHandled audits from Internal Risk and control team (AYIC audits) without any findings.\nSpearheaded the BCP tastings for the team and performed mock BCP testing in the alternative site and submitted a report to management on the same.\nHandled UAT testing under Intellimatch for new reconciliation projects which assisted the team in smooth transition into Intellimatch.\nAnalyst – Nostro & Suspense Reconciliations:                                   \n Jun’10 – Sep’13\t\nSuccessfully learnt the process from the SME and transferred the same knowledge to the team for effective handling of daily business.\nPreparation of procedure documents for the different type of account reconciliation carried out within the team.\nHandled reconciliation of various Asia locations (HK, SG, TH, KR, ID, CN, AU).\nHandled critical process and emerged as a effective back-up for all activities.\nBeing identified as “Critical Staff” for emergency situations.\nInteracting with the clients to report on discrepancies and outstanding items.\nHave created effective back-up for the activities by transferring the subject updates without any knowledge gaps.\nHave arranged client engagement calls and winner of spot ovation 4 times for managing problems and efficient team players.\nApplication Knowledge\nTLM (Transaction Lifecycle Management)\nIntellimatch\nIntellitracs\nSun Accounting\nRIMS\nClarity\nSCORE\nVision Excel\nIntellistore\nSwift Alliance\nBank line\nAvaloq\nBack Office\nVoucher Enquiry System\nDeclaration\nI hereby declare that the above furnished details are true to the best of my knowledge and belief.\nPlace: Chennai\nName: N Sagunthala\t\t\t\t\t\t\t\t\t\t\t"
+  },
+  "meta": {
+    "status": "needs_review",
+    "human_verified": false,
+    "provider_calls": 0,
+    "source_accounting": {
+      "all_source_text_preserved": true,
+      "total_spans": 106,
+      "assigned_meaningful_spans": 98,
+      "unresolved_meaningful_spans": 5,
+      "non_content_artifacts": 3,
+      "duplicates_excluded": 0,
+      "all_meaningful_text_assigned": false,
+      "semantic_correctness_verified": false,
+      "outcomes": [
+        {
+          "source_id": "e0:0:6",
+          "source_element_index": 0,
+          "start": 0,
+          "end": 6,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e1:0:19",
+          "source_element_index": 1,
+          "start": 0,
+          "end": 19,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e2:0:18",
+          "source_element_index": 2,
+          "start": 0,
+          "end": 18,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e3:0:23",
+          "source_element_index": 3,
+          "start": 0,
+          "end": 23,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e4:0:30",
+          "source_element_index": 4,
+          "start": 0,
+          "end": 30,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "BERT embedding assigned to a labeled K-means centroid"
+        },
+        {
+          "source_id": "e5:0:66",
+          "source_element_index": 5,
+          "start": 0,
+          "end": 66,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e6:0:21",
+          "source_element_index": 6,
+          "start": 0,
+          "end": 21,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e7:0:37",
+          "source_element_index": 7,
+          "start": 0,
+          "end": 37,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e8:0:18",
+          "source_element_index": 8,
+          "start": 0,
+          "end": 18,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Distinct BERT heading match with a K-means section label"
+        },
+        {
+          "source_id": "e9:0:52",
+          "source_element_index": 9,
+          "start": 0,
+          "end": 52,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e10:0:74",
+          "source_element_index": 10,
+          "start": 0,
+          "end": 74,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e11:0:25",
+          "source_element_index": 11,
+          "start": 0,
+          "end": 25,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:0:84",
+          "source_element_index": 12,
+          "start": 0,
+          "end": 84,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e13:0:10",
+          "source_element_index": 13,
+          "start": 0,
+          "end": 10,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e14:0:16",
+          "source_element_index": 14,
+          "start": 0,
+          "end": 16,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e15:0:13",
+          "source_element_index": 15,
+          "start": 0,
+          "end": 13,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e16:0:17",
+          "source_element_index": 16,
+          "start": 0,
+          "end": 17,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e17:0:11",
+          "source_element_index": 17,
+          "start": 0,
+          "end": 11,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e18:0:74",
+          "source_element_index": 18,
+          "start": 0,
+          "end": 74,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e19:0:66",
+          "source_element_index": 19,
+          "start": 0,
+          "end": 66,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e20:0:18",
+          "source_element_index": 20,
+          "start": 0,
+          "end": 18,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e21:0:105",
+          "source_element_index": 21,
+          "start": 0,
+          "end": 105,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e22:0:107",
+          "source_element_index": 22,
+          "start": 0,
+          "end": 107,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e23:0:137",
+          "source_element_index": 23,
+          "start": 0,
+          "end": 137,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e24:0:0",
+          "source_element_index": 24,
+          "start": 0,
+          "end": 0,
+          "section": null,
+          "outcome": "non_content_artifact",
+          "reason": "Whitespace retained in source inventory"
+        },
+        {
+          "source_id": "e25:0:98",
+          "source_element_index": 25,
+          "start": 0,
+          "end": 98,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e26:0:20",
+          "source_element_index": 26,
+          "start": 0,
+          "end": 20,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e27:0:113",
+          "source_element_index": 27,
+          "start": 0,
+          "end": 113,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e28:0:217",
+          "source_element_index": 28,
+          "start": 0,
+          "end": 217,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e29:0:232",
+          "source_element_index": 29,
+          "start": 0,
+          "end": 232,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e30:0:195",
+          "source_element_index": 30,
+          "start": 0,
+          "end": 195,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e31:0:121",
+          "source_element_index": 31,
+          "start": 0,
+          "end": 121,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e32:0:72",
+          "source_element_index": 32,
+          "start": 0,
+          "end": 72,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e33:0:117",
+          "source_element_index": 33,
+          "start": 0,
+          "end": 117,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e34:0:72",
+          "source_element_index": 34,
+          "start": 0,
+          "end": 72,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e35:0:102",
+          "source_element_index": 35,
+          "start": 0,
+          "end": 102,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e36:0:18",
+          "source_element_index": 36,
+          "start": 0,
+          "end": 18,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e37:0:333",
+          "source_element_index": 37,
+          "start": 0,
+          "end": 333,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e38:0:249",
+          "source_element_index": 38,
+          "start": 0,
+          "end": 249,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e39:0:202",
+          "source_element_index": 39,
+          "start": 0,
+          "end": 202,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e40:0:265",
+          "source_element_index": 40,
+          "start": 0,
+          "end": 265,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e41:0:159",
+          "source_element_index": 41,
+          "start": 0,
+          "end": 159,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e42:0:138",
+          "source_element_index": 42,
+          "start": 0,
+          "end": 138,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e43:0:174",
+          "source_element_index": 43,
+          "start": 0,
+          "end": 174,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e44:0:0",
+          "source_element_index": 44,
+          "start": 0,
+          "end": 0,
+          "section": null,
+          "outcome": "non_content_artifact",
+          "reason": "Whitespace retained in source inventory"
+        },
+        {
+          "source_id": "e45:0:93",
+          "source_element_index": 45,
+          "start": 0,
+          "end": 93,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e46:0:242",
+          "source_element_index": 46,
+          "start": 0,
+          "end": 242,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e47:0:408",
+          "source_element_index": 47,
+          "start": 0,
+          "end": 408,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e48:0:321",
+          "source_element_index": 48,
+          "start": 0,
+          "end": 321,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e49:0:148",
+          "source_element_index": 49,
+          "start": 0,
+          "end": 148,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e50:0:632",
+          "source_element_index": 50,
+          "start": 0,
+          "end": 632,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e51:0:286",
+          "source_element_index": 51,
+          "start": 0,
+          "end": 286,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e52:0:106",
+          "source_element_index": 52,
+          "start": 0,
+          "end": 106,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e53:0:15",
+          "source_element_index": 53,
+          "start": 0,
+          "end": 15,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e54:0:41",
+          "source_element_index": 54,
+          "start": 0,
+          "end": 41,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e55:0:101",
+          "source_element_index": 55,
+          "start": 0,
+          "end": 101,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e56:0:161",
+          "source_element_index": 56,
+          "start": 0,
+          "end": 161,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e57:0:152",
+          "source_element_index": 57,
+          "start": 0,
+          "end": 152,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e58:0:150",
+          "source_element_index": 58,
+          "start": 0,
+          "end": 150,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e59:0:59",
+          "source_element_index": 59,
+          "start": 0,
+          "end": 59,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e60:0:95",
+          "source_element_index": 60,
+          "start": 0,
+          "end": 95,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e61:0:105",
+          "source_element_index": 61,
+          "start": 0,
+          "end": 105,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e62:0:40",
+          "source_element_index": 62,
+          "start": 0,
+          "end": 40,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e63:0:15",
+          "source_element_index": 63,
+          "start": 0,
+          "end": 15,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e64:0:108",
+          "source_element_index": 64,
+          "start": 0,
+          "end": 108,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e65:0:53",
+          "source_element_index": 65,
+          "start": 0,
+          "end": 53,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e66:0:95",
+          "source_element_index": 66,
+          "start": 0,
+          "end": 95,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e67:0:107",
+          "source_element_index": 67,
+          "start": 0,
+          "end": 107,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e68:0:151",
+          "source_element_index": 68,
+          "start": 0,
+          "end": 151,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e69:0:100",
+          "source_element_index": 69,
+          "start": 0,
+          "end": 100,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e70:0:144",
+          "source_element_index": 70,
+          "start": 0,
+          "end": 144,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e71:0:137",
+          "source_element_index": 71,
+          "start": 0,
+          "end": 137,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e72:0:95",
+          "source_element_index": 72,
+          "start": 0,
+          "end": 95,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e73:0:86",
+          "source_element_index": 73,
+          "start": 0,
+          "end": 86,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e74:0:146",
+          "source_element_index": 74,
+          "start": 0,
+          "end": 146,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e75:0:0",
+          "source_element_index": 75,
+          "start": 0,
+          "end": 0,
+          "section": null,
+          "outcome": "non_content_artifact",
+          "reason": "Whitespace retained in source inventory"
+        },
+        {
+          "source_id": "e76:0:134",
+          "source_element_index": 76,
+          "start": 0,
+          "end": 134,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e77:0:79",
+          "source_element_index": 77,
+          "start": 0,
+          "end": 79,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e78:0:17",
+          "source_element_index": 78,
+          "start": 0,
+          "end": 17,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e79:0:133",
+          "source_element_index": 79,
+          "start": 0,
+          "end": 133,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e80:0:112",
+          "source_element_index": 80,
+          "start": 0,
+          "end": 112,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e81:0:78",
+          "source_element_index": 81,
+          "start": 0,
+          "end": 78,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e82:0:79",
+          "source_element_index": 82,
+          "start": 0,
+          "end": 79,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e83:0:62",
+          "source_element_index": 83,
+          "start": 0,
+          "end": 62,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e84:0:78",
+          "source_element_index": 84,
+          "start": 0,
+          "end": 78,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e85:0:113",
+          "source_element_index": 85,
+          "start": 0,
+          "end": 113,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e86:0:122",
+          "source_element_index": 86,
+          "start": 0,
+          "end": 122,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e87:0:21",
+          "source_element_index": 87,
+          "start": 0,
+          "end": 21,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e88:0:38",
+          "source_element_index": 88,
+          "start": 0,
+          "end": 38,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e89:0:12",
+          "source_element_index": 89,
+          "start": 0,
+          "end": 12,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e90:0:12",
+          "source_element_index": 90,
+          "start": 0,
+          "end": 12,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e91:0:14",
+          "source_element_index": 91,
+          "start": 0,
+          "end": 14,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e92:0:4",
+          "source_element_index": 92,
+          "start": 0,
+          "end": 4,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e93:0:7",
+          "source_element_index": 93,
+          "start": 0,
+          "end": 7,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e94:0:5",
+          "source_element_index": 94,
+          "start": 0,
+          "end": 5,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e95:0:12",
+          "source_element_index": 95,
+          "start": 0,
+          "end": 12,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e96:0:12",
+          "source_element_index": 96,
+          "start": 0,
+          "end": 12,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e97:0:14",
+          "source_element_index": 97,
+          "start": 0,
+          "end": 14,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e98:0:9",
+          "source_element_index": 98,
+          "start": 0,
+          "end": 9,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e99:0:6",
+          "source_element_index": 99,
+          "start": 0,
+          "end": 6,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e100:0:11",
+          "source_element_index": 100,
+          "start": 0,
+          "end": 11,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e101:0:22",
+          "source_element_index": 101,
+          "start": 0,
+          "end": 22,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e102:0:11",
+          "source_element_index": 102,
+          "start": 0,
+          "end": 11,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e103:0:98",
+          "source_element_index": 103,
+          "start": 0,
+          "end": 98,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e104:0:14",
+          "source_element_index": 104,
+          "start": 0,
+          "end": 14,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e105:0:29",
+          "source_element_index": 105,
+          "start": 0,
+          "end": 29,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        }
+      ]
+    },
+    "document_scope": {
+      "kind": "likely_resume",
+      "candidate_resume": true,
+      "reason": "Contact details, multiple resume section families and dated history; provisional scope only",
+      "human_verified": false
+    },
+    "source_inventory_sha256": "550e453d8f44c6fb4bd662011ee9039a2cbcc3668ad0211d7505ea9a908eb404",
+    "field_evidence": {
+      "contact.full_name": [
+        "e6:0:21",
+        "e7:0:37"
+      ],
+      "contact.email": [
+        "e6:0:21",
+        "e7:0:37"
+      ],
+      "contact.phone": [
+        "e6:0:21",
+        "e7:0:37"
+      ],
+      "languages[0]": [
+        "e4:0:30"
+      ]
+    },
+    "record_reviews": [
+      {
+        "category": "education",
+        "entry_id": "education-1",
+        "source_ids": [
+          "e9:0:52",
+          "e10:0:74",
+          "e11:0:25",
+          "e12:0:84",
+          "e13:0:10",
+          "e14:0:16",
+          "e15:0:13",
+          "e16:0:17",
+          "e17:0:11",
+          "e18:0:74",
+          "e19:0:66",
+          "e20:0:18",
+          "e21:0:105",
+          "e22:0:107",
+          "e23:0:137",
+          "e25:0:98",
+          "e26:0:20",
+          "e27:0:113",
+          "e28:0:217",
+          "e29:0:232",
+          "e30:0:195",
+          "e31:0:121",
+          "e32:0:72",
+          "e33:0:117",
+          "e34:0:72",
+          "e35:0:102",
+          "e36:0:18",
+          "e37:0:333",
+          "e38:0:249",
+          "e39:0:202",
+          "e40:0:265",
+          "e41:0:159",
+          "e42:0:138",
+          "e43:0:174",
+          "e45:0:93",
+          "e46:0:242",
+          "e47:0:408",
+          "e48:0:321",
+          "e49:0:148",
+          "e50:0:632",
+          "e51:0:286",
+          "e52:0:106",
+          "e53:0:15",
+          "e54:0:41",
+          "e55:0:101",
+          "e56:0:161",
+          "e57:0:152",
+          "e58:0:150",
+          "e59:0:59",
+          "e60:0:95",
+          "e61:0:105",
+          "e62:0:40",
+          "e63:0:15",
+          "e64:0:108",
+          "e65:0:53",
+          "e66:0:95",
+          "e67:0:107",
+          "e68:0:151",
+          "e69:0:100",
+          "e70:0:144",
+          "e71:0:137",
+          "e72:0:95",
+          "e73:0:86",
+          "e74:0:146",
+          "e76:0:134",
+          "e77:0:79",
+          "e78:0:17",
+          "e79:0:133",
+          "e80:0:112",
+          "e81:0:78",
+          "e82:0:79",
+          "e83:0:62",
+          "e84:0:78",
+          "e85:0:113",
+          "e86:0:122",
+          "e87:0:21",
+          "e88:0:38",
+          "e89:0:12",
+          "e90:0:12",
+          "e91:0:14",
+          "e92:0:4",
+          "e93:0:7",
+          "e94:0:5",
+          "e95:0:12",
+          "e96:0:12",
+          "e97:0:14",
+          "e98:0:9",
+          "e99:0:6",
+          "e100:0:11",
+          "e101:0:22",
+          "e102:0:11",
+          "e103:0:98",
+          "e104:0:14",
+          "e105:0:29"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      }
+    ],
+    "missing_required_fields": [
+      "education[0].institution",
+      "education[0].degree"
+    ],
+    "warnings": [
+      "Schema validity and field completion do not establish extraction or relationship accuracy.",
+      "Handoff confidence scores are fixed heuristics, not calibrated probabilities.",
+      "Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields."
+    ],
+    "unmapped_blocks": [
+      {
+        "source_id": "e8:0:18",
+        "category": "education",
+        "text": "Education details:",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:0:52",
+        "category": "education",
+        "text": "PG: Master of Business Administration (MBA) Finance ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e10:0:74",
+        "category": "education",
+        "text": "UNIVERSITY YEAR PASSED AGGREATE PONDICHERRY UNIV (LOYOLA COLLEGE) 2012 61%",
+        "page_number": 1
+      },
+      {
+        "source_id": "e11:0:25",
+        "category": "education",
+        "text": "UG: Bachelor of Commerce ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:0:84",
+        "category": "education",
+        "text": "UNIVERSITY YEAR PASSED AGGREATE ANNA UNIVERSITY (ETHIRAJ COLLEGE FOR WOMEN) 2010 79%",
+        "page_number": 1
+      },
+      {
+        "source_id": "e13:0:10",
+        "category": "education",
+        "text": "Strengths:",
+        "page_number": 1
+      },
+      {
+        "source_id": "e14:0:16",
+        "category": "education",
+        "text": "Good team player",
+        "page_number": 1
+      },
+      {
+        "source_id": "e15:0:13",
+        "category": "education",
+        "text": "Quick Learner",
+        "page_number": 1
+      },
+      {
+        "source_id": "e16:0:17",
+        "category": "education",
+        "text": "Leadership skills",
+        "page_number": 1
+      },
+      {
+        "source_id": "e17:0:11",
+        "category": "education",
+        "text": "Flexibility",
+        "page_number": 1
+      },
+      {
+        "source_id": "e18:0:74",
+        "category": "education",
+        "text": "Logical and creative thinker, with a niche to produce effective solutions.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e19:0:66",
+        "category": "education",
+        "text": "Energetic, dynamic, good coordinator and decision-making capacity.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e20:0:18",
+        "category": "education",
+        "text": "Executive profile:",
+        "page_number": 1
+      },
+      {
+        "source_id": "e21:0:105",
+        "category": "education",
+        "text": "Proven experience in handling transition process and leading teams towards successful process operations.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e22:0:107",
+        "category": "education",
+        "text": "Demonstrated ability in ensuring adherence to quality, service level agreements, and compliance parameters.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e23:0:137",
+        "category": "education",
+        "text": "Adept in developing and ensuring client satisfaction by maintaining excellent Turnaround Time (TAT) for delivery & service quality norms.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e25:0:98",
+        "category": "education",
+        "text": "LTIMINDTREE - Specialist – CITI projects (TLM):                                                   ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e26:0:20",
+        "category": "education",
+        "text": " Mar’22 – till date\t",
+        "page_number": 2
+      },
+      {
+        "source_id": "e27:0:113",
+        "category": "education",
+        "text": "Have worked for PP (Product Processor) remediation into FFS (Finance Full suite) as legacy GL system decommission",
+        "page_number": 2
+      },
+      {
+        "source_id": "e28:0:217",
+        "category": "education",
+        "text": "Have worked on GMI/Non-GMI segregation at source feed- FFS (Finance Full suite) wherein feed delays impacting reconciliations on the back of late comer PP-GMI thereby reconciliation process streamlined in TLM platform",
+        "page_number": 2
+      },
+      {
+        "source_id": "e29:0:232",
+        "category": "education",
+        "text": "Have worked for Recs Transformation Program – SSO, Manual recon automation into TLM platform, there by reduction of manual touch points and achieving standard reconciliation model reconciling balances/transactions in automated tool.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e30:0:195",
+        "category": "education",
+        "text": "The above-mentioned project cycle includes requirements gathering; POC (proof of concept); source feed analysis; BRD preparation; UAT testing phase; Production Go-Live and Postproduction support.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e31:0:121",
+        "category": "education",
+        "text": "Each migration is tracked under JIRA platform where all artefacts of the automation are documented for future references.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e32:0:72",
+        "category": "education",
+        "text": "Applications/Tools used: TLM; Recon Catalogue; QuickRec; Tectia; Autosys",
+        "page_number": 2
+      },
+      {
+        "source_id": "e33:0:117",
+        "category": "education",
+        "text": "Have received appreciation emails from stakeholders/Citi managers for my deliverables within timelines and errorless.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e34:0:72",
+        "category": "education",
+        "text": "Have been rated 4 – Outstanding performer in the last performance cycle.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e35:0:102",
+        "category": "education",
+        "text": "SCB - Team Lead – Business Configuration Team (TLM):                                                  ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e36:0:18",
+        "category": "education",
+        "text": "  Oct’16 – Feb’22\t",
+        "page_number": 2
+      },
+      {
+        "source_id": "e37:0:333",
+        "category": "education",
+        "text": "Have performed configurations for Nostro/Suspense/Stock reconciliations to reduce manual intervention thereby increasing the overall auto match percentage across all the accounts. It includes auto match and auto coding using edit events where the possible references are identified for perfect matches and rules were set accordingly.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e38:0:249",
+        "category": "education",
+        "text": "Have performed Manual to TLM migrations for Suspense reconciliations as part of (i) New migration from country (ii) Manually performed reconciliations on boarded to auto mated recon tool TLM (iii) Automating input files for existing reconciliations.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e39:0:202",
+        "category": "education",
+        "text": "Have prepared BI (Business Informatics); Static report; CM (Centralized Module) creation as part of BRD (Business Requirements Document) for all the reconciliations that are automated into TLM platform.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e40:0:265",
+        "category": "education",
+        "text": "Have worked for and introduced Casing Module for UAE countries to eradicate email traffic between Operations and BAU teams to ease matching/coding advises action on time and present correct stats of outstanding items to top management for fast resolution of breaks.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e41:0:159",
+        "category": "education",
+        "text": "Production issues/TLM queries with respect to auto match/reason for breaks raised from BAU teams were addressed and effective fix were put in place within TAT.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e42:0:138",
+        "category": "education",
+        "text": "Have supported Post go-live issues if any for the accounts auto mated into TLM as part of projects for Nostro/Suspense/FM reconciliations.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e43:0:174",
+        "category": "education",
+        "text": "Each account has been migrated into TLM post analysis of the requirements whether as per the process standards; Impact analysis; end to end UAT testing; regression testing as",
+        "page_number": 2
+      },
+      {
+        "source_id": "e45:0:93",
+        "category": "education",
+        "text": "applicable; prior communication on the application changes if any to respective stakeholders.",
+        "page_number": 3
+      },
+      {
+        "source_id": "e46:0:242",
+        "category": "education",
+        "text": "Have worked for resolutions for major exception issues encountered across reconciliations in FM instance mitigating risk of genuine breaks not getting escalated/loss of age of breaks. This was tested and fixed as part of FMO patch deployment.",
+        "page_number": 3
+      },
+      {
+        "source_id": "e47:0:408",
+        "category": "education",
+        "text": "Have worked for automation of CDU (Client Data Unit) migration which reduced huge manual effort involved for paper confirmation of trades booked in TP system SCRITTURA and as part of this automation its sub products: FXO(Forex Options); NDF (Non-Deliverable Futures); COM (Commodities) were successfully introduced into reconciliations which enabled all genuine trades were reconciled by respective BAU team.",
+        "page_number": 3
+      },
+      {
+        "source_id": "e48:0:321",
+        "category": "education",
+        "text": "Have worked for FM forced matches, wherein breaks are investigated and arranged calls with respective Operations; Technology and TP system support teams to discuss on the ideal approach for logical closure of breaks. As part of this activity, around 7k+ breaks were resolved mitigating risk and effective reconciliations.",
+        "page_number": 3
+      },
+      {
+        "source_id": "e49:0:148",
+        "category": "education",
+        "text": "Projects that are delivered from my end were part of monthly internal audit which are acknowledged with nil deviations as per the process standards.",
+        "page_number": 3
+      },
+      {
+        "source_id": "e50:0:632",
+        "category": "education",
+        "text": "Have worked on one of the critical project: STRIDE (Securities Transformation In Design and Evolution). It is related to the decommission of a major settlement system- OPICS and replaced with GPTM. It involves (i) Impact analysis of the accounts in scope (ii) BI mapping details for input files of new system (iii) Migration of existing accounts into GPTM (iii)End to end UAT testing to understand whether results as expected from new system (iv) Auto match configuration to match trades by system as per the requirements/ booking model (v) Negative testing to identify impact if any for other existing reconciliations not in scope.",
+        "page_number": 3
+      },
+      {
+        "source_id": "e51:0:286",
+        "category": "education",
+        "text": "Have worked for PB OPICS decommission project. It is related to decommission of Private Banking OPICS and replaced with T24, carried out UAT testing for impacted accounts in FM/Suspense/Nostro reconciliations involving respective BAU & Operations team with adequate test cases in scope.",
+        "page_number": 3
+      },
+      {
+        "source_id": "e52:0:106",
+        "category": "education",
+        "text": "RBS - Process lead – Reconciliations – (Intellimatch):                                                    ",
+        "page_number": 3
+      },
+      {
+        "source_id": "e53:0:15",
+        "category": "education",
+        "text": "Sep’15-Oct’16\t\t",
+        "page_number": 3
+      },
+      {
+        "source_id": "e54:0:41",
+        "category": "education",
+        "text": "Involved in preparing various MI reports.",
+        "page_number": 3
+      },
+      {
+        "source_id": "e55:0:101",
+        "category": "education",
+        "text": "Have successfully implemented Intelliweb 9.2 application (primary reconciliation tool) for NL region.",
+        "page_number": 3
+      },
+      {
+        "source_id": "e56:0:161",
+        "category": "education",
+        "text": "Have performed analysis of intraday SLAs across RECs NV resulted in smooth transition of users as part of project brown and received silver ovation for the same.",
+        "page_number": 3
+      },
+      {
+        "source_id": "e57:0:152",
+        "category": "education",
+        "text": "Have performed account review for reconciliations in order to have check over the dormant accounts and work closely with stakeholders to close the same.",
+        "page_number": 3
+      },
+      {
+        "source_id": "e58:0:150",
+        "category": "education",
+        "text": "Have performed User Access review for the team to have checked on incorrect assigned to reconciliations and highlight the line manager for UER review.",
+        "page_number": 3
+      },
+      {
+        "source_id": "e59:0:59",
+        "category": "education",
+        "text": "Have performed Service Schedule reviews for timely signoff.",
+        "page_number": 3
+      },
+      {
+        "source_id": "e60:0:95",
+        "category": "education",
+        "text": "Have reviewed error logs and discussed among the team on how to reduce it to increase accuracy.",
+        "page_number": 3
+      },
+      {
+        "source_id": "e61:0:105",
+        "category": "education",
+        "text": "Have worked under PLC reconciliations based out of UK covering Wealth, Ulster, Corporate reconciliations.",
+        "page_number": 3
+      },
+      {
+        "source_id": "e62:0:40",
+        "category": "education",
+        "text": "Sr. Analyst – Asia Reconciliations:\t\t\t\t\t",
+        "page_number": 3
+      },
+      {
+        "source_id": "e63:0:15",
+        "category": "education",
+        "text": "Oct ’13- Aug'15",
+        "page_number": 3
+      },
+      {
+        "source_id": "e64:0:108",
+        "category": "education",
+        "text": "Handled Nostro, Suspense, Equity, Stock, Intercompany, and Client trust reconciliations for ASPAC countries.",
+        "page_number": 3
+      },
+      {
+        "source_id": "e65:0:53",
+        "category": "education",
+        "text": "Preparation of journal vouchers for various accounts.",
+        "page_number": 3
+      },
+      {
+        "source_id": "e66:0:95",
+        "category": "education",
+        "text": "Created new auto-match rules to increase efficiency in the matching of entries in Intellimatch.",
+        "page_number": 3
+      },
+      {
+        "source_id": "e67:0:107",
+        "category": "education",
+        "text": "Frequent review of wrong auto-match rules in order to eliminate them thereby saving manual workaround time.",
+        "page_number": 3
+      },
+      {
+        "source_id": "e68:0:151",
+        "category": "education",
+        "text": "Preparation of Monthly & Weekly MI reports to control team and to head of the branch to substantiate the outstanding breaks in the respective accounts.",
+        "page_number": 3
+      },
+      {
+        "source_id": "e69:0:100",
+        "category": "education",
+        "text": "Handled various escalations from the front and team and resolved them at the earliest possible time.",
+        "page_number": 3
+      },
+      {
+        "source_id": "e70:0:144",
+        "category": "education",
+        "text": "Preparation of value balance report of the nostro accounts on a daily basis to ensure the accounts short positions are covered on a daily basis.",
+        "page_number": 3
+      },
+      {
+        "source_id": "e71:0:137",
+        "category": "education",
+        "text": "Participated in periodical process review meetings which evaluate the performance of team members and offered suggestions for betterment.",
+        "page_number": 3
+      },
+      {
+        "source_id": "e72:0:95",
+        "category": "education",
+        "text": "Attested Nostro & Suspense accounts as part of substantiation of balance sheet in clarity tool.",
+        "page_number": 3
+      },
+      {
+        "source_id": "e73:0:86",
+        "category": "education",
+        "text": "Handled audits from Internal Risk and control team (AYIC audits) without any findings.",
+        "page_number": 3
+      },
+      {
+        "source_id": "e74:0:146",
+        "category": "education",
+        "text": "Spearheaded the BCP tastings for the team and performed mock BCP testing in the alternative site and submitted a report to management on the same.",
+        "page_number": 3
+      },
+      {
+        "source_id": "e76:0:134",
+        "category": "education",
+        "text": "Handled UAT testing under Intellimatch for new reconciliation projects which assisted the team in smooth transition into Intellimatch.",
+        "page_number": 4
+      },
+      {
+        "source_id": "e77:0:79",
+        "category": "education",
+        "text": "Analyst – Nostro & Suspense Reconciliations:                                   ",
+        "page_number": 4
+      },
+      {
+        "source_id": "e78:0:17",
+        "category": "education",
+        "text": " Jun’10 – Sep’13\t",
+        "page_number": 4
+      },
+      {
+        "source_id": "e79:0:133",
+        "category": "education",
+        "text": "Successfully learnt the process from the SME and transferred the same knowledge to the team for effective handling of daily business.",
+        "page_number": 4
+      },
+      {
+        "source_id": "e80:0:112",
+        "category": "education",
+        "text": "Preparation of procedure documents for the different type of account reconciliation carried out within the team.",
+        "page_number": 4
+      },
+      {
+        "source_id": "e81:0:78",
+        "category": "education",
+        "text": "Handled reconciliation of various Asia locations (HK, SG, TH, KR, ID, CN, AU).",
+        "page_number": 4
+      },
+      {
+        "source_id": "e82:0:79",
+        "category": "education",
+        "text": "Handled critical process and emerged as a effective back-up for all activities.",
+        "page_number": 4
+      },
+      {
+        "source_id": "e83:0:62",
+        "category": "education",
+        "text": "Being identified as “Critical Staff” for emergency situations.",
+        "page_number": 4
+      },
+      {
+        "source_id": "e84:0:78",
+        "category": "education",
+        "text": "Interacting with the clients to report on discrepancies and outstanding items.",
+        "page_number": 4
+      },
+      {
+        "source_id": "e85:0:113",
+        "category": "education",
+        "text": "Have created effective back-up for the activities by transferring the subject updates without any knowledge gaps.",
+        "page_number": 4
+      },
+      {
+        "source_id": "e86:0:122",
+        "category": "education",
+        "text": "Have arranged client engagement calls and winner of spot ovation 4 times for managing problems and efficient team players.",
+        "page_number": 4
+      },
+      {
+        "source_id": "e87:0:21",
+        "category": "education",
+        "text": "Application Knowledge",
+        "page_number": 4
+      },
+      {
+        "source_id": "e88:0:38",
+        "category": "education",
+        "text": "TLM (Transaction Lifecycle Management)",
+        "page_number": 4
+      },
+      {
+        "source_id": "e89:0:12",
+        "category": "education",
+        "text": "Intellimatch",
+        "page_number": 4
+      },
+      {
+        "source_id": "e90:0:12",
+        "category": "education",
+        "text": "Intellitracs",
+        "page_number": 4
+      },
+      {
+        "source_id": "e91:0:14",
+        "category": "education",
+        "text": "Sun Accounting",
+        "page_number": 4
+      },
+      {
+        "source_id": "e92:0:4",
+        "category": "education",
+        "text": "RIMS",
+        "page_number": 4
+      },
+      {
+        "source_id": "e93:0:7",
+        "category": "education",
+        "text": "Clarity",
+        "page_number": 4
+      },
+      {
+        "source_id": "e94:0:5",
+        "category": "education",
+        "text": "SCORE",
+        "page_number": 4
+      },
+      {
+        "source_id": "e95:0:12",
+        "category": "education",
+        "text": "Vision Excel",
+        "page_number": 4
+      },
+      {
+        "source_id": "e96:0:12",
+        "category": "education",
+        "text": "Intellistore",
+        "page_number": 4
+      },
+      {
+        "source_id": "e97:0:14",
+        "category": "education",
+        "text": "Swift Alliance",
+        "page_number": 4
+      },
+      {
+        "source_id": "e98:0:9",
+        "category": "education",
+        "text": "Bank line",
+        "page_number": 4
+      },
+      {
+        "source_id": "e99:0:6",
+        "category": "education",
+        "text": "Avaloq",
+        "page_number": 4
+      },
+      {
+        "source_id": "e100:0:11",
+        "category": "education",
+        "text": "Back Office",
+        "page_number": 4
+      },
+      {
+        "source_id": "e101:0:22",
+        "category": "education",
+        "text": "Voucher Enquiry System",
+        "page_number": 4
+      },
+      {
+        "source_id": "e102:0:11",
+        "category": "education",
+        "text": "Declaration",
+        "page_number": 4
+      },
+      {
+        "source_id": "e103:0:98",
+        "category": "education",
+        "text": "I hereby declare that the above furnished details are true to the best of my knowledge and belief.",
+        "page_number": 4
+      },
+      {
+        "source_id": "e104:0:14",
+        "category": "education",
+        "text": "Place: Chennai",
+        "page_number": 4
+      },
+      {
+        "source_id": "e105:0:29",
+        "category": "education",
+        "text": "Name: N Sagunthala\t\t\t\t\t\t\t\t\t\t\t",
+        "page_number": 4
+      },
+      {
+        "source_id": "e0:0:6",
+        "category": null,
+        "text": "RESUME",
+        "page_number": 1
+      },
+      {
+        "source_id": "e1:0:19",
+        "category": null,
+        "text": "Name: Sagunthala. N",
+        "page_number": 1
+      },
+      {
+        "source_id": "e2:0:18",
+        "category": null,
+        "text": "DOB: 19th Aug 1988",
+        "page_number": 1
+      },
+      {
+        "source_id": "e3:0:23",
+        "category": null,
+        "text": "Marital status: Married",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:0:66",
+        "category": null,
+        "text": "Permanent address: No: 15, Kanniappan Street, Chrompet Chennai-44.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e24:0:0",
+        "category": null,
+        "text": "",
+        "page_number": null
+      },
+      {
+        "source_id": "e44:0:0",
+        "category": null,
+        "text": "",
+        "page_number": null
+      },
+      {
+        "source_id": "e75:0:0",
+        "category": null,
+        "text": "",
+        "page_number": null
+      }
+    ],
+    "needs_review": [
+      {
+        "source_element_index": 0,
+        "start": 0,
+        "end": 6,
+        "text": "RESUME",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.5164,
+        "margin": 0.041,
+        "lane": "main",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 1,
+        "start": 0,
+        "end": 19,
+        "text": "Name: Sagunthala. N",
+        "page_number": 1,
+        "cluster_id": 10,
+        "candidate_section": "languages",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1969,
+        "margin": 0.0256,
+        "lane": "main",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 2,
+        "start": 0,
+        "end": 18,
+        "text": "DOB: 19th Aug 1988",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2319,
+        "margin": -0.0022,
+        "lane": "main",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 3,
+        "start": 0,
+        "end": 23,
+        "text": "Marital status: Married",
+        "page_number": 1,
+        "cluster_id": 12,
+        "candidate_section": "references",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1896,
+        "margin": 0.0125,
+        "lane": "main",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 5,
+        "start": 0,
+        "end": 66,
+        "text": "Permanent address: No: 15, Kanniappan Street, Chrompet Chennai-44.",
+        "page_number": 1,
+        "cluster_id": 0,
+        "candidate_section": "personal_information",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.4251,
+        "margin": 0.1573,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 24,
+        "start": 0,
+        "end": 0,
+        "text": "",
+        "page_number": null,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1867,
+        "margin": -0.0366,
+        "lane": "main",
+        "reason": "Layout footer or page separator retained outside semantic sections",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 44,
+        "start": 0,
+        "end": 0,
+        "text": "",
+        "page_number": null,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1867,
+        "margin": -0.0366,
+        "lane": "main",
+        "reason": "Layout footer or page separator retained outside semantic sections",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 75,
+        "start": 0,
+        "end": 0,
+        "text": "",
+        "page_number": null,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1867,
+        "margin": -0.0366,
+        "lane": "main",
+        "reason": "Layout footer or page separator retained outside semantic sections",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      }
+    ]
+  },
+  "section_schemas": [
+    {
+      "category": "languages",
+      "label": "Languages",
+      "records": [
+        {
+          "record_id": "languages-1",
+          "source_ids": [
+            "e4:0:30"
+          ],
+          "attributes": [
+            {
+              "name": "language",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "proficiency",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "Unlabelled compound information requires source review."
+          ]
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e4:0:30",
+          "quote": "Known Language: Tamil, English"
+        }
+      ]
+    },
+    {
+      "category": "personal_information",
+      "label": "Personal information",
+      "records": [
+        {
+          "record_id": "personal_information",
+          "source_ids": [
+            "e6:0:21",
+            "e7:0:37"
+          ],
+          "attributes": [
+            {
+              "name": "full_name",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "email",
+              "items": [
+                {
+                  "value": "shakunthala_natraj@yahoo.in",
+                  "evidence": [
+                    {
+                      "source_id": "e7:0:37",
+                      "quote": "shakunthala_natraj@yahoo.in"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "phone",
+              "items": [
+                {
+                  "value": "9677221075",
+                  "evidence": [
+                    {
+                      "source_id": "e6:0:21",
+                      "quote": "9677221075"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "linkedin_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "github_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "portfolio_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "professional_title",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e6:0:21",
+          "quote": "Phone no: 9677221075 "
+        },
+        {
+          "source_id": "e7:0:37",
+          "quote": "Email Id: shakunthala_natraj@yahoo.in"
+        }
+      ]
+    },
+    {
+      "category": "education",
+      "label": "Education",
+      "records": [
+        {
+          "record_id": "education-1",
+          "source_ids": [
+            "e9:0:52",
+            "e10:0:74",
+            "e11:0:25",
+            "e12:0:84",
+            "e13:0:10",
+            "e14:0:16",
+            "e15:0:13",
+            "e16:0:17",
+            "e17:0:11",
+            "e18:0:74",
+            "e19:0:66",
+            "e20:0:18",
+            "e21:0:105",
+            "e22:0:107",
+            "e23:0:137",
+            "e25:0:98",
+            "e26:0:20",
+            "e27:0:113",
+            "e28:0:217",
+            "e29:0:232",
+            "e30:0:195",
+            "e31:0:121",
+            "e32:0:72",
+            "e33:0:117",
+            "e34:0:72",
+            "e35:0:102",
+            "e36:0:18",
+            "e37:0:333",
+            "e38:0:249",
+            "e39:0:202",
+            "e40:0:265",
+            "e41:0:159",
+            "e42:0:138",
+            "e43:0:174",
+            "e45:0:93",
+            "e46:0:242",
+            "e47:0:408",
+            "e48:0:321",
+            "e49:0:148",
+            "e50:0:632",
+            "e51:0:286",
+            "e52:0:106",
+            "e53:0:15",
+            "e54:0:41",
+            "e55:0:101",
+            "e56:0:161",
+            "e57:0:152",
+            "e58:0:150",
+            "e59:0:59",
+            "e60:0:95",
+            "e61:0:105",
+            "e62:0:40",
+            "e63:0:15",
+            "e64:0:108",
+            "e65:0:53",
+            "e66:0:95",
+            "e67:0:107",
+            "e68:0:151",
+            "e69:0:100",
+            "e70:0:144",
+            "e71:0:137",
+            "e72:0:95",
+            "e73:0:86",
+            "e74:0:146",
+            "e76:0:134",
+            "e77:0:79",
+            "e78:0:17",
+            "e79:0:133",
+            "e80:0:112",
+            "e81:0:78",
+            "e82:0:79",
+            "e83:0:62",
+            "e84:0:78",
+            "e85:0:113",
+            "e86:0:122",
+            "e87:0:21",
+            "e88:0:38",
+            "e89:0:12",
+            "e90:0:12",
+            "e91:0:14",
+            "e92:0:4",
+            "e93:0:7",
+            "e94:0:5",
+            "e95:0:12",
+            "e96:0:12",
+            "e97:0:14",
+            "e98:0:9",
+            "e99:0:6",
+            "e100:0:11",
+            "e101:0:22",
+            "e102:0:11",
+            "e103:0:98",
+            "e104:0:14",
+            "e105:0:29"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "degree",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "Expected or in-progress education; dates are provisional, not confirmed graduation.",
+            "Multiple qualifications in one supplied record; child associations unresolved."
+          ]
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e8:0:18",
+          "quote": "Education details:"
+        },
+        {
+          "source_id": "e9:0:52",
+          "quote": "PG: Master of Business Administration (MBA) Finance "
+        },
+        {
+          "source_id": "e10:0:74",
+          "quote": "UNIVERSITY YEAR PASSED AGGREATE PONDICHERRY UNIV (LOYOLA COLLEGE) 2012 61%"
+        },
+        {
+          "source_id": "e11:0:25",
+          "quote": "UG: Bachelor of Commerce "
+        },
+        {
+          "source_id": "e12:0:84",
+          "quote": "UNIVERSITY YEAR PASSED AGGREATE ANNA UNIVERSITY (ETHIRAJ COLLEGE FOR WOMEN) 2010 79%"
+        },
+        {
+          "source_id": "e13:0:10",
+          "quote": "Strengths:"
+        },
+        {
+          "source_id": "e14:0:16",
+          "quote": "Good team player"
+        },
+        {
+          "source_id": "e15:0:13",
+          "quote": "Quick Learner"
+        },
+        {
+          "source_id": "e16:0:17",
+          "quote": "Leadership skills"
+        },
+        {
+          "source_id": "e17:0:11",
+          "quote": "Flexibility"
+        },
+        {
+          "source_id": "e18:0:74",
+          "quote": "Logical and creative thinker, with a niche to produce effective solutions."
+        },
+        {
+          "source_id": "e19:0:66",
+          "quote": "Energetic, dynamic, good coordinator and decision-making capacity."
+        },
+        {
+          "source_id": "e20:0:18",
+          "quote": "Executive profile:"
+        },
+        {
+          "source_id": "e21:0:105",
+          "quote": "Proven experience in handling transition process and leading teams towards successful process operations."
+        },
+        {
+          "source_id": "e22:0:107",
+          "quote": "Demonstrated ability in ensuring adherence to quality, service level agreements, and compliance parameters."
+        },
+        {
+          "source_id": "e23:0:137",
+          "quote": "Adept in developing and ensuring client satisfaction by maintaining excellent Turnaround Time (TAT) for delivery & service quality norms."
+        },
+        {
+          "source_id": "e25:0:98",
+          "quote": "LTIMINDTREE - Specialist – CITI projects (TLM):                                                   "
+        },
+        {
+          "source_id": "e26:0:20",
+          "quote": " Mar’22 – till date\t"
+        },
+        {
+          "source_id": "e27:0:113",
+          "quote": "Have worked for PP (Product Processor) remediation into FFS (Finance Full suite) as legacy GL system decommission"
+        },
+        {
+          "source_id": "e28:0:217",
+          "quote": "Have worked on GMI/Non-GMI segregation at source feed- FFS (Finance Full suite) wherein feed delays impacting reconciliations on the back of late comer PP-GMI thereby reconciliation process streamlined in TLM platform"
+        },
+        {
+          "source_id": "e29:0:232",
+          "quote": "Have worked for Recs Transformation Program – SSO, Manual recon automation into TLM platform, there by reduction of manual touch points and achieving standard reconciliation model reconciling balances/transactions in automated tool."
+        },
+        {
+          "source_id": "e30:0:195",
+          "quote": "The above-mentioned project cycle includes requirements gathering; POC (proof of concept); source feed analysis; BRD preparation; UAT testing phase; Production Go-Live and Postproduction support."
+        },
+        {
+          "source_id": "e31:0:121",
+          "quote": "Each migration is tracked under JIRA platform where all artefacts of the automation are documented for future references."
+        },
+        {
+          "source_id": "e32:0:72",
+          "quote": "Applications/Tools used: TLM; Recon Catalogue; QuickRec; Tectia; Autosys"
+        },
+        {
+          "source_id": "e33:0:117",
+          "quote": "Have received appreciation emails from stakeholders/Citi managers for my deliverables within timelines and errorless."
+        },
+        {
+          "source_id": "e34:0:72",
+          "quote": "Have been rated 4 – Outstanding performer in the last performance cycle."
+        },
+        {
+          "source_id": "e35:0:102",
+          "quote": "SCB - Team Lead – Business Configuration Team (TLM):                                                  "
+        },
+        {
+          "source_id": "e36:0:18",
+          "quote": "  Oct’16 – Feb’22\t"
+        },
+        {
+          "source_id": "e37:0:333",
+          "quote": "Have performed configurations for Nostro/Suspense/Stock reconciliations to reduce manual intervention thereby increasing the overall auto match percentage across all the accounts. It includes auto match and auto coding using edit events where the possible references are identified for perfect matches and rules were set accordingly."
+        },
+        {
+          "source_id": "e38:0:249",
+          "quote": "Have performed Manual to TLM migrations for Suspense reconciliations as part of (i) New migration from country (ii) Manually performed reconciliations on boarded to auto mated recon tool TLM (iii) Automating input files for existing reconciliations."
+        },
+        {
+          "source_id": "e39:0:202",
+          "quote": "Have prepared BI (Business Informatics); Static report; CM (Centralized Module) creation as part of BRD (Business Requirements Document) for all the reconciliations that are automated into TLM platform."
+        },
+        {
+          "source_id": "e40:0:265",
+          "quote": "Have worked for and introduced Casing Module for UAE countries to eradicate email traffic between Operations and BAU teams to ease matching/coding advises action on time and present correct stats of outstanding items to top management for fast resolution of breaks."
+        },
+        {
+          "source_id": "e41:0:159",
+          "quote": "Production issues/TLM queries with respect to auto match/reason for breaks raised from BAU teams were addressed and effective fix were put in place within TAT."
+        },
+        {
+          "source_id": "e42:0:138",
+          "quote": "Have supported Post go-live issues if any for the accounts auto mated into TLM as part of projects for Nostro/Suspense/FM reconciliations."
+        },
+        {
+          "source_id": "e43:0:174",
+          "quote": "Each account has been migrated into TLM post analysis of the requirements whether as per the process standards; Impact analysis; end to end UAT testing; regression testing as"
+        },
+        {
+          "source_id": "e45:0:93",
+          "quote": "applicable; prior communication on the application changes if any to respective stakeholders."
+        },
+        {
+          "source_id": "e46:0:242",
+          "quote": "Have worked for resolutions for major exception issues encountered across reconciliations in FM instance mitigating risk of genuine breaks not getting escalated/loss of age of breaks. This was tested and fixed as part of FMO patch deployment."
+        },
+        {
+          "source_id": "e47:0:408",
+          "quote": "Have worked for automation of CDU (Client Data Unit) migration which reduced huge manual effort involved for paper confirmation of trades booked in TP system SCRITTURA and as part of this automation its sub products: FXO(Forex Options); NDF (Non-Deliverable Futures); COM (Commodities) were successfully introduced into reconciliations which enabled all genuine trades were reconciled by respective BAU team."
+        },
+        {
+          "source_id": "e48:0:321",
+          "quote": "Have worked for FM forced matches, wherein breaks are investigated and arranged calls with respective Operations; Technology and TP system support teams to discuss on the ideal approach for logical closure of breaks. As part of this activity, around 7k+ breaks were resolved mitigating risk and effective reconciliations."
+        },
+        {
+          "source_id": "e49:0:148",
+          "quote": "Projects that are delivered from my end were part of monthly internal audit which are acknowledged with nil deviations as per the process standards."
+        },
+        {
+          "source_id": "e50:0:632",
+          "quote": "Have worked on one of the critical project: STRIDE (Securities Transformation In Design and Evolution). It is related to the decommission of a major settlement system- OPICS and replaced with GPTM. It involves (i) Impact analysis of the accounts in scope (ii) BI mapping details for input files of new system (iii) Migration of existing accounts into GPTM (iii)End to end UAT testing to understand whether results as expected from new system (iv) Auto match configuration to match trades by system as per the requirements/ booking model (v) Negative testing to identify impact if any for other existing reconciliations not in scope."
+        },
+        {
+          "source_id": "e51:0:286",
+          "quote": "Have worked for PB OPICS decommission project. It is related to decommission of Private Banking OPICS and replaced with T24, carried out UAT testing for impacted accounts in FM/Suspense/Nostro reconciliations involving respective BAU & Operations team with adequate test cases in scope."
+        },
+        {
+          "source_id": "e52:0:106",
+          "quote": "RBS - Process lead – Reconciliations – (Intellimatch):                                                    "
+        },
+        {
+          "source_id": "e53:0:15",
+          "quote": "Sep’15-Oct’16\t\t"
+        },
+        {
+          "source_id": "e54:0:41",
+          "quote": "Involved in preparing various MI reports."
+        },
+        {
+          "source_id": "e55:0:101",
+          "quote": "Have successfully implemented Intelliweb 9.2 application (primary reconciliation tool) for NL region."
+        },
+        {
+          "source_id": "e56:0:161",
+          "quote": "Have performed analysis of intraday SLAs across RECs NV resulted in smooth transition of users as part of project brown and received silver ovation for the same."
+        },
+        {
+          "source_id": "e57:0:152",
+          "quote": "Have performed account review for reconciliations in order to have check over the dormant accounts and work closely with stakeholders to close the same."
+        },
+        {
+          "source_id": "e58:0:150",
+          "quote": "Have performed User Access review for the team to have checked on incorrect assigned to reconciliations and highlight the line manager for UER review."
+        },
+        {
+          "source_id": "e59:0:59",
+          "quote": "Have performed Service Schedule reviews for timely signoff."
+        },
+        {
+          "source_id": "e60:0:95",
+          "quote": "Have reviewed error logs and discussed among the team on how to reduce it to increase accuracy."
+        },
+        {
+          "source_id": "e61:0:105",
+          "quote": "Have worked under PLC reconciliations based out of UK covering Wealth, Ulster, Corporate reconciliations."
+        },
+        {
+          "source_id": "e62:0:40",
+          "quote": "Sr. Analyst – Asia Reconciliations:\t\t\t\t\t"
+        },
+        {
+          "source_id": "e63:0:15",
+          "quote": "Oct ’13- Aug'15"
+        },
+        {
+          "source_id": "e64:0:108",
+          "quote": "Handled Nostro, Suspense, Equity, Stock, Intercompany, and Client trust reconciliations for ASPAC countries."
+        },
+        {
+          "source_id": "e65:0:53",
+          "quote": "Preparation of journal vouchers for various accounts."
+        },
+        {
+          "source_id": "e66:0:95",
+          "quote": "Created new auto-match rules to increase efficiency in the matching of entries in Intellimatch."
+        },
+        {
+          "source_id": "e67:0:107",
+          "quote": "Frequent review of wrong auto-match rules in order to eliminate them thereby saving manual workaround time."
+        },
+        {
+          "source_id": "e68:0:151",
+          "quote": "Preparation of Monthly & Weekly MI reports to control team and to head of the branch to substantiate the outstanding breaks in the respective accounts."
+        },
+        {
+          "source_id": "e69:0:100",
+          "quote": "Handled various escalations from the front and team and resolved them at the earliest possible time."
+        },
+        {
+          "source_id": "e70:0:144",
+          "quote": "Preparation of value balance report of the nostro accounts on a daily basis to ensure the accounts short positions are covered on a daily basis."
+        },
+        {
+          "source_id": "e71:0:137",
+          "quote": "Participated in periodical process review meetings which evaluate the performance of team members and offered suggestions for betterment."
+        },
+        {
+          "source_id": "e72:0:95",
+          "quote": "Attested Nostro & Suspense accounts as part of substantiation of balance sheet in clarity tool."
+        },
+        {
+          "source_id": "e73:0:86",
+          "quote": "Handled audits from Internal Risk and control team (AYIC audits) without any findings."
+        },
+        {
+          "source_id": "e74:0:146",
+          "quote": "Spearheaded the BCP tastings for the team and performed mock BCP testing in the alternative site and submitted a report to management on the same."
+        },
+        {
+          "source_id": "e76:0:134",
+          "quote": "Handled UAT testing under Intellimatch for new reconciliation projects which assisted the team in smooth transition into Intellimatch."
+        },
+        {
+          "source_id": "e77:0:79",
+          "quote": "Analyst – Nostro & Suspense Reconciliations:                                   "
+        },
+        {
+          "source_id": "e78:0:17",
+          "quote": " Jun’10 – Sep’13\t"
+        },
+        {
+          "source_id": "e79:0:133",
+          "quote": "Successfully learnt the process from the SME and transferred the same knowledge to the team for effective handling of daily business."
+        },
+        {
+          "source_id": "e80:0:112",
+          "quote": "Preparation of procedure documents for the different type of account reconciliation carried out within the team."
+        },
+        {
+          "source_id": "e81:0:78",
+          "quote": "Handled reconciliation of various Asia locations (HK, SG, TH, KR, ID, CN, AU)."
+        },
+        {
+          "source_id": "e82:0:79",
+          "quote": "Handled critical process and emerged as a effective back-up for all activities."
+        },
+        {
+          "source_id": "e83:0:62",
+          "quote": "Being identified as “Critical Staff” for emergency situations."
+        },
+        {
+          "source_id": "e84:0:78",
+          "quote": "Interacting with the clients to report on discrepancies and outstanding items."
+        },
+        {
+          "source_id": "e85:0:113",
+          "quote": "Have created effective back-up for the activities by transferring the subject updates without any knowledge gaps."
+        },
+        {
+          "source_id": "e86:0:122",
+          "quote": "Have arranged client engagement calls and winner of spot ovation 4 times for managing problems and efficient team players."
+        },
+        {
+          "source_id": "e87:0:21",
+          "quote": "Application Knowledge"
+        },
+        {
+          "source_id": "e88:0:38",
+          "quote": "TLM (Transaction Lifecycle Management)"
+        },
+        {
+          "source_id": "e89:0:12",
+          "quote": "Intellimatch"
+        },
+        {
+          "source_id": "e90:0:12",
+          "quote": "Intellitracs"
+        },
+        {
+          "source_id": "e91:0:14",
+          "quote": "Sun Accounting"
+        },
+        {
+          "source_id": "e92:0:4",
+          "quote": "RIMS"
+        },
+        {
+          "source_id": "e93:0:7",
+          "quote": "Clarity"
+        },
+        {
+          "source_id": "e94:0:5",
+          "quote": "SCORE"
+        },
+        {
+          "source_id": "e95:0:12",
+          "quote": "Vision Excel"
+        },
+        {
+          "source_id": "e96:0:12",
+          "quote": "Intellistore"
+        },
+        {
+          "source_id": "e97:0:14",
+          "quote": "Swift Alliance"
+        },
+        {
+          "source_id": "e98:0:9",
+          "quote": "Bank line"
+        },
+        {
+          "source_id": "e99:0:6",
+          "quote": "Avaloq"
+        },
+        {
+          "source_id": "e100:0:11",
+          "quote": "Back Office"
+        },
+        {
+          "source_id": "e101:0:22",
+          "quote": "Voucher Enquiry System"
+        },
+        {
+          "source_id": "e102:0:11",
+          "quote": "Declaration"
+        },
+        {
+          "source_id": "e103:0:98",
+          "quote": "I hereby declare that the above furnished details are true to the best of my knowledge and belief."
+        },
+        {
+          "source_id": "e104:0:14",
+          "quote": "Place: Chennai"
+        },
+        {
+          "source_id": "e105:0:29",
+          "quote": "Name: N Sagunthala\t\t\t\t\t\t\t\t\t\t\t"
+        }
+      ]
+    },
+    {
+      "category": "needs_review",
+      "label": "Unassigned source blocks",
+      "records": [],
+      "residual_blocks": [
+        {
+          "source_id": "e0:0:6",
+          "quote": "RESUME"
+        },
+        {
+          "source_id": "e1:0:19",
+          "quote": "Name: Sagunthala. N"
+        },
+        {
+          "source_id": "e2:0:18",
+          "quote": "DOB: 19th Aug 1988"
+        },
+        {
+          "source_id": "e3:0:23",
+          "quote": "Marital status: Married"
+        },
+        {
+          "source_id": "e5:0:66",
+          "quote": "Permanent address: No: 15, Kanniappan Street, Chrompet Chennai-44."
+        },
+        {
+          "source_id": "e24:0:0",
+          "quote": ""
+        },
+        {
+          "source_id": "e44:0:0",
+          "quote": ""
+        },
+        {
+          "source_id": "e75:0:0",
+          "quote": ""
+        }
+      ]
+    }
+  ]
+}

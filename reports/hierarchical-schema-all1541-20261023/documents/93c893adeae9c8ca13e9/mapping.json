@@ -1,0 +1,545 @@
+{
+  "success": true,
+  "source": "VAMSIVARDHAN MUKKANA CV.docx",
+  "extraction_mode": "existing_blocks_schema_mapping",
+  "data": {
+    "contact": {
+      "full_name": "",
+      "email": "",
+      "phone": "",
+      "location": null,
+      "linkedin_url": null,
+      "github_url": null,
+      "portfolio_url": null
+    },
+    "professional_title": null,
+    "summary": null,
+    "total_experience_years": null,
+    "skills": {
+      "technical_skills": [],
+      "tools_and_platforms": [],
+      "domain_and_functional": [],
+      "soft_skills": [],
+      "all_skills": []
+    },
+    "experience": [],
+    "education": [],
+    "certifications": [
+      {
+        "name": "Compliance, and Technology stakeholders to translate business and regulatory requirements into functional solutions. Skilled in Data Quality, Data Controls, Data Lineage, Metadata Management, Issue Remediation, Data Stewardship, and Regulatory Compliance, with experience aligned to BCBS 239 principles. WORK EXPERIENCE Decision Scientist (Data Governance & Data Quality) Mu Sigma Business Solutions Private Limited ( Client – Citi Bank) Jun’22 – Present                              \t\t\t                           Bengaluru, Karnataka, India Key Result Areas Conducted end-to-end requirements gathering with Business SMEs, Data Owners, Legal, Risk, Compliance, and Technology stakeholders, translating business and regulatory requirements into functional requirements and governance solutions. Created Business Requirement Documents (BRDs) documenting business requirements, data requirements, business rules, governance controls, and functional requirements for technology implementation. Owned Data Stewardship activities, including data ownership, business definitions, Business Glossary and Data Dictionary maintenance, metadata, CDEs, and governance requirements across critical data domains. Managed data governance, data quality, metadata management, data",
+        "issuer": null,
+        "issue_year": null
+      }
+    ],
+    "projects": [],
+    "languages": []
+  },
+  "schema_mapping": {
+    "fields_populated": 1,
+    "total_fields": 16,
+    "completion_percentage": 6.2,
+    "field_details": [
+      {
+        "field_name": "contact.full_name",
+        "target_type": "string",
+        "is_required": true,
+        "is_extracted": false,
+        "source_section": "Header / Personal Details",
+        "confidence_score": 0.0,
+        "description": "Candidate's full name, extracted from the top header of the resume."
+      },
+      {
+        "field_name": "contact.email",
+        "target_type": "string (email)",
+        "is_required": true,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's primary contact email address."
+      },
+      {
+        "field_name": "contact.phone",
+        "target_type": "string (phone)",
+        "is_required": true,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's telephone / mobile phone number."
+      },
+      {
+        "field_name": "contact.location",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's residential location or work city."
+      },
+      {
+        "field_name": "contact.linkedin_url",
+        "target_type": "string (url) | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "URL to candidate's LinkedIn profile."
+      },
+      {
+        "field_name": "professional_title",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Subtitle",
+        "confidence_score": 0.0,
+        "description": "Candidate's target headline or most recent job title."
+      },
+      {
+        "field_name": "summary",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Professional Summary / Profile / Objective",
+        "confidence_score": 0.0,
+        "description": "Executive bio, professional overview, or career objective."
+      },
+      {
+        "field_name": "total_experience_years",
+        "target_type": "float | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Summary / Experience Calculation",
+        "confidence_score": 0.0,
+        "description": "Total professional experience in years."
+      },
+      {
+        "field_name": "skills.technical_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Technical Competencies",
+        "confidence_score": 0.0,
+        "description": "Technical programming languages and core software competencies."
+      },
+      {
+        "field_name": "skills.tools_and_platforms",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Tools & Technologies",
+        "confidence_score": 0.0,
+        "description": "Software platforms, developer tools, and operational systems."
+      },
+      {
+        "field_name": "skills.domain_and_functional",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Domain Expertise",
+        "confidence_score": 0.0,
+        "description": "Functional domain knowledge (e.g. Hedge Funds, KYC, NAV, Derivatives)."
+      },
+      {
+        "field_name": "skills.all_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills (Aggregated)",
+        "confidence_score": 0.0,
+        "description": "Complete list of candidate skills across all categories."
+      },
+      {
+        "field_name": "experience",
+        "target_type": "array[WorkExperience]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Professional Experience / Work History",
+        "confidence_score": 0.0,
+        "description": "Complete chronological employment records with bullet points."
+      },
+      {
+        "field_name": "education",
+        "target_type": "array[Education]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Education / Academic Qualifications",
+        "confidence_score": 0.0,
+        "description": "University, college, and higher education degree qualifications."
+      },
+      {
+        "field_name": "certifications",
+        "target_type": "array[Certification]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Certifications / Licenses",
+        "confidence_score": 0.8,
+        "description": "Professional accreditations and credentials."
+      },
+      {
+        "field_name": "projects",
+        "target_type": "array[Project]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Projects / Key Engagements",
+        "confidence_score": 0.0,
+        "description": "Major projects or strategic initiatives led by candidate."
+      }
+    ]
+  },
+  "raw_sections": {
+    "certifications": "Compliance, and Technology stakeholders to translate business and regulatory requirements into functional solutions. Skilled in Data Quality, Data Controls, Data Lineage, Metadata Management, Issue Remediation, Data Stewardship, and Regulatory Compliance, with experience aligned to BCBS 239 principles. WORK EXPERIENCE Decision Scientist (Data Governance & Data Quality) Mu Sigma Business Solutions Private Limited ( Client – Citi Bank) Jun’22 – Present                              \t\t\t                           Bengaluru, Karnataka, India Key Result Areas Conducted end-to-end requirements gathering with Business SMEs, Data Owners, Legal, Risk, Compliance, and Technology stakeholders, translating business and regulatory requirements into functional requirements and governance solutions. Created Business Requirement Documents (BRDs) documenting business requirements, data requirements, business rules, governance controls, and functional requirements for technology implementation. Owned Data Stewardship activities, including data ownership, business definitions, Business Glossary and Data Dictionary maintenance, metadata, CDEs, and governance requirements across critical data domains. Managed data governance, data quality, metadata management, data ",
+    "awards": "Achievements Mapped 12+ source-to-consumption systems and established 50+ Data Offerings and Data Contracts, strengthening regulatory traceability, ownership, and accountability. Developed governance documentation, metadata repositories, and change-management artifacts, sustaining 95%+ audit traceability across 4 Retail Services initiatives. Designed, validated, and implemented 700+ Data Quality Rules across 150+ CDEs, enabling early detection of 200+ potential data defects and shifting resolution to source-level correction. Remediated and dispositioned 100+ failed DQ rules through SQL-driven root cause analysis, reducing open data quality issues by approximately 20%. Improved data reliability across 15+ business-critical use cases while supporting regulatory reporting requirements including FR Y-14. Built Power BI and Excel dashboards tracking 700+ rules by status, pass/fail rate, and RAG, achieving approximately 90% disposition targets. CORE COMPETENCIES Data Governance & Stewardship Data Quality Management Data Issue Management & Remediation Data Controls, Control Review & Oversight Metadata Management & Data Cataloguing Data Lineage, Traceability & CDE Management Regulatory Compliance, BCBS 239 & Regulatory Reporting Data Profiling, Root Cause Analysis & Audit Readiness Stakeholder Management, Team Leadership & Governance Reporting TECHNICAL SKILLS Data Governance & Metadata: Collibra, Microsoft Purview, Data Contracts, Data Offerings, Data Stewardship, Data Ownership, CDE Management, Data Lineage, Data Cataloguing, Metadata Documentation, Audit Traceability Data Analysis & Databases: SQL, Python, Data Profiling, Data Validation, Data Quality Rules, Data Quality Controls, Root Cause Analysis, Issue Remediation Project & Collaboration Tools: JIRA, Confluence, SharePoint, MS Project Reporting & Visualization: Power BI, Excel, PowerPoint, Visio Frameworks & Standards: BCBS 239, DQCA / DQMRC Control Benchmark, Regulatory Reporting, Control Assessment, Issue Remediation Lifecycle ",
+    "education": "EDUCATION B.E. (Electronics & Communication Engineering) Gandhi Institute of Technology and Management (GITAM), Visakhapatnam, Andhra Pradesh 2018 – 2022 PERSONAL DETAILS Date of Birth: 30th June 2001 Languages Known: English, Telugu & Hindi"
+  },
+  "meta": {
+    "status": "needs_review",
+    "human_verified": false,
+    "provider_calls": 0,
+    "source_accounting": {
+      "all_source_text_preserved": true,
+      "total_spans": 8,
+      "assigned_meaningful_spans": 5,
+      "unresolved_meaningful_spans": 3,
+      "non_content_artifacts": 0,
+      "duplicates_excluded": 0,
+      "all_meaningful_text_assigned": false,
+      "semantic_correctness_verified": false,
+      "outcomes": [
+        {
+          "source_id": "e0:0:1049",
+          "source_element_index": 0,
+          "start": 0,
+          "end": 1049,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e0:1049:2312",
+          "source_element_index": 0,
+          "start": 1049,
+          "end": 2312,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "BERT embedding assigned to a labeled K-means centroid"
+        },
+        {
+          "source_id": "e0:2312:3408",
+          "source_element_index": 0,
+          "start": 2312,
+          "end": 3408,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e0:3408:3513",
+          "source_element_index": 0,
+          "start": 3408,
+          "end": 3513,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e0:3513:3525",
+          "source_element_index": 0,
+          "start": 3513,
+          "end": 3525,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e0:3525:4513",
+          "source_element_index": 0,
+          "start": 3525,
+          "end": 4513,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:4513:5527",
+          "source_element_index": 0,
+          "start": 4513,
+          "end": 5527,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:5527:5768",
+          "source_element_index": 0,
+          "start": 5527,
+          "end": 5768,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        }
+      ]
+    },
+    "document_scope": {
+      "kind": "likely_resume",
+      "candidate_resume": true,
+      "reason": "Contact details, multiple resume section families and dated history; provisional scope only",
+      "human_verified": false
+    },
+    "source_inventory_sha256": "f75f4510a5a74042f3c07562cfff0c228b68c4216c1ce0860efb338c0809ed09",
+    "field_evidence": {
+      "certifications[0].name": [
+        "e0:1049:2312"
+      ]
+    },
+    "record_reviews": [
+      {
+        "category": "certifications",
+        "entry_id": "certifications-1",
+        "source_ids": [
+          "e0:1049:2312"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      }
+    ],
+    "missing_required_fields": [
+      "contact.full_name",
+      "contact.email",
+      "contact.phone"
+    ],
+    "warnings": [
+      "Schema validity and field completion do not establish extraction or relationship accuracy.",
+      "Handoff confidence scores are fixed heuristics, not calibrated probabilities.",
+      "Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields."
+    ],
+    "unmapped_blocks": [
+      {
+        "source_id": "e0:3513:3525",
+        "category": "awards",
+        "text": "Achievements",
+        "page_number": null
+      },
+      {
+        "source_id": "e0:3525:4513",
+        "category": "awards",
+        "text": " Mapped 12+ source-to-consumption systems and established 50+ Data Offerings and Data Contracts, strengthening regulatory traceability, ownership, and accountability. Developed governance documentation, metadata repositories, and change-management artifacts, sustaining 95%+ audit traceability across 4 Retail Services initiatives. Designed, validated, and implemented 700+ Data Quality Rules across 150+ CDEs, enabling early detection of 200+ potential data defects and shifting resolution to source-level correction. Remediated and dispositioned 100+ failed DQ rules through SQL-driven root cause analysis, reducing open data quality issues by approximately 20%. Improved data reliability across 15+ business-critical use cases while supporting regulatory reporting requirements including FR Y-14. Built Power BI and Excel dashboards tracking 700+ rules by status, pass/fail rate, and RAG, achieving approximately 90% disposition targets. CORE COMPETENCIES Data Governance & Stewardship",
+        "page_number": null
+      },
+      {
+        "source_id": "e0:4513:5527",
+        "category": "awards",
+        "text": " Data Quality Management Data Issue Management & Remediation Data Controls, Control Review & Oversight Metadata Management & Data Cataloguing Data Lineage, Traceability & CDE Management Regulatory Compliance, BCBS 239 & Regulatory Reporting Data Profiling, Root Cause Analysis & Audit Readiness Stakeholder Management, Team Leadership & Governance Reporting TECHNICAL SKILLS Data Governance & Metadata: Collibra, Microsoft Purview, Data Contracts, Data Offerings, Data Stewardship, Data Ownership, CDE Management, Data Lineage, Data Cataloguing, Metadata Documentation, Audit Traceability Data Analysis & Databases: SQL, Python, Data Profiling, Data Validation, Data Quality Rules, Data Quality Controls, Root Cause Analysis, Issue Remediation Project & Collaboration Tools: JIRA, Confluence, SharePoint, MS Project Reporting & Visualization: Power BI, Excel, PowerPoint, Visio Frameworks & Standards: BCBS 239, DQCA / DQMRC Control Benchmark, Regulatory Reporting, Control Assessment, Issue Remediation Lifecycle ",
+        "page_number": null
+      },
+      {
+        "source_id": "e0:5527:5768",
+        "category": "education",
+        "text": "EDUCATION B.E. (Electronics & Communication Engineering) Gandhi Institute of Technology and Management (GITAM), Visakhapatnam, Andhra Pradesh 2018 – 2022 PERSONAL DETAILS Date of Birth: 30th June 2001 Languages Known: English, Telugu & Hindi",
+        "page_number": null
+      },
+      {
+        "source_id": "e0:0:1049",
+        "category": null,
+        "text": "VAMSIVARDHAN MUKKANA Experienced Functional Business Analyst with end-to-end involvement in requirements elicitation, stakeholder workshops, business analysis, functional documentation, and solution delivery across Citi Bank's Capital Markets environment. Experienced working with Legal, Risk, Compliance, Business SMEs, Data Owners, and Technology stakeholders to translate business and regulatory requirements into functional solutions and governance outcomes. +91 6300236605 mukkanavamsi@gmail.com vamsivardhan Bengaluru, Karnataka, India PROFILE SUMMARY Data Management Analyst with 4 years of BFSI experience, supporting a major U.S. bank on Data Governance, Data Quality, Metadata Management, and Regulatory Reporting initiatives. Experienced in Citi Bank's Capital Markets environment, supporting enterprise data governance, regulatory compliance, data quality, and data management initiatives. Strong Functional Business Analysis experience with end-to-end requirements gathering, collaborating with Business SMEs, Data Owners, Legal, Risk, ",
+        "page_number": null
+      },
+      {
+        "source_id": "e0:2312:3408",
+        "category": null,
+        "text": "lineage, audit traceability, and regulatory reporting initiatives across Capital Markets / banking data portfolios. Defined Data Offerings, Data Contracts, Critical Data Elements (CDEs), data ownership models, governance controls, metadata repositories, and remediation frameworks. Designed and validated enterprise Data Quality Rules across Accuracy, Completeness, and Timeliness dimensions, performing SQL-based data profiling, root cause analysis, and issue of remediation. Collaborated with Legal, Risk, Compliance, Business SMEs, Data Owners, and Technology teams to understand regulatory and governance requirements and support implementation of appropriate data controls. Provided oversight across the issue of remediation lifecycle, validating corrective actions and closure evidence with Data Owners. Reviewed Data Quality Controls against the enterprise control benchmark (DQCA / DQMRC), evaluating control effectiveness, design coverage, and identifying control gaps. Collaborated with Data Owners, Use Case Owners, Technology teams, and Control Partners across sprint-based delivery, ",
+        "page_number": null
+      },
+      {
+        "source_id": "e0:3408:3513",
+        "category": null,
+        "text": "reporting progress to senior leadership while leading a team of 7 members across 4 lending programs. Key ",
+        "page_number": null
+      }
+    ],
+    "needs_review": [
+      {
+        "source_element_index": 0,
+        "start": 0,
+        "end": 1049,
+        "text": "VAMSIVARDHAN MUKKANA Experienced Functional Business Analyst with end-to-end involvement in requirements elicitation, stakeholder workshops, business analysis, functional documentation, and solution delivery across Citi Bank's Capital Markets environment. Experienced working with Legal, Risk, Compliance, Business SMEs, Data Owners, and Technology stakeholders to translate business and regulatory requirements into functional solutions and governance outcomes. +91 6300236605 mukkanavamsi@gmail.com vamsivardhan Bengaluru, Karnataka, India PROFILE SUMMARY Data Management Analyst with 4 years of BFSI experience, supporting a major U.S. bank on Data Governance, Data Quality, Metadata Management, and Regulatory Reporting initiatives. Experienced in Citi Bank's Capital Markets environment, supporting enterprise data governance, regulatory compliance, data quality, and data management initiatives. Strong Functional Business Analysis experience with end-to-end requirements gathering, collaborating with Business SMEs, Data Owners, Legal, Risk, ",
+        "page_number": null,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3854,
+        "margin": 0.0068,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 0,
+        "start": 2312,
+        "end": 3408,
+        "text": "lineage, audit traceability, and regulatory reporting initiatives across Capital Markets / banking data portfolios. Defined Data Offerings, Data Contracts, Critical Data Elements (CDEs), data ownership models, governance controls, metadata repositories, and remediation frameworks. Designed and validated enterprise Data Quality Rules across Accuracy, Completeness, and Timeliness dimensions, performing SQL-based data profiling, root cause analysis, and issue of remediation. Collaborated with Legal, Risk, Compliance, Business SMEs, Data Owners, and Technology teams to understand regulatory and governance requirements and support implementation of appropriate data controls. Provided oversight across the issue of remediation lifecycle, validating corrective actions and closure evidence with Data Owners. Reviewed Data Quality Controls against the enterprise control benchmark (DQCA / DQMRC), evaluating control effectiveness, design coverage, and identifying control gaps. Collaborated with Data Owners, Use Case Owners, Technology teams, and Control Partners across sprint-based delivery, ",
+        "page_number": null,
+        "cluster_id": 6,
+        "candidate_section": "certifications",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3263,
+        "margin": 0.0638,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 0,
+        "start": 3408,
+        "end": 3513,
+        "text": "reporting progress to senior leadership while leading a team of 7 members across 4 lending programs. Key ",
+        "page_number": null,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3923,
+        "margin": -0.0457,
+        "lane": "main",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      }
+    ]
+  },
+  "section_schemas": [
+    {
+      "category": "certifications",
+      "label": "Certifications",
+      "records": [
+        {
+          "record_id": "certifications-1",
+          "source_ids": [
+            "e0:1049:2312"
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "items": [
+                {
+                  "value": "Compliance, and Technology stakeholders to translate business and regulatory requirements into functional solutions. Skilled in Data Quality, Data Controls, Data Lineage, Metadata Management, Issue Remediation, Data Stewardship, and Regulatory Compliance, with experience aligned to BCBS 239 principles. WORK EXPERIENCE Decision Scientist (Data Governance & Data Quality) Mu Sigma Business Solutions Private Limited ( Client – Citi Bank) Jun’22 – Present                              \t\t\t                           Bengaluru, Karnataka, India Key Result Areas Conducted end-to-end requirements gathering with Business SMEs, Data Owners, Legal, Risk, Compliance, and Technology stakeholders, translating business and regulatory requirements into functional requirements and governance solutions. Created Business Requirement Documents (BRDs) documenting business requirements, data requirements, business rules, governance controls, and functional requirements for technology implementation. Owned Data Stewardship activities, including data ownership, business definitions, Business Glossary and Data Dictionary maintenance, metadata, CDEs, and governance requirements across critical data domains. Managed data governance, data quality, metadata management, data",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1049:2312",
+                      "quote": "Compliance, and Technology stakeholders to translate business and regulatory requirements into functional solutions. Skilled in Data Quality, Data Controls, Data Lineage, Metadata Management, Issue Remediation, Data Stewardship, and Regulatory Compliance, with experience aligned to BCBS 239 principles. WORK EXPERIENCE Decision Scientist (Data Governance & Data Quality) Mu Sigma Business Solutions Private Limited ( Client – Citi Bank) Jun’22 – Present                              \t\t\t                           Bengaluru, Karnataka, India Key Result Areas Conducted end-to-end requirements gathering with Business SMEs, Data Owners, Legal, Risk, Compliance, and Technology stakeholders, translating business and regulatory requirements into functional requirements and governance solutions. Created Business Requirement Documents (BRDs) documenting business requirements, data requirements, business rules, governance controls, and functional requirements for technology implementation. Owned Data Stewardship activities, including data ownership, business definitions, Business Glossary and Data Dictionary maintenance, metadata, CDEs, and governance requirements across critical data domains. Managed data governance, data quality, metadata management, data"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "issuer",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "issue_year",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": []
+    },
+    {
+      "category": "awards",
+      "label": "Awards and achievements",
+      "records": [
+        {
+          "record_id": "awards-1",
+          "source_ids": [
+            "e0:3525:4513",
+            "e0:4513:5527"
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "issuer",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "date",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "Unlabelled compound information requires source review."
+          ]
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e0:3513:3525",
+          "quote": "Achievements"
+        },
+        {
+          "source_id": "e0:3525:4513",
+          "quote": " Mapped 12+ source-to-consumption systems and established 50+ Data Offerings and Data Contracts, strengthening regulatory traceability, ownership, and accountability. Developed governance documentation, metadata repositories, and change-management artifacts, sustaining 95%+ audit traceability across 4 Retail Services initiatives. Designed, validated, and implemented 700+ Data Quality Rules across 150+ CDEs, enabling early detection of 200+ potential data defects and shifting resolution to source-level correction. Remediated and dispositioned 100+ failed DQ rules through SQL-driven root cause analysis, reducing open data quality issues by approximately 20%. Improved data reliability across 15+ business-critical use cases while supporting regulatory reporting requirements including FR Y-14. Built Power BI and Excel dashboards tracking 700+ rules by status, pass/fail rate, and RAG, achieving approximately 90% disposition targets. CORE COMPETENCIES Data Governance & Stewardship"
+        },
+        {
+          "source_id": "e0:4513:5527",
+          "quote": " Data Quality Management Data Issue Management & Remediation Data Controls, Control Review & Oversight Metadata Management & Data Cataloguing Data Lineage, Traceability & CDE Management Regulatory Compliance, BCBS 239 & Regulatory Reporting Data Profiling, Root Cause Analysis & Audit Readiness Stakeholder Management, Team Leadership & Governance Reporting TECHNICAL SKILLS Data Governance & Metadata: Collibra, Microsoft Purview, Data Contracts, Data Offerings, Data Stewardship, Data Ownership, CDE Management, Data Lineage, Data Cataloguing, Metadata Documentation, Audit Traceability Data Analysis & Databases: SQL, Python, Data Profiling, Data Validation, Data Quality Rules, Data Quality Controls, Root Cause Analysis, Issue Remediation Project & Collaboration Tools: JIRA, Confluence, SharePoint, MS Project Reporting & Visualization: Power BI, Excel, PowerPoint, Visio Frameworks & Standards: BCBS 239, DQCA / DQMRC Control Benchmark, Regulatory Reporting, Control Assessment, Issue Remediation Lifecycle "
+        }
+      ]
+    },
+    {
+      "category": "education",
+      "label": "Education",
+      "records": [],
+      "residual_blocks": [
+        {
+          "source_id": "e0:5527:5768",
+          "quote": "EDUCATION B.E. (Electronics & Communication Engineering) Gandhi Institute of Technology and Management (GITAM), Visakhapatnam, Andhra Pradesh 2018 – 2022 PERSONAL DETAILS Date of Birth: 30th June 2001 Languages Known: English, Telugu & Hindi"
+        }
+      ]
+    },
+    {
+      "category": "needs_review",
+      "label": "Unassigned source blocks",
+      "records": [],
+      "residual_blocks": [
+        {
+          "source_id": "e0:0:1049",
+          "quote": "VAMSIVARDHAN MUKKANA Experienced Functional Business Analyst with end-to-end involvement in requirements elicitation, stakeholder workshops, business analysis, functional documentation, and solution delivery across Citi Bank's Capital Markets environment. Experienced working with Legal, Risk, Compliance, Business SMEs, Data Owners, and Technology stakeholders to translate business and regulatory requirements into functional solutions and governance outcomes. +91 6300236605 mukkanavamsi@gmail.com vamsivardhan Bengaluru, Karnataka, India PROFILE SUMMARY Data Management Analyst with 4 years of BFSI experience, supporting a major U.S. bank on Data Governance, Data Quality, Metadata Management, and Regulatory Reporting initiatives. Experienced in Citi Bank's Capital Markets environment, supporting enterprise data governance, regulatory compliance, data quality, and data management initiatives. Strong Functional Business Analysis experience with end-to-end requirements gathering, collaborating with Business SMEs, Data Owners, Legal, Risk, "
+        },
+        {
+          "source_id": "e0:2312:3408",
+          "quote": "lineage, audit traceability, and regulatory reporting initiatives across Capital Markets / banking data portfolios. Defined Data Offerings, Data Contracts, Critical Data Elements (CDEs), data ownership models, governance controls, metadata repositories, and remediation frameworks. Designed and validated enterprise Data Quality Rules across Accuracy, Completeness, and Timeliness dimensions, performing SQL-based data profiling, root cause analysis, and issue of remediation. Collaborated with Legal, Risk, Compliance, Business SMEs, Data Owners, and Technology teams to understand regulatory and governance requirements and support implementation of appropriate data controls. Provided oversight across the issue of remediation lifecycle, validating corrective actions and closure evidence with Data Owners. Reviewed Data Quality Controls against the enterprise control benchmark (DQCA / DQMRC), evaluating control effectiveness, design coverage, and identifying control gaps. Collaborated with Data Owners, Use Case Owners, Technology teams, and Control Partners across sprint-based delivery, "
+        },
+        {
+          "source_id": "e0:3408:3513",
+          "quote": "reporting progress to senior leadership while leading a team of 7 members across 4 lending programs. Key "
+        }
+      ]
+    }
+  ]
+}

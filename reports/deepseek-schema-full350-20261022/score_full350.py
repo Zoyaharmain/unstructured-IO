@@ -292,6 +292,7 @@ def main():
             }
         },
         'batches': dict(batch_metrics),
+        'batch_decisions': read_json(OUT / 'batch-decisions.json') if (OUT / 'batch-decisions.json').exists() else [],
         'preservation': {
             'production_files_checked': prod_checked,
             'zero_modifications': len(prod_changed) == 0

@@ -1,0 +1,672 @@
+{
+  "success": true,
+  "source": "MrinmoySadhukhan_1.docx",
+  "extraction_mode": "existing_blocks_schema_mapping",
+  "data": {
+    "contact": {
+      "full_name": "",
+      "email": "",
+      "phone": "",
+      "location": null,
+      "linkedin_url": null,
+      "github_url": null,
+      "portfolio_url": null
+    },
+    "professional_title": null,
+    "summary": null,
+    "total_experience_years": null,
+    "skills": {
+      "technical_skills": [],
+      "tools_and_platforms": [],
+      "domain_and_functional": [],
+      "soft_skills": [],
+      "all_skills": []
+    },
+    "experience": [],
+    "education": [],
+    "certifications": [],
+    "projects": [],
+    "languages": []
+  },
+  "schema_mapping": {
+    "fields_populated": 0,
+    "total_fields": 16,
+    "completion_percentage": 0.0,
+    "field_details": [
+      {
+        "field_name": "contact.full_name",
+        "target_type": "string",
+        "is_required": true,
+        "is_extracted": false,
+        "source_section": "Header / Personal Details",
+        "confidence_score": 0.0,
+        "description": "Candidate's full name, extracted from the top header of the resume."
+      },
+      {
+        "field_name": "contact.email",
+        "target_type": "string (email)",
+        "is_required": true,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's primary contact email address."
+      },
+      {
+        "field_name": "contact.phone",
+        "target_type": "string (phone)",
+        "is_required": true,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's telephone / mobile phone number."
+      },
+      {
+        "field_name": "contact.location",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's residential location or work city."
+      },
+      {
+        "field_name": "contact.linkedin_url",
+        "target_type": "string (url) | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "URL to candidate's LinkedIn profile."
+      },
+      {
+        "field_name": "professional_title",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Subtitle",
+        "confidence_score": 0.0,
+        "description": "Candidate's target headline or most recent job title."
+      },
+      {
+        "field_name": "summary",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Professional Summary / Profile / Objective",
+        "confidence_score": 0.0,
+        "description": "Executive bio, professional overview, or career objective."
+      },
+      {
+        "field_name": "total_experience_years",
+        "target_type": "float | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Summary / Experience Calculation",
+        "confidence_score": 0.0,
+        "description": "Total professional experience in years."
+      },
+      {
+        "field_name": "skills.technical_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Technical Competencies",
+        "confidence_score": 0.0,
+        "description": "Technical programming languages and core software competencies."
+      },
+      {
+        "field_name": "skills.tools_and_platforms",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Tools & Technologies",
+        "confidence_score": 0.0,
+        "description": "Software platforms, developer tools, and operational systems."
+      },
+      {
+        "field_name": "skills.domain_and_functional",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Domain Expertise",
+        "confidence_score": 0.0,
+        "description": "Functional domain knowledge (e.g. Hedge Funds, KYC, NAV, Derivatives)."
+      },
+      {
+        "field_name": "skills.all_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills (Aggregated)",
+        "confidence_score": 0.0,
+        "description": "Complete list of candidate skills across all categories."
+      },
+      {
+        "field_name": "experience",
+        "target_type": "array[WorkExperience]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Professional Experience / Work History",
+        "confidence_score": 0.0,
+        "description": "Complete chronological employment records with bullet points."
+      },
+      {
+        "field_name": "education",
+        "target_type": "array[Education]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Education / Academic Qualifications",
+        "confidence_score": 0.0,
+        "description": "University, college, and higher education degree qualifications."
+      },
+      {
+        "field_name": "certifications",
+        "target_type": "array[Certification]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Certifications / Licenses",
+        "confidence_score": 0.0,
+        "description": "Professional accreditations and credentials."
+      },
+      {
+        "field_name": "projects",
+        "target_type": "array[Project]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Projects / Key Engagements",
+        "confidence_score": 0.0,
+        "description": "Major projects or strategic initiatives led by candidate."
+      }
+    ]
+  },
+  "raw_sections": {},
+  "meta": {
+    "status": "needs_review",
+    "human_verified": false,
+    "provider_calls": 0,
+    "source_accounting": {
+      "all_source_text_preserved": true,
+      "total_spans": 11,
+      "assigned_meaningful_spans": 0,
+      "unresolved_meaningful_spans": 10,
+      "non_content_artifacts": 1,
+      "duplicates_excluded": 0,
+      "all_meaningful_text_assigned": false,
+      "semantic_correctness_verified": false,
+      "outcomes": [
+        {
+          "source_id": "e0:0:888",
+          "source_element_index": 0,
+          "start": 0,
+          "end": 888,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e0:888:1924",
+          "source_element_index": 0,
+          "start": 888,
+          "end": 1924,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e0:1924:2889",
+          "source_element_index": 0,
+          "start": 1924,
+          "end": 2889,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e0:2889:3961",
+          "source_element_index": 0,
+          "start": 2889,
+          "end": 3961,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e0:3961:5012",
+          "source_element_index": 0,
+          "start": 3961,
+          "end": 5012,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e0:5012:6186",
+          "source_element_index": 0,
+          "start": 5012,
+          "end": 6186,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e0:6186:7303",
+          "source_element_index": 0,
+          "start": 6186,
+          "end": 7303,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e0:7303:8201",
+          "source_element_index": 0,
+          "start": 7303,
+          "end": 8201,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e0:8201:9162",
+          "source_element_index": 0,
+          "start": 8201,
+          "end": 9162,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e0:9162:9482",
+          "source_element_index": 0,
+          "start": 9162,
+          "end": 9482,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e1:0:0",
+          "source_element_index": 1,
+          "start": 0,
+          "end": 0,
+          "section": null,
+          "outcome": "non_content_artifact",
+          "reason": "Whitespace retained in source inventory"
+        }
+      ]
+    },
+    "document_scope": {
+      "kind": "likely_resume",
+      "candidate_resume": true,
+      "reason": "Contact details, multiple resume section families and dated history; provisional scope only",
+      "human_verified": false
+    },
+    "source_inventory_sha256": "9dff3cf2c58882299617ee3fc6a5ee5a6aaf9f25acc924c5c365c92162df1b20",
+    "field_evidence": {},
+    "record_reviews": [],
+    "missing_required_fields": [
+      "contact.full_name",
+      "contact.email",
+      "contact.phone"
+    ],
+    "warnings": [
+      "Schema validity and field completion do not establish extraction or relationship accuracy.",
+      "Handoff confidence scores are fixed heuristics, not calibrated probabilities.",
+      "Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields."
+    ],
+    "unmapped_blocks": [
+      {
+        "source_id": "e0:0:888",
+        "category": null,
+        "text": "MRINMOY SADHUKHAN DATA SCIENTIST Result Oriented Professional with 8+ years of total experience and ~6 years targeting Assignments in Data Science in a reputed organization to take challenging roles to deliver efficient outcomes. +91-8777473934, +91- 9674761339 mrinmoymechanical@gmail.com www.linkedin.com/in/mrinmoy-sadhukhan-b93396176 PROFILE SUMMARY Accomplished Data Science Leader with 8+ years of experience delivering AI/ML solutions, Agentic AI pipelines, and cloud-based deployments in supply chain management cutting across finance, manufacturing, and procurement. Proven ability to lead cross-functional teams, drive enterprise-wide AI adoption, and deliver measurable business impact under complex, high-stakes environments. Currently spearheading AI initiatives at Adani Enterprises, deploying Agentic AI pipelines using LangChain, LangGraphs and Azure AI services to stream",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:888:1924",
+        "category": null,
+        "text": "line procurement, enrich data, and unlock multi-crore cashflows through cloud-driven automation. At Tiger Analytics, directed a high-performing team to build AI Monitoring Platforms on Databricks, including Drift/Anomaly Detection, EDA-as-a-Service, and SHAP-based visualization pipelines for real-time model explainability and monitoring. Proven expertise in Machine Learning, Deep Learning, Natural Language Processing, Computer Vision, and Time Series Forecasting with hands-on experience in Python, Azure ML, SHAP, Prophet, Isolation Forests, and cloud-based deployment frameworks. Demonstrated expertise in Demand forecasting using XGBoost, LSTMs and ensemble modelling, Risk Management using anomaly detection algorithms and customer service creating chatbots using RAG pipelines. Earlier at Eaton, transitioned from Finite Element Analyst to Data Scientist, leading ML initiatives that replaced simulation-based workflows — reducing cycle times by 70% and enabling intelligent automation for new business opportunities. Designed ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:1924:2889",
+        "category": null,
+        "text": "and deployed ML models including Gradient Boosting, Random Forest, SVM, and Neural Networks, driving design optimization, packaging efficiency, and cost savings with measurable ROI. Engineered Computer Vision and NLP applications such as BOM extraction from engineering drawings and lifecycle FAQ bots, delivering >$150K in savings. Recognized for technical excellence with a strong academic foundation (IIT – GPA 9.2; IIEST – GPA 8.5), multiple hackathon wins, and successful DFSS (Design for Six Sigma) initiatives. WORK EXPERIENCE Adani Enterprises Limited | Kolkata | 2025 – Present Data Science Manager | 2025 – Present Key Result Areas: Led the design and deployment of an Agentic AI pipeline using LangChain, LLMs, and memory-augmented architectures to automate financial document extraction — unlocking ₹10 Cr/month in stuck cash flow through intelligent automation. Developed and productionized a material data extraction and categorization system from SAP",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:2889:3961",
+        "category": null,
+        "text": ", integrating custom web search, Azure AI Foundry agents, and LLM-based quality checks — streamlining procurement workflows and improving data accuracy. Architected and deployed an end-to-end Named Entity Recognition (NER) pipeline in Azure ML Studio using pretrained BIOS-tagging models to extract custom material entities — reducing manual effort from 3 months to under a week. Built an automated framework for financial and legal document classification leveraging Azure Document Intelligence, LLM validation, and compliance checks against legal templates — ensuring regulatory adherence and risk mitigation. Tiger Analytics | Hyderabad | 2024 – 2025 Senior Data Scientist | 2024 – 2025 Key Result Areas: Led a high-performing team as Platform Lead, building enterprise-grade AI/ML monitoring platforms to ensure continuous tracking of customer model performance under tight deadlines. Developed and deployed Drift Detection as a Service in Databricks, enabling automated monitoring of data drift and concept drift to identify and address model performance degradation ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:3961:5012",
+        "category": null,
+        "text": "over time. Built advanced data visualization dashboards for drift monitoring, enabling stakeholders to track and analyze shifts in input features, distributions, and target outcomes. Designed and implemented Anomaly Detection as a Service using Prophet and Isolation Forests, supporting both supervised and unsupervised workflows for robust data preprocessing and early issue detection. Delivered Exploratory Data Analysis (EDA) as a Service, providing automated data health checks, multivariate analysis, and bias/disparity impact assessments to improve data quality and governance. Established end-to-end ML model monitoring solutions leveraging real-time metrics (gains/lift charts, residual analysis, accuracy trends) to ensure sustained model reliability and business impact. Created Visualization as a Service using SHAP, enabling explainable AI by interpreting model behaviour, surfacing feature importance, and enhancing model transparency for business stakeholders. Eaton India | Pune | 2017 – 2024 Senior Engineer (Data Science & RPA) | 2020",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:5012:6186",
+        "category": null,
+        "text": "-2024 Key Result Areas: Spearheaded a transition from a Finite Element (FE) Analyst role to a Data Scientist position at Eaton, showcasing adaptability and career progression. Led a proficient team in the development of intelligent products, employing machine learning models eliminating physics-based simulations. This initiative resulted in accelerated development cycles and reducing cycle time by 70%. Executed several machine learning projects since 2020, establishing expertise in Python programming, Data Visualization, Feature Engineering, Regression Analysis, Deep Learning, and Ensemble learning acquiring fresh business from internal partners. Explored diverse projects on Data Science, refining skills in Dimensionality Reduction, Natural Language Processing, Computer Vision, Hyperparameter Tuning, and Clustering Analysis showcasing passion towards learning. Developed a comprehensive understanding of various machine learning models such as Kriging, Artificial Neural Network, Random Forest, Multilayer Perceptron, Gradient Boosting Method, KNN, KMeans and compiled insights for team benefit. Developed advanced AI/ML solutions including a demand forecasting ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:6186:7303",
+        "category": null,
+        "text": "system for predicting MCB sales using ensemble time series models (XGBoost and Random Forest) for improved accuracy; implemented a risk management framework to detect anomalies in clutch plate operational responses for early failure prevention; and built RAG-based customer service chatbots leveraging proprietary documents to enhance automated query resolution and customer engagement. Utilized ML models to predict and optimize product performance under different operating conditions, boosting packaging efficiency by 30% and minimizing wastage maintaining optimal performance. Framed a computer vision architecture to read customer drawings and populate database for BOM creation reducing manual efforts by 90%. This key initiative enabled entry into a new customer space. Utilized NLP to create a simple FAQ Bot that can ease up search operations for Life Cycle Assessment of a product to determine its carbon footprint. This resulted in savings over 150k dollars and helped acquire business from internal customers. Developed & compared an LSTM & ARIMA model to predict outcomes of a time series data for share ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:7303:8201",
+        "category": null,
+        "text": "prices. This built confidence in utilizing the same models for legacy data of product performance. Engineer (Finite Element (FE) Analyst) | 2017 – 2020 Key Result Areas: 3+ years of experience in structural, vibration, shock, and electronic simulations using ANSYS, LS-Dyna, and Sherlock, supporting aerospace programs (A320NEO, Gulfstream ECS/NAI systems) and ensuring on-time Critical Design Review (CDR) completion. Led LS-Dyna safety light analysis and developed FE-based simulation models, reducing design cycle time by 90%; applied PCB housing dynamics (ANSYS, Sherlock) to improve reliability and minimize product failures. Executed simulation projects for GE, Daimler, and General Dynamics, achieving $20K cost savings; performed seismic qualification analysis in ANSYS, enabling AWS market entry and saving $78K. Automated ANSYS preprocessing workflows with Python (30% faster turnaround) ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:8201:9162",
+        "category": null,
+        "text": "and developed additive manufacturing print-time optimization in ANSYS ACT. CORE COMPETENCIES Artificial Intelligence (AI) Machine Learning (ML) Deep Learning & Neural Networks Natural Language Processing (NLP) Computer Vision Azure AI/ML and Cloud Deployments Unsupervised Learning & Clustering Dimensionality Reduction (PCA) Exploratory Data Analysis (EDA) Feature Engineering Data Visualization & Explainability Agentic AI & LLM Integration RAG Architecture Time Series Forecasting Demand Forecasting, Risk Management & Customer Service TECHNICAL SKILLS Scikit-learn Seaborn TensorFlow Prophet NLTK SHAP Keras Azure HuggingFace LangChain Databricks OpenCV EDUCATION Indian Institute of Technology, Roorkee M.Tech | CAD, CAM and Robotics | CGPA: 9.265 | 2017 Indian Institute of Engineering Science and Technology, Shibpur B.E. | Mechanical Engineering |CGPA: 8.55 | 2015 SOFT SKILLS Collaborator Analytical Leadership Emotional Intelligence CERTIFICATION SIX ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:9162:9482",
+        "category": null,
+        "text": "Sigma Design (DFSS) Green Belt ACHIEVEMENTS Saswata Mishra Scholarship for education impact Hackathon 1 winner – hose failure detection Hackathon 2 winner – aircraft refueling system DFSS Green Belt – $1.1M savings via NAI design optimization 3rd, Junk-E – wooden flight challenge 3rd, JBNSTS – egg drop structure design",
+        "page_number": 1
+      },
+      {
+        "source_id": "e1:0:0",
+        "category": null,
+        "text": "",
+        "page_number": null
+      }
+    ],
+    "needs_review": [
+      {
+        "source_element_index": 0,
+        "start": 0,
+        "end": 888,
+        "text": "MRINMOY SADHUKHAN DATA SCIENTIST Result Oriented Professional with 8+ years of total experience and ~6 years targeting Assignments in Data Science in a reputed organization to take challenging roles to deliver efficient outcomes. +91-8777473934, +91- 9674761339 mrinmoymechanical@gmail.com www.linkedin.com/in/mrinmoy-sadhukhan-b93396176 PROFILE SUMMARY Accomplished Data Science Leader with 8+ years of experience delivering AI/ML solutions, Agentic AI pipelines, and cloud-based deployments in supply chain management cutting across finance, manufacturing, and procurement. Proven ability to lead cross-functional teams, drive enterprise-wide AI adoption, and deliver measurable business impact under complex, high-stakes environments. Currently spearheading AI initiatives at Adani Enterprises, deploying Agentic AI pipelines using LangChain, LangGraphs and Azure AI services to stream",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.373,
+        "margin": -0.0178,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 0,
+        "start": 888,
+        "end": 1924,
+        "text": "line procurement, enrich data, and unlock multi-crore cashflows through cloud-driven automation. At Tiger Analytics, directed a high-performing team to build AI Monitoring Platforms on Databricks, including Drift/Anomaly Detection, EDA-as-a-Service, and SHAP-based visualization pipelines for real-time model explainability and monitoring. Proven expertise in Machine Learning, Deep Learning, Natural Language Processing, Computer Vision, and Time Series Forecasting with hands-on experience in Python, Azure ML, SHAP, Prophet, Isolation Forests, and cloud-based deployment frameworks. Demonstrated expertise in Demand forecasting using XGBoost, LSTMs and ensemble modelling, Risk Management using anomaly detection algorithms and customer service creating chatbots using RAG pipelines. Earlier at Eaton, transitioned from Finite Element Analyst to Data Scientist, leading ML initiatives that replaced simulation-based workflows — reducing cycle times by 70% and enabling intelligent automation for new business opportunities. Designed ",
+        "page_number": 1,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3505,
+        "margin": 0.0379,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 0,
+        "start": 1924,
+        "end": 2889,
+        "text": "and deployed ML models including Gradient Boosting, Random Forest, SVM, and Neural Networks, driving design optimization, packaging efficiency, and cost savings with measurable ROI. Engineered Computer Vision and NLP applications such as BOM extraction from engineering drawings and lifecycle FAQ bots, delivering >$150K in savings. Recognized for technical excellence with a strong academic foundation (IIT – GPA 9.2; IIEST – GPA 8.5), multiple hackathon wins, and successful DFSS (Design for Six Sigma) initiatives. WORK EXPERIENCE Adani Enterprises Limited | Kolkata | 2025 – Present Data Science Manager | 2025 – Present Key Result Areas: Led the design and deployment of an Agentic AI pipeline using LangChain, LLMs, and memory-augmented architectures to automate financial document extraction — unlocking ₹10 Cr/month in stuck cash flow through intelligent automation. Developed and productionized a material data extraction and categorization system from SAP",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2782,
+        "margin": 0.0087,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 0,
+        "start": 2889,
+        "end": 3961,
+        "text": ", integrating custom web search, Azure AI Foundry agents, and LLM-based quality checks — streamlining procurement workflows and improving data accuracy. Architected and deployed an end-to-end Named Entity Recognition (NER) pipeline in Azure ML Studio using pretrained BIOS-tagging models to extract custom material entities — reducing manual effort from 3 months to under a week. Built an automated framework for financial and legal document classification leveraging Azure Document Intelligence, LLM validation, and compliance checks against legal templates — ensuring regulatory adherence and risk mitigation. Tiger Analytics | Hyderabad | 2024 – 2025 Senior Data Scientist | 2024 – 2025 Key Result Areas: Led a high-performing team as Platform Lead, building enterprise-grade AI/ML monitoring platforms to ensure continuous tracking of customer model performance under tight deadlines. Developed and deployed Drift Detection as a Service in Databricks, enabling automated monitoring of data drift and concept drift to identify and address model performance degradation ",
+        "page_number": 1,
+        "cluster_id": 6,
+        "candidate_section": "certifications",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2822,
+        "margin": 0.0569,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 0,
+        "start": 3961,
+        "end": 5012,
+        "text": "over time. Built advanced data visualization dashboards for drift monitoring, enabling stakeholders to track and analyze shifts in input features, distributions, and target outcomes. Designed and implemented Anomaly Detection as a Service using Prophet and Isolation Forests, supporting both supervised and unsupervised workflows for robust data preprocessing and early issue detection. Delivered Exploratory Data Analysis (EDA) as a Service, providing automated data health checks, multivariate analysis, and bias/disparity impact assessments to improve data quality and governance. Established end-to-end ML model monitoring solutions leveraging real-time metrics (gains/lift charts, residual analysis, accuracy trends) to ensure sustained model reliability and business impact. Created Visualization as a Service using SHAP, enabling explainable AI by interpreting model behaviour, surfacing feature importance, and enhancing model transparency for business stakeholders. Eaton India | Pune | 2017 – 2024 Senior Engineer (Data Science & RPA) | 2020",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2532,
+        "margin": 0.0219,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 0,
+        "start": 5012,
+        "end": 6186,
+        "text": "-2024 Key Result Areas: Spearheaded a transition from a Finite Element (FE) Analyst role to a Data Scientist position at Eaton, showcasing adaptability and career progression. Led a proficient team in the development of intelligent products, employing machine learning models eliminating physics-based simulations. This initiative resulted in accelerated development cycles and reducing cycle time by 70%. Executed several machine learning projects since 2020, establishing expertise in Python programming, Data Visualization, Feature Engineering, Regression Analysis, Deep Learning, and Ensemble learning acquiring fresh business from internal partners. Explored diverse projects on Data Science, refining skills in Dimensionality Reduction, Natural Language Processing, Computer Vision, Hyperparameter Tuning, and Clustering Analysis showcasing passion towards learning. Developed a comprehensive understanding of various machine learning models such as Kriging, Artificial Neural Network, Random Forest, Multilayer Perceptron, Gradient Boosting Method, KNN, KMeans and compiled insights for team benefit. Developed advanced AI/ML solutions including a demand forecasting ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.372,
+        "margin": -0.0194,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 0,
+        "start": 6186,
+        "end": 7303,
+        "text": "system for predicting MCB sales using ensemble time series models (XGBoost and Random Forest) for improved accuracy; implemented a risk management framework to detect anomalies in clutch plate operational responses for early failure prevention; and built RAG-based customer service chatbots leveraging proprietary documents to enhance automated query resolution and customer engagement. Utilized ML models to predict and optimize product performance under different operating conditions, boosting packaging efficiency by 30% and minimizing wastage maintaining optimal performance. Framed a computer vision architecture to read customer drawings and populate database for BOM creation reducing manual efforts by 90%. This key initiative enabled entry into a new customer space. Utilized NLP to create a simple FAQ Bot that can ease up search operations for Life Cycle Assessment of a product to determine its carbon footprint. This resulted in savings over 150k dollars and helped acquire business from internal customers. Developed & compared an LSTM & ARIMA model to predict outcomes of a time series data for share ",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3273,
+        "margin": 0.0371,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 0,
+        "start": 7303,
+        "end": 8201,
+        "text": "prices. This built confidence in utilizing the same models for legacy data of product performance. Engineer (Finite Element (FE) Analyst) | 2017 – 2020 Key Result Areas: 3+ years of experience in structural, vibration, shock, and electronic simulations using ANSYS, LS-Dyna, and Sherlock, supporting aerospace programs (A320NEO, Gulfstream ECS/NAI systems) and ensuring on-time Critical Design Review (CDR) completion. Led LS-Dyna safety light analysis and developed FE-based simulation models, reducing design cycle time by 90%; applied PCB housing dynamics (ANSYS, Sherlock) to improve reliability and minimize product failures. Executed simulation projects for GE, Daimler, and General Dynamics, achieving $20K cost savings; performed seismic qualification analysis in ANSYS, enabling AWS market entry and saving $78K. Automated ANSYS preprocessing workflows with Python (30% faster turnaround) ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2577,
+        "margin": -0.0195,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 0,
+        "start": 8201,
+        "end": 9162,
+        "text": "and developed additive manufacturing print-time optimization in ANSYS ACT. CORE COMPETENCIES Artificial Intelligence (AI) Machine Learning (ML) Deep Learning & Neural Networks Natural Language Processing (NLP) Computer Vision Azure AI/ML and Cloud Deployments Unsupervised Learning & Clustering Dimensionality Reduction (PCA) Exploratory Data Analysis (EDA) Feature Engineering Data Visualization & Explainability Agentic AI & LLM Integration RAG Architecture Time Series Forecasting Demand Forecasting, Risk Management & Customer Service TECHNICAL SKILLS Scikit-learn Seaborn TensorFlow Prophet NLTK SHAP Keras Azure HuggingFace LangChain Databricks OpenCV EDUCATION Indian Institute of Technology, Roorkee M.Tech | CAD, CAM and Robotics | CGPA: 9.265 | 2017 Indian Institute of Engineering Science and Technology, Shibpur B.E. | Mechanical Engineering |CGPA: 8.55 | 2015 SOFT SKILLS Collaborator Analytical Leadership Emotional Intelligence CERTIFICATION SIX ",
+        "page_number": 1,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.4862,
+        "margin": 0.0534,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 0,
+        "start": 9162,
+        "end": 9482,
+        "text": "Sigma Design (DFSS) Green Belt ACHIEVEMENTS Saswata Mishra Scholarship for education impact Hackathon 1 winner – hose failure detection Hackathon 2 winner – aircraft refueling system DFSS Green Belt – $1.1M savings via NAI design optimization 3rd, Junk-E – wooden flight challenge 3rd, JBNSTS – egg drop structure design",
+        "page_number": 1,
+        "cluster_id": 7,
+        "candidate_section": "awards",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3721,
+        "margin": 0.1136,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 1,
+        "start": 0,
+        "end": 0,
+        "text": "",
+        "page_number": null,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1867,
+        "margin": -0.0366,
+        "lane": "main",
+        "reason": "Layout footer or page separator retained outside semantic sections",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      }
+    ]
+  },
+  "section_schemas": [
+    {
+      "category": "needs_review",
+      "label": "Unassigned source blocks",
+      "records": [],
+      "residual_blocks": [
+        {
+          "source_id": "e0:0:888",
+          "quote": "MRINMOY SADHUKHAN DATA SCIENTIST Result Oriented Professional with 8+ years of total experience and ~6 years targeting Assignments in Data Science in a reputed organization to take challenging roles to deliver efficient outcomes. +91-8777473934, +91- 9674761339 mrinmoymechanical@gmail.com www.linkedin.com/in/mrinmoy-sadhukhan-b93396176 PROFILE SUMMARY Accomplished Data Science Leader with 8+ years of experience delivering AI/ML solutions, Agentic AI pipelines, and cloud-based deployments in supply chain management cutting across finance, manufacturing, and procurement. Proven ability to lead cross-functional teams, drive enterprise-wide AI adoption, and deliver measurable business impact under complex, high-stakes environments. Currently spearheading AI initiatives at Adani Enterprises, deploying Agentic AI pipelines using LangChain, LangGraphs and Azure AI services to stream"
+        },
+        {
+          "source_id": "e0:888:1924",
+          "quote": "line procurement, enrich data, and unlock multi-crore cashflows through cloud-driven automation. At Tiger Analytics, directed a high-performing team to build AI Monitoring Platforms on Databricks, including Drift/Anomaly Detection, EDA-as-a-Service, and SHAP-based visualization pipelines for real-time model explainability and monitoring. Proven expertise in Machine Learning, Deep Learning, Natural Language Processing, Computer Vision, and Time Series Forecasting with hands-on experience in Python, Azure ML, SHAP, Prophet, Isolation Forests, and cloud-based deployment frameworks. Demonstrated expertise in Demand forecasting using XGBoost, LSTMs and ensemble modelling, Risk Management using anomaly detection algorithms and customer service creating chatbots using RAG pipelines. Earlier at Eaton, transitioned from Finite Element Analyst to Data Scientist, leading ML initiatives that replaced simulation-based workflows — reducing cycle times by 70% and enabling intelligent automation for new business opportunities. Designed "
+        },
+        {
+          "source_id": "e0:1924:2889",
+          "quote": "and deployed ML models including Gradient Boosting, Random Forest, SVM, and Neural Networks, driving design optimization, packaging efficiency, and cost savings with measurable ROI. Engineered Computer Vision and NLP applications such as BOM extraction from engineering drawings and lifecycle FAQ bots, delivering >$150K in savings. Recognized for technical excellence with a strong academic foundation (IIT – GPA 9.2; IIEST – GPA 8.5), multiple hackathon wins, and successful DFSS (Design for Six Sigma) initiatives. WORK EXPERIENCE Adani Enterprises Limited | Kolkata | 2025 – Present Data Science Manager | 2025 – Present Key Result Areas: Led the design and deployment of an Agentic AI pipeline using LangChain, LLMs, and memory-augmented architectures to automate financial document extraction — unlocking ₹10 Cr/month in stuck cash flow through intelligent automation. Developed and productionized a material data extraction and categorization system from SAP"
+        },
+        {
+          "source_id": "e0:2889:3961",
+          "quote": ", integrating custom web search, Azure AI Foundry agents, and LLM-based quality checks — streamlining procurement workflows and improving data accuracy. Architected and deployed an end-to-end Named Entity Recognition (NER) pipeline in Azure ML Studio using pretrained BIOS-tagging models to extract custom material entities — reducing manual effort from 3 months to under a week. Built an automated framework for financial and legal document classification leveraging Azure Document Intelligence, LLM validation, and compliance checks against legal templates — ensuring regulatory adherence and risk mitigation. Tiger Analytics | Hyderabad | 2024 – 2025 Senior Data Scientist | 2024 – 2025 Key Result Areas: Led a high-performing team as Platform Lead, building enterprise-grade AI/ML monitoring platforms to ensure continuous tracking of customer model performance under tight deadlines. Developed and deployed Drift Detection as a Service in Databricks, enabling automated monitoring of data drift and concept drift to identify and address model performance degradation "
+        },
+        {
+          "source_id": "e0:3961:5012",
+          "quote": "over time. Built advanced data visualization dashboards for drift monitoring, enabling stakeholders to track and analyze shifts in input features, distributions, and target outcomes. Designed and implemented Anomaly Detection as a Service using Prophet and Isolation Forests, supporting both supervised and unsupervised workflows for robust data preprocessing and early issue detection. Delivered Exploratory Data Analysis (EDA) as a Service, providing automated data health checks, multivariate analysis, and bias/disparity impact assessments to improve data quality and governance. Established end-to-end ML model monitoring solutions leveraging real-time metrics (gains/lift charts, residual analysis, accuracy trends) to ensure sustained model reliability and business impact. Created Visualization as a Service using SHAP, enabling explainable AI by interpreting model behaviour, surfacing feature importance, and enhancing model transparency for business stakeholders. Eaton India | Pune | 2017 – 2024 Senior Engineer (Data Science & RPA) | 2020"
+        },
+        {
+          "source_id": "e0:5012:6186",
+          "quote": "-2024 Key Result Areas: Spearheaded a transition from a Finite Element (FE) Analyst role to a Data Scientist position at Eaton, showcasing adaptability and career progression. Led a proficient team in the development of intelligent products, employing machine learning models eliminating physics-based simulations. This initiative resulted in accelerated development cycles and reducing cycle time by 70%. Executed several machine learning projects since 2020, establishing expertise in Python programming, Data Visualization, Feature Engineering, Regression Analysis, Deep Learning, and Ensemble learning acquiring fresh business from internal partners. Explored diverse projects on Data Science, refining skills in Dimensionality Reduction, Natural Language Processing, Computer Vision, Hyperparameter Tuning, and Clustering Analysis showcasing passion towards learning. Developed a comprehensive understanding of various machine learning models such as Kriging, Artificial Neural Network, Random Forest, Multilayer Perceptron, Gradient Boosting Method, KNN, KMeans and compiled insights for team benefit. Developed advanced AI/ML solutions including a demand forecasting "
+        },
+        {
+          "source_id": "e0:6186:7303",
+          "quote": "system for predicting MCB sales using ensemble time series models (XGBoost and Random Forest) for improved accuracy; implemented a risk management framework to detect anomalies in clutch plate operational responses for early failure prevention; and built RAG-based customer service chatbots leveraging proprietary documents to enhance automated query resolution and customer engagement. Utilized ML models to predict and optimize product performance under different operating conditions, boosting packaging efficiency by 30% and minimizing wastage maintaining optimal performance. Framed a computer vision architecture to read customer drawings and populate database for BOM creation reducing manual efforts by 90%. This key initiative enabled entry into a new customer space. Utilized NLP to create a simple FAQ Bot that can ease up search operations for Life Cycle Assessment of a product to determine its carbon footprint. This resulted in savings over 150k dollars and helped acquire business from internal customers. Developed & compared an LSTM & ARIMA model to predict outcomes of a time series data for share "
+        },
+        {
+          "source_id": "e0:7303:8201",
+          "quote": "prices. This built confidence in utilizing the same models for legacy data of product performance. Engineer (Finite Element (FE) Analyst) | 2017 – 2020 Key Result Areas: 3+ years of experience in structural, vibration, shock, and electronic simulations using ANSYS, LS-Dyna, and Sherlock, supporting aerospace programs (A320NEO, Gulfstream ECS/NAI systems) and ensuring on-time Critical Design Review (CDR) completion. Led LS-Dyna safety light analysis and developed FE-based simulation models, reducing design cycle time by 90%; applied PCB housing dynamics (ANSYS, Sherlock) to improve reliability and minimize product failures. Executed simulation projects for GE, Daimler, and General Dynamics, achieving $20K cost savings; performed seismic qualification analysis in ANSYS, enabling AWS market entry and saving $78K. Automated ANSYS preprocessing workflows with Python (30% faster turnaround) "
+        },
+        {
+          "source_id": "e0:8201:9162",
+          "quote": "and developed additive manufacturing print-time optimization in ANSYS ACT. CORE COMPETENCIES Artificial Intelligence (AI) Machine Learning (ML) Deep Learning & Neural Networks Natural Language Processing (NLP) Computer Vision Azure AI/ML and Cloud Deployments Unsupervised Learning & Clustering Dimensionality Reduction (PCA) Exploratory Data Analysis (EDA) Feature Engineering Data Visualization & Explainability Agentic AI & LLM Integration RAG Architecture Time Series Forecasting Demand Forecasting, Risk Management & Customer Service TECHNICAL SKILLS Scikit-learn Seaborn TensorFlow Prophet NLTK SHAP Keras Azure HuggingFace LangChain Databricks OpenCV EDUCATION Indian Institute of Technology, Roorkee M.Tech | CAD, CAM and Robotics | CGPA: 9.265 | 2017 Indian Institute of Engineering Science and Technology, Shibpur B.E. | Mechanical Engineering |CGPA: 8.55 | 2015 SOFT SKILLS Collaborator Analytical Leadership Emotional Intelligence CERTIFICATION SIX "
+        },
+        {
+          "source_id": "e0:9162:9482",
+          "quote": "Sigma Design (DFSS) Green Belt ACHIEVEMENTS Saswata Mishra Scholarship for education impact Hackathon 1 winner – hose failure detection Hackathon 2 winner – aircraft refueling system DFSS Green Belt – $1.1M savings via NAI design optimization 3rd, Junk-E – wooden flight challenge 3rd, JBNSTS – egg drop structure design"
+        },
+        {
+          "source_id": "e1:0:0",
+          "quote": ""
+        }
+      ]
+    }
+  ]
+}

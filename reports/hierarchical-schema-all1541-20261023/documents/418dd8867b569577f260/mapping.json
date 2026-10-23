@@ -1,0 +1,5097 @@
+{
+  "success": true,
+  "source": "Nishant Saxena.docx",
+  "extraction_mode": "existing_blocks_schema_mapping",
+  "data": {
+    "contact": {
+      "full_name": "Golden Visa Holder",
+      "email": "n7.saxena82@gmail.com",
+      "phone": "9936636566",
+      "location": "India",
+      "linkedin_url": null,
+      "github_url": null,
+      "portfolio_url": null
+    },
+    "professional_title": null,
+    "summary": "Seasoned professional with 17+ years of experience specializing in Genesys Cloud CX architecture and Avaya ecosystems. A PMP and Scrum certified leader with a strong techno-functional acumen, adept at translating complex technical intricacies into actionable business strategies. Expert in driving Agile delivery, managing product backlogs through the creation of precise User Stories, and leading high-velocity Sprints. A skilled communicator adept at managing complex stakeholder relationships, ensuring seamless alignment between cross-functional teams and executive leadership to drive project consensus. Highly proficient in Risk Management, with a proven ability to identify project vulnerabilities early and execute robust mitigation plans that ensure the successful delivery of large-scale enterprise communication solutions. Expert in navigating complex regulatory environments and delivering executive-level briefings to C-suite stakeholders and regulators.\nDomain\tBanking: Standard Chartered Bank, Arab National Bank, Bank Muscat, Bank Dhofar, ENBD and FAB.\nFinTech: Tabby\nTelecom: Etisalat (e&), Orange, Base Telecom, & Nepal Telecom",
+    "total_experience_years": 17.0,
+    "skills": {
+      "technical_skills": [],
+      "tools_and_platforms": [],
+      "domain_and_functional": [],
+      "soft_skills": [],
+      "all_skills": []
+    },
+    "experience": [
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      }
+    ],
+    "education": [
+      {
+        "institution": "",
+        "degree": "",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      }
+    ],
+    "certifications": [
+      {
+        "name": "PMP ACP\nGenesys Cloud Certified Associate Professional Scrum Master™ I (PSM-I) ACSS (Avaya-Red),\nNCSS (Avaya- Blue).",
+        "issuer": null,
+        "issue_year": null
+      }
+    ],
+    "projects": [],
+    "languages": [
+      "English:\tC2 Proficient",
+      "Urdu:\tC1",
+      "Advanced",
+      "Hindi:\tC2",
+      "Proficient",
+      "AWARDS\t Received Employee of the Year award at Etisalat.",
+      "Received multiple SPOT Award at Etisalat.",
+      "Received SHINE awards at orange",
+      "Received Internal Appreciation of Year- 2014-Q4 from KPN Base Telecom. For providing extended support for significant contribution in AOD code enhancement In short time span.",
+      "Received Customer Appreciation Award from Avaya APS for SCB APAC Phone Banking Project. The award is for the handling critical tasks and deliverables professionally and showing customer first approach.",
+      "Received Team player of the Year Award at Etisalat."
+    ]
+  },
+  "schema_mapping": {
+    "fields_populated": 9,
+    "total_fields": 16,
+    "completion_percentage": 56.2,
+    "field_details": [
+      {
+        "field_name": "contact.full_name",
+        "target_type": "string",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Personal Details",
+        "confidence_score": 0.95,
+        "description": "Candidate's full name, extracted from the top header of the resume."
+      },
+      {
+        "field_name": "contact.email",
+        "target_type": "string (email)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.98,
+        "description": "Candidate's primary contact email address."
+      },
+      {
+        "field_name": "contact.phone",
+        "target_type": "string (phone)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.95,
+        "description": "Candidate's telephone / mobile phone number."
+      },
+      {
+        "field_name": "contact.location",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.85,
+        "description": "Candidate's residential location or work city."
+      },
+      {
+        "field_name": "contact.linkedin_url",
+        "target_type": "string (url) | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "URL to candidate's LinkedIn profile."
+      },
+      {
+        "field_name": "professional_title",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Subtitle",
+        "confidence_score": 0.0,
+        "description": "Candidate's target headline or most recent job title."
+      },
+      {
+        "field_name": "summary",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Summary / Profile / Objective",
+        "confidence_score": 0.85,
+        "description": "Executive bio, professional overview, or career objective."
+      },
+      {
+        "field_name": "total_experience_years",
+        "target_type": "float | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Summary / Experience Calculation",
+        "confidence_score": 0.9,
+        "description": "Total professional experience in years."
+      },
+      {
+        "field_name": "skills.technical_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Technical Competencies",
+        "confidence_score": 0.0,
+        "description": "Technical programming languages and core software competencies."
+      },
+      {
+        "field_name": "skills.tools_and_platforms",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Tools & Technologies",
+        "confidence_score": 0.0,
+        "description": "Software platforms, developer tools, and operational systems."
+      },
+      {
+        "field_name": "skills.domain_and_functional",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Domain Expertise",
+        "confidence_score": 0.0,
+        "description": "Functional domain knowledge (e.g. Hedge Funds, KYC, NAV, Derivatives)."
+      },
+      {
+        "field_name": "skills.all_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills (Aggregated)",
+        "confidence_score": 0.0,
+        "description": "Complete list of candidate skills across all categories."
+      },
+      {
+        "field_name": "experience",
+        "target_type": "array[WorkExperience]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Experience / Work History",
+        "confidence_score": 0.92,
+        "description": "Complete chronological employment records with bullet points."
+      },
+      {
+        "field_name": "education",
+        "target_type": "array[Education]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Education / Academic Qualifications",
+        "confidence_score": 0.9,
+        "description": "University, college, and higher education degree qualifications."
+      },
+      {
+        "field_name": "certifications",
+        "target_type": "array[Certification]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Certifications / Licenses",
+        "confidence_score": 0.8,
+        "description": "Professional accreditations and credentials."
+      },
+      {
+        "field_name": "projects",
+        "target_type": "array[Project]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Projects / Key Engagements",
+        "confidence_score": 0.0,
+        "description": "Major projects or strategic initiatives led by candidate."
+      }
+    ]
+  },
+  "raw_sections": {
+    "personal_information": "Golden Visa Holder\n9936636566\n n7.saxena82@gmail.com\nContact Center Technologies: ACM\n5.x, AACC 7.x, AEP 7.x, Avaya MPP\n7.x, WebLM, Cisco,CVP\nCTI Servers and Boards: Avaya AES\n6.x/7.x, Avaya AIC 7.2\nApplication Servers: Apache Tomcat 6/7, Oracle WebLogic 10.0,IBM WebSphere 7.1\nDatabase: Oracle 11g, MS-SQL\nProgramming & Scripting: Java (Scripting & Servlets),Vxml, XML,CCXML\nSpeech Platforms and Integration Tools: Nuance OSR & TTS\nOperating System: Windows, Red Hat Linux/Unix, Solaris 10\nProtocols & Communication Layers:\nVOIP(SIP, H323), TCP/IP, SS7.\nVoice Self Service (Design, development and implementation): Avaya Orchestration Designer, Avaya IVR Designer.\nOutbound Dialer - Avaya POM\nAPI: SOAP/ REST Full API\nPython: NumPy/Pandas\nData Analysis: Data Wrangling/Cleaning\nPERSONAL INFORMATION\nNationality: Indian\nPassport: R7717303.\nVISA: Residence Golden Visa, Dubai, UAE, 01/2034\nAlternate 'Contact No (UAE): +971565065045\nAlternate 'Contact No (India): +919005985989\nONSITE EXPERIENCE\t United Arab Emirates: Resident Golden VISA\nUSA: US B1 (Multi Entry) expired in 2025\nBelgium: Work Permit\nSingapore: Work Permit\nSri Lanka: Business VISA",
+    "summary": "SUMMARY\tSeasoned professional with 17+ years of experience specializing in Genesys Cloud CX architecture and Avaya ecosystems. A PMP and Scrum certified leader with a strong techno-functional acumen, adept at translating complex technical intricacies into actionable business strategies. Expert in driving Agile delivery, managing product backlogs through the creation of precise User Stories, and leading high-velocity Sprints. A skilled communicator adept at managing complex stakeholder relationships, ensuring seamless alignment between cross-functional teams and executive leadership to drive project consensus. Highly proficient in Risk Management, with a proven ability to identify project vulnerabilities early and execute robust mitigation plans that ensure the successful delivery of large-scale enterprise communication solutions. Expert in navigating complex regulatory environments and delivering executive-level briefings to C-suite stakeholders and regulators.\nDomain\tBanking: Standard Chartered Bank, Arab National Bank, Bank Muscat, Bank Dhofar, ENBD and FAB.\nFinTech: Tabby\nTelecom: Etisalat (e&), Orange, Base Telecom, & Nepal Telecom",
+    "experience": "EXPERIENCE\tProject Manager – CCaaS, 05/2025 – 02/2026\nServion Global Solutions, Dubai, UAE\nCustomized delivery methodologies to specific client goals, ensuring tailored solutions and optimized project outcomes\nEstablished robust program governance frameworks to manage multi-vendor transformations.\nLed the strategic Cloud Migration of legacy on-premise systems to Genesys Cloud CX within the highly regulated banking sector.\nDefined and tracked critical KPIs to rigorously evaluate project performance and drive data-driven strategies for continuous process optimization.\nSteered end-to-end business transformation and technology road mapping, overseeing the full lifecycle from strategic development and implementation to operational execution and high-scale technical delivery.\nOrchestrated the organizational transition from traditional Waterfall methodologies to Agile frameworks, enhancing delivery speed, flexibility, and team collaboration\nStreamlined project lifecycles as a Scrum Master, implementing Agile best practices to improve team productivity and ensure high-quality technical output.\nTranslated complex business needs into actionable User Stories while maintaining a refined and comprehensive Product Backlog to drive consistent sprint progress.\nLead end-to-end delivery of complex Contact Center projects across the MEA region, ensuring strict adherence to project scope, schedule, and cost.\nLed cross-functional teams and third-party vendors (Avaya, Genesys) to deliver a 5,000-seat migration on time and 10% under budget.\nManaged the full project lifecycle using Agile methodologies, ensuring 100% alignment with Business Architecture goals.\nOversee the procurement, deployment, installation, configuration, and testing of the SBC (Session Border Controller), ensuring seamless network transition and functionality for the Genesys Cloud CX solution.\nOversee the procurement, deployment, and management of large Edge Devices & SIP trunks, including the strategic execution of server replacement projects (swapping small servers for larger units) to enhance infrastructure capacity and performance for the Genesys Cloud CX.\nExpertise in advanced Contact Center technologies, including IVR, CTI, Speech NLP, Voice Biometrics, AI, and Chatbot Solutions.\nDelivered cross-platform solutions across Avaya, Genesys Cloud CX, and\nNuance Speech/Security/Chatbot suites in the ME regions.\nFacilitate critical collaboration and alignment between internal teams, including Sales, Delivery Head, Functional Managers, and external client project teams.\nPrepare and present mandatory weekly project status reports and project metrics presentations for the MEA delivery leadership.\nReport directly to the Delivery Head for Projects.\nCollaborate with Pre-Sales teams to lead effort estimation activities based on comprehensive project expertise.\nResponsible for managing critical project financials and resource & revenue forecasting.\nDeveloping resource category plans and accurate revenue forecasting.\nManage all administrative project components, including raising resource requests and processing milestone-based invoice submissions.\nProject Manager (Techno-functional role)– Contact Center, 05/2024 - 05/2025  Binary Link Technologies, Dubai, UAE\nCustomized project methodologies to suit specific client needs and objectives, delivering tailored solutions and maximizing client satisfaction.\nEstablished robust program governance frameworks to manage multi-vendor transformations.\nEstablished and monitored key performance indicators KPIs to evaluate project success, providing a basis for continuous improvement.\nDirecting business transformation, technology planning, strategy development, implementation, operational transformation execution and technical solution delivery function.\nManaged shift towards Agile approaches in place of conventional project management practices.\nStreamlined processes as a Scrum Master.\nCrafted user stories while maintaining a comprehensive backlog.\nWorked with business representatives to craft impactful event content.\nTracked sprint progress using burn-down charts, made necessary adjustments to meet deadlines.\nCollaborated with Product Owners to refine project backlogs.\nCollaborated with clients to understand specific project requirements.\nAligned IVR system with organizational business and technology strategies.\nExplore automation opportunities within the IVR system to enhance customer experience.\nFacilitated team understanding of IVR call flows for accurate implementation.\nFacilitated development team's comprehension of business context.\nExplain technical implementation to gather business stakeholders' sign-off.\nEnsure that the IVR system complies with security and data protection requirements, working closely with security teams to address any vulnerabilities or compliance gaps.\nSupported the development of an efficient IVR system for enhanced customer experience.\nProvide ongoing support for the production IVR system, addressing any technical issues, performance concerns, and scalability requirements.\nEnsured incident resolution to uphold the operational efficiency of the IVR system.\nPerformed data wrangling to ensure data readiness for analysis.\nCollaborated with AI team to implement machine learning strategies.\nCreated data visualization reports utilizing NumPy, Pandas, and Matplotlib libraries.\nOversaw the transition from traditional project management methodologies to Agile frameworks.\nEstablished robust program governance frameworks to manage multi-vendor transformations.\nCrafted user stories while maintaining a comprehensive backlog.\nCreated event content in collaboration with product owner/business.\nMonitored sprint progress through burn-down charts, adjusting strategies to meet deadlines.\nWorked closely with Product Owners to refine backlogs and define sprint goals for project alignment.\nTranslated business requirements into technical IVR designs.\nLiaised with business teams to capture and document IVR requirements.\nIdentify automation opportunities within IVR system.\nConducted walk-through sessions for the development team.\nAssisted development team in grasping business context and technical details of IVR system.\nObtained stakeholder sign-off to align with business requirements.\nEnsured IVR code compliance with coding standards.\nFacilitate alignment of IVR designs and actual system through developer collaboration.\nEnsured the IVR system fulfilled user requirements through comprehensive UAT support.\nEnsured effective issue resolution in the IVR system.\nEnsured comprehensive technology landscape compatibility during IVR integration.\nCollaborated with various teams to resolve integration issues efficiently.\nMaintained consistent support for the production IVR system.\nEnhanced incident resolution procedures to ensure ongoing system reliability.\nEnsure IVR system adheres to security and data protection standards.\nManaged digital touchpoints for Etisalat including SMS services, web interfaces and IVR solutions.\nDesigned and implemented solutions for Etisalat's online sales-and-service channels.\nExecuted comprehensive evaluation and deployment of OSS/BSS.\nLed project coordination as a Scrum Master.\nCrafted user stories while maintaining a comprehensive backlog.\nCreated event content in collaboration with product owner/business.\nMonitored sprint progress through burn-down charts, adjusting strategies to meet deadlines.\nWorked closely with Product Owners to refine backlogs and define sprint goals for project alignment.\nDeveloped and maintained IVR 101 main application.\nLed architectural design and development efforts for enterprise/ SMB - Business application solutions, improving system scalability and performance.\nIntegrated custom APIs and strategies for third-party services, streamlining processes and improving user experiences.\nDelivered detailed project plans and status reports for all activities.\nProvided weekly detailed project reports to keep manager informed on milestones and updates. Implemented responsive design principles, ensuring optimal user experience across various channels.\nDesigned and executed rigorous testing protocols to identify and rectify application bugs, elevating product quality.\nCrafted detailed technical documentation to support application deployment, usage, and maintenance.\nFacilitated knowledge sharing sessions and workshops to mentor junior developers and foster a culture of continuous learning.\nManaged version control and code reviews to maintain high-quality code standards across all development stages.\nOptimized application performance through comprehensive testing, debugging, and refining based on user feedback.\nDesigned and implemented secure authentication and authorization mechanisms to safeguard sensitive user data.\nLed development team in designing, coding, and implementing scalable applications tailored to client specifications.\nEstimated work effort, timelines, and resource requirements.\nEnsured platform operational stability.\nConducted continuous research and development for feature selection.\nPlayed a pivotal role in creating and upholding standards to maintain connectivity despite development changes.\nImplemented robust security protocols to safeguard client data and prevent unauthorized access.\nFacilitate in transition of BASE Telecom's (Big Telecom company in Belgium) IVR infrastructure from Nortel MPS 1000 platform due to end of support.\nTo understand the existing system and design and incorporated in new IVR call flow\nProvide video presentation of IVR call flow to the client followed by conditional sign-off\nIVR call flow development as per LLD and works along with ITEL and IN team to gather the information which is required for integration\nCreated 'Turkish Standard Phrase set' Bundle for Turkish Language.\nDeveloped JAVA servlet to introduce dynamic IVR menus, configurable placeholders based on time stamp and various features.\nAddressed and resolved application defects in JIRA promptly.\nImplemented change to enable rolled over AOD logs within the application server.\nImplemented updated applications on Apache Tomcat servers in lab environments.\nUtilized Citrix server for deploying OD application into Avaya servers.\nFacilitated configuration tasks during the installation of Avaya Aura Experience Portal.\nAnalyzed user feedback and usage data to identify areas for improvement, leading to targeted enhancements that increased customer satisfaction.\nLed IVR call flow design and development of SCB migration project in India, Sri Lanka, and Singapore for CC.\nDeveloped and implemented a bank IVR application featuring bank/card user validation, TPIN encryption and validation, CVV validation, ATM PIN validation, CTI integration, RS232 6-digit PIN encryption, and HSM integration.\nLinked IVR Application with CCMS, EBBS and Euro-net third-party server.\nDeveloped JSP code for sub-dialogues.\nEngineered Skill Routing mechanism for Bangalore and Chennai locations.\nCreated a detailed logging mechanism for each menu.\nMonitored technological advancements to recommend upgrades and enhancements, keeping IVR systems up-to-date and competitive.\nUpgraded infrastructure with Nortel MPS 500 system at nine locations in India and Nepal.\nDeveloped a new Avaya - Blue IVR setup with customized reporting.\nSupported backend agents as Communication Manager.\nSupported hardware and application functions.\nDeveloped and implemented diverse SIP line prepaid and postpaid applications.\nParticipated in distributing software updates and patches.\nResolved advanced issues in IVR systems.\nLiaised with third-party specialists.\nManaged escalated calls while providing L2 technical support.\nCollaborated closely with client manager and NOC IVR team.\nInstalled Avaya MPS 500 systems.\nKept server health checkup list updated daily.\nConducted in-depth analysis of client IT infrastructure, identifying key areas for improvement and cost reduction.\nSKILLS\t Scrum Master\nChange Management\nRisk Management\nBCP/DR Frameworks\nStake Holder Management\nStrategic Thinking & Planning.\nOperational Resilience\nFinancial Cost Control Management.\nData migration\nService delivery\nSDLC: Agile/Waterfall/Hybrid\nJIRA\nConfluence\nCitrix\nDESC ISR cloud security\nData Sovereignty regulation\nUAE Regulatory & Compliance\nData Privacy Law (Federal Law 45)\nGenesys Cloud CX\nSBC & SIP Trunks",
+    "certifications": "CERTIFICATIONS\tPMP ACP\nGenesys Cloud Certified Associate Professional Scrum Master™ I (PSM-I) ACSS (Avaya-Red),\nNCSS (Avaya- Blue).",
+    "education": "EDUCATION\tIndian Institute of Technology, Mumbai, India, 2010\nM. Tech: Communication\nAegis School of Telecom, Mumbai, India, 2006\nMaster program: Telecom and Management\nU.P. Technical University, Lucknow, India, 2004\nB. Tech: Electronics & Communication",
+    "languages": "LANGUAGES\tEnglish:\tC2 Proficient\nUrdu:\tC1\nAdvanced\nHindi:\tC2\nProficient\nAWARDS\t Received Employee of the Year award at Etisalat.\nReceived multiple SPOT Award at Etisalat.\nReceived SHINE awards at orange\nReceived Internal Appreciation of Year- 2014-Q4 from KPN Base Telecom. For providing extended support for significant contribution in AOD code enhancement In short time span.\nReceived Customer Appreciation Award from Avaya APS for SCB APAC Phone Banking Project. The award is for the handling critical tasks and deliverables professionally and showing customer first approach.\nReceived Team player of the Year Award at Etisalat.",
+    "interests": "HOBBIES AND INTERESTS\t Chess\nCricket\nTable Tennis\nReading Books\nDRIVING LICENCE\t UAE - Yes\nIndia - Yes"
+  },
+  "meta": {
+    "status": "needs_review",
+    "human_verified": false,
+    "provider_calls": 0,
+    "source_accounting": {
+      "all_source_text_preserved": true,
+      "total_spans": 217,
+      "assigned_meaningful_spans": 215,
+      "unresolved_meaningful_spans": 2,
+      "non_content_artifacts": 0,
+      "duplicates_excluded": 0,
+      "all_meaningful_text_assigned": false,
+      "semantic_correctness_verified": false,
+      "outcomes": [
+        {
+          "source_id": "e0:0:14",
+          "source_element_index": 0,
+          "start": 0,
+          "end": 14,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e1:0:18",
+          "source_element_index": 1,
+          "start": 0,
+          "end": 18,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e2:0:18",
+          "source_element_index": 2,
+          "start": 0,
+          "end": 18,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e3:0:10",
+          "source_element_index": 3,
+          "start": 0,
+          "end": 10,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e4:0:22",
+          "source_element_index": 4,
+          "start": 0,
+          "end": 22,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e5:0:8",
+          "source_element_index": 5,
+          "start": 0,
+          "end": 8,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e5:8:975",
+          "source_element_index": 5,
+          "start": 8,
+          "end": 975,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e6:0:100",
+          "source_element_index": 6,
+          "start": 0,
+          "end": 100,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e7:0:14",
+          "source_element_index": 7,
+          "start": 0,
+          "end": 14,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:0:61",
+          "source_element_index": 8,
+          "start": 0,
+          "end": 61,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:0:11",
+          "source_element_index": 9,
+          "start": 0,
+          "end": 11,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e9:11:53",
+          "source_element_index": 9,
+          "start": 11,
+          "end": 53,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e10:0:36",
+          "source_element_index": 10,
+          "start": 0,
+          "end": 36,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e11:0:118",
+          "source_element_index": 11,
+          "start": 0,
+          "end": 118,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:0:88",
+          "source_element_index": 12,
+          "start": 0,
+          "end": 88,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e13:0:126",
+          "source_element_index": 13,
+          "start": 0,
+          "end": 126,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e14:0:146",
+          "source_element_index": 14,
+          "start": 0,
+          "end": 146,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e15:0:207",
+          "source_element_index": 15,
+          "start": 0,
+          "end": 207,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e16:0:166",
+          "source_element_index": 16,
+          "start": 0,
+          "end": 166,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e17:0:154",
+          "source_element_index": 17,
+          "start": 0,
+          "end": 154,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e18:0:161",
+          "source_element_index": 18,
+          "start": 0,
+          "end": 161,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e19:0:146",
+          "source_element_index": 19,
+          "start": 0,
+          "end": 146,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e20:0:131",
+          "source_element_index": 20,
+          "start": 0,
+          "end": 131,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e21:0:119",
+          "source_element_index": 21,
+          "start": 0,
+          "end": 119,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e22:0:207",
+          "source_element_index": 22,
+          "start": 0,
+          "end": 207,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e23:0:271",
+          "source_element_index": 23,
+          "start": 0,
+          "end": 271,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e24:0:127",
+          "source_element_index": 24,
+          "start": 0,
+          "end": 127,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e25:0:70",
+          "source_element_index": 25,
+          "start": 0,
+          "end": 70,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e26:0:56",
+          "source_element_index": 26,
+          "start": 0,
+          "end": 56,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e27:0:159",
+          "source_element_index": 27,
+          "start": 0,
+          "end": 159,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e28:0:126",
+          "source_element_index": 28,
+          "start": 0,
+          "end": 126,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e29:0:50",
+          "source_element_index": 29,
+          "start": 0,
+          "end": 50,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e30:0:111",
+          "source_element_index": 30,
+          "start": 0,
+          "end": 111,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e31:0:88",
+          "source_element_index": 31,
+          "start": 0,
+          "end": 88,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e32:0:68",
+          "source_element_index": 32,
+          "start": 0,
+          "end": 68,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e33:0:133",
+          "source_element_index": 33,
+          "start": 0,
+          "end": 133,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e34:0:113",
+          "source_element_index": 34,
+          "start": 0,
+          "end": 113,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e35:0:144",
+          "source_element_index": 35,
+          "start": 0,
+          "end": 144,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e36:0:88",
+          "source_element_index": 36,
+          "start": 0,
+          "end": 88,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e37:0:132",
+          "source_element_index": 37,
+          "start": 0,
+          "end": 132,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e38:0:172",
+          "source_element_index": 38,
+          "start": 0,
+          "end": 172,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e39:0:93",
+          "source_element_index": 39,
+          "start": 0,
+          "end": 93,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e40:0:40",
+          "source_element_index": 40,
+          "start": 0,
+          "end": 40,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e41:0:63",
+          "source_element_index": 41,
+          "start": 0,
+          "end": 63,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e42:0:70",
+          "source_element_index": 42,
+          "start": 0,
+          "end": 70,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e43:0:93",
+          "source_element_index": 43,
+          "start": 0,
+          "end": 93,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e44:0:60",
+          "source_element_index": 44,
+          "start": 0,
+          "end": 60,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e45:0:70",
+          "source_element_index": 45,
+          "start": 0,
+          "end": 70,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e46:0:74",
+          "source_element_index": 46,
+          "start": 0,
+          "end": 74,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e47:0:86",
+          "source_element_index": 47,
+          "start": 0,
+          "end": 86,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e48:0:77",
+          "source_element_index": 48,
+          "start": 0,
+          "end": 77,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e49:0:65",
+          "source_element_index": 49,
+          "start": 0,
+          "end": 65,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e50:0:75",
+          "source_element_index": 50,
+          "start": 0,
+          "end": 75,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e51:0:170",
+          "source_element_index": 51,
+          "start": 0,
+          "end": 170,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e52:0:86",
+          "source_element_index": 52,
+          "start": 0,
+          "end": 86,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e53:0:139",
+          "source_element_index": 53,
+          "start": 0,
+          "end": 139,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e54:0:83",
+          "source_element_index": 54,
+          "start": 0,
+          "end": 83,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e55:0:63",
+          "source_element_index": 55,
+          "start": 0,
+          "end": 63,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e56:0:67",
+          "source_element_index": 56,
+          "start": 0,
+          "end": 67,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e57:0:85",
+          "source_element_index": 57,
+          "start": 0,
+          "end": 85,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e58:0:93",
+          "source_element_index": 58,
+          "start": 0,
+          "end": 93,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e59:0:88",
+          "source_element_index": 59,
+          "start": 0,
+          "end": 88,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e60:0:63",
+          "source_element_index": 60,
+          "start": 0,
+          "end": 63,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e61:0:67",
+          "source_element_index": 61,
+          "start": 0,
+          "end": 67,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e62:0:91",
+          "source_element_index": 62,
+          "start": 0,
+          "end": 91,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e63:0:100",
+          "source_element_index": 63,
+          "start": 0,
+          "end": 100,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e64:0:60",
+          "source_element_index": 64,
+          "start": 0,
+          "end": 60,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e65:0:69",
+          "source_element_index": 65,
+          "start": 0,
+          "end": 69,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e66:0:52",
+          "source_element_index": 66,
+          "start": 0,
+          "end": 52,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e67:0:57",
+          "source_element_index": 67,
+          "start": 0,
+          "end": 57,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e68:0:91",
+          "source_element_index": 68,
+          "start": 0,
+          "end": 91,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e69:0:66",
+          "source_element_index": 69,
+          "start": 0,
+          "end": 66,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e70:0:50",
+          "source_element_index": 70,
+          "start": 0,
+          "end": 50,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e71:0:86",
+          "source_element_index": 71,
+          "start": 0,
+          "end": 86,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e72:0:85",
+          "source_element_index": 72,
+          "start": 0,
+          "end": 85,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e73:0:53",
+          "source_element_index": 73,
+          "start": 0,
+          "end": 53,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e74:0:80",
+          "source_element_index": 74,
+          "start": 0,
+          "end": 80,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e75:0:74",
+          "source_element_index": 75,
+          "start": 0,
+          "end": 74,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e76:0:60",
+          "source_element_index": 76,
+          "start": 0,
+          "end": 60,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e77:0:77",
+          "source_element_index": 77,
+          "start": 0,
+          "end": 77,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e78:0:68",
+          "source_element_index": 78,
+          "start": 0,
+          "end": 68,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e79:0:98",
+          "source_element_index": 79,
+          "start": 0,
+          "end": 98,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e80:0:84",
+          "source_element_index": 80,
+          "start": 0,
+          "end": 84,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e81:0:60",
+          "source_element_index": 81,
+          "start": 0,
+          "end": 60,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e82:0:43",
+          "source_element_index": 82,
+          "start": 0,
+          "end": 43,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e83:0:63",
+          "source_element_index": 83,
+          "start": 0,
+          "end": 63,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e84:0:67",
+          "source_element_index": 84,
+          "start": 0,
+          "end": 67,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e85:0:91",
+          "source_element_index": 85,
+          "start": 0,
+          "end": 91,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e86:0:100",
+          "source_element_index": 86,
+          "start": 0,
+          "end": 100,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e87:0:50",
+          "source_element_index": 87,
+          "start": 0,
+          "end": 50,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e88:0:148",
+          "source_element_index": 88,
+          "start": 0,
+          "end": 148,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e89:0:118",
+          "source_element_index": 89,
+          "start": 0,
+          "end": 118,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e90:0:71",
+          "source_element_index": 90,
+          "start": 0,
+          "end": 71,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e91:0:192",
+          "source_element_index": 91,
+          "start": 0,
+          "end": 192,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e92:0:117",
+          "source_element_index": 92,
+          "start": 0,
+          "end": 117,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e93:0:99",
+          "source_element_index": 93,
+          "start": 0,
+          "end": 99,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e94:0:125",
+          "source_element_index": 94,
+          "start": 0,
+          "end": 125,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e95:0:111",
+          "source_element_index": 95,
+          "start": 0,
+          "end": 111,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e96:0:112",
+          "source_element_index": 96,
+          "start": 0,
+          "end": 112,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e97:0:109",
+          "source_element_index": 97,
+          "start": 0,
+          "end": 109,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e98:0:116",
+          "source_element_index": 98,
+          "start": 0,
+          "end": 116,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e99:0:60",
+          "source_element_index": 99,
+          "start": 0,
+          "end": 60,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e100:0:39",
+          "source_element_index": 100,
+          "start": 0,
+          "end": 39,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e101:0:68",
+          "source_element_index": 101,
+          "start": 0,
+          "end": 68,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e102:0:111",
+          "source_element_index": 102,
+          "start": 0,
+          "end": 111,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e103:0:95",
+          "source_element_index": 103,
+          "start": 0,
+          "end": 95,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e104:0:147",
+          "source_element_index": 104,
+          "start": 0,
+          "end": 147,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e105:0:82",
+          "source_element_index": 105,
+          "start": 0,
+          "end": 82,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e106:0:90",
+          "source_element_index": 106,
+          "start": 0,
+          "end": 90,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e107:0:134",
+          "source_element_index": 107,
+          "start": 0,
+          "end": 134,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e108:0:66",
+          "source_element_index": 108,
+          "start": 0,
+          "end": 66,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e109:0:122",
+          "source_element_index": 109,
+          "start": 0,
+          "end": 122,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e110:0:60",
+          "source_element_index": 110,
+          "start": 0,
+          "end": 60,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e111:0:80",
+          "source_element_index": 111,
+          "start": 0,
+          "end": 80,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e112:0:78",
+          "source_element_index": 112,
+          "start": 0,
+          "end": 78,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e113:0:71",
+          "source_element_index": 113,
+          "start": 0,
+          "end": 71,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e114:0:88",
+          "source_element_index": 114,
+          "start": 0,
+          "end": 88,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e115:0:143",
+          "source_element_index": 115,
+          "start": 0,
+          "end": 143,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e116:0:108",
+          "source_element_index": 116,
+          "start": 0,
+          "end": 108,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e117:0:221",
+          "source_element_index": 117,
+          "start": 0,
+          "end": 221,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e118:0:71",
+          "source_element_index": 118,
+          "start": 0,
+          "end": 71,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e119:0:37",
+          "source_element_index": 119,
+          "start": 0,
+          "end": 37,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e120:0:71",
+          "source_element_index": 120,
+          "start": 0,
+          "end": 71,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e121:0:51",
+          "source_element_index": 121,
+          "start": 0,
+          "end": 51,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e122:0:124",
+          "source_element_index": 122,
+          "start": 0,
+          "end": 124,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e123:0:88",
+          "source_element_index": 123,
+          "start": 0,
+          "end": 88,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e124:0:65",
+          "source_element_index": 124,
+          "start": 0,
+          "end": 65,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e125:0:50",
+          "source_element_index": 125,
+          "start": 0,
+          "end": 50,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e126:0:45",
+          "source_element_index": 126,
+          "start": 0,
+          "end": 45,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e127:0:77",
+          "source_element_index": 127,
+          "start": 0,
+          "end": 77,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e128:0:58",
+          "source_element_index": 128,
+          "start": 0,
+          "end": 58,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e129:0:40",
+          "source_element_index": 129,
+          "start": 0,
+          "end": 40,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e130:0:37",
+          "source_element_index": 130,
+          "start": 0,
+          "end": 37,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e131:0:61",
+          "source_element_index": 131,
+          "start": 0,
+          "end": 61,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e132:0:58",
+          "source_element_index": 132,
+          "start": 0,
+          "end": 58,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e133:0:32",
+          "source_element_index": 133,
+          "start": 0,
+          "end": 32,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e134:0:46",
+          "source_element_index": 134,
+          "start": 0,
+          "end": 46,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e135:0:114",
+          "source_element_index": 135,
+          "start": 0,
+          "end": 114,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e136:0:21",
+          "source_element_index": 136,
+          "start": 0,
+          "end": 21,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e137:0:17",
+          "source_element_index": 137,
+          "start": 0,
+          "end": 17,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e138:0:15",
+          "source_element_index": 138,
+          "start": 0,
+          "end": 15,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e139:0:17",
+          "source_element_index": 139,
+          "start": 0,
+          "end": 17,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e140:0:23",
+          "source_element_index": 140,
+          "start": 0,
+          "end": 23,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e141:0:30",
+          "source_element_index": 141,
+          "start": 0,
+          "end": 30,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e142:0:22",
+          "source_element_index": 142,
+          "start": 0,
+          "end": 22,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e143:0:34",
+          "source_element_index": 143,
+          "start": 0,
+          "end": 34,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e144:0:14",
+          "source_element_index": 144,
+          "start": 0,
+          "end": 14,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e145:0:16",
+          "source_element_index": 145,
+          "start": 0,
+          "end": 16,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e146:0:28",
+          "source_element_index": 146,
+          "start": 0,
+          "end": 28,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e147:0:4",
+          "source_element_index": 147,
+          "start": 0,
+          "end": 4,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e148:0:10",
+          "source_element_index": 148,
+          "start": 0,
+          "end": 10,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e149:0:6",
+          "source_element_index": 149,
+          "start": 0,
+          "end": 6,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e150:0:23",
+          "source_element_index": 150,
+          "start": 0,
+          "end": 23,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e151:0:27",
+          "source_element_index": 151,
+          "start": 0,
+          "end": 27,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e152:0:27",
+          "source_element_index": 152,
+          "start": 0,
+          "end": 27,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e153:0:33",
+          "source_element_index": 153,
+          "start": 0,
+          "end": 33,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e154:0:16",
+          "source_element_index": 154,
+          "start": 0,
+          "end": 16,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e155:0:16",
+          "source_element_index": 155,
+          "start": 0,
+          "end": 16,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e156:0:8",
+          "source_element_index": 156,
+          "start": 0,
+          "end": 8,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e156:8:32",
+          "source_element_index": 156,
+          "start": 8,
+          "end": 32,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e157:0:33",
+          "source_element_index": 157,
+          "start": 0,
+          "end": 33,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e158:0:21",
+          "source_element_index": 158,
+          "start": 0,
+          "end": 21,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e159:0:33",
+          "source_element_index": 159,
+          "start": 0,
+          "end": 33,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e160:0:22",
+          "source_element_index": 160,
+          "start": 0,
+          "end": 22,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e161:0:78",
+          "source_element_index": 161,
+          "start": 0,
+          "end": 78,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e162:0:28",
+          "source_element_index": 162,
+          "start": 0,
+          "end": 28,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e163:0:68",
+          "source_element_index": 163,
+          "start": 0,
+          "end": 68,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e164:0:56",
+          "source_element_index": 164,
+          "start": 0,
+          "end": 56,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e165:0:57",
+          "source_element_index": 165,
+          "start": 0,
+          "end": 57,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e166:0:33",
+          "source_element_index": 166,
+          "start": 0,
+          "end": 33,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e167:0:29",
+          "source_element_index": 167,
+          "start": 0,
+          "end": 29,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e168:0:110",
+          "source_element_index": 168,
+          "start": 0,
+          "end": 110,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e169:0:27",
+          "source_element_index": 169,
+          "start": 0,
+          "end": 27,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e170:0:24",
+          "source_element_index": 170,
+          "start": 0,
+          "end": 24,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e171:0:20",
+          "source_element_index": 171,
+          "start": 0,
+          "end": 20,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e172:0:38",
+          "source_element_index": 172,
+          "start": 0,
+          "end": 38,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e173:0:15",
+          "source_element_index": 173,
+          "start": 0,
+          "end": 15,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e173:15:22",
+          "source_element_index": 173,
+          "start": 15,
+          "end": 22,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e174:0:88",
+          "source_element_index": 174,
+          "start": 0,
+          "end": 88,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e175:0:19",
+          "source_element_index": 175,
+          "start": 0,
+          "end": 19,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e176:0:10",
+          "source_element_index": 176,
+          "start": 0,
+          "end": 10,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e176:10:61",
+          "source_element_index": 176,
+          "start": 10,
+          "end": 61,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e177:0:22",
+          "source_element_index": 177,
+          "start": 0,
+          "end": 22,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e178:0:44",
+          "source_element_index": 178,
+          "start": 0,
+          "end": 44,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e179:0:38",
+          "source_element_index": 179,
+          "start": 0,
+          "end": 38,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e180:0:47",
+          "source_element_index": 180,
+          "start": 0,
+          "end": 47,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e181:0:36",
+          "source_element_index": 181,
+          "start": 0,
+          "end": 36,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e182:0:10",
+          "source_element_index": 182,
+          "start": 0,
+          "end": 10,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e182:10:32",
+          "source_element_index": 182,
+          "start": 10,
+          "end": 32,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e183:0:8",
+          "source_element_index": 183,
+          "start": 0,
+          "end": 8,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e184:0:8",
+          "source_element_index": 184,
+          "start": 0,
+          "end": 8,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e185:0:9",
+          "source_element_index": 185,
+          "start": 0,
+          "end": 9,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e186:0:10",
+          "source_element_index": 186,
+          "start": 0,
+          "end": 10,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e187:0:57",
+          "source_element_index": 187,
+          "start": 0,
+          "end": 57,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e188:0:41",
+          "source_element_index": 188,
+          "start": 0,
+          "end": 41,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e189:0:31",
+          "source_element_index": 189,
+          "start": 0,
+          "end": 31,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e190:0:174",
+          "source_element_index": 190,
+          "start": 0,
+          "end": 174,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e191:0:201",
+          "source_element_index": 191,
+          "start": 0,
+          "end": 201,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e192:0:51",
+          "source_element_index": 192,
+          "start": 0,
+          "end": 51,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e193:0:8",
+          "source_element_index": 193,
+          "start": 0,
+          "end": 8,
+          "section": "interests",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e193:8:29",
+          "source_element_index": 193,
+          "start": 8,
+          "end": 29,
+          "section": "interests",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e194:0:7",
+          "source_element_index": 194,
+          "start": 0,
+          "end": 7,
+          "section": "interests",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e195:0:12",
+          "source_element_index": 195,
+          "start": 0,
+          "end": 12,
+          "section": "interests",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e196:0:13",
+          "source_element_index": 196,
+          "start": 0,
+          "end": 13,
+          "section": "interests",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e197:0:27",
+          "source_element_index": 197,
+          "start": 0,
+          "end": 27,
+          "section": "interests",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e198:0:11",
+          "source_element_index": 198,
+          "start": 0,
+          "end": 11,
+          "section": "interests",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e199:0:20",
+          "source_element_index": 199,
+          "start": 0,
+          "end": 20,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e200:0:19",
+          "source_element_index": 200,
+          "start": 0,
+          "end": 19,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e201:0:19",
+          "source_element_index": 201,
+          "start": 0,
+          "end": 19,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e202:0:48",
+          "source_element_index": 202,
+          "start": 0,
+          "end": 48,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e203:0:42",
+          "source_element_index": 203,
+          "start": 0,
+          "end": 42,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e204:0:44",
+          "source_element_index": 204,
+          "start": 0,
+          "end": 44,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e205:0:62",
+          "source_element_index": 205,
+          "start": 0,
+          "end": 62,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e206:0:40",
+          "source_element_index": 206,
+          "start": 0,
+          "end": 40,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e207:0:20",
+          "source_element_index": 207,
+          "start": 0,
+          "end": 20,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e208:0:22",
+          "source_element_index": 208,
+          "start": 0,
+          "end": 22,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e209:0:24",
+          "source_element_index": 209,
+          "start": 0,
+          "end": 24,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        }
+      ]
+    },
+    "document_scope": {
+      "kind": "likely_resume",
+      "candidate_resume": true,
+      "reason": "Contact details, multiple resume section families and dated history; provisional scope only",
+      "human_verified": false
+    },
+    "source_inventory_sha256": "7e08e333be8e036e077f616b46ea424bb44d93c895be62d494e6061c7e5dc40b",
+    "field_evidence": {
+      "contact.full_name": [
+        "e2:0:18",
+        "e3:0:10",
+        "e4:0:22",
+        "e156:8:32",
+        "e157:0:33",
+        "e158:0:21",
+        "e159:0:33",
+        "e160:0:22",
+        "e161:0:78",
+        "e162:0:28",
+        "e163:0:68",
+        "e164:0:56",
+        "e165:0:57",
+        "e166:0:33",
+        "e167:0:29",
+        "e168:0:110",
+        "e169:0:27",
+        "e170:0:24",
+        "e171:0:20",
+        "e172:0:38",
+        "e200:0:19",
+        "e201:0:19",
+        "e202:0:48",
+        "e203:0:42",
+        "e204:0:44",
+        "e205:0:62",
+        "e206:0:40",
+        "e207:0:20",
+        "e208:0:22",
+        "e209:0:24"
+      ],
+      "contact.email": [
+        "e2:0:18",
+        "e3:0:10",
+        "e4:0:22",
+        "e156:8:32",
+        "e157:0:33",
+        "e158:0:21",
+        "e159:0:33",
+        "e160:0:22",
+        "e161:0:78",
+        "e162:0:28",
+        "e163:0:68",
+        "e164:0:56",
+        "e165:0:57",
+        "e166:0:33",
+        "e167:0:29",
+        "e168:0:110",
+        "e169:0:27",
+        "e170:0:24",
+        "e171:0:20",
+        "e172:0:38",
+        "e200:0:19",
+        "e201:0:19",
+        "e202:0:48",
+        "e203:0:42",
+        "e204:0:44",
+        "e205:0:62",
+        "e206:0:40",
+        "e207:0:20",
+        "e208:0:22",
+        "e209:0:24"
+      ],
+      "contact.phone": [
+        "e2:0:18",
+        "e3:0:10",
+        "e4:0:22",
+        "e156:8:32",
+        "e157:0:33",
+        "e158:0:21",
+        "e159:0:33",
+        "e160:0:22",
+        "e161:0:78",
+        "e162:0:28",
+        "e163:0:68",
+        "e164:0:56",
+        "e165:0:57",
+        "e166:0:33",
+        "e167:0:29",
+        "e168:0:110",
+        "e169:0:27",
+        "e170:0:24",
+        "e171:0:20",
+        "e172:0:38",
+        "e200:0:19",
+        "e201:0:19",
+        "e202:0:48",
+        "e203:0:42",
+        "e204:0:44",
+        "e205:0:62",
+        "e206:0:40",
+        "e207:0:20",
+        "e208:0:22",
+        "e209:0:24"
+      ],
+      "contact.location": [
+        "e2:0:18",
+        "e3:0:10",
+        "e4:0:22",
+        "e156:8:32",
+        "e157:0:33",
+        "e158:0:21",
+        "e159:0:33",
+        "e160:0:22",
+        "e161:0:78",
+        "e162:0:28",
+        "e163:0:68",
+        "e164:0:56",
+        "e165:0:57",
+        "e166:0:33",
+        "e167:0:29",
+        "e168:0:110",
+        "e169:0:27",
+        "e170:0:24",
+        "e171:0:20",
+        "e172:0:38",
+        "e200:0:19",
+        "e201:0:19",
+        "e202:0:48",
+        "e203:0:42",
+        "e204:0:44",
+        "e205:0:62",
+        "e206:0:40",
+        "e207:0:20",
+        "e208:0:22",
+        "e209:0:24"
+      ],
+      "summary": [
+        "e5:8:975",
+        "e6:0:100",
+        "e7:0:14",
+        "e8:0:61"
+      ],
+      "total_experience_years": [
+        "e5:8:975"
+      ],
+      "certifications[0].name": [
+        "e173:15:22",
+        "e174:0:88",
+        "e175:0:19"
+      ],
+      "languages[0]": [
+        "e182:10:32"
+      ],
+      "languages[1]": [
+        "e183:0:8"
+      ],
+      "languages[2]": [
+        "e184:0:8"
+      ],
+      "languages[3]": [
+        "e185:0:9"
+      ],
+      "languages[4]": [
+        "e186:0:10"
+      ],
+      "languages[5]": [
+        "e187:0:57"
+      ],
+      "languages[6]": [
+        "e188:0:41"
+      ],
+      "languages[7]": [
+        "e189:0:31"
+      ],
+      "languages[8]": [
+        "e190:0:174"
+      ],
+      "languages[9]": [
+        "e191:0:201"
+      ],
+      "languages[10]": [
+        "e192:0:51"
+      ]
+    },
+    "record_reviews": [
+      {
+        "category": "experience",
+        "entry_id": "experience-1",
+        "source_ids": [
+          "e9:11:53",
+          "e10:0:36",
+          "e11:0:118",
+          "e12:0:88",
+          "e13:0:126",
+          "e14:0:146",
+          "e15:0:207",
+          "e16:0:166",
+          "e17:0:154",
+          "e18:0:161",
+          "e19:0:146",
+          "e20:0:131",
+          "e21:0:119",
+          "e22:0:207",
+          "e23:0:271",
+          "e24:0:127",
+          "e25:0:70",
+          "e26:0:56",
+          "e27:0:159",
+          "e28:0:126",
+          "e29:0:50",
+          "e30:0:111",
+          "e31:0:88",
+          "e32:0:68",
+          "e33:0:133",
+          "e34:0:113",
+          "e35:0:144",
+          "e36:0:88",
+          "e37:0:132",
+          "e38:0:172",
+          "e39:0:93",
+          "e40:0:40",
+          "e41:0:63",
+          "e42:0:70",
+          "e43:0:93",
+          "e44:0:60",
+          "e45:0:70",
+          "e46:0:74",
+          "e47:0:86",
+          "e48:0:77",
+          "e49:0:65",
+          "e50:0:75",
+          "e51:0:170",
+          "e52:0:86",
+          "e53:0:139",
+          "e54:0:83",
+          "e55:0:63",
+          "e56:0:67",
+          "e57:0:85",
+          "e58:0:93",
+          "e59:0:88",
+          "e60:0:63",
+          "e61:0:67",
+          "e62:0:91",
+          "e63:0:100",
+          "e64:0:60",
+          "e65:0:69",
+          "e66:0:52",
+          "e67:0:57",
+          "e68:0:91",
+          "e69:0:66",
+          "e70:0:50",
+          "e71:0:86",
+          "e72:0:85",
+          "e73:0:53",
+          "e74:0:80",
+          "e75:0:74",
+          "e76:0:60",
+          "e77:0:77",
+          "e78:0:68",
+          "e79:0:98",
+          "e80:0:84",
+          "e81:0:60",
+          "e82:0:43",
+          "e83:0:63",
+          "e84:0:67",
+          "e85:0:91",
+          "e86:0:100",
+          "e87:0:50",
+          "e88:0:148",
+          "e89:0:118",
+          "e90:0:71",
+          "e91:0:192",
+          "e92:0:117",
+          "e93:0:99",
+          "e94:0:125",
+          "e95:0:111",
+          "e96:0:112",
+          "e97:0:109",
+          "e98:0:116",
+          "e99:0:60",
+          "e100:0:39",
+          "e101:0:68",
+          "e102:0:111",
+          "e103:0:95",
+          "e104:0:147",
+          "e105:0:82",
+          "e106:0:90",
+          "e107:0:134",
+          "e108:0:66",
+          "e109:0:122",
+          "e110:0:60",
+          "e111:0:80",
+          "e112:0:78",
+          "e113:0:71",
+          "e114:0:88",
+          "e115:0:143",
+          "e116:0:108",
+          "e117:0:221",
+          "e118:0:71",
+          "e119:0:37",
+          "e120:0:71",
+          "e121:0:51",
+          "e122:0:124",
+          "e123:0:88",
+          "e124:0:65",
+          "e125:0:50",
+          "e126:0:45",
+          "e127:0:77",
+          "e128:0:58",
+          "e129:0:40",
+          "e130:0:37",
+          "e131:0:61",
+          "e132:0:58",
+          "e133:0:32",
+          "e134:0:46",
+          "e135:0:114",
+          "e136:0:21",
+          "e137:0:17",
+          "e138:0:15",
+          "e139:0:17",
+          "e140:0:23",
+          "e141:0:30",
+          "e142:0:22",
+          "e143:0:34",
+          "e144:0:14",
+          "e145:0:16",
+          "e146:0:28",
+          "e147:0:4",
+          "e148:0:10",
+          "e149:0:6",
+          "e150:0:23",
+          "e151:0:27",
+          "e152:0:27",
+          "e153:0:33",
+          "e154:0:16",
+          "e155:0:16"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "education",
+        "entry_id": "education-1",
+        "source_ids": [
+          "e176:10:61",
+          "e177:0:22",
+          "e178:0:44",
+          "e179:0:38",
+          "e180:0:47",
+          "e181:0:36"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "certifications",
+        "entry_id": "certifications-1",
+        "source_ids": [
+          "e173:15:22",
+          "e174:0:88",
+          "e175:0:19"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      }
+    ],
+    "missing_required_fields": [
+      "experience[0].company",
+      "experience[0].role",
+      "education[0].institution",
+      "education[0].degree"
+    ],
+    "warnings": [
+      "Schema validity and field completion do not establish extraction or relationship accuracy.",
+      "Handoff confidence scores are fixed heuristics, not calibrated probabilities.",
+      "Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields."
+    ],
+    "unmapped_blocks": [
+      {
+        "source_id": "e156:0:8",
+        "category": "personal_information",
+        "text": "Contact ",
+        "page_number": null
+      },
+      {
+        "source_id": "e199:0:20",
+        "category": "personal_information",
+        "text": "PERSONAL INFORMATION",
+        "page_number": null
+      },
+      {
+        "source_id": "e5:0:8",
+        "category": "summary",
+        "text": "SUMMARY\t",
+        "page_number": null
+      },
+      {
+        "source_id": "e9:0:11",
+        "category": "experience",
+        "text": "EXPERIENCE\t",
+        "page_number": null
+      },
+      {
+        "source_id": "e9:11:53",
+        "category": "experience",
+        "text": "Project Manager – CCaaS, 05/2025 – 02/2026",
+        "page_number": null
+      },
+      {
+        "source_id": "e10:0:36",
+        "category": "experience",
+        "text": "Servion Global Solutions, Dubai, UAE",
+        "page_number": null
+      },
+      {
+        "source_id": "e11:0:118",
+        "category": "experience",
+        "text": "Customized delivery methodologies to specific client goals, ensuring tailored solutions and optimized project outcomes",
+        "page_number": null
+      },
+      {
+        "source_id": "e12:0:88",
+        "category": "experience",
+        "text": "Established robust program governance frameworks to manage multi-vendor transformations.",
+        "page_number": null
+      },
+      {
+        "source_id": "e13:0:126",
+        "category": "experience",
+        "text": "Led the strategic Cloud Migration of legacy on-premise systems to Genesys Cloud CX within the highly regulated banking sector.",
+        "page_number": null
+      },
+      {
+        "source_id": "e14:0:146",
+        "category": "experience",
+        "text": "Defined and tracked critical KPIs to rigorously evaluate project performance and drive data-driven strategies for continuous process optimization.",
+        "page_number": null
+      },
+      {
+        "source_id": "e15:0:207",
+        "category": "experience",
+        "text": "Steered end-to-end business transformation and technology road mapping, overseeing the full lifecycle from strategic development and implementation to operational execution and high-scale technical delivery.",
+        "page_number": null
+      },
+      {
+        "source_id": "e16:0:166",
+        "category": "experience",
+        "text": "Orchestrated the organizational transition from traditional Waterfall methodologies to Agile frameworks, enhancing delivery speed, flexibility, and team collaboration",
+        "page_number": null
+      },
+      {
+        "source_id": "e17:0:154",
+        "category": "experience",
+        "text": "Streamlined project lifecycles as a Scrum Master, implementing Agile best practices to improve team productivity and ensure high-quality technical output.",
+        "page_number": null
+      },
+      {
+        "source_id": "e18:0:161",
+        "category": "experience",
+        "text": "Translated complex business needs into actionable User Stories while maintaining a refined and comprehensive Product Backlog to drive consistent sprint progress.",
+        "page_number": null
+      },
+      {
+        "source_id": "e19:0:146",
+        "category": "experience",
+        "text": "Lead end-to-end delivery of complex Contact Center projects across the MEA region, ensuring strict adherence to project scope, schedule, and cost.",
+        "page_number": null
+      },
+      {
+        "source_id": "e20:0:131",
+        "category": "experience",
+        "text": "Led cross-functional teams and third-party vendors (Avaya, Genesys) to deliver a 5,000-seat migration on time and 10% under budget.",
+        "page_number": null
+      },
+      {
+        "source_id": "e21:0:119",
+        "category": "experience",
+        "text": "Managed the full project lifecycle using Agile methodologies, ensuring 100% alignment with Business Architecture goals.",
+        "page_number": null
+      },
+      {
+        "source_id": "e22:0:207",
+        "category": "experience",
+        "text": "Oversee the procurement, deployment, installation, configuration, and testing of the SBC (Session Border Controller), ensuring seamless network transition and functionality for the Genesys Cloud CX solution.",
+        "page_number": null
+      },
+      {
+        "source_id": "e23:0:271",
+        "category": "experience",
+        "text": "Oversee the procurement, deployment, and management of large Edge Devices & SIP trunks, including the strategic execution of server replacement projects (swapping small servers for larger units) to enhance infrastructure capacity and performance for the Genesys Cloud CX.",
+        "page_number": null
+      },
+      {
+        "source_id": "e24:0:127",
+        "category": "experience",
+        "text": "Expertise in advanced Contact Center technologies, including IVR, CTI, Speech NLP, Voice Biometrics, AI, and Chatbot Solutions.",
+        "page_number": null
+      },
+      {
+        "source_id": "e25:0:70",
+        "category": "experience",
+        "text": "Delivered cross-platform solutions across Avaya, Genesys Cloud CX, and",
+        "page_number": null
+      },
+      {
+        "source_id": "e26:0:56",
+        "category": "experience",
+        "text": "Nuance Speech/Security/Chatbot suites in the ME regions.",
+        "page_number": null
+      },
+      {
+        "source_id": "e27:0:159",
+        "category": "experience",
+        "text": "Facilitate critical collaboration and alignment between internal teams, including Sales, Delivery Head, Functional Managers, and external client project teams.",
+        "page_number": null
+      },
+      {
+        "source_id": "e28:0:126",
+        "category": "experience",
+        "text": "Prepare and present mandatory weekly project status reports and project metrics presentations for the MEA delivery leadership.",
+        "page_number": null
+      },
+      {
+        "source_id": "e29:0:50",
+        "category": "experience",
+        "text": "Report directly to the Delivery Head for Projects.",
+        "page_number": null
+      },
+      {
+        "source_id": "e30:0:111",
+        "category": "experience",
+        "text": "Collaborate with Pre-Sales teams to lead effort estimation activities based on comprehensive project expertise.",
+        "page_number": null
+      },
+      {
+        "source_id": "e31:0:88",
+        "category": "experience",
+        "text": "Responsible for managing critical project financials and resource & revenue forecasting.",
+        "page_number": null
+      },
+      {
+        "source_id": "e32:0:68",
+        "category": "experience",
+        "text": "Developing resource category plans and accurate revenue forecasting.",
+        "page_number": null
+      },
+      {
+        "source_id": "e33:0:133",
+        "category": "experience",
+        "text": "Manage all administrative project components, including raising resource requests and processing milestone-based invoice submissions.",
+        "page_number": null
+      },
+      {
+        "source_id": "e34:0:113",
+        "category": "experience",
+        "text": "Project Manager (Techno-functional role)– Contact Center, 05/2024 - 05/2025  Binary Link Technologies, Dubai, UAE",
+        "page_number": null
+      },
+      {
+        "source_id": "e35:0:144",
+        "category": "experience",
+        "text": "Customized project methodologies to suit specific client needs and objectives, delivering tailored solutions and maximizing client satisfaction.",
+        "page_number": null
+      },
+      {
+        "source_id": "e36:0:88",
+        "category": "experience",
+        "text": "Established robust program governance frameworks to manage multi-vendor transformations.",
+        "page_number": null
+      },
+      {
+        "source_id": "e37:0:132",
+        "category": "experience",
+        "text": "Established and monitored key performance indicators KPIs to evaluate project success, providing a basis for continuous improvement.",
+        "page_number": null
+      },
+      {
+        "source_id": "e38:0:172",
+        "category": "experience",
+        "text": "Directing business transformation, technology planning, strategy development, implementation, operational transformation execution and technical solution delivery function.",
+        "page_number": null
+      },
+      {
+        "source_id": "e39:0:93",
+        "category": "experience",
+        "text": "Managed shift towards Agile approaches in place of conventional project management practices.",
+        "page_number": null
+      },
+      {
+        "source_id": "e40:0:40",
+        "category": "experience",
+        "text": "Streamlined processes as a Scrum Master.",
+        "page_number": null
+      },
+      {
+        "source_id": "e41:0:63",
+        "category": "experience",
+        "text": "Crafted user stories while maintaining a comprehensive backlog.",
+        "page_number": null
+      },
+      {
+        "source_id": "e42:0:70",
+        "category": "experience",
+        "text": "Worked with business representatives to craft impactful event content.",
+        "page_number": null
+      },
+      {
+        "source_id": "e43:0:93",
+        "category": "experience",
+        "text": "Tracked sprint progress using burn-down charts, made necessary adjustments to meet deadlines.",
+        "page_number": null
+      },
+      {
+        "source_id": "e44:0:60",
+        "category": "experience",
+        "text": "Collaborated with Product Owners to refine project backlogs.",
+        "page_number": null
+      },
+      {
+        "source_id": "e45:0:70",
+        "category": "experience",
+        "text": "Collaborated with clients to understand specific project requirements.",
+        "page_number": null
+      },
+      {
+        "source_id": "e46:0:74",
+        "category": "experience",
+        "text": "Aligned IVR system with organizational business and technology strategies.",
+        "page_number": null
+      },
+      {
+        "source_id": "e47:0:86",
+        "category": "experience",
+        "text": "Explore automation opportunities within the IVR system to enhance customer experience.",
+        "page_number": null
+      },
+      {
+        "source_id": "e48:0:77",
+        "category": "experience",
+        "text": "Facilitated team understanding of IVR call flows for accurate implementation.",
+        "page_number": null
+      },
+      {
+        "source_id": "e49:0:65",
+        "category": "experience",
+        "text": "Facilitated development team's comprehension of business context.",
+        "page_number": null
+      },
+      {
+        "source_id": "e50:0:75",
+        "category": "experience",
+        "text": "Explain technical implementation to gather business stakeholders' sign-off.",
+        "page_number": null
+      },
+      {
+        "source_id": "e51:0:170",
+        "category": "experience",
+        "text": "Ensure that the IVR system complies with security and data protection requirements, working closely with security teams to address any vulnerabilities or compliance gaps.",
+        "page_number": null
+      },
+      {
+        "source_id": "e52:0:86",
+        "category": "experience",
+        "text": "Supported the development of an efficient IVR system for enhanced customer experience.",
+        "page_number": null
+      },
+      {
+        "source_id": "e53:0:139",
+        "category": "experience",
+        "text": "Provide ongoing support for the production IVR system, addressing any technical issues, performance concerns, and scalability requirements.",
+        "page_number": null
+      },
+      {
+        "source_id": "e54:0:83",
+        "category": "experience",
+        "text": "Ensured incident resolution to uphold the operational efficiency of the IVR system.",
+        "page_number": null
+      },
+      {
+        "source_id": "e55:0:63",
+        "category": "experience",
+        "text": "Performed data wrangling to ensure data readiness for analysis.",
+        "page_number": null
+      },
+      {
+        "source_id": "e56:0:67",
+        "category": "experience",
+        "text": "Collaborated with AI team to implement machine learning strategies.",
+        "page_number": null
+      },
+      {
+        "source_id": "e57:0:85",
+        "category": "experience",
+        "text": "Created data visualization reports utilizing NumPy, Pandas, and Matplotlib libraries.",
+        "page_number": null
+      },
+      {
+        "source_id": "e58:0:93",
+        "category": "experience",
+        "text": "Oversaw the transition from traditional project management methodologies to Agile frameworks.",
+        "page_number": null
+      },
+      {
+        "source_id": "e59:0:88",
+        "category": "experience",
+        "text": "Established robust program governance frameworks to manage multi-vendor transformations.",
+        "page_number": null
+      },
+      {
+        "source_id": "e60:0:63",
+        "category": "experience",
+        "text": "Crafted user stories while maintaining a comprehensive backlog.",
+        "page_number": null
+      },
+      {
+        "source_id": "e61:0:67",
+        "category": "experience",
+        "text": "Created event content in collaboration with product owner/business.",
+        "page_number": null
+      },
+      {
+        "source_id": "e62:0:91",
+        "category": "experience",
+        "text": "Monitored sprint progress through burn-down charts, adjusting strategies to meet deadlines.",
+        "page_number": null
+      },
+      {
+        "source_id": "e63:0:100",
+        "category": "experience",
+        "text": "Worked closely with Product Owners to refine backlogs and define sprint goals for project alignment.",
+        "page_number": null
+      },
+      {
+        "source_id": "e64:0:60",
+        "category": "experience",
+        "text": "Translated business requirements into technical IVR designs.",
+        "page_number": null
+      },
+      {
+        "source_id": "e65:0:69",
+        "category": "experience",
+        "text": "Liaised with business teams to capture and document IVR requirements.",
+        "page_number": null
+      },
+      {
+        "source_id": "e66:0:52",
+        "category": "experience",
+        "text": "Identify automation opportunities within IVR system.",
+        "page_number": null
+      },
+      {
+        "source_id": "e67:0:57",
+        "category": "experience",
+        "text": "Conducted walk-through sessions for the development team.",
+        "page_number": null
+      },
+      {
+        "source_id": "e68:0:91",
+        "category": "experience",
+        "text": "Assisted development team in grasping business context and technical details of IVR system.",
+        "page_number": null
+      },
+      {
+        "source_id": "e69:0:66",
+        "category": "experience",
+        "text": "Obtained stakeholder sign-off to align with business requirements.",
+        "page_number": null
+      },
+      {
+        "source_id": "e70:0:50",
+        "category": "experience",
+        "text": "Ensured IVR code compliance with coding standards.",
+        "page_number": null
+      },
+      {
+        "source_id": "e71:0:86",
+        "category": "experience",
+        "text": "Facilitate alignment of IVR designs and actual system through developer collaboration.",
+        "page_number": null
+      },
+      {
+        "source_id": "e72:0:85",
+        "category": "experience",
+        "text": "Ensured the IVR system fulfilled user requirements through comprehensive UAT support.",
+        "page_number": null
+      },
+      {
+        "source_id": "e73:0:53",
+        "category": "experience",
+        "text": "Ensured effective issue resolution in the IVR system.",
+        "page_number": null
+      },
+      {
+        "source_id": "e74:0:80",
+        "category": "experience",
+        "text": "Ensured comprehensive technology landscape compatibility during IVR integration.",
+        "page_number": null
+      },
+      {
+        "source_id": "e75:0:74",
+        "category": "experience",
+        "text": "Collaborated with various teams to resolve integration issues efficiently.",
+        "page_number": null
+      },
+      {
+        "source_id": "e76:0:60",
+        "category": "experience",
+        "text": "Maintained consistent support for the production IVR system.",
+        "page_number": null
+      },
+      {
+        "source_id": "e77:0:77",
+        "category": "experience",
+        "text": "Enhanced incident resolution procedures to ensure ongoing system reliability.",
+        "page_number": null
+      },
+      {
+        "source_id": "e78:0:68",
+        "category": "experience",
+        "text": "Ensure IVR system adheres to security and data protection standards.",
+        "page_number": null
+      },
+      {
+        "source_id": "e79:0:98",
+        "category": "experience",
+        "text": "Managed digital touchpoints for Etisalat including SMS services, web interfaces and IVR solutions.",
+        "page_number": null
+      },
+      {
+        "source_id": "e80:0:84",
+        "category": "experience",
+        "text": "Designed and implemented solutions for Etisalat's online sales-and-service channels.",
+        "page_number": null
+      },
+      {
+        "source_id": "e81:0:60",
+        "category": "experience",
+        "text": "Executed comprehensive evaluation and deployment of OSS/BSS.",
+        "page_number": null
+      },
+      {
+        "source_id": "e82:0:43",
+        "category": "experience",
+        "text": "Led project coordination as a Scrum Master.",
+        "page_number": null
+      },
+      {
+        "source_id": "e83:0:63",
+        "category": "experience",
+        "text": "Crafted user stories while maintaining a comprehensive backlog.",
+        "page_number": null
+      },
+      {
+        "source_id": "e84:0:67",
+        "category": "experience",
+        "text": "Created event content in collaboration with product owner/business.",
+        "page_number": null
+      },
+      {
+        "source_id": "e85:0:91",
+        "category": "experience",
+        "text": "Monitored sprint progress through burn-down charts, adjusting strategies to meet deadlines.",
+        "page_number": null
+      },
+      {
+        "source_id": "e86:0:100",
+        "category": "experience",
+        "text": "Worked closely with Product Owners to refine backlogs and define sprint goals for project alignment.",
+        "page_number": null
+      },
+      {
+        "source_id": "e87:0:50",
+        "category": "experience",
+        "text": "Developed and maintained IVR 101 main application.",
+        "page_number": null
+      },
+      {
+        "source_id": "e88:0:148",
+        "category": "experience",
+        "text": "Led architectural design and development efforts for enterprise/ SMB - Business application solutions, improving system scalability and performance.",
+        "page_number": null
+      },
+      {
+        "source_id": "e89:0:118",
+        "category": "experience",
+        "text": "Integrated custom APIs and strategies for third-party services, streamlining processes and improving user experiences.",
+        "page_number": null
+      },
+      {
+        "source_id": "e90:0:71",
+        "category": "experience",
+        "text": "Delivered detailed project plans and status reports for all activities.",
+        "page_number": null
+      },
+      {
+        "source_id": "e91:0:192",
+        "category": "experience",
+        "text": "Provided weekly detailed project reports to keep manager informed on milestones and updates. Implemented responsive design principles, ensuring optimal user experience across various channels.",
+        "page_number": null
+      },
+      {
+        "source_id": "e92:0:117",
+        "category": "experience",
+        "text": "Designed and executed rigorous testing protocols to identify and rectify application bugs, elevating product quality.",
+        "page_number": null
+      },
+      {
+        "source_id": "e93:0:99",
+        "category": "experience",
+        "text": "Crafted detailed technical documentation to support application deployment, usage, and maintenance.",
+        "page_number": null
+      },
+      {
+        "source_id": "e94:0:125",
+        "category": "experience",
+        "text": "Facilitated knowledge sharing sessions and workshops to mentor junior developers and foster a culture of continuous learning.",
+        "page_number": null
+      },
+      {
+        "source_id": "e95:0:111",
+        "category": "experience",
+        "text": "Managed version control and code reviews to maintain high-quality code standards across all development stages.",
+        "page_number": null
+      },
+      {
+        "source_id": "e96:0:112",
+        "category": "experience",
+        "text": "Optimized application performance through comprehensive testing, debugging, and refining based on user feedback.",
+        "page_number": null
+      },
+      {
+        "source_id": "e97:0:109",
+        "category": "experience",
+        "text": "Designed and implemented secure authentication and authorization mechanisms to safeguard sensitive user data.",
+        "page_number": null
+      },
+      {
+        "source_id": "e98:0:116",
+        "category": "experience",
+        "text": "Led development team in designing, coding, and implementing scalable applications tailored to client specifications.",
+        "page_number": null
+      },
+      {
+        "source_id": "e99:0:60",
+        "category": "experience",
+        "text": "Estimated work effort, timelines, and resource requirements.",
+        "page_number": null
+      },
+      {
+        "source_id": "e100:0:39",
+        "category": "experience",
+        "text": "Ensured platform operational stability.",
+        "page_number": null
+      },
+      {
+        "source_id": "e101:0:68",
+        "category": "experience",
+        "text": "Conducted continuous research and development for feature selection.",
+        "page_number": null
+      },
+      {
+        "source_id": "e102:0:111",
+        "category": "experience",
+        "text": "Played a pivotal role in creating and upholding standards to maintain connectivity despite development changes.",
+        "page_number": null
+      },
+      {
+        "source_id": "e103:0:95",
+        "category": "experience",
+        "text": "Implemented robust security protocols to safeguard client data and prevent unauthorized access.",
+        "page_number": null
+      },
+      {
+        "source_id": "e104:0:147",
+        "category": "experience",
+        "text": "Facilitate in transition of BASE Telecom's (Big Telecom company in Belgium) IVR infrastructure from Nortel MPS 1000 platform due to end of support.",
+        "page_number": null
+      },
+      {
+        "source_id": "e105:0:82",
+        "category": "experience",
+        "text": "To understand the existing system and design and incorporated in new IVR call flow",
+        "page_number": null
+      },
+      {
+        "source_id": "e106:0:90",
+        "category": "experience",
+        "text": "Provide video presentation of IVR call flow to the client followed by conditional sign-off",
+        "page_number": null
+      },
+      {
+        "source_id": "e107:0:134",
+        "category": "experience",
+        "text": "IVR call flow development as per LLD and works along with ITEL and IN team to gather the information which is required for integration",
+        "page_number": null
+      },
+      {
+        "source_id": "e108:0:66",
+        "category": "experience",
+        "text": "Created 'Turkish Standard Phrase set' Bundle for Turkish Language.",
+        "page_number": null
+      },
+      {
+        "source_id": "e109:0:122",
+        "category": "experience",
+        "text": "Developed JAVA servlet to introduce dynamic IVR menus, configurable placeholders based on time stamp and various features.",
+        "page_number": null
+      },
+      {
+        "source_id": "e110:0:60",
+        "category": "experience",
+        "text": "Addressed and resolved application defects in JIRA promptly.",
+        "page_number": null
+      },
+      {
+        "source_id": "e111:0:80",
+        "category": "experience",
+        "text": "Implemented change to enable rolled over AOD logs within the application server.",
+        "page_number": null
+      },
+      {
+        "source_id": "e112:0:78",
+        "category": "experience",
+        "text": "Implemented updated applications on Apache Tomcat servers in lab environments.",
+        "page_number": null
+      },
+      {
+        "source_id": "e113:0:71",
+        "category": "experience",
+        "text": "Utilized Citrix server for deploying OD application into Avaya servers.",
+        "page_number": null
+      },
+      {
+        "source_id": "e114:0:88",
+        "category": "experience",
+        "text": "Facilitated configuration tasks during the installation of Avaya Aura Experience Portal.",
+        "page_number": null
+      },
+      {
+        "source_id": "e115:0:143",
+        "category": "experience",
+        "text": "Analyzed user feedback and usage data to identify areas for improvement, leading to targeted enhancements that increased customer satisfaction.",
+        "page_number": null
+      },
+      {
+        "source_id": "e116:0:108",
+        "category": "experience",
+        "text": "Led IVR call flow design and development of SCB migration project in India, Sri Lanka, and Singapore for CC.",
+        "page_number": null
+      },
+      {
+        "source_id": "e117:0:221",
+        "category": "experience",
+        "text": "Developed and implemented a bank IVR application featuring bank/card user validation, TPIN encryption and validation, CVV validation, ATM PIN validation, CTI integration, RS232 6-digit PIN encryption, and HSM integration.",
+        "page_number": null
+      },
+      {
+        "source_id": "e118:0:71",
+        "category": "experience",
+        "text": "Linked IVR Application with CCMS, EBBS and Euro-net third-party server.",
+        "page_number": null
+      },
+      {
+        "source_id": "e119:0:37",
+        "category": "experience",
+        "text": "Developed JSP code for sub-dialogues.",
+        "page_number": null
+      },
+      {
+        "source_id": "e120:0:71",
+        "category": "experience",
+        "text": "Engineered Skill Routing mechanism for Bangalore and Chennai locations.",
+        "page_number": null
+      },
+      {
+        "source_id": "e121:0:51",
+        "category": "experience",
+        "text": "Created a detailed logging mechanism for each menu.",
+        "page_number": null
+      },
+      {
+        "source_id": "e122:0:124",
+        "category": "experience",
+        "text": "Monitored technological advancements to recommend upgrades and enhancements, keeping IVR systems up-to-date and competitive.",
+        "page_number": null
+      },
+      {
+        "source_id": "e123:0:88",
+        "category": "experience",
+        "text": "Upgraded infrastructure with Nortel MPS 500 system at nine locations in India and Nepal.",
+        "page_number": null
+      },
+      {
+        "source_id": "e124:0:65",
+        "category": "experience",
+        "text": "Developed a new Avaya - Blue IVR setup with customized reporting.",
+        "page_number": null
+      },
+      {
+        "source_id": "e125:0:50",
+        "category": "experience",
+        "text": "Supported backend agents as Communication Manager.",
+        "page_number": null
+      },
+      {
+        "source_id": "e126:0:45",
+        "category": "experience",
+        "text": "Supported hardware and application functions.",
+        "page_number": null
+      },
+      {
+        "source_id": "e127:0:77",
+        "category": "experience",
+        "text": "Developed and implemented diverse SIP line prepaid and postpaid applications.",
+        "page_number": null
+      },
+      {
+        "source_id": "e128:0:58",
+        "category": "experience",
+        "text": "Participated in distributing software updates and patches.",
+        "page_number": null
+      },
+      {
+        "source_id": "e129:0:40",
+        "category": "experience",
+        "text": "Resolved advanced issues in IVR systems.",
+        "page_number": null
+      },
+      {
+        "source_id": "e130:0:37",
+        "category": "experience",
+        "text": "Liaised with third-party specialists.",
+        "page_number": null
+      },
+      {
+        "source_id": "e131:0:61",
+        "category": "experience",
+        "text": "Managed escalated calls while providing L2 technical support.",
+        "page_number": null
+      },
+      {
+        "source_id": "e132:0:58",
+        "category": "experience",
+        "text": "Collaborated closely with client manager and NOC IVR team.",
+        "page_number": null
+      },
+      {
+        "source_id": "e133:0:32",
+        "category": "experience",
+        "text": "Installed Avaya MPS 500 systems.",
+        "page_number": null
+      },
+      {
+        "source_id": "e134:0:46",
+        "category": "experience",
+        "text": "Kept server health checkup list updated daily.",
+        "page_number": null
+      },
+      {
+        "source_id": "e135:0:114",
+        "category": "experience",
+        "text": "Conducted in-depth analysis of client IT infrastructure, identifying key areas for improvement and cost reduction.",
+        "page_number": null
+      },
+      {
+        "source_id": "e136:0:21",
+        "category": "experience",
+        "text": "SKILLS\t Scrum Master",
+        "page_number": null
+      },
+      {
+        "source_id": "e137:0:17",
+        "category": "experience",
+        "text": "Change Management",
+        "page_number": null
+      },
+      {
+        "source_id": "e138:0:15",
+        "category": "experience",
+        "text": "Risk Management",
+        "page_number": null
+      },
+      {
+        "source_id": "e139:0:17",
+        "category": "experience",
+        "text": "BCP/DR Frameworks",
+        "page_number": null
+      },
+      {
+        "source_id": "e140:0:23",
+        "category": "experience",
+        "text": "Stake Holder Management",
+        "page_number": null
+      },
+      {
+        "source_id": "e141:0:30",
+        "category": "experience",
+        "text": "Strategic Thinking & Planning.",
+        "page_number": null
+      },
+      {
+        "source_id": "e142:0:22",
+        "category": "experience",
+        "text": "Operational Resilience",
+        "page_number": null
+      },
+      {
+        "source_id": "e143:0:34",
+        "category": "experience",
+        "text": "Financial Cost Control Management.",
+        "page_number": null
+      },
+      {
+        "source_id": "e144:0:14",
+        "category": "experience",
+        "text": "Data migration",
+        "page_number": null
+      },
+      {
+        "source_id": "e145:0:16",
+        "category": "experience",
+        "text": "Service delivery",
+        "page_number": null
+      },
+      {
+        "source_id": "e146:0:28",
+        "category": "experience",
+        "text": "SDLC: Agile/Waterfall/Hybrid",
+        "page_number": null
+      },
+      {
+        "source_id": "e147:0:4",
+        "category": "experience",
+        "text": "JIRA",
+        "page_number": null
+      },
+      {
+        "source_id": "e148:0:10",
+        "category": "experience",
+        "text": "Confluence",
+        "page_number": null
+      },
+      {
+        "source_id": "e149:0:6",
+        "category": "experience",
+        "text": "Citrix",
+        "page_number": null
+      },
+      {
+        "source_id": "e150:0:23",
+        "category": "experience",
+        "text": "DESC ISR cloud security",
+        "page_number": null
+      },
+      {
+        "source_id": "e151:0:27",
+        "category": "experience",
+        "text": "Data Sovereignty regulation",
+        "page_number": null
+      },
+      {
+        "source_id": "e152:0:27",
+        "category": "experience",
+        "text": "UAE Regulatory & Compliance",
+        "page_number": null
+      },
+      {
+        "source_id": "e153:0:33",
+        "category": "experience",
+        "text": "Data Privacy Law (Federal Law 45)",
+        "page_number": null
+      },
+      {
+        "source_id": "e154:0:16",
+        "category": "experience",
+        "text": "Genesys Cloud CX",
+        "page_number": null
+      },
+      {
+        "source_id": "e155:0:16",
+        "category": "experience",
+        "text": "SBC & SIP Trunks",
+        "page_number": null
+      },
+      {
+        "source_id": "e173:0:15",
+        "category": "certifications",
+        "text": "CERTIFICATIONS\t",
+        "page_number": null
+      },
+      {
+        "source_id": "e176:0:10",
+        "category": "education",
+        "text": "EDUCATION\t",
+        "page_number": null
+      },
+      {
+        "source_id": "e176:10:61",
+        "category": "education",
+        "text": "Indian Institute of Technology, Mumbai, India, 2010",
+        "page_number": null
+      },
+      {
+        "source_id": "e177:0:22",
+        "category": "education",
+        "text": "M. Tech: Communication",
+        "page_number": null
+      },
+      {
+        "source_id": "e178:0:44",
+        "category": "education",
+        "text": "Aegis School of Telecom, Mumbai, India, 2006",
+        "page_number": null
+      },
+      {
+        "source_id": "e179:0:38",
+        "category": "education",
+        "text": "Master program: Telecom and Management",
+        "page_number": null
+      },
+      {
+        "source_id": "e180:0:47",
+        "category": "education",
+        "text": "U.P. Technical University, Lucknow, India, 2004",
+        "page_number": null
+      },
+      {
+        "source_id": "e181:0:36",
+        "category": "education",
+        "text": "B. Tech: Electronics & Communication",
+        "page_number": null
+      },
+      {
+        "source_id": "e182:0:10",
+        "category": "languages",
+        "text": "LANGUAGES\t",
+        "page_number": null
+      },
+      {
+        "source_id": "e193:0:8",
+        "category": "interests",
+        "text": "HOBBIES ",
+        "page_number": null
+      },
+      {
+        "source_id": "e193:8:29",
+        "category": "interests",
+        "text": "AND INTERESTS\t Chess",
+        "page_number": null
+      },
+      {
+        "source_id": "e194:0:7",
+        "category": "interests",
+        "text": "Cricket",
+        "page_number": null
+      },
+      {
+        "source_id": "e195:0:12",
+        "category": "interests",
+        "text": "Table Tennis",
+        "page_number": null
+      },
+      {
+        "source_id": "e196:0:13",
+        "category": "interests",
+        "text": "Reading Books",
+        "page_number": null
+      },
+      {
+        "source_id": "e197:0:27",
+        "category": "interests",
+        "text": "DRIVING LICENCE\t UAE - Yes",
+        "page_number": null
+      },
+      {
+        "source_id": "e198:0:11",
+        "category": "interests",
+        "text": "India - Yes",
+        "page_number": null
+      },
+      {
+        "source_id": "e0:0:14",
+        "category": null,
+        "text": "NISHANT SAXENA",
+        "page_number": null
+      },
+      {
+        "source_id": "e1:0:18",
+        "category": null,
+        "text": "IIT Bombay, Mumbai",
+        "page_number": null
+      }
+    ],
+    "needs_review": [
+      {
+        "source_element_index": 0,
+        "start": 0,
+        "end": 14,
+        "text": "NISHANT SAXENA",
+        "page_number": null,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1307,
+        "margin": -0.0223,
+        "lane": "main",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 1,
+        "start": 0,
+        "end": 18,
+        "text": "IIT Bombay, Mumbai",
+        "page_number": null,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2303,
+        "margin": -0.0665,
+        "lane": "main",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      }
+    ]
+  },
+  "section_schemas": [
+    {
+      "category": "personal_information",
+      "label": "Personal information",
+      "records": [
+        {
+          "record_id": "personal_information",
+          "source_ids": [
+            "e2:0:18",
+            "e3:0:10",
+            "e4:0:22",
+            "e156:8:32",
+            "e157:0:33",
+            "e158:0:21",
+            "e159:0:33",
+            "e160:0:22",
+            "e161:0:78",
+            "e162:0:28",
+            "e163:0:68",
+            "e164:0:56",
+            "e165:0:57",
+            "e166:0:33",
+            "e167:0:29",
+            "e168:0:110",
+            "e169:0:27",
+            "e170:0:24",
+            "e171:0:20",
+            "e172:0:38",
+            "e200:0:19",
+            "e201:0:19",
+            "e202:0:48",
+            "e203:0:42",
+            "e204:0:44",
+            "e205:0:62",
+            "e206:0:40",
+            "e207:0:20",
+            "e208:0:22",
+            "e209:0:24"
+          ],
+          "attributes": [
+            {
+              "name": "full_name",
+              "items": [
+                {
+                  "value": "Golden Visa Holder",
+                  "evidence": [
+                    {
+                      "source_id": "e2:0:18",
+                      "quote": "Golden Visa Holder"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "email",
+              "items": [
+                {
+                  "value": "n7.saxena82@gmail.com",
+                  "evidence": [
+                    {
+                      "source_id": "e4:0:22",
+                      "quote": "n7.saxena82@gmail.com"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "phone",
+              "items": [
+                {
+                  "value": "9936636566",
+                  "evidence": [
+                    {
+                      "source_id": "e3:0:10",
+                      "quote": "9936636566"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "location",
+              "items": [
+                {
+                  "value": "India",
+                  "evidence": [
+                    {
+                      "source_id": "e200:0:19",
+                      "quote": "India"
+                    },
+                    {
+                      "source_id": "e204:0:44",
+                      "quote": "India"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "linkedin_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "github_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "portfolio_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "professional_title",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e156:0:8",
+          "quote": "Contact "
+        },
+        {
+          "source_id": "e156:8:32",
+          "quote": "Center Technologies: ACM"
+        },
+        {
+          "source_id": "e157:0:33",
+          "quote": "5.x, AACC 7.x, AEP 7.x, Avaya MPP"
+        },
+        {
+          "source_id": "e158:0:21",
+          "quote": "7.x, WebLM, Cisco,CVP"
+        },
+        {
+          "source_id": "e159:0:33",
+          "quote": "CTI Servers and Boards: Avaya AES"
+        },
+        {
+          "source_id": "e160:0:22",
+          "quote": "6.x/7.x, Avaya AIC 7.2"
+        },
+        {
+          "source_id": "e161:0:78",
+          "quote": "Application Servers: Apache Tomcat 6/7, Oracle WebLogic 10.0,IBM WebSphere 7.1"
+        },
+        {
+          "source_id": "e162:0:28",
+          "quote": "Database: Oracle 11g, MS-SQL"
+        },
+        {
+          "source_id": "e163:0:68",
+          "quote": "Programming & Scripting: Java (Scripting & Servlets),Vxml, XML,CCXML"
+        },
+        {
+          "source_id": "e164:0:56",
+          "quote": "Speech Platforms and Integration Tools: Nuance OSR & TTS"
+        },
+        {
+          "source_id": "e165:0:57",
+          "quote": "Operating System: Windows, Red Hat Linux/Unix, Solaris 10"
+        },
+        {
+          "source_id": "e166:0:33",
+          "quote": "Protocols & Communication Layers:"
+        },
+        {
+          "source_id": "e167:0:29",
+          "quote": "VOIP(SIP, H323), TCP/IP, SS7."
+        },
+        {
+          "source_id": "e168:0:110",
+          "quote": "Voice Self Service (Design, development and implementation): Avaya Orchestration Designer, Avaya IVR Designer."
+        },
+        {
+          "source_id": "e169:0:27",
+          "quote": "Outbound Dialer - Avaya POM"
+        },
+        {
+          "source_id": "e170:0:24",
+          "quote": "API: SOAP/ REST Full API"
+        },
+        {
+          "source_id": "e171:0:20",
+          "quote": "Python: NumPy/Pandas"
+        },
+        {
+          "source_id": "e172:0:38",
+          "quote": "Data Analysis: Data Wrangling/Cleaning"
+        },
+        {
+          "source_id": "e199:0:20",
+          "quote": "PERSONAL INFORMATION"
+        },
+        {
+          "source_id": "e200:0:19",
+          "quote": "Nationality: Indian"
+        },
+        {
+          "source_id": "e201:0:19",
+          "quote": "Passport: R7717303."
+        },
+        {
+          "source_id": "e202:0:48",
+          "quote": "VISA: Residence Golden Visa, Dubai, UAE, 01/2034"
+        },
+        {
+          "source_id": "e203:0:42",
+          "quote": "Alternate 'Contact No (UAE): +971565065045"
+        },
+        {
+          "source_id": "e204:0:44",
+          "quote": "Alternate 'Contact No (India): +919005985989"
+        },
+        {
+          "source_id": "e205:0:62",
+          "quote": "ONSITE EXPERIENCE\t United Arab Emirates: Resident Golden VISA"
+        },
+        {
+          "source_id": "e206:0:40",
+          "quote": "USA: US B1 (Multi Entry) expired in 2025"
+        },
+        {
+          "source_id": "e207:0:20",
+          "quote": "Belgium: Work Permit"
+        },
+        {
+          "source_id": "e208:0:22",
+          "quote": "Singapore: Work Permit"
+        },
+        {
+          "source_id": "e209:0:24",
+          "quote": "Sri Lanka: Business VISA"
+        }
+      ]
+    },
+    {
+      "category": "summary",
+      "label": "Summary",
+      "records": [
+        {
+          "record_id": "summary",
+          "source_ids": [
+            "e5:8:975",
+            "e6:0:100",
+            "e7:0:14",
+            "e8:0:61"
+          ],
+          "attributes": [
+            {
+              "name": "statements",
+              "items": [
+                {
+                  "value": "Seasoned professional with 17+ years of experience specializing in Genesys Cloud CX architecture and Avaya ecosystems. A PMP and Scrum certified leader with a strong techno-functional acumen, adept at translating complex technical intricacies into actionable business strategies. Expert in driving Agile delivery, managing product backlogs through the creation of precise User Stories, and leading high-velocity Sprints. A skilled communicator adept at managing complex stakeholder relationships, ensuring seamless alignment between cross-functional teams and executive leadership to drive project consensus. Highly proficient in Risk Management, with a proven ability to identify project vulnerabilities early and execute robust mitigation plans that ensure the successful delivery of large-scale enterprise communication solutions. Expert in navigating complex regulatory environments and delivering executive-level briefings to C-suite stakeholders and regulators.",
+                  "evidence": [
+                    {
+                      "source_id": "e5:8:975",
+                      "quote": "Seasoned professional with 17+ years of experience specializing in Genesys Cloud CX architecture and Avaya ecosystems. A PMP and Scrum certified leader with a strong techno-functional acumen, adept at translating complex technical intricacies into actionable business strategies. Expert in driving Agile delivery, managing product backlogs through the creation of precise User Stories, and leading high-velocity Sprints. A skilled communicator adept at managing complex stakeholder relationships, ensuring seamless alignment between cross-functional teams and executive leadership to drive project consensus. Highly proficient in Risk Management, with a proven ability to identify project vulnerabilities early and execute robust mitigation plans that ensure the successful delivery of large-scale enterprise communication solutions. Expert in navigating complex regulatory environments and delivering executive-level briefings to C-suite stakeholders and regulators."
+                    }
+                  ],
+                  "status": "needs_review"
+                },
+                {
+                  "value": "Domain\tBanking: Standard Chartered Bank, Arab National Bank, Bank Muscat, Bank Dhofar, ENBD and FAB.",
+                  "evidence": [
+                    {
+                      "source_id": "e6:0:100",
+                      "quote": "Domain\tBanking: Standard Chartered Bank, Arab National Bank, Bank Muscat, Bank Dhofar, ENBD and FAB."
+                    }
+                  ],
+                  "status": "needs_review"
+                },
+                {
+                  "value": "FinTech: Tabby",
+                  "evidence": [
+                    {
+                      "source_id": "e7:0:14",
+                      "quote": "FinTech: Tabby"
+                    }
+                  ],
+                  "status": "needs_review"
+                },
+                {
+                  "value": "Telecom: Etisalat (e&), Orange, Base Telecom, & Nepal Telecom",
+                  "evidence": [
+                    {
+                      "source_id": "e8:0:61",
+                      "quote": "Telecom: Etisalat (e&), Orange, Base Telecom, & Nepal Telecom"
+                    }
+                  ],
+                  "status": "needs_review"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "total_experience_years",
+              "items": [
+                {
+                  "value": 17.0,
+                  "evidence": [
+                    {
+                      "source_id": "e5:8:975",
+                      "quote": "17"
+                    }
+                  ],
+                  "status": "needs_review"
+                }
+              ],
+              "status": "mapped"
+            }
+          ],
+          "review_reasons": [
+            "Experience years are approximate or a lower bound; inspect the source qualifier."
+          ]
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e5:0:8",
+          "quote": "SUMMARY\t"
+        }
+      ]
+    },
+    {
+      "category": "experience",
+      "label": "Experience",
+      "records": [
+        {
+          "record_id": "experience-1",
+          "source_ids": [
+            "e9:11:53",
+            "e10:0:36",
+            "e11:0:118",
+            "e12:0:88",
+            "e13:0:126",
+            "e14:0:146",
+            "e15:0:207",
+            "e16:0:166",
+            "e17:0:154",
+            "e18:0:161",
+            "e19:0:146",
+            "e20:0:131",
+            "e21:0:119",
+            "e22:0:207",
+            "e23:0:271",
+            "e24:0:127",
+            "e25:0:70",
+            "e26:0:56",
+            "e27:0:159",
+            "e28:0:126",
+            "e29:0:50",
+            "e30:0:111",
+            "e31:0:88",
+            "e32:0:68",
+            "e33:0:133",
+            "e34:0:113",
+            "e35:0:144",
+            "e36:0:88",
+            "e37:0:132",
+            "e38:0:172",
+            "e39:0:93",
+            "e40:0:40",
+            "e41:0:63",
+            "e42:0:70",
+            "e43:0:93",
+            "e44:0:60",
+            "e45:0:70",
+            "e46:0:74",
+            "e47:0:86",
+            "e48:0:77",
+            "e49:0:65",
+            "e50:0:75",
+            "e51:0:170",
+            "e52:0:86",
+            "e53:0:139",
+            "e54:0:83",
+            "e55:0:63",
+            "e56:0:67",
+            "e57:0:85",
+            "e58:0:93",
+            "e59:0:88",
+            "e60:0:63",
+            "e61:0:67",
+            "e62:0:91",
+            "e63:0:100",
+            "e64:0:60",
+            "e65:0:69",
+            "e66:0:52",
+            "e67:0:57",
+            "e68:0:91",
+            "e69:0:66",
+            "e70:0:50",
+            "e71:0:86",
+            "e72:0:85",
+            "e73:0:53",
+            "e74:0:80",
+            "e75:0:74",
+            "e76:0:60",
+            "e77:0:77",
+            "e78:0:68",
+            "e79:0:98",
+            "e80:0:84",
+            "e81:0:60",
+            "e82:0:43",
+            "e83:0:63",
+            "e84:0:67",
+            "e85:0:91",
+            "e86:0:100",
+            "e87:0:50",
+            "e88:0:148",
+            "e89:0:118",
+            "e90:0:71",
+            "e91:0:192",
+            "e92:0:117",
+            "e93:0:99",
+            "e94:0:125",
+            "e95:0:111",
+            "e96:0:112",
+            "e97:0:109",
+            "e98:0:116",
+            "e99:0:60",
+            "e100:0:39",
+            "e101:0:68",
+            "e102:0:111",
+            "e103:0:95",
+            "e104:0:147",
+            "e105:0:82",
+            "e106:0:90",
+            "e107:0:134",
+            "e108:0:66",
+            "e109:0:122",
+            "e110:0:60",
+            "e111:0:80",
+            "e112:0:78",
+            "e113:0:71",
+            "e114:0:88",
+            "e115:0:143",
+            "e116:0:108",
+            "e117:0:221",
+            "e118:0:71",
+            "e119:0:37",
+            "e120:0:71",
+            "e121:0:51",
+            "e122:0:124",
+            "e123:0:88",
+            "e124:0:65",
+            "e125:0:50",
+            "e126:0:45",
+            "e127:0:77",
+            "e128:0:58",
+            "e129:0:40",
+            "e130:0:37",
+            "e131:0:61",
+            "e132:0:58",
+            "e133:0:32",
+            "e134:0:46",
+            "e135:0:114",
+            "e136:0:21",
+            "e137:0:17",
+            "e138:0:15",
+            "e139:0:17",
+            "e140:0:23",
+            "e141:0:30",
+            "e142:0:22",
+            "e143:0:34",
+            "e144:0:14",
+            "e145:0:16",
+            "e146:0:28",
+            "e147:0:4",
+            "e148:0:10",
+            "e149:0:6",
+            "e150:0:23",
+            "e151:0:27",
+            "e152:0:27",
+            "e153:0:33",
+            "e154:0:16",
+            "e155:0:16"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "Training/research content requires employment association review."
+          ]
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e9:0:11",
+          "quote": "EXPERIENCE\t"
+        },
+        {
+          "source_id": "e9:11:53",
+          "quote": "Project Manager – CCaaS, 05/2025 – 02/2026"
+        },
+        {
+          "source_id": "e10:0:36",
+          "quote": "Servion Global Solutions, Dubai, UAE"
+        },
+        {
+          "source_id": "e11:0:118",
+          "quote": "Customized delivery methodologies to specific client goals, ensuring tailored solutions and optimized project outcomes"
+        },
+        {
+          "source_id": "e12:0:88",
+          "quote": "Established robust program governance frameworks to manage multi-vendor transformations."
+        },
+        {
+          "source_id": "e13:0:126",
+          "quote": "Led the strategic Cloud Migration of legacy on-premise systems to Genesys Cloud CX within the highly regulated banking sector."
+        },
+        {
+          "source_id": "e14:0:146",
+          "quote": "Defined and tracked critical KPIs to rigorously evaluate project performance and drive data-driven strategies for continuous process optimization."
+        },
+        {
+          "source_id": "e15:0:207",
+          "quote": "Steered end-to-end business transformation and technology road mapping, overseeing the full lifecycle from strategic development and implementation to operational execution and high-scale technical delivery."
+        },
+        {
+          "source_id": "e16:0:166",
+          "quote": "Orchestrated the organizational transition from traditional Waterfall methodologies to Agile frameworks, enhancing delivery speed, flexibility, and team collaboration"
+        },
+        {
+          "source_id": "e17:0:154",
+          "quote": "Streamlined project lifecycles as a Scrum Master, implementing Agile best practices to improve team productivity and ensure high-quality technical output."
+        },
+        {
+          "source_id": "e18:0:161",
+          "quote": "Translated complex business needs into actionable User Stories while maintaining a refined and comprehensive Product Backlog to drive consistent sprint progress."
+        },
+        {
+          "source_id": "e19:0:146",
+          "quote": "Lead end-to-end delivery of complex Contact Center projects across the MEA region, ensuring strict adherence to project scope, schedule, and cost."
+        },
+        {
+          "source_id": "e20:0:131",
+          "quote": "Led cross-functional teams and third-party vendors (Avaya, Genesys) to deliver a 5,000-seat migration on time and 10% under budget."
+        },
+        {
+          "source_id": "e21:0:119",
+          "quote": "Managed the full project lifecycle using Agile methodologies, ensuring 100% alignment with Business Architecture goals."
+        },
+        {
+          "source_id": "e22:0:207",
+          "quote": "Oversee the procurement, deployment, installation, configuration, and testing of the SBC (Session Border Controller), ensuring seamless network transition and functionality for the Genesys Cloud CX solution."
+        },
+        {
+          "source_id": "e23:0:271",
+          "quote": "Oversee the procurement, deployment, and management of large Edge Devices & SIP trunks, including the strategic execution of server replacement projects (swapping small servers for larger units) to enhance infrastructure capacity and performance for the Genesys Cloud CX."
+        },
+        {
+          "source_id": "e24:0:127",
+          "quote": "Expertise in advanced Contact Center technologies, including IVR, CTI, Speech NLP, Voice Biometrics, AI, and Chatbot Solutions."
+        },
+        {
+          "source_id": "e25:0:70",
+          "quote": "Delivered cross-platform solutions across Avaya, Genesys Cloud CX, and"
+        },
+        {
+          "source_id": "e26:0:56",
+          "quote": "Nuance Speech/Security/Chatbot suites in the ME regions."
+        },
+        {
+          "source_id": "e27:0:159",
+          "quote": "Facilitate critical collaboration and alignment between internal teams, including Sales, Delivery Head, Functional Managers, and external client project teams."
+        },
+        {
+          "source_id": "e28:0:126",
+          "quote": "Prepare and present mandatory weekly project status reports and project metrics presentations for the MEA delivery leadership."
+        },
+        {
+          "source_id": "e29:0:50",
+          "quote": "Report directly to the Delivery Head for Projects."
+        },
+        {
+          "source_id": "e30:0:111",
+          "quote": "Collaborate with Pre-Sales teams to lead effort estimation activities based on comprehensive project expertise."
+        },
+        {
+          "source_id": "e31:0:88",
+          "quote": "Responsible for managing critical project financials and resource & revenue forecasting."
+        },
+        {
+          "source_id": "e32:0:68",
+          "quote": "Developing resource category plans and accurate revenue forecasting."
+        },
+        {
+          "source_id": "e33:0:133",
+          "quote": "Manage all administrative project components, including raising resource requests and processing milestone-based invoice submissions."
+        },
+        {
+          "source_id": "e34:0:113",
+          "quote": "Project Manager (Techno-functional role)– Contact Center, 05/2024 - 05/2025  Binary Link Technologies, Dubai, UAE"
+        },
+        {
+          "source_id": "e35:0:144",
+          "quote": "Customized project methodologies to suit specific client needs and objectives, delivering tailored solutions and maximizing client satisfaction."
+        },
+        {
+          "source_id": "e36:0:88",
+          "quote": "Established robust program governance frameworks to manage multi-vendor transformations."
+        },
+        {
+          "source_id": "e37:0:132",
+          "quote": "Established and monitored key performance indicators KPIs to evaluate project success, providing a basis for continuous improvement."
+        },
+        {
+          "source_id": "e38:0:172",
+          "quote": "Directing business transformation, technology planning, strategy development, implementation, operational transformation execution and technical solution delivery function."
+        },
+        {
+          "source_id": "e39:0:93",
+          "quote": "Managed shift towards Agile approaches in place of conventional project management practices."
+        },
+        {
+          "source_id": "e40:0:40",
+          "quote": "Streamlined processes as a Scrum Master."
+        },
+        {
+          "source_id": "e41:0:63",
+          "quote": "Crafted user stories while maintaining a comprehensive backlog."
+        },
+        {
+          "source_id": "e42:0:70",
+          "quote": "Worked with business representatives to craft impactful event content."
+        },
+        {
+          "source_id": "e43:0:93",
+          "quote": "Tracked sprint progress using burn-down charts, made necessary adjustments to meet deadlines."
+        },
+        {
+          "source_id": "e44:0:60",
+          "quote": "Collaborated with Product Owners to refine project backlogs."
+        },
+        {
+          "source_id": "e45:0:70",
+          "quote": "Collaborated with clients to understand specific project requirements."
+        },
+        {
+          "source_id": "e46:0:74",
+          "quote": "Aligned IVR system with organizational business and technology strategies."
+        },
+        {
+          "source_id": "e47:0:86",
+          "quote": "Explore automation opportunities within the IVR system to enhance customer experience."
+        },
+        {
+          "source_id": "e48:0:77",
+          "quote": "Facilitated team understanding of IVR call flows for accurate implementation."
+        },
+        {
+          "source_id": "e49:0:65",
+          "quote": "Facilitated development team's comprehension of business context."
+        },
+        {
+          "source_id": "e50:0:75",
+          "quote": "Explain technical implementation to gather business stakeholders' sign-off."
+        },
+        {
+          "source_id": "e51:0:170",
+          "quote": "Ensure that the IVR system complies with security and data protection requirements, working closely with security teams to address any vulnerabilities or compliance gaps."
+        },
+        {
+          "source_id": "e52:0:86",
+          "quote": "Supported the development of an efficient IVR system for enhanced customer experience."
+        },
+        {
+          "source_id": "e53:0:139",
+          "quote": "Provide ongoing support for the production IVR system, addressing any technical issues, performance concerns, and scalability requirements."
+        },
+        {
+          "source_id": "e54:0:83",
+          "quote": "Ensured incident resolution to uphold the operational efficiency of the IVR system."
+        },
+        {
+          "source_id": "e55:0:63",
+          "quote": "Performed data wrangling to ensure data readiness for analysis."
+        },
+        {
+          "source_id": "e56:0:67",
+          "quote": "Collaborated with AI team to implement machine learning strategies."
+        },
+        {
+          "source_id": "e57:0:85",
+          "quote": "Created data visualization reports utilizing NumPy, Pandas, and Matplotlib libraries."
+        },
+        {
+          "source_id": "e58:0:93",
+          "quote": "Oversaw the transition from traditional project management methodologies to Agile frameworks."
+        },
+        {
+          "source_id": "e59:0:88",
+          "quote": "Established robust program governance frameworks to manage multi-vendor transformations."
+        },
+        {
+          "source_id": "e60:0:63",
+          "quote": "Crafted user stories while maintaining a comprehensive backlog."
+        },
+        {
+          "source_id": "e61:0:67",
+          "quote": "Created event content in collaboration with product owner/business."
+        },
+        {
+          "source_id": "e62:0:91",
+          "quote": "Monitored sprint progress through burn-down charts, adjusting strategies to meet deadlines."
+        },
+        {
+          "source_id": "e63:0:100",
+          "quote": "Worked closely with Product Owners to refine backlogs and define sprint goals for project alignment."
+        },
+        {
+          "source_id": "e64:0:60",
+          "quote": "Translated business requirements into technical IVR designs."
+        },
+        {
+          "source_id": "e65:0:69",
+          "quote": "Liaised with business teams to capture and document IVR requirements."
+        },
+        {
+          "source_id": "e66:0:52",
+          "quote": "Identify automation opportunities within IVR system."
+        },
+        {
+          "source_id": "e67:0:57",
+          "quote": "Conducted walk-through sessions for the development team."
+        },
+        {
+          "source_id": "e68:0:91",
+          "quote": "Assisted development team in grasping business context and technical details of IVR system."
+        },
+        {
+          "source_id": "e69:0:66",
+          "quote": "Obtained stakeholder sign-off to align with business requirements."
+        },
+        {
+          "source_id": "e70:0:50",
+          "quote": "Ensured IVR code compliance with coding standards."
+        },
+        {
+          "source_id": "e71:0:86",
+          "quote": "Facilitate alignment of IVR designs and actual system through developer collaboration."
+        },
+        {
+          "source_id": "e72:0:85",
+          "quote": "Ensured the IVR system fulfilled user requirements through comprehensive UAT support."
+        },
+        {
+          "source_id": "e73:0:53",
+          "quote": "Ensured effective issue resolution in the IVR system."
+        },
+        {
+          "source_id": "e74:0:80",
+          "quote": "Ensured comprehensive technology landscape compatibility during IVR integration."
+        },
+        {
+          "source_id": "e75:0:74",
+          "quote": "Collaborated with various teams to resolve integration issues efficiently."
+        },
+        {
+          "source_id": "e76:0:60",
+          "quote": "Maintained consistent support for the production IVR system."
+        },
+        {
+          "source_id": "e77:0:77",
+          "quote": "Enhanced incident resolution procedures to ensure ongoing system reliability."
+        },
+        {
+          "source_id": "e78:0:68",
+          "quote": "Ensure IVR system adheres to security and data protection standards."
+        },
+        {
+          "source_id": "e79:0:98",
+          "quote": "Managed digital touchpoints for Etisalat including SMS services, web interfaces and IVR solutions."
+        },
+        {
+          "source_id": "e80:0:84",
+          "quote": "Designed and implemented solutions for Etisalat's online sales-and-service channels."
+        },
+        {
+          "source_id": "e81:0:60",
+          "quote": "Executed comprehensive evaluation and deployment of OSS/BSS."
+        },
+        {
+          "source_id": "e82:0:43",
+          "quote": "Led project coordination as a Scrum Master."
+        },
+        {
+          "source_id": "e83:0:63",
+          "quote": "Crafted user stories while maintaining a comprehensive backlog."
+        },
+        {
+          "source_id": "e84:0:67",
+          "quote": "Created event content in collaboration with product owner/business."
+        },
+        {
+          "source_id": "e85:0:91",
+          "quote": "Monitored sprint progress through burn-down charts, adjusting strategies to meet deadlines."
+        },
+        {
+          "source_id": "e86:0:100",
+          "quote": "Worked closely with Product Owners to refine backlogs and define sprint goals for project alignment."
+        },
+        {
+          "source_id": "e87:0:50",
+          "quote": "Developed and maintained IVR 101 main application."
+        },
+        {
+          "source_id": "e88:0:148",
+          "quote": "Led architectural design and development efforts for enterprise/ SMB - Business application solutions, improving system scalability and performance."
+        },
+        {
+          "source_id": "e89:0:118",
+          "quote": "Integrated custom APIs and strategies for third-party services, streamlining processes and improving user experiences."
+        },
+        {
+          "source_id": "e90:0:71",
+          "quote": "Delivered detailed project plans and status reports for all activities."
+        },
+        {
+          "source_id": "e91:0:192",
+          "quote": "Provided weekly detailed project reports to keep manager informed on milestones and updates. Implemented responsive design principles, ensuring optimal user experience across various channels."
+        },
+        {
+          "source_id": "e92:0:117",
+          "quote": "Designed and executed rigorous testing protocols to identify and rectify application bugs, elevating product quality."
+        },
+        {
+          "source_id": "e93:0:99",
+          "quote": "Crafted detailed technical documentation to support application deployment, usage, and maintenance."
+        },
+        {
+          "source_id": "e94:0:125",
+          "quote": "Facilitated knowledge sharing sessions and workshops to mentor junior developers and foster a culture of continuous learning."
+        },
+        {
+          "source_id": "e95:0:111",
+          "quote": "Managed version control and code reviews to maintain high-quality code standards across all development stages."
+        },
+        {
+          "source_id": "e96:0:112",
+          "quote": "Optimized application performance through comprehensive testing, debugging, and refining based on user feedback."
+        },
+        {
+          "source_id": "e97:0:109",
+          "quote": "Designed and implemented secure authentication and authorization mechanisms to safeguard sensitive user data."
+        },
+        {
+          "source_id": "e98:0:116",
+          "quote": "Led development team in designing, coding, and implementing scalable applications tailored to client specifications."
+        },
+        {
+          "source_id": "e99:0:60",
+          "quote": "Estimated work effort, timelines, and resource requirements."
+        },
+        {
+          "source_id": "e100:0:39",
+          "quote": "Ensured platform operational stability."
+        },
+        {
+          "source_id": "e101:0:68",
+          "quote": "Conducted continuous research and development for feature selection."
+        },
+        {
+          "source_id": "e102:0:111",
+          "quote": "Played a pivotal role in creating and upholding standards to maintain connectivity despite development changes."
+        },
+        {
+          "source_id": "e103:0:95",
+          "quote": "Implemented robust security protocols to safeguard client data and prevent unauthorized access."
+        },
+        {
+          "source_id": "e104:0:147",
+          "quote": "Facilitate in transition of BASE Telecom's (Big Telecom company in Belgium) IVR infrastructure from Nortel MPS 1000 platform due to end of support."
+        },
+        {
+          "source_id": "e105:0:82",
+          "quote": "To understand the existing system and design and incorporated in new IVR call flow"
+        },
+        {
+          "source_id": "e106:0:90",
+          "quote": "Provide video presentation of IVR call flow to the client followed by conditional sign-off"
+        },
+        {
+          "source_id": "e107:0:134",
+          "quote": "IVR call flow development as per LLD and works along with ITEL and IN team to gather the information which is required for integration"
+        },
+        {
+          "source_id": "e108:0:66",
+          "quote": "Created 'Turkish Standard Phrase set' Bundle for Turkish Language."
+        },
+        {
+          "source_id": "e109:0:122",
+          "quote": "Developed JAVA servlet to introduce dynamic IVR menus, configurable placeholders based on time stamp and various features."
+        },
+        {
+          "source_id": "e110:0:60",
+          "quote": "Addressed and resolved application defects in JIRA promptly."
+        },
+        {
+          "source_id": "e111:0:80",
+          "quote": "Implemented change to enable rolled over AOD logs within the application server."
+        },
+        {
+          "source_id": "e112:0:78",
+          "quote": "Implemented updated applications on Apache Tomcat servers in lab environments."
+        },
+        {
+          "source_id": "e113:0:71",
+          "quote": "Utilized Citrix server for deploying OD application into Avaya servers."
+        },
+        {
+          "source_id": "e114:0:88",
+          "quote": "Facilitated configuration tasks during the installation of Avaya Aura Experience Portal."
+        },
+        {
+          "source_id": "e115:0:143",
+          "quote": "Analyzed user feedback and usage data to identify areas for improvement, leading to targeted enhancements that increased customer satisfaction."
+        },
+        {
+          "source_id": "e116:0:108",
+          "quote": "Led IVR call flow design and development of SCB migration project in India, Sri Lanka, and Singapore for CC."
+        },
+        {
+          "source_id": "e117:0:221",
+          "quote": "Developed and implemented a bank IVR application featuring bank/card user validation, TPIN encryption and validation, CVV validation, ATM PIN validation, CTI integration, RS232 6-digit PIN encryption, and HSM integration."
+        },
+        {
+          "source_id": "e118:0:71",
+          "quote": "Linked IVR Application with CCMS, EBBS and Euro-net third-party server."
+        },
+        {
+          "source_id": "e119:0:37",
+          "quote": "Developed JSP code for sub-dialogues."
+        },
+        {
+          "source_id": "e120:0:71",
+          "quote": "Engineered Skill Routing mechanism for Bangalore and Chennai locations."
+        },
+        {
+          "source_id": "e121:0:51",
+          "quote": "Created a detailed logging mechanism for each menu."
+        },
+        {
+          "source_id": "e122:0:124",
+          "quote": "Monitored technological advancements to recommend upgrades and enhancements, keeping IVR systems up-to-date and competitive."
+        },
+        {
+          "source_id": "e123:0:88",
+          "quote": "Upgraded infrastructure with Nortel MPS 500 system at nine locations in India and Nepal."
+        },
+        {
+          "source_id": "e124:0:65",
+          "quote": "Developed a new Avaya - Blue IVR setup with customized reporting."
+        },
+        {
+          "source_id": "e125:0:50",
+          "quote": "Supported backend agents as Communication Manager."
+        },
+        {
+          "source_id": "e126:0:45",
+          "quote": "Supported hardware and application functions."
+        },
+        {
+          "source_id": "e127:0:77",
+          "quote": "Developed and implemented diverse SIP line prepaid and postpaid applications."
+        },
+        {
+          "source_id": "e128:0:58",
+          "quote": "Participated in distributing software updates and patches."
+        },
+        {
+          "source_id": "e129:0:40",
+          "quote": "Resolved advanced issues in IVR systems."
+        },
+        {
+          "source_id": "e130:0:37",
+          "quote": "Liaised with third-party specialists."
+        },
+        {
+          "source_id": "e131:0:61",
+          "quote": "Managed escalated calls while providing L2 technical support."
+        },
+        {
+          "source_id": "e132:0:58",
+          "quote": "Collaborated closely with client manager and NOC IVR team."
+        },
+        {
+          "source_id": "e133:0:32",
+          "quote": "Installed Avaya MPS 500 systems."
+        },
+        {
+          "source_id": "e134:0:46",
+          "quote": "Kept server health checkup list updated daily."
+        },
+        {
+          "source_id": "e135:0:114",
+          "quote": "Conducted in-depth analysis of client IT infrastructure, identifying key areas for improvement and cost reduction."
+        },
+        {
+          "source_id": "e136:0:21",
+          "quote": "SKILLS\t Scrum Master"
+        },
+        {
+          "source_id": "e137:0:17",
+          "quote": "Change Management"
+        },
+        {
+          "source_id": "e138:0:15",
+          "quote": "Risk Management"
+        },
+        {
+          "source_id": "e139:0:17",
+          "quote": "BCP/DR Frameworks"
+        },
+        {
+          "source_id": "e140:0:23",
+          "quote": "Stake Holder Management"
+        },
+        {
+          "source_id": "e141:0:30",
+          "quote": "Strategic Thinking & Planning."
+        },
+        {
+          "source_id": "e142:0:22",
+          "quote": "Operational Resilience"
+        },
+        {
+          "source_id": "e143:0:34",
+          "quote": "Financial Cost Control Management."
+        },
+        {
+          "source_id": "e144:0:14",
+          "quote": "Data migration"
+        },
+        {
+          "source_id": "e145:0:16",
+          "quote": "Service delivery"
+        },
+        {
+          "source_id": "e146:0:28",
+          "quote": "SDLC: Agile/Waterfall/Hybrid"
+        },
+        {
+          "source_id": "e147:0:4",
+          "quote": "JIRA"
+        },
+        {
+          "source_id": "e148:0:10",
+          "quote": "Confluence"
+        },
+        {
+          "source_id": "e149:0:6",
+          "quote": "Citrix"
+        },
+        {
+          "source_id": "e150:0:23",
+          "quote": "DESC ISR cloud security"
+        },
+        {
+          "source_id": "e151:0:27",
+          "quote": "Data Sovereignty regulation"
+        },
+        {
+          "source_id": "e152:0:27",
+          "quote": "UAE Regulatory & Compliance"
+        },
+        {
+          "source_id": "e153:0:33",
+          "quote": "Data Privacy Law (Federal Law 45)"
+        },
+        {
+          "source_id": "e154:0:16",
+          "quote": "Genesys Cloud CX"
+        },
+        {
+          "source_id": "e155:0:16",
+          "quote": "SBC & SIP Trunks"
+        }
+      ]
+    },
+    {
+      "category": "certifications",
+      "label": "Certifications",
+      "records": [
+        {
+          "record_id": "certifications-1",
+          "source_ids": [
+            "e173:15:22",
+            "e174:0:88",
+            "e175:0:19"
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "issuer",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "issue_year",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e173:0:15",
+          "quote": "CERTIFICATIONS\t"
+        },
+        {
+          "source_id": "e173:15:22",
+          "quote": "PMP ACP"
+        },
+        {
+          "source_id": "e174:0:88",
+          "quote": "Genesys Cloud Certified Associate Professional Scrum Master™ I (PSM-I) ACSS (Avaya-Red),"
+        },
+        {
+          "source_id": "e175:0:19",
+          "quote": "NCSS (Avaya- Blue)."
+        }
+      ]
+    },
+    {
+      "category": "education",
+      "label": "Education",
+      "records": [
+        {
+          "record_id": "education-1",
+          "source_ids": [
+            "e176:10:61",
+            "e177:0:22",
+            "e178:0:44",
+            "e179:0:38",
+            "e180:0:47",
+            "e181:0:36"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "degree",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e176:0:10",
+          "quote": "EDUCATION\t"
+        },
+        {
+          "source_id": "e176:10:61",
+          "quote": "Indian Institute of Technology, Mumbai, India, 2010"
+        },
+        {
+          "source_id": "e177:0:22",
+          "quote": "M. Tech: Communication"
+        },
+        {
+          "source_id": "e178:0:44",
+          "quote": "Aegis School of Telecom, Mumbai, India, 2006"
+        },
+        {
+          "source_id": "e179:0:38",
+          "quote": "Master program: Telecom and Management"
+        },
+        {
+          "source_id": "e180:0:47",
+          "quote": "U.P. Technical University, Lucknow, India, 2004"
+        },
+        {
+          "source_id": "e181:0:36",
+          "quote": "B. Tech: Electronics & Communication"
+        }
+      ]
+    },
+    {
+      "category": "languages",
+      "label": "Languages",
+      "records": [
+        {
+          "record_id": "languages-1",
+          "source_ids": [
+            "e182:10:32",
+            "e183:0:8",
+            "e184:0:8",
+            "e185:0:9",
+            "e186:0:10",
+            "e187:0:57",
+            "e188:0:41",
+            "e189:0:31",
+            "e190:0:174",
+            "e191:0:201",
+            "e192:0:51"
+          ],
+          "attributes": [
+            {
+              "name": "language",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "proficiency",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "Unlabelled compound information requires source review."
+          ]
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e182:0:10",
+          "quote": "LANGUAGES\t"
+        },
+        {
+          "source_id": "e182:10:32",
+          "quote": "English:\tC2 Proficient"
+        },
+        {
+          "source_id": "e183:0:8",
+          "quote": "Urdu:\tC1"
+        },
+        {
+          "source_id": "e184:0:8",
+          "quote": "Advanced"
+        },
+        {
+          "source_id": "e185:0:9",
+          "quote": "Hindi:\tC2"
+        },
+        {
+          "source_id": "e186:0:10",
+          "quote": "Proficient"
+        },
+        {
+          "source_id": "e187:0:57",
+          "quote": "AWARDS\t Received Employee of the Year award at Etisalat."
+        },
+        {
+          "source_id": "e188:0:41",
+          "quote": "Received multiple SPOT Award at Etisalat."
+        },
+        {
+          "source_id": "e189:0:31",
+          "quote": "Received SHINE awards at orange"
+        },
+        {
+          "source_id": "e190:0:174",
+          "quote": "Received Internal Appreciation of Year- 2014-Q4 from KPN Base Telecom. For providing extended support for significant contribution in AOD code enhancement In short time span."
+        },
+        {
+          "source_id": "e191:0:201",
+          "quote": "Received Customer Appreciation Award from Avaya APS for SCB APAC Phone Banking Project. The award is for the handling critical tasks and deliverables professionally and showing customer first approach."
+        },
+        {
+          "source_id": "e192:0:51",
+          "quote": "Received Team player of the Year Award at Etisalat."
+        }
+      ]
+    },
+    {
+      "category": "interests",
+      "label": "Interests",
+      "records": [
+        {
+          "record_id": "interests-1",
+          "source_ids": [
+            "e193:8:29",
+            "e194:0:7",
+            "e195:0:12",
+            "e196:0:13",
+            "e197:0:27",
+            "e198:0:11"
+          ],
+          "attributes": [
+            {
+              "name": "interest",
+              "items": [
+                {
+                  "value": "AND INTERESTS\t Chess",
+                  "evidence": [
+                    {
+                      "source_id": "e193:8:29",
+                      "quote": "AND INTERESTS\t Chess"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Cricket",
+                  "evidence": [
+                    {
+                      "source_id": "e194:0:7",
+                      "quote": "Cricket"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Table Tennis",
+                  "evidence": [
+                    {
+                      "source_id": "e195:0:12",
+                      "quote": "Table Tennis"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Reading Books",
+                  "evidence": [
+                    {
+                      "source_id": "e196:0:13",
+                      "quote": "Reading Books"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "DRIVING LICENCE\t UAE - Yes",
+                  "evidence": [
+                    {
+                      "source_id": "e197:0:27",
+                      "quote": "DRIVING LICENCE\t UAE - Yes"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "India - Yes",
+                  "evidence": [
+                    {
+                      "source_id": "e198:0:11",
+                      "quote": "India - Yes"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e193:0:8",
+          "quote": "HOBBIES "
+        }
+      ]
+    },
+    {
+      "category": "needs_review",
+      "label": "Unassigned source blocks",
+      "records": [],
+      "residual_blocks": [
+        {
+          "source_id": "e0:0:14",
+          "quote": "NISHANT SAXENA"
+        },
+        {
+          "source_id": "e1:0:18",
+          "quote": "IIT Bombay, Mumbai"
+        }
+      ]
+    }
+  ]
+}

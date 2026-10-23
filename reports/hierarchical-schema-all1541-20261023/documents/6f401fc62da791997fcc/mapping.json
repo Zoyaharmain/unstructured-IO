@@ -1,0 +1,2111 @@
+{
+  "success": true,
+  "source": "Resume_Rituparna Mitra_June 2025.pdf",
+  "extraction_mode": "existing_blocks_schema_mapping",
+  "data": {
+    "contact": {
+      "full_name": "",
+      "email": "",
+      "phone": "",
+      "location": null,
+      "linkedin_url": null,
+      "github_url": null,
+      "portfolio_url": null
+    },
+    "professional_title": null,
+    "summary": "SAP EWM Consultant having 4+ years of experience in SAP Consulting and Delivery on Application Maintenance Area. Client interaction, Understanding Business Requirement, Incident Management, Provide Root Cause Analysis and Corrective Actions. Worked in Retail Industrial Business Scenarios with Inbound & Outbound Delivery, Inventory Management.",
+    "total_experience_years": 4.0,
+    "skills": {
+      "technical_skills": [],
+      "tools_and_platforms": [],
+      "domain_and_functional": [],
+      "soft_skills": [],
+      "all_skills": []
+    },
+    "experience": [
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      }
+    ],
+    "education": [
+      {
+        "institution": "",
+        "degree": "",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      },
+      {
+        "institution": "",
+        "degree": "",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      },
+      {
+        "institution": "",
+        "degree": "",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      },
+      {
+        "institution": "",
+        "degree": "",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      },
+      {
+        "institution": "",
+        "degree": "",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      },
+      {
+        "institution": "",
+        "degree": "",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      },
+      {
+        "institution": "",
+        "degree": "",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      },
+      {
+        "institution": "",
+        "degree": "",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      },
+      {
+        "institution": "",
+        "degree": "",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      },
+      {
+        "institution": "",
+        "degree": "",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      },
+      {
+        "institution": "",
+        "degree": "",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      }
+    ],
+    "certifications": [],
+    "projects": [],
+    "languages": []
+  },
+  "schema_mapping": {
+    "fields_populated": 4,
+    "total_fields": 16,
+    "completion_percentage": 25.0,
+    "field_details": [
+      {
+        "field_name": "contact.full_name",
+        "target_type": "string",
+        "is_required": true,
+        "is_extracted": false,
+        "source_section": "Header / Personal Details",
+        "confidence_score": 0.0,
+        "description": "Candidate's full name, extracted from the top header of the resume."
+      },
+      {
+        "field_name": "contact.email",
+        "target_type": "string (email)",
+        "is_required": true,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's primary contact email address."
+      },
+      {
+        "field_name": "contact.phone",
+        "target_type": "string (phone)",
+        "is_required": true,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's telephone / mobile phone number."
+      },
+      {
+        "field_name": "contact.location",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's residential location or work city."
+      },
+      {
+        "field_name": "contact.linkedin_url",
+        "target_type": "string (url) | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "URL to candidate's LinkedIn profile."
+      },
+      {
+        "field_name": "professional_title",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Subtitle",
+        "confidence_score": 0.0,
+        "description": "Candidate's target headline or most recent job title."
+      },
+      {
+        "field_name": "summary",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Summary / Profile / Objective",
+        "confidence_score": 0.85,
+        "description": "Executive bio, professional overview, or career objective."
+      },
+      {
+        "field_name": "total_experience_years",
+        "target_type": "float | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Summary / Experience Calculation",
+        "confidence_score": 0.9,
+        "description": "Total professional experience in years."
+      },
+      {
+        "field_name": "skills.technical_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Technical Competencies",
+        "confidence_score": 0.0,
+        "description": "Technical programming languages and core software competencies."
+      },
+      {
+        "field_name": "skills.tools_and_platforms",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Tools & Technologies",
+        "confidence_score": 0.0,
+        "description": "Software platforms, developer tools, and operational systems."
+      },
+      {
+        "field_name": "skills.domain_and_functional",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Domain Expertise",
+        "confidence_score": 0.0,
+        "description": "Functional domain knowledge (e.g. Hedge Funds, KYC, NAV, Derivatives)."
+      },
+      {
+        "field_name": "skills.all_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills (Aggregated)",
+        "confidence_score": 0.0,
+        "description": "Complete list of candidate skills across all categories."
+      },
+      {
+        "field_name": "experience",
+        "target_type": "array[WorkExperience]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Experience / Work History",
+        "confidence_score": 0.92,
+        "description": "Complete chronological employment records with bullet points."
+      },
+      {
+        "field_name": "education",
+        "target_type": "array[Education]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Education / Academic Qualifications",
+        "confidence_score": 0.9,
+        "description": "University, college, and higher education degree qualifications."
+      },
+      {
+        "field_name": "certifications",
+        "target_type": "array[Certification]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Certifications / Licenses",
+        "confidence_score": 0.0,
+        "description": "Professional accreditations and credentials."
+      },
+      {
+        "field_name": "projects",
+        "target_type": "array[Project]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Projects / Key Engagements",
+        "confidence_score": 0.0,
+        "description": "Major projects or strategic initiatives led by candidate."
+      }
+    ]
+  },
+  "raw_sections": {
+    "summary": "Profile\nSAP EWM Consultant having 4+ years of experience in SAP Consulting and Delivery on Application Maintenance Area. Client interaction, Understanding Business Requirement, Incident Management, Provide Root Cause Analysis and Corrective Actions. Worked in Retail Industrial Business Scenarios with Inbound & Outbound Delivery, Inventory Management.",
+    "experience": "Employment History\nSOFTWARE ENGINEERING , Accenture\nJ U N E 2 0 2 1 — P R E S E N T\nResponsible for driving functional discussion with client & third party and as a Functional Consultant provide solution design as per requirements.\nAs a part of application developments worked on different user stories/requirements for development such as Activation of Multi- picking process, Automation OD Creation, Custom Report to activate locked Handling units.\nWorked on various standard processes in EWM i.e VAS , De consolidation etc . Also have quite a good experience in the Transportation Unit part .\nWorked on different Business requirements and achieved by specific EWM Config. Change and developing some custom reports / technical code change.\nHandled SAP EWM Integration with other Non-SAP Systems. ● As a part of Application Maintenance responsible for Incident Management & Service Requests handling, Resolving Priority Incidents and provide possible Root Cause Analysis.\nResolved Incidents related to Goods Issue, Goods Receipt, Reservation, Physical Inventory, Stock Transfer, Purchase Order, and other relevant objects in EWM.\nCollaborate with various stakeholders to manage fit gap and scenarios analysis to understand the recurring incident (in Service Now) and propose solutions /changes. . Focused on Daily Order Processing Flow and reconciliation activities to avoid any Business Block.\nExperienced in Integration testing (FIT, SIT, UAT) for EWM Business process.",
+    "education": "Education\nBachelor of Engineering in Electronics and Communication Engineering,\nUNIVERSITY OF ENGINEERING AND MANAGEMENT, Kolkata\nJ A N U A R Y 2 0 2 1\nHigh School Diploma, Shibpur Bhabani Balika Vidyalaya, Howrah\nA P R I L 2 0 1 7\nCertification\nSAP Extended Warehouse Management with SAP S/4 HANA (C_S4EWM_2020)\nKolkata,India 08910687644 rituparnamitra14@gmail.com\nSAPEWM\nSAPRetail\nHindi\nEnglish"
+  },
+  "meta": {
+    "status": "needs_review",
+    "human_verified": false,
+    "provider_calls": 0,
+    "source_accounting": {
+      "all_source_text_preserved": true,
+      "total_spans": 52,
+      "assigned_meaningful_spans": 50,
+      "unresolved_meaningful_spans": 1,
+      "non_content_artifacts": 1,
+      "duplicates_excluded": 0,
+      "all_meaningful_text_assigned": false,
+      "semantic_correctness_verified": false,
+      "outcomes": [
+        {
+          "source_id": "e0:0:15",
+          "source_element_index": 0,
+          "start": 0,
+          "end": 15,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e1:0:7",
+          "source_element_index": 1,
+          "start": 0,
+          "end": 7,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e2:0:71",
+          "source_element_index": 2,
+          "start": 0,
+          "end": 71,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e2:71:147",
+          "source_element_index": 2,
+          "start": 71,
+          "end": 147,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e2:147:218",
+          "source_element_index": 2,
+          "start": 147,
+          "end": 218,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e2:218:294",
+          "source_element_index": 2,
+          "start": 218,
+          "end": 294,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e2:294:344",
+          "source_element_index": 2,
+          "start": 294,
+          "end": 344,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:0:18",
+          "source_element_index": 3,
+          "start": 0,
+          "end": 18,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e4:0:32",
+          "source_element_index": 4,
+          "start": 0,
+          "end": 32,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e5:0:31",
+          "source_element_index": 5,
+          "start": 0,
+          "end": 31,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e6:0:72",
+          "source_element_index": 6,
+          "start": 0,
+          "end": 72,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e6:72:134",
+          "source_element_index": 6,
+          "start": 72,
+          "end": 134,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e6:134:147",
+          "source_element_index": 6,
+          "start": 134,
+          "end": 147,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e7:0:63",
+          "source_element_index": 7,
+          "start": 0,
+          "end": 63,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e7:63:129",
+          "source_element_index": 7,
+          "start": 63,
+          "end": 129,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e7:129:196",
+          "source_element_index": 7,
+          "start": 129,
+          "end": 196,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e7:196:218",
+          "source_element_index": 7,
+          "start": 196,
+          "end": 218,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:0:57",
+          "source_element_index": 8,
+          "start": 0,
+          "end": 57,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:57:118",
+          "source_element_index": 8,
+          "start": 57,
+          "end": 118,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:118:144",
+          "source_element_index": 8,
+          "start": 118,
+          "end": 144,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:0:67",
+          "source_element_index": 9,
+          "start": 0,
+          "end": 67,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:67:133",
+          "source_element_index": 9,
+          "start": 67,
+          "end": 133,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:133:145",
+          "source_element_index": 9,
+          "start": 133,
+          "end": 145,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e10:0:55",
+          "source_element_index": 10,
+          "start": 0,
+          "end": 55,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e10:55:58",
+          "source_element_index": 10,
+          "start": 55,
+          "end": 58,
+          "section": "experience",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e10:58:120",
+          "source_element_index": 10,
+          "start": 58,
+          "end": 120,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e10:120:189",
+          "source_element_index": 10,
+          "start": 120,
+          "end": 189,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e10:189:230",
+          "source_element_index": 10,
+          "start": 189,
+          "end": 230,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e11:0:71",
+          "source_element_index": 11,
+          "start": 0,
+          "end": 71,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e11:71:142",
+          "source_element_index": 11,
+          "start": 71,
+          "end": 142,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e11:142:157",
+          "source_element_index": 11,
+          "start": 142,
+          "end": 157,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:0:70",
+          "source_element_index": 12,
+          "start": 0,
+          "end": 70,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:70:137",
+          "source_element_index": 12,
+          "start": 70,
+          "end": 137,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:137:206",
+          "source_element_index": 12,
+          "start": 137,
+          "end": 206,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:206:264",
+          "source_element_index": 12,
+          "start": 206,
+          "end": 264,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e13:0:68",
+          "source_element_index": 13,
+          "start": 0,
+          "end": 68,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e13:68:76",
+          "source_element_index": 13,
+          "start": 68,
+          "end": 76,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e14:0:9",
+          "source_element_index": 14,
+          "start": 0,
+          "end": 9,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e15:0:69",
+          "source_element_index": 15,
+          "start": 0,
+          "end": 69,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e16:0:49",
+          "source_element_index": 16,
+          "start": 0,
+          "end": 49,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e17:0:21",
+          "source_element_index": 17,
+          "start": 0,
+          "end": 21,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e18:0:61",
+          "source_element_index": 18,
+          "start": 0,
+          "end": 61,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e19:0:17",
+          "source_element_index": 19,
+          "start": 0,
+          "end": 17,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e20:0:13",
+          "source_element_index": 20,
+          "start": 0,
+          "end": 13,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e21:0:66",
+          "source_element_index": 21,
+          "start": 0,
+          "end": 66,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e22:0:14",
+          "source_element_index": 22,
+          "start": 0,
+          "end": 14,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e22:14:26",
+          "source_element_index": 22,
+          "start": 14,
+          "end": 26,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e22:26:52",
+          "source_element_index": 22,
+          "start": 26,
+          "end": 52,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e23:0:6",
+          "source_element_index": 23,
+          "start": 0,
+          "end": 6,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e24:0:9",
+          "source_element_index": 24,
+          "start": 0,
+          "end": 9,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e25:0:5",
+          "source_element_index": 25,
+          "start": 0,
+          "end": 5,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e26:0:7",
+          "source_element_index": 26,
+          "start": 0,
+          "end": 7,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        }
+      ]
+    },
+    "document_scope": {
+      "kind": "candidate_or_unknown",
+      "candidate_resume": null,
+      "requires_scope_review": true
+    },
+    "source_inventory_sha256": "09a0b80d29f8555da1e535cd3767623aa03345865dcd1ac131a144b33747b002",
+    "field_evidence": {
+      "summary": [
+        "e2:0:71",
+        "e2:71:147",
+        "e2:147:218",
+        "e2:218:294",
+        "e2:294:344"
+      ],
+      "total_experience_years": [
+        "e2:0:71"
+      ]
+    },
+    "record_reviews": [
+      {
+        "category": "experience",
+        "entry_id": "experience-1",
+        "source_ids": [
+          "e4:0:32",
+          "e5:0:31",
+          "e6:0:72",
+          "e6:72:134",
+          "e6:134:147",
+          "e7:0:63",
+          "e7:63:129",
+          "e7:129:196",
+          "e7:196:218",
+          "e8:0:57",
+          "e8:57:118",
+          "e8:118:144",
+          "e9:0:67",
+          "e9:67:133",
+          "e9:133:145",
+          "e10:0:55",
+          "e10:55:58",
+          "e10:58:120",
+          "e10:120:189",
+          "e10:189:230",
+          "e11:0:71",
+          "e11:71:142",
+          "e11:142:157",
+          "e12:0:70",
+          "e12:70:137",
+          "e12:137:206",
+          "e12:206:264",
+          "e13:0:68",
+          "e13:68:76"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "education",
+        "entry_id": "education-1",
+        "source_ids": [
+          "e15:0:69"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "education",
+        "entry_id": "education-2",
+        "source_ids": [
+          "e16:0:49"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "education",
+        "entry_id": "education-3",
+        "source_ids": [
+          "e17:0:21"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "education",
+        "entry_id": "education-4",
+        "source_ids": [
+          "e18:0:61"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "education",
+        "entry_id": "education-5",
+        "source_ids": [
+          "e19:0:17"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "education",
+        "entry_id": "education-6",
+        "source_ids": [
+          "e20:0:13",
+          "e21:0:66"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "education",
+        "entry_id": "education-7",
+        "source_ids": [
+          "e22:0:14",
+          "e22:14:26",
+          "e22:26:52"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "education",
+        "entry_id": "education-8",
+        "source_ids": [
+          "e23:0:6"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "education",
+        "entry_id": "education-9",
+        "source_ids": [
+          "e24:0:9"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "education",
+        "entry_id": "education-10",
+        "source_ids": [
+          "e25:0:5"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "education",
+        "entry_id": "education-11",
+        "source_ids": [
+          "e26:0:7"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      }
+    ],
+    "missing_required_fields": [
+      "contact.full_name",
+      "contact.email",
+      "contact.phone",
+      "experience[0].company",
+      "experience[0].role",
+      "education[0].institution",
+      "education[0].degree",
+      "education[1].institution",
+      "education[1].degree",
+      "education[2].institution",
+      "education[2].degree",
+      "education[3].institution",
+      "education[3].degree",
+      "education[4].institution",
+      "education[4].degree",
+      "education[5].institution",
+      "education[5].degree",
+      "education[6].institution",
+      "education[6].degree",
+      "education[7].institution",
+      "education[7].degree",
+      "education[8].institution",
+      "education[8].degree",
+      "education[9].institution",
+      "education[9].degree",
+      "education[10].institution",
+      "education[10].degree"
+    ],
+    "warnings": [
+      "Schema validity and field completion do not establish extraction or relationship accuracy.",
+      "Handoff confidence scores are fixed heuristics, not calibrated probabilities.",
+      "Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields."
+    ],
+    "unmapped_blocks": [
+      {
+        "source_id": "e1:0:7",
+        "category": "summary",
+        "text": "Profile",
+        "page_number": 1
+      },
+      {
+        "source_id": "e3:0:18",
+        "category": "experience",
+        "text": "Employment History",
+        "page_number": 1
+      },
+      {
+        "source_id": "e4:0:32",
+        "category": "experience",
+        "text": "SOFTWARE ENGINEERING , Accenture",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:0:31",
+        "category": "experience",
+        "text": "J U N E 2 0 2 1 — P R E S E N T",
+        "page_number": 1
+      },
+      {
+        "source_id": "e6:0:72",
+        "category": "experience",
+        "text": "Responsible for driving functional discussion with client & third party ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e6:72:134",
+        "category": "experience",
+        "text": "and as a Functional Consultant provide solution design as per ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e6:134:147",
+        "category": "experience",
+        "text": "requirements.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e7:0:63",
+        "category": "experience",
+        "text": "As a part of application developments worked on different user ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e7:63:129",
+        "category": "experience",
+        "text": "stories/requirements for development such as Activation of Multi- ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e7:129:196",
+        "category": "experience",
+        "text": "picking process, Automation OD Creation, Custom Report to activate ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e7:196:218",
+        "category": "experience",
+        "text": "locked Handling units.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:0:57",
+        "category": "experience",
+        "text": "Worked on various standard processes in EWM i.e VAS , De ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:57:118",
+        "category": "experience",
+        "text": "consolidation etc . Also have quite a good experience in the ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:118:144",
+        "category": "experience",
+        "text": "Transportation Unit part .",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:0:67",
+        "category": "experience",
+        "text": "Worked on different Business requirements and achieved by specific ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:67:133",
+        "category": "experience",
+        "text": "EWM Config. Change and developing some custom reports / technical ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:133:145",
+        "category": "experience",
+        "text": "code change.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e10:0:55",
+        "category": "experience",
+        "text": "Handled SAP EWM Integration with other Non-SAP Systems.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e10:55:58",
+        "category": "experience",
+        "text": " ● ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e10:58:120",
+        "category": "experience",
+        "text": "As a part of Application Maintenance responsible for Incident ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e10:120:189",
+        "category": "experience",
+        "text": "Management & Service Requests handling, Resolving Priority Incidents ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e10:189:230",
+        "category": "experience",
+        "text": "and provide possible Root Cause Analysis.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e11:0:71",
+        "category": "experience",
+        "text": "Resolved Incidents related to Goods Issue, Goods Receipt, Reservation, ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e11:71:142",
+        "category": "experience",
+        "text": "Physical Inventory, Stock Transfer, Purchase Order, and other relevant ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e11:142:157",
+        "category": "experience",
+        "text": "objects in EWM.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:0:70",
+        "category": "experience",
+        "text": "Collaborate with various stakeholders to manage fit gap and scenarios ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:70:137",
+        "category": "experience",
+        "text": "analysis to understand the recurring incident (in Service Now) and ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:137:206",
+        "category": "experience",
+        "text": "propose solutions /changes. . Focused on Daily Order Processing Flow ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:206:264",
+        "category": "experience",
+        "text": "and reconciliation activities to avoid any Business Block.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e13:0:68",
+        "category": "experience",
+        "text": "Experienced in Integration testing (FIT, SIT, UAT) for EWM Business ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e13:68:76",
+        "category": "experience",
+        "text": "process.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e14:0:9",
+        "category": "education",
+        "text": "Education",
+        "page_number": 1
+      },
+      {
+        "source_id": "e15:0:69",
+        "category": "education",
+        "text": "Bachelor of Engineering in Electronics and Communication Engineering,",
+        "page_number": 1
+      },
+      {
+        "source_id": "e16:0:49",
+        "category": "education",
+        "text": "UNIVERSITY OF ENGINEERING AND MANAGEMENT, Kolkata",
+        "page_number": 1
+      },
+      {
+        "source_id": "e17:0:21",
+        "category": "education",
+        "text": "J A N U A R Y 2 0 2 1",
+        "page_number": 1
+      },
+      {
+        "source_id": "e18:0:61",
+        "category": "education",
+        "text": "High School Diploma, Shibpur Bhabani Balika Vidyalaya, Howrah",
+        "page_number": 1
+      },
+      {
+        "source_id": "e19:0:17",
+        "category": "education",
+        "text": "A P R I L 2 0 1 7",
+        "page_number": 1
+      },
+      {
+        "source_id": "e20:0:13",
+        "category": "education",
+        "text": "Certification",
+        "page_number": 1
+      },
+      {
+        "source_id": "e21:0:66",
+        "category": "education",
+        "text": "SAP Extended Warehouse Management with SAP S/4 HANA (C_S4EWM_2020)",
+        "page_number": 1
+      },
+      {
+        "source_id": "e22:0:14",
+        "category": "education",
+        "text": "Kolkata,India ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e22:14:26",
+        "category": "education",
+        "text": "08910687644 ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e22:26:52",
+        "category": "education",
+        "text": "rituparnamitra14@gmail.com",
+        "page_number": 1
+      },
+      {
+        "source_id": "e23:0:6",
+        "category": "education",
+        "text": "SAPEWM",
+        "page_number": 1
+      },
+      {
+        "source_id": "e24:0:9",
+        "category": "education",
+        "text": "SAPRetail",
+        "page_number": 1
+      },
+      {
+        "source_id": "e25:0:5",
+        "category": "education",
+        "text": "Hindi",
+        "page_number": 1
+      },
+      {
+        "source_id": "e26:0:7",
+        "category": "education",
+        "text": "English",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:0:15",
+        "category": null,
+        "text": "Rituparna Mitra",
+        "page_number": 1
+      }
+    ],
+    "needs_review": [
+      {
+        "source_element_index": 0,
+        "start": 0,
+        "end": 15,
+        "text": "Rituparna Mitra",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1366,
+        "margin": -0.047,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      }
+    ]
+  },
+  "section_schemas": [
+    {
+      "category": "summary",
+      "label": "Summary",
+      "records": [
+        {
+          "record_id": "summary",
+          "source_ids": [
+            "e2:0:71",
+            "e2:71:147",
+            "e2:147:218",
+            "e2:218:294",
+            "e2:294:344"
+          ],
+          "attributes": [
+            {
+              "name": "statements",
+              "items": [
+                {
+                  "value": "SAP EWM Consultant having 4+ years of experience in SAP Consulting and ",
+                  "evidence": [
+                    {
+                      "source_id": "e2:0:71",
+                      "quote": "SAP EWM Consultant having 4+ years of experience in SAP Consulting and "
+                    }
+                  ],
+                  "status": "needs_review"
+                },
+                {
+                  "value": "Delivery on Application Maintenance Area. Client interaction, Understanding ",
+                  "evidence": [
+                    {
+                      "source_id": "e2:71:147",
+                      "quote": "Delivery on Application Maintenance Area. Client interaction, Understanding "
+                    }
+                  ],
+                  "status": "needs_review"
+                },
+                {
+                  "value": "Business Requirement, Incident Management, Provide Root Cause Analysis ",
+                  "evidence": [
+                    {
+                      "source_id": "e2:147:218",
+                      "quote": "Business Requirement, Incident Management, Provide Root Cause Analysis "
+                    }
+                  ],
+                  "status": "needs_review"
+                },
+                {
+                  "value": "and Corrective Actions. Worked in Retail Industrial Business Scenarios with ",
+                  "evidence": [
+                    {
+                      "source_id": "e2:218:294",
+                      "quote": "and Corrective Actions. Worked in Retail Industrial Business Scenarios with "
+                    }
+                  ],
+                  "status": "needs_review"
+                },
+                {
+                  "value": "Inbound & Outbound Delivery, Inventory Management.",
+                  "evidence": [
+                    {
+                      "source_id": "e2:294:344",
+                      "quote": "Inbound & Outbound Delivery, Inventory Management."
+                    }
+                  ],
+                  "status": "needs_review"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "total_experience_years",
+              "items": [
+                {
+                  "value": 4.0,
+                  "evidence": [
+                    {
+                      "source_id": "e2:0:71",
+                      "quote": "4"
+                    }
+                  ],
+                  "status": "needs_review"
+                }
+              ],
+              "status": "mapped"
+            }
+          ],
+          "review_reasons": [
+            "Experience years are approximate or a lower bound; inspect the source qualifier."
+          ]
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e1:0:7",
+          "quote": "Profile"
+        }
+      ]
+    },
+    {
+      "category": "experience",
+      "label": "Experience",
+      "records": [
+        {
+          "record_id": "experience-1",
+          "source_ids": [
+            "e4:0:32",
+            "e5:0:31",
+            "e6:0:72",
+            "e6:72:134",
+            "e6:134:147",
+            "e7:0:63",
+            "e7:63:129",
+            "e7:129:196",
+            "e7:196:218",
+            "e8:0:57",
+            "e8:57:118",
+            "e8:118:144",
+            "e9:0:67",
+            "e9:67:133",
+            "e9:133:145",
+            "e10:0:55",
+            "e10:55:58",
+            "e10:58:120",
+            "e10:120:189",
+            "e10:189:230",
+            "e11:0:71",
+            "e11:71:142",
+            "e11:142:157",
+            "e12:0:70",
+            "e12:70:137",
+            "e12:137:206",
+            "e12:206:264",
+            "e13:0:68",
+            "e13:68:76"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e3:0:18",
+          "quote": "Employment History"
+        },
+        {
+          "source_id": "e4:0:32",
+          "quote": "SOFTWARE ENGINEERING , Accenture"
+        },
+        {
+          "source_id": "e5:0:31",
+          "quote": "J U N E 2 0 2 1 — P R E S E N T"
+        },
+        {
+          "source_id": "e6:0:72",
+          "quote": "Responsible for driving functional discussion with client & third party "
+        },
+        {
+          "source_id": "e6:72:134",
+          "quote": "and as a Functional Consultant provide solution design as per "
+        },
+        {
+          "source_id": "e6:134:147",
+          "quote": "requirements."
+        },
+        {
+          "source_id": "e7:0:63",
+          "quote": "As a part of application developments worked on different user "
+        },
+        {
+          "source_id": "e7:63:129",
+          "quote": "stories/requirements for development such as Activation of Multi- "
+        },
+        {
+          "source_id": "e7:129:196",
+          "quote": "picking process, Automation OD Creation, Custom Report to activate "
+        },
+        {
+          "source_id": "e7:196:218",
+          "quote": "locked Handling units."
+        },
+        {
+          "source_id": "e8:0:57",
+          "quote": "Worked on various standard processes in EWM i.e VAS , De "
+        },
+        {
+          "source_id": "e8:57:118",
+          "quote": "consolidation etc . Also have quite a good experience in the "
+        },
+        {
+          "source_id": "e8:118:144",
+          "quote": "Transportation Unit part ."
+        },
+        {
+          "source_id": "e9:0:67",
+          "quote": "Worked on different Business requirements and achieved by specific "
+        },
+        {
+          "source_id": "e9:67:133",
+          "quote": "EWM Config. Change and developing some custom reports / technical "
+        },
+        {
+          "source_id": "e9:133:145",
+          "quote": "code change."
+        },
+        {
+          "source_id": "e10:0:55",
+          "quote": "Handled SAP EWM Integration with other Non-SAP Systems."
+        },
+        {
+          "source_id": "e10:55:58",
+          "quote": " ● "
+        },
+        {
+          "source_id": "e10:58:120",
+          "quote": "As a part of Application Maintenance responsible for Incident "
+        },
+        {
+          "source_id": "e10:120:189",
+          "quote": "Management & Service Requests handling, Resolving Priority Incidents "
+        },
+        {
+          "source_id": "e10:189:230",
+          "quote": "and provide possible Root Cause Analysis."
+        },
+        {
+          "source_id": "e11:0:71",
+          "quote": "Resolved Incidents related to Goods Issue, Goods Receipt, Reservation, "
+        },
+        {
+          "source_id": "e11:71:142",
+          "quote": "Physical Inventory, Stock Transfer, Purchase Order, and other relevant "
+        },
+        {
+          "source_id": "e11:142:157",
+          "quote": "objects in EWM."
+        },
+        {
+          "source_id": "e12:0:70",
+          "quote": "Collaborate with various stakeholders to manage fit gap and scenarios "
+        },
+        {
+          "source_id": "e12:70:137",
+          "quote": "analysis to understand the recurring incident (in Service Now) and "
+        },
+        {
+          "source_id": "e12:137:206",
+          "quote": "propose solutions /changes. . Focused on Daily Order Processing Flow "
+        },
+        {
+          "source_id": "e12:206:264",
+          "quote": "and reconciliation activities to avoid any Business Block."
+        },
+        {
+          "source_id": "e13:0:68",
+          "quote": "Experienced in Integration testing (FIT, SIT, UAT) for EWM Business "
+        },
+        {
+          "source_id": "e13:68:76",
+          "quote": "process."
+        }
+      ]
+    },
+    {
+      "category": "education",
+      "label": "Education",
+      "records": [
+        {
+          "record_id": "education-1",
+          "source_ids": [
+            "e15:0:69"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "degree",
+              "items": [
+                {
+                  "value": "Bachelor of Engineering",
+                  "evidence": [
+                    {
+                      "source_id": "e15:0:69",
+                      "quote": "Bachelor of Engineering"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "field_of_study",
+              "items": [
+                {
+                  "value": "Electronics and Communication Engineering",
+                  "evidence": [
+                    {
+                      "source_id": "e15:0:69",
+                      "quote": "Electronics and Communication Engineering"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "education-2",
+          "source_ids": [
+            "e16:0:49"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "degree",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "education-3",
+          "source_ids": [
+            "e17:0:21"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "degree",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "education-4",
+          "source_ids": [
+            "e18:0:61"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "degree",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "education-5",
+          "source_ids": [
+            "e19:0:17"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "degree",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "education-6",
+          "source_ids": [
+            "e20:0:13",
+            "e21:0:66"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "degree",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "education-7",
+          "source_ids": [
+            "e22:0:14",
+            "e22:14:26",
+            "e22:26:52"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "degree",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "education-8",
+          "source_ids": [
+            "e23:0:6"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "degree",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "education-9",
+          "source_ids": [
+            "e24:0:9"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "degree",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "education-10",
+          "source_ids": [
+            "e25:0:5"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "degree",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "education-11",
+          "source_ids": [
+            "e26:0:7"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "degree",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e14:0:9",
+          "quote": "Education"
+        },
+        {
+          "source_id": "e15:0:69",
+          "quote": "Bachelor of Engineering in Electronics and Communication Engineering,"
+        },
+        {
+          "source_id": "e16:0:49",
+          "quote": "UNIVERSITY OF ENGINEERING AND MANAGEMENT, Kolkata"
+        },
+        {
+          "source_id": "e17:0:21",
+          "quote": "J A N U A R Y 2 0 2 1"
+        },
+        {
+          "source_id": "e18:0:61",
+          "quote": "High School Diploma, Shibpur Bhabani Balika Vidyalaya, Howrah"
+        },
+        {
+          "source_id": "e19:0:17",
+          "quote": "A P R I L 2 0 1 7"
+        },
+        {
+          "source_id": "e20:0:13",
+          "quote": "Certification"
+        },
+        {
+          "source_id": "e21:0:66",
+          "quote": "SAP Extended Warehouse Management with SAP S/4 HANA (C_S4EWM_2020)"
+        },
+        {
+          "source_id": "e22:0:14",
+          "quote": "Kolkata,India "
+        },
+        {
+          "source_id": "e22:14:26",
+          "quote": "08910687644 "
+        },
+        {
+          "source_id": "e22:26:52",
+          "quote": "rituparnamitra14@gmail.com"
+        },
+        {
+          "source_id": "e23:0:6",
+          "quote": "SAPEWM"
+        },
+        {
+          "source_id": "e24:0:9",
+          "quote": "SAPRetail"
+        },
+        {
+          "source_id": "e25:0:5",
+          "quote": "Hindi"
+        },
+        {
+          "source_id": "e26:0:7",
+          "quote": "English"
+        }
+      ]
+    },
+    {
+      "category": "needs_review",
+      "label": "Unassigned source blocks",
+      "records": [],
+      "residual_blocks": [
+        {
+          "source_id": "e0:0:15",
+          "quote": "Rituparna Mitra"
+        }
+      ]
+    }
+  ]
+}

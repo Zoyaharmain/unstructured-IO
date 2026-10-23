@@ -1,0 +1,1167 @@
+{
+  "success": true,
+  "source": "Harsh Vardhan.docx",
+  "extraction_mode": "existing_blocks_schema_mapping",
+  "data": {
+    "contact": {
+      "full_name": "Harsh Vardhan Bangalore India (+91) 9643101947 hv160292@gmail.com https://www.linkedin.com/in/harshvardhan16/",
+      "email": "hv160292@gmail.com",
+      "phone": "9643101947",
+      "location": "Bangalore",
+      "linkedin_url": "https://www.linkedin.com/in/harshvardhan16",
+      "github_url": null,
+      "portfolio_url": null
+    },
+    "professional_title": null,
+    "summary": "Azure Cloud Engineer with over 11 years of experience in designing, automating, and managing enterprise-scale Azure environments. Certified in Terraform HCL and Google Cloud Generative AI Leadership, with proven expertise in cloud infrastructure, cost optimization, and automation. Adept at integrating AI capabilities with cloud platforms to deliver secure, scalable, and efficient solutions that accelerate digital transformation.",
+    "total_experience_years": 11.0,
+    "skills": {
+      "technical_skills": [
+        "SQL"
+      ],
+      "tools_and_platforms": [
+        "AWS",
+        "Azure",
+        "GCP"
+      ],
+      "domain_and_functional": [],
+      "soft_skills": [],
+      "all_skills": [
+        "SQL",
+        "AWS",
+        "Azure",
+        "GCP",
+        "Azure Terraform ARM Templates Cloud Migration CI/CD (Azure DevOps",
+        "GitHub Actions – exposure) Automation & Monitoring PowerShell",
+        "Azure CLI Azure SQL Data Protection Azure Security Azure Monitor Log Analytics PIM",
+        "MFA Generative AI AWS (Basic) GCP (Basic) ITIL NetBackup .."
+      ]
+    },
+    "experience": [
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      }
+    ],
+    "education": [
+      {
+        "institution": "",
+        "degree": "",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      }
+    ],
+    "certifications": [
+      {
+        "name": "Microsoft Certified: Azure Solution Architect Expert (2023) HashiCorp Certified: Terraform Associate (HCL) (2024) Google Cloud Certified – Generative AI Leader (2025) Google Cloud Certified Cloud Digital Leader (2023) Microsoft Certified: Azure Administrator Associate Microsoft Certified: Azure AI Fundamentals Microsoft Certified: Azure Data Fundamentals Microsoft Certified: Azure Fundamentals",
+        "issuer": null,
+        "issue_year": null
+      }
+    ],
+    "projects": [],
+    "languages": []
+  },
+  "schema_mapping": {
+    "fields_populated": 13,
+    "total_fields": 16,
+    "completion_percentage": 81.2,
+    "field_details": [
+      {
+        "field_name": "contact.full_name",
+        "target_type": "string",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Personal Details",
+        "confidence_score": 0.95,
+        "description": "Candidate's full name, extracted from the top header of the resume."
+      },
+      {
+        "field_name": "contact.email",
+        "target_type": "string (email)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.98,
+        "description": "Candidate's primary contact email address."
+      },
+      {
+        "field_name": "contact.phone",
+        "target_type": "string (phone)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.95,
+        "description": "Candidate's telephone / mobile phone number."
+      },
+      {
+        "field_name": "contact.location",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.85,
+        "description": "Candidate's residential location or work city."
+      },
+      {
+        "field_name": "contact.linkedin_url",
+        "target_type": "string (url) | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.9,
+        "description": "URL to candidate's LinkedIn profile."
+      },
+      {
+        "field_name": "professional_title",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Subtitle",
+        "confidence_score": 0.0,
+        "description": "Candidate's target headline or most recent job title."
+      },
+      {
+        "field_name": "summary",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Summary / Profile / Objective",
+        "confidence_score": 0.85,
+        "description": "Executive bio, professional overview, or career objective."
+      },
+      {
+        "field_name": "total_experience_years",
+        "target_type": "float | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Summary / Experience Calculation",
+        "confidence_score": 0.9,
+        "description": "Total professional experience in years."
+      },
+      {
+        "field_name": "skills.technical_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills / Technical Competencies",
+        "confidence_score": 0.92,
+        "description": "Technical programming languages and core software competencies."
+      },
+      {
+        "field_name": "skills.tools_and_platforms",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills / Tools & Technologies",
+        "confidence_score": 0.9,
+        "description": "Software platforms, developer tools, and operational systems."
+      },
+      {
+        "field_name": "skills.domain_and_functional",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Domain Expertise",
+        "confidence_score": 0.0,
+        "description": "Functional domain knowledge (e.g. Hedge Funds, KYC, NAV, Derivatives)."
+      },
+      {
+        "field_name": "skills.all_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills (Aggregated)",
+        "confidence_score": 0.95,
+        "description": "Complete list of candidate skills across all categories."
+      },
+      {
+        "field_name": "experience",
+        "target_type": "array[WorkExperience]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Experience / Work History",
+        "confidence_score": 0.92,
+        "description": "Complete chronological employment records with bullet points."
+      },
+      {
+        "field_name": "education",
+        "target_type": "array[Education]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Education / Academic Qualifications",
+        "confidence_score": 0.9,
+        "description": "University, college, and higher education degree qualifications."
+      },
+      {
+        "field_name": "certifications",
+        "target_type": "array[Certification]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Certifications / Licenses",
+        "confidence_score": 0.8,
+        "description": "Professional accreditations and credentials."
+      },
+      {
+        "field_name": "projects",
+        "target_type": "array[Project]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Projects / Key Engagements",
+        "confidence_score": 0.0,
+        "description": "Major projects or strategic initiatives led by candidate."
+      }
+    ]
+  },
+  "raw_sections": {
+    "personal_information": "Harsh Vardhan Bangalore India (+91) 9643101947 hv160292@gmail.com https://www.linkedin.com/in/harshvardhan16/",
+    "summary": "Profile Summary Azure Cloud Engineer with over 11 years of experience in designing, automating, and managing enterprise-scale Azure environments. Certified in Terraform HCL and Google Cloud Generative AI Leadership, with proven expertise in cloud infrastructure, cost optimization, and automation. Adept at integrating AI capabilities with cloud platforms to deliver secure, scalable, and efficient solutions that accelerate digital transformation.",
+    "skills": "Key Skills Azure Terraform ARM Templates Cloud Migration CI/CD (Azure DevOps, GitHub Actions – exposure) Automation & Monitoring PowerShell | Azure CLI Azure SQL Data Protection Azure Security Azure Monitor Log Analytics PIM | MFA Generative AI AWS (Basic) GCP (Basic) ITIL NetBackup ..",
+    "certifications": "Certifications Microsoft Certified: Azure Solution Architect Expert (2023) HashiCorp Certified: Terraform Associate (HCL) (2024) Google Cloud Certified – Generative AI Leader (2025) Google Cloud Certified Cloud Digital Leader (2023) Microsoft Certified: Azure Administrator Associate Microsoft Certified: Azure AI Fundamentals Microsoft Certified: Azure Data Fundamentals Microsoft Certified: Azure Fundamentals",
+    "experience": "Experience Azure Cloud Engineer, 10/2022 - Current Tata Consultancy Services (TCS), Bangalore, IN Designed and managed enterprise-scale Azure environments covering compute, networking, and storage, ensuring high performance and cost efficiency. Automated provisioning and deployment of Azure resources using Terraform and ARM templates (created in Visual Studio and integrated with Azure DevOps pipelines). Implemented CI/CD practices for production deployments and enablers, improving release reliability and reducing manual effort. Led cost optimization initiatives through Reservations, right-sizing, and performance tuning — achieving measurable reductions in monthly cloud spend. Configured and maintained Azure Monitor, Log Analytics, and Action Groups for proactive resource monitoring, alerts, and incident response. Implemented and maintained Azure Backup policies ensuring data protection, integrity, and availability in compliance with business continuity requirements. Managed Azure Active Directory and Entra Connect, administering users, groups, and MFA settings to strengthen identity and access management. Applied Privileged Identity Management (PIM) to enforce least-privilege principles and improve audit compliance. Executed patching automation across Azure and On-Prem environments via Azure Update Management and Azure Arc, ensuring security compliance. Migrated database servers from on-prem to Azure Cloud, improving scalability and reducing downtime by ~30%. Performed Azure Database migration from on-premise SQL Server to Azure SQL Database, ensuring data integrity, minimal downtime, and improved scalability. Collaborated with the SOC team to implement security hardening measures (disk encryption, patch updates, and connectivity improvements), enhancing overall cloud security posture. Prepared and executed Incident, Change, and Request tasks under ITIL framework with consistent SLA adherence. Azure System Administrator, 04/2021 - 09/2022 Kyndryl India Pvt. Ltd. Administered core Azure infrastructure (Compute, Network, Storage) and successfully executed cross-subscription migrations, achieving 15% cost optimization. Deployed Azure Virtual Machines using ARM Templates and customized resources to meet diverse project specifications. Established and administered robust Azure Active Directory and backup policies, improving data recovery efficiency by 20% and enforcing MFA security. Cloud Support Engineer, 10/2018 - 07/2021 IBM India Pvt. Limited Managed foundational Azure infrastructure (Compute, Storage, Networking) and executed resource migration between subscriptions. Deployed Azure Virtual Machines using ARM Templates and implemented Azure Backup policies for data resilience. Administered Azure Active Directory and enforced Multi-Factor Authentication (MFA) policies for users and groups. System Administrator, 08/2015 - 09/2018 DXC Technology Managed enterprise-level data protection and backup operations using tools including Netbackup and Arcserve. Ensured data recovery efficiency and system compliance by managing daily/weekly/monthly backup jobs, media, and storage device configurations. Executed re-runs of failed backups and configured backups on servers using Arcserve and Netbackup. 1St Level Assurance Engineer, 06/2014 - 07/2015 Ericsson Maintained 99.9% network availability by conducting proactive daily health checks on critical Packet Core Network (PCN) infrastructure using specialized monitoring tools. Provided expert L2/L3 troubleshooting and incident management, quickly identifying and escalating critical network issues to ensure prompt resolution and minimize service disruption.\nProjects / Highlights Automated Azure infrastructure deployment using ARM Templates integrated with Azure DevOps CI/CD pipelines, enabling consistent and repeatable environment provisioning. Migrated on-prem SQL workloads to Azure SQL Database with zero data loss, achieving improved scalability and 15% cost optimization through Azure Reservations and right-sizing. Implemented patch automation via Azure Update Management and Azure Arc, ensuring compliance and strengthening cloud security posture. Integrated AI-based monitoring insights using Azure OpenAI and Log Analytics, improving proactive incident detection and response efficiency.",
+    "education": "Education Rajiv Gandhi Proudyogiki Vishwavidyalaya (RGPV), Bhopal, 01/2014 B.Tech : Computer Science GPA / Marks: 74.9%\n#HRJ#c53004f1-cb21-4d33-80ed-20e573ceb944#"
+  },
+  "meta": {
+    "status": "needs_review",
+    "human_verified": false,
+    "provider_calls": 0,
+    "source_accounting": {
+      "all_source_text_preserved": true,
+      "total_spans": 17,
+      "assigned_meaningful_spans": 16,
+      "unresolved_meaningful_spans": 1,
+      "non_content_artifacts": 0,
+      "duplicates_excluded": 0,
+      "all_meaningful_text_assigned": false,
+      "semantic_correctness_verified": false,
+      "outcomes": [
+        {
+          "source_id": "e0:0:109",
+          "source_element_index": 0,
+          "start": 0,
+          "end": 109,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e1:0:151",
+          "source_element_index": 1,
+          "start": 0,
+          "end": 151,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e2:0:16",
+          "source_element_index": 2,
+          "start": 0,
+          "end": 16,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e2:16:448",
+          "source_element_index": 2,
+          "start": 16,
+          "end": 448,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:0:11",
+          "source_element_index": 3,
+          "start": 0,
+          "end": 11,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e3:11:286",
+          "source_element_index": 3,
+          "start": 11,
+          "end": 286,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e4:0:15",
+          "source_element_index": 4,
+          "start": 0,
+          "end": 15,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e4:15:411",
+          "source_element_index": 4,
+          "start": 15,
+          "end": 411,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e5:0:11",
+          "source_element_index": 5,
+          "start": 0,
+          "end": 11,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e5:11:1171",
+          "source_element_index": 5,
+          "start": 11,
+          "end": 1171,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e5:1171:2300",
+          "source_element_index": 5,
+          "start": 1171,
+          "end": 2300,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e5:2300:3357",
+          "source_element_index": 5,
+          "start": 2300,
+          "end": 3357,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e5:3357:3655",
+          "source_element_index": 5,
+          "start": 3357,
+          "end": 3655,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e6:0:642",
+          "source_element_index": 6,
+          "start": 0,
+          "end": 642,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e7:0:10",
+          "source_element_index": 7,
+          "start": 0,
+          "end": 10,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e7:10:119",
+          "source_element_index": 7,
+          "start": 10,
+          "end": 119,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:0:42",
+          "source_element_index": 8,
+          "start": 0,
+          "end": 42,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        }
+      ]
+    },
+    "document_scope": {
+      "kind": "likely_resume",
+      "candidate_resume": true,
+      "reason": "Contact details, multiple resume section families and dated history; provisional scope only",
+      "human_verified": false
+    },
+    "source_inventory_sha256": "6b331c1ec7ae2137aaf3447ae32e79af454d361820b2976c65aad18621fe3505",
+    "field_evidence": {
+      "contact.full_name": [
+        "e0:0:109"
+      ],
+      "contact.email": [
+        "e0:0:109"
+      ],
+      "contact.phone": [
+        "e0:0:109"
+      ],
+      "contact.location": [
+        "e0:0:109"
+      ],
+      "contact.linkedin_url": [
+        "e0:0:109"
+      ],
+      "summary": [
+        "e2:16:448"
+      ],
+      "total_experience_years": [
+        "e2:16:448"
+      ],
+      "skills.technical_skills[0]": [
+        "e3:11:286"
+      ],
+      "skills.tools_and_platforms[0]": [
+        "e3:11:286"
+      ],
+      "skills.tools_and_platforms[1]": [
+        "e3:11:286"
+      ],
+      "skills.tools_and_platforms[2]": [
+        "e3:11:286"
+      ],
+      "skills.all_skills[0]": [
+        "e3:11:286"
+      ],
+      "skills.all_skills[1]": [
+        "e3:11:286"
+      ],
+      "skills.all_skills[2]": [
+        "e3:11:286"
+      ],
+      "skills.all_skills[3]": [
+        "e3:11:286"
+      ],
+      "skills.all_skills[4]": [
+        "e3:11:286"
+      ],
+      "skills.all_skills[5]": [
+        "e3:11:286"
+      ],
+      "skills.all_skills[6]": [
+        "e3:11:286"
+      ],
+      "skills.all_skills[7]": [
+        "e3:11:286"
+      ],
+      "certifications[0].name": [
+        "e4:15:411"
+      ]
+    },
+    "record_reviews": [
+      {
+        "category": "experience",
+        "entry_id": "experience-1",
+        "source_ids": [
+          "e5:11:1171",
+          "e5:1171:2300",
+          "e5:2300:3357",
+          "e5:3357:3655",
+          "e6:0:642"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "education",
+        "entry_id": "education-1",
+        "source_ids": [
+          "e7:10:119",
+          "e8:0:42"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "certifications",
+        "entry_id": "certifications-1",
+        "source_ids": [
+          "e4:15:411"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      }
+    ],
+    "missing_required_fields": [
+      "experience[0].company",
+      "experience[0].role",
+      "education[0].institution",
+      "education[0].degree"
+    ],
+    "warnings": [
+      "Schema validity and field completion do not establish extraction or relationship accuracy.",
+      "Handoff confidence scores are fixed heuristics, not calibrated probabilities.",
+      "Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields."
+    ],
+    "unmapped_blocks": [
+      {
+        "source_id": "e2:0:16",
+        "category": "summary",
+        "text": "Profile Summary ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e3:0:11",
+        "category": "skills",
+        "text": "Key Skills ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e4:0:15",
+        "category": "certifications",
+        "text": "Certifications ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:0:11",
+        "category": "experience",
+        "text": "Experience ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:11:1171",
+        "category": "experience",
+        "text": "Azure Cloud Engineer, 10/2022 - Current Tata Consultancy Services (TCS), Bangalore, IN Designed and managed enterprise-scale Azure environments covering compute, networking, and storage, ensuring high performance and cost efficiency. Automated provisioning and deployment of Azure resources using Terraform and ARM templates (created in Visual Studio and integrated with Azure DevOps pipelines). Implemented CI/CD practices for production deployments and enablers, improving release reliability and reducing manual effort. Led cost optimization initiatives through Reservations, right-sizing, and performance tuning — achieving measurable reductions in monthly cloud spend. Configured and maintained Azure Monitor, Log Analytics, and Action Groups for proactive resource monitoring, alerts, and incident response. Implemented and maintained Azure Backup policies ensuring data protection, integrity, and availability in compliance with business continuity requirements. Managed Azure Active Directory and Entra Connect, administering users, groups, and MFA settings to strengthen identity and access management. Applied Privileged Identity Management (PIM) to ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:1171:2300",
+        "category": "experience",
+        "text": "enforce least-privilege principles and improve audit compliance. Executed patching automation across Azure and On-Prem environments via Azure Update Management and Azure Arc, ensuring security compliance. Migrated database servers from on-prem to Azure Cloud, improving scalability and reducing downtime by ~30%. Performed Azure Database migration from on-premise SQL Server to Azure SQL Database, ensuring data integrity, minimal downtime, and improved scalability. Collaborated with the SOC team to implement security hardening measures (disk encryption, patch updates, and connectivity improvements), enhancing overall cloud security posture. Prepared and executed Incident, Change, and Request tasks under ITIL framework with consistent SLA adherence. Azure System Administrator, 04/2021 - 09/2022 Kyndryl India Pvt. Ltd. Administered core Azure infrastructure (Compute, Network, Storage) and successfully executed cross-subscription migrations, achieving 15% cost optimization. Deployed Azure Virtual Machines using ARM Templates and customized resources to meet diverse project specifications. Established and administered ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:2300:3357",
+        "category": "experience",
+        "text": "robust Azure Active Directory and backup policies, improving data recovery efficiency by 20% and enforcing MFA security. Cloud Support Engineer, 10/2018 - 07/2021 IBM India Pvt. Limited Managed foundational Azure infrastructure (Compute, Storage, Networking) and executed resource migration between subscriptions. Deployed Azure Virtual Machines using ARM Templates and implemented Azure Backup policies for data resilience. Administered Azure Active Directory and enforced Multi-Factor Authentication (MFA) policies for users and groups. System Administrator, 08/2015 - 09/2018 DXC Technology Managed enterprise-level data protection and backup operations using tools including Netbackup and Arcserve. Ensured data recovery efficiency and system compliance by managing daily/weekly/monthly backup jobs, media, and storage device configurations. Executed re-runs of failed backups and configured backups on servers using Arcserve and Netbackup. 1St Level Assurance Engineer, 06/2014 - 07/2015 Ericsson Maintained 99.9% network availability by conducting pro",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:3357:3655",
+        "category": "experience",
+        "text": "active daily health checks on critical Packet Core Network (PCN) infrastructure using specialized monitoring tools. Provided expert L2/L3 troubleshooting and incident management, quickly identifying and escalating critical network issues to ensure prompt resolution and minimize service disruption.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e6:0:642",
+        "category": "experience",
+        "text": "Projects / Highlights Automated Azure infrastructure deployment using ARM Templates integrated with Azure DevOps CI/CD pipelines, enabling consistent and repeatable environment provisioning. Migrated on-prem SQL workloads to Azure SQL Database with zero data loss, achieving improved scalability and 15% cost optimization through Azure Reservations and right-sizing. Implemented patch automation via Azure Update Management and Azure Arc, ensuring compliance and strengthening cloud security posture. Integrated AI-based monitoring insights using Azure OpenAI and Log Analytics, improving proactive incident detection and response efficiency.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e7:0:10",
+        "category": "education",
+        "text": "Education ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e7:10:119",
+        "category": "education",
+        "text": "Rajiv Gandhi Proudyogiki Vishwavidyalaya (RGPV), Bhopal, 01/2014 B.Tech : Computer Science GPA / Marks: 74.9%",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:0:42",
+        "category": "education",
+        "text": "#HRJ#c53004f1-cb21-4d33-80ed-20e573ceb944#",
+        "page_number": 1
+      },
+      {
+        "source_id": "e1:0:151",
+        "category": null,
+        "text": "Professional Title Azure Cloud Engineer | ARM Template & Terraform Automation | Azure DevOps CI/CD | AI & Cloud Innovation | Certified Google AI Leader",
+        "page_number": 1
+      }
+    ],
+    "needs_review": [
+      {
+        "source_element_index": 1,
+        "start": 0,
+        "end": 151,
+        "text": "Professional Title Azure Cloud Engineer | ARM Template & Terraform Automation | Azure DevOps CI/CD | AI & Cloud Innovation | Certified Google AI Leader",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.43,
+        "margin": -0.0275,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      }
+    ]
+  },
+  "section_schemas": [
+    {
+      "category": "personal_information",
+      "label": "Personal information",
+      "records": [
+        {
+          "record_id": "personal_information",
+          "source_ids": [
+            "e0:0:109"
+          ],
+          "attributes": [
+            {
+              "name": "full_name",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "email",
+              "items": [
+                {
+                  "value": "hv160292@gmail.com",
+                  "evidence": [
+                    {
+                      "source_id": "e0:0:109",
+                      "quote": "hv160292@gmail.com"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "phone",
+              "items": [
+                {
+                  "value": "9643101947",
+                  "evidence": [
+                    {
+                      "source_id": "e0:0:109",
+                      "quote": "9643101947"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "location",
+              "items": [
+                {
+                  "value": "Bangalore",
+                  "evidence": [
+                    {
+                      "source_id": "e0:0:109",
+                      "quote": "Bangalore"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "linkedin_url",
+              "items": [
+                {
+                  "value": "https://www.linkedin.com/in/harshvardhan16",
+                  "evidence": [
+                    {
+                      "source_id": "e0:0:109",
+                      "quote": "https://www.linkedin.com/in/harshvardhan16"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "github_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "portfolio_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "professional_title",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e0:0:109",
+          "quote": "Harsh Vardhan Bangalore India (+91) 9643101947 hv160292@gmail.com https://www.linkedin.com/in/harshvardhan16/"
+        }
+      ]
+    },
+    {
+      "category": "summary",
+      "label": "Summary",
+      "records": [
+        {
+          "record_id": "summary",
+          "source_ids": [
+            "e2:16:448"
+          ],
+          "attributes": [
+            {
+              "name": "statements",
+              "items": [
+                {
+                  "value": "Azure Cloud Engineer with over 11 years of experience in designing, automating, and managing enterprise-scale Azure environments. Certified in Terraform HCL and Google Cloud Generative AI Leadership, with proven expertise in cloud infrastructure, cost optimization, and automation. Adept at integrating AI capabilities with cloud platforms to deliver secure, scalable, and efficient solutions that accelerate digital transformation.",
+                  "evidence": [
+                    {
+                      "source_id": "e2:16:448",
+                      "quote": "Azure Cloud Engineer with over 11 years of experience in designing, automating, and managing enterprise-scale Azure environments. Certified in Terraform HCL and Google Cloud Generative AI Leadership, with proven expertise in cloud infrastructure, cost optimization, and automation. Adept at integrating AI capabilities with cloud platforms to deliver secure, scalable, and efficient solutions that accelerate digital transformation."
+                    }
+                  ],
+                  "status": "needs_review"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "total_experience_years",
+              "items": [
+                {
+                  "value": 11.0,
+                  "evidence": [
+                    {
+                      "source_id": "e2:16:448",
+                      "quote": "11"
+                    }
+                  ],
+                  "status": "needs_review"
+                }
+              ],
+              "status": "mapped"
+            }
+          ],
+          "review_reasons": [
+            "Experience years are approximate or a lower bound; inspect the source qualifier."
+          ]
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e2:0:16",
+          "quote": "Profile Summary "
+        }
+      ]
+    },
+    {
+      "category": "skills",
+      "label": "Skills",
+      "records": [
+        {
+          "record_id": "skills",
+          "source_ids": [
+            "e3:11:286"
+          ],
+          "attributes": [
+            {
+              "name": "technical_skills",
+              "items": [
+                {
+                  "value": "SQL",
+                  "evidence": [
+                    {
+                      "source_id": "e3:11:286",
+                      "quote": "SQL"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "tools_and_platforms",
+              "items": [
+                {
+                  "value": "AWS",
+                  "evidence": [
+                    {
+                      "source_id": "e3:11:286",
+                      "quote": "AWS"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Azure",
+                  "evidence": [
+                    {
+                      "source_id": "e3:11:286",
+                      "quote": "Azure"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "GCP",
+                  "evidence": [
+                    {
+                      "source_id": "e3:11:286",
+                      "quote": "GCP"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "domain_and_functional",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "soft_skills",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "all_skills",
+              "items": [
+                {
+                  "value": "SQL",
+                  "evidence": [
+                    {
+                      "source_id": "e3:11:286",
+                      "quote": "SQL"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "AWS",
+                  "evidence": [
+                    {
+                      "source_id": "e3:11:286",
+                      "quote": "AWS"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Azure",
+                  "evidence": [
+                    {
+                      "source_id": "e3:11:286",
+                      "quote": "Azure"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "GCP",
+                  "evidence": [
+                    {
+                      "source_id": "e3:11:286",
+                      "quote": "GCP"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Azure Terraform ARM Templates Cloud Migration CI/CD (Azure DevOps",
+                  "evidence": [
+                    {
+                      "source_id": "e3:11:286",
+                      "quote": "Azure Terraform ARM Templates Cloud Migration CI/CD (Azure DevOps"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "GitHub Actions – exposure) Automation & Monitoring PowerShell",
+                  "evidence": [
+                    {
+                      "source_id": "e3:11:286",
+                      "quote": "GitHub Actions – exposure) Automation & Monitoring PowerShell"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Azure CLI Azure SQL Data Protection Azure Security Azure Monitor Log Analytics PIM",
+                  "evidence": [
+                    {
+                      "source_id": "e3:11:286",
+                      "quote": "Azure CLI Azure SQL Data Protection Azure Security Azure Monitor Log Analytics PIM"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "MFA Generative AI AWS (Basic) GCP (Basic) ITIL NetBackup ..",
+                  "evidence": [
+                    {
+                      "source_id": "e3:11:286",
+                      "quote": "MFA Generative AI AWS (Basic) GCP (Basic) ITIL NetBackup .."
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e3:0:11",
+          "quote": "Key Skills "
+        },
+        {
+          "source_id": "e3:11:286",
+          "quote": "Azure Terraform ARM Templates Cloud Migration CI/CD (Azure DevOps, GitHub Actions – exposure) Automation & Monitoring PowerShell | Azure CLI Azure SQL Data Protection Azure Security Azure Monitor Log Analytics PIM | MFA Generative AI AWS (Basic) GCP (Basic) ITIL NetBackup .."
+        }
+      ]
+    },
+    {
+      "category": "certifications",
+      "label": "Certifications",
+      "records": [
+        {
+          "record_id": "certifications-1",
+          "source_ids": [
+            "e4:15:411"
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "items": [
+                {
+                  "value": "Microsoft Certified: Azure Solution Architect Expert (2023) HashiCorp Certified: Terraform Associate (HCL) (2024) Google Cloud Certified – Generative AI Leader (2025) Google Cloud Certified Cloud Digital Leader (2023) Microsoft Certified: Azure Administrator Associate Microsoft Certified: Azure AI Fundamentals Microsoft Certified: Azure Data Fundamentals Microsoft Certified: Azure Fundamentals",
+                  "evidence": [
+                    {
+                      "source_id": "e4:15:411",
+                      "quote": "Microsoft Certified: Azure Solution Architect Expert (2023) HashiCorp Certified: Terraform Associate (HCL) (2024) Google Cloud Certified – Generative AI Leader (2025) Google Cloud Certified Cloud Digital Leader (2023) Microsoft Certified: Azure Administrator Associate Microsoft Certified: Azure AI Fundamentals Microsoft Certified: Azure Data Fundamentals Microsoft Certified: Azure Fundamentals"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "issuer",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "issue_year",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e4:0:15",
+          "quote": "Certifications "
+        }
+      ]
+    },
+    {
+      "category": "experience",
+      "label": "Experience",
+      "records": [
+        {
+          "record_id": "experience-1",
+          "source_ids": [
+            "e5:11:1171",
+            "e5:1171:2300",
+            "e5:2300:3357",
+            "e5:3357:3655",
+            "e6:0:642"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e5:0:11",
+          "quote": "Experience "
+        },
+        {
+          "source_id": "e5:11:1171",
+          "quote": "Azure Cloud Engineer, 10/2022 - Current Tata Consultancy Services (TCS), Bangalore, IN Designed and managed enterprise-scale Azure environments covering compute, networking, and storage, ensuring high performance and cost efficiency. Automated provisioning and deployment of Azure resources using Terraform and ARM templates (created in Visual Studio and integrated with Azure DevOps pipelines). Implemented CI/CD practices for production deployments and enablers, improving release reliability and reducing manual effort. Led cost optimization initiatives through Reservations, right-sizing, and performance tuning — achieving measurable reductions in monthly cloud spend. Configured and maintained Azure Monitor, Log Analytics, and Action Groups for proactive resource monitoring, alerts, and incident response. Implemented and maintained Azure Backup policies ensuring data protection, integrity, and availability in compliance with business continuity requirements. Managed Azure Active Directory and Entra Connect, administering users, groups, and MFA settings to strengthen identity and access management. Applied Privileged Identity Management (PIM) to "
+        },
+        {
+          "source_id": "e5:1171:2300",
+          "quote": "enforce least-privilege principles and improve audit compliance. Executed patching automation across Azure and On-Prem environments via Azure Update Management and Azure Arc, ensuring security compliance. Migrated database servers from on-prem to Azure Cloud, improving scalability and reducing downtime by ~30%. Performed Azure Database migration from on-premise SQL Server to Azure SQL Database, ensuring data integrity, minimal downtime, and improved scalability. Collaborated with the SOC team to implement security hardening measures (disk encryption, patch updates, and connectivity improvements), enhancing overall cloud security posture. Prepared and executed Incident, Change, and Request tasks under ITIL framework with consistent SLA adherence. Azure System Administrator, 04/2021 - 09/2022 Kyndryl India Pvt. Ltd. Administered core Azure infrastructure (Compute, Network, Storage) and successfully executed cross-subscription migrations, achieving 15% cost optimization. Deployed Azure Virtual Machines using ARM Templates and customized resources to meet diverse project specifications. Established and administered "
+        },
+        {
+          "source_id": "e5:2300:3357",
+          "quote": "robust Azure Active Directory and backup policies, improving data recovery efficiency by 20% and enforcing MFA security. Cloud Support Engineer, 10/2018 - 07/2021 IBM India Pvt. Limited Managed foundational Azure infrastructure (Compute, Storage, Networking) and executed resource migration between subscriptions. Deployed Azure Virtual Machines using ARM Templates and implemented Azure Backup policies for data resilience. Administered Azure Active Directory and enforced Multi-Factor Authentication (MFA) policies for users and groups. System Administrator, 08/2015 - 09/2018 DXC Technology Managed enterprise-level data protection and backup operations using tools including Netbackup and Arcserve. Ensured data recovery efficiency and system compliance by managing daily/weekly/monthly backup jobs, media, and storage device configurations. Executed re-runs of failed backups and configured backups on servers using Arcserve and Netbackup. 1St Level Assurance Engineer, 06/2014 - 07/2015 Ericsson Maintained 99.9% network availability by conducting pro"
+        },
+        {
+          "source_id": "e5:3357:3655",
+          "quote": "active daily health checks on critical Packet Core Network (PCN) infrastructure using specialized monitoring tools. Provided expert L2/L3 troubleshooting and incident management, quickly identifying and escalating critical network issues to ensure prompt resolution and minimize service disruption."
+        },
+        {
+          "source_id": "e6:0:642",
+          "quote": "Projects / Highlights Automated Azure infrastructure deployment using ARM Templates integrated with Azure DevOps CI/CD pipelines, enabling consistent and repeatable environment provisioning. Migrated on-prem SQL workloads to Azure SQL Database with zero data loss, achieving improved scalability and 15% cost optimization through Azure Reservations and right-sizing. Implemented patch automation via Azure Update Management and Azure Arc, ensuring compliance and strengthening cloud security posture. Integrated AI-based monitoring insights using Azure OpenAI and Log Analytics, improving proactive incident detection and response efficiency."
+        }
+      ]
+    },
+    {
+      "category": "education",
+      "label": "Education",
+      "records": [
+        {
+          "record_id": "education-1",
+          "source_ids": [
+            "e7:10:119",
+            "e8:0:42"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "degree",
+              "items": [
+                {
+                  "value": "B.Tech",
+                  "evidence": [
+                    {
+                      "source_id": "e7:10:119",
+                      "quote": "B.Tech"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e7:0:10",
+          "quote": "Education "
+        },
+        {
+          "source_id": "e7:10:119",
+          "quote": "Rajiv Gandhi Proudyogiki Vishwavidyalaya (RGPV), Bhopal, 01/2014 B.Tech : Computer Science GPA / Marks: 74.9%"
+        },
+        {
+          "source_id": "e8:0:42",
+          "quote": "#HRJ#c53004f1-cb21-4d33-80ed-20e573ceb944#"
+        }
+      ]
+    },
+    {
+      "category": "needs_review",
+      "label": "Unassigned source blocks",
+      "records": [],
+      "residual_blocks": [
+        {
+          "source_id": "e1:0:151",
+          "quote": "Professional Title Azure Cloud Engineer | ARM Template & Terraform Automation | Azure DevOps CI/CD | AI & Cloud Innovation | Certified Google AI Leader"
+        }
+      ]
+    }
+  ]
+}

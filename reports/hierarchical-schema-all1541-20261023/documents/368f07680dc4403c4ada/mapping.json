@@ -1,0 +1,1549 @@
+{
+  "success": true,
+  "source": "MeenalDixit[5y_9m].docx",
+  "extraction_mode": "existing_blocks_schema_mapping",
+  "data": {
+    "contact": {
+      "full_name": "Meenal Dixit",
+      "email": "Meenaldixit12@gmail.com",
+      "phone": "+91 9611217811",
+      "location": "Noida",
+      "linkedin_url": "www.linkedin.com/in/meenal-dixit",
+      "github_url": null,
+      "portfolio_url": null
+    },
+    "professional_title": null,
+    "summary": null,
+    "total_experience_years": null,
+    "skills": {
+      "technical_skills": [],
+      "tools_and_platforms": [],
+      "domain_and_functional": [],
+      "soft_skills": [],
+      "all_skills": []
+    },
+    "experience": [],
+    "education": [
+      {
+        "institution": "",
+        "degree": "",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      }
+    ],
+    "certifications": [],
+    "projects": [],
+    "languages": [
+      "Languages known: English, Hindi"
+    ]
+  },
+  "schema_mapping": {
+    "fields_populated": 6,
+    "total_fields": 16,
+    "completion_percentage": 37.5,
+    "field_details": [
+      {
+        "field_name": "contact.full_name",
+        "target_type": "string",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Personal Details",
+        "confidence_score": 0.95,
+        "description": "Candidate's full name, extracted from the top header of the resume."
+      },
+      {
+        "field_name": "contact.email",
+        "target_type": "string (email)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.98,
+        "description": "Candidate's primary contact email address."
+      },
+      {
+        "field_name": "contact.phone",
+        "target_type": "string (phone)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.95,
+        "description": "Candidate's telephone / mobile phone number."
+      },
+      {
+        "field_name": "contact.location",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.85,
+        "description": "Candidate's residential location or work city."
+      },
+      {
+        "field_name": "contact.linkedin_url",
+        "target_type": "string (url) | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.9,
+        "description": "URL to candidate's LinkedIn profile."
+      },
+      {
+        "field_name": "professional_title",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Subtitle",
+        "confidence_score": 0.0,
+        "description": "Candidate's target headline or most recent job title."
+      },
+      {
+        "field_name": "summary",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Professional Summary / Profile / Objective",
+        "confidence_score": 0.0,
+        "description": "Executive bio, professional overview, or career objective."
+      },
+      {
+        "field_name": "total_experience_years",
+        "target_type": "float | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Summary / Experience Calculation",
+        "confidence_score": 0.0,
+        "description": "Total professional experience in years."
+      },
+      {
+        "field_name": "skills.technical_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Technical Competencies",
+        "confidence_score": 0.0,
+        "description": "Technical programming languages and core software competencies."
+      },
+      {
+        "field_name": "skills.tools_and_platforms",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Tools & Technologies",
+        "confidence_score": 0.0,
+        "description": "Software platforms, developer tools, and operational systems."
+      },
+      {
+        "field_name": "skills.domain_and_functional",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Domain Expertise",
+        "confidence_score": 0.0,
+        "description": "Functional domain knowledge (e.g. Hedge Funds, KYC, NAV, Derivatives)."
+      },
+      {
+        "field_name": "skills.all_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills (Aggregated)",
+        "confidence_score": 0.0,
+        "description": "Complete list of candidate skills across all categories."
+      },
+      {
+        "field_name": "experience",
+        "target_type": "array[WorkExperience]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Professional Experience / Work History",
+        "confidence_score": 0.0,
+        "description": "Complete chronological employment records with bullet points."
+      },
+      {
+        "field_name": "education",
+        "target_type": "array[Education]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Education / Academic Qualifications",
+        "confidence_score": 0.9,
+        "description": "University, college, and higher education degree qualifications."
+      },
+      {
+        "field_name": "certifications",
+        "target_type": "array[Certification]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Certifications / Licenses",
+        "confidence_score": 0.0,
+        "description": "Professional accreditations and credentials."
+      },
+      {
+        "field_name": "projects",
+        "target_type": "array[Project]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Projects / Key Engagements",
+        "confidence_score": 0.0,
+        "description": "Major projects or strategic initiatives led by candidate."
+      }
+    ]
+  },
+  "raw_sections": {
+    "personal_information": "Meenal Dixit\nMobile: +91 9611217811| Address: Noida (India)\nE-Mail: Meenaldixit12@gmail.com | LinkedIn: www.linkedin.com/in/meenal-dixit",
+    "education": "Degree Specialization Marks College/University Post Graduate Diploma in Mgmt. Finance 78 % Lexicon Mgmt. Institute of Leadership & Excellence Bachelor of Business Administration Finance & Marketing 9.0 CGPA Chandigarh University.",
+    "languages": "Languages known: English, Hindi",
+    "interests": "Passions: Dance & Music, Badminton, Social Work"
+  },
+  "meta": {
+    "status": "needs_review",
+    "human_verified": false,
+    "provider_calls": 0,
+    "source_accounting": {
+      "all_source_text_preserved": true,
+      "total_spans": 30,
+      "assigned_meaningful_spans": 6,
+      "unresolved_meaningful_spans": 24,
+      "non_content_artifacts": 0,
+      "duplicates_excluded": 0,
+      "all_meaningful_text_assigned": false,
+      "semantic_correctness_verified": false,
+      "outcomes": [
+        {
+          "source_id": "e0:0:12",
+          "source_element_index": 0,
+          "start": 0,
+          "end": 12,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e1:0:46",
+          "source_element_index": 1,
+          "start": 0,
+          "end": 46,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e2:0:76",
+          "source_element_index": 2,
+          "start": 0,
+          "end": 76,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e3:0:515",
+          "source_element_index": 3,
+          "start": 0,
+          "end": 515,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e4:0:498",
+          "source_element_index": 4,
+          "start": 0,
+          "end": 498,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e5:0:62",
+          "source_element_index": 5,
+          "start": 0,
+          "end": 62,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e6:0:117",
+          "source_element_index": 6,
+          "start": 0,
+          "end": 117,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e7:0:197",
+          "source_element_index": 7,
+          "start": 0,
+          "end": 197,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e8:0:176",
+          "source_element_index": 8,
+          "start": 0,
+          "end": 176,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e9:0:97",
+          "source_element_index": 9,
+          "start": 0,
+          "end": 97,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e10:0:112",
+          "source_element_index": 10,
+          "start": 0,
+          "end": 112,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e11:0:139",
+          "source_element_index": 11,
+          "start": 0,
+          "end": 139,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e12:0:115",
+          "source_element_index": 12,
+          "start": 0,
+          "end": 115,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e13:0:162",
+          "source_element_index": 13,
+          "start": 0,
+          "end": 162,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e14:0:162",
+          "source_element_index": 14,
+          "start": 0,
+          "end": 162,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e15:0:185",
+          "source_element_index": 15,
+          "start": 0,
+          "end": 185,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e16:0:200",
+          "source_element_index": 16,
+          "start": 0,
+          "end": 200,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e17:0:199",
+          "source_element_index": 17,
+          "start": 0,
+          "end": 199,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e18:0:201",
+          "source_element_index": 18,
+          "start": 0,
+          "end": 201,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e19:0:55",
+          "source_element_index": 19,
+          "start": 0,
+          "end": 55,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e20:0:303",
+          "source_element_index": 20,
+          "start": 0,
+          "end": 303,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e21:0:207",
+          "source_element_index": 21,
+          "start": 0,
+          "end": 207,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e22:0:96",
+          "source_element_index": 22,
+          "start": 0,
+          "end": 96,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e23:0:175",
+          "source_element_index": 23,
+          "start": 0,
+          "end": 175,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e24:0:209",
+          "source_element_index": 24,
+          "start": 0,
+          "end": 209,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e25:0:229",
+          "source_element_index": 25,
+          "start": 0,
+          "end": 229,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "BERT embedding assigned to a labeled K-means centroid"
+        },
+        {
+          "source_id": "e26:0:30",
+          "source_element_index": 26,
+          "start": 0,
+          "end": 30,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e27:0:14",
+          "source_element_index": 27,
+          "start": 0,
+          "end": 14,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e28:0:31",
+          "source_element_index": 28,
+          "start": 0,
+          "end": 31,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "BERT embedding assigned to a labeled K-means centroid"
+        },
+        {
+          "source_id": "e29:0:47",
+          "source_element_index": 29,
+          "start": 0,
+          "end": 47,
+          "section": "interests",
+          "outcome": "assigned",
+          "reason": "BERT embedding assigned to a labeled K-means centroid"
+        }
+      ]
+    },
+    "document_scope": {
+      "kind": "candidate_or_unknown",
+      "candidate_resume": null,
+      "requires_scope_review": true
+    },
+    "source_inventory_sha256": "45100171d036fdb2706afc1d7d64fd58949adf6ded8d0cff8385feba93c23f9f",
+    "field_evidence": {
+      "contact.full_name": [
+        "e0:0:12",
+        "e1:0:46",
+        "e2:0:76"
+      ],
+      "contact.email": [
+        "e0:0:12",
+        "e1:0:46",
+        "e2:0:76"
+      ],
+      "contact.phone": [
+        "e0:0:12",
+        "e1:0:46",
+        "e2:0:76"
+      ],
+      "contact.location": [
+        "e0:0:12",
+        "e1:0:46",
+        "e2:0:76"
+      ],
+      "contact.linkedin_url": [
+        "e0:0:12",
+        "e1:0:46",
+        "e2:0:76"
+      ],
+      "languages[0]": [
+        "e28:0:31"
+      ]
+    },
+    "record_reviews": [
+      {
+        "category": "education",
+        "entry_id": "education-1",
+        "source_ids": [
+          "e25:0:229"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      }
+    ],
+    "missing_required_fields": [
+      "education[0].institution",
+      "education[0].degree"
+    ],
+    "warnings": [
+      "Schema validity and field completion do not establish extraction or relationship accuracy.",
+      "Handoff confidence scores are fixed heuristics, not calibrated probabilities.",
+      "Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields."
+    ],
+    "unmapped_blocks": [
+      {
+        "source_id": "e25:0:229",
+        "category": "education",
+        "text": "Degree Specialization Marks College/University Post Graduate Diploma in Mgmt. Finance 78 % Lexicon Mgmt. Institute of Leadership & Excellence Bachelor of Business Administration Finance & Marketing 9.0 CGPA Chandigarh University.",
+        "page_number": null
+      },
+      {
+        "source_id": "e29:0:47",
+        "category": "interests",
+        "text": "Passions: Dance & Music, Badminton, Social Work",
+        "page_number": null
+      },
+      {
+        "source_id": "e3:0:515",
+        "category": null,
+        "text": "Detail-oriented Data Governance and Privacy Professional with over 6 years of experience specializing in enterprise data risk mitigation, regulatory compliance frameworks, and asset lifecycle management. Proven track record in designing data risk scorecards, identifying and tagging Critical Data Elements (CDEs), and establishing clear data ownership and data sharing boundaries. Adept at managing metadata and data quality metrics across enterprise platforms to minimize risk and accelerate data privacy maturity.",
+        "page_number": null
+      },
+      {
+        "source_id": "e4:0:498",
+        "category": null,
+        "text": "Data Governance & Privacy Metadata Management, Data Stewardship, Data Risk Identification, Data Lineage Mapping, Business Glossary Curation, Data Privacy Frameworks, Data Minimization, Retention & Deletion Schedules, Business Glossary Curation. BI Tools Tableau, Power BI, MS Excel, SQL, Power Query Other Tools Solidatus, Omni, Compass, Collibra, Jira, Confluence, MS Word, MS PowerPoint. Frameworks & Compliance ERISA, IRS Regulations, Risk Reporting Standards (RRS), Record Management Standards.",
+        "page_number": null
+      },
+      {
+        "source_id": "e5:0:62",
+        "category": null,
+        "text": "Data Governance: Senior Analyst, TIAA\tAugust 2023-October 2025",
+        "page_number": null
+      },
+      {
+        "source_id": "e6:0:117",
+        "category": null,
+        "text": "Worked with the Data Governance team to institutionalize data auditing, record management, and risk mitigation across",
+        "page_number": null
+      },
+      {
+        "source_id": "e7:0:197",
+        "category": null,
+        "text": "business domains. Spearheaded the transition of raw datasets into governed, metadata-enriched data products while building continuous control automation to support enterprise governance benchmarks.",
+        "page_number": null
+      },
+      {
+        "source_id": "e8:0:176",
+        "category": null,
+        "text": "Designed and spearheaded a quarterly Data Risk Scorecard program measuring KPIs around key metrics: Data Ownership, Data Privacy, Data Access, Data Sharing, and Data Retention.",
+        "page_number": null
+      },
+      {
+        "source_id": "e9:0:97",
+        "category": null,
+        "text": "Collaborated with business units to identify and tag Critical Data Elements (CDEs) within Collibr",
+        "page_number": null
+      },
+      {
+        "source_id": "e10:0:112",
+        "category": null,
+        "text": "Mapped technical database structures to business glossaries to ensure a single source of truth for data quality.",
+        "page_number": null
+      },
+      {
+        "source_id": "e11:0:139",
+        "category": null,
+        "text": "Managed the structural setup of the Collibra environment, defining how communities, domains, and asset types mapped back to business units.",
+        "page_number": null
+      },
+      {
+        "source_id": "e12:0:115",
+        "category": null,
+        "text": "Oversaw user role assignments and governance permissions to ensure appropriate data stewardship and asset security.",
+        "page_number": null
+      },
+      {
+        "source_id": "e13:0:162",
+        "category": null,
+        "text": "Led interactive demos with business unit heads to validate data mappings, resolve data ownership ambiguity, and enforce stewardship standards across the platform.",
+        "page_number": null
+      },
+      {
+        "source_id": "e14:0:162",
+        "category": null,
+        "text": "Defined and assigned explicit data roles (Data Owners, System Owners, Risk Stewards) in Collibra, eliminating role ambiguity and securing user access permissions.",
+        "page_number": null
+      },
+      {
+        "source_id": "e15:0:185",
+        "category": null,
+        "text": "Designed and spearheaded a quarterly Data Risk Scorecard program measuring key performance indicators (KPIs) to quantify and mitigate data handling risks across multiple business units.",
+        "page_number": null
+      },
+      {
+        "source_id": "e16:0:200",
+        "category": null,
+        "text": "Defined and assigned explicit data ownership roles (Data Owners, System Owners, and Risk Stewards) within Collibra, eliminating ambiguity regarding who was responsible for validating scorecard metrics",
+        "page_number": null
+      },
+      {
+        "source_id": "e17:0:199",
+        "category": null,
+        "text": "Stewardship & Business Glossary: Built and maintained a centralized repository and Business Glossary within Collibra, linking physical technical assets to business definitions and data quality rules.",
+        "page_number": null
+      },
+      {
+        "source_id": "e18:0:201",
+        "category": null,
+        "text": "Spearheaded data profiling initiatives to identify and resolve systemic duplication issues across enterprise business glossaries, consolidating redundant definitions to ensure a single source of truth.",
+        "page_number": null
+      },
+      {
+        "source_id": "e19:0:55",
+        "category": null,
+        "text": "Retirement Financial Analyst, TIAA\tFeb 2020 - July 2023",
+        "page_number": null
+      },
+      {
+        "source_id": "e20:0:303",
+        "category": null,
+        "text": "Worked within the Institutional Retirement division to proactively manage fiduciary, financial, and operational risks across major product suites (TPA, IPRO, ATRA). Executed complex systematic distributions, financial calculations, and market alignment reconciliations under strict regulatory oversight.",
+        "page_number": null
+      },
+      {
+        "source_id": "e21:0:207",
+        "category": null,
+        "text": "Risk & Compliance Management: Managed fiduciary, financial, and operational risks within the Institutional Retirement division across major product suites (TPA, IPRO, ATRA) under strict regulatory oversight.",
+        "page_number": null
+      },
+      {
+        "source_id": "e22:0:96",
+        "category": null,
+        "text": "Data Auditing & Regulatory Adherence: Audited high-value transaction data structures and annuity",
+        "page_number": null
+      },
+      {
+        "source_id": "e23:0:175",
+        "category": null,
+        "text": "Remediation & Analysis: Engineered sophisticated gain/loss calculations and reversals for missed trade dates to restore participant accounts to their correct fiduciary states.",
+        "page_number": null
+      },
+      {
+        "source_id": "e24:0:209",
+        "category": null,
+        "text": "Microsoft Certified Power BI Data Analyst DAMA International Certified Data Management Professional (CDMP AIGPE Lean Six Sigma Green Belt DPDPA.COM Digital personal data protection Office Master Excel using AI",
+        "page_number": null
+      },
+      {
+        "source_id": "e26:0:30",
+        "category": null,
+        "text": "Date of Birth: 12th March 1997",
+        "page_number": null
+      },
+      {
+        "source_id": "e27:0:14",
+        "category": null,
+        "text": "Gender: Female",
+        "page_number": null
+      }
+    ],
+    "needs_review": [
+      {
+        "source_element_index": 3,
+        "start": 0,
+        "end": 515,
+        "text": "Detail-oriented Data Governance and Privacy Professional with over 6 years of experience specializing in enterprise data risk mitigation, regulatory compliance frameworks, and asset lifecycle management. Proven track record in designing data risk scorecards, identifying and tagging Critical Data Elements (CDEs), and establishing clear data ownership and data sharing boundaries. Adept at managing metadata and data quality metrics across enterprise platforms to minimize risk and accelerate data privacy maturity.",
+        "page_number": null,
+        "cluster_id": 6,
+        "candidate_section": "certifications",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3443,
+        "margin": 0.1016,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 4,
+        "start": 0,
+        "end": 498,
+        "text": "Data Governance & Privacy Metadata Management, Data Stewardship, Data Risk Identification, Data Lineage Mapping, Business Glossary Curation, Data Privacy Frameworks, Data Minimization, Retention & Deletion Schedules, Business Glossary Curation. BI Tools Tableau, Power BI, MS Excel, SQL, Power Query Other Tools Solidatus, Omni, Compass, Collibra, Jira, Confluence, MS Word, MS PowerPoint. Frameworks & Compliance ERISA, IRS Regulations, Risk Reporting Standards (RRS), Record Management Standards.",
+        "page_number": null,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3707,
+        "margin": 0.0498,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 5,
+        "start": 0,
+        "end": 62,
+        "text": "Data Governance: Senior Analyst, TIAA\tAugust 2023-October 2025",
+        "page_number": null,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3951,
+        "margin": 0.0806,
+        "lane": "main",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 6,
+        "start": 0,
+        "end": 117,
+        "text": "Worked with the Data Governance team to institutionalize data auditing, record management, and risk mitigation across",
+        "page_number": null,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2653,
+        "margin": -0.0107,
+        "lane": "main",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 7,
+        "start": 0,
+        "end": 197,
+        "text": "business domains. Spearheaded the transition of raw datasets into governed, metadata-enriched data products while building continuous control automation to support enterprise governance benchmarks.",
+        "page_number": null,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2642,
+        "margin": -0.0048,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 8,
+        "start": 0,
+        "end": 176,
+        "text": "Designed and spearheaded a quarterly Data Risk Scorecard program measuring KPIs around key metrics: Data Ownership, Data Privacy, Data Access, Data Sharing, and Data Retention.",
+        "page_number": null,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2862,
+        "margin": -0.0015,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 9,
+        "start": 0,
+        "end": 97,
+        "text": "Collaborated with business units to identify and tag Critical Data Elements (CDEs) within Collibr",
+        "page_number": null,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2482,
+        "margin": -0.0036,
+        "lane": "main",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 10,
+        "start": 0,
+        "end": 112,
+        "text": "Mapped technical database structures to business glossaries to ensure a single source of truth for data quality.",
+        "page_number": null,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.298,
+        "margin": 0.0267,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 11,
+        "start": 0,
+        "end": 139,
+        "text": "Managed the structural setup of the Collibra environment, defining how communities, domains, and asset types mapped back to business units.",
+        "page_number": null,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.346,
+        "margin": 0.026,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 12,
+        "start": 0,
+        "end": 115,
+        "text": "Oversaw user role assignments and governance permissions to ensure appropriate data stewardship and asset security.",
+        "page_number": null,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.4257,
+        "margin": 0.0919,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 13,
+        "start": 0,
+        "end": 162,
+        "text": "Led interactive demos with business unit heads to validate data mappings, resolve data ownership ambiguity, and enforce stewardship standards across the platform.",
+        "page_number": null,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3582,
+        "margin": 0.0332,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 14,
+        "start": 0,
+        "end": 162,
+        "text": "Defined and assigned explicit data roles (Data Owners, System Owners, Risk Stewards) in Collibra, eliminating role ambiguity and securing user access permissions.",
+        "page_number": null,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3673,
+        "margin": 0.0253,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 15,
+        "start": 0,
+        "end": 185,
+        "text": "Designed and spearheaded a quarterly Data Risk Scorecard program measuring key performance indicators (KPIs) to quantify and mitigate data handling risks across multiple business units.",
+        "page_number": null,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2052,
+        "margin": -0.0105,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 16,
+        "start": 0,
+        "end": 200,
+        "text": "Defined and assigned explicit data ownership roles (Data Owners, System Owners, and Risk Stewards) within Collibra, eliminating ambiguity regarding who was responsible for validating scorecard metrics",
+        "page_number": null,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3306,
+        "margin": 0.0029,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 17,
+        "start": 0,
+        "end": 199,
+        "text": "Stewardship & Business Glossary: Built and maintained a centralized repository and Business Glossary within Collibra, linking physical technical assets to business definitions and data quality rules.",
+        "page_number": null,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3005,
+        "margin": 0.0261,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 18,
+        "start": 0,
+        "end": 201,
+        "text": "Spearheaded data profiling initiatives to identify and resolve systemic duplication issues across enterprise business glossaries, consolidating redundant definitions to ensure a single source of truth.",
+        "page_number": null,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2143,
+        "margin": -0.0029,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 19,
+        "start": 0,
+        "end": 55,
+        "text": "Retirement Financial Analyst, TIAA\tFeb 2020 - July 2023",
+        "page_number": null,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.4202,
+        "margin": 0.0203,
+        "lane": "main",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 20,
+        "start": 0,
+        "end": 303,
+        "text": "Worked within the Institutional Retirement division to proactively manage fiduciary, financial, and operational risks across major product suites (TPA, IPRO, ATRA). Executed complex systematic distributions, financial calculations, and market alignment reconciliations under strict regulatory oversight.",
+        "page_number": null,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.301,
+        "margin": 0.0146,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 21,
+        "start": 0,
+        "end": 207,
+        "text": "Risk & Compliance Management: Managed fiduciary, financial, and operational risks within the Institutional Retirement division across major product suites (TPA, IPRO, ATRA) under strict regulatory oversight.",
+        "page_number": null,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2495,
+        "margin": 0.0105,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 22,
+        "start": 0,
+        "end": 96,
+        "text": "Data Auditing & Regulatory Adherence: Audited high-value transaction data structures and annuity",
+        "page_number": null,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2143,
+        "margin": -0.028,
+        "lane": "main",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 23,
+        "start": 0,
+        "end": 175,
+        "text": "Remediation & Analysis: Engineered sophisticated gain/loss calculations and reversals for missed trade dates to restore participant accounts to their correct fiduciary states.",
+        "page_number": null,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2438,
+        "margin": 0.0181,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 24,
+        "start": 0,
+        "end": 209,
+        "text": "Microsoft Certified Power BI Data Analyst DAMA International Certified Data Management Professional (CDMP AIGPE Lean Six Sigma Green Belt DPDPA.COM Digital personal data protection Office Master Excel using AI",
+        "page_number": null,
+        "cluster_id": 6,
+        "candidate_section": "certifications",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.4237,
+        "margin": 0.0291,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 26,
+        "start": 0,
+        "end": 30,
+        "text": "Date of Birth: 12th March 1997",
+        "page_number": null,
+        "cluster_id": 7,
+        "candidate_section": "awards",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3437,
+        "margin": 0.0183,
+        "lane": "main",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 27,
+        "start": 0,
+        "end": 14,
+        "text": "Gender: Female",
+        "page_number": null,
+        "cluster_id": 8,
+        "candidate_section": "publications",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1894,
+        "margin": 0.0009,
+        "lane": "main",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      }
+    ]
+  },
+  "section_schemas": [
+    {
+      "category": "personal_information",
+      "label": "Personal information",
+      "records": [
+        {
+          "record_id": "personal_information",
+          "source_ids": [
+            "e0:0:12",
+            "e1:0:46",
+            "e2:0:76"
+          ],
+          "attributes": [
+            {
+              "name": "full_name",
+              "items": [
+                {
+                  "value": "Meenal Dixit",
+                  "evidence": [
+                    {
+                      "source_id": "e0:0:12",
+                      "quote": "Meenal Dixit"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "email",
+              "items": [
+                {
+                  "value": "Meenaldixit12@gmail.com",
+                  "evidence": [
+                    {
+                      "source_id": "e2:0:76",
+                      "quote": "Meenaldixit12@gmail.com"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "phone",
+              "items": [
+                {
+                  "value": "+91 9611217811",
+                  "evidence": [
+                    {
+                      "source_id": "e1:0:46",
+                      "quote": "+91 9611217811"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "location",
+              "items": [
+                {
+                  "value": "Noida",
+                  "evidence": [
+                    {
+                      "source_id": "e1:0:46",
+                      "quote": "Noida"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "linkedin_url",
+              "items": [
+                {
+                  "value": "www.linkedin.com/in/meenal-dixit",
+                  "evidence": [
+                    {
+                      "source_id": "e2:0:76",
+                      "quote": "www.linkedin.com/in/meenal-dixit"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "github_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "portfolio_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "professional_title",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e1:0:46",
+          "quote": "Mobile: +91 9611217811| Address: Noida (India)"
+        },
+        {
+          "source_id": "e2:0:76",
+          "quote": "E-Mail: Meenaldixit12@gmail.com | LinkedIn: www.linkedin.com/in/meenal-dixit"
+        }
+      ]
+    },
+    {
+      "category": "education",
+      "label": "Education",
+      "records": [
+        {
+          "record_id": "education-1",
+          "source_ids": [
+            "e25:0:229"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "degree",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e25:0:229",
+          "quote": "Degree Specialization Marks College/University Post Graduate Diploma in Mgmt. Finance 78 % Lexicon Mgmt. Institute of Leadership & Excellence Bachelor of Business Administration Finance & Marketing 9.0 CGPA Chandigarh University."
+        }
+      ]
+    },
+    {
+      "category": "languages",
+      "label": "Languages",
+      "records": [
+        {
+          "record_id": "languages-1",
+          "source_ids": [
+            "e28:0:31"
+          ],
+          "attributes": [
+            {
+              "name": "language",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "proficiency",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "Unlabelled compound information requires source review."
+          ]
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e28:0:31",
+          "quote": "Languages known: English, Hindi"
+        }
+      ]
+    },
+    {
+      "category": "interests",
+      "label": "Interests",
+      "records": [
+        {
+          "record_id": "interests-1",
+          "source_ids": [
+            "e29:0:47"
+          ],
+          "attributes": [
+            {
+              "name": "interest",
+              "items": [
+                {
+                  "value": "Passions: Dance & Music, Badminton, Social Work",
+                  "evidence": [
+                    {
+                      "source_id": "e29:0:47",
+                      "quote": "Passions: Dance & Music, Badminton, Social Work"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": []
+    },
+    {
+      "category": "needs_review",
+      "label": "Unassigned source blocks",
+      "records": [],
+      "residual_blocks": [
+        {
+          "source_id": "e3:0:515",
+          "quote": "Detail-oriented Data Governance and Privacy Professional with over 6 years of experience specializing in enterprise data risk mitigation, regulatory compliance frameworks, and asset lifecycle management. Proven track record in designing data risk scorecards, identifying and tagging Critical Data Elements (CDEs), and establishing clear data ownership and data sharing boundaries. Adept at managing metadata and data quality metrics across enterprise platforms to minimize risk and accelerate data privacy maturity."
+        },
+        {
+          "source_id": "e4:0:498",
+          "quote": "Data Governance & Privacy Metadata Management, Data Stewardship, Data Risk Identification, Data Lineage Mapping, Business Glossary Curation, Data Privacy Frameworks, Data Minimization, Retention & Deletion Schedules, Business Glossary Curation. BI Tools Tableau, Power BI, MS Excel, SQL, Power Query Other Tools Solidatus, Omni, Compass, Collibra, Jira, Confluence, MS Word, MS PowerPoint. Frameworks & Compliance ERISA, IRS Regulations, Risk Reporting Standards (RRS), Record Management Standards."
+        },
+        {
+          "source_id": "e5:0:62",
+          "quote": "Data Governance: Senior Analyst, TIAA\tAugust 2023-October 2025"
+        },
+        {
+          "source_id": "e6:0:117",
+          "quote": "Worked with the Data Governance team to institutionalize data auditing, record management, and risk mitigation across"
+        },
+        {
+          "source_id": "e7:0:197",
+          "quote": "business domains. Spearheaded the transition of raw datasets into governed, metadata-enriched data products while building continuous control automation to support enterprise governance benchmarks."
+        },
+        {
+          "source_id": "e8:0:176",
+          "quote": "Designed and spearheaded a quarterly Data Risk Scorecard program measuring KPIs around key metrics: Data Ownership, Data Privacy, Data Access, Data Sharing, and Data Retention."
+        },
+        {
+          "source_id": "e9:0:97",
+          "quote": "Collaborated with business units to identify and tag Critical Data Elements (CDEs) within Collibr"
+        },
+        {
+          "source_id": "e10:0:112",
+          "quote": "Mapped technical database structures to business glossaries to ensure a single source of truth for data quality."
+        },
+        {
+          "source_id": "e11:0:139",
+          "quote": "Managed the structural setup of the Collibra environment, defining how communities, domains, and asset types mapped back to business units."
+        },
+        {
+          "source_id": "e12:0:115",
+          "quote": "Oversaw user role assignments and governance permissions to ensure appropriate data stewardship and asset security."
+        },
+        {
+          "source_id": "e13:0:162",
+          "quote": "Led interactive demos with business unit heads to validate data mappings, resolve data ownership ambiguity, and enforce stewardship standards across the platform."
+        },
+        {
+          "source_id": "e14:0:162",
+          "quote": "Defined and assigned explicit data roles (Data Owners, System Owners, Risk Stewards) in Collibra, eliminating role ambiguity and securing user access permissions."
+        },
+        {
+          "source_id": "e15:0:185",
+          "quote": "Designed and spearheaded a quarterly Data Risk Scorecard program measuring key performance indicators (KPIs) to quantify and mitigate data handling risks across multiple business units."
+        },
+        {
+          "source_id": "e16:0:200",
+          "quote": "Defined and assigned explicit data ownership roles (Data Owners, System Owners, and Risk Stewards) within Collibra, eliminating ambiguity regarding who was responsible for validating scorecard metrics"
+        },
+        {
+          "source_id": "e17:0:199",
+          "quote": "Stewardship & Business Glossary: Built and maintained a centralized repository and Business Glossary within Collibra, linking physical technical assets to business definitions and data quality rules."
+        },
+        {
+          "source_id": "e18:0:201",
+          "quote": "Spearheaded data profiling initiatives to identify and resolve systemic duplication issues across enterprise business glossaries, consolidating redundant definitions to ensure a single source of truth."
+        },
+        {
+          "source_id": "e19:0:55",
+          "quote": "Retirement Financial Analyst, TIAA\tFeb 2020 - July 2023"
+        },
+        {
+          "source_id": "e20:0:303",
+          "quote": "Worked within the Institutional Retirement division to proactively manage fiduciary, financial, and operational risks across major product suites (TPA, IPRO, ATRA). Executed complex systematic distributions, financial calculations, and market alignment reconciliations under strict regulatory oversight."
+        },
+        {
+          "source_id": "e21:0:207",
+          "quote": "Risk & Compliance Management: Managed fiduciary, financial, and operational risks within the Institutional Retirement division across major product suites (TPA, IPRO, ATRA) under strict regulatory oversight."
+        },
+        {
+          "source_id": "e22:0:96",
+          "quote": "Data Auditing & Regulatory Adherence: Audited high-value transaction data structures and annuity"
+        },
+        {
+          "source_id": "e23:0:175",
+          "quote": "Remediation & Analysis: Engineered sophisticated gain/loss calculations and reversals for missed trade dates to restore participant accounts to their correct fiduciary states."
+        },
+        {
+          "source_id": "e24:0:209",
+          "quote": "Microsoft Certified Power BI Data Analyst DAMA International Certified Data Management Professional (CDMP AIGPE Lean Six Sigma Green Belt DPDPA.COM Digital personal data protection Office Master Excel using AI"
+        },
+        {
+          "source_id": "e26:0:30",
+          "quote": "Date of Birth: 12th March 1997"
+        },
+        {
+          "source_id": "e27:0:14",
+          "quote": "Gender: Female"
+        }
+      ]
+    }
+  ]
+}

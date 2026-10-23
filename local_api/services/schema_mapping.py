@@ -4,7 +4,6 @@ import json
 import re
 from local_api.vendor.handoff_schema.models import (
     ResumeSchema, ContactInfo, WorkExperience, Education, Project, Certification,
-    CategorizedSkills, ParseResponse,
 )
 from local_api.vendor.handoff_schema.service import (
     extract_contact_info, extract_work_experience, extract_education,
@@ -14,6 +13,8 @@ from local_api.services.source_accounting import account_source
 from local_api.services.review_resolution import document_scope
 from local_api.services.record_relationships import dated_organization_header
 from local_api.services.source_validation import validate_result
+from local_api.schemas.mapping import SchemaMappingResponse
+from local_api.services.section_subschemas import build_subschemas
 
 
 def source_id(block):
@@ -172,7 +173,8 @@ def map_schema(request):
                'Handoff confidence scores are fixed heuristics, not calibrated probabilities.',
                'Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields.']
     all_blocks=[(s.category,b) for s in request.sections.sections for b in s.blocks]+[(None,b) for b in request.sections.needs_review]
-    return ParseResponse(success=True,source=request.source,extraction_mode='existing_blocks_schema_mapping',data=data,schema_mapping=mapping,raw_sections=raw,
+    return SchemaMappingResponse(success=True,source=request.source,extraction_mode='existing_blocks_schema_mapping',data=data,schema_mapping=mapping,raw_sections=raw,
+        section_schemas=build_subschemas(request.sections,data,scope),
         meta={'status':'needs_review','human_verified':False,'provider_calls':0,'source_accounting':accounting,'document_scope':scope,
               'source_inventory_sha256':hashlib.sha256(json.dumps([e.model_dump() for e in request.elements],sort_keys=True,ensure_ascii=False).encode()).hexdigest(),
               'field_evidence':evidence,'record_reviews':record_reviews,'missing_required_fields':missing,'warnings':warnings,

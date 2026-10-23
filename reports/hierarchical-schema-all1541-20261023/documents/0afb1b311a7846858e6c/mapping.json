@@ -1,0 +1,2017 @@
+{
+  "success": true,
+  "source": "GyanendraSingh.docx",
+  "extraction_mode": "existing_blocks_schema_mapping",
+  "data": {
+    "contact": {
+      "full_name": "Gyanendra Singh",
+      "email": "singhamgyanendra@gmail.com",
+      "phone": "+91 8116734503",
+      "location": null,
+      "linkedin_url": null,
+      "github_url": null,
+      "portfolio_url": null
+    },
+    "professional_title": "Senior Software Engineer",
+    "summary": "Senior Software Engineer with 9+ years of experience in designing, developing, and optimizing Java-based applications. Expertise in Spring Boot, Microservices, Cloud Computing, and Database Management. Proven ability to enhance security, automate processes, and drive high-performance scalable solutions. Strong background in Agile development, CI/CD, and DevOps.",
+    "total_experience_years": 9.0,
+    "skills": {
+      "technical_skills": [],
+      "tools_and_platforms": [],
+      "domain_and_functional": [],
+      "soft_skills": [],
+      "all_skills": []
+    },
+    "experience": [
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      }
+    ],
+    "education": [
+      {
+        "institution": "",
+        "degree": "",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      },
+      {
+        "institution": "",
+        "degree": "",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      },
+      {
+        "institution": "",
+        "degree": "",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      }
+    ],
+    "certifications": [],
+    "projects": [],
+    "languages": [
+      "Java (Core & Advanced), Shell Script",
+      "Core CS: Data Structures, Algorithms, Design Patterns (Singleton, Factory, Observer)",
+      "Design: Low-Level Design (LLD), High-Level Design (HLD)",
+      "Frameworks & Libraries",
+      "Spring Boot, Spring Cloud, Hibernate, JPA, Spring Security, AOP",
+      "WebFlux (Reactive programming), Apache Kafka (Messaging)",
+      "Microservices & API Development",
+      "RESTful APIs, Service Discovery, API Gateway",
+      "Circuit Breaker, Load Balancing, Config Server",
+      "Database Technologies",
+      "SQL: PostgreSQL, Sybase",
+      "NoSQL: MongoDB",
+      "ORM Tools: Hibernate, JPA",
+      "Cloud & DevOps",
+      "Cloud Platforms: AWS (EC2, S3, RDS, Lambda)",
+      "Containerization: Docker, Kubernetes",
+      "CI/CD Tools: Jenkins, Git, Maven, Gradle",
+      "Testing & Quality Assurance",
+      "JUnit, Mockito, Integration Testing, Test-Driven Development (TDD)",
+      "Development Practices",
+      "Agile Methodologies: Scrum, Sprint Planning, Retrospectives",
+      "Version Control: Git",
+      "Build Tools: Maven, Gradle"
+    ]
+  },
+  "schema_mapping": {
+    "fields_populated": 8,
+    "total_fields": 16,
+    "completion_percentage": 50.0,
+    "field_details": [
+      {
+        "field_name": "contact.full_name",
+        "target_type": "string",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Personal Details",
+        "confidence_score": 0.95,
+        "description": "Candidate's full name, extracted from the top header of the resume."
+      },
+      {
+        "field_name": "contact.email",
+        "target_type": "string (email)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.98,
+        "description": "Candidate's primary contact email address."
+      },
+      {
+        "field_name": "contact.phone",
+        "target_type": "string (phone)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.95,
+        "description": "Candidate's telephone / mobile phone number."
+      },
+      {
+        "field_name": "contact.location",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's residential location or work city."
+      },
+      {
+        "field_name": "contact.linkedin_url",
+        "target_type": "string (url) | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "URL to candidate's LinkedIn profile."
+      },
+      {
+        "field_name": "professional_title",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Header / Subtitle",
+        "confidence_score": 0.88,
+        "description": "Candidate's target headline or most recent job title."
+      },
+      {
+        "field_name": "summary",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Summary / Profile / Objective",
+        "confidence_score": 0.85,
+        "description": "Executive bio, professional overview, or career objective."
+      },
+      {
+        "field_name": "total_experience_years",
+        "target_type": "float | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Summary / Experience Calculation",
+        "confidence_score": 0.9,
+        "description": "Total professional experience in years."
+      },
+      {
+        "field_name": "skills.technical_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Technical Competencies",
+        "confidence_score": 0.0,
+        "description": "Technical programming languages and core software competencies."
+      },
+      {
+        "field_name": "skills.tools_and_platforms",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Tools & Technologies",
+        "confidence_score": 0.0,
+        "description": "Software platforms, developer tools, and operational systems."
+      },
+      {
+        "field_name": "skills.domain_and_functional",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Domain Expertise",
+        "confidence_score": 0.0,
+        "description": "Functional domain knowledge (e.g. Hedge Funds, KYC, NAV, Derivatives)."
+      },
+      {
+        "field_name": "skills.all_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills (Aggregated)",
+        "confidence_score": 0.0,
+        "description": "Complete list of candidate skills across all categories."
+      },
+      {
+        "field_name": "experience",
+        "target_type": "array[WorkExperience]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Experience / Work History",
+        "confidence_score": 0.92,
+        "description": "Complete chronological employment records with bullet points."
+      },
+      {
+        "field_name": "education",
+        "target_type": "array[Education]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Education / Academic Qualifications",
+        "confidence_score": 0.9,
+        "description": "University, college, and higher education degree qualifications."
+      },
+      {
+        "field_name": "certifications",
+        "target_type": "array[Certification]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Certifications / Licenses",
+        "confidence_score": 0.0,
+        "description": "Professional accreditations and credentials."
+      },
+      {
+        "field_name": "projects",
+        "target_type": "array[Project]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Projects / Key Engagements",
+        "confidence_score": 0.0,
+        "description": "Major projects or strategic initiatives led by candidate."
+      }
+    ]
+  },
+  "raw_sections": {
+    "personal_information": "Gyanendra Singh\nSenior Software Engineer\nEmail –singhamgyanendra@gmail.com | +91 8116734503 | LinkedIn",
+    "summary": "Professional Summary\nSenior Software Engineer with 9+ years of experience in designing, developing, and optimizing Java-based applications. Expertise in Spring Boot, Microservices, Cloud Computing, and Database Management. Proven ability to enhance security, automate processes, and drive high-performance scalable solutions. Strong background in Agile development, CI/CD, and DevOps.",
+    "experience": "Work Experience\nGenpact (Western Union & Macquarie) – Lead Consultant\nAug 2022 – Present\nSpearheaded development of microservices using Spring Boot, Spring Cloud, and Kafka, enabling scalable event-driven architecture for financial transaction processing.\nLed the complete cloud migration of a core banking service to AWS, utilizing EC2, S3, and RDS, resulting in 35% cost optimization and improved scalability.\nDesigned and developed RESTful APIs for secure user onboarding, integrating Spring Security, JWT authentication, and MongoDB for flexible data storage.\nImplemented CI/CD pipelines using Jenkins, Docker, and Kubernetes, ensuring zero-downtime deployments and rapid rollbacks across staging and production.\nBuilt an internal DevOps utility tool using Java and Shell scripts, enhancing deployment governance and reducing manual intervention by 60%.\nEngineered a Kafka-based asynchronous permissioning system (DCM Agent) to decouple services and improve system resiliency under high-load conditions.",
+    "education": "Education\nNIT Durgapur – B.Tech, Computer Science\n2011 – 2015\nLanguages & Programming Concepts",
+    "languages": "Languages: Java (Core & Advanced), Shell Script\nCore CS: Data Structures, Algorithms, Design Patterns (Singleton, Factory, Observer)\nDesign: Low-Level Design (LLD), High-Level Design (HLD)\nFrameworks & Libraries\nSpring Boot, Spring Cloud, Hibernate, JPA, Spring Security, AOP\nWebFlux (Reactive programming), Apache Kafka (Messaging)\nMicroservices & API Development\nRESTful APIs, Service Discovery, API Gateway\nCircuit Breaker, Load Balancing, Config Server\nDatabase Technologies\nSQL: PostgreSQL, Sybase\nNoSQL: MongoDB\nORM Tools: Hibernate, JPA\nCloud & DevOps\nCloud Platforms: AWS (EC2, S3, RDS, Lambda)\nContainerization: Docker, Kubernetes\nCI/CD Tools: Jenkins, Git, Maven, Gradle\nTesting & Quality Assurance\nJUnit, Mockito, Integration Testing, Test-Driven Development (TDD)\nDevelopment Practices\nAgile Methodologies: Scrum, Sprint Planning, Retrospectives\nVersion Control: Git\nBuild Tools: Maven, Gradle",
+    "certifications": "Certifications & ",
+    "awards": "Achievements\nRecognized at Genpact for excellence in security module enhancements.\nLed a critical database migration project, reducing downtime by 40%."
+  },
+  "meta": {
+    "status": "needs_review",
+    "human_verified": false,
+    "provider_calls": 0,
+    "source_accounting": {
+      "all_source_text_preserved": true,
+      "total_spans": 55,
+      "assigned_meaningful_spans": 46,
+      "unresolved_meaningful_spans": 8,
+      "non_content_artifacts": 1,
+      "duplicates_excluded": 0,
+      "all_meaningful_text_assigned": false,
+      "semantic_correctness_verified": false,
+      "outcomes": [
+        {
+          "source_id": "e0:0:16",
+          "source_element_index": 0,
+          "start": 0,
+          "end": 16,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e0:16:41",
+          "source_element_index": 0,
+          "start": 16,
+          "end": 41,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e0:41:102",
+          "source_element_index": 0,
+          "start": 41,
+          "end": 102,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e1:0:20",
+          "source_element_index": 1,
+          "start": 0,
+          "end": 20,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e2:0:363",
+          "source_element_index": 2,
+          "start": 0,
+          "end": 363,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:0:15",
+          "source_element_index": 3,
+          "start": 0,
+          "end": 15,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e4:0:53",
+          "source_element_index": 4,
+          "start": 0,
+          "end": 53,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e5:0:18",
+          "source_element_index": 5,
+          "start": 0,
+          "end": 18,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e6:0:166",
+          "source_element_index": 6,
+          "start": 0,
+          "end": 166,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e7:0:155",
+          "source_element_index": 7,
+          "start": 0,
+          "end": 155,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:0:151",
+          "source_element_index": 8,
+          "start": 0,
+          "end": 151,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:0:152",
+          "source_element_index": 9,
+          "start": 0,
+          "end": 152,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e10:0:140",
+          "source_element_index": 10,
+          "start": 0,
+          "end": 140,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e11:0:149",
+          "source_element_index": 11,
+          "start": 0,
+          "end": 149,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:0:30",
+          "source_element_index": 12,
+          "start": 0,
+          "end": 30,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Possible ambiguous or unsupported heading; section context stopped"
+        },
+        {
+          "source_id": "e13:0:19",
+          "source_element_index": 13,
+          "start": 0,
+          "end": 19,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e14:0:169",
+          "source_element_index": 14,
+          "start": 0,
+          "end": 169,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e15:0:171",
+          "source_element_index": 15,
+          "start": 0,
+          "end": 171,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e16:0:131",
+          "source_element_index": 16,
+          "start": 0,
+          "end": 131,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e17:0:151",
+          "source_element_index": 17,
+          "start": 0,
+          "end": 151,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e18:0:144",
+          "source_element_index": 18,
+          "start": 0,
+          "end": 144,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e19:0:139",
+          "source_element_index": 19,
+          "start": 0,
+          "end": 139,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e20:0:9",
+          "source_element_index": 20,
+          "start": 0,
+          "end": 9,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e21:0:40",
+          "source_element_index": 21,
+          "start": 0,
+          "end": 40,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e21:40:51",
+          "source_element_index": 21,
+          "start": 40,
+          "end": 51,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e22:0:0",
+          "source_element_index": 22,
+          "start": 0,
+          "end": 0,
+          "section": null,
+          "outcome": "non_content_artifact",
+          "reason": "Whitespace retained in source inventory"
+        },
+        {
+          "source_id": "e23:0:32",
+          "source_element_index": 23,
+          "start": 0,
+          "end": 32,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e24:0:10",
+          "source_element_index": 24,
+          "start": 0,
+          "end": 10,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e24:10:47",
+          "source_element_index": 24,
+          "start": 10,
+          "end": 47,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e25:0:84",
+          "source_element_index": 25,
+          "start": 0,
+          "end": 84,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e26:0:55",
+          "source_element_index": 26,
+          "start": 0,
+          "end": 55,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e27:0:22",
+          "source_element_index": 27,
+          "start": 0,
+          "end": 22,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e28:0:63",
+          "source_element_index": 28,
+          "start": 0,
+          "end": 63,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e29:0:56",
+          "source_element_index": 29,
+          "start": 0,
+          "end": 56,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e30:0:31",
+          "source_element_index": 30,
+          "start": 0,
+          "end": 31,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e31:0:44",
+          "source_element_index": 31,
+          "start": 0,
+          "end": 44,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e32:0:46",
+          "source_element_index": 32,
+          "start": 0,
+          "end": 46,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e33:0:21",
+          "source_element_index": 33,
+          "start": 0,
+          "end": 21,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e34:0:23",
+          "source_element_index": 34,
+          "start": 0,
+          "end": 23,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e35:0:14",
+          "source_element_index": 35,
+          "start": 0,
+          "end": 14,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e36:0:25",
+          "source_element_index": 36,
+          "start": 0,
+          "end": 25,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e37:0:14",
+          "source_element_index": 37,
+          "start": 0,
+          "end": 14,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e38:0:43",
+          "source_element_index": 38,
+          "start": 0,
+          "end": 43,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e39:0:36",
+          "source_element_index": 39,
+          "start": 0,
+          "end": 36,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e40:0:40",
+          "source_element_index": 40,
+          "start": 0,
+          "end": 40,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e41:0:27",
+          "source_element_index": 41,
+          "start": 0,
+          "end": 27,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e42:0:66",
+          "source_element_index": 42,
+          "start": 0,
+          "end": 66,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e43:0:21",
+          "source_element_index": 43,
+          "start": 0,
+          "end": 21,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e44:0:59",
+          "source_element_index": 44,
+          "start": 0,
+          "end": 59,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e45:0:20",
+          "source_element_index": 45,
+          "start": 0,
+          "end": 20,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e46:0:26",
+          "source_element_index": 46,
+          "start": 0,
+          "end": 26,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e47:0:17",
+          "source_element_index": 47,
+          "start": 0,
+          "end": 17,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "Distinct BERT heading match with a K-means section label"
+        },
+        {
+          "source_id": "e47:17:29",
+          "source_element_index": 47,
+          "start": 17,
+          "end": 29,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e48:0:69",
+          "source_element_index": 48,
+          "start": 0,
+          "end": 69,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e49:0:68",
+          "source_element_index": 49,
+          "start": 0,
+          "end": 68,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        }
+      ]
+    },
+    "document_scope": {
+      "kind": "candidate_or_unknown",
+      "candidate_resume": null,
+      "requires_scope_review": true
+    },
+    "source_inventory_sha256": "aabcc0a17ee7b93da73d4295a6f679984408351704881f1bda4da8c6dfa13ab6",
+    "field_evidence": {
+      "contact.full_name": [
+        "e0:0:16",
+        "e0:16:41",
+        "e0:41:102"
+      ],
+      "contact.email": [
+        "e0:0:16",
+        "e0:16:41",
+        "e0:41:102"
+      ],
+      "contact.phone": [
+        "e0:0:16",
+        "e0:16:41",
+        "e0:41:102"
+      ],
+      "professional_title": [
+        "e0:16:41"
+      ],
+      "summary": [
+        "e2:0:363"
+      ],
+      "total_experience_years": [
+        "e2:0:363"
+      ],
+      "languages[0]": [
+        "e24:10:47"
+      ],
+      "languages[1]": [
+        "e25:0:84"
+      ],
+      "languages[2]": [
+        "e26:0:55"
+      ],
+      "languages[3]": [
+        "e27:0:22"
+      ],
+      "languages[4]": [
+        "e28:0:63"
+      ],
+      "languages[5]": [
+        "e29:0:56"
+      ],
+      "languages[6]": [
+        "e30:0:31"
+      ],
+      "languages[7]": [
+        "e31:0:44"
+      ],
+      "languages[8]": [
+        "e32:0:46"
+      ],
+      "languages[9]": [
+        "e33:0:21"
+      ],
+      "languages[10]": [
+        "e34:0:23"
+      ],
+      "languages[11]": [
+        "e35:0:14"
+      ],
+      "languages[12]": [
+        "e36:0:25"
+      ],
+      "languages[13]": [
+        "e37:0:14"
+      ],
+      "languages[14]": [
+        "e38:0:43"
+      ],
+      "languages[15]": [
+        "e39:0:36"
+      ],
+      "languages[16]": [
+        "e40:0:40"
+      ],
+      "languages[17]": [
+        "e41:0:27"
+      ],
+      "languages[18]": [
+        "e42:0:66"
+      ],
+      "languages[19]": [
+        "e43:0:21"
+      ],
+      "languages[20]": [
+        "e44:0:59"
+      ],
+      "languages[21]": [
+        "e45:0:20"
+      ],
+      "languages[22]": [
+        "e46:0:26"
+      ]
+    },
+    "record_reviews": [
+      {
+        "category": "experience",
+        "entry_id": "experience-1",
+        "source_ids": [
+          "e4:0:53"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-2",
+        "source_ids": [
+          "e5:0:18",
+          "e6:0:166",
+          "e7:0:155",
+          "e8:0:151",
+          "e9:0:152",
+          "e10:0:140",
+          "e11:0:149"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "education",
+        "entry_id": "education-1",
+        "source_ids": [
+          "e21:0:40"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "education",
+        "entry_id": "education-2",
+        "source_ids": [
+          "e21:40:51"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "education",
+        "entry_id": "education-3",
+        "source_ids": [
+          "e23:0:32"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      }
+    ],
+    "missing_required_fields": [
+      "experience[0].company",
+      "experience[0].role",
+      "experience[1].company",
+      "experience[1].role",
+      "education[0].institution",
+      "education[0].degree",
+      "education[1].institution",
+      "education[1].degree",
+      "education[2].institution",
+      "education[2].degree"
+    ],
+    "warnings": [
+      "Schema validity and field completion do not establish extraction or relationship accuracy.",
+      "Handoff confidence scores are fixed heuristics, not calibrated probabilities.",
+      "Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields."
+    ],
+    "unmapped_blocks": [
+      {
+        "source_id": "e1:0:20",
+        "category": "summary",
+        "text": "Professional Summary",
+        "page_number": 1
+      },
+      {
+        "source_id": "e3:0:15",
+        "category": "experience",
+        "text": "Work Experience",
+        "page_number": 1
+      },
+      {
+        "source_id": "e4:0:53",
+        "category": "experience",
+        "text": "Genpact (Western Union & Macquarie) – Lead Consultant",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:0:18",
+        "category": "experience",
+        "text": "Aug 2022 – Present",
+        "page_number": 1
+      },
+      {
+        "source_id": "e6:0:166",
+        "category": "experience",
+        "text": "Spearheaded development of microservices using Spring Boot, Spring Cloud, and Kafka, enabling scalable event-driven architecture for financial transaction processing.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e7:0:155",
+        "category": "experience",
+        "text": "Led the complete cloud migration of a core banking service to AWS, utilizing EC2, S3, and RDS, resulting in 35% cost optimization and improved scalability.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:0:151",
+        "category": "experience",
+        "text": "Designed and developed RESTful APIs for secure user onboarding, integrating Spring Security, JWT authentication, and MongoDB for flexible data storage.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:0:152",
+        "category": "experience",
+        "text": "Implemented CI/CD pipelines using Jenkins, Docker, and Kubernetes, ensuring zero-downtime deployments and rapid rollbacks across staging and production.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e10:0:140",
+        "category": "experience",
+        "text": "Built an internal DevOps utility tool using Java and Shell scripts, enhancing deployment governance and reducing manual intervention by 60%.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e11:0:149",
+        "category": "experience",
+        "text": "Engineered a Kafka-based asynchronous permissioning system (DCM Agent) to decouple services and improve system resiliency under high-load conditions.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e20:0:9",
+        "category": "education",
+        "text": "Education",
+        "page_number": 1
+      },
+      {
+        "source_id": "e21:0:40",
+        "category": "education",
+        "text": "NIT Durgapur – B.Tech, Computer Science\n",
+        "page_number": 1
+      },
+      {
+        "source_id": "e21:40:51",
+        "category": "education",
+        "text": "2011 – 2015",
+        "page_number": 1
+      },
+      {
+        "source_id": "e23:0:32",
+        "category": "education",
+        "text": "Languages & Programming Concepts",
+        "page_number": 2
+      },
+      {
+        "source_id": "e24:0:10",
+        "category": "languages",
+        "text": "Languages:",
+        "page_number": 2
+      },
+      {
+        "source_id": "e47:0:17",
+        "category": "certifications",
+        "text": "Certifications & ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e47:17:29",
+        "category": "awards",
+        "text": "Achievements",
+        "page_number": 2
+      },
+      {
+        "source_id": "e48:0:69",
+        "category": "awards",
+        "text": "Recognized at Genpact for excellence in security module enhancements.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e49:0:68",
+        "category": "awards",
+        "text": "Led a critical database migration project, reducing downtime by 40%.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e12:0:30",
+        "category": null,
+        "text": "TCS – Senior Software Engineer",
+        "page_number": 1
+      },
+      {
+        "source_id": "e13:0:19",
+        "category": null,
+        "text": "Apr 2016 – Aug 2022",
+        "page_number": 1
+      },
+      {
+        "source_id": "e14:0:169",
+        "category": null,
+        "text": "Designed and implemented an order management platform using Spring Boot and Hibernate, integrating PostgreSQL as the primary data store and Redis for session management.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e15:0:171",
+        "category": null,
+        "text": "Architected microservices for a logistics client, breaking down a monolith into containerized services managed through Docker and Kubernetes, reducing release time by 50%.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e16:0:131",
+        "category": null,
+        "text": "Developed ETL data pipelines using Java and Apache Kafka to stream transactional data across distributed systems in near real-time.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e17:0:151",
+        "category": null,
+        "text": "Contributed to modernization of a legacy application by refactoring core modules with Spring WebFlux for reactive programming and enhanced performance.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e18:0:144",
+        "category": null,
+        "text": "Created JUnit and Mockito-based unit and integration test suites, achieving over 85% code coverage and ensuring reliable, maintainable codebase.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e19:0:139",
+        "category": null,
+        "text": "Collaborated with cross-functional teams in Agile sprints, managing end-to-end delivery of features, code reviews, and production releases.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e22:0:0",
+        "category": null,
+        "text": "",
+        "page_number": null
+      }
+    ],
+    "needs_review": [
+      {
+        "source_element_index": 12,
+        "start": 0,
+        "end": 30,
+        "text": "TCS – Senior Software Engineer",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.527,
+        "margin": -0.0079,
+        "lane": "main",
+        "reason": "Possible ambiguous or unsupported heading; section context stopped",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 13,
+        "start": 0,
+        "end": 19,
+        "text": "Apr 2016 – Aug 2022",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2839,
+        "margin": -0.0534,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 14,
+        "start": 0,
+        "end": 169,
+        "text": "Designed and implemented an order management platform using Spring Boot and Hibernate, integrating PostgreSQL as the primary data store and Redis for session management.",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2293,
+        "margin": 0.0121,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 15,
+        "start": 0,
+        "end": 171,
+        "text": "Architected microservices for a logistics client, breaking down a monolith into containerized services managed through Docker and Kubernetes, reducing release time by 50%.",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.207,
+        "margin": 0.0316,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 16,
+        "start": 0,
+        "end": 131,
+        "text": "Developed ETL data pipelines using Java and Apache Kafka to stream transactional data across distributed systems in near real-time.",
+        "page_number": 1,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1955,
+        "margin": 0.0308,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 17,
+        "start": 0,
+        "end": 151,
+        "text": "Contributed to modernization of a legacy application by refactoring core modules with Spring WebFlux for reactive programming and enhanced performance.",
+        "page_number": 1,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2019,
+        "margin": 0.0421,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 18,
+        "start": 0,
+        "end": 144,
+        "text": "Created JUnit and Mockito-based unit and integration test suites, achieving over 85% code coverage and ensuring reliable, maintainable codebase.",
+        "page_number": 1,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2507,
+        "margin": 0.0241,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 19,
+        "start": 0,
+        "end": 139,
+        "text": "Collaborated with cross-functional teams in Agile sprints, managing end-to-end delivery of features, code reviews, and production releases.",
+        "page_number": 1,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3552,
+        "margin": 0.0261,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 22,
+        "start": 0,
+        "end": 0,
+        "text": "",
+        "page_number": null,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1867,
+        "margin": -0.0366,
+        "lane": "main",
+        "reason": "Layout footer or page separator retained outside semantic sections",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      }
+    ]
+  },
+  "section_schemas": [
+    {
+      "category": "personal_information",
+      "label": "Personal information",
+      "records": [
+        {
+          "record_id": "personal_information",
+          "source_ids": [
+            "e0:0:16",
+            "e0:16:41",
+            "e0:41:102"
+          ],
+          "attributes": [
+            {
+              "name": "full_name",
+              "items": [
+                {
+                  "value": "Gyanendra Singh",
+                  "evidence": [
+                    {
+                      "source_id": "e0:0:16",
+                      "quote": "Gyanendra Singh"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "email",
+              "items": [
+                {
+                  "value": "singhamgyanendra@gmail.com",
+                  "evidence": [
+                    {
+                      "source_id": "e0:41:102",
+                      "quote": "singhamgyanendra@gmail.com"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "phone",
+              "items": [
+                {
+                  "value": "+91 8116734503",
+                  "evidence": [
+                    {
+                      "source_id": "e0:41:102",
+                      "quote": "+91 8116734503"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "linkedin_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "github_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "portfolio_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "professional_title",
+              "items": [
+                {
+                  "value": "Senior Software Engineer",
+                  "evidence": [
+                    {
+                      "source_id": "e0:16:41",
+                      "quote": "Senior Software Engineer"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e0:41:102",
+          "quote": "Email –singhamgyanendra@gmail.com | +91 8116734503 | LinkedIn"
+        }
+      ]
+    },
+    {
+      "category": "summary",
+      "label": "Summary",
+      "records": [
+        {
+          "record_id": "summary",
+          "source_ids": [
+            "e2:0:363"
+          ],
+          "attributes": [
+            {
+              "name": "statements",
+              "items": [
+                {
+                  "value": "Senior Software Engineer with 9+ years of experience in designing, developing, and optimizing Java-based applications. Expertise in Spring Boot, Microservices, Cloud Computing, and Database Management. Proven ability to enhance security, automate processes, and drive high-performance scalable solutions. Strong background in Agile development, CI/CD, and DevOps.",
+                  "evidence": [
+                    {
+                      "source_id": "e2:0:363",
+                      "quote": "Senior Software Engineer with 9+ years of experience in designing, developing, and optimizing Java-based applications. Expertise in Spring Boot, Microservices, Cloud Computing, and Database Management. Proven ability to enhance security, automate processes, and drive high-performance scalable solutions. Strong background in Agile development, CI/CD, and DevOps."
+                    }
+                  ],
+                  "status": "needs_review"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "total_experience_years",
+              "items": [
+                {
+                  "value": 9.0,
+                  "evidence": [
+                    {
+                      "source_id": "e2:0:363",
+                      "quote": "9"
+                    }
+                  ],
+                  "status": "needs_review"
+                }
+              ],
+              "status": "mapped"
+            }
+          ],
+          "review_reasons": [
+            "Experience years are approximate or a lower bound; inspect the source qualifier."
+          ]
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e1:0:20",
+          "quote": "Professional Summary"
+        }
+      ]
+    },
+    {
+      "category": "experience",
+      "label": "Experience",
+      "records": [
+        {
+          "record_id": "experience-1",
+          "source_ids": [
+            "e4:0:53"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "experience-2",
+          "source_ids": [
+            "e5:0:18",
+            "e6:0:166",
+            "e7:0:155",
+            "e8:0:151",
+            "e9:0:152",
+            "e10:0:140",
+            "e11:0:149"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e3:0:15",
+          "quote": "Work Experience"
+        },
+        {
+          "source_id": "e4:0:53",
+          "quote": "Genpact (Western Union & Macquarie) – Lead Consultant"
+        },
+        {
+          "source_id": "e5:0:18",
+          "quote": "Aug 2022 – Present"
+        },
+        {
+          "source_id": "e6:0:166",
+          "quote": "Spearheaded development of microservices using Spring Boot, Spring Cloud, and Kafka, enabling scalable event-driven architecture for financial transaction processing."
+        },
+        {
+          "source_id": "e7:0:155",
+          "quote": "Led the complete cloud migration of a core banking service to AWS, utilizing EC2, S3, and RDS, resulting in 35% cost optimization and improved scalability."
+        },
+        {
+          "source_id": "e8:0:151",
+          "quote": "Designed and developed RESTful APIs for secure user onboarding, integrating Spring Security, JWT authentication, and MongoDB for flexible data storage."
+        },
+        {
+          "source_id": "e9:0:152",
+          "quote": "Implemented CI/CD pipelines using Jenkins, Docker, and Kubernetes, ensuring zero-downtime deployments and rapid rollbacks across staging and production."
+        },
+        {
+          "source_id": "e10:0:140",
+          "quote": "Built an internal DevOps utility tool using Java and Shell scripts, enhancing deployment governance and reducing manual intervention by 60%."
+        },
+        {
+          "source_id": "e11:0:149",
+          "quote": "Engineered a Kafka-based asynchronous permissioning system (DCM Agent) to decouple services and improve system resiliency under high-load conditions."
+        }
+      ]
+    },
+    {
+      "category": "education",
+      "label": "Education",
+      "records": [
+        {
+          "record_id": "education-1",
+          "source_ids": [
+            "e21:0:40"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "degree",
+              "items": [
+                {
+                  "value": "B.Tech",
+                  "evidence": [
+                    {
+                      "source_id": "e21:0:40",
+                      "quote": "B.Tech"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "education-2",
+          "source_ids": [
+            "e21:40:51"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "degree",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "education-3",
+          "source_ids": [
+            "e23:0:32"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "degree",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e20:0:9",
+          "quote": "Education"
+        },
+        {
+          "source_id": "e21:0:40",
+          "quote": "NIT Durgapur – B.Tech, Computer Science\n"
+        },
+        {
+          "source_id": "e21:40:51",
+          "quote": "2011 – 2015"
+        },
+        {
+          "source_id": "e23:0:32",
+          "quote": "Languages & Programming Concepts"
+        }
+      ]
+    },
+    {
+      "category": "languages",
+      "label": "Languages",
+      "records": [
+        {
+          "record_id": "languages-1",
+          "source_ids": [
+            "e24:10:47",
+            "e25:0:84",
+            "e26:0:55",
+            "e27:0:22",
+            "e28:0:63",
+            "e29:0:56",
+            "e30:0:31",
+            "e31:0:44",
+            "e32:0:46",
+            "e33:0:21",
+            "e34:0:23",
+            "e35:0:14",
+            "e36:0:25",
+            "e37:0:14",
+            "e38:0:43",
+            "e39:0:36",
+            "e40:0:40",
+            "e41:0:27",
+            "e42:0:66",
+            "e43:0:21",
+            "e44:0:59",
+            "e45:0:20",
+            "e46:0:26"
+          ],
+          "attributes": [
+            {
+              "name": "language",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "proficiency",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "Unlabelled compound information requires source review."
+          ]
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e24:0:10",
+          "quote": "Languages:"
+        },
+        {
+          "source_id": "e24:10:47",
+          "quote": " Java (Core & Advanced), Shell Script"
+        },
+        {
+          "source_id": "e25:0:84",
+          "quote": "Core CS: Data Structures, Algorithms, Design Patterns (Singleton, Factory, Observer)"
+        },
+        {
+          "source_id": "e26:0:55",
+          "quote": "Design: Low-Level Design (LLD), High-Level Design (HLD)"
+        },
+        {
+          "source_id": "e27:0:22",
+          "quote": "Frameworks & Libraries"
+        },
+        {
+          "source_id": "e28:0:63",
+          "quote": "Spring Boot, Spring Cloud, Hibernate, JPA, Spring Security, AOP"
+        },
+        {
+          "source_id": "e29:0:56",
+          "quote": "WebFlux (Reactive programming), Apache Kafka (Messaging)"
+        },
+        {
+          "source_id": "e30:0:31",
+          "quote": "Microservices & API Development"
+        },
+        {
+          "source_id": "e31:0:44",
+          "quote": "RESTful APIs, Service Discovery, API Gateway"
+        },
+        {
+          "source_id": "e32:0:46",
+          "quote": "Circuit Breaker, Load Balancing, Config Server"
+        },
+        {
+          "source_id": "e33:0:21",
+          "quote": "Database Technologies"
+        },
+        {
+          "source_id": "e34:0:23",
+          "quote": "SQL: PostgreSQL, Sybase"
+        },
+        {
+          "source_id": "e35:0:14",
+          "quote": "NoSQL: MongoDB"
+        },
+        {
+          "source_id": "e36:0:25",
+          "quote": "ORM Tools: Hibernate, JPA"
+        },
+        {
+          "source_id": "e37:0:14",
+          "quote": "Cloud & DevOps"
+        },
+        {
+          "source_id": "e38:0:43",
+          "quote": "Cloud Platforms: AWS (EC2, S3, RDS, Lambda)"
+        },
+        {
+          "source_id": "e39:0:36",
+          "quote": "Containerization: Docker, Kubernetes"
+        },
+        {
+          "source_id": "e40:0:40",
+          "quote": "CI/CD Tools: Jenkins, Git, Maven, Gradle"
+        },
+        {
+          "source_id": "e41:0:27",
+          "quote": "Testing & Quality Assurance"
+        },
+        {
+          "source_id": "e42:0:66",
+          "quote": "JUnit, Mockito, Integration Testing, Test-Driven Development (TDD)"
+        },
+        {
+          "source_id": "e43:0:21",
+          "quote": "Development Practices"
+        },
+        {
+          "source_id": "e44:0:59",
+          "quote": "Agile Methodologies: Scrum, Sprint Planning, Retrospectives"
+        },
+        {
+          "source_id": "e45:0:20",
+          "quote": "Version Control: Git"
+        },
+        {
+          "source_id": "e46:0:26",
+          "quote": "Build Tools: Maven, Gradle"
+        }
+      ]
+    },
+    {
+      "category": "certifications",
+      "label": "Certifications",
+      "records": [],
+      "residual_blocks": [
+        {
+          "source_id": "e47:0:17",
+          "quote": "Certifications & "
+        }
+      ]
+    },
+    {
+      "category": "awards",
+      "label": "Awards and achievements",
+      "records": [
+        {
+          "record_id": "awards-1",
+          "source_ids": [
+            "e48:0:69",
+            "e49:0:68"
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "issuer",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "date",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "Unlabelled compound information requires source review."
+          ]
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e47:17:29",
+          "quote": "Achievements"
+        },
+        {
+          "source_id": "e48:0:69",
+          "quote": "Recognized at Genpact for excellence in security module enhancements."
+        },
+        {
+          "source_id": "e49:0:68",
+          "quote": "Led a critical database migration project, reducing downtime by 40%."
+        }
+      ]
+    },
+    {
+      "category": "needs_review",
+      "label": "Unassigned source blocks",
+      "records": [],
+      "residual_blocks": [
+        {
+          "source_id": "e12:0:30",
+          "quote": "TCS – Senior Software Engineer"
+        },
+        {
+          "source_id": "e13:0:19",
+          "quote": "Apr 2016 – Aug 2022"
+        },
+        {
+          "source_id": "e14:0:169",
+          "quote": "Designed and implemented an order management platform using Spring Boot and Hibernate, integrating PostgreSQL as the primary data store and Redis for session management."
+        },
+        {
+          "source_id": "e15:0:171",
+          "quote": "Architected microservices for a logistics client, breaking down a monolith into containerized services managed through Docker and Kubernetes, reducing release time by 50%."
+        },
+        {
+          "source_id": "e16:0:131",
+          "quote": "Developed ETL data pipelines using Java and Apache Kafka to stream transactional data across distributed systems in near real-time."
+        },
+        {
+          "source_id": "e17:0:151",
+          "quote": "Contributed to modernization of a legacy application by refactoring core modules with Spring WebFlux for reactive programming and enhanced performance."
+        },
+        {
+          "source_id": "e18:0:144",
+          "quote": "Created JUnit and Mockito-based unit and integration test suites, achieving over 85% code coverage and ensuring reliable, maintainable codebase."
+        },
+        {
+          "source_id": "e19:0:139",
+          "quote": "Collaborated with cross-functional teams in Agile sprints, managing end-to-end delivery of features, code reviews, and production releases."
+        },
+        {
+          "source_id": "e22:0:0",
+          "quote": ""
+        }
+      ]
+    }
+  ]
+}

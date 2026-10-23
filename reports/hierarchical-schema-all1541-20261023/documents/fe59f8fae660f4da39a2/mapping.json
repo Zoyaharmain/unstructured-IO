@@ -1,0 +1,1260 @@
+{
+  "success": true,
+  "source": "Assignment.pdf",
+  "extraction_mode": "existing_blocks_schema_mapping",
+  "data": {
+    "contact": {
+      "full_name": "",
+      "email": "",
+      "phone": "",
+      "location": null,
+      "linkedin_url": null,
+      "github_url": null,
+      "portfolio_url": null
+    },
+    "professional_title": null,
+    "summary": null,
+    "total_experience_years": null,
+    "skills": {
+      "technical_skills": [],
+      "tools_and_platforms": [],
+      "domain_and_functional": [],
+      "soft_skills": [],
+      "all_skills": []
+    },
+    "experience": [],
+    "education": [],
+    "certifications": [],
+    "projects": [],
+    "languages": []
+  },
+  "schema_mapping": {
+    "fields_populated": 0,
+    "total_fields": 16,
+    "completion_percentage": 0.0,
+    "field_details": [
+      {
+        "field_name": "contact.full_name",
+        "target_type": "string",
+        "is_required": true,
+        "is_extracted": false,
+        "source_section": "Header / Personal Details",
+        "confidence_score": 0.0,
+        "description": "Candidate's full name, extracted from the top header of the resume."
+      },
+      {
+        "field_name": "contact.email",
+        "target_type": "string (email)",
+        "is_required": true,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's primary contact email address."
+      },
+      {
+        "field_name": "contact.phone",
+        "target_type": "string (phone)",
+        "is_required": true,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's telephone / mobile phone number."
+      },
+      {
+        "field_name": "contact.location",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's residential location or work city."
+      },
+      {
+        "field_name": "contact.linkedin_url",
+        "target_type": "string (url) | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "URL to candidate's LinkedIn profile."
+      },
+      {
+        "field_name": "professional_title",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Subtitle",
+        "confidence_score": 0.0,
+        "description": "Candidate's target headline or most recent job title."
+      },
+      {
+        "field_name": "summary",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Professional Summary / Profile / Objective",
+        "confidence_score": 0.0,
+        "description": "Executive bio, professional overview, or career objective."
+      },
+      {
+        "field_name": "total_experience_years",
+        "target_type": "float | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Summary / Experience Calculation",
+        "confidence_score": 0.0,
+        "description": "Total professional experience in years."
+      },
+      {
+        "field_name": "skills.technical_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Technical Competencies",
+        "confidence_score": 0.0,
+        "description": "Technical programming languages and core software competencies."
+      },
+      {
+        "field_name": "skills.tools_and_platforms",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Tools & Technologies",
+        "confidence_score": 0.0,
+        "description": "Software platforms, developer tools, and operational systems."
+      },
+      {
+        "field_name": "skills.domain_and_functional",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Domain Expertise",
+        "confidence_score": 0.0,
+        "description": "Functional domain knowledge (e.g. Hedge Funds, KYC, NAV, Derivatives)."
+      },
+      {
+        "field_name": "skills.all_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills (Aggregated)",
+        "confidence_score": 0.0,
+        "description": "Complete list of candidate skills across all categories."
+      },
+      {
+        "field_name": "experience",
+        "target_type": "array[WorkExperience]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Professional Experience / Work History",
+        "confidence_score": 0.0,
+        "description": "Complete chronological employment records with bullet points."
+      },
+      {
+        "field_name": "education",
+        "target_type": "array[Education]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Education / Academic Qualifications",
+        "confidence_score": 0.0,
+        "description": "University, college, and higher education degree qualifications."
+      },
+      {
+        "field_name": "certifications",
+        "target_type": "array[Certification]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Certifications / Licenses",
+        "confidence_score": 0.0,
+        "description": "Professional accreditations and credentials."
+      },
+      {
+        "field_name": "projects",
+        "target_type": "array[Project]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Projects / Key Engagements",
+        "confidence_score": 0.0,
+        "description": "Major projects or strategic initiatives led by candidate."
+      }
+    ]
+  },
+  "raw_sections": {
+    "experience": "to their clients and successful projects, including which "
+  },
+  "meta": {
+    "status": "needs_review",
+    "human_verified": false,
+    "provider_calls": 0,
+    "source_accounting": {
+      "all_source_text_preserved": true,
+      "total_spans": 26,
+      "assigned_meaningful_spans": 1,
+      "unresolved_meaningful_spans": 25,
+      "non_content_artifacts": 0,
+      "duplicates_excluded": 0,
+      "all_meaningful_text_assigned": false,
+      "semantic_correctness_verified": false,
+      "outcomes": [
+        {
+          "source_id": "e0:0:36",
+          "source_element_index": 0,
+          "start": 0,
+          "end": 36,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e1:0:59",
+          "source_element_index": 1,
+          "start": 0,
+          "end": 59,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e2:0:57",
+          "source_element_index": 2,
+          "start": 0,
+          "end": 57,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e3:0:55",
+          "source_element_index": 3,
+          "start": 0,
+          "end": 55,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e3:55:112",
+          "source_element_index": 3,
+          "start": 55,
+          "end": 112,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e3:112:127",
+          "source_element_index": 3,
+          "start": 112,
+          "end": 127,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e4:0:62",
+          "source_element_index": 4,
+          "start": 0,
+          "end": 62,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e4:62:117",
+          "source_element_index": 4,
+          "start": 62,
+          "end": 117,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e4:117:171",
+          "source_element_index": 4,
+          "start": 117,
+          "end": 171,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e4:171:229",
+          "source_element_index": 4,
+          "start": 171,
+          "end": 229,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e4:229:287",
+          "source_element_index": 4,
+          "start": 229,
+          "end": 287,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "BERT embedding assigned to a labeled K-means centroid"
+        },
+        {
+          "source_id": "e4:287:337",
+          "source_element_index": 4,
+          "start": 287,
+          "end": 337,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e5:0:60",
+          "source_element_index": 5,
+          "start": 0,
+          "end": 60,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e5:60:115",
+          "source_element_index": 5,
+          "start": 60,
+          "end": 115,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e5:115:158",
+          "source_element_index": 5,
+          "start": 115,
+          "end": 158,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e6:0:54",
+          "source_element_index": 6,
+          "start": 0,
+          "end": 54,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e7:0:43",
+          "source_element_index": 7,
+          "start": 0,
+          "end": 43,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e8:0:54",
+          "source_element_index": 8,
+          "start": 0,
+          "end": 54,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e9:0:58",
+          "source_element_index": 9,
+          "start": 0,
+          "end": 58,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e9:58:70",
+          "source_element_index": 9,
+          "start": 58,
+          "end": 70,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e10:0:57",
+          "source_element_index": 10,
+          "start": 0,
+          "end": 57,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e10:57:108",
+          "source_element_index": 10,
+          "start": 57,
+          "end": 108,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e11:0:59",
+          "source_element_index": 11,
+          "start": 0,
+          "end": 59,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e12:0:31",
+          "source_element_index": 12,
+          "start": 0,
+          "end": 31,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e13:0:63",
+          "source_element_index": 13,
+          "start": 0,
+          "end": 63,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e13:63:117",
+          "source_element_index": 13,
+          "start": 63,
+          "end": 117,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        }
+      ]
+    },
+    "document_scope": {
+      "kind": "website_critique",
+      "candidate_resume": false,
+      "reason": "Explicit website-critique title and document-purpose statement"
+    },
+    "source_inventory_sha256": "8674fb8cf7ccce7b7916637031b3215295a90b62a695bd1cb69ad1e27233c7a7",
+    "field_evidence": {},
+    "record_reviews": [],
+    "missing_required_fields": [
+      "contact.full_name",
+      "contact.email",
+      "contact.phone"
+    ],
+    "warnings": [
+      "Document scope is non-resume; candidate fields were left empty and source sections retained.",
+      "Schema validity and field completion do not establish extraction or relationship accuracy.",
+      "Handoff confidence scores are fixed heuristics, not calibrated probabilities.",
+      "Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields."
+    ],
+    "unmapped_blocks": [
+      {
+        "source_id": "e4:229:287",
+        "category": "experience",
+        "text": "to their clients and successful projects, including which ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:0:36",
+        "category": null,
+        "text": "Detailed Critique on DoRight website",
+        "page_number": 1
+      },
+      {
+        "source_id": "e1:0:59",
+        "category": null,
+        "text": "Upon reviewing the website, I noticed the following things:",
+        "page_number": 1
+      },
+      {
+        "source_id": "e2:0:57",
+        "category": null,
+        "text": "1. The first thing which I observed was the color palette",
+        "page_number": 1
+      },
+      {
+        "source_id": "e3:0:55",
+        "category": null,
+        "text": "and typography which is consistent throughout the site ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e3:55:112",
+        "category": null,
+        "text": "which makes it look more professional and highlights the ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e3:112:127",
+        "category": null,
+        "text": "brand identity.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e4:0:62",
+        "category": null,
+        "text": "2. Even though the first impression of the website is usually ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e4:62:117",
+        "category": null,
+        "text": "the color theme and look of the site, the content also ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e4:117:171",
+        "category": null,
+        "text": "plays a crucial role in grabbing the attention of the ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e4:171:229",
+        "category": null,
+        "text": "visitors. The website lacks in detail information related ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e4:287:337",
+        "category": null,
+        "text": "would result in more registrations of new clients.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:0:60",
+        "category": null,
+        "text": "3. Although the colour palette of the website is consistent ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:60:115",
+        "category": null,
+        "text": "it can use more of visual elements to make the website ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:115:158",
+        "category": null,
+        "text": "more attractive and engaging for the users.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e6:0:54",
+        "category": null,
+        "text": "4. The website can also incorporate SEO to improve the",
+        "page_number": 1
+      },
+      {
+        "source_id": "e7:0:43",
+        "category": null,
+        "text": "site's visibility in search engine results.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:0:54",
+        "category": null,
+        "text": "5. The site performs well on mobile devices, making it",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:0:58",
+        "category": null,
+        "text": "easier for users to access the website according to their ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:58:70",
+        "category": null,
+        "text": "convenience.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e10:0:57",
+        "category": null,
+        "text": "6. The subtle effects like animation and hovering on the ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e10:57:108",
+        "category": null,
+        "text": "buttons and links makes the site more interactable.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e11:0:59",
+        "category": null,
+        "text": "7. The search bar feature is missing from the website which",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:0:31",
+        "category": null,
+        "text": "would make it easier to access.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e13:0:63",
+        "category": null,
+        "text": "8. Overall the website is fine, but it can definitely use more ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e13:63:117",
+        "category": null,
+        "text": "colour and visual elements to make it more impressive.",
+        "page_number": 1
+      }
+    ],
+    "needs_review": [
+      {
+        "source_element_index": 0,
+        "start": 0,
+        "end": 36,
+        "text": "Detailed Critique on DoRight website",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2971,
+        "margin": 0.1315,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 1,
+        "start": 0,
+        "end": 59,
+        "text": "Upon reviewing the website, I noticed the following things:",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2374,
+        "margin": 0.0582,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 2,
+        "start": 0,
+        "end": 57,
+        "text": "1. The first thing which I observed was the color palette",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1619,
+        "margin": 0.0267,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 3,
+        "start": 0,
+        "end": 55,
+        "text": "and typography which is consistent throughout the site ",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2479,
+        "margin": -0.0247,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 3,
+        "start": 55,
+        "end": 112,
+        "text": "which makes it look more professional and highlights the ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1476,
+        "margin": -0.0522,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 3,
+        "start": 112,
+        "end": 127,
+        "text": "brand identity.",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2963,
+        "margin": -0.017,
+        "lane": "left",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 4,
+        "start": 0,
+        "end": 62,
+        "text": "2. Even though the first impression of the website is usually ",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2152,
+        "margin": 0.0283,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 4,
+        "start": 62,
+        "end": 117,
+        "text": "the color theme and look of the site, the content also ",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2754,
+        "margin": 0.1042,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 4,
+        "start": 117,
+        "end": 171,
+        "text": "plays a crucial role in grabbing the attention of the ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1925,
+        "margin": -0.0667,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 4,
+        "start": 171,
+        "end": 229,
+        "text": "visitors. The website lacks in detail information related ",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3559,
+        "margin": 0.0021,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 4,
+        "start": 287,
+        "end": 337,
+        "text": "would result in more registrations of new clients.",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3946,
+        "margin": 0.1173,
+        "lane": "left",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 5,
+        "start": 0,
+        "end": 60,
+        "text": "3. Although the colour palette of the website is consistent ",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2226,
+        "margin": 0.0646,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 5,
+        "start": 60,
+        "end": 115,
+        "text": "it can use more of visual elements to make the website ",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3227,
+        "margin": 0.1256,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 5,
+        "start": 115,
+        "end": 158,
+        "text": "more attractive and engaging for the users.",
+        "page_number": 1,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2547,
+        "margin": -0.0129,
+        "lane": "left",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 6,
+        "start": 0,
+        "end": 54,
+        "text": "4. The website can also incorporate SEO to improve the",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.289,
+        "margin": 0.0247,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 7,
+        "start": 0,
+        "end": 43,
+        "text": "site's visibility in search engine results.",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2272,
+        "margin": 0.0494,
+        "lane": "left",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 8,
+        "start": 0,
+        "end": 54,
+        "text": "5. The site performs well on mobile devices, making it",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2319,
+        "margin": -0.0144,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 9,
+        "start": 0,
+        "end": 58,
+        "text": "easier for users to access the website according to their ",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.324,
+        "margin": 0.2021,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 9,
+        "start": 58,
+        "end": 70,
+        "text": "convenience.",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1635,
+        "margin": -0.044,
+        "lane": "left",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 10,
+        "start": 0,
+        "end": 57,
+        "text": "6. The subtle effects like animation and hovering on the ",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1737,
+        "margin": 0.0033,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 10,
+        "start": 57,
+        "end": 108,
+        "text": "buttons and links makes the site more interactable.",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2202,
+        "margin": 0.0497,
+        "lane": "left",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 11,
+        "start": 0,
+        "end": 59,
+        "text": "7. The search bar feature is missing from the website which",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.177,
+        "margin": 0.0059,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 12,
+        "start": 0,
+        "end": 31,
+        "text": "would make it easier to access.",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1743,
+        "margin": 0.0608,
+        "lane": "left",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 13,
+        "start": 0,
+        "end": 63,
+        "text": "8. Overall the website is fine, but it can definitely use more ",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1762,
+        "margin": -0.0155,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 13,
+        "start": 63,
+        "end": 117,
+        "text": "colour and visual elements to make it more impressive.",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2748,
+        "margin": -0.0112,
+        "lane": "wide",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      }
+    ]
+  },
+  "section_schemas": [
+    {
+      "category": "experience",
+      "label": "Experience",
+      "records": [],
+      "residual_blocks": [
+        {
+          "source_id": "e4:229:287",
+          "quote": "to their clients and successful projects, including which "
+        }
+      ]
+    },
+    {
+      "category": "needs_review",
+      "label": "Unassigned source blocks",
+      "records": [],
+      "residual_blocks": [
+        {
+          "source_id": "e0:0:36",
+          "quote": "Detailed Critique on DoRight website"
+        },
+        {
+          "source_id": "e1:0:59",
+          "quote": "Upon reviewing the website, I noticed the following things:"
+        },
+        {
+          "source_id": "e2:0:57",
+          "quote": "1. The first thing which I observed was the color palette"
+        },
+        {
+          "source_id": "e3:0:55",
+          "quote": "and typography which is consistent throughout the site "
+        },
+        {
+          "source_id": "e3:55:112",
+          "quote": "which makes it look more professional and highlights the "
+        },
+        {
+          "source_id": "e3:112:127",
+          "quote": "brand identity."
+        },
+        {
+          "source_id": "e4:0:62",
+          "quote": "2. Even though the first impression of the website is usually "
+        },
+        {
+          "source_id": "e4:62:117",
+          "quote": "the color theme and look of the site, the content also "
+        },
+        {
+          "source_id": "e4:117:171",
+          "quote": "plays a crucial role in grabbing the attention of the "
+        },
+        {
+          "source_id": "e4:171:229",
+          "quote": "visitors. The website lacks in detail information related "
+        },
+        {
+          "source_id": "e4:287:337",
+          "quote": "would result in more registrations of new clients."
+        },
+        {
+          "source_id": "e5:0:60",
+          "quote": "3. Although the colour palette of the website is consistent "
+        },
+        {
+          "source_id": "e5:60:115",
+          "quote": "it can use more of visual elements to make the website "
+        },
+        {
+          "source_id": "e5:115:158",
+          "quote": "more attractive and engaging for the users."
+        },
+        {
+          "source_id": "e6:0:54",
+          "quote": "4. The website can also incorporate SEO to improve the"
+        },
+        {
+          "source_id": "e7:0:43",
+          "quote": "site's visibility in search engine results."
+        },
+        {
+          "source_id": "e8:0:54",
+          "quote": "5. The site performs well on mobile devices, making it"
+        },
+        {
+          "source_id": "e9:0:58",
+          "quote": "easier for users to access the website according to their "
+        },
+        {
+          "source_id": "e9:58:70",
+          "quote": "convenience."
+        },
+        {
+          "source_id": "e10:0:57",
+          "quote": "6. The subtle effects like animation and hovering on the "
+        },
+        {
+          "source_id": "e10:57:108",
+          "quote": "buttons and links makes the site more interactable."
+        },
+        {
+          "source_id": "e11:0:59",
+          "quote": "7. The search bar feature is missing from the website which"
+        },
+        {
+          "source_id": "e12:0:31",
+          "quote": "would make it easier to access."
+        },
+        {
+          "source_id": "e13:0:63",
+          "quote": "8. Overall the website is fine, but it can definitely use more "
+        },
+        {
+          "source_id": "e13:63:117",
+          "quote": "colour and visual elements to make it more impressive."
+        }
+      ]
+    }
+  ]
+}

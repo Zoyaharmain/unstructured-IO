@@ -1,0 +1,2922 @@
+{
+  "success": true,
+  "source": "Kusumita_Resume.pdf",
+  "extraction_mode": "existing_blocks_schema_mapping",
+  "data": {
+    "contact": {
+      "full_name": "Kusumita Bhattacharya",
+      "email": "kusumitabhatt@gmail.com",
+      "phone": "+91-6361055738",
+      "location": "Kolkata",
+      "linkedin_url": null,
+      "github_url": null,
+      "portfolio_url": null
+    },
+    "professional_title": null,
+    "summary": null,
+    "total_experience_years": null,
+    "skills": {
+      "technical_skills": [],
+      "tools_and_platforms": [
+        "JIRA",
+        "Excel"
+      ],
+      "domain_and_functional": [],
+      "soft_skills": [
+        "Leadership",
+        "Process Improvement"
+      ],
+      "all_skills": [
+        "JIRA",
+        "Excel",
+        "Leadership",
+        "Process Improvement",
+        "Primary Technical Skills: SAP EWM",
+        "SAP MM",
+        "Retail Warehousing",
+        "MS Excel",
+        "ServiceNow",
+        "Citrix",
+        "Soft Skills: MuleSoft",
+        "Anypoint Studio",
+        "Jenkins",
+        "Anypoint Cloud Server",
+        "Leadership capabilities",
+        "Adaptability skills",
+        "Dependability",
+        "Time Management",
+        "Business Process Improvement",
+        "Risk & Analysis Decision Making",
+        "Bachelor of Technology",
+        "Computer Science Engineering",
+        "Aug 2016 - May 2020",
+        "KIIT University",
+        "Bhubaneshwar",
+        "CGPA: 8.05",
+        "CBSE",
+        "Class XII",
+        "Apr 2014 - Mar 2016",
+        "RSVM",
+        "Dhanbad",
+        "Percentage: 84%",
+        "ICSE",
+        "Class X",
+        "Apr 2013 - Mar 2014",
+        "De Nobili School",
+        "C.M.R.I",
+        "Percentage: 78%",
+        "SAP MM Training",
+        "Accenture",
+        "SAP EWM Certification by Tag Skills"
+      ]
+    },
+    "experience": [],
+    "education": [],
+    "certifications": [],
+    "projects": [],
+    "languages": []
+  },
+  "schema_mapping": {
+    "fields_populated": 6,
+    "total_fields": 16,
+    "completion_percentage": 37.5,
+    "field_details": [
+      {
+        "field_name": "contact.full_name",
+        "target_type": "string",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Personal Details",
+        "confidence_score": 0.95,
+        "description": "Candidate's full name, extracted from the top header of the resume."
+      },
+      {
+        "field_name": "contact.email",
+        "target_type": "string (email)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.98,
+        "description": "Candidate's primary contact email address."
+      },
+      {
+        "field_name": "contact.phone",
+        "target_type": "string (phone)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.95,
+        "description": "Candidate's telephone / mobile phone number."
+      },
+      {
+        "field_name": "contact.location",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.85,
+        "description": "Candidate's residential location or work city."
+      },
+      {
+        "field_name": "contact.linkedin_url",
+        "target_type": "string (url) | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "URL to candidate's LinkedIn profile."
+      },
+      {
+        "field_name": "professional_title",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Subtitle",
+        "confidence_score": 0.0,
+        "description": "Candidate's target headline or most recent job title."
+      },
+      {
+        "field_name": "summary",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Professional Summary / Profile / Objective",
+        "confidence_score": 0.0,
+        "description": "Executive bio, professional overview, or career objective."
+      },
+      {
+        "field_name": "total_experience_years",
+        "target_type": "float | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Summary / Experience Calculation",
+        "confidence_score": 0.0,
+        "description": "Total professional experience in years."
+      },
+      {
+        "field_name": "skills.technical_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Technical Competencies",
+        "confidence_score": 0.0,
+        "description": "Technical programming languages and core software competencies."
+      },
+      {
+        "field_name": "skills.tools_and_platforms",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills / Tools & Technologies",
+        "confidence_score": 0.9,
+        "description": "Software platforms, developer tools, and operational systems."
+      },
+      {
+        "field_name": "skills.domain_and_functional",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Domain Expertise",
+        "confidence_score": 0.0,
+        "description": "Functional domain knowledge (e.g. Hedge Funds, KYC, NAV, Derivatives)."
+      },
+      {
+        "field_name": "skills.all_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills (Aggregated)",
+        "confidence_score": 0.95,
+        "description": "Complete list of candidate skills across all categories."
+      },
+      {
+        "field_name": "experience",
+        "target_type": "array[WorkExperience]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Professional Experience / Work History",
+        "confidence_score": 0.0,
+        "description": "Complete chronological employment records with bullet points."
+      },
+      {
+        "field_name": "education",
+        "target_type": "array[Education]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Education / Academic Qualifications",
+        "confidence_score": 0.0,
+        "description": "University, college, and higher education degree qualifications."
+      },
+      {
+        "field_name": "certifications",
+        "target_type": "array[Certification]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Certifications / Licenses",
+        "confidence_score": 0.0,
+        "description": "Professional accreditations and credentials."
+      },
+      {
+        "field_name": "projects",
+        "target_type": "array[Project]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Projects / Key Engagements",
+        "confidence_score": 0.0,
+        "description": "Major projects or strategic initiatives led by candidate."
+      }
+    ]
+  },
+  "raw_sections": {
+    "personal_information": "Kusumita Bhattacharya\nkusumitabhatt@gmail.com| +91-6361055738| Kolkata, India",
+    "skills": "SKILLS\nPrimary Technical Skills: SAP EWM, SAP MM, Retail Warehousing, MS Excel Tools: ServiceNow, JIRA, Citrix Soft Skills: MuleSoft, Anypoint Studio, Jenkins, Anypoint Cloud Server, Leadership capabilities, Adaptability skills, Dependability, Time Management, Business Process Improvement, Risk & Analysis Decision Making\nBachelor of Technology, Computer Science Engineering\nAug 2016 - May 2020\nKIIT University, Bhubaneshwar\nCGPA: 8.05\nCBSE, Class XII,\nApr 2014 - Mar 2016 RSVM, Dhanbad Percentage: 84%\nICSE, Class X, Apr 2013 - Mar 2014 De Nobili School, C.M.R.I Percentage: 78%\nSAP MM Training, Accenture • SAP EWM Certification by Tag Skills"
+  },
+  "meta": {
+    "status": "needs_review",
+    "human_verified": false,
+    "provider_calls": 0,
+    "source_accounting": {
+      "all_source_text_preserved": true,
+      "total_spans": 62,
+      "assigned_meaningful_spans": 21,
+      "unresolved_meaningful_spans": 26,
+      "non_content_artifacts": 15,
+      "duplicates_excluded": 0,
+      "all_meaningful_text_assigned": false,
+      "semantic_correctness_verified": false,
+      "outcomes": [
+        {
+          "source_id": "e0:0:21",
+          "source_element_index": 0,
+          "start": 0,
+          "end": 21,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e1:0:55",
+          "source_element_index": 1,
+          "start": 0,
+          "end": 55,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e2:0:113",
+          "source_element_index": 2,
+          "start": 0,
+          "end": 113,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e2:113:234",
+          "source_element_index": 2,
+          "start": 113,
+          "end": 234,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e2:234:356",
+          "source_element_index": 2,
+          "start": 234,
+          "end": 356,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e2:356:376",
+          "source_element_index": 2,
+          "start": 356,
+          "end": 376,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e3:0:52",
+          "source_element_index": 3,
+          "start": 0,
+          "end": 52,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e4:0:19",
+          "source_element_index": 4,
+          "start": 0,
+          "end": 19,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e5:0:73",
+          "source_element_index": 5,
+          "start": 0,
+          "end": 73,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e5:73:76",
+          "source_element_index": 5,
+          "start": 73,
+          "end": 76,
+          "section": null,
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e5:76:157",
+          "source_element_index": 5,
+          "start": 76,
+          "end": 157,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e5:157:160",
+          "source_element_index": 5,
+          "start": 157,
+          "end": 160,
+          "section": null,
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e5:160:248",
+          "source_element_index": 5,
+          "start": 160,
+          "end": 248,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e5:248:251",
+          "source_element_index": 5,
+          "start": 248,
+          "end": 251,
+          "section": null,
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e5:251:281",
+          "source_element_index": 5,
+          "start": 251,
+          "end": 281,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e5:281:284",
+          "source_element_index": 5,
+          "start": 281,
+          "end": 284,
+          "section": null,
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e5:284:375",
+          "source_element_index": 5,
+          "start": 284,
+          "end": 375,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e5:375:378",
+          "source_element_index": 5,
+          "start": 375,
+          "end": 378,
+          "section": null,
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e5:378:452",
+          "source_element_index": 5,
+          "start": 378,
+          "end": 452,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e5:452:455",
+          "source_element_index": 5,
+          "start": 452,
+          "end": 455,
+          "section": null,
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e5:455:556",
+          "source_element_index": 5,
+          "start": 455,
+          "end": 556,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e5:556:619",
+          "source_element_index": 5,
+          "start": 556,
+          "end": 619,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e6:0:52",
+          "source_element_index": 6,
+          "start": 0,
+          "end": 52,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e6:52:55",
+          "source_element_index": 6,
+          "start": 52,
+          "end": 55,
+          "section": null,
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e6:55:87",
+          "source_element_index": 6,
+          "start": 55,
+          "end": 87,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e7:0:56",
+          "source_element_index": 7,
+          "start": 0,
+          "end": 56,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e7:56:76",
+          "source_element_index": 7,
+          "start": 56,
+          "end": 76,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e8:0:31",
+          "source_element_index": 8,
+          "start": 0,
+          "end": 31,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e8:31:34",
+          "source_element_index": 8,
+          "start": 31,
+          "end": 34,
+          "section": null,
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e8:34:109",
+          "source_element_index": 8,
+          "start": 34,
+          "end": 109,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e8:109:112",
+          "source_element_index": 8,
+          "start": 109,
+          "end": 112,
+          "section": null,
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e8:112:146",
+          "source_element_index": 8,
+          "start": 112,
+          "end": 146,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e8:146:149",
+          "source_element_index": 8,
+          "start": 146,
+          "end": 149,
+          "section": null,
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e8:149:214",
+          "source_element_index": 8,
+          "start": 149,
+          "end": 214,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e8:214:217",
+          "source_element_index": 8,
+          "start": 214,
+          "end": 217,
+          "section": null,
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e8:217:282",
+          "source_element_index": 8,
+          "start": 217,
+          "end": 282,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e8:282:285",
+          "source_element_index": 8,
+          "start": 282,
+          "end": 285,
+          "section": null,
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e8:285:371",
+          "source_element_index": 8,
+          "start": 285,
+          "end": 371,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e8:371:374",
+          "source_element_index": 8,
+          "start": 371,
+          "end": 374,
+          "section": null,
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e8:374:474",
+          "source_element_index": 8,
+          "start": 374,
+          "end": 474,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e8:474:477",
+          "source_element_index": 8,
+          "start": 474,
+          "end": 477,
+          "section": null,
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e8:477:513",
+          "source_element_index": 8,
+          "start": 477,
+          "end": 513,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e9:0:6",
+          "source_element_index": 9,
+          "start": 0,
+          "end": 6,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e10:0:72",
+          "source_element_index": 10,
+          "start": 0,
+          "end": 72,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e10:72:104",
+          "source_element_index": 10,
+          "start": 72,
+          "end": 104,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e10:104:222",
+          "source_element_index": 10,
+          "start": 104,
+          "end": 222,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e10:222:315",
+          "source_element_index": 10,
+          "start": 222,
+          "end": 315,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e11:0:52",
+          "source_element_index": 11,
+          "start": 0,
+          "end": 52,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:0:19",
+          "source_element_index": 12,
+          "start": 0,
+          "end": 19,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e13:0:29",
+          "source_element_index": 13,
+          "start": 0,
+          "end": 29,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e14:0:10",
+          "source_element_index": 14,
+          "start": 0,
+          "end": 10,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e15:0:16",
+          "source_element_index": 15,
+          "start": 0,
+          "end": 16,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e16:0:20",
+          "source_element_index": 16,
+          "start": 0,
+          "end": 20,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e16:20:34",
+          "source_element_index": 16,
+          "start": 20,
+          "end": 34,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e16:34:49",
+          "source_element_index": 16,
+          "start": 34,
+          "end": 49,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e17:0:15",
+          "source_element_index": 17,
+          "start": 0,
+          "end": 15,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e17:15:35",
+          "source_element_index": 17,
+          "start": 15,
+          "end": 35,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e17:35:61",
+          "source_element_index": 17,
+          "start": 35,
+          "end": 61,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e17:61:76",
+          "source_element_index": 17,
+          "start": 61,
+          "end": 76,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e18:0:26",
+          "source_element_index": 18,
+          "start": 0,
+          "end": 26,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e18:26:29",
+          "source_element_index": 18,
+          "start": 26,
+          "end": 29,
+          "section": "skills",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e18:29:64",
+          "source_element_index": 18,
+          "start": 29,
+          "end": 64,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        }
+      ]
+    },
+    "document_scope": {
+      "kind": "likely_resume",
+      "candidate_resume": true,
+      "reason": "Contact details, multiple resume section families and dated history; provisional scope only",
+      "human_verified": false
+    },
+    "source_inventory_sha256": "2c1a8abaa9e982a7345fd12511d533c012c3417beb6324b2799ad01cd95c81ce",
+    "field_evidence": {
+      "contact.full_name": [
+        "e0:0:21",
+        "e1:0:55"
+      ],
+      "contact.email": [
+        "e0:0:21",
+        "e1:0:55"
+      ],
+      "contact.phone": [
+        "e0:0:21",
+        "e1:0:55"
+      ],
+      "contact.location": [
+        "e0:0:21",
+        "e1:0:55"
+      ],
+      "skills.tools_and_platforms[0]": [
+        "e10:72:104"
+      ],
+      "skills.tools_and_platforms[1]": [
+        "e10:0:72"
+      ],
+      "skills.soft_skills[0]": [
+        "e10:104:222"
+      ],
+      "skills.soft_skills[1]": [
+        "e10:222:315"
+      ],
+      "skills.all_skills[0]": [
+        "e10:72:104"
+      ],
+      "skills.all_skills[1]": [
+        "e10:0:72"
+      ],
+      "skills.all_skills[2]": [
+        "e10:104:222"
+      ],
+      "skills.all_skills[3]": [
+        "e10:222:315"
+      ],
+      "skills.all_skills[4]": [
+        "e10:0:72"
+      ],
+      "skills.all_skills[5]": [
+        "e10:0:72",
+        "e18:0:26"
+      ],
+      "skills.all_skills[6]": [
+        "e10:0:72"
+      ],
+      "skills.all_skills[7]": [
+        "e10:0:72"
+      ],
+      "skills.all_skills[8]": [
+        "e10:72:104"
+      ],
+      "skills.all_skills[9]": [
+        "e10:72:104"
+      ],
+      "skills.all_skills[10]": [
+        "e10:104:222"
+      ],
+      "skills.all_skills[11]": [
+        "e10:104:222"
+      ],
+      "skills.all_skills[12]": [
+        "e10:104:222"
+      ],
+      "skills.all_skills[13]": [
+        "e10:104:222"
+      ],
+      "skills.all_skills[14]": [
+        "e10:104:222"
+      ],
+      "skills.all_skills[15]": [
+        "e10:104:222"
+      ],
+      "skills.all_skills[16]": [
+        "e10:222:315"
+      ],
+      "skills.all_skills[17]": [
+        "e10:222:315"
+      ],
+      "skills.all_skills[18]": [
+        "e10:222:315"
+      ],
+      "skills.all_skills[19]": [
+        "e10:222:315"
+      ],
+      "skills.all_skills[20]": [
+        "e11:0:52"
+      ],
+      "skills.all_skills[21]": [
+        "e11:0:52"
+      ],
+      "skills.all_skills[22]": [
+        "e12:0:19"
+      ],
+      "skills.all_skills[23]": [
+        "e13:0:29"
+      ],
+      "skills.all_skills[24]": [
+        "e13:0:29"
+      ],
+      "skills.all_skills[25]": [
+        "e14:0:10"
+      ],
+      "skills.all_skills[26]": [
+        "e15:0:16"
+      ],
+      "skills.all_skills[27]": [
+        "e15:0:16"
+      ],
+      "skills.all_skills[28]": [
+        "e16:0:20"
+      ],
+      "skills.all_skills[29]": [
+        "e16:20:34"
+      ],
+      "skills.all_skills[30]": [
+        "e16:20:34"
+      ],
+      "skills.all_skills[31]": [
+        "e16:34:49"
+      ],
+      "skills.all_skills[32]": [
+        "e17:0:15"
+      ],
+      "skills.all_skills[33]": [
+        "e15:0:16",
+        "e17:0:15"
+      ],
+      "skills.all_skills[34]": [
+        "e17:15:35"
+      ],
+      "skills.all_skills[35]": [
+        "e17:35:61"
+      ],
+      "skills.all_skills[36]": [
+        "e17:35:61"
+      ],
+      "skills.all_skills[37]": [
+        "e17:61:76"
+      ],
+      "skills.all_skills[38]": [
+        "e18:0:26"
+      ],
+      "skills.all_skills[39]": [
+        "e18:0:26"
+      ],
+      "skills.all_skills[40]": [
+        "e18:29:64"
+      ]
+    },
+    "record_reviews": [],
+    "missing_required_fields": [],
+    "warnings": [
+      "Schema validity and field completion do not establish extraction or relationship accuracy.",
+      "Handoff confidence scores are fixed heuristics, not calibrated probabilities.",
+      "Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields."
+    ],
+    "unmapped_blocks": [
+      {
+        "source_id": "e9:0:6",
+        "category": "skills",
+        "text": "SKILLS",
+        "page_number": 1
+      },
+      {
+        "source_id": "e18:26:29",
+        "category": "skills",
+        "text": " • ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e2:0:113",
+        "category": null,
+        "text": "Strategic and results-driven SAP EWM consultant with experience in managing multiple warehouses, client relation ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e2:113:234",
+        "category": null,
+        "text": "and configure scenarios. Excellent exposure of working in complex projects and complicated designs with multiple systems ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e2:234:356",
+        "category": null,
+        "text": "and interfaces closely working with SAP. Equipped with excellent communication skills, work ethics and possesses a strong ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e2:356:376",
+        "category": null,
+        "text": "sense of leadership.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e3:0:52",
+        "category": null,
+        "text": "Application Development Analyst (SAP EWM), Accenture",
+        "page_number": 1
+      },
+      {
+        "source_id": "e4:0:19",
+        "category": null,
+        "text": "July 2022 – Present",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:0:73",
+        "category": null,
+        "text": "Client: Leading Textile firm based out of Europe and Asia Pacific Market.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:73:76",
+        "category": null,
+        "text": " • ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:76:157",
+        "category": null,
+        "text": "Experience on End–To–End Test Process, Regressions, Smoke, Functional, Automation",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:157:160",
+        "category": null,
+        "text": " • ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:160:248",
+        "category": null,
+        "text": "Responsible: Application built to transfer files from inbound to outbound and vice-versa",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:248:251",
+        "category": null,
+        "text": " • ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:251:281",
+        "category": null,
+        "text": "Test Strategy / Test Planning.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:281:284",
+        "category": null,
+        "text": " • ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:284:375",
+        "category": null,
+        "text": "Worked in the post-implementation phase to support the go-live in a new warehouse Delivered",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:375:378",
+        "category": null,
+        "text": " • ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:378:452",
+        "category": null,
+        "text": "Providing automation ideas that helped to reduce 600+ manual effort hours.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:452:455",
+        "category": null,
+        "text": " • ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:455:556",
+        "category": null,
+        "text": "Knowledge and experience in warehouse process like Inbound, Outbound, Crossdocking, wave management, ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:556:619",
+        "category": null,
+        "text": "Internal Process (Replenishment, Scrapping, Physical Inventory)",
+        "page_number": 1
+      },
+      {
+        "source_id": "e6:0:52",
+        "category": null,
+        "text": "EWM POC for 4 Technical go-live and 1 store go-live.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e6:52:55",
+        "category": null,
+        "text": " • ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e6:55:87",
+        "category": null,
+        "text": "Total Implementations done is 1.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e7:0:56",
+        "category": null,
+        "text": "Application Development Associate (MuleSoft), Accenture ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e7:56:76",
+        "category": null,
+        "text": "Nov 2020 – June 2022",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:0:31",
+        "category": null,
+        "text": "Client: Unilever (Europe, U2k2)",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:31:34",
+        "category": null,
+        "text": " • ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:34:109",
+        "category": null,
+        "text": "Experience in mapping Business Processes to SAP in distributed environment.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:109:112",
+        "category": null,
+        "text": " • ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:112:146",
+        "category": null,
+        "text": "Prepare Functional Design Document",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:146:149",
+        "category": null,
+        "text": " • ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:149:214",
+        "category": null,
+        "text": "Develop Code and Execute Test case through sample files provided.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:214:217",
+        "category": null,
+        "text": " • ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:217:282",
+        "category": null,
+        "text": "Preparing reports daily basis for testing the code in quality env",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:282:285",
+        "category": null,
+        "text": " • ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:285:371",
+        "category": null,
+        "text": "Responsible for training end user in understanding process and providing work arounds.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:371:374",
+        "category": null,
+        "text": " • ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:374:474",
+        "category": null,
+        "text": "Responsible for implementing, testing and documenting functional specification of changes in system.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:474:477",
+        "category": null,
+        "text": " • ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:477:513",
+        "category": null,
+        "text": "MuleSoft POC for 4 Technical go-live",
+        "page_number": 1
+      }
+    ],
+    "needs_review": [
+      {
+        "source_element_index": 2,
+        "start": 0,
+        "end": 113,
+        "text": "Strategic and results-driven SAP EWM consultant with experience in managing multiple warehouses, client relation ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3604,
+        "margin": 0.0374,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 2,
+        "start": 113,
+        "end": 234,
+        "text": "and configure scenarios. Excellent exposure of working in complex projects and complicated designs with multiple systems ",
+        "page_number": 1,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.51,
+        "margin": 0.0103,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 2,
+        "start": 234,
+        "end": 356,
+        "text": "and interfaces closely working with SAP. Equipped with excellent communication skills, work ethics and possesses a strong ",
+        "page_number": 1,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.5599,
+        "margin": 0.0175,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 2,
+        "start": 356,
+        "end": 376,
+        "text": "sense of leadership.",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3689,
+        "margin": 0.0182,
+        "lane": "left",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 3,
+        "start": 0,
+        "end": 52,
+        "text": "Application Development Analyst (SAP EWM), Accenture",
+        "page_number": 1,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3666,
+        "margin": 0.0087,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 4,
+        "start": 0,
+        "end": 19,
+        "text": "July 2022 – Present",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3066,
+        "margin": 0.0158,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 5,
+        "start": 0,
+        "end": 73,
+        "text": "Client: Leading Textile firm based out of Europe and Asia Pacific Market.",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3295,
+        "margin": 0.1119,
+        "lane": "left",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 5,
+        "start": 73,
+        "end": 76,
+        "text": " • ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1924,
+        "margin": -0.0514,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 5,
+        "start": 76,
+        "end": 157,
+        "text": "Experience on End–To–End Test Process, Regressions, Smoke, Functional, Automation",
+        "page_number": 1,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3699,
+        "margin": -0.0086,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 5,
+        "start": 157,
+        "end": 160,
+        "text": " • ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1924,
+        "margin": -0.0514,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 5,
+        "start": 160,
+        "end": 248,
+        "text": "Responsible: Application built to transfer files from inbound to outbound and vice-versa",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.268,
+        "margin": 0.0508,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 5,
+        "start": 248,
+        "end": 251,
+        "text": " • ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1924,
+        "margin": -0.0514,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 5,
+        "start": 251,
+        "end": 281,
+        "text": "Test Strategy / Test Planning.",
+        "page_number": 1,
+        "cluster_id": 1,
+        "candidate_section": "summary",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2714,
+        "margin": 0.0416,
+        "lane": "left",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 5,
+        "start": 281,
+        "end": 284,
+        "text": " • ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1924,
+        "margin": -0.0514,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 5,
+        "start": 284,
+        "end": 375,
+        "text": "Worked in the post-implementation phase to support the go-live in a new warehouse Delivered",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3712,
+        "margin": 0.143,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 5,
+        "start": 375,
+        "end": 378,
+        "text": " • ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1924,
+        "margin": -0.0514,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 5,
+        "start": 378,
+        "end": 452,
+        "text": "Providing automation ideas that helped to reduce 600+ manual effort hours.",
+        "page_number": 1,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3874,
+        "margin": 0.0312,
+        "lane": "left",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 5,
+        "start": 452,
+        "end": 455,
+        "text": " • ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1924,
+        "margin": -0.0514,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 5,
+        "start": 455,
+        "end": 556,
+        "text": "Knowledge and experience in warehouse process like Inbound, Outbound, Crossdocking, wave management, ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3886,
+        "margin": 0.0248,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 5,
+        "start": 556,
+        "end": 619,
+        "text": "Internal Process (Replenishment, Scrapping, Physical Inventory)",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2572,
+        "margin": 0.0391,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 6,
+        "start": 0,
+        "end": 52,
+        "text": "EWM POC for 4 Technical go-live and 1 store go-live.",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2247,
+        "margin": 0.0294,
+        "lane": "left",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 6,
+        "start": 52,
+        "end": 55,
+        "text": " • ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1924,
+        "margin": -0.0514,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 6,
+        "start": 55,
+        "end": 87,
+        "text": "Total Implementations done is 1.",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1911,
+        "margin": -0.0284,
+        "lane": "left",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 7,
+        "start": 0,
+        "end": 56,
+        "text": "Application Development Associate (MuleSoft), Accenture ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3256,
+        "margin": 0.0482,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 7,
+        "start": 56,
+        "end": 76,
+        "text": "Nov 2020 – June 2022",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2215,
+        "margin": 0.0482,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 8,
+        "start": 0,
+        "end": 31,
+        "text": "Client: Unilever (Europe, U2k2)",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2053,
+        "margin": -0.0063,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 8,
+        "start": 31,
+        "end": 34,
+        "text": " • ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1924,
+        "margin": -0.0514,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 8,
+        "start": 34,
+        "end": 109,
+        "text": "Experience in mapping Business Processes to SAP in distributed environment.",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3678,
+        "margin": 0.0614,
+        "lane": "left",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 8,
+        "start": 109,
+        "end": 112,
+        "text": " • ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1924,
+        "margin": -0.0514,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 8,
+        "start": 112,
+        "end": 146,
+        "text": "Prepare Functional Design Document",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1919,
+        "margin": -0.0426,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 8,
+        "start": 146,
+        "end": 149,
+        "text": " • ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1924,
+        "margin": -0.0514,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 8,
+        "start": 149,
+        "end": 214,
+        "text": "Develop Code and Execute Test case through sample files provided.",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2691,
+        "margin": 0.0438,
+        "lane": "left",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 8,
+        "start": 214,
+        "end": 217,
+        "text": " • ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1924,
+        "margin": -0.0514,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 8,
+        "start": 217,
+        "end": 282,
+        "text": "Preparing reports daily basis for testing the code in quality env",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1963,
+        "margin": -0.0122,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 8,
+        "start": 282,
+        "end": 285,
+        "text": " • ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1924,
+        "margin": -0.0514,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 8,
+        "start": 285,
+        "end": 371,
+        "text": "Responsible for training end user in understanding process and providing work arounds.",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.5479,
+        "margin": 0.0354,
+        "lane": "left",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 8,
+        "start": 371,
+        "end": 374,
+        "text": " • ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1924,
+        "margin": -0.0514,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 8,
+        "start": 374,
+        "end": 474,
+        "text": "Responsible for implementing, testing and documenting functional specification of changes in system.",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3476,
+        "margin": 0.0397,
+        "lane": "left",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 8,
+        "start": 474,
+        "end": 477,
+        "text": " • ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1924,
+        "margin": -0.0514,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 8,
+        "start": 477,
+        "end": 513,
+        "text": "MuleSoft POC for 4 Technical go-live",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1417,
+        "margin": -0.028,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      }
+    ]
+  },
+  "section_schemas": [
+    {
+      "category": "personal_information",
+      "label": "Personal information",
+      "records": [
+        {
+          "record_id": "personal_information",
+          "source_ids": [
+            "e0:0:21",
+            "e1:0:55"
+          ],
+          "attributes": [
+            {
+              "name": "full_name",
+              "items": [
+                {
+                  "value": "Kusumita Bhattacharya",
+                  "evidence": [
+                    {
+                      "source_id": "e0:0:21",
+                      "quote": "Kusumita Bhattacharya"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "email",
+              "items": [
+                {
+                  "value": "kusumitabhatt@gmail.com",
+                  "evidence": [
+                    {
+                      "source_id": "e1:0:55",
+                      "quote": "kusumitabhatt@gmail.com"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "phone",
+              "items": [
+                {
+                  "value": "+91-6361055738",
+                  "evidence": [
+                    {
+                      "source_id": "e1:0:55",
+                      "quote": "+91-6361055738"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "location",
+              "items": [
+                {
+                  "value": "Kolkata",
+                  "evidence": [
+                    {
+                      "source_id": "e1:0:55",
+                      "quote": "Kolkata"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "linkedin_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "github_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "portfolio_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "professional_title",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e1:0:55",
+          "quote": "kusumitabhatt@gmail.com| +91-6361055738| Kolkata, India"
+        }
+      ]
+    },
+    {
+      "category": "skills",
+      "label": "Skills",
+      "records": [
+        {
+          "record_id": "skills",
+          "source_ids": [
+            "e10:0:72",
+            "e10:72:104",
+            "e10:104:222",
+            "e10:222:315",
+            "e11:0:52",
+            "e12:0:19",
+            "e13:0:29",
+            "e14:0:10",
+            "e15:0:16",
+            "e16:0:20",
+            "e16:20:34",
+            "e16:34:49",
+            "e17:0:15",
+            "e17:15:35",
+            "e17:35:61",
+            "e17:61:76",
+            "e18:0:26",
+            "e18:26:29",
+            "e18:29:64"
+          ],
+          "attributes": [
+            {
+              "name": "technical_skills",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "tools_and_platforms",
+              "items": [
+                {
+                  "value": "JIRA",
+                  "evidence": [
+                    {
+                      "source_id": "e10:72:104",
+                      "quote": "JIRA"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Excel",
+                  "evidence": [
+                    {
+                      "source_id": "e10:0:72",
+                      "quote": "Excel"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "domain_and_functional",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "soft_skills",
+              "items": [
+                {
+                  "value": "Leadership",
+                  "evidence": [
+                    {
+                      "source_id": "e10:104:222",
+                      "quote": "Leadership"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Process Improvement",
+                  "evidence": [
+                    {
+                      "source_id": "e10:222:315",
+                      "quote": "Process Improvement"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "all_skills",
+              "items": [
+                {
+                  "value": "JIRA",
+                  "evidence": [
+                    {
+                      "source_id": "e10:72:104",
+                      "quote": "JIRA"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Excel",
+                  "evidence": [
+                    {
+                      "source_id": "e10:0:72",
+                      "quote": "Excel"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Leadership",
+                  "evidence": [
+                    {
+                      "source_id": "e10:104:222",
+                      "quote": "Leadership"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Process Improvement",
+                  "evidence": [
+                    {
+                      "source_id": "e10:222:315",
+                      "quote": "Process Improvement"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Primary Technical Skills: SAP EWM",
+                  "evidence": [
+                    {
+                      "source_id": "e10:0:72",
+                      "quote": "Primary Technical Skills: SAP EWM"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "SAP MM",
+                  "evidence": [
+                    {
+                      "source_id": "e10:0:72",
+                      "quote": "SAP MM"
+                    },
+                    {
+                      "source_id": "e18:0:26",
+                      "quote": "SAP MM"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Retail Warehousing",
+                  "evidence": [
+                    {
+                      "source_id": "e10:0:72",
+                      "quote": "Retail Warehousing"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "MS Excel",
+                  "evidence": [
+                    {
+                      "source_id": "e10:0:72",
+                      "quote": "MS Excel"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "ServiceNow",
+                  "evidence": [
+                    {
+                      "source_id": "e10:72:104",
+                      "quote": "ServiceNow"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Citrix",
+                  "evidence": [
+                    {
+                      "source_id": "e10:72:104",
+                      "quote": "Citrix"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Soft Skills: MuleSoft",
+                  "evidence": [
+                    {
+                      "source_id": "e10:104:222",
+                      "quote": "Soft Skills: MuleSoft"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Anypoint Studio",
+                  "evidence": [
+                    {
+                      "source_id": "e10:104:222",
+                      "quote": "Anypoint Studio"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Jenkins",
+                  "evidence": [
+                    {
+                      "source_id": "e10:104:222",
+                      "quote": "Jenkins"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Anypoint Cloud Server",
+                  "evidence": [
+                    {
+                      "source_id": "e10:104:222",
+                      "quote": "Anypoint Cloud Server"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Leadership capabilities",
+                  "evidence": [
+                    {
+                      "source_id": "e10:104:222",
+                      "quote": "Leadership capabilities"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Adaptability skills",
+                  "evidence": [
+                    {
+                      "source_id": "e10:104:222",
+                      "quote": "Adaptability skills"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Dependability",
+                  "evidence": [
+                    {
+                      "source_id": "e10:222:315",
+                      "quote": "Dependability"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Time Management",
+                  "evidence": [
+                    {
+                      "source_id": "e10:222:315",
+                      "quote": "Time Management"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Business Process Improvement",
+                  "evidence": [
+                    {
+                      "source_id": "e10:222:315",
+                      "quote": "Business Process Improvement"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Risk & Analysis Decision Making",
+                  "evidence": [
+                    {
+                      "source_id": "e10:222:315",
+                      "quote": "Risk & Analysis Decision Making"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Bachelor of Technology",
+                  "evidence": [
+                    {
+                      "source_id": "e11:0:52",
+                      "quote": "Bachelor of Technology"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Computer Science Engineering",
+                  "evidence": [
+                    {
+                      "source_id": "e11:0:52",
+                      "quote": "Computer Science Engineering"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Aug 2016 - May 2020",
+                  "evidence": [
+                    {
+                      "source_id": "e12:0:19",
+                      "quote": "Aug 2016 - May 2020"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "KIIT University",
+                  "evidence": [
+                    {
+                      "source_id": "e13:0:29",
+                      "quote": "KIIT University"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Bhubaneshwar",
+                  "evidence": [
+                    {
+                      "source_id": "e13:0:29",
+                      "quote": "Bhubaneshwar"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "CGPA: 8.05",
+                  "evidence": [
+                    {
+                      "source_id": "e14:0:10",
+                      "quote": "CGPA: 8.05"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "CBSE",
+                  "evidence": [
+                    {
+                      "source_id": "e15:0:16",
+                      "quote": "CBSE"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Class XII",
+                  "evidence": [
+                    {
+                      "source_id": "e15:0:16",
+                      "quote": "Class XII"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Apr 2014 - Mar 2016",
+                  "evidence": [
+                    {
+                      "source_id": "e16:0:20",
+                      "quote": "Apr 2014 - Mar 2016"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "RSVM",
+                  "evidence": [
+                    {
+                      "source_id": "e16:20:34",
+                      "quote": "RSVM"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Dhanbad",
+                  "evidence": [
+                    {
+                      "source_id": "e16:20:34",
+                      "quote": "Dhanbad"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Percentage: 84%",
+                  "evidence": [
+                    {
+                      "source_id": "e16:34:49",
+                      "quote": "Percentage: 84%"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "ICSE",
+                  "evidence": [
+                    {
+                      "source_id": "e17:0:15",
+                      "quote": "ICSE"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Class X",
+                  "evidence": [
+                    {
+                      "source_id": "e15:0:16",
+                      "quote": "Class X"
+                    },
+                    {
+                      "source_id": "e17:0:15",
+                      "quote": "Class X"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Apr 2013 - Mar 2014",
+                  "evidence": [
+                    {
+                      "source_id": "e17:15:35",
+                      "quote": "Apr 2013 - Mar 2014"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "De Nobili School",
+                  "evidence": [
+                    {
+                      "source_id": "e17:35:61",
+                      "quote": "De Nobili School"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "C.M.R.I",
+                  "evidence": [
+                    {
+                      "source_id": "e17:35:61",
+                      "quote": "C.M.R.I"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Percentage: 78%",
+                  "evidence": [
+                    {
+                      "source_id": "e17:61:76",
+                      "quote": "Percentage: 78%"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "SAP MM Training",
+                  "evidence": [
+                    {
+                      "source_id": "e18:0:26",
+                      "quote": "SAP MM Training"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Accenture",
+                  "evidence": [
+                    {
+                      "source_id": "e18:0:26",
+                      "quote": "Accenture"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "SAP EWM Certification by Tag Skills",
+                  "evidence": [
+                    {
+                      "source_id": "e18:29:64",
+                      "quote": "SAP EWM Certification by Tag Skills"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e9:0:6",
+          "quote": "SKILLS"
+        },
+        {
+          "source_id": "e10:0:72",
+          "quote": "Primary Technical Skills: SAP EWM, SAP MM, Retail Warehousing, MS Excel "
+        },
+        {
+          "source_id": "e10:72:104",
+          "quote": "Tools: ServiceNow, JIRA, Citrix "
+        },
+        {
+          "source_id": "e10:104:222",
+          "quote": "Soft Skills: MuleSoft, Anypoint Studio, Jenkins, Anypoint Cloud Server, Leadership capabilities, Adaptability skills, "
+        },
+        {
+          "source_id": "e10:222:315",
+          "quote": "Dependability, Time Management, Business Process Improvement, Risk & Analysis Decision Making"
+        },
+        {
+          "source_id": "e11:0:52",
+          "quote": "Bachelor of Technology, Computer Science Engineering"
+        },
+        {
+          "source_id": "e13:0:29",
+          "quote": "KIIT University, Bhubaneshwar"
+        },
+        {
+          "source_id": "e15:0:16",
+          "quote": "CBSE, Class XII,"
+        },
+        {
+          "source_id": "e16:20:34",
+          "quote": "RSVM, Dhanbad "
+        },
+        {
+          "source_id": "e17:0:15",
+          "quote": "ICSE, Class X, "
+        },
+        {
+          "source_id": "e17:35:61",
+          "quote": "De Nobili School, C.M.R.I "
+        },
+        {
+          "source_id": "e18:0:26",
+          "quote": "SAP MM Training, Accenture"
+        },
+        {
+          "source_id": "e18:26:29",
+          "quote": " • "
+        }
+      ]
+    },
+    {
+      "category": "needs_review",
+      "label": "Unassigned source blocks",
+      "records": [],
+      "residual_blocks": [
+        {
+          "source_id": "e2:0:113",
+          "quote": "Strategic and results-driven SAP EWM consultant with experience in managing multiple warehouses, client relation "
+        },
+        {
+          "source_id": "e2:113:234",
+          "quote": "and configure scenarios. Excellent exposure of working in complex projects and complicated designs with multiple systems "
+        },
+        {
+          "source_id": "e2:234:356",
+          "quote": "and interfaces closely working with SAP. Equipped with excellent communication skills, work ethics and possesses a strong "
+        },
+        {
+          "source_id": "e2:356:376",
+          "quote": "sense of leadership."
+        },
+        {
+          "source_id": "e3:0:52",
+          "quote": "Application Development Analyst (SAP EWM), Accenture"
+        },
+        {
+          "source_id": "e4:0:19",
+          "quote": "July 2022 – Present"
+        },
+        {
+          "source_id": "e5:0:73",
+          "quote": "Client: Leading Textile firm based out of Europe and Asia Pacific Market."
+        },
+        {
+          "source_id": "e5:73:76",
+          "quote": " • "
+        },
+        {
+          "source_id": "e5:76:157",
+          "quote": "Experience on End–To–End Test Process, Regressions, Smoke, Functional, Automation"
+        },
+        {
+          "source_id": "e5:157:160",
+          "quote": " • "
+        },
+        {
+          "source_id": "e5:160:248",
+          "quote": "Responsible: Application built to transfer files from inbound to outbound and vice-versa"
+        },
+        {
+          "source_id": "e5:248:251",
+          "quote": " • "
+        },
+        {
+          "source_id": "e5:251:281",
+          "quote": "Test Strategy / Test Planning."
+        },
+        {
+          "source_id": "e5:281:284",
+          "quote": " • "
+        },
+        {
+          "source_id": "e5:284:375",
+          "quote": "Worked in the post-implementation phase to support the go-live in a new warehouse Delivered"
+        },
+        {
+          "source_id": "e5:375:378",
+          "quote": " • "
+        },
+        {
+          "source_id": "e5:378:452",
+          "quote": "Providing automation ideas that helped to reduce 600+ manual effort hours."
+        },
+        {
+          "source_id": "e5:452:455",
+          "quote": " • "
+        },
+        {
+          "source_id": "e5:455:556",
+          "quote": "Knowledge and experience in warehouse process like Inbound, Outbound, Crossdocking, wave management, "
+        },
+        {
+          "source_id": "e5:556:619",
+          "quote": "Internal Process (Replenishment, Scrapping, Physical Inventory)"
+        },
+        {
+          "source_id": "e6:0:52",
+          "quote": "EWM POC for 4 Technical go-live and 1 store go-live."
+        },
+        {
+          "source_id": "e6:52:55",
+          "quote": " • "
+        },
+        {
+          "source_id": "e6:55:87",
+          "quote": "Total Implementations done is 1."
+        },
+        {
+          "source_id": "e7:0:56",
+          "quote": "Application Development Associate (MuleSoft), Accenture "
+        },
+        {
+          "source_id": "e7:56:76",
+          "quote": "Nov 2020 – June 2022"
+        },
+        {
+          "source_id": "e8:0:31",
+          "quote": "Client: Unilever (Europe, U2k2)"
+        },
+        {
+          "source_id": "e8:31:34",
+          "quote": " • "
+        },
+        {
+          "source_id": "e8:34:109",
+          "quote": "Experience in mapping Business Processes to SAP in distributed environment."
+        },
+        {
+          "source_id": "e8:109:112",
+          "quote": " • "
+        },
+        {
+          "source_id": "e8:112:146",
+          "quote": "Prepare Functional Design Document"
+        },
+        {
+          "source_id": "e8:146:149",
+          "quote": " • "
+        },
+        {
+          "source_id": "e8:149:214",
+          "quote": "Develop Code and Execute Test case through sample files provided."
+        },
+        {
+          "source_id": "e8:214:217",
+          "quote": " • "
+        },
+        {
+          "source_id": "e8:217:282",
+          "quote": "Preparing reports daily basis for testing the code in quality env"
+        },
+        {
+          "source_id": "e8:282:285",
+          "quote": " • "
+        },
+        {
+          "source_id": "e8:285:371",
+          "quote": "Responsible for training end user in understanding process and providing work arounds."
+        },
+        {
+          "source_id": "e8:371:374",
+          "quote": " • "
+        },
+        {
+          "source_id": "e8:374:474",
+          "quote": "Responsible for implementing, testing and documenting functional specification of changes in system."
+        },
+        {
+          "source_id": "e8:474:477",
+          "quote": " • "
+        },
+        {
+          "source_id": "e8:477:513",
+          "quote": "MuleSoft POC for 4 Technical go-live"
+        }
+      ]
+    }
+  ]
+}

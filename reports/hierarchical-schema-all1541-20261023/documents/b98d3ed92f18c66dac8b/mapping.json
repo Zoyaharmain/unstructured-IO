@@ -1,0 +1,3114 @@
+{
+  "success": true,
+  "source": "ShantanuBharati.pdf",
+  "extraction_mode": "existing_blocks_schema_mapping",
+  "data": {
+    "contact": {
+      "full_name": "Shantanu Bharati",
+      "email": "shantanu056@gmail.com9764112629https",
+      "phone": "9764112629",
+      "location": null,
+      "linkedin_url": null,
+      "github_url": "https://github.com/shantanu056LinkedInWork",
+      "portfolio_url": null
+    },
+    "professional_title": null,
+    "summary": null,
+    "total_experience_years": null,
+    "skills": {
+      "technical_skills": [
+        "Python",
+        "SQL",
+        "Docker"
+      ],
+      "tools_and_platforms": [
+        "Azure"
+      ],
+      "domain_and_functional": [],
+      "soft_skills": [],
+      "all_skills": [
+        "Python",
+        "SQL",
+        "Docker",
+        "Azure",
+        "Technical",
+        "ML & DL:",
+        "Supervised/UnsupervisedLearning",
+        "FeatureEngineering",
+        "ModelEvaluation",
+        "HyperparameterTuning",
+        "Deep Learning: TensorFlow",
+        "Keras",
+        "CNNs",
+        "LSTMs",
+        "NLP & GenAI: RAG",
+        "PromptEngineering",
+        "TextClassification",
+        "NER",
+        "LLMIntegration",
+        "Azure & MLOps: Azure ML",
+        "Azure OpenAI",
+        "CognitiveSearch",
+        "Blob Storage",
+        "VMs",
+        "Azure Monitor",
+        "Scikit-",
+        "learn",
+        "XGBoost",
+        "HuggingFace",
+        "LangChain",
+        "GitCertification",
+        "Microsoft Azure AIFundamentals",
+        "(AI-900)",
+        "CI/CD for Machine Learning –",
+        "DataCamp",
+        "Building powerful RAGpipelines",
+        "Udemy",
+        "Introduction to MLFlow -",
+        "DataCampEducational",
+        "BackgroundQuantiphi",
+        "Bachelor of Engineering-M.E.",
+        "MIT-COE",
+        "Kothrud",
+        "PuneSPPU",
+        "Pune",
+        "2020",
+        "Diploma in Automobile Engineering",
+        "Government Polytechnic Nagpur",
+        "RTMNU Nagpur",
+        "2017",
+        "88%"
+      ]
+    },
+    "experience": [
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [
+          "-Built a secure RAG-based knowledge assistant for semantic search andQ",
+          "-Built and deployed a two-stage recommendation system (candidategeneration",
+          "Implemented batch inference pipelines and REST-based model servingon",
+          "Developed fraud detection models using gradient boosting and neuralnetworks"
+        ],
+        "technologies": []
+      },
+      {
+        "company": "Cognizant Technology Solutions",
+        "role": "Software Engineer (RPA Development)\n Engineer",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      }
+    ],
+    "education": [],
+    "certifications": [],
+    "projects": [],
+    "languages": []
+  },
+  "schema_mapping": {
+    "fields_populated": 7,
+    "total_fields": 16,
+    "completion_percentage": 43.8,
+    "field_details": [
+      {
+        "field_name": "contact.full_name",
+        "target_type": "string",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Personal Details",
+        "confidence_score": 0.95,
+        "description": "Candidate's full name, extracted from the top header of the resume."
+      },
+      {
+        "field_name": "contact.email",
+        "target_type": "string (email)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.98,
+        "description": "Candidate's primary contact email address."
+      },
+      {
+        "field_name": "contact.phone",
+        "target_type": "string (phone)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.95,
+        "description": "Candidate's telephone / mobile phone number."
+      },
+      {
+        "field_name": "contact.location",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's residential location or work city."
+      },
+      {
+        "field_name": "contact.linkedin_url",
+        "target_type": "string (url) | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "URL to candidate's LinkedIn profile."
+      },
+      {
+        "field_name": "professional_title",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Subtitle",
+        "confidence_score": 0.0,
+        "description": "Candidate's target headline or most recent job title."
+      },
+      {
+        "field_name": "summary",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Professional Summary / Profile / Objective",
+        "confidence_score": 0.0,
+        "description": "Executive bio, professional overview, or career objective."
+      },
+      {
+        "field_name": "total_experience_years",
+        "target_type": "float | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Summary / Experience Calculation",
+        "confidence_score": 0.0,
+        "description": "Total professional experience in years."
+      },
+      {
+        "field_name": "skills.technical_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills / Technical Competencies",
+        "confidence_score": 0.92,
+        "description": "Technical programming languages and core software competencies."
+      },
+      {
+        "field_name": "skills.tools_and_platforms",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills / Tools & Technologies",
+        "confidence_score": 0.9,
+        "description": "Software platforms, developer tools, and operational systems."
+      },
+      {
+        "field_name": "skills.domain_and_functional",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Domain Expertise",
+        "confidence_score": 0.0,
+        "description": "Functional domain knowledge (e.g. Hedge Funds, KYC, NAV, Derivatives)."
+      },
+      {
+        "field_name": "skills.all_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills (Aggregated)",
+        "confidence_score": 0.95,
+        "description": "Complete list of candidate skills across all categories."
+      },
+      {
+        "field_name": "experience",
+        "target_type": "array[WorkExperience]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Experience / Work History",
+        "confidence_score": 0.92,
+        "description": "Complete chronological employment records with bullet points."
+      },
+      {
+        "field_name": "education",
+        "target_type": "array[Education]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Education / Academic Qualifications",
+        "confidence_score": 0.0,
+        "description": "University, college, and higher education degree qualifications."
+      },
+      {
+        "field_name": "certifications",
+        "target_type": "array[Certification]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Certifications / Licenses",
+        "confidence_score": 0.0,
+        "description": "Professional accreditations and credentials."
+      },
+      {
+        "field_name": "projects",
+        "target_type": "array[Project]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Projects / Key Engagements",
+        "confidence_score": 0.0,
+        "description": "Major projects or strategic initiatives led by candidate."
+      }
+    ]
+  },
+  "raw_sections": {
+    "personal_information": "Shantanu BharatiContact\nshantanu056@gmail.com9764112629https://github.com/shantanu056LinkedInWork ",
+    "experience": "Experience\n | Sep 2022 - PresentLLM-powered Enterprise Knowledge Assistant (GenAI / RAG)-Built a secure RAG-based knowledge assistant for semantic search andQ&A over internal documents for a Global Consulting Firm (InternalEnterprise Platform)- Integrated Azure OpenAI Service with Azure Cognitive Search andenforced role-based access via AAD (Microsoft Entra ID)Personalized Recommendation & Ranking Platform (E-commerce)-Built and deployed a two-stage recommendation system (candidategeneration + ranking) using TensorFlow and classical ML, for a LargeRetail / E-commerce Platform. - Improved content and product relevance, achieving ~15% CTR uplift. - Implemented batch inference pipelines and REST-based model servingon Azure infrastructure.Fraud Detection & Risk Scoring Engine (BFSI)- Developed fraud detection models using gradient boosting and neuralnetworks to generate transaction risk scores for a Tier-1 Global BankingClient. - Reduced false positives by ~20% while maintaining high fraud recall. - Deployed and monitored models via Azure Machine Learning and AzureMonitor.\nCognizant Technology Solutions | Nov 2020- Sep 2022Intelligent Document Processing & Automation Platform - Delivered an enterprise-scale IDP solution for Credit Suisse usingEyeShare for document ingestion and UiPath for workflow automation. - Automated OCR-based extraction and routing of invoices, claims, andKYC documents. - Orchestrated UiPath bots for validation, exception handling, and ERPupdates, reducing manual processing by ~50%.Software Engineer (RPA Development)AI/ML EngineerML Engineer-----------------------------------------------------------------------------------------",
+    "skills": "SkillsTechnical Skills\nML & DL:Supervised/UnsupervisedLearning, FeatureEngineering, ModelEvaluation, HyperparameterTuning\nDeep Learning: TensorFlow,Keras, CNNs, LSTMs\nNLP & GenAI: RAG, PromptEngineering, TextClassification, NER, LLMIntegration\nAzure & MLOps: Azure ML,Azure OpenAI, CognitiveSearch, Blob Storage, VMs,Azure Monitor,\nProgramming: Python, Scikit-learn, XGBoost, HuggingFace, LangChain, SQL,Docker, GitCertification\nMicrosoft Azure AIFundamentals (AI-900)\nCI/CD for Machine Learning –DataCamp\nBuilding powerful RAGpipelines - Udemy\nIntroduction to MLFlow -DataCampEducational BackgroundQuantiphi\nBachelor of Engineering-M.E.MIT-COE, Kothrud, PuneSPPU Pune | 2020 Diploma in Automobile Engineering Government Polytechnic Nagpur RTMNU Nagpur | 2017 | 88%"
+  },
+  "meta": {
+    "status": "needs_review",
+    "human_verified": false,
+    "provider_calls": 0,
+    "source_accounting": {
+      "all_source_text_preserved": true,
+      "total_spans": 92,
+      "assigned_meaningful_spans": 85,
+      "unresolved_meaningful_spans": 7,
+      "non_content_artifacts": 0,
+      "duplicates_excluded": 0,
+      "all_meaningful_text_assigned": false,
+      "semantic_correctness_verified": false,
+      "outcomes": [
+        {
+          "source_id": "e0:0:16",
+          "source_element_index": 0,
+          "start": 0,
+          "end": 16,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline before the contact section"
+        },
+        {
+          "source_id": "e0:16:23",
+          "source_element_index": 0,
+          "start": 16,
+          "end": 23,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e0:23:25",
+          "source_element_index": 0,
+          "start": 23,
+          "end": 25,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e0:25:90",
+          "source_element_index": 0,
+          "start": 25,
+          "end": 90,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e0:90:167",
+          "source_element_index": 0,
+          "start": 90,
+          "end": 167,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e0:167:228",
+          "source_element_index": 0,
+          "start": 167,
+          "end": 228,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e0:228:283",
+          "source_element_index": 0,
+          "start": 228,
+          "end": 283,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e0:283:353",
+          "source_element_index": 0,
+          "start": 283,
+          "end": 353,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e0:353:355",
+          "source_element_index": 0,
+          "start": 353,
+          "end": 355,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e0:355:391",
+          "source_element_index": 0,
+          "start": 355,
+          "end": 391,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:391:429",
+          "source_element_index": 0,
+          "start": 391,
+          "end": 429,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:429:439",
+          "source_element_index": 0,
+          "start": 429,
+          "end": 439,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e0:439:445",
+          "source_element_index": 0,
+          "start": 439,
+          "end": 445,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e0:445:454",
+          "source_element_index": 0,
+          "start": 445,
+          "end": 454,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e0:454:461",
+          "source_element_index": 0,
+          "start": 454,
+          "end": 461,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e1:0:8",
+          "source_element_index": 1,
+          "start": 0,
+          "end": 8,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e1:8:39",
+          "source_element_index": 1,
+          "start": 8,
+          "end": 39,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e1:39:59",
+          "source_element_index": 1,
+          "start": 39,
+          "end": 59,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e1:59:76",
+          "source_element_index": 1,
+          "start": 59,
+          "end": 76,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e1:76:98",
+          "source_element_index": 1,
+          "start": 76,
+          "end": 98,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e2:0:26",
+          "source_element_index": 2,
+          "start": 0,
+          "end": 26,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e2:26:44",
+          "source_element_index": 2,
+          "start": 26,
+          "end": 44,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:0:35",
+          "source_element_index": 3,
+          "start": 0,
+          "end": 35,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:35:55",
+          "source_element_index": 3,
+          "start": 35,
+          "end": 55,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:55:76",
+          "source_element_index": 3,
+          "start": 55,
+          "end": 76,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e4:0:24",
+          "source_element_index": 4,
+          "start": 0,
+          "end": 24,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e4:24:53",
+          "source_element_index": 4,
+          "start": 24,
+          "end": 53,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e4:53:73",
+          "source_element_index": 4,
+          "start": 53,
+          "end": 73,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e4:73:87",
+          "source_element_index": 4,
+          "start": 73,
+          "end": 87,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e5:0:28",
+          "source_element_index": 5,
+          "start": 0,
+          "end": 28,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e5:28:55",
+          "source_element_index": 5,
+          "start": 28,
+          "end": 55,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e5:55:72",
+          "source_element_index": 5,
+          "start": 55,
+          "end": 72,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e5:72:96",
+          "source_element_index": 5,
+          "start": 72,
+          "end": 96,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e6:0:30",
+          "source_element_index": 6,
+          "start": 0,
+          "end": 30,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e6:30:39",
+          "source_element_index": 6,
+          "start": 30,
+          "end": 39,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e7:0:28",
+          "source_element_index": 7,
+          "start": 0,
+          "end": 28,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e7:28:36",
+          "source_element_index": 7,
+          "start": 28,
+          "end": 36,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:0:30",
+          "source_element_index": 8,
+          "start": 0,
+          "end": 30,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:30:38",
+          "source_element_index": 8,
+          "start": 30,
+          "end": 38,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:0:24",
+          "source_element_index": 9,
+          "start": 0,
+          "end": 24,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:24:43",
+          "source_element_index": 9,
+          "start": 24,
+          "end": 43,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:43:63",
+          "source_element_index": 9,
+          "start": 43,
+          "end": 63,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:63:87",
+          "source_element_index": 9,
+          "start": 63,
+          "end": 87,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:87:140",
+          "source_element_index": 9,
+          "start": 87,
+          "end": 140,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:140:210",
+          "source_element_index": 9,
+          "start": 140,
+          "end": 210,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:210:285",
+          "source_element_index": 9,
+          "start": 210,
+          "end": 285,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:285:295",
+          "source_element_index": 9,
+          "start": 285,
+          "end": 295,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:295:297",
+          "source_element_index": 9,
+          "start": 295,
+          "end": 297,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:297:368",
+          "source_element_index": 9,
+          "start": 297,
+          "end": 368,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:368:415",
+          "source_element_index": 9,
+          "start": 368,
+          "end": 415,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:415:474",
+          "source_element_index": 9,
+          "start": 415,
+          "end": 474,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:474:548",
+          "source_element_index": 9,
+          "start": 474,
+          "end": 548,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:548:612",
+          "source_element_index": 9,
+          "start": 548,
+          "end": 612,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:612:635",
+          "source_element_index": 9,
+          "start": 612,
+          "end": 635,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:635:638",
+          "source_element_index": 9,
+          "start": 635,
+          "end": 638,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:638:704",
+          "source_element_index": 9,
+          "start": 638,
+          "end": 704,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:704:707",
+          "source_element_index": 9,
+          "start": 704,
+          "end": 707,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:707:775",
+          "source_element_index": 9,
+          "start": 707,
+          "end": 775,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:775:797",
+          "source_element_index": 9,
+          "start": 775,
+          "end": 797,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:797:841",
+          "source_element_index": 9,
+          "start": 797,
+          "end": 841,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:841:843",
+          "source_element_index": 9,
+          "start": 841,
+          "end": 843,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:843:918",
+          "source_element_index": 9,
+          "start": 843,
+          "end": 918,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:918:961",
+          "source_element_index": 9,
+          "start": 918,
+          "end": 961,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:961:988",
+          "source_element_index": 9,
+          "start": 961,
+          "end": 988,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:988:989",
+          "source_element_index": 9,
+          "start": 988,
+          "end": 989,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:989:992",
+          "source_element_index": 9,
+          "start": 989,
+          "end": 992,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:992:1060",
+          "source_element_index": 9,
+          "start": 992,
+          "end": 1060,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:1060:1063",
+          "source_element_index": 9,
+          "start": 1060,
+          "end": 1063,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:1063:1136",
+          "source_element_index": 9,
+          "start": 1063,
+          "end": 1136,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:1136:1137",
+          "source_element_index": 9,
+          "start": 1136,
+          "end": 1137,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:1137:1165",
+          "source_element_index": 9,
+          "start": 1137,
+          "end": 1165,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:1165:1191",
+          "source_element_index": 9,
+          "start": 1165,
+          "end": 1191,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:1191:1204",
+          "source_element_index": 9,
+          "start": 1191,
+          "end": 1204,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:1204:1238",
+          "source_element_index": 9,
+          "start": 1204,
+          "end": 1238,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:1238:1268",
+          "source_element_index": 9,
+          "start": 1238,
+          "end": 1268,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:1268:1293",
+          "source_element_index": 9,
+          "start": 1268,
+          "end": 1293,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:1293:1355",
+          "source_element_index": 9,
+          "start": 1293,
+          "end": 1355,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit dated employer starts or continues Experience across layout changes"
+        },
+        {
+          "source_id": "e9:1355:1397",
+          "source_element_index": 9,
+          "start": 1355,
+          "end": 1397,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:1397:1400",
+          "source_element_index": 9,
+          "start": 1397,
+          "end": 1400,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:1400:1474",
+          "source_element_index": 9,
+          "start": 1400,
+          "end": 1474,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:1474:1533",
+          "source_element_index": 9,
+          "start": 1474,
+          "end": 1533,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:1533:1536",
+          "source_element_index": 9,
+          "start": 1533,
+          "end": 1536,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:1536:1606",
+          "source_element_index": 9,
+          "start": 1536,
+          "end": 1606,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:1606:1617",
+          "source_element_index": 9,
+          "start": 1606,
+          "end": 1617,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:1617:1620",
+          "source_element_index": 9,
+          "start": 1617,
+          "end": 1620,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:1620:1695",
+          "source_element_index": 9,
+          "start": 1620,
+          "end": 1695,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:1695:1732",
+          "source_element_index": 9,
+          "start": 1695,
+          "end": 1732,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:1732:1767",
+          "source_element_index": 9,
+          "start": 1732,
+          "end": 1767,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:1767:1783",
+          "source_element_index": 9,
+          "start": 1767,
+          "end": 1783,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:1783:1792",
+          "source_element_index": 9,
+          "start": 1783,
+          "end": 1792,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:1792:1804",
+          "source_element_index": 9,
+          "start": 1792,
+          "end": 1804,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:1804:1881",
+          "source_element_index": 9,
+          "start": 1804,
+          "end": 1881,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        }
+      ]
+    },
+    "document_scope": {
+      "kind": "candidate_or_unknown",
+      "candidate_resume": null,
+      "requires_scope_review": true
+    },
+    "source_inventory_sha256": "496fa63482261cddb781d57cfb041e815735f8bdf1f0ccc6ae54622388bf0b91",
+    "field_evidence": {
+      "contact.full_name": [
+        "e0:0:16",
+        "e0:355:391",
+        "e0:391:429"
+      ],
+      "contact.email": [
+        "e0:0:16",
+        "e0:355:391",
+        "e0:391:429"
+      ],
+      "contact.phone": [
+        "e0:0:16",
+        "e0:355:391",
+        "e0:391:429"
+      ],
+      "contact.github_url": [
+        "e0:0:16",
+        "e0:355:391",
+        "e0:391:429"
+      ],
+      "skills.technical_skills[0]": [
+        "e5:0:28"
+      ],
+      "skills.technical_skills[1]": [
+        "e5:55:72"
+      ],
+      "skills.technical_skills[2]": [
+        "e5:72:96"
+      ],
+      "skills.tools_and_platforms[0]": [
+        "e4:0:24",
+        "e4:24:53",
+        "e4:73:87",
+        "e6:0:30"
+      ],
+      "skills.all_skills[0]": [
+        "e5:0:28"
+      ],
+      "skills.all_skills[1]": [
+        "e5:55:72"
+      ],
+      "skills.all_skills[2]": [
+        "e5:72:96"
+      ],
+      "skills.all_skills[3]": [
+        "e4:0:24",
+        "e4:24:53",
+        "e4:73:87",
+        "e6:0:30"
+      ],
+      "skills.all_skills[4]": [
+        "e0:445:454"
+      ],
+      "skills.all_skills[5]": [
+        "e1:0:8"
+      ],
+      "skills.all_skills[6]": [
+        "e1:8:39"
+      ],
+      "skills.all_skills[7]": [
+        "e1:39:59"
+      ],
+      "skills.all_skills[8]": [
+        "e1:59:76"
+      ],
+      "skills.all_skills[9]": [
+        "e1:76:98"
+      ],
+      "skills.all_skills[10]": [
+        "e2:0:26"
+      ],
+      "skills.all_skills[11]": [
+        "e2:26:44"
+      ],
+      "skills.all_skills[12]": [
+        "e2:26:44"
+      ],
+      "skills.all_skills[13]": [
+        "e2:26:44"
+      ],
+      "skills.all_skills[14]": [
+        "e3:0:35"
+      ],
+      "skills.all_skills[15]": [
+        "e3:0:35"
+      ],
+      "skills.all_skills[16]": [
+        "e3:35:55"
+      ],
+      "skills.all_skills[17]": [
+        "e3:55:76"
+      ],
+      "skills.all_skills[18]": [
+        "e3:55:76"
+      ],
+      "skills.all_skills[19]": [
+        "e4:0:24"
+      ],
+      "skills.all_skills[20]": [
+        "e4:24:53"
+      ],
+      "skills.all_skills[21]": [
+        "e4:24:53"
+      ],
+      "skills.all_skills[22]": [
+        "e4:53:73"
+      ],
+      "skills.all_skills[23]": [
+        "e4:53:73"
+      ],
+      "skills.all_skills[24]": [
+        "e4:73:87"
+      ],
+      "skills.all_skills[25]": [
+        "e5:0:28"
+      ],
+      "skills.all_skills[26]": [
+        "e1:8:39",
+        "e2:0:26",
+        "e5:28:55",
+        "e7:0:28"
+      ],
+      "skills.all_skills[27]": [
+        "e5:28:55"
+      ],
+      "skills.all_skills[28]": [
+        "e5:28:55"
+      ],
+      "skills.all_skills[29]": [
+        "e5:55:72"
+      ],
+      "skills.all_skills[30]": [
+        "e5:72:96"
+      ],
+      "skills.all_skills[31]": [
+        "e6:0:30"
+      ],
+      "skills.all_skills[32]": [
+        "e6:30:39"
+      ],
+      "skills.all_skills[33]": [
+        "e7:0:28"
+      ],
+      "skills.all_skills[34]": [
+        "e7:28:36",
+        "e9:24:43"
+      ],
+      "skills.all_skills[35]": [
+        "e8:0:30"
+      ],
+      "skills.all_skills[36]": [
+        "e8:30:38"
+      ],
+      "skills.all_skills[37]": [
+        "e9:0:24"
+      ],
+      "skills.all_skills[38]": [
+        "e9:24:43"
+      ],
+      "skills.all_skills[39]": [
+        "e9:43:63"
+      ],
+      "skills.all_skills[40]": [
+        "e9:1137:1165"
+      ],
+      "skills.all_skills[41]": [
+        "e9:1165:1191"
+      ],
+      "skills.all_skills[42]": [
+        "e9:1165:1191"
+      ],
+      "skills.all_skills[43]": [
+        "e9:1165:1191"
+      ],
+      "skills.all_skills[44]": [
+        "e9:1165:1191",
+        "e9:1191:1204"
+      ],
+      "skills.all_skills[45]": [
+        "e9:1191:1204"
+      ],
+      "skills.all_skills[46]": [
+        "e9:1204:1238"
+      ],
+      "skills.all_skills[47]": [
+        "e9:1238:1268"
+      ],
+      "skills.all_skills[48]": [
+        "e9:1268:1293"
+      ],
+      "skills.all_skills[49]": [
+        "e9:1268:1293"
+      ],
+      "skills.all_skills[50]": [
+        "e9:1268:1293"
+      ],
+      "experience[0].responsibilities[0]": [
+        "e9:140:210"
+      ],
+      "experience[0].responsibilities[1]": [
+        "e9:474:548"
+      ],
+      "experience[0].responsibilities[2]": [
+        "e9:707:775"
+      ],
+      "experience[0].responsibilities[3]": [
+        "e9:843:918"
+      ],
+      "experience[1].company": [
+        "e9:1293:1355"
+      ],
+      "experience[1].role": [
+        "e9:1732:1767",
+        "e9:1783:1792"
+      ]
+    },
+    "record_reviews": [
+      {
+        "category": "experience",
+        "entry_id": "experience-1",
+        "source_ids": [
+          "e9:63:87",
+          "e9:87:140",
+          "e9:140:210",
+          "e9:210:285",
+          "e9:285:295",
+          "e9:295:297",
+          "e9:297:368",
+          "e9:368:415",
+          "e9:415:474",
+          "e9:474:548",
+          "e9:548:612",
+          "e9:612:635",
+          "e9:635:638",
+          "e9:638:704",
+          "e9:704:707",
+          "e9:707:775",
+          "e9:775:797",
+          "e9:797:841",
+          "e9:841:843",
+          "e9:843:918",
+          "e9:918:961",
+          "e9:961:988",
+          "e9:988:989",
+          "e9:989:992",
+          "e9:992:1060",
+          "e9:1060:1063",
+          "e9:1063:1136",
+          "e9:1136:1137",
+          "e9:1397:1400",
+          "e9:1533:1536",
+          "e9:1617:1620",
+          "e9:1792:1804",
+          "e9:1804:1881"
+        ],
+        "relationship_status": "needs_review",
+        "review_reasons": [
+          "employer_not_established_from_supported_fields"
+        ]
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-2",
+        "source_ids": [
+          "e9:1293:1355",
+          "e9:1355:1397",
+          "e9:1400:1474",
+          "e9:1474:1533",
+          "e9:1536:1606",
+          "e9:1606:1617",
+          "e9:1620:1695",
+          "e9:1695:1732",
+          "e9:1732:1767",
+          "e9:1767:1783",
+          "e9:1783:1792"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      }
+    ],
+    "missing_required_fields": [
+      "experience[0].company",
+      "experience[0].role"
+    ],
+    "warnings": [
+      "Schema validity and field completion do not establish extraction or relationship accuracy.",
+      "Handoff confidence scores are fixed heuristics, not calibrated probabilities.",
+      "Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields."
+    ],
+    "unmapped_blocks": [
+      {
+        "source_id": "e0:16:23",
+        "category": "personal_information",
+        "text": "Contact",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:429:439",
+        "category": "experience",
+        "text": "Experience",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:63:87",
+        "category": "experience",
+        "text": " | Sep 2022 - PresentLLM",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:87:140",
+        "category": "experience",
+        "text": "-powered Enterprise Knowledge Assistant (GenAI / RAG)",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:210:285",
+        "category": "experience",
+        "text": "&A over internal documents for a Global Consulting Firm (InternalEnterprise",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:285:295",
+        "category": "experience",
+        "text": " Platform)",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:295:297",
+        "category": "experience",
+        "text": "- ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:297:368",
+        "category": "experience",
+        "text": "Integrated Azure OpenAI Service with Azure Cognitive Search andenforced",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:368:415",
+        "category": "experience",
+        "text": " role-based access via AAD (Microsoft Entra ID)",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:415:474",
+        "category": "experience",
+        "text": "Personalized Recommendation & Ranking Platform (E-commerce)",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:548:612",
+        "category": "experience",
+        "text": " + ranking) using TensorFlow and classical ML, for a LargeRetail",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:612:635",
+        "category": "experience",
+        "text": " / E-commerce Platform.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:635:638",
+        "category": "experience",
+        "text": " - ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:638:704",
+        "category": "experience",
+        "text": "Improved content and product relevance, achieving ~15% CTR uplift.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:704:707",
+        "category": "experience",
+        "text": " - ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:775:797",
+        "category": "experience",
+        "text": " Azure infrastructure.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:797:841",
+        "category": "experience",
+        "text": "Fraud Detection & Risk Scoring Engine (BFSI)",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:841:843",
+        "category": "experience",
+        "text": "- ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:918:961",
+        "category": "experience",
+        "text": " to generate transaction risk scores for a ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:961:988",
+        "category": "experience",
+        "text": "Tier-1 Global BankingClient",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:988:989",
+        "category": "experience",
+        "text": ".",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:989:992",
+        "category": "experience",
+        "text": " - ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:992:1060",
+        "category": "experience",
+        "text": "Reduced false positives by ~20% while maintaining high fraud recall.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:1060:1063",
+        "category": "experience",
+        "text": " - ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:1063:1136",
+        "category": "experience",
+        "text": "Deployed and monitored models via Azure Machine Learning and AzureMonitor",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:1136:1137",
+        "category": "experience",
+        "text": ".",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:1355:1397",
+        "category": "experience",
+        "text": " Document Processing & Automation Platform",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:1397:1400",
+        "category": "experience",
+        "text": " - ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:1400:1474",
+        "category": "experience",
+        "text": "Delivered an enterprise-scale IDP solution for Credit Suisse usingEyeShare",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:1474:1533",
+        "category": "experience",
+        "text": " for document ingestion and UiPath for workflow automation.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:1533:1536",
+        "category": "experience",
+        "text": " - ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:1536:1606",
+        "category": "experience",
+        "text": "Automated OCR-based extraction and routing of invoices, claims, andKYC",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:1606:1617",
+        "category": "experience",
+        "text": " documents.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:1617:1620",
+        "category": "experience",
+        "text": " - ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:1620:1695",
+        "category": "experience",
+        "text": "Orchestrated UiPath bots for validation, exception handling, and ERPupdates",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:1695:1732",
+        "category": "experience",
+        "text": ", reducing manual processing by ~50%.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:1767:1783",
+        "category": "experience",
+        "text": "AI/ML EngineerML",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:1792:1804",
+        "category": "experience",
+        "text": "------------",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:1804:1881",
+        "category": "experience",
+        "text": "-----------------------------------------------------------------------------",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:439:445",
+        "category": "skills",
+        "text": "Skills",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:454:461",
+        "category": "skills",
+        "text": " Skills",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:23:25",
+        "category": null,
+        "text": "ML",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:25:90",
+        "category": null,
+        "text": " / AI Engineer with ~5 years of experience delivering production-",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:90:167",
+        "category": null,
+        "text": "grade, Azure-native ML solutions in enterprise environments. Strongbackground",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:167:228",
+        "category": null,
+        "text": " in TensorFlow/Keras, classical ML, and Azure MachineLearning",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:228:283",
+        "category": null,
+        "text": ", with hands-on delivery across recommendation systems,",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:283:353",
+        "category": null,
+        "text": "fraud & risk modeling, document intelligence, and LLM-based RAGsystems",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:353:355",
+        "category": null,
+        "text": ". ",
+        "page_number": 1
+      }
+    ],
+    "needs_review": [
+      {
+        "source_element_index": 0,
+        "start": 23,
+        "end": 25,
+        "text": "ML",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1452,
+        "margin": -0.0501,
+        "lane": "left",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 0,
+        "start": 25,
+        "end": 90,
+        "text": " / AI Engineer with ~5 years of experience delivering production-",
+        "page_number": 1,
+        "cluster_id": 1,
+        "candidate_section": "summary",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.6017,
+        "margin": 0.0495,
+        "lane": "left",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 0,
+        "start": 90,
+        "end": 167,
+        "text": "grade, Azure-native ML solutions in enterprise environments. Strongbackground",
+        "page_number": 1,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3026,
+        "margin": 0.0217,
+        "lane": "left",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 0,
+        "start": 167,
+        "end": 228,
+        "text": " in TensorFlow/Keras, classical ML, and Azure MachineLearning",
+        "page_number": 1,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2667,
+        "margin": 0.0362,
+        "lane": "left",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 0,
+        "start": 228,
+        "end": 283,
+        "text": ", with hands-on delivery across recommendation systems,",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.439,
+        "margin": 0.1792,
+        "lane": "left",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 0,
+        "start": 283,
+        "end": 353,
+        "text": "fraud & risk modeling, document intelligence, and LLM-based RAGsystems",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2166,
+        "margin": 0.015,
+        "lane": "left",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 0,
+        "start": 353,
+        "end": 355,
+        "text": ". ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1498,
+        "margin": -0.0296,
+        "lane": "left",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      }
+    ]
+  },
+  "section_schemas": [
+    {
+      "category": "personal_information",
+      "label": "Personal information",
+      "records": [
+        {
+          "record_id": "personal_information",
+          "source_ids": [
+            "e0:0:16",
+            "e0:355:391",
+            "e0:391:429"
+          ],
+          "attributes": [
+            {
+              "name": "full_name",
+              "items": [
+                {
+                  "value": "Shantanu Bharati",
+                  "evidence": [
+                    {
+                      "source_id": "e0:0:16",
+                      "quote": "Shantanu Bharati"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "email",
+              "items": [
+                {
+                  "value": "shantanu056@gmail.com9764112629https",
+                  "evidence": [
+                    {
+                      "source_id": "e0:355:391",
+                      "quote": "shantanu056@gmail.com9764112629https"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "phone",
+              "items": [
+                {
+                  "value": "9764112629",
+                  "evidence": [
+                    {
+                      "source_id": "e0:355:391",
+                      "quote": "9764112629"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "linkedin_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "github_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "portfolio_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "professional_title",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e0:16:23",
+          "quote": "Contact"
+        },
+        {
+          "source_id": "e0:391:429",
+          "quote": "://github.com/shantanu056LinkedInWork "
+        }
+      ]
+    },
+    {
+      "category": "experience",
+      "label": "Experience",
+      "records": [
+        {
+          "record_id": "experience-1",
+          "source_ids": [
+            "e9:63:87",
+            "e9:87:140",
+            "e9:140:210",
+            "e9:210:285",
+            "e9:285:295",
+            "e9:295:297",
+            "e9:297:368",
+            "e9:368:415",
+            "e9:415:474",
+            "e9:474:548",
+            "e9:548:612",
+            "e9:612:635",
+            "e9:635:638",
+            "e9:638:704",
+            "e9:704:707",
+            "e9:707:775",
+            "e9:775:797",
+            "e9:797:841",
+            "e9:841:843",
+            "e9:843:918",
+            "e9:918:961",
+            "e9:961:988",
+            "e9:988:989",
+            "e9:989:992",
+            "e9:992:1060",
+            "e9:1060:1063",
+            "e9:1063:1136",
+            "e9:1136:1137",
+            "e9:1397:1400",
+            "e9:1533:1536",
+            "e9:1617:1620",
+            "e9:1792:1804",
+            "e9:1804:1881"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [
+                {
+                  "value": "-Built a secure RAG-based knowledge assistant for semantic search andQ",
+                  "evidence": [
+                    {
+                      "source_id": "e9:140:210",
+                      "quote": "-Built a secure RAG-based knowledge assistant for semantic search andQ"
+                    }
+                  ],
+                  "status": "needs_review"
+                },
+                {
+                  "value": "-Built and deployed a two-stage recommendation system (candidategeneration",
+                  "evidence": [
+                    {
+                      "source_id": "e9:474:548",
+                      "quote": "-Built and deployed a two-stage recommendation system (candidategeneration"
+                    }
+                  ],
+                  "status": "needs_review"
+                },
+                {
+                  "value": "Implemented batch inference pipelines and REST-based model servingon",
+                  "evidence": [
+                    {
+                      "source_id": "e9:707:775",
+                      "quote": "Implemented batch inference pipelines and REST-based model servingon"
+                    }
+                  ],
+                  "status": "needs_review"
+                },
+                {
+                  "value": "Developed fraud detection models using gradient boosting and neuralnetworks",
+                  "evidence": [
+                    {
+                      "source_id": "e9:843:918",
+                      "quote": "Developed fraud detection models using gradient boosting and neuralnetworks"
+                    }
+                  ],
+                  "status": "needs_review"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "employer_not_established_from_supported_fields"
+          ]
+        },
+        {
+          "record_id": "experience-2",
+          "source_ids": [
+            "e9:1293:1355",
+            "e9:1355:1397",
+            "e9:1400:1474",
+            "e9:1474:1533",
+            "e9:1536:1606",
+            "e9:1606:1617",
+            "e9:1620:1695",
+            "e9:1695:1732",
+            "e9:1732:1767",
+            "e9:1767:1783",
+            "e9:1783:1792"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [
+                {
+                  "value": "Cognizant Technology Solutions",
+                  "evidence": [
+                    {
+                      "source_id": "e9:1293:1355",
+                      "quote": "Cognizant Technology Solutions"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e0:429:439",
+          "quote": "Experience"
+        },
+        {
+          "source_id": "e9:63:87",
+          "quote": " | Sep 2022 - PresentLLM"
+        },
+        {
+          "source_id": "e9:87:140",
+          "quote": "-powered Enterprise Knowledge Assistant (GenAI / RAG)"
+        },
+        {
+          "source_id": "e9:210:285",
+          "quote": "&A over internal documents for a Global Consulting Firm (InternalEnterprise"
+        },
+        {
+          "source_id": "e9:285:295",
+          "quote": " Platform)"
+        },
+        {
+          "source_id": "e9:295:297",
+          "quote": "- "
+        },
+        {
+          "source_id": "e9:297:368",
+          "quote": "Integrated Azure OpenAI Service with Azure Cognitive Search andenforced"
+        },
+        {
+          "source_id": "e9:368:415",
+          "quote": " role-based access via AAD (Microsoft Entra ID)"
+        },
+        {
+          "source_id": "e9:415:474",
+          "quote": "Personalized Recommendation & Ranking Platform (E-commerce)"
+        },
+        {
+          "source_id": "e9:548:612",
+          "quote": " + ranking) using TensorFlow and classical ML, for a LargeRetail"
+        },
+        {
+          "source_id": "e9:612:635",
+          "quote": " / E-commerce Platform."
+        },
+        {
+          "source_id": "e9:635:638",
+          "quote": " - "
+        },
+        {
+          "source_id": "e9:638:704",
+          "quote": "Improved content and product relevance, achieving ~15% CTR uplift."
+        },
+        {
+          "source_id": "e9:704:707",
+          "quote": " - "
+        },
+        {
+          "source_id": "e9:775:797",
+          "quote": " Azure infrastructure."
+        },
+        {
+          "source_id": "e9:797:841",
+          "quote": "Fraud Detection & Risk Scoring Engine (BFSI)"
+        },
+        {
+          "source_id": "e9:841:843",
+          "quote": "- "
+        },
+        {
+          "source_id": "e9:918:961",
+          "quote": " to generate transaction risk scores for a "
+        },
+        {
+          "source_id": "e9:961:988",
+          "quote": "Tier-1 Global BankingClient"
+        },
+        {
+          "source_id": "e9:988:989",
+          "quote": "."
+        },
+        {
+          "source_id": "e9:989:992",
+          "quote": " - "
+        },
+        {
+          "source_id": "e9:992:1060",
+          "quote": "Reduced false positives by ~20% while maintaining high fraud recall."
+        },
+        {
+          "source_id": "e9:1060:1063",
+          "quote": " - "
+        },
+        {
+          "source_id": "e9:1063:1136",
+          "quote": "Deployed and monitored models via Azure Machine Learning and AzureMonitor"
+        },
+        {
+          "source_id": "e9:1136:1137",
+          "quote": "."
+        },
+        {
+          "source_id": "e9:1293:1355",
+          "quote": "Cognizant Technology Solutions | Nov 2020- Sep 2022Intelligent"
+        },
+        {
+          "source_id": "e9:1355:1397",
+          "quote": " Document Processing & Automation Platform"
+        },
+        {
+          "source_id": "e9:1397:1400",
+          "quote": " - "
+        },
+        {
+          "source_id": "e9:1400:1474",
+          "quote": "Delivered an enterprise-scale IDP solution for Credit Suisse usingEyeShare"
+        },
+        {
+          "source_id": "e9:1474:1533",
+          "quote": " for document ingestion and UiPath for workflow automation."
+        },
+        {
+          "source_id": "e9:1533:1536",
+          "quote": " - "
+        },
+        {
+          "source_id": "e9:1536:1606",
+          "quote": "Automated OCR-based extraction and routing of invoices, claims, andKYC"
+        },
+        {
+          "source_id": "e9:1606:1617",
+          "quote": " documents."
+        },
+        {
+          "source_id": "e9:1617:1620",
+          "quote": " - "
+        },
+        {
+          "source_id": "e9:1620:1695",
+          "quote": "Orchestrated UiPath bots for validation, exception handling, and ERPupdates"
+        },
+        {
+          "source_id": "e9:1695:1732",
+          "quote": ", reducing manual processing by ~50%."
+        },
+        {
+          "source_id": "e9:1732:1767",
+          "quote": "Software Engineer (RPA Development)"
+        },
+        {
+          "source_id": "e9:1767:1783",
+          "quote": "AI/ML EngineerML"
+        },
+        {
+          "source_id": "e9:1783:1792",
+          "quote": " Engineer"
+        },
+        {
+          "source_id": "e9:1792:1804",
+          "quote": "------------"
+        },
+        {
+          "source_id": "e9:1804:1881",
+          "quote": "-----------------------------------------------------------------------------"
+        }
+      ]
+    },
+    {
+      "category": "skills",
+      "label": "Skills",
+      "records": [
+        {
+          "record_id": "skills",
+          "source_ids": [
+            "e0:445:454",
+            "e1:0:8",
+            "e1:8:39",
+            "e1:39:59",
+            "e1:59:76",
+            "e1:76:98",
+            "e2:0:26",
+            "e2:26:44",
+            "e3:0:35",
+            "e3:35:55",
+            "e3:55:76",
+            "e4:0:24",
+            "e4:24:53",
+            "e4:53:73",
+            "e4:73:87",
+            "e5:0:28",
+            "e5:28:55",
+            "e5:55:72",
+            "e5:72:96",
+            "e6:0:30",
+            "e6:30:39",
+            "e7:0:28",
+            "e7:28:36",
+            "e8:0:30",
+            "e8:30:38",
+            "e9:0:24",
+            "e9:24:43",
+            "e9:43:63",
+            "e9:1137:1165",
+            "e9:1165:1191",
+            "e9:1191:1204",
+            "e9:1204:1238",
+            "e9:1238:1268",
+            "e9:1268:1293"
+          ],
+          "attributes": [
+            {
+              "name": "technical_skills",
+              "items": [
+                {
+                  "value": "Python",
+                  "evidence": [
+                    {
+                      "source_id": "e5:0:28",
+                      "quote": "Python"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "SQL",
+                  "evidence": [
+                    {
+                      "source_id": "e5:55:72",
+                      "quote": "SQL"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Docker",
+                  "evidence": [
+                    {
+                      "source_id": "e5:72:96",
+                      "quote": "Docker"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "tools_and_platforms",
+              "items": [
+                {
+                  "value": "Azure",
+                  "evidence": [
+                    {
+                      "source_id": "e4:0:24",
+                      "quote": "Azure"
+                    },
+                    {
+                      "source_id": "e4:24:53",
+                      "quote": "Azure"
+                    },
+                    {
+                      "source_id": "e4:73:87",
+                      "quote": "Azure"
+                    },
+                    {
+                      "source_id": "e6:0:30",
+                      "quote": "Azure"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "domain_and_functional",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "soft_skills",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "all_skills",
+              "items": [
+                {
+                  "value": "Python",
+                  "evidence": [
+                    {
+                      "source_id": "e5:0:28",
+                      "quote": "Python"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "SQL",
+                  "evidence": [
+                    {
+                      "source_id": "e5:55:72",
+                      "quote": "SQL"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Docker",
+                  "evidence": [
+                    {
+                      "source_id": "e5:72:96",
+                      "quote": "Docker"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Azure",
+                  "evidence": [
+                    {
+                      "source_id": "e4:0:24",
+                      "quote": "Azure"
+                    },
+                    {
+                      "source_id": "e4:24:53",
+                      "quote": "Azure"
+                    },
+                    {
+                      "source_id": "e4:73:87",
+                      "quote": "Azure"
+                    },
+                    {
+                      "source_id": "e6:0:30",
+                      "quote": "Azure"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Technical",
+                  "evidence": [
+                    {
+                      "source_id": "e0:445:454",
+                      "quote": "Technical"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "ML & DL:",
+                  "evidence": [
+                    {
+                      "source_id": "e1:0:8",
+                      "quote": "ML & DL:"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Supervised/UnsupervisedLearning",
+                  "evidence": [
+                    {
+                      "source_id": "e1:8:39",
+                      "quote": "Supervised/UnsupervisedLearning"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "FeatureEngineering",
+                  "evidence": [
+                    {
+                      "source_id": "e1:39:59",
+                      "quote": "FeatureEngineering"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "ModelEvaluation",
+                  "evidence": [
+                    {
+                      "source_id": "e1:59:76",
+                      "quote": "ModelEvaluation"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "HyperparameterTuning",
+                  "evidence": [
+                    {
+                      "source_id": "e1:76:98",
+                      "quote": "HyperparameterTuning"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Deep Learning: TensorFlow",
+                  "evidence": [
+                    {
+                      "source_id": "e2:0:26",
+                      "quote": "Deep Learning: TensorFlow"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Keras",
+                  "evidence": [
+                    {
+                      "source_id": "e2:26:44",
+                      "quote": "Keras"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "CNNs",
+                  "evidence": [
+                    {
+                      "source_id": "e2:26:44",
+                      "quote": "CNNs"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "LSTMs",
+                  "evidence": [
+                    {
+                      "source_id": "e2:26:44",
+                      "quote": "LSTMs"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "NLP & GenAI: RAG",
+                  "evidence": [
+                    {
+                      "source_id": "e3:0:35",
+                      "quote": "NLP & GenAI: RAG"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "PromptEngineering",
+                  "evidence": [
+                    {
+                      "source_id": "e3:0:35",
+                      "quote": "PromptEngineering"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "TextClassification",
+                  "evidence": [
+                    {
+                      "source_id": "e3:35:55",
+                      "quote": "TextClassification"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "NER",
+                  "evidence": [
+                    {
+                      "source_id": "e3:55:76",
+                      "quote": "NER"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "LLMIntegration",
+                  "evidence": [
+                    {
+                      "source_id": "e3:55:76",
+                      "quote": "LLMIntegration"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Azure & MLOps: Azure ML",
+                  "evidence": [
+                    {
+                      "source_id": "e4:0:24",
+                      "quote": "Azure & MLOps: Azure ML"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Azure OpenAI",
+                  "evidence": [
+                    {
+                      "source_id": "e4:24:53",
+                      "quote": "Azure OpenAI"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "CognitiveSearch",
+                  "evidence": [
+                    {
+                      "source_id": "e4:24:53",
+                      "quote": "CognitiveSearch"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Blob Storage",
+                  "evidence": [
+                    {
+                      "source_id": "e4:53:73",
+                      "quote": "Blob Storage"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "VMs",
+                  "evidence": [
+                    {
+                      "source_id": "e4:53:73",
+                      "quote": "VMs"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Azure Monitor",
+                  "evidence": [
+                    {
+                      "source_id": "e4:73:87",
+                      "quote": "Azure Monitor"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Scikit-",
+                  "evidence": [
+                    {
+                      "source_id": "e5:0:28",
+                      "quote": "Scikit-"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "learn",
+                  "evidence": [
+                    {
+                      "source_id": "e1:8:39",
+                      "quote": "Learn"
+                    },
+                    {
+                      "source_id": "e2:0:26",
+                      "quote": "Learn"
+                    },
+                    {
+                      "source_id": "e5:28:55",
+                      "quote": "learn"
+                    },
+                    {
+                      "source_id": "e7:0:28",
+                      "quote": "Learn"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "XGBoost",
+                  "evidence": [
+                    {
+                      "source_id": "e5:28:55",
+                      "quote": "XGBoost"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "HuggingFace",
+                  "evidence": [
+                    {
+                      "source_id": "e5:28:55",
+                      "quote": "HuggingFace"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "LangChain",
+                  "evidence": [
+                    {
+                      "source_id": "e5:55:72",
+                      "quote": "LangChain"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "GitCertification",
+                  "evidence": [
+                    {
+                      "source_id": "e5:72:96",
+                      "quote": "GitCertification"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Microsoft Azure AIFundamentals",
+                  "evidence": [
+                    {
+                      "source_id": "e6:0:30",
+                      "quote": "Microsoft Azure AIFundamentals"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "(AI-900)",
+                  "evidence": [
+                    {
+                      "source_id": "e6:30:39",
+                      "quote": "(AI-900)"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "CI/CD for Machine Learning –",
+                  "evidence": [
+                    {
+                      "source_id": "e7:0:28",
+                      "quote": "CI/CD for Machine Learning –"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "DataCamp",
+                  "evidence": [
+                    {
+                      "source_id": "e7:28:36",
+                      "quote": "DataCamp"
+                    },
+                    {
+                      "source_id": "e9:24:43",
+                      "quote": "DataCamp"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Building powerful RAGpipelines",
+                  "evidence": [
+                    {
+                      "source_id": "e8:0:30",
+                      "quote": "Building powerful RAGpipelines"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Udemy",
+                  "evidence": [
+                    {
+                      "source_id": "e8:30:38",
+                      "quote": "Udemy"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Introduction to MLFlow -",
+                  "evidence": [
+                    {
+                      "source_id": "e9:0:24",
+                      "quote": "Introduction to MLFlow -"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "DataCampEducational",
+                  "evidence": [
+                    {
+                      "source_id": "e9:24:43",
+                      "quote": "DataCampEducational"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "BackgroundQuantiphi",
+                  "evidence": [
+                    {
+                      "source_id": "e9:43:63",
+                      "quote": "BackgroundQuantiphi"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Bachelor of Engineering-M.E.",
+                  "evidence": [
+                    {
+                      "source_id": "e9:1137:1165",
+                      "quote": "Bachelor of Engineering-M.E."
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "MIT-COE",
+                  "evidence": [
+                    {
+                      "source_id": "e9:1165:1191",
+                      "quote": "MIT-COE"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Kothrud",
+                  "evidence": [
+                    {
+                      "source_id": "e9:1165:1191",
+                      "quote": "Kothrud"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "PuneSPPU",
+                  "evidence": [
+                    {
+                      "source_id": "e9:1165:1191",
+                      "quote": "PuneSPPU"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Pune",
+                  "evidence": [
+                    {
+                      "source_id": "e9:1165:1191",
+                      "quote": "Pune"
+                    },
+                    {
+                      "source_id": "e9:1191:1204",
+                      "quote": "Pune"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "2020",
+                  "evidence": [
+                    {
+                      "source_id": "e9:1191:1204",
+                      "quote": "2020"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Diploma in Automobile Engineering",
+                  "evidence": [
+                    {
+                      "source_id": "e9:1204:1238",
+                      "quote": "Diploma in Automobile Engineering"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Government Polytechnic Nagpur",
+                  "evidence": [
+                    {
+                      "source_id": "e9:1238:1268",
+                      "quote": "Government Polytechnic Nagpur"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "RTMNU Nagpur",
+                  "evidence": [
+                    {
+                      "source_id": "e9:1268:1293",
+                      "quote": "RTMNU Nagpur"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "2017",
+                  "evidence": [
+                    {
+                      "source_id": "e9:1268:1293",
+                      "quote": "2017"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "88%",
+                  "evidence": [
+                    {
+                      "source_id": "e9:1268:1293",
+                      "quote": "88%"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e0:439:445",
+          "quote": "Skills"
+        },
+        {
+          "source_id": "e0:454:461",
+          "quote": " Skills"
+        },
+        {
+          "source_id": "e1:39:59",
+          "quote": ", FeatureEngineering"
+        },
+        {
+          "source_id": "e1:59:76",
+          "quote": ", ModelEvaluation"
+        },
+        {
+          "source_id": "e1:76:98",
+          "quote": ", HyperparameterTuning"
+        },
+        {
+          "source_id": "e2:0:26",
+          "quote": "Deep Learning: TensorFlow,"
+        },
+        {
+          "source_id": "e2:26:44",
+          "quote": "Keras, CNNs, LSTMs"
+        },
+        {
+          "source_id": "e3:0:35",
+          "quote": "NLP & GenAI: RAG, PromptEngineering"
+        },
+        {
+          "source_id": "e3:35:55",
+          "quote": ", TextClassification"
+        },
+        {
+          "source_id": "e3:55:76",
+          "quote": ", NER, LLMIntegration"
+        },
+        {
+          "source_id": "e4:0:24",
+          "quote": "Azure & MLOps: Azure ML,"
+        },
+        {
+          "source_id": "e4:24:53",
+          "quote": "Azure OpenAI, CognitiveSearch"
+        },
+        {
+          "source_id": "e4:53:73",
+          "quote": ", Blob Storage, VMs,"
+        },
+        {
+          "source_id": "e4:73:87",
+          "quote": "Azure Monitor,"
+        },
+        {
+          "source_id": "e5:0:28",
+          "quote": "Programming: Python, Scikit-"
+        },
+        {
+          "source_id": "e5:28:55",
+          "quote": "learn, XGBoost, HuggingFace"
+        },
+        {
+          "source_id": "e5:55:72",
+          "quote": ", LangChain, SQL,"
+        },
+        {
+          "source_id": "e5:72:96",
+          "quote": "Docker, GitCertification"
+        },
+        {
+          "source_id": "e8:30:38",
+          "quote": " - Udemy"
+        },
+        {
+          "source_id": "e9:1165:1191",
+          "quote": "MIT-COE, Kothrud, PuneSPPU"
+        },
+        {
+          "source_id": "e9:1191:1204",
+          "quote": " Pune | 2020 "
+        },
+        {
+          "source_id": "e9:1268:1293",
+          "quote": "RTMNU Nagpur | 2017 | 88%"
+        }
+      ]
+    },
+    {
+      "category": "needs_review",
+      "label": "Unassigned source blocks",
+      "records": [],
+      "residual_blocks": [
+        {
+          "source_id": "e0:23:25",
+          "quote": "ML"
+        },
+        {
+          "source_id": "e0:25:90",
+          "quote": " / AI Engineer with ~5 years of experience delivering production-"
+        },
+        {
+          "source_id": "e0:90:167",
+          "quote": "grade, Azure-native ML solutions in enterprise environments. Strongbackground"
+        },
+        {
+          "source_id": "e0:167:228",
+          "quote": " in TensorFlow/Keras, classical ML, and Azure MachineLearning"
+        },
+        {
+          "source_id": "e0:228:283",
+          "quote": ", with hands-on delivery across recommendation systems,"
+        },
+        {
+          "source_id": "e0:283:353",
+          "quote": "fraud & risk modeling, document intelligence, and LLM-based RAGsystems"
+        },
+        {
+          "source_id": "e0:353:355",
+          "quote": ". "
+        }
+      ]
+    }
+  ]
+}

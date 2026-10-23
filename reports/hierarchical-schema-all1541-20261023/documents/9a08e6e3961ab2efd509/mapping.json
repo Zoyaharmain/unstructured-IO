@@ -1,0 +1,1373 @@
+{
+  "success": true,
+  "source": "Thomas Paul.docx",
+  "extraction_mode": "existing_blocks_schema_mapping",
+  "data": {
+    "contact": {
+      "full_name": "",
+      "email": "",
+      "phone": "",
+      "location": null,
+      "linkedin_url": null,
+      "github_url": null,
+      "portfolio_url": null
+    },
+    "professional_title": null,
+    "summary": null,
+    "total_experience_years": null,
+    "skills": {
+      "technical_skills": [
+        "Docker",
+        "Kubernetes"
+      ],
+      "tools_and_platforms": [
+        "Git",
+        "AWS",
+        "Azure"
+      ],
+      "domain_and_functional": [],
+      "soft_skills": [
+        "Agile",
+        "Scrum",
+        "Leadership",
+        "Change Management"
+      ],
+      "all_skills": [
+        "Docker",
+        "Kubernetes",
+        "Git",
+        "AWS",
+        "Azure",
+        "Agile",
+        "Scrum",
+        "Leadership",
+        "Change Management",
+        "Terraform (IaC)",
+        "Kubernetes (AKS)",
+        "Helm",
+        "ArgoCD",
+        "PowerShell",
+        "Bash DevSecOps & Monitoring:SonarQube",
+        "Code Quality & Vulnerability Scanning",
+        "Grafana",
+        "Azure Monitor",
+        "Security Compliance Tools Cloud & Infrastructure:Microsoft Azure",
+        "Azure DevOps",
+        "Azure Services (WebApps",
+        "Storage account",
+        "VMs",
+        "ADF",
+        "Databricks)",
+        "AWS (Basics) Programming & Scripting: PowerShell",
+        "Bash",
+        "YAML",
+        "JSON Release & Configuration Management: Build and Release Management",
+        "Deployment Automation",
+        "Source Control (Git",
+        "Azure Repos)",
+        "Configuration Management",
+        "Version Control Methodologies & Frameworks: Agile",
+        "Continuous Improvement",
+        "Incident Management Operating Systems: Windows Server Administration",
+        "Linux (Basics) CORE COMPETENCIES DevOps Strategy & Roadmapping Cloud Infrastructure Governance Release & Deployment Management Automation Framework Design Continuous Integration & Delivery Leadership Cross-Functional Team Collaboration"
+      ]
+    },
+    "experience": [],
+    "education": [],
+    "certifications": [
+      {
+        "name": "Performance Optimization & Scalability Planning Disaster Recovery & Business Continuity Compliance & Security Governance Agile & Scrum Methodology Execution Technical Documentation & Process Standardization Stakeholder & Vendor Coordination CERTIFICATIONS & EDUCATION Post Graduate Certification in Cloud and DevOps – EICT, IIT Guwahati (2021) Microsoft Certified: Azure Fundamentals (AZ-900) – Microsoft (2021) Bachelor of Technology (B.Tech.) in Electronics & Communication Engineering",
+        "issuer": null,
+        "issue_year": null
+      }
+    ],
+    "projects": [],
+    "languages": []
+  },
+  "schema_mapping": {
+    "fields_populated": 4,
+    "total_fields": 16,
+    "completion_percentage": 25.0,
+    "field_details": [
+      {
+        "field_name": "contact.full_name",
+        "target_type": "string",
+        "is_required": true,
+        "is_extracted": false,
+        "source_section": "Header / Personal Details",
+        "confidence_score": 0.0,
+        "description": "Candidate's full name, extracted from the top header of the resume."
+      },
+      {
+        "field_name": "contact.email",
+        "target_type": "string (email)",
+        "is_required": true,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's primary contact email address."
+      },
+      {
+        "field_name": "contact.phone",
+        "target_type": "string (phone)",
+        "is_required": true,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's telephone / mobile phone number."
+      },
+      {
+        "field_name": "contact.location",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's residential location or work city."
+      },
+      {
+        "field_name": "contact.linkedin_url",
+        "target_type": "string (url) | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "URL to candidate's LinkedIn profile."
+      },
+      {
+        "field_name": "professional_title",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Subtitle",
+        "confidence_score": 0.0,
+        "description": "Candidate's target headline or most recent job title."
+      },
+      {
+        "field_name": "summary",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Professional Summary / Profile / Objective",
+        "confidence_score": 0.0,
+        "description": "Executive bio, professional overview, or career objective."
+      },
+      {
+        "field_name": "total_experience_years",
+        "target_type": "float | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Summary / Experience Calculation",
+        "confidence_score": 0.0,
+        "description": "Total professional experience in years."
+      },
+      {
+        "field_name": "skills.technical_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills / Technical Competencies",
+        "confidence_score": 0.92,
+        "description": "Technical programming languages and core software competencies."
+      },
+      {
+        "field_name": "skills.tools_and_platforms",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills / Tools & Technologies",
+        "confidence_score": 0.9,
+        "description": "Software platforms, developer tools, and operational systems."
+      },
+      {
+        "field_name": "skills.domain_and_functional",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Domain Expertise",
+        "confidence_score": 0.0,
+        "description": "Functional domain knowledge (e.g. Hedge Funds, KYC, NAV, Derivatives)."
+      },
+      {
+        "field_name": "skills.all_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills (Aggregated)",
+        "confidence_score": 0.95,
+        "description": "Complete list of candidate skills across all categories."
+      },
+      {
+        "field_name": "experience",
+        "target_type": "array[WorkExperience]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Professional Experience / Work History",
+        "confidence_score": 0.0,
+        "description": "Complete chronological employment records with bullet points."
+      },
+      {
+        "field_name": "education",
+        "target_type": "array[Education]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Education / Academic Qualifications",
+        "confidence_score": 0.0,
+        "description": "University, college, and higher education degree qualifications."
+      },
+      {
+        "field_name": "certifications",
+        "target_type": "array[Certification]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Certifications / Licenses",
+        "confidence_score": 0.8,
+        "description": "Professional accreditations and credentials."
+      },
+      {
+        "field_name": "projects",
+        "target_type": "array[Project]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Projects / Key Engagements",
+        "confidence_score": 0.0,
+        "description": "Major projects or strategic initiatives led by candidate."
+      }
+    ]
+  },
+  "raw_sections": {
+    "skills": ", Terraform (IaC), Docker, Kubernetes (AKS), Helm, ArgoCD, PowerShell, Bash DevSecOps & Monitoring:SonarQube, Code Quality & Vulnerability Scanning, Grafana, Azure Monitor, Security Compliance Tools Cloud & Infrastructure:Microsoft Azure, Azure DevOps, Azure Services (WebApps, Storage account, VMs,  ADF, Databricks), Azure Monitor, AWS (Basics) Programming & Scripting: PowerShell, Bash, YAML, JSON Release & Configuration Management: Build and Release Management, Deployment Automation, Source Control (Git, Azure Repos), Configuration Management, Version Control Methodologies & Frameworks: Agile, Scrum, Change Management, Continuous Improvement, Incident Management Operating Systems: Windows Server Administration, Linux (Basics) CORE COMPETENCIES DevOps Strategy & Roadmapping Cloud Infrastructure Governance Release & Deployment Management Automation Framework Design Continuous Integration & Delivery Leadership Cross-Functional Team Collaboration ",
+    "certifications": "Performance Optimization & Scalability Planning Disaster Recovery & Business Continuity Compliance & Security Governance Agile & Scrum Methodology Execution Technical Documentation & Process Standardization Stakeholder & Vendor Coordination CERTIFICATIONS & EDUCATION Post Graduate Certification in Cloud and DevOps – EICT, IIT Guwahati (2021) Microsoft Certified: Azure Fundamentals (AZ-900) – Microsoft (2021) Bachelor of Technology (B.Tech.) in Electronics & Communication Engineering\n"
+  },
+  "meta": {
+    "status": "needs_review",
+    "human_verified": false,
+    "provider_calls": 0,
+    "source_accounting": {
+      "all_source_text_preserved": true,
+      "total_spans": 11,
+      "assigned_meaningful_spans": 2,
+      "unresolved_meaningful_spans": 9,
+      "non_content_artifacts": 0,
+      "duplicates_excluded": 0,
+      "all_meaningful_text_assigned": false,
+      "semantic_correctness_verified": false,
+      "outcomes": [
+        {
+          "source_id": "e0:0:916",
+          "source_element_index": 0,
+          "start": 0,
+          "end": 916,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e0:916:1876",
+          "source_element_index": 0,
+          "start": 916,
+          "end": 1876,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e0:1876:2834",
+          "source_element_index": 0,
+          "start": 1876,
+          "end": 2834,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "BERT embedding assigned to a labeled K-means centroid"
+        },
+        {
+          "source_id": "e0:2834:3322",
+          "source_element_index": 0,
+          "start": 2834,
+          "end": 3322,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "BERT embedding assigned to a labeled K-means centroid"
+        },
+        {
+          "source_id": "e0:3322:4250",
+          "source_element_index": 0,
+          "start": 3322,
+          "end": 4250,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e0:4250:5264",
+          "source_element_index": 0,
+          "start": 4250,
+          "end": 5264,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e0:5264:6225",
+          "source_element_index": 0,
+          "start": 5264,
+          "end": 6225,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e0:6225:7217",
+          "source_element_index": 0,
+          "start": 6225,
+          "end": 7217,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e0:7217:8300",
+          "source_element_index": 0,
+          "start": 7217,
+          "end": 8300,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e0:8300:9298",
+          "source_element_index": 0,
+          "start": 8300,
+          "end": 9298,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e0:9298:9325",
+          "source_element_index": 0,
+          "start": 9298,
+          "end": 9325,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        }
+      ]
+    },
+    "document_scope": {
+      "kind": "likely_resume",
+      "candidate_resume": true,
+      "reason": "Contact details, multiple resume section families and dated history; provisional scope only",
+      "human_verified": false
+    },
+    "source_inventory_sha256": "46af6c7608048a117672786208b7804a21ebdb5695de72c757115bd08bf5617e",
+    "field_evidence": {
+      "skills.technical_skills[0]": [
+        "e0:1876:2834"
+      ],
+      "skills.technical_skills[1]": [
+        "e0:1876:2834"
+      ],
+      "skills.tools_and_platforms[0]": [
+        "e0:1876:2834"
+      ],
+      "skills.tools_and_platforms[1]": [
+        "e0:1876:2834"
+      ],
+      "skills.tools_and_platforms[2]": [
+        "e0:1876:2834"
+      ],
+      "skills.soft_skills[0]": [
+        "e0:1876:2834"
+      ],
+      "skills.soft_skills[1]": [
+        "e0:1876:2834"
+      ],
+      "skills.soft_skills[2]": [
+        "e0:1876:2834"
+      ],
+      "skills.soft_skills[3]": [
+        "e0:1876:2834"
+      ],
+      "skills.all_skills[0]": [
+        "e0:1876:2834"
+      ],
+      "skills.all_skills[1]": [
+        "e0:1876:2834"
+      ],
+      "skills.all_skills[2]": [
+        "e0:1876:2834"
+      ],
+      "skills.all_skills[3]": [
+        "e0:1876:2834"
+      ],
+      "skills.all_skills[4]": [
+        "e0:1876:2834"
+      ],
+      "skills.all_skills[5]": [
+        "e0:1876:2834"
+      ],
+      "skills.all_skills[6]": [
+        "e0:1876:2834"
+      ],
+      "skills.all_skills[7]": [
+        "e0:1876:2834"
+      ],
+      "skills.all_skills[8]": [
+        "e0:1876:2834"
+      ],
+      "skills.all_skills[9]": [
+        "e0:1876:2834"
+      ],
+      "skills.all_skills[10]": [
+        "e0:1876:2834"
+      ],
+      "skills.all_skills[11]": [
+        "e0:1876:2834"
+      ],
+      "skills.all_skills[12]": [
+        "e0:1876:2834"
+      ],
+      "skills.all_skills[13]": [
+        "e0:1876:2834"
+      ],
+      "skills.all_skills[14]": [
+        "e0:1876:2834"
+      ],
+      "skills.all_skills[15]": [
+        "e0:1876:2834"
+      ],
+      "skills.all_skills[16]": [
+        "e0:1876:2834"
+      ],
+      "skills.all_skills[17]": [
+        "e0:1876:2834"
+      ],
+      "skills.all_skills[18]": [
+        "e0:1876:2834"
+      ],
+      "skills.all_skills[19]": [
+        "e0:1876:2834"
+      ],
+      "skills.all_skills[20]": [
+        "e0:1876:2834"
+      ],
+      "skills.all_skills[21]": [
+        "e0:1876:2834"
+      ],
+      "skills.all_skills[22]": [
+        "e0:1876:2834"
+      ],
+      "skills.all_skills[23]": [
+        "e0:1876:2834"
+      ],
+      "skills.all_skills[24]": [
+        "e0:1876:2834"
+      ],
+      "skills.all_skills[25]": [
+        "e0:1876:2834"
+      ],
+      "skills.all_skills[26]": [
+        "e0:1876:2834"
+      ],
+      "skills.all_skills[27]": [
+        "e0:1876:2834"
+      ],
+      "skills.all_skills[28]": [
+        "e0:1876:2834"
+      ],
+      "skills.all_skills[29]": [
+        "e0:1876:2834"
+      ],
+      "skills.all_skills[30]": [
+        "e0:1876:2834"
+      ],
+      "skills.all_skills[31]": [
+        "e0:1876:2834"
+      ],
+      "skills.all_skills[32]": [
+        "e0:1876:2834"
+      ],
+      "skills.all_skills[33]": [
+        "e0:1876:2834"
+      ],
+      "skills.all_skills[34]": [
+        "e0:1876:2834"
+      ],
+      "skills.all_skills[35]": [
+        "e0:1876:2834"
+      ],
+      "skills.all_skills[36]": [
+        "e0:1876:2834"
+      ],
+      "certifications[0].name": [
+        "e0:2834:3322"
+      ]
+    },
+    "record_reviews": [
+      {
+        "category": "certifications",
+        "entry_id": "certifications-1",
+        "source_ids": [
+          "e0:2834:3322"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      }
+    ],
+    "missing_required_fields": [
+      "contact.full_name",
+      "contact.email",
+      "contact.phone"
+    ],
+    "warnings": [
+      "Schema validity and field completion do not establish extraction or relationship accuracy.",
+      "Handoff confidence scores are fixed heuristics, not calibrated probabilities.",
+      "Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields."
+    ],
+    "unmapped_blocks": [
+      {
+        "source_id": "e0:0:916",
+        "category": null,
+        "text": "Thomas Paul Accomplished professional with experience in architecting, automating, & optimizing mission-critical deployments across Azure Cloud & hybrid environments. Skilled in driving DevSecOps transformation, infrastructure automation, & CI/CD optimization using Azure DevOps, Terraform, Docker, & Kubernetes. Targeting strategic roles in DevOps Architecture, Cloud Infrastructure, SRE, or Cloud Transformation to enhance scalability, delivery efficiency & business agility. +91 9809469609 +91-9496346437 thomaspauls@yahoo.com thomazpaulz@gmail.com Bangalore -560035 Thomas Paul | LinkedIn PROFILE SUMMARY Strategic DevOps Leader with nearly 13 years of experience in architecting and managing enterprise-grade Azure DevOps ecosystems, delivering scalable automation, streamlined CI/CD pipelines, and robust infrastructure as code (IaC) for global clients across telecom, FMCG, and IT services sectors. Expert in ",
+        "page_number": null
+      },
+      {
+        "source_id": "e0:916:1876",
+        "category": null,
+        "text": "Cloud Infrastructure Automation, driving Azure migrations, Terraform-based provisioning, and deployment of WebApps, FunctionApps, ADF, Databricks, and microservices to ensure reliability, scalability, and performance. Champion of DevSecOps integration, embedding continuous security, code quality, and compliance checks using SonarQube, vulnerability scanning tools, and governance frameworks across development lifecycles. Advanced proficiency in containerization and orchestration through Docker, Kubernetes (AKS), Helm, and GitHub Actions, enabling seamless multi-environment delivery, proactive monitoring, and rapid recovery. Collaborative and award-winning leader, known for fostering agile, high-performing teams, mentoring engineers, and driving process excellence—recognized with multiple awards including EY Turbo Idea Winner and IBM Manager’s Choice Award. TECHNICAL SKILLS DevOps & Automation: CI/CD Pipelines, Azure Devops, GitHub Actions, Jenkins",
+        "page_number": null
+      },
+      {
+        "source_id": "e0:3322:4250",
+        "category": null,
+        "text": "University of Calicut, 2010 AWARDS Turbo Idea Winner – Innovation Award at Ernst & Young (EY) Rockers Award – Best Team Award at EY Best Performer Award (Twice) – Ernst & Young (EY) Manager’s Choice Award – IBM CAREER TIMELINE WORK EXPERIENCE Sr.Specialist | AT&T, Bangalore | Jul’24 – Present Architecting & managing DevOps pipelines for multiple telecom API applications using Azure DevOps, GitHub Actions, Docker, AKS, &Helm. Maintaining Terraform infrastructure pipelines, resolving issues, and ensuring automated, repeatable infrastructure provisioning. Managing build and release pipelines for MLOps, .NET Core, React.js, and Node.js applications, ensuring seamless CI/CD execution. Maintaining and upgrading AKS clusters, implementing best practices for performance, scalability, and security Monitoring applications through Grafana dashboards& integrating pipelines with SonarQube& other code quality tools for DevSecOps",
+        "page_number": null
+      },
+      {
+        "source_id": "e0:4250:5264",
+        "category": null,
+        "text": " compliance. Preparing end-to-end technical and functional documentation for newly onboarded APIs to ensure clarity and knowledge transfer. Deploying and monitoring syntesters and healthcheck APIs, ensuring reliability and continuous availability. Identifying & implementing automation solutions using PowerShell&Bash scripting, improving operational efficiency & reducing manual effort. Devops Architect | Persistent, Bangalore | Dec’23 – June’24 Served as DevOps architect for multiple client projects, designing and implementing scalable DevOps pipelines. Implemented DevOps pipelines leveraging Azure WebApps, FunctionApps, Storage Accounts, Databricks, and Azure Data Factory (ADF). Managed DevSecOps practices, integrating security and compliance tools into the deployment lifecycle. Utilized Terraform (IaC) for infrastructure provisioning and automated environment management. Deployed Dockerized applications&Kubernetes workloads (AKS) using Helm Charts and ArgoCD, ensuring reliable &scalable deployments",
+        "page_number": null
+      },
+      {
+        "source_id": "e0:5264:6225",
+        "category": null,
+        "text": ". Architected Azure infrastructure for web applications, managed Azure migration from Hyper-V environments, performed Bash and PowerShell scripting, and contributed as a member of Agile/Scrum teams. Senior DevOps Specialist | LTIMindtree, Bangalore | Aug’ 21 – Dec’ 23 Led DevOps initiatives for multiple P&G applications, overseeing build and release pipelines and ensuring operational excellence. Managed build and release pipelines using Azure DevOps, Jenkins, and GitHub Actions for seamless CI/CD execution. Architected Azure infrastructure for API applications collaboratively as part of the technical team. Created and maintained build and release pipelines for .NET Core, React.js, and Node.js applications, including Azure Data Factory (ADF) and Databricks (ADB) integrations. Migrated DevOps pipelines between GitHub Actions and Azure DevOps, ensuring minimal downtime and process continuity. Deployed applications to Azure WebApps, Function Apps, CDN",
+        "page_number": null
+      },
+      {
+        "source_id": "e0:6225:7217",
+        "category": null,
+        "text": ", CloudFront,&Azure ML Workspace, ensuring high availability & performance. Implemented DevSecOps practices by integrating SonarQube and other security tools into pipelines as per compliance requirements, and managed ARM templates and Terraform IaC. Managed dockerized applications and Kubernetes (AKS) deployments, performed Bash and PowerShell scripting, and followed Agile/Scrum methodology with effective change management. Sr. Technical Consultant | Experis IT, Bangalore | Aug’ 19 – Aug’ 21 Served as an Azure DevOps engineer for IBM clients, ensuring seamless project execution and environment management. Configured permissions and access controls for DevOps projects, maintaining security and compliance standards. Managed source code versioning using Azure Repos and implemented build and release pipelines for .NET Core applications. Deployed & maintained applications on Azure WebApps, Virtual Machines (VMs),&AKS (Azure Kubernetes Service), ensuring reliable delivery. Monitored ",
+        "page_number": null
+      },
+      {
+        "source_id": "e0:7217:8300",
+        "category": null,
+        "text": "applications & infrastructure using Azure Monitor, & configured desired state configurations for web servers to ensure stability. Applied PowerShell automation for routine tasks, utilized ARM templates and Terraform for infrastructure provisioning, and supported Azure Load Balancer and Traffic Manager configurations. Principal Associate | Eurofins, Bangalore | Oct’18 – Apr’ 19 Provided production infrastructure DevOps support for .NET and Windows-based applications, ensuring stable and reliable operations. Managedautomated deployments using Jenkins and PowerShell, managed manual deployments, and resolved related deployment issues. Troubleshot website issues, including error codes, SSL-related problems, DNS, performance bottlenecks, on IIS, Azure WebApps, &SQL Server. Monitored data flow issues, executed Disaster Recovery (DR) procedures, & implemented PowerShell automation for routine operational tasks. Technical Specialist | IBM, Bangalore | Aug’16 – Oct’18 Provided middleware support and automation for the Anthem WellPoint client, ensuring smooth operations across ",
+        "page_number": null
+      },
+      {
+        "source_id": "e0:8300:9298",
+        "category": null,
+        "text": "production and non-production environments. Managed IIS & Apache servers, including SSL certificate, & executed automated and manual deployments, hotfixes, &root cause analysis for performance issues. Developed and implemented PowerShell automation scripts to streamline routine tasks and enhance process efficiency. Technical Associate | Ernst and Young, Cochin | Dec’11 – May’16 Installation, configuration , performance optimization and support of web and app servers for different audit applciations Handling automated, manual deployments, SSL certificates and related issues in Web and App servers PowerShell automation support for developing toolsets in IIS, AD PROJECTS AT&T – Designed and implemented DevOps pipelines for API testing applications. P&G – Implemented end-to-end Azure DevOps architecture for web applications. Pipeline Migration – Migrated pipelines between GitHub Actions and Azure DevOps (Node.js, React.js). CI/CD Automation – Built CI/CD pipelines for Azure Data Factory ",
+        "page_number": null
+      },
+      {
+        "source_id": "e0:9298:9325",
+        "category": null,
+        "text": "(ADF) and Databricks (ADB).",
+        "page_number": null
+      }
+    ],
+    "needs_review": [
+      {
+        "source_element_index": 0,
+        "start": 0,
+        "end": 916,
+        "text": "Thomas Paul Accomplished professional with experience in architecting, automating, & optimizing mission-critical deployments across Azure Cloud & hybrid environments. Skilled in driving DevSecOps transformation, infrastructure automation, & CI/CD optimization using Azure DevOps, Terraform, Docker, & Kubernetes. Targeting strategic roles in DevOps Architecture, Cloud Infrastructure, SRE, or Cloud Transformation to enhance scalability, delivery efficiency & business agility. +91 9809469609 +91-9496346437 thomaspauls@yahoo.com thomazpaulz@gmail.com Bangalore -560035 Thomas Paul | LinkedIn PROFILE SUMMARY Strategic DevOps Leader with nearly 13 years of experience in architecting and managing enterprise-grade Azure DevOps ecosystems, delivering scalable automation, streamlined CI/CD pipelines, and robust infrastructure as code (IaC) for global clients across telecom, FMCG, and IT services sectors. Expert in ",
+        "page_number": null,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3684,
+        "margin": -0.0204,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 0,
+        "start": 916,
+        "end": 1876,
+        "text": "Cloud Infrastructure Automation, driving Azure migrations, Terraform-based provisioning, and deployment of WebApps, FunctionApps, ADF, Databricks, and microservices to ensure reliability, scalability, and performance. Champion of DevSecOps integration, embedding continuous security, code quality, and compliance checks using SonarQube, vulnerability scanning tools, and governance frameworks across development lifecycles. Advanced proficiency in containerization and orchestration through Docker, Kubernetes (AKS), Helm, and GitHub Actions, enabling seamless multi-environment delivery, proactive monitoring, and rapid recovery. Collaborative and award-winning leader, known for fostering agile, high-performing teams, mentoring engineers, and driving process excellence—recognized with multiple awards including EY Turbo Idea Winner and IBM Manager’s Choice Award. TECHNICAL SKILLS DevOps & Automation: CI/CD Pipelines, Azure Devops, GitHub Actions, Jenkins",
+        "page_number": null,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.4837,
+        "margin": 0.0623,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 0,
+        "start": 3322,
+        "end": 4250,
+        "text": "University of Calicut, 2010 AWARDS Turbo Idea Winner – Innovation Award at Ernst & Young (EY) Rockers Award – Best Team Award at EY Best Performer Award (Twice) – Ernst & Young (EY) Manager’s Choice Award – IBM CAREER TIMELINE WORK EXPERIENCE Sr.Specialist | AT&T, Bangalore | Jul’24 – Present Architecting & managing DevOps pipelines for multiple telecom API applications using Azure DevOps, GitHub Actions, Docker, AKS, &Helm. Maintaining Terraform infrastructure pipelines, resolving issues, and ensuring automated, repeatable infrastructure provisioning. Managing build and release pipelines for MLOps, .NET Core, React.js, and Node.js applications, ensuring seamless CI/CD execution. Maintaining and upgrading AKS clusters, implementing best practices for performance, scalability, and security Monitoring applications through Grafana dashboards& integrating pipelines with SonarQube& other code quality tools for DevSecOps",
+        "page_number": null,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.4396,
+        "margin": 0.0382,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 0,
+        "start": 4250,
+        "end": 5264,
+        "text": " compliance. Preparing end-to-end technical and functional documentation for newly onboarded APIs to ensure clarity and knowledge transfer. Deploying and monitoring syntesters and healthcheck APIs, ensuring reliability and continuous availability. Identifying & implementing automation solutions using PowerShell&Bash scripting, improving operational efficiency & reducing manual effort. Devops Architect | Persistent, Bangalore | Dec’23 – June’24 Served as DevOps architect for multiple client projects, designing and implementing scalable DevOps pipelines. Implemented DevOps pipelines leveraging Azure WebApps, FunctionApps, Storage Accounts, Databricks, and Azure Data Factory (ADF). Managed DevSecOps practices, integrating security and compliance tools into the deployment lifecycle. Utilized Terraform (IaC) for infrastructure provisioning and automated environment management. Deployed Dockerized applications&Kubernetes workloads (AKS) using Helm Charts and ArgoCD, ensuring reliable &scalable deployments",
+        "page_number": null,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3856,
+        "margin": 0.0284,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 0,
+        "start": 5264,
+        "end": 6225,
+        "text": ". Architected Azure infrastructure for web applications, managed Azure migration from Hyper-V environments, performed Bash and PowerShell scripting, and contributed as a member of Agile/Scrum teams. Senior DevOps Specialist | LTIMindtree, Bangalore | Aug’ 21 – Dec’ 23 Led DevOps initiatives for multiple P&G applications, overseeing build and release pipelines and ensuring operational excellence. Managed build and release pipelines using Azure DevOps, Jenkins, and GitHub Actions for seamless CI/CD execution. Architected Azure infrastructure for API applications collaboratively as part of the technical team. Created and maintained build and release pipelines for .NET Core, React.js, and Node.js applications, including Azure Data Factory (ADF) and Databricks (ADB) integrations. Migrated DevOps pipelines between GitHub Actions and Azure DevOps, ensuring minimal downtime and process continuity. Deployed applications to Azure WebApps, Function Apps, CDN",
+        "page_number": null,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3542,
+        "margin": 0.0657,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 0,
+        "start": 6225,
+        "end": 7217,
+        "text": ", CloudFront,&Azure ML Workspace, ensuring high availability & performance. Implemented DevSecOps practices by integrating SonarQube and other security tools into pipelines as per compliance requirements, and managed ARM templates and Terraform IaC. Managed dockerized applications and Kubernetes (AKS) deployments, performed Bash and PowerShell scripting, and followed Agile/Scrum methodology with effective change management. Sr. Technical Consultant | Experis IT, Bangalore | Aug’ 19 – Aug’ 21 Served as an Azure DevOps engineer for IBM clients, ensuring seamless project execution and environment management. Configured permissions and access controls for DevOps projects, maintaining security and compliance standards. Managed source code versioning using Azure Repos and implemented build and release pipelines for .NET Core applications. Deployed & maintained applications on Azure WebApps, Virtual Machines (VMs),&AKS (Azure Kubernetes Service), ensuring reliable delivery. Monitored ",
+        "page_number": null,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3821,
+        "margin": 0.0587,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 0,
+        "start": 7217,
+        "end": 8300,
+        "text": "applications & infrastructure using Azure Monitor, & configured desired state configurations for web servers to ensure stability. Applied PowerShell automation for routine tasks, utilized ARM templates and Terraform for infrastructure provisioning, and supported Azure Load Balancer and Traffic Manager configurations. Principal Associate | Eurofins, Bangalore | Oct’18 – Apr’ 19 Provided production infrastructure DevOps support for .NET and Windows-based applications, ensuring stable and reliable operations. Managedautomated deployments using Jenkins and PowerShell, managed manual deployments, and resolved related deployment issues. Troubleshot website issues, including error codes, SSL-related problems, DNS, performance bottlenecks, on IIS, Azure WebApps, &SQL Server. Monitored data flow issues, executed Disaster Recovery (DR) procedures, & implemented PowerShell automation for routine operational tasks. Technical Specialist | IBM, Bangalore | Aug’16 – Oct’18 Provided middleware support and automation for the Anthem WellPoint client, ensuring smooth operations across ",
+        "page_number": null,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2769,
+        "margin": 0.0271,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 0,
+        "start": 8300,
+        "end": 9298,
+        "text": "production and non-production environments. Managed IIS & Apache servers, including SSL certificate, & executed automated and manual deployments, hotfixes, &root cause analysis for performance issues. Developed and implemented PowerShell automation scripts to streamline routine tasks and enhance process efficiency. Technical Associate | Ernst and Young, Cochin | Dec’11 – May’16 Installation, configuration , performance optimization and support of web and app servers for different audit applciations Handling automated, manual deployments, SSL certificates and related issues in Web and App servers PowerShell automation support for developing toolsets in IIS, AD PROJECTS AT&T – Designed and implemented DevOps pipelines for API testing applications. P&G – Implemented end-to-end Azure DevOps architecture for web applications. Pipeline Migration – Migrated pipelines between GitHub Actions and Azure DevOps (Node.js, React.js). CI/CD Automation – Built CI/CD pipelines for Azure Data Factory ",
+        "page_number": null,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3245,
+        "margin": 0.0562,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 0,
+        "start": 9298,
+        "end": 9325,
+        "text": "(ADF) and Databricks (ADB).",
+        "page_number": null,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1848,
+        "margin": 0.0367,
+        "lane": "main",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      }
+    ]
+  },
+  "section_schemas": [
+    {
+      "category": "skills",
+      "label": "Skills",
+      "records": [
+        {
+          "record_id": "skills",
+          "source_ids": [
+            "e0:1876:2834"
+          ],
+          "attributes": [
+            {
+              "name": "technical_skills",
+              "items": [
+                {
+                  "value": "Docker",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1876:2834",
+                      "quote": "Docker"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Kubernetes",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1876:2834",
+                      "quote": "Kubernetes"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "tools_and_platforms",
+              "items": [
+                {
+                  "value": "Git",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1876:2834",
+                      "quote": "Git"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "AWS",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1876:2834",
+                      "quote": "AWS"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Azure",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1876:2834",
+                      "quote": "Azure"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "domain_and_functional",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "soft_skills",
+              "items": [
+                {
+                  "value": "Agile",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1876:2834",
+                      "quote": "Agile"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Scrum",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1876:2834",
+                      "quote": "Scrum"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Leadership",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1876:2834",
+                      "quote": "Leadership"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Change Management",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1876:2834",
+                      "quote": "Change Management"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "all_skills",
+              "items": [
+                {
+                  "value": "Docker",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1876:2834",
+                      "quote": "Docker"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Kubernetes",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1876:2834",
+                      "quote": "Kubernetes"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Git",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1876:2834",
+                      "quote": "Git"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "AWS",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1876:2834",
+                      "quote": "AWS"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Azure",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1876:2834",
+                      "quote": "Azure"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Agile",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1876:2834",
+                      "quote": "Agile"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Scrum",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1876:2834",
+                      "quote": "Scrum"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Leadership",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1876:2834",
+                      "quote": "Leadership"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Change Management",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1876:2834",
+                      "quote": "Change Management"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Terraform (IaC)",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1876:2834",
+                      "quote": "Terraform (IaC)"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Kubernetes (AKS)",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1876:2834",
+                      "quote": "Kubernetes (AKS)"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Helm",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1876:2834",
+                      "quote": "Helm"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "ArgoCD",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1876:2834",
+                      "quote": "ArgoCD"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "PowerShell",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1876:2834",
+                      "quote": "PowerShell"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Bash DevSecOps & Monitoring:SonarQube",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1876:2834",
+                      "quote": "Bash DevSecOps & Monitoring:SonarQube"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Code Quality & Vulnerability Scanning",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1876:2834",
+                      "quote": "Code Quality & Vulnerability Scanning"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Grafana",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1876:2834",
+                      "quote": "Grafana"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Azure Monitor",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1876:2834",
+                      "quote": "Azure Monitor"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Security Compliance Tools Cloud & Infrastructure:Microsoft Azure",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1876:2834",
+                      "quote": "Security Compliance Tools Cloud & Infrastructure:Microsoft Azure"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Azure DevOps",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1876:2834",
+                      "quote": "Azure DevOps"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Azure Services (WebApps",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1876:2834",
+                      "quote": "Azure Services (WebApps"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Storage account",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1876:2834",
+                      "quote": "Storage account"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "VMs",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1876:2834",
+                      "quote": "VMs"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "ADF",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1876:2834",
+                      "quote": "ADF"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Databricks)",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1876:2834",
+                      "quote": "Databricks)"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "AWS (Basics) Programming & Scripting: PowerShell",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1876:2834",
+                      "quote": "AWS (Basics) Programming & Scripting: PowerShell"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Bash",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1876:2834",
+                      "quote": "Bash"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "YAML",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1876:2834",
+                      "quote": "YAML"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "JSON Release & Configuration Management: Build and Release Management",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1876:2834",
+                      "quote": "JSON Release & Configuration Management: Build and Release Management"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Deployment Automation",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1876:2834",
+                      "quote": "Deployment Automation"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Source Control (Git",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1876:2834",
+                      "quote": "Source Control (Git"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Azure Repos)",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1876:2834",
+                      "quote": "Azure Repos)"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Configuration Management",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1876:2834",
+                      "quote": "Configuration Management"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Version Control Methodologies & Frameworks: Agile",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1876:2834",
+                      "quote": "Version Control Methodologies & Frameworks: Agile"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Continuous Improvement",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1876:2834",
+                      "quote": "Continuous Improvement"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Incident Management Operating Systems: Windows Server Administration",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1876:2834",
+                      "quote": "Incident Management Operating Systems: Windows Server Administration"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Linux (Basics) CORE COMPETENCIES DevOps Strategy & Roadmapping Cloud Infrastructure Governance Release & Deployment Management Automation Framework Design Continuous Integration & Delivery Leadership Cross-Functional Team Collaboration",
+                  "evidence": [
+                    {
+                      "source_id": "e0:1876:2834",
+                      "quote": "Linux (Basics) CORE COMPETENCIES DevOps Strategy & Roadmapping Cloud Infrastructure Governance Release & Deployment Management Automation Framework Design Continuous Integration & Delivery Leadership Cross-Functional Team Collaboration"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e0:1876:2834",
+          "quote": ", Terraform (IaC), Docker, Kubernetes (AKS), Helm, ArgoCD, PowerShell, Bash DevSecOps & Monitoring:SonarQube, Code Quality & Vulnerability Scanning, Grafana, Azure Monitor, Security Compliance Tools Cloud & Infrastructure:Microsoft Azure, Azure DevOps, Azure Services (WebApps, Storage account, VMs,  ADF, Databricks), Azure Monitor, AWS (Basics) Programming & Scripting: PowerShell, Bash, YAML, JSON Release & Configuration Management: Build and Release Management, Deployment Automation, Source Control (Git, Azure Repos), Configuration Management, Version Control Methodologies & Frameworks: Agile, Scrum, Change Management, Continuous Improvement, Incident Management Operating Systems: Windows Server Administration, Linux (Basics) CORE COMPETENCIES DevOps Strategy & Roadmapping Cloud Infrastructure Governance Release & Deployment Management Automation Framework Design Continuous Integration & Delivery Leadership Cross-Functional Team Collaboration "
+        }
+      ]
+    },
+    {
+      "category": "certifications",
+      "label": "Certifications",
+      "records": [
+        {
+          "record_id": "certifications-1",
+          "source_ids": [
+            "e0:2834:3322"
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "items": [
+                {
+                  "value": "Performance Optimization & Scalability Planning Disaster Recovery & Business Continuity Compliance & Security Governance Agile & Scrum Methodology Execution Technical Documentation & Process Standardization Stakeholder & Vendor Coordination CERTIFICATIONS & EDUCATION Post Graduate Certification in Cloud and DevOps – EICT, IIT Guwahati (2021) Microsoft Certified: Azure Fundamentals (AZ-900) – Microsoft (2021) Bachelor of Technology (B.Tech.) in Electronics & Communication Engineering",
+                  "evidence": [
+                    {
+                      "source_id": "e0:2834:3322",
+                      "quote": "Performance Optimization & Scalability Planning Disaster Recovery & Business Continuity Compliance & Security Governance Agile & Scrum Methodology Execution Technical Documentation & Process Standardization Stakeholder & Vendor Coordination CERTIFICATIONS & EDUCATION Post Graduate Certification in Cloud and DevOps – EICT, IIT Guwahati (2021) Microsoft Certified: Azure Fundamentals (AZ-900) – Microsoft (2021) Bachelor of Technology (B.Tech.) in Electronics & Communication Engineering"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "issuer",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "issue_year",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": []
+    },
+    {
+      "category": "needs_review",
+      "label": "Unassigned source blocks",
+      "records": [],
+      "residual_blocks": [
+        {
+          "source_id": "e0:0:916",
+          "quote": "Thomas Paul Accomplished professional with experience in architecting, automating, & optimizing mission-critical deployments across Azure Cloud & hybrid environments. Skilled in driving DevSecOps transformation, infrastructure automation, & CI/CD optimization using Azure DevOps, Terraform, Docker, & Kubernetes. Targeting strategic roles in DevOps Architecture, Cloud Infrastructure, SRE, or Cloud Transformation to enhance scalability, delivery efficiency & business agility. +91 9809469609 +91-9496346437 thomaspauls@yahoo.com thomazpaulz@gmail.com Bangalore -560035 Thomas Paul | LinkedIn PROFILE SUMMARY Strategic DevOps Leader with nearly 13 years of experience in architecting and managing enterprise-grade Azure DevOps ecosystems, delivering scalable automation, streamlined CI/CD pipelines, and robust infrastructure as code (IaC) for global clients across telecom, FMCG, and IT services sectors. Expert in "
+        },
+        {
+          "source_id": "e0:916:1876",
+          "quote": "Cloud Infrastructure Automation, driving Azure migrations, Terraform-based provisioning, and deployment of WebApps, FunctionApps, ADF, Databricks, and microservices to ensure reliability, scalability, and performance. Champion of DevSecOps integration, embedding continuous security, code quality, and compliance checks using SonarQube, vulnerability scanning tools, and governance frameworks across development lifecycles. Advanced proficiency in containerization and orchestration through Docker, Kubernetes (AKS), Helm, and GitHub Actions, enabling seamless multi-environment delivery, proactive monitoring, and rapid recovery. Collaborative and award-winning leader, known for fostering agile, high-performing teams, mentoring engineers, and driving process excellence—recognized with multiple awards including EY Turbo Idea Winner and IBM Manager’s Choice Award. TECHNICAL SKILLS DevOps & Automation: CI/CD Pipelines, Azure Devops, GitHub Actions, Jenkins"
+        },
+        {
+          "source_id": "e0:3322:4250",
+          "quote": "University of Calicut, 2010 AWARDS Turbo Idea Winner – Innovation Award at Ernst & Young (EY) Rockers Award – Best Team Award at EY Best Performer Award (Twice) – Ernst & Young (EY) Manager’s Choice Award – IBM CAREER TIMELINE WORK EXPERIENCE Sr.Specialist | AT&T, Bangalore | Jul’24 – Present Architecting & managing DevOps pipelines for multiple telecom API applications using Azure DevOps, GitHub Actions, Docker, AKS, &Helm. Maintaining Terraform infrastructure pipelines, resolving issues, and ensuring automated, repeatable infrastructure provisioning. Managing build and release pipelines for MLOps, .NET Core, React.js, and Node.js applications, ensuring seamless CI/CD execution. Maintaining and upgrading AKS clusters, implementing best practices for performance, scalability, and security Monitoring applications through Grafana dashboards& integrating pipelines with SonarQube& other code quality tools for DevSecOps"
+        },
+        {
+          "source_id": "e0:4250:5264",
+          "quote": " compliance. Preparing end-to-end technical and functional documentation for newly onboarded APIs to ensure clarity and knowledge transfer. Deploying and monitoring syntesters and healthcheck APIs, ensuring reliability and continuous availability. Identifying & implementing automation solutions using PowerShell&Bash scripting, improving operational efficiency & reducing manual effort. Devops Architect | Persistent, Bangalore | Dec’23 – June’24 Served as DevOps architect for multiple client projects, designing and implementing scalable DevOps pipelines. Implemented DevOps pipelines leveraging Azure WebApps, FunctionApps, Storage Accounts, Databricks, and Azure Data Factory (ADF). Managed DevSecOps practices, integrating security and compliance tools into the deployment lifecycle. Utilized Terraform (IaC) for infrastructure provisioning and automated environment management. Deployed Dockerized applications&Kubernetes workloads (AKS) using Helm Charts and ArgoCD, ensuring reliable &scalable deployments"
+        },
+        {
+          "source_id": "e0:5264:6225",
+          "quote": ". Architected Azure infrastructure for web applications, managed Azure migration from Hyper-V environments, performed Bash and PowerShell scripting, and contributed as a member of Agile/Scrum teams. Senior DevOps Specialist | LTIMindtree, Bangalore | Aug’ 21 – Dec’ 23 Led DevOps initiatives for multiple P&G applications, overseeing build and release pipelines and ensuring operational excellence. Managed build and release pipelines using Azure DevOps, Jenkins, and GitHub Actions for seamless CI/CD execution. Architected Azure infrastructure for API applications collaboratively as part of the technical team. Created and maintained build and release pipelines for .NET Core, React.js, and Node.js applications, including Azure Data Factory (ADF) and Databricks (ADB) integrations. Migrated DevOps pipelines between GitHub Actions and Azure DevOps, ensuring minimal downtime and process continuity. Deployed applications to Azure WebApps, Function Apps, CDN"
+        },
+        {
+          "source_id": "e0:6225:7217",
+          "quote": ", CloudFront,&Azure ML Workspace, ensuring high availability & performance. Implemented DevSecOps practices by integrating SonarQube and other security tools into pipelines as per compliance requirements, and managed ARM templates and Terraform IaC. Managed dockerized applications and Kubernetes (AKS) deployments, performed Bash and PowerShell scripting, and followed Agile/Scrum methodology with effective change management. Sr. Technical Consultant | Experis IT, Bangalore | Aug’ 19 – Aug’ 21 Served as an Azure DevOps engineer for IBM clients, ensuring seamless project execution and environment management. Configured permissions and access controls for DevOps projects, maintaining security and compliance standards. Managed source code versioning using Azure Repos and implemented build and release pipelines for .NET Core applications. Deployed & maintained applications on Azure WebApps, Virtual Machines (VMs),&AKS (Azure Kubernetes Service), ensuring reliable delivery. Monitored "
+        },
+        {
+          "source_id": "e0:7217:8300",
+          "quote": "applications & infrastructure using Azure Monitor, & configured desired state configurations for web servers to ensure stability. Applied PowerShell automation for routine tasks, utilized ARM templates and Terraform for infrastructure provisioning, and supported Azure Load Balancer and Traffic Manager configurations. Principal Associate | Eurofins, Bangalore | Oct’18 – Apr’ 19 Provided production infrastructure DevOps support for .NET and Windows-based applications, ensuring stable and reliable operations. Managedautomated deployments using Jenkins and PowerShell, managed manual deployments, and resolved related deployment issues. Troubleshot website issues, including error codes, SSL-related problems, DNS, performance bottlenecks, on IIS, Azure WebApps, &SQL Server. Monitored data flow issues, executed Disaster Recovery (DR) procedures, & implemented PowerShell automation for routine operational tasks. Technical Specialist | IBM, Bangalore | Aug’16 – Oct’18 Provided middleware support and automation for the Anthem WellPoint client, ensuring smooth operations across "
+        },
+        {
+          "source_id": "e0:8300:9298",
+          "quote": "production and non-production environments. Managed IIS & Apache servers, including SSL certificate, & executed automated and manual deployments, hotfixes, &root cause analysis for performance issues. Developed and implemented PowerShell automation scripts to streamline routine tasks and enhance process efficiency. Technical Associate | Ernst and Young, Cochin | Dec’11 – May’16 Installation, configuration , performance optimization and support of web and app servers for different audit applciations Handling automated, manual deployments, SSL certificates and related issues in Web and App servers PowerShell automation support for developing toolsets in IIS, AD PROJECTS AT&T – Designed and implemented DevOps pipelines for API testing applications. P&G – Implemented end-to-end Azure DevOps architecture for web applications. Pipeline Migration – Migrated pipelines between GitHub Actions and Azure DevOps (Node.js, React.js). CI/CD Automation – Built CI/CD pipelines for Azure Data Factory "
+        },
+        {
+          "source_id": "e0:9298:9325",
+          "quote": "(ADF) and Databricks (ADB)."
+        }
+      ]
+    }
+  ]
+}

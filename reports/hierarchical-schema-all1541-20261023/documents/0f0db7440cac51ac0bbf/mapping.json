@@ -1,0 +1,2266 @@
+{
+  "success": true,
+  "source": "Lalitesh Singh.pdf",
+  "extraction_mode": "existing_blocks_schema_mapping",
+  "data": {
+    "contact": {
+      "full_name": "Lalitesh-LinkedIN",
+      "email": "Laliteshtdl@gmail.com",
+      "phone": "",
+      "location": null,
+      "linkedin_url": null,
+      "github_url": null,
+      "portfolio_url": null
+    },
+    "professional_title": null,
+    "summary": "Certified Workday Integrations Consultant with 3 years of experience in Implementation, AMS, and support projects. Skilled in designing and developing Workday integrations, collaborating with clients, gathering business requirements, and implementing solutions.",
+    "total_experience_years": 3.0,
+    "skills": {
+      "technical_skills": [
+        "Java"
+      ],
+      "tools_and_platforms": [],
+      "domain_and_functional": [],
+      "soft_skills": [],
+      "all_skills": [
+        "Java",
+        "Integrations",
+        "Custom Reports",
+        "XSLT Transformations",
+        "Security",
+        "Business Processes",
+        "EIB & CCW",
+        "Calculated Fields",
+        "XSLT",
+        "JAVA",
+        "English",
+        "XML",
+        "MS Office",
+        "Problem Solving",
+        "WORKDAY CERTIFICATIONS",
+        "Workday Integration",
+        "Cloud Connect for third party Payroll (CCTPP)",
+        "Orchestrate for Integrations"
+      ]
+    },
+    "experience": [
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      }
+    ],
+    "education": [
+      {
+        "institution": "",
+        "degree": "",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      },
+      {
+        "institution": "",
+        "degree": "",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      },
+      {
+        "institution": "",
+        "degree": "",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      }
+    ],
+    "certifications": [],
+    "projects": [],
+    "languages": []
+  },
+  "schema_mapping": {
+    "fields_populated": 8,
+    "total_fields": 16,
+    "completion_percentage": 50.0,
+    "field_details": [
+      {
+        "field_name": "contact.full_name",
+        "target_type": "string",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Personal Details",
+        "confidence_score": 0.95,
+        "description": "Candidate's full name, extracted from the top header of the resume."
+      },
+      {
+        "field_name": "contact.email",
+        "target_type": "string (email)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.98,
+        "description": "Candidate's primary contact email address."
+      },
+      {
+        "field_name": "contact.phone",
+        "target_type": "string (phone)",
+        "is_required": true,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's telephone / mobile phone number."
+      },
+      {
+        "field_name": "contact.location",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's residential location or work city."
+      },
+      {
+        "field_name": "contact.linkedin_url",
+        "target_type": "string (url) | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "URL to candidate's LinkedIn profile."
+      },
+      {
+        "field_name": "professional_title",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Subtitle",
+        "confidence_score": 0.0,
+        "description": "Candidate's target headline or most recent job title."
+      },
+      {
+        "field_name": "summary",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Summary / Profile / Objective",
+        "confidence_score": 0.85,
+        "description": "Executive bio, professional overview, or career objective."
+      },
+      {
+        "field_name": "total_experience_years",
+        "target_type": "float | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Summary / Experience Calculation",
+        "confidence_score": 0.9,
+        "description": "Total professional experience in years."
+      },
+      {
+        "field_name": "skills.technical_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills / Technical Competencies",
+        "confidence_score": 0.92,
+        "description": "Technical programming languages and core software competencies."
+      },
+      {
+        "field_name": "skills.tools_and_platforms",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Tools & Technologies",
+        "confidence_score": 0.0,
+        "description": "Software platforms, developer tools, and operational systems."
+      },
+      {
+        "field_name": "skills.domain_and_functional",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Domain Expertise",
+        "confidence_score": 0.0,
+        "description": "Functional domain knowledge (e.g. Hedge Funds, KYC, NAV, Derivatives)."
+      },
+      {
+        "field_name": "skills.all_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills (Aggregated)",
+        "confidence_score": 0.95,
+        "description": "Complete list of candidate skills across all categories."
+      },
+      {
+        "field_name": "experience",
+        "target_type": "array[WorkExperience]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Experience / Work History",
+        "confidence_score": 0.92,
+        "description": "Complete chronological employment records with bullet points."
+      },
+      {
+        "field_name": "education",
+        "target_type": "array[Education]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Education / Academic Qualifications",
+        "confidence_score": 0.9,
+        "description": "University, college, and higher education degree qualifications."
+      },
+      {
+        "field_name": "certifications",
+        "target_type": "array[Certification]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Certifications / Licenses",
+        "confidence_score": 0.0,
+        "description": "Professional accreditations and credentials."
+      },
+      {
+        "field_name": "projects",
+        "target_type": "array[Project]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Projects / Key Engagements",
+        "confidence_score": 0.0,
+        "description": "Major projects or strategic initiatives led by candidate."
+      }
+    ]
+  },
+  "raw_sections": {
+    "personal_information": "Lalitesh-LinkedIN\nLaliteshtdl@gmail.com",
+    "summary": "ABOUT ME\nCertified Workday Integrations Consultant with 3 years of experience in Implementation, AMS, and support projects. Skilled in designing and developing Workday integrations, collaborating with clients, gathering business requirements, and implementing solutions.",
+    "skills": "AREA OF EXPERTISE\nIntegrations\nCustom Reports\nXSLT Transformations\nSecurity\nBusiness Processes\nEIB & CCW\nCalculated Fields\nSKILLS\nXSLT\nJAVA\nEnglish\nXML\nMS Office\nProblem Solving\nWORKDAY CERTIFICATIONS\nWorkday Integration\nCloud Connect for third party Payroll (CCTPP)\nOrchestrate for Integrations",
+    "experience": "EXPERIENCE\n2022 - NOW\nWorkday Integration Consultant\nCognizant Technology\nSolutions\nWorked closely with clients to understand their needs, gathered requirements, and built integration solutions.\nFixed integration errors by checking logs, troubleshooting Workday Studio issues, and helping clients resolve data problems.\nDesigned and developed integrations using EIB, Core Connectors, PECI, Workday Studio, and RaaS reports.\nProvided ongoing support for AMS and post-launch projects by fixing issues, improving performance, and making updates based on user feedback.\nCustomized Workday Studio integrations to automate daily data checks and meet business requirements.\nPerformed Workday Release Testing to make sure integrations worked correctly and followed compliance rules.\nCreated change requests and detailed documentation, including build guides, test plans, and migration documents to ensure smooth updates and transitions.\nBuilt, tested, and verified integrations during implementation, then retested in Sandbox with updated data before migrating to production.",
+    "education": "EDUCATION\n2018 – 2022\nBachelor of Technology, Computer Science & Engineering\nGraphic Era University Dehradun, India",
+    "awards": "ACCOMPLISHMENTS\nReceived client appreciations and recommendations for exceptional performance and delivery.\nProvided Knowledge Transfer (KT) sessions to team members.\nHindi"
+  },
+  "meta": {
+    "status": "needs_review",
+    "human_verified": false,
+    "provider_calls": 0,
+    "source_accounting": {
+      "all_source_text_preserved": true,
+      "total_spans": 58,
+      "assigned_meaningful_spans": 55,
+      "unresolved_meaningful_spans": 3,
+      "non_content_artifacts": 0,
+      "duplicates_excluded": 0,
+      "all_meaningful_text_assigned": false,
+      "semantic_correctness_verified": false,
+      "outcomes": [
+        {
+          "source_id": "e0:0:14",
+          "source_element_index": 0,
+          "start": 0,
+          "end": 14,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e1:0:30",
+          "source_element_index": 1,
+          "start": 0,
+          "end": 30,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e2:0:14",
+          "source_element_index": 2,
+          "start": 0,
+          "end": 14,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e3:0:17",
+          "source_element_index": 3,
+          "start": 0,
+          "end": 17,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e4:0:21",
+          "source_element_index": 4,
+          "start": 0,
+          "end": 21,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e5:0:8",
+          "source_element_index": 5,
+          "start": 0,
+          "end": 8,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e6:0:97",
+          "source_element_index": 6,
+          "start": 0,
+          "end": 97,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e6:97:201",
+          "source_element_index": 6,
+          "start": 97,
+          "end": 201,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e6:201:261",
+          "source_element_index": 6,
+          "start": 201,
+          "end": 261,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e7:0:17",
+          "source_element_index": 7,
+          "start": 0,
+          "end": 17,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Distinct BERT heading match with a K-means section label"
+        },
+        {
+          "source_id": "e8:0:12",
+          "source_element_index": 8,
+          "start": 0,
+          "end": 12,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:0:14",
+          "source_element_index": 9,
+          "start": 0,
+          "end": 14,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e10:0:20",
+          "source_element_index": 10,
+          "start": 0,
+          "end": 20,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e11:0:8",
+          "source_element_index": 11,
+          "start": 0,
+          "end": 8,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:0:18",
+          "source_element_index": 12,
+          "start": 0,
+          "end": 18,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e13:0:9",
+          "source_element_index": 13,
+          "start": 0,
+          "end": 9,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e14:0:17",
+          "source_element_index": 14,
+          "start": 0,
+          "end": 17,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e15:0:10",
+          "source_element_index": 15,
+          "start": 0,
+          "end": 10,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e16:0:10",
+          "source_element_index": 16,
+          "start": 0,
+          "end": 10,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e17:0:30",
+          "source_element_index": 17,
+          "start": 0,
+          "end": 30,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e18:0:20",
+          "source_element_index": 18,
+          "start": 0,
+          "end": 20,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e19:0:9",
+          "source_element_index": 19,
+          "start": 0,
+          "end": 9,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e20:0:82",
+          "source_element_index": 20,
+          "start": 0,
+          "end": 82,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e20:82:110",
+          "source_element_index": 20,
+          "start": 82,
+          "end": 110,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e21:0:82",
+          "source_element_index": 21,
+          "start": 0,
+          "end": 82,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e21:82:124",
+          "source_element_index": 21,
+          "start": 82,
+          "end": 124,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e22:0:78",
+          "source_element_index": 22,
+          "start": 0,
+          "end": 78,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e22:78:103",
+          "source_element_index": 22,
+          "start": 78,
+          "end": 103,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e23:0:76",
+          "source_element_index": 23,
+          "start": 0,
+          "end": 76,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e23:76:141",
+          "source_element_index": 23,
+          "start": 76,
+          "end": 141,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e24:0:78",
+          "source_element_index": 24,
+          "start": 0,
+          "end": 78,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e24:78:100",
+          "source_element_index": 24,
+          "start": 78,
+          "end": 100,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e25:0:81",
+          "source_element_index": 25,
+          "start": 0,
+          "end": 81,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e25:81:107",
+          "source_element_index": 25,
+          "start": 81,
+          "end": 107,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e26:0:81",
+          "source_element_index": 26,
+          "start": 0,
+          "end": 81,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e26:81:153",
+          "source_element_index": 26,
+          "start": 81,
+          "end": 153,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e27:0:81",
+          "source_element_index": 27,
+          "start": 0,
+          "end": 81,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e27:81:138",
+          "source_element_index": 27,
+          "start": 81,
+          "end": 138,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e28:0:9",
+          "source_element_index": 28,
+          "start": 0,
+          "end": 9,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e29:0:11",
+          "source_element_index": 29,
+          "start": 0,
+          "end": 11,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e30:0:54",
+          "source_element_index": 30,
+          "start": 0,
+          "end": 54,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e31:0:23",
+          "source_element_index": 31,
+          "start": 0,
+          "end": 23,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e31:23:38",
+          "source_element_index": 31,
+          "start": 23,
+          "end": 38,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e32:0:6",
+          "source_element_index": 32,
+          "start": 0,
+          "end": 6,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e33:0:4",
+          "source_element_index": 33,
+          "start": 0,
+          "end": 4,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e34:0:4",
+          "source_element_index": 34,
+          "start": 0,
+          "end": 4,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e35:0:7",
+          "source_element_index": 35,
+          "start": 0,
+          "end": 7,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e36:0:3",
+          "source_element_index": 36,
+          "start": 0,
+          "end": 3,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e37:0:9",
+          "source_element_index": 37,
+          "start": 0,
+          "end": 9,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e38:0:15",
+          "source_element_index": 38,
+          "start": 0,
+          "end": 15,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e39:0:22",
+          "source_element_index": 39,
+          "start": 0,
+          "end": 22,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e40:0:19",
+          "source_element_index": 40,
+          "start": 0,
+          "end": 19,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e41:0:45",
+          "source_element_index": 41,
+          "start": 0,
+          "end": 45,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e42:0:28",
+          "source_element_index": 42,
+          "start": 0,
+          "end": 28,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e43:0:15",
+          "source_element_index": 43,
+          "start": 0,
+          "end": 15,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Distinct BERT heading match with a K-means section label"
+        },
+        {
+          "source_id": "e44:0:91",
+          "source_element_index": 44,
+          "start": 0,
+          "end": 91,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e45:0:58",
+          "source_element_index": 45,
+          "start": 0,
+          "end": 58,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e46:0:5",
+          "source_element_index": 46,
+          "start": 0,
+          "end": 5,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        }
+      ]
+    },
+    "document_scope": {
+      "kind": "likely_resume",
+      "candidate_resume": true,
+      "reason": "Contact details, multiple resume section families and dated history; provisional scope only",
+      "human_verified": false
+    },
+    "source_inventory_sha256": "79f90b8e27200d2df7b61c9ef44ce8177d8011966c0959c6a00025154fcec1c4",
+    "field_evidence": {
+      "contact.full_name": [
+        "e3:0:17",
+        "e4:0:21"
+      ],
+      "contact.email": [
+        "e3:0:17",
+        "e4:0:21"
+      ],
+      "summary": [
+        "e6:0:97",
+        "e6:97:201",
+        "e6:201:261"
+      ],
+      "total_experience_years": [
+        "e6:0:97"
+      ],
+      "skills.technical_skills[0]": [
+        "e34:0:4"
+      ],
+      "skills.all_skills[0]": [
+        "e34:0:4"
+      ],
+      "skills.all_skills[1]": [
+        "e8:0:12",
+        "e42:0:28"
+      ],
+      "skills.all_skills[2]": [
+        "e9:0:14"
+      ],
+      "skills.all_skills[3]": [
+        "e10:0:20"
+      ],
+      "skills.all_skills[4]": [
+        "e11:0:8"
+      ],
+      "skills.all_skills[5]": [
+        "e12:0:18"
+      ],
+      "skills.all_skills[6]": [
+        "e13:0:9"
+      ],
+      "skills.all_skills[7]": [
+        "e14:0:17"
+      ],
+      "skills.all_skills[8]": [
+        "e10:0:20",
+        "e33:0:4"
+      ],
+      "skills.all_skills[9]": [
+        "e34:0:4"
+      ],
+      "skills.all_skills[10]": [
+        "e35:0:7"
+      ],
+      "skills.all_skills[11]": [
+        "e36:0:3"
+      ],
+      "skills.all_skills[12]": [
+        "e37:0:9"
+      ],
+      "skills.all_skills[13]": [
+        "e38:0:15"
+      ],
+      "skills.all_skills[14]": [
+        "e39:0:22"
+      ],
+      "skills.all_skills[15]": [
+        "e40:0:19"
+      ],
+      "skills.all_skills[16]": [
+        "e41:0:45"
+      ],
+      "skills.all_skills[17]": [
+        "e42:0:28"
+      ]
+    },
+    "record_reviews": [
+      {
+        "category": "experience",
+        "entry_id": "experience-1",
+        "source_ids": [
+          "e16:0:10"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-2",
+        "source_ids": [
+          "e17:0:30",
+          "e20:0:82",
+          "e20:82:110",
+          "e21:0:82",
+          "e21:82:124",
+          "e22:0:78",
+          "e22:78:103",
+          "e23:0:76",
+          "e23:76:141",
+          "e24:0:78",
+          "e24:78:100",
+          "e25:0:81",
+          "e25:81:107",
+          "e26:0:81",
+          "e26:81:153",
+          "e27:0:81",
+          "e27:81:138"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-3",
+        "source_ids": [
+          "e18:0:20"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-4",
+        "source_ids": [
+          "e19:0:9"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "education",
+        "entry_id": "education-1",
+        "source_ids": [
+          "e29:0:11"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "education",
+        "entry_id": "education-2",
+        "source_ids": [
+          "e30:0:54"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "education",
+        "entry_id": "education-3",
+        "source_ids": [
+          "e31:0:23",
+          "e31:23:38"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      }
+    ],
+    "missing_required_fields": [
+      "contact.phone",
+      "experience[0].company",
+      "experience[0].role",
+      "experience[1].company",
+      "experience[1].role",
+      "experience[2].company",
+      "experience[2].role",
+      "experience[3].company",
+      "experience[3].role",
+      "education[0].institution",
+      "education[0].degree",
+      "education[1].institution",
+      "education[1].degree",
+      "education[2].institution",
+      "education[2].degree"
+    ],
+    "warnings": [
+      "Schema validity and field completion do not establish extraction or relationship accuracy.",
+      "Handoff confidence scores are fixed heuristics, not calibrated probabilities.",
+      "Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields."
+    ],
+    "unmapped_blocks": [
+      {
+        "source_id": "e5:0:8",
+        "category": "summary",
+        "text": "ABOUT ME",
+        "page_number": 1
+      },
+      {
+        "source_id": "e7:0:17",
+        "category": "skills",
+        "text": "AREA OF EXPERTISE",
+        "page_number": 1
+      },
+      {
+        "source_id": "e32:0:6",
+        "category": "skills",
+        "text": "SKILLS",
+        "page_number": 2
+      },
+      {
+        "source_id": "e15:0:10",
+        "category": "experience",
+        "text": "EXPERIENCE",
+        "page_number": 1
+      },
+      {
+        "source_id": "e16:0:10",
+        "category": "experience",
+        "text": "2022 - NOW",
+        "page_number": 1
+      },
+      {
+        "source_id": "e17:0:30",
+        "category": "experience",
+        "text": "Workday Integration Consultant",
+        "page_number": 1
+      },
+      {
+        "source_id": "e18:0:20",
+        "category": "experience",
+        "text": "Cognizant Technology",
+        "page_number": 1
+      },
+      {
+        "source_id": "e19:0:9",
+        "category": "experience",
+        "text": "Solutions",
+        "page_number": 1
+      },
+      {
+        "source_id": "e20:0:82",
+        "category": "experience",
+        "text": "Worked closely with clients to understand their needs, gathered requirements, and ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e20:82:110",
+        "category": "experience",
+        "text": "built integration solutions.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e21:0:82",
+        "category": "experience",
+        "text": "Fixed integration errors by checking logs, troubleshooting Workday Studio issues, ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e21:82:124",
+        "category": "experience",
+        "text": "and helping clients resolve data problems.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e22:0:78",
+        "category": "experience",
+        "text": "Designed and developed integrations using EIB, Core Connectors, PECI, Workday ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e22:78:103",
+        "category": "experience",
+        "text": "Studio, and RaaS reports.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e23:0:76",
+        "category": "experience",
+        "text": "Provided ongoing support for AMS and post-launch projects by fixing issues, ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e23:76:141",
+        "category": "experience",
+        "text": "improving performance, and making updates based on user feedback.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e24:0:78",
+        "category": "experience",
+        "text": "Customized Workday Studio integrations to automate daily data checks and meet ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e24:78:100",
+        "category": "experience",
+        "text": "business requirements.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e25:0:81",
+        "category": "experience",
+        "text": "Performed Workday Release Testing to make sure integrations worked correctly and ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e25:81:107",
+        "category": "experience",
+        "text": "followed compliance rules.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e26:0:81",
+        "category": "experience",
+        "text": "Created change requests and detailed documentation, including build guides, test ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e26:81:153",
+        "category": "experience",
+        "text": "plans, and migration documents to ensure smooth updates and transitions.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e27:0:81",
+        "category": "experience",
+        "text": "Built, tested, and verified integrations during implementation, then retested in ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e27:81:138",
+        "category": "experience",
+        "text": "Sandbox with updated data before migrating to production.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e28:0:9",
+        "category": "education",
+        "text": "EDUCATION",
+        "page_number": 2
+      },
+      {
+        "source_id": "e29:0:11",
+        "category": "education",
+        "text": "2018 – 2022",
+        "page_number": 2
+      },
+      {
+        "source_id": "e30:0:54",
+        "category": "education",
+        "text": "Bachelor of Technology, Computer Science & Engineering",
+        "page_number": 2
+      },
+      {
+        "source_id": "e31:0:23",
+        "category": "education",
+        "text": "Graphic Era University ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e31:23:38",
+        "category": "education",
+        "text": "Dehradun, India",
+        "page_number": 2
+      },
+      {
+        "source_id": "e43:0:15",
+        "category": "awards",
+        "text": "ACCOMPLISHMENTS",
+        "page_number": 2
+      },
+      {
+        "source_id": "e44:0:91",
+        "category": "awards",
+        "text": "Received client appreciations and recommendations for exceptional performance and delivery.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e45:0:58",
+        "category": "awards",
+        "text": "Provided Knowledge Transfer (KT) sessions to team members.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e46:0:5",
+        "category": "awards",
+        "text": "Hindi",
+        "page_number": 2
+      },
+      {
+        "source_id": "e0:0:14",
+        "category": null,
+        "text": "LALITESH SINGH",
+        "page_number": 1
+      },
+      {
+        "source_id": "e1:0:30",
+        "category": null,
+        "text": "WORKDAY INTEGRATION CONSULTANT",
+        "page_number": 1
+      },
+      {
+        "source_id": "e2:0:14",
+        "category": null,
+        "text": "+91 9761680245",
+        "page_number": 1
+      }
+    ],
+    "needs_review": [
+      {
+        "source_element_index": 0,
+        "start": 0,
+        "end": 14,
+        "text": "LALITESH SINGH",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.224,
+        "margin": 0.0033,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 1,
+        "start": 0,
+        "end": 30,
+        "text": "WORKDAY INTEGRATION CONSULTANT",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.4506,
+        "margin": 0.0658,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 2,
+        "start": 0,
+        "end": 14,
+        "text": "+91 9761680245",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.0923,
+        "margin": -0.0608,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      }
+    ]
+  },
+  "section_schemas": [
+    {
+      "category": "personal_information",
+      "label": "Personal information",
+      "records": [
+        {
+          "record_id": "personal_information",
+          "source_ids": [
+            "e3:0:17",
+            "e4:0:21"
+          ],
+          "attributes": [
+            {
+              "name": "full_name",
+              "items": [
+                {
+                  "value": "Lalitesh-LinkedIN",
+                  "evidence": [
+                    {
+                      "source_id": "e3:0:17",
+                      "quote": "Lalitesh-LinkedIN"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "email",
+              "items": [
+                {
+                  "value": "Laliteshtdl@gmail.com",
+                  "evidence": [
+                    {
+                      "source_id": "e4:0:21",
+                      "quote": "Laliteshtdl@gmail.com"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "phone",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "linkedin_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "github_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "portfolio_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "professional_title",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": []
+    },
+    {
+      "category": "summary",
+      "label": "Summary",
+      "records": [
+        {
+          "record_id": "summary",
+          "source_ids": [
+            "e6:0:97",
+            "e6:97:201",
+            "e6:201:261"
+          ],
+          "attributes": [
+            {
+              "name": "statements",
+              "items": [
+                {
+                  "value": "Certified Workday Integrations Consultant with 3 years of experience in Implementation, AMS, and ",
+                  "evidence": [
+                    {
+                      "source_id": "e6:0:97",
+                      "quote": "Certified Workday Integrations Consultant with 3 years of experience in Implementation, AMS, and "
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "support projects. Skilled in designing and developing Workday integrations, collaborating with clients, ",
+                  "evidence": [
+                    {
+                      "source_id": "e6:97:201",
+                      "quote": "support projects. Skilled in designing and developing Workday integrations, collaborating with clients, "
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "gathering business requirements, and implementing solutions.",
+                  "evidence": [
+                    {
+                      "source_id": "e6:201:261",
+                      "quote": "gathering business requirements, and implementing solutions."
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "total_experience_years",
+              "items": [
+                {
+                  "value": 3.0,
+                  "evidence": [
+                    {
+                      "source_id": "e6:0:97",
+                      "quote": "3"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e5:0:8",
+          "quote": "ABOUT ME"
+        }
+      ]
+    },
+    {
+      "category": "skills",
+      "label": "Skills",
+      "records": [
+        {
+          "record_id": "skills",
+          "source_ids": [
+            "e8:0:12",
+            "e9:0:14",
+            "e10:0:20",
+            "e11:0:8",
+            "e12:0:18",
+            "e13:0:9",
+            "e14:0:17",
+            "e33:0:4",
+            "e34:0:4",
+            "e35:0:7",
+            "e36:0:3",
+            "e37:0:9",
+            "e38:0:15",
+            "e39:0:22",
+            "e40:0:19",
+            "e41:0:45",
+            "e42:0:28"
+          ],
+          "attributes": [
+            {
+              "name": "technical_skills",
+              "items": [
+                {
+                  "value": "Java",
+                  "evidence": [
+                    {
+                      "source_id": "e34:0:4",
+                      "quote": "JAVA"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "tools_and_platforms",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "domain_and_functional",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "soft_skills",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "all_skills",
+              "items": [
+                {
+                  "value": "Java",
+                  "evidence": [
+                    {
+                      "source_id": "e34:0:4",
+                      "quote": "JAVA"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Integrations",
+                  "evidence": [
+                    {
+                      "source_id": "e8:0:12",
+                      "quote": "Integrations"
+                    },
+                    {
+                      "source_id": "e42:0:28",
+                      "quote": "Integrations"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Custom Reports",
+                  "evidence": [
+                    {
+                      "source_id": "e9:0:14",
+                      "quote": "Custom Reports"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "XSLT Transformations",
+                  "evidence": [
+                    {
+                      "source_id": "e10:0:20",
+                      "quote": "XSLT Transformations"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Security",
+                  "evidence": [
+                    {
+                      "source_id": "e11:0:8",
+                      "quote": "Security"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Business Processes",
+                  "evidence": [
+                    {
+                      "source_id": "e12:0:18",
+                      "quote": "Business Processes"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "EIB & CCW",
+                  "evidence": [
+                    {
+                      "source_id": "e13:0:9",
+                      "quote": "EIB & CCW"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Calculated Fields",
+                  "evidence": [
+                    {
+                      "source_id": "e14:0:17",
+                      "quote": "Calculated Fields"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "XSLT",
+                  "evidence": [
+                    {
+                      "source_id": "e10:0:20",
+                      "quote": "XSLT"
+                    },
+                    {
+                      "source_id": "e33:0:4",
+                      "quote": "XSLT"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "JAVA",
+                  "evidence": [
+                    {
+                      "source_id": "e34:0:4",
+                      "quote": "JAVA"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "English",
+                  "evidence": [
+                    {
+                      "source_id": "e35:0:7",
+                      "quote": "English"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "XML",
+                  "evidence": [
+                    {
+                      "source_id": "e36:0:3",
+                      "quote": "XML"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "MS Office",
+                  "evidence": [
+                    {
+                      "source_id": "e37:0:9",
+                      "quote": "MS Office"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Problem Solving",
+                  "evidence": [
+                    {
+                      "source_id": "e38:0:15",
+                      "quote": "Problem Solving"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "WORKDAY CERTIFICATIONS",
+                  "evidence": [
+                    {
+                      "source_id": "e39:0:22",
+                      "quote": "WORKDAY CERTIFICATIONS"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Workday Integration",
+                  "evidence": [
+                    {
+                      "source_id": "e40:0:19",
+                      "quote": "Workday Integration"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Cloud Connect for third party Payroll (CCTPP)",
+                  "evidence": [
+                    {
+                      "source_id": "e41:0:45",
+                      "quote": "Cloud Connect for third party Payroll (CCTPP)"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Orchestrate for Integrations",
+                  "evidence": [
+                    {
+                      "source_id": "e42:0:28",
+                      "quote": "Orchestrate for Integrations"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e7:0:17",
+          "quote": "AREA OF EXPERTISE"
+        },
+        {
+          "source_id": "e32:0:6",
+          "quote": "SKILLS"
+        }
+      ]
+    },
+    {
+      "category": "experience",
+      "label": "Experience",
+      "records": [
+        {
+          "record_id": "experience-1",
+          "source_ids": [
+            "e16:0:10"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "experience-2",
+          "source_ids": [
+            "e17:0:30",
+            "e20:0:82",
+            "e20:82:110",
+            "e21:0:82",
+            "e21:82:124",
+            "e22:0:78",
+            "e22:78:103",
+            "e23:0:76",
+            "e23:76:141",
+            "e24:0:78",
+            "e24:78:100",
+            "e25:0:81",
+            "e25:81:107",
+            "e26:0:81",
+            "e26:81:153",
+            "e27:0:81",
+            "e27:81:138"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "experience-3",
+          "source_ids": [
+            "e18:0:20"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "experience-4",
+          "source_ids": [
+            "e19:0:9"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e15:0:10",
+          "quote": "EXPERIENCE"
+        },
+        {
+          "source_id": "e16:0:10",
+          "quote": "2022 - NOW"
+        },
+        {
+          "source_id": "e17:0:30",
+          "quote": "Workday Integration Consultant"
+        },
+        {
+          "source_id": "e18:0:20",
+          "quote": "Cognizant Technology"
+        },
+        {
+          "source_id": "e19:0:9",
+          "quote": "Solutions"
+        },
+        {
+          "source_id": "e20:0:82",
+          "quote": "Worked closely with clients to understand their needs, gathered requirements, and "
+        },
+        {
+          "source_id": "e20:82:110",
+          "quote": "built integration solutions."
+        },
+        {
+          "source_id": "e21:0:82",
+          "quote": "Fixed integration errors by checking logs, troubleshooting Workday Studio issues, "
+        },
+        {
+          "source_id": "e21:82:124",
+          "quote": "and helping clients resolve data problems."
+        },
+        {
+          "source_id": "e22:0:78",
+          "quote": "Designed and developed integrations using EIB, Core Connectors, PECI, Workday "
+        },
+        {
+          "source_id": "e22:78:103",
+          "quote": "Studio, and RaaS reports."
+        },
+        {
+          "source_id": "e23:0:76",
+          "quote": "Provided ongoing support for AMS and post-launch projects by fixing issues, "
+        },
+        {
+          "source_id": "e23:76:141",
+          "quote": "improving performance, and making updates based on user feedback."
+        },
+        {
+          "source_id": "e24:0:78",
+          "quote": "Customized Workday Studio integrations to automate daily data checks and meet "
+        },
+        {
+          "source_id": "e24:78:100",
+          "quote": "business requirements."
+        },
+        {
+          "source_id": "e25:0:81",
+          "quote": "Performed Workday Release Testing to make sure integrations worked correctly and "
+        },
+        {
+          "source_id": "e25:81:107",
+          "quote": "followed compliance rules."
+        },
+        {
+          "source_id": "e26:0:81",
+          "quote": "Created change requests and detailed documentation, including build guides, test "
+        },
+        {
+          "source_id": "e26:81:153",
+          "quote": "plans, and migration documents to ensure smooth updates and transitions."
+        },
+        {
+          "source_id": "e27:0:81",
+          "quote": "Built, tested, and verified integrations during implementation, then retested in "
+        },
+        {
+          "source_id": "e27:81:138",
+          "quote": "Sandbox with updated data before migrating to production."
+        }
+      ]
+    },
+    {
+      "category": "education",
+      "label": "Education",
+      "records": [
+        {
+          "record_id": "education-1",
+          "source_ids": [
+            "e29:0:11"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "degree",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "education-2",
+          "source_ids": [
+            "e30:0:54"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "degree",
+              "items": [
+                {
+                  "value": "Bachelor of Technology",
+                  "evidence": [
+                    {
+                      "source_id": "e30:0:54",
+                      "quote": "Bachelor of Technology"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "education-3",
+          "source_ids": [
+            "e31:0:23",
+            "e31:23:38"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "degree",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e28:0:9",
+          "quote": "EDUCATION"
+        },
+        {
+          "source_id": "e29:0:11",
+          "quote": "2018 – 2022"
+        },
+        {
+          "source_id": "e30:0:54",
+          "quote": "Bachelor of Technology, Computer Science & Engineering"
+        },
+        {
+          "source_id": "e31:0:23",
+          "quote": "Graphic Era University "
+        },
+        {
+          "source_id": "e31:23:38",
+          "quote": "Dehradun, India"
+        }
+      ]
+    },
+    {
+      "category": "awards",
+      "label": "Awards and achievements",
+      "records": [
+        {
+          "record_id": "awards-1",
+          "source_ids": [
+            "e44:0:91",
+            "e45:0:58"
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "issuer",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "date",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "Unlabelled compound information requires source review."
+          ]
+        },
+        {
+          "record_id": "awards-2",
+          "source_ids": [
+            "e46:0:5"
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "issuer",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "date",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "Unlabelled compound information requires source review."
+          ]
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e43:0:15",
+          "quote": "ACCOMPLISHMENTS"
+        },
+        {
+          "source_id": "e44:0:91",
+          "quote": "Received client appreciations and recommendations for exceptional performance and delivery."
+        },
+        {
+          "source_id": "e45:0:58",
+          "quote": "Provided Knowledge Transfer (KT) sessions to team members."
+        },
+        {
+          "source_id": "e46:0:5",
+          "quote": "Hindi"
+        }
+      ]
+    },
+    {
+      "category": "needs_review",
+      "label": "Unassigned source blocks",
+      "records": [],
+      "residual_blocks": [
+        {
+          "source_id": "e0:0:14",
+          "quote": "LALITESH SINGH"
+        },
+        {
+          "source_id": "e1:0:30",
+          "quote": "WORKDAY INTEGRATION CONSULTANT"
+        },
+        {
+          "source_id": "e2:0:14",
+          "quote": "+91 9761680245"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,4232 @@
+{
+  "success": true,
+  "source": "kunal.pdf",
+  "extraction_mode": "existing_blocks_schema_mapping",
+  "data": {
+    "contact": {
+      "full_name": "Educational Qualification",
+      "email": "kunalofficialmail7@gmail.com",
+      "phone": "91-8799722885",
+      "location": null,
+      "linkedin_url": null,
+      "github_url": null,
+      "portfolio_url": null
+    },
+    "professional_title": null,
+    "summary": "Business Analyst at Citi Bank with nearly 5 years of experience, deeply passionate about investment research and asset valuation. Proficient in leveraging tools for Analysis and Product Management. Currently pursuing CFA L1 to deepen my expertise.",
+    "total_experience_years": 5.0,
+    "skills": {
+      "technical_skills": [
+        "Python",
+        "SQL"
+      ],
+      "tools_and_platforms": [
+        "Power BI",
+        "Tableau",
+        "Bloomberg",
+        "JIRA",
+        "Confluence",
+        "Excel"
+      ],
+      "domain_and_functional": [],
+      "soft_skills": [
+        "Agile",
+        "Scrum"
+      ],
+      "all_skills": [
+        "Python",
+        "SQL",
+        "Power BI",
+        "Tableau",
+        "Bloomberg",
+        "JIRA",
+        "Confluence",
+        "Excel",
+        "Agile",
+        "Scrum",
+        "Jira",
+        "Agile (Scrum)",
+        "Figma",
+        "MS Excel",
+        "Lean/Six Sigma"
+      ]
+    },
+    "experience": [
+      {
+        "company": "",
+        "role": "",
+        "start_date": "Aug 2023",
+        "end_date": "June 2026",
+        "duration": "Aug 2023 – June 2026",
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      }
+    ],
+    "education": [
+      {
+        "institution": "XII, CBSE",
+        "degree": "",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      },
+      {
+        "institution": "",
+        "degree": "",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      },
+      {
+        "institution": "",
+        "degree": "",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      },
+      {
+        "institution": "",
+        "degree": "",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      }
+    ],
+    "certifications": [
+      {
+        "name": "Financial Statements (CFI), Introduction to Capital Markets (CFI), SQL Masterclass: SQL for Data Analytics",
+        "issuer": null,
+        "issue_year": null
+      }
+    ],
+    "projects": [
+      {
+        "name": "Financial Model of",
+        "description": "Financial Model of Mahindra & Mahindra\n• • •\nPerformed valuation of Mahindra & Mahindra using DCF and Multiples method for stock recommendation. Forecasted the financial line items based on assumptions from annual report and quarterly conference calls. Financial modelling involved collecting data from SIAM, TMA and industry reports by research agencies. Incorporated different scenarios based on expected industry growth rate for different product lines.",
+        "role": null,
+        "technologies": [],
+        "url": null
+      },
+      {
+        "name": "Certifications &",
+        "description": "Certifications & ",
+        "role": null,
+        "technologies": [],
+        "url": null
+      }
+    ],
+    "languages": []
+  },
+  "schema_mapping": {
+    "fields_populated": 12,
+    "total_fields": 16,
+    "completion_percentage": 75.0,
+    "field_details": [
+      {
+        "field_name": "contact.full_name",
+        "target_type": "string",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Personal Details",
+        "confidence_score": 0.95,
+        "description": "Candidate's full name, extracted from the top header of the resume."
+      },
+      {
+        "field_name": "contact.email",
+        "target_type": "string (email)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.98,
+        "description": "Candidate's primary contact email address."
+      },
+      {
+        "field_name": "contact.phone",
+        "target_type": "string (phone)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.95,
+        "description": "Candidate's telephone / mobile phone number."
+      },
+      {
+        "field_name": "contact.location",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's residential location or work city."
+      },
+      {
+        "field_name": "contact.linkedin_url",
+        "target_type": "string (url) | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "URL to candidate's LinkedIn profile."
+      },
+      {
+        "field_name": "professional_title",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Subtitle",
+        "confidence_score": 0.0,
+        "description": "Candidate's target headline or most recent job title."
+      },
+      {
+        "field_name": "summary",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Summary / Profile / Objective",
+        "confidence_score": 0.85,
+        "description": "Executive bio, professional overview, or career objective."
+      },
+      {
+        "field_name": "total_experience_years",
+        "target_type": "float | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Summary / Experience Calculation",
+        "confidence_score": 0.9,
+        "description": "Total professional experience in years."
+      },
+      {
+        "field_name": "skills.technical_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills / Technical Competencies",
+        "confidence_score": 0.92,
+        "description": "Technical programming languages and core software competencies."
+      },
+      {
+        "field_name": "skills.tools_and_platforms",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills / Tools & Technologies",
+        "confidence_score": 0.9,
+        "description": "Software platforms, developer tools, and operational systems."
+      },
+      {
+        "field_name": "skills.domain_and_functional",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Domain Expertise",
+        "confidence_score": 0.0,
+        "description": "Functional domain knowledge (e.g. Hedge Funds, KYC, NAV, Derivatives)."
+      },
+      {
+        "field_name": "skills.all_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills (Aggregated)",
+        "confidence_score": 0.95,
+        "description": "Complete list of candidate skills across all categories."
+      },
+      {
+        "field_name": "experience",
+        "target_type": "array[WorkExperience]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Experience / Work History",
+        "confidence_score": 0.92,
+        "description": "Complete chronological employment records with bullet points."
+      },
+      {
+        "field_name": "education",
+        "target_type": "array[Education]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Education / Academic Qualifications",
+        "confidence_score": 0.9,
+        "description": "University, college, and higher education degree qualifications."
+      },
+      {
+        "field_name": "certifications",
+        "target_type": "array[Certification]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Certifications / Licenses",
+        "confidence_score": 0.8,
+        "description": "Professional accreditations and credentials."
+      },
+      {
+        "field_name": "projects",
+        "target_type": "array[Project]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Projects / Key Engagements",
+        "confidence_score": 0.8,
+        "description": "Major projects or strategic initiatives led by candidate."
+      }
+    ]
+  },
+  "raw_sections": {
+    "personal_information": "Email: kunalofficialmail7@gmail.com\nKunal\nContact: + 91-8799722885\nEducational Qualification\nInstitute\nCGPA/ % 7.80/10 85.00\nYear 2021 2018",
+    "summary": "Business Analyst at Citi Bank with nearly 5 years of experience, deeply passionate about investment research and asset valuation. Proficient in leveraging tools for Analysis and Product Management. Currently pursuing CFA L1 to deepen my expertise.",
+    "education": "Qualification BBE XII, CBSE\nShivaji College, University of Delhi St. Martins Diocesan School, Delhi\nCiti Bank, Pune Business Analyst/Product Owner, Asset Management\n\nRoles and Responsibilities\ntheir automated transformation into ISO 20022 (JSON) format across downstream trade lifecycle platforms.\n",
+    "experience": "Work Experience\nAug 2023 – June 2026\nSep 2021 – Jan 23\nLeadership Experience",
+    "awards": "Key Achievements\nIncedo, Gurgaon Investment Banking Analyst, Asset Management\nplatforms using Bloomberg, while providing support to portfolio managers during trade settlements.\nRoles and Responsibilities\nUniversity of Delhi (Founding Member & Research Head)\nFinance & Investment Cell\nOrganised 7+ finance and strategy events, engaging 350+ participants across 40+ colleges. •\nthe Indian Consumer & Retail landscape for regional prospects\nAudit Research, (Venture Capital) Live Project\nConducted investment-focused audit analysis on portfolio companies, evaluating cost structures, burn rates, and financial efficiency using Advanced Excel and Python to create expense reports.\nBuilt financial tracking models and derived actionable insights from financial data to support investment decisions and capital allocation, driving ~5% improvement in allocation efficiency.\nAnalysed company financials, aligning insights with wealth preservation and growth objectives.\nI.B Fellowship, Marquee Equity\n\n\nEvaluated companies across different sectors through in-depth macro investment research, business and market analysis to support capital raising efforts and deal sourcing initiatives with stakeholder management. Facilitated deal sourcing by engaging ~500 companies across sectors, identifying capital-raising opportunities and aligning them with investor mandates and appetite.",
+    "projects": "Academic Projects\nFinancial Model of Mahindra & Mahindra\n• • •\nPerformed valuation of Mahindra & Mahindra using DCF and Multiples method for stock recommendation. Forecasted the financial line items based on assumptions from annual report and quarterly conference calls. Financial modelling involved collecting data from SIAM, TMA and industry reports by research agencies. Incorporated different scenarios based on expected industry growth rate for different product lines.\nCertifications & ",
+    "certifications": "Certifications & \nTraining\nFinancial Statements (CFI), Introduction to Capital Markets (CFI), SQL Masterclass: SQL for Data Analytics",
+    "skills": "Skills\nTechnical Skills\nTools: Bloomberg, Tableau, Jira, Agile (Scrum), Figma, Power BI, Python, SQL, MS Excel, Confluence, Lean/Six Sigma Core Skills: Data Analysis, Business analysis, Project management, Stakeholder Management, Research"
+  },
+  "meta": {
+    "status": "needs_review",
+    "human_verified": false,
+    "provider_calls": 0,
+    "source_accounting": {
+      "all_source_text_preserved": true,
+      "total_spans": 109,
+      "assigned_meaningful_spans": 69,
+      "unresolved_meaningful_spans": 27,
+      "non_content_artifacts": 13,
+      "duplicates_excluded": 0,
+      "all_meaningful_text_assigned": false,
+      "semantic_correctness_verified": false,
+      "outcomes": [
+        {
+          "source_id": "e0:0:35",
+          "source_element_index": 0,
+          "start": 0,
+          "end": 35,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline before the contact section"
+        },
+        {
+          "source_id": "e1:0:5",
+          "source_element_index": 1,
+          "start": 0,
+          "end": 5,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline before the contact section"
+        },
+        {
+          "source_id": "e2:0:8",
+          "source_element_index": 2,
+          "start": 0,
+          "end": 8,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e2:8:24",
+          "source_element_index": 2,
+          "start": 8,
+          "end": 24,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:0:144",
+          "source_element_index": 3,
+          "start": 0,
+          "end": 144,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "BERT embedding assigned to a labeled K-means centroid"
+        },
+        {
+          "source_id": "e3:144:247",
+          "source_element_index": 3,
+          "start": 144,
+          "end": 247,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "BERT embedding assigned to a labeled K-means centroid"
+        },
+        {
+          "source_id": "e4:0:25",
+          "source_element_index": 4,
+          "start": 0,
+          "end": 25,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e5:0:14",
+          "source_element_index": 5,
+          "start": 0,
+          "end": 14,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Distinct BERT heading match with a K-means section label"
+        },
+        {
+          "source_id": "e5:14:18",
+          "source_element_index": 5,
+          "start": 14,
+          "end": 18,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e5:18:27",
+          "source_element_index": 5,
+          "start": 18,
+          "end": 27,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e6:0:9",
+          "source_element_index": 6,
+          "start": 0,
+          "end": 9,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e7:0:37",
+          "source_element_index": 7,
+          "start": 0,
+          "end": 37,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e7:37:71",
+          "source_element_index": 7,
+          "start": 37,
+          "end": 71,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:0:8",
+          "source_element_index": 8,
+          "start": 0,
+          "end": 8,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:8:16",
+          "source_element_index": 8,
+          "start": 8,
+          "end": 16,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:16:21",
+          "source_element_index": 8,
+          "start": 16,
+          "end": 21,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:0:5",
+          "source_element_index": 9,
+          "start": 0,
+          "end": 5,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:5:10",
+          "source_element_index": 9,
+          "start": 5,
+          "end": 10,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:10:14",
+          "source_element_index": 9,
+          "start": 10,
+          "end": 14,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e10:0:15",
+          "source_element_index": 10,
+          "start": 0,
+          "end": 15,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e11:0:16",
+          "source_element_index": 11,
+          "start": 0,
+          "end": 16,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e11:16:64",
+          "source_element_index": 11,
+          "start": 16,
+          "end": 64,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:0:20",
+          "source_element_index": 12,
+          "start": 0,
+          "end": 20,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e13:0:113",
+          "source_element_index": 13,
+          "start": 0,
+          "end": 113,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e13:113:217",
+          "source_element_index": 13,
+          "start": 113,
+          "end": 217,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e13:217:331",
+          "source_element_index": 13,
+          "start": 217,
+          "end": 331,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e13:331:447",
+          "source_element_index": 13,
+          "start": 331,
+          "end": 447,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e13:447:450",
+          "source_element_index": 13,
+          "start": 447,
+          "end": 450,
+          "section": null,
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e13:450:560",
+          "source_element_index": 13,
+          "start": 450,
+          "end": 560,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e13:560:671",
+          "source_element_index": 13,
+          "start": 560,
+          "end": 671,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e14:0:0",
+          "source_element_index": 14,
+          "start": 0,
+          "end": 0,
+          "section": "education",
+          "outcome": "non_content_artifact",
+          "reason": "Whitespace retained in source inventory"
+        },
+        {
+          "source_id": "e15:0:10",
+          "source_element_index": 15,
+          "start": 0,
+          "end": 10,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e15:10:26",
+          "source_element_index": 15,
+          "start": 10,
+          "end": 26,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e16:0:108",
+          "source_element_index": 16,
+          "start": 0,
+          "end": 108,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e16:108:218",
+          "source_element_index": 16,
+          "start": 108,
+          "end": 218,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e16:218:322",
+          "source_element_index": 16,
+          "start": 218,
+          "end": 322,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e16:322:325",
+          "source_element_index": 16,
+          "start": 322,
+          "end": 325,
+          "section": null,
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e16:325:433",
+          "source_element_index": 16,
+          "start": 325,
+          "end": 433,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e16:433:547",
+          "source_element_index": 16,
+          "start": 433,
+          "end": 547,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e16:547:661",
+          "source_element_index": 16,
+          "start": 547,
+          "end": 661,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e16:661:782",
+          "source_element_index": 16,
+          "start": 661,
+          "end": 782,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e16:782:897",
+          "source_element_index": 16,
+          "start": 782,
+          "end": 897,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e17:0:0",
+          "source_element_index": 17,
+          "start": 0,
+          "end": 0,
+          "section": "education",
+          "outcome": "non_content_artifact",
+          "reason": "Whitespace retained in source inventory"
+        },
+        {
+          "source_id": "e18:0:16",
+          "source_element_index": 18,
+          "start": 0,
+          "end": 16,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Distinct BERT heading match with a K-means section label"
+        },
+        {
+          "source_id": "e19:0:112",
+          "source_element_index": 19,
+          "start": 0,
+          "end": 112,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e19:112:223",
+          "source_element_index": 19,
+          "start": 112,
+          "end": 223,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e20:0:16",
+          "source_element_index": 20,
+          "start": 0,
+          "end": 16,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e20:16:60",
+          "source_element_index": 20,
+          "start": 16,
+          "end": 60,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e21:0:17",
+          "source_element_index": 21,
+          "start": 0,
+          "end": 17,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e21:17:20",
+          "source_element_index": 21,
+          "start": 17,
+          "end": 20,
+          "section": null,
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e21:20:136",
+          "source_element_index": 21,
+          "start": 20,
+          "end": 136,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e21:136:139",
+          "source_element_index": 21,
+          "start": 136,
+          "end": 139,
+          "section": null,
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e21:139:255",
+          "source_element_index": 21,
+          "start": 139,
+          "end": 255,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e21:255:258",
+          "source_element_index": 21,
+          "start": 255,
+          "end": 258,
+          "section": null,
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e21:258:366",
+          "source_element_index": 21,
+          "start": 258,
+          "end": 366,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e21:366:464",
+          "source_element_index": 21,
+          "start": 366,
+          "end": 464,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e21:464:467",
+          "source_element_index": 21,
+          "start": 464,
+          "end": 467,
+          "section": null,
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e21:467:575",
+          "source_element_index": 21,
+          "start": 467,
+          "end": 575,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e21:575:578",
+          "source_element_index": 21,
+          "start": 575,
+          "end": 578,
+          "section": null,
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e21:578:687",
+          "source_element_index": 21,
+          "start": 578,
+          "end": 687,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e22:0:10",
+          "source_element_index": 22,
+          "start": 0,
+          "end": 10,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e22:10:26",
+          "source_element_index": 22,
+          "start": 10,
+          "end": 26,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e23:0:118",
+          "source_element_index": 23,
+          "start": 0,
+          "end": 118,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e24:0:21",
+          "source_element_index": 24,
+          "start": 0,
+          "end": 21,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e25:0:53",
+          "source_element_index": 25,
+          "start": 0,
+          "end": 53,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e26:0:10",
+          "source_element_index": 26,
+          "start": 0,
+          "end": 10,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e26:10:25",
+          "source_element_index": 26,
+          "start": 10,
+          "end": 25,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e27:0:89",
+          "source_element_index": 27,
+          "start": 0,
+          "end": 89,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e27:89:91",
+          "source_element_index": 27,
+          "start": 89,
+          "end": 91,
+          "section": "awards",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e28:0:116",
+          "source_element_index": 28,
+          "start": 0,
+          "end": 116,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e28:116:177",
+          "source_element_index": 28,
+          "start": 116,
+          "end": 177,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e29:0:24",
+          "source_element_index": 29,
+          "start": 0,
+          "end": 24,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Combined heading contains multiple BERT-recognized section families"
+        },
+        {
+          "source_id": "e30:0:16",
+          "source_element_index": 30,
+          "start": 0,
+          "end": 16,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e30:16:34",
+          "source_element_index": 30,
+          "start": 16,
+          "end": 34,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e30:34:46",
+          "source_element_index": 30,
+          "start": 34,
+          "end": 46,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e31:0:101",
+          "source_element_index": 31,
+          "start": 0,
+          "end": 101,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e31:101:191",
+          "source_element_index": 31,
+          "start": 101,
+          "end": 191,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e32:0:106",
+          "source_element_index": 32,
+          "start": 0,
+          "end": 106,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e32:106:189",
+          "source_element_index": 32,
+          "start": 106,
+          "end": 189,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e33:0:94",
+          "source_element_index": 33,
+          "start": 0,
+          "end": 94,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e34:0:16",
+          "source_element_index": 34,
+          "start": 0,
+          "end": 16,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e34:16:30",
+          "source_element_index": 34,
+          "start": 16,
+          "end": 30,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e35:0:0",
+          "source_element_index": 35,
+          "start": 0,
+          "end": 0,
+          "section": "awards",
+          "outcome": "non_content_artifact",
+          "reason": "Whitespace retained in source inventory"
+        },
+        {
+          "source_id": "e36:0:0",
+          "source_element_index": 36,
+          "start": 0,
+          "end": 0,
+          "section": "awards",
+          "outcome": "non_content_artifact",
+          "reason": "Whitespace retained in source inventory"
+        },
+        {
+          "source_id": "e37:0:102",
+          "source_element_index": 37,
+          "start": 0,
+          "end": 102,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e37:102:212",
+          "source_element_index": 37,
+          "start": 102,
+          "end": 212,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e37:212:309",
+          "source_element_index": 37,
+          "start": 212,
+          "end": 309,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e37:309:377",
+          "source_element_index": 37,
+          "start": 309,
+          "end": 377,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e38:0:4",
+          "source_element_index": 38,
+          "start": 0,
+          "end": 4,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e39:0:17",
+          "source_element_index": 39,
+          "start": 0,
+          "end": 17,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e40:0:19",
+          "source_element_index": 40,
+          "start": 0,
+          "end": 19,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e40:19:38",
+          "source_element_index": 40,
+          "start": 19,
+          "end": 38,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e41:0:5",
+          "source_element_index": 41,
+          "start": 0,
+          "end": 5,
+          "section": "projects",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e42:0:100",
+          "source_element_index": 42,
+          "start": 0,
+          "end": 100,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e42:100:208",
+          "source_element_index": 42,
+          "start": 100,
+          "end": 208,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e42:208:311",
+          "source_element_index": 42,
+          "start": 208,
+          "end": 311,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e42:311:411",
+          "source_element_index": 42,
+          "start": 311,
+          "end": 411,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e43:0:4",
+          "source_element_index": 43,
+          "start": 0,
+          "end": 4,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e44:0:13",
+          "source_element_index": 44,
+          "start": 0,
+          "end": 13,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Possible ambiguous or unsupported heading; section context stopped"
+        },
+        {
+          "source_id": "e44:13:27",
+          "source_element_index": 44,
+          "start": 13,
+          "end": 27,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e44:27:30",
+          "source_element_index": 44,
+          "start": 27,
+          "end": 30,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e44:30:36",
+          "source_element_index": 44,
+          "start": 30,
+          "end": 36,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e45:0:17",
+          "source_element_index": 45,
+          "start": 0,
+          "end": 17,
+          "section": "projects",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e45:17:25",
+          "source_element_index": 45,
+          "start": 17,
+          "end": 25,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e46:0:117",
+          "source_element_index": 46,
+          "start": 0,
+          "end": 117,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e46:117:223",
+          "source_element_index": 46,
+          "start": 117,
+          "end": 223,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e47:0:16",
+          "source_element_index": 47,
+          "start": 0,
+          "end": 16,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e48:0:115",
+          "source_element_index": 48,
+          "start": 0,
+          "end": 115,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "BERT embedding assigned to a labeled K-means centroid"
+        },
+        {
+          "source_id": "e48:115:214",
+          "source_element_index": 48,
+          "start": 115,
+          "end": 214,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        }
+      ]
+    },
+    "document_scope": {
+      "kind": "likely_resume",
+      "candidate_resume": true,
+      "reason": "Contact details, multiple resume section families and dated history; provisional scope only",
+      "human_verified": false
+    },
+    "source_inventory_sha256": "6da4c59cf9866e7c0360d54f1e846013f12c2b0c43525bd0505a6f80cebc374e",
+    "field_evidence": {
+      "contact.full_name": [
+        "e0:0:35",
+        "e1:0:5",
+        "e2:8:24",
+        "e4:0:25",
+        "e6:0:9",
+        "e8:0:8",
+        "e8:8:16",
+        "e8:16:21",
+        "e9:0:5",
+        "e9:5:10",
+        "e9:10:14"
+      ],
+      "contact.email": [
+        "e0:0:35",
+        "e1:0:5",
+        "e2:8:24",
+        "e4:0:25",
+        "e6:0:9",
+        "e8:0:8",
+        "e8:8:16",
+        "e8:16:21",
+        "e9:0:5",
+        "e9:5:10",
+        "e9:10:14"
+      ],
+      "contact.phone": [
+        "e0:0:35",
+        "e1:0:5",
+        "e2:8:24",
+        "e4:0:25",
+        "e6:0:9",
+        "e8:0:8",
+        "e8:8:16",
+        "e8:16:21",
+        "e9:0:5",
+        "e9:5:10",
+        "e9:10:14"
+      ],
+      "summary": [
+        "e3:0:144",
+        "e3:144:247"
+      ],
+      "total_experience_years": [
+        "e3:0:144"
+      ],
+      "skills.technical_skills[0]": [
+        "e48:0:115"
+      ],
+      "skills.technical_skills[1]": [
+        "e48:0:115"
+      ],
+      "skills.tools_and_platforms[0]": [
+        "e48:0:115"
+      ],
+      "skills.tools_and_platforms[1]": [
+        "e48:0:115"
+      ],
+      "skills.tools_and_platforms[2]": [
+        "e48:0:115"
+      ],
+      "skills.tools_and_platforms[3]": [
+        "e48:0:115"
+      ],
+      "skills.tools_and_platforms[4]": [
+        "e48:0:115"
+      ],
+      "skills.tools_and_platforms[5]": [
+        "e48:0:115"
+      ],
+      "skills.soft_skills[0]": [
+        "e48:0:115"
+      ],
+      "skills.soft_skills[1]": [
+        "e48:0:115"
+      ],
+      "skills.all_skills[0]": [
+        "e48:0:115"
+      ],
+      "skills.all_skills[1]": [
+        "e48:0:115"
+      ],
+      "skills.all_skills[2]": [
+        "e48:0:115"
+      ],
+      "skills.all_skills[3]": [
+        "e48:0:115"
+      ],
+      "skills.all_skills[4]": [
+        "e48:0:115"
+      ],
+      "skills.all_skills[5]": [
+        "e48:0:115"
+      ],
+      "skills.all_skills[6]": [
+        "e48:0:115"
+      ],
+      "skills.all_skills[7]": [
+        "e48:0:115"
+      ],
+      "skills.all_skills[8]": [
+        "e48:0:115"
+      ],
+      "skills.all_skills[9]": [
+        "e48:0:115"
+      ],
+      "skills.all_skills[10]": [
+        "e48:0:115"
+      ],
+      "skills.all_skills[11]": [
+        "e48:0:115"
+      ],
+      "skills.all_skills[12]": [
+        "e48:0:115"
+      ],
+      "skills.all_skills[13]": [
+        "e48:0:115"
+      ],
+      "skills.all_skills[14]": [
+        "e48:0:115"
+      ],
+      "experience[0].start_date": [
+        "e12:0:20",
+        "e21:0:17"
+      ],
+      "experience[0].end_date": [
+        "e12:0:20",
+        "e21:0:17"
+      ],
+      "experience[0].duration": [
+        "e12:0:20",
+        "e21:0:17"
+      ],
+      "education[0].institution": [
+        "e5:18:27"
+      ],
+      "projects[0].name": [
+        "e40:0:19",
+        "e40:19:38",
+        "e41:0:5",
+        "e42:0:100",
+        "e42:100:208",
+        "e42:208:311",
+        "e42:311:411"
+      ],
+      "projects[0].description": [
+        "e40:0:19",
+        "e40:19:38",
+        "e41:0:5",
+        "e42:0:100",
+        "e42:100:208",
+        "e42:208:311",
+        "e42:311:411"
+      ],
+      "projects[1].name": [
+        "e45:0:17"
+      ],
+      "projects[1].description": [
+        "e45:0:17"
+      ],
+      "certifications[0].name": [
+        "e46:117:223"
+      ]
+    },
+    "record_reviews": [
+      {
+        "category": "experience",
+        "entry_id": "experience-1",
+        "source_ids": [
+          "e12:0:20",
+          "e21:0:17"
+        ],
+        "relationship_status": "needs_review",
+        "review_reasons": [
+          "employer_not_established_from_supported_fields"
+        ]
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-2",
+        "source_ids": [
+          "e24:0:21"
+        ],
+        "relationship_status": "needs_review",
+        "review_reasons": [
+          "employer_not_established_from_supported_fields"
+        ]
+      },
+      {
+        "category": "education",
+        "entry_id": "education-1",
+        "source_ids": [
+          "e5:14:18",
+          "e5:18:27"
+        ],
+        "relationship_status": "needs_review",
+        "review_reasons": [
+          "qualification_not_established"
+        ]
+      },
+      {
+        "category": "education",
+        "entry_id": "education-2",
+        "source_ids": [
+          "e7:0:37",
+          "e7:37:71"
+        ],
+        "relationship_status": "needs_review",
+        "review_reasons": [
+          "qualification_not_established"
+        ]
+      },
+      {
+        "category": "education",
+        "entry_id": "education-3",
+        "source_ids": [
+          "e11:0:16",
+          "e11:16:64",
+          "e14:0:0"
+        ],
+        "relationship_status": "needs_review",
+        "review_reasons": [
+          "qualification_not_established"
+        ]
+      },
+      {
+        "category": "education",
+        "entry_id": "education-4",
+        "source_ids": [
+          "e15:0:10",
+          "e15:10:26",
+          "e16:218:322",
+          "e17:0:0"
+        ],
+        "relationship_status": "needs_review",
+        "review_reasons": [
+          "qualification_not_established"
+        ]
+      },
+      {
+        "category": "projects",
+        "entry_id": "projects-1",
+        "source_ids": [
+          "e40:0:19",
+          "e40:19:38",
+          "e41:0:5",
+          "e42:0:100",
+          "e42:100:208",
+          "e42:208:311",
+          "e42:311:411"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "projects",
+        "entry_id": "projects-2",
+        "source_ids": [
+          "e45:0:17"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "certifications",
+        "entry_id": "certifications-1",
+        "source_ids": [
+          "e46:117:223"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      }
+    ],
+    "missing_required_fields": [
+      "experience[0].company",
+      "experience[0].role",
+      "experience[1].company",
+      "experience[1].role",
+      "education[0].degree",
+      "education[1].institution",
+      "education[1].degree",
+      "education[2].institution",
+      "education[2].degree",
+      "education[3].institution",
+      "education[3].degree"
+    ],
+    "warnings": [
+      "Schema validity and field completion do not establish extraction or relationship accuracy.",
+      "Handoff confidence scores are fixed heuristics, not calibrated probabilities.",
+      "Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields."
+    ],
+    "unmapped_blocks": [
+      {
+        "source_id": "e2:0:8",
+        "category": "personal_information",
+        "text": "Contact:",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:0:14",
+        "category": "education",
+        "text": "Qualification ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:14:18",
+        "category": "education",
+        "text": "BBE ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e7:0:37",
+        "category": "education",
+        "text": "Shivaji College, University of Delhi ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e7:37:71",
+        "category": "education",
+        "text": "St. Martins Diocesan School, Delhi",
+        "page_number": 1
+      },
+      {
+        "source_id": "e11:0:16",
+        "category": "education",
+        "text": "Citi Bank, Pune ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e11:16:64",
+        "category": "education",
+        "text": "Business Analyst/Product Owner, Asset Management",
+        "page_number": 1
+      },
+      {
+        "source_id": "e14:0:0",
+        "category": "education",
+        "text": "",
+        "page_number": 1
+      },
+      {
+        "source_id": "e15:0:10",
+        "category": "education",
+        "text": "Roles and ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e15:10:26",
+        "category": "education",
+        "text": "Responsibilities",
+        "page_number": 1
+      },
+      {
+        "source_id": "e16:218:322",
+        "category": "education",
+        "text": "their automated transformation into ISO 20022 (JSON) format across downstream trade lifecycle platforms.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e17:0:0",
+        "category": "education",
+        "text": "",
+        "page_number": 1
+      },
+      {
+        "source_id": "e10:0:15",
+        "category": "experience",
+        "text": "Work Experience",
+        "page_number": 1
+      },
+      {
+        "source_id": "e24:0:21",
+        "category": "experience",
+        "text": "Leadership Experience",
+        "page_number": 1
+      },
+      {
+        "source_id": "e18:0:16",
+        "category": "awards",
+        "text": "Key Achievements",
+        "page_number": 1
+      },
+      {
+        "source_id": "e20:0:16",
+        "category": "awards",
+        "text": "Incedo, Gurgaon ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e20:16:60",
+        "category": "awards",
+        "text": "Investment Banking Analyst, Asset Management",
+        "page_number": 1
+      },
+      {
+        "source_id": "e21:366:464",
+        "category": "awards",
+        "text": "platforms using Bloomberg, while providing support to portfolio managers during trade settlements.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e22:0:10",
+        "category": "awards",
+        "text": "Roles and ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e22:10:26",
+        "category": "awards",
+        "text": "Responsibilities",
+        "page_number": 1
+      },
+      {
+        "source_id": "e25:0:53",
+        "category": "awards",
+        "text": "University of Delhi (Founding Member & Research Head)",
+        "page_number": 1
+      },
+      {
+        "source_id": "e26:0:10",
+        "category": "awards",
+        "text": "Finance & ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e26:10:25",
+        "category": "awards",
+        "text": "Investment Cell",
+        "page_number": 1
+      },
+      {
+        "source_id": "e27:0:89",
+        "category": "awards",
+        "text": "Organised 7+ finance and strategy events, engaging 350+ participants across 40+ colleges.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e27:89:91",
+        "category": "awards",
+        "text": " •",
+        "page_number": 1
+      },
+      {
+        "source_id": "e28:116:177",
+        "category": "awards",
+        "text": "the Indian Consumer & Retail landscape for regional prospects",
+        "page_number": 1
+      },
+      {
+        "source_id": "e30:0:16",
+        "category": "awards",
+        "text": "Audit Research, ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e30:16:34",
+        "category": "awards",
+        "text": "(Venture Capital) ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e30:34:46",
+        "category": "awards",
+        "text": "Live Project",
+        "page_number": 1
+      },
+      {
+        "source_id": "e31:0:101",
+        "category": "awards",
+        "text": "Conducted investment-focused audit analysis on portfolio companies, evaluating cost structures, burn ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e31:101:191",
+        "category": "awards",
+        "text": "rates, and financial efficiency using Advanced Excel and Python to create expense reports.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e32:0:106",
+        "category": "awards",
+        "text": "Built financial tracking models and derived actionable insights from financial data to support investment ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e32:106:189",
+        "category": "awards",
+        "text": "decisions and capital allocation, driving ~5% improvement in allocation efficiency.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e33:0:94",
+        "category": "awards",
+        "text": "Analysed company financials, aligning insights with wealth preservation and growth objectives.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e34:0:16",
+        "category": "awards",
+        "text": "I.B Fellowship, ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e34:16:30",
+        "category": "awards",
+        "text": "Marquee Equity",
+        "page_number": 1
+      },
+      {
+        "source_id": "e35:0:0",
+        "category": "awards",
+        "text": "",
+        "page_number": 1
+      },
+      {
+        "source_id": "e36:0:0",
+        "category": "awards",
+        "text": "",
+        "page_number": 1
+      },
+      {
+        "source_id": "e37:0:102",
+        "category": "awards",
+        "text": "Evaluated companies across different sectors through in-depth macro investment research, business and ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e37:102:212",
+        "category": "awards",
+        "text": "market analysis to support capital raising efforts and deal sourcing initiatives with stakeholder management. ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e37:212:309",
+        "category": "awards",
+        "text": "Facilitated deal sourcing by engaging ~500 companies across sectors, identifying capital-raising ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e37:309:377",
+        "category": "awards",
+        "text": "opportunities and aligning them with investor mandates and appetite.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e39:0:17",
+        "category": "projects",
+        "text": "Academic Projects",
+        "page_number": 1
+      },
+      {
+        "source_id": "e44:13:27",
+        "category": "certifications",
+        "text": "Certifications",
+        "page_number": 1
+      },
+      {
+        "source_id": "e44:27:30",
+        "category": "certifications",
+        "text": " & ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e45:17:25",
+        "category": "certifications",
+        "text": "Training",
+        "page_number": 1
+      },
+      {
+        "source_id": "e44:30:36",
+        "category": "skills",
+        "text": "Skills",
+        "page_number": 1
+      },
+      {
+        "source_id": "e47:0:16",
+        "category": "skills",
+        "text": "Technical Skills",
+        "page_number": 1
+      },
+      {
+        "source_id": "e48:115:214",
+        "category": "skills",
+        "text": "Core Skills: Data Analysis, Business analysis, Project management, Stakeholder Management, Research",
+        "page_number": 1
+      },
+      {
+        "source_id": "e13:0:113",
+        "category": null,
+        "text": "Conducted end-to-end trade lifecycle data analysis via SQL (ELT) for CSDR fee to identify process gaps, document ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e13:113:217",
+        "category": null,
+        "text": "business requirements, and recommend actionable solutions improving STP rates, driving ~15% efficiency. ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e13:217:331",
+        "category": null,
+        "text": "Translated BRD into functional specifications (FRD) and actionable 25+ user stories for a SaaS based tokenization ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e13:331:447",
+        "category": null,
+        "text": "platform, defining acceptance criteria for QA validation, while maintaining requirements traceability on confluence.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e13:447:450",
+        "category": null,
+        "text": " • ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e13:450:560",
+        "category": null,
+        "text": "Mapped end-to-end tokenization lifecycle process workflow and swimlane maps in Figma capturing decision nodes ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e13:560:671",
+        "category": null,
+        "text": "system triggers, and exception handling paths accelerating business readiness, supporting UI/UX transformation.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e16:0:108",
+        "category": null,
+        "text": "Developed Business Scenario Models (BSMs) mapping STP flow, alternate and exception flows, translating 300+ ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e16:108:218",
+        "category": null,
+        "text": "scenarios into structured Test cases, leveraged SWIFT MT540/542..etc messages for trade booking and validated ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e16:322:325",
+        "category": null,
+        "text": " • ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e16:325:433",
+        "category": null,
+        "text": "Owned end-to-end UAT execution across 4 different testing cycles, overseeing defect resolution and incident ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e16:433:547",
+        "category": null,
+        "text": "tracking via Jira — achieving 98% defect closure rate within timelines ensuring zero critical defects at go-live. ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e16:547:661",
+        "category": null,
+        "text": "Led cross-functional stakeholder workshops across Operations, Technology, Legal, Risk and Product teams to define ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e16:661:782",
+        "category": null,
+        "text": "system capabilities for a secure digital asset custody platform supporting crypto transactions on blockchain infra using ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e16:782:897",
+        "category": null,
+        "text": "AI tools, drove comprehensive risk mitigation by engineering a 3x3 risk rating matrix with more than 30 attributes.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e19:0:112",
+        "category": null,
+        "text": "Delivered a multi-region tokenization platform (MALT) product development along 4 different product by training ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e19:112:223",
+        "category": null,
+        "text": "a 15-member team on procedure documentation, , ensuring 100% operational readiness and seamless Agile delivery.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e21:17:20",
+        "category": null,
+        "text": " • ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e21:20:136",
+        "category": null,
+        "text": "Monitored trade execution and settlement projections to generate liquidity forecasts, ensuring funding optimization.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e21:136:139",
+        "category": null,
+        "text": " • ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e21:139:255",
+        "category": null,
+        "text": "Partnered with brokers and custodians to resolve multi-million-dollar OTC derivative trade breaks, minimizing risks.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e21:255:258",
+        "category": null,
+        "text": " • ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e21:258:366",
+        "category": null,
+        "text": "Collaborated with Trade Operations to facilitate the setup of various securities on APL and TNET (Trustnet) ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e21:464:467",
+        "category": null,
+        "text": " • ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e21:467:575",
+        "category": null,
+        "text": "Maintained SOP documentation for trade settlement and reconciliation for different Securities & Derivatives.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e21:575:578",
+        "category": null,
+        "text": " • ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e21:578:687",
+        "category": null,
+        "text": "Generate comprehensive manual pricing reports across Bloomberg, IDC, and other custodian platforms (Fidelity,",
+        "page_number": 1
+      },
+      {
+        "source_id": "e23:0:118",
+        "category": null,
+        "text": "Pershing) to provide high-fidelity inputs for asset modelling, ensuring accurate daily NAV and robust risk mitigation.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e28:0:116",
+        "category": null,
+        "text": "Led a research vertical for 12 members to deliver weekly sector modules for \"Vittlitt\" strategic content, analysing ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e29:0:24",
+        "category": null,
+        "text": "Projects and Internships",
+        "page_number": 1
+      },
+      {
+        "source_id": "e38:0:4",
+        "category": null,
+        "text": "2021",
+        "page_number": 1
+      },
+      {
+        "source_id": "e43:0:4",
+        "category": null,
+        "text": "2023",
+        "page_number": 1
+      },
+      {
+        "source_id": "e44:0:13",
+        "category": null,
+        "text": "Professional ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e46:0:117",
+        "category": null,
+        "text": "Financial Markets by Yale University (Coursera), Corporate, Finance & Valuation (NYU Prof Aswath Damodaran), Reading ",
+        "page_number": 1
+      }
+    ],
+    "needs_review": [
+      {
+        "source_element_index": 13,
+        "start": 0,
+        "end": 113,
+        "text": "Conducted end-to-end trade lifecycle data analysis via SQL (ELT) for CSDR fee to identify process gaps, document ",
+        "page_number": 1,
+        "cluster_id": 6,
+        "candidate_section": "certifications",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2708,
+        "margin": 0.0601,
+        "lane": "wide",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 13,
+        "start": 113,
+        "end": 217,
+        "text": "business requirements, and recommend actionable solutions improving STP rates, driving ~15% efficiency. ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2869,
+        "margin": 0.0086,
+        "lane": "wide",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 13,
+        "start": 217,
+        "end": 331,
+        "text": "Translated BRD into functional specifications (FRD) and actionable 25+ user stories for a SaaS based tokenization ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2641,
+        "margin": -0.0271,
+        "lane": "wide",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 13,
+        "start": 331,
+        "end": 447,
+        "text": "platform, defining acceptance criteria for QA validation, while maintaining requirements traceability on confluence.",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3162,
+        "margin": -0.0236,
+        "lane": "wide",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 13,
+        "start": 447,
+        "end": 450,
+        "text": " • ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1924,
+        "margin": -0.0514,
+        "lane": "wide",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 13,
+        "start": 450,
+        "end": 560,
+        "text": "Mapped end-to-end tokenization lifecycle process workflow and swimlane maps in Figma capturing decision nodes ",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1844,
+        "margin": -0.0053,
+        "lane": "wide",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 13,
+        "start": 560,
+        "end": 671,
+        "text": "system triggers, and exception handling paths accelerating business readiness, supporting UI/UX transformation.",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3417,
+        "margin": 0.0084,
+        "lane": "wide",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 16,
+        "start": 0,
+        "end": 108,
+        "text": "Developed Business Scenario Models (BSMs) mapping STP flow, alternate and exception flows, translating 300+ ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2942,
+        "margin": 0.0342,
+        "lane": "wide",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 16,
+        "start": 108,
+        "end": 218,
+        "text": "scenarios into structured Test cases, leveraged SWIFT MT540/542..etc messages for trade booking and validated ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2044,
+        "margin": -0.034,
+        "lane": "wide",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 16,
+        "start": 322,
+        "end": 325,
+        "text": " • ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1924,
+        "margin": -0.0514,
+        "lane": "wide",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 16,
+        "start": 325,
+        "end": 433,
+        "text": "Owned end-to-end UAT execution across 4 different testing cycles, overseeing defect resolution and incident ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1766,
+        "margin": 0.0329,
+        "lane": "wide",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 16,
+        "start": 433,
+        "end": 547,
+        "text": "tracking via Jira — achieving 98% defect closure rate within timelines ensuring zero critical defects at go-live. ",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1989,
+        "margin": 0.029,
+        "lane": "wide",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 16,
+        "start": 547,
+        "end": 661,
+        "text": "Led cross-functional stakeholder workshops across Operations, Technology, Legal, Risk and Product teams to define ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3326,
+        "margin": 0.0782,
+        "lane": "wide",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 16,
+        "start": 661,
+        "end": 782,
+        "text": "system capabilities for a secure digital asset custody platform supporting crypto transactions on blockchain infra using ",
+        "page_number": 1,
+        "cluster_id": 6,
+        "candidate_section": "certifications",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2069,
+        "margin": 0.0529,
+        "lane": "wide",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 16,
+        "start": 782,
+        "end": 897,
+        "text": "AI tools, drove comprehensive risk mitigation by engineering a 3x3 risk rating matrix with more than 30 attributes.",
+        "page_number": 1,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2563,
+        "margin": 0.0351,
+        "lane": "wide",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 19,
+        "start": 0,
+        "end": 112,
+        "text": "Delivered a multi-region tokenization platform (MALT) product development along 4 different product by training ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2746,
+        "margin": 0.0063,
+        "lane": "wide",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 19,
+        "start": 112,
+        "end": 223,
+        "text": "a 15-member team on procedure documentation, , ensuring 100% operational readiness and seamless Agile delivery.",
+        "page_number": 1,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.372,
+        "margin": 0.0162,
+        "lane": "wide",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 21,
+        "start": 17,
+        "end": 20,
+        "text": " • ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1924,
+        "margin": -0.0514,
+        "lane": "wide",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 21,
+        "start": 20,
+        "end": 136,
+        "text": "Monitored trade execution and settlement projections to generate liquidity forecasts, ensuring funding optimization.",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1628,
+        "margin": 0.0019,
+        "lane": "wide",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 21,
+        "start": 136,
+        "end": 139,
+        "text": " • ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1924,
+        "margin": -0.0514,
+        "lane": "wide",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 21,
+        "start": 139,
+        "end": 255,
+        "text": "Partnered with brokers and custodians to resolve multi-million-dollar OTC derivative trade breaks, minimizing risks.",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2113,
+        "margin": 0.0138,
+        "lane": "wide",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 21,
+        "start": 255,
+        "end": 258,
+        "text": " • ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1924,
+        "margin": -0.0514,
+        "lane": "wide",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 21,
+        "start": 258,
+        "end": 366,
+        "text": "Collaborated with Trade Operations to facilitate the setup of various securities on APL and TNET (Trustnet) ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2401,
+        "margin": -0.0202,
+        "lane": "wide",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 21,
+        "start": 464,
+        "end": 467,
+        "text": " • ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1924,
+        "margin": -0.0514,
+        "lane": "wide",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 21,
+        "start": 467,
+        "end": 575,
+        "text": "Maintained SOP documentation for trade settlement and reconciliation for different Securities & Derivatives.",
+        "page_number": 1,
+        "cluster_id": 12,
+        "candidate_section": "references",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2939,
+        "margin": 0.0164,
+        "lane": "wide",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 21,
+        "start": 575,
+        "end": 578,
+        "text": " • ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1924,
+        "margin": -0.0514,
+        "lane": "wide",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 21,
+        "start": 578,
+        "end": 687,
+        "text": "Generate comprehensive manual pricing reports across Bloomberg, IDC, and other custodian platforms (Fidelity,",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3263,
+        "margin": 0.0689,
+        "lane": "wide",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 23,
+        "start": 0,
+        "end": 118,
+        "text": "Pershing) to provide high-fidelity inputs for asset modelling, ensuring accurate daily NAV and robust risk mitigation.",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2555,
+        "margin": 0.0463,
+        "lane": "wide",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 28,
+        "start": 0,
+        "end": 116,
+        "text": "Led a research vertical for 12 members to deliver weekly sector modules for \"Vittlitt\" strategic content, analysing ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3562,
+        "margin": -0.0132,
+        "lane": "wide",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 29,
+        "start": 0,
+        "end": 24,
+        "text": "Projects and Internships",
+        "page_number": 1,
+        "cluster_id": 1,
+        "candidate_section": null,
+        "alternatives": [
+          "experience",
+          "projects"
+        ],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.4739,
+        "margin": 0.043,
+        "lane": "right",
+        "reason": "Combined heading contains multiple BERT-recognized section families",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 38,
+        "start": 0,
+        "end": 4,
+        "text": "2021",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3166,
+        "margin": -0.0125,
+        "lane": "right",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 43,
+        "start": 0,
+        "end": 4,
+        "text": "2023",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2452,
+        "margin": -0.0402,
+        "lane": "right",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 44,
+        "start": 0,
+        "end": 13,
+        "text": "Professional ",
+        "page_number": 1,
+        "cluster_id": 1,
+        "candidate_section": "summary",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.4885,
+        "margin": 0.0956,
+        "lane": "right",
+        "reason": "Possible ambiguous or unsupported heading; section context stopped",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 46,
+        "start": 0,
+        "end": 117,
+        "text": "Financial Markets by Yale University (Coursera), Corporate, Finance & Valuation (NYU Prof Aswath Damodaran), Reading ",
+        "page_number": 1,
+        "cluster_id": 4,
+        "candidate_section": "education",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3273,
+        "margin": 0.0947,
+        "lane": "wide",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      }
+    ]
+  },
+  "section_schemas": [
+    {
+      "category": "personal_information",
+      "label": "Personal information",
+      "records": [
+        {
+          "record_id": "personal_information",
+          "source_ids": [
+            "e0:0:35",
+            "e1:0:5",
+            "e2:8:24",
+            "e4:0:25",
+            "e6:0:9",
+            "e8:0:8",
+            "e8:8:16",
+            "e8:16:21",
+            "e9:0:5",
+            "e9:5:10",
+            "e9:10:14"
+          ],
+          "attributes": [
+            {
+              "name": "full_name",
+              "items": [
+                {
+                  "value": "Educational Qualification",
+                  "evidence": [
+                    {
+                      "source_id": "e4:0:25",
+                      "quote": "Educational Qualification"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "email",
+              "items": [
+                {
+                  "value": "kunalofficialmail7@gmail.com",
+                  "evidence": [
+                    {
+                      "source_id": "e0:0:35",
+                      "quote": "kunalofficialmail7@gmail.com"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "phone",
+              "items": [
+                {
+                  "value": "91-8799722885",
+                  "evidence": [
+                    {
+                      "source_id": "e2:8:24",
+                      "quote": "91-8799722885"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "linkedin_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "github_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "portfolio_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "professional_title",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e0:0:35",
+          "quote": "Email: kunalofficialmail7@gmail.com"
+        },
+        {
+          "source_id": "e1:0:5",
+          "quote": "Kunal"
+        },
+        {
+          "source_id": "e2:0:8",
+          "quote": "Contact:"
+        },
+        {
+          "source_id": "e2:8:24",
+          "quote": " + 91-8799722885"
+        },
+        {
+          "source_id": "e6:0:9",
+          "quote": "Institute"
+        },
+        {
+          "source_id": "e8:0:8",
+          "quote": "CGPA/ % "
+        },
+        {
+          "source_id": "e8:8:16",
+          "quote": "7.80/10 "
+        },
+        {
+          "source_id": "e8:16:21",
+          "quote": "85.00"
+        },
+        {
+          "source_id": "e9:0:5",
+          "quote": "Year "
+        },
+        {
+          "source_id": "e9:5:10",
+          "quote": "2021 "
+        },
+        {
+          "source_id": "e9:10:14",
+          "quote": "2018"
+        }
+      ]
+    },
+    {
+      "category": "summary",
+      "label": "Summary",
+      "records": [
+        {
+          "record_id": "summary",
+          "source_ids": [
+            "e3:0:144",
+            "e3:144:247"
+          ],
+          "attributes": [
+            {
+              "name": "statements",
+              "items": [
+                {
+                  "value": "Business Analyst at Citi Bank with nearly 5 years of experience, deeply passionate about investment research and asset valuation. Proficient in ",
+                  "evidence": [
+                    {
+                      "source_id": "e3:0:144",
+                      "quote": "Business Analyst at Citi Bank with nearly 5 years of experience, deeply passionate about investment research and asset valuation. Proficient in "
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "leveraging tools for Analysis and Product Management. Currently pursuing CFA L1 to deepen my expertise.",
+                  "evidence": [
+                    {
+                      "source_id": "e3:144:247",
+                      "quote": "leveraging tools for Analysis and Product Management. Currently pursuing CFA L1 to deepen my expertise."
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "total_experience_years",
+              "items": [
+                {
+                  "value": 5.0,
+                  "evidence": [
+                    {
+                      "source_id": "e3:0:144",
+                      "quote": "5"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": []
+    },
+    {
+      "category": "education",
+      "label": "Education",
+      "records": [
+        {
+          "record_id": "education-1",
+          "source_ids": [
+            "e5:14:18",
+            "e5:18:27"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [
+                {
+                  "value": "XII, CBSE",
+                  "evidence": [
+                    {
+                      "source_id": "e5:18:27",
+                      "quote": "XII, CBSE"
+                    }
+                  ],
+                  "status": "needs_review"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "degree",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "qualification_not_established"
+          ]
+        },
+        {
+          "record_id": "education-2",
+          "source_ids": [
+            "e7:0:37",
+            "e7:37:71"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "degree",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "qualification_not_established"
+          ]
+        },
+        {
+          "record_id": "education-3",
+          "source_ids": [
+            "e11:0:16",
+            "e11:16:64",
+            "e14:0:0"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "degree",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "qualification_not_established"
+          ]
+        },
+        {
+          "record_id": "education-4",
+          "source_ids": [
+            "e15:0:10",
+            "e15:10:26",
+            "e16:218:322",
+            "e17:0:0"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "degree",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "qualification_not_established"
+          ]
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e5:0:14",
+          "quote": "Qualification "
+        },
+        {
+          "source_id": "e5:14:18",
+          "quote": "BBE "
+        },
+        {
+          "source_id": "e7:0:37",
+          "quote": "Shivaji College, University of Delhi "
+        },
+        {
+          "source_id": "e7:37:71",
+          "quote": "St. Martins Diocesan School, Delhi"
+        },
+        {
+          "source_id": "e11:0:16",
+          "quote": "Citi Bank, Pune "
+        },
+        {
+          "source_id": "e11:16:64",
+          "quote": "Business Analyst/Product Owner, Asset Management"
+        },
+        {
+          "source_id": "e14:0:0",
+          "quote": ""
+        },
+        {
+          "source_id": "e15:0:10",
+          "quote": "Roles and "
+        },
+        {
+          "source_id": "e15:10:26",
+          "quote": "Responsibilities"
+        },
+        {
+          "source_id": "e16:218:322",
+          "quote": "their automated transformation into ISO 20022 (JSON) format across downstream trade lifecycle platforms."
+        },
+        {
+          "source_id": "e17:0:0",
+          "quote": ""
+        }
+      ]
+    },
+    {
+      "category": "experience",
+      "label": "Experience",
+      "records": [
+        {
+          "record_id": "experience-1",
+          "source_ids": [
+            "e12:0:20",
+            "e21:0:17"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [
+                {
+                  "value": "Aug 2023",
+                  "evidence": [
+                    {
+                      "source_id": "e12:0:20",
+                      "quote": "Aug 2023"
+                    }
+                  ],
+                  "status": "needs_review"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "end_date",
+              "items": [
+                {
+                  "value": "June 2026",
+                  "evidence": [
+                    {
+                      "source_id": "e12:0:20",
+                      "quote": "June 2026"
+                    }
+                  ],
+                  "status": "needs_review"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "duration",
+              "items": [
+                {
+                  "value": "Aug 2023 – June 2026",
+                  "evidence": [
+                    {
+                      "source_id": "e12:0:20",
+                      "quote": "Aug 2023 – June 2026"
+                    }
+                  ],
+                  "status": "needs_review"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "employer_not_established_from_supported_fields"
+          ]
+        },
+        {
+          "record_id": "experience-2",
+          "source_ids": [
+            "e24:0:21"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "employer_not_established_from_supported_fields"
+          ]
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e10:0:15",
+          "quote": "Work Experience"
+        },
+        {
+          "source_id": "e21:0:17",
+          "quote": "Sep 2021 – Jan 23"
+        },
+        {
+          "source_id": "e24:0:21",
+          "quote": "Leadership Experience"
+        }
+      ]
+    },
+    {
+      "category": "awards",
+      "label": "Awards and achievements",
+      "records": [
+        {
+          "record_id": "awards-1",
+          "source_ids": [
+            "e20:0:16",
+            "e20:16:60",
+            "e21:366:464",
+            "e22:0:10",
+            "e22:10:26",
+            "e25:0:53",
+            "e26:0:10",
+            "e26:10:25",
+            "e27:0:89",
+            "e27:89:91",
+            "e28:116:177",
+            "e30:0:16",
+            "e30:16:34",
+            "e30:34:46",
+            "e31:0:101",
+            "e31:101:191",
+            "e32:0:106",
+            "e32:106:189",
+            "e33:0:94",
+            "e34:0:16",
+            "e34:16:30",
+            "e35:0:0",
+            "e36:0:0",
+            "e37:0:102",
+            "e37:102:212",
+            "e37:212:309",
+            "e37:309:377"
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "issuer",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "date",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "Unlabelled compound information requires source review."
+          ]
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e18:0:16",
+          "quote": "Key Achievements"
+        },
+        {
+          "source_id": "e20:0:16",
+          "quote": "Incedo, Gurgaon "
+        },
+        {
+          "source_id": "e20:16:60",
+          "quote": "Investment Banking Analyst, Asset Management"
+        },
+        {
+          "source_id": "e21:366:464",
+          "quote": "platforms using Bloomberg, while providing support to portfolio managers during trade settlements."
+        },
+        {
+          "source_id": "e22:0:10",
+          "quote": "Roles and "
+        },
+        {
+          "source_id": "e22:10:26",
+          "quote": "Responsibilities"
+        },
+        {
+          "source_id": "e25:0:53",
+          "quote": "University of Delhi (Founding Member & Research Head)"
+        },
+        {
+          "source_id": "e26:0:10",
+          "quote": "Finance & "
+        },
+        {
+          "source_id": "e26:10:25",
+          "quote": "Investment Cell"
+        },
+        {
+          "source_id": "e27:0:89",
+          "quote": "Organised 7+ finance and strategy events, engaging 350+ participants across 40+ colleges."
+        },
+        {
+          "source_id": "e27:89:91",
+          "quote": " •"
+        },
+        {
+          "source_id": "e28:116:177",
+          "quote": "the Indian Consumer & Retail landscape for regional prospects"
+        },
+        {
+          "source_id": "e30:0:16",
+          "quote": "Audit Research, "
+        },
+        {
+          "source_id": "e30:16:34",
+          "quote": "(Venture Capital) "
+        },
+        {
+          "source_id": "e30:34:46",
+          "quote": "Live Project"
+        },
+        {
+          "source_id": "e31:0:101",
+          "quote": "Conducted investment-focused audit analysis on portfolio companies, evaluating cost structures, burn "
+        },
+        {
+          "source_id": "e31:101:191",
+          "quote": "rates, and financial efficiency using Advanced Excel and Python to create expense reports."
+        },
+        {
+          "source_id": "e32:0:106",
+          "quote": "Built financial tracking models and derived actionable insights from financial data to support investment "
+        },
+        {
+          "source_id": "e32:106:189",
+          "quote": "decisions and capital allocation, driving ~5% improvement in allocation efficiency."
+        },
+        {
+          "source_id": "e33:0:94",
+          "quote": "Analysed company financials, aligning insights with wealth preservation and growth objectives."
+        },
+        {
+          "source_id": "e34:0:16",
+          "quote": "I.B Fellowship, "
+        },
+        {
+          "source_id": "e34:16:30",
+          "quote": "Marquee Equity"
+        },
+        {
+          "source_id": "e35:0:0",
+          "quote": ""
+        },
+        {
+          "source_id": "e36:0:0",
+          "quote": ""
+        },
+        {
+          "source_id": "e37:0:102",
+          "quote": "Evaluated companies across different sectors through in-depth macro investment research, business and "
+        },
+        {
+          "source_id": "e37:102:212",
+          "quote": "market analysis to support capital raising efforts and deal sourcing initiatives with stakeholder management. "
+        },
+        {
+          "source_id": "e37:212:309",
+          "quote": "Facilitated deal sourcing by engaging ~500 companies across sectors, identifying capital-raising "
+        },
+        {
+          "source_id": "e37:309:377",
+          "quote": "opportunities and aligning them with investor mandates and appetite."
+        }
+      ]
+    },
+    {
+      "category": "projects",
+      "label": "Projects",
+      "records": [
+        {
+          "record_id": "projects-1",
+          "source_ids": [
+            "e40:0:19",
+            "e40:19:38",
+            "e41:0:5",
+            "e42:0:100",
+            "e42:100:208",
+            "e42:208:311",
+            "e42:311:411"
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "items": [
+                {
+                  "value": "Financial Model of",
+                  "evidence": [
+                    {
+                      "source_id": "e40:0:19",
+                      "quote": "Financial Model of"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "description",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "url",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "projects-2",
+          "source_ids": [
+            "e45:0:17"
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "items": [
+                {
+                  "value": "Certifications &",
+                  "evidence": [
+                    {
+                      "source_id": "e45:0:17",
+                      "quote": "Certifications &"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "description",
+              "items": [
+                {
+                  "value": "Certifications & ",
+                  "evidence": [
+                    {
+                      "source_id": "e45:0:17",
+                      "quote": "Certifications & "
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "url",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e39:0:17",
+          "quote": "Academic Projects"
+        },
+        {
+          "source_id": "e40:19:38",
+          "quote": "Mahindra & Mahindra"
+        },
+        {
+          "source_id": "e41:0:5",
+          "quote": "• • •"
+        },
+        {
+          "source_id": "e42:0:100",
+          "quote": "Performed valuation of Mahindra & Mahindra using DCF and Multiples method for stock recommendation. "
+        },
+        {
+          "source_id": "e42:100:208",
+          "quote": "Forecasted the financial line items based on assumptions from annual report and quarterly conference calls. "
+        },
+        {
+          "source_id": "e42:208:311",
+          "quote": "Financial modelling involved collecting data from SIAM, TMA and industry reports by research agencies. "
+        },
+        {
+          "source_id": "e42:311:411",
+          "quote": "Incorporated different scenarios based on expected industry growth rate for different product lines."
+        }
+      ]
+    },
+    {
+      "category": "certifications",
+      "label": "Certifications",
+      "records": [
+        {
+          "record_id": "certifications-1",
+          "source_ids": [
+            "e46:117:223"
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "items": [
+                {
+                  "value": "Financial Statements (CFI), Introduction to Capital Markets (CFI), SQL Masterclass: SQL for Data Analytics",
+                  "evidence": [
+                    {
+                      "source_id": "e46:117:223",
+                      "quote": "Financial Statements (CFI), Introduction to Capital Markets (CFI), SQL Masterclass: SQL for Data Analytics"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "issuer",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "issue_year",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e44:13:27",
+          "quote": "Certifications"
+        },
+        {
+          "source_id": "e44:27:30",
+          "quote": " & "
+        },
+        {
+          "source_id": "e45:17:25",
+          "quote": "Training"
+        }
+      ]
+    },
+    {
+      "category": "skills",
+      "label": "Skills",
+      "records": [
+        {
+          "record_id": "skills",
+          "source_ids": [
+            "e48:0:115"
+          ],
+          "attributes": [
+            {
+              "name": "technical_skills",
+              "items": [
+                {
+                  "value": "Python",
+                  "evidence": [
+                    {
+                      "source_id": "e48:0:115",
+                      "quote": "Python"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "SQL",
+                  "evidence": [
+                    {
+                      "source_id": "e48:0:115",
+                      "quote": "SQL"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "tools_and_platforms",
+              "items": [
+                {
+                  "value": "Power BI",
+                  "evidence": [
+                    {
+                      "source_id": "e48:0:115",
+                      "quote": "Power BI"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Tableau",
+                  "evidence": [
+                    {
+                      "source_id": "e48:0:115",
+                      "quote": "Tableau"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Bloomberg",
+                  "evidence": [
+                    {
+                      "source_id": "e48:0:115",
+                      "quote": "Bloomberg"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "JIRA",
+                  "evidence": [
+                    {
+                      "source_id": "e48:0:115",
+                      "quote": "Jira"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Confluence",
+                  "evidence": [
+                    {
+                      "source_id": "e48:0:115",
+                      "quote": "Confluence"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Excel",
+                  "evidence": [
+                    {
+                      "source_id": "e48:0:115",
+                      "quote": "Excel"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "domain_and_functional",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "soft_skills",
+              "items": [
+                {
+                  "value": "Agile",
+                  "evidence": [
+                    {
+                      "source_id": "e48:0:115",
+                      "quote": "Agile"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Scrum",
+                  "evidence": [
+                    {
+                      "source_id": "e48:0:115",
+                      "quote": "Scrum"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "all_skills",
+              "items": [
+                {
+                  "value": "Python",
+                  "evidence": [
+                    {
+                      "source_id": "e48:0:115",
+                      "quote": "Python"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "SQL",
+                  "evidence": [
+                    {
+                      "source_id": "e48:0:115",
+                      "quote": "SQL"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Power BI",
+                  "evidence": [
+                    {
+                      "source_id": "e48:0:115",
+                      "quote": "Power BI"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Tableau",
+                  "evidence": [
+                    {
+                      "source_id": "e48:0:115",
+                      "quote": "Tableau"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Bloomberg",
+                  "evidence": [
+                    {
+                      "source_id": "e48:0:115",
+                      "quote": "Bloomberg"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "JIRA",
+                  "evidence": [
+                    {
+                      "source_id": "e48:0:115",
+                      "quote": "Jira"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Confluence",
+                  "evidence": [
+                    {
+                      "source_id": "e48:0:115",
+                      "quote": "Confluence"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Excel",
+                  "evidence": [
+                    {
+                      "source_id": "e48:0:115",
+                      "quote": "Excel"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Agile",
+                  "evidence": [
+                    {
+                      "source_id": "e48:0:115",
+                      "quote": "Agile"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Scrum",
+                  "evidence": [
+                    {
+                      "source_id": "e48:0:115",
+                      "quote": "Scrum"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Jira",
+                  "evidence": [
+                    {
+                      "source_id": "e48:0:115",
+                      "quote": "Jira"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Agile (Scrum)",
+                  "evidence": [
+                    {
+                      "source_id": "e48:0:115",
+                      "quote": "Agile (Scrum)"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Figma",
+                  "evidence": [
+                    {
+                      "source_id": "e48:0:115",
+                      "quote": "Figma"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "MS Excel",
+                  "evidence": [
+                    {
+                      "source_id": "e48:0:115",
+                      "quote": "MS Excel"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Lean/Six Sigma",
+                  "evidence": [
+                    {
+                      "source_id": "e48:0:115",
+                      "quote": "Lean/Six Sigma"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e44:30:36",
+          "quote": "Skills"
+        },
+        {
+          "source_id": "e47:0:16",
+          "quote": "Technical Skills"
+        },
+        {
+          "source_id": "e48:0:115",
+          "quote": "Tools: Bloomberg, Tableau, Jira, Agile (Scrum), Figma, Power BI, Python, SQL, MS Excel, Confluence, Lean/Six Sigma "
+        },
+        {
+          "source_id": "e48:115:214",
+          "quote": "Core Skills: Data Analysis, Business analysis, Project management, Stakeholder Management, Research"
+        }
+      ]
+    },
+    {
+      "category": "needs_review",
+      "label": "Unassigned source blocks",
+      "records": [],
+      "residual_blocks": [
+        {
+          "source_id": "e13:0:113",
+          "quote": "Conducted end-to-end trade lifecycle data analysis via SQL (ELT) for CSDR fee to identify process gaps, document "
+        },
+        {
+          "source_id": "e13:113:217",
+          "quote": "business requirements, and recommend actionable solutions improving STP rates, driving ~15% efficiency. "
+        },
+        {
+          "source_id": "e13:217:331",
+          "quote": "Translated BRD into functional specifications (FRD) and actionable 25+ user stories for a SaaS based tokenization "
+        },
+        {
+          "source_id": "e13:331:447",
+          "quote": "platform, defining acceptance criteria for QA validation, while maintaining requirements traceability on confluence."
+        },
+        {
+          "source_id": "e13:447:450",
+          "quote": " • "
+        },
+        {
+          "source_id": "e13:450:560",
+          "quote": "Mapped end-to-end tokenization lifecycle process workflow and swimlane maps in Figma capturing decision nodes "
+        },
+        {
+          "source_id": "e13:560:671",
+          "quote": "system triggers, and exception handling paths accelerating business readiness, supporting UI/UX transformation."
+        },
+        {
+          "source_id": "e16:0:108",
+          "quote": "Developed Business Scenario Models (BSMs) mapping STP flow, alternate and exception flows, translating 300+ "
+        },
+        {
+          "source_id": "e16:108:218",
+          "quote": "scenarios into structured Test cases, leveraged SWIFT MT540/542..etc messages for trade booking and validated "
+        },
+        {
+          "source_id": "e16:322:325",
+          "quote": " • "
+        },
+        {
+          "source_id": "e16:325:433",
+          "quote": "Owned end-to-end UAT execution across 4 different testing cycles, overseeing defect resolution and incident "
+        },
+        {
+          "source_id": "e16:433:547",
+          "quote": "tracking via Jira — achieving 98% defect closure rate within timelines ensuring zero critical defects at go-live. "
+        },
+        {
+          "source_id": "e16:547:661",
+          "quote": "Led cross-functional stakeholder workshops across Operations, Technology, Legal, Risk and Product teams to define "
+        },
+        {
+          "source_id": "e16:661:782",
+          "quote": "system capabilities for a secure digital asset custody platform supporting crypto transactions on blockchain infra using "
+        },
+        {
+          "source_id": "e16:782:897",
+          "quote": "AI tools, drove comprehensive risk mitigation by engineering a 3x3 risk rating matrix with more than 30 attributes."
+        },
+        {
+          "source_id": "e19:0:112",
+          "quote": "Delivered a multi-region tokenization platform (MALT) product development along 4 different product by training "
+        },
+        {
+          "source_id": "e19:112:223",
+          "quote": "a 15-member team on procedure documentation, , ensuring 100% operational readiness and seamless Agile delivery."
+        },
+        {
+          "source_id": "e21:17:20",
+          "quote": " • "
+        },
+        {
+          "source_id": "e21:20:136",
+          "quote": "Monitored trade execution and settlement projections to generate liquidity forecasts, ensuring funding optimization."
+        },
+        {
+          "source_id": "e21:136:139",
+          "quote": " • "
+        },
+        {
+          "source_id": "e21:139:255",
+          "quote": "Partnered with brokers and custodians to resolve multi-million-dollar OTC derivative trade breaks, minimizing risks."
+        },
+        {
+          "source_id": "e21:255:258",
+          "quote": " • "
+        },
+        {
+          "source_id": "e21:258:366",
+          "quote": "Collaborated with Trade Operations to facilitate the setup of various securities on APL and TNET (Trustnet) "
+        },
+        {
+          "source_id": "e21:464:467",
+          "quote": " • "
+        },
+        {
+          "source_id": "e21:467:575",
+          "quote": "Maintained SOP documentation for trade settlement and reconciliation for different Securities & Derivatives."
+        },
+        {
+          "source_id": "e21:575:578",
+          "quote": " • "
+        },
+        {
+          "source_id": "e21:578:687",
+          "quote": "Generate comprehensive manual pricing reports across Bloomberg, IDC, and other custodian platforms (Fidelity,"
+        },
+        {
+          "source_id": "e23:0:118",
+          "quote": "Pershing) to provide high-fidelity inputs for asset modelling, ensuring accurate daily NAV and robust risk mitigation."
+        },
+        {
+          "source_id": "e28:0:116",
+          "quote": "Led a research vertical for 12 members to deliver weekly sector modules for \"Vittlitt\" strategic content, analysing "
+        },
+        {
+          "source_id": "e29:0:24",
+          "quote": "Projects and Internships"
+        },
+        {
+          "source_id": "e38:0:4",
+          "quote": "2021"
+        },
+        {
+          "source_id": "e43:0:4",
+          "quote": "2023"
+        },
+        {
+          "source_id": "e44:0:13",
+          "quote": "Professional "
+        },
+        {
+          "source_id": "e46:0:117",
+          "quote": "Financial Markets by Yale University (Coursera), Corporate, Finance & Valuation (NYU Prof Aswath Damodaran), Reading "
+        }
+      ]
+    }
+  ]
+}

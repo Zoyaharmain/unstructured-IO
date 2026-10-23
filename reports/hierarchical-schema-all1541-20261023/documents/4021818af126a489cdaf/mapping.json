@@ -1,0 +1,3109 @@
+{
+  "success": true,
+  "source": "Rules.docx",
+  "extraction_mode": "existing_blocks_schema_mapping",
+  "data": {
+    "contact": {
+      "full_name": "",
+      "email": "",
+      "phone": "",
+      "location": null,
+      "linkedin_url": null,
+      "github_url": null,
+      "portfolio_url": null
+    },
+    "professional_title": null,
+    "summary": "Purpose\nTo ensure that every candidate's resume is evaluated consistently, accurately, and credibly before screening or submission.\nThis framework combines human judgment and AI-driven rule checks to identify authentic, experienced, and in-depth candidates.\nStructure\n🟢 Core 9 Categories (Total: 66 Rules) – Mandatory evaluation dimensions for all profiles.\n🟡 Optional 3 Categories (Total: 14 Rules) – Contextual checks depending on role, JD, or domain.\nTotal Rules: 80 (52 Mandatory / 15 Optional / 13 Positive Boosts)\nLegend\nSymbol Meaning Action ❌ Hard rejection / gating failure Disqualify or probe deeply ⚠️ Cautionary signal Investigate or clarify ✅ Credibility/strength indicator Add to the candidate's confidence score.\n🟢 CORE 9 CATEGORIES (66 RULES)\n1.",
+    "total_experience_years": null,
+    "skills": {
+      "technical_skills": [],
+      "tools_and_platforms": [],
+      "domain_and_functional": [],
+      "soft_skills": [],
+      "all_skills": []
+    },
+    "experience": [
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      }
+    ],
+    "education": [],
+    "certifications": [],
+    "projects": [],
+    "languages": []
+  },
+  "schema_mapping": {
+    "fields_populated": 2,
+    "total_fields": 16,
+    "completion_percentage": 12.5,
+    "field_details": [
+      {
+        "field_name": "contact.full_name",
+        "target_type": "string",
+        "is_required": true,
+        "is_extracted": false,
+        "source_section": "Header / Personal Details",
+        "confidence_score": 0.0,
+        "description": "Candidate's full name, extracted from the top header of the resume."
+      },
+      {
+        "field_name": "contact.email",
+        "target_type": "string (email)",
+        "is_required": true,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's primary contact email address."
+      },
+      {
+        "field_name": "contact.phone",
+        "target_type": "string (phone)",
+        "is_required": true,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's telephone / mobile phone number."
+      },
+      {
+        "field_name": "contact.location",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's residential location or work city."
+      },
+      {
+        "field_name": "contact.linkedin_url",
+        "target_type": "string (url) | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "URL to candidate's LinkedIn profile."
+      },
+      {
+        "field_name": "professional_title",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Subtitle",
+        "confidence_score": 0.0,
+        "description": "Candidate's target headline or most recent job title."
+      },
+      {
+        "field_name": "summary",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Summary / Profile / Objective",
+        "confidence_score": 0.85,
+        "description": "Executive bio, professional overview, or career objective."
+      },
+      {
+        "field_name": "total_experience_years",
+        "target_type": "float | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Summary / Experience Calculation",
+        "confidence_score": 0.0,
+        "description": "Total professional experience in years."
+      },
+      {
+        "field_name": "skills.technical_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Technical Competencies",
+        "confidence_score": 0.0,
+        "description": "Technical programming languages and core software competencies."
+      },
+      {
+        "field_name": "skills.tools_and_platforms",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Tools & Technologies",
+        "confidence_score": 0.0,
+        "description": "Software platforms, developer tools, and operational systems."
+      },
+      {
+        "field_name": "skills.domain_and_functional",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Domain Expertise",
+        "confidence_score": 0.0,
+        "description": "Functional domain knowledge (e.g. Hedge Funds, KYC, NAV, Derivatives)."
+      },
+      {
+        "field_name": "skills.all_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills (Aggregated)",
+        "confidence_score": 0.0,
+        "description": "Complete list of candidate skills across all categories."
+      },
+      {
+        "field_name": "experience",
+        "target_type": "array[WorkExperience]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Experience / Work History",
+        "confidence_score": 0.92,
+        "description": "Complete chronological employment records with bullet points."
+      },
+      {
+        "field_name": "education",
+        "target_type": "array[Education]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Education / Academic Qualifications",
+        "confidence_score": 0.0,
+        "description": "University, college, and higher education degree qualifications."
+      },
+      {
+        "field_name": "certifications",
+        "target_type": "array[Certification]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Certifications / Licenses",
+        "confidence_score": 0.0,
+        "description": "Professional accreditations and credentials."
+      },
+      {
+        "field_name": "projects",
+        "target_type": "array[Project]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Projects / Key Engagements",
+        "confidence_score": 0.0,
+        "description": "Major projects or strategic initiatives led by candidate."
+      }
+    ]
+  },
+  "raw_sections": {
+    "experience": "Executive \nExperience Timeline Integrity (8 Rules)\nValidate chronology, stability, and authenticity of employment.\n1. ❌ Claimed vs. calculated experience mismatch > 1.5 years.\n2. ❌ Overlapping full-time roles (unless dual payroll proof).\n3. ❌ Backward or invalid dates (e.g., Feb 2018 – Jan 2017).\n4. ❌ Unexplained gaps > 6 months.\n5. ⚠️ Multiple short stints (< 12 months each) within one year → possible role inflation.\n6. ⚠️ Too-clean transitions (12M/24M/36M) → artificial smoothing.\n7. ⚠️ < 1 month gap between education & first job (unless campus placement).\n8. ✅ Stable tenure (2–4 years) → credibility boost.\n2. Must-Have Skills Depth (7 Rules)\nAssess depth, authenticity, and continuity of key technical skills.\n1. ❌ Depth < 3 (“applied in project”) on any must-have skill.\n2. ❌ Skill only name-dropped (score = 1) with no project context.\n3. ⚠️ Used without clarity (score = 2) → probe further.\n4. ✅ Depth 3 = Applied in project with context/tools.\n5. ✅ Depth 4 = Architected / mentored / optimised (ownership).\n6. ✅ At least one must-have skill should reach depth 4 for senior roles (8Y+).\n7. ❌ Inconsistent skill claims across roles.\n3. Project Ownership & Realism (7 Rules)\nMeasure real contribution, ownership, and measurable impact.\n1. ❌ Missing ownership in ≥ 2 major projects.\n2. ❌ No measurable KPIs or outcomes.\n3. ❌ No team or scope context (scale, team size).\n4. ❌ Inflated ownership (“architected enterprise platform” in 6M role).\n5. ⚠️ Overly generic bullets repeated across projects (“responsible for X”).\n6. ✅ Clear personal accountability and differentiation from team/company work.\n7. ✅ Quantified KPIs (latency ↓40%, throughput ↑3x, cost ↓20%).\n4. Language & Tone Realism (8 Rules)\nDetect AI-written tone, over-polished phrasing, or vague resumes.\n1. ❌ Polished but vague tone with no specifics.\n2. ❌ Entirely passive voice across roles.\n3. ❌ Obvious GPT-template phrasing (“leveraged synergies”, “orchestrated outcomes”).\n4. ⚠️ > 3 vague or buzzword-heavy statements.\n5. ⚠️ Repeated phrasing across roles (> 6 times).\n6. ❌ Inflated metrics (“95% accuracy” reused).\n7. ⚠️ Overused generic verbs (> 10x: “responsible for”, “worked on”).\n8. ✅ Balanced tone (mix of technical depth + business outcomes).\n5. Credibility & Authenticity Signals (7 Rules)\nEnsure employer, education, and role data are verifiable.\n1. ❌ Employer vs. client mismatch (vendor claiming client).\n2. ❌ > 2 payroll/vendor layers.\n3. ❌ Full-time job during full-time education (unless justified).\n4. ⚠️ LinkedIn missing or newly created (< 3 months).\n5. ⚠️ Fake-sounding email ID.\n6. ⚠️ Employer branding contradiction (Tier-3 vendor → FAANG claim).\n7. ✅ Clear, verifiable employers and clients.\n6. Proxy / Clone Detection (7 Rules)\nIdentify cloned or AI-generated resumes.\n1. ❌ Resume cloned (known template).\n2. ❌ Repeated identical achievements across roles.\n3. ❌ Cloned + reused KPIs → auto-reject.\n4. ⚠️ Resume formatting too uniform.\n5. ⚠️ Phrase reuse across projects.\n6. ⚠️ AI tone shift mid-resume (half passive, half detailed).\n7. ✅ Organic variation in phrasing and project style.\n7. Education & Foundational Background (6 Rules)\nValidate education credibility and logical career foundation.\n1. ❌ Fake or unverifiable institution.\n2. ❌ Full-time education overlapping full-time role.\n3. ⚠️ < 1 month gap post-education → suspicious unless campus hire.\n4. ⚠️ Irrelevant degree (note but not penalize).\n5. ✅ Premium institute → credibility boost.\n6. ✅ Logical transition (education → entry → progression).\n8. Leadership & Career Progression (5 Rules)\nEvaluate trajectory, growth, and evidence of leadership.\n1. ❌ Flat career over 8+ years.\n2. ❌ Repeated lateral roles with no progression story.\n3. ✅ Promotion within same company (Engineer → Sr. Engineer → Lead).\n4. ✅ Scope growth: mentoring, stakeholder management, design authority.\n5. ✅ Leadership activities (hiring, mentoring, tech talks).\n9. Pedigree & Macro Signals (6 Rules)\nAssess overall employer quality and trajectory.\n1. ❌ Repeated downgrade in employer quality.\n2. ❌ Job-hopping across Tier-3 vendors.\n3. ✅ Employer trajectory improves (Tier-3 → Tier-2 → Tier-1).\n4. ✅ Multiple Tier-1 employers → strong signal.\n5. ✅ Premium education + Tier-1 experience → high trust.\n6. ⚠️ Mixed pedigree → neutral outcome.\n🟡 OPTIONAL 3 CATEGORIES (14 RULES)\n10. Tools & Certification Validation (6 Rules)\nVerify authenticity, relevance, and context of certifications.\n1. ❌ Fake or irrelevant certifications.\n2. ❌ Laundry list of certifications without project link.\n3. ❌ “Pursuing” certification > 6 months old.\n4. ⚠️ Tool overload (> 15 tools in short role).\n5. ✅ OEM certifications (AWS, GCP, Azure, Oracle) → credibility boost.\n6. ✅ Tools clearly tied to project outcomes.\n11. JD Alignment & Broadness (3 Rules)\nEnsure resume aligns with required and optional JD expectations.\n1. ✅ Broad JD → confirm with recruiter whether to cluster or evaluate equally.\n2. ❌ Missing must-have skills → auto-reject.\n3. ⚠️ JD too generic → mark as “equal weight” evaluation.\n12. Domain / Industry Relevance (3 Rules)\nCheck domain alignment for industry-specific roles.\n1. ❌ No domain exposure where mandated (e.g., BFSI).\n2. ⚠️ Adjacent domain only (e.g., telecom vs BFSI).\n3. ✅ Multiple domain-relevant roles → credibility boost.\n🧾 Summary Insights\nStrict Rejection Rules (❌)\nExperience overclaims, fake education, missing must-have depth, proxy/clone templates, inflated ownership, payroll chains, irrelevant certifications, and pedigree downgrades.\nWarning Rules (⚠️)\nVague tone, short stints, tool overload, buzzword overuse, adjacent domains, generic JDs, or unclear depth.\nPositive Rules (✅)\nPromotion within company, Tier-1 employers, stable tenure, measurable KPIs, depth-4 mastery, premium education, and OEM certifications.\nTotal Rules: 80\n❌ 37 Mandatory Rejects\n⚠️ 30 Warnings / Optional Checks\n✅ 13 Credibility Boosts",
+    "summary": "Summary\nPurpose\nTo ensure that every candidate's resume is evaluated consistently, accurately, and credibly before screening or submission.\nThis framework combines human judgment and AI-driven rule checks to identify authentic, experienced, and in-depth candidates.\nStructure\n🟢 Core 9 Categories (Total: 66 Rules) – Mandatory evaluation dimensions for all profiles.\n🟡 Optional 3 Categories (Total: 14 Rules) – Contextual checks depending on role, JD, or domain.\nTotal Rules: 80 (52 Mandatory / 15 Optional / 13 Positive Boosts)\nLegend\nSymbol Meaning Action ❌ Hard rejection / gating failure Disqualify or probe deeply ⚠️ Cautionary signal Investigate or clarify ✅ Credibility/strength indicator Add to the candidate's confidence score.\n🟢 CORE 9 CATEGORIES (66 RULES)\n1. "
+  },
+  "meta": {
+    "status": "needs_review",
+    "human_verified": false,
+    "provider_calls": 0,
+    "source_accounting": {
+      "all_source_text_preserved": true,
+      "total_spans": 126,
+      "assigned_meaningful_spans": 123,
+      "unresolved_meaningful_spans": 3,
+      "non_content_artifacts": 0,
+      "duplicates_excluded": 0,
+      "all_meaningful_text_assigned": false,
+      "semantic_correctness_verified": false,
+      "outcomes": [
+        {
+          "source_id": "e0:0:37",
+          "source_element_index": 0,
+          "start": 0,
+          "end": 37,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e1:0:31",
+          "source_element_index": 1,
+          "start": 0,
+          "end": 31,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e2:0:2",
+          "source_element_index": 2,
+          "start": 0,
+          "end": 2,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e2:2:12",
+          "source_element_index": 2,
+          "start": 2,
+          "end": 12,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "BERT embedding assigned to a labeled K-means centroid"
+        },
+        {
+          "source_id": "e2:12:19",
+          "source_element_index": 2,
+          "start": 12,
+          "end": 19,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e3:0:8",
+          "source_element_index": 3,
+          "start": 0,
+          "end": 8,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:8:132",
+          "source_element_index": 3,
+          "start": 8,
+          "end": 132,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:132:257",
+          "source_element_index": 3,
+          "start": 132,
+          "end": 257,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e4:0:9",
+          "source_element_index": 4,
+          "start": 0,
+          "end": 9,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e5:0:89",
+          "source_element_index": 5,
+          "start": 0,
+          "end": 89,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e6:0:95",
+          "source_element_index": 6,
+          "start": 0,
+          "end": 95,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e7:0:65",
+          "source_element_index": 7,
+          "start": 0,
+          "end": 65,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:0:6",
+          "source_element_index": 8,
+          "start": 0,
+          "end": 6,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:0:200",
+          "source_element_index": 9,
+          "start": 0,
+          "end": 200,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e10:0:30",
+          "source_element_index": 10,
+          "start": 0,
+          "end": 30,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e11:0:3",
+          "source_element_index": 11,
+          "start": 0,
+          "end": 3,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e11:3:13",
+          "source_element_index": 11,
+          "start": 3,
+          "end": 13,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e11:13:42",
+          "source_element_index": 11,
+          "start": 13,
+          "end": 42,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:0:63",
+          "source_element_index": 12,
+          "start": 0,
+          "end": 63,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e13:0:60",
+          "source_element_index": 13,
+          "start": 0,
+          "end": 60,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e14:0:61",
+          "source_element_index": 14,
+          "start": 0,
+          "end": 61,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e15:0:59",
+          "source_element_index": 15,
+          "start": 0,
+          "end": 59,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e16:0:33",
+          "source_element_index": 16,
+          "start": 0,
+          "end": 33,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e17:0:89",
+          "source_element_index": 17,
+          "start": 0,
+          "end": 89,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e18:0:65",
+          "source_element_index": 18,
+          "start": 0,
+          "end": 65,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e19:0:76",
+          "source_element_index": 19,
+          "start": 0,
+          "end": 76,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e20:0:51",
+          "source_element_index": 20,
+          "start": 0,
+          "end": 51,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e21:0:35",
+          "source_element_index": 21,
+          "start": 0,
+          "end": 35,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e22:0:67",
+          "source_element_index": 22,
+          "start": 0,
+          "end": 67,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e23:0:61",
+          "source_element_index": 23,
+          "start": 0,
+          "end": 61,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e24:0:65",
+          "source_element_index": 24,
+          "start": 0,
+          "end": 65,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e25:0:55",
+          "source_element_index": 25,
+          "start": 0,
+          "end": 55,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e26:0:53",
+          "source_element_index": 26,
+          "start": 0,
+          "end": 53,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e27:0:62",
+          "source_element_index": 27,
+          "start": 0,
+          "end": 62,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e28:0:78",
+          "source_element_index": 28,
+          "start": 0,
+          "end": 78,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e29:0:44",
+          "source_element_index": 29,
+          "start": 0,
+          "end": 44,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e30:0:40",
+          "source_element_index": 30,
+          "start": 0,
+          "end": 40,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e31:0:60",
+          "source_element_index": 31,
+          "start": 0,
+          "end": 60,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e32:0:45",
+          "source_element_index": 32,
+          "start": 0,
+          "end": 45,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e33:0:36",
+          "source_element_index": 33,
+          "start": 0,
+          "end": 36,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e34:0:49",
+          "source_element_index": 34,
+          "start": 0,
+          "end": 49,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e35:0:71",
+          "source_element_index": 35,
+          "start": 0,
+          "end": 71,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e36:0:76",
+          "source_element_index": 36,
+          "start": 0,
+          "end": 76,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e37:0:78",
+          "source_element_index": 37,
+          "start": 0,
+          "end": 78,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e38:0:63",
+          "source_element_index": 38,
+          "start": 0,
+          "end": 63,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e39:0:36",
+          "source_element_index": 39,
+          "start": 0,
+          "end": 36,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e40:0:65",
+          "source_element_index": 40,
+          "start": 0,
+          "end": 65,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e41:0:47",
+          "source_element_index": 41,
+          "start": 0,
+          "end": 47,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e42:0:41",
+          "source_element_index": 42,
+          "start": 0,
+          "end": 41,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e43:0:84",
+          "source_element_index": 43,
+          "start": 0,
+          "end": 84,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e44:0:45",
+          "source_element_index": 44,
+          "start": 0,
+          "end": 45,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e45:0:49",
+          "source_element_index": 45,
+          "start": 0,
+          "end": 49,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e46:0:46",
+          "source_element_index": 46,
+          "start": 0,
+          "end": 46,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e47:0:69",
+          "source_element_index": 47,
+          "start": 0,
+          "end": 69,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e48:0:64",
+          "source_element_index": 48,
+          "start": 0,
+          "end": 64,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e49:0:47",
+          "source_element_index": 49,
+          "start": 0,
+          "end": 47,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e50:0:57",
+          "source_element_index": 50,
+          "start": 0,
+          "end": 57,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e51:0:59",
+          "source_element_index": 51,
+          "start": 0,
+          "end": 59,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e52:0:31",
+          "source_element_index": 52,
+          "start": 0,
+          "end": 31,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e53:0:65",
+          "source_element_index": 53,
+          "start": 0,
+          "end": 65,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e54:0:53",
+          "source_element_index": 54,
+          "start": 0,
+          "end": 53,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e55:0:29",
+          "source_element_index": 55,
+          "start": 0,
+          "end": 29,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e56:0:68",
+          "source_element_index": 56,
+          "start": 0,
+          "end": 68,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e57:0:45",
+          "source_element_index": 57,
+          "start": 0,
+          "end": 45,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e58:0:36",
+          "source_element_index": 58,
+          "start": 0,
+          "end": 36,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e59:0:40",
+          "source_element_index": 59,
+          "start": 0,
+          "end": 40,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e60:0:36",
+          "source_element_index": 60,
+          "start": 0,
+          "end": 36,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e61:0:50",
+          "source_element_index": 61,
+          "start": 0,
+          "end": 50,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e62:0:40",
+          "source_element_index": 62,
+          "start": 0,
+          "end": 40,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e63:0:36",
+          "source_element_index": 63,
+          "start": 0,
+          "end": 36,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e64:0:35",
+          "source_element_index": 64,
+          "start": 0,
+          "end": 35,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e65:0:61",
+          "source_element_index": 65,
+          "start": 0,
+          "end": 61,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e66:0:53",
+          "source_element_index": 66,
+          "start": 0,
+          "end": 53,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e67:0:48",
+          "source_element_index": 67,
+          "start": 0,
+          "end": 48,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e68:0:61",
+          "source_element_index": 68,
+          "start": 0,
+          "end": 61,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e69:0:38",
+          "source_element_index": 69,
+          "start": 0,
+          "end": 38,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e70:0:52",
+          "source_element_index": 70,
+          "start": 0,
+          "end": 52,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e71:0:67",
+          "source_element_index": 71,
+          "start": 0,
+          "end": 67,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e72:0:48",
+          "source_element_index": 72,
+          "start": 0,
+          "end": 48,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e73:0:43",
+          "source_element_index": 73,
+          "start": 0,
+          "end": 43,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e74:0:58",
+          "source_element_index": 74,
+          "start": 0,
+          "end": 58,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e75:0:44",
+          "source_element_index": 75,
+          "start": 0,
+          "end": 44,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e76:0:56",
+          "source_element_index": 76,
+          "start": 0,
+          "end": 56,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e77:0:31",
+          "source_element_index": 77,
+          "start": 0,
+          "end": 31,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e78:0:54",
+          "source_element_index": 78,
+          "start": 0,
+          "end": 54,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e79:0:68",
+          "source_element_index": 79,
+          "start": 0,
+          "end": 68,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e80:0:71",
+          "source_element_index": 80,
+          "start": 0,
+          "end": 71,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e81:0:59",
+          "source_element_index": 81,
+          "start": 0,
+          "end": 59,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e82:0:37",
+          "source_element_index": 82,
+          "start": 0,
+          "end": 37,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e83:0:47",
+          "source_element_index": 83,
+          "start": 0,
+          "end": 47,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e84:0:44",
+          "source_element_index": 84,
+          "start": 0,
+          "end": 44,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e85:0:39",
+          "source_element_index": 85,
+          "start": 0,
+          "end": 39,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e86:0:61",
+          "source_element_index": 86,
+          "start": 0,
+          "end": 61,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e87:0:47",
+          "source_element_index": 87,
+          "start": 0,
+          "end": 47,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e88:0:56",
+          "source_element_index": 88,
+          "start": 0,
+          "end": 56,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e89:0:39",
+          "source_element_index": 89,
+          "start": 0,
+          "end": 39,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e90:0:34",
+          "source_element_index": 90,
+          "start": 0,
+          "end": 34,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e91:0:46",
+          "source_element_index": 91,
+          "start": 0,
+          "end": 46,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e92:0:62",
+          "source_element_index": 92,
+          "start": 0,
+          "end": 62,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e93:0:39",
+          "source_element_index": 93,
+          "start": 0,
+          "end": 39,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e94:0:57",
+          "source_element_index": 94,
+          "start": 0,
+          "end": 57,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e95:0:45",
+          "source_element_index": 95,
+          "start": 0,
+          "end": 45,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e96:0:47",
+          "source_element_index": 96,
+          "start": 0,
+          "end": 47,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e97:0:70",
+          "source_element_index": 97,
+          "start": 0,
+          "end": 70,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e98:0:44",
+          "source_element_index": 98,
+          "start": 0,
+          "end": 44,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e99:0:38",
+          "source_element_index": 99,
+          "start": 0,
+          "end": 38,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e100:0:64",
+          "source_element_index": 100,
+          "start": 0,
+          "end": 64,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e101:0:78",
+          "source_element_index": 101,
+          "start": 0,
+          "end": 78,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e102:0:44",
+          "source_element_index": 102,
+          "start": 0,
+          "end": 44,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e103:0:57",
+          "source_element_index": 103,
+          "start": 0,
+          "end": 57,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e104:0:41",
+          "source_element_index": 104,
+          "start": 0,
+          "end": 41,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e105:0:51",
+          "source_element_index": 105,
+          "start": 0,
+          "end": 51,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e106:0:52",
+          "source_element_index": 106,
+          "start": 0,
+          "end": 52,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e107:0:51",
+          "source_element_index": 107,
+          "start": 0,
+          "end": 51,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e108:0:56",
+          "source_element_index": 108,
+          "start": 0,
+          "end": 56,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e109:0:18",
+          "source_element_index": 109,
+          "start": 0,
+          "end": 18,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e110:0:27",
+          "source_element_index": 110,
+          "start": 0,
+          "end": 27,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e110:27:201",
+          "source_element_index": 110,
+          "start": 27,
+          "end": 201,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e111:0:19",
+          "source_element_index": 111,
+          "start": 0,
+          "end": 19,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e111:19:126",
+          "source_element_index": 111,
+          "start": 19,
+          "end": 126,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e112:0:19",
+          "source_element_index": 112,
+          "start": 0,
+          "end": 19,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e112:19:154",
+          "source_element_index": 112,
+          "start": 19,
+          "end": 154,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e113:0:15",
+          "source_element_index": 113,
+          "start": 0,
+          "end": 15,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e114:0:22",
+          "source_element_index": 114,
+          "start": 0,
+          "end": 22,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e115:0:32",
+          "source_element_index": 115,
+          "start": 0,
+          "end": 32,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e116:0:23",
+          "source_element_index": 116,
+          "start": 0,
+          "end": 23,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        }
+      ]
+    },
+    "document_scope": {
+      "kind": "candidate_or_unknown",
+      "candidate_resume": null,
+      "requires_scope_review": true
+    },
+    "source_inventory_sha256": "04cbabb6696279eeb82e6576d93a925499a48c207555b1b293e3adafc3155801",
+    "field_evidence": {
+      "summary": [
+        "e3:0:8",
+        "e3:8:132",
+        "e3:132:257",
+        "e4:0:9",
+        "e5:0:89",
+        "e6:0:95",
+        "e7:0:65",
+        "e8:0:6",
+        "e9:0:200",
+        "e10:0:30",
+        "e11:0:3"
+      ]
+    },
+    "record_reviews": [
+      {
+        "category": "experience",
+        "entry_id": "experience-1",
+        "source_ids": [
+          "e2:2:12"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-2",
+        "source_ids": [
+          "e11:13:42",
+          "e12:0:63",
+          "e13:0:60",
+          "e14:0:61",
+          "e15:0:59",
+          "e16:0:33",
+          "e17:0:89",
+          "e18:0:65",
+          "e19:0:76",
+          "e20:0:51",
+          "e21:0:35",
+          "e22:0:67",
+          "e23:0:61",
+          "e24:0:65",
+          "e25:0:55",
+          "e26:0:53",
+          "e27:0:62",
+          "e28:0:78",
+          "e29:0:44",
+          "e30:0:40",
+          "e31:0:60",
+          "e32:0:45",
+          "e33:0:36",
+          "e34:0:49",
+          "e35:0:71",
+          "e36:0:76",
+          "e37:0:78",
+          "e38:0:63",
+          "e39:0:36",
+          "e40:0:65",
+          "e41:0:47",
+          "e42:0:41",
+          "e43:0:84",
+          "e44:0:45",
+          "e45:0:49",
+          "e46:0:46",
+          "e47:0:69",
+          "e48:0:64",
+          "e49:0:47",
+          "e50:0:57",
+          "e51:0:59",
+          "e52:0:31",
+          "e53:0:65",
+          "e54:0:53",
+          "e55:0:29",
+          "e56:0:68",
+          "e57:0:45",
+          "e58:0:36",
+          "e59:0:40",
+          "e60:0:36",
+          "e61:0:50",
+          "e62:0:40",
+          "e63:0:36",
+          "e64:0:35",
+          "e65:0:61",
+          "e66:0:53",
+          "e67:0:48",
+          "e68:0:61",
+          "e69:0:38",
+          "e70:0:52",
+          "e71:0:67",
+          "e72:0:48",
+          "e73:0:43",
+          "e74:0:58",
+          "e75:0:44",
+          "e76:0:56",
+          "e77:0:31",
+          "e78:0:54",
+          "e79:0:68",
+          "e80:0:71",
+          "e81:0:59",
+          "e82:0:37",
+          "e83:0:47",
+          "e84:0:44",
+          "e85:0:39",
+          "e86:0:61",
+          "e87:0:47",
+          "e88:0:56",
+          "e89:0:39",
+          "e90:0:34",
+          "e91:0:46",
+          "e92:0:62",
+          "e93:0:39",
+          "e94:0:57",
+          "e95:0:45",
+          "e96:0:47",
+          "e97:0:70",
+          "e98:0:44",
+          "e99:0:38",
+          "e100:0:64",
+          "e101:0:78",
+          "e102:0:44",
+          "e103:0:57",
+          "e104:0:41",
+          "e105:0:51",
+          "e106:0:52",
+          "e107:0:51",
+          "e108:0:56",
+          "e109:0:18",
+          "e110:0:27",
+          "e110:27:201",
+          "e111:0:19",
+          "e111:19:126",
+          "e112:0:19",
+          "e112:19:154",
+          "e113:0:15",
+          "e114:0:22",
+          "e115:0:32",
+          "e116:0:23"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      }
+    ],
+    "missing_required_fields": [
+      "contact.full_name",
+      "contact.email",
+      "contact.phone",
+      "experience[0].company",
+      "experience[0].role",
+      "experience[1].company",
+      "experience[1].role"
+    ],
+    "warnings": [
+      "Schema validity and field completion do not establish extraction or relationship accuracy.",
+      "Handoff confidence scores are fixed heuristics, not calibrated probabilities.",
+      "Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields."
+    ],
+    "unmapped_blocks": [
+      {
+        "source_id": "e2:2:12",
+        "category": "experience",
+        "text": "Executive ",
+        "page_number": null
+      },
+      {
+        "source_id": "e11:3:13",
+        "category": "experience",
+        "text": "Experience",
+        "page_number": null
+      },
+      {
+        "source_id": "e11:13:42",
+        "category": "experience",
+        "text": " Timeline Integrity (8 Rules)",
+        "page_number": null
+      },
+      {
+        "source_id": "e12:0:63",
+        "category": "experience",
+        "text": "Validate chronology, stability, and authenticity of employment.",
+        "page_number": null
+      },
+      {
+        "source_id": "e13:0:60",
+        "category": "experience",
+        "text": "1. ❌ Claimed vs. calculated experience mismatch > 1.5 years.",
+        "page_number": null
+      },
+      {
+        "source_id": "e14:0:61",
+        "category": "experience",
+        "text": "2. ❌ Overlapping full-time roles (unless dual payroll proof).",
+        "page_number": null
+      },
+      {
+        "source_id": "e15:0:59",
+        "category": "experience",
+        "text": "3. ❌ Backward or invalid dates (e.g., Feb 2018 – Jan 2017).",
+        "page_number": null
+      },
+      {
+        "source_id": "e16:0:33",
+        "category": "experience",
+        "text": "4. ❌ Unexplained gaps > 6 months.",
+        "page_number": null
+      },
+      {
+        "source_id": "e17:0:89",
+        "category": "experience",
+        "text": "5. ⚠️ Multiple short stints (< 12 months each) within one year → possible role inflation.",
+        "page_number": null
+      },
+      {
+        "source_id": "e18:0:65",
+        "category": "experience",
+        "text": "6. ⚠️ Too-clean transitions (12M/24M/36M) → artificial smoothing.",
+        "page_number": null
+      },
+      {
+        "source_id": "e19:0:76",
+        "category": "experience",
+        "text": "7. ⚠️ < 1 month gap between education & first job (unless campus placement).",
+        "page_number": null
+      },
+      {
+        "source_id": "e20:0:51",
+        "category": "experience",
+        "text": "8. ✅ Stable tenure (2–4 years) → credibility boost.",
+        "page_number": null
+      },
+      {
+        "source_id": "e21:0:35",
+        "category": "experience",
+        "text": "2. Must-Have Skills Depth (7 Rules)",
+        "page_number": null
+      },
+      {
+        "source_id": "e22:0:67",
+        "category": "experience",
+        "text": "Assess depth, authenticity, and continuity of key technical skills.",
+        "page_number": null
+      },
+      {
+        "source_id": "e23:0:61",
+        "category": "experience",
+        "text": "1. ❌ Depth < 3 (“applied in project”) on any must-have skill.",
+        "page_number": null
+      },
+      {
+        "source_id": "e24:0:65",
+        "category": "experience",
+        "text": "2. ❌ Skill only name-dropped (score = 1) with no project context.",
+        "page_number": null
+      },
+      {
+        "source_id": "e25:0:55",
+        "category": "experience",
+        "text": "3. ⚠️ Used without clarity (score = 2) → probe further.",
+        "page_number": null
+      },
+      {
+        "source_id": "e26:0:53",
+        "category": "experience",
+        "text": "4. ✅ Depth 3 = Applied in project with context/tools.",
+        "page_number": null
+      },
+      {
+        "source_id": "e27:0:62",
+        "category": "experience",
+        "text": "5. ✅ Depth 4 = Architected / mentored / optimised (ownership).",
+        "page_number": null
+      },
+      {
+        "source_id": "e28:0:78",
+        "category": "experience",
+        "text": "6. ✅ At least one must-have skill should reach depth 4 for senior roles (8Y+).",
+        "page_number": null
+      },
+      {
+        "source_id": "e29:0:44",
+        "category": "experience",
+        "text": "7. ❌ Inconsistent skill claims across roles.",
+        "page_number": null
+      },
+      {
+        "source_id": "e30:0:40",
+        "category": "experience",
+        "text": "3. Project Ownership & Realism (7 Rules)",
+        "page_number": null
+      },
+      {
+        "source_id": "e31:0:60",
+        "category": "experience",
+        "text": "Measure real contribution, ownership, and measurable impact.",
+        "page_number": null
+      },
+      {
+        "source_id": "e32:0:45",
+        "category": "experience",
+        "text": "1. ❌ Missing ownership in ≥ 2 major projects.",
+        "page_number": null
+      },
+      {
+        "source_id": "e33:0:36",
+        "category": "experience",
+        "text": "2. ❌ No measurable KPIs or outcomes.",
+        "page_number": null
+      },
+      {
+        "source_id": "e34:0:49",
+        "category": "experience",
+        "text": "3. ❌ No team or scope context (scale, team size).",
+        "page_number": null
+      },
+      {
+        "source_id": "e35:0:71",
+        "category": "experience",
+        "text": "4. ❌ Inflated ownership (“architected enterprise platform” in 6M role).",
+        "page_number": null
+      },
+      {
+        "source_id": "e36:0:76",
+        "category": "experience",
+        "text": "5. ⚠️ Overly generic bullets repeated across projects (“responsible for X”).",
+        "page_number": null
+      },
+      {
+        "source_id": "e37:0:78",
+        "category": "experience",
+        "text": "6. ✅ Clear personal accountability and differentiation from team/company work.",
+        "page_number": null
+      },
+      {
+        "source_id": "e38:0:63",
+        "category": "experience",
+        "text": "7. ✅ Quantified KPIs (latency ↓40%, throughput ↑3x, cost ↓20%).",
+        "page_number": null
+      },
+      {
+        "source_id": "e39:0:36",
+        "category": "experience",
+        "text": "4. Language & Tone Realism (8 Rules)",
+        "page_number": null
+      },
+      {
+        "source_id": "e40:0:65",
+        "category": "experience",
+        "text": "Detect AI-written tone, over-polished phrasing, or vague resumes.",
+        "page_number": null
+      },
+      {
+        "source_id": "e41:0:47",
+        "category": "experience",
+        "text": "1. ❌ Polished but vague tone with no specifics.",
+        "page_number": null
+      },
+      {
+        "source_id": "e42:0:41",
+        "category": "experience",
+        "text": "2. ❌ Entirely passive voice across roles.",
+        "page_number": null
+      },
+      {
+        "source_id": "e43:0:84",
+        "category": "experience",
+        "text": "3. ❌ Obvious GPT-template phrasing (“leveraged synergies”, “orchestrated outcomes”).",
+        "page_number": null
+      },
+      {
+        "source_id": "e44:0:45",
+        "category": "experience",
+        "text": "4. ⚠️ > 3 vague or buzzword-heavy statements.",
+        "page_number": null
+      },
+      {
+        "source_id": "e45:0:49",
+        "category": "experience",
+        "text": "5. ⚠️ Repeated phrasing across roles (> 6 times).",
+        "page_number": null
+      },
+      {
+        "source_id": "e46:0:46",
+        "category": "experience",
+        "text": "6. ❌ Inflated metrics (“95% accuracy” reused).",
+        "page_number": null
+      },
+      {
+        "source_id": "e47:0:69",
+        "category": "experience",
+        "text": "7. ⚠️ Overused generic verbs (> 10x: “responsible for”, “worked on”).",
+        "page_number": null
+      },
+      {
+        "source_id": "e48:0:64",
+        "category": "experience",
+        "text": "8. ✅ Balanced tone (mix of technical depth + business outcomes).",
+        "page_number": null
+      },
+      {
+        "source_id": "e49:0:47",
+        "category": "experience",
+        "text": "5. Credibility & Authenticity Signals (7 Rules)",
+        "page_number": null
+      },
+      {
+        "source_id": "e50:0:57",
+        "category": "experience",
+        "text": "Ensure employer, education, and role data are verifiable.",
+        "page_number": null
+      },
+      {
+        "source_id": "e51:0:59",
+        "category": "experience",
+        "text": "1. ❌ Employer vs. client mismatch (vendor claiming client).",
+        "page_number": null
+      },
+      {
+        "source_id": "e52:0:31",
+        "category": "experience",
+        "text": "2. ❌ > 2 payroll/vendor layers.",
+        "page_number": null
+      },
+      {
+        "source_id": "e53:0:65",
+        "category": "experience",
+        "text": "3. ❌ Full-time job during full-time education (unless justified).",
+        "page_number": null
+      },
+      {
+        "source_id": "e54:0:53",
+        "category": "experience",
+        "text": "4. ⚠️ LinkedIn missing or newly created (< 3 months).",
+        "page_number": null
+      },
+      {
+        "source_id": "e55:0:29",
+        "category": "experience",
+        "text": "5. ⚠️ Fake-sounding email ID.",
+        "page_number": null
+      },
+      {
+        "source_id": "e56:0:68",
+        "category": "experience",
+        "text": "6. ⚠️ Employer branding contradiction (Tier-3 vendor → FAANG claim).",
+        "page_number": null
+      },
+      {
+        "source_id": "e57:0:45",
+        "category": "experience",
+        "text": "7. ✅ Clear, verifiable employers and clients.",
+        "page_number": null
+      },
+      {
+        "source_id": "e58:0:36",
+        "category": "experience",
+        "text": "6. Proxy / Clone Detection (7 Rules)",
+        "page_number": null
+      },
+      {
+        "source_id": "e59:0:40",
+        "category": "experience",
+        "text": "Identify cloned or AI-generated resumes.",
+        "page_number": null
+      },
+      {
+        "source_id": "e60:0:36",
+        "category": "experience",
+        "text": "1. ❌ Resume cloned (known template).",
+        "page_number": null
+      },
+      {
+        "source_id": "e61:0:50",
+        "category": "experience",
+        "text": "2. ❌ Repeated identical achievements across roles.",
+        "page_number": null
+      },
+      {
+        "source_id": "e62:0:40",
+        "category": "experience",
+        "text": "3. ❌ Cloned + reused KPIs → auto-reject.",
+        "page_number": null
+      },
+      {
+        "source_id": "e63:0:36",
+        "category": "experience",
+        "text": "4. ⚠️ Resume formatting too uniform.",
+        "page_number": null
+      },
+      {
+        "source_id": "e64:0:35",
+        "category": "experience",
+        "text": "5. ⚠️ Phrase reuse across projects.",
+        "page_number": null
+      },
+      {
+        "source_id": "e65:0:61",
+        "category": "experience",
+        "text": "6. ⚠️ AI tone shift mid-resume (half passive, half detailed).",
+        "page_number": null
+      },
+      {
+        "source_id": "e66:0:53",
+        "category": "experience",
+        "text": "7. ✅ Organic variation in phrasing and project style.",
+        "page_number": null
+      },
+      {
+        "source_id": "e67:0:48",
+        "category": "experience",
+        "text": "7. Education & Foundational Background (6 Rules)",
+        "page_number": null
+      },
+      {
+        "source_id": "e68:0:61",
+        "category": "experience",
+        "text": "Validate education credibility and logical career foundation.",
+        "page_number": null
+      },
+      {
+        "source_id": "e69:0:38",
+        "category": "experience",
+        "text": "1. ❌ Fake or unverifiable institution.",
+        "page_number": null
+      },
+      {
+        "source_id": "e70:0:52",
+        "category": "experience",
+        "text": "2. ❌ Full-time education overlapping full-time role.",
+        "page_number": null
+      },
+      {
+        "source_id": "e71:0:67",
+        "category": "experience",
+        "text": "3. ⚠️ < 1 month gap post-education → suspicious unless campus hire.",
+        "page_number": null
+      },
+      {
+        "source_id": "e72:0:48",
+        "category": "experience",
+        "text": "4. ⚠️ Irrelevant degree (note but not penalize).",
+        "page_number": null
+      },
+      {
+        "source_id": "e73:0:43",
+        "category": "experience",
+        "text": "5. ✅ Premium institute → credibility boost.",
+        "page_number": null
+      },
+      {
+        "source_id": "e74:0:58",
+        "category": "experience",
+        "text": "6. ✅ Logical transition (education → entry → progression).",
+        "page_number": null
+      },
+      {
+        "source_id": "e75:0:44",
+        "category": "experience",
+        "text": "8. Leadership & Career Progression (5 Rules)",
+        "page_number": null
+      },
+      {
+        "source_id": "e76:0:56",
+        "category": "experience",
+        "text": "Evaluate trajectory, growth, and evidence of leadership.",
+        "page_number": null
+      },
+      {
+        "source_id": "e77:0:31",
+        "category": "experience",
+        "text": "1. ❌ Flat career over 8+ years.",
+        "page_number": null
+      },
+      {
+        "source_id": "e78:0:54",
+        "category": "experience",
+        "text": "2. ❌ Repeated lateral roles with no progression story.",
+        "page_number": null
+      },
+      {
+        "source_id": "e79:0:68",
+        "category": "experience",
+        "text": "3. ✅ Promotion within same company (Engineer → Sr. Engineer → Lead).",
+        "page_number": null
+      },
+      {
+        "source_id": "e80:0:71",
+        "category": "experience",
+        "text": "4. ✅ Scope growth: mentoring, stakeholder management, design authority.",
+        "page_number": null
+      },
+      {
+        "source_id": "e81:0:59",
+        "category": "experience",
+        "text": "5. ✅ Leadership activities (hiring, mentoring, tech talks).",
+        "page_number": null
+      },
+      {
+        "source_id": "e82:0:37",
+        "category": "experience",
+        "text": "9. Pedigree & Macro Signals (6 Rules)",
+        "page_number": null
+      },
+      {
+        "source_id": "e83:0:47",
+        "category": "experience",
+        "text": "Assess overall employer quality and trajectory.",
+        "page_number": null
+      },
+      {
+        "source_id": "e84:0:44",
+        "category": "experience",
+        "text": "1. ❌ Repeated downgrade in employer quality.",
+        "page_number": null
+      },
+      {
+        "source_id": "e85:0:39",
+        "category": "experience",
+        "text": "2. ❌ Job-hopping across Tier-3 vendors.",
+        "page_number": null
+      },
+      {
+        "source_id": "e86:0:61",
+        "category": "experience",
+        "text": "3. ✅ Employer trajectory improves (Tier-3 → Tier-2 → Tier-1).",
+        "page_number": null
+      },
+      {
+        "source_id": "e87:0:47",
+        "category": "experience",
+        "text": "4. ✅ Multiple Tier-1 employers → strong signal.",
+        "page_number": null
+      },
+      {
+        "source_id": "e88:0:56",
+        "category": "experience",
+        "text": "5. ✅ Premium education + Tier-1 experience → high trust.",
+        "page_number": null
+      },
+      {
+        "source_id": "e89:0:39",
+        "category": "experience",
+        "text": "6. ⚠️ Mixed pedigree → neutral outcome.",
+        "page_number": null
+      },
+      {
+        "source_id": "e90:0:34",
+        "category": "experience",
+        "text": "🟡 OPTIONAL 3 CATEGORIES (14 RULES)",
+        "page_number": null
+      },
+      {
+        "source_id": "e91:0:46",
+        "category": "experience",
+        "text": "10. Tools & Certification Validation (6 Rules)",
+        "page_number": null
+      },
+      {
+        "source_id": "e92:0:62",
+        "category": "experience",
+        "text": "Verify authenticity, relevance, and context of certifications.",
+        "page_number": null
+      },
+      {
+        "source_id": "e93:0:39",
+        "category": "experience",
+        "text": "1. ❌ Fake or irrelevant certifications.",
+        "page_number": null
+      },
+      {
+        "source_id": "e94:0:57",
+        "category": "experience",
+        "text": "2. ❌ Laundry list of certifications without project link.",
+        "page_number": null
+      },
+      {
+        "source_id": "e95:0:45",
+        "category": "experience",
+        "text": "3. ❌ “Pursuing” certification > 6 months old.",
+        "page_number": null
+      },
+      {
+        "source_id": "e96:0:47",
+        "category": "experience",
+        "text": "4. ⚠️ Tool overload (> 15 tools in short role).",
+        "page_number": null
+      },
+      {
+        "source_id": "e97:0:70",
+        "category": "experience",
+        "text": "5. ✅ OEM certifications (AWS, GCP, Azure, Oracle) → credibility boost.",
+        "page_number": null
+      },
+      {
+        "source_id": "e98:0:44",
+        "category": "experience",
+        "text": "6. ✅ Tools clearly tied to project outcomes.",
+        "page_number": null
+      },
+      {
+        "source_id": "e99:0:38",
+        "category": "experience",
+        "text": "11. JD Alignment & Broadness (3 Rules)",
+        "page_number": null
+      },
+      {
+        "source_id": "e100:0:64",
+        "category": "experience",
+        "text": "Ensure resume aligns with required and optional JD expectations.",
+        "page_number": null
+      },
+      {
+        "source_id": "e101:0:78",
+        "category": "experience",
+        "text": "1. ✅ Broad JD → confirm with recruiter whether to cluster or evaluate equally.",
+        "page_number": null
+      },
+      {
+        "source_id": "e102:0:44",
+        "category": "experience",
+        "text": "2. ❌ Missing must-have skills → auto-reject.",
+        "page_number": null
+      },
+      {
+        "source_id": "e103:0:57",
+        "category": "experience",
+        "text": "3. ⚠️ JD too generic → mark as “equal weight” evaluation.",
+        "page_number": null
+      },
+      {
+        "source_id": "e104:0:41",
+        "category": "experience",
+        "text": "12. Domain / Industry Relevance (3 Rules)",
+        "page_number": null
+      },
+      {
+        "source_id": "e105:0:51",
+        "category": "experience",
+        "text": "Check domain alignment for industry-specific roles.",
+        "page_number": null
+      },
+      {
+        "source_id": "e106:0:52",
+        "category": "experience",
+        "text": "1. ❌ No domain exposure where mandated (e.g., BFSI).",
+        "page_number": null
+      },
+      {
+        "source_id": "e107:0:51",
+        "category": "experience",
+        "text": "2. ⚠️ Adjacent domain only (e.g., telecom vs BFSI).",
+        "page_number": null
+      },
+      {
+        "source_id": "e108:0:56",
+        "category": "experience",
+        "text": "3. ✅ Multiple domain-relevant roles → credibility boost.",
+        "page_number": null
+      },
+      {
+        "source_id": "e109:0:18",
+        "category": "experience",
+        "text": "🧾 Summary Insights",
+        "page_number": null
+      },
+      {
+        "source_id": "e110:0:27",
+        "category": "experience",
+        "text": "Strict Rejection Rules (❌)\n",
+        "page_number": null
+      },
+      {
+        "source_id": "e110:27:201",
+        "category": "experience",
+        "text": "Experience overclaims, fake education, missing must-have depth, proxy/clone templates, inflated ownership, payroll chains, irrelevant certifications, and pedigree downgrades.",
+        "page_number": null
+      },
+      {
+        "source_id": "e111:0:19",
+        "category": "experience",
+        "text": "Warning Rules (⚠️)\n",
+        "page_number": null
+      },
+      {
+        "source_id": "e111:19:126",
+        "category": "experience",
+        "text": "Vague tone, short stints, tool overload, buzzword overuse, adjacent domains, generic JDs, or unclear depth.",
+        "page_number": null
+      },
+      {
+        "source_id": "e112:0:19",
+        "category": "experience",
+        "text": "Positive Rules (✅)\n",
+        "page_number": null
+      },
+      {
+        "source_id": "e112:19:154",
+        "category": "experience",
+        "text": "Promotion within company, Tier-1 employers, stable tenure, measurable KPIs, depth-4 mastery, premium education, and OEM certifications.",
+        "page_number": null
+      },
+      {
+        "source_id": "e113:0:15",
+        "category": "experience",
+        "text": "Total Rules: 80",
+        "page_number": null
+      },
+      {
+        "source_id": "e114:0:22",
+        "category": "experience",
+        "text": "❌ 37 Mandatory Rejects",
+        "page_number": null
+      },
+      {
+        "source_id": "e115:0:32",
+        "category": "experience",
+        "text": "⚠️ 30 Warnings / Optional Checks",
+        "page_number": null
+      },
+      {
+        "source_id": "e116:0:23",
+        "category": "experience",
+        "text": "✅ 13 Credibility Boosts",
+        "page_number": null
+      },
+      {
+        "source_id": "e2:12:19",
+        "category": "summary",
+        "text": "Summary",
+        "page_number": null
+      },
+      {
+        "source_id": "e0:0:37",
+        "category": null,
+        "text": "📋 Tribera Resume Evaluation Framework",
+        "page_number": null
+      },
+      {
+        "source_id": "e1:0:31",
+        "category": null,
+        "text": "Version 2.1 | Internal Use Only",
+        "page_number": null
+      },
+      {
+        "source_id": "e2:0:2",
+        "category": null,
+        "text": "🔎 ",
+        "page_number": null
+      }
+    ],
+    "needs_review": [
+      {
+        "source_element_index": 0,
+        "start": 0,
+        "end": 37,
+        "text": "📋 Tribera Resume Evaluation Framework",
+        "page_number": null,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2988,
+        "margin": -0.0123,
+        "lane": "main",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 1,
+        "start": 0,
+        "end": 31,
+        "text": "Version 2.1 | Internal Use Only",
+        "page_number": null,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.094,
+        "margin": 0.0508,
+        "lane": "main",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 2,
+        "start": 0,
+        "end": 2,
+        "text": "🔎 ",
+        "page_number": null,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1058,
+        "margin": -0.0381,
+        "lane": "main",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      }
+    ]
+  },
+  "section_schemas": [
+    {
+      "category": "experience",
+      "label": "Experience",
+      "records": [
+        {
+          "record_id": "experience-1",
+          "source_ids": [
+            "e2:2:12"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "experience-2",
+          "source_ids": [
+            "e11:13:42",
+            "e12:0:63",
+            "e13:0:60",
+            "e14:0:61",
+            "e15:0:59",
+            "e16:0:33",
+            "e17:0:89",
+            "e18:0:65",
+            "e19:0:76",
+            "e20:0:51",
+            "e21:0:35",
+            "e22:0:67",
+            "e23:0:61",
+            "e24:0:65",
+            "e25:0:55",
+            "e26:0:53",
+            "e27:0:62",
+            "e28:0:78",
+            "e29:0:44",
+            "e30:0:40",
+            "e31:0:60",
+            "e32:0:45",
+            "e33:0:36",
+            "e34:0:49",
+            "e35:0:71",
+            "e36:0:76",
+            "e37:0:78",
+            "e38:0:63",
+            "e39:0:36",
+            "e40:0:65",
+            "e41:0:47",
+            "e42:0:41",
+            "e43:0:84",
+            "e44:0:45",
+            "e45:0:49",
+            "e46:0:46",
+            "e47:0:69",
+            "e48:0:64",
+            "e49:0:47",
+            "e50:0:57",
+            "e51:0:59",
+            "e52:0:31",
+            "e53:0:65",
+            "e54:0:53",
+            "e55:0:29",
+            "e56:0:68",
+            "e57:0:45",
+            "e58:0:36",
+            "e59:0:40",
+            "e60:0:36",
+            "e61:0:50",
+            "e62:0:40",
+            "e63:0:36",
+            "e64:0:35",
+            "e65:0:61",
+            "e66:0:53",
+            "e67:0:48",
+            "e68:0:61",
+            "e69:0:38",
+            "e70:0:52",
+            "e71:0:67",
+            "e72:0:48",
+            "e73:0:43",
+            "e74:0:58",
+            "e75:0:44",
+            "e76:0:56",
+            "e77:0:31",
+            "e78:0:54",
+            "e79:0:68",
+            "e80:0:71",
+            "e81:0:59",
+            "e82:0:37",
+            "e83:0:47",
+            "e84:0:44",
+            "e85:0:39",
+            "e86:0:61",
+            "e87:0:47",
+            "e88:0:56",
+            "e89:0:39",
+            "e90:0:34",
+            "e91:0:46",
+            "e92:0:62",
+            "e93:0:39",
+            "e94:0:57",
+            "e95:0:45",
+            "e96:0:47",
+            "e97:0:70",
+            "e98:0:44",
+            "e99:0:38",
+            "e100:0:64",
+            "e101:0:78",
+            "e102:0:44",
+            "e103:0:57",
+            "e104:0:41",
+            "e105:0:51",
+            "e106:0:52",
+            "e107:0:51",
+            "e108:0:56",
+            "e109:0:18",
+            "e110:0:27",
+            "e110:27:201",
+            "e111:0:19",
+            "e111:19:126",
+            "e112:0:19",
+            "e112:19:154",
+            "e113:0:15",
+            "e114:0:22",
+            "e115:0:32",
+            "e116:0:23"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e2:2:12",
+          "quote": "Executive "
+        },
+        {
+          "source_id": "e11:3:13",
+          "quote": "Experience"
+        },
+        {
+          "source_id": "e11:13:42",
+          "quote": " Timeline Integrity (8 Rules)"
+        },
+        {
+          "source_id": "e12:0:63",
+          "quote": "Validate chronology, stability, and authenticity of employment."
+        },
+        {
+          "source_id": "e13:0:60",
+          "quote": "1. ❌ Claimed vs. calculated experience mismatch > 1.5 years."
+        },
+        {
+          "source_id": "e14:0:61",
+          "quote": "2. ❌ Overlapping full-time roles (unless dual payroll proof)."
+        },
+        {
+          "source_id": "e15:0:59",
+          "quote": "3. ❌ Backward or invalid dates (e.g., Feb 2018 – Jan 2017)."
+        },
+        {
+          "source_id": "e16:0:33",
+          "quote": "4. ❌ Unexplained gaps > 6 months."
+        },
+        {
+          "source_id": "e17:0:89",
+          "quote": "5. ⚠️ Multiple short stints (< 12 months each) within one year → possible role inflation."
+        },
+        {
+          "source_id": "e18:0:65",
+          "quote": "6. ⚠️ Too-clean transitions (12M/24M/36M) → artificial smoothing."
+        },
+        {
+          "source_id": "e19:0:76",
+          "quote": "7. ⚠️ < 1 month gap between education & first job (unless campus placement)."
+        },
+        {
+          "source_id": "e20:0:51",
+          "quote": "8. ✅ Stable tenure (2–4 years) → credibility boost."
+        },
+        {
+          "source_id": "e21:0:35",
+          "quote": "2. Must-Have Skills Depth (7 Rules)"
+        },
+        {
+          "source_id": "e22:0:67",
+          "quote": "Assess depth, authenticity, and continuity of key technical skills."
+        },
+        {
+          "source_id": "e23:0:61",
+          "quote": "1. ❌ Depth < 3 (“applied in project”) on any must-have skill."
+        },
+        {
+          "source_id": "e24:0:65",
+          "quote": "2. ❌ Skill only name-dropped (score = 1) with no project context."
+        },
+        {
+          "source_id": "e25:0:55",
+          "quote": "3. ⚠️ Used without clarity (score = 2) → probe further."
+        },
+        {
+          "source_id": "e26:0:53",
+          "quote": "4. ✅ Depth 3 = Applied in project with context/tools."
+        },
+        {
+          "source_id": "e27:0:62",
+          "quote": "5. ✅ Depth 4 = Architected / mentored / optimised (ownership)."
+        },
+        {
+          "source_id": "e28:0:78",
+          "quote": "6. ✅ At least one must-have skill should reach depth 4 for senior roles (8Y+)."
+        },
+        {
+          "source_id": "e29:0:44",
+          "quote": "7. ❌ Inconsistent skill claims across roles."
+        },
+        {
+          "source_id": "e30:0:40",
+          "quote": "3. Project Ownership & Realism (7 Rules)"
+        },
+        {
+          "source_id": "e31:0:60",
+          "quote": "Measure real contribution, ownership, and measurable impact."
+        },
+        {
+          "source_id": "e32:0:45",
+          "quote": "1. ❌ Missing ownership in ≥ 2 major projects."
+        },
+        {
+          "source_id": "e33:0:36",
+          "quote": "2. ❌ No measurable KPIs or outcomes."
+        },
+        {
+          "source_id": "e34:0:49",
+          "quote": "3. ❌ No team or scope context (scale, team size)."
+        },
+        {
+          "source_id": "e35:0:71",
+          "quote": "4. ❌ Inflated ownership (“architected enterprise platform” in 6M role)."
+        },
+        {
+          "source_id": "e36:0:76",
+          "quote": "5. ⚠️ Overly generic bullets repeated across projects (“responsible for X”)."
+        },
+        {
+          "source_id": "e37:0:78",
+          "quote": "6. ✅ Clear personal accountability and differentiation from team/company work."
+        },
+        {
+          "source_id": "e38:0:63",
+          "quote": "7. ✅ Quantified KPIs (latency ↓40%, throughput ↑3x, cost ↓20%)."
+        },
+        {
+          "source_id": "e39:0:36",
+          "quote": "4. Language & Tone Realism (8 Rules)"
+        },
+        {
+          "source_id": "e40:0:65",
+          "quote": "Detect AI-written tone, over-polished phrasing, or vague resumes."
+        },
+        {
+          "source_id": "e41:0:47",
+          "quote": "1. ❌ Polished but vague tone with no specifics."
+        },
+        {
+          "source_id": "e42:0:41",
+          "quote": "2. ❌ Entirely passive voice across roles."
+        },
+        {
+          "source_id": "e43:0:84",
+          "quote": "3. ❌ Obvious GPT-template phrasing (“leveraged synergies”, “orchestrated outcomes”)."
+        },
+        {
+          "source_id": "e44:0:45",
+          "quote": "4. ⚠️ > 3 vague or buzzword-heavy statements."
+        },
+        {
+          "source_id": "e45:0:49",
+          "quote": "5. ⚠️ Repeated phrasing across roles (> 6 times)."
+        },
+        {
+          "source_id": "e46:0:46",
+          "quote": "6. ❌ Inflated metrics (“95% accuracy” reused)."
+        },
+        {
+          "source_id": "e47:0:69",
+          "quote": "7. ⚠️ Overused generic verbs (> 10x: “responsible for”, “worked on”)."
+        },
+        {
+          "source_id": "e48:0:64",
+          "quote": "8. ✅ Balanced tone (mix of technical depth + business outcomes)."
+        },
+        {
+          "source_id": "e49:0:47",
+          "quote": "5. Credibility & Authenticity Signals (7 Rules)"
+        },
+        {
+          "source_id": "e50:0:57",
+          "quote": "Ensure employer, education, and role data are verifiable."
+        },
+        {
+          "source_id": "e51:0:59",
+          "quote": "1. ❌ Employer vs. client mismatch (vendor claiming client)."
+        },
+        {
+          "source_id": "e52:0:31",
+          "quote": "2. ❌ > 2 payroll/vendor layers."
+        },
+        {
+          "source_id": "e53:0:65",
+          "quote": "3. ❌ Full-time job during full-time education (unless justified)."
+        },
+        {
+          "source_id": "e54:0:53",
+          "quote": "4. ⚠️ LinkedIn missing or newly created (< 3 months)."
+        },
+        {
+          "source_id": "e55:0:29",
+          "quote": "5. ⚠️ Fake-sounding email ID."
+        },
+        {
+          "source_id": "e56:0:68",
+          "quote": "6. ⚠️ Employer branding contradiction (Tier-3 vendor → FAANG claim)."
+        },
+        {
+          "source_id": "e57:0:45",
+          "quote": "7. ✅ Clear, verifiable employers and clients."
+        },
+        {
+          "source_id": "e58:0:36",
+          "quote": "6. Proxy / Clone Detection (7 Rules)"
+        },
+        {
+          "source_id": "e59:0:40",
+          "quote": "Identify cloned or AI-generated resumes."
+        },
+        {
+          "source_id": "e60:0:36",
+          "quote": "1. ❌ Resume cloned (known template)."
+        },
+        {
+          "source_id": "e61:0:50",
+          "quote": "2. ❌ Repeated identical achievements across roles."
+        },
+        {
+          "source_id": "e62:0:40",
+          "quote": "3. ❌ Cloned + reused KPIs → auto-reject."
+        },
+        {
+          "source_id": "e63:0:36",
+          "quote": "4. ⚠️ Resume formatting too uniform."
+        },
+        {
+          "source_id": "e64:0:35",
+          "quote": "5. ⚠️ Phrase reuse across projects."
+        },
+        {
+          "source_id": "e65:0:61",
+          "quote": "6. ⚠️ AI tone shift mid-resume (half passive, half detailed)."
+        },
+        {
+          "source_id": "e66:0:53",
+          "quote": "7. ✅ Organic variation in phrasing and project style."
+        },
+        {
+          "source_id": "e67:0:48",
+          "quote": "7. Education & Foundational Background (6 Rules)"
+        },
+        {
+          "source_id": "e68:0:61",
+          "quote": "Validate education credibility and logical career foundation."
+        },
+        {
+          "source_id": "e69:0:38",
+          "quote": "1. ❌ Fake or unverifiable institution."
+        },
+        {
+          "source_id": "e70:0:52",
+          "quote": "2. ❌ Full-time education overlapping full-time role."
+        },
+        {
+          "source_id": "e71:0:67",
+          "quote": "3. ⚠️ < 1 month gap post-education → suspicious unless campus hire."
+        },
+        {
+          "source_id": "e72:0:48",
+          "quote": "4. ⚠️ Irrelevant degree (note but not penalize)."
+        },
+        {
+          "source_id": "e73:0:43",
+          "quote": "5. ✅ Premium institute → credibility boost."
+        },
+        {
+          "source_id": "e74:0:58",
+          "quote": "6. ✅ Logical transition (education → entry → progression)."
+        },
+        {
+          "source_id": "e75:0:44",
+          "quote": "8. Leadership & Career Progression (5 Rules)"
+        },
+        {
+          "source_id": "e76:0:56",
+          "quote": "Evaluate trajectory, growth, and evidence of leadership."
+        },
+        {
+          "source_id": "e77:0:31",
+          "quote": "1. ❌ Flat career over 8+ years."
+        },
+        {
+          "source_id": "e78:0:54",
+          "quote": "2. ❌ Repeated lateral roles with no progression story."
+        },
+        {
+          "source_id": "e79:0:68",
+          "quote": "3. ✅ Promotion within same company (Engineer → Sr. Engineer → Lead)."
+        },
+        {
+          "source_id": "e80:0:71",
+          "quote": "4. ✅ Scope growth: mentoring, stakeholder management, design authority."
+        },
+        {
+          "source_id": "e81:0:59",
+          "quote": "5. ✅ Leadership activities (hiring, mentoring, tech talks)."
+        },
+        {
+          "source_id": "e82:0:37",
+          "quote": "9. Pedigree & Macro Signals (6 Rules)"
+        },
+        {
+          "source_id": "e83:0:47",
+          "quote": "Assess overall employer quality and trajectory."
+        },
+        {
+          "source_id": "e84:0:44",
+          "quote": "1. ❌ Repeated downgrade in employer quality."
+        },
+        {
+          "source_id": "e85:0:39",
+          "quote": "2. ❌ Job-hopping across Tier-3 vendors."
+        },
+        {
+          "source_id": "e86:0:61",
+          "quote": "3. ✅ Employer trajectory improves (Tier-3 → Tier-2 → Tier-1)."
+        },
+        {
+          "source_id": "e87:0:47",
+          "quote": "4. ✅ Multiple Tier-1 employers → strong signal."
+        },
+        {
+          "source_id": "e88:0:56",
+          "quote": "5. ✅ Premium education + Tier-1 experience → high trust."
+        },
+        {
+          "source_id": "e89:0:39",
+          "quote": "6. ⚠️ Mixed pedigree → neutral outcome."
+        },
+        {
+          "source_id": "e90:0:34",
+          "quote": "🟡 OPTIONAL 3 CATEGORIES (14 RULES)"
+        },
+        {
+          "source_id": "e91:0:46",
+          "quote": "10. Tools & Certification Validation (6 Rules)"
+        },
+        {
+          "source_id": "e92:0:62",
+          "quote": "Verify authenticity, relevance, and context of certifications."
+        },
+        {
+          "source_id": "e93:0:39",
+          "quote": "1. ❌ Fake or irrelevant certifications."
+        },
+        {
+          "source_id": "e94:0:57",
+          "quote": "2. ❌ Laundry list of certifications without project link."
+        },
+        {
+          "source_id": "e95:0:45",
+          "quote": "3. ❌ “Pursuing” certification > 6 months old."
+        },
+        {
+          "source_id": "e96:0:47",
+          "quote": "4. ⚠️ Tool overload (> 15 tools in short role)."
+        },
+        {
+          "source_id": "e97:0:70",
+          "quote": "5. ✅ OEM certifications (AWS, GCP, Azure, Oracle) → credibility boost."
+        },
+        {
+          "source_id": "e98:0:44",
+          "quote": "6. ✅ Tools clearly tied to project outcomes."
+        },
+        {
+          "source_id": "e99:0:38",
+          "quote": "11. JD Alignment & Broadness (3 Rules)"
+        },
+        {
+          "source_id": "e100:0:64",
+          "quote": "Ensure resume aligns with required and optional JD expectations."
+        },
+        {
+          "source_id": "e101:0:78",
+          "quote": "1. ✅ Broad JD → confirm with recruiter whether to cluster or evaluate equally."
+        },
+        {
+          "source_id": "e102:0:44",
+          "quote": "2. ❌ Missing must-have skills → auto-reject."
+        },
+        {
+          "source_id": "e103:0:57",
+          "quote": "3. ⚠️ JD too generic → mark as “equal weight” evaluation."
+        },
+        {
+          "source_id": "e104:0:41",
+          "quote": "12. Domain / Industry Relevance (3 Rules)"
+        },
+        {
+          "source_id": "e105:0:51",
+          "quote": "Check domain alignment for industry-specific roles."
+        },
+        {
+          "source_id": "e106:0:52",
+          "quote": "1. ❌ No domain exposure where mandated (e.g., BFSI)."
+        },
+        {
+          "source_id": "e107:0:51",
+          "quote": "2. ⚠️ Adjacent domain only (e.g., telecom vs BFSI)."
+        },
+        {
+          "source_id": "e108:0:56",
+          "quote": "3. ✅ Multiple domain-relevant roles → credibility boost."
+        },
+        {
+          "source_id": "e109:0:18",
+          "quote": "🧾 Summary Insights"
+        },
+        {
+          "source_id": "e110:0:27",
+          "quote": "Strict Rejection Rules (❌)\n"
+        },
+        {
+          "source_id": "e110:27:201",
+          "quote": "Experience overclaims, fake education, missing must-have depth, proxy/clone templates, inflated ownership, payroll chains, irrelevant certifications, and pedigree downgrades."
+        },
+        {
+          "source_id": "e111:0:19",
+          "quote": "Warning Rules (⚠️)\n"
+        },
+        {
+          "source_id": "e111:19:126",
+          "quote": "Vague tone, short stints, tool overload, buzzword overuse, adjacent domains, generic JDs, or unclear depth."
+        },
+        {
+          "source_id": "e112:0:19",
+          "quote": "Positive Rules (✅)\n"
+        },
+        {
+          "source_id": "e112:19:154",
+          "quote": "Promotion within company, Tier-1 employers, stable tenure, measurable KPIs, depth-4 mastery, premium education, and OEM certifications."
+        },
+        {
+          "source_id": "e113:0:15",
+          "quote": "Total Rules: 80"
+        },
+        {
+          "source_id": "e114:0:22",
+          "quote": "❌ 37 Mandatory Rejects"
+        },
+        {
+          "source_id": "e115:0:32",
+          "quote": "⚠️ 30 Warnings / Optional Checks"
+        },
+        {
+          "source_id": "e116:0:23",
+          "quote": "✅ 13 Credibility Boosts"
+        }
+      ]
+    },
+    {
+      "category": "summary",
+      "label": "Summary",
+      "records": [
+        {
+          "record_id": "summary",
+          "source_ids": [
+            "e3:0:8",
+            "e3:8:132",
+            "e3:132:257",
+            "e4:0:9",
+            "e5:0:89",
+            "e6:0:95",
+            "e7:0:65",
+            "e8:0:6",
+            "e9:0:200",
+            "e10:0:30",
+            "e11:0:3"
+          ],
+          "attributes": [
+            {
+              "name": "statements",
+              "items": [
+                {
+                  "value": "Purpose\n",
+                  "evidence": [
+                    {
+                      "source_id": "e3:0:8",
+                      "quote": "Purpose\n"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "To ensure that every candidate's resume is evaluated consistently, accurately, and credibly before screening or submission.\n",
+                  "evidence": [
+                    {
+                      "source_id": "e3:8:132",
+                      "quote": "To ensure that every candidate's resume is evaluated consistently, accurately, and credibly before screening or submission.\n"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "This framework combines human judgment and AI-driven rule checks to identify authentic, experienced, and in-depth candidates.",
+                  "evidence": [
+                    {
+                      "source_id": "e3:132:257",
+                      "quote": "This framework combines human judgment and AI-driven rule checks to identify authentic, experienced, and in-depth candidates."
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Structure",
+                  "evidence": [
+                    {
+                      "source_id": "e4:0:9",
+                      "quote": "Structure"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "🟢 Core 9 Categories (Total: 66 Rules) – Mandatory evaluation dimensions for all profiles.",
+                  "evidence": [
+                    {
+                      "source_id": "e5:0:89",
+                      "quote": "🟢 Core 9 Categories (Total: 66 Rules) – Mandatory evaluation dimensions for all profiles."
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "🟡 Optional 3 Categories (Total: 14 Rules) – Contextual checks depending on role, JD, or domain.",
+                  "evidence": [
+                    {
+                      "source_id": "e6:0:95",
+                      "quote": "🟡 Optional 3 Categories (Total: 14 Rules) – Contextual checks depending on role, JD, or domain."
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Total Rules: 80 (52 Mandatory / 15 Optional / 13 Positive Boosts)",
+                  "evidence": [
+                    {
+                      "source_id": "e7:0:65",
+                      "quote": "Total Rules: 80 (52 Mandatory / 15 Optional / 13 Positive Boosts)"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Legend",
+                  "evidence": [
+                    {
+                      "source_id": "e8:0:6",
+                      "quote": "Legend"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Symbol Meaning Action ❌ Hard rejection / gating failure Disqualify or probe deeply ⚠️ Cautionary signal Investigate or clarify ✅ Credibility/strength indicator Add to the candidate's confidence score.",
+                  "evidence": [
+                    {
+                      "source_id": "e9:0:200",
+                      "quote": "Symbol Meaning Action ❌ Hard rejection / gating failure Disqualify or probe deeply ⚠️ Cautionary signal Investigate or clarify ✅ Credibility/strength indicator Add to the candidate's confidence score."
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "🟢 CORE 9 CATEGORIES (66 RULES)",
+                  "evidence": [
+                    {
+                      "source_id": "e10:0:30",
+                      "quote": "🟢 CORE 9 CATEGORIES (66 RULES)"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "1. ",
+                  "evidence": [
+                    {
+                      "source_id": "e11:0:3",
+                      "quote": "1. "
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "total_experience_years",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e2:12:19",
+          "quote": "Summary"
+        }
+      ]
+    },
+    {
+      "category": "needs_review",
+      "label": "Unassigned source blocks",
+      "records": [],
+      "residual_blocks": [
+        {
+          "source_id": "e0:0:37",
+          "quote": "📋 Tribera Resume Evaluation Framework"
+        },
+        {
+          "source_id": "e1:0:31",
+          "quote": "Version 2.1 | Internal Use Only"
+        },
+        {
+          "source_id": "e2:0:2",
+          "quote": "🔎 "
+        }
+      ]
+    }
+  ]
+}

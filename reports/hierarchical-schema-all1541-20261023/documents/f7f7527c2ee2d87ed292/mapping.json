@@ -1,0 +1,3297 @@
+{
+  "success": true,
+  "source": "Nimit Narayani.pdf",
+  "extraction_mode": "existing_blocks_schema_mapping",
+  "data": {
+    "contact": {
+      "full_name": "nimitnarayani@gmail.com",
+      "email": "nimitnarayani@gmail.com",
+      "phone": "",
+      "location": null,
+      "linkedin_url": null,
+      "github_url": null,
+      "portfolio_url": null
+    },
+    "professional_title": null,
+    "summary": null,
+    "total_experience_years": null,
+    "skills": {
+      "technical_skills": [
+        "Python"
+      ],
+      "tools_and_platforms": [],
+      "domain_and_functional": [],
+      "soft_skills": [],
+      "all_skills": [
+        "Python",
+        "Networking (MPLS",
+        "OSPF",
+        "ISIS",
+        "BGP",
+        "IPv4",
+        "IPv6",
+        "TCP/IP",
+        "UDP)",
+        "Cisco IOS XR/XE",
+        "DHCP",
+        "DNS",
+        "Network Automation (Troubleshooting/Configuration of Cisco IOS XR/XE devices)"
+      ]
+    },
+    "experience": [
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      }
+    ],
+    "education": [
+      {
+        "institution": "",
+        "degree": "",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      },
+      {
+        "institution": "",
+        "degree": "",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      }
+    ],
+    "certifications": [
+      {
+        "name": "Automate The Boring Stuff With Python\nDevnet, Cisco",
+        "issuer": null,
+        "issue_year": null
+      },
+      {
+        "name": "Python 3\nCCNA (CISCO)",
+        "issuer": null,
+        "issue_year": null
+      }
+    ],
+    "projects": [],
+    "languages": []
+  },
+  "schema_mapping": {
+    "fields_populated": 7,
+    "total_fields": 16,
+    "completion_percentage": 43.8,
+    "field_details": [
+      {
+        "field_name": "contact.full_name",
+        "target_type": "string",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Personal Details",
+        "confidence_score": 0.95,
+        "description": "Candidate's full name, extracted from the top header of the resume."
+      },
+      {
+        "field_name": "contact.email",
+        "target_type": "string (email)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.98,
+        "description": "Candidate's primary contact email address."
+      },
+      {
+        "field_name": "contact.phone",
+        "target_type": "string (phone)",
+        "is_required": true,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's telephone / mobile phone number."
+      },
+      {
+        "field_name": "contact.location",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's residential location or work city."
+      },
+      {
+        "field_name": "contact.linkedin_url",
+        "target_type": "string (url) | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "URL to candidate's LinkedIn profile."
+      },
+      {
+        "field_name": "professional_title",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Subtitle",
+        "confidence_score": 0.0,
+        "description": "Candidate's target headline or most recent job title."
+      },
+      {
+        "field_name": "summary",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Professional Summary / Profile / Objective",
+        "confidence_score": 0.0,
+        "description": "Executive bio, professional overview, or career objective."
+      },
+      {
+        "field_name": "total_experience_years",
+        "target_type": "float | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Summary / Experience Calculation",
+        "confidence_score": 0.0,
+        "description": "Total professional experience in years."
+      },
+      {
+        "field_name": "skills.technical_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills / Technical Competencies",
+        "confidence_score": 0.92,
+        "description": "Technical programming languages and core software competencies."
+      },
+      {
+        "field_name": "skills.tools_and_platforms",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Tools & Technologies",
+        "confidence_score": 0.0,
+        "description": "Software platforms, developer tools, and operational systems."
+      },
+      {
+        "field_name": "skills.domain_and_functional",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Domain Expertise",
+        "confidence_score": 0.0,
+        "description": "Functional domain knowledge (e.g. Hedge Funds, KYC, NAV, Derivatives)."
+      },
+      {
+        "field_name": "skills.all_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills (Aggregated)",
+        "confidence_score": 0.95,
+        "description": "Complete list of candidate skills across all categories."
+      },
+      {
+        "field_name": "experience",
+        "target_type": "array[WorkExperience]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Experience / Work History",
+        "confidence_score": 0.92,
+        "description": "Complete chronological employment records with bullet points."
+      },
+      {
+        "field_name": "education",
+        "target_type": "array[Education]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Education / Academic Qualifications",
+        "confidence_score": 0.9,
+        "description": "University, college, and higher education degree qualifications."
+      },
+      {
+        "field_name": "certifications",
+        "target_type": "array[Certification]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Certifications / Licenses",
+        "confidence_score": 0.8,
+        "description": "Professional accreditations and credentials."
+      },
+      {
+        "field_name": "projects",
+        "target_type": "array[Project]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Projects / Key Engagements",
+        "confidence_score": 0.0,
+        "description": "Major projects or strategic initiatives led by candidate."
+      }
+    ]
+  },
+  "raw_sections": {
+    "personal_information": "nimitnarayani@gmail.com",
+    "experience": "PROFESSIONAL EXPERIENCE\nConsulting Engineer, Cisco\n08/2022 – present | Bangalore, India\nIndian Air Force – Network Automation (Air-Gapped): Implemented Python automation in an on-site air-gapped environment to detect configuration and service issues across BGP, IS-IS, OSPF, MPLS, and L3VPN, reducing troubleshooting time by 80%. •Microsoft Data Center – Data Center Network: Configured Cisco NCS540 routers, handling provisioning, hardware validation, OSPF testing, and reachability checks before production integration. •Reliance Jio – Network Migration & Automation: Migrated 500+ devices from Juniper and Huawei to NCS540, supporting IS-IS and BGP. Validated configurations and built Python-based pre/ post migration checks for 1000+ devices, reducing verification time by 90%. •NIC Guwahati – Hardware Validation and P2P testing: Performed NRFU and hardware testing of network devices and supported deployment and performance validation. •MTNL India – Migration: Supported migration of 100+ sites to ASR and NCS routers, assisting with troubleshooting and validation of BGP, MPLS, L2/ L3 VPN, and VRF services. •Railway Telecom – Network Design: Assisted in on-site network design in coordination with customers and solution architects. •MTN South Africa – Migration Documentation: Prepared MOP documents for large-scale, multi-site migrations involving 50 routers, covering VPN, MPLS, OSPF, and IS-IS, including pre-check and rollback procedures. •Core-42 – Deployment Automation: Automated document validation, NIP vs live configuration checks, and bulk configuration deployment, reducing rollout time by 90%. •Network Automation Tool (Cisco In-Built Tool): Planned automation of CRD, DDD, NIP, and NRFU workflows to reduce manual effort by 80% and standardize deployments. •Pre/Post Comparison Tool: Automated pre- and post-migration checks to compare router configurations, interface states, and BGP/ OSPF adjacencies. 01/2022 – 07/2022 | Bangalore, India\nIndian Air Force – Network Automation (Air-Gapped): Implemented Python automation in an on-site air-gapped environment to detect configuration and service issues across BGP, IS-IS, OSPF, MPLS, and L3VPN, reducing troubleshooting time by 80%. •Microsoft Data Center – Data Center Network: Configured Cisco NCS540 routers, handling provisioning, hardware validation, OSPF testing, and reachability checks before production integration. •Reliance Jio – Network Migration & Automation: Migrated 500+ devices from Juniper and Huawei to NCS540, supporting IS-IS and BGP. Validated configurations and built Python-based pre/ post migration checks for 1000+ devices, reducing verification time by 90%. •NIC Guwahati – Hardware Validation and P2P testing: Performed NRFU and hardware testing of network devices and supported deployment and performance validation. •MTNL India – Migration: Supported migration of 100+ sites to ASR and NCS routers, assisting with troubleshooting and validation of BGP, MPLS, L2/ L3 VPN, and VRF services. •Railway Telecom – Network Design: Assisted in on-site network design in coordination with customers and solution architects. •MTN South Africa – Migration Documentation: Prepared MOP documents for large-scale, multi-site migrations involving 50 routers, covering VPN, MPLS, OSPF, and IS-IS, including pre-check and rollback procedures. •Core-42 – Deployment Automation: Automated document validation, NIP vs live configuration checks, and bulk configuration deployment, reducing rollout time by 90%. •Network Automation Tool (Cisco In-Built Tool): Planned automation of CRD, DDD, NIP, and NRFU workflows to reduce manual effort by 80% and standardize deployments. •Pre/Post Comparison Tool: Automated pre- and post-migration checks to compare router configurations, interface states, and BGP/ OSPF adjacencies. 01/2022 – 07/2022 | Bangalore, India\nCompleted technical training and assisted with configuration, testing, and basic troubleshooting of network devices across 5–10 routers under engineer supervision.\nAI-ML virtual internship, AWS Academy\n10/2021 – 12/2021 | Delhi, India\nTrained & implemented AI-ML models through which we can solve real world problems.",
+    "skills": "SKILLS\nPython\nNetworking (MPLS, OSPF, ISIS, BGP, IPv4, IPv6, TCP/IP, UDP)\nCisco IOS XR/XE\nDHCP\nDNS\nNetwork Automation (Troubleshooting/Configuration of Cisco IOS XR/XE devices)",
+    "certifications": "CERTIFICATES\nAutomate The Boring Stuff With Python\nPython 3\nDevnet, Cisco\nCCNA (CISCO)",
+    "education": "EDUCATION\nBachelor of Technology in Computer Science, Galgotias University 7.18/ 10 CGPA (First Division)\n2018 – 2022 | Noida, India",
+    "publications": "PUBLICATIONS\nWEB SCRAPING & AUTOMATION BOT, Nimit Narayani Authored a Survey Research Paper on using Python to automate all the tasks including Stock Market, YouTube and other websites."
+  },
+  "meta": {
+    "status": "needs_review",
+    "human_verified": false,
+    "provider_calls": 0,
+    "source_accounting": {
+      "all_source_text_preserved": true,
+      "total_spans": 104,
+      "assigned_meaningful_spans": 82,
+      "unresolved_meaningful_spans": 4,
+      "non_content_artifacts": 18,
+      "duplicates_excluded": 0,
+      "all_meaningful_text_assigned": false,
+      "semantic_correctness_verified": false,
+      "outcomes": [
+        {
+          "source_id": "e0:0:14",
+          "source_element_index": 0,
+          "start": 0,
+          "end": 14,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e1:0:23",
+          "source_element_index": 1,
+          "start": 0,
+          "end": 23,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e2:0:14",
+          "source_element_index": 2,
+          "start": 0,
+          "end": 14,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e3:0:9",
+          "source_element_index": 3,
+          "start": 0,
+          "end": 9,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e4:0:8",
+          "source_element_index": 4,
+          "start": 0,
+          "end": 8,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e5:0:23",
+          "source_element_index": 5,
+          "start": 0,
+          "end": 23,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e6:0:26",
+          "source_element_index": 6,
+          "start": 0,
+          "end": 26,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e7:0:36",
+          "source_element_index": 7,
+          "start": 0,
+          "end": 36,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:0:96",
+          "source_element_index": 8,
+          "start": 0,
+          "end": 96,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:96:197",
+          "source_element_index": 8,
+          "start": 96,
+          "end": 197,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:197:241",
+          "source_element_index": 8,
+          "start": 197,
+          "end": 241,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:241:243",
+          "source_element_index": 8,
+          "start": 241,
+          "end": 243,
+          "section": "experience",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e8:243:344",
+          "source_element_index": 8,
+          "start": 243,
+          "end": 344,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:344:433",
+          "source_element_index": 8,
+          "start": 344,
+          "end": 433,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:433:435",
+          "source_element_index": 8,
+          "start": 433,
+          "end": 435,
+          "section": "experience",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e8:435:531",
+          "source_element_index": 8,
+          "start": 435,
+          "end": 531,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:531:633",
+          "source_element_index": 8,
+          "start": 531,
+          "end": 633,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:633:693",
+          "source_element_index": 8,
+          "start": 633,
+          "end": 693,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:693:695",
+          "source_element_index": 8,
+          "start": 693,
+          "end": 695,
+          "section": "experience",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e8:695:786",
+          "source_element_index": 8,
+          "start": 695,
+          "end": 786,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:786:854",
+          "source_element_index": 8,
+          "start": 786,
+          "end": 854,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:854:856",
+          "source_element_index": 8,
+          "start": 854,
+          "end": 856,
+          "section": "experience",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e8:856:908",
+          "source_element_index": 8,
+          "start": 856,
+          "end": 908,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:908:953",
+          "source_element_index": 8,
+          "start": 908,
+          "end": 953,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:953:1027",
+          "source_element_index": 8,
+          "start": 953,
+          "end": 1027,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:1027:1029",
+          "source_element_index": 8,
+          "start": 1027,
+          "end": 1029,
+          "section": "experience",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e8:1029:1129",
+          "source_element_index": 8,
+          "start": 1029,
+          "end": 1129,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:1129:1153",
+          "source_element_index": 8,
+          "start": 1129,
+          "end": 1153,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:1153:1155",
+          "source_element_index": 8,
+          "start": 1153,
+          "end": 1155,
+          "section": "experience",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e8:1155:1250",
+          "source_element_index": 8,
+          "start": 1155,
+          "end": 1250,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:1250:1353",
+          "source_element_index": 8,
+          "start": 1250,
+          "end": 1353,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:1353:1364",
+          "source_element_index": 8,
+          "start": 1353,
+          "end": 1364,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:1364:1366",
+          "source_element_index": 8,
+          "start": 1364,
+          "end": 1366,
+          "section": "experience",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e8:1366:1464",
+          "source_element_index": 8,
+          "start": 1366,
+          "end": 1464,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:1464:1528",
+          "source_element_index": 8,
+          "start": 1464,
+          "end": 1528,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:1528:1530",
+          "source_element_index": 8,
+          "start": 1528,
+          "end": 1530,
+          "section": "experience",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e8:1530:1623",
+          "source_element_index": 8,
+          "start": 1530,
+          "end": 1623,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:1623:1692",
+          "source_element_index": 8,
+          "start": 1623,
+          "end": 1692,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:1692:1694",
+          "source_element_index": 8,
+          "start": 1692,
+          "end": 1694,
+          "section": "experience",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e8:1694:1754",
+          "source_element_index": 8,
+          "start": 1694,
+          "end": 1754,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:1754:1795",
+          "source_element_index": 8,
+          "start": 1754,
+          "end": 1795,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:1795:1840",
+          "source_element_index": 8,
+          "start": 1795,
+          "end": 1840,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:1840:1876",
+          "source_element_index": 8,
+          "start": 1840,
+          "end": 1876,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:0:96",
+          "source_element_index": 9,
+          "start": 0,
+          "end": 96,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:96:197",
+          "source_element_index": 9,
+          "start": 96,
+          "end": 197,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:197:241",
+          "source_element_index": 9,
+          "start": 197,
+          "end": 241,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:241:243",
+          "source_element_index": 9,
+          "start": 241,
+          "end": 243,
+          "section": "experience",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e9:243:344",
+          "source_element_index": 9,
+          "start": 243,
+          "end": 344,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:344:433",
+          "source_element_index": 9,
+          "start": 344,
+          "end": 433,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:433:435",
+          "source_element_index": 9,
+          "start": 433,
+          "end": 435,
+          "section": "experience",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e9:435:531",
+          "source_element_index": 9,
+          "start": 435,
+          "end": 531,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:531:633",
+          "source_element_index": 9,
+          "start": 531,
+          "end": 633,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:633:693",
+          "source_element_index": 9,
+          "start": 633,
+          "end": 693,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:693:695",
+          "source_element_index": 9,
+          "start": 693,
+          "end": 695,
+          "section": "experience",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e9:695:786",
+          "source_element_index": 9,
+          "start": 695,
+          "end": 786,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:786:854",
+          "source_element_index": 9,
+          "start": 786,
+          "end": 854,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:854:856",
+          "source_element_index": 9,
+          "start": 854,
+          "end": 856,
+          "section": "experience",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e9:856:908",
+          "source_element_index": 9,
+          "start": 856,
+          "end": 908,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:908:953",
+          "source_element_index": 9,
+          "start": 908,
+          "end": 953,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:953:1027",
+          "source_element_index": 9,
+          "start": 953,
+          "end": 1027,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:1027:1029",
+          "source_element_index": 9,
+          "start": 1027,
+          "end": 1029,
+          "section": "experience",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e9:1029:1129",
+          "source_element_index": 9,
+          "start": 1029,
+          "end": 1129,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:1129:1153",
+          "source_element_index": 9,
+          "start": 1129,
+          "end": 1153,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:1153:1155",
+          "source_element_index": 9,
+          "start": 1153,
+          "end": 1155,
+          "section": "experience",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e9:1155:1250",
+          "source_element_index": 9,
+          "start": 1155,
+          "end": 1250,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:1250:1353",
+          "source_element_index": 9,
+          "start": 1250,
+          "end": 1353,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:1353:1364",
+          "source_element_index": 9,
+          "start": 1353,
+          "end": 1364,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:1364:1366",
+          "source_element_index": 9,
+          "start": 1364,
+          "end": 1366,
+          "section": "experience",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e9:1366:1464",
+          "source_element_index": 9,
+          "start": 1366,
+          "end": 1464,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:1464:1528",
+          "source_element_index": 9,
+          "start": 1464,
+          "end": 1528,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:1528:1530",
+          "source_element_index": 9,
+          "start": 1528,
+          "end": 1530,
+          "section": "experience",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e9:1530:1623",
+          "source_element_index": 9,
+          "start": 1530,
+          "end": 1623,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:1623:1692",
+          "source_element_index": 9,
+          "start": 1623,
+          "end": 1692,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:1692:1694",
+          "source_element_index": 9,
+          "start": 1692,
+          "end": 1694,
+          "section": "experience",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e9:1694:1754",
+          "source_element_index": 9,
+          "start": 1694,
+          "end": 1754,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:1754:1795",
+          "source_element_index": 9,
+          "start": 1754,
+          "end": 1795,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:1795:1840",
+          "source_element_index": 9,
+          "start": 1795,
+          "end": 1840,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:1840:1876",
+          "source_element_index": 9,
+          "start": 1840,
+          "end": 1876,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e10:0:100",
+          "source_element_index": 10,
+          "start": 0,
+          "end": 100,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e10:100:163",
+          "source_element_index": 10,
+          "start": 100,
+          "end": 163,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e11:0:37",
+          "source_element_index": 11,
+          "start": 0,
+          "end": 37,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:0:32",
+          "source_element_index": 12,
+          "start": 0,
+          "end": 32,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e13:0:82",
+          "source_element_index": 13,
+          "start": 0,
+          "end": 82,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e14:0:6",
+          "source_element_index": 14,
+          "start": 0,
+          "end": 6,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e15:0:6",
+          "source_element_index": 15,
+          "start": 0,
+          "end": 6,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e16:0:59",
+          "source_element_index": 16,
+          "start": 0,
+          "end": 59,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e17:0:15",
+          "source_element_index": 17,
+          "start": 0,
+          "end": 15,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e18:0:4",
+          "source_element_index": 18,
+          "start": 0,
+          "end": 4,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e19:0:3",
+          "source_element_index": 19,
+          "start": 0,
+          "end": 3,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e20:0:77",
+          "source_element_index": 20,
+          "start": 0,
+          "end": 77,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e21:0:12",
+          "source_element_index": 21,
+          "start": 0,
+          "end": 12,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e22:0:37",
+          "source_element_index": 22,
+          "start": 0,
+          "end": 37,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e23:0:8",
+          "source_element_index": 23,
+          "start": 0,
+          "end": 8,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e24:0:13",
+          "source_element_index": 24,
+          "start": 0,
+          "end": 13,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e25:0:12",
+          "source_element_index": 25,
+          "start": 0,
+          "end": 12,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e26:0:9",
+          "source_element_index": 26,
+          "start": 0,
+          "end": 9,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e27:0:44",
+          "source_element_index": 27,
+          "start": 0,
+          "end": 44,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e27:44:65",
+          "source_element_index": 27,
+          "start": 44,
+          "end": 65,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e27:65:95",
+          "source_element_index": 27,
+          "start": 65,
+          "end": 95,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e28:0:26",
+          "source_element_index": 28,
+          "start": 0,
+          "end": 26,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e29:0:12",
+          "source_element_index": 29,
+          "start": 0,
+          "end": 12,
+          "section": "publications",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e30:0:46",
+          "source_element_index": 30,
+          "start": 0,
+          "end": 46,
+          "section": "publications",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e30:46:145",
+          "source_element_index": 30,
+          "start": 46,
+          "end": 145,
+          "section": "publications",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e30:145:172",
+          "source_element_index": 30,
+          "start": 145,
+          "end": 172,
+          "section": "publications",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        }
+      ]
+    },
+    "document_scope": {
+      "kind": "likely_resume",
+      "candidate_resume": true,
+      "reason": "Contact details, multiple resume section families and dated history; provisional scope only",
+      "human_verified": false
+    },
+    "source_inventory_sha256": "eaaefa3993dad3840833ac2ceaf488112a54bf3cc69de0c04853a055a06cba31",
+    "field_evidence": {
+      "contact.full_name": [
+        "e1:0:23"
+      ],
+      "contact.email": [
+        "e1:0:23"
+      ],
+      "skills.technical_skills[0]": [
+        "e15:0:6"
+      ],
+      "skills.all_skills[0]": [
+        "e15:0:6"
+      ],
+      "skills.all_skills[1]": [
+        "e16:0:59"
+      ],
+      "skills.all_skills[2]": [
+        "e16:0:59"
+      ],
+      "skills.all_skills[3]": [
+        "e16:0:59"
+      ],
+      "skills.all_skills[4]": [
+        "e16:0:59"
+      ],
+      "skills.all_skills[5]": [
+        "e16:0:59"
+      ],
+      "skills.all_skills[6]": [
+        "e16:0:59"
+      ],
+      "skills.all_skills[7]": [
+        "e16:0:59"
+      ],
+      "skills.all_skills[8]": [
+        "e16:0:59"
+      ],
+      "skills.all_skills[9]": [
+        "e17:0:15",
+        "e20:0:77"
+      ],
+      "skills.all_skills[10]": [
+        "e18:0:4"
+      ],
+      "skills.all_skills[11]": [
+        "e19:0:3"
+      ],
+      "skills.all_skills[12]": [
+        "e20:0:77"
+      ],
+      "certifications[0].name": [
+        "e22:0:37",
+        "e24:0:13"
+      ],
+      "certifications[1].name": [
+        "e23:0:8",
+        "e25:0:12"
+      ]
+    },
+    "record_reviews": [
+      {
+        "category": "experience",
+        "entry_id": "experience-1",
+        "source_ids": [
+          "e6:0:26",
+          "e8:197:241",
+          "e8:633:693",
+          "e8:786:854",
+          "e8:953:1027",
+          "e8:1129:1153",
+          "e8:1353:1364",
+          "e8:1464:1528",
+          "e8:1623:1692",
+          "e8:1795:1840",
+          "e9:197:241",
+          "e9:633:693",
+          "e9:786:854",
+          "e9:953:1027",
+          "e9:1129:1153",
+          "e9:1353:1364",
+          "e9:1464:1528",
+          "e9:1623:1692",
+          "e9:1795:1840",
+          "e10:100:163"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-2",
+        "source_ids": [
+          "e7:0:36",
+          "e8:1840:1876",
+          "e9:1840:1876",
+          "e12:0:32"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-3",
+        "source_ids": [
+          "e8:0:96",
+          "e8:96:197",
+          "e8:241:243",
+          "e8:243:344",
+          "e8:344:433",
+          "e8:433:435",
+          "e8:435:531",
+          "e8:531:633",
+          "e8:693:695",
+          "e8:695:786",
+          "e8:854:856",
+          "e8:856:908",
+          "e8:908:953",
+          "e8:1027:1029",
+          "e8:1029:1129",
+          "e8:1153:1155",
+          "e8:1155:1250",
+          "e8:1250:1353",
+          "e8:1364:1366",
+          "e8:1366:1464",
+          "e8:1528:1530",
+          "e8:1530:1623",
+          "e8:1692:1694",
+          "e8:1694:1754",
+          "e8:1754:1795",
+          "e9:0:96",
+          "e9:96:197",
+          "e9:241:243",
+          "e9:243:344",
+          "e9:344:433",
+          "e9:433:435",
+          "e9:435:531",
+          "e9:531:633",
+          "e9:693:695",
+          "e9:695:786",
+          "e9:854:856",
+          "e9:856:908",
+          "e9:908:953",
+          "e9:1027:1029",
+          "e9:1029:1129",
+          "e9:1153:1155",
+          "e9:1155:1250",
+          "e9:1250:1353",
+          "e9:1364:1366",
+          "e9:1366:1464",
+          "e9:1528:1530",
+          "e9:1530:1623",
+          "e9:1692:1694",
+          "e9:1694:1754",
+          "e9:1754:1795",
+          "e10:0:100"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-4",
+        "source_ids": [
+          "e11:0:37",
+          "e13:0:82"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "education",
+        "entry_id": "education-1",
+        "source_ids": [
+          "e27:0:44",
+          "e27:44:65",
+          "e27:65:95"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "education",
+        "entry_id": "education-2",
+        "source_ids": [
+          "e28:0:26"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "certifications",
+        "entry_id": "certifications-1",
+        "source_ids": [
+          "e22:0:37",
+          "e24:0:13"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "certifications",
+        "entry_id": "certifications-2",
+        "source_ids": [
+          "e23:0:8",
+          "e25:0:12"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      }
+    ],
+    "missing_required_fields": [
+      "contact.phone",
+      "experience[0].company",
+      "experience[0].role",
+      "experience[1].company",
+      "experience[1].role",
+      "experience[2].company",
+      "experience[2].role",
+      "experience[3].company",
+      "experience[3].role",
+      "education[0].institution",
+      "education[0].degree",
+      "education[1].institution",
+      "education[1].degree"
+    ],
+    "warnings": [
+      "Schema validity and field completion do not establish extraction or relationship accuracy.",
+      "Handoff confidence scores are fixed heuristics, not calibrated probabilities.",
+      "Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields."
+    ],
+    "unmapped_blocks": [
+      {
+        "source_id": "e5:0:23",
+        "category": "experience",
+        "text": "PROFESSIONAL EXPERIENCE",
+        "page_number": 1
+      },
+      {
+        "source_id": "e6:0:26",
+        "category": "experience",
+        "text": "Consulting Engineer, Cisco",
+        "page_number": 1
+      },
+      {
+        "source_id": "e7:0:36",
+        "category": "experience",
+        "text": "08/2022 – present | Bangalore, India",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:0:96",
+        "category": "experience",
+        "text": "Indian Air Force – Network Automation (Air-Gapped): Implemented Python automation in an on-site ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:96:197",
+        "category": "experience",
+        "text": "air-gapped environment to detect configuration and service issues across BGP, IS-IS, OSPF, MPLS, and ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:197:241",
+        "category": "experience",
+        "text": "L3VPN, reducing troubleshooting time by 80%.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:241:243",
+        "category": "experience",
+        "text": " •",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:243:344",
+        "category": "experience",
+        "text": "Microsoft Data Center – Data Center Network: Configured Cisco NCS540 routers, handling provisioning, ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:344:433",
+        "category": "experience",
+        "text": "hardware validation, OSPF testing, and reachability checks before production integration.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:433:435",
+        "category": "experience",
+        "text": " •",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:435:531",
+        "category": "experience",
+        "text": "Reliance Jio – Network Migration & Automation: Migrated 500+ devices from Juniper and Huawei to ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:531:633",
+        "category": "experience",
+        "text": "NCS540, supporting IS-IS and BGP. Validated configurations and built Python-based pre/ post migration ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:633:693",
+        "category": "experience",
+        "text": "checks for 1000+ devices, reducing verification time by 90%.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:693:695",
+        "category": "experience",
+        "text": " •",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:695:786",
+        "category": "experience",
+        "text": "NIC Guwahati – Hardware Validation and P2P testing: Performed NRFU and hardware testing of ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:786:854",
+        "category": "experience",
+        "text": "network devices and supported deployment and performance validation.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:854:856",
+        "category": "experience",
+        "text": " •",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:856:908",
+        "category": "experience",
+        "text": "MTNL India – Migration: Supported migration of 100+ ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:908:953",
+        "category": "experience",
+        "text": "sites to ASR and NCS routers, assisting with ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:953:1027",
+        "category": "experience",
+        "text": "troubleshooting and validation of BGP, MPLS, L2/ L3 VPN, and VRF services.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:1027:1029",
+        "category": "experience",
+        "text": " •",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:1029:1129",
+        "category": "experience",
+        "text": "Railway Telecom – Network Design: Assisted in on-site network design in coordination with customers ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:1129:1153",
+        "category": "experience",
+        "text": "and solution architects.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:1153:1155",
+        "category": "experience",
+        "text": " •",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:1155:1250",
+        "category": "experience",
+        "text": "MTN South Africa – Migration Documentation: Prepared MOP documents for large-scale, multi-site ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:1250:1353",
+        "category": "experience",
+        "text": "migrations involving 50 routers, covering VPN, MPLS, OSPF, and IS-IS, including pre-check and rollback ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:1353:1364",
+        "category": "experience",
+        "text": "procedures.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:1364:1366",
+        "category": "experience",
+        "text": " •",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:1366:1464",
+        "category": "experience",
+        "text": "Core-42 – Deployment Automation: Automated document validation, NIP vs live configuration checks, ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:1464:1528",
+        "category": "experience",
+        "text": "and bulk configuration deployment, reducing rollout time by 90%.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:1528:1530",
+        "category": "experience",
+        "text": " •",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:1530:1623",
+        "category": "experience",
+        "text": "Network Automation Tool (Cisco In-Built Tool): Planned automation of CRD, DDD, NIP, and NRFU ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:1623:1692",
+        "category": "experience",
+        "text": "workflows to reduce manual effort by 80% and standardize deployments.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:1692:1694",
+        "category": "experience",
+        "text": " •",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:1694:1754",
+        "category": "experience",
+        "text": "Pre/Post Comparison Tool: Automated pre- and post-migration ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:1754:1795",
+        "category": "experience",
+        "text": "checks to compare router configurations, ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:1795:1840",
+        "category": "experience",
+        "text": "interface states, and BGP/ OSPF adjacencies. ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:1840:1876",
+        "category": "experience",
+        "text": "01/2022 – 07/2022 | Bangalore, India",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:0:96",
+        "category": "experience",
+        "text": "Indian Air Force – Network Automation (Air-Gapped): Implemented Python automation in an on-site ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:96:197",
+        "category": "experience",
+        "text": "air-gapped environment to detect configuration and service issues across BGP, IS-IS, OSPF, MPLS, and ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:197:241",
+        "category": "experience",
+        "text": "L3VPN, reducing troubleshooting time by 80%.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:241:243",
+        "category": "experience",
+        "text": " •",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:243:344",
+        "category": "experience",
+        "text": "Microsoft Data Center – Data Center Network: Configured Cisco NCS540 routers, handling provisioning, ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:344:433",
+        "category": "experience",
+        "text": "hardware validation, OSPF testing, and reachability checks before production integration.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:433:435",
+        "category": "experience",
+        "text": " •",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:435:531",
+        "category": "experience",
+        "text": "Reliance Jio – Network Migration & Automation: Migrated 500+ devices from Juniper and Huawei to ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:531:633",
+        "category": "experience",
+        "text": "NCS540, supporting IS-IS and BGP. Validated configurations and built Python-based pre/ post migration ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:633:693",
+        "category": "experience",
+        "text": "checks for 1000+ devices, reducing verification time by 90%.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:693:695",
+        "category": "experience",
+        "text": " •",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:695:786",
+        "category": "experience",
+        "text": "NIC Guwahati – Hardware Validation and P2P testing: Performed NRFU and hardware testing of ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:786:854",
+        "category": "experience",
+        "text": "network devices and supported deployment and performance validation.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:854:856",
+        "category": "experience",
+        "text": " •",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:856:908",
+        "category": "experience",
+        "text": "MTNL India – Migration: Supported migration of 100+ ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:908:953",
+        "category": "experience",
+        "text": "sites to ASR and NCS routers, assisting with ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:953:1027",
+        "category": "experience",
+        "text": "troubleshooting and validation of BGP, MPLS, L2/ L3 VPN, and VRF services.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:1027:1029",
+        "category": "experience",
+        "text": " •",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:1029:1129",
+        "category": "experience",
+        "text": "Railway Telecom – Network Design: Assisted in on-site network design in coordination with customers ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:1129:1153",
+        "category": "experience",
+        "text": "and solution architects.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:1153:1155",
+        "category": "experience",
+        "text": " •",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:1155:1250",
+        "category": "experience",
+        "text": "MTN South Africa – Migration Documentation: Prepared MOP documents for large-scale, multi-site ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:1250:1353",
+        "category": "experience",
+        "text": "migrations involving 50 routers, covering VPN, MPLS, OSPF, and IS-IS, including pre-check and rollback ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:1353:1364",
+        "category": "experience",
+        "text": "procedures.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:1364:1366",
+        "category": "experience",
+        "text": " •",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:1366:1464",
+        "category": "experience",
+        "text": "Core-42 – Deployment Automation: Automated document validation, NIP vs live configuration checks, ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:1464:1528",
+        "category": "experience",
+        "text": "and bulk configuration deployment, reducing rollout time by 90%.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:1528:1530",
+        "category": "experience",
+        "text": " •",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:1530:1623",
+        "category": "experience",
+        "text": "Network Automation Tool (Cisco In-Built Tool): Planned automation of CRD, DDD, NIP, and NRFU ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:1623:1692",
+        "category": "experience",
+        "text": "workflows to reduce manual effort by 80% and standardize deployments.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:1692:1694",
+        "category": "experience",
+        "text": " •",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:1694:1754",
+        "category": "experience",
+        "text": "Pre/Post Comparison Tool: Automated pre- and post-migration ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:1754:1795",
+        "category": "experience",
+        "text": "checks to compare router configurations, ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:1795:1840",
+        "category": "experience",
+        "text": "interface states, and BGP/ OSPF adjacencies. ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e9:1840:1876",
+        "category": "experience",
+        "text": "01/2022 – 07/2022 | Bangalore, India",
+        "page_number": 1
+      },
+      {
+        "source_id": "e10:0:100",
+        "category": "experience",
+        "text": "Completed technical training and assisted with configuration, testing, and basic troubleshooting of ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e10:100:163",
+        "category": "experience",
+        "text": "network devices across 5–10 routers under engineer supervision.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e11:0:37",
+        "category": "experience",
+        "text": "AI-ML virtual internship, AWS Academy",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:0:32",
+        "category": "experience",
+        "text": "10/2021 – 12/2021 | Delhi, India",
+        "page_number": 1
+      },
+      {
+        "source_id": "e13:0:82",
+        "category": "experience",
+        "text": "Trained & implemented AI-ML models through which we can solve real world problems.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e14:0:6",
+        "category": "skills",
+        "text": "SKILLS",
+        "page_number": 1
+      },
+      {
+        "source_id": "e21:0:12",
+        "category": "certifications",
+        "text": "CERTIFICATES",
+        "page_number": 1
+      },
+      {
+        "source_id": "e26:0:9",
+        "category": "education",
+        "text": "EDUCATION",
+        "page_number": 1
+      },
+      {
+        "source_id": "e27:0:44",
+        "category": "education",
+        "text": "Bachelor of Technology in Computer Science, ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e27:44:65",
+        "category": "education",
+        "text": "Galgotias University ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e27:65:95",
+        "category": "education",
+        "text": "7.18/ 10 CGPA (First Division)",
+        "page_number": 1
+      },
+      {
+        "source_id": "e28:0:26",
+        "category": "education",
+        "text": "2018 – 2022 | Noida, India",
+        "page_number": 1
+      },
+      {
+        "source_id": "e29:0:12",
+        "category": "publications",
+        "text": "PUBLICATIONS",
+        "page_number": 1
+      },
+      {
+        "source_id": "e30:0:46",
+        "category": "publications",
+        "text": "WEB SCRAPING & AUTOMATION BOT, Nimit Narayani ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e30:46:145",
+        "category": "publications",
+        "text": "Authored a Survey Research Paper on using Python to automate all the tasks including Stock Market, ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e30:145:172",
+        "category": "publications",
+        "text": "YouTube and other websites.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:0:14",
+        "category": null,
+        "text": "Nimit Narayani",
+        "page_number": 1
+      },
+      {
+        "source_id": "e2:0:14",
+        "category": null,
+        "text": "+91 8126878372",
+        "page_number": 1
+      },
+      {
+        "source_id": "e3:0:9",
+        "category": null,
+        "text": "Bangalore",
+        "page_number": 1
+      },
+      {
+        "source_id": "e4:0:8",
+        "category": null,
+        "text": "LinkedIn",
+        "page_number": 1
+      }
+    ],
+    "needs_review": [
+      {
+        "source_element_index": 0,
+        "start": 0,
+        "end": 14,
+        "text": "Nimit Narayani",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1503,
+        "margin": -0.0686,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 2,
+        "start": 0,
+        "end": 14,
+        "text": "+91 8126878372",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.0932,
+        "margin": -0.0419,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 3,
+        "start": 0,
+        "end": 9,
+        "text": "Bangalore",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.25,
+        "margin": -0.0511,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 4,
+        "start": 0,
+        "end": 8,
+        "text": "LinkedIn",
+        "page_number": 1,
+        "cluster_id": 0,
+        "candidate_section": "personal_information",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.4279,
+        "margin": 0.0589,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      }
+    ]
+  },
+  "section_schemas": [
+    {
+      "category": "personal_information",
+      "label": "Personal information",
+      "records": [
+        {
+          "record_id": "personal_information",
+          "source_ids": [
+            "e1:0:23"
+          ],
+          "attributes": [
+            {
+              "name": "full_name",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "email",
+              "items": [
+                {
+                  "value": "nimitnarayani@gmail.com",
+                  "evidence": [
+                    {
+                      "source_id": "e1:0:23",
+                      "quote": "nimitnarayani@gmail.com"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "phone",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "linkedin_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "github_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "portfolio_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "professional_title",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": []
+    },
+    {
+      "category": "experience",
+      "label": "Experience",
+      "records": [
+        {
+          "record_id": "experience-1",
+          "source_ids": [
+            "e6:0:26",
+            "e8:197:241",
+            "e8:633:693",
+            "e8:786:854",
+            "e8:953:1027",
+            "e8:1129:1153",
+            "e8:1353:1364",
+            "e8:1464:1528",
+            "e8:1623:1692",
+            "e8:1795:1840",
+            "e9:197:241",
+            "e9:633:693",
+            "e9:786:854",
+            "e9:953:1027",
+            "e9:1129:1153",
+            "e9:1353:1364",
+            "e9:1464:1528",
+            "e9:1623:1692",
+            "e9:1795:1840",
+            "e10:100:163"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "experience-2",
+          "source_ids": [
+            "e7:0:36",
+            "e8:1840:1876",
+            "e9:1840:1876",
+            "e12:0:32"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "experience-3",
+          "source_ids": [
+            "e8:0:96",
+            "e8:96:197",
+            "e8:241:243",
+            "e8:243:344",
+            "e8:344:433",
+            "e8:433:435",
+            "e8:435:531",
+            "e8:531:633",
+            "e8:693:695",
+            "e8:695:786",
+            "e8:854:856",
+            "e8:856:908",
+            "e8:908:953",
+            "e8:1027:1029",
+            "e8:1029:1129",
+            "e8:1153:1155",
+            "e8:1155:1250",
+            "e8:1250:1353",
+            "e8:1364:1366",
+            "e8:1366:1464",
+            "e8:1528:1530",
+            "e8:1530:1623",
+            "e8:1692:1694",
+            "e8:1694:1754",
+            "e8:1754:1795",
+            "e9:0:96",
+            "e9:96:197",
+            "e9:241:243",
+            "e9:243:344",
+            "e9:344:433",
+            "e9:433:435",
+            "e9:435:531",
+            "e9:531:633",
+            "e9:693:695",
+            "e9:695:786",
+            "e9:854:856",
+            "e9:856:908",
+            "e9:908:953",
+            "e9:1027:1029",
+            "e9:1029:1129",
+            "e9:1153:1155",
+            "e9:1155:1250",
+            "e9:1250:1353",
+            "e9:1364:1366",
+            "e9:1366:1464",
+            "e9:1528:1530",
+            "e9:1530:1623",
+            "e9:1692:1694",
+            "e9:1694:1754",
+            "e9:1754:1795",
+            "e10:0:100"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "Training/research content requires employment association review."
+          ]
+        },
+        {
+          "record_id": "experience-4",
+          "source_ids": [
+            "e11:0:37",
+            "e13:0:82"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e5:0:23",
+          "quote": "PROFESSIONAL EXPERIENCE"
+        },
+        {
+          "source_id": "e6:0:26",
+          "quote": "Consulting Engineer, Cisco"
+        },
+        {
+          "source_id": "e7:0:36",
+          "quote": "08/2022 – present | Bangalore, India"
+        },
+        {
+          "source_id": "e8:0:96",
+          "quote": "Indian Air Force – Network Automation (Air-Gapped): Implemented Python automation in an on-site "
+        },
+        {
+          "source_id": "e8:96:197",
+          "quote": "air-gapped environment to detect configuration and service issues across BGP, IS-IS, OSPF, MPLS, and "
+        },
+        {
+          "source_id": "e8:197:241",
+          "quote": "L3VPN, reducing troubleshooting time by 80%."
+        },
+        {
+          "source_id": "e8:241:243",
+          "quote": " •"
+        },
+        {
+          "source_id": "e8:243:344",
+          "quote": "Microsoft Data Center – Data Center Network: Configured Cisco NCS540 routers, handling provisioning, "
+        },
+        {
+          "source_id": "e8:344:433",
+          "quote": "hardware validation, OSPF testing, and reachability checks before production integration."
+        },
+        {
+          "source_id": "e8:433:435",
+          "quote": " •"
+        },
+        {
+          "source_id": "e8:435:531",
+          "quote": "Reliance Jio – Network Migration & Automation: Migrated 500+ devices from Juniper and Huawei to "
+        },
+        {
+          "source_id": "e8:531:633",
+          "quote": "NCS540, supporting IS-IS and BGP. Validated configurations and built Python-based pre/ post migration "
+        },
+        {
+          "source_id": "e8:633:693",
+          "quote": "checks for 1000+ devices, reducing verification time by 90%."
+        },
+        {
+          "source_id": "e8:693:695",
+          "quote": " •"
+        },
+        {
+          "source_id": "e8:695:786",
+          "quote": "NIC Guwahati – Hardware Validation and P2P testing: Performed NRFU and hardware testing of "
+        },
+        {
+          "source_id": "e8:786:854",
+          "quote": "network devices and supported deployment and performance validation."
+        },
+        {
+          "source_id": "e8:854:856",
+          "quote": " •"
+        },
+        {
+          "source_id": "e8:856:908",
+          "quote": "MTNL India – Migration: Supported migration of 100+ "
+        },
+        {
+          "source_id": "e8:908:953",
+          "quote": "sites to ASR and NCS routers, assisting with "
+        },
+        {
+          "source_id": "e8:953:1027",
+          "quote": "troubleshooting and validation of BGP, MPLS, L2/ L3 VPN, and VRF services."
+        },
+        {
+          "source_id": "e8:1027:1029",
+          "quote": " •"
+        },
+        {
+          "source_id": "e8:1029:1129",
+          "quote": "Railway Telecom – Network Design: Assisted in on-site network design in coordination with customers "
+        },
+        {
+          "source_id": "e8:1129:1153",
+          "quote": "and solution architects."
+        },
+        {
+          "source_id": "e8:1153:1155",
+          "quote": " •"
+        },
+        {
+          "source_id": "e8:1155:1250",
+          "quote": "MTN South Africa – Migration Documentation: Prepared MOP documents for large-scale, multi-site "
+        },
+        {
+          "source_id": "e8:1250:1353",
+          "quote": "migrations involving 50 routers, covering VPN, MPLS, OSPF, and IS-IS, including pre-check and rollback "
+        },
+        {
+          "source_id": "e8:1353:1364",
+          "quote": "procedures."
+        },
+        {
+          "source_id": "e8:1364:1366",
+          "quote": " •"
+        },
+        {
+          "source_id": "e8:1366:1464",
+          "quote": "Core-42 – Deployment Automation: Automated document validation, NIP vs live configuration checks, "
+        },
+        {
+          "source_id": "e8:1464:1528",
+          "quote": "and bulk configuration deployment, reducing rollout time by 90%."
+        },
+        {
+          "source_id": "e8:1528:1530",
+          "quote": " •"
+        },
+        {
+          "source_id": "e8:1530:1623",
+          "quote": "Network Automation Tool (Cisco In-Built Tool): Planned automation of CRD, DDD, NIP, and NRFU "
+        },
+        {
+          "source_id": "e8:1623:1692",
+          "quote": "workflows to reduce manual effort by 80% and standardize deployments."
+        },
+        {
+          "source_id": "e8:1692:1694",
+          "quote": " •"
+        },
+        {
+          "source_id": "e8:1694:1754",
+          "quote": "Pre/Post Comparison Tool: Automated pre- and post-migration "
+        },
+        {
+          "source_id": "e8:1754:1795",
+          "quote": "checks to compare router configurations, "
+        },
+        {
+          "source_id": "e8:1795:1840",
+          "quote": "interface states, and BGP/ OSPF adjacencies. "
+        },
+        {
+          "source_id": "e8:1840:1876",
+          "quote": "01/2022 – 07/2022 | Bangalore, India"
+        },
+        {
+          "source_id": "e9:0:96",
+          "quote": "Indian Air Force – Network Automation (Air-Gapped): Implemented Python automation in an on-site "
+        },
+        {
+          "source_id": "e9:96:197",
+          "quote": "air-gapped environment to detect configuration and service issues across BGP, IS-IS, OSPF, MPLS, and "
+        },
+        {
+          "source_id": "e9:197:241",
+          "quote": "L3VPN, reducing troubleshooting time by 80%."
+        },
+        {
+          "source_id": "e9:241:243",
+          "quote": " •"
+        },
+        {
+          "source_id": "e9:243:344",
+          "quote": "Microsoft Data Center – Data Center Network: Configured Cisco NCS540 routers, handling provisioning, "
+        },
+        {
+          "source_id": "e9:344:433",
+          "quote": "hardware validation, OSPF testing, and reachability checks before production integration."
+        },
+        {
+          "source_id": "e9:433:435",
+          "quote": " •"
+        },
+        {
+          "source_id": "e9:435:531",
+          "quote": "Reliance Jio – Network Migration & Automation: Migrated 500+ devices from Juniper and Huawei to "
+        },
+        {
+          "source_id": "e9:531:633",
+          "quote": "NCS540, supporting IS-IS and BGP. Validated configurations and built Python-based pre/ post migration "
+        },
+        {
+          "source_id": "e9:633:693",
+          "quote": "checks for 1000+ devices, reducing verification time by 90%."
+        },
+        {
+          "source_id": "e9:693:695",
+          "quote": " •"
+        },
+        {
+          "source_id": "e9:695:786",
+          "quote": "NIC Guwahati – Hardware Validation and P2P testing: Performed NRFU and hardware testing of "
+        },
+        {
+          "source_id": "e9:786:854",
+          "quote": "network devices and supported deployment and performance validation."
+        },
+        {
+          "source_id": "e9:854:856",
+          "quote": " •"
+        },
+        {
+          "source_id": "e9:856:908",
+          "quote": "MTNL India – Migration: Supported migration of 100+ "
+        },
+        {
+          "source_id": "e9:908:953",
+          "quote": "sites to ASR and NCS routers, assisting with "
+        },
+        {
+          "source_id": "e9:953:1027",
+          "quote": "troubleshooting and validation of BGP, MPLS, L2/ L3 VPN, and VRF services."
+        },
+        {
+          "source_id": "e9:1027:1029",
+          "quote": " •"
+        },
+        {
+          "source_id": "e9:1029:1129",
+          "quote": "Railway Telecom – Network Design: Assisted in on-site network design in coordination with customers "
+        },
+        {
+          "source_id": "e9:1129:1153",
+          "quote": "and solution architects."
+        },
+        {
+          "source_id": "e9:1153:1155",
+          "quote": " •"
+        },
+        {
+          "source_id": "e9:1155:1250",
+          "quote": "MTN South Africa – Migration Documentation: Prepared MOP documents for large-scale, multi-site "
+        },
+        {
+          "source_id": "e9:1250:1353",
+          "quote": "migrations involving 50 routers, covering VPN, MPLS, OSPF, and IS-IS, including pre-check and rollback "
+        },
+        {
+          "source_id": "e9:1353:1364",
+          "quote": "procedures."
+        },
+        {
+          "source_id": "e9:1364:1366",
+          "quote": " •"
+        },
+        {
+          "source_id": "e9:1366:1464",
+          "quote": "Core-42 – Deployment Automation: Automated document validation, NIP vs live configuration checks, "
+        },
+        {
+          "source_id": "e9:1464:1528",
+          "quote": "and bulk configuration deployment, reducing rollout time by 90%."
+        },
+        {
+          "source_id": "e9:1528:1530",
+          "quote": " •"
+        },
+        {
+          "source_id": "e9:1530:1623",
+          "quote": "Network Automation Tool (Cisco In-Built Tool): Planned automation of CRD, DDD, NIP, and NRFU "
+        },
+        {
+          "source_id": "e9:1623:1692",
+          "quote": "workflows to reduce manual effort by 80% and standardize deployments."
+        },
+        {
+          "source_id": "e9:1692:1694",
+          "quote": " •"
+        },
+        {
+          "source_id": "e9:1694:1754",
+          "quote": "Pre/Post Comparison Tool: Automated pre- and post-migration "
+        },
+        {
+          "source_id": "e9:1754:1795",
+          "quote": "checks to compare router configurations, "
+        },
+        {
+          "source_id": "e9:1795:1840",
+          "quote": "interface states, and BGP/ OSPF adjacencies. "
+        },
+        {
+          "source_id": "e9:1840:1876",
+          "quote": "01/2022 – 07/2022 | Bangalore, India"
+        },
+        {
+          "source_id": "e10:0:100",
+          "quote": "Completed technical training and assisted with configuration, testing, and basic troubleshooting of "
+        },
+        {
+          "source_id": "e10:100:163",
+          "quote": "network devices across 5–10 routers under engineer supervision."
+        },
+        {
+          "source_id": "e11:0:37",
+          "quote": "AI-ML virtual internship, AWS Academy"
+        },
+        {
+          "source_id": "e12:0:32",
+          "quote": "10/2021 – 12/2021 | Delhi, India"
+        },
+        {
+          "source_id": "e13:0:82",
+          "quote": "Trained & implemented AI-ML models through which we can solve real world problems."
+        }
+      ]
+    },
+    {
+      "category": "skills",
+      "label": "Skills",
+      "records": [
+        {
+          "record_id": "skills",
+          "source_ids": [
+            "e15:0:6",
+            "e16:0:59",
+            "e17:0:15",
+            "e18:0:4",
+            "e19:0:3",
+            "e20:0:77"
+          ],
+          "attributes": [
+            {
+              "name": "technical_skills",
+              "items": [
+                {
+                  "value": "Python",
+                  "evidence": [
+                    {
+                      "source_id": "e15:0:6",
+                      "quote": "Python"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "tools_and_platforms",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "domain_and_functional",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "soft_skills",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "all_skills",
+              "items": [
+                {
+                  "value": "Python",
+                  "evidence": [
+                    {
+                      "source_id": "e15:0:6",
+                      "quote": "Python"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Networking (MPLS",
+                  "evidence": [
+                    {
+                      "source_id": "e16:0:59",
+                      "quote": "Networking (MPLS"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "OSPF",
+                  "evidence": [
+                    {
+                      "source_id": "e16:0:59",
+                      "quote": "OSPF"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "ISIS",
+                  "evidence": [
+                    {
+                      "source_id": "e16:0:59",
+                      "quote": "ISIS"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "BGP",
+                  "evidence": [
+                    {
+                      "source_id": "e16:0:59",
+                      "quote": "BGP"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "IPv4",
+                  "evidence": [
+                    {
+                      "source_id": "e16:0:59",
+                      "quote": "IPv4"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "IPv6",
+                  "evidence": [
+                    {
+                      "source_id": "e16:0:59",
+                      "quote": "IPv6"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "TCP/IP",
+                  "evidence": [
+                    {
+                      "source_id": "e16:0:59",
+                      "quote": "TCP/IP"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "UDP)",
+                  "evidence": [
+                    {
+                      "source_id": "e16:0:59",
+                      "quote": "UDP)"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Cisco IOS XR/XE",
+                  "evidence": [
+                    {
+                      "source_id": "e17:0:15",
+                      "quote": "Cisco IOS XR/XE"
+                    },
+                    {
+                      "source_id": "e20:0:77",
+                      "quote": "Cisco IOS XR/XE"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "DHCP",
+                  "evidence": [
+                    {
+                      "source_id": "e18:0:4",
+                      "quote": "DHCP"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "DNS",
+                  "evidence": [
+                    {
+                      "source_id": "e19:0:3",
+                      "quote": "DNS"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Network Automation (Troubleshooting/Configuration of Cisco IOS XR/XE devices)",
+                  "evidence": [
+                    {
+                      "source_id": "e20:0:77",
+                      "quote": "Network Automation (Troubleshooting/Configuration of Cisco IOS XR/XE devices)"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e14:0:6",
+          "quote": "SKILLS"
+        },
+        {
+          "source_id": "e16:0:59",
+          "quote": "Networking (MPLS, OSPF, ISIS, BGP, IPv4, IPv6, TCP/IP, UDP)"
+        }
+      ]
+    },
+    {
+      "category": "certifications",
+      "label": "Certifications",
+      "records": [
+        {
+          "record_id": "certifications-1",
+          "source_ids": [
+            "e22:0:37",
+            "e24:0:13"
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "issuer",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "issue_year",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "certifications-2",
+          "source_ids": [
+            "e23:0:8",
+            "e25:0:12"
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "issuer",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "issue_year",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e21:0:12",
+          "quote": "CERTIFICATES"
+        },
+        {
+          "source_id": "e22:0:37",
+          "quote": "Automate The Boring Stuff With Python"
+        },
+        {
+          "source_id": "e23:0:8",
+          "quote": "Python 3"
+        },
+        {
+          "source_id": "e24:0:13",
+          "quote": "Devnet, Cisco"
+        },
+        {
+          "source_id": "e25:0:12",
+          "quote": "CCNA (CISCO)"
+        }
+      ]
+    },
+    {
+      "category": "education",
+      "label": "Education",
+      "records": [
+        {
+          "record_id": "education-1",
+          "source_ids": [
+            "e27:0:44",
+            "e27:44:65",
+            "e27:65:95"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [
+                {
+                  "value": "Galgotias University",
+                  "evidence": [
+                    {
+                      "source_id": "e27:44:65",
+                      "quote": "Galgotias University"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "degree",
+              "items": [
+                {
+                  "value": "Bachelor of Technology",
+                  "evidence": [
+                    {
+                      "source_id": "e27:0:44",
+                      "quote": "Bachelor of Technology"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "field_of_study",
+              "items": [
+                {
+                  "value": "Computer Science",
+                  "evidence": [
+                    {
+                      "source_id": "e27:0:44",
+                      "quote": "Computer Science"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "education-2",
+          "source_ids": [
+            "e28:0:26"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "degree",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e26:0:9",
+          "quote": "EDUCATION"
+        },
+        {
+          "source_id": "e27:0:44",
+          "quote": "Bachelor of Technology in Computer Science, "
+        },
+        {
+          "source_id": "e27:65:95",
+          "quote": "7.18/ 10 CGPA (First Division)"
+        },
+        {
+          "source_id": "e28:0:26",
+          "quote": "2018 – 2022 | Noida, India"
+        }
+      ]
+    },
+    {
+      "category": "publications",
+      "label": "Publications",
+      "records": [
+        {
+          "record_id": "publications-1",
+          "source_ids": [
+            "e30:0:46",
+            "e30:145:172"
+          ],
+          "attributes": [
+            {
+              "name": "title",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "publisher",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "url",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "Unlabelled compound information requires source review."
+          ]
+        },
+        {
+          "record_id": "publications-2",
+          "source_ids": [
+            "e30:46:145"
+          ],
+          "attributes": [
+            {
+              "name": "title",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "publisher",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "url",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "Unlabelled compound information requires source review."
+          ]
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e29:0:12",
+          "quote": "PUBLICATIONS"
+        },
+        {
+          "source_id": "e30:0:46",
+          "quote": "WEB SCRAPING & AUTOMATION BOT, Nimit Narayani "
+        },
+        {
+          "source_id": "e30:46:145",
+          "quote": "Authored a Survey Research Paper on using Python to automate all the tasks including Stock Market, "
+        },
+        {
+          "source_id": "e30:145:172",
+          "quote": "YouTube and other websites."
+        }
+      ]
+    },
+    {
+      "category": "needs_review",
+      "label": "Unassigned source blocks",
+      "records": [],
+      "residual_blocks": [
+        {
+          "source_id": "e0:0:14",
+          "quote": "Nimit Narayani"
+        },
+        {
+          "source_id": "e2:0:14",
+          "quote": "+91 8126878372"
+        },
+        {
+          "source_id": "e3:0:9",
+          "quote": "Bangalore"
+        },
+        {
+          "source_id": "e4:0:8",
+          "quote": "LinkedIn"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1036 @@
+{
+  "success": true,
+  "source": "Shilpa.pdf",
+  "extraction_mode": "existing_blocks_schema_mapping",
+  "data": {
+    "contact": {
+      "full_name": "SHILPA ASHOK MISHRA",
+      "email": "shilpa77in@gmail.com",
+      "phone": "8928284663",
+      "location": null,
+      "linkedin_url": null,
+      "github_url": null,
+      "portfolio_url": null
+    },
+    "professional_title": null,
+    "summary": "To build a career that will help me to recognize my full potential, contributing to the company's growth and reputation.",
+    "total_experience_years": null,
+    "skills": {
+      "technical_skills": [],
+      "tools_and_platforms": [],
+      "domain_and_functional": [],
+      "soft_skills": [],
+      "all_skills": []
+    },
+    "experience": [
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      }
+    ],
+    "education": [
+      {
+        "institution": "",
+        "degree": "B.COM V.K Krishna Menon College, Mumbai Maharashtra GPA: 6.50 (CGPI)",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      },
+      {
+        "institution": "",
+        "degree": "HSC New English Highschool, Mumbai Maharashtra GPA: 64.77%",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      },
+      {
+        "institution": "",
+        "degree": "Ssc Panchmukhi Hindi High School, Maharashtra GPA: 66.20%",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      },
+      {
+        "institution": "",
+        "degree": "",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      }
+    ],
+    "certifications": [],
+    "projects": [],
+    "languages": [
+      "English Marathi Hindi"
+    ]
+  },
+  "schema_mapping": {
+    "fields_populated": 6,
+    "total_fields": 16,
+    "completion_percentage": 37.5,
+    "field_details": [
+      {
+        "field_name": "contact.full_name",
+        "target_type": "string",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Personal Details",
+        "confidence_score": 0.95,
+        "description": "Candidate's full name, extracted from the top header of the resume."
+      },
+      {
+        "field_name": "contact.email",
+        "target_type": "string (email)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.98,
+        "description": "Candidate's primary contact email address."
+      },
+      {
+        "field_name": "contact.phone",
+        "target_type": "string (phone)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.95,
+        "description": "Candidate's telephone / mobile phone number."
+      },
+      {
+        "field_name": "contact.location",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's residential location or work city."
+      },
+      {
+        "field_name": "contact.linkedin_url",
+        "target_type": "string (url) | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "URL to candidate's LinkedIn profile."
+      },
+      {
+        "field_name": "professional_title",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Subtitle",
+        "confidence_score": 0.0,
+        "description": "Candidate's target headline or most recent job title."
+      },
+      {
+        "field_name": "summary",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Summary / Profile / Objective",
+        "confidence_score": 0.85,
+        "description": "Executive bio, professional overview, or career objective."
+      },
+      {
+        "field_name": "total_experience_years",
+        "target_type": "float | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Summary / Experience Calculation",
+        "confidence_score": 0.0,
+        "description": "Total professional experience in years."
+      },
+      {
+        "field_name": "skills.technical_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Technical Competencies",
+        "confidence_score": 0.0,
+        "description": "Technical programming languages and core software competencies."
+      },
+      {
+        "field_name": "skills.tools_and_platforms",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Tools & Technologies",
+        "confidence_score": 0.0,
+        "description": "Software platforms, developer tools, and operational systems."
+      },
+      {
+        "field_name": "skills.domain_and_functional",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Domain Expertise",
+        "confidence_score": 0.0,
+        "description": "Functional domain knowledge (e.g. Hedge Funds, KYC, NAV, Derivatives)."
+      },
+      {
+        "field_name": "skills.all_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills (Aggregated)",
+        "confidence_score": 0.0,
+        "description": "Complete list of candidate skills across all categories."
+      },
+      {
+        "field_name": "experience",
+        "target_type": "array[WorkExperience]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Experience / Work History",
+        "confidence_score": 0.92,
+        "description": "Complete chronological employment records with bullet points."
+      },
+      {
+        "field_name": "education",
+        "target_type": "array[Education]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Education / Academic Qualifications",
+        "confidence_score": 0.9,
+        "description": "University, college, and higher education degree qualifications."
+      },
+      {
+        "field_name": "certifications",
+        "target_type": "array[Certification]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Certifications / Licenses",
+        "confidence_score": 0.0,
+        "description": "Professional accreditations and credentials."
+      },
+      {
+        "field_name": "projects",
+        "target_type": "array[Project]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Projects / Key Engagements",
+        "confidence_score": 0.0,
+        "description": "Major projects or strategic initiatives led by candidate."
+      }
+    ]
+  },
+  "raw_sections": {
+    "personal_information": "SHILPA ASHOK MISHRA\n8928284663 | shilpa77in@gmail.com | Kalwa, Maharashtra 400605\nPERSONAL INFORMATION\nDate of Birth: 11/05/00 Marital Status: Unmarried",
+    "summary": "SUMMARY\nTo build a career that will help me to recognize my full potential, contributing to the company's growth and reputation.",
+    "experience": "EXPERIENCE\nCustomer Service Associate, NOVAC Company, January 2024-March 2026 Resolved customer queries promptly, contributing to overall customer satisfaction. Supported process improvements that enhanced customer service efficiency. Maintained accurate service records and documentation to support operational efficiency.\nAccounts & Taxation Intern, CA firm, December 2022-December 2023 Managed GST monthly returns and compiled annual summary reports (GSTR-9 & GSTR-9C) to maintain accurate tax records. Executed TDS return filing and conducted data entry using WIN-TDS software to ensure timely submissions. Managed accounting entries in Tally ERP9. Facilitated ITR filing and prepared income tax documents to ensure compliance with tax regulations.",
+    "education": "EDUCATION\nB.COM V.K Krishna Menon College, Mumbai Maharashtra GPA: 6.50 (CGPI)\nHSC New English Highschool, Mumbai Maharashtra GPA: 64.77%\nSsc Panchmukhi Hindi High School, Maharashtra GPA: 66.20%\nDISCLAIMER\n| hereby declare that the information furnished above is true to the best of my knowledge.",
+    "languages": "LANGUAGES\nEnglish Marathi Hindi"
+  },
+  "meta": {
+    "status": "needs_review",
+    "human_verified": false,
+    "provider_calls": 0,
+    "source_accounting": {
+      "all_source_text_preserved": true,
+      "total_spans": 17,
+      "assigned_meaningful_spans": 17,
+      "unresolved_meaningful_spans": 0,
+      "non_content_artifacts": 0,
+      "duplicates_excluded": 0,
+      "all_meaningful_text_assigned": true,
+      "semantic_correctness_verified": false,
+      "outcomes": [
+        {
+          "source_id": "e0:0:19",
+          "source_element_index": 0,
+          "start": 0,
+          "end": 19,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline before the contact section"
+        },
+        {
+          "source_id": "e1:0:61",
+          "source_element_index": 1,
+          "start": 0,
+          "end": 61,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline before the contact section"
+        },
+        {
+          "source_id": "e2:0:7",
+          "source_element_index": 2,
+          "start": 0,
+          "end": 7,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e3:0:120",
+          "source_element_index": 3,
+          "start": 0,
+          "end": 120,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e4:0:10",
+          "source_element_index": 4,
+          "start": 0,
+          "end": 10,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e5:0:312",
+          "source_element_index": 5,
+          "start": 0,
+          "end": 312,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e6:0:428",
+          "source_element_index": 6,
+          "start": 0,
+          "end": 428,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e7:0:9",
+          "source_element_index": 7,
+          "start": 0,
+          "end": 9,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e8:0:68",
+          "source_element_index": 8,
+          "start": 0,
+          "end": 68,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:0:58",
+          "source_element_index": 9,
+          "start": 0,
+          "end": 58,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e10:0:57",
+          "source_element_index": 10,
+          "start": 0,
+          "end": 57,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e11:0:10",
+          "source_element_index": 11,
+          "start": 0,
+          "end": 10,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:0:90",
+          "source_element_index": 12,
+          "start": 0,
+          "end": 90,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e13:0:9",
+          "source_element_index": 13,
+          "start": 0,
+          "end": 9,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e14:0:21",
+          "source_element_index": 14,
+          "start": 0,
+          "end": 21,
+          "section": "languages",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e15:0:20",
+          "source_element_index": 15,
+          "start": 0,
+          "end": 20,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e16:0:49",
+          "source_element_index": 16,
+          "start": 0,
+          "end": 49,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        }
+      ]
+    },
+    "document_scope": {
+      "kind": "candidate_or_unknown",
+      "candidate_resume": null,
+      "requires_scope_review": true
+    },
+    "source_inventory_sha256": "c6452a718f62ce206e3470c942e99e00ca7406b5a47b32748165ac9c32b83c85",
+    "field_evidence": {
+      "contact.full_name": [
+        "e0:0:19",
+        "e1:0:61",
+        "e16:0:49"
+      ],
+      "contact.email": [
+        "e0:0:19",
+        "e1:0:61",
+        "e16:0:49"
+      ],
+      "contact.phone": [
+        "e0:0:19",
+        "e1:0:61",
+        "e16:0:49"
+      ],
+      "summary": [
+        "e3:0:120"
+      ],
+      "education[0].degree": [
+        "e8:0:68"
+      ],
+      "education[1].degree": [
+        "e9:0:58"
+      ],
+      "education[2].degree": [
+        "e10:0:57"
+      ],
+      "languages[0]": [
+        "e14:0:21"
+      ]
+    },
+    "record_reviews": [
+      {
+        "category": "experience",
+        "entry_id": "experience-1",
+        "source_ids": [
+          "e5:0:312",
+          "e6:0:428"
+        ],
+        "relationship_status": "needs_review",
+        "review_reasons": [
+          "employer_not_established_from_supported_fields"
+        ]
+      },
+      {
+        "category": "education",
+        "entry_id": "education-1",
+        "source_ids": [
+          "e8:0:68"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "education",
+        "entry_id": "education-2",
+        "source_ids": [
+          "e9:0:58"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "education",
+        "entry_id": "education-3",
+        "source_ids": [
+          "e10:0:57"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "education",
+        "entry_id": "education-4",
+        "source_ids": [
+          "e11:0:10",
+          "e12:0:90"
+        ],
+        "relationship_status": "needs_review",
+        "review_reasons": [
+          "qualification_not_established"
+        ]
+      }
+    ],
+    "missing_required_fields": [
+      "experience[0].company",
+      "experience[0].role",
+      "education[0].institution",
+      "education[1].institution",
+      "education[2].institution",
+      "education[3].institution",
+      "education[3].degree"
+    ],
+    "warnings": [
+      "Schema validity and field completion do not establish extraction or relationship accuracy.",
+      "Handoff confidence scores are fixed heuristics, not calibrated probabilities.",
+      "Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields."
+    ],
+    "unmapped_blocks": [
+      {
+        "source_id": "e15:0:20",
+        "category": "personal_information",
+        "text": "PERSONAL INFORMATION",
+        "page_number": 1
+      },
+      {
+        "source_id": "e2:0:7",
+        "category": "summary",
+        "text": "SUMMARY",
+        "page_number": 1
+      },
+      {
+        "source_id": "e4:0:10",
+        "category": "experience",
+        "text": "EXPERIENCE",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:0:312",
+        "category": "experience",
+        "text": "Customer Service Associate, NOVAC Company, January 2024-March 2026 Resolved customer queries promptly, contributing to overall customer satisfaction. Supported process improvements that enhanced customer service efficiency. Maintained accurate service records and documentation to support operational efficiency.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e6:0:428",
+        "category": "experience",
+        "text": "Accounts & Taxation Intern, CA firm, December 2022-December 2023 Managed GST monthly returns and compiled annual summary reports (GSTR-9 & GSTR-9C) to maintain accurate tax records. Executed TDS return filing and conducted data entry using WIN-TDS software to ensure timely submissions. Managed accounting entries in Tally ERP9. Facilitated ITR filing and prepared income tax documents to ensure compliance with tax regulations.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e7:0:9",
+        "category": "education",
+        "text": "EDUCATION",
+        "page_number": 1
+      },
+      {
+        "source_id": "e11:0:10",
+        "category": "education",
+        "text": "DISCLAIMER",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:0:90",
+        "category": "education",
+        "text": "| hereby declare that the information furnished above is true to the best of my knowledge.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e13:0:9",
+        "category": "languages",
+        "text": "LANGUAGES",
+        "page_number": 1
+      }
+    ],
+    "needs_review": []
+  },
+  "section_schemas": [
+    {
+      "category": "personal_information",
+      "label": "Personal information",
+      "records": [
+        {
+          "record_id": "personal_information",
+          "source_ids": [
+            "e0:0:19",
+            "e1:0:61",
+            "e16:0:49"
+          ],
+          "attributes": [
+            {
+              "name": "full_name",
+              "items": [
+                {
+                  "value": "SHILPA ASHOK MISHRA",
+                  "evidence": [
+                    {
+                      "source_id": "e0:0:19",
+                      "quote": "SHILPA ASHOK MISHRA"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "email",
+              "items": [
+                {
+                  "value": "shilpa77in@gmail.com",
+                  "evidence": [
+                    {
+                      "source_id": "e1:0:61",
+                      "quote": "shilpa77in@gmail.com"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "phone",
+              "items": [
+                {
+                  "value": "8928284663",
+                  "evidence": [
+                    {
+                      "source_id": "e1:0:61",
+                      "quote": "8928284663"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "linkedin_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "github_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "portfolio_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "professional_title",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e1:0:61",
+          "quote": "8928284663 | shilpa77in@gmail.com | Kalwa, Maharashtra 400605"
+        },
+        {
+          "source_id": "e15:0:20",
+          "quote": "PERSONAL INFORMATION"
+        },
+        {
+          "source_id": "e16:0:49",
+          "quote": "Date of Birth: 11/05/00 Marital Status: Unmarried"
+        }
+      ]
+    },
+    {
+      "category": "summary",
+      "label": "Summary",
+      "records": [
+        {
+          "record_id": "summary",
+          "source_ids": [
+            "e3:0:120"
+          ],
+          "attributes": [
+            {
+              "name": "statements",
+              "items": [
+                {
+                  "value": "To build a career that will help me to recognize my full potential, contributing to the company's growth and reputation.",
+                  "evidence": [
+                    {
+                      "source_id": "e3:0:120",
+                      "quote": "To build a career that will help me to recognize my full potential, contributing to the company's growth and reputation."
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "total_experience_years",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e2:0:7",
+          "quote": "SUMMARY"
+        }
+      ]
+    },
+    {
+      "category": "experience",
+      "label": "Experience",
+      "records": [
+        {
+          "record_id": "experience-1",
+          "source_ids": [
+            "e5:0:312",
+            "e6:0:428"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "employer_not_established_from_supported_fields"
+          ]
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e4:0:10",
+          "quote": "EXPERIENCE"
+        },
+        {
+          "source_id": "e5:0:312",
+          "quote": "Customer Service Associate, NOVAC Company, January 2024-March 2026 Resolved customer queries promptly, contributing to overall customer satisfaction. Supported process improvements that enhanced customer service efficiency. Maintained accurate service records and documentation to support operational efficiency."
+        },
+        {
+          "source_id": "e6:0:428",
+          "quote": "Accounts & Taxation Intern, CA firm, December 2022-December 2023 Managed GST monthly returns and compiled annual summary reports (GSTR-9 & GSTR-9C) to maintain accurate tax records. Executed TDS return filing and conducted data entry using WIN-TDS software to ensure timely submissions. Managed accounting entries in Tally ERP9. Facilitated ITR filing and prepared income tax documents to ensure compliance with tax regulations."
+        }
+      ]
+    },
+    {
+      "category": "education",
+      "label": "Education",
+      "records": [
+        {
+          "record_id": "education-1",
+          "source_ids": [
+            "e8:0:68"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "degree",
+              "items": [
+                {
+                  "value": "B.COM V.K Krishna Menon College, Mumbai Maharashtra GPA: 6.50 (CGPI)",
+                  "evidence": [
+                    {
+                      "source_id": "e8:0:68",
+                      "quote": "B.COM V.K Krishna Menon College, Mumbai Maharashtra GPA: 6.50 (CGPI)"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "education-2",
+          "source_ids": [
+            "e9:0:58"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "degree",
+              "items": [
+                {
+                  "value": "HSC New English Highschool, Mumbai Maharashtra GPA: 64.77%",
+                  "evidence": [
+                    {
+                      "source_id": "e9:0:58",
+                      "quote": "HSC New English Highschool, Mumbai Maharashtra GPA: 64.77%"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "education-3",
+          "source_ids": [
+            "e10:0:57"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "degree",
+              "items": [
+                {
+                  "value": "Ssc Panchmukhi Hindi High School, Maharashtra GPA: 66.20%",
+                  "evidence": [
+                    {
+                      "source_id": "e10:0:57",
+                      "quote": "Ssc Panchmukhi Hindi High School, Maharashtra GPA: 66.20%"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "education-4",
+          "source_ids": [
+            "e11:0:10",
+            "e12:0:90"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "degree",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "qualification_not_established"
+          ]
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e7:0:9",
+          "quote": "EDUCATION"
+        },
+        {
+          "source_id": "e11:0:10",
+          "quote": "DISCLAIMER"
+        },
+        {
+          "source_id": "e12:0:90",
+          "quote": "| hereby declare that the information furnished above is true to the best of my knowledge."
+        }
+      ]
+    },
+    {
+      "category": "languages",
+      "label": "Languages",
+      "records": [
+        {
+          "record_id": "languages-1",
+          "source_ids": [
+            "e14:0:21"
+          ],
+          "attributes": [
+            {
+              "name": "language",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "proficiency",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "Unlabelled compound information requires source review."
+          ]
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e13:0:9",
+          "quote": "LANGUAGES"
+        },
+        {
+          "source_id": "e14:0:21",
+          "quote": "English Marathi Hindi"
+        }
+      ]
+    }
+  ]
+}

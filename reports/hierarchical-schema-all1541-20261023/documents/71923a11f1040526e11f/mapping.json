@@ -1,0 +1,4074 @@
+{
+  "success": true,
+  "source": "RishiGoswamiCAMS.pdf",
+  "extraction_mode": "existing_blocks_schema_mapping",
+  "data": {
+    "contact": {
+      "full_name": "919079359342 +971502654305(UAE)",
+      "email": "bimblebob95@gmail.com",
+      "phone": "+919079359342",
+      "location": "Uk",
+      "linkedin_url": "https://www.linkedin.com/in/rishi-",
+      "github_url": null,
+      "portfolio_url": null
+    },
+    "professional_title": "Manager (KYC & AML)",
+    "summary": null,
+    "total_experience_years": null,
+    "skills": {
+      "technical_skills": [],
+      "tools_and_platforms": [],
+      "domain_and_functional": [],
+      "soft_skills": [],
+      "all_skills": []
+    },
+    "experience": [
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      }
+    ],
+    "education": [],
+    "certifications": [
+      {
+        "name": "CAMS certification (Certified Anti- Money Laundering Specialist) Certificate in effective communications and human relation, High impact presentation by Dale Carnegie & Associates, Inc",
+        "issuer": null,
+        "issue_year": null
+      }
+    ],
+    "projects": [],
+    "languages": []
+  },
+  "schema_mapping": {
+    "fields_populated": 8,
+    "total_fields": 16,
+    "completion_percentage": 50.0,
+    "field_details": [
+      {
+        "field_name": "contact.full_name",
+        "target_type": "string",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Personal Details",
+        "confidence_score": 0.95,
+        "description": "Candidate's full name, extracted from the top header of the resume."
+      },
+      {
+        "field_name": "contact.email",
+        "target_type": "string (email)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.98,
+        "description": "Candidate's primary contact email address."
+      },
+      {
+        "field_name": "contact.phone",
+        "target_type": "string (phone)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.95,
+        "description": "Candidate's telephone / mobile phone number."
+      },
+      {
+        "field_name": "contact.location",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.85,
+        "description": "Candidate's residential location or work city."
+      },
+      {
+        "field_name": "contact.linkedin_url",
+        "target_type": "string (url) | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.9,
+        "description": "URL to candidate's LinkedIn profile."
+      },
+      {
+        "field_name": "professional_title",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Header / Subtitle",
+        "confidence_score": 0.88,
+        "description": "Candidate's target headline or most recent job title."
+      },
+      {
+        "field_name": "summary",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Professional Summary / Profile / Objective",
+        "confidence_score": 0.0,
+        "description": "Executive bio, professional overview, or career objective."
+      },
+      {
+        "field_name": "total_experience_years",
+        "target_type": "float | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Summary / Experience Calculation",
+        "confidence_score": 0.0,
+        "description": "Total professional experience in years."
+      },
+      {
+        "field_name": "skills.technical_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Technical Competencies",
+        "confidence_score": 0.0,
+        "description": "Technical programming languages and core software competencies."
+      },
+      {
+        "field_name": "skills.tools_and_platforms",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Tools & Technologies",
+        "confidence_score": 0.0,
+        "description": "Software platforms, developer tools, and operational systems."
+      },
+      {
+        "field_name": "skills.domain_and_functional",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Domain Expertise",
+        "confidence_score": 0.0,
+        "description": "Functional domain knowledge (e.g. Hedge Funds, KYC, NAV, Derivatives)."
+      },
+      {
+        "field_name": "skills.all_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills (Aggregated)",
+        "confidence_score": 0.0,
+        "description": "Complete list of candidate skills across all categories."
+      },
+      {
+        "field_name": "experience",
+        "target_type": "array[WorkExperience]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Experience / Work History",
+        "confidence_score": 0.92,
+        "description": "Complete chronological employment records with bullet points."
+      },
+      {
+        "field_name": "education",
+        "target_type": "array[Education]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Education / Academic Qualifications",
+        "confidence_score": 0.0,
+        "description": "University, college, and higher education degree qualifications."
+      },
+      {
+        "field_name": "certifications",
+        "target_type": "array[Certification]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Certifications / Licenses",
+        "confidence_score": 0.8,
+        "description": "Professional accreditations and credentials."
+      },
+      {
+        "field_name": "projects",
+        "target_type": "array[Project]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Projects / Key Engagements",
+        "confidence_score": 0.0,
+        "description": "Major projects or strategic initiatives led by candidate."
+      }
+    ]
+  },
+  "raw_sections": {
+    "personal_information": "C O N T A C T\n+919079359342 +971502654305(UAE)\nbimblebob95@gmail.com\nDubai/UAE\nhttps://www.linkedin.com/in/rishi- goswami-277605b7\nC A R E E R S Y N O P S I S\nWith 14+ years of professional experience, I specialize in project management, operational transformation, and leading teams of 20 to 40 members across the MENA region. My 5.5 years in project management have been marked by effective forecasting and shrinkage significant efficiency gains, and I've also worked in the 3rd and 2nd line of defense.\ncontrol,\ncontributing\nto\nMy background includes KYC checks, audits, and ensuring compliance with regulators like the CBUAE, OCC, FCA, BaFin. I excel in due diligence, adapting to the unique risks of clients in the UAE, US, UK, and DE. My expertise also covers verifying client data from sources such as Lexis Nexis and Bankers Almanac.\nI am committed to driving strategic growth and maintaining regulatory standards through my experience in operational transformation and project execution.\nC O R E E X E R T I S E\nAML Risk Assessment, Training & Governance • • • • • • S K I L L S & C O M P E T E N C I E S\nBusiness and Entrepreneurial skills:\n\n\nStrong command of business and management principles, resource allocation, production methods, and leading others. Initiator and problem- solver using creativity, resourcefulness and assets to break down and overcome organizational obstacles\nRishi Goswami, CAMS\nW O R K E X P E R I E N C E\nErnst & Young, Dubai (Jan 2025 till date) Manager (KYC & AML) · Directed project management for KYC operations in the UAE, ensuring compliance with local banking regulations and standards set by the Central Bank of the UAE.\n\nRecently worked with one of the UAE's major banks, where I managed a team of 200 people and successfully delivered the project.\nDeveloped and presented comprehensive MIS reports. ·\nEvaluated and documented the approval or rejection of compliance cases, providing detailed feedback and recommendations for process enhancements.\nErnst & Young, Bangalore (December 2021 till Jan 2025) Manager (KYC & AML) · Directed project management for KYC operations in compliance with banking standards set by the Central Bank of the UAE (CBUAE), ensuring adherence to local regulations.\nOperational transformation across KYC, Screening, and AML processes, aligning with CBUAE guidelines to enhance efficiency and compliance\nDeveloped and presented comprehensive Management Information System (MIS) reports that reflect CBUAE KYC requirements and operational metrics.\n\nLeveraged 14+ years in banking and consulting, focusing on KYC and Transaction Monitoring, with a strong emphasis on compliance with CBUAE regulations.\nOaknorth Bank, Gurugram (June 2021 till December 2021) Senior Associate (Onboarding)\n\nPerform loan booking operations in line with UK banking norms (KYC/Due diligence/AML).\n\nPerform in life loan management activities within the available systems pertaining to Syndication, Agency, Bilateral Loan operations.\n\nReview Legal documents in terms of completeness and plausibility and Review & sign-off on legal documents\nManage Payment operations to process payments to external parties · Query and task management by Loan and customer type.\nUBS, Hyderabad (May, 2019 till June 21) KYC Authorized officer (Manager)\n\nLead the team on matters related to AML matters, KYC on-boarding, working with the Front line Origination Units to ensure all new clients are on-boarded correctly.\n\nEnsure team performs active due diligence on clients, conducts quality assurance of customer AML KYC profiles of all risk ratings prepared by Front line Origination Units.\n\nKeep abreast of new KYC policies, regulations, and requirements and implement new processes into the teams review processes.\n\nFocus on the assurance of quality and consistency in Client Due Diligence standards in accordance to the prevailing requirements; and within stipulated timeframe across adoption locations.\n\nEnsure the team has appropriate level of training on AML KYC/On-boarding matters to perform the role effectively.\n· Managed team of 10 to 12 members as team lead.\nInterpersonal and communication skills: • Attentive listener and believe in participative\ndecision making. Soft and hard skill training\n• Motivated team player with excellent public speaking ability and communication\nPWC-SDC, Bangalore (October 2017 till May 2019) KYC SME\n·\nCreating and modifying addendums and KOP/DTP as per recent regulatory requirements like FinCEN & FATCA (US), MIFID (UK&DE) and changes.\n·\nLiaising with policy team to make changes or updating Kop & DTPs;\nTraining new joiners or Refresher trainings, to make them operationally ready on the new Anti-Money Laundering (AML) and Know Your Client (KYC) policy of the organization, as well as conducting refresher trainings for trained staff;\n\nProviding Solutions & directions to IT teams for On boarding & product system enhancements;\nCredit Suisse, Pune (September 2016 till September 2017) Compliance Analyst\nAML Transaction Monitoring: · Monitoring transaction to identify potential money laundering risk, obtaining proper document to justify the transaction purpose and information available with the other tools like: Mantas, NTPA.\nMonitoring the entire Watch-list listed names that have done the transaction above the set threshold.\nDaily assessment of SWIFT and AML reports relating to potential suspicious activity. Analyze high risk wire transaction activity and recommend SAR filing for MLRO in case of potential Money Laundering. Collect documentary proof and build and maintain case files for transactions deemed suspicious.\n\n\nDBOI Global Services Private Limited, Jaipur (July 2013 till September 2016) Process Analyst\n·\n\n· ·\nReview and adhere to DB Global KYC Policy & AML policies & procedure Review completeness of a client's KYC (Know Your Customers) i.e. documentation/information and identifying missing documentation/information that needs to be obtained. Ensured compliance with all regulatory requirements, including Anti Money Laundering (AML) regulations such as USA PATRIOT ACT, BSA, FATCA, FCPA, OFAC Sanctions etc., Performing AML screening searches Performing QA (internal QC & 6 eye checks) Ensure KYC reviews are in accordance with all the prevailing regulatory guidelines, i.e. USA Patriot Act, 3rd EU MLD, MIFID Classification, and Deutsche Bank’s internal AML policies. Also, to ensure completion of pipeline on time and with the highest standards of quality.\nTeleperformance, Jaipur (September 2011 till July 2013)\nAssistant Manager Call Center\n\nCoaching, Team Meetings and giving feedback to enhance Customer ",
+    "awards": "A C H I E V E M E N T S\nGot the Award for Extraordinary client relationship 2023\nGot the Award of Best Quality Performer of Month in April & June’12.\nGot the Award of Significant Contributor of the Month November 12.\nP R O F E S S I O N A L Q U A L I F I C A T I O N S\nMaster in Business Administration (2022) from NMIMS (Specialization: International Trade Management)\nBachelor in Commerce (2013) from Rajasthan University\nE D U C A T I O N A L Q U A L I F I C A T I O N S\nIntermediate (2009) from S.A.P.S School\nMatriculation (2006) from S.A.P.S School",
+    "certifications": "C E R T I F I C A T I O N S\n\n\nCAMS certification (Certified Anti- Money Laundering Specialist) Certificate in effective communications and human relation, High impact presentation by Dale Carnegie & Associates, Inc",
+    "experience": "experience. Call Monitoring / Customer complaint resolution / Team Building Activities.\n· Handling Backend activity of a leading E-Commerce Company."
+  },
+  "meta": {
+    "status": "needs_review",
+    "human_verified": false,
+    "provider_calls": 0,
+    "source_accounting": {
+      "all_source_text_preserved": true,
+      "total_spans": 188,
+      "assigned_meaningful_spans": 166,
+      "unresolved_meaningful_spans": 0,
+      "non_content_artifacts": 22,
+      "duplicates_excluded": 0,
+      "all_meaningful_text_assigned": true,
+      "semantic_correctness_verified": false,
+      "outcomes": [
+        {
+          "source_id": "e0:0:13",
+          "source_element_index": 0,
+          "start": 0,
+          "end": 13,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e1:0:32",
+          "source_element_index": 1,
+          "start": 0,
+          "end": 32,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e2:0:21",
+          "source_element_index": 2,
+          "start": 0,
+          "end": 21,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e3:0:9",
+          "source_element_index": 3,
+          "start": 0,
+          "end": 9,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e4:0:35",
+          "source_element_index": 4,
+          "start": 0,
+          "end": 35,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e4:35:51",
+          "source_element_index": 4,
+          "start": 35,
+          "end": 51,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e5:0:27",
+          "source_element_index": 5,
+          "start": 0,
+          "end": 27,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e6:0:56",
+          "source_element_index": 6,
+          "start": 0,
+          "end": 56,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e6:56:107",
+          "source_element_index": 6,
+          "start": 56,
+          "end": 107,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e6:107:156",
+          "source_element_index": 6,
+          "start": 107,
+          "end": 156,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e6:156:204",
+          "source_element_index": 6,
+          "start": 156,
+          "end": 204,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e6:204:250",
+          "source_element_index": 6,
+          "start": 204,
+          "end": 250,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e6:250:260",
+          "source_element_index": 6,
+          "start": 250,
+          "end": 260,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e6:260:272",
+          "source_element_index": 6,
+          "start": 260,
+          "end": 272,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e6:272:330",
+          "source_element_index": 6,
+          "start": 272,
+          "end": 330,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e6:330:346",
+          "source_element_index": 6,
+          "start": 330,
+          "end": 346,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e7:0:8",
+          "source_element_index": 7,
+          "start": 0,
+          "end": 8,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e8:0:12",
+          "source_element_index": 8,
+          "start": 0,
+          "end": 12,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:0:2",
+          "source_element_index": 9,
+          "start": 0,
+          "end": 2,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e10:0:47",
+          "source_element_index": 10,
+          "start": 0,
+          "end": 47,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e10:47:99",
+          "source_element_index": 10,
+          "start": 47,
+          "end": 99,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e10:99:154",
+          "source_element_index": 10,
+          "start": 99,
+          "end": 154,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e10:154:210",
+          "source_element_index": 10,
+          "start": 154,
+          "end": 210,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e10:210:262",
+          "source_element_index": 10,
+          "start": 210,
+          "end": 262,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e10:262:310",
+          "source_element_index": 10,
+          "start": 262,
+          "end": 310,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e11:0:47",
+          "source_element_index": 11,
+          "start": 0,
+          "end": 47,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e11:47:91",
+          "source_element_index": 11,
+          "start": 47,
+          "end": 91,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e11:91:144",
+          "source_element_index": 11,
+          "start": 91,
+          "end": 144,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e11:144:154",
+          "source_element_index": 11,
+          "start": 144,
+          "end": 154,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:0:23",
+          "source_element_index": 12,
+          "start": 0,
+          "end": 23,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e13:0:42",
+          "source_element_index": 13,
+          "start": 0,
+          "end": 42,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e13:42:55",
+          "source_element_index": 13,
+          "start": 42,
+          "end": 55,
+          "section": "personal_information",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e13:55:92",
+          "source_element_index": 13,
+          "start": 55,
+          "end": 92,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e14:0:36",
+          "source_element_index": 14,
+          "start": 0,
+          "end": 36,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e15:0:0",
+          "source_element_index": 15,
+          "start": 0,
+          "end": 0,
+          "section": "personal_information",
+          "outcome": "non_content_artifact",
+          "reason": "Whitespace retained in source inventory"
+        },
+        {
+          "source_id": "e16:0:0",
+          "source_element_index": 16,
+          "start": 0,
+          "end": 0,
+          "section": "personal_information",
+          "outcome": "non_content_artifact",
+          "reason": "Whitespace retained in source inventory"
+        },
+        {
+          "source_id": "e17:0:42",
+          "source_element_index": 17,
+          "start": 0,
+          "end": 42,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e17:42:86",
+          "source_element_index": 17,
+          "start": 42,
+          "end": 86,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e17:86:115",
+          "source_element_index": 17,
+          "start": 86,
+          "end": 115,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e17:115:163",
+          "source_element_index": 17,
+          "start": 115,
+          "end": 163,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e17:163:208",
+          "source_element_index": 17,
+          "start": 163,
+          "end": 208,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e17:208:241",
+          "source_element_index": 17,
+          "start": 208,
+          "end": 241,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e18:0:19",
+          "source_element_index": 18,
+          "start": 0,
+          "end": 19,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e19:0:27",
+          "source_element_index": 19,
+          "start": 0,
+          "end": 27,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e20:0:42",
+          "source_element_index": 20,
+          "start": 0,
+          "end": 42,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e20:42:62",
+          "source_element_index": 20,
+          "start": 42,
+          "end": 62,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e20:62:132",
+          "source_element_index": 20,
+          "start": 62,
+          "end": 132,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e20:132:207",
+          "source_element_index": 20,
+          "start": 132,
+          "end": 207,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e20:207:223",
+          "source_element_index": 20,
+          "start": 207,
+          "end": 223,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e21:0:0",
+          "source_element_index": 21,
+          "start": 0,
+          "end": 0,
+          "section": "personal_information",
+          "outcome": "non_content_artifact",
+          "reason": "Whitespace retained in source inventory"
+        },
+        {
+          "source_id": "e22:0:74",
+          "source_element_index": 22,
+          "start": 0,
+          "end": 74,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e22:74:127",
+          "source_element_index": 22,
+          "start": 74,
+          "end": 127,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e23:0:52",
+          "source_element_index": 23,
+          "start": 0,
+          "end": 52,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e24:0:72",
+          "source_element_index": 24,
+          "start": 0,
+          "end": 72,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e24:72:145",
+          "source_element_index": 24,
+          "start": 72,
+          "end": 145,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e25:0:55",
+          "source_element_index": 25,
+          "start": 0,
+          "end": 55,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e25:55:75",
+          "source_element_index": 25,
+          "start": 55,
+          "end": 75,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e25:75:151",
+          "source_element_index": 25,
+          "start": 75,
+          "end": 151,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e25:151:227",
+          "source_element_index": 25,
+          "start": 151,
+          "end": 227,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e25:227:245",
+          "source_element_index": 25,
+          "start": 227,
+          "end": 245,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e26:0:69",
+          "source_element_index": 26,
+          "start": 0,
+          "end": 69,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e26:69:136",
+          "source_element_index": 26,
+          "start": 69,
+          "end": 136,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e27:0:68",
+          "source_element_index": 27,
+          "start": 0,
+          "end": 68,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e27:68:142",
+          "source_element_index": 27,
+          "start": 68,
+          "end": 142,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e28:0:0",
+          "source_element_index": 28,
+          "start": 0,
+          "end": 0,
+          "section": "personal_information",
+          "outcome": "non_content_artifact",
+          "reason": "Whitespace retained in source inventory"
+        },
+        {
+          "source_id": "e29:0:67",
+          "source_element_index": 29,
+          "start": 0,
+          "end": 67,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e29:67:139",
+          "source_element_index": 29,
+          "start": 67,
+          "end": 139,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e29:139:151",
+          "source_element_index": 29,
+          "start": 139,
+          "end": 151,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e30:0:55",
+          "source_element_index": 30,
+          "start": 0,
+          "end": 55,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e30:55:84",
+          "source_element_index": 30,
+          "start": 55,
+          "end": 84,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e31:0:0",
+          "source_element_index": 31,
+          "start": 0,
+          "end": 0,
+          "section": "personal_information",
+          "outcome": "non_content_artifact",
+          "reason": "Whitespace retained in source inventory"
+        },
+        {
+          "source_id": "e32:0:71",
+          "source_element_index": 32,
+          "start": 0,
+          "end": 71,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e32:71:86",
+          "source_element_index": 32,
+          "start": 71,
+          "end": 86,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e33:0:0",
+          "source_element_index": 33,
+          "start": 0,
+          "end": 0,
+          "section": "personal_information",
+          "outcome": "non_content_artifact",
+          "reason": "Whitespace retained in source inventory"
+        },
+        {
+          "source_id": "e34:0:72",
+          "source_element_index": 34,
+          "start": 0,
+          "end": 72,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e34:72:133",
+          "source_element_index": 34,
+          "start": 72,
+          "end": 133,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e35:0:0",
+          "source_element_index": 35,
+          "start": 0,
+          "end": 0,
+          "section": "personal_information",
+          "outcome": "non_content_artifact",
+          "reason": "Whitespace retained in source inventory"
+        },
+        {
+          "source_id": "e36:0:76",
+          "source_element_index": 36,
+          "start": 0,
+          "end": 76,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e36:76:105",
+          "source_element_index": 36,
+          "start": 76,
+          "end": 105,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e37:0:66",
+          "source_element_index": 37,
+          "start": 0,
+          "end": 66,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e37:66:120",
+          "source_element_index": 37,
+          "start": 66,
+          "end": 120,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e38:0:40",
+          "source_element_index": 38,
+          "start": 0,
+          "end": 40,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e38:40:72",
+          "source_element_index": 38,
+          "start": 40,
+          "end": 72,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e39:0:0",
+          "source_element_index": 39,
+          "start": 0,
+          "end": 0,
+          "section": "personal_information",
+          "outcome": "non_content_artifact",
+          "reason": "Whitespace retained in source inventory"
+        },
+        {
+          "source_id": "e40:0:74",
+          "source_element_index": 40,
+          "start": 0,
+          "end": 74,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e40:74:153",
+          "source_element_index": 40,
+          "start": 74,
+          "end": 153,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e40:153:163",
+          "source_element_index": 40,
+          "start": 153,
+          "end": 163,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e41:0:0",
+          "source_element_index": 41,
+          "start": 0,
+          "end": 0,
+          "section": "personal_information",
+          "outcome": "non_content_artifact",
+          "reason": "Whitespace retained in source inventory"
+        },
+        {
+          "source_id": "e42:0:71",
+          "source_element_index": 42,
+          "start": 0,
+          "end": 71,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e42:71:148",
+          "source_element_index": 42,
+          "start": 71,
+          "end": 148,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e42:148:171",
+          "source_element_index": 42,
+          "start": 148,
+          "end": 171,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e43:0:0",
+          "source_element_index": 43,
+          "start": 0,
+          "end": 0,
+          "section": "personal_information",
+          "outcome": "non_content_artifact",
+          "reason": "Whitespace retained in source inventory"
+        },
+        {
+          "source_id": "e44:0:68",
+          "source_element_index": 44,
+          "start": 0,
+          "end": 68,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e44:68:124",
+          "source_element_index": 44,
+          "start": 68,
+          "end": 124,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e45:0:0",
+          "source_element_index": 45,
+          "start": 0,
+          "end": 0,
+          "section": "personal_information",
+          "outcome": "non_content_artifact",
+          "reason": "Whitespace retained in source inventory"
+        },
+        {
+          "source_id": "e46:0:74",
+          "source_element_index": 46,
+          "start": 0,
+          "end": 74,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e46:74:152",
+          "source_element_index": 46,
+          "start": 74,
+          "end": 152,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e46:152:188",
+          "source_element_index": 46,
+          "start": 152,
+          "end": 188,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e47:0:0",
+          "source_element_index": 47,
+          "start": 0,
+          "end": 0,
+          "section": "personal_information",
+          "outcome": "non_content_artifact",
+          "reason": "Whitespace retained in source inventory"
+        },
+        {
+          "source_id": "e48:0:73",
+          "source_element_index": 48,
+          "start": 0,
+          "end": 73,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e48:73:113",
+          "source_element_index": 48,
+          "start": 73,
+          "end": 113,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e49:0:48",
+          "source_element_index": 49,
+          "start": 0,
+          "end": 48,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e50:0:39",
+          "source_element_index": 50,
+          "start": 0,
+          "end": 39,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e50:39:42",
+          "source_element_index": 50,
+          "start": 39,
+          "end": 42,
+          "section": "personal_information",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e50:42:89",
+          "source_element_index": 50,
+          "start": 42,
+          "end": 89,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e51:0:17",
+          "source_element_index": 51,
+          "start": 0,
+          "end": 17,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e51:17:45",
+          "source_element_index": 51,
+          "start": 17,
+          "end": 45,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e52:0:2",
+          "source_element_index": 52,
+          "start": 0,
+          "end": 2,
+          "section": "personal_information",
+          "outcome": "non_content_artifact",
+          "reason": "Standalone list markers retained in source inventory"
+        },
+        {
+          "source_id": "e52:2:46",
+          "source_element_index": 52,
+          "start": 2,
+          "end": 46,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e52:46:80",
+          "source_element_index": 52,
+          "start": 46,
+          "end": 80,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e53:0:23",
+          "source_element_index": 53,
+          "start": 0,
+          "end": 23,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e54:0:39",
+          "source_element_index": 54,
+          "start": 0,
+          "end": 39,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e54:39:56",
+          "source_element_index": 54,
+          "start": 39,
+          "end": 56,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e55:0:43",
+          "source_element_index": 55,
+          "start": 0,
+          "end": 43,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e55:43:68",
+          "source_element_index": 55,
+          "start": 43,
+          "end": 68,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e56:0:44",
+          "source_element_index": 56,
+          "start": 0,
+          "end": 44,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e56:44:66",
+          "source_element_index": 56,
+          "start": 44,
+          "end": 66,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e57:0:51",
+          "source_element_index": 57,
+          "start": 0,
+          "end": 51,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e58:0:46",
+          "source_element_index": 58,
+          "start": 0,
+          "end": 46,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e58:46:89",
+          "source_element_index": 58,
+          "start": 46,
+          "end": 89,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e58:89:100",
+          "source_element_index": 58,
+          "start": 89,
+          "end": 100,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e59:0:43",
+          "source_element_index": 59,
+          "start": 0,
+          "end": 43,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e59:43:53",
+          "source_element_index": 59,
+          "start": 43,
+          "end": 53,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e60:0:49",
+          "source_element_index": 60,
+          "start": 0,
+          "end": 49,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e61:0:39",
+          "source_element_index": 61,
+          "start": 0,
+          "end": 39,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e62:0:40",
+          "source_element_index": 62,
+          "start": 0,
+          "end": 40,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e63:0:27",
+          "source_element_index": 63,
+          "start": 0,
+          "end": 27,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e64:0:0",
+          "source_element_index": 64,
+          "start": 0,
+          "end": 0,
+          "section": "certifications",
+          "outcome": "non_content_artifact",
+          "reason": "Whitespace retained in source inventory"
+        },
+        {
+          "source_id": "e65:0:0",
+          "source_element_index": 65,
+          "start": 0,
+          "end": 0,
+          "section": "certifications",
+          "outcome": "non_content_artifact",
+          "reason": "Whitespace retained in source inventory"
+        },
+        {
+          "source_id": "e66:0:36",
+          "source_element_index": 66,
+          "start": 0,
+          "end": 36,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e66:36:65",
+          "source_element_index": 66,
+          "start": 36,
+          "end": 65,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e66:65:109",
+          "source_element_index": 66,
+          "start": 65,
+          "end": 109,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e66:109:150",
+          "source_element_index": 66,
+          "start": 109,
+          "end": 150,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e66:150:184",
+          "source_element_index": 66,
+          "start": 150,
+          "end": 184,
+          "section": "certifications",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e67:0:48",
+          "source_element_index": 67,
+          "start": 0,
+          "end": 48,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e67:48:55",
+          "source_element_index": 67,
+          "start": 48,
+          "end": 55,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e68:0:1",
+          "source_element_index": 68,
+          "start": 0,
+          "end": 1,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e69:0:70",
+          "source_element_index": 69,
+          "start": 0,
+          "end": 70,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e69:70:135",
+          "source_element_index": 69,
+          "start": 70,
+          "end": 135,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e70:0:1",
+          "source_element_index": 70,
+          "start": 0,
+          "end": 1,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e71:0:65",
+          "source_element_index": 71,
+          "start": 0,
+          "end": 65,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e72:0:78",
+          "source_element_index": 72,
+          "start": 0,
+          "end": 78,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e72:78:151",
+          "source_element_index": 72,
+          "start": 78,
+          "end": 151,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e72:151:232",
+          "source_element_index": 72,
+          "start": 151,
+          "end": 232,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e73:0:0",
+          "source_element_index": 73,
+          "start": 0,
+          "end": 0,
+          "section": "personal_information",
+          "outcome": "non_content_artifact",
+          "reason": "Whitespace retained in source inventory"
+        },
+        {
+          "source_id": "e74:0:71",
+          "source_element_index": 74,
+          "start": 0,
+          "end": 71,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e74:71:91",
+          "source_element_index": 74,
+          "start": 71,
+          "end": 91,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e75:0:57",
+          "source_element_index": 75,
+          "start": 0,
+          "end": 57,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e75:57:75",
+          "source_element_index": 75,
+          "start": 57,
+          "end": 75,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e76:0:28",
+          "source_element_index": 76,
+          "start": 0,
+          "end": 28,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e76:28:108",
+          "source_element_index": 76,
+          "start": 28,
+          "end": 108,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e76:108:185",
+          "source_element_index": 76,
+          "start": 108,
+          "end": 185,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e76:185:225",
+          "source_element_index": 76,
+          "start": 185,
+          "end": 225,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e77:0:77",
+          "source_element_index": 77,
+          "start": 0,
+          "end": 77,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e77:77:101",
+          "source_element_index": 77,
+          "start": 77,
+          "end": 101,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e78:0:75",
+          "source_element_index": 78,
+          "start": 0,
+          "end": 75,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e78:75:85",
+          "source_element_index": 78,
+          "start": 75,
+          "end": 85,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e78:85:158",
+          "source_element_index": 78,
+          "start": 85,
+          "end": 158,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e78:158:202",
+          "source_element_index": 78,
+          "start": 158,
+          "end": 202,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e78:202:279",
+          "source_element_index": 78,
+          "start": 202,
+          "end": 279,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e78:279:297",
+          "source_element_index": 78,
+          "start": 279,
+          "end": 297,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e79:0:0",
+          "source_element_index": 79,
+          "start": 0,
+          "end": 0,
+          "section": "personal_information",
+          "outcome": "non_content_artifact",
+          "reason": "Whitespace retained in source inventory"
+        },
+        {
+          "source_id": "e80:0:0",
+          "source_element_index": 80,
+          "start": 0,
+          "end": 0,
+          "section": "personal_information",
+          "outcome": "non_content_artifact",
+          "reason": "Whitespace retained in source inventory"
+        },
+        {
+          "source_id": "e81:0:77",
+          "source_element_index": 81,
+          "start": 0,
+          "end": 77,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e81:77:92",
+          "source_element_index": 81,
+          "start": 77,
+          "end": 92,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e82:0:1",
+          "source_element_index": 82,
+          "start": 0,
+          "end": 1,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e83:0:0",
+          "source_element_index": 83,
+          "start": 0,
+          "end": 0,
+          "section": "personal_information",
+          "outcome": "non_content_artifact",
+          "reason": "Whitespace retained in source inventory"
+        },
+        {
+          "source_id": "e84:0:3",
+          "source_element_index": 84,
+          "start": 0,
+          "end": 3,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e85:0:69",
+          "source_element_index": 85,
+          "start": 0,
+          "end": 69,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e85:69:134",
+          "source_element_index": 85,
+          "start": 69,
+          "end": 134,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e85:134:184",
+          "source_element_index": 85,
+          "start": 134,
+          "end": 184,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e85:184:237",
+          "source_element_index": 85,
+          "start": 184,
+          "end": 237,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e85:237:311",
+          "source_element_index": 85,
+          "start": 237,
+          "end": 311,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e85:311:383",
+          "source_element_index": 85,
+          "start": 311,
+          "end": 383,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e85:383:404",
+          "source_element_index": 85,
+          "start": 383,
+          "end": 404,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e85:404:438",
+          "source_element_index": 85,
+          "start": 404,
+          "end": 438,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e85:438:481",
+          "source_element_index": 85,
+          "start": 438,
+          "end": 481,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e85:481:553",
+          "source_element_index": 85,
+          "start": 481,
+          "end": 553,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e85:553:634",
+          "source_element_index": 85,
+          "start": 553,
+          "end": 634,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e85:634:715",
+          "source_element_index": 85,
+          "start": 634,
+          "end": 715,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e85:715:753",
+          "source_element_index": 85,
+          "start": 715,
+          "end": 753,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e86:0:55",
+          "source_element_index": 86,
+          "start": 0,
+          "end": 55,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e87:0:29",
+          "source_element_index": 87,
+          "start": 0,
+          "end": 29,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e88:0:0",
+          "source_element_index": 88,
+          "start": 0,
+          "end": 0,
+          "section": "personal_information",
+          "outcome": "non_content_artifact",
+          "reason": "Whitespace retained in source inventory"
+        },
+        {
+          "source_id": "e89:0:64",
+          "source_element_index": 89,
+          "start": 0,
+          "end": 64,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e89:64:76",
+          "source_element_index": 89,
+          "start": 64,
+          "end": 76,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e89:76:151",
+          "source_element_index": 89,
+          "start": 76,
+          "end": 151,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e90:0:60",
+          "source_element_index": 90,
+          "start": 0,
+          "end": 60,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        }
+      ]
+    },
+    "document_scope": {
+      "kind": "candidate_or_unknown",
+      "candidate_resume": null,
+      "requires_scope_review": true
+    },
+    "source_inventory_sha256": "4d7ca9dc58f7d3f7848599cd54b44cd54485865a2050b944292317f977e2dd58",
+    "field_evidence": {
+      "contact.full_name": [
+        "e1:0:32",
+        "e2:0:21",
+        "e3:0:9",
+        "e4:0:35",
+        "e4:35:51",
+        "e5:0:27",
+        "e6:0:56",
+        "e6:56:107",
+        "e6:107:156",
+        "e6:156:204",
+        "e6:204:250",
+        "e6:250:260",
+        "e6:260:272",
+        "e6:272:330",
+        "e6:330:346",
+        "e7:0:8",
+        "e8:0:12",
+        "e9:0:2",
+        "e10:0:47",
+        "e10:47:99",
+        "e10:99:154",
+        "e10:154:210",
+        "e10:210:262",
+        "e10:262:310",
+        "e11:0:47",
+        "e11:47:91",
+        "e11:91:144",
+        "e11:144:154",
+        "e12:0:23",
+        "e13:0:42",
+        "e13:42:55",
+        "e13:55:92",
+        "e14:0:36",
+        "e17:0:42",
+        "e17:42:86",
+        "e17:86:115",
+        "e17:115:163",
+        "e17:163:208",
+        "e17:208:241",
+        "e18:0:19",
+        "e19:0:27",
+        "e20:0:42",
+        "e20:42:62",
+        "e20:62:132",
+        "e20:132:207",
+        "e20:207:223",
+        "e22:0:74",
+        "e22:74:127",
+        "e23:0:52",
+        "e24:0:72",
+        "e24:72:145",
+        "e25:0:55",
+        "e25:55:75",
+        "e25:75:151",
+        "e25:151:227",
+        "e25:227:245",
+        "e26:0:69",
+        "e26:69:136",
+        "e27:0:68",
+        "e27:68:142",
+        "e29:0:67",
+        "e29:67:139",
+        "e29:139:151",
+        "e30:0:55",
+        "e30:55:84",
+        "e32:0:71",
+        "e32:71:86",
+        "e34:0:72",
+        "e34:72:133",
+        "e36:0:76",
+        "e36:76:105",
+        "e37:0:66",
+        "e37:66:120",
+        "e38:0:40",
+        "e38:40:72",
+        "e40:0:74",
+        "e40:74:153",
+        "e40:153:163",
+        "e42:0:71",
+        "e42:71:148",
+        "e42:148:171",
+        "e44:0:68",
+        "e44:68:124",
+        "e46:0:74",
+        "e46:74:152",
+        "e46:152:188",
+        "e48:0:73",
+        "e48:73:113",
+        "e49:0:48",
+        "e50:0:39",
+        "e50:39:42",
+        "e50:42:89",
+        "e51:0:17",
+        "e51:17:45",
+        "e52:0:2",
+        "e52:2:46",
+        "e52:46:80",
+        "e67:0:48",
+        "e67:48:55",
+        "e68:0:1",
+        "e69:0:70",
+        "e69:70:135",
+        "e70:0:1",
+        "e71:0:65",
+        "e72:0:78",
+        "e72:78:151",
+        "e72:151:232",
+        "e74:0:71",
+        "e74:71:91",
+        "e75:0:57",
+        "e75:57:75",
+        "e76:0:28",
+        "e76:28:108",
+        "e76:108:185",
+        "e76:185:225",
+        "e77:0:77",
+        "e77:77:101",
+        "e78:0:75",
+        "e78:75:85",
+        "e78:85:158",
+        "e78:158:202",
+        "e78:202:279",
+        "e78:279:297",
+        "e81:0:77",
+        "e81:77:92",
+        "e82:0:1",
+        "e84:0:3",
+        "e85:0:69",
+        "e85:69:134",
+        "e85:134:184",
+        "e85:184:237",
+        "e85:237:311",
+        "e85:311:383",
+        "e85:383:404",
+        "e85:404:438",
+        "e85:438:481",
+        "e85:481:553",
+        "e85:553:634",
+        "e85:634:715",
+        "e85:715:753",
+        "e86:0:55",
+        "e87:0:29",
+        "e89:0:64"
+      ],
+      "contact.email": [
+        "e1:0:32",
+        "e2:0:21",
+        "e3:0:9",
+        "e4:0:35",
+        "e4:35:51",
+        "e5:0:27",
+        "e6:0:56",
+        "e6:56:107",
+        "e6:107:156",
+        "e6:156:204",
+        "e6:204:250",
+        "e6:250:260",
+        "e6:260:272",
+        "e6:272:330",
+        "e6:330:346",
+        "e7:0:8",
+        "e8:0:12",
+        "e9:0:2",
+        "e10:0:47",
+        "e10:47:99",
+        "e10:99:154",
+        "e10:154:210",
+        "e10:210:262",
+        "e10:262:310",
+        "e11:0:47",
+        "e11:47:91",
+        "e11:91:144",
+        "e11:144:154",
+        "e12:0:23",
+        "e13:0:42",
+        "e13:42:55",
+        "e13:55:92",
+        "e14:0:36",
+        "e17:0:42",
+        "e17:42:86",
+        "e17:86:115",
+        "e17:115:163",
+        "e17:163:208",
+        "e17:208:241",
+        "e18:0:19",
+        "e19:0:27",
+        "e20:0:42",
+        "e20:42:62",
+        "e20:62:132",
+        "e20:132:207",
+        "e20:207:223",
+        "e22:0:74",
+        "e22:74:127",
+        "e23:0:52",
+        "e24:0:72",
+        "e24:72:145",
+        "e25:0:55",
+        "e25:55:75",
+        "e25:75:151",
+        "e25:151:227",
+        "e25:227:245",
+        "e26:0:69",
+        "e26:69:136",
+        "e27:0:68",
+        "e27:68:142",
+        "e29:0:67",
+        "e29:67:139",
+        "e29:139:151",
+        "e30:0:55",
+        "e30:55:84",
+        "e32:0:71",
+        "e32:71:86",
+        "e34:0:72",
+        "e34:72:133",
+        "e36:0:76",
+        "e36:76:105",
+        "e37:0:66",
+        "e37:66:120",
+        "e38:0:40",
+        "e38:40:72",
+        "e40:0:74",
+        "e40:74:153",
+        "e40:153:163",
+        "e42:0:71",
+        "e42:71:148",
+        "e42:148:171",
+        "e44:0:68",
+        "e44:68:124",
+        "e46:0:74",
+        "e46:74:152",
+        "e46:152:188",
+        "e48:0:73",
+        "e48:73:113",
+        "e49:0:48",
+        "e50:0:39",
+        "e50:39:42",
+        "e50:42:89",
+        "e51:0:17",
+        "e51:17:45",
+        "e52:0:2",
+        "e52:2:46",
+        "e52:46:80",
+        "e67:0:48",
+        "e67:48:55",
+        "e68:0:1",
+        "e69:0:70",
+        "e69:70:135",
+        "e70:0:1",
+        "e71:0:65",
+        "e72:0:78",
+        "e72:78:151",
+        "e72:151:232",
+        "e74:0:71",
+        "e74:71:91",
+        "e75:0:57",
+        "e75:57:75",
+        "e76:0:28",
+        "e76:28:108",
+        "e76:108:185",
+        "e76:185:225",
+        "e77:0:77",
+        "e77:77:101",
+        "e78:0:75",
+        "e78:75:85",
+        "e78:85:158",
+        "e78:158:202",
+        "e78:202:279",
+        "e78:279:297",
+        "e81:0:77",
+        "e81:77:92",
+        "e82:0:1",
+        "e84:0:3",
+        "e85:0:69",
+        "e85:69:134",
+        "e85:134:184",
+        "e85:184:237",
+        "e85:237:311",
+        "e85:311:383",
+        "e85:383:404",
+        "e85:404:438",
+        "e85:438:481",
+        "e85:481:553",
+        "e85:553:634",
+        "e85:634:715",
+        "e85:715:753",
+        "e86:0:55",
+        "e87:0:29",
+        "e89:0:64"
+      ],
+      "contact.phone": [
+        "e1:0:32",
+        "e2:0:21",
+        "e3:0:9",
+        "e4:0:35",
+        "e4:35:51",
+        "e5:0:27",
+        "e6:0:56",
+        "e6:56:107",
+        "e6:107:156",
+        "e6:156:204",
+        "e6:204:250",
+        "e6:250:260",
+        "e6:260:272",
+        "e6:272:330",
+        "e6:330:346",
+        "e7:0:8",
+        "e8:0:12",
+        "e9:0:2",
+        "e10:0:47",
+        "e10:47:99",
+        "e10:99:154",
+        "e10:154:210",
+        "e10:210:262",
+        "e10:262:310",
+        "e11:0:47",
+        "e11:47:91",
+        "e11:91:144",
+        "e11:144:154",
+        "e12:0:23",
+        "e13:0:42",
+        "e13:42:55",
+        "e13:55:92",
+        "e14:0:36",
+        "e17:0:42",
+        "e17:42:86",
+        "e17:86:115",
+        "e17:115:163",
+        "e17:163:208",
+        "e17:208:241",
+        "e18:0:19",
+        "e19:0:27",
+        "e20:0:42",
+        "e20:42:62",
+        "e20:62:132",
+        "e20:132:207",
+        "e20:207:223",
+        "e22:0:74",
+        "e22:74:127",
+        "e23:0:52",
+        "e24:0:72",
+        "e24:72:145",
+        "e25:0:55",
+        "e25:55:75",
+        "e25:75:151",
+        "e25:151:227",
+        "e25:227:245",
+        "e26:0:69",
+        "e26:69:136",
+        "e27:0:68",
+        "e27:68:142",
+        "e29:0:67",
+        "e29:67:139",
+        "e29:139:151",
+        "e30:0:55",
+        "e30:55:84",
+        "e32:0:71",
+        "e32:71:86",
+        "e34:0:72",
+        "e34:72:133",
+        "e36:0:76",
+        "e36:76:105",
+        "e37:0:66",
+        "e37:66:120",
+        "e38:0:40",
+        "e38:40:72",
+        "e40:0:74",
+        "e40:74:153",
+        "e40:153:163",
+        "e42:0:71",
+        "e42:71:148",
+        "e42:148:171",
+        "e44:0:68",
+        "e44:68:124",
+        "e46:0:74",
+        "e46:74:152",
+        "e46:152:188",
+        "e48:0:73",
+        "e48:73:113",
+        "e49:0:48",
+        "e50:0:39",
+        "e50:39:42",
+        "e50:42:89",
+        "e51:0:17",
+        "e51:17:45",
+        "e52:0:2",
+        "e52:2:46",
+        "e52:46:80",
+        "e67:0:48",
+        "e67:48:55",
+        "e68:0:1",
+        "e69:0:70",
+        "e69:70:135",
+        "e70:0:1",
+        "e71:0:65",
+        "e72:0:78",
+        "e72:78:151",
+        "e72:151:232",
+        "e74:0:71",
+        "e74:71:91",
+        "e75:0:57",
+        "e75:57:75",
+        "e76:0:28",
+        "e76:28:108",
+        "e76:108:185",
+        "e76:185:225",
+        "e77:0:77",
+        "e77:77:101",
+        "e78:0:75",
+        "e78:75:85",
+        "e78:85:158",
+        "e78:158:202",
+        "e78:202:279",
+        "e78:279:297",
+        "e81:0:77",
+        "e81:77:92",
+        "e82:0:1",
+        "e84:0:3",
+        "e85:0:69",
+        "e85:69:134",
+        "e85:134:184",
+        "e85:184:237",
+        "e85:237:311",
+        "e85:311:383",
+        "e85:383:404",
+        "e85:404:438",
+        "e85:438:481",
+        "e85:481:553",
+        "e85:553:634",
+        "e85:634:715",
+        "e85:715:753",
+        "e86:0:55",
+        "e87:0:29",
+        "e89:0:64"
+      ],
+      "contact.location": [
+        "e1:0:32",
+        "e2:0:21",
+        "e3:0:9",
+        "e4:0:35",
+        "e4:35:51",
+        "e5:0:27",
+        "e6:0:56",
+        "e6:56:107",
+        "e6:107:156",
+        "e6:156:204",
+        "e6:204:250",
+        "e6:250:260",
+        "e6:260:272",
+        "e6:272:330",
+        "e6:330:346",
+        "e7:0:8",
+        "e8:0:12",
+        "e9:0:2",
+        "e10:0:47",
+        "e10:47:99",
+        "e10:99:154",
+        "e10:154:210",
+        "e10:210:262",
+        "e10:262:310",
+        "e11:0:47",
+        "e11:47:91",
+        "e11:91:144",
+        "e11:144:154",
+        "e12:0:23",
+        "e13:0:42",
+        "e13:42:55",
+        "e13:55:92",
+        "e14:0:36",
+        "e17:0:42",
+        "e17:42:86",
+        "e17:86:115",
+        "e17:115:163",
+        "e17:163:208",
+        "e17:208:241",
+        "e18:0:19",
+        "e19:0:27",
+        "e20:0:42",
+        "e20:42:62",
+        "e20:62:132",
+        "e20:132:207",
+        "e20:207:223",
+        "e22:0:74",
+        "e22:74:127",
+        "e23:0:52",
+        "e24:0:72",
+        "e24:72:145",
+        "e25:0:55",
+        "e25:55:75",
+        "e25:75:151",
+        "e25:151:227",
+        "e25:227:245",
+        "e26:0:69",
+        "e26:69:136",
+        "e27:0:68",
+        "e27:68:142",
+        "e29:0:67",
+        "e29:67:139",
+        "e29:139:151",
+        "e30:0:55",
+        "e30:55:84",
+        "e32:0:71",
+        "e32:71:86",
+        "e34:0:72",
+        "e34:72:133",
+        "e36:0:76",
+        "e36:76:105",
+        "e37:0:66",
+        "e37:66:120",
+        "e38:0:40",
+        "e38:40:72",
+        "e40:0:74",
+        "e40:74:153",
+        "e40:153:163",
+        "e42:0:71",
+        "e42:71:148",
+        "e42:148:171",
+        "e44:0:68",
+        "e44:68:124",
+        "e46:0:74",
+        "e46:74:152",
+        "e46:152:188",
+        "e48:0:73",
+        "e48:73:113",
+        "e49:0:48",
+        "e50:0:39",
+        "e50:39:42",
+        "e50:42:89",
+        "e51:0:17",
+        "e51:17:45",
+        "e52:0:2",
+        "e52:2:46",
+        "e52:46:80",
+        "e67:0:48",
+        "e67:48:55",
+        "e68:0:1",
+        "e69:0:70",
+        "e69:70:135",
+        "e70:0:1",
+        "e71:0:65",
+        "e72:0:78",
+        "e72:78:151",
+        "e72:151:232",
+        "e74:0:71",
+        "e74:71:91",
+        "e75:0:57",
+        "e75:57:75",
+        "e76:0:28",
+        "e76:28:108",
+        "e76:108:185",
+        "e76:185:225",
+        "e77:0:77",
+        "e77:77:101",
+        "e78:0:75",
+        "e78:75:85",
+        "e78:85:158",
+        "e78:158:202",
+        "e78:202:279",
+        "e78:279:297",
+        "e81:0:77",
+        "e81:77:92",
+        "e82:0:1",
+        "e84:0:3",
+        "e85:0:69",
+        "e85:69:134",
+        "e85:134:184",
+        "e85:184:237",
+        "e85:237:311",
+        "e85:311:383",
+        "e85:383:404",
+        "e85:404:438",
+        "e85:438:481",
+        "e85:481:553",
+        "e85:553:634",
+        "e85:634:715",
+        "e85:715:753",
+        "e86:0:55",
+        "e87:0:29",
+        "e89:0:64"
+      ],
+      "contact.linkedin_url": [
+        "e1:0:32",
+        "e2:0:21",
+        "e3:0:9",
+        "e4:0:35",
+        "e4:35:51",
+        "e5:0:27",
+        "e6:0:56",
+        "e6:56:107",
+        "e6:107:156",
+        "e6:156:204",
+        "e6:204:250",
+        "e6:250:260",
+        "e6:260:272",
+        "e6:272:330",
+        "e6:330:346",
+        "e7:0:8",
+        "e8:0:12",
+        "e9:0:2",
+        "e10:0:47",
+        "e10:47:99",
+        "e10:99:154",
+        "e10:154:210",
+        "e10:210:262",
+        "e10:262:310",
+        "e11:0:47",
+        "e11:47:91",
+        "e11:91:144",
+        "e11:144:154",
+        "e12:0:23",
+        "e13:0:42",
+        "e13:42:55",
+        "e13:55:92",
+        "e14:0:36",
+        "e17:0:42",
+        "e17:42:86",
+        "e17:86:115",
+        "e17:115:163",
+        "e17:163:208",
+        "e17:208:241",
+        "e18:0:19",
+        "e19:0:27",
+        "e20:0:42",
+        "e20:42:62",
+        "e20:62:132",
+        "e20:132:207",
+        "e20:207:223",
+        "e22:0:74",
+        "e22:74:127",
+        "e23:0:52",
+        "e24:0:72",
+        "e24:72:145",
+        "e25:0:55",
+        "e25:55:75",
+        "e25:75:151",
+        "e25:151:227",
+        "e25:227:245",
+        "e26:0:69",
+        "e26:69:136",
+        "e27:0:68",
+        "e27:68:142",
+        "e29:0:67",
+        "e29:67:139",
+        "e29:139:151",
+        "e30:0:55",
+        "e30:55:84",
+        "e32:0:71",
+        "e32:71:86",
+        "e34:0:72",
+        "e34:72:133",
+        "e36:0:76",
+        "e36:76:105",
+        "e37:0:66",
+        "e37:66:120",
+        "e38:0:40",
+        "e38:40:72",
+        "e40:0:74",
+        "e40:74:153",
+        "e40:153:163",
+        "e42:0:71",
+        "e42:71:148",
+        "e42:148:171",
+        "e44:0:68",
+        "e44:68:124",
+        "e46:0:74",
+        "e46:74:152",
+        "e46:152:188",
+        "e48:0:73",
+        "e48:73:113",
+        "e49:0:48",
+        "e50:0:39",
+        "e50:39:42",
+        "e50:42:89",
+        "e51:0:17",
+        "e51:17:45",
+        "e52:0:2",
+        "e52:2:46",
+        "e52:46:80",
+        "e67:0:48",
+        "e67:48:55",
+        "e68:0:1",
+        "e69:0:70",
+        "e69:70:135",
+        "e70:0:1",
+        "e71:0:65",
+        "e72:0:78",
+        "e72:78:151",
+        "e72:151:232",
+        "e74:0:71",
+        "e74:71:91",
+        "e75:0:57",
+        "e75:57:75",
+        "e76:0:28",
+        "e76:28:108",
+        "e76:108:185",
+        "e76:185:225",
+        "e77:0:77",
+        "e77:77:101",
+        "e78:0:75",
+        "e78:75:85",
+        "e78:85:158",
+        "e78:158:202",
+        "e78:202:279",
+        "e78:279:297",
+        "e81:0:77",
+        "e81:77:92",
+        "e82:0:1",
+        "e84:0:3",
+        "e85:0:69",
+        "e85:69:134",
+        "e85:134:184",
+        "e85:184:237",
+        "e85:237:311",
+        "e85:311:383",
+        "e85:383:404",
+        "e85:404:438",
+        "e85:438:481",
+        "e85:481:553",
+        "e85:553:634",
+        "e85:634:715",
+        "e85:715:753",
+        "e86:0:55",
+        "e87:0:29",
+        "e89:0:64"
+      ],
+      "professional_title": [
+        "e20:42:62"
+      ],
+      "certifications[0].name": [
+        "e64:0:0",
+        "e65:0:0",
+        "e66:0:36",
+        "e66:36:65",
+        "e66:65:109",
+        "e66:109:150",
+        "e66:150:184"
+      ]
+    },
+    "record_reviews": [
+      {
+        "category": "experience",
+        "entry_id": "experience-1",
+        "source_ids": [
+          "e89:76:151",
+          "e90:0:60"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "certifications",
+        "entry_id": "certifications-1",
+        "source_ids": [
+          "e64:0:0",
+          "e65:0:0",
+          "e66:0:36",
+          "e66:36:65",
+          "e66:65:109",
+          "e66:109:150",
+          "e66:150:184"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      }
+    ],
+    "missing_required_fields": [
+      "experience[0].company",
+      "experience[0].role"
+    ],
+    "warnings": [
+      "Schema validity and field completion do not establish extraction or relationship accuracy.",
+      "Handoff confidence scores are fixed heuristics, not calibrated probabilities.",
+      "Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields."
+    ],
+    "unmapped_blocks": [
+      {
+        "source_id": "e0:0:13",
+        "category": "personal_information",
+        "text": "C O N T A C T",
+        "page_number": 1
+      },
+      {
+        "source_id": "e15:0:0",
+        "category": "personal_information",
+        "text": "",
+        "page_number": 1
+      },
+      {
+        "source_id": "e16:0:0",
+        "category": "personal_information",
+        "text": "",
+        "page_number": 1
+      },
+      {
+        "source_id": "e21:0:0",
+        "category": "personal_information",
+        "text": "",
+        "page_number": 1
+      },
+      {
+        "source_id": "e28:0:0",
+        "category": "personal_information",
+        "text": "",
+        "page_number": 1
+      },
+      {
+        "source_id": "e31:0:0",
+        "category": "personal_information",
+        "text": "",
+        "page_number": 1
+      },
+      {
+        "source_id": "e33:0:0",
+        "category": "personal_information",
+        "text": "",
+        "page_number": 1
+      },
+      {
+        "source_id": "e35:0:0",
+        "category": "personal_information",
+        "text": "",
+        "page_number": 1
+      },
+      {
+        "source_id": "e39:0:0",
+        "category": "personal_information",
+        "text": "",
+        "page_number": 1
+      },
+      {
+        "source_id": "e41:0:0",
+        "category": "personal_information",
+        "text": "",
+        "page_number": 1
+      },
+      {
+        "source_id": "e43:0:0",
+        "category": "personal_information",
+        "text": "",
+        "page_number": 1
+      },
+      {
+        "source_id": "e45:0:0",
+        "category": "personal_information",
+        "text": "",
+        "page_number": 1
+      },
+      {
+        "source_id": "e47:0:0",
+        "category": "personal_information",
+        "text": "",
+        "page_number": 1
+      },
+      {
+        "source_id": "e73:0:0",
+        "category": "personal_information",
+        "text": "",
+        "page_number": 2
+      },
+      {
+        "source_id": "e79:0:0",
+        "category": "personal_information",
+        "text": "",
+        "page_number": 2
+      },
+      {
+        "source_id": "e80:0:0",
+        "category": "personal_information",
+        "text": "",
+        "page_number": 2
+      },
+      {
+        "source_id": "e83:0:0",
+        "category": "personal_information",
+        "text": "",
+        "page_number": 2
+      },
+      {
+        "source_id": "e88:0:0",
+        "category": "personal_information",
+        "text": "",
+        "page_number": 2
+      },
+      {
+        "source_id": "e53:0:23",
+        "category": "awards",
+        "text": "A C H I E V E M E N T S",
+        "page_number": 2
+      },
+      {
+        "source_id": "e54:0:39",
+        "category": "awards",
+        "text": "Got the Award for Extraordinary client ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e54:39:56",
+        "category": "awards",
+        "text": "relationship 2023",
+        "page_number": 2
+      },
+      {
+        "source_id": "e55:0:43",
+        "category": "awards",
+        "text": "Got the Award of Best Quality Performer of ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e55:43:68",
+        "category": "awards",
+        "text": "Month in April & June’12.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e56:0:44",
+        "category": "awards",
+        "text": "Got the Award of Significant Contributor of ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e56:44:66",
+        "category": "awards",
+        "text": "the Month November 12.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e57:0:51",
+        "category": "awards",
+        "text": "P R O F E S S I O N A L Q U A L I F I C A T I O N S",
+        "page_number": 2
+      },
+      {
+        "source_id": "e58:0:46",
+        "category": "awards",
+        "text": "Master in Business Administration (2022) from ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e58:46:89",
+        "category": "awards",
+        "text": "NMIMS (Specialization: International Trade ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e58:89:100",
+        "category": "awards",
+        "text": "Management)",
+        "page_number": 2
+      },
+      {
+        "source_id": "e59:0:43",
+        "category": "awards",
+        "text": "Bachelor in Commerce (2013) from Rajasthan ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e59:43:53",
+        "category": "awards",
+        "text": "University",
+        "page_number": 2
+      },
+      {
+        "source_id": "e60:0:49",
+        "category": "awards",
+        "text": "E D U C A T I O N A L Q U A L I F I C A T I O N S",
+        "page_number": 2
+      },
+      {
+        "source_id": "e61:0:39",
+        "category": "awards",
+        "text": "Intermediate (2009) from S.A.P.S School",
+        "page_number": 2
+      },
+      {
+        "source_id": "e62:0:40",
+        "category": "awards",
+        "text": "Matriculation (2006) from S.A.P.S School",
+        "page_number": 2
+      },
+      {
+        "source_id": "e63:0:27",
+        "category": "certifications",
+        "text": "C E R T I F I C A T I O N S",
+        "page_number": 2
+      },
+      {
+        "source_id": "e89:64:76",
+        "category": "experience",
+        "text": "experience. ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e89:76:151",
+        "category": "experience",
+        "text": "Call Monitoring / Customer complaint resolution / Team Building Activities.",
+        "page_number": 2
+      },
+      {
+        "source_id": "e90:0:60",
+        "category": "experience",
+        "text": "· Handling Backend activity of a leading E-Commerce Company.",
+        "page_number": 2
+      }
+    ],
+    "needs_review": []
+  },
+  "section_schemas": [
+    {
+      "category": "personal_information",
+      "label": "Personal information",
+      "records": [
+        {
+          "record_id": "personal_information",
+          "source_ids": [
+            "e1:0:32",
+            "e2:0:21",
+            "e3:0:9",
+            "e4:0:35",
+            "e4:35:51",
+            "e5:0:27",
+            "e6:0:56",
+            "e6:56:107",
+            "e6:107:156",
+            "e6:156:204",
+            "e6:204:250",
+            "e6:250:260",
+            "e6:260:272",
+            "e6:272:330",
+            "e6:330:346",
+            "e7:0:8",
+            "e8:0:12",
+            "e9:0:2",
+            "e10:0:47",
+            "e10:47:99",
+            "e10:99:154",
+            "e10:154:210",
+            "e10:210:262",
+            "e10:262:310",
+            "e11:0:47",
+            "e11:47:91",
+            "e11:91:144",
+            "e11:144:154",
+            "e12:0:23",
+            "e13:0:42",
+            "e13:42:55",
+            "e13:55:92",
+            "e14:0:36",
+            "e17:0:42",
+            "e17:42:86",
+            "e17:86:115",
+            "e17:115:163",
+            "e17:163:208",
+            "e17:208:241",
+            "e18:0:19",
+            "e19:0:27",
+            "e20:0:42",
+            "e20:42:62",
+            "e20:62:132",
+            "e20:132:207",
+            "e20:207:223",
+            "e22:0:74",
+            "e22:74:127",
+            "e23:0:52",
+            "e24:0:72",
+            "e24:72:145",
+            "e25:0:55",
+            "e25:55:75",
+            "e25:75:151",
+            "e25:151:227",
+            "e25:227:245",
+            "e26:0:69",
+            "e26:69:136",
+            "e27:0:68",
+            "e27:68:142",
+            "e29:0:67",
+            "e29:67:139",
+            "e29:139:151",
+            "e30:0:55",
+            "e30:55:84",
+            "e32:0:71",
+            "e32:71:86",
+            "e34:0:72",
+            "e34:72:133",
+            "e36:0:76",
+            "e36:76:105",
+            "e37:0:66",
+            "e37:66:120",
+            "e38:0:40",
+            "e38:40:72",
+            "e40:0:74",
+            "e40:74:153",
+            "e40:153:163",
+            "e42:0:71",
+            "e42:71:148",
+            "e42:148:171",
+            "e44:0:68",
+            "e44:68:124",
+            "e46:0:74",
+            "e46:74:152",
+            "e46:152:188",
+            "e48:0:73",
+            "e48:73:113",
+            "e49:0:48",
+            "e50:0:39",
+            "e50:39:42",
+            "e50:42:89",
+            "e51:0:17",
+            "e51:17:45",
+            "e52:0:2",
+            "e52:2:46",
+            "e52:46:80",
+            "e67:0:48",
+            "e67:48:55",
+            "e68:0:1",
+            "e69:0:70",
+            "e69:70:135",
+            "e70:0:1",
+            "e71:0:65",
+            "e72:0:78",
+            "e72:78:151",
+            "e72:151:232",
+            "e74:0:71",
+            "e74:71:91",
+            "e75:0:57",
+            "e75:57:75",
+            "e76:0:28",
+            "e76:28:108",
+            "e76:108:185",
+            "e76:185:225",
+            "e77:0:77",
+            "e77:77:101",
+            "e78:0:75",
+            "e78:75:85",
+            "e78:85:158",
+            "e78:158:202",
+            "e78:202:279",
+            "e78:279:297",
+            "e81:0:77",
+            "e81:77:92",
+            "e82:0:1",
+            "e84:0:3",
+            "e85:0:69",
+            "e85:69:134",
+            "e85:134:184",
+            "e85:184:237",
+            "e85:237:311",
+            "e85:311:383",
+            "e85:383:404",
+            "e85:404:438",
+            "e85:438:481",
+            "e85:481:553",
+            "e85:553:634",
+            "e85:634:715",
+            "e85:715:753",
+            "e86:0:55",
+            "e87:0:29",
+            "e89:0:64"
+          ],
+          "attributes": [
+            {
+              "name": "full_name",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "email",
+              "items": [
+                {
+                  "value": "bimblebob95@gmail.com",
+                  "evidence": [
+                    {
+                      "source_id": "e2:0:21",
+                      "quote": "bimblebob95@gmail.com"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "phone",
+              "items": [
+                {
+                  "value": "+919079359342",
+                  "evidence": [
+                    {
+                      "source_id": "e1:0:32",
+                      "quote": "+919079359342"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "location",
+              "items": [
+                {
+                  "value": "Uk",
+                  "evidence": [
+                    {
+                      "source_id": "e10:154:210",
+                      "quote": "UK"
+                    },
+                    {
+                      "source_id": "e32:0:71",
+                      "quote": "UK"
+                    },
+                    {
+                      "source_id": "e69:70:135",
+                      "quote": "UK"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "linkedin_url",
+              "items": [
+                {
+                  "value": "https://www.linkedin.com/in/rishi-",
+                  "evidence": [
+                    {
+                      "source_id": "e4:0:35",
+                      "quote": "https://www.linkedin.com/in/rishi-"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "github_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "portfolio_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "professional_title",
+              "items": [
+                {
+                  "value": "Manager (KYC & AML)",
+                  "evidence": [
+                    {
+                      "source_id": "e20:42:62",
+                      "quote": "Manager (KYC & AML)"
+                    },
+                    {
+                      "source_id": "e25:55:75",
+                      "quote": "Manager (KYC & AML)"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e0:0:13",
+          "quote": "C O N T A C T"
+        },
+        {
+          "source_id": "e1:0:32",
+          "quote": "+919079359342 +971502654305(UAE)"
+        },
+        {
+          "source_id": "e3:0:9",
+          "quote": "Dubai/UAE"
+        },
+        {
+          "source_id": "e4:35:51",
+          "quote": "goswami-277605b7"
+        },
+        {
+          "source_id": "e5:0:27",
+          "quote": "C A R E E R S Y N O P S I S"
+        },
+        {
+          "source_id": "e6:0:56",
+          "quote": "With 14+ years of professional experience, I specialize "
+        },
+        {
+          "source_id": "e6:56:107",
+          "quote": "in project management, operational transformation, "
+        },
+        {
+          "source_id": "e6:107:156",
+          "quote": "and leading teams of 20 to 40 members across the "
+        },
+        {
+          "source_id": "e6:156:204",
+          "quote": "MENA region. My 5.5 years in project management "
+        },
+        {
+          "source_id": "e6:204:250",
+          "quote": "have been marked by effective forecasting and "
+        },
+        {
+          "source_id": "e6:250:260",
+          "quote": "shrinkage "
+        },
+        {
+          "source_id": "e6:260:272",
+          "quote": "significant "
+        },
+        {
+          "source_id": "e6:272:330",
+          "quote": "efficiency gains, and I've also worked in the 3rd and 2nd "
+        },
+        {
+          "source_id": "e6:330:346",
+          "quote": "line of defense."
+        },
+        {
+          "source_id": "e7:0:8",
+          "quote": "control,"
+        },
+        {
+          "source_id": "e8:0:12",
+          "quote": "contributing"
+        },
+        {
+          "source_id": "e9:0:2",
+          "quote": "to"
+        },
+        {
+          "source_id": "e10:0:47",
+          "quote": "My background includes KYC checks, audits, and "
+        },
+        {
+          "source_id": "e10:47:99",
+          "quote": "ensuring compliance with regulators like the CBUAE, "
+        },
+        {
+          "source_id": "e10:99:154",
+          "quote": "OCC, FCA, BaFin. I excel in due diligence, adapting to "
+        },
+        {
+          "source_id": "e10:154:210",
+          "quote": "the unique risks of clients in the UAE, US, UK, and DE. "
+        },
+        {
+          "source_id": "e10:210:262",
+          "quote": "My expertise also covers verifying client data from "
+        },
+        {
+          "source_id": "e10:262:310",
+          "quote": "sources such as Lexis Nexis and Bankers Almanac."
+        },
+        {
+          "source_id": "e11:0:47",
+          "quote": "I am committed to driving strategic growth and "
+        },
+        {
+          "source_id": "e11:47:91",
+          "quote": "maintaining regulatory standards through my "
+        },
+        {
+          "source_id": "e11:91:144",
+          "quote": "experience in operational transformation and project "
+        },
+        {
+          "source_id": "e11:144:154",
+          "quote": "execution."
+        },
+        {
+          "source_id": "e12:0:23",
+          "quote": "C O R E E X E R T I S E"
+        },
+        {
+          "source_id": "e13:0:42",
+          "quote": "AML Risk Assessment, Training & Governance"
+        },
+        {
+          "source_id": "e13:42:55",
+          "quote": " • • • • • • "
+        },
+        {
+          "source_id": "e13:55:92",
+          "quote": "S K I L L S & C O M P E T E N C I E S"
+        },
+        {
+          "source_id": "e14:0:36",
+          "quote": "Business and Entrepreneurial skills:"
+        },
+        {
+          "source_id": "e15:0:0",
+          "quote": ""
+        },
+        {
+          "source_id": "e16:0:0",
+          "quote": ""
+        },
+        {
+          "source_id": "e17:0:42",
+          "quote": "Strong command of business and management "
+        },
+        {
+          "source_id": "e17:42:86",
+          "quote": "principles, resource allocation, production "
+        },
+        {
+          "source_id": "e17:86:115",
+          "quote": "methods, and leading others. "
+        },
+        {
+          "source_id": "e17:115:163",
+          "quote": "Initiator and problem- solver using creativity, "
+        },
+        {
+          "source_id": "e17:163:208",
+          "quote": "resourcefulness and assets to break down and "
+        },
+        {
+          "source_id": "e17:208:241",
+          "quote": "overcome organizational obstacles"
+        },
+        {
+          "source_id": "e18:0:19",
+          "quote": "Rishi Goswami, CAMS"
+        },
+        {
+          "source_id": "e19:0:27",
+          "quote": "W O R K E X P E R I E N C E"
+        },
+        {
+          "source_id": "e20:0:42",
+          "quote": "Ernst & Young, Dubai (Jan 2025 till date) "
+        },
+        {
+          "source_id": "e20:62:132",
+          "quote": "· Directed project management for KYC operations in the UAE, ensuring "
+        },
+        {
+          "source_id": "e20:132:207",
+          "quote": "compliance with local banking regulations and standards set by the Central "
+        },
+        {
+          "source_id": "e20:207:223",
+          "quote": "Bank of the UAE."
+        },
+        {
+          "source_id": "e21:0:0",
+          "quote": ""
+        },
+        {
+          "source_id": "e22:0:74",
+          "quote": "Recently worked with one of the UAE's major banks, where I managed a team "
+        },
+        {
+          "source_id": "e22:74:127",
+          "quote": "of 200 people and successfully delivered the project."
+        },
+        {
+          "source_id": "e23:0:52",
+          "quote": "Developed and presented comprehensive MIS reports. ·"
+        },
+        {
+          "source_id": "e24:0:72",
+          "quote": "Evaluated and documented the approval or rejection of compliance cases, "
+        },
+        {
+          "source_id": "e24:72:145",
+          "quote": "providing detailed feedback and recommendations for process enhancements."
+        },
+        {
+          "source_id": "e25:0:55",
+          "quote": "Ernst & Young, Bangalore (December 2021 till Jan 2025) "
+        },
+        {
+          "source_id": "e25:75:151",
+          "quote": "· Directed project management for KYC operations in compliance with banking "
+        },
+        {
+          "source_id": "e25:151:227",
+          "quote": "standards set by the Central Bank of the UAE (CBUAE), ensuring adherence to "
+        },
+        {
+          "source_id": "e25:227:245",
+          "quote": "local regulations."
+        },
+        {
+          "source_id": "e26:0:69",
+          "quote": "Operational transformation across KYC, Screening, and AML processes, "
+        },
+        {
+          "source_id": "e26:69:136",
+          "quote": "aligning with CBUAE guidelines to enhance efficiency and compliance"
+        },
+        {
+          "source_id": "e27:0:68",
+          "quote": "Developed and presented comprehensive Management Information System "
+        },
+        {
+          "source_id": "e27:68:142",
+          "quote": "(MIS) reports that reflect CBUAE KYC requirements and operational metrics."
+        },
+        {
+          "source_id": "e28:0:0",
+          "quote": ""
+        },
+        {
+          "source_id": "e29:0:67",
+          "quote": "Leveraged 14+ years in banking and consulting, focusing on KYC and "
+        },
+        {
+          "source_id": "e29:67:139",
+          "quote": "Transaction Monitoring, with a strong emphasis on compliance with CBUAE "
+        },
+        {
+          "source_id": "e29:139:151",
+          "quote": "regulations."
+        },
+        {
+          "source_id": "e30:0:55",
+          "quote": "Oaknorth Bank, Gurugram (June 2021 till December 2021) "
+        },
+        {
+          "source_id": "e30:55:84",
+          "quote": "Senior Associate (Onboarding)"
+        },
+        {
+          "source_id": "e31:0:0",
+          "quote": ""
+        },
+        {
+          "source_id": "e32:0:71",
+          "quote": "Perform loan booking operations in line with UK banking norms (KYC/Due "
+        },
+        {
+          "source_id": "e32:71:86",
+          "quote": "diligence/AML)."
+        },
+        {
+          "source_id": "e33:0:0",
+          "quote": ""
+        },
+        {
+          "source_id": "e34:0:72",
+          "quote": "Perform in life loan management activities within the available systems "
+        },
+        {
+          "source_id": "e34:72:133",
+          "quote": "pertaining to Syndication, Agency, Bilateral Loan operations."
+        },
+        {
+          "source_id": "e35:0:0",
+          "quote": ""
+        },
+        {
+          "source_id": "e36:0:76",
+          "quote": "Review Legal documents in terms of completeness and plausibility and Review "
+        },
+        {
+          "source_id": "e36:76:105",
+          "quote": "& sign-off on legal documents"
+        },
+        {
+          "source_id": "e37:0:66",
+          "quote": "Manage Payment operations to process payments to external parties "
+        },
+        {
+          "source_id": "e37:66:120",
+          "quote": "· Query and task management by Loan and customer type."
+        },
+        {
+          "source_id": "e38:0:40",
+          "quote": "UBS, Hyderabad (May, 2019 till June 21) "
+        },
+        {
+          "source_id": "e38:40:72",
+          "quote": "KYC Authorized officer (Manager)"
+        },
+        {
+          "source_id": "e39:0:0",
+          "quote": ""
+        },
+        {
+          "source_id": "e40:0:74",
+          "quote": "Lead the team on matters related to AML matters, KYC on-boarding, working "
+        },
+        {
+          "source_id": "e40:74:153",
+          "quote": "with the Front line Origination Units to ensure all new clients are on-boarded "
+        },
+        {
+          "source_id": "e40:153:163",
+          "quote": "correctly."
+        },
+        {
+          "source_id": "e41:0:0",
+          "quote": ""
+        },
+        {
+          "source_id": "e42:0:71",
+          "quote": "Ensure team performs active due diligence on clients, conducts quality "
+        },
+        {
+          "source_id": "e42:71:148",
+          "quote": "assurance of customer AML KYC profiles of all risk ratings prepared by Front "
+        },
+        {
+          "source_id": "e42:148:171",
+          "quote": "line Origination Units."
+        },
+        {
+          "source_id": "e43:0:0",
+          "quote": ""
+        },
+        {
+          "source_id": "e44:0:68",
+          "quote": "Keep abreast of new KYC policies, regulations, and requirements and "
+        },
+        {
+          "source_id": "e44:68:124",
+          "quote": "implement new processes into the teams review processes."
+        },
+        {
+          "source_id": "e45:0:0",
+          "quote": ""
+        },
+        {
+          "source_id": "e46:0:74",
+          "quote": "Focus on the assurance of quality and consistency in Client Due Diligence "
+        },
+        {
+          "source_id": "e46:74:152",
+          "quote": "standards in accordance to the prevailing requirements; and within stipulated "
+        },
+        {
+          "source_id": "e46:152:188",
+          "quote": "timeframe across adoption locations."
+        },
+        {
+          "source_id": "e47:0:0",
+          "quote": ""
+        },
+        {
+          "source_id": "e48:0:73",
+          "quote": "Ensure the team has appropriate level of training on AML KYC/On-boarding "
+        },
+        {
+          "source_id": "e48:73:113",
+          "quote": "matters to perform the role effectively."
+        },
+        {
+          "source_id": "e49:0:48",
+          "quote": "· Managed team of 10 to 12 members as team lead."
+        },
+        {
+          "source_id": "e50:0:39",
+          "quote": "Interpersonal and communication skills:"
+        },
+        {
+          "source_id": "e50:39:42",
+          "quote": " • "
+        },
+        {
+          "source_id": "e50:42:89",
+          "quote": "Attentive listener and believe in participative"
+        },
+        {
+          "source_id": "e51:0:17",
+          "quote": "decision making. "
+        },
+        {
+          "source_id": "e51:17:45",
+          "quote": "Soft and hard skill training"
+        },
+        {
+          "source_id": "e52:0:2",
+          "quote": "• "
+        },
+        {
+          "source_id": "e52:2:46",
+          "quote": "Motivated team player with excellent public "
+        },
+        {
+          "source_id": "e52:46:80",
+          "quote": "speaking ability and communication"
+        },
+        {
+          "source_id": "e67:0:48",
+          "quote": "PWC-SDC, Bangalore (October 2017 till May 2019) "
+        },
+        {
+          "source_id": "e67:48:55",
+          "quote": "KYC SME"
+        },
+        {
+          "source_id": "e68:0:1",
+          "quote": "·"
+        },
+        {
+          "source_id": "e69:0:70",
+          "quote": "Creating and modifying addendums and KOP/DTP as per recent regulatory "
+        },
+        {
+          "source_id": "e69:70:135",
+          "quote": "requirements like FinCEN & FATCA (US), MIFID (UK&DE) and changes."
+        },
+        {
+          "source_id": "e70:0:1",
+          "quote": "·"
+        },
+        {
+          "source_id": "e71:0:65",
+          "quote": "Liaising with policy team to make changes or updating Kop & DTPs;"
+        },
+        {
+          "source_id": "e72:0:78",
+          "quote": "Training new joiners or Refresher trainings, to make them operationally ready "
+        },
+        {
+          "source_id": "e72:78:151",
+          "quote": "on the new Anti-Money Laundering (AML) and Know Your Client (KYC) policy "
+        },
+        {
+          "source_id": "e72:151:232",
+          "quote": "of the organization, as well as conducting refresher trainings for trained staff;"
+        },
+        {
+          "source_id": "e73:0:0",
+          "quote": ""
+        },
+        {
+          "source_id": "e74:0:71",
+          "quote": "Providing Solutions & directions to IT teams for On boarding & product "
+        },
+        {
+          "source_id": "e74:71:91",
+          "quote": "system enhancements;"
+        },
+        {
+          "source_id": "e75:0:57",
+          "quote": "Credit Suisse, Pune (September 2016 till September 2017) "
+        },
+        {
+          "source_id": "e75:57:75",
+          "quote": "Compliance Analyst"
+        },
+        {
+          "source_id": "e76:0:28",
+          "quote": "AML Transaction Monitoring: "
+        },
+        {
+          "source_id": "e76:28:108",
+          "quote": "· Monitoring transaction to identify potential money laundering risk, obtaining "
+        },
+        {
+          "source_id": "e76:108:185",
+          "quote": "proper document to justify the transaction purpose and information available "
+        },
+        {
+          "source_id": "e76:185:225",
+          "quote": "with the other tools like: Mantas, NTPA."
+        },
+        {
+          "source_id": "e77:0:77",
+          "quote": "Monitoring the entire Watch-list listed names that have done the transaction "
+        },
+        {
+          "source_id": "e77:77:101",
+          "quote": "above the set threshold."
+        },
+        {
+          "source_id": "e78:0:75",
+          "quote": "Daily assessment of SWIFT and AML reports relating to potential suspicious "
+        },
+        {
+          "source_id": "e78:75:85",
+          "quote": "activity. "
+        },
+        {
+          "source_id": "e78:85:158",
+          "quote": "Analyze high risk wire transaction activity and recommend SAR filing for "
+        },
+        {
+          "source_id": "e78:158:202",
+          "quote": "MLRO in case of potential Money Laundering. "
+        },
+        {
+          "source_id": "e78:202:279",
+          "quote": "Collect documentary proof and build and maintain case files for transactions "
+        },
+        {
+          "source_id": "e78:279:297",
+          "quote": "deemed suspicious."
+        },
+        {
+          "source_id": "e79:0:0",
+          "quote": ""
+        },
+        {
+          "source_id": "e80:0:0",
+          "quote": ""
+        },
+        {
+          "source_id": "e81:0:77",
+          "quote": "DBOI Global Services Private Limited, Jaipur (July 2013 till September 2016) "
+        },
+        {
+          "source_id": "e81:77:92",
+          "quote": "Process Analyst"
+        },
+        {
+          "source_id": "e82:0:1",
+          "quote": "·"
+        },
+        {
+          "source_id": "e83:0:0",
+          "quote": ""
+        },
+        {
+          "source_id": "e84:0:3",
+          "quote": "· ·"
+        },
+        {
+          "source_id": "e85:0:69",
+          "quote": "Review and adhere to DB Global KYC Policy & AML policies & procedure "
+        },
+        {
+          "source_id": "e85:69:134",
+          "quote": "Review completeness of a client's KYC (Know Your Customers) i.e. "
+        },
+        {
+          "source_id": "e85:134:184",
+          "quote": "documentation/information and identifying missing "
+        },
+        {
+          "source_id": "e85:184:237",
+          "quote": "documentation/information that needs to be obtained. "
+        },
+        {
+          "source_id": "e85:237:311",
+          "quote": "Ensured compliance with all regulatory requirements, including Anti Money "
+        },
+        {
+          "source_id": "e85:311:383",
+          "quote": "Laundering (AML) regulations such as USA PATRIOT ACT, BSA, FATCA, FCPA, "
+        },
+        {
+          "source_id": "e85:383:404",
+          "quote": "OFAC Sanctions etc., "
+        },
+        {
+          "source_id": "e85:404:438",
+          "quote": "Performing AML screening searches "
+        },
+        {
+          "source_id": "e85:438:481",
+          "quote": "Performing QA (internal QC & 6 eye checks) "
+        },
+        {
+          "source_id": "e85:481:553",
+          "quote": "Ensure KYC reviews are in accordance with all the prevailing regulatory "
+        },
+        {
+          "source_id": "e85:553:634",
+          "quote": "guidelines, i.e. USA Patriot Act, 3rd EU MLD, MIFID Classification, and Deutsche "
+        },
+        {
+          "source_id": "e85:634:715",
+          "quote": "Bank’s internal AML policies. Also, to ensure completion of pipeline on time and "
+        },
+        {
+          "source_id": "e85:715:753",
+          "quote": "with the highest standards of quality."
+        },
+        {
+          "source_id": "e86:0:55",
+          "quote": "Teleperformance, Jaipur (September 2011 till July 2013)"
+        },
+        {
+          "source_id": "e87:0:29",
+          "quote": "Assistant Manager Call Center"
+        },
+        {
+          "source_id": "e88:0:0",
+          "quote": ""
+        },
+        {
+          "source_id": "e89:0:64",
+          "quote": "Coaching, Team Meetings and giving feedback to enhance Customer "
+        }
+      ]
+    },
+    {
+      "category": "awards",
+      "label": "Awards and achievements",
+      "records": [
+        {
+          "record_id": "awards-1",
+          "source_ids": [
+            "e54:0:39",
+            "e54:39:56",
+            "e55:0:43",
+            "e55:43:68",
+            "e56:0:44",
+            "e56:44:66",
+            "e57:0:51",
+            "e58:0:46",
+            "e58:46:89",
+            "e58:89:100",
+            "e59:0:43",
+            "e59:43:53",
+            "e60:0:49",
+            "e61:0:39",
+            "e62:0:40"
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "issuer",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "date",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "Unlabelled compound information requires source review."
+          ]
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e53:0:23",
+          "quote": "A C H I E V E M E N T S"
+        },
+        {
+          "source_id": "e54:0:39",
+          "quote": "Got the Award for Extraordinary client "
+        },
+        {
+          "source_id": "e54:39:56",
+          "quote": "relationship 2023"
+        },
+        {
+          "source_id": "e55:0:43",
+          "quote": "Got the Award of Best Quality Performer of "
+        },
+        {
+          "source_id": "e55:43:68",
+          "quote": "Month in April & June’12."
+        },
+        {
+          "source_id": "e56:0:44",
+          "quote": "Got the Award of Significant Contributor of "
+        },
+        {
+          "source_id": "e56:44:66",
+          "quote": "the Month November 12."
+        },
+        {
+          "source_id": "e57:0:51",
+          "quote": "P R O F E S S I O N A L Q U A L I F I C A T I O N S"
+        },
+        {
+          "source_id": "e58:0:46",
+          "quote": "Master in Business Administration (2022) from "
+        },
+        {
+          "source_id": "e58:46:89",
+          "quote": "NMIMS (Specialization: International Trade "
+        },
+        {
+          "source_id": "e58:89:100",
+          "quote": "Management)"
+        },
+        {
+          "source_id": "e59:0:43",
+          "quote": "Bachelor in Commerce (2013) from Rajasthan "
+        },
+        {
+          "source_id": "e59:43:53",
+          "quote": "University"
+        },
+        {
+          "source_id": "e60:0:49",
+          "quote": "E D U C A T I O N A L Q U A L I F I C A T I O N S"
+        },
+        {
+          "source_id": "e61:0:39",
+          "quote": "Intermediate (2009) from S.A.P.S School"
+        },
+        {
+          "source_id": "e62:0:40",
+          "quote": "Matriculation (2006) from S.A.P.S School"
+        }
+      ]
+    },
+    {
+      "category": "certifications",
+      "label": "Certifications",
+      "records": [
+        {
+          "record_id": "certifications-1",
+          "source_ids": [
+            "e64:0:0",
+            "e65:0:0",
+            "e66:0:36",
+            "e66:36:65",
+            "e66:65:109",
+            "e66:109:150",
+            "e66:150:184"
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "issuer",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "issue_year",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e63:0:27",
+          "quote": "C E R T I F I C A T I O N S"
+        },
+        {
+          "source_id": "e64:0:0",
+          "quote": ""
+        },
+        {
+          "source_id": "e65:0:0",
+          "quote": ""
+        },
+        {
+          "source_id": "e66:0:36",
+          "quote": "CAMS certification (Certified Anti- "
+        },
+        {
+          "source_id": "e66:36:65",
+          "quote": "Money Laundering Specialist) "
+        },
+        {
+          "source_id": "e66:65:109",
+          "quote": "Certificate in effective communications and "
+        },
+        {
+          "source_id": "e66:109:150",
+          "quote": "human relation, High impact presentation "
+        },
+        {
+          "source_id": "e66:150:184",
+          "quote": "by Dale Carnegie & Associates, Inc"
+        }
+      ]
+    },
+    {
+      "category": "experience",
+      "label": "Experience",
+      "records": [
+        {
+          "record_id": "experience-1",
+          "source_ids": [
+            "e89:76:151",
+            "e90:0:60"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e89:64:76",
+          "quote": "experience. "
+        },
+        {
+          "source_id": "e89:76:151",
+          "quote": "Call Monitoring / Customer complaint resolution / Team Building Activities."
+        },
+        {
+          "source_id": "e90:0:60",
+          "quote": "· Handling Backend activity of a leading E-Commerce Company."
+        }
+      ]
+    }
+  ]
+}

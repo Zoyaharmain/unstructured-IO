@@ -1,0 +1,2956 @@
+{
+  "success": true,
+  "source": "GampalaChiranjeevi_CV.docx",
+  "extraction_mode": "existing_blocks_schema_mapping",
+  "data": {
+    "contact": {
+      "full_name": "Chiranjeevi Gampala",
+      "email": "chiru.gampalla345@gmail.com",
+      "phone": "+91 9393089745",
+      "location": "Hyderabad",
+      "linkedin_url": "linkedin.com/in/gampala-chiranjeevi-035ba5168",
+      "github_url": null,
+      "portfolio_url": null
+    },
+    "professional_title": null,
+    "summary": "Investment Banking Operations professional with 7.7+ years of experience across Corporate Actions, Securities Operations, Asset Servicing, Middle Office, Trade Settlements, Trade Lifecycle Management, and Fund Accounting within global financial institutions.\nProven expertise in processing Mandatory and Voluntary Corporate Actions, SWIFT message validation, trade settlements, reconciliation, exception management, and operational risk controls across global markets.\nExperienced in collaborating with Front Office, Middle Office, Custody, Fund Accounting, Technology, Client Service, and Operations teams to deliver operational excellence, strengthen governance, improve Straight Through Processing (STP), and enhance client experience.\nDemonstrated success in leading teams, driving automation initiatives, improving operational efficiency, and managing critical market events while maintaining regulatory compliance and high service quality.",
+    "total_experience_years": 7.7,
+    "skills": {
+      "technical_skills": [],
+      "tools_and_platforms": [
+        "Bloomberg",
+        "Excel"
+      ],
+      "domain_and_functional": [
+        "Corporate Actions",
+        "Trade Lifecycle",
+        "SWIFT"
+      ],
+      "soft_skills": [],
+      "all_skills": [
+        "Bloomberg",
+        "Excel",
+        "Corporate Actions",
+        "Trade Lifecycle",
+        "SWIFT",
+        "Investment Banking Operations",
+        "Corporate Actions (Mandatory & Voluntary)",
+        "Securities Operations",
+        "Asset Servicing",
+        "Middle Office Operations",
+        "Trade Processing",
+        "Trade Lifecycle Management",
+        "Trade Settlements",
+        "Fund Accounting",
+        "Income Processing",
+        "Cash & Stock Dividends",
+        "Rights Issues",
+        "Tender Offers",
+        "Mergers",
+        "Stock Splits",
+        "Reconciliation & Controls",
+        "Cash & Position Reconciliation",
+        "Exception Management",
+        "Operational Risk & Controls",
+        "Root Cause Analysis",
+        "STP Break Investigation",
+        "Regulatory Compliance",
+        "Governance Reporting",
+        "KPI & MIS Reporting",
+        "Financial Systems",
+        "Bloomberg Terminal",
+        "Reuters",
+        "Aladdin",
+        "Euroclear",
+        "Clearstream",
+        "SWIFT MT564",
+        "SWIFT MT566",
+        "SWIFT MT568",
+        "Advanced Excel"
+      ]
+    },
+    "experience": [
+      {
+        "company": "",
+        "role": "",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      }
+    ],
+    "education": [
+      {
+        "institution": "",
+        "degree": "",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": null,
+        "grade_or_gpa": null
+      }
+    ],
+    "certifications": [],
+    "projects": [],
+    "languages": []
+  },
+  "schema_mapping": {
+    "fields_populated": 12,
+    "total_fields": 16,
+    "completion_percentage": 75.0,
+    "field_details": [
+      {
+        "field_name": "contact.full_name",
+        "target_type": "string",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Personal Details",
+        "confidence_score": 0.95,
+        "description": "Candidate's full name, extracted from the top header of the resume."
+      },
+      {
+        "field_name": "contact.email",
+        "target_type": "string (email)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.98,
+        "description": "Candidate's primary contact email address."
+      },
+      {
+        "field_name": "contact.phone",
+        "target_type": "string (phone)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.95,
+        "description": "Candidate's telephone / mobile phone number."
+      },
+      {
+        "field_name": "contact.location",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.85,
+        "description": "Candidate's residential location or work city."
+      },
+      {
+        "field_name": "contact.linkedin_url",
+        "target_type": "string (url) | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.9,
+        "description": "URL to candidate's LinkedIn profile."
+      },
+      {
+        "field_name": "professional_title",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Subtitle",
+        "confidence_score": 0.0,
+        "description": "Candidate's target headline or most recent job title."
+      },
+      {
+        "field_name": "summary",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Summary / Profile / Objective",
+        "confidence_score": 0.85,
+        "description": "Executive bio, professional overview, or career objective."
+      },
+      {
+        "field_name": "total_experience_years",
+        "target_type": "float | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Summary / Experience Calculation",
+        "confidence_score": 0.9,
+        "description": "Total professional experience in years."
+      },
+      {
+        "field_name": "skills.technical_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Technical Competencies",
+        "confidence_score": 0.0,
+        "description": "Technical programming languages and core software competencies."
+      },
+      {
+        "field_name": "skills.tools_and_platforms",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills / Tools & Technologies",
+        "confidence_score": 0.9,
+        "description": "Software platforms, developer tools, and operational systems."
+      },
+      {
+        "field_name": "skills.domain_and_functional",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills / Domain Expertise",
+        "confidence_score": 0.9,
+        "description": "Functional domain knowledge (e.g. Hedge Funds, KYC, NAV, Derivatives)."
+      },
+      {
+        "field_name": "skills.all_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills (Aggregated)",
+        "confidence_score": 0.95,
+        "description": "Complete list of candidate skills across all categories."
+      },
+      {
+        "field_name": "experience",
+        "target_type": "array[WorkExperience]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Experience / Work History",
+        "confidence_score": 0.92,
+        "description": "Complete chronological employment records with bullet points."
+      },
+      {
+        "field_name": "education",
+        "target_type": "array[Education]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Education / Academic Qualifications",
+        "confidence_score": 0.9,
+        "description": "University, college, and higher education degree qualifications."
+      },
+      {
+        "field_name": "certifications",
+        "target_type": "array[Certification]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Certifications / Licenses",
+        "confidence_score": 0.0,
+        "description": "Professional accreditations and credentials."
+      },
+      {
+        "field_name": "projects",
+        "target_type": "array[Project]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Projects / Key Engagements",
+        "confidence_score": 0.0,
+        "description": "Major projects or strategic initiatives led by candidate."
+      }
+    ]
+  },
+  "raw_sections": {
+    "personal_information": "Chiranjeevi Gampala\nHyderabad, Telangana | +91 9393089745    | chiru.gampalla345@gmail.com | LinkedIn: linkedin.com/in/gampala-chiranjeevi-035ba5168",
+    "summary": "SUMMARY\nInvestment Banking Operations professional with 7.7+ years of experience across Corporate Actions, Securities Operations, Asset Servicing, Middle Office, Trade Settlements, Trade Lifecycle Management, and Fund Accounting within global financial institutions.\nProven expertise in processing Mandatory and Voluntary Corporate Actions, SWIFT message validation, trade settlements, reconciliation, exception management, and operational risk controls across global markets.\nExperienced in collaborating with Front Office, Middle Office, Custody, Fund Accounting, Technology, Client Service, and Operations teams to deliver operational excellence, strengthen governance, improve Straight Through Processing (STP), and enhance client experience.\nDemonstrated success in leading teams, driving automation initiatives, improving operational efficiency, and managing critical market events while maintaining regulatory compliance and high service quality.",
+    "education": "EDUCATION\nAurora PG College, Hyderabad\tHyderabad\nMBA (Finance)\t2018\nOsmania University, Hyderabad\tHyderabad\nBachelor of Commerce (Computers)\t2016",
+    "experience": "EXPERIENCE\t\nSenior Securities Specialist – Corporate Actions\tFebruary 2023 – Present\nUBS\nHyderabad\nLead a team of six analysts supporting end-to-end Corporate Actions processing across global markets, ensuring SLA adherence, operational excellence, regulatory compliance, and high-quality client service.\nProcess Mandatory and Voluntary Corporate Action events including Dividends, Rights Issues, Tender Offers, Stock Splits, Mergers, and Spin-offs.\nManage the complete Corporate Action lifecycle including event capture, validation, entitlement processing, election management, settlement, and client reporting.\nReview and validate SWIFT MT564, MT566, and MT568 messages, ensuring accurate interpretation and timely processing of market events.\nPerformed entitlement validation, cash and stock reconciliations, SmartStream TLM exception investigations, and operational risk mitigation to ensure accurate client positions and timely settlements.\nCollaborate with Front Office, Middle Office, Custody, Fund Accounting, Technology, Client Service, and Operations teams to resolve high-priority operational issues.\nPresent governance updates, KPI dashboards, and operational metrics to senior stakeholders.\nLed automation and process improvement initiatives that improved operational efficiency by 20%, reduced manual intervention, and enhanced Straight Through Processing (STP).\nReviewed and validated Management Fee and Performance Fee calculations, investigating exceptions and coordinating with relevant stakeholders for timely resolution.\nUtilized SmartStream TLM to monitor reconciliations, investigate operational exceptions, resolve trade breaks, and improve Straight Through Processing (STP).\nMaintained and validated Standing Settlement Instructions (SSI) to support accurate settlement processing and mitigate settlement risk.\nSupported end-to-end trade lifecycle activities by partnering with Front Office, Middle Office, Custody, Fund Accounting, and Technology teams to resolve operational issues.\nConducted pre-settlement validations and ensured accurate processing of Corporate Action entitlements while adhering to internal controls and regulatory requirements.\nParticipated in process improvement initiatives that enhanced operational efficiency, reduced manual intervention, and strengthened operational controls.\nAchieved 98% query resolution within 24 hours while maintaining zero operational losses during critical market events.\nTrade Settlements Analyst May 2022 – November 2022 Accenture Processed Hong Kong Equity trade settlements for global investment banking clients. Managed settlement processing, trade validation, reconciliation, and settlement monitoring activities. Investigated settlement failures, unmatched trades, and booking discrepancies. Coordinated with brokers, custodians, and internal Operations teams to resolve settlement exceptions within SLA. Performed exception management and operational risk mitigation, contributing to a 15% reduction in settlement failures. Improved settlement turnaround by 10% through proactive monitoring and issue resolution. Bengaluru Middle Office Analyst – Hedge Funds May 2020 – May 2022\nState Street\nHyderabad\nSupported end-to-end Trade Lifecycle Management across Equities, Fixed Income, FX, and Hedge Fund products.\nPerformed trade processing, trade validation, settlement support, and lifecycle event management.\nWorked closely with Fund Accounting, NAV, Pricing, Custody, and Client Service teams to ensure accurate trade processing.\nPerformed cash and position reconciliations while investigating trade breaks and operational exceptions.\nSupported trade booking validation and settlement monitoring across multiple investment products.\nCoordinated with Portfolio Managers, Traders, Custodians, and global Operations teams to resolve trade-related issues.\nAutomated operational reporting and workflow improvements, reducing processing time by 25%.\nMaintained 100% trade booking accuracy while ensuring adherence to internal controls.\nSupported NAV preparation, validation, and release activities, ensuring timely portfolio valuation and coordination with Fund Accounting teams\nPerformed Management Fee and Performance Fee calculations, validation, and exception resolution in accordance with fund documentation and client requirements.\nUtilized SmartStream TLM to monitor reconciliations, investigate exceptions, resolve trade breaks, and improve Straight Through Processing (STP).\nMaintained and validated Standing Settlement Instructions (SSI) to ensure accurate settlement processing and minimize settlement failures.\nWorked closely with Fund Accounting, Custody, Pricing, and Operations teams to resolve NAV, reconciliation, and settlement-related exceptions within SLA.\nCorporate Actions Analyst\tOctober 2018 – May 2020\nWipro Limited (UBS)\nHyderabad\nProcessed Mandatory and Voluntary Corporate Action events across global markets.\nReviewed and interpreted SWIFT MT564, MT566, and MT568 Corporate Action messages.\nProcessed Dividends, Rights Issues, Tender Offers, Bonus Issues, Stock Splits, and Mergers.\nPerformed entitlement validation, event elections, booking verification, reconciliation, and operational break investigation.\nInvestigated operational exceptions, booking discrepancies, and entitlement breaks while ensuring timely resolution in accordance with operational procedures.\nProduced governance reports and KPI dashboards while ensuring compliance with global operating procedures.",
+    "awards": "Key Achievements\nLed a team of 6 analysts supporting global Corporate Actions processing.\nImproved operational efficiency by 20% through automation initiatives.\nReduced settlement failures by 15%.\nReduced operational processing time by 25%.\nAchieved 98% query resolution within 24 hours.\nMaintained 100% trade booking accuracy.\nSuccessfully managed critical market events with zero operational losses.\nReceived Performer of the Month / Quarter recognition.",
+    "skills": "CORE SKILLS\nInvestment Banking Operations\nCorporate Actions (Mandatory & Voluntary)\nSecurities Operations\nAsset Servicing\nMiddle Office Operations\nTrade Processing\nTrade Lifecycle Management\nTrade Settlements\nFund Accounting\nIncome Processing\nCash & Stock Dividends\nRights Issues\nTender Offers\nMergers\nStock Splits\nReconciliation & Controls\nCash & Position Reconciliation\nException Management\nOperational Risk & Controls\nRoot Cause Analysis\nSTP Break Investigation\nRegulatory Compliance\nGovernance Reporting\nKPI & MIS Reporting\nFinancial Systems\nBloomberg Terminal\nReuters\nAladdin\nEuroclear\nClearstream\nSWIFT MT564\nSWIFT MT566\nSWIFT MT568\nAdvanced Excel"
+  },
+  "meta": {
+    "status": "needs_review",
+    "human_verified": false,
+    "provider_calls": 0,
+    "source_accounting": {
+      "all_source_text_preserved": true,
+      "total_spans": 100,
+      "assigned_meaningful_spans": 100,
+      "unresolved_meaningful_spans": 0,
+      "non_content_artifacts": 0,
+      "duplicates_excluded": 0,
+      "all_meaningful_text_assigned": true,
+      "semantic_correctness_verified": false,
+      "outcomes": [
+        {
+          "source_id": "e0:0:19",
+          "source_element_index": 0,
+          "start": 0,
+          "end": 19,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e1:0:128",
+          "source_element_index": 1,
+          "start": 0,
+          "end": 128,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e2:0:7",
+          "source_element_index": 2,
+          "start": 0,
+          "end": 7,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e3:0:258",
+          "source_element_index": 3,
+          "start": 0,
+          "end": 258,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e4:0:209",
+          "source_element_index": 4,
+          "start": 0,
+          "end": 209,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e5:0:269",
+          "source_element_index": 5,
+          "start": 0,
+          "end": 269,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e6:0:206",
+          "source_element_index": 6,
+          "start": 0,
+          "end": 206,
+          "section": "summary",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e7:0:9",
+          "source_element_index": 7,
+          "start": 0,
+          "end": 9,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e8:0:38",
+          "source_element_index": 8,
+          "start": 0,
+          "end": 38,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e9:0:18",
+          "source_element_index": 9,
+          "start": 0,
+          "end": 18,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e10:0:39",
+          "source_element_index": 10,
+          "start": 0,
+          "end": 39,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e11:0:37",
+          "source_element_index": 11,
+          "start": 0,
+          "end": 37,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:0:11",
+          "source_element_index": 12,
+          "start": 0,
+          "end": 11,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e13:0:72",
+          "source_element_index": 13,
+          "start": 0,
+          "end": 72,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit dated employer starts or continues Experience across layout changes"
+        },
+        {
+          "source_id": "e14:0:3",
+          "source_element_index": 14,
+          "start": 0,
+          "end": 3,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e15:0:9",
+          "source_element_index": 15,
+          "start": 0,
+          "end": 9,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e16:0:205",
+          "source_element_index": 16,
+          "start": 0,
+          "end": 205,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e17:0:144",
+          "source_element_index": 17,
+          "start": 0,
+          "end": 144,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e18:0:162",
+          "source_element_index": 18,
+          "start": 0,
+          "end": 162,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e19:0:132",
+          "source_element_index": 19,
+          "start": 0,
+          "end": 132,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e20:0:199",
+          "source_element_index": 20,
+          "start": 0,
+          "end": 199,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e21:0:165",
+          "source_element_index": 21,
+          "start": 0,
+          "end": 165,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e22:0:91",
+          "source_element_index": 22,
+          "start": 0,
+          "end": 91,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e23:0:172",
+          "source_element_index": 23,
+          "start": 0,
+          "end": 172,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e24:0:163",
+          "source_element_index": 24,
+          "start": 0,
+          "end": 163,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e25:0:157",
+          "source_element_index": 25,
+          "start": 0,
+          "end": 157,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e26:0:135",
+          "source_element_index": 26,
+          "start": 0,
+          "end": 135,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e27:0:173",
+          "source_element_index": 27,
+          "start": 0,
+          "end": 173,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e28:0:166",
+          "source_element_index": 28,
+          "start": 0,
+          "end": 166,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e29:0:153",
+          "source_element_index": 29,
+          "start": 0,
+          "end": 153,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e30:0:118",
+          "source_element_index": 30,
+          "start": 0,
+          "end": 118,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e31:0:714",
+          "source_element_index": 31,
+          "start": 0,
+          "end": 714,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e32:0:12",
+          "source_element_index": 32,
+          "start": 0,
+          "end": 12,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e33:0:9",
+          "source_element_index": 33,
+          "start": 0,
+          "end": 9,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e34:0:107",
+          "source_element_index": 34,
+          "start": 0,
+          "end": 107,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e35:0:97",
+          "source_element_index": 35,
+          "start": 0,
+          "end": 97,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e36:0:121",
+          "source_element_index": 36,
+          "start": 0,
+          "end": 121,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e37:0:104",
+          "source_element_index": 37,
+          "start": 0,
+          "end": 104,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e38:0:97",
+          "source_element_index": 38,
+          "start": 0,
+          "end": 97,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e39:0:118",
+          "source_element_index": 39,
+          "start": 0,
+          "end": 118,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e40:0:91",
+          "source_element_index": 40,
+          "start": 0,
+          "end": 91,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e41:0:85",
+          "source_element_index": 41,
+          "start": 0,
+          "end": 85,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e42:0:142",
+          "source_element_index": 42,
+          "start": 0,
+          "end": 142,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e43:0:158",
+          "source_element_index": 43,
+          "start": 0,
+          "end": 158,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e44:0:145",
+          "source_element_index": 44,
+          "start": 0,
+          "end": 145,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e45:0:138",
+          "source_element_index": 45,
+          "start": 0,
+          "end": 138,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e46:0:153",
+          "source_element_index": 46,
+          "start": 0,
+          "end": 153,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e47:0:49",
+          "source_element_index": 47,
+          "start": 0,
+          "end": 49,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e48:0:19",
+          "source_element_index": 48,
+          "start": 0,
+          "end": 19,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e49:0:9",
+          "source_element_index": 49,
+          "start": 0,
+          "end": 9,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e50:0:80",
+          "source_element_index": 50,
+          "start": 0,
+          "end": 80,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e51:0:81",
+          "source_element_index": 51,
+          "start": 0,
+          "end": 81,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e52:0:91",
+          "source_element_index": 52,
+          "start": 0,
+          "end": 91,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e53:0:125",
+          "source_element_index": 53,
+          "start": 0,
+          "end": 125,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e54:0:158",
+          "source_element_index": 54,
+          "start": 0,
+          "end": 158,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e55:0:106",
+          "source_element_index": 55,
+          "start": 0,
+          "end": 106,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e56:0:16",
+          "source_element_index": 56,
+          "start": 0,
+          "end": 16,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Distinct BERT heading match with a K-means section label"
+        },
+        {
+          "source_id": "e57:0:72",
+          "source_element_index": 57,
+          "start": 0,
+          "end": 72,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e58:0:70",
+          "source_element_index": 58,
+          "start": 0,
+          "end": 70,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e59:0:35",
+          "source_element_index": 59,
+          "start": 0,
+          "end": 35,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e60:0:43",
+          "source_element_index": 60,
+          "start": 0,
+          "end": 43,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e61:0:46",
+          "source_element_index": 61,
+          "start": 0,
+          "end": 46,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e62:0:39",
+          "source_element_index": 62,
+          "start": 0,
+          "end": 39,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e63:0:73",
+          "source_element_index": 63,
+          "start": 0,
+          "end": 73,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e64:0:54",
+          "source_element_index": 64,
+          "start": 0,
+          "end": 54,
+          "section": "awards",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e65:0:11",
+          "source_element_index": 65,
+          "start": 0,
+          "end": 11,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e66:0:29",
+          "source_element_index": 66,
+          "start": 0,
+          "end": 29,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e67:0:41",
+          "source_element_index": 67,
+          "start": 0,
+          "end": 41,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e68:0:21",
+          "source_element_index": 68,
+          "start": 0,
+          "end": 21,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e69:0:15",
+          "source_element_index": 69,
+          "start": 0,
+          "end": 15,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e70:0:24",
+          "source_element_index": 70,
+          "start": 0,
+          "end": 24,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e71:0:16",
+          "source_element_index": 71,
+          "start": 0,
+          "end": 16,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e72:0:26",
+          "source_element_index": 72,
+          "start": 0,
+          "end": 26,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e73:0:17",
+          "source_element_index": 73,
+          "start": 0,
+          "end": 17,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e74:0:15",
+          "source_element_index": 74,
+          "start": 0,
+          "end": 15,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e75:0:17",
+          "source_element_index": 75,
+          "start": 0,
+          "end": 17,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e76:0:22",
+          "source_element_index": 76,
+          "start": 0,
+          "end": 22,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e77:0:13",
+          "source_element_index": 77,
+          "start": 0,
+          "end": 13,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e78:0:13",
+          "source_element_index": 78,
+          "start": 0,
+          "end": 13,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e79:0:7",
+          "source_element_index": 79,
+          "start": 0,
+          "end": 7,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e80:0:12",
+          "source_element_index": 80,
+          "start": 0,
+          "end": 12,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e81:0:25",
+          "source_element_index": 81,
+          "start": 0,
+          "end": 25,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e82:0:30",
+          "source_element_index": 82,
+          "start": 0,
+          "end": 30,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e83:0:20",
+          "source_element_index": 83,
+          "start": 0,
+          "end": 20,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e84:0:27",
+          "source_element_index": 84,
+          "start": 0,
+          "end": 27,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e85:0:19",
+          "source_element_index": 85,
+          "start": 0,
+          "end": 19,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e86:0:23",
+          "source_element_index": 86,
+          "start": 0,
+          "end": 23,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e87:0:21",
+          "source_element_index": 87,
+          "start": 0,
+          "end": 21,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e88:0:20",
+          "source_element_index": 88,
+          "start": 0,
+          "end": 20,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e89:0:19",
+          "source_element_index": 89,
+          "start": 0,
+          "end": 19,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e90:0:17",
+          "source_element_index": 90,
+          "start": 0,
+          "end": 17,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e91:0:18",
+          "source_element_index": 91,
+          "start": 0,
+          "end": 18,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e92:0:7",
+          "source_element_index": 92,
+          "start": 0,
+          "end": 7,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e93:0:7",
+          "source_element_index": 93,
+          "start": 0,
+          "end": 7,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e94:0:9",
+          "source_element_index": 94,
+          "start": 0,
+          "end": 9,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e95:0:11",
+          "source_element_index": 95,
+          "start": 0,
+          "end": 11,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e96:0:11",
+          "source_element_index": 96,
+          "start": 0,
+          "end": 11,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e97:0:11",
+          "source_element_index": 97,
+          "start": 0,
+          "end": 11,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e98:0:11",
+          "source_element_index": 98,
+          "start": 0,
+          "end": 11,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e99:0:14",
+          "source_element_index": 99,
+          "start": 0,
+          "end": 14,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        }
+      ]
+    },
+    "document_scope": {
+      "kind": "likely_resume",
+      "candidate_resume": true,
+      "reason": "Contact details, multiple resume section families and dated history; provisional scope only",
+      "human_verified": false
+    },
+    "source_inventory_sha256": "3d248d353c597bd8163f98586ab402d514813849c1ade42f249b3cab6195d491",
+    "field_evidence": {
+      "contact.full_name": [
+        "e0:0:19",
+        "e1:0:128"
+      ],
+      "contact.email": [
+        "e0:0:19",
+        "e1:0:128"
+      ],
+      "contact.phone": [
+        "e0:0:19",
+        "e1:0:128"
+      ],
+      "contact.location": [
+        "e0:0:19",
+        "e1:0:128"
+      ],
+      "contact.linkedin_url": [
+        "e0:0:19",
+        "e1:0:128"
+      ],
+      "summary": [
+        "e3:0:258",
+        "e4:0:209",
+        "e5:0:269",
+        "e6:0:206"
+      ],
+      "total_experience_years": [
+        "e3:0:258"
+      ],
+      "skills.tools_and_platforms[0]": [
+        "e91:0:18"
+      ],
+      "skills.tools_and_platforms[1]": [
+        "e99:0:14"
+      ],
+      "skills.domain_and_functional[0]": [
+        "e67:0:41"
+      ],
+      "skills.domain_and_functional[1]": [
+        "e72:0:26"
+      ],
+      "skills.domain_and_functional[2]": [
+        "e96:0:11",
+        "e97:0:11",
+        "e98:0:11"
+      ],
+      "skills.all_skills[0]": [
+        "e91:0:18"
+      ],
+      "skills.all_skills[1]": [
+        "e99:0:14"
+      ],
+      "skills.all_skills[2]": [
+        "e67:0:41"
+      ],
+      "skills.all_skills[3]": [
+        "e72:0:26"
+      ],
+      "skills.all_skills[4]": [
+        "e96:0:11",
+        "e97:0:11",
+        "e98:0:11"
+      ],
+      "skills.all_skills[5]": [
+        "e66:0:29"
+      ],
+      "skills.all_skills[6]": [
+        "e67:0:41"
+      ],
+      "skills.all_skills[7]": [
+        "e68:0:21"
+      ],
+      "skills.all_skills[8]": [
+        "e69:0:15"
+      ],
+      "skills.all_skills[9]": [
+        "e70:0:24"
+      ],
+      "skills.all_skills[10]": [
+        "e71:0:16"
+      ],
+      "skills.all_skills[11]": [
+        "e72:0:26"
+      ],
+      "skills.all_skills[12]": [
+        "e73:0:17"
+      ],
+      "skills.all_skills[13]": [
+        "e74:0:15"
+      ],
+      "skills.all_skills[14]": [
+        "e75:0:17"
+      ],
+      "skills.all_skills[15]": [
+        "e76:0:22"
+      ],
+      "skills.all_skills[16]": [
+        "e77:0:13"
+      ],
+      "skills.all_skills[17]": [
+        "e78:0:13"
+      ],
+      "skills.all_skills[18]": [
+        "e79:0:7"
+      ],
+      "skills.all_skills[19]": [
+        "e80:0:12"
+      ],
+      "skills.all_skills[20]": [
+        "e81:0:25"
+      ],
+      "skills.all_skills[21]": [
+        "e82:0:30"
+      ],
+      "skills.all_skills[22]": [
+        "e83:0:20"
+      ],
+      "skills.all_skills[23]": [
+        "e84:0:27"
+      ],
+      "skills.all_skills[24]": [
+        "e85:0:19"
+      ],
+      "skills.all_skills[25]": [
+        "e86:0:23"
+      ],
+      "skills.all_skills[26]": [
+        "e87:0:21"
+      ],
+      "skills.all_skills[27]": [
+        "e88:0:20"
+      ],
+      "skills.all_skills[28]": [
+        "e89:0:19"
+      ],
+      "skills.all_skills[29]": [
+        "e90:0:17"
+      ],
+      "skills.all_skills[30]": [
+        "e91:0:18"
+      ],
+      "skills.all_skills[31]": [
+        "e92:0:7"
+      ],
+      "skills.all_skills[32]": [
+        "e93:0:7"
+      ],
+      "skills.all_skills[33]": [
+        "e94:0:9"
+      ],
+      "skills.all_skills[34]": [
+        "e95:0:11"
+      ],
+      "skills.all_skills[35]": [
+        "e96:0:11"
+      ],
+      "skills.all_skills[36]": [
+        "e97:0:11"
+      ],
+      "skills.all_skills[37]": [
+        "e98:0:11"
+      ],
+      "skills.all_skills[38]": [
+        "e99:0:14"
+      ]
+    },
+    "record_reviews": [
+      {
+        "category": "experience",
+        "entry_id": "experience-1",
+        "source_ids": [
+          "e13:0:72",
+          "e14:0:3",
+          "e15:0:9",
+          "e16:0:205",
+          "e17:0:144",
+          "e18:0:162",
+          "e19:0:132",
+          "e20:0:199",
+          "e21:0:165",
+          "e22:0:91",
+          "e23:0:172",
+          "e24:0:163",
+          "e25:0:157",
+          "e26:0:135",
+          "e27:0:173",
+          "e28:0:166",
+          "e29:0:153",
+          "e30:0:118",
+          "e31:0:714",
+          "e32:0:12",
+          "e33:0:9",
+          "e34:0:107",
+          "e35:0:97",
+          "e36:0:121",
+          "e37:0:104",
+          "e38:0:97",
+          "e39:0:118",
+          "e40:0:91",
+          "e41:0:85",
+          "e42:0:142",
+          "e43:0:158",
+          "e44:0:145",
+          "e45:0:138",
+          "e46:0:153",
+          "e47:0:49",
+          "e48:0:19",
+          "e49:0:9",
+          "e50:0:80",
+          "e51:0:81",
+          "e52:0:91",
+          "e53:0:125",
+          "e54:0:158",
+          "e55:0:106"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      },
+      {
+        "category": "education",
+        "entry_id": "education-1",
+        "source_ids": [
+          "e8:0:38",
+          "e9:0:18",
+          "e10:0:39",
+          "e11:0:37"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": []
+      }
+    ],
+    "missing_required_fields": [
+      "experience[0].company",
+      "experience[0].role",
+      "education[0].institution",
+      "education[0].degree"
+    ],
+    "warnings": [
+      "Schema validity and field completion do not establish extraction or relationship accuracy.",
+      "Handoff confidence scores are fixed heuristics, not calibrated probabilities.",
+      "Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields."
+    ],
+    "unmapped_blocks": [
+      {
+        "source_id": "e2:0:7",
+        "category": "summary",
+        "text": "SUMMARY",
+        "page_number": null
+      },
+      {
+        "source_id": "e7:0:9",
+        "category": "education",
+        "text": "EDUCATION",
+        "page_number": null
+      },
+      {
+        "source_id": "e8:0:38",
+        "category": "education",
+        "text": "Aurora PG College, Hyderabad\tHyderabad",
+        "page_number": null
+      },
+      {
+        "source_id": "e9:0:18",
+        "category": "education",
+        "text": "MBA (Finance)\t2018",
+        "page_number": null
+      },
+      {
+        "source_id": "e10:0:39",
+        "category": "education",
+        "text": "Osmania University, Hyderabad\tHyderabad",
+        "page_number": null
+      },
+      {
+        "source_id": "e11:0:37",
+        "category": "education",
+        "text": "Bachelor of Commerce (Computers)\t2016",
+        "page_number": null
+      },
+      {
+        "source_id": "e12:0:11",
+        "category": "experience",
+        "text": "EXPERIENCE\t",
+        "page_number": null
+      },
+      {
+        "source_id": "e13:0:72",
+        "category": "experience",
+        "text": "Senior Securities Specialist – Corporate Actions\tFebruary 2023 – Present",
+        "page_number": null
+      },
+      {
+        "source_id": "e14:0:3",
+        "category": "experience",
+        "text": "UBS",
+        "page_number": null
+      },
+      {
+        "source_id": "e15:0:9",
+        "category": "experience",
+        "text": "Hyderabad",
+        "page_number": null
+      },
+      {
+        "source_id": "e16:0:205",
+        "category": "experience",
+        "text": "Lead a team of six analysts supporting end-to-end Corporate Actions processing across global markets, ensuring SLA adherence, operational excellence, regulatory compliance, and high-quality client service.",
+        "page_number": null
+      },
+      {
+        "source_id": "e17:0:144",
+        "category": "experience",
+        "text": "Process Mandatory and Voluntary Corporate Action events including Dividends, Rights Issues, Tender Offers, Stock Splits, Mergers, and Spin-offs.",
+        "page_number": null
+      },
+      {
+        "source_id": "e18:0:162",
+        "category": "experience",
+        "text": "Manage the complete Corporate Action lifecycle including event capture, validation, entitlement processing, election management, settlement, and client reporting.",
+        "page_number": null
+      },
+      {
+        "source_id": "e19:0:132",
+        "category": "experience",
+        "text": "Review and validate SWIFT MT564, MT566, and MT568 messages, ensuring accurate interpretation and timely processing of market events.",
+        "page_number": null
+      },
+      {
+        "source_id": "e20:0:199",
+        "category": "experience",
+        "text": "Performed entitlement validation, cash and stock reconciliations, SmartStream TLM exception investigations, and operational risk mitigation to ensure accurate client positions and timely settlements.",
+        "page_number": null
+      },
+      {
+        "source_id": "e21:0:165",
+        "category": "experience",
+        "text": "Collaborate with Front Office, Middle Office, Custody, Fund Accounting, Technology, Client Service, and Operations teams to resolve high-priority operational issues.",
+        "page_number": null
+      },
+      {
+        "source_id": "e22:0:91",
+        "category": "experience",
+        "text": "Present governance updates, KPI dashboards, and operational metrics to senior stakeholders.",
+        "page_number": null
+      },
+      {
+        "source_id": "e23:0:172",
+        "category": "experience",
+        "text": "Led automation and process improvement initiatives that improved operational efficiency by 20%, reduced manual intervention, and enhanced Straight Through Processing (STP).",
+        "page_number": null
+      },
+      {
+        "source_id": "e24:0:163",
+        "category": "experience",
+        "text": "Reviewed and validated Management Fee and Performance Fee calculations, investigating exceptions and coordinating with relevant stakeholders for timely resolution.",
+        "page_number": null
+      },
+      {
+        "source_id": "e25:0:157",
+        "category": "experience",
+        "text": "Utilized SmartStream TLM to monitor reconciliations, investigate operational exceptions, resolve trade breaks, and improve Straight Through Processing (STP).",
+        "page_number": null
+      },
+      {
+        "source_id": "e26:0:135",
+        "category": "experience",
+        "text": "Maintained and validated Standing Settlement Instructions (SSI) to support accurate settlement processing and mitigate settlement risk.",
+        "page_number": null
+      },
+      {
+        "source_id": "e27:0:173",
+        "category": "experience",
+        "text": "Supported end-to-end trade lifecycle activities by partnering with Front Office, Middle Office, Custody, Fund Accounting, and Technology teams to resolve operational issues.",
+        "page_number": null
+      },
+      {
+        "source_id": "e28:0:166",
+        "category": "experience",
+        "text": "Conducted pre-settlement validations and ensured accurate processing of Corporate Action entitlements while adhering to internal controls and regulatory requirements.",
+        "page_number": null
+      },
+      {
+        "source_id": "e29:0:153",
+        "category": "experience",
+        "text": "Participated in process improvement initiatives that enhanced operational efficiency, reduced manual intervention, and strengthened operational controls.",
+        "page_number": null
+      },
+      {
+        "source_id": "e30:0:118",
+        "category": "experience",
+        "text": "Achieved 98% query resolution within 24 hours while maintaining zero operational losses during critical market events.",
+        "page_number": null
+      },
+      {
+        "source_id": "e31:0:714",
+        "category": "experience",
+        "text": "Trade Settlements Analyst May 2022 – November 2022 Accenture Processed Hong Kong Equity trade settlements for global investment banking clients. Managed settlement processing, trade validation, reconciliation, and settlement monitoring activities. Investigated settlement failures, unmatched trades, and booking discrepancies. Coordinated with brokers, custodians, and internal Operations teams to resolve settlement exceptions within SLA. Performed exception management and operational risk mitigation, contributing to a 15% reduction in settlement failures. Improved settlement turnaround by 10% through proactive monitoring and issue resolution. Bengaluru Middle Office Analyst – Hedge Funds May 2020 – May 2022",
+        "page_number": null
+      },
+      {
+        "source_id": "e32:0:12",
+        "category": "experience",
+        "text": "State Street",
+        "page_number": null
+      },
+      {
+        "source_id": "e33:0:9",
+        "category": "experience",
+        "text": "Hyderabad",
+        "page_number": null
+      },
+      {
+        "source_id": "e34:0:107",
+        "category": "experience",
+        "text": "Supported end-to-end Trade Lifecycle Management across Equities, Fixed Income, FX, and Hedge Fund products.",
+        "page_number": null
+      },
+      {
+        "source_id": "e35:0:97",
+        "category": "experience",
+        "text": "Performed trade processing, trade validation, settlement support, and lifecycle event management.",
+        "page_number": null
+      },
+      {
+        "source_id": "e36:0:121",
+        "category": "experience",
+        "text": "Worked closely with Fund Accounting, NAV, Pricing, Custody, and Client Service teams to ensure accurate trade processing.",
+        "page_number": null
+      },
+      {
+        "source_id": "e37:0:104",
+        "category": "experience",
+        "text": "Performed cash and position reconciliations while investigating trade breaks and operational exceptions.",
+        "page_number": null
+      },
+      {
+        "source_id": "e38:0:97",
+        "category": "experience",
+        "text": "Supported trade booking validation and settlement monitoring across multiple investment products.",
+        "page_number": null
+      },
+      {
+        "source_id": "e39:0:118",
+        "category": "experience",
+        "text": "Coordinated with Portfolio Managers, Traders, Custodians, and global Operations teams to resolve trade-related issues.",
+        "page_number": null
+      },
+      {
+        "source_id": "e40:0:91",
+        "category": "experience",
+        "text": "Automated operational reporting and workflow improvements, reducing processing time by 25%.",
+        "page_number": null
+      },
+      {
+        "source_id": "e41:0:85",
+        "category": "experience",
+        "text": "Maintained 100% trade booking accuracy while ensuring adherence to internal controls.",
+        "page_number": null
+      },
+      {
+        "source_id": "e42:0:142",
+        "category": "experience",
+        "text": "Supported NAV preparation, validation, and release activities, ensuring timely portfolio valuation and coordination with Fund Accounting teams",
+        "page_number": null
+      },
+      {
+        "source_id": "e43:0:158",
+        "category": "experience",
+        "text": "Performed Management Fee and Performance Fee calculations, validation, and exception resolution in accordance with fund documentation and client requirements.",
+        "page_number": null
+      },
+      {
+        "source_id": "e44:0:145",
+        "category": "experience",
+        "text": "Utilized SmartStream TLM to monitor reconciliations, investigate exceptions, resolve trade breaks, and improve Straight Through Processing (STP).",
+        "page_number": null
+      },
+      {
+        "source_id": "e45:0:138",
+        "category": "experience",
+        "text": "Maintained and validated Standing Settlement Instructions (SSI) to ensure accurate settlement processing and minimize settlement failures.",
+        "page_number": null
+      },
+      {
+        "source_id": "e46:0:153",
+        "category": "experience",
+        "text": "Worked closely with Fund Accounting, Custody, Pricing, and Operations teams to resolve NAV, reconciliation, and settlement-related exceptions within SLA.",
+        "page_number": null
+      },
+      {
+        "source_id": "e47:0:49",
+        "category": "experience",
+        "text": "Corporate Actions Analyst\tOctober 2018 – May 2020",
+        "page_number": null
+      },
+      {
+        "source_id": "e48:0:19",
+        "category": "experience",
+        "text": "Wipro Limited (UBS)",
+        "page_number": null
+      },
+      {
+        "source_id": "e49:0:9",
+        "category": "experience",
+        "text": "Hyderabad",
+        "page_number": null
+      },
+      {
+        "source_id": "e50:0:80",
+        "category": "experience",
+        "text": "Processed Mandatory and Voluntary Corporate Action events across global markets.",
+        "page_number": null
+      },
+      {
+        "source_id": "e51:0:81",
+        "category": "experience",
+        "text": "Reviewed and interpreted SWIFT MT564, MT566, and MT568 Corporate Action messages.",
+        "page_number": null
+      },
+      {
+        "source_id": "e52:0:91",
+        "category": "experience",
+        "text": "Processed Dividends, Rights Issues, Tender Offers, Bonus Issues, Stock Splits, and Mergers.",
+        "page_number": null
+      },
+      {
+        "source_id": "e53:0:125",
+        "category": "experience",
+        "text": "Performed entitlement validation, event elections, booking verification, reconciliation, and operational break investigation.",
+        "page_number": null
+      },
+      {
+        "source_id": "e54:0:158",
+        "category": "experience",
+        "text": "Investigated operational exceptions, booking discrepancies, and entitlement breaks while ensuring timely resolution in accordance with operational procedures.",
+        "page_number": null
+      },
+      {
+        "source_id": "e55:0:106",
+        "category": "experience",
+        "text": "Produced governance reports and KPI dashboards while ensuring compliance with global operating procedures.",
+        "page_number": null
+      },
+      {
+        "source_id": "e56:0:16",
+        "category": "awards",
+        "text": "Key Achievements",
+        "page_number": null
+      },
+      {
+        "source_id": "e57:0:72",
+        "category": "awards",
+        "text": "Led a team of 6 analysts supporting global Corporate Actions processing.",
+        "page_number": null
+      },
+      {
+        "source_id": "e58:0:70",
+        "category": "awards",
+        "text": "Improved operational efficiency by 20% through automation initiatives.",
+        "page_number": null
+      },
+      {
+        "source_id": "e59:0:35",
+        "category": "awards",
+        "text": "Reduced settlement failures by 15%.",
+        "page_number": null
+      },
+      {
+        "source_id": "e60:0:43",
+        "category": "awards",
+        "text": "Reduced operational processing time by 25%.",
+        "page_number": null
+      },
+      {
+        "source_id": "e61:0:46",
+        "category": "awards",
+        "text": "Achieved 98% query resolution within 24 hours.",
+        "page_number": null
+      },
+      {
+        "source_id": "e62:0:39",
+        "category": "awards",
+        "text": "Maintained 100% trade booking accuracy.",
+        "page_number": null
+      },
+      {
+        "source_id": "e63:0:73",
+        "category": "awards",
+        "text": "Successfully managed critical market events with zero operational losses.",
+        "page_number": null
+      },
+      {
+        "source_id": "e64:0:54",
+        "category": "awards",
+        "text": "Received Performer of the Month / Quarter recognition.",
+        "page_number": null
+      },
+      {
+        "source_id": "e65:0:11",
+        "category": "skills",
+        "text": "CORE SKILLS",
+        "page_number": null
+      }
+    ],
+    "needs_review": []
+  },
+  "section_schemas": [
+    {
+      "category": "personal_information",
+      "label": "Personal information",
+      "records": [
+        {
+          "record_id": "personal_information",
+          "source_ids": [
+            "e0:0:19",
+            "e1:0:128"
+          ],
+          "attributes": [
+            {
+              "name": "full_name",
+              "items": [
+                {
+                  "value": "Chiranjeevi Gampala",
+                  "evidence": [
+                    {
+                      "source_id": "e0:0:19",
+                      "quote": "Chiranjeevi Gampala"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "email",
+              "items": [
+                {
+                  "value": "chiru.gampalla345@gmail.com",
+                  "evidence": [
+                    {
+                      "source_id": "e1:0:128",
+                      "quote": "chiru.gampalla345@gmail.com"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "phone",
+              "items": [
+                {
+                  "value": "+91 9393089745",
+                  "evidence": [
+                    {
+                      "source_id": "e1:0:128",
+                      "quote": "+91 9393089745"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "location",
+              "items": [
+                {
+                  "value": "Hyderabad",
+                  "evidence": [
+                    {
+                      "source_id": "e1:0:128",
+                      "quote": "Hyderabad"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "linkedin_url",
+              "items": [
+                {
+                  "value": "linkedin.com/in/gampala-chiranjeevi-035ba5168",
+                  "evidence": [
+                    {
+                      "source_id": "e1:0:128",
+                      "quote": "linkedin.com/in/gampala-chiranjeevi-035ba5168"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "github_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "portfolio_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "professional_title",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e1:0:128",
+          "quote": "Hyderabad, Telangana | +91 9393089745    | chiru.gampalla345@gmail.com | LinkedIn: linkedin.com/in/gampala-chiranjeevi-035ba5168"
+        }
+      ]
+    },
+    {
+      "category": "summary",
+      "label": "Summary",
+      "records": [
+        {
+          "record_id": "summary",
+          "source_ids": [
+            "e3:0:258",
+            "e4:0:209",
+            "e5:0:269",
+            "e6:0:206"
+          ],
+          "attributes": [
+            {
+              "name": "statements",
+              "items": [
+                {
+                  "value": "Investment Banking Operations professional with 7.7+ years of experience across Corporate Actions, Securities Operations, Asset Servicing, Middle Office, Trade Settlements, Trade Lifecycle Management, and Fund Accounting within global financial institutions.",
+                  "evidence": [
+                    {
+                      "source_id": "e3:0:258",
+                      "quote": "Investment Banking Operations professional with 7.7+ years of experience across Corporate Actions, Securities Operations, Asset Servicing, Middle Office, Trade Settlements, Trade Lifecycle Management, and Fund Accounting within global financial institutions."
+                    }
+                  ],
+                  "status": "needs_review"
+                },
+                {
+                  "value": "Proven expertise in processing Mandatory and Voluntary Corporate Actions, SWIFT message validation, trade settlements, reconciliation, exception management, and operational risk controls across global markets.",
+                  "evidence": [
+                    {
+                      "source_id": "e4:0:209",
+                      "quote": "Proven expertise in processing Mandatory and Voluntary Corporate Actions, SWIFT message validation, trade settlements, reconciliation, exception management, and operational risk controls across global markets."
+                    }
+                  ],
+                  "status": "needs_review"
+                },
+                {
+                  "value": "Experienced in collaborating with Front Office, Middle Office, Custody, Fund Accounting, Technology, Client Service, and Operations teams to deliver operational excellence, strengthen governance, improve Straight Through Processing (STP), and enhance client experience.",
+                  "evidence": [
+                    {
+                      "source_id": "e5:0:269",
+                      "quote": "Experienced in collaborating with Front Office, Middle Office, Custody, Fund Accounting, Technology, Client Service, and Operations teams to deliver operational excellence, strengthen governance, improve Straight Through Processing (STP), and enhance client experience."
+                    }
+                  ],
+                  "status": "needs_review"
+                },
+                {
+                  "value": "Demonstrated success in leading teams, driving automation initiatives, improving operational efficiency, and managing critical market events while maintaining regulatory compliance and high service quality.",
+                  "evidence": [
+                    {
+                      "source_id": "e6:0:206",
+                      "quote": "Demonstrated success in leading teams, driving automation initiatives, improving operational efficiency, and managing critical market events while maintaining regulatory compliance and high service quality."
+                    }
+                  ],
+                  "status": "needs_review"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "total_experience_years",
+              "items": [
+                {
+                  "value": 7.7,
+                  "evidence": [
+                    {
+                      "source_id": "e3:0:258",
+                      "quote": "7.7"
+                    }
+                  ],
+                  "status": "needs_review"
+                }
+              ],
+              "status": "mapped"
+            }
+          ],
+          "review_reasons": [
+            "Experience years are approximate or a lower bound; inspect the source qualifier."
+          ]
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e2:0:7",
+          "quote": "SUMMARY"
+        }
+      ]
+    },
+    {
+      "category": "education",
+      "label": "Education",
+      "records": [
+        {
+          "record_id": "education-1",
+          "source_ids": [
+            "e8:0:38",
+            "e9:0:18",
+            "e10:0:39",
+            "e11:0:37"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "degree",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "Multiple qualifications in one supplied record; child associations unresolved."
+          ]
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e7:0:9",
+          "quote": "EDUCATION"
+        },
+        {
+          "source_id": "e8:0:38",
+          "quote": "Aurora PG College, Hyderabad\tHyderabad"
+        },
+        {
+          "source_id": "e9:0:18",
+          "quote": "MBA (Finance)\t2018"
+        },
+        {
+          "source_id": "e10:0:39",
+          "quote": "Osmania University, Hyderabad\tHyderabad"
+        },
+        {
+          "source_id": "e11:0:37",
+          "quote": "Bachelor of Commerce (Computers)\t2016"
+        }
+      ]
+    },
+    {
+      "category": "experience",
+      "label": "Experience",
+      "records": [
+        {
+          "record_id": "experience-1",
+          "source_ids": [
+            "e13:0:72",
+            "e14:0:3",
+            "e15:0:9",
+            "e16:0:205",
+            "e17:0:144",
+            "e18:0:162",
+            "e19:0:132",
+            "e20:0:199",
+            "e21:0:165",
+            "e22:0:91",
+            "e23:0:172",
+            "e24:0:163",
+            "e25:0:157",
+            "e26:0:135",
+            "e27:0:173",
+            "e28:0:166",
+            "e29:0:153",
+            "e30:0:118",
+            "e31:0:714",
+            "e32:0:12",
+            "e33:0:9",
+            "e34:0:107",
+            "e35:0:97",
+            "e36:0:121",
+            "e37:0:104",
+            "e38:0:97",
+            "e39:0:118",
+            "e40:0:91",
+            "e41:0:85",
+            "e42:0:142",
+            "e43:0:158",
+            "e44:0:145",
+            "e45:0:138",
+            "e46:0:153",
+            "e47:0:49",
+            "e48:0:19",
+            "e49:0:9",
+            "e50:0:80",
+            "e51:0:81",
+            "e52:0:91",
+            "e53:0:125",
+            "e54:0:158",
+            "e55:0:106"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e12:0:11",
+          "quote": "EXPERIENCE\t"
+        },
+        {
+          "source_id": "e13:0:72",
+          "quote": "Senior Securities Specialist – Corporate Actions\tFebruary 2023 – Present"
+        },
+        {
+          "source_id": "e14:0:3",
+          "quote": "UBS"
+        },
+        {
+          "source_id": "e15:0:9",
+          "quote": "Hyderabad"
+        },
+        {
+          "source_id": "e16:0:205",
+          "quote": "Lead a team of six analysts supporting end-to-end Corporate Actions processing across global markets, ensuring SLA adherence, operational excellence, regulatory compliance, and high-quality client service."
+        },
+        {
+          "source_id": "e17:0:144",
+          "quote": "Process Mandatory and Voluntary Corporate Action events including Dividends, Rights Issues, Tender Offers, Stock Splits, Mergers, and Spin-offs."
+        },
+        {
+          "source_id": "e18:0:162",
+          "quote": "Manage the complete Corporate Action lifecycle including event capture, validation, entitlement processing, election management, settlement, and client reporting."
+        },
+        {
+          "source_id": "e19:0:132",
+          "quote": "Review and validate SWIFT MT564, MT566, and MT568 messages, ensuring accurate interpretation and timely processing of market events."
+        },
+        {
+          "source_id": "e20:0:199",
+          "quote": "Performed entitlement validation, cash and stock reconciliations, SmartStream TLM exception investigations, and operational risk mitigation to ensure accurate client positions and timely settlements."
+        },
+        {
+          "source_id": "e21:0:165",
+          "quote": "Collaborate with Front Office, Middle Office, Custody, Fund Accounting, Technology, Client Service, and Operations teams to resolve high-priority operational issues."
+        },
+        {
+          "source_id": "e22:0:91",
+          "quote": "Present governance updates, KPI dashboards, and operational metrics to senior stakeholders."
+        },
+        {
+          "source_id": "e23:0:172",
+          "quote": "Led automation and process improvement initiatives that improved operational efficiency by 20%, reduced manual intervention, and enhanced Straight Through Processing (STP)."
+        },
+        {
+          "source_id": "e24:0:163",
+          "quote": "Reviewed and validated Management Fee and Performance Fee calculations, investigating exceptions and coordinating with relevant stakeholders for timely resolution."
+        },
+        {
+          "source_id": "e25:0:157",
+          "quote": "Utilized SmartStream TLM to monitor reconciliations, investigate operational exceptions, resolve trade breaks, and improve Straight Through Processing (STP)."
+        },
+        {
+          "source_id": "e26:0:135",
+          "quote": "Maintained and validated Standing Settlement Instructions (SSI) to support accurate settlement processing and mitigate settlement risk."
+        },
+        {
+          "source_id": "e27:0:173",
+          "quote": "Supported end-to-end trade lifecycle activities by partnering with Front Office, Middle Office, Custody, Fund Accounting, and Technology teams to resolve operational issues."
+        },
+        {
+          "source_id": "e28:0:166",
+          "quote": "Conducted pre-settlement validations and ensured accurate processing of Corporate Action entitlements while adhering to internal controls and regulatory requirements."
+        },
+        {
+          "source_id": "e29:0:153",
+          "quote": "Participated in process improvement initiatives that enhanced operational efficiency, reduced manual intervention, and strengthened operational controls."
+        },
+        {
+          "source_id": "e30:0:118",
+          "quote": "Achieved 98% query resolution within 24 hours while maintaining zero operational losses during critical market events."
+        },
+        {
+          "source_id": "e31:0:714",
+          "quote": "Trade Settlements Analyst May 2022 – November 2022 Accenture Processed Hong Kong Equity trade settlements for global investment banking clients. Managed settlement processing, trade validation, reconciliation, and settlement monitoring activities. Investigated settlement failures, unmatched trades, and booking discrepancies. Coordinated with brokers, custodians, and internal Operations teams to resolve settlement exceptions within SLA. Performed exception management and operational risk mitigation, contributing to a 15% reduction in settlement failures. Improved settlement turnaround by 10% through proactive monitoring and issue resolution. Bengaluru Middle Office Analyst – Hedge Funds May 2020 – May 2022"
+        },
+        {
+          "source_id": "e32:0:12",
+          "quote": "State Street"
+        },
+        {
+          "source_id": "e33:0:9",
+          "quote": "Hyderabad"
+        },
+        {
+          "source_id": "e34:0:107",
+          "quote": "Supported end-to-end Trade Lifecycle Management across Equities, Fixed Income, FX, and Hedge Fund products."
+        },
+        {
+          "source_id": "e35:0:97",
+          "quote": "Performed trade processing, trade validation, settlement support, and lifecycle event management."
+        },
+        {
+          "source_id": "e36:0:121",
+          "quote": "Worked closely with Fund Accounting, NAV, Pricing, Custody, and Client Service teams to ensure accurate trade processing."
+        },
+        {
+          "source_id": "e37:0:104",
+          "quote": "Performed cash and position reconciliations while investigating trade breaks and operational exceptions."
+        },
+        {
+          "source_id": "e38:0:97",
+          "quote": "Supported trade booking validation and settlement monitoring across multiple investment products."
+        },
+        {
+          "source_id": "e39:0:118",
+          "quote": "Coordinated with Portfolio Managers, Traders, Custodians, and global Operations teams to resolve trade-related issues."
+        },
+        {
+          "source_id": "e40:0:91",
+          "quote": "Automated operational reporting and workflow improvements, reducing processing time by 25%."
+        },
+        {
+          "source_id": "e41:0:85",
+          "quote": "Maintained 100% trade booking accuracy while ensuring adherence to internal controls."
+        },
+        {
+          "source_id": "e42:0:142",
+          "quote": "Supported NAV preparation, validation, and release activities, ensuring timely portfolio valuation and coordination with Fund Accounting teams"
+        },
+        {
+          "source_id": "e43:0:158",
+          "quote": "Performed Management Fee and Performance Fee calculations, validation, and exception resolution in accordance with fund documentation and client requirements."
+        },
+        {
+          "source_id": "e44:0:145",
+          "quote": "Utilized SmartStream TLM to monitor reconciliations, investigate exceptions, resolve trade breaks, and improve Straight Through Processing (STP)."
+        },
+        {
+          "source_id": "e45:0:138",
+          "quote": "Maintained and validated Standing Settlement Instructions (SSI) to ensure accurate settlement processing and minimize settlement failures."
+        },
+        {
+          "source_id": "e46:0:153",
+          "quote": "Worked closely with Fund Accounting, Custody, Pricing, and Operations teams to resolve NAV, reconciliation, and settlement-related exceptions within SLA."
+        },
+        {
+          "source_id": "e47:0:49",
+          "quote": "Corporate Actions Analyst\tOctober 2018 – May 2020"
+        },
+        {
+          "source_id": "e48:0:19",
+          "quote": "Wipro Limited (UBS)"
+        },
+        {
+          "source_id": "e49:0:9",
+          "quote": "Hyderabad"
+        },
+        {
+          "source_id": "e50:0:80",
+          "quote": "Processed Mandatory and Voluntary Corporate Action events across global markets."
+        },
+        {
+          "source_id": "e51:0:81",
+          "quote": "Reviewed and interpreted SWIFT MT564, MT566, and MT568 Corporate Action messages."
+        },
+        {
+          "source_id": "e52:0:91",
+          "quote": "Processed Dividends, Rights Issues, Tender Offers, Bonus Issues, Stock Splits, and Mergers."
+        },
+        {
+          "source_id": "e53:0:125",
+          "quote": "Performed entitlement validation, event elections, booking verification, reconciliation, and operational break investigation."
+        },
+        {
+          "source_id": "e54:0:158",
+          "quote": "Investigated operational exceptions, booking discrepancies, and entitlement breaks while ensuring timely resolution in accordance with operational procedures."
+        },
+        {
+          "source_id": "e55:0:106",
+          "quote": "Produced governance reports and KPI dashboards while ensuring compliance with global operating procedures."
+        }
+      ]
+    },
+    {
+      "category": "awards",
+      "label": "Awards and achievements",
+      "records": [
+        {
+          "record_id": "awards-1",
+          "source_ids": [
+            "e57:0:72",
+            "e58:0:70",
+            "e59:0:35",
+            "e60:0:43",
+            "e61:0:46",
+            "e62:0:39",
+            "e63:0:73",
+            "e64:0:54"
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "issuer",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "date",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "Unlabelled compound information requires source review."
+          ]
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e56:0:16",
+          "quote": "Key Achievements"
+        },
+        {
+          "source_id": "e57:0:72",
+          "quote": "Led a team of 6 analysts supporting global Corporate Actions processing."
+        },
+        {
+          "source_id": "e58:0:70",
+          "quote": "Improved operational efficiency by 20% through automation initiatives."
+        },
+        {
+          "source_id": "e59:0:35",
+          "quote": "Reduced settlement failures by 15%."
+        },
+        {
+          "source_id": "e60:0:43",
+          "quote": "Reduced operational processing time by 25%."
+        },
+        {
+          "source_id": "e61:0:46",
+          "quote": "Achieved 98% query resolution within 24 hours."
+        },
+        {
+          "source_id": "e62:0:39",
+          "quote": "Maintained 100% trade booking accuracy."
+        },
+        {
+          "source_id": "e63:0:73",
+          "quote": "Successfully managed critical market events with zero operational losses."
+        },
+        {
+          "source_id": "e64:0:54",
+          "quote": "Received Performer of the Month / Quarter recognition."
+        }
+      ]
+    },
+    {
+      "category": "skills",
+      "label": "Skills",
+      "records": [
+        {
+          "record_id": "skills",
+          "source_ids": [
+            "e66:0:29",
+            "e67:0:41",
+            "e68:0:21",
+            "e69:0:15",
+            "e70:0:24",
+            "e71:0:16",
+            "e72:0:26",
+            "e73:0:17",
+            "e74:0:15",
+            "e75:0:17",
+            "e76:0:22",
+            "e77:0:13",
+            "e78:0:13",
+            "e79:0:7",
+            "e80:0:12",
+            "e81:0:25",
+            "e82:0:30",
+            "e83:0:20",
+            "e84:0:27",
+            "e85:0:19",
+            "e86:0:23",
+            "e87:0:21",
+            "e88:0:20",
+            "e89:0:19",
+            "e90:0:17",
+            "e91:0:18",
+            "e92:0:7",
+            "e93:0:7",
+            "e94:0:9",
+            "e95:0:11",
+            "e96:0:11",
+            "e97:0:11",
+            "e98:0:11",
+            "e99:0:14"
+          ],
+          "attributes": [
+            {
+              "name": "technical_skills",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "tools_and_platforms",
+              "items": [
+                {
+                  "value": "Bloomberg",
+                  "evidence": [
+                    {
+                      "source_id": "e91:0:18",
+                      "quote": "Bloomberg"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Excel",
+                  "evidence": [
+                    {
+                      "source_id": "e99:0:14",
+                      "quote": "Excel"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "domain_and_functional",
+              "items": [
+                {
+                  "value": "Corporate Actions",
+                  "evidence": [
+                    {
+                      "source_id": "e67:0:41",
+                      "quote": "Corporate Actions"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Trade Lifecycle",
+                  "evidence": [
+                    {
+                      "source_id": "e72:0:26",
+                      "quote": "Trade Lifecycle"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "SWIFT",
+                  "evidence": [
+                    {
+                      "source_id": "e96:0:11",
+                      "quote": "SWIFT"
+                    },
+                    {
+                      "source_id": "e97:0:11",
+                      "quote": "SWIFT"
+                    },
+                    {
+                      "source_id": "e98:0:11",
+                      "quote": "SWIFT"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "soft_skills",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "all_skills",
+              "items": [
+                {
+                  "value": "Bloomberg",
+                  "evidence": [
+                    {
+                      "source_id": "e91:0:18",
+                      "quote": "Bloomberg"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Excel",
+                  "evidence": [
+                    {
+                      "source_id": "e99:0:14",
+                      "quote": "Excel"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Corporate Actions",
+                  "evidence": [
+                    {
+                      "source_id": "e67:0:41",
+                      "quote": "Corporate Actions"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Trade Lifecycle",
+                  "evidence": [
+                    {
+                      "source_id": "e72:0:26",
+                      "quote": "Trade Lifecycle"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "SWIFT",
+                  "evidence": [
+                    {
+                      "source_id": "e96:0:11",
+                      "quote": "SWIFT"
+                    },
+                    {
+                      "source_id": "e97:0:11",
+                      "quote": "SWIFT"
+                    },
+                    {
+                      "source_id": "e98:0:11",
+                      "quote": "SWIFT"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Investment Banking Operations",
+                  "evidence": [
+                    {
+                      "source_id": "e66:0:29",
+                      "quote": "Investment Banking Operations"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Corporate Actions (Mandatory & Voluntary)",
+                  "evidence": [
+                    {
+                      "source_id": "e67:0:41",
+                      "quote": "Corporate Actions (Mandatory & Voluntary)"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Securities Operations",
+                  "evidence": [
+                    {
+                      "source_id": "e68:0:21",
+                      "quote": "Securities Operations"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Asset Servicing",
+                  "evidence": [
+                    {
+                      "source_id": "e69:0:15",
+                      "quote": "Asset Servicing"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Middle Office Operations",
+                  "evidence": [
+                    {
+                      "source_id": "e70:0:24",
+                      "quote": "Middle Office Operations"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Trade Processing",
+                  "evidence": [
+                    {
+                      "source_id": "e71:0:16",
+                      "quote": "Trade Processing"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Trade Lifecycle Management",
+                  "evidence": [
+                    {
+                      "source_id": "e72:0:26",
+                      "quote": "Trade Lifecycle Management"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Trade Settlements",
+                  "evidence": [
+                    {
+                      "source_id": "e73:0:17",
+                      "quote": "Trade Settlements"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Fund Accounting",
+                  "evidence": [
+                    {
+                      "source_id": "e74:0:15",
+                      "quote": "Fund Accounting"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Income Processing",
+                  "evidence": [
+                    {
+                      "source_id": "e75:0:17",
+                      "quote": "Income Processing"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Cash & Stock Dividends",
+                  "evidence": [
+                    {
+                      "source_id": "e76:0:22",
+                      "quote": "Cash & Stock Dividends"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Rights Issues",
+                  "evidence": [
+                    {
+                      "source_id": "e77:0:13",
+                      "quote": "Rights Issues"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Tender Offers",
+                  "evidence": [
+                    {
+                      "source_id": "e78:0:13",
+                      "quote": "Tender Offers"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Mergers",
+                  "evidence": [
+                    {
+                      "source_id": "e79:0:7",
+                      "quote": "Mergers"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Stock Splits",
+                  "evidence": [
+                    {
+                      "source_id": "e80:0:12",
+                      "quote": "Stock Splits"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Reconciliation & Controls",
+                  "evidence": [
+                    {
+                      "source_id": "e81:0:25",
+                      "quote": "Reconciliation & Controls"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Cash & Position Reconciliation",
+                  "evidence": [
+                    {
+                      "source_id": "e82:0:30",
+                      "quote": "Cash & Position Reconciliation"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Exception Management",
+                  "evidence": [
+                    {
+                      "source_id": "e83:0:20",
+                      "quote": "Exception Management"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Operational Risk & Controls",
+                  "evidence": [
+                    {
+                      "source_id": "e84:0:27",
+                      "quote": "Operational Risk & Controls"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Root Cause Analysis",
+                  "evidence": [
+                    {
+                      "source_id": "e85:0:19",
+                      "quote": "Root Cause Analysis"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "STP Break Investigation",
+                  "evidence": [
+                    {
+                      "source_id": "e86:0:23",
+                      "quote": "STP Break Investigation"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Regulatory Compliance",
+                  "evidence": [
+                    {
+                      "source_id": "e87:0:21",
+                      "quote": "Regulatory Compliance"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Governance Reporting",
+                  "evidence": [
+                    {
+                      "source_id": "e88:0:20",
+                      "quote": "Governance Reporting"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "KPI & MIS Reporting",
+                  "evidence": [
+                    {
+                      "source_id": "e89:0:19",
+                      "quote": "KPI & MIS Reporting"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Financial Systems",
+                  "evidence": [
+                    {
+                      "source_id": "e90:0:17",
+                      "quote": "Financial Systems"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Bloomberg Terminal",
+                  "evidence": [
+                    {
+                      "source_id": "e91:0:18",
+                      "quote": "Bloomberg Terminal"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Reuters",
+                  "evidence": [
+                    {
+                      "source_id": "e92:0:7",
+                      "quote": "Reuters"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Aladdin",
+                  "evidence": [
+                    {
+                      "source_id": "e93:0:7",
+                      "quote": "Aladdin"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Euroclear",
+                  "evidence": [
+                    {
+                      "source_id": "e94:0:9",
+                      "quote": "Euroclear"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Clearstream",
+                  "evidence": [
+                    {
+                      "source_id": "e95:0:11",
+                      "quote": "Clearstream"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "SWIFT MT564",
+                  "evidence": [
+                    {
+                      "source_id": "e96:0:11",
+                      "quote": "SWIFT MT564"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "SWIFT MT566",
+                  "evidence": [
+                    {
+                      "source_id": "e97:0:11",
+                      "quote": "SWIFT MT566"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "SWIFT MT568",
+                  "evidence": [
+                    {
+                      "source_id": "e98:0:11",
+                      "quote": "SWIFT MT568"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Advanced Excel",
+                  "evidence": [
+                    {
+                      "source_id": "e99:0:14",
+                      "quote": "Advanced Excel"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e65:0:11",
+          "quote": "CORE SKILLS"
+        }
+      ]
+    }
+  ]
+}
