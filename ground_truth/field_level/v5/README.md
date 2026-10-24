@@ -1,0 +1,3 @@
+# Field references v5
+
+Group 02: five explicit employment header decisions by reviewer `manjunath-muruga` accepted for Aditya (company, role, start_date, end_date, duration). Location A069 remains ambiguous, preserved verbatim under uncertainty/ and excluded from scoring. Earlier 12 labels and provenance remain unchanged: six Group 01 decisions and six prior Manjunath expectations. Total 17 partial expected fields (Aditya 8, Manjunath 9), not whole-resume approval. 218 other worksheet rows remain pending. Quotes checked against frozen blocks and record ownership, not a fresh visual PDF review. Previous versions remain unchanged.

@@ -1,0 +1,63 @@
+.........FF....F                                                         [100%]
+=================================== FAILURES ===================================
+__________________ test_failed_chunk_rolls_back_entire_review __________________
+
+    def test_failed_chunk_rolls_back_entire_review():
+     req,sec=fixture();before=deepcopy(sec);calls=[]
+     def transport(cfg,msg):
+      calls.append(msg)
+      if len(calls)==2:raise RuntimeError('synthetic failure')
+      return respond(msg)
+     result=review_sections(req,sec,settings=settings(max_units=2),transport=transport)
+     assert result.metadata['llm_review']['status']=='failed' and result.metadata['llm_review']['local_result_retained']
+>    assert result.sections==before.sections and not validate_result(req.elements,result)
+E    AssertionError: assert ([ResumeSectio...le_blocks=[])] == [ResumeSectio...le_blocks=[])]
+E      
+E      Use -v to get more diff and not ['canonical_text_mismatch'])
+E     +  where ['canonical_text_mismatch'] = validate_result([ExtractedElement(type='NarrativeText', text='Built services with SQL. 0', page_number=1, metadata={}), ExtractedEleme...tadata={}), ExtractedElement(type='NarrativeText', text='Built services with SQL. 5', page_number=2, metadata={}), ...], SectionResponse(status='provisional', extraction_verified=False, sections=[ResumeSection(category='experience', label=...t complete. Retry or inspect the server configuration. All local blocks and unassigned text were retained unchanged.']))
+E     +    where [ExtractedElement(type='NarrativeText', text='Built services with SQL. 0', page_number=1, metadata={}), ExtractedEleme...tadata={}), ExtractedElement(type='NarrativeText', text='Built services with SQL. 5', page_number=2, metadata={}), ...] = SectionRequest(elements=[ExtractedElement(type='NarrativeText', text='Built services with SQL. 0', page_number=1, meta...ement(type='NarrativeText', text='Built services with SQL. 7', page_number=2, metadata={})], extraction_verified=False).elements
+
+tests/test_review_chunking.py:66: AssertionError
+------------------------------ Captured log call -------------------------------
+WARNING  local_api.services.llm_section_review:llm_section_review.py:377 DeepSeek review did not complete: review_failed
+_______________ test_context_only_assignment_and_record_anchors ________________
+
+    def test_context_only_assignment_and_record_anchors():
+     req,sec=fixture(4);sec.sections[0].entries[0].fields={'employer':[0]}
+     c=section_plan(req,sec,settings(max_units=1))['chunks'][1]
+>    ctx=json.loads(c['messages'][1]['content'])['context'];assert ctx[0]['source_id']=='e0:0:25'
+                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E    AssertionError: assert 'e0:0:26' == 'e0:0:25'
+E      
+E      - e0:0:25
+E      ?       ^
+E      + e0:0:26
+E      ?       ^
+
+tests/test_review_chunking.py:73: AssertionError
+__________ test_audit_coverage_acknowledgement_and_incomplete_failure __________
+
+    def test_audit_coverage_acknowledgement_and_incomplete_failure():
+>    req,sec=fixture(2);schema=map_schema(SchemaMappingRequest(elements=req.elements,sections=sec,source='fixture')).model_dump(mode='json')
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_review_chunking.py:110: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+request = SchemaMappingRequest(elements=[ExtractedElement(type='NarrativeText', text='Built services with SQL. 0', page_number=1..._reasons=[])], source_heading=None, readable_blocks=[])], needs_review=[], metadata={}, warnings=[]), source='fixture')
+
+    def map_schema(request):
+        # Fail closed on stale/altered/overlapping source intervals or foreign fields.
+        if sum(len(s.blocks) for s in request.sections.sections)+len(request.sections.needs_review)>10000:
+            raise ValueError('Too many section blocks')
+        errors=validate_result(request.elements,request.sections)
+>       if errors:raise ValueError('Sections are not bound to the supplied source inventory')
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       ValueError: Sections are not bound to the supplied source inventory
+
+local_api/services/schema_mapping.py:45: ValueError
+=========================== short test summary info ============================
+FAILED tests/test_review_chunking.py::test_failed_chunk_rolls_back_entire_review
+FAILED tests/test_review_chunking.py::test_context_only_assignment_and_record_anchors
+FAILED tests/test_review_chunking.py::test_audit_coverage_acknowledgement_and_incomplete_failure
+3 failed, 13 passed in 6.18s

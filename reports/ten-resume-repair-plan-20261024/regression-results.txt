@@ -1,0 +1,27 @@
+FF.....                                                                  [100%]
+=================================== FAILURES ===================================
+___________ test_responsibility_continuation_is_not_company_evidence ___________
+
+    def test_responsibility_continuation_is_not_company_evidence():
+        text='delivering high-integrity data feeds to downstream Fund accounting systems.'
+        kinds=field_kinds(text,'experience')
+>       assert 'responsibilities' in kinds and 'employer' not in kinds
+E       AssertionError: assert ('responsibilities' in ['employer'])
+
+reports/ten-resume-repair-plan-20261024/tests/test_confirmed_defects.py:13: AssertionError
+__________ test_hierarchy_only_progress_changes_feedback_fingerprint ___________
+
+    def test_hierarchy_only_progress_changes_feedback_fingerprint():
+        sections=SectionResponse(status='provisional',sections=[],needs_review=[],metadata={},warnings=[])
+        before={'data':{},'section_schemas':[{'category':'experience','records':[]}]}
+        after=deepcopy(before);after['section_schemas'][0]['records']=[{'record_id':'experience-1','attributes':[]}]
+>       assert fingerprint(sections,before)!=fingerprint(sections,after)
+E       AssertionError: assert 'b87cf1caae40e4ec27f1e92d3a323949ed8e7a27f5e16e914191bbd21253d093' != 'b87cf1caae40e4ec27f1e92d3a323949ed8e7a27f5e16e914191bbd21253d093'
+E        +  where 'b87cf1caae40e4ec27f1e92d3a323949ed8e7a27f5e16e914191bbd21253d093' = fingerprint(SectionResponse(status='provisional', extraction_verified=False, sections=[], needs_review=[], metadata={}, warnings=[]), {'data': {}, 'section_schemas': [{'category': 'experience', 'records': []}]})
+E        +  and   'b87cf1caae40e4ec27f1e92d3a323949ed8e7a27f5e16e914191bbd21253d093' = fingerprint(SectionResponse(status='provisional', extraction_verified=False, sections=[], needs_review=[], metadata={}, warnings=[]), {'data': {}, 'section_schemas': [{'category': 'experience', 'records': [{'record_id': 'experience-1', 'attributes': []}]}]})
+
+reports/ten-resume-repair-plan-20261024/tests/test_confirmed_defects.py:19: AssertionError
+=========================== short test summary info ============================
+FAILED reports/ten-resume-repair-plan-20261024/tests/test_confirmed_defects.py::test_responsibility_continuation_is_not_company_evidence
+FAILED reports/ten-resume-repair-plan-20261024/tests/test_confirmed_defects.py::test_hierarchy_only_progress_changes_feedback_fingerprint
+2 failed, 5 passed in 0.15s

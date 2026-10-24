@@ -53,10 +53,10 @@ DATE = r'(?:' + MONTH + r'\.?\s+(?:19|20)\d{2}|(?:19|20)\d{2}(?:[-/]\d{1,2})?|\d
 RANGE = re.compile(r'(?<![\w/])(' + DATE + r')\s*(?:[-\u2013\u2014]|\bto\b|\btill\b|\buntil\b)\s*(' + DATE + r'|Present|Current(?:ly working)?|Till Date|Now)(?!\w)', re.I)
 
 
-ROLE = re.compile(r'\b(?:engineer|developer|analyst|consultant|architect|manager|specialist|scientist|associate|director|administrator|officer|executive|intern|underwriter)\b', re.I)
+ROLE = re.compile(r'\b(?:engineer|developer|analyst|consultant|architect|manager|specialist|scientist|associate|director|administrator|officer|executive|intern|underwriter|supervisor)\b', re.I)
 
 
-ACTION = re.compile(r'^(?:[\u2022*\-]\s*)?(?:led|built|developed|implemented|configured|prepared|managed|conducted|supported|translated|partnered|owned|drove|validated|participated|facilitated|engaged|created|designed|acted|worked|engineered|responsible|interact|analy[sz]e|ensure|drive|collaborate|assist|coordinate|conduct|perform|create|own|manage|document|maintain|design|develop|implement|translate|prepare|gather|capture|handle|support|lead(?!\s+(?:business|software|data|engineer|analyst|developer|consultant)\b)|work(?=\s+(?:with|on|closely|across|in)\b))\b', re.I)
+ACTION = re.compile(r'^(?:[\u2022*\-]\s*)?(?:led|built|developed|implemented|configured|prepared|managed|conducted|supported|translated|partnered|owned|drove|validated|participated|facilitated|engaged|expanded|created|designed|acted|worked|engineered|responsible|interact|analy[sz]e|ensure|drive|collaborate|assist|coordinate|conduct|perform|create|own|manage|document|maintain|design|develop|implement|translate|prepare|gather|capture|handle|support|took(?=\s+(?:a\s+)?lead\b)|lead(?!\s+(?:business|software|data|engineer|analyst|developer|consultant)\b)|work(?=\s+(?:with|on|closely|across|in)\b))\b', re.I)
 PLACE = re.compile(r'^(?:(?:Chennai|Bangalore|Bengaluru|Pune|Mumbai|Hyderabad|Noida|Delhi|London|Paris|Remote)(?:,\s*[^|]+)?|[^|,]+,\s*(?:India|France|UK|USA))$', re.I)
 
 

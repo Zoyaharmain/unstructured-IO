@@ -1,0 +1,158 @@
+{
+  "status": "complete",
+  "findings": [
+    {
+      "field": "data.experience[0].role",
+      "issue": "Role misassigned: field contains a job title from the first employer's header but the same record omits the actual company 'Bounteous x Accolite', which is present in source. Header block was split so company never populated.",
+      "source_ids": [
+        "e6:24:50",
+        "e8:0:20"
+      ]
+    },
+    {
+      "field": "data.experience[1].role",
+      "issue": "Invented/misplaced role: value is the responsibility bullet 'Established PMO frameworks...' rather than a job title; this bullet belongs to the Bounteous experience, not a separate role. No source title supports this.",
+      "source_ids": [
+        "e10:252:379"
+      ]
+    },
+    {
+      "field": "data.experience[1]",
+      "issue": "Fabricated experience record: second entry created from a continuation bullet with no distinct employer, title, or dates in source; duplicates Bounteous x Accolite tenure.",
+      "source_ids": [
+        "e10:252:379",
+        "e8:0:20"
+      ]
+    },
+    {
+      "field": "data.experience[*].company",
+      "issue": "Omission: companies 'Bounteous x Accolite', 'Infrasoft Technologies', and 'Tech Mahindra' appear in source but all company fields are empty.",
+      "source_ids": [
+        "e8:0:20",
+        "e13:0:22",
+        "e17:0:13"
+      ]
+    },
+    {
+      "field": "data.experience[*].start_date / end_date",
+      "issue": "Omission: date ranges 'Nov '20 - Present', 'Feb '19 - Nov '20', 'Aug '16 - Oct '18' are present in source but all date fields are null.",
+      "source_ids": [
+        "e7:0:17",
+        "e12:0:19",
+        "e16:0:19"
+      ]
+    },
+    {
+      "field": "data.experience[2].responsibilities[5]",
+      "issue": "Location contamination: 'Mumbai, IN' appended to a responsibility bullet instead of being mapped to location.",
+      "source_ids": [
+        "e14:720:731",
+        "e14:638:720"
+      ]
+    },
+    {
+      "field": "data.experience[2].location",
+      "issue": "Omission: 'Mumbai, IN' location for Infrasoft role present in source but location field null.",
+      "source_ids": [
+        "e14:720:731"
+      ]
+    },
+    {
+      "field": "data.education[0].grade_or_gpa",
+      "issue": "Wrong relationship: '8.5' belongs to 'IMT Ghaziabad, PG Program in Management', not to Liverpool John Moores University MBA. Degree/grade cross-attributed across distinct entries.",
+      "source_ids": [
+        "e28:0:44",
+        "e26:0:62"
+      ]
+    },
+    {
+      "field": "data.education[0].start_year / graduation_year",
+      "issue": "Omission: '2022 – 2023' dates for Liverpool John Moores MBA present in source but year fields null.",
+      "source_ids": [
+        "e26:0:62"
+      ]
+    },
+    {
+      "field": "data.education",
+      "issue": "Omission: 'PG Program in Management' at IMT Ghaziabad (2021–2022) exists in source but no education entry created for it; its CGPA 8.5 was misattributed to the MBA.",
+      "source_ids": [
+        "e27:0:24",
+        "e28:0:44"
+      ]
+    },
+    {
+      "field": "data.education[0].degree",
+      "issue": "Degree inflation: source reads 'Executive MBA – Data Analytics'; schema records 'MBA' dropping 'Executive'.",
+      "source_ids": [
+        "e25:10:40"
+      ]
+    },
+    {
+      "field": "data.certifications[0].name",
+      "issue": "Omission: five certifications in source ('PMP – PMI', 'IBM AI Developer Professional Certificate', 'CXL Adobe Analytics Certification', 'CXL Product Analytics Certification', 'Python Industrial Training') but a single empty certification record was produced.",
+      "source_ids": [
+        "e31:17:60",
+        "e31:63:104",
+        "e31:107:140",
+        "e31:143:178",
+        "e31:181:207"
+      ]
+    },
+    {
+      "field": "data.projects[1].name / [2].name / [5].name",
+      "issue": "Invented project names: responsibility bullets ('Delivered onboarding, payments, cheque processing capabilities.', 'Improved release planning...', 'Administered roadmap execution...') were promoted to project names, fragmenting the Qatar Islamic Bank and Sun Life projects.",
+      "source_ids": [
+        "e20:0:63",
+        "e20:306:396",
+        "e23:289:360"
+      ]
+    },
+    {
+      "field": "data.projects[0].description",
+      "issue": "Incomplete description: Qatar Islamic Bank project bullets split out into separate fabricated project records instead of remaining under the single project.",
+      "source_ids": [
+        "e19:9:87",
+        "e19:87:109"
+      ]
+    },
+    {
+      "field": "data.languages",
+      "issue": "Omission: language 'Punjabi' present in source ('English, Hindi, Punjabi') but only English and Hindi extracted.",
+      "source_ids": [
+        "e33:25:59"
+      ]
+    },
+    {
+      "field": "data.skills.technical_skills",
+      "issue": "Misclassification: 'Leadership' is a soft skill but placed under soft_skills without it existing in source as a listed skill; source core competencies do not include 'Leadership' explicitly. Also 'Program Management' etc. appear only in all_skills.",
+      "source_ids": [
+        "e5:0:91",
+        "e5:91:189"
+      ]
+    },
+    {
+      "field": "data.skills.domain_and_functional",
+      "issue": "Omission: banking/payments domain competencies (Digital Banking, Payment Platforms, Core Banking Modernization, Fintech Solutions) present in source but domain_and_functional array empty.",
+      "source_ids": [
+        "e5:189:291"
+      ]
+    },
+    {
+      "field": "data.summary / total_experience_years",
+      "issue": "Qualifier dropped: summary states '9+ years'; schema records total_experience_years as exact 9.0, losing the lower-bound qualifier.",
+      "source_ids": [
+        "e2:8:140"
+      ]
+    },
+    {
+      "field": "data.contact.phone",
+      "issue": "Omission of key achievements: 'KEY ACHIEVEMENTS' block (15+ programs, 30% OCR reduction, 25% conversion) and 'AWARDS' block are unrepresented in schema data.",
+      "source_ids": [
+        "e4:0:92",
+        "e4:95:168",
+        "e4:171:248",
+        "e32:7:101"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,142 @@
+{
+  "pass": 2,
+  "section_review": {
+    "provider": "DeepSeek",
+    "status": "complete",
+    "reviewed_units": 84,
+    "changed_units": 0,
+    "resolved_units": 0,
+    "local_result_retained": false,
+    "provider_calls": 1,
+    "model": "deepseek-flash",
+    "invalid_response_attempts": [],
+    "resolution_status": "all_meaningful_text_assigned",
+    "all_meaningful_text_assigned": true,
+    "remaining_meaningful_review_units": 0,
+    "pass_count": 1,
+    "split_units": 0,
+    "remaining_review_units": 0
+  },
+  "audit_status": "complete",
+  "unresolved_meaningful_spans": 0,
+  "missing_required_fields": [],
+  "schema_findings": [
+    {
+      "field": "data.experience[0].responsibilities",
+      "issue": "Sentence fragments from source layout breaks are stored as separate responsibilities (e.g. 'Translated complex', 'regulatory updates', 'into detailed', 'field-level'), fragmenting what appears to be one or two sentences; 'regulatory updates into detailed field-level' gaps are not attached to any evidence and read as orphaned fragments.",
+      "source_ids": [
+        "e15:0:18",
+        "e16:0:11",
+        "e16:11:94",
+        "e16:94:129",
+        "e17:0:18",
+        "e18:0:13",
+        "e19:0:11"
+      ]
+    },
+    {
+      "field": "data.experience[1].responsibilities",
+      "issue": "Fragments split across lines are stored as separate bullets ('Drove BA scope...' and 'Designed validation rules...' each truncated at line end, with continuations 'delivering high-integrity data feeds...','reduce operational risk...' stored as peers rather than joined); several continuation fragments omitted entirely (e.g. 'and' trailing 'Designed validation rules... and').",
+      "source_ids": [
+        "e23:0:78",
+        "e24:0:75",
+        "e25:0:82",
+        "e26:0:49",
+        "e27:0:80",
+        "e28:0:58"
+      ]
+    },
+    {
+      "field": "data.experience[2].responsibilities",
+      "issue": "First responsibility fragmented into 'Owned','the','functional','integrity of reference data and SSI setups, driving' as separate items rather than one sentence; likewise 'Reconciled accrued interest... static data system' and 'setup to prevent settlement/NAV impacts.' split, dropping the middle clause 'against downstream accounting/settlement systems; corrected day-count and coupon ' which is unmapped.",
+      "source_ids": [
+        "e33:0:5",
+        "e34:0:3",
+        "e35:0:10",
+        "e36:0:51",
+        "e37:0:68",
+        "e38:0:83",
+        "e38:83:164",
+        "e38:164:204"
+      ]
+    },
+    {
+      "field": "data.experience[3].responsibilities",
+      "issue": "Source bullet 'Ensured intraday prices for securities are fed into downstream Fund accounting platforms to drive daily NAV accounting and prevent discrepancies in financial reporting.' is present in source but absent from the parsed responsibilities list; only later bullets are captured.",
+      "source_ids": [
+        "e43:0:79",
+        "e43:79:158",
+        "e43:158:168"
+      ]
+    },
+    {
+      "field": "data.skills.technical_skills",
+      "issue": "Technical skills list only contains 'SQL'; other tools/languages from source (e.g. Excel, JIRA, SharePoint, Confluence, HP ALM) are classified as tools_and_platforms, leaving technical_skills under-populated relative to the 'Technical & Data Tools' label in source.",
+      "source_ids": [
+        "e9:0:83",
+        "e10:0:66"
+      ]
+    },
+    {
+      "field": "data.skills.domain_and_functional",
+      "issue": "Domain expertise list only contains 'ISO 20022' and 'SWIFT' (which are standards, not domain expertise per source), while actual domain expertise items (Trade Lifecycle, Reference Data Management, Pricing, Corporate actions, EMIR, Data Reconciliation, clearing, custody, settlement) are missing from this field.",
+      "source_ids": [
+        "e8:67:148",
+        "e8:148:231",
+        "e8:231:274",
+        "e11:0:55"
+      ]
+    },
+    {
+      "field": "data.skills.all_skills",
+      "issue": "Mixed granularity: both 'SQL' and 'SQL (Data validation & extraction)' appear, both 'Excel' and 'Excel (advanced)', plus fragment tokens 'actions' and 'clearing' extracted from sentence context rather than as discrete skills; duplicates risk inconsistent downstream matching.",
+      "source_ids": [
+        "e8:148:231",
+        "e8:231:274",
+        "e9:0:83"
+      ]
+    },
+    {
+      "field": "data.education[0].graduation_year",
+      "issue": "Year '2011' is correctly sourced, but start_year unresolved while an MBA alongside a 2009 bachelor's implies a plausible start year; unresolved is acceptable, no invented value — flagged only to note the sequence is consistent.",
+      "source_ids": [
+        "e50:0:44"
+      ]
+    },
+    {
+      "field": "data.experience[0].end_date",
+      "issue": "PwC end date January 2024 followed by BNP Paribas ISPL end date May 2022 creates a chronological overlap in some readers' eyes order — actually order is PwC (2022-2024) then BNP (2019-2022), chronological reverse; no conflict, but note that reverse-chronological ordering across entries is intact. No date invention detected.",
+      "source_ids": [
+        "e13:0:65",
+        "e22:0:75"
+      ]
+    },
+    {
+      "field": "data.total_experience_years",
+      "issue": "Summary states '4+ years in requirements and Agile delivery, built on 8+ years in financial operations' — total_experience_years is null; combined tenure (~12+ years) is derivable but not asserted, so no invented value. Noting only that the field is unresolved while summary provides a split figure.",
+      "source_ids": [
+        "e4:0:92"
+      ]
+    },
+    {
+      "field": "data.experience[2].responsibilities",
+      "issue": "Last responsibility omits the source fragment '...corporate actions in' / 'collaboration with external vendors.' split ('Resolved data mismatches...corporate actions in' stored but 'collaboration with external vendors.' stored separately as its own bullet).",
+      "source_ids": [
+        "e39:0:81",
+        "e40:0:36"
+      ]
+    },
+    {
+      "field": "data.professional_title",
+      "issue": "Title 'Senior Business Analyst | Financial Markets' matches source subtitle, fine; but summary claims BA experience '4+ years' while earliest BA role listed (Barclays Senior Reference Data Analyst, 2015) is not a BA title and BA-titled roles begin July 2019 — a 4+ year BA claim from 2019 is plausible (~4.5 yrs to Jan 2024), no invented value but flagged for consistency.",
+      "source_ids": [
+        "e0:18:61",
+        "e4:0:92",
+        "e22:0:75",
+        "e13:0:65"
+      ]
+    }
+  ],
+  "fingerprint": "a71bfda6506b8747f16d415154546799d3363e642d37b37ac8e03ecc48bb8c1a",
+  "previous_valid_result_retained": false
+}

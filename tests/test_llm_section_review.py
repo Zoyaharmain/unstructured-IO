@@ -98,7 +98,8 @@ def test_invalid_reply_never_partially_changes_local_blocks(document, content):
 @pytest.mark.parametrize('settings, expected', [
     (review.ReviewSettings(), 'disabled'),
     (review.ReviewSettings(enabled=True), 'not_configured'),
-    (configured(max_units=2), 'failed'),
+    # Valid small budgets now chunk; an invalid zero budget still sends nothing.
+    (configured(max_units=0), 'failed'),
     (configured(max_input_chars=50), 'failed'),
     (configured(base_url='http://example.com'), 'failed'),
     (configured(base_url='https://user:secret@example.com'), 'failed'),

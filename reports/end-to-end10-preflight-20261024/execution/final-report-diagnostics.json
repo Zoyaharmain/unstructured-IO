@@ -1,0 +1,1080 @@
+[
+  {
+    "file": "Aditya vashisth.pdf",
+    "source_elements": 53,
+    "initial_unresolved_meaningful_spans": 17,
+    "final_unresolved_meaningful_spans": 0,
+    "feedback_passes": 2,
+    "stop_reason": "recovery_budget_exhausted",
+    "missing_required_legacy_fields": [],
+    "final_audit": {
+      "status": "complete",
+      "findings": [
+        {
+          "field": "data.education[0].start_year",
+          "issue": "Source 'Guru Gobind Singh Indraprastha University, Delhi | 2018 - 21' denotes a range 2018-2021; mapping only 2018 as start_year and leaving graduation_year null drops the 21 completion year.",
+          "source_ids": [
+            "e12:507:567"
+          ]
+        },
+        {
+          "field": "data.education[1].start_year",
+          "issue": "Source 'Guru Gobind Singh Indraprastha University, Delhi | 2013 - 17' denotes a range 2013-2017; mapping only 2013 as start_year and leaving graduation_year null drops the 17 completion year.",
+          "source_ids": [
+            "e20:90:150"
+          ]
+        },
+        {
+          "field": "data.experience[0].responsibilities[1]",
+          "issue": "Starts mid-sentence at 'roles (AssistantAgent...' — the leading clause 'Architect and implement multi-agent conversational systems with specialized agent' was dropped, producing a fragment.",
+          "source_ids": [
+            "e14:0:81",
+            "e14:81:155"
+          ]
+        },
+        {
+          "field": "data.experience[0].responsibilities[6]",
+          "issue": "Responsibility reduced to 'embedding generation', omitting the source line 'Architect data processing pipelines for content extraction, transformation, and embedding generation' — incomplete/invented truncation.",
+          "source_ids": [
+            "e19:0:79",
+            "e19:79:99"
+          ]
+        },
+        {
+          "field": "data.experience[0].responsibilities[3]",
+          "issue": "Bullet merges a separate section heading 'Technical Architecture & Implementation:' into the RAG responsibility text.",
+          "source_ids": [
+            "e16:0:75",
+            "e16:75:134",
+            "e16:134:174"
+          ]
+        },
+        {
+          "field": "data.experience[0].responsibilities[0]",
+          "issue": "Source skill list cites OpenAI GPT-4o; this responsibility cites GPT-3.5-Turbo (source-supported) but the schema lists GPT-4o skill while experience uses 3.5 — verify consistency; also LangChain reference appears cut at 'LangChain.'",
+          "source_ids": [
+            "e13:0:81",
+            "e13:81:102",
+            "e1:0:37"
+          ]
+        },
+        {
+          "field": "data.experience[0].responsibilities",
+          "issue": "First employment bullet group begins with heading 'Generative AI & Multi-Agent Systems Leadership:' which was not mapped as a responsibility and appears in no field.",
+          "source_ids": [
+            "e12:721:768"
+          ]
+        },
+        {
+          "field": "data.summary",
+          "issue": "Summary string is a run-together concatenation without spaces ('ProfileInnovative...specializing inGenerative...') and includes the literal section label 'Profile' as part of the summary text.",
+          "source_ids": [
+            "e12:57:64",
+            "e12:64:138",
+            "e12:138:210"
+          ]
+        },
+        {
+          "field": "data.summary / total_experience_years",
+          "issue": "Summary claims '8+ years of experience'; schema total_experience_years=8.0 is a lower-bound interpretation, not an exact computed figure.",
+          "source_ids": [
+            "e12:64:138"
+          ]
+        },
+        {
+          "field": "data.certifications[0].name",
+          "issue": "Certification record concatenates the section heading 'Certifications' plus all five certification names into a single name, duplicating the five individual certification records that follow.",
+          "source_ids": [
+            "e21:47:61",
+            "e21:61:311"
+          ]
+        },
+        {
+          "field": "data.skills.all_skills",
+          "issue": "Skill values are fragmented mid-phrase ('Microsoft', 'Retrieval-Augmented', 'Generation', 'Autonomous', 'Workflows', 'Conversational AI') rather than atomic skills; 'AWS and OpenAI API' and 'MySQL and Firestore' merge distinct items.",
+          "source_ids": [
+            "e3:0:33",
+            "e5:36:66",
+            "e5:66:76",
+            "e6:0:32",
+            "e9:40:59",
+            "e10:36:69"
+          ]
+        },
+        {
+          "field": "data.skills.technical_skills",
+          "issue": "MySQL mapped from a combined 'MySQL and Firestore' source span; Firestore dropped as a separate database skill present in source.",
+          "source_ids": [
+            "e10:36:69"
+          ]
+        },
+        {
+          "field": "data.projects[0].description",
+          "issue": "Project description concatenates the project name heading and duplicate bullet text; source block e29:12:72 repeated as both name and description start.",
+          "source_ids": [
+            "e29:12:72",
+            "e29:72:190"
+          ]
+        },
+        {
+          "field": "data.projects[1].description",
+          "issue": "Description repeats the project name 'HealthEdge Guiding Care Bot | Multi-Agent System' as part of the description text.",
+          "source_ids": [
+            "e35:133:182",
+            "e35:182:296"
+          ]
+        },
+        {
+          "field": "data.projects[3].description",
+          "issue": "Description embeds the name, 'GitHub:', and URL ('github.com/av525/essay-writer-langgraph') inline rather than isolating them; URL also duplicated in projects[3].url.",
+          "source_ids": [
+            "e44:73:119",
+            "e44:119:127",
+            "e45:0:39"
+          ]
+        },
+        {
+          "field": "data.projects[4].description",
+          "issue": "Description embeds the name, 'GitHub:', and URL inline; URL duplicated in projects[4].url.",
+          "source_ids": [
+            "e48:86:142",
+            "e48:142:149",
+            "e49:0:36"
+          ]
+        },
+        {
+          "field": "data.contact.phone",
+          "issue": "Source email block shows trailing period 'avmsv1996@gmail.com.'; phone/email extraction placed correctly but email value strips trailing period — minor, verify source support.",
+          "source_ids": [
+            "e20:164:184"
+          ]
+        },
+        {
+          "field": "data.contact.location",
+          "issue": "Source contains 'Technical' fragment (e0:31:41) unresolved; possible location or title qualifier omitted from structured fields.",
+          "source_ids": [
+            "e0:31:41"
+          ]
+        }
+      ]
+    },
+    "provider_requests": 3
+  },
+  {
+    "file": "_ManjunathMurugan.pdf",
+    "source_elements": 53,
+    "initial_unresolved_meaningful_spans": 1,
+    "final_unresolved_meaningful_spans": 0,
+    "feedback_passes": 2,
+    "stop_reason": "no_source_or_mapping_progress",
+    "missing_required_legacy_fields": [],
+    "final_audit": {
+      "status": "complete",
+      "findings": [
+        {
+          "field": "data.experience[0].responsibilities",
+          "issue": "Sentence fragments from source layout breaks are stored as separate responsibilities (e.g. 'Translated complex', 'regulatory updates', 'into detailed', 'field-level'), fragmenting what appears to be one or two sentences; 'regulatory updates into detailed field-level' gaps are not attached to any evidence and read as orphaned fragments.",
+          "source_ids": [
+            "e15:0:18",
+            "e16:0:11",
+            "e16:11:94",
+            "e16:94:129",
+            "e17:0:18",
+            "e18:0:13",
+            "e19:0:11"
+          ]
+        },
+        {
+          "field": "data.experience[1].responsibilities",
+          "issue": "Fragments split across lines are stored as separate bullets ('Drove BA scope...' and 'Designed validation rules...' each truncated at line end, with continuations 'delivering high-integrity data feeds...','reduce operational risk...' stored as peers rather than joined); several continuation fragments omitted entirely (e.g. 'and' trailing 'Designed validation rules... and').",
+          "source_ids": [
+            "e23:0:78",
+            "e24:0:75",
+            "e25:0:82",
+            "e26:0:49",
+            "e27:0:80",
+            "e28:0:58"
+          ]
+        },
+        {
+          "field": "data.experience[2].responsibilities",
+          "issue": "First responsibility fragmented into 'Owned','the','functional','integrity of reference data and SSI setups, driving' as separate items rather than one sentence; likewise 'Reconciled accrued interest... static data system' and 'setup to prevent settlement/NAV impacts.' split, dropping the middle clause 'against downstream accounting/settlement systems; corrected day-count and coupon ' which is unmapped.",
+          "source_ids": [
+            "e33:0:5",
+            "e34:0:3",
+            "e35:0:10",
+            "e36:0:51",
+            "e37:0:68",
+            "e38:0:83",
+            "e38:83:164",
+            "e38:164:204"
+          ]
+        },
+        {
+          "field": "data.experience[3].responsibilities",
+          "issue": "Source bullet 'Ensured intraday prices for securities are fed into downstream Fund accounting platforms to drive daily NAV accounting and prevent discrepancies in financial reporting.' is present in source but absent from the parsed responsibilities list; only later bullets are captured.",
+          "source_ids": [
+            "e43:0:79",
+            "e43:79:158",
+            "e43:158:168"
+          ]
+        },
+        {
+          "field": "data.skills.technical_skills",
+          "issue": "Technical skills list only contains 'SQL'; other tools/languages from source (e.g. Excel, JIRA, SharePoint, Confluence, HP ALM) are classified as tools_and_platforms, leaving technical_skills under-populated relative to the 'Technical & Data Tools' label in source.",
+          "source_ids": [
+            "e9:0:83",
+            "e10:0:66"
+          ]
+        },
+        {
+          "field": "data.skills.domain_and_functional",
+          "issue": "Domain expertise list only contains 'ISO 20022' and 'SWIFT' (which are standards, not domain expertise per source), while actual domain expertise items (Trade Lifecycle, Reference Data Management, Pricing, Corporate actions, EMIR, Data Reconciliation, clearing, custody, settlement) are missing from this field.",
+          "source_ids": [
+            "e8:67:148",
+            "e8:148:231",
+            "e8:231:274",
+            "e11:0:55"
+          ]
+        },
+        {
+          "field": "data.skills.all_skills",
+          "issue": "Mixed granularity: both 'SQL' and 'SQL (Data validation & extraction)' appear, both 'Excel' and 'Excel (advanced)', plus fragment tokens 'actions' and 'clearing' extracted from sentence context rather than as discrete skills; duplicates risk inconsistent downstream matching.",
+          "source_ids": [
+            "e8:148:231",
+            "e8:231:274",
+            "e9:0:83"
+          ]
+        },
+        {
+          "field": "data.education[0].graduation_year",
+          "issue": "Year '2011' is correctly sourced, but start_year unresolved while an MBA alongside a 2009 bachelor's implies a plausible start year; unresolved is acceptable, no invented value — flagged only to note the sequence is consistent.",
+          "source_ids": [
+            "e50:0:44"
+          ]
+        },
+        {
+          "field": "data.experience[0].end_date",
+          "issue": "PwC end date January 2024 followed by BNP Paribas ISPL end date May 2022 creates a chronological overlap in some readers' eyes order — actually order is PwC (2022-2024) then BNP (2019-2022), chronological reverse; no conflict, but note that reverse-chronological ordering across entries is intact. No date invention detected.",
+          "source_ids": [
+            "e13:0:65",
+            "e22:0:75"
+          ]
+        },
+        {
+          "field": "data.total_experience_years",
+          "issue": "Summary states '4+ years in requirements and Agile delivery, built on 8+ years in financial operations' — total_experience_years is null; combined tenure (~12+ years) is derivable but not asserted, so no invented value. Noting only that the field is unresolved while summary provides a split figure.",
+          "source_ids": [
+            "e4:0:92"
+          ]
+        },
+        {
+          "field": "data.experience[2].responsibilities",
+          "issue": "Last responsibility omits the source fragment '...corporate actions in' / 'collaboration with external vendors.' split ('Resolved data mismatches...corporate actions in' stored but 'collaboration with external vendors.' stored separately as its own bullet).",
+          "source_ids": [
+            "e39:0:81",
+            "e40:0:36"
+          ]
+        },
+        {
+          "field": "data.professional_title",
+          "issue": "Title 'Senior Business Analyst | Financial Markets' matches source subtitle, fine; but summary claims BA experience '4+ years' while earliest BA role listed (Barclays Senior Reference Data Analyst, 2015) is not a BA title and BA-titled roles begin July 2019 — a 4+ year BA claim from 2019 is plausible (~4.5 yrs to Jan 2024), no invented value but flagged for consistency.",
+          "source_ids": [
+            "e0:18:61",
+            "e4:0:92",
+            "e22:0:75",
+            "e13:0:65"
+          ]
+        }
+      ]
+    },
+    "provider_requests": 4
+  },
+  {
+    "file": "Chandan Kumar BV.pdf",
+    "source_elements": 30,
+    "initial_unresolved_meaningful_spans": 4,
+    "final_unresolved_meaningful_spans": 0,
+    "feedback_passes": 2,
+    "stop_reason": "no_source_or_mapping_progress",
+    "missing_required_legacy_fields": [
+      "experience[0].company",
+      "experience[1].role",
+      "education[2].institution",
+      "education[3].institution"
+    ],
+    "final_audit": {
+      "status": "complete",
+      "findings": [
+        {
+          "field": "contact.full_name",
+          "issue": "Full name is set to 'City', which is a field label, not the candidate's name; actual name 'Chandan kumar B V' appears in source but was not used",
+          "source_ids": [
+            "e3:0:4",
+            "e9:0:17"
+          ]
+        },
+        {
+          "field": "experience[0].company",
+          "issue": "Employer is empty though source states 'IndiaMART' as employer for the Senior Executive role",
+          "source_ids": [
+            "e28:0:9",
+            "e10:0:16",
+            "e26:0:18"
+          ]
+        },
+        {
+          "field": "experience[0].role",
+          "issue": "Role 'Senior Executive' attributed to experience-1, but the same role/employer appears to belong to a single IndiaMART entry; experience split may create a duplicate role attribution",
+          "source_ids": [
+            "e10:0:16",
+            "e27:0:16",
+            "e28:0:9"
+          ]
+        },
+        {
+          "field": "experience[1].company",
+          "issue": "Company contains a sentence fragment 'them face to face, explain about IndiaMart subscription plans and services' rather than the employer 'IndiaMART'; this is a responsibility statement misassigned as employer",
+          "source_ids": [
+            "e29:302:377",
+            "e28:0:9"
+          ]
+        },
+        {
+          "field": "experience[1]",
+          "issue": "Duplicate experience entry representing the same IndiaMART role as experience-1, with responsibilities ignored and instead split off as a second record",
+          "source_ids": [
+            "e27:0:16",
+            "e28:0:9",
+            "e29:0:71",
+            "e29:71:146",
+            "e29:146:224",
+            "e29:224:302"
+          ]
+        },
+        {
+          "field": "experience[0].responsibilities",
+          "issue": "Responsibilities for the IndiaMART role (field sales, calls, client meetings, onboarding) are present in source but left unresolved",
+          "source_ids": [
+            "e29:0:71",
+            "e29:71:146",
+            "e29:146:224",
+            "e29:224:302",
+            "e29:377:452",
+            "e29:452:523",
+            "e29:523:536"
+          ]
+        },
+        {
+          "field": "experience[0]",
+          "issue": "Duration/tenure '1 Year 5 Months' in source is not mapped to any experience record",
+          "source_ids": [
+            "e11:0:15"
+          ]
+        },
+        {
+          "field": "summary.total_experience_years",
+          "issue": "Source states 'over 1 year and 5 months' of experience, allowing a numeric value, but field left unresolved",
+          "source_ids": [
+            "e15:0:67",
+            "e11:0:15"
+          ]
+        },
+        {
+          "field": "education[1].degree",
+          "issue": "Degree field improperly includes graduation year 'B.Com, 2022' rather than degree alone, mixing degree and year attributes",
+          "source_ids": [
+            "e19:0:11"
+          ]
+        },
+        {
+          "field": "education[2].degree",
+          "issue": "Degree field '12th, 2019' includes graduation year; year is also separately stored, duplicating the year value within the degree string",
+          "source_ids": [
+            "e21:0:10"
+          ]
+        },
+        {
+          "field": "education[3].degree",
+          "issue": "Degree field '10th, 2016' includes graduation year; year is also separately stored, duplicating the year value within the degree string",
+          "source_ids": [
+            "e23:0:10"
+          ]
+        },
+        {
+          "field": "education[2].institution",
+          "issue": "Institution empty; source provides only 'Karnataka, Kannada' which is region/language, not an institution; unresolved may misrepresent that no institution exists",
+          "source_ids": [
+            "e21:0:10",
+            "e22:0:18"
+          ]
+        },
+        {
+          "field": "education[3].institution",
+          "issue": "Institution empty; source provides only 'Karnataka, Kannada' which is region/language, not an institution",
+          "source_ids": [
+            "e23:0:10",
+            "e24:0:18"
+          ]
+        },
+        {
+          "field": "contact.email",
+          "issue": "Email extracted as 'chandans1437@gmail.co' (missing final 'm'); source is split such that '.co' and ' m' spans must be joined to form the complete address",
+          "source_ids": [
+            "e13:0:21",
+            "e13:21:23"
+          ]
+        }
+      ]
+    },
+    "provider_requests": 4
+  },
+  {
+    "file": "Siva Mari.pdf",
+    "source_elements": 326,
+    "initial_unresolved_meaningful_spans": 6,
+    "final_unresolved_meaningful_spans": 0,
+    "feedback_passes": 1,
+    "stop_reason": "section_review_failed",
+    "missing_required_legacy_fields": [
+      "contact.phone",
+      "experience[0].company",
+      "experience[0].role",
+      "experience[2].company",
+      "experience[2].role",
+      "experience[3].role",
+      "experience[4].company",
+      "experience[4].role",
+      "experience[5].company",
+      "experience[6].company",
+      "experience[7].company",
+      "experience[8].company",
+      "experience[8].role",
+      "experience[9].role",
+      "experience[10].role",
+      "experience[11].role",
+      "experience[12].company",
+      "experience[12].role",
+      "experience[13].role",
+      "experience[14].company",
+      "experience[14].role",
+      "experience[15].company",
+      "experience[15].role",
+      "experience[16].company",
+      "experience[16].role",
+      "experience[17].role",
+      "experience[18].role"
+    ],
+    "final_audit": {
+      "status": "not_run",
+      "findings": []
+    },
+    "provider_requests": 0
+  },
+  {
+    "file": "Divya Balyan.pdf",
+    "source_elements": 150,
+    "initial_unresolved_meaningful_spans": 2,
+    "final_unresolved_meaningful_spans": 0,
+    "feedback_passes": 1,
+    "stop_reason": "schema_audit_failed",
+    "missing_required_legacy_fields": [
+      "experience[0].company",
+      "experience[2].company",
+      "experience[2].role",
+      "experience[4].company",
+      "experience[4].role"
+    ],
+    "final_audit": {
+      "status": "failed",
+      "reason": "document_limit_exceeded",
+      "findings": []
+    },
+    "provider_requests": 1
+  },
+  {
+    "file": "Vikrant Roy.pdf",
+    "source_elements": 422,
+    "initial_unresolved_meaningful_spans": 1,
+    "final_unresolved_meaningful_spans": 1,
+    "feedback_passes": 1,
+    "stop_reason": "section_review_failed",
+    "missing_required_legacy_fields": [
+      "contact.full_name",
+      "experience[0].company",
+      "experience[0].role",
+      "experience[1].role",
+      "experience[2].company",
+      "experience[2].role",
+      "experience[3].role",
+      "experience[4].company",
+      "experience[4].role",
+      "experience[5].role",
+      "education[0].degree",
+      "education[1].institution",
+      "education[1].degree",
+      "education[2].institution",
+      "education[4].institution",
+      "education[4].degree",
+      "education[5].institution",
+      "education[5].degree",
+      "education[6].institution",
+      "education[7].degree",
+      "education[8].degree",
+      "education[9].degree",
+      "education[10].institution",
+      "education[10].degree",
+      "education[11].institution",
+      "education[11].degree",
+      "education[12].institution",
+      "education[12].degree",
+      "education[13].institution",
+      "education[13].degree",
+      "education[14].institution",
+      "education[14].degree",
+      "education[15].institution",
+      "education[15].degree",
+      "education[16].institution",
+      "education[16].degree",
+      "education[17].institution",
+      "education[17].degree",
+      "education[18].institution",
+      "education[18].degree",
+      "education[19].institution",
+      "education[19].degree",
+      "education[20].institution",
+      "education[20].degree"
+    ],
+    "final_audit": {
+      "status": "not_run",
+      "findings": []
+    },
+    "provider_requests": 0
+  },
+  {
+    "file": "Sundar.pdf",
+    "source_elements": 94,
+    "initial_unresolved_meaningful_spans": 10,
+    "final_unresolved_meaningful_spans": 0,
+    "feedback_passes": 1,
+    "stop_reason": "schema_audit_failed",
+    "missing_required_legacy_fields": [
+      "experience[1].role",
+      "experience[6].role",
+      "education[0].institution",
+      "education[1].institution",
+      "education[1].degree",
+      "education[2].institution"
+    ],
+    "final_audit": {
+      "status": "failed",
+      "reason": "document_limit_exceeded",
+      "findings": []
+    },
+    "provider_requests": 1
+  },
+  {
+    "file": "Santhosh KR -  SAP EWM.pdf",
+    "source_elements": 134,
+    "initial_unresolved_meaningful_spans": 77,
+    "final_unresolved_meaningful_spans": 0,
+    "feedback_passes": 2,
+    "stop_reason": "recovery_budget_exhausted",
+    "missing_required_legacy_fields": [
+      "experience[0].company",
+      "experience[0].role",
+      "experience[1].role",
+      "experience[2].company",
+      "experience[2].role",
+      "experience[3].role",
+      "experience[4].company",
+      "education[0].institution",
+      "education[1].degree"
+    ],
+    "final_audit": {
+      "status": "complete",
+      "findings": [
+        {
+          "field": "experience[0].company",
+          "issue": "First experience record has empty company although source e29:0:40 states 'Organization : Tata Consultancy Services' and e12:0:101 confirms TCS; record was flagged needs_review with conflicting labels rather than populated",
+          "source_ids": [
+            "e29:0:40",
+            "e12:0:101"
+          ]
+        },
+        {
+          "field": "experience[0].role",
+          "issue": "First experience record has empty role although source e12:0:101 states 'as Associate Consultant'; e33:0:17 lists 'Support Project' as role",
+          "source_ids": [
+            "e12:0:101",
+            "e33:0:17"
+          ]
+        },
+        {
+          "field": "experience[0].start_date",
+          "issue": "First experience start_date is null although source e34:0:31 states 'Duration : Jan 2025 – Till Date'",
+          "source_ids": [
+            "e34:0:31"
+          ]
+        },
+        {
+          "field": "experience[1].role",
+          "issue": "Second experience record has empty role even though source e78:0:31 states 'Senior Configuration Engineer' (and e14:0:112 Senior Engineer) for this employer",
+          "source_ids": [
+            "e78:0:31",
+            "e14:0:112"
+          ]
+        },
+        {
+          "field": "experience[1].start_date",
+          "issue": "Second experience record (Source Engineering) start/end dates are null although source e79:0:31 states 'Duration : Dec 2017 – July 2019', which was instead attached to experience[2]",
+          "source_ids": [
+            "e79:0:31"
+          ]
+        },
+        {
+          "field": "experience[2].company",
+          "issue": "Third experience record lists company empty but its responsibilities (MBOM/EBOM, Teamcenter) belong to Source Engineering per lifecycle ordering; employer relationship not established and date split from company",
+          "source_ids": [
+            "e79:0:31",
+            "e82:0:99"
+          ]
+        },
+        {
+          "field": "experience[2].role",
+          "issue": "Third experience record role empty; source indicates role should be Senior Configuration Engineer from e78:0:31",
+          "source_ids": [
+            "e78:0:31"
+          ]
+        },
+        {
+          "field": "experience[3].role",
+          "issue": "Fourth experience record (EASI) role empty; source e98:0:17 ': Design Engineer' and e15:0:108 'as Specialist' relate to this employer, while the Design Engineer role was instead assigned to experience[4]",
+          "source_ids": [
+            "e98:0:17",
+            "e15:0:108"
+          ]
+        },
+        {
+          "field": "experience[3].start_date",
+          "issue": "Fourth experience record dates null although source e99:0:30 'Oct 2010 – Dec 2017' and e15:0:108 both indicate this range belongs to EASI",
+          "source_ids": [
+            "e99:0:30",
+            "e15:0:108"
+          ]
+        },
+        {
+          "field": "experience[4].company",
+          "issue": "Fifth experience record has empty company though responsibilities (CAD, GM Quality Check list) trace to EASI/General Motors; role Design Engineer assigned here rather than to EASI record",
+          "source_ids": [
+            "e98:0:17",
+            "e111:0:110"
+          ]
+        },
+        {
+          "field": "experience[4].role",
+          "issue": "Role value includes leading label artifact ': Design Engineer' with source label colon retained",
+          "source_ids": [
+            "e98:0:17"
+          ]
+        },
+        {
+          "field": "experience[4].responsibilities",
+          "issue": "Responsibilities for EASI/General Motors record are empty although source e101 through e112 contain them",
+          "source_ids": [
+            "e101:0:62",
+            "e103:0:59",
+            "e104:0:79"
+          ]
+        },
+        {
+          "field": "education[0].institution",
+          "issue": "Education record has empty institution though degree 'PUC' and year 2004 correspond to Maharaja Govt PU College, Mysore",
+          "source_ids": [
+            "e114:8:12",
+            "e115:45:78",
+            "e117:5:10"
+          ]
+        },
+        {
+          "field": "education[0].degree",
+          "issue": "Degree 'PUC' mapped but the BE degree (e114:4:8) and PES College of Engineering, Mandya (e115:10:45, year 2008 e117:0:5) are omitted entirely from education array",
+          "source_ids": [
+            "e114:4:8",
+            "e115:10:45",
+            "e117:0:5"
+          ]
+        },
+        {
+          "field": "education[0].graduation_year",
+          "issue": "Graduation year 2004 paired with degree PUC in one record while institution unresolved; year-institution alignment (PUC=2004, BE=2008, SSLC=2002) not reflected",
+          "source_ids": [
+            "e117:5:10",
+            "e115:45:78"
+          ]
+        },
+        {
+          "field": "education[1].degree",
+          "issue": "Second education record (T Mariyappa High School) has empty degree though source lists SSLC",
+          "source_ids": [
+            "e114:12:16",
+            "e115:78:113"
+          ]
+        },
+        {
+          "field": "education[].grade_or_gpa",
+          "issue": "All grade_or_gpa fields null although source e133:0:8 lists '68 73 73'; percentages unmapped",
+          "source_ids": [
+            "e133:0:8"
+          ]
+        },
+        {
+          "field": "total_experience_years",
+          "issue": "Value 14.0 given as exact while source states 'Overall 14+Years' (lower bound/approximate); stored as exact float",
+          "source_ids": [
+            "e2:0:106"
+          ]
+        },
+        {
+          "field": "skills.all_skills",
+          "issue": "Skills arrays all empty although summary/source names SAP EWM, PLM, Teamcenter, BOM Management, Oracle ERP, SAP etc.; not extracted",
+          "source_ids": [
+            "e4:0:101",
+            "e82:0:99",
+            "e91:0:77"
+          ]
+        },
+        {
+          "field": "languages",
+          "issue": "Only 'English' captured; source e131:0:36 also lists Kannada",
+          "source_ids": [
+            "e131:0:36"
+          ]
+        },
+        {
+          "field": "contact.email",
+          "issue": "Only primary email captured; source e0:36:95 lists two emails 'santhoshkr96205@gmail.com & santhoshkr1986@gmail.com'",
+          "source_ids": [
+            "e0:36:95"
+          ]
+        },
+        {
+          "field": "experience[0].responsibilities",
+          "issue": "TCS responsibilities (e36 through e50) left unassigned to any experience record; experience[0] responsibilities empty",
+          "source_ids": [
+            "e36:0:102",
+            "e38:0:64"
+          ]
+        },
+        {
+          "field": "experience[1].responsibilities",
+          "issue": "Siemens Gamesa responsibilities (e56 through e73) not mapped to any record",
+          "source_ids": [
+            "e56:0:55",
+            "e57:0:50"
+          ]
+        },
+        {
+          "field": "experience",
+          "issue": "Source lists four employers (TCS Jan2025, Siemens Gamesa Aug2019-Dec2024, Source Engineering Dec2017-Jul2019, EASi Oct2010-Dec2017 per e12-e15) but schema has five misaligned records; Siemens Gamesa entirely absent as a company and TCS lacks dates/role",
+          "source_ids": [
+            "e12:0:101",
+            "e13:0:79",
+            "e14:0:112",
+            "e15:0:108"
+          ]
+        }
+      ]
+    },
+    "provider_requests": 4
+  },
+  {
+    "file": "Sumit.pdf",
+    "source_elements": 220,
+    "initial_unresolved_meaningful_spans": 0,
+    "final_unresolved_meaningful_spans": 0,
+    "feedback_passes": 1,
+    "stop_reason": "schema_audit_failed",
+    "missing_required_legacy_fields": [
+      "contact.phone",
+      "experience[1].company",
+      "experience[1].role",
+      "experience[2].company",
+      "experience[3].company",
+      "experience[3].role",
+      "experience[4].company",
+      "experience[5].company",
+      "experience[5].role"
+    ],
+    "final_audit": {
+      "status": "failed",
+      "reason": "document_limit_exceeded",
+      "findings": []
+    },
+    "provider_requests": 1
+  },
+  {
+    "file": "HarmeetSingh cv.pdf",
+    "source_elements": 34,
+    "initial_unresolved_meaningful_spans": 2,
+    "final_unresolved_meaningful_spans": 1,
+    "feedback_passes": 2,
+    "stop_reason": "recovery_budget_exhausted",
+    "missing_required_legacy_fields": [
+      "experience[0].company",
+      "experience[1].company",
+      "experience[2].company",
+      "experience[3].company",
+      "certifications[0].name"
+    ],
+    "final_audit": {
+      "status": "complete",
+      "findings": [
+        {
+          "field": "data.experience[0].company",
+          "issue": "Employer 'Bounteous x Accolite' is present in source but company field is empty.",
+          "source_ids": [
+            "e8:0:20"
+          ]
+        },
+        {
+          "field": "data.experience[0].start_date",
+          "issue": "Start date 'Nov '20' is present in source but start_date is null.",
+          "source_ids": [
+            "e7:0:17"
+          ]
+        },
+        {
+          "field": "data.experience[0].end_date",
+          "issue": "End date 'Present' is present in source but end_date is null.",
+          "source_ids": [
+            "e7:0:17"
+          ]
+        },
+        {
+          "field": "data.experience[0].location",
+          "issue": "Location is ambiguous: the first role shows 'Gurugram, India' at e9:0:15 and 'Mumbai, IN' at e10:928:938; location is null.",
+          "source_ids": [
+            "e9:0:15",
+            "e10:928:938"
+          ]
+        },
+        {
+          "field": "data.experience[1].role",
+          "issue": "Role is an invented responsibility sentence 'Established PMO frameworks...' rather than a job title; no title exists in source for this entry.",
+          "source_ids": [
+            "e10:252:379"
+          ]
+        },
+        {
+          "field": "data.experience[1].company",
+          "issue": "Employer not populated; source lists Infrasoft Technologies for the second role at e13:0:22.",
+          "source_ids": [
+            "e13:0:22"
+          ]
+        },
+        {
+          "field": "data.experience[1].start_date",
+          "issue": "Start date 'Feb '19' present in source but start_date is null.",
+          "source_ids": [
+            "e12:0:19"
+          ]
+        },
+        {
+          "field": "data.experience[1].end_date",
+          "issue": "End date 'Nov '20' present in source but end_date is null.",
+          "source_ids": [
+            "e12:0:19"
+          ]
+        },
+        {
+          "field": "data.experience[2].company",
+          "issue": "Employer 'Infrasoft Technologies' present in source but company is empty for this record.",
+          "source_ids": [
+            "e13:0:22"
+          ]
+        },
+        {
+          "field": "data.experience[2].start_date",
+          "issue": "Start date 'Feb '19' present in source but start_date is null.",
+          "source_ids": [
+            "e12:0:19"
+          ]
+        },
+        {
+          "field": "data.experience[2].end_date",
+          "issue": "End date 'Nov '20' present in source but end_date is null.",
+          "source_ids": [
+            "e12:0:19"
+          ]
+        },
+        {
+          "field": "data.experience[2].responsibilities[5]",
+          "issue": "Location text 'Mumbai, IN' is concatenated into the responsibility value instead of being placed in a location field.",
+          "source_ids": [
+            "e14:638:720",
+            "e14:720:731"
+          ]
+        },
+        {
+          "field": "data.experience[2].responsibilities",
+          "issue": "Source responsibility 'Coordinated business stakeholders, compliance teams, and technology teams to ensure timely deployment.' is omitted.",
+          "source_ids": [
+            "e14:533:635"
+          ]
+        },
+        {
+          "field": "data.experience[3].company",
+          "issue": "Employer 'Tech Mahindra' present in source but company field is empty.",
+          "source_ids": [
+            "e17:0:13"
+          ]
+        },
+        {
+          "field": "data.experience[3].start_date",
+          "issue": "Start date 'Aug '16' present in source but start_date is null.",
+          "source_ids": [
+            "e16:0:19"
+          ]
+        },
+        {
+          "field": "data.experience[3].end_date",
+          "issue": "End date 'Oct '18' present in source but end_date is null.",
+          "source_ids": [
+            "e16:0:19"
+          ]
+        },
+        {
+          "field": "data.education[0].grade_or_gpa",
+          "issue": "GPA '8.5' belongs to IMT Ghaziabad PG Program (e28:0:44), not Liverpool John Moores University.",
+          "source_ids": [
+            "e26:0:62",
+            "e28:0:44"
+          ]
+        },
+        {
+          "field": "data.education[0].degree",
+          "issue": "Source states 'Executive MBA – Data Analytics'; degree recorded as 'MBA', omitting 'Executive'.",
+          "source_ids": [
+            "e25:10:40"
+          ]
+        },
+        {
+          "field": "data.education[0].start_year",
+          "issue": "Start year 2022 present in source but start_year is null.",
+          "source_ids": [
+            "e26:0:62"
+          ]
+        },
+        {
+          "field": "data.education[0].graduation_year",
+          "issue": "Graduation year 2023 present in source but graduation_year is null.",
+          "source_ids": [
+            "e26:0:62"
+          ]
+        },
+        {
+          "field": "data.education[1]",
+          "issue": "PG Program in Management at IMT Ghaziabad (2021–2022, CGPA 8.5) is omitted from education entries.",
+          "source_ids": [
+            "e27:0:24",
+            "e28:0:44"
+          ]
+        },
+        {
+          "field": "data.projects[1].name",
+          "issue": "Project name is a responsibility bullet ('Delivered onboarding, payments...') rather than the project title; these bullets belong to the Qatar Islamic Bank project.",
+          "source_ids": [
+            "e19:9:87",
+            "e20:0:63"
+          ]
+        },
+        {
+          "field": "data.projects[2].name",
+          "issue": "Project name is an invented responsibility sentence; these bullets belong to Qatar Islamic Bank project.",
+          "source_ids": [
+            "e20:306:396"
+          ]
+        },
+        {
+          "field": "data.projects[1].description",
+          "issue": "Final source bullet 'Improved release planning and delivery predictability through Agile governance frameworks.' is split into a separate fabricated project record instead of this project.",
+          "source_ids": [
+            "e20:242:303",
+            "e20:306:396"
+          ]
+        },
+        {
+          "field": "data.projects[3].name",
+          "issue": "Project name includes stray 'White Label Application (WLA)' prefix; source project title is 'Payments & Wallet Platform (Marqeta)'.",
+          "source_ids": [
+            "e20:453:519"
+          ]
+        },
+        {
+          "field": "data.projects[5].name",
+          "issue": "Project name is an invented responsibility sentence ('Administered roadmap execution...'); bullets belong to Sun Life project.",
+          "source_ids": [
+            "e23:289:360"
+          ]
+        },
+        {
+          "field": "data.projects[5].description",
+          "issue": "Final Sun Life bullet 'Improved mobile and web customer journeys through UX enhancements.' is split into a separate fabricated project record.",
+          "source_ids": [
+            "e23:360:363",
+            "e23:363:429"
+          ]
+        },
+        {
+          "field": "data.certifications[0].name",
+          "issue": "Certification name is empty; five certifications (PMP, IBM AI Developer, CXL Adobe Analytics, CXL Product Analytics, Python Industrial Training) exist in source.",
+          "source_ids": [
+            "e31:17:60",
+            "e31:63:104",
+            "e31:107:140",
+            "e31:143:178",
+            "e31:181:207"
+          ]
+        },
+        {
+          "field": "data.certifications[0].issuer",
+          "issue": "Issuer 'PMI' present in source but issuer is null.",
+          "source_ids": [
+            "e31:17:60"
+          ]
+        },
+        {
+          "field": "data.skills.technical_skills",
+          "issue": "'Python' and 'SQL' are listed only under 'Data / AI Exposure', not technical programming proficiency; classification may overstate.",
+          "source_ids": [
+            "e24:305:379"
+          ]
+        },
+        {
+          "field": "data.skills.soft_skills",
+          "issue": "'Leadership' is inferred from 'Program & Portfolio Leadership' header, not stated as a standalone skill.",
+          "source_ids": [
+            "e5:0:91"
+          ]
+        },
+        {
+          "field": "data.languages",
+          "issue": "Third language 'Punjabi' present in source is omitted; only English and Hindi captured.",
+          "source_ids": [
+            "e33:25:59"
+          ]
+        },
+        {
+          "field": "data.total_experience_years",
+          "issue": "Value 9.0 derived from '9+ years'; source states a lower bound, and dates span Aug '16 to Present (~8.5+ yrs), so 9.0 is not directly stated.",
+          "source_ids": [
+            "e2:8:140",
+            "e16:0:19"
+          ]
+        }
+      ]
+    },
+    "provider_requests": 4
+  }
+]

@@ -1,0 +1,248 @@
+{
+  "status": "complete",
+  "findings": [
+    {
+      "field": "data.experience[0].company",
+      "issue": "Employer 'Bounteous x Accolite' is present in source but company field is empty.",
+      "source_ids": [
+        "e8:0:20"
+      ]
+    },
+    {
+      "field": "data.experience[0].start_date",
+      "issue": "Start date 'Nov '20' is present in source but start_date is null.",
+      "source_ids": [
+        "e7:0:17"
+      ]
+    },
+    {
+      "field": "data.experience[0].end_date",
+      "issue": "End date 'Present' is present in source but end_date is null.",
+      "source_ids": [
+        "e7:0:17"
+      ]
+    },
+    {
+      "field": "data.experience[0].location",
+      "issue": "Location is ambiguous: the first role shows 'Gurugram, India' at e9:0:15 and 'Mumbai, IN' at e10:928:938; location is null.",
+      "source_ids": [
+        "e9:0:15",
+        "e10:928:938"
+      ]
+    },
+    {
+      "field": "data.experience[1].role",
+      "issue": "Role is an invented responsibility sentence 'Established PMO frameworks...' rather than a job title; no title exists in source for this entry.",
+      "source_ids": [
+        "e10:252:379"
+      ]
+    },
+    {
+      "field": "data.experience[1].company",
+      "issue": "Employer not populated; source lists Infrasoft Technologies for the second role at e13:0:22.",
+      "source_ids": [
+        "e13:0:22"
+      ]
+    },
+    {
+      "field": "data.experience[1].start_date",
+      "issue": "Start date 'Feb '19' present in source but start_date is null.",
+      "source_ids": [
+        "e12:0:19"
+      ]
+    },
+    {
+      "field": "data.experience[1].end_date",
+      "issue": "End date 'Nov '20' present in source but end_date is null.",
+      "source_ids": [
+        "e12:0:19"
+      ]
+    },
+    {
+      "field": "data.experience[2].company",
+      "issue": "Employer 'Infrasoft Technologies' present in source but company is empty for this record.",
+      "source_ids": [
+        "e13:0:22"
+      ]
+    },
+    {
+      "field": "data.experience[2].start_date",
+      "issue": "Start date 'Feb '19' present in source but start_date is null.",
+      "source_ids": [
+        "e12:0:19"
+      ]
+    },
+    {
+      "field": "data.experience[2].end_date",
+      "issue": "End date 'Nov '20' present in source but end_date is null.",
+      "source_ids": [
+        "e12:0:19"
+      ]
+    },
+    {
+      "field": "data.experience[2].responsibilities[5]",
+      "issue": "Location text 'Mumbai, IN' is concatenated into the responsibility value instead of being placed in a location field.",
+      "source_ids": [
+        "e14:638:720",
+        "e14:720:731"
+      ]
+    },
+    {
+      "field": "data.experience[2].responsibilities",
+      "issue": "Source responsibility 'Coordinated business stakeholders, compliance teams, and technology teams to ensure timely deployment.' is omitted.",
+      "source_ids": [
+        "e14:533:635"
+      ]
+    },
+    {
+      "field": "data.experience[3].company",
+      "issue": "Employer 'Tech Mahindra' present in source but company field is empty.",
+      "source_ids": [
+        "e17:0:13"
+      ]
+    },
+    {
+      "field": "data.experience[3].start_date",
+      "issue": "Start date 'Aug '16' present in source but start_date is null.",
+      "source_ids": [
+        "e16:0:19"
+      ]
+    },
+    {
+      "field": "data.experience[3].end_date",
+      "issue": "End date 'Oct '18' present in source but end_date is null.",
+      "source_ids": [
+        "e16:0:19"
+      ]
+    },
+    {
+      "field": "data.education[0].grade_or_gpa",
+      "issue": "GPA '8.5' belongs to IMT Ghaziabad PG Program (e28:0:44), not Liverpool John Moores University.",
+      "source_ids": [
+        "e26:0:62",
+        "e28:0:44"
+      ]
+    },
+    {
+      "field": "data.education[0].degree",
+      "issue": "Source states 'Executive MBA – Data Analytics'; degree recorded as 'MBA', omitting 'Executive'.",
+      "source_ids": [
+        "e25:10:40"
+      ]
+    },
+    {
+      "field": "data.education[0].start_year",
+      "issue": "Start year 2022 present in source but start_year is null.",
+      "source_ids": [
+        "e26:0:62"
+      ]
+    },
+    {
+      "field": "data.education[0].graduation_year",
+      "issue": "Graduation year 2023 present in source but graduation_year is null.",
+      "source_ids": [
+        "e26:0:62"
+      ]
+    },
+    {
+      "field": "data.education[1]",
+      "issue": "PG Program in Management at IMT Ghaziabad (2021–2022, CGPA 8.5) is omitted from education entries.",
+      "source_ids": [
+        "e27:0:24",
+        "e28:0:44"
+      ]
+    },
+    {
+      "field": "data.projects[1].name",
+      "issue": "Project name is a responsibility bullet ('Delivered onboarding, payments...') rather than the project title; these bullets belong to the Qatar Islamic Bank project.",
+      "source_ids": [
+        "e19:9:87",
+        "e20:0:63"
+      ]
+    },
+    {
+      "field": "data.projects[2].name",
+      "issue": "Project name is an invented responsibility sentence; these bullets belong to Qatar Islamic Bank project.",
+      "source_ids": [
+        "e20:306:396"
+      ]
+    },
+    {
+      "field": "data.projects[1].description",
+      "issue": "Final source bullet 'Improved release planning and delivery predictability through Agile governance frameworks.' is split into a separate fabricated project record instead of this project.",
+      "source_ids": [
+        "e20:242:303",
+        "e20:306:396"
+      ]
+    },
+    {
+      "field": "data.projects[3].name",
+      "issue": "Project name includes stray 'White Label Application (WLA)' prefix; source project title is 'Payments & Wallet Platform (Marqeta)'.",
+      "source_ids": [
+        "e20:453:519"
+      ]
+    },
+    {
+      "field": "data.projects[5].name",
+      "issue": "Project name is an invented responsibility sentence ('Administered roadmap execution...'); bullets belong to Sun Life project.",
+      "source_ids": [
+        "e23:289:360"
+      ]
+    },
+    {
+      "field": "data.projects[5].description",
+      "issue": "Final Sun Life bullet 'Improved mobile and web customer journeys through UX enhancements.' is split into a separate fabricated project record.",
+      "source_ids": [
+        "e23:360:363",
+        "e23:363:429"
+      ]
+    },
+    {
+      "field": "data.certifications[0].name",
+      "issue": "Certification name is empty; five certifications (PMP, IBM AI Developer, CXL Adobe Analytics, CXL Product Analytics, Python Industrial Training) exist in source.",
+      "source_ids": [
+        "e31:17:60",
+        "e31:63:104",
+        "e31:107:140",
+        "e31:143:178",
+        "e31:181:207"
+      ]
+    },
+    {
+      "field": "data.certifications[0].issuer",
+      "issue": "Issuer 'PMI' present in source but issuer is null.",
+      "source_ids": [
+        "e31:17:60"
+      ]
+    },
+    {
+      "field": "data.skills.technical_skills",
+      "issue": "'Python' and 'SQL' are listed only under 'Data / AI Exposure', not technical programming proficiency; classification may overstate.",
+      "source_ids": [
+        "e24:305:379"
+      ]
+    },
+    {
+      "field": "data.skills.soft_skills",
+      "issue": "'Leadership' is inferred from 'Program & Portfolio Leadership' header, not stated as a standalone skill.",
+      "source_ids": [
+        "e5:0:91"
+      ]
+    },
+    {
+      "field": "data.languages",
+      "issue": "Third language 'Punjabi' present in source is omitted; only English and Hindi captured.",
+      "source_ids": [
+        "e33:25:59"
+      ]
+    },
+    {
+      "field": "data.total_experience_years",
+      "issue": "Value 9.0 derived from '9+ years'; source states a lower bound, and dates span Aug '16 to Present (~8.5+ yrs), so 9.0 is not directly stated.",
+      "source_ids": [
+        "e2:8:140",
+        "e16:0:19"
+      ]
+    }
+  ]
+}

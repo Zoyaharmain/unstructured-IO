@@ -1,0 +1,231 @@
+FFF...........FFFFFFFF                                                   [100%]
+=================================== FAILURES ===================================
+_ test_delivering_clause_is_responsibility[delivering high-integrity data feeds to downstream Fund accounting systems.] _
+
+text = 'delivering high-integrity data feeds to downstream Fund accounting systems.'
+
+    @pytest.mark.parametrize('text',[
+     'delivering high-integrity data feeds to downstream Fund accounting systems.',
+     'Delivering validated data to downstream accounting systems',
+     '• delivering reports for regulatory systems.',
+    ])
+    def test_delivering_clause_is_responsibility(text):
+>    assert field_kinds(text,'experience')==['responsibilities']
+E    AssertionError: assert ['employer'] == ['responsibilities']
+E      
+E      At index 0 diff: 'employer' != 'responsibilities'
+E      Use -v to get more diff
+
+tests/test_phase1_repairs.py:14: AssertionError
+_ test_delivering_clause_is_responsibility[Delivering validated data to downstream accounting systems] _
+
+text = 'Delivering validated data to downstream accounting systems'
+
+    @pytest.mark.parametrize('text',[
+     'delivering high-integrity data feeds to downstream Fund accounting systems.',
+     'Delivering validated data to downstream accounting systems',
+     '• delivering reports for regulatory systems.',
+    ])
+    def test_delivering_clause_is_responsibility(text):
+>    assert field_kinds(text,'experience')==['responsibilities']
+E    AssertionError: assert ['employer'] == ['responsibilities']
+E      
+E      At index 0 diff: 'employer' != 'responsibilities'
+E      Use -v to get more diff
+
+tests/test_phase1_repairs.py:14: AssertionError
+_ test_delivering_clause_is_responsibility[\u2022 delivering reports for regulatory systems.] _
+
+text = '• delivering reports for regulatory systems.'
+
+    @pytest.mark.parametrize('text',[
+     'delivering high-integrity data feeds to downstream Fund accounting systems.',
+     'Delivering validated data to downstream accounting systems',
+     '• delivering reports for regulatory systems.',
+    ])
+    def test_delivering_clause_is_responsibility(text):
+>    assert field_kinds(text,'experience')==['responsibilities']
+E    AssertionError: assert ['employer'] == ['responsibilities']
+E      
+E      At index 0 diff: 'employer' != 'responsibilities'
+E      Use -v to get more diff
+
+tests/test_phase1_repairs.py:14: AssertionError
+___________ test_meaningful_hierarchy_state_changes_progress[value] ____________
+
+change = 'value'
+
+    @pytest.mark.parametrize('change',['value','record_id','ownership','quote','evidence_id','parent','residual'])
+    def test_meaningful_hierarchy_state_changes_progress(change):
+>    sec,before=fixture();after=deepcopy(before);parent=after['section_schemas'][0];record=parent['records'][0];item=record['attributes'][0]['items'][0]
+                ^^^^^^^^^
+
+tests/test_phase1_repairs.py:32: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def fixture():
+>    block=SectionBlock(source_element_index=0,start=0,end=3,text='SQL',assignment='semantic',reason='initial',lane='main')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E    pydantic_core._pydantic_core.ValidationError: 1 validation error for SectionBlock
+E    page_number
+E      Field required [type=missing, input_value={'source_element_index': ...nitial', 'lane': 'main'}, input_type=dict]
+E        For further information visit https://errors.pydantic.dev/2.14/v/missing
+
+tests/test_phase1_repairs.py:25: ValidationError
+_________ test_meaningful_hierarchy_state_changes_progress[record_id] __________
+
+change = 'record_id'
+
+    @pytest.mark.parametrize('change',['value','record_id','ownership','quote','evidence_id','parent','residual'])
+    def test_meaningful_hierarchy_state_changes_progress(change):
+>    sec,before=fixture();after=deepcopy(before);parent=after['section_schemas'][0];record=parent['records'][0];item=record['attributes'][0]['items'][0]
+                ^^^^^^^^^
+
+tests/test_phase1_repairs.py:32: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def fixture():
+>    block=SectionBlock(source_element_index=0,start=0,end=3,text='SQL',assignment='semantic',reason='initial',lane='main')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E    pydantic_core._pydantic_core.ValidationError: 1 validation error for SectionBlock
+E    page_number
+E      Field required [type=missing, input_value={'source_element_index': ...nitial', 'lane': 'main'}, input_type=dict]
+E        For further information visit https://errors.pydantic.dev/2.14/v/missing
+
+tests/test_phase1_repairs.py:25: ValidationError
+_________ test_meaningful_hierarchy_state_changes_progress[ownership] __________
+
+change = 'ownership'
+
+    @pytest.mark.parametrize('change',['value','record_id','ownership','quote','evidence_id','parent','residual'])
+    def test_meaningful_hierarchy_state_changes_progress(change):
+>    sec,before=fixture();after=deepcopy(before);parent=after['section_schemas'][0];record=parent['records'][0];item=record['attributes'][0]['items'][0]
+                ^^^^^^^^^
+
+tests/test_phase1_repairs.py:32: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def fixture():
+>    block=SectionBlock(source_element_index=0,start=0,end=3,text='SQL',assignment='semantic',reason='initial',lane='main')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E    pydantic_core._pydantic_core.ValidationError: 1 validation error for SectionBlock
+E    page_number
+E      Field required [type=missing, input_value={'source_element_index': ...nitial', 'lane': 'main'}, input_type=dict]
+E        For further information visit https://errors.pydantic.dev/2.14/v/missing
+
+tests/test_phase1_repairs.py:25: ValidationError
+___________ test_meaningful_hierarchy_state_changes_progress[quote] ____________
+
+change = 'quote'
+
+    @pytest.mark.parametrize('change',['value','record_id','ownership','quote','evidence_id','parent','residual'])
+    def test_meaningful_hierarchy_state_changes_progress(change):
+>    sec,before=fixture();after=deepcopy(before);parent=after['section_schemas'][0];record=parent['records'][0];item=record['attributes'][0]['items'][0]
+                ^^^^^^^^^
+
+tests/test_phase1_repairs.py:32: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def fixture():
+>    block=SectionBlock(source_element_index=0,start=0,end=3,text='SQL',assignment='semantic',reason='initial',lane='main')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E    pydantic_core._pydantic_core.ValidationError: 1 validation error for SectionBlock
+E    page_number
+E      Field required [type=missing, input_value={'source_element_index': ...nitial', 'lane': 'main'}, input_type=dict]
+E        For further information visit https://errors.pydantic.dev/2.14/v/missing
+
+tests/test_phase1_repairs.py:25: ValidationError
+________ test_meaningful_hierarchy_state_changes_progress[evidence_id] _________
+
+change = 'evidence_id'
+
+    @pytest.mark.parametrize('change',['value','record_id','ownership','quote','evidence_id','parent','residual'])
+    def test_meaningful_hierarchy_state_changes_progress(change):
+>    sec,before=fixture();after=deepcopy(before);parent=after['section_schemas'][0];record=parent['records'][0];item=record['attributes'][0]['items'][0]
+                ^^^^^^^^^
+
+tests/test_phase1_repairs.py:32: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def fixture():
+>    block=SectionBlock(source_element_index=0,start=0,end=3,text='SQL',assignment='semantic',reason='initial',lane='main')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E    pydantic_core._pydantic_core.ValidationError: 1 validation error for SectionBlock
+E    page_number
+E      Field required [type=missing, input_value={'source_element_index': ...nitial', 'lane': 'main'}, input_type=dict]
+E        For further information visit https://errors.pydantic.dev/2.14/v/missing
+
+tests/test_phase1_repairs.py:25: ValidationError
+___________ test_meaningful_hierarchy_state_changes_progress[parent] ___________
+
+change = 'parent'
+
+    @pytest.mark.parametrize('change',['value','record_id','ownership','quote','evidence_id','parent','residual'])
+    def test_meaningful_hierarchy_state_changes_progress(change):
+>    sec,before=fixture();after=deepcopy(before);parent=after['section_schemas'][0];record=parent['records'][0];item=record['attributes'][0]['items'][0]
+                ^^^^^^^^^
+
+tests/test_phase1_repairs.py:32: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def fixture():
+>    block=SectionBlock(source_element_index=0,start=0,end=3,text='SQL',assignment='semantic',reason='initial',lane='main')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E    pydantic_core._pydantic_core.ValidationError: 1 validation error for SectionBlock
+E    page_number
+E      Field required [type=missing, input_value={'source_element_index': ...nitial', 'lane': 'main'}, input_type=dict]
+E        For further information visit https://errors.pydantic.dev/2.14/v/missing
+
+tests/test_phase1_repairs.py:25: ValidationError
+__________ test_meaningful_hierarchy_state_changes_progress[residual] __________
+
+change = 'residual'
+
+    @pytest.mark.parametrize('change',['value','record_id','ownership','quote','evidence_id','parent','residual'])
+    def test_meaningful_hierarchy_state_changes_progress(change):
+>    sec,before=fixture();after=deepcopy(before);parent=after['section_schemas'][0];record=parent['records'][0];item=record['attributes'][0]['items'][0]
+                ^^^^^^^^^
+
+tests/test_phase1_repairs.py:32: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def fixture():
+>    block=SectionBlock(source_element_index=0,start=0,end=3,text='SQL',assignment='semantic',reason='initial',lane='main')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E    pydantic_core._pydantic_core.ValidationError: 1 validation error for SectionBlock
+E    page_number
+E      Field required [type=missing, input_value={'source_element_index': ...nitial', 'lane': 'main'}, input_type=dict]
+E        For further information visit https://errors.pydantic.dev/2.14/v/missing
+
+tests/test_phase1_repairs.py:25: ValidationError
+______________ test_diagnostic_changes_do_not_keep_feedback_alive ______________
+
+    def test_diagnostic_changes_do_not_keep_feedback_alive():
+>    sec,before=fixture();other=sec.model_copy(deep=True);after=deepcopy(before)
+                ^^^^^^^^^
+
+tests/test_phase1_repairs.py:43: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def fixture():
+>    block=SectionBlock(source_element_index=0,start=0,end=3,text='SQL',assignment='semantic',reason='initial',lane='main')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E    pydantic_core._pydantic_core.ValidationError: 1 validation error for SectionBlock
+E    page_number
+E      Field required [type=missing, input_value={'source_element_index': ...nitial', 'lane': 'main'}, input_type=dict]
+E        For further information visit https://errors.pydantic.dev/2.14/v/missing
+
+tests/test_phase1_repairs.py:25: ValidationError
+=========================== short test summary info ============================
+FAILED tests/test_phase1_repairs.py::test_delivering_clause_is_responsibility[delivering high-integrity data feeds to downstream Fund accounting systems.]
+FAILED tests/test_phase1_repairs.py::test_delivering_clause_is_responsibility[Delivering validated data to downstream accounting systems]
+FAILED tests/test_phase1_repairs.py::test_delivering_clause_is_responsibility[\u2022 delivering reports for regulatory systems.]
+FAILED tests/test_phase1_repairs.py::test_meaningful_hierarchy_state_changes_progress[value]
+FAILED tests/test_phase1_repairs.py::test_meaningful_hierarchy_state_changes_progress[record_id]
+FAILED tests/test_phase1_repairs.py::test_meaningful_hierarchy_state_changes_progress[ownership]
+FAILED tests/test_phase1_repairs.py::test_meaningful_hierarchy_state_changes_progress[quote]
+FAILED tests/test_phase1_repairs.py::test_meaningful_hierarchy_state_changes_progress[evidence_id]
+FAILED tests/test_phase1_repairs.py::test_meaningful_hierarchy_state_changes_progress[parent]
+FAILED tests/test_phase1_repairs.py::test_meaningful_hierarchy_state_changes_progress[residual]
+FAILED tests/test_phase1_repairs.py::test_diagnostic_changes_do_not_keep_feedback_alive
+11 failed, 11 passed in 0.19s

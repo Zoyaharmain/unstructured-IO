@@ -1,0 +1,31 @@
+Offline regression results
+
+Focused command (outside sandbox after diagnostic):
+AUDIT_TEST_LABEL=focused- PYTHONUNBUFFERED=1 .venv/bin/python reports/end-to-end10-preflight-20261024/run_tests_offline.py tests/test_text_extraction.py tests/test_resume_sections.py tests/test_single_resume_check.py tests/test_llm_section_review.py tests/test_section_subschemas.py tests/test_schema_field_index.py tests/test_record_subfields.py tests/test_section_layout_recovery.py tests/test_hierarchical_schema.py
+
+........................................................................ [ 42%]
+........................................................................ [ 85%]
+........................                                                 [100%]
+168 passed in 44.22s
+
+Full command (outside sandbox):
+PYTHONUNBUFFERED=1 .venv/bin/python reports/end-to-end10-preflight-20261024/run_tests_offline.py
+
+........................................................................ [ 17%]
+........................................................................ [ 35%]
+........................................................................ [ 52%]
+........................................................................ [ 70%]
+........................................................................ [ 87%]
+..................................................                       [100%]
+410 passed in 134.07s (0:02:14)
+
+New preflight/import checks:
+.venv/bin/python -m pytest -q reports/end-to-end10-preflight-20261024/tests/test_preflight.py
+
+....                                                                     [100%]
+4 passed in 0.04s
+
+410 full-suite tests passed; zero failed, zero skipped. The 168 focused tests overlap the full suite; do not sum them as unique tests. Four new preflight checks are separate. Both network guard logs record zero external socket attempts. Provider credentials removed by the harness; live provider tests were not run.
+
+Initial sandbox attempts:
+Focused run stalled on its first HTTP TestClient request and was interrupted (exit 130). Full run completed 85 checks then stalled on the TestClient schema-query endpoint test and was interrupted (exit 130). Neither is counted as a passing run. A minimal /health TestClient diagnostic timed out at 35 seconds (exit 124) in the sandbox with a thread traceback; the same diagnostic outside the sandbox returned 200. Completed suites then ran outside the sandbox with the same external-network guard. Diagnostic logs are retained. Production code was not changed and no tests were weakened or excluded.

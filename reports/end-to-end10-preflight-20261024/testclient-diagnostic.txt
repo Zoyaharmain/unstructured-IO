@@ -1,0 +1,32 @@
+Calling local /health through TestClient; no provider access.
+Timeout (0:00:20)!
+Thread 0x000078ecc0df86c0 (most recent call first):
+  File "/usr/lib/python3.12/selectors.py", line 468 in select
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 1949 in _run_once
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 641 in run_forever
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 674 in run_until_complete
+  File "/usr/lib/python3.12/asyncio/runners.py", line 118 in run
+  File "/home/gopal/unstructured-IO/.venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 2548 in run
+  File "/home/gopal/unstructured-IO/.venv/lib/python3.12/site-packages/anyio/_core/_eventloop.py", line 83 in run
+  File "/home/gopal/unstructured-IO/.venv/lib/python3.12/site-packages/anyio/from_thread.py", line 538 in run_blocking_portal
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x000078ece0a3c080 (most recent call first):
+  File "/usr/lib/python3.12/threading.py", line 355 in wait
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 451 in result
+  File "/home/gopal/unstructured-IO/.venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 2780 in run_sync_from_thread
+  File "/home/gopal/unstructured-IO/.venv/lib/python3.12/site-packages/anyio/from_thread.py", line 119 in run_sync
+  File "/home/gopal/unstructured-IO/.venv/lib/python3.12/site-packages/anyio/from_thread.py", line 303 in _spawn_task_from_thread
+  File "/home/gopal/unstructured-IO/.venv/lib/python3.12/site-packages/anyio/from_thread.py", line 384 in start_task_soon
+  File "/home/gopal/unstructured-IO/.venv/lib/python3.12/site-packages/anyio/from_thread.py", line 340 in call
+  File "/home/gopal/unstructured-IO/.venv/lib/python3.12/site-packages/starlette/testclient.py", line 350 in handle_request
+  File "/home/gopal/unstructured-IO/.venv/lib/python3.12/site-packages/httpx2/_client.py", line 1076 in _send_single_request
+  File "/home/gopal/unstructured-IO/.venv/lib/python3.12/site-packages/httpx2/_client.py", line 1043 in _send_handling_redirects
+  File "/home/gopal/unstructured-IO/.venv/lib/python3.12/site-packages/httpx2/_client.py", line 1008 in _send_handling_auth
+  File "/home/gopal/unstructured-IO/.venv/lib/python3.12/site-packages/httpx2/_client.py", line 980 in send
+  File "/home/gopal/unstructured-IO/.venv/lib/python3.12/site-packages/httpx2/_client.py", line 797 in request
+  File "/home/gopal/unstructured-IO/.venv/lib/python3.12/site-packages/starlette/testclient.py", line 457 in request
+  File "/home/gopal/unstructured-IO/.venv/lib/python3.12/site-packages/httpx2/_client.py", line 1113 in get
+  File "/home/gopal/unstructured-IO/reports/end-to-end10-preflight-20261024/diagnose_testclient.py", line 9 in <module>

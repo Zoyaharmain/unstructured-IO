@@ -1,0 +1,238 @@
+{
+  "status": "complete",
+  "findings": [
+    {
+      "field": "experience[0].company",
+      "issue": "First employment record has empty company/role/dates despite source stating Tata Consultancy Services as employer with client GSK; the record conflates first and second jobs and leaves key fields blank.",
+      "source_ids": [
+        "e12:0:101",
+        "e29:0:40",
+        "e31:0:25",
+        "e51:0:46"
+      ]
+    },
+    {
+      "field": "experience[0].role",
+      "issue": "Role left empty though source lists titles (Associate Consultant for TCS; Engineer-4 for Siemens Gamesa).",
+      "source_ids": [
+        "e12:0:101",
+        "e13:0:79"
+      ]
+    },
+    {
+      "field": "experience[0].start_date",
+      "issue": "Start date null though source gives Jan 2025 for TCS.",
+      "source_ids": [
+        "e34:0:31",
+        "e12:0:101"
+      ]
+    },
+    {
+      "field": "experience[1].company",
+      "issue": "Source Engineering appears as a standalone company record with no role/dates/responsibilities, yet the full-time entry (Source Engineering Pvt Ltd, Dec 2017–July 2019, Senior Engineer) is captured elsewhere; duplicate/incomplete segmentation.",
+      "source_ids": [
+        "e74:0:56",
+        "e14:0:112",
+        "e79:0:31"
+      ]
+    },
+    {
+      "field": "experience[2].company",
+      "issue": "Company unresolved for the Dec 2017–July 2019 Source Engineering entry; source explicitly names Source Engineering Pvt Ltd.",
+      "source_ids": [
+        "e74:0:56",
+        "e79:0:31"
+      ]
+    },
+    {
+      "field": "experience[2].role",
+      "issue": "Role unresolved though source states Senior Configuration Engineer / Senior Engineer for this period.",
+      "source_ids": [
+        "e78:0:31",
+        "e14:0:112"
+      ]
+    },
+    {
+      "field": "experience[2].responsibilities[4]",
+      "issue": "Responsibility fragment 'Cutover Template Preparations and Execution' appears merged from a split line (e84/e85 cut off the preceding sentence) and may be misattributed.",
+      "source_ids": [
+        "e84:0:104",
+        "e86:0:101",
+        "e87:0:43"
+      ]
+    },
+    {
+      "field": "experience[2].responsibilities[2]",
+      "issue": "Responsibility item begins mid-sentence ('components, assemblies & kits...'), omitting the opening of the bullet; located without prefix.",
+      "source_ids": [
+        "e84:0:104",
+        "e85:0:105"
+      ]
+    },
+    {
+      "field": "experience[3].role",
+      "issue": "Role unresolved for EASI/Allegis record though source gives Design Engineer and Specialist titles.",
+      "source_ids": [
+        "e98:0:17",
+        "e15:0:108"
+      ]
+    },
+    {
+      "field": "experience[3].start_date",
+      "issue": "Start/end dates and duration null for EASI record despite source giving Oct 2010–Dec 2017 under this employer.",
+      "source_ids": [
+        "e99:0:30",
+        "e15:0:108"
+      ]
+    },
+    {
+      "field": "experience[3].responsibilities",
+      "issue": "Responsibilities empty for EASI record; source provides a full set of bullets for this employer.",
+      "source_ids": [
+        "e101:0:62",
+        "e103:0:59",
+        "e104:0:79",
+        "e110:0:101"
+      ]
+    },
+    {
+      "field": "experience[4].company",
+      "issue": "Company unresolved for Design Engineer record; source attributes this employment to EASI – Allegis Services Pvt Ltd.",
+      "source_ids": [
+        "e94:0:46",
+        "e15:0:108"
+      ]
+    },
+    {
+      "field": "experience[4].role",
+      "issue": "Role value includes leading colon/whitespace ': Design Engineer' rather than clean title.",
+      "source_ids": [
+        "e98:0:17"
+      ]
+    },
+    {
+      "field": "experience[4].responsibilities",
+      "issue": "Responsibilities empty for Design Engineer period despite source bullets (CAD model changes, VSD import, assembly procedures, etc.).",
+      "source_ids": [
+        "e101:0:62",
+        "e103:0:59",
+        "e104:0:79",
+        "e107:0:51"
+      ]
+    },
+    {
+      "field": "experience[1].role",
+      "issue": "Source Engineering record missing role though source lists Senior Configuration Engineer for that employer.",
+      "source_ids": [
+        "e78:0:31"
+      ]
+    },
+    {
+      "field": "education[0].degree",
+      "issue": "Degree 'PUC' misassigned; education-1 combines PES College of Engineering (BE, 2008) and Maharaja Govt PU College (PUC, 2004). Degree placed as PUC while institution left empty, inverting the correct BE/PES pairing.",
+      "source_ids": [
+        "e114:4:8",
+        "e114:8:12",
+        "e115:10:45",
+        "e115:45:78",
+        "e117:0:5"
+      ]
+    },
+    {
+      "field": "education[0].institution",
+      "issue": "Institution empty for record that includes PES College of Engineering, Mandya (BE).",
+      "source_ids": [
+        "e115:10:45",
+        "e114:4:8"
+      ]
+    },
+    {
+      "field": "education[0].graduation_year",
+      "issue": "Graduation year 2004 attached to degree 'PUC' but BE year is 2008; year/degree pairing inconsistent with source columns.",
+      "source_ids": [
+        "e117:0:5",
+        "e117:5:10",
+        "e114:4:8"
+      ]
+    },
+    {
+      "field": "education[0].grade_or_gpa",
+      "issue": "Grades (68, 73, 73) present in source percentage row are not captured for any education record.",
+      "source_ids": [
+        "e118:0:10",
+        "e133:0:8"
+      ]
+    },
+    {
+      "field": "education[1].degree",
+      "issue": "Degree empty for T Mariyappa High School record though source labels it SSLC.",
+      "source_ids": [
+        "e114:12:16"
+      ]
+    },
+    {
+      "field": "education",
+      "issue": "BE degree and PES College of Engineering record omitted entirely; only PUC and SSLC rows captured, dropping the highest qualification.",
+      "source_ids": [
+        "e114:4:8",
+        "e115:10:45",
+        "e117:0:5"
+      ]
+    },
+    {
+      "field": "education[1].institution",
+      "issue": "Institution value 'T Mariyappa High School' omits location suffix 'K R Nagara' present in source.",
+      "source_ids": [
+        "e115:78:113"
+      ]
+    },
+    {
+      "field": "summary",
+      "issue": "Summary concatenates 'SAP Exposure' subheading and bullets into a single summary string, merging an exposure section rather than preserving section structure; fragment '➢' bullet also included.",
+      "source_ids": [
+        "e16:0:12",
+        "e6:0:1"
+      ]
+    },
+    {
+      "field": "skills",
+      "issue": "All skill categories empty though source lists SAP EWM, Teamcenter, SAP SCM, PLM, BOM Management, SAP, Oracle ERP, UG NX, etc.",
+      "source_ids": [
+        "e4:0:101",
+        "e19:0:54",
+        "e62:0:92",
+        "e91:0:77",
+        "e92:0:69"
+      ]
+    },
+    {
+      "field": "languages",
+      "issue": "Languages array empty though source lists Kannada and English.",
+      "source_ids": [
+        "e131:0:36"
+      ]
+    },
+    {
+      "field": "personal_information.email",
+      "issue": "Second email santhoshkr1986@gmail.com present in source but only one email captured; may be an omission.",
+      "source_ids": [
+        "e0:36:95"
+      ]
+    },
+    {
+      "field": "experience[4].role",
+      "issue": "Specialist title for EASI period present in career contour but not captured as role anywhere.",
+      "source_ids": [
+        "e15:0:108"
+      ]
+    },
+    {
+      "field": "experience[3].duration",
+      "issue": "Duration 'Oct 2010 – Dec 2017' for EASI not captured in the EASI record (moved to Design Engineer record), separating dates from correct employer.",
+      "source_ids": [
+        "e99:0:30",
+        "e94:0:46"
+      ]
+    }
+  ]
+}

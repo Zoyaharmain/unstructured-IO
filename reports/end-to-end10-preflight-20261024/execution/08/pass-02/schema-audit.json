@@ -1,0 +1,195 @@
+{
+  "status": "complete",
+  "findings": [
+    {
+      "field": "experience[0].company",
+      "issue": "First experience record has empty company although source e29:0:40 states 'Organization : Tata Consultancy Services' and e12:0:101 confirms TCS; record was flagged needs_review with conflicting labels rather than populated",
+      "source_ids": [
+        "e29:0:40",
+        "e12:0:101"
+      ]
+    },
+    {
+      "field": "experience[0].role",
+      "issue": "First experience record has empty role although source e12:0:101 states 'as Associate Consultant'; e33:0:17 lists 'Support Project' as role",
+      "source_ids": [
+        "e12:0:101",
+        "e33:0:17"
+      ]
+    },
+    {
+      "field": "experience[0].start_date",
+      "issue": "First experience start_date is null although source e34:0:31 states 'Duration : Jan 2025 – Till Date'",
+      "source_ids": [
+        "e34:0:31"
+      ]
+    },
+    {
+      "field": "experience[1].role",
+      "issue": "Second experience record has empty role even though source e78:0:31 states 'Senior Configuration Engineer' (and e14:0:112 Senior Engineer) for this employer",
+      "source_ids": [
+        "e78:0:31",
+        "e14:0:112"
+      ]
+    },
+    {
+      "field": "experience[1].start_date",
+      "issue": "Second experience record (Source Engineering) start/end dates are null although source e79:0:31 states 'Duration : Dec 2017 – July 2019', which was instead attached to experience[2]",
+      "source_ids": [
+        "e79:0:31"
+      ]
+    },
+    {
+      "field": "experience[2].company",
+      "issue": "Third experience record lists company empty but its responsibilities (MBOM/EBOM, Teamcenter) belong to Source Engineering per lifecycle ordering; employer relationship not established and date split from company",
+      "source_ids": [
+        "e79:0:31",
+        "e82:0:99"
+      ]
+    },
+    {
+      "field": "experience[2].role",
+      "issue": "Third experience record role empty; source indicates role should be Senior Configuration Engineer from e78:0:31",
+      "source_ids": [
+        "e78:0:31"
+      ]
+    },
+    {
+      "field": "experience[3].role",
+      "issue": "Fourth experience record (EASI) role empty; source e98:0:17 ': Design Engineer' and e15:0:108 'as Specialist' relate to this employer, while the Design Engineer role was instead assigned to experience[4]",
+      "source_ids": [
+        "e98:0:17",
+        "e15:0:108"
+      ]
+    },
+    {
+      "field": "experience[3].start_date",
+      "issue": "Fourth experience record dates null although source e99:0:30 'Oct 2010 – Dec 2017' and e15:0:108 both indicate this range belongs to EASI",
+      "source_ids": [
+        "e99:0:30",
+        "e15:0:108"
+      ]
+    },
+    {
+      "field": "experience[4].company",
+      "issue": "Fifth experience record has empty company though responsibilities (CAD, GM Quality Check list) trace to EASI/General Motors; role Design Engineer assigned here rather than to EASI record",
+      "source_ids": [
+        "e98:0:17",
+        "e111:0:110"
+      ]
+    },
+    {
+      "field": "experience[4].role",
+      "issue": "Role value includes leading label artifact ': Design Engineer' with source label colon retained",
+      "source_ids": [
+        "e98:0:17"
+      ]
+    },
+    {
+      "field": "experience[4].responsibilities",
+      "issue": "Responsibilities for EASI/General Motors record are empty although source e101 through e112 contain them",
+      "source_ids": [
+        "e101:0:62",
+        "e103:0:59",
+        "e104:0:79"
+      ]
+    },
+    {
+      "field": "education[0].institution",
+      "issue": "Education record has empty institution though degree 'PUC' and year 2004 correspond to Maharaja Govt PU College, Mysore",
+      "source_ids": [
+        "e114:8:12",
+        "e115:45:78",
+        "e117:5:10"
+      ]
+    },
+    {
+      "field": "education[0].degree",
+      "issue": "Degree 'PUC' mapped but the BE degree (e114:4:8) and PES College of Engineering, Mandya (e115:10:45, year 2008 e117:0:5) are omitted entirely from education array",
+      "source_ids": [
+        "e114:4:8",
+        "e115:10:45",
+        "e117:0:5"
+      ]
+    },
+    {
+      "field": "education[0].graduation_year",
+      "issue": "Graduation year 2004 paired with degree PUC in one record while institution unresolved; year-institution alignment (PUC=2004, BE=2008, SSLC=2002) not reflected",
+      "source_ids": [
+        "e117:5:10",
+        "e115:45:78"
+      ]
+    },
+    {
+      "field": "education[1].degree",
+      "issue": "Second education record (T Mariyappa High School) has empty degree though source lists SSLC",
+      "source_ids": [
+        "e114:12:16",
+        "e115:78:113"
+      ]
+    },
+    {
+      "field": "education[].grade_or_gpa",
+      "issue": "All grade_or_gpa fields null although source e133:0:8 lists '68 73 73'; percentages unmapped",
+      "source_ids": [
+        "e133:0:8"
+      ]
+    },
+    {
+      "field": "total_experience_years",
+      "issue": "Value 14.0 given as exact while source states 'Overall 14+Years' (lower bound/approximate); stored as exact float",
+      "source_ids": [
+        "e2:0:106"
+      ]
+    },
+    {
+      "field": "skills.all_skills",
+      "issue": "Skills arrays all empty although summary/source names SAP EWM, PLM, Teamcenter, BOM Management, Oracle ERP, SAP etc.; not extracted",
+      "source_ids": [
+        "e4:0:101",
+        "e82:0:99",
+        "e91:0:77"
+      ]
+    },
+    {
+      "field": "languages",
+      "issue": "Only 'English' captured; source e131:0:36 also lists Kannada",
+      "source_ids": [
+        "e131:0:36"
+      ]
+    },
+    {
+      "field": "contact.email",
+      "issue": "Only primary email captured; source e0:36:95 lists two emails 'santhoshkr96205@gmail.com & santhoshkr1986@gmail.com'",
+      "source_ids": [
+        "e0:36:95"
+      ]
+    },
+    {
+      "field": "experience[0].responsibilities",
+      "issue": "TCS responsibilities (e36 through e50) left unassigned to any experience record; experience[0] responsibilities empty",
+      "source_ids": [
+        "e36:0:102",
+        "e38:0:64"
+      ]
+    },
+    {
+      "field": "experience[1].responsibilities",
+      "issue": "Siemens Gamesa responsibilities (e56 through e73) not mapped to any record",
+      "source_ids": [
+        "e56:0:55",
+        "e57:0:50"
+      ]
+    },
+    {
+      "field": "experience",
+      "issue": "Source lists four employers (TCS Jan2025, Siemens Gamesa Aug2019-Dec2024, Source Engineering Dec2017-Jul2019, EASi Oct2010-Dec2017 per e12-e15) but schema has five misaligned records; Siemens Gamesa entirely absent as a company and TCS lacks dates/role",
+      "source_ids": [
+        "e12:0:101",
+        "e13:0:79",
+        "e14:0:112",
+        "e15:0:108"
+      ]
+    }
+  ]
+}

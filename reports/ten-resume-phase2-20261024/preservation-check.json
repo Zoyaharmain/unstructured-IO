@@ -1,0 +1,22 @@
+{
+  "protected_files_checked": 16036,
+  "protected_files_changed": [],
+  "existing_code_files_modified_in_phase2": [
+    "local_api/services/llm_section_review.py",
+    "scripts/check_single_resume.py",
+    "scripts/single_resume_pipeline.py",
+    "tests/test_flagged_review_resolution.py",
+    "tests/test_llm_section_review.py"
+  ],
+  "new_code_files": [
+    "local_api/services/review_chunking.py",
+    "tests/test_review_chunking.py"
+  ],
+  "phase1_classifier_preserved": true,
+  "phase1_fingerprint_regressions_pass": true,
+  "education_and_mapping_rules_unchanged": true,
+  "live_api_calls": 0,
+  "ten_input_replay_extraction_detection_embeddings": 0,
+  "previous350_rerun": false,
+  "notes": "Guarded regression suite exercises its own existing fixtures and cached local models; the frozen ten-input replay forbids extraction, detection, model loading and sockets. Runtime __pycache__ excluded from immutable artifacts."
+}

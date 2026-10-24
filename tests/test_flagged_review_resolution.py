@@ -94,7 +94,10 @@ def test_replay_real_first_response_keeps_source_and_work_education_memberships(
  if not (root/'documents'/(id+'.json')).exists():pytest.skip('Private pilot artifact unavailable')
  a=json.loads((root/'documents'/(id+'.json')).read_text());responses=json.loads((root/'provider-decisions'/(id+'.json')).read_text());request=SectionRequest(elements=a['extraction']['elements']);local=SectionResponse.model_validate(a['local_sections']);original=local.model_dump_json();calls=[]
  def provider(settings,messages):calls.append(messages);return responses[0]['content']
- result=review_sections(request,local,settings=ReviewSettings(enabled=True,api_key='mock',model='mock',max_units=1000,max_input_chars=1000000),transport=provider)
+ # This frozen response uses the historical whole-document uN contract.
+ # Match its explicit large character budget with large token-policy budgets;
+ # never reinterpret a historical whole response as chunk-local decisions.
+ result=review_sections(request,local,settings=ReviewSettings(enabled=True,api_key='mock',model='mock',max_units=1000,max_input_chars=1000000,max_input_tokens=1000000,max_context_tokens=1016000),transport=provider)
  assert len(calls)==1 and result.metadata['llm_review']['status']=='complete'
  assert_coverage(request.elements,source_ledger(result));assert local.model_dump_json()==original
  # Deterministic abstention recovery cannot change the provider's work/education source ownership.

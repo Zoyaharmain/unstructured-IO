@@ -1,0 +1,17 @@
+...............F.................................                        [100%]
+=================================== FAILURES ===================================
+__________ test_audit_coverage_acknowledgement_and_incomplete_failure __________
+
+    def test_audit_coverage_acknowledgement_and_incomplete_failure():
+     req,sec=fixture(2);schema=map_schema(SchemaMappingRequest(elements=req.elements,sections=sec,source='fixture')).model_dump(mode='json')
+     p=audit_plan(req.elements,sec,schema,settings(max_units=2))
+>    assert {'populated_field','unresolved_field','source_omission_check','legacy_value'} <= {u['kind'] for c in p['chunks'] for u in c['targets']}
+E    AssertionError: assert {'legacy_valu...solved_field'} <= {'legacy_valu...solved_field'}
+E      
+E      Extra items in the left set:
+E      'populated_field'
+
+tests/test_review_chunking.py:112: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_review_chunking.py::test_audit_coverage_acknowledgement_and_incomplete_failure
+1 failed, 48 passed, 1 deselected in 6.73s

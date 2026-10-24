@@ -1,0 +1,151 @@
+{
+  "status": "complete",
+  "findings": [
+    {
+      "field": "data.education[0].start_year",
+      "issue": "Source 'Guru Gobind Singh Indraprastha University, Delhi | 2018 - 21' denotes a range 2018-2021; mapping only 2018 as start_year and leaving graduation_year null drops the 21 completion year.",
+      "source_ids": [
+        "e12:507:567"
+      ]
+    },
+    {
+      "field": "data.education[1].start_year",
+      "issue": "Source 'Guru Gobind Singh Indraprastha University, Delhi | 2013 - 17' denotes a range 2013-2017; mapping only 2013 as start_year and leaving graduation_year null drops the 17 completion year.",
+      "source_ids": [
+        "e20:90:150"
+      ]
+    },
+    {
+      "field": "data.experience[0].responsibilities[1]",
+      "issue": "Starts mid-sentence at 'roles (AssistantAgent...' — the leading clause 'Architect and implement multi-agent conversational systems with specialized agent' was dropped, producing a fragment.",
+      "source_ids": [
+        "e14:0:81",
+        "e14:81:155"
+      ]
+    },
+    {
+      "field": "data.experience[0].responsibilities[6]",
+      "issue": "Responsibility reduced to 'embedding generation', omitting the source line 'Architect data processing pipelines for content extraction, transformation, and embedding generation' — incomplete/invented truncation.",
+      "source_ids": [
+        "e19:0:79",
+        "e19:79:99"
+      ]
+    },
+    {
+      "field": "data.experience[0].responsibilities[3]",
+      "issue": "Bullet merges a separate section heading 'Technical Architecture & Implementation:' into the RAG responsibility text.",
+      "source_ids": [
+        "e16:0:75",
+        "e16:75:134",
+        "e16:134:174"
+      ]
+    },
+    {
+      "field": "data.experience[0].responsibilities[0]",
+      "issue": "Source skill list cites OpenAI GPT-4o; this responsibility cites GPT-3.5-Turbo (source-supported) but the schema lists GPT-4o skill while experience uses 3.5 — verify consistency; also LangChain reference appears cut at 'LangChain.'",
+      "source_ids": [
+        "e13:0:81",
+        "e13:81:102",
+        "e1:0:37"
+      ]
+    },
+    {
+      "field": "data.experience[0].responsibilities",
+      "issue": "First employment bullet group begins with heading 'Generative AI & Multi-Agent Systems Leadership:' which was not mapped as a responsibility and appears in no field.",
+      "source_ids": [
+        "e12:721:768"
+      ]
+    },
+    {
+      "field": "data.summary",
+      "issue": "Summary string is a run-together concatenation without spaces ('ProfileInnovative...specializing inGenerative...') and includes the literal section label 'Profile' as part of the summary text.",
+      "source_ids": [
+        "e12:57:64",
+        "e12:64:138",
+        "e12:138:210"
+      ]
+    },
+    {
+      "field": "data.summary / total_experience_years",
+      "issue": "Summary claims '8+ years of experience'; schema total_experience_years=8.0 is a lower-bound interpretation, not an exact computed figure.",
+      "source_ids": [
+        "e12:64:138"
+      ]
+    },
+    {
+      "field": "data.certifications[0].name",
+      "issue": "Certification record concatenates the section heading 'Certifications' plus all five certification names into a single name, duplicating the five individual certification records that follow.",
+      "source_ids": [
+        "e21:47:61",
+        "e21:61:311"
+      ]
+    },
+    {
+      "field": "data.skills.all_skills",
+      "issue": "Skill values are fragmented mid-phrase ('Microsoft', 'Retrieval-Augmented', 'Generation', 'Autonomous', 'Workflows', 'Conversational AI') rather than atomic skills; 'AWS and OpenAI API' and 'MySQL and Firestore' merge distinct items.",
+      "source_ids": [
+        "e3:0:33",
+        "e5:36:66",
+        "e5:66:76",
+        "e6:0:32",
+        "e9:40:59",
+        "e10:36:69"
+      ]
+    },
+    {
+      "field": "data.skills.technical_skills",
+      "issue": "MySQL mapped from a combined 'MySQL and Firestore' source span; Firestore dropped as a separate database skill present in source.",
+      "source_ids": [
+        "e10:36:69"
+      ]
+    },
+    {
+      "field": "data.projects[0].description",
+      "issue": "Project description concatenates the project name heading and duplicate bullet text; source block e29:12:72 repeated as both name and description start.",
+      "source_ids": [
+        "e29:12:72",
+        "e29:72:190"
+      ]
+    },
+    {
+      "field": "data.projects[1].description",
+      "issue": "Description repeats the project name 'HealthEdge Guiding Care Bot | Multi-Agent System' as part of the description text.",
+      "source_ids": [
+        "e35:133:182",
+        "e35:182:296"
+      ]
+    },
+    {
+      "field": "data.projects[3].description",
+      "issue": "Description embeds the name, 'GitHub:', and URL ('github.com/av525/essay-writer-langgraph') inline rather than isolating them; URL also duplicated in projects[3].url.",
+      "source_ids": [
+        "e44:73:119",
+        "e44:119:127",
+        "e45:0:39"
+      ]
+    },
+    {
+      "field": "data.projects[4].description",
+      "issue": "Description embeds the name, 'GitHub:', and URL inline; URL duplicated in projects[4].url.",
+      "source_ids": [
+        "e48:86:142",
+        "e48:142:149",
+        "e49:0:36"
+      ]
+    },
+    {
+      "field": "data.contact.phone",
+      "issue": "Source email block shows trailing period 'avmsv1996@gmail.com.'; phone/email extraction placed correctly but email value strips trailing period — minor, verify source support.",
+      "source_ids": [
+        "e20:164:184"
+      ]
+    },
+    {
+      "field": "data.contact.location",
+      "issue": "Source contains 'Technical' fragment (e0:31:41) unresolved; possible location or title qualifier omitted from structured fields.",
+      "source_ids": [
+        "e0:31:41"
+      ]
+    }
+  ]
+}

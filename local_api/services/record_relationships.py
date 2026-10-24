@@ -40,15 +40,24 @@ def field_kinds(text,category):
     kinds=[]
     if re.search(r'\b(?:19|20)\d{2}\b|\b(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sept?|Oct|Nov|Dec)\s*[‘’\']?\d{2}',text,re.I):kinds.append('dates')
     if category=='education':
-        if degree_families(text):kinds.append('qualification')
-        if re.search(r'\b(?:university|college|institute|institution|school|convent|academy|vidyalaya|vidyapeeth|polytechnic|board|iit|iiit|nit|cbse|icse)\b',text,re.I):kinds.append('institution')
+        institution_marker = bool(re.search(r'\b(?:university|college|institute|institution|school|convent|academy|vidyalaya|vidyapeeth|polytechnic|board|iit|iiit|nit|cbse|icse)\b',text,re.I))
+        explicit_credential = bool(re.search(r'\b(?:diploma|certificate|class\s+(?:x|xii)|sslc|ssc|10th|12th|matric(?:ulation)?)\b',text,re.I))
+        # A named school is institution evidence, not automatically a degree.
+        # Keep an explicit credential such as "High School Diploma" eligible.
+        if degree_families(text) and not (institution_marker and not explicit_credential):kinds.append('qualification')
+        if institution_marker:kinds.append('institution')
         if re.search(r'\b(?:cgpa|gpa|grade|distinction|percentage)\b|\d\s*%',text,re.I):kinds.append('grade')
         if re.search(r'\b(?:computer science|engineering|finance|commerce|accountancy|artificial intelligence|mathematics|business administration)\b',text,re.I):kinds.append('field_of_study')
     else:
         from local_api.services.record_subfields import employment_header_fields, ACTION, ROLE
         if ACTION.search(text):return [*kinds, 'responsibilities']
+        # A delivering clause can continue a responsibility across PDF elements.
+        # Require a clause, not just the word: "Delivering Systems Ltd" remains
+        # organization evidence. Do this before generic suffixes such as systems.
+        if re.match(r'^\s*(?:[•▪●*\-]\s*)?delivering\s+\S.+\s+(?:to|for|through|across|within)\s+\S', text, re.I):
+            return [*kinds, 'responsibilities']
         if employment_header_fields(text):kinds.extend(['employer', 'title'])
-        if len(text.split()) <= 18 and re.search(r'\b(?:engineer|developer|analyst|associate|consultant|manager|architect|intern|specialist|director|officer|executive|practitioner|lead|administrator|underwriter)\b',text,re.I):kinds.append('title')
+        if len(text.split()) <= 18 and re.search(r'\b(?:engineer|developer|analyst|associate|consultant|manager|architect|intern|specialist|director|officer|executive|practitioner|lead|administrator|underwriter|supervisor)\b',text,re.I):kinds.append('title')
         if dated_organization_header(text) or re.search(r'\b(?:ltd|limited|inc|llc|corp|corporation|systems|services|bank|technolog(?:y|ies|ie)|solutions|ispl|paribas|bnp|pvt|private)\b|\b(?:company|employer)\s*:',text,re.I):kinds.append('employer')
         if re.match(r'^\s*[•▪●\-]?\s*(?:led|built|developed|managed|implemented|responsib|worked on|configured|designed|achieved|supported|created|performed|conducted)',text,re.I):kinds.append('responsibilities')
     if re.match(r'^\s*(?:location|work base)\s*:',text,re.I):kinds.append('location')

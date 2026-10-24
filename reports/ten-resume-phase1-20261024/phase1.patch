@@ -1,0 +1,122 @@
+diff --git a/local_api/services/record_relationships.py b/local_api/services/record_relationships.py
+index 56630a49..46c54f2c 100644
+--- a/local_api/services/record_relationships.py
++++ b/local_api/services/record_relationships.py
+@@ -47,6 +47,11 @@ def field_kinds(text,category):
+     else:
+         from local_api.services.record_subfields import employment_header_fields, ACTION, ROLE
+         if ACTION.search(text):return [*kinds, 'responsibilities']
++        # A delivering clause can continue a responsibility across PDF elements.
++        # Require a clause, not just the word: "Delivering Systems Ltd" remains
++        # organization evidence. Do this before generic suffixes such as systems.
++        if re.match(r'^\s*(?:[•▪●*\-]\s*)?delivering\s+\S.+\s+(?:to|for|through|across|within)\s+\S', text, re.I):
++            return [*kinds, 'responsibilities']
+         if employment_header_fields(text):kinds.extend(['employer', 'title'])
+         if len(text.split()) <= 18 and re.search(r'\b(?:engineer|developer|analyst|associate|consultant|manager|architect|intern|specialist|director|officer|executive|practitioner|lead|administrator|underwriter)\b',text,re.I):kinds.append('title')
+         if dated_organization_header(text) or re.search(r'\b(?:ltd|limited|inc|llc|corp|corporation|systems|services|bank|technolog(?:y|ies|ie)|solutions|ispl|paribas|bnp|pvt|private)\b|\b(?:company|employer)\s*:',text,re.I):kinds.append('employer')
+diff --git a/scripts/single_resume_pipeline.py b/scripts/single_resume_pipeline.py
+index b283b8c6..34217dfc 100644
+--- a/scripts/single_resume_pipeline.py
++++ b/scripts/single_resume_pipeline.py
+@@ -13,11 +13,27 @@ from local_api.services.source_validation import validate_result
+ 
+ def fingerprint(sections, schema):
+     # Exclude diagnostic reasons, confidence and counters: they are not progress.
++    hierarchy = [
++        {'category': parent['category'],
++         'records': [
++             {'record_id': record['record_id'],
++              'source_ids': record.get('source_ids', []),
++              'attributes': [
++                  {'name': attribute['name'],
++                   'items': [{'value': item['value'],
++                              'status': item.get('status'),
++                              'evidence': item.get('evidence', [])}
++                             for item in attribute.get('items', [])]}
++                  for attribute in record.get('attributes', [])]}
++             for record in parent.get('records', [])],
++         'residual_blocks': parent.get('residual_blocks', [])}
++        for parent in schema.get('section_schemas', [])]
+     return hashlib.sha256(json.dumps({
+-        'sections': [(s.category, [(b.source_element_index, b.start, b.end) for b in s.blocks],
+-                      [e.model_dump() for e in s.entries]) for s in sections.sections],
+-        'unknown': [(b.source_element_index, b.start, b.end) for b in sections.needs_review],
++        'sections': [(s.category, [(b.source_element_index, b.start, b.end, b.text) for b in s.blocks],
++                      [(e.entry_id, e.block_indices, e.fields) for e in s.entries]) for s in sections.sections],
++        'unknown': [(b.source_element_index, b.start, b.end, b.text) for b in sections.needs_review],
+         'data': schema['data'],
++        'hierarchy': hierarchy,
+     }, sort_keys=True).encode()).hexdigest()
+ 
+ 
+--- /dev/null
++++ tests/test_phase1_repairs.py
+@@ -0,0 +1,68 @@
++"""Phase 1: body continuations and semantic recovery progress; no live provider."""
++from copy import deepcopy
++import pytest
++from local_api.schemas.sections import SectionResponse,SectionBlock,ResumeSection
++from local_api.services.record_relationships import field_kinds
++from scripts.single_resume_pipeline import fingerprint
++
++@pytest.mark.parametrize('text',[
++ 'delivering high-integrity data feeds to downstream Fund accounting systems.',
++ 'Delivering validated data to downstream accounting systems',
++ '• delivering reports for regulatory systems.',
++])
++def test_delivering_clause_is_responsibility(text):
++ assert field_kinds(text,'experience')==['responsibilities']
++
++@pytest.mark.parametrize('text',['Persistent Systems','Delivering Systems','Delivering Systems Ltd','Company: Delivering Systems','Engineer | Persistent Systems | 2020 - 2024','BNP Paribas ISPL'])
++def test_company_headers_are_preserved(text):
++ assert 'employer' in field_kinds(text,'experience')
++
++@pytest.mark.parametrize('text',['systems','Delivering results','Data for systems','delivering systems','Systems for Everyone Ltd'])
++def test_no_broad_delivering_or_systems_rule(text):
++ assert field_kinds(text,'experience')!=['responsibilities']
++
++def fixture():
++ block=SectionBlock(source_element_index=0,start=0,end=3,text='SQL',page_number=1,assignment='semantic',reason='initial',lane='main')
++ sections=SectionResponse(status='provisional',sections=[ResumeSection(category='skills',label='Skills',blocks=[block])],needs_review=[],metadata={},warnings=[])
++ schema={'data':{'skills':['SQL']},'section_schemas':[{'category':'skills','label':'Skills','records':[{'record_id':'skills','source_ids':['e0:0:3'],'review_reasons':[],'attributes':[{'name':'technical_skills','status':'mapped','items':[{'value':'SQL','status':'source_supported','evidence':[{'source_id':'e0:0:3','quote':'SQL'}]}]}]}],'residual_blocks':[]}]}
++ return sections,schema
++
++@pytest.mark.parametrize('change',['value','record_id','ownership','quote','evidence_id','parent','residual'])
++def test_meaningful_hierarchy_state_changes_progress(change):
++ sec,before=fixture();after=deepcopy(before);parent=after['section_schemas'][0];record=parent['records'][0];item=record['attributes'][0]['items'][0]
++ if change=='value':item['value']='Python'
++ elif change=='record_id':record['record_id']='skills-2'
++ elif change=='ownership':record['source_ids']=['e1:0:3']
++ elif change=='quote':item['evidence'][0]['quote']='SQ'
++ elif change=='evidence_id':item['evidence'][0]['source_id']='e1:0:3'
++ elif change=='parent':parent['category']='experience'
++ else:parent['residual_blocks']=[{'source_id':'e0:0:3','quote':'SQL'}]
++ assert fingerprint(sec,before)!=fingerprint(sec,after)
++
++def test_diagnostic_changes_do_not_keep_feedback_alive():
++ sec,before=fixture();other=sec.model_copy(deep=True);after=deepcopy(before)
++ other.metadata={'retry_count':100,'warning_count':999};other.warnings=['new warning'];other.sections[0].blocks[0].reason='different explanation'
++ after['meta']={'warnings':['new diagnostic'],'provider_calls':999}
++ after['section_schemas'][0]['records'][0]['review_reasons']=['different diagnostic']
++ assert fingerprint(sec,before)==fingerprint(other,after)
++
++def test_entry_explanations_do_not_count_but_field_ownership_does():
++ from local_api.schemas.sections import SectionEntry
++ sec,schema=fixture()
++ sec.sections[0].entries=[SectionEntry(entry_id='skills-1',block_indices=[0],lane='main',boundary_reason='source',fields={'title':[0]})]
++ other=sec.model_copy(deep=True);other.sections[0].entries[0].boundary_reason='new explanation';other.sections[0].entries[0].review_reasons=['diagnostic only']
++ assert fingerprint(sec,schema)==fingerprint(other,schema)
++ other.sections[0].entries[0].fields={'responsibilities':[0]}
++ assert fingerprint(sec,schema)!=fingerprint(other,schema)
++
++def test_continuation_keeps_its_existing_record_and_company_header():
++ from local_api.schemas.sections import SectionEntry
++ from local_api.services.record_relationships import annotate_relationships
++ texts=['Persistent Systems','BNP Paribas ISPL','Drove BA scope for a pricing platform,','delivering high-integrity data feeds to downstream Fund accounting systems.']
++ blocks=[SectionBlock(source_element_index=i,start=0,end=len(t),text=t,page_number=1,lane='main',assignment='heading_context',reason='saved context') for i,t in enumerate(texts)]
++ section=ResumeSection(category='experience',label='Experience',blocks=blocks,entries=[SectionEntry(entry_id='experience-1',block_indices=[0],lane='main',boundary_reason='header'),SectionEntry(entry_id='experience-2',block_indices=[1,2,3],lane='main',boundary_reason='header')])
++ annotate_relationships(section)
++ assert section.entries[0].fields['employer']==[0]
++ assert section.entries[1].fields['employer']==[1]
++ assert section.entries[1].fields['responsibilities']==[2,3]
++ assert [e.block_indices for e in section.entries]==[[0],[1,2,3]]

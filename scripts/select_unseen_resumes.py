@@ -22,6 +22,10 @@ def prior_selections(reports):
     hashes=set();names=set();sources=[]
     for path in sorted(Path(reports).rglob('manifest.json')):
         data=json.loads(path.read_text())
+        # Some historical report manifests are JSON arrays rather than batch
+        # manifests. They contain no selected-document scope to exclude.
+        if not isinstance(data, dict):
+            continue
         if 'selected' not in data:continue
         selected=data['selected']
         if not isinstance(selected,list):raise ValueError('Invalid selected list: '+str(path))

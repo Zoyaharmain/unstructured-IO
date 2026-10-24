@@ -1,0 +1,24 @@
+const fs=require('fs'),vm=require('vm'),assert=require('assert');
+const html=fs.readFileSync('reports/manual-field-review-employment-20261024-v4/group-02.html','utf8');
+class Element{constructor(){this.value='';this.children=[];this.textContent='';}append(e){this.children.push(e);}click(){}}
+const elements=Object.fromEntries(['rows','reviewer','message','json','csv'].map(k=>[k,new Element()]));let blob;
+const context=vm.createContext({document:{createElement:()=>new Element(),getElementById:id=>elements[id]},Blob:class{constructor(parts){blob=this;this.parts=parts;}},URL:{createObjectURL:()=> 'blob:test',revokeObjectURL:()=>{}},setTimeout:()=>{}});
+vm.runInContext(html.split('<script>')[1].split('</script>')[0],context);
+const run=s=>vm.runInContext(s,context);elements.reviewer.value='Test reviewer';
+assert.equal(run('rows.length'),6);assert.equal(run("rows.every(r=>r.parent_section==='experience'&&r.predicted_record_id==='experience-1')"),true);
+assert.throws(()=>run('reviewed()'),/No decisions/);
+run("controls[0].decision.value='correct';controls[0].decision.onchange()");
+assert.equal(run('reviewed()[0].expected_values[0]'),'Persistent Systems');
+run("controls[0].evidence.value=JSON.stringify([{source_id:'e12:647:706',quote:'Invented employer'}])");
+assert.throws(()=>run('reviewed()'),/quote does not occur/);
+run("controls[0].decision.onchange(); controls[5].decision.value='correct';controls[5].decision.onchange()");
+assert.throws(()=>run('reviewed()'),/explicit values/);
+run("controls[5].decision.value='absent';controls[5].decision.onchange()");
+assert.throws(()=>run('reviewed()'),/verified absence/);
+run("controls[5].decision.value='ambiguous'");assert.throws(()=>run('reviewed()'),/describe the uncertainty/);
+run("controls[5].notes.value='Location is not explicit in the saved record; original PDF review pending.';download('json')");
+let exported=JSON.parse(blob.parts.join(''));
+assert.equal(exported.review_session,'manual-field-review-employment-20261024-v4');assert.equal(exported.pending_rows_omitted,4);
+assert.equal(exported.decisions[1].review_status,'ambiguous');assert.equal(exported.decisions[1].expected_values,null);
+assert.equal(run("rows.every(r=>r.review_status==='pending')"),true);
+console.log('PASS: six employment rows, explicit confirmation, wrong-quote rejection, no inferred absence, uncertainty preserved, session-tagged download, pending state unchanged.');

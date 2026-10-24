@@ -134,7 +134,7 @@ def map_schema(request):
                     candidate=candidates[0] if len(candidates)==1 else None
                     company=literal(candidate.company,refs('employer')) if candidate else None
                     role=literal(candidate.role,refs('title')) if candidate else None
-                    role_pattern=r'\b(?:engineer|developer|analyst|consultant|architect|manager|specialist|director|lead)\b'
+                    role_pattern=r'\b(?:engineer|developer|analyst|consultant|architect|manager|specialist|director|lead|supervisor)\b'
                     company_pattern=r'\b(?:ltd|limited|inc|llc|corp|corporation|systems|services|bank|technolog(?:y|ies)|solutions|company|ispl|paribas|bnp|pvt|private)\b'
                     if company and re.search(role_pattern,company,re.I) and not re.search(company_pattern,company,re.I):company=None
                     if role and re.search(company_pattern,role,re.I):role=None

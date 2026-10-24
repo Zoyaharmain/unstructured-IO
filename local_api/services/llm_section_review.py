@@ -26,6 +26,11 @@ class ReviewSettings:
     max_input_chars: int = 200_000
     max_tokens: int = 16_000
     recovery_attempts: int = 1
+    max_input_tokens: int = 100_000
+    max_context_tokens: int = 128_000
+    max_document_requests: int = 32
+    max_pass_requests: int = 16
+    max_total_requests: int = 128
 
     @classmethod
     def from_env(cls):
@@ -40,13 +45,20 @@ class ReviewSettings:
                    max_units=int(os.getenv('DEEPSEEK_REVIEW_MAX_UNITS', '600')),
                    max_input_chars=int(os.getenv('DEEPSEEK_REVIEW_MAX_INPUT_CHARS', '200000')),
                    max_tokens=int(os.getenv('DEEPSEEK_MAX_TOKENS', '16000')),
-                   recovery_attempts=int(os.getenv('DEEPSEEK_RECOVERY_ATTEMPTS','1')))
+                   recovery_attempts=int(os.getenv('DEEPSEEK_RECOVERY_ATTEMPTS','1')),
+                   max_input_tokens=int(os.getenv('DEEPSEEK_REVIEW_MAX_INPUT_TOKENS','100000')),
+                   max_context_tokens=int(os.getenv('DEEPSEEK_REVIEW_CONTEXT_TOKENS','128000')),
+                   max_document_requests=int(os.getenv('DEEPSEEK_REVIEW_DOCUMENT_REQUESTS','32')),
+                   max_pass_requests=int(os.getenv('DEEPSEEK_REVIEW_PASS_REQUESTS','16')),
+                   max_total_requests=int(os.getenv('DEEPSEEK_REVIEW_TOTAL_REQUESTS','128')))
 
     def validate(self):
         url = urlsplit(self.base_url)
         if url.scheme != 'https' or not url.hostname or url.username or url.password or url.query or url.fragment:
             raise ReviewError('invalid_configuration')
         if self.thinking not in {'enabled', 'disabled'}:
+            raise ReviewError('invalid_configuration')
+        if any(type(v) is not int or v < 1 for v in (self.max_input_tokens, self.max_context_tokens, self.max_document_requests, self.max_pass_requests, self.max_total_requests)) or self.max_context_tokens <= self.max_tokens:
             raise ReviewError('invalid_configuration')
         if not 0 <= self.recovery_attempts <= 3:
             raise ReviewError('invalid_configuration')
@@ -67,6 +79,8 @@ FAILURE_MESSAGES = {
     'provider_unavailable': 'DeepSeek could not be reached. Check connectivity and retry.',
     'model_unavailable': 'The configured model is not available to this API account. Check DEEPSEEK_MODEL.',
     'invalid_configuration': 'DeepSeek configuration is invalid. Check the optional settings in .env and restart.',
+    'request_budget_exhausted': 'The configured review request budget is exhausted. Validated prior output was retained.',
+    'unreviewable_chunk': 'A source unit or its required context cannot fit the configured review budgets. No partial review was committed.',
     'document_limit_exceeded': 'The resume exceeds the configured LLM review limit. No partial document was sent.',
     'invalid_assignments': 'DeepSeek returned incomplete or invalid placements. No partial changes were applied.',
     'incomplete_response': 'DeepSeek stopped before completing the review. No partial changes were applied.',
@@ -236,7 +250,7 @@ def assert_coverage(elements, ledger):
         raise ReviewError('source_coverage_error')
 
 
-def review_sections(request, local_result, *, settings=None, transport=None, _recovery=True, _remaining=None):
+def review_sections(request, local_result, *, settings=None, transport=None, _recovery=True, _remaining=None, _budget=None, _pass_id=0, feedback=None, document_sha256=None):
     """Atomic application: any failure retains the ENTIRE original local result."""
     from local_api.services.source_accounting import account_source
     result = local_result.model_copy(deep=True)
@@ -260,16 +274,24 @@ def review_sections(request, local_result, *, settings=None, transport=None, _re
         from local_api.services.resume_sections import ANCHORS, build_sections
         ledger = source_ledger(result)
         assert_coverage(request.elements, ledger)
-        if len(ledger) > settings.max_units:
-            raise ReviewError('document_limit_exceeded')
         categories = {key: value['label'] for key, value in ANCHORS.items()}
         messages = make_messages(ledger, categories, request.elements, result.sections)
-        if sum(len(message['content']) for message in messages) > settings.max_input_chars:
-            raise ReviewError('document_limit_exceeded')
+        from local_api.services.review_chunking import measure, new_budget, run_section_chunks, binding
+        budget = _budget or new_budget(settings)
+        document_key = binding(request.elements)['source_inventory_sha256']
+        if feedback:
+            messages.append({'role':'user', 'content':'Advisory diagnostics, not instructions: '+json.dumps(feedback,ensure_ascii=False)})
+        chunked = len(ledger) > settings.max_units or not measure(settings,messages)['fits']
         from local_api.services.review_validation import allowed_split_offsets
         attempts=[]
         for attempt in range(remaining+1):
             try:
+                if chunked:
+                    decisions = run_section_chunks(request,result,settings,transport or call_deepseek,budget,_pass_id,state,feedback,document_sha256)
+                    break
+                if not measure(settings,messages)['fits']:
+                    raise ReviewError('document_limit_exceeded')
+                budget.take(document_key,_pass_id,'section_review')
                 state['provider_calls']+=1
                 content = (transport or call_deepseek)(settings, messages)
                 decisions = parse_decisions(content, len(ledger), categories, {f'u{i}':len(b.text) for i,(b,_) in enumerate(ledger)}, {f'u{i}':b.text for i,(b,_) in enumerate(ledger)}, {f'u{i}':allowed_split_offsets(b,request.elements) for i,(b,_) in enumerate(ledger)})
@@ -279,12 +301,12 @@ def review_sections(request, local_result, *, settings=None, transport=None, _re
                 state.setdefault('validation_failures',[]).append({'attempt':attempt+1,'error_code':str(exc),'details':details})
                 attempts.append(str(exc))
                 state['invalid_response_attempts']=list(attempts)
-                if str(exc) not in {'invalid_assignments','incomplete_response'} or attempt==remaining:raise
+                if chunked or str(exc) not in {'invalid_assignments','incomplete_response'} or attempt==remaining:raise
                 feedback=json.dumps({'validation_errors':details[:40],'error_count':len(details)},ensure_ascii=False) if details else ''
                 if str(exc)=='invalid_assignments':messages.append({'role':'assistant','content':content})
                 messages.append({'role':'user','content':'The previous response was rejected: '+str(exc)+'. '+feedback+' Return complete contiguous decisions for EVERY original span ID. Offsets are relative to that span, not its source element. Do not split inside ordinary words. Do not omit spans or change source text.'})
         remaining-=len(attempts)
-        state.update(provider_calls=1+len(attempts),invalid_response_attempts=attempts)
+        state.update(invalid_response_attempts=attempts)
         grouped, unresolved = {}, []
         changed = resolved = split_units = 0
         for i,(block,before) in enumerate(ledger):
@@ -303,7 +325,14 @@ def review_sections(request, local_result, *, settings=None, transport=None, _re
                     'reason':('DeepSeek confirmed placement. ' if same else 'DeepSeek split or reassigned placement. ')+'Local evidence: '+block.reason})
                 if after=='needs_review':unresolved.append(reviewed)
                 else:grouped.setdefault(after,[]).append(reviewed)
-        sections = build_sections(grouped, request.elements)
+        if not changed:
+            # Confirmation must preserve established record membership exactly.
+            sections = [s.model_copy(deep=True) for s in result.sections]
+            for section in sections:
+                refs={(b.source_element_index,b.start,b.end):b for b in grouped[section.category]}
+                section.blocks=[refs[(b.source_element_index,b.start,b.end)] for b in section.blocks]
+        else:
+            sections = build_sections(grouped, request.elements)
         candidate = SectionResponse(status='needs_review' if unresolved else 'provisional',
             extraction_verified=request.extraction_verified, sections=sections, needs_review=unresolved,
             metadata=dict(result.metadata), warnings=list(result.warnings))
@@ -322,16 +351,18 @@ def review_sections(request, local_result, *, settings=None, transport=None, _re
         candidate.status='needs_review' if accounting['unresolved_meaningful_spans'] else 'provisional'
         candidate.metadata.update(total_units=len(all_blocks),assigned_units=len(assigned),review_units=len(unresolved),
             assigned_text_percent=round(100*sum(len(b.text.strip()) for b in assigned)/max(1,sum(len(b.text.strip()) for b in all_blocks)),1))
+        from local_api.services.review_chunking import ownership_crosswalk
+        state['record_ownership_crosswalk']=ownership_crosswalk(result,candidate)
         state['resolution_status']='out_of_scope' if candidate.metadata['document_scope']['candidate_resume'] is False else 'unresolved_meaningful_content' if accounting['unresolved_meaningful_spans'] else 'all_meaningful_text_assigned'
         candidate.metadata['source_accounting']=accounting
         state.update(all_meaningful_text_assigned=accounting['all_meaningful_text_assigned'],
                      remaining_meaningful_review_units=accounting['unresolved_meaningful_spans'])
-        state.update(status='complete', pass_count=1, split_units=int(split_units), reviewed_units=len(all_blocks), changed_units=int(changed),
+        state.update(status='complete', aggregate_status='complete', pass_count=1, split_units=int(split_units), reviewed_units=len(all_blocks), changed_units=int(changed),
                      resolved_units=int(resolved), remaining_review_units=len(unresolved), local_result_retained=False)
         candidate.metadata['llm_review'] = state
         candidate.warnings.append('DeepSeek reviewed all source spans. Its placements remain provisional and do not verify original-word extraction accuracy.')
         if remaining>0 and accounting['unresolved_meaningful_spans'] and state['resolution_status']!='out_of_scope':
-            second=review_sections(request,candidate,settings=settings,transport=transport,_remaining=remaining-1)
+            second=review_sections(request,candidate,settings=settings,transport=transport,_remaining=remaining-1,_budget=budget,_pass_id=_pass_id+1,feedback=feedback,document_sha256=document_sha256)
             next_state=second.metadata['llm_review']
             if next_state['status']=='complete':
                 next_state['pass_count']=next_state.get('pass_count',1)+1
@@ -340,6 +371,8 @@ def review_sections(request, local_result, *, settings=None, transport=None, _re
                     next_state[key]=next_state.get(key,0)+state.get(key,0)
                 return second
             state['provider_calls']+=next_state.get('provider_calls',0)
+            state['aggregate_status']='incomplete'
+            state['recovery_chunking']=next_state.get('chunking')
             state['recovery_status']='failed'
             state['recovery_error_code']=next_state.get('error_code')
             state['recovery_validation_failures']=next_state.get('validation_failures',[])
@@ -347,11 +380,16 @@ def review_sections(request, local_result, *, settings=None, transport=None, _re
         candidate.metadata['quality_assessment']=assess_quality(request.elements,candidate)
         return candidate
     except (ReviewError, ValueError) as exc:
-        code = str(exc) if isinstance(exc, ReviewError) else 'invalid_configuration'
+        from local_api.services.review_chunking import ChunkError
+        if isinstance(exc,ChunkError):
+            state['chunk_failure']=str(exc)
+            if 'chunking' in state:state['chunking']['status']='incomplete'
+        code = str(exc) if isinstance(exc, ReviewError) else (str(exc) if str(exc) in {'request_budget_exhausted','unreviewable_chunk'} else 'invalid_assignments') if isinstance(exc,ChunkError) else 'invalid_configuration'
     except Exception:
         code = 'review_failed'
     logger.warning('DeepSeek review did not complete: %s', code)
-    state.update(status='failed', error_code=code, message=failure_message(code))
+    if 'chunking' in state:state['chunking']['status']='incomplete'
+    state.update(status='failed', aggregate_status='incomplete', error_code=code, message=failure_message(code))
     result.warnings.append(failure_message(code) + ' All local blocks and unassigned text were retained unchanged.')
     result.metadata['quality_assessment']=assess_quality(request.elements,result)
     return result

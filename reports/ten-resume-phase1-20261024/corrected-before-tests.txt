@@ -1,0 +1,220 @@
+FFF...........FFFFFFF.F                                                  [100%]
+=================================== FAILURES ===================================
+_ test_delivering_clause_is_responsibility[delivering high-integrity data feeds to downstream Fund accounting systems.] _
+
+text = 'delivering high-integrity data feeds to downstream Fund accounting systems.'
+
+    @pytest.mark.parametrize('text',[
+     'delivering high-integrity data feeds to downstream Fund accounting systems.',
+     'Delivering validated data to downstream accounting systems',
+     '• delivering reports for regulatory systems.',
+    ])
+    def test_delivering_clause_is_responsibility(text):
+>    assert field_kinds(text,'experience')==['responsibilities']
+E    AssertionError: assert ['employer'] == ['responsibilities']
+E      
+E      At index 0 diff: 'employer' != 'responsibilities'
+E      Use -v to get more diff
+
+tests/test_phase1_repairs.py:14: AssertionError
+_ test_delivering_clause_is_responsibility[Delivering validated data to downstream accounting systems] _
+
+text = 'Delivering validated data to downstream accounting systems'
+
+    @pytest.mark.parametrize('text',[
+     'delivering high-integrity data feeds to downstream Fund accounting systems.',
+     'Delivering validated data to downstream accounting systems',
+     '• delivering reports for regulatory systems.',
+    ])
+    def test_delivering_clause_is_responsibility(text):
+>    assert field_kinds(text,'experience')==['responsibilities']
+E    AssertionError: assert ['employer'] == ['responsibilities']
+E      
+E      At index 0 diff: 'employer' != 'responsibilities'
+E      Use -v to get more diff
+
+tests/test_phase1_repairs.py:14: AssertionError
+_ test_delivering_clause_is_responsibility[\u2022 delivering reports for regulatory systems.] _
+
+text = '• delivering reports for regulatory systems.'
+
+    @pytest.mark.parametrize('text',[
+     'delivering high-integrity data feeds to downstream Fund accounting systems.',
+     'Delivering validated data to downstream accounting systems',
+     '• delivering reports for regulatory systems.',
+    ])
+    def test_delivering_clause_is_responsibility(text):
+>    assert field_kinds(text,'experience')==['responsibilities']
+E    AssertionError: assert ['employer'] == ['responsibilities']
+E      
+E      At index 0 diff: 'employer' != 'responsibilities'
+E      Use -v to get more diff
+
+tests/test_phase1_repairs.py:14: AssertionError
+___________ test_meaningful_hierarchy_state_changes_progress[value] ____________
+
+change = 'value'
+
+    @pytest.mark.parametrize('change',['value','record_id','ownership','quote','evidence_id','parent','residual'])
+    def test_meaningful_hierarchy_state_changes_progress(change):
+     sec,before=fixture();after=deepcopy(before);parent=after['section_schemas'][0];record=parent['records'][0];item=record['attributes'][0]['items'][0]
+     if change=='value':item['value']='Python'
+     elif change=='record_id':record['record_id']='skills-2'
+     elif change=='ownership':record['source_ids']=['e1:0:3']
+     elif change=='quote':item['evidence'][0]['quote']='SQ'
+     elif change=='evidence_id':item['evidence'][0]['source_id']='e1:0:3'
+     elif change=='parent':parent['category']='experience'
+     else:parent['residual_blocks']=[{'source_id':'e0:0:3','quote':'SQL'}]
+>    assert fingerprint(sec,before)!=fingerprint(sec,after)
+E    AssertionError: assert '3d71316b1ee911dabe11f6a574c9cdecaa3a28424f2cc65656d49f706bba5141' != '3d71316b1ee911dabe11f6a574c9cdecaa3a28424f2cc65656d49f706bba5141'
+E     +  where '3d71316b1ee911dabe11f6a574c9cdecaa3a28424f2cc65656d49f706bba5141' = fingerprint(SectionResponse(status='provisional', extraction_verified=False, sections=[ResumeSection(category='skills', label='Ski...e, llm_action=None)], entries=[], source_heading=None, readable_blocks=[])], needs_review=[], metadata={}, warnings=[]), {'data': {'skills': ['SQL']}, 'section_schemas': [{'category': 'skills', 'label': 'Skills', 'records': [{'record_id': 'skills', 'source_ids': ['e0:0:3'], 'review_reasons': [], 'attributes': [{...}]}], 'residual_blocks': []}]})
+E     +  and   '3d71316b1ee911dabe11f6a574c9cdecaa3a28424f2cc65656d49f706bba5141' = fingerprint(SectionResponse(status='provisional', extraction_verified=False, sections=[ResumeSection(category='skills', label='Ski...e, llm_action=None)], entries=[], source_heading=None, readable_blocks=[])], needs_review=[], metadata={}, warnings=[]), {'data': {'skills': ['SQL']}, 'section_schemas': [{'category': 'skills', 'label': 'Skills', 'records': [{'record_id': 'skills', 'source_ids': ['e0:0:3'], 'review_reasons': [], 'attributes': [{...}]}], 'residual_blocks': []}]})
+
+tests/test_phase1_repairs.py:40: AssertionError
+_________ test_meaningful_hierarchy_state_changes_progress[record_id] __________
+
+change = 'record_id'
+
+    @pytest.mark.parametrize('change',['value','record_id','ownership','quote','evidence_id','parent','residual'])
+    def test_meaningful_hierarchy_state_changes_progress(change):
+     sec,before=fixture();after=deepcopy(before);parent=after['section_schemas'][0];record=parent['records'][0];item=record['attributes'][0]['items'][0]
+     if change=='value':item['value']='Python'
+     elif change=='record_id':record['record_id']='skills-2'
+     elif change=='ownership':record['source_ids']=['e1:0:3']
+     elif change=='quote':item['evidence'][0]['quote']='SQ'
+     elif change=='evidence_id':item['evidence'][0]['source_id']='e1:0:3'
+     elif change=='parent':parent['category']='experience'
+     else:parent['residual_blocks']=[{'source_id':'e0:0:3','quote':'SQL'}]
+>    assert fingerprint(sec,before)!=fingerprint(sec,after)
+E    AssertionError: assert '3d71316b1ee911dabe11f6a574c9cdecaa3a28424f2cc65656d49f706bba5141' != '3d71316b1ee911dabe11f6a574c9cdecaa3a28424f2cc65656d49f706bba5141'
+E     +  where '3d71316b1ee911dabe11f6a574c9cdecaa3a28424f2cc65656d49f706bba5141' = fingerprint(SectionResponse(status='provisional', extraction_verified=False, sections=[ResumeSection(category='skills', label='Ski...e, llm_action=None)], entries=[], source_heading=None, readable_blocks=[])], needs_review=[], metadata={}, warnings=[]), {'data': {'skills': ['SQL']}, 'section_schemas': [{'category': 'skills', 'label': 'Skills', 'records': [{'record_id': 'skills', 'source_ids': ['e0:0:3'], 'review_reasons': [], 'attributes': [{...}]}], 'residual_blocks': []}]})
+E     +  and   '3d71316b1ee911dabe11f6a574c9cdecaa3a28424f2cc65656d49f706bba5141' = fingerprint(SectionResponse(status='provisional', extraction_verified=False, sections=[ResumeSection(category='skills', label='Ski...e, llm_action=None)], entries=[], source_heading=None, readable_blocks=[])], needs_review=[], metadata={}, warnings=[]), {'data': {'skills': ['SQL']}, 'section_schemas': [{'category': 'skills', 'label': 'Skills', 'records': [{'record_id': 'skills-2', 'source_ids': ['e0:0:3'], 'review_reasons': [], 'attributes': [{...}]}], 'residual_blocks': []}]})
+
+tests/test_phase1_repairs.py:40: AssertionError
+_________ test_meaningful_hierarchy_state_changes_progress[ownership] __________
+
+change = 'ownership'
+
+    @pytest.mark.parametrize('change',['value','record_id','ownership','quote','evidence_id','parent','residual'])
+    def test_meaningful_hierarchy_state_changes_progress(change):
+     sec,before=fixture();after=deepcopy(before);parent=after['section_schemas'][0];record=parent['records'][0];item=record['attributes'][0]['items'][0]
+     if change=='value':item['value']='Python'
+     elif change=='record_id':record['record_id']='skills-2'
+     elif change=='ownership':record['source_ids']=['e1:0:3']
+     elif change=='quote':item['evidence'][0]['quote']='SQ'
+     elif change=='evidence_id':item['evidence'][0]['source_id']='e1:0:3'
+     elif change=='parent':parent['category']='experience'
+     else:parent['residual_blocks']=[{'source_id':'e0:0:3','quote':'SQL'}]
+>    assert fingerprint(sec,before)!=fingerprint(sec,after)
+E    AssertionError: assert '3d71316b1ee911dabe11f6a574c9cdecaa3a28424f2cc65656d49f706bba5141' != '3d71316b1ee911dabe11f6a574c9cdecaa3a28424f2cc65656d49f706bba5141'
+E     +  where '3d71316b1ee911dabe11f6a574c9cdecaa3a28424f2cc65656d49f706bba5141' = fingerprint(SectionResponse(status='provisional', extraction_verified=False, sections=[ResumeSection(category='skills', label='Ski...e, llm_action=None)], entries=[], source_heading=None, readable_blocks=[])], needs_review=[], metadata={}, warnings=[]), {'data': {'skills': ['SQL']}, 'section_schemas': [{'category': 'skills', 'label': 'Skills', 'records': [{'record_id': 'skills', 'source_ids': ['e0:0:3'], 'review_reasons': [], 'attributes': [{...}]}], 'residual_blocks': []}]})
+E     +  and   '3d71316b1ee911dabe11f6a574c9cdecaa3a28424f2cc65656d49f706bba5141' = fingerprint(SectionResponse(status='provisional', extraction_verified=False, sections=[ResumeSection(category='skills', label='Ski...e, llm_action=None)], entries=[], source_heading=None, readable_blocks=[])], needs_review=[], metadata={}, warnings=[]), {'data': {'skills': ['SQL']}, 'section_schemas': [{'category': 'skills', 'label': 'Skills', 'records': [{'record_id': 'skills', 'source_ids': ['e1:0:3'], 'review_reasons': [], 'attributes': [{...}]}], 'residual_blocks': []}]})
+
+tests/test_phase1_repairs.py:40: AssertionError
+___________ test_meaningful_hierarchy_state_changes_progress[quote] ____________
+
+change = 'quote'
+
+    @pytest.mark.parametrize('change',['value','record_id','ownership','quote','evidence_id','parent','residual'])
+    def test_meaningful_hierarchy_state_changes_progress(change):
+     sec,before=fixture();after=deepcopy(before);parent=after['section_schemas'][0];record=parent['records'][0];item=record['attributes'][0]['items'][0]
+     if change=='value':item['value']='Python'
+     elif change=='record_id':record['record_id']='skills-2'
+     elif change=='ownership':record['source_ids']=['e1:0:3']
+     elif change=='quote':item['evidence'][0]['quote']='SQ'
+     elif change=='evidence_id':item['evidence'][0]['source_id']='e1:0:3'
+     elif change=='parent':parent['category']='experience'
+     else:parent['residual_blocks']=[{'source_id':'e0:0:3','quote':'SQL'}]
+>    assert fingerprint(sec,before)!=fingerprint(sec,after)
+E    AssertionError: assert '3d71316b1ee911dabe11f6a574c9cdecaa3a28424f2cc65656d49f706bba5141' != '3d71316b1ee911dabe11f6a574c9cdecaa3a28424f2cc65656d49f706bba5141'
+E     +  where '3d71316b1ee911dabe11f6a574c9cdecaa3a28424f2cc65656d49f706bba5141' = fingerprint(SectionResponse(status='provisional', extraction_verified=False, sections=[ResumeSection(category='skills', label='Ski...e, llm_action=None)], entries=[], source_heading=None, readable_blocks=[])], needs_review=[], metadata={}, warnings=[]), {'data': {'skills': ['SQL']}, 'section_schemas': [{'category': 'skills', 'label': 'Skills', 'records': [{'record_id': 'skills', 'source_ids': ['e0:0:3'], 'review_reasons': [], 'attributes': [{...}]}], 'residual_blocks': []}]})
+E     +  and   '3d71316b1ee911dabe11f6a574c9cdecaa3a28424f2cc65656d49f706bba5141' = fingerprint(SectionResponse(status='provisional', extraction_verified=False, sections=[ResumeSection(category='skills', label='Ski...e, llm_action=None)], entries=[], source_heading=None, readable_blocks=[])], needs_review=[], metadata={}, warnings=[]), {'data': {'skills': ['SQL']}, 'section_schemas': [{'category': 'skills', 'label': 'Skills', 'records': [{'record_id': 'skills', 'source_ids': ['e0:0:3'], 'review_reasons': [], 'attributes': [{...}]}], 'residual_blocks': []}]})
+
+tests/test_phase1_repairs.py:40: AssertionError
+________ test_meaningful_hierarchy_state_changes_progress[evidence_id] _________
+
+change = 'evidence_id'
+
+    @pytest.mark.parametrize('change',['value','record_id','ownership','quote','evidence_id','parent','residual'])
+    def test_meaningful_hierarchy_state_changes_progress(change):
+     sec,before=fixture();after=deepcopy(before);parent=after['section_schemas'][0];record=parent['records'][0];item=record['attributes'][0]['items'][0]
+     if change=='value':item['value']='Python'
+     elif change=='record_id':record['record_id']='skills-2'
+     elif change=='ownership':record['source_ids']=['e1:0:3']
+     elif change=='quote':item['evidence'][0]['quote']='SQ'
+     elif change=='evidence_id':item['evidence'][0]['source_id']='e1:0:3'
+     elif change=='parent':parent['category']='experience'
+     else:parent['residual_blocks']=[{'source_id':'e0:0:3','quote':'SQL'}]
+>    assert fingerprint(sec,before)!=fingerprint(sec,after)
+E    AssertionError: assert '3d71316b1ee911dabe11f6a574c9cdecaa3a28424f2cc65656d49f706bba5141' != '3d71316b1ee911dabe11f6a574c9cdecaa3a28424f2cc65656d49f706bba5141'
+E     +  where '3d71316b1ee911dabe11f6a574c9cdecaa3a28424f2cc65656d49f706bba5141' = fingerprint(SectionResponse(status='provisional', extraction_verified=False, sections=[ResumeSection(category='skills', label='Ski...e, llm_action=None)], entries=[], source_heading=None, readable_blocks=[])], needs_review=[], metadata={}, warnings=[]), {'data': {'skills': ['SQL']}, 'section_schemas': [{'category': 'skills', 'label': 'Skills', 'records': [{'record_id': 'skills', 'source_ids': ['e0:0:3'], 'review_reasons': [], 'attributes': [{...}]}], 'residual_blocks': []}]})
+E     +  and   '3d71316b1ee911dabe11f6a574c9cdecaa3a28424f2cc65656d49f706bba5141' = fingerprint(SectionResponse(status='provisional', extraction_verified=False, sections=[ResumeSection(category='skills', label='Ski...e, llm_action=None)], entries=[], source_heading=None, readable_blocks=[])], needs_review=[], metadata={}, warnings=[]), {'data': {'skills': ['SQL']}, 'section_schemas': [{'category': 'skills', 'label': 'Skills', 'records': [{'record_id': 'skills', 'source_ids': ['e0:0:3'], 'review_reasons': [], 'attributes': [{...}]}], 'residual_blocks': []}]})
+
+tests/test_phase1_repairs.py:40: AssertionError
+___________ test_meaningful_hierarchy_state_changes_progress[parent] ___________
+
+change = 'parent'
+
+    @pytest.mark.parametrize('change',['value','record_id','ownership','quote','evidence_id','parent','residual'])
+    def test_meaningful_hierarchy_state_changes_progress(change):
+     sec,before=fixture();after=deepcopy(before);parent=after['section_schemas'][0];record=parent['records'][0];item=record['attributes'][0]['items'][0]
+     if change=='value':item['value']='Python'
+     elif change=='record_id':record['record_id']='skills-2'
+     elif change=='ownership':record['source_ids']=['e1:0:3']
+     elif change=='quote':item['evidence'][0]['quote']='SQ'
+     elif change=='evidence_id':item['evidence'][0]['source_id']='e1:0:3'
+     elif change=='parent':parent['category']='experience'
+     else:parent['residual_blocks']=[{'source_id':'e0:0:3','quote':'SQL'}]
+>    assert fingerprint(sec,before)!=fingerprint(sec,after)
+E    AssertionError: assert '3d71316b1ee911dabe11f6a574c9cdecaa3a28424f2cc65656d49f706bba5141' != '3d71316b1ee911dabe11f6a574c9cdecaa3a28424f2cc65656d49f706bba5141'
+E     +  where '3d71316b1ee911dabe11f6a574c9cdecaa3a28424f2cc65656d49f706bba5141' = fingerprint(SectionResponse(status='provisional', extraction_verified=False, sections=[ResumeSection(category='skills', label='Ski...e, llm_action=None)], entries=[], source_heading=None, readable_blocks=[])], needs_review=[], metadata={}, warnings=[]), {'data': {'skills': ['SQL']}, 'section_schemas': [{'category': 'skills', 'label': 'Skills', 'records': [{'record_id': 'skills', 'source_ids': ['e0:0:3'], 'review_reasons': [], 'attributes': [{...}]}], 'residual_blocks': []}]})
+E     +  and   '3d71316b1ee911dabe11f6a574c9cdecaa3a28424f2cc65656d49f706bba5141' = fingerprint(SectionResponse(status='provisional', extraction_verified=False, sections=[ResumeSection(category='skills', label='Ski...e, llm_action=None)], entries=[], source_heading=None, readable_blocks=[])], needs_review=[], metadata={}, warnings=[]), {'data': {'skills': ['SQL']}, 'section_schemas': [{'category': 'experience', 'label': 'Skills', 'records': [{'record_id': 'skills', 'source_ids': ['e0:0:3'], 'review_reasons': [], 'attributes': [{...}]}], 'residual_blocks': []}]})
+
+tests/test_phase1_repairs.py:40: AssertionError
+__________ test_meaningful_hierarchy_state_changes_progress[residual] __________
+
+change = 'residual'
+
+    @pytest.mark.parametrize('change',['value','record_id','ownership','quote','evidence_id','parent','residual'])
+    def test_meaningful_hierarchy_state_changes_progress(change):
+     sec,before=fixture();after=deepcopy(before);parent=after['section_schemas'][0];record=parent['records'][0];item=record['attributes'][0]['items'][0]
+     if change=='value':item['value']='Python'
+     elif change=='record_id':record['record_id']='skills-2'
+     elif change=='ownership':record['source_ids']=['e1:0:3']
+     elif change=='quote':item['evidence'][0]['quote']='SQ'
+     elif change=='evidence_id':item['evidence'][0]['source_id']='e1:0:3'
+     elif change=='parent':parent['category']='experience'
+     else:parent['residual_blocks']=[{'source_id':'e0:0:3','quote':'SQL'}]
+>    assert fingerprint(sec,before)!=fingerprint(sec,after)
+E    AssertionError: assert '3d71316b1ee911dabe11f6a574c9cdecaa3a28424f2cc65656d49f706bba5141' != '3d71316b1ee911dabe11f6a574c9cdecaa3a28424f2cc65656d49f706bba5141'
+E     +  where '3d71316b1ee911dabe11f6a574c9cdecaa3a28424f2cc65656d49f706bba5141' = fingerprint(SectionResponse(status='provisional', extraction_verified=False, sections=[ResumeSection(category='skills', label='Ski...e, llm_action=None)], entries=[], source_heading=None, readable_blocks=[])], needs_review=[], metadata={}, warnings=[]), {'data': {'skills': ['SQL']}, 'section_schemas': [{'category': 'skills', 'label': 'Skills', 'records': [{'record_id': 'skills', 'source_ids': ['e0:0:3'], 'review_reasons': [], 'attributes': [{...}]}], 'residual_blocks': []}]})
+E     +  and   '3d71316b1ee911dabe11f6a574c9cdecaa3a28424f2cc65656d49f706bba5141' = fingerprint(SectionResponse(status='provisional', extraction_verified=False, sections=[ResumeSection(category='skills', label='Ski...e, llm_action=None)], entries=[], source_heading=None, readable_blocks=[])], needs_review=[], metadata={}, warnings=[]), {'data': {'skills': ['SQL']}, 'section_schemas': [{'category': 'skills', 'label': 'Skills', 'records': [{'record_id': ...0:0:3'], 'review_reasons': [], 'attributes': [{...}]}], 'residual_blocks': [{'source_id': 'e0:0:3', 'quote': 'SQL'}]}]})
+
+tests/test_phase1_repairs.py:40: AssertionError
+________ test_entry_explanations_do_not_count_but_field_ownership_does _________
+
+    def test_entry_explanations_do_not_count_but_field_ownership_does():
+     from local_api.schemas.sections import SectionEntry
+     sec,schema=fixture()
+     sec.sections[0].entries=[SectionEntry(entry_id='skills-1',block_indices=[0],lane='main',boundary_reason='source',fields={'title':[0]})]
+     other=sec.model_copy(deep=True);other.sections[0].entries[0].boundary_reason='new explanation';other.sections[0].entries[0].review_reasons=['diagnostic only']
+>    assert fingerprint(sec,schema)==fingerprint(other,schema)
+E    AssertionError: assert 'e093a2a6bf4e...d0ebbe87386bc' == 'd9294fdb317c...c32a1d8d0008c'
+E      
+E      - d9294fdb317ce2dc18646781bd94f4fc0e47d28f99d4cbc242ac32a1d8d0008c
+E      + e093a2a6bf4e4d9d9f25df63e7d605eb413796bca014cd9511cd0ebbe87386bc
+
+tests/test_phase1_repairs.py:54: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_phase1_repairs.py::test_delivering_clause_is_responsibility[delivering high-integrity data feeds to downstream Fund accounting systems.]
+FAILED tests/test_phase1_repairs.py::test_delivering_clause_is_responsibility[Delivering validated data to downstream accounting systems]
+FAILED tests/test_phase1_repairs.py::test_delivering_clause_is_responsibility[\u2022 delivering reports for regulatory systems.]
+FAILED tests/test_phase1_repairs.py::test_meaningful_hierarchy_state_changes_progress[value]
+FAILED tests/test_phase1_repairs.py::test_meaningful_hierarchy_state_changes_progress[record_id]
+FAILED tests/test_phase1_repairs.py::test_meaningful_hierarchy_state_changes_progress[ownership]
+FAILED tests/test_phase1_repairs.py::test_meaningful_hierarchy_state_changes_progress[quote]
+FAILED tests/test_phase1_repairs.py::test_meaningful_hierarchy_state_changes_progress[evidence_id]
+FAILED tests/test_phase1_repairs.py::test_meaningful_hierarchy_state_changes_progress[parent]
+FAILED tests/test_phase1_repairs.py::test_meaningful_hierarchy_state_changes_progress[residual]
+FAILED tests/test_phase1_repairs.py::test_entry_explanations_do_not_count_but_field_ownership_does
+11 failed, 12 passed, 1 deselected in 0.08s

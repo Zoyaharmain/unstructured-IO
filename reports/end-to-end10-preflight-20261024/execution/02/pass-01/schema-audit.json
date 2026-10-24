@@ -1,0 +1,141 @@
+{
+  "status": "complete",
+  "findings": [
+    {
+      "field": "data.experience[0].responsibilities",
+      "issue": "Responsibility list is fragmented; semantic sentence split across separate array items (e.g., 'Translated complex' then 'functional specifications...' then 'regulatory updates; into detailed; field-level'), producing broken/incomplete bullet points and losing the full sentence for the fourth responsibility.",
+      "source_ids": [
+        "e15:0:18",
+        "e16:0:11",
+        "e16:11:94",
+        "e16:94:129",
+        "e17:0:18",
+        "e18:0:13",
+        "e19:0:11"
+      ]
+    },
+    {
+      "field": "data.experience[0].responsibilities",
+      "issue": "Text 'regulatory updates' and 'field-level' appear out of logical order relative to the source sentence; the extracted responsibilities do not reflect the coherent source phrasing.",
+      "source_ids": [
+        "e17:0:18",
+        "e18:0:13",
+        "e19:0:11"
+      ]
+    },
+    {
+      "field": "data.experience[1].responsibilities",
+      "issue": "Bullets fragmented mid-sentence: 'Drove BA scope for the pricing platform transformation with the Product Owner,' loses the continuation 'delivering high-integrity data feeds to downstream Fund accounting systems.' which is unmapped.",
+      "source_ids": [
+        "e23:0:78",
+        "e24:0:75"
+      ]
+    },
+    {
+      "field": "data.experience[1].responsibilities",
+      "issue": "Bullet split 'Designed validation rules...' and 'reduce operational risk across pricing workflows.' into two items; and 'Participated in UAT/NRT...' / 'documented defects...' split into separate items, breaking sentence integrity.",
+      "source_ids": [
+        "e27:0:80",
+        "e28:0:58",
+        "e29:0:78",
+        "e30:0:60"
+      ]
+    },
+    {
+      "field": "data.experience[2].responsibilities",
+      "issue": "First bullet fragmented into 'Owned','the','functional','integrity of reference data...' separate items rather than one sentence.",
+      "source_ids": [
+        "e33:0:5",
+        "e34:0:3",
+        "e35:0:10",
+        "e36:0:51",
+        "e37:0:68"
+      ]
+    },
+    {
+      "field": "data.experience[2].responsibilities",
+      "issue": "Reconciliation bullet split; the clause 'against downstream accounting/settlement systems; corrected day-count and coupon' (e38:83:164) is unmapped, so responsibility omits corrected day-count/coupon detail and jumps to 'setup to prevent settlement/NAV impacts.'",
+      "source_ids": [
+        "e38:0:83",
+        "e38:83:164",
+        "e38:164:204"
+      ]
+    },
+    {
+      "field": "data.experience[3].responsibilities",
+      "issue": "First bullet 'Ensured intraday prices for securities...' (e43) is missing entirely from responsibilities; only the later bullets appear, omitting a stated responsibility.",
+      "source_ids": [
+        "e43:0:79",
+        "e43:79:158",
+        "e43:158:168"
+      ]
+    },
+    {
+      "field": "data.experience[3].responsibilities",
+      "issue": "'Managed the pricing...' and 'Automated pricing workflows...' split mid-sentence into separate items ('ensuring accurate valuation...', 'team transitions between Hub locations.'), breaking bullet integrity.",
+      "source_ids": [
+        "e44:0:81",
+        "e45:0:69",
+        "e46:0:79",
+        "e47:0:39"
+      ]
+    },
+    {
+      "field": "data.skills.all_skills",
+      "issue": "Domain skills list contains artifact fragments 'actions' (from 'Corporate actions') rather than the full term, and lacks the full domain expertise items (Trade Lifecycle, Reference Data Management, Pricing, Data Reconciliation); the 'Domain Expertise:' label block e8:67:148 is unmapped.",
+      "source_ids": [
+        "e8:67:148",
+        "e8:148:231",
+        "e8:231:274"
+      ]
+    },
+    {
+      "field": "data.skills.domain_and_functional",
+      "issue": "Only 'ISO 20022' and 'SWIFT' (standards) are placed here; actual domain expertise (Trade Lifecycle, Reference Data Management, Pricing, Corporate actions, Data Reconciliation, settlement) is not captured under domain_and_functional, misclassifying standards as domain.",
+      "source_ids": [
+        "e8:67:148",
+        "e8:148:231",
+        "e8:231:274",
+        "e11:0:55"
+      ]
+    },
+    {
+      "field": "data.skills.technical_skills",
+      "issue": "Only 'SQL' captured; tools such as JIRA, Confluence, HP ALM, SharePoint, Bloomberg, Refinitiv are present in source but classification is incomplete relative to listed tools.",
+      "source_ids": [
+        "e9:0:83",
+        "e10:0:66"
+      ]
+    },
+    {
+      "field": "data.experience[0].responsibilities",
+      "issue": "Source block e14:0:79 begins 'Led the end-to-end business analysis for the EMIR Refit implementation for the ' — all content assigned, but check for source span e14:158:203 truncated; ensure 'newly released DTCC technical specifications.' fully included (it is). Low concern but note fragmented bullets above dominate.",
+      "source_ids": [
+        "e14:0:79",
+        "e14:79:158",
+        "e14:158:203"
+      ]
+    },
+    {
+      "field": "data.education[1].degree",
+      "issue": "Source reads 'Bachelor of commerce (B.com)'; extracted degree omits '(B.com)' abbreviation.",
+      "source_ids": [
+        "e50:47:109"
+      ]
+    },
+    {
+      "field": "data.education[0].field_of_study",
+      "issue": "'MBA (Finance)' rendered as field_of_study 'Finance'; acceptable but the parenthetical mapping should be verified against source formatting.",
+      "source_ids": [
+        "e50:0:44"
+      ]
+    },
+    {
+      "field": "data.summary.total_experience_years",
+      "issue": "Summary states '4+ years in requirements and Agile delivery, built on 8+ years in financial operations' but total_experience_years left null; derived total not computed though source provides basis.",
+      "source_ids": [
+        "e4:0:92"
+      ]
+    }
+  ]
+}

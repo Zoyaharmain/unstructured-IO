@@ -1,0 +1,28 @@
+{
+  "id": "d300ef85-a623-4572-be92-cfc78afcde6a",
+  "object": "chat.completion",
+  "created": 1792843540,
+  "model": "deepseek-flash",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "{\"findings\":[{\"field\":\"contact.full_name\",\"issue\":\"Full name is set to 'City', which is a field label, not the candidate's name; actual name 'Chandan kumar B V' appears in source but was not used\",\"source_ids\":[\"e3:0:4\",\"e9:0:17\"]},{\"field\":\"experience[0].company\",\"issue\":\"Employer is empty though source states 'IndiaMART' as employer for the Senior Executive role\",\"source_ids\":[\"e28:0:9\",\"e10:0:16\",\"e26:0:18\"]},{\"field\":\"experience[0].role\",\"issue\":\"Role 'Senior Executive' attributed to experience-1, but the same role/employer appears to belong to a single IndiaMART entry; experience split may create a duplicate role attribution\",\"source_ids\":[\"e10:0:16\",\"e27:0:16\",\"e28:0:9\"]},{\"field\":\"experience[1].company\",\"issue\":\"Company contains a sentence fragment 'them face to face, explain about IndiaMart subscription plans and services' rather than the employer 'IndiaMART'; this is a responsibility statement misassigned as employer\",\"source_ids\":[\"e29:302:377\",\"e28:0:9\"]},{\"field\":\"experience[1]\",\"issue\":\"Duplicate experience entry representing the same IndiaMART role as experience-1, with responsibilities ignored and instead split off as a second record\",\"source_ids\":[\"e27:0:16\",\"e28:0:9\",\"e29:0:71\",\"e29:71:146\",\"e29:146:224\",\"e29:224:302\"]},{\"field\":\"experience[0].responsibilities\",\"issue\":\"Responsibilities for the IndiaMART role (field sales, calls, client meetings, onboarding) are present in source but left unresolved\",\"source_ids\":[\"e29:0:71\",\"e29:71:146\",\"e29:146:224\",\"e29:224:302\",\"e29:377:452\",\"e29:452:523\",\"e29:523:536\"]},{\"field\":\"experience[0]\",\"issue\":\"Duration/tenure '1 Year 5 Months' in source is not mapped to any experience record\",\"source_ids\":[\"e11:0:15\"]},{\"field\":\"summary.total_experience_years\",\"issue\":\"Source states 'over 1 year and 5 months' of experience, allowing a numeric value, but field left unresolved\",\"source_ids\":[\"e15:0:67\",\"e11:0:15\"]},{\"field\":\"education[1].degree\",\"issue\":\"Degree field improperly includes graduation year 'B.Com, 2022' rather than degree alone, mixing degree and year attributes\",\"source_ids\":[\"e19:0:11\"]},{\"field\":\"education[2].degree\",\"issue\":\"Degree field '12th, 2019' includes graduation year; year is also separately stored, duplicating the year value within the degree string\",\"source_ids\":[\"e21:0:10\"]},{\"field\":\"education[3].degree\",\"issue\":\"Degree field '10th, 2016' includes graduation year; year is also separately stored, duplicating the year value within the degree string\",\"source_ids\":[\"e23:0:10\"]},{\"field\":\"education[2].institution\",\"issue\":\"Institution empty; source provides only 'Karnataka, Kannada' which is region/language, not an institution; unresolved may misrepresent that no institution exists\",\"source_ids\":[\"e21:0:10\",\"e22:0:18\"]},{\"field\":\"education[3].institution\",\"issue\":\"Institution empty; source provides only 'Karnataka, Kannada' which is region/language, not an institution\",\"source_ids\":[\"e23:0:10\",\"e24:0:18\"]},{\"field\":\"contact.email\",\"issue\":\"Email extracted as 'chandans1437@gmail.co' (missing final 'm'); source is split such that '.co' and ' m' spans must be joined to form the complete address\",\"source_ids\":[\"e13:0:21\",\"e13:21:23\"]}]}"
+      },
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 24673,
+    "completion_tokens": 880,
+    "total_tokens": 25553,
+    "prompt_tokens_details": {
+      "cached_tokens": 3328
+    },
+    "prompt_cache_hit_tokens": 3328,
+    "prompt_cache_miss_tokens": 21345
+  },
+  "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+}

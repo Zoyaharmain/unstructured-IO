@@ -95,6 +95,53 @@ def test_role_first_header_is_not_mapped_as_company():
  assert out.data.experience[0].role=='Software Engineer'
 
 
+def test_action_with_executive_is_responsibility_not_competing_role_title():
+ from local_api.services.record_relationships import annotate_relationships
+ texts=['Turn Turtle Private Limited','Buisness Development Manager','Expanded Client network through executive outreach and refferals']
+ elements=[ExtractedElement(type='NarrativeText',text=text,page_number=1,metadata={}) for text in texts]
+ blocks=[SectionBlock(source_element_index=i,start=0,end=len(text),text=text,page_number=1,lane='source',assignment='semantic',reason='source') for i,text in enumerate(texts)]
+ experience=ResumeSection(category='experience',label='Experience',blocks=blocks,text='\n'.join(texts),entries=[
+  SectionEntry(entry_id='experience-1',block_indices=[0,1,2],lane='source',boundary_reason='source')])
+ annotate_relationships(experience)
+ assert experience.entries[0].fields['title']==[1]
+ assert experience.entries[0].fields['responsibilities']==[2]
+ request=SchemaMappingRequest(elements=elements,sections=SectionResponse(status='provisional',sections=[experience],needs_review=[],metadata={},warnings=[]))
+ out=map_schema(request)
+ assert out.data.experience[0].role=='Buisness Development Manager'
+ assert out.data.experience[0].responsibilities==[texts[2]]
+
+
+def test_supervisor_header_is_role_while_took_a_lead_is_responsibility():
+ from local_api.services.record_relationships import annotate_relationships
+ texts=['Jagran Solutions Pvt Ltd', 'Sales Team Supervisor', 'Took a lead in the Karnataka team in achieving their targets.']
+ elements=[ExtractedElement(type='NarrativeText',text=text,page_number=1,metadata={}) for text in texts]
+ blocks=[SectionBlock(source_element_index=i,start=0,end=len(text),text=text,page_number=1,lane='source',assignment='semantic',reason='source') for i,text in enumerate(texts)]
+ experience=ResumeSection(category='experience',label='Experience',blocks=blocks,text='\n'.join(texts),entries=[
+  SectionEntry(entry_id='experience-1',block_indices=[0,1,2],lane='source',boundary_reason='source')])
+ annotate_relationships(experience)
+ assert experience.entries[0].fields['title']==[1]
+ assert experience.entries[0].fields['responsibilities']==[2]
+ out=map_schema(SchemaMappingRequest(elements=elements,sections=SectionResponse(status='provisional',sections=[experience],needs_review=[],metadata={},warnings=[])))
+ assert out.data.experience[0].role==texts[1]
+ assert out.data.experience[0].responsibilities==[texts[2]]
+
+
+def test_named_school_stays_institution_when_no_credential_is_stated():
+ from local_api.services.record_relationships import annotate_relationships
+ texts=['PCME', '2001 - 2011', 'ST.LOURDES HIGH SCHOOL']
+ elements=[ExtractedElement(type='NarrativeText',text=text,page_number=1,metadata={}) for text in texts]
+ blocks=[SectionBlock(source_element_index=i,start=0,end=len(text),text=text,page_number=1,lane='source',assignment='semantic',reason='source') for i,text in enumerate(texts)]
+ education=ResumeSection(category='education',label='Education',blocks=blocks,text='\n'.join(texts),entries=[
+  SectionEntry(entry_id='education-1',block_indices=[0,1,2],lane='source',boundary_reason='source')])
+ annotate_relationships(education)
+ assert 'qualification' not in education.entries[0].fields
+ assert education.entries[0].fields['institution']==[2]
+ out=map_schema(SchemaMappingRequest(elements=elements,sections=SectionResponse(status='provisional',sections=[education],needs_review=[],metadata={},warnings=[])))
+ assert out.data.education[0].institution==texts[2]
+ assert out.data.education[0].degree==''
+ assert 'education[0].degree' in out.meta['missing_required_fields']
+
+
 def test_dated_organization_without_suffix_maps_own_employer_and_current_date():
  req=sample();text='NTT Data, Noida (November 2022- Currently working)';req.elements[3].text=text
  sec=next(s for s in req.sections.sections if s.category=='experience');sec.blocks[0].text=text;sec.blocks[0].end=len(text);sec.text='\n'.join(b.text for b in sec.blocks)

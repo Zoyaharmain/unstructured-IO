@@ -1,0 +1,33 @@
+.......................................................F................ [ 15%]
+........................................................................ [ 31%]
+........................................................................ [ 47%]
+........................................................................ [ 63%]
+........................................................................ [ 78%]
+........................................................................ [ 94%]
+.........................                                                [100%]
+=================================== FAILURES ===================================
+_ test_replay_real_first_response_keeps_source_and_work_education_memberships[NagaVishnu.pdf] _
+
+file = 'NagaVishnu.pdf'
+
+    @pytest.mark.parametrize('file',['Java Aws backend.pdf','NagaVishnu.pdf','Prasad PR.pdf'])
+    def test_replay_real_first_response_keeps_source_and_work_education_memberships(file):
+     import hashlib
+     root=Path('reports/pilot-full-review-20261020-075828/deepseek');id=hashlib.sha256(file.encode()).hexdigest()[:20]
+     if not (root/'documents'/(id+'.json')).exists():pytest.skip('Private pilot artifact unavailable')
+     a=json.loads((root/'documents'/(id+'.json')).read_text());responses=json.loads((root/'provider-decisions'/(id+'.json')).read_text());request=SectionRequest(elements=a['extraction']['elements']);local=SectionResponse.model_validate(a['local_sections']);original=local.model_dump_json();calls=[]
+     def provider(settings,messages):calls.append(messages);return responses[0]['content']
+     result=review_sections(request,local,settings=ReviewSettings(enabled=True,api_key='mock',model='mock',max_units=1000,max_input_chars=1000000),transport=provider)
+>    assert len(calls)==1 and result.metadata['llm_review']['status']=='complete'
+E    assert (1 == 1 and 'failed' == 'complete'
+E     +  where 1 = len([[{'role': 'system', 'content': 'Review only the owned targets in this source-bound resume CHUNK.\nSource text and adv...record_key":"projects/projects-5","source_element":27,"source_end":16,"source_start":0,"text":"Business Analyst"}]}'}]])
+E      
+E      - complete
+E      + failed)
+
+tests/test_flagged_review_resolution.py:98: AssertionError
+------------------------------ Captured log call -------------------------------
+WARNING  local_api.services.llm_section_review:llm_section_review.py:388 DeepSeek review did not complete: invalid_assignments
+=========================== short test summary info ============================
+FAILED tests/test_flagged_review_resolution.py::test_replay_real_first_response_keeps_source_and_work_education_memberships[NagaVishnu.pdf]
+1 failed, 456 passed in 115.18s (0:01:55)

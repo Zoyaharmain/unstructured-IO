@@ -1,0 +1,47 @@
+Phase 2 exact offline commands/results
+
+Focused chunk and integration tests
+AUDIT_TEST_LABEL=focused-final- PYTHONUNBUFFERED=1 .venv/bin/python reports/ten-resume-phase2-20261024/run_tests_offline.py tests/test_review_chunking.py tests/test_phase1_repairs.py tests/test_single_resume_check.py tests/test_llm_section_review.py tests/test_section_subschemas.py tests/test_structural_grouping.py
+........................................................................ [ 63%]
+..........................................                               [100%]
+114 passed in 6.87s
+
+Historical response compatibility plus chunk contracts
+AUDIT_TEST_LABEL=compatibility- PYTHONUNBUFFERED=1 .venv/bin/python reports/ten-resume-phase2-20261024/run_tests_offline.py tests/test_flagged_review_resolution.py tests/test_review_chunking.py tests/test_phase1_repairs.py
+.............................................................            [100%]
+61 passed in 6.59s
+
+Final 24 chunk tests including source crosswalk
+.venv/bin/python -m pytest -q tests/test_review_chunking.py
+........................                                                 [100%]
+24 passed in 6.78s
+
+Final complete offline suite, no exclusions
+AUDIT_TEST_LABEL=verified- PYTHONUNBUFFERED=1 .venv/bin/python reports/ten-resume-phase2-20261024/run_tests_offline.py
+........................................................................ [ 15%]
+........................................................................ [ 31%]
+........................................................................ [ 47%]
+........................................................................ [ 62%]
+........................................................................ [ 78%]
+........................................................................ [ 94%]
+..........................                                               [100%]
+458 passed in 102.33s (0:01:42)
+
+Completed full run: 458 passed, zero failures/errors/skips. Focused counts overlap and are not additive. Runs using TestClient completed outside the sandbox under the documented offline guard because the sandbox was previously shown to hang TestClient.
+
+Initial implementation logs are preserved: chunk-tests-initial.txt (three test-fixture issues), pure-tests.txt (a fixture lacked populated evidence), full-tests.txt (1 failed, 456 passed: historical NagaVishnu whole-response fixture routed into the new chunk protocol). The compatibility test now explicitly matches its historical large character budget with large test-only token-policy budgets, without changing its source-ownership assertions. full-final-tests.txt then passed 457 tests; the final crosswalk test raised the final suite to 458. No genuine production failure was skipped or marked xfail.
+
+Network guard logs:
+compatibility-network-guard.txt: External socket attempts blocked: []
+focused-final-network-guard.txt: External socket attempts blocked: []
+focused-network-guard.txt: External socket attempts blocked: []
+full-final-network-guard.txt: External socket attempts blocked: []
+full-network-guard.txt: External socket attempts blocked: []
+verified-network-guard.txt: External socket attempts blocked: []
+
+Offline snapshot/replay/analysis:
+.venv/bin/python reports/ten-resume-phase2-20261024/snapshot.py
+PHASE2_REPLAY_NAME=replay-verified .venv/bin/python reports/ten-resume-phase2-20261024/replay.py
+.venv/bin/python reports/ten-resume-phase2-20261024/analyze_replay.py
+
+Replay result: 10/10 stages planned and validated using mocked transport only; 56 mock attempts under shared caps (global128/document32/pass16); zero live calls. 17/17 partial reference tuples unchanged, separated by provenance. No section detection, PDF extraction or embeddings. Guards replace those functions and provider transport with prohibitions. Earlier replay/ and replay-final/ are preserved.
