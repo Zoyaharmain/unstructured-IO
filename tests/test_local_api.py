@@ -1,6 +1,7 @@
 """HTTP contract and parity against the installed Unstructured package."""
 from io import BytesIO
 import json
+import hashlib
 from pathlib import Path
 import pytest
 from fastapi.testclient import TestClient
@@ -8,7 +9,25 @@ import local_api.app as api
 from unstructured.partition.auto import partition
 
 FIXTURES = Path(__file__).parent / 'fixtures'
+HISTORICAL_PARITY = Path('reports/api-parity')
 client = TestClient(api.app)
+
+
+def parity_snapshot():
+    if not HISTORICAL_PARITY.is_dir():
+        return {}
+    return {path.name: hashlib.sha256(path.read_bytes()).hexdigest()
+            for path in HISTORICAL_PARITY.iterdir() if path.is_file()}
+
+
+def write_parity_artifacts(output, filename, strategy, direct, actual):
+    output = Path(output).resolve()
+    historical = HISTORICAL_PARITY.resolve()
+    if output == historical or historical in output.parents:
+        raise ValueError('Parity test output must not modify historical reports')
+    output.mkdir(parents=True, exist_ok=True)
+    (output / f'{Path(filename).stem}.{strategy}.direct.json').write_text(json.dumps(direct, indent=2)+'\n')
+    (output / f'{Path(filename).stem}.{strategy}.api.json').write_text(json.dumps(actual, indent=2)+'\n')
 
 
 def test_health():
@@ -51,7 +70,8 @@ def test_preserves_all_elements_and_passes_strategy(monkeypatch, strategy):
 
 @pytest.mark.parametrize('strategy', ['auto', 'fast', 'hi_res', 'ocr_only'])
 @pytest.mark.parametrize('filename', ['Jayesh Yadav-CV.pdf', 'digital-multipage.pdf'])
-def test_direct_extraction_parity(strategy, filename):
+def test_direct_extraction_parity(strategy, filename, tmp_path):
+    historical_before = parity_snapshot()
     payload = (FIXTURES / filename).read_bytes()
     settings = dict(metadata_filename=filename,
         strategy=strategy, languages=['eng'], hi_res_model_name='yolox',
@@ -72,10 +92,13 @@ def test_direct_extraction_parity(strategy, filename):
     assert actual['page_numbers'] == sorted({e['metadata']['page_number'] for e in direct if e.get('metadata', {}).get('page_number') is not None})
     # Complete equality above includes IDs, empty objects, text, element types, coordinates,
     # metadata, and exact reading order. No fields are filtered or rounded.
-    out = Path('reports/api-parity')
-    out.mkdir(parents=True, exist_ok=True)
-    (out / f'{Path(filename).stem}.{strategy}.direct.json').write_text(json.dumps(direct, indent=2)+'\n')
-    (out / f'{Path(filename).stem}.{strategy}.api.json').write_text(json.dumps(actual, indent=2)+'\n')
+    write_parity_artifacts(tmp_path / 'api-parity', filename, strategy, direct, actual)
+    assert parity_snapshot() == historical_before
+
+
+def test_parity_artifacts_refuse_historical_report_directory():
+    with pytest.raises(ValueError, match='historical reports'):
+        write_parity_artifacts(HISTORICAL_PARITY, 'fixture.pdf', 'fast', [], {})
 
 
 @pytest.mark.parametrize('files', [None, {'file': ('', b'hello')}, {'file': ('   ', b'hello')}])

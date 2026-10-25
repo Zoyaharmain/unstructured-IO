@@ -27,23 +27,26 @@ def word_safe_cut(text, cut):
 # Record fields must not change the owning section, even when their values look
 # like another section (a project's tools are still part of that project).
 RECORD_FIELDS = {'technologies', 'technology', 'tools', 'tool', 'tech stack',
+                 'tools and technology', 'tools and technologies', 'technology stack',
                  'description', 'project description', 'project title', 'project name',
                  'role', 'job title', 'designation', 'client', 'duration', 'period',
                  'achievement', 'accomplishment', 'responsibilities', 'key responsibilities',
                  'roles and responsibilities', 'job responsibilities', 'key achievements',
                  'environment', 'client name', 'work base location'}
 EXTRA_HEADINGS = {
-    'personal_information': ['contact', 'personal info'],
-    'summary': ['objective', 'career summary', 'executive summary', 'profile snapshot', 'profile summary'],
-    'projects': ['key projects', 'project highlights'],
+    'personal_information': ['contact', 'personal info', 'personal details'],
+    'summary': ['objective', 'career summary', 'executive summary', 'profile snapshot', 'profile summary', 'professional summary', 'career objective'],
+    'projects': ['key projects', 'project highlights', 'project details', 'projects', 'academic projects'],
     'experience': ['employment', 'professional background', 'work history', 'career history',
-                   'role history', 'employment history', 'experience summary', 'professional employment'],
+                   'role history', 'employment history', 'experience summary', 'professional employment',
+                   'organizational experience', 'organization experience', 'professional experience summary',
+                   'project experience'],
     'languages': ['spoken languages', 'language proficiency', 'langues'],
-    'education': ['qualifications', 'educational background', 'academic qualifications', 'formation', 'formations'],
+    'education': ['qualifications', 'educational background', 'academic qualifications', 'formation', 'formations', 'academics', 'academic background'],
     'skills': ['competences', 'comp\u00e9tences', 'languages and platforms', 'programming languages',
                'tools and platforms', 'core programming and frameworks', 'cloud and devops',
                'testing and development practices', 'skill set', 'skill sets', 'skillset', 'key strengths', 'technical competencies', 'core skills', 'domain expertise', 'business analysis and product management', 'tools and technology'],
-    'certifications': ['certificates', 'training'],
+    'certifications': ['certificates', 'training', 'certifications and licenses'],
 }
 
 
@@ -66,7 +69,7 @@ def heading_boundary(text, aliases):
     normalized = normalized_heading(text)
     if re.fullmatch(r'project\s*#?\s*\d+\s*[:.)-]?', normalized):
         return 'projects', None
-    if normalized in RECORD_FIELDS:
+    if normalized in RECORD_FIELDS and normalized not in aliases:
         return None, None
     category = aliases.get(normalized)
     # Letter spacing in PDFs is often inconsistent (e.g. 'PRO F E SS I O N A L').
@@ -155,6 +158,10 @@ def entry_groups(blocks, category, elements):
             explicit_title = (len(text.split()) <= 18 and not re.search(
                 r'\b(?:developed|implemented|configured|responsible|supported|designed|built|managed|led|worked|performed)\b', text, re.I)
                 and bool(set(kinds) & {'title', 'employer'}))
+        elif category == 'education' and explicit_title:
+            from local_api.services.record_relationships import field_kinds
+            kinds = field_kinds(text, category)
+            explicit_title = (len(text.split()) <= 18 and bool(set(kinds) & {'institution', 'qualification'}))
         labeled_entry = bool(re.match(r'^\s*(?:\d+[.)]\s*)?(?:project(?: name| title)?|company|employer|institution)\s*:', text, re.I))
         if block.reviewed_by_llm:
             # A title detector's field labels and embedded project titles are not

@@ -316,11 +316,15 @@ def review_sections(request, local_result, *, settings=None, transport=None, _re
             resolved+=before is None and all(after!='needs_review' for _,_,after in parts)
             for start,end,after in parts:
                 same=after==(before or 'needs_review') and len(parts)==1
+                sub_text = block.text[start:end]
+                from local_api.services.resume_sections import ALIASES
+                from local_api.services.resume_structure import normalized_heading
+                is_heading = normalized_heading(sub_text) in ALIASES
                 reviewed=block.model_copy(update={'start':block.start+start,'end':block.start+end,
-                    'text':block.text[start:end], 'reviewed_by_llm':True,
+                    'text':sub_text, 'reviewed_by_llm':True,
                     'local_section':block.local_section if block.reviewed_by_llm else before,
                     'local_assignment':block.local_assignment if block.reviewed_by_llm else block.assignment,
-                    'assignment':block.assignment if same else 'llm_reassigned',
+                    'assignment':'structural_heading' if is_heading else (block.assignment if same else 'llm_reassigned'),
                     'llm_action':'confirmed' if same else 'reassigned',
                     'reason':('DeepSeek confirmed placement. ' if same else 'DeepSeek split or reassigned placement. ')+'Local evidence: '+block.reason})
                 if after=='needs_review':unresolved.append(reviewed)

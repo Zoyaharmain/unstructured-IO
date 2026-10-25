@@ -1,0 +1,74 @@
+{
+  "timestamp": "2026-10-25T09:38:47-07:00",
+  "repository": "/home/gopal/unstructured-IO",
+  "git_branch": "main",
+  "git_commit": "096286a8",
+  "total_collected_tests": 472,
+  "collection_errors": 0,
+  "test_tiers": [
+    {
+      "tier": "unit or mock_provider",
+      "command": "HF_HUB_OFFLINE=1 PYTHONPATH=. .venv/bin/python -m pytest -m 'unit or mock_provider' -q",
+      "exit_code": 0,
+      "passed": 370,
+      "failed": 0,
+      "skipped": 0,
+      "deselected": 102,
+      "duration_seconds": 35.23,
+      "status": "PASS"
+    },
+    {
+      "tier": "api_integration",
+      "command": "HF_HUB_OFFLINE=1 PYTHONPATH=. .venv/bin/python -m pytest -m api_integration -q",
+      "exit_code": 0,
+      "passed": 64,
+      "failed": 0,
+      "skipped": 0,
+      "deselected": 408,
+      "duration_seconds": 21.11,
+      "status": "PASS"
+    },
+    {
+      "tier": "extraction_slow",
+      "command": "HF_HUB_OFFLINE=1 PYTHONPATH=. .venv/bin/pytest -m extraction_slow -v -s",
+      "exit_code": 0,
+      "passed": 13,
+      "failed": 0,
+      "skipped": 0,
+      "deselected": 459,
+      "duration_seconds": 113.55,
+      "status": "PASS"
+    },
+    {
+      "tier": "local_model",
+      "command": "env -u DEEPSEEK_API_KEY -u OPENAI_API_KEY DEEPSEEK_REVIEW_ENABLED=false HF_HUB_OFFLINE=1 PYTHONPATH=. .venv/bin/python -m pytest -m local_model -q",
+      "exit_code": 0,
+      "passed": 25,
+      "failed": 0,
+      "skipped": 0,
+      "deselected": 447,
+      "duration_seconds": 18.58,
+      "status": "PASS"
+    },
+    {
+      "tier": "provider",
+      "command": "Excluded by default (--strict-markers -m 'not provider')",
+      "exit_code": 0,
+      "passed": 0,
+      "failed": 0,
+      "skipped": 0,
+      "deselected": 0,
+      "duration_seconds": 0.0,
+      "status": "INTENTIONALLY_EXCLUDED"
+    }
+  ],
+  "aggregate_offline_results": {
+    "total_unique_tests_executed": 472,
+    "total_passed": 472,
+    "total_failed": 0,
+    "total_skipped": 0,
+    "total_errors": 0,
+    "pass_rate_percent": 100.0
+  }
+}
+

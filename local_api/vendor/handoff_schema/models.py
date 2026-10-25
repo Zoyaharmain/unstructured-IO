@@ -148,6 +148,7 @@ class FieldMappingDetail(BaseModel):
     source_section: str
     confidence_score: float = Field(ge=0.0, le=1.0)
     description: str
+    source_status: str = Field(default="present_and_extracted")
 
 
 class SchemaMappingReport(BaseModel):

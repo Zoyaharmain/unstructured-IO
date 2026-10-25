@@ -1,0 +1,67 @@
+{
+  "run_id": "comprehensive-verification-20261025-100000",
+  "generated_at": "2026-10-25T10:00:00-07:00",
+  "readiness_decision": "LIMITED_PILOT_READY",
+  "production_readiness": "NOT_READY",
+  "test_execution": {
+    "total_collected": 472,
+    "total_passed": 472,
+    "total_failed": 0,
+    "total_skipped": 0,
+    "pass_rate_percent": 100.0,
+    "tiers": {
+      "unit": 241,
+      "mock_provider": 129,
+      "api_integration": 64,
+      "extraction_slow": 13,
+      "local_model": 25,
+      "provider": "excluded_by_default"
+    }
+  },
+  "format_compatibility": {
+    "tested_formats_count": 16,
+    "supported_pass": 12,
+    "supported_partial": 1,
+    "correctly_rejected_invalid": 3,
+    "verified_formats": [
+      "Digital PDF",
+      "Multi-column PDF",
+      "Scanned OCR PDF",
+      "Rotated PDF",
+      "Native Word DOCX",
+      "Rendered PNG Image",
+      "Plain Text TXT",
+      "Markdown MD"
+    ],
+    "correctly_rejected_formats": [
+      "Empty 0-byte PDF (422)",
+      "Corrupted PDF (422)",
+      "Binary Executable EXE (415)"
+    ]
+  },
+  "performance": {
+    "extraction_digital_fast_median_ms": 72.6,
+    "extraction_digital_auto_median_ms": 69.6,
+    "end_to_end_resume_pipeline_median_s": 8.52,
+    "end_to_end_resume_pipeline_p95_s": 8.71,
+    "concurrency_throughput_req_per_sec": 34.12,
+    "concurrency_5_threads_median_ms": 150.3,
+    "peak_memory_mb": 484.42
+  },
+  "ground_truth_accuracy": {
+    "gold_sample_resumes": 15,
+    "local_offline_character_accuracy": 0.585,
+    "local_offline_entirely_correct_resumes": 0.0,
+    "llm_assisted_character_accuracy": 0.9992,
+    "llm_assisted_entirely_correct_resumes": 0.60,
+    "total_discovered_resumes": 804,
+    "unannotated_resumes_count": 789
+  },
+  "operational_safety": {
+    "provider_calls_made": 0,
+    "provider_credits_consumed": 0,
+    "historical_reports_overwritten": 0,
+    "offline_network_sockets_blocked": true
+  }
+}
+

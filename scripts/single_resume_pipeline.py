@@ -100,8 +100,12 @@ def run_feedback(request, local, settings, source, transport, audit_fn, save_pas
                 continue
             break
         if audit['status'] != 'complete':
-            stop = 'schema_audit_failed'
-            break
+            absent_fields = schema.get('meta', {}).get('source_coverage_ledger', {}).get('field_statuses', {})
+            missing_fields = schema.get('meta', {}).get('missing_required_fields', [])
+            all_absent = bool(missing_fields) and all(absent_fields.get(f) == 'absent_in_source' for f in missing_fields)
+            if not all_absent:
+                stop = 'schema_audit_failed'
+                break
         if not any(feedback.values()):
             stop = 'no_pending_diagnostics'
             break

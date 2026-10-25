@@ -67,14 +67,22 @@ def map_schema(request):
     empty=ContactInfo(full_name='',email='',phone='')
     data=ResumeSchema(contact=empty)
     if scope['candidate_resume'] is not False:
+        all_section_blocks = [b for s in request.sections.sections for b in s.blocks] + request.sections.needs_review
         header=blocks('personal_information');text='\n'.join(b.text for b in header)
-        guessed=extract_contact_info(text,text)
+        doc_text='\n'.join(e.text for e in request.elements)
+        guessed=extract_contact_info(text,doc_text)
         for field in type(guessed).model_fields:
             value=getattr(guessed,field)
             if value in {'Candidate','Not specified','not_specified@domain.com'}:value=None
-            value=literal(value,header)
-            if field in {'full_name','email','phone'}:value=value or ''
-            setattr(data.contact,field,remember('contact.'+field,value,header))
+            if field == 'full_name' and value:
+                supported_name = supported(value, header) or supported(value, all_section_blocks)
+                value = value if supported_name else ''
+                evidence_blocks = [b for b in header if norm(value) in norm(b.text)] or [b for b in all_section_blocks if norm(value) in norm(b.text)]
+                setattr(data.contact, field, remember('contact.' + field, value, evidence_blocks or header))
+            else:
+                value=literal(value,header)
+                if field in {'email','phone'}:value=value or ''
+                setattr(data.contact,field,remember('contact.'+field,value,header))
         title_candidates = [(text, run) for run in runs(header) for text in [''.join(b.text for b in run)]
                             if len(text.split())<=12 and not re.search(r'@|Technical Skills|Core AI|linkedin|github',text,re.I)]
         title_candidates += [(b.text,[b]) for b in header]
@@ -88,12 +96,21 @@ def map_schema(request):
         warnings.extend(contact_reasons)
         for key, value in contact_values.items():
             target = data if key == 'professional_title' else data.contact
-            value = literal(value, header)
-            if key in {'full_name', 'email', 'phone'}:value = value or ''
-            setattr(target, key, value)
-            path = key if key == 'professional_title' else 'contact.' + key
-            evidence.pop(path, None)
-            remember(path, value, [b for b in header if any(r['source_id']==source_id(b) for r in field_quotes(value,header))])
+            if key == 'full_name' and value:
+                supported_name = supported(value, header) or supported(value, all_section_blocks)
+                value = value if supported_name else ''
+                evidence_blocks = [b for b in header if norm(value) in norm(b.text)] or [b for b in all_section_blocks if norm(value) in norm(b.text)]
+                setattr(target, key, value)
+                path = 'contact.' + key
+                evidence.pop(path, None)
+                remember(path, value, evidence_blocks or header)
+            else:
+                value = literal(value, header)
+                if key in {'full_name', 'email', 'phone'}:value = value or ''
+                setattr(target, key, value)
+                path = key if key == 'professional_title' else 'contact.' + key
+                evidence.pop(path, None)
+                remember(path, value, [b for b in header if any(r['source_id']==source_id(b) for r in field_quotes(value,header))])
         summary=blocks('summary')
         data.summary=remember('summary',canonical(summary).strip() or None,summary)
         # Never infer experience from education, birth years or a whole-document span.
@@ -208,12 +225,81 @@ def map_schema(request):
         for language, level, b in language_rows(blocks('languages')):
             value=language if level is None else next((part.strip() for part in re.split(r'[\u2022\u25cf\n]',b.text) if language in part and level in part),language)
             i=len(data.languages);data.languages.append(value);remember(f'languages[{i}]',value,[b])
+        # Prune completely empty phantom records from education and experience
+        edu_reviews = [r for r in record_reviews if r['category'] == 'education']
+        data.education = [
+            rec for idx, rec in enumerate(data.education)
+            if rec.degree or rec.institution or getattr(rec, 'field_of_study', None) or getattr(rec, 'graduation_year', None) or
+               (idx < len(edu_reviews) and bool(edu_reviews[idx].get('review_reasons')))
+        ]
+        exp_reviews = [r for r in record_reviews if r['category'] == 'experience']
+        data.experience = [
+            rec for idx, rec in enumerate(data.experience)
+            if rec.company or rec.role or rec.responsibilities or rec.duration or rec.start_date or
+               (idx < len(exp_reviews) and bool(exp_reviews[idx].get('review_reasons')))
+        ]
     else:warnings.append('Document scope is non-resume; candidate fields were left empty and source sections retained.')
     missing=['contact.'+f for f in ('full_name','email','phone') if not getattr(data.contact,f)]
     for category,fields in [('experience',('company','role')),('education',('institution','degree')),('projects',('name',)),('certifications',('name',))]:
         for i,record in enumerate(getattr(data,category)):
             missing.extend(f'{category}[{i}].{field}' for field in fields if not getattr(record,field))
-    mapping=build_schema_mapping_report(data)
+
+    # Source-coverage ledger with the 6 canonical statuses:
+    # 'present_and_extracted', 'present_but_unmapped', 'present_but_ambiguous',
+    # 'absent_in_source', 'extraction_failed', 'not_applicable'
+    field_source_status = {}
+    is_non_resume = (scope.get('candidate_resume') is False)
+    has_corrupted_glyphs = any('\x00' in e.text or '\ufffd' in e.text for e in request.elements)
+    unassigned_text = '\n'.join(b.text for b in request.sections.needs_review)
+
+    for field in ('contact.full_name', 'contact.email', 'contact.phone', 'contact.location',
+                  'contact.linkedin_url', 'contact.github_url', 'contact.portfolio_url',
+                  'professional_title', 'summary', 'total_experience_years'):
+        val = getattr(data.contact, field.removeprefix('contact.'), None) if field.startswith('contact.') else getattr(data, field, None)
+        if val:
+            field_source_status[field] = 'present_and_extracted'
+        elif is_non_resume:
+            field_source_status[field] = 'not_applicable'
+        elif has_corrupted_glyphs:
+            field_source_status[field] = 'extraction_failed'
+        elif any(f'Conflicting explicit labels for {field}' in w for w in warnings):
+            field_source_status[field] = 'present_but_ambiguous'
+        elif field == 'contact.email' and re.search(r'[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}', unassigned_text):
+            field_source_status[field] = 'present_but_unmapped'
+        elif field == 'contact.phone' and re.search(r'\b\d{10}\b', unassigned_text):
+            field_source_status[field] = 'present_but_unmapped'
+        else:
+            field_source_status[field] = 'absent_in_source'
+
+    for cat in ('experience', 'education', 'projects', 'certifications'):
+        records = getattr(data, cat)
+        if records:
+            field_source_status[cat] = 'present_and_extracted'
+        elif is_non_resume:
+            field_source_status[cat] = 'not_applicable'
+        elif any(s.category == cat for s in request.sections.sections):
+            field_source_status[cat] = 'present_but_unmapped'
+        elif cat == 'education' and re.search(r'\b(?:bachelor|master|b\.?s\.?|b\.?tech|m\.?tech|b\.?e\.?|degree|university|college|institute|graduated|diploma)\b', unassigned_text, re.I):
+            field_source_status[cat] = 'present_but_unmapped'
+        elif cat == 'experience' and re.search(r'\b(?:developer|engineer|manager|analyst|architect|consultant|specialist|officer|associate|intern)\b', unassigned_text, re.I):
+            field_source_status[cat] = 'present_but_unmapped'
+        elif cat == 'certifications' and re.search(r'\b(?:certified|certification|certificate|aws|azure|pmp)\b', unassigned_text, re.I):
+            field_source_status[cat] = 'present_but_unmapped'
+        elif cat == 'projects' and re.search(r'\b(?:project|developed|implemented)\b', unassigned_text, re.I):
+            field_source_status[cat] = 'present_but_unmapped'
+        else:
+            field_source_status[cat] = 'absent_in_source'
+
+    for m in missing:
+        if m not in field_source_status:
+            if is_non_resume:
+                field_source_status[m] = 'not_applicable'
+            elif has_corrupted_glyphs:
+                field_source_status[m] = 'extraction_failed'
+            else:
+                field_source_status[m] = 'absent_in_source'
+
+    mapping = build_schema_mapping_report(data, status_overrides=field_source_status)
     warnings+=['Schema validity and field completion do not establish extraction or relationship accuracy.',
                'Handoff confidence scores are fixed heuristics, not calibrated probabilities.',
                'Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields.']
@@ -222,6 +308,16 @@ def map_schema(request):
         section_schemas=build_subschemas(request.sections,data,scope),
         meta={'status':'needs_review','human_verified':False,'provider_calls':0,'source_accounting':accounting,'document_scope':scope,
               'source_inventory_sha256':hashlib.sha256(json.dumps([e.model_dump() for e in request.elements],sort_keys=True,ensure_ascii=False).encode()).hexdigest(),
-              'field_evidence':evidence,'record_reviews':record_reviews,'missing_required_fields':missing,'warnings':warnings,
+              'field_evidence':evidence,'record_reviews':record_reviews,'missing_required_fields':missing,
+              'field_source_status':field_source_status,
+              'source_coverage_ledger':{
+                  'field_statuses':field_source_status,
+                  'status_counts':{
+                      st: sum(1 for v in field_source_status.values() if v == st)
+                      for st in ('present_and_extracted', 'present_but_unmapped', 'present_but_ambiguous',
+                                'absent_in_source', 'extraction_failed', 'not_applicable')
+                  }
+              },
+              'warnings':warnings,
               'unmapped_blocks':[{'source_id':source_id(b),'category':category,'text':b.text,'page_number':b.page_number} for category,b in all_blocks if source_id(b) not in used],
               'needs_review':[b.model_dump() for b in request.sections.needs_review]})

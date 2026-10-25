@@ -64,3 +64,16 @@ package-dir = {"" = "src", "local_api" = "local_api"}
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+# The legacy PDF port uses the standard src/ layout while local_api remains a
+# repository-root package.  Keep both importable when tests run from a fresh
+# checkout without requiring an editable installation first.
+pythonpath = ["src"]
+addopts = "--strict-markers -m 'not provider'"
+markers = [
+  "unit: fast deterministic unit, schema, evidence, and control-flow tests",
+  "api_integration: in-process local HTTP/API integration without external services",
+  "extraction_slow: real PDF, OCR, or hi_res extraction using local dependencies/models",
+  "local_model: real local section-detection model execution (Sentence-BERT/K-means)",
+  "mock_provider: provider/recovery behavior using injected or replayed responses only",
+  "provider: explicitly authorized live-provider evaluation; excluded by default",
+]

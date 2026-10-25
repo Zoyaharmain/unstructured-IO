@@ -76,6 +76,8 @@ def extract_contact_info(header_text: str, full_text: str) -> ContactInfo:
     # Email
     email_match = re.search(r"[\w\.-]+@[\w\.-]+\.\w+", full_text)
     email = email_match.group(0) if email_match else "not_specified@domain.com"
+    if email and email != "not_specified@domain.com":
+        email = re.sub(r"^\d{7,14}(?=[a-zA-Z])", "", email)
 
     # Phone (handles +91, dashes, parentheses, 10-12 digits)
     phone_match = re.search(
@@ -87,31 +89,91 @@ def extract_contact_info(header_text: str, full_text: str) -> ContactInfo:
     # Social URLs
     linkedin_match = re.search(r"(?:https?:\/\/)?(?:www\.)?linkedin\.com\/in\/[\w\-_]+", full_text, re.I)
     linkedin_url = linkedin_match.group(0) if linkedin_match else None
+    if linkedin_url:
+        linkedin_url = re.sub(r"github.*$", "", linkedin_url, flags=re.I).rstrip("/-_")
 
     github_match = re.search(r"(?:https?:\/\/)?(?:www\.)?github\.com\/[\w\-_]+", full_text, re.I)
     github_url = github_match.group(0) if github_match else None
+    if github_url:
+        github_url = re.sub(r"(?:certifications|skills|projects|experience|education).*$", "", github_url, flags=re.I).rstrip("/-_")
 
-    # Candidate Name (Extracts from top lines of Header)
+    # Candidate Name (Extracts from top lines of Header or Preamble)
     full_name = "Candidate"
-    header_lines = [l.strip() for l in header_text.splitlines() if l.strip()]
-    for line in header_lines[:4]:
-        # Ignore lines with email, phone, or generic labels
-        if "@" in line or any(char.isdigit() for char in line) and len(line) < 20:
-            continue
-        if re.search(r"\b(curriculum|resume|biodata|profile|contact|location)\b", line, re.I):
-            continue
-        cleaned = re.sub(r"^[^\w]+", "", line)
+    blacklist_pattern = re.compile(
+        r"\b(curriculum|resume|biodata|profile|contact|location|address|phone|mobile|tel|telephone|"
+        r"email|e-mail|skills|technical\s+skills|key\s+skills|core\s+competencies|experience|work\s+experience|"
+        r"education|qualifications|projects|certifications|awards|summary|objective|declaration|"
+        r"languages|hobbies|interests|references|revenue\s+growth|key\s+accounts|strategic\s+planning|"
+        r"business\s+development|project\s+management|vendor\s+management|client\s+retention|"
+        r"market\s+expansion|pricing\s+strategy|sales\s+excellence|role\s+history|work\s+history|career\s+history)\b",
+        re.I,
+    )
+    buzzword_pattern = re.compile(
+        r"\b(?:senior|junior|engineering|lead|engineer|developer|analyst|consultant|architect|"
+        r"manager|specialist|scientist|executive|director|officer|administrator|accountant|supervisor|"
+        r"authorized|availability|linkedin|github|professional|"
+        r"curriculum|growth|planning|negotiation|strategy|sales|excellence|service|support|trends|"
+        r"relationship|building|management|solution|outreach|collaboration|initiatives|history)\b",
+        re.I,
+    )
+
+    # Derive email username tokens if email exists to corroborate candidate name
+    email_name_tokens = set()
+    if email and email != "not_specified@domain.com":
+        raw_user = email.split("@")[0].lower()
+        cleaned_user = re.sub(r"[\d._+-]", " ", raw_user)
+        email_name_tokens = {tok for tok in cleaned_user.split() if len(tok) >= 3}
+
+    def evaluate_name_line(line: str) -> str | None:
+        if "@" in line or (any(char.isdigit() for char in line) and len(line) < 20):
+            return None
+        # Strip trailing contact labels if merged onto the same line (e.g. "Puppy kumari Email Id -")
+        candidate_prefix = re.split(r"\s*(?:Email(?:\s*Id)?|Ph:|Phone|Mobile|Contact|Location|Address)\b.*", line, flags=re.I)[0].strip()
+        line_to_check = candidate_prefix if candidate_prefix else line
+
+        if blacklist_pattern.search(line_to_check):
+            return None
+        cleaned = re.sub(r"^[^\w]+", "", line_to_check).strip()
         cleaned = re.sub(r"^(?:full name|candidate name|name)\s*:\s*", "", cleaned, flags=re.I)
-        # PDF extraction may join the candidate name and professional title.
         cleaned = re.split(
-            r"\s+(?=(?:(?:Senior|Junior|Lead|Principal|Business|Financial|Software|Data|Technical)\s+)*(?:Analyst|Engineer|Developer|Consultant|Architect|Manager|Specialist|Scientist)\b)",
+            r"\s+(?=(?:(?:Senior|Junior|Lead|Principal|Business|Financial|Software|Data|Technical|Accounts)\s+)*(?:Analyst|Engineer|Developer|Consultant|Architect|Manager|Specialist|Scientist|Executive|Associate|Director|Officer|Administrator|Accountant|Supervisor)\b)",
             cleaned, maxsplit=1, flags=re.I,
         )[0].strip()
         if (1 <= len(cleaned.split()) <= 6 and len(cleaned) < 70
                 and re.fullmatch(r"[^\W\d_][^\d@:/|,;]*", cleaned)
-                and not re.search(r"\b(?:senior|junior|engineering|lead|engineer|developer|analyst|consultant|architect|manager|specialist|scientist|authorized|availability|linkedin|github|professional|curriculum)\b", cleaned, re.I)) :
-            full_name = cleaned
-            break
+                and not buzzword_pattern.search(cleaned)
+                and cleaned.lower() not in {"email", "phone", "mobile", "contact", "name", "candidate", "address"}):
+            return cleaned
+        return None
+
+    header_lines = [l.strip() for l in header_text.splitlines() if l.strip()]
+    name_candidates = []
+    for line in header_lines[:8]:
+        cand = evaluate_name_line(line)
+        if cand:
+            name_candidates.append(cand)
+
+    # If header didn't yield a name, search the preamble of full_text
+    if not name_candidates and full_text:
+        preamble_lines = [l.strip() for l in full_text.splitlines() if l.strip()]
+        for line in preamble_lines[:10]:
+            cand = evaluate_name_line(line)
+            if cand:
+                name_candidates.append(cand)
+
+    # Prioritize candidate name corroborated by email username, preferring capitalized/multi-word names
+    if email_name_tokens and name_candidates:
+        corroborated = [
+            c for c in name_candidates
+            if any(part.lower() in email_name_tokens or any(part.lower() in tok for tok in email_name_tokens)
+                   for part in c.split())
+        ]
+        if corroborated:
+            full_name = max(corroborated, key=lambda c: (len(c.split()) > 1, c.istitle(), c.isupper(), len(c)))
+        else:
+            full_name = max(name_candidates, key=lambda c: (len(c.split()) > 1, c.istitle(), c.isupper(), len(c)))
+    elif name_candidates:
+        full_name = max(name_candidates, key=lambda c: (len(c.split()) > 1, c.istitle(), c.isupper(), len(c)))
 
     # Location heuristic
     loc_match = re.search(
@@ -385,10 +447,11 @@ def execute_section_heuristic_parser(text: str) -> tuple[ResumeSchema, dict[str,
 # ---------------------------------------------------------------------------
 # 3. Schema Mapping Report Generator
 # ---------------------------------------------------------------------------
-def build_schema_mapping_report(resume: ResumeSchema) -> SchemaMappingReport:
+def build_schema_mapping_report(resume: ResumeSchema, *, status_overrides: dict[str, str] | None = None) -> SchemaMappingReport:
     """Builds a comprehensive schema mapping report evaluating extraction coverage and confidence."""
     details: list[FieldMappingDetail] = []
     populated_count = 0
+    status_map = status_overrides or {}
 
     checks: list[tuple[str, bool, float]] = [
         ("contact.full_name", bool(resume.contact.full_name and resume.contact.full_name != "Candidate"), 0.95),
@@ -415,6 +478,9 @@ def build_schema_mapping_report(resume: ResumeSchema) -> SchemaMappingReport:
         spec = spec_dict.get(field_name, {})
         if is_extracted:
             populated_count += 1
+            src_status = status_map.get(field_name, "present_and_extracted")
+        else:
+            src_status = status_map.get(field_name, "absent_in_source")
 
         details.append(
             FieldMappingDetail(
@@ -425,6 +491,7 @@ def build_schema_mapping_report(resume: ResumeSchema) -> SchemaMappingReport:
                 source_section=spec.get("source_section", "Resume Body"),
                 confidence_score=conf if is_extracted else 0.0,
                 description=spec.get("description", ""),
+                source_status=src_status,
             )
         )
 
