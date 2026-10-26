@@ -238,6 +238,13 @@ class SectionEngine:
             alternatives = sorted(compounds.get(position, set()))
             compound = len(alternatives) > 1 and structural_label is None
             employer_boundary = employment_start(unit.text)
+            # A labelled professional engagement may follow a skills sidebar
+            # without a repeated Experience heading. Require role, project and
+            # client evidence; do not treat a client as an employer.
+            engagement_boundary = bool(context and context[0] == 'skills' and 'experience' in grouped and
+                re.match(r'^\s*Role\s*:\s*\S', unit.text, re.I) and
+                re.search(r'\bProject\s*:', element.text, re.I) and
+                re.search(r'\bClient\s*:', element.text, re.I))
             page_artifact = element.type == 'PageBreak' or (element.type == 'Footer' and bool(re.fullmatch(r'\s*(?:page\s*)?\d+(?:\s*(?:of|/)\s*\d+)?\s*', unit.text, flags=re.I)))
             is_heading = (structural_label is not None or (short and hscore >= .72 and hmargin >= .09 and (not context or not context[2] or unit.heading_style))) and not compound and not record_field and not page_artifact and not employer_boundary
             assignment, reason = 'semantic', 'BERT embedding assigned to a labeled K-means centroid'
@@ -252,13 +259,14 @@ class SectionEngine:
             elif unit.margin_footer and re.match(r'\s*(?:place|date)\s*:', unit.text, re.I):
                 label = 'personal_information'
                 assignment, reason = 'personal_detail', 'Location/date signature in the document bottom margin'
-            elif employer_boundary:
+            elif employer_boundary or engagement_boundary:
                 label = 'experience'
                 context_source = unit.index
                 target_lanes = set(item.lane for item in units) if len(page_heading_lanes.get(element.page_number, set()) - {'wide', 'unknown'}) <= 1 else {unit.lane}
                 for lane in target_lanes:
                     contexts[lane] = (label, unit.index, True)
-                assignment, reason = 'employment_boundary', 'Explicit dated employer starts or continues Experience across layout changes'
+                assignment, reason = 'employment_boundary', ('Explicit role, project and client resume employment context'
+                    if engagement_boundary else 'Explicit dated employer starts or continues Experience across layout changes')
             elif is_heading:
                 label, cluster, similarity, margin = heading
                 label = structural_label or label

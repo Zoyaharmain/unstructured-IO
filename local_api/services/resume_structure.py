@@ -35,18 +35,23 @@ RECORD_FIELDS = {'technologies', 'technology', 'tools', 'tool', 'tech stack',
                  'environment', 'client name', 'work base location'}
 EXTRA_HEADINGS = {
     'personal_information': ['contact', 'personal info', 'personal details'],
-    'summary': ['objective', 'career summary', 'executive summary', 'profile snapshot', 'profile summary', 'professional summary', 'career objective'],
-    'projects': ['key projects', 'project highlights', 'project details', 'projects', 'academic projects'],
+    'summary': ['objective', 'career summary', 'executive summary', 'profile snapshot', 'profile summary', 'professional summary', 'career objective',
+                'selected jd-aligned highlights', 'key business impact', 'career highlights', 'professional highlights'],
+    'projects': ['key projects', 'project highlights', 'project details', 'projects', 'academic projects',
+                 'independent project', 'independent projects', 'other project details'],
     'experience': ['employment', 'professional background', 'work history', 'career history',
                    'role history', 'employment history', 'experience summary', 'professional employment',
                    'organizational experience', 'organization experience', 'professional experience summary',
-                   'project experience'],
+                   'project experience', 'key projects and roles', 'earlier experience', 'earlier employment'],
     'languages': ['spoken languages', 'language proficiency', 'langues'],
-    'education': ['qualifications', 'educational background', 'academic qualifications', 'formation', 'formations', 'academics', 'academic background'],
+    'education': ['qualifications', 'educational background', 'academic qualifications', 'formation', 'formations', 'academics', 'academic background', 'academic details'],
     'skills': ['competences', 'comp\u00e9tences', 'languages and platforms', 'programming languages',
                'tools and platforms', 'core programming and frameworks', 'cloud and devops',
+               'core competencies and skills', 'it skillset', 'it skills',
                'testing and development practices', 'skill set', 'skill sets', 'skillset', 'key strengths', 'technical competencies', 'core skills', 'domain expertise', 'business analysis and product management', 'tools and technology'],
-    'certifications': ['certificates', 'training', 'certifications and licenses'],
+    'certifications': ['certificates', 'certification', 'training', 'certifications and licenses'],
+    'awards': ['key achievements', 'professional achievements', 'awards and recognitions',
+               'achievements/awards'],
 }
 
 
@@ -103,6 +108,9 @@ def heading_boundary(text, aliases):
         if match:
             prefix = match.group(1)
             remainder = text[match.end():]
+            # A training/project title is not a flattened section heading.
+            if alias == 'training' and not prefix.isupper():
+                continue
             if prefix[0].isupper() and remainder and (remainder[0].isupper() or remainder[0].isdigit()):
                 return owner, match.end()
     return None, None
@@ -132,7 +140,8 @@ def entry_groups(blocks, category, elements):
             any(elements[b.source_element_index].metadata.get('pdf_source_lines') for b in blocks)):
         geometry_groups=reviewed_employment_groups(blocks,elements)
         if geometry_groups:return geometry_groups
-    if category=='education' and blocks and all(b.reviewed_by_llm for b in blocks):
+    if category=='education' and blocks and (all(b.reviewed_by_llm for b in blocks) or
+            any(elements[b.source_element_index].metadata.get('pdf_source_lines') for b in blocks)):
         geometry_groups=reviewed_education_groups(blocks,elements)
         if geometry_groups:return geometry_groups
     groups, active = [], {}
@@ -245,9 +254,12 @@ def reviewed_employment_groups(blocks,elements):
         hs=hints(b)
         return min((h['bbox'][1] for h in hs),default=None)
     from local_api.services.record_relationships import dated_organization_header
+    from local_api.services.record_subfields import responsibility_fragment
     anchors=[]
     for i,b in enumerate(blocks):
         text=b.text.strip();hs=hints(b)
+        if b.assignment in {'section_heading', 'structural_heading'} or normalized_heading(text) in {'experience','work experience','professional experience','employment','work history'}:continue
+        if responsibility_fragment(text):continue
         if len(text.split())>30 or re.match(r'^(?:job\s+role\s*:|[•▪●*]|projects?\s*[:\-]|projects?\s+(?:name|title|description|summary)\b|client\s*[:\-]|responsibilit)',text,re.I):continue
         bold=any(h.get('bold') for h in hs)
         dated_history=bool(re.match(r'^(?:Since|From)\b.+\bwith\b.+\bas\b',text,re.I) and re.search(r'\b(?:19|20)\d{2}\b',text))
@@ -260,7 +272,16 @@ def reviewed_employment_groups(blocks,elements):
                     if other_top is not None and top is not None and abs(other_top-top)<=.025:
                         aligned_date=True
                         break
-        if not (((role.search(text) or business.search(text)) and (bold or employment_start(text) or aligned_date)) or (bold and dated_history) or dated_organization_header(text)):continue
+        following = [blocks[k] for k in range(i+1, min(i+4, len(blocks)))]
+        has_following_role_or_date = any(
+            (role.search(f.text) or date_pat.search(f.text)) and not responsibility_fragment(f.text)
+            for f in following
+        )
+        paired_employer = bool(bold and has_following_role_or_date and len(text.split()) <= 10
+                               and not role.search(text) and not responsibility_fragment(text))
+        if not (((role.search(text) or business.search(text)) and (bold or employment_start(text) or aligned_date)) or (bold and dated_history) or dated_organization_header(text) or paired_employer):continue
+        if anchors and anchors[-1].get('paired_employer') and anchors[-1]['index'] == i-1:
+            continue
         # Employer and title can occupy two adjacent source rows. Merge a
         # title-only continuation with the immediately preceding employer row.
         if anchors and top is not None and anchors[-1]['page']==b.page_number and anchors[-1]['y'] is not None and 0<=top-anchors[-1]['y']<=.03 and (
@@ -268,7 +289,7 @@ def reviewed_employment_groups(blocks,elements):
             (business.search(text) and not role.search(text) and not re.search(r'\d|[,|]',text))
         ):
             continue
-        anchors.append({'index':i,'page':b.page_number,'y':top})
+        anchors.append({'index':i,'page':b.page_number,'y':top,'paired_employer':paired_employer})
     if not anchors:return []
     groups=[{'entry_id':f'experience-{i+1}','block_indices':[],'lane':'source_geometry','boundary_reason':'source employment header; source row/page membership, not layout lane'} for i in range(len(anchors))]
     shared_from=None
@@ -362,6 +383,7 @@ def reviewed_education_groups(blocks,elements):
 def employment_start(text):
     from local_api.vendor.resume_semantic_blocks import PERIOD, employment_header, ACTION, EDUCATION
     lookup=text.strip().lstrip('•▪●*\uf0b7- ').strip()
+    if re.search(r'\b(?:award|awarded|prize|winner|best employee|certified|certification|certificate)\b', lookup, re.I):return False
     if re.match(r'^(?:projects?\s*[:\-]|projects?\s+(?:name|title|description|summary)\b|client\s*[:\-]|duration\s*:|responsibilities\s*:|accomplishments\s*:)',lookup,re.I):return False
     # A dated "Worked as ... at/with ..." statement is a history header,
     # whereas a responsibility mentioning a date is not.

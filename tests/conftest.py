@@ -16,12 +16,14 @@ MOCK_PROVIDER_MODULES = {
 }
 
 API_MODULES = {
+    "test_schema_diagnostics_api.py",
     "test_local_api.py",
     "test_text_extraction.py",
     "test_verification_ui.py",
 }
 
 API_TESTS = {
+    "test_schema_mapping.py::test_explicit_field_review_http_keeps_contracts_aligned",
     "test_schema_mapping.py::test_real_http_contract_and_validation",
     "test_hierarchical_schema.py::test_query_endpoint_reuses_mapping_and_rejects_invalid_paths",
     "test_section_subschemas.py::test_nested_contract_is_returned_by_http_and_has_discoverable_definition",

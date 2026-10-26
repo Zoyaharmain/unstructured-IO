@@ -42,12 +42,14 @@ def map_schema(request):
     if sum(len(s.blocks) for s in request.sections.sections)+len(request.sections.needs_review)>10000:
         raise ValueError('Too many section blocks')
     errors=validate_result(request.elements,request.sections)
-    if errors:raise ValueError('Sections are not bound to the supplied source inventory')
+    if errors:
+        from local_api.services.schema_diagnostics import fail
+        fail('source_binding_validation', errors[0], ('sections',))
     accounting=account_source(request.elements,request.sections)
     scope=document_scope(request.elements)
     sections={s.category:s for s in request.sections.sections}
     raw={key:canonical(s.blocks) for key,s in sections.items()}
-    evidence={};warnings=[];record_reviews=[];used=set()
+    evidence={};warnings=[];record_reviews=[];used=set();record_bindings={}
     inventory={source_id(b):b.text for section in request.sections.sections for b in section.blocks}
     inventory.update({source_id(b):b.text for b in request.sections.needs_review})
     def field_quotes(value, bs):
@@ -203,6 +205,7 @@ def map_schema(request):
                         i=len(data.certifications);value=canonical(contents).strip();record=Certification(name=value);data.certifications.append(record);remember(f'certifications[{i}].name',value,contents)
                 if category == 'certifications' and not contents:
                     continue
+                review['mapped_index'] = i
                 original = record.model_dump()
                 base, education_reasons = refine_education(original, bs) if category == 'education' else (original, [])
                 refined, reasons = refine_record(category, base, bs, header_fields=(
@@ -225,19 +228,29 @@ def map_schema(request):
         for language, level, b in language_rows(blocks('languages')):
             value=language if level is None else next((part.strip() for part in re.split(r'[\u2022\u25cf\n]',b.text) if language in part and level in part),language)
             i=len(data.languages);data.languages.append(value);remember(f'languages[{i}]',value,[b])
-        # Prune completely empty phantom records from education and experience
-        edu_reviews = [r for r in record_reviews if r['category'] == 'education']
-        data.education = [
-            rec for idx, rec in enumerate(data.education)
-            if rec.degree or rec.institution or getattr(rec, 'field_of_study', None) or getattr(rec, 'graduation_year', None) or
-               (idx < len(edu_reviews) and bool(edu_reviews[idx].get('review_reasons')))
-        ]
-        exp_reviews = [r for r in record_reviews if r['category'] == 'experience']
-        data.experience = [
-            rec for idx, rec in enumerate(data.experience)
-            if rec.company or rec.role or rec.responsibilities or rec.duration or rec.start_date or
-               (idx < len(exp_reviews) and bool(exp_reviews[idx].get('review_reasons')))
-        ]
+        # Retain entry identity and reindex citations together when pruning.
+        for category in ('experience', 'education', 'projects', 'certifications'):
+            reviews = [r for r in record_reviews if r['category'] == category and 'mapped_index' in r]
+            kept = []
+            old_evidence = {p: refs for p, refs in evidence.items() if p.startswith(category + '[')}
+            for path in old_evidence:
+                evidence.pop(path)
+            record_bindings[category] = {}
+            for old_index, record in enumerate(getattr(data, category)):
+                review = reviews[old_index]
+                if category in {'experience', 'education'} and not any(record.model_dump().values()) and not review['review_reasons']:
+                    review['mapped_index'] = None
+                    continue
+                new_index = len(kept)
+                review['mapped_index'] = new_index
+                kept.append(record)
+                record_bindings[category][review['entry_id']] = new_index
+                old_prefix = f'{category}[{old_index}].'
+                for path, refs in old_evidence.items():
+                    if path.startswith(old_prefix):
+                        evidence[f'{category}[{new_index}].' + path[len(old_prefix):]] = refs
+            setattr(data, category, kept)
+        used = {ref for refs in evidence.values() for ref in refs}
     else:warnings.append('Document scope is non-resume; candidate fields were left empty and source sections retained.')
     missing=['contact.'+f for f in ('full_name','email','phone') if not getattr(data.contact,f)]
     for category,fields in [('experience',('company','role')),('education',('institution','degree')),('projects',('name',)),('certifications',('name',))]:
@@ -250,7 +263,9 @@ def map_schema(request):
     field_source_status = {}
     is_non_resume = (scope.get('candidate_resume') is False)
     has_corrupted_glyphs = any('\x00' in e.text or '\ufffd' in e.text for e in request.elements)
-    unassigned_text = '\n'.join(b.text for b in request.sections.needs_review)
+    # Misassigned content is still present in the document, even when no block
+    # remains in needs_review. Never confuse section placement with absence.
+    unassigned_text = '\n'.join(e.text for e in request.elements)
 
     for field in ('contact.full_name', 'contact.email', 'contact.phone', 'contact.location',
                   'contact.linkedin_url', 'contact.github_url', 'contact.portfolio_url',
@@ -262,11 +277,12 @@ def map_schema(request):
             field_source_status[field] = 'not_applicable'
         elif has_corrupted_glyphs:
             field_source_status[field] = 'extraction_failed'
-        elif any(f'Conflicting explicit labels for {field}' in w for w in warnings):
+        elif any(f'Conflicting explicit labels for {field.removeprefix("contact.")}.' in w for w in warnings):
             field_source_status[field] = 'present_but_ambiguous'
         elif field == 'contact.email' and re.search(r'[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}', unassigned_text):
             field_source_status[field] = 'present_but_unmapped'
-        elif field == 'contact.phone' and re.search(r'\b\d{10}\b', unassigned_text):
+        elif field == 'contact.phone' and any(10 <= len(re.sub(r'\D', '', token)) <= 15
+                for token in re.findall(r'(?<!\w)\+?\d[\d ()-]{7,}\d(?!\w)', unassigned_text)):
             field_source_status[field] = 'present_but_unmapped'
         else:
             field_source_status[field] = 'absent_in_source'
@@ -299,16 +315,20 @@ def map_schema(request):
             else:
                 field_source_status[m] = 'absent_in_source'
 
+    from local_api.services.field_coverage import complete_field_statuses
+    complete_field_statuses(field_source_status, request.sections, data, scope,
+                            record_bindings, record_reviews, warnings)
+
     mapping = build_schema_mapping_report(data, status_overrides=field_source_status)
     warnings+=['Schema validity and field completion do not establish extraction or relationship accuracy.',
                'Handoff confidence scores are fixed heuristics, not calibrated probabilities.',
                'Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields.']
     all_blocks=[(s.category,b) for s in request.sections.sections for b in s.blocks]+[(None,b) for b in request.sections.needs_review]
     return SchemaMappingResponse(success=True,source=request.source,extraction_mode='existing_blocks_schema_mapping',data=data,schema_mapping=mapping,raw_sections=raw,
-        section_schemas=build_subschemas(request.sections,data,scope),
+        section_schemas=build_subschemas(request.sections,data,scope,record_bindings),
         meta={'status':'needs_review','human_verified':False,'provider_calls':0,'source_accounting':accounting,'document_scope':scope,
               'source_inventory_sha256':hashlib.sha256(json.dumps([e.model_dump() for e in request.elements],sort_keys=True,ensure_ascii=False).encode()).hexdigest(),
-              'field_evidence':evidence,'record_reviews':record_reviews,'missing_required_fields':missing,
+              'field_evidence':evidence,'record_reviews':record_reviews,'record_bindings':record_bindings,'missing_required_fields':missing,
               'field_source_status':field_source_status,
               'source_coverage_ledger':{
                   'field_statuses':field_source_status,

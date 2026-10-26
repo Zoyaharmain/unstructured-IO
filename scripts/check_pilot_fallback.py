@@ -18,18 +18,7 @@ def signature(result):
  return [(b.source_element_index,b.start,b.end,s.category) for s in result.sections for b in s.blocks]+[(b.source_element_index,b.start,b.end,None) for b in result.needs_review]
 def save(path,data):
  tmp=path.with_suffix(path.suffix+'.tmp');tmp.write_text(json.dumps(data,indent=2,ensure_ascii=False)+'\n');tmp.replace(path)
-def load_provider_env(path):
- # Simple KEY=value configuration only; never execute .env as shell code.
- if not path.is_file():return
- for line in path.read_text().splitlines():
-  line=line.strip()
-  if line.startswith('export '):line=line[7:].lstrip()
-  if not line or line.startswith('#') or '=' not in line:continue
-  key,value=line.split('=',1);key=key.strip();value=value.strip()
-  if not re.fullmatch(r'DEEPSEEK_[A-Z0-9_]+',key):continue
-  if len(value)>=2 and value[0]==value[-1] and value[0] in ('"',"'"):value=value[1:-1]
-  else:value=re.split(r'\s+#',value,maxsplit=1)[0].strip()
-  os.environ.setdefault(key,value)
+from local_api.core.provider_env import load_provider_env
 def diagnostics(pdf,extraction):
  els=extraction.elements;duplicate=[]
  for i,e in enumerate(els):

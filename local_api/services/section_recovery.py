@@ -16,14 +16,17 @@ def recover_sections(request, local_result):
             # Match both Title Case (e.g. Work Experience) and UPPERCASE (e.g. WORK EXPERIENCE, CONTACT, SKILLS)
             upper_pattern = r'\s*'.join(re.escape(word.upper()) for word in alias.split())
             cap_pattern = r'\s*'.join(re.escape(word.capitalize()) for word in alias.split())
-            pattern = r'(?<![A-Za-z])(' + upper_pattern + r'|' + cap_pattern + r')(?![a-z])'
+            pattern = r'(?<![A-Za-z])(' + upper_pattern + r'|' + cap_pattern + r')(?![A-Za-z])'
             for match in re.finditer(pattern, block.text):
                 if match.start() > 0 and (match.end() == len(block.text) or not block.text[match.end()].islower()):
                     # Avoid cutting inside regular sentences unless preceded by punctuation or boundary
                     prefix = block.text[:match.start()]
-                    if (block in local_result.needs_review or
-                            prefix.endswith(('.', '!', '?', ';', '\n', '\r', ':')) or
-                            (prefix and prefix[-1].islower())):
+                    # Title-case vocabulary inside prose (Microsoft Projects,
+                    # Training App) cannot establish a section boundary.
+                    stripped = prefix.rstrip(' \t')
+                    joined_upper = bool(prefix and prefix[-1].islower() and match.group().isupper())
+                    review_upper = block in local_result.needs_review and match.group().isupper()
+                    if (stripped.endswith(('.', '!', '?', ';', '\n', '\r', ':', '&')) or joined_upper or review_upper):
                         updates.setdefault(block.source_element_index, set()).update(
                             [block.start + match.start(), block.start + match.end()]
                         )

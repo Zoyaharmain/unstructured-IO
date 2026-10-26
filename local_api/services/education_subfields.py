@@ -2,7 +2,7 @@
 import re
 from local_api.services.source_fragments import runs, texts
 
-DEGREE = re.compile(r'(?<!\w)(?:PG\s+Certificate|Diploma|Master of (?:Technology|Science|Engineering|Business Administration|Computer Applications?)|Bachelor of (?:Technology|Science|Engineering|Arts|Commerce|Pharmacy)|M\.?\s?Sc\.?|B\.?\s?Sc\.?|M\.?Tech\.?|B\.?Tech\.?|B\.?E\.?|M\.?E\.?|MBA|MCA|BCA)(?!\w)', re.I)
+DEGREE = re.compile(r'(?<!\w)(?:PG\s+Certificate|Post\s+Graduate\s+Diploma|PGDM|Diploma|Master of (?:Technology|Science|Engineering|Business Administration|Computer Applications?)|Bachelor of (?:Technology|Science|Engineering|Arts|Commerce|Pharmacy)|M\.?\s?Sc\.?|B\.?\s?Sc\.?|B\.?Com\.?|M\.?Com\.?|M\.?Tech\.?|B\.?Tech\.?|B\.?E\.?|M\.?E\.?|MBA|MCA|BCA)(?!\w)', re.I)
 
 
 def refine_education(values, blocks):
@@ -23,6 +23,10 @@ def refine_education(values, blocks):
                 match = re.match(re.escape(local.group()),source,re.I)
                 if previous and re.fullmatch(r'\s*\(\s*', b.text[previous.end():local.start()]) and b.text[local.end():].startswith(')'):
                     continue
+                if (previous and local.group().casefold() == 'pgdm' and 'diploma' in previous.group().casefold()
+                        and re.fullmatch(r'\s+in\s+[A-Za-z ]+\(\s*', b.text[previous.end():local.start()])
+                        and b.text[local.end():].startswith(')')):
+                    continue
                 degrees.append((source,match));previous=local
     if not degrees:
         degrees=[(source,match) for source in source_texts for match in DEGREE.finditer(source)]
@@ -33,7 +37,7 @@ def refine_education(values, blocks):
         source, match = degrees[0]
         values['degree'] = match.group()
         following = source[match.end():]
-        major = re.match(r'\s*(?:in\s+|[-\u2013]\s*)?\(?([A-Za-z][A-Za-z &/\-]*?)(?:\)|,|\||\s+from\b|\s+[-\u2013\u2014]\s+|\s+(?:19|20)\d{2}\b|$)', following)
+        major = re.match(r'\s*(?:in\s+|[-\u2013]\s*)?\(?([A-Za-z][A-Za-z &/\-]*?)(?:\)|\s*\(|,|\||\s+from\b|\s+[-\u2013\u2014]\s+|\s+(?:19|20)\d{2}\b|$)', following)
         if major and not values.get('field_of_study'):
             candidate = major.group(1).strip()
             if not re.fullmatch(r'(?:MCA|MBA|B\.?Com|B\.?E\.?|B\.?Tech|M\.?Tech|B\.?Sc|M\.?Sc)', candidate, re.I) and not re.search(r'\b(?:university|college|institute|GPA|expected|pursuing)\b', candidate, re.I):

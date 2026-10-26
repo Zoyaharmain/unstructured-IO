@@ -125,9 +125,13 @@ def main():
             save(directory / (name + '.json'), data)
 
     from scripts.single_resume_pipeline import run_feedback
+    from local_api.services.llm_schema_mapping import map_with_field_review
+    def mapping_with_review(mapping_request):
+        return map_with_field_review(mapping_request, settings=settings, transport=recorded_transport,
+                                     budget=request_budget) if args.llm_review else map_schema(mapping_request)
     sections, schema, audit, pipeline = run_feedback(
         request, local, settings, args.file.name, recorded_transport, audit_schema, save_pass,
-        request_budget=request_budget, document_sha256=document_hash)
+        request_budget=request_budget, document_sha256=document_hash, mapping_fn=mapping_with_review)
     save(args.output / 'sections.json', sections.model_dump(mode='json'))
     save(args.output / 'schema.json', schema)
     save(args.output / 'schema-audit.json', audit)

@@ -3,11 +3,23 @@ const $ = id => document.getElementById(id);
 let file = null, result = null, originalURL = null, busy = false, comparisonGeneration = 0;
 const node = (tag, className, text) => { const el = document.createElement(tag); if (className) el.className = className; if (text !== undefined) el.textContent = text; return el; };
 function status(message, kind = '') { $('status').textContent = message; $('status').className = `status ${kind}`; }
-function setBusy(value) { busy = value; $('file').disabled = value; $('strategy').disabled = value || file?.name.toLowerCase().endsWith('.docx'); $('extract').disabled = value || !file; $('extract').textContent = value ? 'Extracting…' : 'Extract & inspect →'; $('dropzone').setAttribute('aria-disabled', String(value)); }
+function setBusy(value) { busy = value; $('file').disabled = value; $('strategy').disabled = value || file?.name.toLowerCase().endsWith('.docx'); $('extract').disabled = value || !file; $('extract').textContent = value ? 'Extracting…' : 'Process resume →'; $('dropzone').setAttribute('aria-disabled', String(value)); }
+function workflowStage(stage, state, message) {
+  const element = $('stage-' + stage); element.dataset.state = state;
+  element.querySelector('span').textContent = message;
+}
+function resetWorkflow() {
+  workflowStage('extract', 'pending', 'Waiting for extraction');
+  workflowStage('review', 'pending', 'Waiting for extracted text');
+  workflowStage('schema', 'pending', 'Waiting for reviewed sections');
+  $('workflow-verdict').textContent = 'Processing has not completed.';
+  $('workflow-verdict').className = 'status';
+}
 function clearResult() {
+  resetWorkflow();
   comparisonGeneration++;
-  document.dispatchEvent(new Event('extraction-reset'));
   result = null;
+  document.dispatchEvent(new Event('extraction-reset'));
   for (const id of ['words', 'blocks-count', 'characters', 'pages']) $(id).textContent = '—';
   $('block-badge').textContent = '0'; $('block-list').replaceChildren(node('div', 'empty', 'Extract this document to inspect its text blocks.'));
   $('plain-text').textContent = 'Extracted plain text will appear here.';
@@ -36,7 +48,7 @@ async function chooseFile(selected) {
     }, {once: true});
   } else { frame.src = originalURL + '#view=FitH&navpanes=0'; $('preview-label').textContent = 'Original PDF · select a block with page metadata to navigate'; }
   $('preview').replaceChildren(frame);
-  status('Ready. Choose a strategy and click Extract & inspect.');
+  await runExtraction();
 }
 $('file').addEventListener('change', event => chooseFile(event.target.files[0]));
 for (const eventName of ['dragover', 'dragenter']) $('dropzone').addEventListener(eventName, event => { event.preventDefault(); if (!busy) $('dropzone').classList.add('dragging'); });
@@ -44,10 +56,11 @@ for (const eventName of ['dragleave', 'drop']) $('dropzone').addEventListener(ev
 $('dropzone').addEventListener('drop', event => chooseFile(event.dataTransfer.files[0]));
 window.addEventListener('message', event => { const frame = $('preview').querySelector('iframe'); if (frame && event.source === frame.contentWindow && event.data?.type === 'docx-error') $('preview-label').textContent = 'DOCX preview unavailable. Use Open ↗ to view the original; extraction can still be tried.'; });
 $('strategy').addEventListener('change', () => { clearResult(); status('Strategy changed. Extract again to see the new result.'); });
-async function readResponse(response) { let body; try { body = await response.json(); } catch { throw new Error(`The server returned HTTP ${response.status}. Please try again.`); } if (!response.ok) throw new Error(typeof body.detail === 'string' ? body.detail : 'The request could not be processed. Check the file or text size.'); return body; }
-$('extract').addEventListener('click', async () => {
+async function readResponse(response) { let body; try { body = await response.json(); } catch { throw new Error(`The server returned HTTP ${response.status}. Please try again.`); } if (!response.ok) { const error = new Error(typeof body.detail === 'string' ? body.detail : body.detail?.message || 'The request could not be processed. Check the file or text size.'); error.diagnostic = body.detail?.diagnostic; throw error; } return body; }
+async function runExtraction() {
   if (!file || busy) return;
   clearResult(); setBusy(true); status('Extracting locally… OCR and layout models can take longer on the first run.', 'busy');
+  workflowStage('extract', 'working', 'Reading the document…');
   const started = performance.now();
   const data = new FormData(); data.append('file', file); data.append('strategy', $('strategy').value); data.append('include_elements', 'true');
   try {
@@ -61,11 +74,13 @@ $('extract').addEventListener('click', async () => {
     for (const id of ['download', 'copy', 'search', 'type-filter', 'compare']) $(id).disabled = false;
     for (const type of [...new Set(result.elements.map(element => element.type))].sort()) $('type-filter').add(new Option(type, type));
     renderBlocks();
+    workflowStage('extract', result.text.trim() ? 'complete' : 'failed', result.text.trim() ? `${result.metadata.total_elements} source elements extracted` : 'No text found; try OCR only');
     document.dispatchEvent(new Event('extraction-ready'));
     status(result.text.trim() ? `Extraction complete in ${((performance.now() - started) / 1000).toFixed(1)}s · Requested strategy: ${result.strategy} · Section blocks appear automatically in Resume sections.` : 'No text was extracted. If this is a scanned PDF, try OCR only or High resolution.', result.text.trim() ? '' : 'error');
-  } catch (error) { status(error.message || 'Unable to reach the extraction server.', 'error'); }
+  } catch (error) { status(error.message || 'Unable to reach the extraction server.', 'error'); workflowStage('extract', 'failed', error.message); $('workflow-verdict').textContent = 'Extraction failed. Check the error above and retry.'; }
   finally { setBusy(false); }
-});
+}
+$('extract').addEventListener('click', runExtraction);
 function renderBlocks() {
   const query = $('search').value.toLocaleLowerCase(), type = $('type-filter').value;
   const fragment = document.createDocumentFragment(); let shown = 0;

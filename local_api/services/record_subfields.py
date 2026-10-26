@@ -60,10 +60,18 @@ ACTION = re.compile(r'^(?:[\u2022*\-]\s*)?(?:led|built|developed|implemented|con
 PLACE = re.compile(r'^(?:(?:Chennai|Bangalore|Bengaluru|Pune|Mumbai|Hyderabad|Noida|Delhi|London|Paris|Remote)(?:,\s*[^|]+)?|[^|,]+,\s*(?:India|France|UK|USA))$', re.I)
 
 
+def responsibility_fragment(text):
+    """A wrapped prose clause is not an employer just because it says systems."""
+    text = text.strip()
+    return bool(ACTION.search(text) or len(text.split()) > 6 and (
+        re.search(r'\b(?:setting up|cut average|ensuring|enhancing|working across)\b', text, re.I)
+        or text[:1].islower() and text.endswith('.')))
+
+
 def employment_header_fields(text):
     """Identify role/employer by unambiguous component shapes, not field order."""
     text = text.strip()
-    if len(text.split()) > 32 or ACTION.search(text):return {}
+    if len(text.split()) > 32 or responsibility_fragment(text):return {}
     dates = list(RANGE.finditer(text))
     if len(dates) > 1:return {}
     prefix = text[:dates[0].start()].rstrip(' |\u2013\u2014-()') if dates else text
@@ -138,6 +146,8 @@ def refine_record(category, values, blocks, *, header_fields=None):
         headers = [employment_header_fields(text) for text in [*texts(blocks), *(b.text for b in blocks)]]
         for name in ('company', 'role', 'location'):
             candidates = list(dict.fromkeys(h[name] for h in headers if name in h))
+            if name == 'company' and header_fields is not None and values.get('company') and not ROLE.search(values['company']):
+                continue
             if (header_fields is None or name in header_fields or (name == 'location' and {'company','role'} <= header_fields)) and name not in found and len(candidates) == 1 :
                 values[name] = candidates[0]
         date_blocks = [b for b in blocks if len(b.text.split()) <= 24 and not re.match(

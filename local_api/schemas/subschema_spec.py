@@ -28,7 +28,7 @@ for parent, names in {
     'languages': ('language', 'proficiency'), 'interests': ('interest',),
     'references': ('name', 'relationship', 'organization', 'email', 'phone', 'availability'),
 }.items():
-    SUBSCHEMAS[parent] = {name: {'type': 'string', 'multiple': name in {'activities', 'interest'}} for name in names}
+    SUBSCHEMAS[parent] = {name: {'type': 'string', 'multiple': name in {'activities', 'interest', 'language', 'proficiency'}} for name in names}
 SUBSCHEMAS['needs_review'] = {}
 
 LEGACY_PARENTS = {'personal_information': 'contact', 'summary': 'summary',

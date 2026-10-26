@@ -28,7 +28,7 @@ class AttributeValue(StrictModel):
 class Attribute(StrictModel):
     name: str
     items: list[AttributeValue] = Field(default_factory=list)
-    status: Literal['mapped', 'unresolved'] = 'unresolved'
+    status: Literal['mapped', 'unresolved', 'not_stated', 'ambiguous', 'unmapped'] = 'unresolved'
 
     @model_validator(mode='after')
     def consistent_status(self):

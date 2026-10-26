@@ -1,8 +1,9 @@
 """Source-aware hierarchy validation and deterministic record-preserving queries."""
 import re
-from local_api.services.source_fragments import contiguous_support
+from local_api.services.source_fragments import contiguous_support, citations
 from local_api.schemas.subschemas import SectionSchema
 from local_api.schemas.subschema_spec import SUBSCHEMAS, REPEATED
+from local_api.services.schema_diagnostics import fail
 
 
 def source_id(block):
@@ -13,35 +14,46 @@ def validate_hierarchy(hierarchy, sections):
     """Fail closed on invalid structure, citations or cross-record evidence."""
     parsed = [SectionSchema.model_validate(s.model_dump() if isinstance(s, SectionSchema) else s) for s in hierarchy]
     if len({s.category for s in parsed}) != len(parsed):
-        raise ValueError('Duplicate parent schema')
+        fail('parent_schema_validation', 'duplicate_parent', ('section_schemas',))
     parents = {s.category: s for s in sections.sections}
     global_inventory={source_id(b):b.text for s in sections.sections for b in s.blocks}
     global_inventory.update({source_id(b):b.text for b in sections.needs_review})
-    for parent in parsed:
+    for pi, parent in enumerate(parsed):
+        parent_path = ('section_schemas', pi)
         section = parents.get(parent.category)
         blocks = section.blocks if section else sections.needs_review if parent.category == 'needs_review' else []
         inventory = {source_id(b): b.text for b in blocks}
         ownership = {e.entry_id: {source_id(section.blocks[i]) for i in e.block_indices} for e in section.entries} if section else {}
         for residual in parent.residual_blocks:
             if inventory.get(residual.source_id) != residual.quote:
-                raise ValueError('Invalid residual source')
-        for record in parent.records:
+                fail('source_evidence_validation', 'invalid_residual', parent_path)
+        for ri, record in enumerate(parent.records):
+            record_path = parent_path + ('records', ri)
             allowed = set(record.source_ids)
             if not allowed or not allowed <= inventory.keys():
-                raise ValueError('Record has foreign or missing source IDs')
+                fail('record_ownership_validation', 'foreign_record_source', record_path + ('source_ids',))
             if parent.category in REPEATED and allowed != ownership.get(record.record_id):
-                raise ValueError('Record does not preserve supplied entry ownership')
-            for field in record.attributes:
-                for item in field.items:
+                fail('record_ownership_validation', 'record_owner_mismatch', record_path + ('source_ids',))
+            for ai, field in enumerate(record.attributes):
+                field_path = record_path + ('attributes', ai)
+                for vi, item in enumerate(field.items):
+                    value_path = field_path + ('items', vi)
                     for ref in item.evidence:
                         if ref.source_id not in allowed or ref.quote not in inventory[ref.source_id]:
-                            raise ValueError('Invalid or cross-record quote')
+                            fail('source_evidence_validation', 'invalid_or_cross_record_quote', value_path + ('evidence',), field.name)
                     if isinstance(item.value, str):
                         if not any(item.value.casefold() in ref.quote.casefold() for ref in item.evidence) and not contiguous_support(item.value, item.evidence, global_inventory):
-                            raise ValueError('Value is unsupported by its own evidence')
+                            own_blocks = [b for b in blocks if source_id(b) in allowed]
+                            fail('source_evidence_validation', 'unsupported_value', value_path + ('value',), field.name,
+                                 evidence_analysis={'item_index': vi, 'value_length': len(item.value),
+                                     'evidence_count': len(item.evidence), 'all_quotes_valid': True,
+                                     'evidence_source_ids': [ref.source_id for ref in item.evidence],
+                                     'evidence_quote_lengths': [len(ref.quote) for ref in item.evidence],
+                                     'literal_in_record': bool(citations(item.value, own_blocks)),
+                                     'whitespace_match_in_record': bool(citations(item.value, own_blocks, flexible_whitespace=True))})
                     else:
                         if not any(re.search(r'(?<![\d.])'+re.escape(format(item.value, 'g'))+r'(?![\d.])', ref.quote) for ref in item.evidence):
-                            raise ValueError('Number is unsupported by its own evidence')
+                            fail('source_evidence_validation', 'unsupported_number', value_path + ('value',), field.name)
     return parsed
 
 

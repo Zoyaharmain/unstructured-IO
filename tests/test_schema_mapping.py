@@ -173,3 +173,26 @@ def test_candidate_name_and_french_location_have_schema_evidence(merged):
   assert attrs[field].status == 'mapped'
   assert attrs[field].items[0].evidence[0].quote == expected
  assert attrs['github_url'].status == attrs['portfolio_url'].status == 'unresolved'
+
+
+def test_explicit_field_review_http_keeps_contracts_aligned(monkeypatch):
+ from local_api.services import llm_schema_mapping as reviewed
+ from test_llm_schema_mapping import fixture, configured
+ import json
+ req, reply = fixture()
+ original = reviewed.map_with_field_review
+ calls = []
+ def mapping(request):
+  calls.append(request.review_fields)
+  return original(request, settings=configured(), transport=lambda *_: json.dumps(reply))
+ monkeypatch.setattr(reviewed, 'map_with_field_review', mapping)
+ with TestClient(app) as client:
+  data = req.model_dump() | {'review_fields': True}
+  response = client.post('/api/v1/resume/schema', json=data)
+ assert response.status_code == 200, response.text
+ out = response.json()
+ assert calls == [True]
+ assert out['meta']['field_review']['status'] == 'complete'
+ assert out['data']['experience'][1]['company'] == 'Beta Ltd'
+ assert out['field_index']['experience.company'][1]['items'][0]['value'] == 'Beta Ltd'
+ assert out['field_index']['experience.location'][0]['status'] == 'not_stated'

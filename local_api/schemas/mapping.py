@@ -31,3 +31,11 @@ class SchemaMappingResponse(ParseResponse):
 class SubschemaQueryRequest(SchemaMappingRequest):
     query_path: str = Field(min_length=3, max_length=128)
     record_id: str | None = Field(default=None, max_length=256)
+
+
+class ReviewedSchemaMappingRequest(SchemaMappingRequest):
+    review_fields: bool = False
+
+
+class ReviewedSubschemaQueryRequest(SubschemaQueryRequest):
+    review_fields: bool = False

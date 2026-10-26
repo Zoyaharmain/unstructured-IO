@@ -1,15 +1,25 @@
-"""Schema mapping consumes existing blocks, without triggering provider requests."""
+"""Map source-bound blocks; explicit review_fields enables grounded DeepSeek mapping."""
 from fastapi import APIRouter, HTTPException
 from starlette.concurrency import run_in_threadpool
-from local_api.schemas.mapping import SchemaMappingRequest, SchemaMappingResponse, SubschemaQueryRequest
+from local_api.schemas.mapping import SchemaMappingResponse, ReviewedSubschemaQueryRequest, ReviewedSchemaMappingRequest
 from local_api.services.schema_mapping import map_schema
 from local_api.vendor.handoff_schema.models import ResumeSchema
 from local_api.vendor.handoff_schema.schema_spec import get_full_schema_mapping
 from local_api.schemas.subschemas import SectionSchema
 from local_api.schemas.subschema_spec import hierarchy_definition
 from local_api.services.subschema_validation import query_subschemas
+from local_api.services.schema_diagnostics import record_failure, client_diagnostic, mapping_result
+from pydantic import ValidationError
 
 router=APIRouter(prefix='/api/v1/resume/schema',tags=['Resume schema mapping'])
+
+
+def mapping_error(exc, category='source_binding_validation'):
+    diagnostic = record_failure(exc, 'response_model_validation' if isinstance(exc, ValidationError) else category)
+    return HTTPException(422, detail={
+        'message': 'Schema mapping or query input was rejected. See the diagnostic reference.',
+        'mapping_result': {'status': 'failed', 'usable': False, 'requires_review': True, 'fallback_used': False},
+        'diagnostic': client_diagnostic(diagnostic)})
 
 
 @router.get('/definition')
@@ -25,6 +35,7 @@ def mapping():
                          'record_boundaries':'Preserved from supplied section entries',
                          'unknown_required_strings':'Empty string; see meta.missing_required_fields',
                          'confidence':'Handoff fixed heuristic scores; not probabilities'}
+    spec['integration']['optional_field_review'] = 'POST with review_fields=true uses configured DeepSeek, validates exact citations, and derives legacy/subschema fields together.'
     return spec
 
 
@@ -36,19 +47,34 @@ def subschema_definition():
 
 
 @router.post('/query')
-async def query_existing_sections(request: SubschemaQueryRequest):
+async def query_existing_sections(request: ReviewedSubschemaQueryRequest):
     # Reuse source binding and mapping; never trust client-provided citations.
     try:
-        mapped = await run_in_threadpool(map_schema, request)
+        try:
+            query_subschemas([], request.query_path, request.record_id)
+        except ValueError as exc:
+            raise mapping_error(exc, 'subschema_path_validation') from None
+        if request.review_fields:
+            from local_api.services.llm_schema_mapping import map_with_field_review
+            mapped = await run_in_threadpool(map_with_field_review, request)
+        else:
+            mapped = await run_in_threadpool(map_schema, request)
         matches = query_subschemas(mapped.section_schemas, request.query_path, request.record_id)
-        return {'query_path': request.query_path, 'matches': matches, 'provider_calls': 0}
+        return {'query_path': request.query_path, 'matches': matches, 'provider_calls': mapped.meta.get('provider_calls', 0),
+                'mapping_result': mapped.meta.get('mapping_result', mapping_result(mapped)),
+                'field_review': mapped.meta.get('field_review', {'status': 'not_requested', 'provider_calls': 0})}
     except ValueError as exc:
-        raise HTTPException(422, 'Invalid source binding or unknown sub-schema query') from exc
+        raise mapping_error(exc) from None
 
 
 @router.post('',response_model=SchemaMappingResponse)
-async def map_existing_sections(request: SchemaMappingRequest):
+async def map_existing_sections(request: ReviewedSchemaMappingRequest):
     try:
-        return await run_in_threadpool(map_schema,request)
+        if request.review_fields:
+            from local_api.services.llm_schema_mapping import map_with_field_review
+            return await run_in_threadpool(map_with_field_review, request)
+        mapped = await run_in_threadpool(map_schema,request)
+        mapped.meta['mapping_result'] = mapping_result(mapped)
+        return mapped
     except ValueError as exc:
-        raise HTTPException(422,'Invalid or stale source/section binding') from exc
+        raise mapping_error(exc) from None

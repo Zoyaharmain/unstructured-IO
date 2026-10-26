@@ -49,8 +49,8 @@ def field_kinds(text,category):
         if re.search(r'\b(?:cgpa|gpa|grade|distinction|percentage)\b|\d\s*%',text,re.I):kinds.append('grade')
         if re.search(r'\b(?:computer science|engineering|finance|commerce|accountancy|artificial intelligence|mathematics|business administration)\b',text,re.I):kinds.append('field_of_study')
     else:
-        from local_api.services.record_subfields import employment_header_fields, ACTION, ROLE
-        if ACTION.search(text):return [*kinds, 'responsibilities']
+        from local_api.services.record_subfields import employment_header_fields, ACTION, ROLE, responsibility_fragment
+        if responsibility_fragment(text):return [*kinds, 'responsibilities']
         # A delivering clause can continue a responsibility across PDF elements.
         # Require a clause, not just the word: "Delivering Systems Ltd" remains
         # organization evidence. Do this before generic suffixes such as systems.
@@ -79,6 +79,13 @@ def annotate_relationships(section):
                 kinds = ['responsibilities']
             for kind in kinds:fields.setdefault(kind,[]).append(index)
             if section.category=='education' and len(degree_families(text))>1:reasons.append('multiple_qualifications_in_one_source_span')
+        if section.category == 'experience' and len(entry.block_indices) >= 2:
+            first, second = (section.blocks[i] for i in entry.block_indices[:2])
+            first_text = first.text.strip()
+            if (first.source_element_index == second.source_element_index and first.end == second.start
+                    and 0 < len(first_text.split()) <= 10 and not re.search(r'\d|[@:;]', first_text)
+                    and not field_kinds(first_text, 'experience') and 'title' in field_kinds(second.text, 'experience')):
+                fields['employer'] = [entry.block_indices[0]]
         if section.category=='education' and not fields.get('qualification'):reasons.append('qualification_not_established')
         if section.category=='experience' and not fields.get('employer'):reasons.append('employer_not_established_from_supported_fields')
         entry.fields=fields;entry.review_reasons=sorted(set(reasons));entry.relationship_status='needs_review' if reasons else 'provisional'

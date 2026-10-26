@@ -37,7 +37,7 @@ def fingerprint(sections, schema):
     }, sort_keys=True).encode()).hexdigest()
 
 
-def run_feedback(request, local, settings, source, transport, audit_fn, save_pass, *, request_budget=None, document_sha256=None):
+def run_feedback(request, local, settings, source, transport, audit_fn, save_pass, *, request_budget=None, document_sha256=None, mapping_fn=None):
     """Each retry re-enters local recovery, strict LLM placement, mapping and audit.
 
     Extraction remains bound to the immutable source inventory. Audit findings
@@ -71,7 +71,12 @@ def run_feedback(request, local, settings, source, transport, audit_fn, save_pas
         failed = settings.enabled and state.get('status') != 'complete'
         if not failed or not index:
             sections = candidate
-        schema = map_schema(SchemaMappingRequest(elements=request.elements, sections=sections, source=source)).model_dump(mode='json')
+        schema = (mapping_fn or map_schema)(SchemaMappingRequest(elements=request.elements, sections=sections, source=source)).model_dump(mode='json')
+        if schema['meta'].get('reviewed_sections'):
+            from local_api.schemas.sections import SectionResponse
+            sections = SectionResponse.model_validate(schema['meta']['reviewed_sections'])
+            if validate_result(request.elements, sections):
+                raise ValueError('Field review source validation failed')
         audit = audit_fn(sections, schema) if settings.enabled and not failed else {'status': 'disabled' if not settings.enabled else 'not_run', 'findings': []}
         accounting = account_source(request.elements, sections)
         next_feedback = {

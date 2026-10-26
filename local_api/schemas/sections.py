@@ -1,5 +1,5 @@
 from typing import Annotated, Literal
-from pydantic import BaseModel, Field, model_validator
+from pydantic import BaseModel, Field, model_validator, computed_field
 from local_api.schemas.extraction import ExtractedElement
 
 
@@ -70,6 +70,12 @@ class ResumeSection(BaseModel):
     entries: list[SectionEntry] = Field(default_factory=list)
     source_heading: str | None = None
     readable_blocks: list[ReadableGroup] = Field(default_factory=list)
+
+    @computed_field
+    @property
+    def logical_blocks(self) -> list[dict]:
+        from local_api.services.logical_blocks import logical_blocks
+        return logical_blocks(self)
 
 
 class SectionResponse(BaseModel):

@@ -19,7 +19,7 @@ def sid(block):
     return f'e{block.source_element_index}:{block.start}:{block.end}'
 
 
-def build_subschemas(sections, data, scope):
+def build_subschemas(sections, data, scope, record_bindings=None):
     output = []
     inventory={sid(b):b.text for s in sections.sections for b in s.blocks}
     inventory.update({sid(b):b.text for b in sections.needs_review})
@@ -43,7 +43,7 @@ def build_subschemas(sections, data, scope):
                 # Each scalar/list item gets its own exact source match and quote.
                 literal = format(item, 'g') if isinstance(item, (int, float)) else str(item)
                 refs = [SourceQuote(**ref) for ref in citations(item, allowed)]
-                if refs and not any(str(item).casefold() in r.quote.casefold() for r in refs) and not contiguous_support(item,refs,inventory):refs=[]
+                if refs and not any(literal.casefold() in r.quote.casefold() for r in refs) and not contiguous_support(item,refs,inventory):refs=[]
                 if refs:
                     # A cited fragment does not consume the rest of its source block.
                     used.update(sid(b) for b in allowed if any(
@@ -56,6 +56,10 @@ def build_subschemas(sections, data, scope):
             if category in grouped:
                 for index, entry in enumerate(section.entries):
                     mapped = getattr(data, category)
+                    if record_bindings is not None:
+                        index = record_bindings.get(category, {}).get(entry.entry_id)
+                        if index is None:
+                            continue
                     if index >= len(mapped):
                         continue
                     record = mapped[index]
@@ -66,7 +70,7 @@ def build_subschemas(sections, data, scope):
                     if category == 'education':
                         _, refinement_reasons = refine_education(values, allowed)
                         reasons.extend(refinement_reasons)
-                    if category == 'experience' and re.search(r'\b(?:trainee|research|training)\b', '\n'.join(b.text for b in allowed), re.I):
+                    if category == 'experience' and not record.company and re.search(r'\b(?:trainee|research|training)\b', allowed[0].text if allowed else '', re.I):
                         reasons.append('Training/research content requires employment association review.')
                     _, refinement_reasons = refine_record(category, values, allowed, header_fields=(
                         {'company' if field == 'employer' else 'role' if field == 'title' else field for field in entry.fields}
@@ -83,7 +87,7 @@ def build_subschemas(sections, data, scope):
                     values['professional_title'] = data.professional_title
                 reasons = []
                 if category == 'summary' and values['total_experience_years'] is not None and any(
-                    re.search(r'\b(?:over|around|approximately|more than)\b|\d\s*\+', b.text, re.I) for b in candidates
+                    re.search(r'\b(?:over|around|approximately|more than)\s+\d+(?:\.\d+)?\s*\+?\s*years?\b|\d+(?:\.\d+)?\s*\+\s*years?\b', b.text, re.I) for b in candidates
                 ):
                     reasons.append('Experience years are approximate or a lower bound; inspect the source qualifier.')
                 if candidates:

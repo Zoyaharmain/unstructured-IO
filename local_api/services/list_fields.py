@@ -33,7 +33,8 @@ def skill_candidates(blocks):
         for i,char in enumerate(source):
             if char=='(':depth+=1
             elif char==')':depth=max(0,depth-1)
-            elif char in ',;|\n\u2022\u25cf' and depth==0:
+            elif depth == 0 and (char in ',;|\n\u2022\u25cf' or
+                    char == '/' and i > 0 and i + 1 < len(source) and source[i-1].isspace() and source[i+1].isspace()):
                 parts.append(source[start:i].strip());start=i+1
         parts.append(source[start:].strip())
         for part in parts:

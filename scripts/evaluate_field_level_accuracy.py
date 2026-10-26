@@ -1,8 +1,8 @@
-"""Field-level precision, recall, and F1 evaluation across the 15 gold resumes.
+"""Section ownership precision, recall, and F1 across the 15 gold documents.
 
 Evaluates:
 1. Section-level span classification (Precision, Recall, F1 per category, Micro/Macro averages).
-2. Structured schema field extraction metrics (Contact, Experience, Education, Skills).
+2. Structured schema field completion counts (not field-value accuracy).
 3. Coverage ledger status distribution across all 15 documents.
 4. Detailed analysis of lowest-scoring documents (S Abhinav.pdf, Java Aws backend.pdf, PUPPYKUMARI.pdf).
 """
@@ -58,7 +58,6 @@ def run_evaluation(output_dir: Path):
         }
 
         gold_truth = dict(gold[file_name])
-        gold_truth['human_verified'] = True
         s = score(raw_elements, gold_truth, pred_dict)
 
         for c in s['confusion']:
@@ -84,6 +83,13 @@ def run_evaluation(output_dir: Path):
             'skills_count': len(mapped.data.skills.all_skills),
             'ledger_statuses': mapped.meta.get('source_coverage_ledger', {}).get('status_counts', {})
         }
+        doc_data['candidate_resume'] = mapped.meta['document_scope'].get('candidate_resume')
+        doc_data['confusion'] = s['confusion']
+        artifact_dir = output_dir / 'documents'
+        artifact_dir.mkdir(exist_ok=True)
+        (artifact_dir / (file_name + '.json')).write_text(json.dumps({
+            'sections': sec_recovered.model_dump(), 'mapping': mapped.model_dump(),
+        }, indent=2, ensure_ascii=False) + '\n')
         doc_results.append(doc_data)
         print(f"  {file_name:<30} -> Acc: {s['character_accuracy']*100:5.2f}% | Name: {mapped.data.contact.full_name:<20} | Exp: {len(mapped.data.experience):2d} | Edu: {len(mapped.data.education):2d} | {duration:.3f}s")
 
@@ -129,6 +135,8 @@ def run_evaluation(output_dir: Path):
     overall_char_acc = total_correct / total_chars if total_chars else 0.0
 
     report = {
+        'measurement': 'Non-whitespace source-character section ownership; not OCR or field-value accuracy',
+        'provider_calls': 0,
         'total_documents': len(doc_results),
         'total_duration_seconds': total_time,
         'overall_character_accuracy': round(overall_char_acc, 4),
@@ -145,6 +153,12 @@ def run_evaluation(output_dir: Path):
         'per_category_metrics': category_metrics,
         'coverage_ledger_summary': dict(field_coverage_summary),
         'per_document_results': doc_results,
+    }
+    candidates = [d for d in doc_results if d['candidate_resume'] is not False]
+    report['candidate_documents'] = {
+        'count': len(candidates),
+        'character_accuracy': round(sum(d['correct_characters'] for d in candidates) /
+                                    max(1, sum(d['scored_characters'] for d in candidates)), 4),
     }
 
     out_file = output_dir / 'field_level_evaluation.json'

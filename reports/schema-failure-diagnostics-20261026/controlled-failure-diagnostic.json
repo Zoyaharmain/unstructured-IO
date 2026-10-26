@@ -1,0 +1,43 @@
+{
+  "verification": "Controlled offline source-evidence failure, not the unavailable historical provider response",
+  "live_provider_calls": 0,
+  "review": {
+    "status": "failed",
+    "provider_calls": 1,
+    "error_code": "invalid_field_mapping",
+    "message": "DeepSeek field mapping failed source or schema validation. Local fields were retained.",
+    "diagnostic": {
+      "id": "46ccdf485dc4416394bf008f316ee2f8",
+      "category": "source_evidence_validation",
+      "exception_type": "ValueError",
+      "code": "unsupported_value",
+      "path": "/section_schemas/4/records/0/attributes/0/items/0/value",
+      "validation_message": "The field value is absent from its own evidence quotes.",
+      "field": "company",
+      "stage": "response_model_validation",
+      "attempt": 1,
+      "recovered": false
+    },
+    "diagnostics": [
+      {
+        "id": "46ccdf485dc4416394bf008f316ee2f8",
+        "category": "source_evidence_validation",
+        "exception_type": "ValueError",
+        "code": "unsupported_value",
+        "path": "/section_schemas/4/records/0/attributes/0/items/0/value",
+        "validation_message": "The field value is absent from its own evidence quotes.",
+        "field": "company",
+        "stage": "response_model_validation",
+        "attempt": 1,
+        "recovered": false
+      }
+    ]
+  },
+  "mapping_result": {
+    "status": "fallback_used",
+    "usable": true,
+    "requires_review": true,
+    "fallback_used": true,
+    "meaning": "Source-bound output is available for inspection; this does not certify field accuracy."
+  }
+}

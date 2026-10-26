@@ -164,3 +164,98 @@ user-provided handoff's ResumeSchema, with missing fields, source evidence and
 record warnings. Mapping makes no provider calls. The UI includes **Map to schema**
 and a JSON download. See [integration instructions](../docs/SCHEMA_MAPPING_API.md)
 for the exact request sequence and schema-definition endpoints.
+
+### Drop a resume and review with DeepSeek
+
+From the repository root, run:
+
+```bash
+.venv/bin/python scripts/start_resume_inspector_local.py --port 8012
+```
+
+Open http://localhost:8012. The launcher loads `DEEPSEEK_*` settings from `.env`
+without printing the key; exported process settings take precedence. Set
+`DEEPSEEK_API_KEY` and `DEEPSEEK_REVIEW_ENABLED=true` in `.env` to enable review.
+The existing Docker launcher also loads `.env` through Docker's environment file.
+
+Dropping or choosing a PDF/DOCX starts extraction, DeepSeek section review, and
+schema mapping automatically. The three progress cards show each stage. Schema
+fields include source evidence, missing fields and ambiguous mappings. A failed
+DeepSeek review is shown explicitly while preserving local results. Use the
+mode selector for local-only processing, or the connection button to check the
+provider key/model without sending a document. Uploads in DeepSeek mode send
+extracted resume text to that provider. A completed review is not proof of
+correctness; compare the fields and cited text with the original document.
+
+The individual CLI requires `--llm-review` to use DeepSeek; `--local-only`
+explicitly disables it regardless of `.env`.
+
+### DeepSeek field and subschema mapping
+
+DeepSeek mode now performs two separate stages: section placement, followed by
+record/field mapping into the imported `ResumeSchema` contract and its child
+schemas. The default low-level `/api/v1/resume/schema` behavior remains local;
+set `review_fields: true` to explicitly request configured DeepSeek field review.
+The frontend sets this flag automatically in DeepSeek mode. The CLI's
+`--llm-review` also includes field mapping before its advisory schema audit.
+
+The field review validates exact source quotes and record ownership before
+committing changes. It can repair employer/role separation and record boundaries.
+Both `data` and `section_schemas` are derived from the same validated field items;
+`meta.reviewed_sections` contains the matching reviewed entry ownership. A field
+query can also opt into review with `review_fields: true`; use the returned
+`field_index` for repeated queries without making additional provider calls.
+
+Empty reviewed attributes distinguish `not_stated`, `ambiguous`, and `unmapped`.
+A `not_stated` URL, issuer, grade, or date must not be fabricated just to fill the
+schema. Unexplained omissions, invented values, foreign citations, and overlapping
+record ownership are rejected atomically. Invalid candidates receive bounded
+correction attempts under the configured request budget. Provider failures retain
+local output and expose `meta.field_review.status = failed` to the UI.
+
+### Schema failure diagnostics and processing outcomes
+
+Schema responses include `meta.mapping_result.status`: `success`, `needs_review`,
+`fallback_used`, or `failed`. `usable: true` means source-bound output is available
+for inspection; it does not certify semantic correctness. A failed DeepSeek
+response retains `meta.field_review.status: failed` and the original diagnostic,
+while validated local output is shown as an amber `fallback_used` result.
+Missing required fields in an otherwise valid result mean `needs_review`; they
+are not automatically response-validation exceptions. Invalid source input is a
+422 `failed` result without a usable fallback.
+
+Production (the default) returns a diagnostic category and reference ID. Server
+logs contain the correlated, sanitized exception type, code, field/path and
+validation message. They exclude exception inputs, resume text and API keys.
+For development, start with:
+
+```bash
+.venv/bin/python scripts/start_resume_inspector_local.py --port 8012 --development
+```
+
+Alternatively set `RESUME_APP_ENV=development`. The UI then displays the sanitized
+reason and field/path. Do not diagnose a historical rejection from the generic
+fallback message alone: earlier builds discarded the exception category.
+
+### Logical resume blocks
+
+Each section response includes derived `logical_blocks` alongside its original
+`blocks`. Summary, contact and skills each form one complete section block.
+Experience, education, projects and certifications use the existing record
+owners to provide one complete block per job, qualification, project or
+certificate. Other record sections follow their available entry boundaries.
+Unowned meaningful text and overlapping ownership are explicitly provisional;
+no employer or qualification association is invented. Unowned layout-only
+markers remain in the original source inventory rather than becoming records.
+
+Logical blocks contain `logical_id`, `kind`, `text`, `block_indices`, original
+`source_ids`, and relationship-review findings. They are recomputed from the
+current record inventory, including after field review. Their text concatenates
+adjacent spans without inserting characters and uses newlines between separate
+source elements. This is grouping, not an abstractive summary: original wording,
+duplicates, offsets, source IDs and evidence checks remain intact.
+
+The UI displays logical records first and keeps fragment inspection collapsed.
+Field-mapping prompts receive complete logical context plus the original source
+blocks; citations must still reference original source IDs and exact quotes.
+Logical IDs are not valid evidence references. Grouping adds no provider calls.
