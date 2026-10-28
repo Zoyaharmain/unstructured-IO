@@ -24,7 +24,7 @@ def skill_candidates(blocks):
                 pending+=b.text;depth+=b.text.count('(')-b.text.count(')')
                 if depth<=0:sources.append(pending);pending='';depth=0
     for source in sources:
-        source=re.sub(r'^\s*[\u2022\u25cf\u25aa*\-]\s*','',source).strip()
+        source=re.sub(r'^\s*[\u2022\u25cf\u25aa\u27a5*\-]\s*','',source).strip()
         if re.fullmatch(r'(?:US )?(?:HEALTHCARE DOMAIN EXPERTISE|TOOLS & TECHNOLOGIES|TECHNICAL SKILLS|CORE COMPETENCIES|Data & Infrastructure|Programming & Development|Core AI/ML & Agentic AI)',source,re.I):continue
         if ':' in source:
             label,body=source.split(':',1)
@@ -40,7 +40,7 @@ def skill_candidates(blocks):
         for part in parts:
             part=part.rstrip('.')
             if part.count('(')!=part.count(')'):continue
-            if not part or len(part.split())>8 or part.endswith('.') or re.search(r'\b(?:including|and|with|for|of|in)\s*$',part,re.I):continue
+            if not part or len(part.split())>30 or part.endswith('.') or re.search(r'\b(?:including|and|with|for|of|in)\s*$',part,re.I):continue
             if part.casefold() in {'including','validation','from','and','with','professional','beginner'}:continue
             if re.match(r'^(?:led|worked|built|conducted|developed|managed|supported|created|prepared|acted|implemented)\b',part,re.I):continue
             if any(c.isalpha() for c in part):result.append(part)

@@ -48,7 +48,7 @@ EXTRA_HEADINGS = {
     'skills': ['technical profile', 'competences', 'comp\u00e9tences', 'languages and platforms', 'programming languages',
                'tools and platforms', 'core programming and frameworks', 'cloud and devops',
                'core competencies and skills', 'it skillset', 'it skills',
-               'testing and development practices', 'skill set', 'skill sets', 'skillset', 'key strengths', 'technical competencies', 'core skills', 'domain expertise', 'business analysis and product management', 'tools and technology'],
+               'testing and development practices', 'skill set', 'skill sets', 'skillset', 'key strengths', 'technical competencies', 'core competency', 'core competence', 'core competences', 'core skills', 'domain expertise', 'business analysis and product management', 'tools and technology'],
     'certifications': ['certificates', 'certification', 'training', 'certifications and licenses'],
     'awards': ['key achievements', 'professional achievements', 'awards and recognitions',
                'achievements/awards'],
@@ -79,6 +79,8 @@ def heading_boundary(text, aliases):
         return 'projects', text.index(':')+1
     if normalized in RECORD_FIELDS and normalized not in aliases:
         return None, None
+    if len(normalized.split()) <= 5 and re.fullmatch(r'(?:[a-z]+\s+){0,4}(?:competencies|competences|competency|skillset)', normalized):
+        return 'skills', None
     category = aliases.get(normalized)
     # Compose headings only when every component names the same schema family.
     components=re.split(r'\s+(?:and|/)\s+',normalized)

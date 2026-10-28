@@ -135,6 +135,16 @@ def map_schema(request):
             if len(matches) == 1:
                 value = next(iter(matches))
                 setattr(data.contact, key, remember('contact.'+key, value, header))
+        from local_api.services.contact_sections import profile_values
+        for key, matches in profile_values(header).items():
+            if len(matches) == 1:
+                value = next(iter(matches))
+                setattr(data.contact, key, remember('contact.'+key, value,
+                    [b for b in header if value in b.text]))
+            elif len(matches) > 1:
+                setattr(data.contact, key, None)
+                evidence.pop('contact.'+key, None)
+                warnings.append('Multiple candidate profile links require review: '+key)
         summary=blocks('summary')
         data.summary=remember('summary',canonical(summary).strip() or None,summary)
         # Never infer experience from education, birth years or a whole-document span.

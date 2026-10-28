@@ -221,6 +221,15 @@ class SectionEngine:
                     context = next(iter(contexts.values()))
             short = len(unit.text.split()) <= 12
             structural_label, _ = heading_boundary(unit.text, ALIASES)
+            # Broad profile/highlights headings cannot override explicit job history.
+            if structural_label == 'summary':
+                from local_api.services.record_subfields import employment_header_fields, RANGE
+                for upcoming in units[position+1:position+16]:
+                    if heading_boundary(upcoming.text, ALIASES)[0]:
+                        break
+                    if RANGE.match(upcoming.text.strip()) and employment_header_fields(upcoming.text):
+                        structural_label = 'experience'
+                        break
             # 'Languages' in a technology list means programming languages.
             if structural_label == 'languages' and re.search(
                     r'(?<!\w)(?:C\#|C\+\+|Java|Python|SQL|JavaScript|TypeScript|Linq)(?!\w)',

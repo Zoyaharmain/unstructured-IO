@@ -212,7 +212,9 @@ def section_decisions(chunk, content, categories):
     from local_api.services.llm_section_review import parse_decisions
     try:raw = json.loads(content)
     except (TypeError,ValueError) as exc:raise ChunkError('invalid_assignments') from exc
-    if not isinstance(raw, dict) or set(raw) != {'assignments'} or not isinstance(raw['assignments'], list):
+    if (not isinstance(raw, dict) or set(raw) - {'assignments', 'type'}
+            or raw.get('type', 'json_object') != 'json_object'
+            or not isinstance(raw.get('assignments'), list)):
         raise ChunkError('invalid_assignments')
     targets = chunk['targets']; ids = {u['id']: f'u{i}' for i, u in enumerate(targets)}
     rows = []

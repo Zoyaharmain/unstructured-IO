@@ -408,7 +408,10 @@ def review_sections(request, local_result, *, settings=None, transport=None, _re
         code = str(exc) if isinstance(exc, ReviewError) else (str(exc) if str(exc) in {'request_budget_exhausted','unreviewable_chunk'} else 'invalid_assignments') if isinstance(exc,ChunkError) else 'invalid_configuration'
     except Exception:
         code = 'review_failed'
-    logger.warning('DeepSeek review did not complete: %s', code)
+    details = [{'kind': d.get('kind'), 'id': d.get('id'),
+                **{k: d[k] for k in ('required_length', 'covered_end', 'expected_start', 'actual_start', 'start', 'end') if type(d.get(k)) is int}}
+               for failure in state.get('validation_failures', [])[-1:] for d in failure.get('details', [])[:20]]
+    logger.warning('DeepSeek review did not complete: %s; validation=%s', code, json.dumps(details))
     if 'chunking' in state:state['chunking']['status']='incomplete'
     state.update(status='failed', aggregate_status='incomplete', error_code=code, message=failure_message(code))
     result.warnings.append(failure_message(code) + ' All local blocks and unassigned text were retained unchanged.')

@@ -49,11 +49,11 @@ ALIASES = {
 }
 
 MONTH = r'(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:t(?:ember)?)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)'
-DATE = r'(?:' + MONTH + r'[.\-]?\s*(?:19|20)?\d{2}|(?:19|20)\d{2}(?:[-/]\d{1,2})?|\d{1,2}/(?:19|20)\d{2})'
+DATE = r"(?:" + MONTH + r"[.\-‘’']?\s*(?:19|20)?\d{2}|(?:19|20)\d{2}(?:[-/]\d{1,2})?|\d{1,2}/(?:19|20)\d{2})"
 RANGE = re.compile(r'(?<![\w/])(' + DATE + r')\s*(?:[-\u2013\u2014]|\bto\b|\btill\b|\buntil\b)\s*(' + DATE + r'|Present|Current(?:ly working)?|Till Date|Till Now|Now)(?!\w)', re.I)
 
 
-ROLE = re.compile(r'\b(?:engineer|developer|analyst|consultant|architect|manager|specialist|scientist|associate|director|administrator|officer|executive|intern|underwriter|supervisor|leader|lead)\b', re.I)
+ROLE = re.compile(r'\b(?:engineer|developer|analyst|consultant|architect|manager|specialist|scientist|associate|director|administrator|officer|executive|intern|underwriter|supervisor|leader|lead|head)\b', re.I)
 
 
 ACTION = re.compile(r'^(?:[\u2022*\-]\s*)?(?:used|utilized|leveraged|led|built|developed|implemented|configured|prepared|managed|conducted|supported|translated|partnered|owned|drove|validated|participated|facilitated|engaged|expanded|created|designed|acted|worked|engineered|responsible|interact|analy[sz]e|ensure|drive|collaborate|assist|coordinate|conduct|perform|create|own|manage|document|maintain|design|develop|implement|translate|prepare|gather|capture|handle|support|took(?=\s+(?:a\s+)?lead\b)|lead(?!\s+(?:business|software|data|engineer|analyst|developer|consultant)\b)|work(?=\s+(?:with|on|closely|across|in)\b))\b', re.I)
@@ -84,6 +84,20 @@ def employment_header_fields(text):
     employer_statement=re.fullmatch(r'(?:I\s+)?Worked\s+(?:at|for|with)\s+(.+?)\s+(?:from|since)\s+(.+?)[.\s]*',text,re.I)
     if employer_statement and RANGE.fullmatch(employer_statement[2]):
         return {'company':employer_statement[1]}
+    dated = RANGE.match(text)
+    if dated:
+        remainder = text[dated.end():].lstrip(' :|–—-')
+        depth = 0
+        splits = []
+        for match in re.finditer(r'\(|\)|\s+as\s+', remainder, re.I):
+            if match.group() == '(':depth += 1
+            elif match.group() == ')':depth = max(0, depth-1)
+            elif depth == 0:splits.append(match)
+        if len(splits) == 1:
+            split = splits[0]
+            company, role = remainder[:split.start()].rstrip(' ,'), remainder[split.end():].rstrip('.')
+            if company and ROLE.search(role) and not responsibility_fragment(role):
+                return {'company': company, 'role': role}
     if responsibility_fragment(text):return {}
     client_header = re.match(r'^(?:Company\s*[:=-]\s*)?(.+?)\s*,?\s+Client\s*[:=-]\s*\S',text,re.I)
     if client_header and len(client_header[1].split())<=10:

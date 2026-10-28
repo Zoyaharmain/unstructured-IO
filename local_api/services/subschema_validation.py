@@ -40,7 +40,12 @@ def validate_hierarchy(hierarchy, sections):
                     value_path = field_path + ('items', vi)
                     for ref in item.evidence:
                         if ref.source_id not in allowed or ref.quote not in inventory[ref.source_id]:
-                            fail('source_evidence_validation', 'invalid_or_cross_record_quote', value_path + ('evidence',), field.name)
+                            fail('source_evidence_validation', 'invalid_or_cross_record_quote', value_path + ('evidence',), field.name,
+                                 evidence_analysis={'item_index': vi, 'value_length': len(str(item.value)),
+                                     'evidence_count': len(item.evidence), 'all_quotes_valid': False,
+                                     'literal_in_record': any(str(item.value).casefold() in inventory[sid].casefold() for sid in allowed),
+                                     'evidence_source_ids': [q.source_id for q in item.evidence],
+                                     'evidence_quote_lengths': [len(q.quote) for q in item.evidence]})
                     if isinstance(item.value, str):
                         if not any(item.value.casefold() in ref.quote.casefold() for ref in item.evidence) and not contiguous_support(item.value, item.evidence, global_inventory):
                             own_blocks = [b for b in blocks if source_id(b) in allowed]

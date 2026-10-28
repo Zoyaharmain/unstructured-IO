@@ -4,6 +4,19 @@ from local_api.services.source_fragments import texts
 
 EMAIL = re.compile(r"[\w.!#$%&'*+/=?^`{|}~-]+@[\w.-]+\.[A-Za-z]{2,}")
 PHONE = re.compile(r'(?<![\w@])(?:\+\d{1,3}[ .-]?)?(?:\(?\d{2,5}\)?[ .-]?){1,4}\d{2,5}(?![\w@])')
+PROFILE = re.compile(r"(?<![\w./-])(?:https?://)?(?:www\.)?(?:github\.com/[A-Za-z0-9][A-Za-z0-9-]*|linkedin\.com/in/[A-Za-z0-9_-]+)/*(?=$|[\s),;])", re.I)
+
+
+def profile_values(blocks):
+    output = {'github_url': set(), 'linkedin_url': set()}
+    for text in texts(blocks):
+        for match in PROFILE.finditer(text):
+            value = match.group()
+            key = 'github_url' if 'github.com/' in value.casefold() else 'linkedin_url'
+            output[key].add(value)
+    return output
+
+
 LABEL = re.compile(r'^\s*(?:e[ -]?mail(?:[ -]?(?:id|address))?|contact(?:\s+(?:details|number|no\.?))?|mobile(?:\s+(?:number|no\.?))?|phone(?:\s+(?:number|no\.?))?|tel(?:ephone)?)\s*[:=\-]', re.I)
 
 
@@ -44,8 +57,11 @@ def recover_contact_sections(result, elements=None):
         if b.page_number not in {None, 1} or b.source_element_index >= reference_start or len(b.text) > 300:
             return False
         values = contact_values([b])
-        if not any(values.values()):
+        profiles = profile_values([b])
+        if not any(values.values()) and not any(profiles.values()):
             return False
+        if any(profiles.values()) and b.source_element_index < body_start:
+            return True
         if LABEL.match(b.text):
             return True
         value = b.text.strip(' \t\r\n|•')
@@ -80,7 +96,7 @@ def recover_contact_sections(result, elements=None):
             moved.extend(b for b in candidates if b not in moved)
     for section in result.sections:
         if section.category in {'summary','skills'}:
-            moved.extend(b for b in section.blocks if LABEL.match(b.text) and candidate(b))
+            moved.extend(b for b in section.blocks if (LABEL.match(b.text) or any(profile_values([b]).values())) and candidate(b))
     if not moved and not heading_contacts:
         return result
     repaired = result.model_copy(deep=True)

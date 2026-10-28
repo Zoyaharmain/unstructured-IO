@@ -64,6 +64,20 @@ function renderSectionResults(data, localOnly) {
   else if (review?.status === 'not_configured') reviewNote.textContent = 'DeepSeek review is enabled but its API key/model is missing. Showing local grouping only.';
   else reviewNote.textContent = localOnly ? 'Local inspection selected. DeepSeek was not called, even if enabled on the server.' : 'DeepSeek review is disabled. Showing local grouping only.';
   fragment.append(reviewNote);
+  if (review?.status === 'failed') {
+    const diagnostic = node('details', 'section-warnings');
+    diagnostic.append(node('summary', '', 'Section review failure details'));
+    diagnostic.append(node('p', '', `Code: ${review.error_code || 'review_failed'}`));
+    if (review.chunk_failure) diagnostic.append(node('p', '', `Chunk check: ${review.chunk_failure}`));
+    for (const attempt of (review.validation_failures || []).slice(-1)) {
+      for (const issue of (attempt.details || []).slice(0, 20)) {
+        diagnostic.append(node('p', '', `${issue.kind || 'invalid_assignment'}${issue.id ? ' · span '+issue.id : ''}`));
+      }
+    }
+    diagnostic.append(node('p', '', 'Local sections were retained. This section-review failure is separate from any field-mapping diagnostic below.'));
+    fragment.append(diagnostic);
+  }
+
   const warnings = document.createElement('details'); warnings.className = 'section-warnings'; warnings.append(node('summary','','Model limitations and evidence'));
   for (const warning of data.warnings) warnings.append(node('p','comparison-note',warning));
   warnings.append(node('p','comparison-note',`${data.metadata.encoder} · ${data.metadata.algorithm}`)); fragment.append(warnings);
