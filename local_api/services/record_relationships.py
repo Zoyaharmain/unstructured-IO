@@ -50,15 +50,26 @@ def field_kinds(text,category):
         if re.search(r'\b(?:computer science|engineering|finance|commerce|accountancy|artificial intelligence|mathematics|business administration)\b',text,re.I):kinds.append('field_of_study')
     else:
         from local_api.services.record_subfields import employment_header_fields, ACTION, ROLE, responsibility_fragment
+        if re.match(r'^\s*Client\b',text,re.I):return [*kinds,'client']
+        explicit=employment_header_fields(text)
+        if explicit:return list(dict.fromkeys(kinds+(['employer'] if 'company' in explicit else [])+(['title'] if 'role' in explicit else [])))
         if responsibility_fragment(text):return [*kinds, 'responsibilities']
         # A delivering clause can continue a responsibility across PDF elements.
         # Require a clause, not just the word: "Delivering Systems Ltd" remains
         # organization evidence. Do this before generic suffixes such as systems.
         if re.match(r'^\s*(?:[•▪●*\-]\s*)?delivering\s+\S.+\s+(?:to|for|through|across|within)\s+\S', text, re.I):
             return [*kinds, 'responsibilities']
-        if employment_header_fields(text):kinds.extend(['employer', 'title'])
+        label = re.match(r'^\s*([A-Za-z ]+)\s*[:=-]\s*(.*)$',text)
+        if label:
+            from local_api.services.record_subfields import ALIASES
+            field=ALIASES['experience'].get(label[1].strip().casefold(),label[1].strip().casefold())
+            if field in {'technologies','responsibilities','location'}:return [field]
+            if field in {'company','employer'} and not label[2].strip():return []
+        header=employment_header_fields(text)
+        if 'company' in header:kinds.append('employer')
+        if 'role' in header:kinds.append('title')
         if len(text.split()) <= 18 and re.search(r'\b(?:engineer|developer|analyst|associate|consultant|manager|architect|intern|specialist|director|officer|executive|practitioner|lead|administrator|underwriter|supervisor)\b',text,re.I):kinds.append('title')
-        if dated_organization_header(text) or re.search(r'\b(?:ltd|limited|inc|llc|corp|corporation|systems|services|bank|technolog(?:y|ies|ie)|solutions|ispl|paribas|bnp|pvt|private)\b|\b(?:company|employer)\s*:',text,re.I):kinds.append('employer')
+        if dated_organization_header(text) or re.search(r'\b(?:ltd|limited|inc|llc|corp|corporation|systems|services|bank|technolog(?:y|ies|ie)|solutions|ispl|paribas|bnp|pvt|private)\b|\b(?:company|employer)\s*[:=-]',text,re.I):kinds.append('employer')
         if re.match(r'^\s*[•▪●\-]?\s*(?:led|built|developed|managed|implemented|responsib|worked on|configured|designed|achieved|supported|created|performed|conducted)',text,re.I):kinds.append('responsibilities')
     if re.match(r'^\s*(?:location|work base)\s*:',text,re.I):kinds.append('location')
     return list(dict.fromkeys(kinds))
@@ -75,6 +86,11 @@ def annotate_relationships(section):
             assigned.add(index)
             text=section.blocks[index].text
             kinds = field_kinds(text,section.category)
+            from local_api.services.record_subfields import employment_header_fields
+            if (section.category=='experience' and fields.get('employer') and fields.get('title')
+                    and len(text.split())>8 and text.rstrip().endswith('.')
+                    and not employment_header_fields(text)):
+                kinds=['responsibilities']
             if section.category == 'experience' and not kinds and fields.get('responsibilities') and section.blocks[index].assignment not in {'structural_heading','section_heading'} and text.strip() and not re.match(r'\s*(?:tools|technology|environment|skills|client|project)\b', text, re.I):
                 kinds = ['responsibilities']
             for kind in kinds:fields.setdefault(kind,[]).append(index)
@@ -82,9 +98,10 @@ def annotate_relationships(section):
         if section.category == 'experience' and len(entry.block_indices) >= 2:
             first, second = (section.blocks[i] for i in entry.block_indices[:2])
             first_text = first.text.strip()
-            if (first.source_element_index == second.source_element_index and first.end == second.start
+            from local_api.services.record_subfields import paired_employment_header
+            if (paired_employment_header(first_text,second.text) or (first.source_element_index == second.source_element_index and first.end == second.start
                     and 0 < len(first_text.split()) <= 10 and not re.search(r'\d|[@:;]', first_text)
-                    and not field_kinds(first_text, 'experience') and 'title' in field_kinds(second.text, 'experience')):
+                    and not field_kinds(first_text, 'experience') and 'title' in field_kinds(second.text, 'experience'))):
                 fields['employer'] = [entry.block_indices[0]]
         if section.category=='education' and not fields.get('qualification'):reasons.append('qualification_not_established')
         if section.category=='experience' and not fields.get('employer'):reasons.append('employer_not_established_from_supported_fields')

@@ -65,17 +65,25 @@ def extract_text(payload: bytes, filename: str, strategy: Strategy = 'auto',
             raise ExtractionError(503, 'High-resolution extraction requires unstructured-inference')
         partition_type = detected
         repaired_images = 0
+        materialized_textboxes = 0
         if detected in {FileType.DOC, FileType.DOCX}:
-            from local_api.services.word_preparation import convert_legacy_word, repair_null_image_relationships
+            from local_api.services.word_preparation import convert_legacy_word, repair_null_image_relationships, materialize_textboxes
             prepared = convert_legacy_word(payload) if detected == FileType.DOC else payload
             prepared, repaired_images = repair_null_image_relationships(prepared)
+            prepared, materialized_textboxes = materialize_textboxes(prepared)
             stream = BytesIO(prepared)
             partition_type = FileType.DOCX
         elements = partition(file=stream, content_type=partition_type.mime_type,
                              metadata_filename=filename, strategy=strategy, languages=['eng'])
         serialized = [e.to_dict() for e in elements]
+        if detected in {FileType.DOC,FileType.DOCX}:
+            from local_api.services.word_preparation import annotate_table_paragraphs
+            annotate_table_paragraphs(prepared,serialized)
         if strategy=='ocr_only':
             for e in serialized:e.setdefault('metadata',{})['ocr_verification_required']=True
+        if materialized_textboxes:
+            for element in serialized:
+                element.setdefault('metadata', {})['materialized_word_textboxes'] = materialized_textboxes
         if repaired_images:
             for element in serialized:
                 element.setdefault('metadata', {})['removed_null_image_relationships'] = repaired_images

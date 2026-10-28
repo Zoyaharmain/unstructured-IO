@@ -62,7 +62,7 @@ def test_production_returns_safe_reason_but_server_keeps_sanitized_details(monke
     request, _ = fixture()
     out = map_with_field_review(request, settings=configured(recovery_attempts=0), transport=lambda *_: 'bad JSON private-text')
     diagnostic = out.meta['field_review']['diagnostic']
-    assert set(diagnostic) == {'id', 'category', 'code', 'validation_message'}
+    assert set(diagnostic) == {'id', 'category', 'code', 'validation_message', 'recovered'}
     assert diagnostic['code'] == 'invalid_json'
     assert 'private-text' not in json.dumps(diagnostic)
     assert 'JSONDecodeError' in caplog.text and 'invalid_json' in caplog.text
@@ -185,7 +185,7 @@ def test_typed_diagnostic_preserves_numeric_indexes_and_named_field(monkeypatch)
     assert diagnostic['path'] == '/sections/0/records/0/fields/company/items/0/evidence/0/quote'
 
 
-def test_empty_required_company_is_needs_review_not_validation_failure(monkeypatch):
+def test_provider_missing_company_claim_is_checked_against_its_source(monkeypatch):
     request, payload = fixture()
     first = payload['sections'][0]['records'][0]
     first['fields']['company'] = []
@@ -195,7 +195,8 @@ def test_empty_required_company_is_needs_review_not_validation_failure(monkeypat
     assert 'diagnostic' not in out.meta['field_review']
     assert out.meta['mapping_result']['status'] == 'needs_review'
     assert out.meta['mapping_result']['fallback_used'] is False
-    assert 'experience[0].company' in out.meta['missing_required_fields']
+    assert out.data.experience[0].company == 'Acme Ltd'
+    assert 'experience[0].company' not in out.meta['missing_required_fields']
 
 
 def test_child_type_failure_names_the_field_without_logging_its_value(monkeypatch):

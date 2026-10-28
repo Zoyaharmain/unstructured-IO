@@ -55,3 +55,24 @@ def test_invalid_query_path_fails_before_field_review(monkeypatch):
             {'query_path': 'experience.unknown', 'review_fields': True})
     assert response.status_code == 422
     assert response.json()['detail']['diagnostic']['category'] == 'subschema_path_validation'
+
+
+def test_section_route_assigns_detected_contact_blocks_before_schema_mapping(monkeypatch):
+    from local_api.routes import sections as route
+    from test_schema_envelope_contacts import contact_fixture
+    from test_contact_section_assignment import add
+    request,_=contact_fixture('Candidate Name')
+    add(request,'Email-ID: candidate@example.org')
+    add(request,'Contact Details: +91 98765 43210')
+    monkeypatch.setattr(route,'detect_sections',lambda _:request.sections)
+    monkeypatch.setattr(route,'recover_sections',lambda _,sections:sections)
+    monkeypatch.setattr(route,'review_sections',lambda _,sections:sections)
+    with TestClient(app) as client:
+        sections=client.post('/api/v1/resume/sections',json={'elements':[e.model_dump() for e in request.elements]}).json()
+        assert sections['needs_review']==[]
+        person=next(s for s in sections['sections'] if s['category']=='personal_information')
+        assert len(person['blocks'])==3
+        response=client.post('/api/v1/resume/schema',json={'elements':[e.model_dump() for e in request.elements],'sections':sections,'review_fields':False})
+    assert response.status_code==200
+    assert response.json()['data']['contact']['email']=='candidate@example.org'
+    assert response.json()['data']['contact']['phone']=='+91 98765 43210'

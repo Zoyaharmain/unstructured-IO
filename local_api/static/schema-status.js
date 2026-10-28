@@ -22,7 +22,7 @@ function schemaOutcome(data, reviewRequested) {
   if (meta.needs_review?.length) reviewReasons.push(`${meta.needs_review.length} source item(s) require review`);
   const omitted = (review.evidence_repairs || []).filter(r => ['unsupported_list_item_pruned', 'unsupported_optional_scalar_pruned', 'scalar_multiple_values_truncated'].includes(r.code)).length;
   if (omitted) reviewReasons.push(`${omitted} unsupported or conflicting provider item(s) omitted`);
-  return {status, reviewReasons, recoveredDiagnostics: history.filter(d => d.recovered === true), message: summaries[status] || summaries.failed,
+  return {status, reviewReasons, recoveredDiagnostics: history.filter(d => d.recovered === true), message: review.status === 'partial' ? 'DeepSeek reviewed some sections. Failed sections retain local results and require review.' : summaries[status] || summaries.failed,
     className: status === 'failed' ? 'status error' : ['fallback_used', 'needs_review'].includes(status) ? 'status warning' : 'status',
     diagnostic: [...history].reverse().find(d => d.recovered !== true) || null};
 }

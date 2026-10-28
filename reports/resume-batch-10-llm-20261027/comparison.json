@@ -1,0 +1,1051 @@
+{
+  "summary": {
+    "scope": 10,
+    "completed": 10,
+    "source_schema_checks": {
+      "pass": 10
+    },
+    "section_review_statuses": {
+      "complete": 10
+    },
+    "field_review_statuses": {
+      "complete": 8,
+      "failed": 2
+    },
+    "audit_statuses": {
+      "incomplete": 9,
+      "complete": 1
+    },
+    "audit_failure_reasons": {
+      "foreign_audit_source": 8,
+      "provider_or_audit_validation_failed": 1
+    },
+    "mapping_statuses": {
+      "needs_review": 7,
+      "fallback_used": 2,
+      "success": 1
+    },
+    "provider_calls": 98,
+    "local_unresolved": 330,
+    "llm_unresolved_completed": 208,
+    "accuracy_percentage": null,
+    "reason": "No independently reviewed complete ground truth",
+    "unique_source_hashes": 10,
+    "employer_spot_check": {
+      "expected": 30,
+      "source_available": 26,
+      "local_recovered": 7,
+      "llm_recovered": 17
+    }
+  },
+  "documents": [
+    {
+      "file": "A A Ashwini.docx",
+      "checks": "pass",
+      "local_unresolved": 52,
+      "section_review": "complete",
+      "field_review": "complete",
+      "provider_calls": 12,
+      "identical_extracted_inventory": true,
+      "employer_spot_check": {
+        "expected": 3,
+        "local_recovered": 0,
+        "llm_recovered": 3,
+        "source_available": 3,
+        "missing_from_extraction": []
+      },
+      "mapping_result": {
+        "status": "needs_review",
+        "usable": true,
+        "requires_review": true,
+        "fallback_used": false,
+        "meaning": "Source-bound output is available for inspection; this does not certify field accuracy."
+      },
+      "field_diagnostics": {
+        "status": "complete",
+        "provider": "DeepSeek",
+        "model": "deepseek-flash",
+        "provider_calls": 4,
+        "reviewed_records": 15,
+        "unassigned_source_ids": [
+          "e24:0:18"
+        ],
+        "human_verified": false
+      },
+      "llm_unresolved": 27,
+      "missing_required_fields": [
+        "experience[0].role",
+        "experience[1].role",
+        "experience[2].role"
+      ],
+      "changed_categories": [
+        "contact",
+        "total_experience_years",
+        "skills",
+        "experience",
+        "education",
+        "projects"
+      ],
+      "record_counts": {
+        "experience": {
+          "local": 8,
+          "llm": 3
+        },
+        "education": {
+          "local": 1,
+          "llm": 1
+        },
+        "projects": {
+          "local": 0,
+          "llm": 8
+        },
+        "certifications": {
+          "local": 0,
+          "llm": 0
+        }
+      },
+      "accuracy": "not_ground_truth_evaluated",
+      "audit_status": "incomplete",
+      "audit_reason": "foreign_audit_source",
+      "audit_findings": 0,
+      "feedback_passes": 2,
+      "stop_reason": "recovery_budget_exhausted"
+    },
+    {
+      "file": "A Fairoz.docx",
+      "checks": "pass",
+      "local_unresolved": 16,
+      "section_review": "complete",
+      "field_review": "failed",
+      "provider_calls": 9,
+      "identical_extracted_inventory": true,
+      "employer_spot_check": {
+        "expected": 2,
+        "local_recovered": 0,
+        "llm_recovered": 0,
+        "source_available": 2,
+        "missing_from_extraction": []
+      },
+      "mapping_result": {
+        "status": "fallback_used",
+        "usable": true,
+        "requires_review": true,
+        "fallback_used": true,
+        "meaning": "Source-bound output is available for inspection; this does not certify field accuracy."
+      },
+      "field_diagnostics": {
+        "status": "failed",
+        "provider_calls": 6,
+        "error_code": "invalid_field_mapping",
+        "message": "DeepSeek field mapping failed source or schema validation. Local fields were retained.",
+        "diagnostic": {
+          "id": "6a6f676a7bbf480982c9099cd9987f37",
+          "category": "subschema_validation",
+          "code": "scalar_multiple_values",
+          "field": "role",
+          "validation_message": "A scalar field contains more than one value."
+        },
+        "diagnostics": [
+          {
+            "id": "748dd8e3272b4c91975fe1847463e2c0",
+            "category": "parent_schema_validation",
+            "code": "batch_section_mismatch",
+            "field": null,
+            "validation_message": "A required parent section is missing or duplicated."
+          },
+          {
+            "id": "6a6f676a7bbf480982c9099cd9987f37",
+            "category": "subschema_validation",
+            "code": "scalar_multiple_values",
+            "field": "role",
+            "validation_message": "A scalar field contains more than one value."
+          }
+        ]
+      },
+      "llm_unresolved": 19,
+      "missing_required_fields": [
+        "experience[0].company",
+        "experience[0].role",
+        "projects[0].name"
+      ],
+      "changed_categories": [
+        "summary",
+        "projects"
+      ],
+      "record_counts": {
+        "experience": {
+          "local": 1,
+          "llm": 1
+        },
+        "education": {
+          "local": 1,
+          "llm": 1
+        },
+        "projects": {
+          "local": 0,
+          "llm": 1
+        },
+        "certifications": {
+          "local": 0,
+          "llm": 0
+        }
+      },
+      "accuracy": "not_ground_truth_evaluated",
+      "audit_status": "incomplete",
+      "audit_reason": "provider_or_audit_validation_failed",
+      "audit_findings": 0,
+      "feedback_passes": 1,
+      "stop_reason": "schema_audit_failed"
+    },
+    {
+      "file": "A Lokhande.pdf",
+      "checks": "pass",
+      "local_unresolved": 32,
+      "section_review": "complete",
+      "field_review": "complete",
+      "provider_calls": 12,
+      "identical_extracted_inventory": true,
+      "employer_spot_check": {
+        "expected": 3,
+        "local_recovered": 1,
+        "llm_recovered": 3,
+        "source_available": 3,
+        "missing_from_extraction": []
+      },
+      "mapping_result": {
+        "status": "needs_review",
+        "usable": true,
+        "requires_review": true,
+        "fallback_used": false,
+        "meaning": "Source-bound output is available for inspection; this does not certify field accuracy."
+      },
+      "field_diagnostics": {
+        "status": "complete",
+        "provider": "DeepSeek",
+        "model": "deepseek-flash",
+        "provider_calls": 4,
+        "reviewed_records": 7,
+        "unassigned_source_ids": [],
+        "human_verified": false,
+        "evidence_repairs": [
+          {
+            "field": "statements",
+            "path": "/sections/1/records/0/fields/statements/items/1",
+            "code": "unsupported_list_item_pruned"
+          }
+        ],
+        "diagnostics": [
+          {
+            "id": "a429e500727746f18571b7cf223d657f",
+            "category": "source_evidence_validation",
+            "code": "invalid_or_cross_record_quote",
+            "field": "statements",
+            "validation_message": "The quote is absent from the source or belongs to another record."
+          }
+        ]
+      },
+      "llm_unresolved": 6,
+      "missing_required_fields": [
+        "education[0].institution"
+      ],
+      "changed_categories": [
+        "contact",
+        "professional_title",
+        "summary",
+        "total_experience_years",
+        "skills",
+        "experience",
+        "education"
+      ],
+      "record_counts": {
+        "experience": {
+          "local": 5,
+          "llm": 3
+        },
+        "education": {
+          "local": 1,
+          "llm": 1
+        },
+        "projects": {
+          "local": 0,
+          "llm": 0
+        },
+        "certifications": {
+          "local": 0,
+          "llm": 0
+        }
+      },
+      "accuracy": "not_ground_truth_evaluated",
+      "audit_status": "complete",
+      "audit_reason": null,
+      "audit_findings": 17,
+      "feedback_passes": 2,
+      "stop_reason": "recovery_budget_exhausted"
+    },
+    {
+      "file": "A Sateesh Kumar 2.docx",
+      "checks": "pass",
+      "local_unresolved": 17,
+      "section_review": "complete",
+      "field_review": "complete",
+      "provider_calls": 11,
+      "identical_extracted_inventory": true,
+      "employer_spot_check": {
+        "expected": 2,
+        "local_recovered": 0,
+        "llm_recovered": 0,
+        "source_available": 0,
+        "missing_from_extraction": [
+          "Velocity IT",
+          "Netafim"
+        ]
+      },
+      "mapping_result": {
+        "status": "needs_review",
+        "usable": true,
+        "requires_review": true,
+        "fallback_used": false,
+        "meaning": "Source-bound output is available for inspection; this does not certify field accuracy."
+      },
+      "field_diagnostics": {
+        "status": "complete",
+        "provider": "DeepSeek",
+        "model": "deepseek-flash",
+        "provider_calls": 4,
+        "reviewed_records": 8,
+        "unassigned_source_ids": [
+          "e47:10:19"
+        ],
+        "human_verified": false,
+        "evidence_repairs": [
+          {
+            "field": "technologies",
+            "path": "/sections/0/records/0/fields/technologies/items/29",
+            "code": "unsupported_list_item_pruned"
+          }
+        ],
+        "diagnostics": [
+          {
+            "id": "7d904fb1da33455e9fb1ac756a7203fd",
+            "category": "source_evidence_validation",
+            "code": "invalid_or_cross_record_quote",
+            "field": "technologies",
+            "validation_message": "The quote is absent from the source or belongs to another record."
+          },
+          {
+            "id": "a3e6e65aeea142afade5e771f31664ef",
+            "category": "subschema_validation",
+            "code": "scalar_multiple_values",
+            "field": "institution",
+            "validation_message": "A scalar field contains more than one value."
+          },
+          {
+            "id": "84dc189a7c834a67b55db7a04da998f1",
+            "category": "subschema_validation",
+            "code": "scalar_multiple_values",
+            "field": "institution",
+            "validation_message": "A scalar field contains more than one value."
+          }
+        ]
+      },
+      "llm_unresolved": 15,
+      "missing_required_fields": [
+        "experience[0].role"
+      ],
+      "changed_categories": [
+        "contact",
+        "skills",
+        "experience",
+        "education"
+      ],
+      "record_counts": {
+        "experience": {
+          "local": 1,
+          "llm": 1
+        },
+        "education": {
+          "local": 1,
+          "llm": 4
+        },
+        "projects": {
+          "local": 0,
+          "llm": 0
+        },
+        "certifications": {
+          "local": 0,
+          "llm": 0
+        }
+      },
+      "accuracy": "not_ground_truth_evaluated",
+      "audit_status": "incomplete",
+      "audit_reason": "foreign_audit_source",
+      "audit_findings": 0,
+      "feedback_passes": 2,
+      "stop_reason": "recovery_budget_exhausted"
+    },
+    {
+      "file": "A Sateesh Kumar.docx",
+      "checks": "pass",
+      "local_unresolved": 17,
+      "section_review": "complete",
+      "field_review": "complete",
+      "provider_calls": 11,
+      "identical_extracted_inventory": true,
+      "employer_spot_check": {
+        "expected": 2,
+        "local_recovered": 0,
+        "llm_recovered": 0,
+        "source_available": 0,
+        "missing_from_extraction": [
+          "Velocity IT",
+          "Netafim"
+        ]
+      },
+      "mapping_result": {
+        "status": "needs_review",
+        "usable": true,
+        "requires_review": true,
+        "fallback_used": false,
+        "meaning": "Source-bound output is available for inspection; this does not certify field accuracy."
+      },
+      "field_diagnostics": {
+        "status": "complete",
+        "provider": "DeepSeek",
+        "model": "deepseek-flash",
+        "provider_calls": 4,
+        "reviewed_records": 8,
+        "unassigned_source_ids": [],
+        "human_verified": false,
+        "diagnostics": [
+          {
+            "id": "bb0ca80b2aff44b38b80bcd8f416689d",
+            "category": "subschema_validation",
+            "code": "missing_source_status",
+            "field": null,
+            "validation_message": "Missing-source statuses must match exactly the empty fields."
+          },
+          {
+            "id": "0159c03375ea41449a6cfa778781b9c3",
+            "category": "response_model_validation",
+            "code": "too_short",
+            "field": "company",
+            "validation_message": "A response value has the wrong type or shape."
+          }
+        ]
+      },
+      "llm_unresolved": 10,
+      "missing_required_fields": [
+        "experience[0].company",
+        "experience[0].role"
+      ],
+      "changed_categories": [
+        "contact",
+        "skills",
+        "experience",
+        "education"
+      ],
+      "record_counts": {
+        "experience": {
+          "local": 1,
+          "llm": 1
+        },
+        "education": {
+          "local": 1,
+          "llm": 4
+        },
+        "projects": {
+          "local": 0,
+          "llm": 0
+        },
+        "certifications": {
+          "local": 0,
+          "llm": 0
+        }
+      },
+      "accuracy": "not_ground_truth_evaluated",
+      "audit_status": "incomplete",
+      "audit_reason": "foreign_audit_source",
+      "audit_findings": 0,
+      "feedback_passes": 2,
+      "stop_reason": "recovery_budget_exhausted"
+    },
+    {
+      "file": "A Suribhotla.pdf",
+      "checks": "pass",
+      "local_unresolved": 17,
+      "section_review": "complete",
+      "field_review": "complete",
+      "provider_calls": 6,
+      "identical_extracted_inventory": true,
+      "employer_spot_check": {
+        "expected": 3,
+        "local_recovered": 0,
+        "llm_recovered": 3,
+        "source_available": 3,
+        "missing_from_extraction": []
+      },
+      "mapping_result": {
+        "status": "success",
+        "usable": true,
+        "requires_review": false,
+        "fallback_used": false,
+        "meaning": "Source-bound output is available for inspection; this does not certify field accuracy."
+      },
+      "field_diagnostics": {
+        "status": "complete",
+        "provider": "DeepSeek",
+        "model": "deepseek-flash",
+        "provider_calls": 4,
+        "reviewed_records": 7,
+        "unassigned_source_ids": [],
+        "human_verified": false,
+        "evidence_repairs": [
+          {
+            "field": "statements",
+            "path": "/sections/1/records/0/fields/statements/items/3/evidence",
+            "code": "literal_record_local_citation_rebuilt"
+          }
+        ],
+        "diagnostics": [
+          {
+            "id": "7b9849cac0db465aa9413e534c2f57bb",
+            "category": "source_evidence_validation",
+            "code": "unsupported_value",
+            "field": "statements",
+            "validation_message": "The field value is absent from its own evidence quotes."
+          }
+        ]
+      },
+      "llm_unresolved": 5,
+      "missing_required_fields": [],
+      "changed_categories": [
+        "summary",
+        "skills",
+        "experience",
+        "education"
+      ],
+      "record_counts": {
+        "experience": {
+          "local": 3,
+          "llm": 3
+        },
+        "education": {
+          "local": 1,
+          "llm": 1
+        },
+        "projects": {
+          "local": 0,
+          "llm": 0
+        },
+        "certifications": {
+          "local": 0,
+          "llm": 0
+        }
+      },
+      "accuracy": "not_ground_truth_evaluated",
+      "audit_status": "incomplete",
+      "audit_reason": "foreign_audit_source",
+      "audit_findings": 0,
+      "feedback_passes": 1,
+      "stop_reason": "schema_audit_failed"
+    },
+    {
+      "file": "A.Bhargava.docx",
+      "checks": "pass",
+      "local_unresolved": 18,
+      "section_review": "complete",
+      "field_review": "failed",
+      "provider_calls": 9,
+      "identical_extracted_inventory": true,
+      "employer_spot_check": {
+        "expected": 7,
+        "local_recovered": 0,
+        "llm_recovered": 0,
+        "source_available": 7,
+        "missing_from_extraction": []
+      },
+      "mapping_result": {
+        "status": "fallback_used",
+        "usable": true,
+        "requires_review": true,
+        "fallback_used": true,
+        "meaning": "Source-bound output is available for inspection; this does not certify field accuracy."
+      },
+      "field_diagnostics": {
+        "status": "failed",
+        "provider_calls": 2,
+        "error_code": "invalid_field_mapping",
+        "message": "DeepSeek field mapping failed source or schema validation. Local fields were retained.",
+        "diagnostic": {
+          "id": "497c73f5e46d43d9b456dc1f90ffd401",
+          "category": "json_parsing",
+          "code": "invalid_json",
+          "validation_message": "Provider response is not valid JSON."
+        },
+        "diagnostics": [
+          {
+            "id": "602a3bfc4b19497c85e4a3ca31552206",
+            "category": "json_parsing",
+            "code": "invalid_json",
+            "validation_message": "Provider response is not valid JSON."
+          },
+          {
+            "id": "497c73f5e46d43d9b456dc1f90ffd401",
+            "category": "json_parsing",
+            "code": "invalid_json",
+            "validation_message": "Provider response is not valid JSON."
+          }
+        ]
+      },
+      "llm_unresolved": 21,
+      "missing_required_fields": [
+        "experience[0].company",
+        "experience[0].role",
+        "education[0].institution",
+        "education[0].degree"
+      ],
+      "changed_categories": [],
+      "record_counts": {
+        "experience": {
+          "local": 1,
+          "llm": 1
+        },
+        "education": {
+          "local": 1,
+          "llm": 1
+        },
+        "projects": {
+          "local": 0,
+          "llm": 0
+        },
+        "certifications": {
+          "local": 1,
+          "llm": 1
+        }
+      },
+      "accuracy": "not_ground_truth_evaluated",
+      "audit_status": "incomplete",
+      "audit_reason": "foreign_audit_source",
+      "audit_findings": 0,
+      "feedback_passes": 2,
+      "stop_reason": "schema_audit_failed"
+    },
+    {
+      "file": "AananthyManoharan.docx",
+      "checks": "pass",
+      "local_unresolved": 33,
+      "section_review": "complete",
+      "field_review": "complete",
+      "provider_calls": 7,
+      "identical_extracted_inventory": true,
+      "employer_spot_check": {
+        "expected": 2,
+        "local_recovered": 2,
+        "llm_recovered": 2,
+        "source_available": 2,
+        "missing_from_extraction": []
+      },
+      "mapping_result": {
+        "status": "needs_review",
+        "usable": true,
+        "requires_review": true,
+        "fallback_used": false,
+        "meaning": "Source-bound output is available for inspection; this does not certify field accuracy."
+      },
+      "field_diagnostics": {
+        "status": "complete",
+        "provider": "DeepSeek",
+        "model": "deepseek-flash",
+        "provider_calls": 5,
+        "reviewed_records": 16,
+        "unassigned_source_ids": [],
+        "human_verified": false,
+        "evidence_repairs": [
+          {
+            "field": "name",
+            "path": "/sections/0/records/0/fields/name",
+            "code": "scalar_multiple_values_truncated"
+          }
+        ],
+        "diagnostics": [
+          {
+            "id": "63ec14baced44d4190dd490d7d69ff63",
+            "category": "subschema_validation",
+            "code": "scalar_multiple_values",
+            "field": "name",
+            "validation_message": "A scalar field contains more than one value."
+          }
+        ]
+      },
+      "llm_unresolved": 18,
+      "missing_required_fields": [],
+      "changed_categories": [
+        "contact",
+        "total_experience_years",
+        "skills",
+        "experience",
+        "education",
+        "certifications"
+      ],
+      "record_counts": {
+        "experience": {
+          "local": 2,
+          "llm": 2
+        },
+        "education": {
+          "local": 3,
+          "llm": 3
+        },
+        "projects": {
+          "local": 0,
+          "llm": 0
+        },
+        "certifications": {
+          "local": 7,
+          "llm": 7
+        }
+      },
+      "accuracy": "not_ground_truth_evaluated",
+      "audit_status": "incomplete",
+      "audit_reason": "foreign_audit_source",
+      "audit_findings": 0,
+      "feedback_passes": 1,
+      "stop_reason": "schema_audit_failed"
+    },
+    {
+      "file": "Abdul Shukoor.pdf",
+      "checks": "pass",
+      "local_unresolved": 106,
+      "section_review": "complete",
+      "field_review": "complete",
+      "provider_calls": 11,
+      "identical_extracted_inventory": true,
+      "employer_spot_check": {
+        "expected": 4,
+        "local_recovered": 4,
+        "llm_recovered": 4,
+        "source_available": 4,
+        "missing_from_extraction": []
+      },
+      "mapping_result": {
+        "status": "needs_review",
+        "usable": true,
+        "requires_review": true,
+        "fallback_used": false,
+        "meaning": "Source-bound output is available for inspection; this does not certify field accuracy."
+      },
+      "field_diagnostics": {
+        "status": "complete",
+        "provider": "DeepSeek",
+        "model": "deepseek-flash",
+        "provider_calls": 8,
+        "reviewed_records": 36,
+        "unassigned_source_ids": [
+          "e79:0:50",
+          "e95:0:32",
+          "e105:0:60",
+          "e145:0:43",
+          "e146:2:56",
+          "e147:0:87",
+          "e148:0:28",
+          "e148:28:102",
+          "e148:102:140",
+          "e148:140:181",
+          "e148:181:253"
+        ],
+        "human_verified": false,
+        "evidence_repairs": [
+          {
+            "field": "tools_and_platforms",
+            "path": "/sections/0/records/0/fields/tools_and_platforms/items/17/evidence",
+            "code": "literal_record_local_citation_rebuilt"
+          },
+          {
+            "field": "all_skills",
+            "path": "/sections/0/records/0/fields/all_skills/items/22/evidence",
+            "code": "literal_record_local_citation_rebuilt"
+          },
+          {
+            "field": "all_skills",
+            "path": "/sections/0/records/0/fields/all_skills/items/23/evidence",
+            "code": "literal_record_local_citation_rebuilt"
+          },
+          {
+            "field": "all_skills",
+            "path": "/sections/0/records/0/fields/all_skills/items/24/evidence",
+            "code": "literal_record_local_citation_rebuilt"
+          },
+          {
+            "field": "all_skills",
+            "path": "/sections/0/records/0/fields/all_skills/items/25/evidence",
+            "code": "literal_record_local_citation_rebuilt"
+          },
+          {
+            "field": "end_date",
+            "path": "/sections/0/records/0/fields/end_date",
+            "code": "unsupported_optional_scalar_pruned"
+          },
+          {
+            "field": "end_date",
+            "path": "/sections/0/records/3/fields/end_date/items/0/evidence",
+            "code": "literal_record_local_citation_rebuilt"
+          },
+          {
+            "field": "duration",
+            "path": "/sections/0/records/3/fields/duration/items/0/evidence",
+            "code": "literal_record_local_citation_rebuilt"
+          },
+          {
+            "field": "responsibilities",
+            "path": "/sections/0/records/4/fields/responsibilities/items/2",
+            "code": "unsupported_list_item_pruned"
+          },
+          {
+            "field": "responsibilities",
+            "path": "/sections/0/records/4/fields/responsibilities/items/4",
+            "code": "unsupported_list_item_pruned"
+          },
+          {
+            "field": "technologies",
+            "path": "/sections/0/records/4/fields/technologies/items/6/evidence",
+            "code": "literal_record_local_citation_rebuilt"
+          },
+          {
+            "field": "field_of_study",
+            "path": "/sections/0/records/0/fields/field_of_study/items/0/evidence",
+            "code": "literal_record_local_citation_rebuilt"
+          },
+          {
+            "field": "description",
+            "path": "/sections/0/records/0/fields/description",
+            "code": "scalar_multiple_values_truncated"
+          },
+          {
+            "field": "description",
+            "path": "/sections/0/records/1/fields/description",
+            "code": "scalar_multiple_values_truncated"
+          },
+          {
+            "field": "description",
+            "path": "/sections/0/records/4/fields/description",
+            "code": "scalar_multiple_values_truncated"
+          },
+          {
+            "field": "description",
+            "path": "/sections/0/records/5/fields/description",
+            "code": "scalar_multiple_values_truncated"
+          },
+          {
+            "field": "description",
+            "path": "/sections/0/records/10/fields/description",
+            "code": "scalar_multiple_values_truncated"
+          },
+          {
+            "field": "description",
+            "path": "/sections/0/records/11/fields/description",
+            "code": "scalar_multiple_values_truncated"
+          },
+          {
+            "field": "description",
+            "path": "/sections/0/records/12/fields/description",
+            "code": "scalar_multiple_values_truncated"
+          },
+          {
+            "field": "description",
+            "path": "/sections/0/records/14/fields/description",
+            "code": "scalar_multiple_values_truncated"
+          },
+          {
+            "field": "description",
+            "path": "/sections/0/records/16/fields/description",
+            "code": "scalar_multiple_values_truncated"
+          },
+          {
+            "field": "description",
+            "path": "/sections/0/records/17/fields/description",
+            "code": "scalar_multiple_values_truncated"
+          },
+          {
+            "field": "technologies",
+            "path": "/sections/0/records/17/fields/technologies/items/1/evidence",
+            "code": "literal_record_local_citation_rebuilt"
+          },
+          {
+            "field": "description",
+            "path": "/sections/0/records/22/fields/description",
+            "code": "scalar_multiple_values_truncated"
+          }
+        ],
+        "diagnostics": [
+          {
+            "id": "eefa7ddce4ac48d2b97bdea905a889ea",
+            "category": "source_evidence_validation",
+            "code": "unsupported_value",
+            "field": "tools_and_platforms",
+            "validation_message": "The field value is absent from its own evidence quotes."
+          },
+          {
+            "id": "249ae56427d443bea903a533023a3778",
+            "category": "source_evidence_validation",
+            "code": "unsupported_value",
+            "field": "end_date",
+            "validation_message": "The field value is absent from its own evidence quotes."
+          },
+          {
+            "id": "1a4b452bfc0e49e586e8991440b0be73",
+            "category": "source_evidence_validation",
+            "code": "invalid_or_cross_record_quote",
+            "field": "field_of_study",
+            "validation_message": "The quote is absent from the source or belongs to another record."
+          },
+          {
+            "id": "152a1fc6652d4255830dcd450b130bf2",
+            "category": "subschema_validation",
+            "code": "scalar_multiple_values",
+            "field": "description",
+            "validation_message": "A scalar field contains more than one value."
+          }
+        ]
+      },
+      "llm_unresolved": 70,
+      "missing_required_fields": [
+        "experience[4].company",
+        "experience[4].role"
+      ],
+      "changed_categories": [
+        "contact",
+        "summary",
+        "skills",
+        "experience",
+        "education",
+        "projects",
+        "languages"
+      ],
+      "record_counts": {
+        "experience": {
+          "local": 4,
+          "llm": 5
+        },
+        "education": {
+          "local": 1,
+          "llm": 1
+        },
+        "projects": {
+          "local": 23,
+          "llm": 23
+        },
+        "certifications": {
+          "local": 2,
+          "llm": 2
+        }
+      },
+      "accuracy": "not_ground_truth_evaluated",
+      "audit_status": "incomplete",
+      "audit_reason": "foreign_audit_source",
+      "audit_findings": 0,
+      "feedback_passes": 1,
+      "stop_reason": "schema_audit_failed"
+    },
+    {
+      "file": "Abhishek Hanashi.pdf",
+      "checks": "pass",
+      "local_unresolved": 22,
+      "section_review": "complete",
+      "field_review": "complete",
+      "provider_calls": 10,
+      "identical_extracted_inventory": true,
+      "employer_spot_check": {
+        "expected": 2,
+        "local_recovered": 0,
+        "llm_recovered": 2,
+        "source_available": 2,
+        "missing_from_extraction": []
+      },
+      "mapping_result": {
+        "status": "needs_review",
+        "usable": true,
+        "requires_review": true,
+        "fallback_used": false,
+        "meaning": "Source-bound output is available for inspection; this does not certify field accuracy."
+      },
+      "field_diagnostics": {
+        "status": "complete",
+        "provider": "DeepSeek",
+        "model": "deepseek-flash",
+        "provider_calls": 6,
+        "reviewed_records": 9,
+        "unassigned_source_ids": [
+          "e25:0:18"
+        ],
+        "human_verified": false,
+        "evidence_repairs": [
+          {
+            "field": "technologies",
+            "path": "/sections/0/records/1/fields/technologies/items/0/evidence",
+            "code": "literal_record_local_citation_rebuilt"
+          },
+          {
+            "field": "institution",
+            "path": "/sections/0/records/0/fields/institution/items/0/evidence",
+            "code": "literal_record_local_citation_rebuilt"
+          },
+          {
+            "field": "name",
+            "path": "/sections/5/records/0/fields/name",
+            "code": "source_backed_record_field_recovered"
+          }
+        ],
+        "diagnostics": [
+          {
+            "id": "44f5869f78204c5681d8c471616f1a35",
+            "category": "source_evidence_validation",
+            "code": "invalid_or_cross_record_quote",
+            "field": "technologies",
+            "validation_message": "The quote is absent from the source or belongs to another record."
+          },
+          {
+            "id": "36752251196648b8a3d5c99d5bcbcec6",
+            "category": "source_evidence_validation",
+            "code": "unsupported_value",
+            "field": "institution",
+            "validation_message": "The field value is absent from its own evidence quotes."
+          }
+        ]
+      },
+      "llm_unresolved": 17,
+      "missing_required_fields": [],
+      "changed_categories": [
+        "contact",
+        "summary",
+        "experience",
+        "education",
+        "projects",
+        "languages"
+      ],
+      "record_counts": {
+        "experience": {
+          "local": 3,
+          "llm": 3
+        },
+        "education": {
+          "local": 2,
+          "llm": 2
+        },
+        "projects": {
+          "local": 1,
+          "llm": 1
+        },
+        "certifications": {
+          "local": 0,
+          "llm": 0
+        }
+      },
+      "accuracy": "not_ground_truth_evaluated",
+      "audit_status": "incomplete",
+      "audit_reason": "foreign_audit_source",
+      "audit_findings": 0,
+      "feedback_passes": 1,
+      "stop_reason": "schema_audit_failed"
+    }
+  ]
+}

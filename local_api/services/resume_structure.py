@@ -37,7 +37,7 @@ EXTRA_HEADINGS = {
     'personal_information': ['contact', 'personal info', 'personal details'],
     'summary': ['objective', 'career summary', 'executive summary', 'profile snapshot', 'profile summary', 'professional summary', 'career objective',
                 'selected jd-aligned highlights', 'key business impact', 'career highlights', 'professional highlights'],
-    'projects': ['key projects', 'project highlights', 'project details', 'projects', 'academic projects',
+    'projects': ['poc', 'pocs', 'proof of concept', 'proofs of concept', 'key projects', 'project highlights', 'project details', 'projects', 'academic projects',
                  'independent project', 'independent projects', 'other project details'],
     'experience': ['employment', 'professional background', 'work history', 'career history',
                    'role history', 'employment history', 'experience summary', 'professional employment',
@@ -45,7 +45,7 @@ EXTRA_HEADINGS = {
                    'project experience', 'key projects and roles', 'earlier experience', 'earlier employment'],
     'languages': ['spoken languages', 'language proficiency', 'langues'],
     'education': ['qualifications', 'educational background', 'academic qualifications', 'formation', 'formations', 'academics', 'academic background', 'academic details'],
-    'skills': ['competences', 'comp\u00e9tences', 'languages and platforms', 'programming languages',
+    'skills': ['technical profile', 'competences', 'comp\u00e9tences', 'languages and platforms', 'programming languages',
                'tools and platforms', 'core programming and frameworks', 'cloud and devops',
                'core competencies and skills', 'it skillset', 'it skills',
                'testing and development practices', 'skill set', 'skill sets', 'skillset', 'key strengths', 'technical competencies', 'core skills', 'domain expertise', 'business analysis and product management', 'tools and technology'],
@@ -74,9 +74,18 @@ def heading_boundary(text, aliases):
     normalized = normalized_heading(text)
     if re.fullmatch(r'project\s*#?\s*\d+\s*[:.)-]?', normalized):
         return 'projects', None
+    numbered_project = re.match(r'^\s*project\s*#?\s*\d+\s*:\s*\S', text, re.I)
+    if numbered_project:
+        return 'projects', text.index(':')+1
     if normalized in RECORD_FIELDS and normalized not in aliases:
         return None, None
     category = aliases.get(normalized)
+    # Compose headings only when every component names the same schema family.
+    components=re.split(r'\s+(?:and|/)\s+',normalized)
+    owners={aliases.get(part) for part in components}
+    if not category and len(components)>1 and None not in owners:
+        if len(owners)==1:category=owners.pop()
+        else:return None,None
     # Letter spacing in PDFs is often inconsistent (e.g. 'PRO F E SS I O N A L').
     # Compare with exact known headings; never compact arbitrary body prose.
     if not category and sum(len(word) == 1 for word in text.split()) >= 3 and re.fullmatch(r'[a-z ]+', normalized):
@@ -171,20 +180,39 @@ def entry_groups(blocks, category, elements):
             from local_api.services.record_relationships import field_kinds
             kinds = field_kinds(text, category)
             explicit_title = (len(text.split()) <= 18 and bool(set(kinds) & {'institution', 'qualification'}))
-        labeled_entry = bool(re.match(r'^\s*(?:\d+[.)]\s*)?(?:project(?: name| title)?|company|employer|institution)\s*:', text, re.I))
+        if category == 'projects' and explicit_title:
+            from local_api.services.record_subfields import responsibility_fragment,ALIASES
+            prefix=normalized_heading(text.split(':',1)[0])
+            subfield=(normalized_heading(text) in RECORD_FIELDS or
+                      ':' in text and (prefix in RECORD_FIELDS or prefix in ALIASES['projects'])
+                      and ALIASES['projects'].get(prefix)!='name')
+            explicit_title = not subfield and not responsibility_fragment(text)
+        labeled_entry = bool(re.match(r'^\s*(?:\d+[.)]\s*)?(?:project(?: name| title)?|company|employer|institution)\s*[:=-]', text, re.I))
         if block.reviewed_by_llm:
             # A title detector's field labels and embedded project titles are not
             # employer boundaries after semantic reassignment to Experience.
             if category=='experience':
                 explicit_title=employment_start(text)
-                labeled_entry=bool(re.match(r'^\s*(?:company|employer)\s*:\s*\S',text,re.I))
+                labeled_entry=bool(re.match(r'^\s*(?:company|employer)\s*[:=-]\s*\S',text,re.I))
             elif category=='education':
                 explicit_title=explicit_title and bool(re.search(r'\b(?:university|college|institute|bachelor|master|diploma|phd|bsc|msc|b\.?tech|m\.?tech)\b',text,re.I))
                 labeled_entry=bool(re.match(r'^\s*(?:institution|university|college)\s*:\s*\S',text,re.I))
+        from local_api.services.record_subfields import RANGE
         dated_header = bool(category in {'experience', 'education'} and len(text.split()) <= 24
-                            and re.search(r'\b(?:19|20)\d{2}\s*(?:[-–—]|to)\s*(?:(?:19|20)\d{2}|present|current)\b', text, re.I)
+                            and RANGE.search(text)
                             and not re.match(r'^[•▪●*\-]', text))
-        boundary = category in {'experience', 'projects', 'education'} and (explicit_title or labeled_entry or dated_header)
+        from local_api.services.record_subfields import paired_employment_header
+        paired = category=='experience' and index+1<len(blocks) and paired_employment_header(text,blocks[index+1].text)
+        paired_continuation = category=='experience' and index>0 and paired_employment_header(blocks[index-1].text,text)
+        boundary = not paired_continuation and category in {'experience', 'projects', 'education'} and (paired or (explicit_title or labeled_entry or dated_header))
+        if category=='experience' and labeled_entry and key in active:
+            meaningful=[i for i in active[key]['block_indices'] if re.search(r'\w',blocks[i].text)]
+            if len(meaningful)==1:
+                prior=blocks[meaningful[0]]
+                if prior.source_element_index==block.source_element_index and RANGE.fullmatch(prior.text.strip()):
+                    boundary=False
+        if paired_continuation and active:
+            key = next(reversed(active))
         if key not in active or boundary:
             group = {'entry_id': f'{category}-{len(groups) + 1}', 'block_indices': [],
                      'lane': block.lane, 'boundary_reason': 'explicit entry title or dated header' if boundary else 'section continuation; no explicit entry boundary'}
@@ -254,13 +282,23 @@ def reviewed_employment_groups(blocks,elements):
         hs=hints(b)
         return min((h['bbox'][1] for h in hs),default=None)
     from local_api.services.record_relationships import dated_organization_header
-    from local_api.services.record_subfields import responsibility_fragment
+    from local_api.services.record_subfields import responsibility_fragment, employment_header_fields
     anchors=[]
+    shared_history=False
     for i,b in enumerate(blocks):
         text=b.text.strip();hs=hints(b)
+        if normalized_heading(text) == 'responsibilities' and len(anchors)>=2:
+            between=blocks[anchors[-2]['index']:i]
+            shared_history=not any(responsibility_fragment(part.text) or len(part.text.split())>30 for part in between)
         if b.assignment in {'section_heading', 'structural_heading'} or normalized_heading(text) in {'experience','work experience','professional experience','employment','work history'}:continue
+        if re.match(r'^Client\b',text,re.I):continue
         if responsibility_fragment(text):continue
         if len(text.split())>30 or re.match(r'^(?:job\s+role\s*:|[•▪●*]|projects?\s*[:\-]|projects?\s+(?:name|title|description|summary)\b|client\s*[:\-]|responsibilit)',text,re.I):continue
+        if re.match(r'^(?:operating systems|servers(?: & web)?|cloud (?:services|platforms)|programming languages|tools|frameworks|databases|ai / llm skills)\s*:', text, re.I):
+            continue
+        explicit_header = bool(employment_header_fields(text))
+        if shared_history and not (explicit_header or employment_start(text) or dated_organization_header(text)):
+            continue
         bold=any(h.get('bold') for h in hs)
         dated_history=bool(re.match(r'^(?:Since|From)\b.+\bwith\b.+\bas\b',text,re.I) and re.search(r'\b(?:19|20)\d{2}\b',text))
         top=y(b)
@@ -279,7 +317,8 @@ def reviewed_employment_groups(blocks,elements):
         )
         paired_employer = bool(bold and has_following_role_or_date and len(text.split()) <= 10
                                and not role.search(text) and not responsibility_fragment(text))
-        if not (((role.search(text) or business.search(text)) and (bold or employment_start(text) or aligned_date)) or (bold and dated_history) or dated_organization_header(text) or paired_employer):continue
+        valid_anchor = (explicit_header or ((role.search(text) or business.search(text)) and (bold or employment_start(text) or aligned_date)) or (bold and dated_history) or dated_organization_header(text) or paired_employer)
+        if not valid_anchor:continue
         if anchors and anchors[-1].get('paired_employer') and anchors[-1]['index'] == i-1:
             continue
         # Employer and title can occupy two adjacent source rows. Merge a
@@ -294,7 +333,7 @@ def reviewed_employment_groups(blocks,elements):
     groups=[{'entry_id':f'experience-{i+1}','block_indices':[],'lane':'source_geometry','boundary_reason':'source employment header; source row/page membership, not layout lane'} for i in range(len(anchors))]
     shared_from=None
     for i,b in enumerate(blocks):
-        if not re.fullmatch(r'\s*(?:accomplishments|career highlights|selected career highlights|key achievements)\s*:?\s*',b.text,re.I):continue
+        if not re.fullmatch(r'\s*(?:responsibilities|accomplishments|career highlights|selected career highlights|key achievements)\s*:?\s*',b.text,re.I):continue
         previous=[a for a in anchors if a['index']<i]
         if len(previous)<2:continue
         between=blocks[previous[-2]['index']:i]
@@ -387,7 +426,8 @@ def employment_start(text):
     if re.match(r'^(?:projects?\s*[:\-]|projects?\s+(?:name|title|description|summary)\b|client\s*[:\-]|duration\s*:|responsibilities\s*:|accomplishments\s*:)',lookup,re.I):return False
     # A dated "Worked as ... at/with ..." statement is a history header,
     # whereas a responsibility mentioning a date is not.
-    stated=bool(re.match(r'^(?:working|worked|currently working)\s+as\b.+\b(?:at|with)\b',lookup,re.I))
+    from local_api.services.record_subfields import employment_header_fields
+    stated=bool(employment_header_fields(lookup)) or bool(re.match(r'^(?:I\s+)?(?:am\s+)?(?:working|worked|currently working)\s+as\b.+\b(?:at|with|for)\b',lookup,re.I))
     date=re.search(r"\b(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sept?(?:ember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s*[‘’']?\d{2,4}",lookup,re.I)
     period=PERIOD.search(lookup)
     raw_prefix=lookup[:(period.start() if period else date.start())] if (period or date) else ''
@@ -402,7 +442,7 @@ def employment_start(text):
 def project_source_groups(blocks,elements):
     """Project ownership from visible title rows or source bullet markers only."""
     from local_api.services.record_subfields import ACTION
-    rows={};bold=[];bullet=[];stops=[]
+    rows={};bold=[];bullet=[];stops=[];numbered=[];contexts=[]
     marker_rows=[]
     for el in elements:
         if el.type!='ListItem' or el.text.strip():continue
@@ -417,15 +457,35 @@ def project_source_groups(blocks,elements):
         name=normalized_heading(b.text)
         if name in {'domain experience','technical skills','personal details','education'}:stops.append(i);continue
         if b.assignment in {'section_heading','structural_heading'} or not b.text.strip():continue
+        # Portfolio/employer overview rows give context, not a project identity.
+        if re.match(r'^projects?\s+(?:worked\s+(?:in|on|at)|in|at)\b', b.text.strip(), re.I):
+            contexts.append(i);continue
+        if re.match(r'^\s*\.?\d+[.)]\s+\S', b.text):numbered.append(i)
         if len(b.text.split())<=18 and ':' not in b.text and not ACTION.search(b.text) and any(h.get('bold') for h in hints):bold.append(i)
         el=elements[b.source_element_index]
         if el.type=='ListItem' and b.start==0 or any(page==b.page_number and abs(y-top)<.008 for page,y in marker_rows):bullet.append(i)
-    anchors=bold if len(bold)>=2 else bullet
+    # Numbered identities outrank typography; bullets alone may be tasks.
+    from local_api.services.record_subfields import DATE
+    dated_titles=[]
+    for i in rows:
+        b=blocks[i]
+        if i in contexts or b.assignment in {'section_heading','structural_heading'}:continue
+        if not 1 <= len(b.text.split()) <= 18 or ':' in b.text or ACTION.search(b.text):continue
+        hs=[h for h in elements[b.source_element_index].metadata.get('pdf_source_lines',[]) if len(h.get('bbox',[]))==4 and min(b.end,h.get('end',0))>max(b.start,h.get('start',0))]
+        x=max(h['bbox'][2] for h in hs)
+        for k in rows:
+            if k==i or rows[k][0]!=rows[i][0] or abs(rows[k][1]-rows[i][1])>.004:continue
+            if not re.fullmatch(r'(?:' + DATE + r'|[A-Za-z]{3,9}\s+\d{2})(?:\s*[-–—]\s*(?:' + DATE + r'|[A-Za-z]{3,9}\s+\d{2}))?[\s\uf020]*', blocks[k].text, re.I):continue
+            kh=[h for h in elements[blocks[k].source_element_index].metadata.get('pdf_source_lines',[]) if len(h.get('bbox',[]))==4 and min(blocks[k].end,h.get('end',0))>max(blocks[k].start,h.get('start',0))]
+            if kh and min(h['bbox'][0] for h in kh)>x:dated_titles.append(i);break
+    identities=sorted(set(numbered+bold+dated_titles),key=lambda i:rows[i])
+    bullets=[i for i in bullet if len(blocks[i].text.split())<=18 and not ACTION.search(blocks[i].text.strip().lstrip('•▪●*\uf0b7 '))]
+    anchors=identities if len(identities)>=2 else bullets
     if stops:
         cutoff=min(rows[i] for i in stops)
         anchors=[i for i in anchors if rows[i]<cutoff]
     if len(anchors)<2:return []
-    outline=sorted([(rows[i], 'start',j) for j,i in enumerate(anchors)]+[(rows[i],'stop',None) for i in stops])
+    outline=sorted([(rows[i], 'start',j) for j,i in enumerate(anchors)]+[(rows[i],'stop',None) for i in stops+contexts])
     groups=[{'entry_id':f'projects-{j+1}','block_indices':[],'lane':'source_geometry',
              'boundary_reason':'visible project title/bullet and source page rows'} for j in range(len(anchors))]
     for i,b in enumerate(blocks):

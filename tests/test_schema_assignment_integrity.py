@@ -44,12 +44,14 @@ def test_pruned_record_keeps_its_entry_identity_and_reindexed_evidence():
     assert attrs['institution'][0].evidence[0].source_id.startswith('e1:')
 
 
-def test_contact_in_wrong_section_is_unmapped_instead_of_absent():
+def test_explicit_candidate_contacts_in_wrong_section_are_reassigned():
     result = map_schema(request('skills', ['Python, SQL', 'Email: alex@example.com', 'Phone: +44 20 7946 0958']))
     statuses = result.meta['field_source_status']
-    assert statuses['contact.email'] == 'present_but_unmapped'
-    assert statuses['contact.phone'] == 'present_but_unmapped'
-    assert result.data.contact.email == ''
+    assert statuses['contact.email'] == 'present_and_extracted'
+    assert statuses['contact.phone'] == 'present_and_extracted'
+    assert result.data.contact.email == 'alex@example.com'
+    assert result.data.contact.phone == '+44 20 7946 0958'
+    assert result.meta['reviewed_sections']['metadata']['contact_section_recovery']['recovered_blocks'] == 2
     dates_only = map_schema(request('skills', ['Python, SQL, 2020 - 2024']))
     assert dates_only.meta['field_source_status']['contact.phone'] == 'absent_in_source'
 

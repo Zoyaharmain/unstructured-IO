@@ -31,6 +31,8 @@ def recover_sections(request, local_result):
                             [block.start + match.start(), block.start + match.end()]
                         )
     if not updates:
+        from local_api.services.education_date_recovery import recover_education_dates
+        local_result = recover_education_dates(local_result, request.elements)
         local_result.metadata['recovery']={'passes':0,'remaining_review_units':len(local_result.needs_review)}
         from local_api.services.quality_assessment import assess_quality
         local_result.metadata['quality_assessment']=assess_quality(request.elements,local_result)
@@ -41,6 +43,8 @@ def recover_sections(request, local_result):
         if index in updates:metadata['recovery_cuts']=sorted(updates[index])
         elements.append(element.model_copy(update={'metadata':metadata}))
     repaired=get_engine().detect(request.model_copy(update={'elements':elements}))
+    from local_api.services.education_date_recovery import recover_education_dates
+    repaired = recover_education_dates(repaired, request.elements)
     repaired.metadata['recovery']={'passes':1,'boundary_count':sum(map(len,updates.values())),
         'initial_review_units':len(local_result.needs_review),'remaining_review_units':len(repaired.needs_review)}
     from local_api.services.quality_assessment import assess_quality

@@ -20,7 +20,7 @@ def main():
     from local_api.core.provider_env import load_provider_env
     load_provider_env(ROOT / '.env')
     for key, value in {
-        'HF_HOME': str(ROOT / '.venv/model-cache'), 'HF_HUB_OFFLINE': '1',
+        'HF_HOME': str(ROOT / '.venv/model-cache'),
         'OMP_NUM_THREADS': '1', 'OPENBLAS_NUM_THREADS': '1', 'DO_NOT_TRACK': 'true',
         'NUMBA_CACHE_DIR': '/tmp/resume-inspector-numba', 'MPLCONFIGDIR': '/tmp/resume-inspector-mpl',
     }.items():

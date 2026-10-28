@@ -105,6 +105,10 @@ function renderSectionResults(data, localOnly) {
       for (const [index, group] of section.logical_blocks.entries()) {
         const logical = node('article', 'logical-record');
         if (group.kind !== 'section') logical.append(node('h4', '', group.kind === 'unresolved' ? 'Unassigned record content' : `${section.label} ${index + 1}`));
+        if (group.semantic_frame) {
+          const scope = group.semantic_frame.scope === 'one_record' ? 'One complete record' : group.semantic_frame.scope === 'complete_section' ? 'Complete section' : 'Association needed';
+          logical.append(node('p', 'comparison-note', `${group.semantic_frame.meaning} · ${scope}`));
+        }
         logical.append(node('p', 'readable-text', group.text));
         for (const reason of group.review_reasons || []) logical.append(node('p', 'comparison-note', reason));
         card.append(logical);

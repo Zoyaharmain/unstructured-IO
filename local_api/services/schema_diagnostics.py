@@ -26,6 +26,8 @@ MESSAGES = {
     'internal_error': 'An internal error interrupted field mapping.',
 }
 CODE_MESSAGES = {
+    'unsupported_employer_context': 'A capability, tool or client mention does not establish an employer.',
+    'invalid_section': 'Each section must contain only category and records; records must be an array.',
     'scalar_multiple_values': 'A scalar field contains more than one value.',
     'string_child_type': 'This child field requires a literal string value.',
     'numeric_child_type': 'This child field requires a numeric value supported by source evidence.',
@@ -127,7 +129,7 @@ def client_diagnostic(diagnostic):
         return diagnostic
     # These values are fixed codes/registry field names, never source text.
     # Keep the reason actionable even when development details are disabled.
-    return {k: diagnostic[k] for k in ('id', 'category', 'code', 'field', 'validation_message')
+    return {k: diagnostic[k] for k in ('id', 'category', 'code', 'field', 'validation_message', 'recovered')
             if k in diagnostic}
 
 

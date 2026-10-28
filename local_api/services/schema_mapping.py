@@ -45,6 +45,13 @@ def map_schema(request):
     if errors:
         from local_api.services.schema_diagnostics import fail
         fail('source_binding_validation', errors[0], ('sections',))
+    from local_api.services.contact_sections import recover_contact_sections, contact_values as literal_contact_values
+    from local_api.services.education_date_recovery import recover_education_dates
+    recovered_sections = recover_education_dates(request.sections, request.elements)
+    recovered_sections = recover_contact_sections(recovered_sections, request.elements)
+    contacts_reassigned = recovered_sections is not request.sections
+    if contacts_reassigned:
+        request = request.model_copy(update={'sections': recovered_sections})
     accounting=account_source(request.elements,request.sections)
     scope=document_scope(request.elements)
     sections={s.category:s for s in request.sections.sections}
@@ -113,6 +120,12 @@ def map_schema(request):
                 path = key if key == 'professional_title' else 'contact.' + key
                 evidence.pop(path, None)
                 remember(path, value, [b for b in header if any(r['source_id']==source_id(b) for r in field_quotes(value,header))])
+        # Recover unique literal contacts even when vendor parsing misses labels
+        # such as Email-ID or international number formatting.
+        for key, matches in literal_contact_values(header).items():
+            if len(matches) == 1:
+                value = next(iter(matches))
+                setattr(data.contact, key, remember('contact.'+key, value, header))
         summary=blocks('summary')
         data.summary=remember('summary',canonical(summary).strip() or None,summary)
         # Never infer experience from education, birth years or a whole-document span.
@@ -324,7 +337,7 @@ def map_schema(request):
                'Handoff confidence scores are fixed heuristics, not calibrated probabilities.',
                'Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields.']
     all_blocks=[(s.category,b) for s in request.sections.sections for b in s.blocks]+[(None,b) for b in request.sections.needs_review]
-    return SchemaMappingResponse(success=True,source=request.source,extraction_mode='existing_blocks_schema_mapping',data=data,schema_mapping=mapping,raw_sections=raw,
+    response = SchemaMappingResponse(success=True,source=request.source,extraction_mode='existing_blocks_schema_mapping',data=data,schema_mapping=mapping,raw_sections=raw,
         section_schemas=build_subschemas(request.sections,data,scope,record_bindings),
         meta={'status':'needs_review','human_verified':False,'provider_calls':0,'source_accounting':accounting,'document_scope':scope,
               'source_inventory_sha256':hashlib.sha256(json.dumps([e.model_dump() for e in request.elements],sort_keys=True,ensure_ascii=False).encode()).hexdigest(),
@@ -341,3 +354,7 @@ def map_schema(request):
               'warnings':warnings,
               'unmapped_blocks':[{'source_id':source_id(b),'category':category,'text':b.text,'page_number':b.page_number} for category,b in all_blocks if source_id(b) not in used],
               'needs_review':[b.model_dump() for b in request.sections.needs_review]})
+
+    if contacts_reassigned:
+        response.meta['reviewed_sections'] = request.sections.model_dump()
+    return response

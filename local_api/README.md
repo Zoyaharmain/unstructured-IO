@@ -259,3 +259,21 @@ The UI displays logical records first and keeps fragment inspection collapsed.
 Field-mapping prompts receive complete logical context plus the original source
 blocks; citations must still reference original source IDs and exact quotes.
 Logical IDs are not valid evidence references. Grouping adds no provider calls.
+
+### First run on another machine
+
+Use the supplied Docker setup or install the API requirements with the supplied
+constraints on a supported Python version. The section encoder must be cached
+on each machine: run `python scripts/warm_models.py --sections` while connected
+to the model host, then start `python scripts/start_resume_inspector_local.py
+--development`. Model downloads are separate from paid DeepSeek inference.
+The launcher respects an explicitly configured `HF_HUB_OFFLINE`, but does not
+force offline mode on a new installation that has no model cache. Set
+`HF_HUB_OFFLINE=1` only after the required models are cached.
+
+Field mapping validates provider section envelopes before accepting any values.
+An exact echoed section label or a single-record object can be normalized and
+fully revalidated; unknown properties and unsupported values remain errors.
+Omitted email/phone fields may be filled from a unique exact match within the
+candidate's personal-information section. Multiple matches remain ambiguous,
+and no contact details are borrowed from references or other sections.

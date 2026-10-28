@@ -58,8 +58,11 @@ def refine_education(values, blocks):
     ranges = list(re.finditer(r'\b((?:19|20)\d{2})\s*[-–—]\s*((?:19|20)\d{2})\b', text))
     if len(ranges) == 1:
         values['start_year'], values['graduation_year'] = ranges[0].group(1, 2)
+    month_ranges = list(re.finditer(r'\b\d{1,2}/((?:19|20)\d{2})\s*[-–—]\s*\d{1,2}/((?:19|20)\d{2})\b', text))
+    if not ranges and len(month_ranges) == 1:
+        values['start_year'], values['graduation_year'] = month_ranges[0].group(1, 2)
     abbreviated = list(re.finditer(r'\b((?:19|20)\d{2})\s*[-\u2013\u2014]\s*(\d{2})(?!\d)',text))
-    if not ranges and len(abbreviated)==1:
+    if not ranges and not month_ranges and len(abbreviated)==1:
         values['start_year']=abbreviated[0].group(1)
         values['graduation_year']=None
         reasons.append('Abbreviated completion year in source; no century inferred.')

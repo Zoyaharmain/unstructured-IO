@@ -12,10 +12,13 @@ def test_development_watches_application_code_without_starting_provider(monkeypa
     from local_api.services import llm_section_review
     monkeypatch.setattr(provider_env, 'load_provider_env', lambda *_: None)
     monkeypatch.setattr(llm_section_review, 'review_status', lambda: {'enabled': False, 'configured': False})
+    monkeypatch.delenv('HF_HUB_OFFLINE', raising=False)
     captured = []
     monkeypatch.setattr(uvicorn, 'run', lambda *a, **kw: captured.append((a, kw)))
     monkeypatch.setattr(sys, 'argv', ['start_resume_inspector_local.py'] + (['--development'] if development else []))
     launcher.main()
+    import os
+    assert 'HF_HUB_OFFLINE' not in os.environ
     args, options = captured[0]
     assert args == ('local_api.app:app',)
     assert options['port'] == 8012

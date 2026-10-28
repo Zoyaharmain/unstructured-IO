@@ -1,0 +1,4758 @@
+{
+  "success": true,
+  "source": "existing-section-blocks",
+  "extraction_mode": "existing_blocks_schema_mapping",
+  "data": {
+    "contact": {
+      "full_name": "Experienced Java",
+      "email": "ashish.lokhande147@gmail.com",
+      "phone": "",
+      "location": null,
+      "linkedin_url": null,
+      "github_url": null,
+      "portfolio_url": null
+    },
+    "professional_title": null,
+    "summary": null,
+    "total_experience_years": null,
+    "skills": {
+      "technical_skills": [
+        "Java",
+        "Kafka",
+        "MySQL"
+      ],
+      "tools_and_platforms": [
+        "JIRA",
+        "Git",
+        "AWS"
+      ],
+      "domain_and_functional": [],
+      "soft_skills": [
+        "Agile",
+        "Scrum"
+      ],
+      "all_skills": [
+        "Java",
+        "Kafka",
+        "MySQL",
+        "JIRA",
+        "Git",
+        "AWS",
+        "Agile",
+        "Scrum",
+        "EC2",
+        "S3",
+        "Hibernate",
+        "RESTful APIs",
+        "Unix",
+        "Kafka Maven",
+        "API",
+        "Backend development",
+        "Bitbucket",
+        "JIRA Agile",
+        "Java 8",
+        "JPA",
+        "Jenkins",
+        "Linux Microservices MySQL",
+        "Scrum Master",
+        "Sprint planning",
+        "Spring Security",
+        "Spring Boot",
+        "TCP/IP"
+      ]
+    },
+    "experience": [
+      {
+        "company": "",
+        "role": "Senior Java Consultant",
+        "start_date": "04/2024",
+        "end_date": "Present",
+        "duration": "04/2024 - Present",
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "Client Barclays",
+        "role": "Java Developer",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [
+          "chitecture, Automated CI/CD pipelines using Jenkins and GitLab."
+        ],
+        "technologies": []
+      },
+      {
+        "company": "",
+        "role": "Java Developer",
+        "start_date": "03/2022",
+        "end_date": "04/2024",
+        "duration": "03/2022 - 04/2024",
+        "location": null,
+        "responsibilities": [],
+        "technologies": []
+      },
+      {
+        "company": "Client JP Morgan Chase",
+        "role": "Java Backend Developer",
+        "start_date": null,
+        "end_date": null,
+        "duration": null,
+        "location": null,
+        "responsibilities": [
+          "DesignedandoptimizedRESTfulAPIsusingSpringBootandJava8.Migrated legacy ap-",
+          "plications from Java 7 to Java 8, enhancing system performance by 20%. Integrat-",
+          "ed Kafka. Led Agile Scrum meetings and managed CI/CD pipelines using Jenkins and",
+          "Bitbucket, ensuring timely delivery of projects."
+        ],
+        "technologies": []
+      },
+      {
+        "company": "Aurus Inc",
+        "role": "Java Developer",
+        "start_date": "01/2020",
+        "end_date": "03/2022",
+        "duration": "01/2020 - 03/2022",
+        "location": null,
+        "responsibilities": [
+          "Designed and developed a secure payment platform (AESDK) API using Java and",
+          "Spring Boot, Integrated POS device communication over Server-Socket (TCP/IP).",
+          "Managed MySQL databases and optimized complex queries, Acted as Scrum Master,",
+          "handling sprint planning and client interactions, ensuring 100% on-time project de-",
+          "livery."
+        ],
+        "technologies": []
+      }
+    ],
+    "education": [
+      {
+        "institution": "",
+        "degree": "Bachelor's degree",
+        "field_of_study": null,
+        "start_year": null,
+        "graduation_year": "2018",
+        "grade_or_gpa": null
+      }
+    ],
+    "certifications": [],
+    "projects": [],
+    "languages": []
+  },
+  "schema_mapping": {
+    "fields_populated": 7,
+    "total_fields": 16,
+    "completion_percentage": 43.8,
+    "field_details": [
+      {
+        "field_name": "contact.full_name",
+        "target_type": "string",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Personal Details",
+        "confidence_score": 0.95,
+        "description": "Candidate's full name, extracted from the top header of the resume.",
+        "source_status": "present_and_extracted"
+      },
+      {
+        "field_name": "contact.email",
+        "target_type": "string (email)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.98,
+        "description": "Candidate's primary contact email address.",
+        "source_status": "present_and_extracted"
+      },
+      {
+        "field_name": "contact.phone",
+        "target_type": "string (phone)",
+        "is_required": true,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's telephone / mobile phone number.",
+        "source_status": "present_but_unmapped"
+      },
+      {
+        "field_name": "contact.location",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's residential location or work city.",
+        "source_status": "absent_in_source"
+      },
+      {
+        "field_name": "contact.linkedin_url",
+        "target_type": "string (url) | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "URL to candidate's LinkedIn profile.",
+        "source_status": "absent_in_source"
+      },
+      {
+        "field_name": "professional_title",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Subtitle",
+        "confidence_score": 0.0,
+        "description": "Candidate's target headline or most recent job title.",
+        "source_status": "absent_in_source"
+      },
+      {
+        "field_name": "summary",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Professional Summary / Profile / Objective",
+        "confidence_score": 0.0,
+        "description": "Executive bio, professional overview, or career objective.",
+        "source_status": "absent_in_source"
+      },
+      {
+        "field_name": "total_experience_years",
+        "target_type": "float | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Summary / Experience Calculation",
+        "confidence_score": 0.0,
+        "description": "Total professional experience in years.",
+        "source_status": "present_but_unmapped"
+      },
+      {
+        "field_name": "skills.technical_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills / Technical Competencies",
+        "confidence_score": 0.92,
+        "description": "Technical programming languages and core software competencies.",
+        "source_status": "present_and_extracted"
+      },
+      {
+        "field_name": "skills.tools_and_platforms",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills / Tools & Technologies",
+        "confidence_score": 0.9,
+        "description": "Software platforms, developer tools, and operational systems.",
+        "source_status": "present_and_extracted"
+      },
+      {
+        "field_name": "skills.domain_and_functional",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Domain Expertise",
+        "confidence_score": 0.0,
+        "description": "Functional domain knowledge (e.g. Hedge Funds, KYC, NAV, Derivatives).",
+        "source_status": "absent_in_source"
+      },
+      {
+        "field_name": "skills.all_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Skills (Aggregated)",
+        "confidence_score": 0.95,
+        "description": "Complete list of candidate skills across all categories.",
+        "source_status": "present_and_extracted"
+      },
+      {
+        "field_name": "experience",
+        "target_type": "array[WorkExperience]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Experience / Work History",
+        "confidence_score": 0.92,
+        "description": "Complete chronological employment records with bullet points.",
+        "source_status": "present_and_extracted"
+      },
+      {
+        "field_name": "education",
+        "target_type": "array[Education]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Education / Academic Qualifications",
+        "confidence_score": 0.9,
+        "description": "University, college, and higher education degree qualifications.",
+        "source_status": "present_and_extracted"
+      },
+      {
+        "field_name": "certifications",
+        "target_type": "array[Certification]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Certifications / Licenses",
+        "confidence_score": 0.0,
+        "description": "Professional accreditations and credentials.",
+        "source_status": "present_but_unmapped"
+      },
+      {
+        "field_name": "projects",
+        "target_type": "array[Project]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Projects / Key Engagements",
+        "confidence_score": 0.0,
+        "description": "Major projects or strategic initiatives led by candidate.",
+        "source_status": "present_but_unmapped"
+      }
+    ]
+  },
+  "raw_sections": {
+    "personal_information": " ashish.lokhande147@gmail.com",
+    "experience": "WORK EXPERIENCE\n04/2024 - Present\nSenior Java Consultant\nCapgemini\nClient Barclays – Java Developer\nPune\nMaintained Java-based Spring boot and microservices for nancial applications, de-\nployed services on AWS (EC2, RDS, S3), Enhanced Kafka-based event-driven ar-\nchitecture, Automated CI/CD pipelines using Jenkins and GitLab.\n03/2022 - 04/2024\nJava Developer\nCognizant Pune\nClient JP Morgan Chase – Java Backend Developer\nDesignedandoptimizedRESTfulAPIsusingSpringBootandJava8.Migrated legacy ap-\nplications from Java 7 to Java 8, enhancing system performance by 20%. Integrat-\ned Kafka. Led Agile Scrum meetings and managed CI/CD pipelines using Jenkins and\nBitbucket, ensuring timely delivery of projects.\n01/2020 - 03/2022\nJava Developer\nAurus Inc Pune\nClient BestBuy and Schnucks\nDesigned and developed a secure payment platform (AESDK) API using Java and\nSpring Boot, Integrated POS device communication over Server-Socket (TCP/IP).\nManaged MySQL databases and optimized complex queries, Acted as Scrum Master,\nhandling sprint planning and client interactions, ensuring 100% on-time project de-\nlivery.",
+    "education": "EDUCATION\n2018\nBachelor's degree\nEngineering\nSoftwa Softwa",
+    "skills": "SKILLS\nEC2\nS3\nHibernate\nRESTful APIs\nUnix\nAWS\nKafka Maven\nAPI\nBackend development\nBitbucket\nGit\nJIRA Agile\nJava 8\nJPA\nJenkins\nLinux Microservices MySQL\nScrum Master\nSprint planning\nSpring Security\nSpring Boot\nTCP/IP"
+  },
+  "meta": {
+    "status": "needs_review",
+    "human_verified": false,
+    "provider_calls": 0,
+    "source_accounting": {
+      "all_source_text_preserved": true,
+      "total_spans": 68,
+      "assigned_meaningful_spans": 57,
+      "unresolved_meaningful_spans": 11,
+      "non_content_artifacts": 0,
+      "duplicates_excluded": 0,
+      "all_meaningful_text_assigned": false,
+      "semantic_correctness_verified": false,
+      "outcomes": [
+        {
+          "source_id": "e0:0:7",
+          "source_element_index": 0,
+          "start": 0,
+          "end": 7,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e0:7:13",
+          "source_element_index": 0,
+          "start": 7,
+          "end": 13,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e1:0:4",
+          "source_element_index": 1,
+          "start": 0,
+          "end": 4,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e1:4:13",
+          "source_element_index": 1,
+          "start": 4,
+          "end": 13,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e1:13:34",
+          "source_element_index": 1,
+          "start": 13,
+          "end": 34,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e2:0:107",
+          "source_element_index": 2,
+          "start": 0,
+          "end": 107,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e3:0:108",
+          "source_element_index": 3,
+          "start": 0,
+          "end": 108,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e4:0:107",
+          "source_element_index": 4,
+          "start": 0,
+          "end": 107,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e5:0:104",
+          "source_element_index": 5,
+          "start": 0,
+          "end": 104,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e6:0:77",
+          "source_element_index": 6,
+          "start": 0,
+          "end": 77,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient separation between semantic clusters"
+        },
+        {
+          "source_id": "e7:0:30",
+          "source_element_index": 7,
+          "start": 0,
+          "end": 30,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e8:0:30",
+          "source_element_index": 8,
+          "start": 0,
+          "end": 30,
+          "section": null,
+          "outcome": "human_review",
+          "reason": "Insufficient semantic evidence for this preamble text"
+        },
+        {
+          "source_id": "e9:0:15",
+          "source_element_index": 9,
+          "start": 0,
+          "end": 15,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e10:0:17",
+          "source_element_index": 10,
+          "start": 0,
+          "end": 17,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e11:0:22",
+          "source_element_index": 11,
+          "start": 0,
+          "end": 22,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e12:0:9",
+          "source_element_index": 12,
+          "start": 0,
+          "end": 9,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e13:0:32",
+          "source_element_index": 13,
+          "start": 0,
+          "end": 32,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e14:0:4",
+          "source_element_index": 14,
+          "start": 0,
+          "end": 4,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e15:0:82",
+          "source_element_index": 15,
+          "start": 0,
+          "end": 82,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e16:0:76",
+          "source_element_index": 16,
+          "start": 0,
+          "end": 76,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e17:0:63",
+          "source_element_index": 17,
+          "start": 0,
+          "end": 63,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e18:0:17",
+          "source_element_index": 18,
+          "start": 0,
+          "end": 17,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e19:0:14",
+          "source_element_index": 19,
+          "start": 0,
+          "end": 14,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e20:0:10",
+          "source_element_index": 20,
+          "start": 0,
+          "end": 10,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e20:10:14",
+          "source_element_index": 20,
+          "start": 10,
+          "end": 14,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e21:0:47",
+          "source_element_index": 21,
+          "start": 0,
+          "end": 47,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e22:0:74",
+          "source_element_index": 22,
+          "start": 0,
+          "end": 74,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e23:0:80",
+          "source_element_index": 23,
+          "start": 0,
+          "end": 80,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e24:0:80",
+          "source_element_index": 24,
+          "start": 0,
+          "end": 80,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e25:0:48",
+          "source_element_index": 25,
+          "start": 0,
+          "end": 48,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e26:0:17",
+          "source_element_index": 26,
+          "start": 0,
+          "end": 17,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e27:0:14",
+          "source_element_index": 27,
+          "start": 0,
+          "end": 14,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e28:0:10",
+          "source_element_index": 28,
+          "start": 0,
+          "end": 10,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e28:10:14",
+          "source_element_index": 28,
+          "start": 10,
+          "end": 14,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e29:0:27",
+          "source_element_index": 29,
+          "start": 0,
+          "end": 27,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e30:0:75",
+          "source_element_index": 30,
+          "start": 0,
+          "end": 75,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e31:0:77",
+          "source_element_index": 31,
+          "start": 0,
+          "end": 77,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e32:0:77",
+          "source_element_index": 32,
+          "start": 0,
+          "end": 77,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e33:0:83",
+          "source_element_index": 33,
+          "start": 0,
+          "end": 83,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e34:0:7",
+          "source_element_index": 34,
+          "start": 0,
+          "end": 7,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e35:0:9",
+          "source_element_index": 35,
+          "start": 0,
+          "end": 9,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e36:0:4",
+          "source_element_index": 36,
+          "start": 0,
+          "end": 4,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e37:0:17",
+          "source_element_index": 37,
+          "start": 0,
+          "end": 17,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e38:0:11",
+          "source_element_index": 38,
+          "start": 0,
+          "end": 11,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e39:0:7",
+          "source_element_index": 39,
+          "start": 0,
+          "end": 7,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e39:7:13",
+          "source_element_index": 39,
+          "start": 7,
+          "end": 13,
+          "section": "education",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e40:0:6",
+          "source_element_index": 40,
+          "start": 0,
+          "end": 6,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Explicit section heading; BERT/K-means candidate retained as evidence"
+        },
+        {
+          "source_id": "e41:0:3",
+          "source_element_index": 41,
+          "start": 0,
+          "end": 3,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e42:0:2",
+          "source_element_index": 42,
+          "start": 0,
+          "end": 2,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e43:0:9",
+          "source_element_index": 43,
+          "start": 0,
+          "end": 9,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e44:0:12",
+          "source_element_index": 44,
+          "start": 0,
+          "end": 12,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e45:0:4",
+          "source_element_index": 45,
+          "start": 0,
+          "end": 4,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e46:0:3",
+          "source_element_index": 46,
+          "start": 0,
+          "end": 3,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e47:0:11",
+          "source_element_index": 47,
+          "start": 0,
+          "end": 11,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e48:0:3",
+          "source_element_index": 48,
+          "start": 0,
+          "end": 3,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e49:0:19",
+          "source_element_index": 49,
+          "start": 0,
+          "end": 19,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e50:0:9",
+          "source_element_index": 50,
+          "start": 0,
+          "end": 9,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e51:0:3",
+          "source_element_index": 51,
+          "start": 0,
+          "end": 3,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e52:0:10",
+          "source_element_index": 52,
+          "start": 0,
+          "end": 10,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e53:0:6",
+          "source_element_index": 53,
+          "start": 0,
+          "end": 6,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e54:0:3",
+          "source_element_index": 54,
+          "start": 0,
+          "end": 3,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e55:0:7",
+          "source_element_index": 55,
+          "start": 0,
+          "end": 7,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e56:0:25",
+          "source_element_index": 56,
+          "start": 0,
+          "end": 25,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e57:0:12",
+          "source_element_index": 57,
+          "start": 0,
+          "end": 12,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e58:0:15",
+          "source_element_index": 58,
+          "start": 0,
+          "end": 15,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e59:0:15",
+          "source_element_index": 59,
+          "start": 0,
+          "end": 15,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e60:0:11",
+          "source_element_index": 60,
+          "start": 0,
+          "end": 11,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        },
+        {
+          "source_id": "e61:0:6",
+          "source_element_index": 61,
+          "start": 0,
+          "end": 6,
+          "section": "skills",
+          "outcome": "assigned",
+          "reason": "Follows a detected heading in the same layout lane; verify visually"
+        }
+      ]
+    },
+    "document_scope": {
+      "kind": "likely_resume",
+      "candidate_resume": true,
+      "reason": "Contact details, multiple resume section families and dated history; provisional scope only",
+      "human_verified": false
+    },
+    "source_inventory_sha256": "19449d17236619b67d2d77a91fdb7212344a0f0c4c9a4352a6ff113217d0bd6c",
+    "field_evidence": {
+      "contact.full_name": [
+        "e2:0:107"
+      ],
+      "contact.email": [
+        "e7:0:30"
+      ],
+      "skills.technical_skills[0]": [
+        "e53:0:6"
+      ],
+      "skills.technical_skills[1]": [
+        "e47:0:11"
+      ],
+      "skills.technical_skills[2]": [
+        "e56:0:25"
+      ],
+      "skills.tools_and_platforms[0]": [
+        "e52:0:10"
+      ],
+      "skills.tools_and_platforms[1]": [
+        "e51:0:3"
+      ],
+      "skills.tools_and_platforms[2]": [
+        "e46:0:3"
+      ],
+      "skills.soft_skills[0]": [
+        "e52:0:10"
+      ],
+      "skills.soft_skills[1]": [
+        "e57:0:12"
+      ],
+      "skills.all_skills[0]": [
+        "e53:0:6"
+      ],
+      "skills.all_skills[1]": [
+        "e47:0:11"
+      ],
+      "skills.all_skills[2]": [
+        "e56:0:25"
+      ],
+      "skills.all_skills[3]": [
+        "e52:0:10"
+      ],
+      "skills.all_skills[4]": [
+        "e51:0:3"
+      ],
+      "skills.all_skills[5]": [
+        "e46:0:3"
+      ],
+      "skills.all_skills[6]": [
+        "e52:0:10"
+      ],
+      "skills.all_skills[7]": [
+        "e57:0:12"
+      ],
+      "skills.all_skills[8]": [
+        "e41:0:3"
+      ],
+      "skills.all_skills[9]": [
+        "e42:0:2"
+      ],
+      "skills.all_skills[10]": [
+        "e43:0:9"
+      ],
+      "skills.all_skills[11]": [
+        "e44:0:12"
+      ],
+      "skills.all_skills[12]": [
+        "e45:0:4"
+      ],
+      "skills.all_skills[13]": [
+        "e47:0:11"
+      ],
+      "skills.all_skills[14]": [
+        "e44:0:12",
+        "e48:0:3"
+      ],
+      "skills.all_skills[15]": [
+        "e49:0:19"
+      ],
+      "skills.all_skills[16]": [
+        "e50:0:9"
+      ],
+      "skills.all_skills[17]": [
+        "e52:0:10"
+      ],
+      "skills.all_skills[18]": [
+        "e53:0:6"
+      ],
+      "skills.all_skills[19]": [
+        "e54:0:3"
+      ],
+      "skills.all_skills[20]": [
+        "e55:0:7"
+      ],
+      "skills.all_skills[21]": [
+        "e56:0:25"
+      ],
+      "skills.all_skills[22]": [
+        "e57:0:12"
+      ],
+      "skills.all_skills[23]": [
+        "e58:0:15"
+      ],
+      "skills.all_skills[24]": [
+        "e59:0:15"
+      ],
+      "skills.all_skills[25]": [
+        "e60:0:11"
+      ],
+      "skills.all_skills[26]": [
+        "e61:0:6"
+      ],
+      "experience[0].role": [
+        "e11:0:22"
+      ],
+      "experience[0].start_date": [
+        "e10:0:17"
+      ],
+      "experience[0].end_date": [
+        "e10:0:17"
+      ],
+      "experience[0].duration": [
+        "e10:0:17"
+      ],
+      "experience[1].company": [
+        "e13:0:32"
+      ],
+      "experience[1].role": [
+        "e13:0:32"
+      ],
+      "experience[1].responsibilities[0]": [
+        "e17:0:63"
+      ],
+      "experience[2].role": [
+        "e19:0:14"
+      ],
+      "experience[2].start_date": [
+        "e18:0:17"
+      ],
+      "experience[2].end_date": [
+        "e18:0:17"
+      ],
+      "experience[2].duration": [
+        "e18:0:17"
+      ],
+      "experience[3].company": [
+        "e21:0:47"
+      ],
+      "experience[3].role": [
+        "e21:0:47"
+      ],
+      "experience[3].responsibilities[0]": [
+        "e22:0:74"
+      ],
+      "experience[3].responsibilities[1]": [
+        "e23:0:80"
+      ],
+      "experience[3].responsibilities[2]": [
+        "e24:0:80"
+      ],
+      "experience[3].responsibilities[3]": [
+        "e25:0:48"
+      ],
+      "experience[4].company": [
+        "e28:0:10"
+      ],
+      "experience[4].role": [
+        "e27:0:14"
+      ],
+      "experience[4].start_date": [
+        "e26:0:17"
+      ],
+      "experience[4].end_date": [
+        "e26:0:17"
+      ],
+      "experience[4].duration": [
+        "e26:0:17"
+      ],
+      "experience[4].responsibilities[0]": [
+        "e30:0:75"
+      ],
+      "experience[4].responsibilities[1]": [
+        "e31:0:77"
+      ],
+      "experience[4].responsibilities[2]": [
+        "e32:0:77"
+      ],
+      "experience[4].responsibilities[3]": [
+        "e33:0:83"
+      ],
+      "experience[4].responsibilities[4]": [
+        "e34:0:7"
+      ],
+      "education[0].degree": [
+        "e37:0:17"
+      ],
+      "education[0].graduation_year": [
+        "e36:0:4"
+      ]
+    },
+    "record_reviews": [
+      {
+        "category": "experience",
+        "entry_id": "experience-1",
+        "source_ids": [
+          "e10:0:17",
+          "e11:0:22"
+        ],
+        "relationship_status": "needs_review",
+        "review_reasons": [
+          "employer_not_established_from_supported_fields"
+        ],
+        "mapped_index": 0
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-2",
+        "source_ids": [
+          "e12:0:9",
+          "e13:0:32",
+          "e14:0:4",
+          "e15:0:82",
+          "e16:0:76",
+          "e17:0:63"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": [],
+        "mapped_index": 1
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-3",
+        "source_ids": [
+          "e18:0:17",
+          "e19:0:14"
+        ],
+        "relationship_status": "needs_review",
+        "review_reasons": [
+          "employer_not_established_from_supported_fields"
+        ],
+        "mapped_index": 2
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-4",
+        "source_ids": [
+          "e20:0:10",
+          "e20:10:14",
+          "e21:0:47",
+          "e22:0:74",
+          "e23:0:80",
+          "e24:0:80",
+          "e25:0:48"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": [],
+        "mapped_index": 3
+      },
+      {
+        "category": "experience",
+        "entry_id": "experience-5",
+        "source_ids": [
+          "e26:0:17",
+          "e27:0:14",
+          "e28:0:10",
+          "e28:10:14",
+          "e29:0:27",
+          "e30:0:75",
+          "e31:0:77",
+          "e32:0:77",
+          "e33:0:83",
+          "e34:0:7"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": [],
+        "mapped_index": 4
+      },
+      {
+        "category": "education",
+        "entry_id": "education-1",
+        "source_ids": [
+          "e36:0:4",
+          "e37:0:17",
+          "e38:0:11"
+        ],
+        "relationship_status": "provisional",
+        "review_reasons": [],
+        "mapped_index": 0
+      }
+    ],
+    "record_bindings": {
+      "experience": {
+        "experience-1": 0,
+        "experience-2": 1,
+        "experience-3": 2,
+        "experience-4": 3,
+        "experience-5": 4
+      },
+      "education": {
+        "education-1": 0
+      },
+      "projects": {},
+      "certifications": {}
+    },
+    "missing_required_fields": [
+      "contact.phone",
+      "experience[0].company",
+      "experience[2].company",
+      "education[0].institution"
+    ],
+    "field_source_status": {
+      "contact.full_name": "present_and_extracted",
+      "contact.email": "present_and_extracted",
+      "contact.phone": "present_but_unmapped",
+      "contact.location": "absent_in_source",
+      "contact.linkedin_url": "absent_in_source",
+      "contact.github_url": "absent_in_source",
+      "contact.portfolio_url": "absent_in_source",
+      "professional_title": "absent_in_source",
+      "summary": "absent_in_source",
+      "total_experience_years": "present_but_unmapped",
+      "experience": "present_and_extracted",
+      "education": "present_and_extracted",
+      "projects": "present_but_unmapped",
+      "certifications": "present_but_unmapped",
+      "experience[0].company": "absent_in_source",
+      "experience[2].company": "absent_in_source",
+      "education[0].institution": "absent_in_source",
+      "experience[0].role": "present_and_extracted",
+      "experience[0].start_date": "present_and_extracted",
+      "experience[0].end_date": "present_and_extracted",
+      "experience[0].duration": "present_and_extracted",
+      "experience[0].location": "absent_in_source",
+      "experience[0].responsibilities": "absent_in_source",
+      "experience[0].technologies": "absent_in_source",
+      "experience[1].company": "present_and_extracted",
+      "experience[1].role": "present_and_extracted",
+      "experience[1].start_date": "absent_in_source",
+      "experience[1].end_date": "absent_in_source",
+      "experience[1].duration": "absent_in_source",
+      "experience[1].location": "absent_in_source",
+      "experience[1].responsibilities": "present_and_extracted",
+      "experience[1].technologies": "absent_in_source",
+      "experience[2].role": "present_and_extracted",
+      "experience[2].start_date": "present_and_extracted",
+      "experience[2].end_date": "present_and_extracted",
+      "experience[2].duration": "present_and_extracted",
+      "experience[2].location": "absent_in_source",
+      "experience[2].responsibilities": "absent_in_source",
+      "experience[2].technologies": "absent_in_source",
+      "experience[3].company": "present_and_extracted",
+      "experience[3].role": "present_and_extracted",
+      "experience[3].start_date": "absent_in_source",
+      "experience[3].end_date": "absent_in_source",
+      "experience[3].duration": "absent_in_source",
+      "experience[3].location": "absent_in_source",
+      "experience[3].responsibilities": "present_and_extracted",
+      "experience[3].technologies": "absent_in_source",
+      "experience[4].company": "present_and_extracted",
+      "experience[4].role": "present_and_extracted",
+      "experience[4].start_date": "present_and_extracted",
+      "experience[4].end_date": "present_and_extracted",
+      "experience[4].duration": "present_and_extracted",
+      "experience[4].location": "absent_in_source",
+      "experience[4].responsibilities": "present_and_extracted",
+      "experience[4].technologies": "absent_in_source",
+      "education[0].degree": "present_and_extracted",
+      "education[0].field_of_study": "absent_in_source",
+      "education[0].start_year": "absent_in_source",
+      "education[0].graduation_year": "present_and_extracted",
+      "education[0].grade_or_gpa": "absent_in_source",
+      "skills": "present_and_extracted",
+      "languages": "absent_in_source"
+    },
+    "source_coverage_ledger": {
+      "field_statuses": {
+        "contact.full_name": "present_and_extracted",
+        "contact.email": "present_and_extracted",
+        "contact.phone": "present_but_unmapped",
+        "contact.location": "absent_in_source",
+        "contact.linkedin_url": "absent_in_source",
+        "contact.github_url": "absent_in_source",
+        "contact.portfolio_url": "absent_in_source",
+        "professional_title": "absent_in_source",
+        "summary": "absent_in_source",
+        "total_experience_years": "present_but_unmapped",
+        "experience": "present_and_extracted",
+        "education": "present_and_extracted",
+        "projects": "present_but_unmapped",
+        "certifications": "present_but_unmapped",
+        "experience[0].company": "absent_in_source",
+        "experience[2].company": "absent_in_source",
+        "education[0].institution": "absent_in_source",
+        "experience[0].role": "present_and_extracted",
+        "experience[0].start_date": "present_and_extracted",
+        "experience[0].end_date": "present_and_extracted",
+        "experience[0].duration": "present_and_extracted",
+        "experience[0].location": "absent_in_source",
+        "experience[0].responsibilities": "absent_in_source",
+        "experience[0].technologies": "absent_in_source",
+        "experience[1].company": "present_and_extracted",
+        "experience[1].role": "present_and_extracted",
+        "experience[1].start_date": "absent_in_source",
+        "experience[1].end_date": "absent_in_source",
+        "experience[1].duration": "absent_in_source",
+        "experience[1].location": "absent_in_source",
+        "experience[1].responsibilities": "present_and_extracted",
+        "experience[1].technologies": "absent_in_source",
+        "experience[2].role": "present_and_extracted",
+        "experience[2].start_date": "present_and_extracted",
+        "experience[2].end_date": "present_and_extracted",
+        "experience[2].duration": "present_and_extracted",
+        "experience[2].location": "absent_in_source",
+        "experience[2].responsibilities": "absent_in_source",
+        "experience[2].technologies": "absent_in_source",
+        "experience[3].company": "present_and_extracted",
+        "experience[3].role": "present_and_extracted",
+        "experience[3].start_date": "absent_in_source",
+        "experience[3].end_date": "absent_in_source",
+        "experience[3].duration": "absent_in_source",
+        "experience[3].location": "absent_in_source",
+        "experience[3].responsibilities": "present_and_extracted",
+        "experience[3].technologies": "absent_in_source",
+        "experience[4].company": "present_and_extracted",
+        "experience[4].role": "present_and_extracted",
+        "experience[4].start_date": "present_and_extracted",
+        "experience[4].end_date": "present_and_extracted",
+        "experience[4].duration": "present_and_extracted",
+        "experience[4].location": "absent_in_source",
+        "experience[4].responsibilities": "present_and_extracted",
+        "experience[4].technologies": "absent_in_source",
+        "education[0].degree": "present_and_extracted",
+        "education[0].field_of_study": "absent_in_source",
+        "education[0].start_year": "absent_in_source",
+        "education[0].graduation_year": "present_and_extracted",
+        "education[0].grade_or_gpa": "absent_in_source",
+        "skills": "present_and_extracted",
+        "languages": "absent_in_source"
+      },
+      "status_counts": {
+        "present_and_extracted": 27,
+        "present_but_unmapped": 4,
+        "present_but_ambiguous": 0,
+        "absent_in_source": 31,
+        "extraction_failed": 0,
+        "not_applicable": 0
+      }
+    },
+    "warnings": [
+      "Schema validity and field completion do not establish extraction or relationship accuracy.",
+      "Handoff confidence scores are fixed heuristics, not calibrated probabilities.",
+      "Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields."
+    ],
+    "unmapped_blocks": [
+      {
+        "source_id": "e9:0:15",
+        "category": "experience",
+        "text": "WORK EXPERIENCE",
+        "page_number": 1
+      },
+      {
+        "source_id": "e12:0:9",
+        "category": "experience",
+        "text": "Capgemini",
+        "page_number": 1
+      },
+      {
+        "source_id": "e14:0:4",
+        "category": "experience",
+        "text": "Pune",
+        "page_number": 1
+      },
+      {
+        "source_id": "e15:0:82",
+        "category": "experience",
+        "text": "Maintained Java-based Spring boot and microservices for nancial applications, de-",
+        "page_number": 1
+      },
+      {
+        "source_id": "e16:0:76",
+        "category": "experience",
+        "text": "ployed services on AWS (EC2, RDS, S3), Enhanced Kafka-based event-driven ar-",
+        "page_number": 1
+      },
+      {
+        "source_id": "e20:0:10",
+        "category": "experience",
+        "text": "Cognizant ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e20:10:14",
+        "category": "experience",
+        "text": "Pune",
+        "page_number": 1
+      },
+      {
+        "source_id": "e28:10:14",
+        "category": "experience",
+        "text": "Pune",
+        "page_number": 1
+      },
+      {
+        "source_id": "e29:0:27",
+        "category": "experience",
+        "text": "Client BestBuy and Schnucks",
+        "page_number": 1
+      },
+      {
+        "source_id": "e35:0:9",
+        "category": "education",
+        "text": "EDUCATION",
+        "page_number": 1
+      },
+      {
+        "source_id": "e38:0:11",
+        "category": "education",
+        "text": "Engineering",
+        "page_number": 1
+      },
+      {
+        "source_id": "e39:0:7",
+        "category": "education",
+        "text": "Softwa ",
+        "page_number": 2
+      },
+      {
+        "source_id": "e39:7:13",
+        "category": "education",
+        "text": "Softwa",
+        "page_number": 2
+      },
+      {
+        "source_id": "e40:0:6",
+        "category": "skills",
+        "text": "SKILLS",
+        "page_number": 2
+      },
+      {
+        "source_id": "e0:0:7",
+        "category": null,
+        "text": "Softwa ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:7:13",
+        "category": null,
+        "text": "Softwa",
+        "page_number": 1
+      },
+      {
+        "source_id": "e1:0:4",
+        "category": null,
+        "text": "A A ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e1:4:13",
+        "category": null,
+        "text": "Lokhande ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e1:13:34",
+        "category": null,
+        "text": "Senior Java Developer",
+        "page_number": 1
+      },
+      {
+        "source_id": "e3:0:108",
+        "category": null,
+        "text": "applications. Procient in Spring Boot, AWS (EC2, RDS, S3), Kafka, and CI/CD pipelines. Skilled in designing",
+        "page_number": 1
+      },
+      {
+        "source_id": "e4:0:107",
+        "category": null,
+        "text": "scalable, high-performance RESTful APIs. Adept at leading Agile teams and delivering solutions that improve",
+        "page_number": 1
+      },
+      {
+        "source_id": "e5:0:104",
+        "category": null,
+        "text": "system performance by up to 20%. Seeking a Java/Microservices Developer role in Germany to contribute to",
+        "page_number": 1
+      },
+      {
+        "source_id": "e6:0:77",
+        "category": null,
+        "text": "innovative software projects and collaborate in an international environment.",
+        "page_number": 1
+      },
+      {
+        "source_id": "e8:0:30",
+        "category": null,
+        "text": " +91 8421279582  Pune, India",
+        "page_number": 1
+      }
+    ],
+    "needs_review": [
+      {
+        "source_element_index": 0,
+        "start": 0,
+        "end": 7,
+        "text": "Softwa ",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1416,
+        "margin": 0.0144,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 0,
+        "start": 7,
+        "end": 13,
+        "text": "Softwa",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1416,
+        "margin": 0.0144,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 1,
+        "start": 0,
+        "end": 4,
+        "text": "A A ",
+        "page_number": 1,
+        "cluster_id": 8,
+        "candidate_section": "publications",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.2347,
+        "margin": -0.0079,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 1,
+        "start": 4,
+        "end": 13,
+        "text": "Lokhande ",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.1267,
+        "margin": -0.0721,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 1,
+        "start": 13,
+        "end": 34,
+        "text": "Senior Java Developer",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.4916,
+        "margin": 0.0276,
+        "lane": "left",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 2,
+        "start": 0,
+        "end": 107,
+        "text": "Experienced Java Developer with 6 years of expertise in backend development, microservices, and cloud-based",
+        "page_number": 1,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.5644,
+        "margin": 0.0375,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 3,
+        "start": 0,
+        "end": 108,
+        "text": "applications. Procient in Spring Boot, AWS (EC2, RDS, S3), Kafka, and CI/CD pipelines. Skilled in designing",
+        "page_number": 1,
+        "cluster_id": 5,
+        "candidate_section": "skills",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3885,
+        "margin": 0.0648,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 4,
+        "start": 0,
+        "end": 107,
+        "text": "scalable, high-performance RESTful APIs. Adept at leading Agile teams and delivering solutions that improve",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3001,
+        "margin": -0.0044,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 5,
+        "start": 0,
+        "end": 104,
+        "text": "system performance by up to 20%. Seeking a Java/Microservices Developer role in Germany to contribute to",
+        "page_number": 1,
+        "cluster_id": 2,
+        "candidate_section": "experience",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.4343,
+        "margin": 0.0136,
+        "lane": "wide",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 6,
+        "start": 0,
+        "end": 77,
+        "text": "innovative software projects and collaborate in an international environment.",
+        "page_number": 1,
+        "cluster_id": 3,
+        "candidate_section": "projects",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.4368,
+        "margin": 0.0242,
+        "lane": "left",
+        "reason": "Insufficient separation between semantic clusters",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      },
+      {
+        "source_element_index": 8,
+        "start": 0,
+        "end": 30,
+        "text": " +91 8421279582  Pune, India",
+        "page_number": 1,
+        "cluster_id": 0,
+        "candidate_section": "personal_information",
+        "alternatives": [],
+        "cluster_space": "content",
+        "context_source_element_index": null,
+        "assignment": "needs_review",
+        "similarity": 0.3679,
+        "margin": 0.0206,
+        "lane": "right",
+        "reason": "Insufficient semantic evidence for this preamble text",
+        "reviewed_by_llm": false,
+        "local_section": null,
+        "local_assignment": null,
+        "llm_action": null
+      }
+    ]
+  },
+  "section_schemas": [
+    {
+      "category": "personal_information",
+      "label": "Personal information",
+      "records": [
+        {
+          "record_id": "personal_information",
+          "source_ids": [
+            "e7:0:30"
+          ],
+          "attributes": [
+            {
+              "name": "full_name",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "email",
+              "items": [
+                {
+                  "value": "ashish.lokhande147@gmail.com",
+                  "evidence": [
+                    {
+                      "source_id": "e7:0:30",
+                      "quote": "ashish.lokhande147@gmail.com"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "phone",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "linkedin_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "github_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "portfolio_url",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "professional_title",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e7:0:30",
+          "quote": " ashish.lokhande147@gmail.com"
+        }
+      ]
+    },
+    {
+      "category": "experience",
+      "label": "Experience",
+      "records": [
+        {
+          "record_id": "experience-1",
+          "source_ids": [
+            "e10:0:17",
+            "e11:0:22"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [
+                {
+                  "value": "Senior Java Consultant",
+                  "evidence": [
+                    {
+                      "source_id": "e11:0:22",
+                      "quote": "Senior Java Consultant"
+                    }
+                  ],
+                  "status": "needs_review"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "start_date",
+              "items": [
+                {
+                  "value": "04/2024",
+                  "evidence": [
+                    {
+                      "source_id": "e10:0:17",
+                      "quote": "04/2024"
+                    }
+                  ],
+                  "status": "needs_review"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "end_date",
+              "items": [
+                {
+                  "value": "Present",
+                  "evidence": [
+                    {
+                      "source_id": "e10:0:17",
+                      "quote": "Present"
+                    }
+                  ],
+                  "status": "needs_review"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "duration",
+              "items": [
+                {
+                  "value": "04/2024 - Present",
+                  "evidence": [
+                    {
+                      "source_id": "e10:0:17",
+                      "quote": "04/2024 - Present"
+                    }
+                  ],
+                  "status": "needs_review"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "employer_not_established_from_supported_fields"
+          ]
+        },
+        {
+          "record_id": "experience-2",
+          "source_ids": [
+            "e12:0:9",
+            "e13:0:32",
+            "e14:0:4",
+            "e15:0:82",
+            "e16:0:76",
+            "e17:0:63"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [
+                {
+                  "value": "Client Barclays",
+                  "evidence": [
+                    {
+                      "source_id": "e13:0:32",
+                      "quote": "Client Barclays"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "role",
+              "items": [
+                {
+                  "value": "Java Developer",
+                  "evidence": [
+                    {
+                      "source_id": "e13:0:32",
+                      "quote": "Java Developer"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [
+                {
+                  "value": "chitecture, Automated CI/CD pipelines using Jenkins and GitLab.",
+                  "evidence": [
+                    {
+                      "source_id": "e17:0:63",
+                      "quote": "chitecture, Automated CI/CD pipelines using Jenkins and GitLab."
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "experience-3",
+          "source_ids": [
+            "e18:0:17",
+            "e19:0:14"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "role",
+              "items": [
+                {
+                  "value": "Java Developer",
+                  "evidence": [
+                    {
+                      "source_id": "e19:0:14",
+                      "quote": "Java Developer"
+                    }
+                  ],
+                  "status": "needs_review"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "start_date",
+              "items": [
+                {
+                  "value": "03/2022",
+                  "evidence": [
+                    {
+                      "source_id": "e18:0:17",
+                      "quote": "03/2022"
+                    }
+                  ],
+                  "status": "needs_review"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "end_date",
+              "items": [
+                {
+                  "value": "04/2024",
+                  "evidence": [
+                    {
+                      "source_id": "e18:0:17",
+                      "quote": "04/2024"
+                    }
+                  ],
+                  "status": "needs_review"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "duration",
+              "items": [
+                {
+                  "value": "03/2022 - 04/2024",
+                  "evidence": [
+                    {
+                      "source_id": "e18:0:17",
+                      "quote": "03/2022 - 04/2024"
+                    }
+                  ],
+                  "status": "needs_review"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "employer_not_established_from_supported_fields"
+          ]
+        },
+        {
+          "record_id": "experience-4",
+          "source_ids": [
+            "e20:0:10",
+            "e20:10:14",
+            "e21:0:47",
+            "e22:0:74",
+            "e23:0:80",
+            "e24:0:80",
+            "e25:0:48"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [
+                {
+                  "value": "Client JP Morgan Chase",
+                  "evidence": [
+                    {
+                      "source_id": "e21:0:47",
+                      "quote": "Client JP Morgan Chase"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "role",
+              "items": [
+                {
+                  "value": "Java Backend Developer",
+                  "evidence": [
+                    {
+                      "source_id": "e21:0:47",
+                      "quote": "Java Backend Developer"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "start_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "end_date",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "duration",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [
+                {
+                  "value": "DesignedandoptimizedRESTfulAPIsusingSpringBootandJava8.Migrated legacy ap-",
+                  "evidence": [
+                    {
+                      "source_id": "e22:0:74",
+                      "quote": "DesignedandoptimizedRESTfulAPIsusingSpringBootandJava8.Migrated legacy ap-"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "plications from Java 7 to Java 8, enhancing system performance by 20%. Integrat-",
+                  "evidence": [
+                    {
+                      "source_id": "e23:0:80",
+                      "quote": "plications from Java 7 to Java 8, enhancing system performance by 20%. Integrat-"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "ed Kafka. Led Agile Scrum meetings and managed CI/CD pipelines using Jenkins and",
+                  "evidence": [
+                    {
+                      "source_id": "e24:0:80",
+                      "quote": "ed Kafka. Led Agile Scrum meetings and managed CI/CD pipelines using Jenkins and"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Bitbucket, ensuring timely delivery of projects.",
+                  "evidence": [
+                    {
+                      "source_id": "e25:0:48",
+                      "quote": "Bitbucket, ensuring timely delivery of projects."
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        },
+        {
+          "record_id": "experience-5",
+          "source_ids": [
+            "e26:0:17",
+            "e27:0:14",
+            "e28:0:10",
+            "e28:10:14",
+            "e29:0:27",
+            "e30:0:75",
+            "e31:0:77",
+            "e32:0:77",
+            "e33:0:83",
+            "e34:0:7"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [
+                {
+                  "value": "Aurus Inc",
+                  "evidence": [
+                    {
+                      "source_id": "e28:0:10",
+                      "quote": "Aurus Inc"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "role",
+              "items": [
+                {
+                  "value": "Java Developer",
+                  "evidence": [
+                    {
+                      "source_id": "e27:0:14",
+                      "quote": "Java Developer"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "start_date",
+              "items": [
+                {
+                  "value": "01/2020",
+                  "evidence": [
+                    {
+                      "source_id": "e26:0:17",
+                      "quote": "01/2020"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "end_date",
+              "items": [
+                {
+                  "value": "03/2022",
+                  "evidence": [
+                    {
+                      "source_id": "e26:0:17",
+                      "quote": "03/2022"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "duration",
+              "items": [
+                {
+                  "value": "01/2020 - 03/2022",
+                  "evidence": [
+                    {
+                      "source_id": "e26:0:17",
+                      "quote": "01/2020 - 03/2022"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [
+                {
+                  "value": "Designed and developed a secure payment platform (AESDK) API using Java and",
+                  "evidence": [
+                    {
+                      "source_id": "e30:0:75",
+                      "quote": "Designed and developed a secure payment platform (AESDK) API using Java and"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Spring Boot, Integrated POS device communication over Server-Socket (TCP/IP).",
+                  "evidence": [
+                    {
+                      "source_id": "e31:0:77",
+                      "quote": "Spring Boot, Integrated POS device communication over Server-Socket (TCP/IP)."
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Managed MySQL databases and optimized complex queries, Acted as Scrum Master,",
+                  "evidence": [
+                    {
+                      "source_id": "e32:0:77",
+                      "quote": "Managed MySQL databases and optimized complex queries, Acted as Scrum Master,"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "handling sprint planning and client interactions, ensuring 100% on-time project de-",
+                  "evidence": [
+                    {
+                      "source_id": "e33:0:83",
+                      "quote": "handling sprint planning and client interactions, ensuring 100% on-time project de-"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "livery.",
+                  "evidence": [
+                    {
+                      "source_id": "e34:0:7",
+                      "quote": "livery."
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e9:0:15",
+          "quote": "WORK EXPERIENCE"
+        },
+        {
+          "source_id": "e12:0:9",
+          "quote": "Capgemini"
+        },
+        {
+          "source_id": "e13:0:32",
+          "quote": "Client Barclays – Java Developer"
+        },
+        {
+          "source_id": "e14:0:4",
+          "quote": "Pune"
+        },
+        {
+          "source_id": "e15:0:82",
+          "quote": "Maintained Java-based Spring boot and microservices for nancial applications, de-"
+        },
+        {
+          "source_id": "e16:0:76",
+          "quote": "ployed services on AWS (EC2, RDS, S3), Enhanced Kafka-based event-driven ar-"
+        },
+        {
+          "source_id": "e20:0:10",
+          "quote": "Cognizant "
+        },
+        {
+          "source_id": "e20:10:14",
+          "quote": "Pune"
+        },
+        {
+          "source_id": "e21:0:47",
+          "quote": "Client JP Morgan Chase – Java Backend Developer"
+        },
+        {
+          "source_id": "e28:10:14",
+          "quote": "Pune"
+        },
+        {
+          "source_id": "e29:0:27",
+          "quote": "Client BestBuy and Schnucks"
+        }
+      ]
+    },
+    {
+      "category": "education",
+      "label": "Education",
+      "records": [
+        {
+          "record_id": "education-1",
+          "source_ids": [
+            "e36:0:4",
+            "e37:0:17",
+            "e38:0:11"
+          ],
+          "attributes": [
+            {
+              "name": "institution",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "degree",
+              "items": [
+                {
+                  "value": "Bachelor's degree",
+                  "evidence": [
+                    {
+                      "source_id": "e37:0:17",
+                      "quote": "Bachelor's degree"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "field_of_study",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "start_year",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "graduation_year",
+              "items": [
+                {
+                  "value": "2018",
+                  "evidence": [
+                    {
+                      "source_id": "e36:0:4",
+                      "quote": "2018"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "grade_or_gpa",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e35:0:9",
+          "quote": "EDUCATION"
+        },
+        {
+          "source_id": "e38:0:11",
+          "quote": "Engineering"
+        },
+        {
+          "source_id": "e39:0:7",
+          "quote": "Softwa "
+        },
+        {
+          "source_id": "e39:7:13",
+          "quote": "Softwa"
+        }
+      ]
+    },
+    {
+      "category": "skills",
+      "label": "Skills",
+      "records": [
+        {
+          "record_id": "skills",
+          "source_ids": [
+            "e41:0:3",
+            "e42:0:2",
+            "e43:0:9",
+            "e44:0:12",
+            "e45:0:4",
+            "e46:0:3",
+            "e47:0:11",
+            "e48:0:3",
+            "e49:0:19",
+            "e50:0:9",
+            "e51:0:3",
+            "e52:0:10",
+            "e53:0:6",
+            "e54:0:3",
+            "e55:0:7",
+            "e56:0:25",
+            "e57:0:12",
+            "e58:0:15",
+            "e59:0:15",
+            "e60:0:11",
+            "e61:0:6"
+          ],
+          "attributes": [
+            {
+              "name": "technical_skills",
+              "items": [
+                {
+                  "value": "Java",
+                  "evidence": [
+                    {
+                      "source_id": "e53:0:6",
+                      "quote": "Java"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Kafka",
+                  "evidence": [
+                    {
+                      "source_id": "e47:0:11",
+                      "quote": "Kafka"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "MySQL",
+                  "evidence": [
+                    {
+                      "source_id": "e56:0:25",
+                      "quote": "MySQL"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "tools_and_platforms",
+              "items": [
+                {
+                  "value": "JIRA",
+                  "evidence": [
+                    {
+                      "source_id": "e52:0:10",
+                      "quote": "JIRA"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Git",
+                  "evidence": [
+                    {
+                      "source_id": "e51:0:3",
+                      "quote": "Git"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "AWS",
+                  "evidence": [
+                    {
+                      "source_id": "e46:0:3",
+                      "quote": "AWS"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "domain_and_functional",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "soft_skills",
+              "items": [
+                {
+                  "value": "Agile",
+                  "evidence": [
+                    {
+                      "source_id": "e52:0:10",
+                      "quote": "Agile"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Scrum",
+                  "evidence": [
+                    {
+                      "source_id": "e57:0:12",
+                      "quote": "Scrum"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "all_skills",
+              "items": [
+                {
+                  "value": "Java",
+                  "evidence": [
+                    {
+                      "source_id": "e53:0:6",
+                      "quote": "Java"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Kafka",
+                  "evidence": [
+                    {
+                      "source_id": "e47:0:11",
+                      "quote": "Kafka"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "MySQL",
+                  "evidence": [
+                    {
+                      "source_id": "e56:0:25",
+                      "quote": "MySQL"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "JIRA",
+                  "evidence": [
+                    {
+                      "source_id": "e52:0:10",
+                      "quote": "JIRA"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Git",
+                  "evidence": [
+                    {
+                      "source_id": "e51:0:3",
+                      "quote": "Git"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "AWS",
+                  "evidence": [
+                    {
+                      "source_id": "e46:0:3",
+                      "quote": "AWS"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Agile",
+                  "evidence": [
+                    {
+                      "source_id": "e52:0:10",
+                      "quote": "Agile"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Scrum",
+                  "evidence": [
+                    {
+                      "source_id": "e57:0:12",
+                      "quote": "Scrum"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "EC2",
+                  "evidence": [
+                    {
+                      "source_id": "e41:0:3",
+                      "quote": "EC2"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "S3",
+                  "evidence": [
+                    {
+                      "source_id": "e42:0:2",
+                      "quote": "S3"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Hibernate",
+                  "evidence": [
+                    {
+                      "source_id": "e43:0:9",
+                      "quote": "Hibernate"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "RESTful APIs",
+                  "evidence": [
+                    {
+                      "source_id": "e44:0:12",
+                      "quote": "RESTful APIs"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Unix",
+                  "evidence": [
+                    {
+                      "source_id": "e45:0:4",
+                      "quote": "Unix"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Kafka Maven",
+                  "evidence": [
+                    {
+                      "source_id": "e47:0:11",
+                      "quote": "Kafka Maven"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "API",
+                  "evidence": [
+                    {
+                      "source_id": "e44:0:12",
+                      "quote": "API"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Backend development",
+                  "evidence": [
+                    {
+                      "source_id": "e49:0:19",
+                      "quote": "Backend development"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Bitbucket",
+                  "evidence": [
+                    {
+                      "source_id": "e50:0:9",
+                      "quote": "Bitbucket"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "JIRA Agile",
+                  "evidence": [
+                    {
+                      "source_id": "e52:0:10",
+                      "quote": "JIRA Agile"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Java 8",
+                  "evidence": [
+                    {
+                      "source_id": "e53:0:6",
+                      "quote": "Java 8"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "JPA",
+                  "evidence": [
+                    {
+                      "source_id": "e54:0:3",
+                      "quote": "JPA"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Jenkins",
+                  "evidence": [
+                    {
+                      "source_id": "e55:0:7",
+                      "quote": "Jenkins"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Linux Microservices MySQL",
+                  "evidence": [
+                    {
+                      "source_id": "e56:0:25",
+                      "quote": "Linux Microservices MySQL"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Scrum Master",
+                  "evidence": [
+                    {
+                      "source_id": "e57:0:12",
+                      "quote": "Scrum Master"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Sprint planning",
+                  "evidence": [
+                    {
+                      "source_id": "e58:0:15",
+                      "quote": "Sprint planning"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Spring Security",
+                  "evidence": [
+                    {
+                      "source_id": "e59:0:15",
+                      "quote": "Spring Security"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "Spring Boot",
+                  "evidence": [
+                    {
+                      "source_id": "e60:0:11",
+                      "quote": "Spring Boot"
+                    }
+                  ],
+                  "status": "source_supported"
+                },
+                {
+                  "value": "TCP/IP",
+                  "evidence": [
+                    {
+                      "source_id": "e61:0:6",
+                      "quote": "TCP/IP"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e40:0:6",
+          "quote": "SKILLS"
+        },
+        {
+          "source_id": "e48:0:3",
+          "quote": "API"
+        }
+      ]
+    },
+    {
+      "category": "needs_review",
+      "label": "Unassigned source blocks",
+      "records": [],
+      "residual_blocks": [
+        {
+          "source_id": "e0:0:7",
+          "quote": "Softwa "
+        },
+        {
+          "source_id": "e0:7:13",
+          "quote": "Softwa"
+        },
+        {
+          "source_id": "e1:0:4",
+          "quote": "A A "
+        },
+        {
+          "source_id": "e1:4:13",
+          "quote": "Lokhande "
+        },
+        {
+          "source_id": "e1:13:34",
+          "quote": "Senior Java Developer"
+        },
+        {
+          "source_id": "e2:0:107",
+          "quote": "Experienced Java Developer with 6 years of expertise in backend development, microservices, and cloud-based"
+        },
+        {
+          "source_id": "e3:0:108",
+          "quote": "applications. Procient in Spring Boot, AWS (EC2, RDS, S3), Kafka, and CI/CD pipelines. Skilled in designing"
+        },
+        {
+          "source_id": "e4:0:107",
+          "quote": "scalable, high-performance RESTful APIs. Adept at leading Agile teams and delivering solutions that improve"
+        },
+        {
+          "source_id": "e5:0:104",
+          "quote": "system performance by up to 20%. Seeking a Java/Microservices Developer role in Germany to contribute to"
+        },
+        {
+          "source_id": "e6:0:77",
+          "quote": "innovative software projects and collaborate in an international environment."
+        },
+        {
+          "source_id": "e8:0:30",
+          "quote": " +91 8421279582  Pune, India"
+        }
+      ]
+    }
+  ],
+  "subschema_definitions": {
+    "version": 1,
+    "parents": {
+      "personal_information": {
+        "full_name": {
+          "type": "string",
+          "multiple": false
+        },
+        "email": {
+          "type": "string",
+          "multiple": false
+        },
+        "phone": {
+          "type": "string",
+          "multiple": false
+        },
+        "location": {
+          "type": "string",
+          "multiple": false
+        },
+        "linkedin_url": {
+          "type": "string",
+          "multiple": false
+        },
+        "github_url": {
+          "type": "string",
+          "multiple": false
+        },
+        "portfolio_url": {
+          "type": "string",
+          "multiple": false
+        },
+        "professional_title": {
+          "type": "string",
+          "multiple": false
+        }
+      },
+      "summary": {
+        "statements": {
+          "type": "string",
+          "multiple": true
+        },
+        "total_experience_years": {
+          "type": "number",
+          "multiple": false
+        }
+      },
+      "experience": {
+        "company": {
+          "type": "string",
+          "multiple": false
+        },
+        "role": {
+          "type": "string",
+          "multiple": false
+        },
+        "start_date": {
+          "type": "string",
+          "multiple": false
+        },
+        "end_date": {
+          "type": "string",
+          "multiple": false
+        },
+        "duration": {
+          "type": "string",
+          "multiple": false
+        },
+        "location": {
+          "type": "string",
+          "multiple": false
+        },
+        "responsibilities": {
+          "type": "string",
+          "multiple": true
+        },
+        "technologies": {
+          "type": "string",
+          "multiple": true
+        }
+      },
+      "education": {
+        "institution": {
+          "type": "string",
+          "multiple": false
+        },
+        "degree": {
+          "type": "string",
+          "multiple": false
+        },
+        "field_of_study": {
+          "type": "string",
+          "multiple": false
+        },
+        "start_year": {
+          "type": "string",
+          "multiple": false
+        },
+        "graduation_year": {
+          "type": "string",
+          "multiple": false
+        },
+        "grade_or_gpa": {
+          "type": "string",
+          "multiple": false
+        }
+      },
+      "projects": {
+        "name": {
+          "type": "string",
+          "multiple": false
+        },
+        "description": {
+          "type": "string",
+          "multiple": false
+        },
+        "role": {
+          "type": "string",
+          "multiple": false
+        },
+        "technologies": {
+          "type": "string",
+          "multiple": true
+        },
+        "url": {
+          "type": "string",
+          "multiple": false
+        }
+      },
+      "certifications": {
+        "name": {
+          "type": "string",
+          "multiple": false
+        },
+        "issuer": {
+          "type": "string",
+          "multiple": false
+        },
+        "issue_year": {
+          "type": "string",
+          "multiple": false
+        }
+      },
+      "skills": {
+        "technical_skills": {
+          "type": "string",
+          "multiple": true
+        },
+        "tools_and_platforms": {
+          "type": "string",
+          "multiple": true
+        },
+        "domain_and_functional": {
+          "type": "string",
+          "multiple": true
+        },
+        "soft_skills": {
+          "type": "string",
+          "multiple": true
+        },
+        "all_skills": {
+          "type": "string",
+          "multiple": true
+        }
+      },
+      "awards": {
+        "name": {
+          "type": "string",
+          "multiple": false
+        },
+        "issuer": {
+          "type": "string",
+          "multiple": false
+        },
+        "date": {
+          "type": "string",
+          "multiple": false
+        }
+      },
+      "publications": {
+        "title": {
+          "type": "string",
+          "multiple": false
+        },
+        "publisher": {
+          "type": "string",
+          "multiple": false
+        },
+        "date": {
+          "type": "string",
+          "multiple": false
+        },
+        "url": {
+          "type": "string",
+          "multiple": false
+        }
+      },
+      "volunteering": {
+        "organization": {
+          "type": "string",
+          "multiple": false
+        },
+        "role": {
+          "type": "string",
+          "multiple": false
+        },
+        "dates": {
+          "type": "string",
+          "multiple": false
+        },
+        "activities": {
+          "type": "string",
+          "multiple": true
+        }
+      },
+      "languages": {
+        "language": {
+          "type": "string",
+          "multiple": true
+        },
+        "proficiency": {
+          "type": "string",
+          "multiple": true
+        }
+      },
+      "interests": {
+        "interest": {
+          "type": "string",
+          "multiple": true
+        }
+      },
+      "references": {
+        "name": {
+          "type": "string",
+          "multiple": false
+        },
+        "relationship": {
+          "type": "string",
+          "multiple": false
+        },
+        "organization": {
+          "type": "string",
+          "multiple": false
+        },
+        "email": {
+          "type": "string",
+          "multiple": false
+        },
+        "phone": {
+          "type": "string",
+          "multiple": false
+        },
+        "availability": {
+          "type": "string",
+          "multiple": false
+        }
+      },
+      "needs_review": {}
+    },
+    "legacy_parents": {
+      "personal_information": "contact",
+      "summary": "summary",
+      "experience": "experience",
+      "education": "education",
+      "projects": "projects",
+      "certifications": "certifications",
+      "skills": "skills",
+      "languages": "languages"
+    },
+    "missing_policy": "unresolved does not establish absence from the PDF",
+    "field_names": "Existing ResumeSchema names retained; no renamed legacy fields",
+    "evidence_policy": "Each item requires an exact quote in a record-local source block",
+    "query_path": "parent.child with optional record_id; results preserve record boundaries"
+  },
+  "field_index": {
+    "personal_information.full_name": [
+      {
+        "parent": "personal_information",
+        "child": "full_name",
+        "field_path": "personal_information[0].full_name",
+        "record_id": "personal_information",
+        "pointer": "/section_schemas/0/records/0/attributes/0",
+        "status": "unresolved",
+        "review_reasons": [],
+        "items": []
+      }
+    ],
+    "personal_information.email": [
+      {
+        "parent": "personal_information",
+        "child": "email",
+        "field_path": "personal_information[0].email",
+        "record_id": "personal_information",
+        "pointer": "/section_schemas/0/records/0/attributes/1",
+        "status": "mapped",
+        "review_reasons": [],
+        "items": [
+          {
+            "value": "ashish.lokhande147@gmail.com",
+            "evidence": [
+              {
+                "source_id": "e7:0:30",
+                "quote": "ashish.lokhande147@gmail.com"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/0/records/0/attributes/1/items/0/value"
+          }
+        ]
+      }
+    ],
+    "personal_information.phone": [
+      {
+        "parent": "personal_information",
+        "child": "phone",
+        "field_path": "personal_information[0].phone",
+        "record_id": "personal_information",
+        "pointer": "/section_schemas/0/records/0/attributes/2",
+        "status": "unresolved",
+        "review_reasons": [],
+        "items": []
+      }
+    ],
+    "personal_information.location": [
+      {
+        "parent": "personal_information",
+        "child": "location",
+        "field_path": "personal_information[0].location",
+        "record_id": "personal_information",
+        "pointer": "/section_schemas/0/records/0/attributes/3",
+        "status": "unresolved",
+        "review_reasons": [],
+        "items": []
+      }
+    ],
+    "personal_information.linkedin_url": [
+      {
+        "parent": "personal_information",
+        "child": "linkedin_url",
+        "field_path": "personal_information[0].linkedin_url",
+        "record_id": "personal_information",
+        "pointer": "/section_schemas/0/records/0/attributes/4",
+        "status": "unresolved",
+        "review_reasons": [],
+        "items": []
+      }
+    ],
+    "personal_information.github_url": [
+      {
+        "parent": "personal_information",
+        "child": "github_url",
+        "field_path": "personal_information[0].github_url",
+        "record_id": "personal_information",
+        "pointer": "/section_schemas/0/records/0/attributes/5",
+        "status": "unresolved",
+        "review_reasons": [],
+        "items": []
+      }
+    ],
+    "personal_information.portfolio_url": [
+      {
+        "parent": "personal_information",
+        "child": "portfolio_url",
+        "field_path": "personal_information[0].portfolio_url",
+        "record_id": "personal_information",
+        "pointer": "/section_schemas/0/records/0/attributes/6",
+        "status": "unresolved",
+        "review_reasons": [],
+        "items": []
+      }
+    ],
+    "personal_information.professional_title": [
+      {
+        "parent": "personal_information",
+        "child": "professional_title",
+        "field_path": "personal_information[0].professional_title",
+        "record_id": "personal_information",
+        "pointer": "/section_schemas/0/records/0/attributes/7",
+        "status": "unresolved",
+        "review_reasons": [],
+        "items": []
+      }
+    ],
+    "summary.statements": [],
+    "summary.total_experience_years": [],
+    "experience.company": [
+      {
+        "parent": "experience",
+        "child": "company",
+        "field_path": "experience[0].company",
+        "record_id": "experience-1",
+        "pointer": "/section_schemas/1/records/0/attributes/0",
+        "status": "unresolved",
+        "review_reasons": [
+          "employer_not_established_from_supported_fields"
+        ],
+        "items": []
+      },
+      {
+        "parent": "experience",
+        "child": "company",
+        "field_path": "experience[1].company",
+        "record_id": "experience-2",
+        "pointer": "/section_schemas/1/records/1/attributes/0",
+        "status": "mapped",
+        "review_reasons": [],
+        "items": [
+          {
+            "value": "Client Barclays",
+            "evidence": [
+              {
+                "source_id": "e13:0:32",
+                "quote": "Client Barclays"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/1/records/1/attributes/0/items/0/value"
+          }
+        ]
+      },
+      {
+        "parent": "experience",
+        "child": "company",
+        "field_path": "experience[2].company",
+        "record_id": "experience-3",
+        "pointer": "/section_schemas/1/records/2/attributes/0",
+        "status": "unresolved",
+        "review_reasons": [
+          "employer_not_established_from_supported_fields"
+        ],
+        "items": []
+      },
+      {
+        "parent": "experience",
+        "child": "company",
+        "field_path": "experience[3].company",
+        "record_id": "experience-4",
+        "pointer": "/section_schemas/1/records/3/attributes/0",
+        "status": "mapped",
+        "review_reasons": [],
+        "items": [
+          {
+            "value": "Client JP Morgan Chase",
+            "evidence": [
+              {
+                "source_id": "e21:0:47",
+                "quote": "Client JP Morgan Chase"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/1/records/3/attributes/0/items/0/value"
+          }
+        ]
+      },
+      {
+        "parent": "experience",
+        "child": "company",
+        "field_path": "experience[4].company",
+        "record_id": "experience-5",
+        "pointer": "/section_schemas/1/records/4/attributes/0",
+        "status": "mapped",
+        "review_reasons": [],
+        "items": [
+          {
+            "value": "Aurus Inc",
+            "evidence": [
+              {
+                "source_id": "e28:0:10",
+                "quote": "Aurus Inc"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/1/records/4/attributes/0/items/0/value"
+          }
+        ]
+      }
+    ],
+    "experience.role": [
+      {
+        "parent": "experience",
+        "child": "role",
+        "field_path": "experience[0].role",
+        "record_id": "experience-1",
+        "pointer": "/section_schemas/1/records/0/attributes/1",
+        "status": "mapped",
+        "review_reasons": [
+          "employer_not_established_from_supported_fields"
+        ],
+        "items": [
+          {
+            "value": "Senior Java Consultant",
+            "evidence": [
+              {
+                "source_id": "e11:0:22",
+                "quote": "Senior Java Consultant"
+              }
+            ],
+            "status": "needs_review",
+            "pointer": "/section_schemas/1/records/0/attributes/1/items/0/value"
+          }
+        ]
+      },
+      {
+        "parent": "experience",
+        "child": "role",
+        "field_path": "experience[1].role",
+        "record_id": "experience-2",
+        "pointer": "/section_schemas/1/records/1/attributes/1",
+        "status": "mapped",
+        "review_reasons": [],
+        "items": [
+          {
+            "value": "Java Developer",
+            "evidence": [
+              {
+                "source_id": "e13:0:32",
+                "quote": "Java Developer"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/1/records/1/attributes/1/items/0/value"
+          }
+        ]
+      },
+      {
+        "parent": "experience",
+        "child": "role",
+        "field_path": "experience[2].role",
+        "record_id": "experience-3",
+        "pointer": "/section_schemas/1/records/2/attributes/1",
+        "status": "mapped",
+        "review_reasons": [
+          "employer_not_established_from_supported_fields"
+        ],
+        "items": [
+          {
+            "value": "Java Developer",
+            "evidence": [
+              {
+                "source_id": "e19:0:14",
+                "quote": "Java Developer"
+              }
+            ],
+            "status": "needs_review",
+            "pointer": "/section_schemas/1/records/2/attributes/1/items/0/value"
+          }
+        ]
+      },
+      {
+        "parent": "experience",
+        "child": "role",
+        "field_path": "experience[3].role",
+        "record_id": "experience-4",
+        "pointer": "/section_schemas/1/records/3/attributes/1",
+        "status": "mapped",
+        "review_reasons": [],
+        "items": [
+          {
+            "value": "Java Backend Developer",
+            "evidence": [
+              {
+                "source_id": "e21:0:47",
+                "quote": "Java Backend Developer"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/1/records/3/attributes/1/items/0/value"
+          }
+        ]
+      },
+      {
+        "parent": "experience",
+        "child": "role",
+        "field_path": "experience[4].role",
+        "record_id": "experience-5",
+        "pointer": "/section_schemas/1/records/4/attributes/1",
+        "status": "mapped",
+        "review_reasons": [],
+        "items": [
+          {
+            "value": "Java Developer",
+            "evidence": [
+              {
+                "source_id": "e27:0:14",
+                "quote": "Java Developer"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/1/records/4/attributes/1/items/0/value"
+          }
+        ]
+      }
+    ],
+    "experience.start_date": [
+      {
+        "parent": "experience",
+        "child": "start_date",
+        "field_path": "experience[0].start_date",
+        "record_id": "experience-1",
+        "pointer": "/section_schemas/1/records/0/attributes/2",
+        "status": "mapped",
+        "review_reasons": [
+          "employer_not_established_from_supported_fields"
+        ],
+        "items": [
+          {
+            "value": "04/2024",
+            "evidence": [
+              {
+                "source_id": "e10:0:17",
+                "quote": "04/2024"
+              }
+            ],
+            "status": "needs_review",
+            "pointer": "/section_schemas/1/records/0/attributes/2/items/0/value"
+          }
+        ]
+      },
+      {
+        "parent": "experience",
+        "child": "start_date",
+        "field_path": "experience[1].start_date",
+        "record_id": "experience-2",
+        "pointer": "/section_schemas/1/records/1/attributes/2",
+        "status": "unresolved",
+        "review_reasons": [],
+        "items": []
+      },
+      {
+        "parent": "experience",
+        "child": "start_date",
+        "field_path": "experience[2].start_date",
+        "record_id": "experience-3",
+        "pointer": "/section_schemas/1/records/2/attributes/2",
+        "status": "mapped",
+        "review_reasons": [
+          "employer_not_established_from_supported_fields"
+        ],
+        "items": [
+          {
+            "value": "03/2022",
+            "evidence": [
+              {
+                "source_id": "e18:0:17",
+                "quote": "03/2022"
+              }
+            ],
+            "status": "needs_review",
+            "pointer": "/section_schemas/1/records/2/attributes/2/items/0/value"
+          }
+        ]
+      },
+      {
+        "parent": "experience",
+        "child": "start_date",
+        "field_path": "experience[3].start_date",
+        "record_id": "experience-4",
+        "pointer": "/section_schemas/1/records/3/attributes/2",
+        "status": "unresolved",
+        "review_reasons": [],
+        "items": []
+      },
+      {
+        "parent": "experience",
+        "child": "start_date",
+        "field_path": "experience[4].start_date",
+        "record_id": "experience-5",
+        "pointer": "/section_schemas/1/records/4/attributes/2",
+        "status": "mapped",
+        "review_reasons": [],
+        "items": [
+          {
+            "value": "01/2020",
+            "evidence": [
+              {
+                "source_id": "e26:0:17",
+                "quote": "01/2020"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/1/records/4/attributes/2/items/0/value"
+          }
+        ]
+      }
+    ],
+    "experience.end_date": [
+      {
+        "parent": "experience",
+        "child": "end_date",
+        "field_path": "experience[0].end_date",
+        "record_id": "experience-1",
+        "pointer": "/section_schemas/1/records/0/attributes/3",
+        "status": "mapped",
+        "review_reasons": [
+          "employer_not_established_from_supported_fields"
+        ],
+        "items": [
+          {
+            "value": "Present",
+            "evidence": [
+              {
+                "source_id": "e10:0:17",
+                "quote": "Present"
+              }
+            ],
+            "status": "needs_review",
+            "pointer": "/section_schemas/1/records/0/attributes/3/items/0/value"
+          }
+        ]
+      },
+      {
+        "parent": "experience",
+        "child": "end_date",
+        "field_path": "experience[1].end_date",
+        "record_id": "experience-2",
+        "pointer": "/section_schemas/1/records/1/attributes/3",
+        "status": "unresolved",
+        "review_reasons": [],
+        "items": []
+      },
+      {
+        "parent": "experience",
+        "child": "end_date",
+        "field_path": "experience[2].end_date",
+        "record_id": "experience-3",
+        "pointer": "/section_schemas/1/records/2/attributes/3",
+        "status": "mapped",
+        "review_reasons": [
+          "employer_not_established_from_supported_fields"
+        ],
+        "items": [
+          {
+            "value": "04/2024",
+            "evidence": [
+              {
+                "source_id": "e18:0:17",
+                "quote": "04/2024"
+              }
+            ],
+            "status": "needs_review",
+            "pointer": "/section_schemas/1/records/2/attributes/3/items/0/value"
+          }
+        ]
+      },
+      {
+        "parent": "experience",
+        "child": "end_date",
+        "field_path": "experience[3].end_date",
+        "record_id": "experience-4",
+        "pointer": "/section_schemas/1/records/3/attributes/3",
+        "status": "unresolved",
+        "review_reasons": [],
+        "items": []
+      },
+      {
+        "parent": "experience",
+        "child": "end_date",
+        "field_path": "experience[4].end_date",
+        "record_id": "experience-5",
+        "pointer": "/section_schemas/1/records/4/attributes/3",
+        "status": "mapped",
+        "review_reasons": [],
+        "items": [
+          {
+            "value": "03/2022",
+            "evidence": [
+              {
+                "source_id": "e26:0:17",
+                "quote": "03/2022"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/1/records/4/attributes/3/items/0/value"
+          }
+        ]
+      }
+    ],
+    "experience.duration": [
+      {
+        "parent": "experience",
+        "child": "duration",
+        "field_path": "experience[0].duration",
+        "record_id": "experience-1",
+        "pointer": "/section_schemas/1/records/0/attributes/4",
+        "status": "mapped",
+        "review_reasons": [
+          "employer_not_established_from_supported_fields"
+        ],
+        "items": [
+          {
+            "value": "04/2024 - Present",
+            "evidence": [
+              {
+                "source_id": "e10:0:17",
+                "quote": "04/2024 - Present"
+              }
+            ],
+            "status": "needs_review",
+            "pointer": "/section_schemas/1/records/0/attributes/4/items/0/value"
+          }
+        ]
+      },
+      {
+        "parent": "experience",
+        "child": "duration",
+        "field_path": "experience[1].duration",
+        "record_id": "experience-2",
+        "pointer": "/section_schemas/1/records/1/attributes/4",
+        "status": "unresolved",
+        "review_reasons": [],
+        "items": []
+      },
+      {
+        "parent": "experience",
+        "child": "duration",
+        "field_path": "experience[2].duration",
+        "record_id": "experience-3",
+        "pointer": "/section_schemas/1/records/2/attributes/4",
+        "status": "mapped",
+        "review_reasons": [
+          "employer_not_established_from_supported_fields"
+        ],
+        "items": [
+          {
+            "value": "03/2022 - 04/2024",
+            "evidence": [
+              {
+                "source_id": "e18:0:17",
+                "quote": "03/2022 - 04/2024"
+              }
+            ],
+            "status": "needs_review",
+            "pointer": "/section_schemas/1/records/2/attributes/4/items/0/value"
+          }
+        ]
+      },
+      {
+        "parent": "experience",
+        "child": "duration",
+        "field_path": "experience[3].duration",
+        "record_id": "experience-4",
+        "pointer": "/section_schemas/1/records/3/attributes/4",
+        "status": "unresolved",
+        "review_reasons": [],
+        "items": []
+      },
+      {
+        "parent": "experience",
+        "child": "duration",
+        "field_path": "experience[4].duration",
+        "record_id": "experience-5",
+        "pointer": "/section_schemas/1/records/4/attributes/4",
+        "status": "mapped",
+        "review_reasons": [],
+        "items": [
+          {
+            "value": "01/2020 - 03/2022",
+            "evidence": [
+              {
+                "source_id": "e26:0:17",
+                "quote": "01/2020 - 03/2022"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/1/records/4/attributes/4/items/0/value"
+          }
+        ]
+      }
+    ],
+    "experience.location": [
+      {
+        "parent": "experience",
+        "child": "location",
+        "field_path": "experience[0].location",
+        "record_id": "experience-1",
+        "pointer": "/section_schemas/1/records/0/attributes/5",
+        "status": "unresolved",
+        "review_reasons": [
+          "employer_not_established_from_supported_fields"
+        ],
+        "items": []
+      },
+      {
+        "parent": "experience",
+        "child": "location",
+        "field_path": "experience[1].location",
+        "record_id": "experience-2",
+        "pointer": "/section_schemas/1/records/1/attributes/5",
+        "status": "unresolved",
+        "review_reasons": [],
+        "items": []
+      },
+      {
+        "parent": "experience",
+        "child": "location",
+        "field_path": "experience[2].location",
+        "record_id": "experience-3",
+        "pointer": "/section_schemas/1/records/2/attributes/5",
+        "status": "unresolved",
+        "review_reasons": [
+          "employer_not_established_from_supported_fields"
+        ],
+        "items": []
+      },
+      {
+        "parent": "experience",
+        "child": "location",
+        "field_path": "experience[3].location",
+        "record_id": "experience-4",
+        "pointer": "/section_schemas/1/records/3/attributes/5",
+        "status": "unresolved",
+        "review_reasons": [],
+        "items": []
+      },
+      {
+        "parent": "experience",
+        "child": "location",
+        "field_path": "experience[4].location",
+        "record_id": "experience-5",
+        "pointer": "/section_schemas/1/records/4/attributes/5",
+        "status": "unresolved",
+        "review_reasons": [],
+        "items": []
+      }
+    ],
+    "experience.responsibilities": [
+      {
+        "parent": "experience",
+        "child": "responsibilities",
+        "field_path": "experience[0].responsibilities",
+        "record_id": "experience-1",
+        "pointer": "/section_schemas/1/records/0/attributes/6",
+        "status": "unresolved",
+        "review_reasons": [
+          "employer_not_established_from_supported_fields"
+        ],
+        "items": []
+      },
+      {
+        "parent": "experience",
+        "child": "responsibilities",
+        "field_path": "experience[1].responsibilities",
+        "record_id": "experience-2",
+        "pointer": "/section_schemas/1/records/1/attributes/6",
+        "status": "mapped",
+        "review_reasons": [],
+        "items": [
+          {
+            "value": "chitecture, Automated CI/CD pipelines using Jenkins and GitLab.",
+            "evidence": [
+              {
+                "source_id": "e17:0:63",
+                "quote": "chitecture, Automated CI/CD pipelines using Jenkins and GitLab."
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/1/records/1/attributes/6/items/0/value"
+          }
+        ]
+      },
+      {
+        "parent": "experience",
+        "child": "responsibilities",
+        "field_path": "experience[2].responsibilities",
+        "record_id": "experience-3",
+        "pointer": "/section_schemas/1/records/2/attributes/6",
+        "status": "unresolved",
+        "review_reasons": [
+          "employer_not_established_from_supported_fields"
+        ],
+        "items": []
+      },
+      {
+        "parent": "experience",
+        "child": "responsibilities",
+        "field_path": "experience[3].responsibilities",
+        "record_id": "experience-4",
+        "pointer": "/section_schemas/1/records/3/attributes/6",
+        "status": "mapped",
+        "review_reasons": [],
+        "items": [
+          {
+            "value": "DesignedandoptimizedRESTfulAPIsusingSpringBootandJava8.Migrated legacy ap-",
+            "evidence": [
+              {
+                "source_id": "e22:0:74",
+                "quote": "DesignedandoptimizedRESTfulAPIsusingSpringBootandJava8.Migrated legacy ap-"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/1/records/3/attributes/6/items/0/value"
+          },
+          {
+            "value": "plications from Java 7 to Java 8, enhancing system performance by 20%. Integrat-",
+            "evidence": [
+              {
+                "source_id": "e23:0:80",
+                "quote": "plications from Java 7 to Java 8, enhancing system performance by 20%. Integrat-"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/1/records/3/attributes/6/items/1/value"
+          },
+          {
+            "value": "ed Kafka. Led Agile Scrum meetings and managed CI/CD pipelines using Jenkins and",
+            "evidence": [
+              {
+                "source_id": "e24:0:80",
+                "quote": "ed Kafka. Led Agile Scrum meetings and managed CI/CD pipelines using Jenkins and"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/1/records/3/attributes/6/items/2/value"
+          },
+          {
+            "value": "Bitbucket, ensuring timely delivery of projects.",
+            "evidence": [
+              {
+                "source_id": "e25:0:48",
+                "quote": "Bitbucket, ensuring timely delivery of projects."
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/1/records/3/attributes/6/items/3/value"
+          }
+        ]
+      },
+      {
+        "parent": "experience",
+        "child": "responsibilities",
+        "field_path": "experience[4].responsibilities",
+        "record_id": "experience-5",
+        "pointer": "/section_schemas/1/records/4/attributes/6",
+        "status": "mapped",
+        "review_reasons": [],
+        "items": [
+          {
+            "value": "Designed and developed a secure payment platform (AESDK) API using Java and",
+            "evidence": [
+              {
+                "source_id": "e30:0:75",
+                "quote": "Designed and developed a secure payment platform (AESDK) API using Java and"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/1/records/4/attributes/6/items/0/value"
+          },
+          {
+            "value": "Spring Boot, Integrated POS device communication over Server-Socket (TCP/IP).",
+            "evidence": [
+              {
+                "source_id": "e31:0:77",
+                "quote": "Spring Boot, Integrated POS device communication over Server-Socket (TCP/IP)."
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/1/records/4/attributes/6/items/1/value"
+          },
+          {
+            "value": "Managed MySQL databases and optimized complex queries, Acted as Scrum Master,",
+            "evidence": [
+              {
+                "source_id": "e32:0:77",
+                "quote": "Managed MySQL databases and optimized complex queries, Acted as Scrum Master,"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/1/records/4/attributes/6/items/2/value"
+          },
+          {
+            "value": "handling sprint planning and client interactions, ensuring 100% on-time project de-",
+            "evidence": [
+              {
+                "source_id": "e33:0:83",
+                "quote": "handling sprint planning and client interactions, ensuring 100% on-time project de-"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/1/records/4/attributes/6/items/3/value"
+          },
+          {
+            "value": "livery.",
+            "evidence": [
+              {
+                "source_id": "e34:0:7",
+                "quote": "livery."
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/1/records/4/attributes/6/items/4/value"
+          }
+        ]
+      }
+    ],
+    "experience.technologies": [
+      {
+        "parent": "experience",
+        "child": "technologies",
+        "field_path": "experience[0].technologies",
+        "record_id": "experience-1",
+        "pointer": "/section_schemas/1/records/0/attributes/7",
+        "status": "unresolved",
+        "review_reasons": [
+          "employer_not_established_from_supported_fields"
+        ],
+        "items": []
+      },
+      {
+        "parent": "experience",
+        "child": "technologies",
+        "field_path": "experience[1].technologies",
+        "record_id": "experience-2",
+        "pointer": "/section_schemas/1/records/1/attributes/7",
+        "status": "unresolved",
+        "review_reasons": [],
+        "items": []
+      },
+      {
+        "parent": "experience",
+        "child": "technologies",
+        "field_path": "experience[2].technologies",
+        "record_id": "experience-3",
+        "pointer": "/section_schemas/1/records/2/attributes/7",
+        "status": "unresolved",
+        "review_reasons": [
+          "employer_not_established_from_supported_fields"
+        ],
+        "items": []
+      },
+      {
+        "parent": "experience",
+        "child": "technologies",
+        "field_path": "experience[3].technologies",
+        "record_id": "experience-4",
+        "pointer": "/section_schemas/1/records/3/attributes/7",
+        "status": "unresolved",
+        "review_reasons": [],
+        "items": []
+      },
+      {
+        "parent": "experience",
+        "child": "technologies",
+        "field_path": "experience[4].technologies",
+        "record_id": "experience-5",
+        "pointer": "/section_schemas/1/records/4/attributes/7",
+        "status": "unresolved",
+        "review_reasons": [],
+        "items": []
+      }
+    ],
+    "education.institution": [
+      {
+        "parent": "education",
+        "child": "institution",
+        "field_path": "education[0].institution",
+        "record_id": "education-1",
+        "pointer": "/section_schemas/2/records/0/attributes/0",
+        "status": "unresolved",
+        "review_reasons": [],
+        "items": []
+      }
+    ],
+    "education.degree": [
+      {
+        "parent": "education",
+        "child": "degree",
+        "field_path": "education[0].degree",
+        "record_id": "education-1",
+        "pointer": "/section_schemas/2/records/0/attributes/1",
+        "status": "mapped",
+        "review_reasons": [],
+        "items": [
+          {
+            "value": "Bachelor's degree",
+            "evidence": [
+              {
+                "source_id": "e37:0:17",
+                "quote": "Bachelor's degree"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/2/records/0/attributes/1/items/0/value"
+          }
+        ]
+      }
+    ],
+    "education.field_of_study": [
+      {
+        "parent": "education",
+        "child": "field_of_study",
+        "field_path": "education[0].field_of_study",
+        "record_id": "education-1",
+        "pointer": "/section_schemas/2/records/0/attributes/2",
+        "status": "unresolved",
+        "review_reasons": [],
+        "items": []
+      }
+    ],
+    "education.start_year": [
+      {
+        "parent": "education",
+        "child": "start_year",
+        "field_path": "education[0].start_year",
+        "record_id": "education-1",
+        "pointer": "/section_schemas/2/records/0/attributes/3",
+        "status": "unresolved",
+        "review_reasons": [],
+        "items": []
+      }
+    ],
+    "education.graduation_year": [
+      {
+        "parent": "education",
+        "child": "graduation_year",
+        "field_path": "education[0].graduation_year",
+        "record_id": "education-1",
+        "pointer": "/section_schemas/2/records/0/attributes/4",
+        "status": "mapped",
+        "review_reasons": [],
+        "items": [
+          {
+            "value": "2018",
+            "evidence": [
+              {
+                "source_id": "e36:0:4",
+                "quote": "2018"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/2/records/0/attributes/4/items/0/value"
+          }
+        ]
+      }
+    ],
+    "education.grade_or_gpa": [
+      {
+        "parent": "education",
+        "child": "grade_or_gpa",
+        "field_path": "education[0].grade_or_gpa",
+        "record_id": "education-1",
+        "pointer": "/section_schemas/2/records/0/attributes/5",
+        "status": "unresolved",
+        "review_reasons": [],
+        "items": []
+      }
+    ],
+    "projects.name": [],
+    "projects.description": [],
+    "projects.role": [],
+    "projects.technologies": [],
+    "projects.url": [],
+    "certifications.name": [],
+    "certifications.issuer": [],
+    "certifications.issue_year": [],
+    "skills.technical_skills": [
+      {
+        "parent": "skills",
+        "child": "technical_skills",
+        "field_path": "skills[0].technical_skills",
+        "record_id": "skills",
+        "pointer": "/section_schemas/3/records/0/attributes/0",
+        "status": "mapped",
+        "review_reasons": [],
+        "items": [
+          {
+            "value": "Java",
+            "evidence": [
+              {
+                "source_id": "e53:0:6",
+                "quote": "Java"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/3/records/0/attributes/0/items/0/value"
+          },
+          {
+            "value": "Kafka",
+            "evidence": [
+              {
+                "source_id": "e47:0:11",
+                "quote": "Kafka"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/3/records/0/attributes/0/items/1/value"
+          },
+          {
+            "value": "MySQL",
+            "evidence": [
+              {
+                "source_id": "e56:0:25",
+                "quote": "MySQL"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/3/records/0/attributes/0/items/2/value"
+          }
+        ]
+      }
+    ],
+    "skills.tools_and_platforms": [
+      {
+        "parent": "skills",
+        "child": "tools_and_platforms",
+        "field_path": "skills[0].tools_and_platforms",
+        "record_id": "skills",
+        "pointer": "/section_schemas/3/records/0/attributes/1",
+        "status": "mapped",
+        "review_reasons": [],
+        "items": [
+          {
+            "value": "JIRA",
+            "evidence": [
+              {
+                "source_id": "e52:0:10",
+                "quote": "JIRA"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/3/records/0/attributes/1/items/0/value"
+          },
+          {
+            "value": "Git",
+            "evidence": [
+              {
+                "source_id": "e51:0:3",
+                "quote": "Git"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/3/records/0/attributes/1/items/1/value"
+          },
+          {
+            "value": "AWS",
+            "evidence": [
+              {
+                "source_id": "e46:0:3",
+                "quote": "AWS"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/3/records/0/attributes/1/items/2/value"
+          }
+        ]
+      }
+    ],
+    "skills.domain_and_functional": [
+      {
+        "parent": "skills",
+        "child": "domain_and_functional",
+        "field_path": "skills[0].domain_and_functional",
+        "record_id": "skills",
+        "pointer": "/section_schemas/3/records/0/attributes/2",
+        "status": "unresolved",
+        "review_reasons": [],
+        "items": []
+      }
+    ],
+    "skills.soft_skills": [
+      {
+        "parent": "skills",
+        "child": "soft_skills",
+        "field_path": "skills[0].soft_skills",
+        "record_id": "skills",
+        "pointer": "/section_schemas/3/records/0/attributes/3",
+        "status": "mapped",
+        "review_reasons": [],
+        "items": [
+          {
+            "value": "Agile",
+            "evidence": [
+              {
+                "source_id": "e52:0:10",
+                "quote": "Agile"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/3/records/0/attributes/3/items/0/value"
+          },
+          {
+            "value": "Scrum",
+            "evidence": [
+              {
+                "source_id": "e57:0:12",
+                "quote": "Scrum"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/3/records/0/attributes/3/items/1/value"
+          }
+        ]
+      }
+    ],
+    "skills.all_skills": [
+      {
+        "parent": "skills",
+        "child": "all_skills",
+        "field_path": "skills[0].all_skills",
+        "record_id": "skills",
+        "pointer": "/section_schemas/3/records/0/attributes/4",
+        "status": "mapped",
+        "review_reasons": [],
+        "items": [
+          {
+            "value": "Java",
+            "evidence": [
+              {
+                "source_id": "e53:0:6",
+                "quote": "Java"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/3/records/0/attributes/4/items/0/value"
+          },
+          {
+            "value": "Kafka",
+            "evidence": [
+              {
+                "source_id": "e47:0:11",
+                "quote": "Kafka"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/3/records/0/attributes/4/items/1/value"
+          },
+          {
+            "value": "MySQL",
+            "evidence": [
+              {
+                "source_id": "e56:0:25",
+                "quote": "MySQL"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/3/records/0/attributes/4/items/2/value"
+          },
+          {
+            "value": "JIRA",
+            "evidence": [
+              {
+                "source_id": "e52:0:10",
+                "quote": "JIRA"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/3/records/0/attributes/4/items/3/value"
+          },
+          {
+            "value": "Git",
+            "evidence": [
+              {
+                "source_id": "e51:0:3",
+                "quote": "Git"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/3/records/0/attributes/4/items/4/value"
+          },
+          {
+            "value": "AWS",
+            "evidence": [
+              {
+                "source_id": "e46:0:3",
+                "quote": "AWS"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/3/records/0/attributes/4/items/5/value"
+          },
+          {
+            "value": "Agile",
+            "evidence": [
+              {
+                "source_id": "e52:0:10",
+                "quote": "Agile"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/3/records/0/attributes/4/items/6/value"
+          },
+          {
+            "value": "Scrum",
+            "evidence": [
+              {
+                "source_id": "e57:0:12",
+                "quote": "Scrum"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/3/records/0/attributes/4/items/7/value"
+          },
+          {
+            "value": "EC2",
+            "evidence": [
+              {
+                "source_id": "e41:0:3",
+                "quote": "EC2"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/3/records/0/attributes/4/items/8/value"
+          },
+          {
+            "value": "S3",
+            "evidence": [
+              {
+                "source_id": "e42:0:2",
+                "quote": "S3"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/3/records/0/attributes/4/items/9/value"
+          },
+          {
+            "value": "Hibernate",
+            "evidence": [
+              {
+                "source_id": "e43:0:9",
+                "quote": "Hibernate"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/3/records/0/attributes/4/items/10/value"
+          },
+          {
+            "value": "RESTful APIs",
+            "evidence": [
+              {
+                "source_id": "e44:0:12",
+                "quote": "RESTful APIs"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/3/records/0/attributes/4/items/11/value"
+          },
+          {
+            "value": "Unix",
+            "evidence": [
+              {
+                "source_id": "e45:0:4",
+                "quote": "Unix"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/3/records/0/attributes/4/items/12/value"
+          },
+          {
+            "value": "Kafka Maven",
+            "evidence": [
+              {
+                "source_id": "e47:0:11",
+                "quote": "Kafka Maven"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/3/records/0/attributes/4/items/13/value"
+          },
+          {
+            "value": "API",
+            "evidence": [
+              {
+                "source_id": "e44:0:12",
+                "quote": "API"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/3/records/0/attributes/4/items/14/value"
+          },
+          {
+            "value": "Backend development",
+            "evidence": [
+              {
+                "source_id": "e49:0:19",
+                "quote": "Backend development"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/3/records/0/attributes/4/items/15/value"
+          },
+          {
+            "value": "Bitbucket",
+            "evidence": [
+              {
+                "source_id": "e50:0:9",
+                "quote": "Bitbucket"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/3/records/0/attributes/4/items/16/value"
+          },
+          {
+            "value": "JIRA Agile",
+            "evidence": [
+              {
+                "source_id": "e52:0:10",
+                "quote": "JIRA Agile"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/3/records/0/attributes/4/items/17/value"
+          },
+          {
+            "value": "Java 8",
+            "evidence": [
+              {
+                "source_id": "e53:0:6",
+                "quote": "Java 8"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/3/records/0/attributes/4/items/18/value"
+          },
+          {
+            "value": "JPA",
+            "evidence": [
+              {
+                "source_id": "e54:0:3",
+                "quote": "JPA"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/3/records/0/attributes/4/items/19/value"
+          },
+          {
+            "value": "Jenkins",
+            "evidence": [
+              {
+                "source_id": "e55:0:7",
+                "quote": "Jenkins"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/3/records/0/attributes/4/items/20/value"
+          },
+          {
+            "value": "Linux Microservices MySQL",
+            "evidence": [
+              {
+                "source_id": "e56:0:25",
+                "quote": "Linux Microservices MySQL"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/3/records/0/attributes/4/items/21/value"
+          },
+          {
+            "value": "Scrum Master",
+            "evidence": [
+              {
+                "source_id": "e57:0:12",
+                "quote": "Scrum Master"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/3/records/0/attributes/4/items/22/value"
+          },
+          {
+            "value": "Sprint planning",
+            "evidence": [
+              {
+                "source_id": "e58:0:15",
+                "quote": "Sprint planning"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/3/records/0/attributes/4/items/23/value"
+          },
+          {
+            "value": "Spring Security",
+            "evidence": [
+              {
+                "source_id": "e59:0:15",
+                "quote": "Spring Security"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/3/records/0/attributes/4/items/24/value"
+          },
+          {
+            "value": "Spring Boot",
+            "evidence": [
+              {
+                "source_id": "e60:0:11",
+                "quote": "Spring Boot"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/3/records/0/attributes/4/items/25/value"
+          },
+          {
+            "value": "TCP/IP",
+            "evidence": [
+              {
+                "source_id": "e61:0:6",
+                "quote": "TCP/IP"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/3/records/0/attributes/4/items/26/value"
+          }
+        ]
+      }
+    ],
+    "awards.name": [],
+    "awards.issuer": [],
+    "awards.date": [],
+    "publications.title": [],
+    "publications.publisher": [],
+    "publications.date": [],
+    "publications.url": [],
+    "volunteering.organization": [],
+    "volunteering.role": [],
+    "volunteering.dates": [],
+    "volunteering.activities": [],
+    "languages.language": [],
+    "languages.proficiency": [],
+    "interests.interest": [],
+    "references.name": [],
+    "references.relationship": [],
+    "references.organization": [],
+    "references.email": [],
+    "references.phone": [],
+    "references.availability": []
+  }
+}

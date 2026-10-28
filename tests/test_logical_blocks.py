@@ -78,3 +78,40 @@ def test_unowned_bullet_markers_do_not_become_fake_job_cards():
     s.entries=[SectionEntry(entry_id='job-1',block_indices=[0,1],lane='main',boundary_reason='job')]
     assert len(s.logical_blocks)==1
     assert s.blocks[2].text==' • '
+
+
+def test_semantic_shape_uses_existing_registry_and_record_local_sources_only():
+    from local_api.schemas.subschema_spec import SUBSCHEMAS
+    s=section('experience',['Acme','Engineer','Beta'])
+    s.entries=[SectionEntry(entry_id='job',block_indices=[0,1],lane='main',boundary_reason='source',
+                           fields={'employer':[0,2], 'title':[1], 'invented':[2]})]
+    groups=s.logical_blocks
+    frame=groups[0]['semantic_frame']
+    assert frame['schema_target']=='experience'
+    assert frame['scope']=='one_record'
+    slots={slot['name']:slot for slot in frame['field_slots']}
+    assert set(slots)==set(SUBSCHEMAS['experience'])
+    assert slots['company']['source_hints']==[groups[0]['source_ids'][0]]
+    assert slots['role']['source_hints']==[groups[0]['source_ids'][1]]
+    assert slots['location']['source_hints']==[]
+    assert groups[1]['semantic_frame']['schema_target'] is None
+    assert groups[1]['semantic_frame']['interpretation_status']=='requires_association'
+
+
+def test_shape_hints_refresh_when_ownership_changes_and_never_invent_values():
+    s=section('projects',['Project One','Description'])
+    s.entries=[SectionEntry(entry_id='project',block_indices=[0,1],lane='main',boundary_reason='source',fields={'title':[0]})]
+    frame=s.logical_blocks[0]['semantic_frame']
+    assert next(slot for slot in frame['field_slots'] if slot['name']=='name')['source_hints']==['e0:0:11']
+    assert all('value' not in slot for slot in frame['field_slots'])
+    s.entries[0].block_indices=[1]
+    assert all(not slot['source_hints'] for slot in s.logical_blocks[-1]['semantic_frame']['field_slots'])
+
+
+def test_summary_shape_collects_all_paragraphs_in_one_statement_context():
+    s=section('summary',['First paragraph.','Second paragraph.'])
+    groups=s.logical_blocks
+    assert len(groups)==1
+    frame=groups[0]['semantic_frame']
+    assert frame['scope']=='complete_section'
+    assert next(slot for slot in frame['field_slots'] if slot['name']=='statements')['source_hints']==groups[0]['source_ids']

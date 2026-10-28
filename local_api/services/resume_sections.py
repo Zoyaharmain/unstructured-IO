@@ -138,7 +138,8 @@ class SectionEngine:
                     hint_cuts = []
                     recovery_cuts = []
                 mechanical_cuts = hint_cuts + [offsets[i][0] for i in range(200, len(offsets), 200)]
-                cuts = sorted(set(recovery_cuts + [word_safe_cut(line, cut) for cut in mechanical_cuts] + [0] + ([inline_cut] if inline_cut else []) + [len(line)]))
+                project_cuts = [cut for match in re.finditer(r'(?<!\w)project\s*#?\s*\d+\s*:\s*\S',line,re.I) for cut in (match.start(),line.index(':',match.start())+1)]
+                cuts = sorted(set(project_cuts + recovery_cuts + [word_safe_cut(line, cut) for cut in mechanical_cuts] + [0] + ([inline_cut] if inline_cut else []) + [len(line)]))
                 if not line:
                     cuts = [0, 0]
                 for start, end in zip(cuts, cuts[1:]):
@@ -237,7 +238,10 @@ class SectionEngine:
             if record_field:structural_label = None
             alternatives = sorted(compounds.get(position, set()))
             compound = len(alternatives) > 1 and structural_label is None
-            employer_boundary = employment_start(unit.text)
+            from local_api.services.record_subfields import paired_employment_header
+            next_unit = units[position+1] if position+1<len(units) else None
+            paired_boundary = bool(next_unit and context and context[0] in {'experience','projects'} and paired_employment_header(unit.text,next_unit.text))
+            employer_boundary = employment_start(unit.text) or paired_boundary
             # A labelled professional engagement may follow a skills sidebar
             # without a repeated Experience heading. Require role, project and
             # client evidence; do not treat a client as an employer.

@@ -122,3 +122,14 @@ def test_reverse_date_range_is_flagged_for_review():
     record = map_schema(req).section_schemas[0].records[0]
     assert any('precedes' in reason for reason in record.review_reasons)
     assert all(i.status == 'needs_review' for a in record.attributes for i in a.items)
+
+
+@pytest.mark.parametrize('text,company,role',[
+    ('SLK Software, Team Leader','SLK Software','Team Leader'),
+    ('Impetus Technologies, SRE/Devops Engineer','Impetus Technologies','SRE/Devops Engineer'),
+    ('Cavisson Systems, Software Engineer','Cavisson Systems','Software Engineer'),
+    ('Acme, Inc., Senior Engineer','Acme, Inc.','Senior Engineer'),
+])
+def test_comma_employment_headers_preserve_literal_company_and_role(text,company,role):
+    from local_api.services.record_subfields import employment_header_fields
+    assert employment_header_fields(text)=={'company':company,'role':role}
