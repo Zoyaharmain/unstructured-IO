@@ -104,7 +104,7 @@ function renderSubschemas(sections) {
     }
     if (section.residual_blocks.length) {
       const residual = add(card, 'details', '');
-      add(residual, 'summary', `${section.residual_blocks.length} source blocks retained for comparison`);
+      add(residual, 'summary', `${section.residual_blocks.length} source excerpts with headings or text not fully covered by field citations`);
       for (const block of section.residual_blocks) add(residual, 'p', `${block.source_id}: ${block.quote}`);
     }
   }

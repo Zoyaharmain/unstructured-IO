@@ -80,6 +80,15 @@ def map_schema(request):
         header=blocks('personal_information');text='\n'.join(b.text for b in header)
         doc_text='\n'.join(e.text for e in request.elements)
         guessed=extract_contact_info(text,doc_text)
+        # Prefer a distinct opening identity fragment over words in a role headline.
+        from local_api.services.record_subfields import ROLE
+        identity = [b.text.strip() for b in header
+                    if b.source_element_index == min((h.source_element_index for h in header), default=-1)
+                    and 2 <= len(b.text.split()) <= 5
+                    and all(c.isalpha() or c in " .'-" for c in b.text.strip())
+                    and not ROLE.search(b.text)]
+        if len(identity) == 1:
+            guessed.full_name = identity[0]
         for field in type(guessed).model_fields:
             value=getattr(guessed,field)
             if value in {'Candidate','Not specified','not_specified@domain.com'}:value=None

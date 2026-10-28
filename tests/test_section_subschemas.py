@@ -37,13 +37,15 @@ def test_unsupported_value_is_not_inherited_from_another_record():
     assert next(a for a in job.attributes if a.name == 'role').items
 
 
-def test_fragments_do_not_hide_rest_of_block_and_unlabelled_awards_stay_unresolved():
+def test_fragments_preserve_rest_of_block_and_unlabelled_awards_keep_literal_name():
     out = map_schema(sample())
     job = next(s for s in out.section_schemas if s.category == 'experience')
     assert any('Acme Ltd |' in b.quote for b in job.residual_blocks)
     awards = next(s for s in out.section_schemas if s.category == 'awards')
-    assert all(not a.items for a in awards.records[0].attributes)
-    assert awards.residual_blocks[0].quote == 'Regional community prize'
+    fields = {a.name: a for a in awards.records[0].attributes}
+    assert fields['name'].items[0].value == 'Regional community prize'
+    assert fields['name'].items[0].evidence[0].quote == 'Regional community prize'
+    assert not fields['issuer'].items and not fields['date'].items
 
 
 def test_ambiguous_associations_remain_flagged():

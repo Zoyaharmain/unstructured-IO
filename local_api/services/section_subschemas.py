@@ -118,6 +118,13 @@ def build_subschemas(sections, data, scope, record_bindings=None):
                         values['interest'] = [b.text for b in allowed]
                     values, refinement_reasons = refine_record(category, values, allowed)
                     reasons.extend(refinement_reasons)
+                    # An explicitly routed achievement can be a complete statement,
+                    # without an "Award name:" label. Preserve it literally; do not
+                    # infer an issuer or date from adjacent records.
+                    if category == 'awards' and not values.get('name'):
+                        from local_api.services.schema_mapping import canonical
+                        content = [b for b in allowed if b.assignment not in {'section_heading', 'structural_heading'}]
+                        values['name'] = canonical(content).strip() or None
                     if any(v is None for v in values.values()):
                         reasons.append('Unlabelled compound information requires source review.')
                     records.append(SubschemaRecord(record_id=record_id, source_ids=[sid(b) for b in allowed],
