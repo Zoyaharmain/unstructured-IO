@@ -86,9 +86,10 @@ function renderSubschemas(sections) {
   for (const section of sections) {
     const card = add(root, 'section', '');
     add(card, 'h3', section.label);
-    for (const record of section.records) {
+    for (const [index, record] of section.records.entries()) {
       const group = add(card, 'details', ''); group.open = true;
-      add(group, 'summary', record.record_id);
+      group.dataset.recordId = record.record_id;
+      add(group, 'summary', `${section.label} ${index + 1}`);
       const fields = add(group, 'dl', '');
       for (const field of record.attributes) {
         add(fields, 'dt', field.name.replaceAll('_', ' '));

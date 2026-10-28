@@ -116,9 +116,11 @@ function renderSectionResults(data, localOnly) {
     }
     content.append(document.createTextNode(chars.slice(cursor).join('')));
     if (section.logical_blocks?.length) {
-      for (const [index, group] of section.logical_blocks.entries()) {
+      let recordNumber = 0;
+      for (const group of section.logical_blocks) {
+        if (group.kind === 'record') recordNumber++;
         const logical = node('article', 'logical-record');
-        if (group.kind !== 'section') logical.append(node('h4', '', group.kind === 'unresolved' ? 'Unassigned record content' : `${section.label} ${index + 1}`));
+        if (group.kind !== 'section') logical.append(node('h4', '', group.kind === 'unresolved' ? `${section.label} · record association needs review` : `${section.label} ${recordNumber}`));
         if (group.semantic_frame) {
           const scope = group.semantic_frame.scope === 'one_record' ? 'One complete record' : group.semantic_frame.scope === 'complete_section' ? 'Complete section' : 'Association needed';
           logical.append(node('p', 'comparison-note', `${group.semantic_frame.meaning} · ${scope}`));

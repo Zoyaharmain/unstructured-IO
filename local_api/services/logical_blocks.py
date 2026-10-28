@@ -8,7 +8,13 @@ RECORD_SECTIONS = {'experience', 'education', 'projects', 'certifications',
 
 def logical_blocks(section):
     """Partition record content once; raw headings/layout remain in source blocks."""
-    content = [i for i, b in enumerate(section.blocks) if b.assignment not in HEADINGS]
+    from local_api.services.resume_structure import heading_boundary
+    from local_api.services.resume_sections import ALIASES
+    # Old/reviewed inventories may retain a content assignment on an exact
+    # heading. It establishes section context, never a record's field value.
+    content = [i for i, b in enumerate(section.blocks)
+               if b.assignment not in HEADINGS
+               and heading_boundary(b.text, ALIASES)[0] != section.category]
     if not content:
         return []
 
@@ -45,9 +51,17 @@ def logical_blocks(section):
         output.append(group(entry.entry_id, indices, 'record', reasons, entry)); used.update(indices)
     # Do not guess which employer/degree should own a remaining paragraph.
     remaining = [i for i in content if i not in used]
-    if remaining and any(c.isalnum() for i in remaining for c in section.blocks[i].text):
-        output.append(group(f'{section.category}-unassigned', remaining, 'unresolved',
-                            ['These source fragments have no established record owner.']))
+    # Keep separated leftovers separated: a single catch-all card can falsely
+    # imply a relationship between paragraphs on opposite sides of a record.
+    clusters = []
+    for index in remaining:
+        if not clusters or index != clusters[-1][-1] + 1:
+            clusters.append([])
+        clusters[-1].append(index)
+    for number, indices in enumerate(clusters, 1):
+        if any(c.isalnum() for i in indices for c in section.blocks[i].text):
+            output.append(group(f'{section.category}-unassigned-{number}', indices, 'unresolved',
+                                ['Section identified; association with a specific record has not been established.']))
     return sorted(output, key=lambda g: g['block_indices'][0])
 
 
@@ -78,7 +92,7 @@ def semantic_frame(section, indices, kind, entry=None):
     if section.category == 'summary' and kind == 'section':
         hints['statements'] = [f'e{section.blocks[i].source_element_index}:{section.blocks[i].start}:{section.blocks[i].end}' for i in indices]
     return {
-        'schema_target': section.category if kind != 'unresolved' else None,
+        'schema_target': section.category,
         'meaning': section.label,
         'scope': 'unassigned_fragments' if kind == 'unresolved' else
                  'one_record' if kind == 'record' else 'complete_section',

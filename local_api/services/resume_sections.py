@@ -34,6 +34,11 @@ _engine = None
 def build_sections(grouped, elements):
     from local_api.services.source_rows import refine_rows
     grouped = refine_rows(grouped, elements)
+    grouped = {category: [b.model_copy(update={'assignment': 'structural_heading'})
+               if b.assignment not in {'section_heading', 'structural_heading'}
+               and heading_boundary(b.text, ALIASES)[0] == category else b
+               for b in blocks] for category, blocks in grouped.items()}
+
     sections = [ResumeSection(category=key, label=ANCHORS[key]['label'], blocks=blocks, entries=entry_groups(blocks, key, elements)) for key, blocks in grouped.items()]
     for section in sections:
         from local_api.services.record_relationships import annotate_relationships

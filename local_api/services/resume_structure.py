@@ -45,7 +45,7 @@ EXTRA_HEADINGS = {
                    'project experience', 'key projects and roles', 'earlier experience', 'earlier employment'],
     'languages': ['spoken languages', 'language proficiency', 'langues'],
     'education': ['qualifications', 'educational background', 'academic qualifications', 'formation', 'formations', 'academics', 'academic background', 'academic details'],
-    'skills': ['technical profile', 'competences', 'comp\u00e9tences', 'languages and platforms', 'programming languages',
+    'skills': ['technical profile', 'technical exposure', 'competences', 'comp\u00e9tences', 'languages and platforms', 'programming languages',
                'tools and platforms', 'core programming and frameworks', 'cloud and devops',
                'core competencies and skills', 'it skillset', 'it skills',
                'testing and development practices', 'skill set', 'skill sets', 'skillset', 'key strengths', 'technical competencies', 'core competency', 'core competence', 'core competences', 'core skills', 'domain expertise', 'business analysis and product management', 'tools and technology'],

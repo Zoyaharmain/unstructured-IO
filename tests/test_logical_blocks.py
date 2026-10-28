@@ -94,7 +94,7 @@ def test_semantic_shape_uses_existing_registry_and_record_local_sources_only():
     assert slots['company']['source_hints']==[groups[0]['source_ids'][0]]
     assert slots['role']['source_hints']==[groups[0]['source_ids'][1]]
     assert slots['location']['source_hints']==[]
-    assert groups[1]['semantic_frame']['schema_target'] is None
+    assert groups[1]['semantic_frame']['schema_target'] == 'experience'
     assert groups[1]['semantic_frame']['interpretation_status']=='requires_association'
 
 
@@ -115,3 +115,20 @@ def test_summary_shape_collects_all_paragraphs_in_one_statement_context():
     frame=groups[0]['semantic_frame']
     assert frame['scope']=='complete_section'
     assert next(slot for slot in frame['field_slots'] if slot['name']=='statements')['source_hints']==groups[0]['source_ids']
+
+
+def test_exact_heading_with_stale_content_assignment_is_context_not_orphan():
+    s=section('projects',['PROJECTS and POCs:','Project A','Built APIs'])
+    s.entries=[SectionEntry(entry_id='project-1',block_indices=[1,2],lane='main',boundary_reason='source')]
+    assert len(s.logical_blocks)==1
+    assert s.logical_blocks[0]['block_indices']==[1,2]
+    assert s.blocks[0].text=='PROJECTS and POCs:'
+
+
+def test_unowned_fragments_keep_known_schema_and_do_not_merge_across_records():
+    s=section('experience',['Ambiguous preceding duties','Employer','Engineer','Ambiguous following duties'])
+    s.entries=[SectionEntry(entry_id='job',block_indices=[1,2],lane='main',boundary_reason='source')]
+    unresolved=[g for g in s.logical_blocks if g['kind']=='unresolved']
+    assert [g['block_indices'] for g in unresolved]==[[0],[3]]
+    assert all(g['semantic_frame']['schema_target']=='experience' for g in unresolved)
+    assert all(g['relationship_status']=='needs_review' for g in unresolved)
