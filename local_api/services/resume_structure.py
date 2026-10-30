@@ -32,6 +32,7 @@ RECORD_FIELDS = {'technologies', 'technology', 'tools', 'tool', 'tech stack',
                  'role', 'job title', 'designation', 'client', 'duration', 'period',
                  'achievement', 'accomplishment', 'responsibilities', 'key responsibilities',
                  'roles and responsibilities', 'job responsibilities', 'key achievements',
+                 'key responsibilities and achievements', 'responsibilities and achievements', 'technology and tools',
                  'environment', 'client name', 'work base location'}
 EXTRA_HEADINGS = {
     'personal_information': ['contact', 'personal info', 'personal details'],
@@ -51,7 +52,10 @@ EXTRA_HEADINGS = {
                'testing and development practices', 'skill set', 'skill sets', 'skillset', 'key strengths', 'technical competencies', 'core competency', 'core competence', 'core competences', 'core skills', 'domain expertise', 'business analysis and product management', 'tools and technology'],
     'certifications': ['certificates', 'certification', 'training', 'certifications and licenses'],
     'awards': ['key achievements', 'professional achievements', 'awards and recognitions',
-               'achievements/awards'],
+               'awards and recognition', 'awards & recognition', 'awards & recognitions',
+               'recognition and awards', 'recognitions and awards',
+               'achievements/awards', 'achievements and awards', 'key achievement',
+               'awards/achievements', 'awards and achievement'],
 }
 
 
@@ -122,6 +126,8 @@ def heading_boundary(text, aliases):
             # A training/project title is not a flattened section heading.
             if alias == 'training' and not prefix.isupper():
                 continue
+            if alias in {'certification', 'certifications'} and re.match(r'^(?:testing|exam|examination|course|authority|matrix|matrixes)\b', remainder, re.I):
+                continue
             if prefix[0].isupper() and remainder and (remainder[0].isupper() or remainder[0].isdigit()):
                 return owner, match.end()
     return None, None
@@ -133,6 +139,42 @@ def entry_groups(blocks, category, elements):
     These are structural proposals, not invented company/degree records. Without
     a visible entry boundary, retain one group rather than guess from similarity.
     """
+    if category == 'awards':
+        content = [(i,b) for i,b in enumerate(blocks)
+                   if b.assignment not in {'section_heading','structural_heading'} and b.text.strip()]
+        if content:
+            cards = []
+            bullet_seen = False
+            for index, b in content:
+                text = b.text.strip()
+                if not re.search(r'[A-Za-z0-9]', text):
+                    bullet_seen = True
+                    continue
+                starts_new = False
+                if not cards:
+                    starts_new = True
+                elif bullet_seen:
+                    starts_new = True
+                else:
+                    prev_b = blocks[cards[-1]['block_indices'][-1]]
+                    if b.source_element_index != prev_b.source_element_index:
+                        el = elements[b.source_element_index]
+                        if el.type in {'ListItem', 'Title'}:
+                            starts_new = True
+                        elif re.search(r'\b(?:Award|Champion|Scholarship|Medal|Prize|Honors?|Winner|Recognition|Performer)\b', text, re.I):
+                            starts_new = True
+                        elif re.match(r'^\s*[•▪●*\uf0b7-]\s+', text):
+                            starts_new = True
+                    elif re.match(r'^\s*[•▪●*\uf0b7-]\s+', text):
+                        starts_new = True
+                if starts_new:
+                    cards.append({'entry_id': f'awards-{len(cards)+1}', 'block_indices': [index],
+                                  'lane': 'source', 'boundary_reason': 'original achievement list item'})
+                else:
+                    cards[-1]['block_indices'].append(index)
+                bullet_seen = False
+            if cards:
+                return cards
     if category == 'projects':
         geometric = project_source_groups(blocks,elements)
         if geometric:return geometric
@@ -284,7 +326,7 @@ def reviewed_employment_groups(blocks,elements):
         hs=hints(b)
         return min((h['bbox'][1] for h in hs),default=None)
     from local_api.services.record_relationships import dated_organization_header
-    from local_api.services.record_subfields import responsibility_fragment, employment_header_fields
+    from local_api.services.record_subfields import responsibility_fragment, employment_header_fields, is_place
     anchors=[]
     shared_history=False
     for i,b in enumerate(blocks):
@@ -318,9 +360,10 @@ def reviewed_employment_groups(blocks,elements):
             for f in following
         )
         paired_employer = bool(bold and has_following_role_or_date and len(text.split()) <= 10
-                               and not role.search(text) and not responsibility_fragment(text))
+                               and not role.search(text) and not responsibility_fragment(text)
+                               and not is_place(text))
         valid_anchor = (explicit_header or ((role.search(text) or business.search(text)) and (bold or employment_start(text) or aligned_date)) or (bold and dated_history) or dated_organization_header(text) or paired_employer)
-        if not valid_anchor:continue
+        if not valid_anchor or is_place(text):continue
         if anchors and anchors[-1].get('paired_employer') and anchors[-1]['index'] == i-1:
             continue
         # Employer and title can occupy two adjacent source rows. Merge a
@@ -391,6 +434,22 @@ def reviewed_education_groups(blocks,elements):
     for i in anchors:
         if not any(blocks[j].page_number==blocks[i].page_number and abs(rows[j][0]-rows[i][0])<.006 and abs(rows[j][1]-rows[i][1])<.25 for j in unique):unique.append(i)
     anchors=unique
+    # A wrapped acronym expansion is one qualification, not another degree.
+    aliases={'pgdb':r'Post\s+Graduate\s+Diploma', 'pgdm':r'Post\s+Graduate\s+Diploma',
+             'mba':r'Master\s+of\s+Business\s+Administration'}
+    suppressed=set()
+    for previous,current in zip(anchors,anchors[1:]):
+        prefix=blocks[previous].text.strip()
+        match=re.match(r'^(PGDB|PGDM|MBA)\s*\(',prefix,re.I)
+        if not match or ')' in prefix or blocks[previous].page_number!=blocks[current].page_number:
+            continue
+        between=blocks[previous:current+1]
+        if blocks[current].source_element_index-blocks[previous].source_element_index>1:
+            continue
+        text=' '.join(b.text for b in between)
+        if re.search(r'\b'+match[1]+r'\s*\(\s*'+aliases[match[1].lower()],text,re.I):
+            suppressed.add(current)
+    anchors=[i for i in anchors if i not in suppressed]
     groups=[{'entry_id':f'education-{i+1}','block_indices':[],'lane':'source_geometry','boundary_reason':'visible qualification anchor and nearby source rows; field values remain unverified'} for i in range(len(anchors))]
     header_names = {'education','qualifications','academic credentials','educational background','qualification','college/university/institution','academic profile','college/school','university/board','degree','year of passing'}
     institution_rows = [i for i,b in enumerate(blocks) if i in rows and 'institution' in field_kinds(b.text,'education') and normalized_heading(b.text) not in header_names]

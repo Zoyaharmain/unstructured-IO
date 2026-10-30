@@ -14,7 +14,7 @@ def logical_blocks(section):
     # heading. It establishes section context, never a record's field value.
     content = [i for i, b in enumerate(section.blocks)
                if b.assignment not in HEADINGS
-               and heading_boundary(b.text, ALIASES)[0] != section.category]
+               and heading_boundary(b.text, ALIASES) != (section.category, None)]
     if not content:
         return []
 

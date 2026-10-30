@@ -503,3 +503,31 @@ def test_explicit_context_survives_lane_changes_inside_one_element(engine):
     assert ''.join(b.text for b in skills.blocks if b.source_element_index == 1) == text
     assert not out.needs_review
     assert_preserved(req, out)
+
+
+def test_preamble_role_headline_assigned_to_personal_information(engine):
+    req = request(['A Madhavi', 'test@example.com', '+91 9876543210', 'Hyderabad',
+                   'Role: Business Analyst', 'Professional Summary', 'Experienced BA with 8+ years.'])
+    out = engine.detect(req)
+    pi = next(s for s in out.sections if s.category == 'personal_information')
+    assert any('Role: Business Analyst' in b.text for b in pi.blocks)
+    assert not any('Role: Business Analyst' in b.text for b in out.needs_review)
+
+
+def test_certification_testing_bullet_does_not_split_or_hijack_section(engine):
+    from local_api.services.resume_structure import heading_boundary
+    assert heading_boundary('Certification Testing with member banks', service.ALIASES) == (None, None)
+    req = request(['Key Projects:', 'Implementation of Fraud Detection system',
+                   'Certification Testing with member banks', 'Worked on Tag Mapping to Element level mapping for IMPS.',
+                   'Key Responsibilities:', 'Gathered and analyzed business requirements.',
+                   'Certifications', '- Certified Scrum Product Owner (CSPO), 2025'],
+                  types=['Title', 'ListItem', 'ListItem', 'ListItem', 'Title', 'ListItem', 'Title', 'ListItem'])
+    out = engine.detect(req)
+    projects = next(s for s in out.sections if s.category == 'projects')
+    certifications = next(s for s in out.sections if s.category == 'certifications')
+    assert 'Certification Testing with member banks' in projects.text
+    assert 'Key Responsibilities:' in projects.text
+    assert 'Gathered and analyzed business requirements.' in projects.text
+    assert '- Certified Scrum Product Owner (CSPO), 2025' in certifications.text
+    assert not out.needs_review
+

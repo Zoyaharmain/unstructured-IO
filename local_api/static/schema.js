@@ -29,8 +29,9 @@ async function mapExistingSections() {
       sectionResult = data.meta.reviewed_sections;
       renderSectionResults(sectionResult, $('section-mode').value === 'local');
     }
-    mappedResume = data; $('schema-json').textContent = JSON.stringify(data,null,2);
+    mappedResume = data; $('schema-json').textContent = JSON.stringify(standardizedResumeExport(data),null,2);
     renderSubschemas(data.section_schemas || []);
+    renderStandardizationWarnings(data);
     $('schema-preview').hidden = false; $('download-schema').disabled = false;
     const missing = data.meta?.missing_required_fields?.length || 0;
     const coverage = data.meta?.source_coverage_ledger?.status_counts || {};
@@ -77,6 +78,45 @@ function renderSchemaHistory(diagnostics) {
   $('schema-status').append(history);
 }
 $('map-schema').addEventListener('click', mapExistingSections);
+function schemaSourceCoverage(section, block, sources = []) {
+  const text = block.quote;
+  const covered = Array(text.length).fill(false);
+  const mappedFields = new Set();
+  const context = [];
+  const source = sources.find(b => `e${b.source_element_index}:${b.start}:${b.end}` === block.source_id);
+  if (source && ['section_heading', 'structural_heading'].includes(source.assignment)) {
+    return {mappedFields: [], remaining: [], context: [text]};
+  }
+  // Labels group competencies; their values, not their labels, are skill items.
+  if (section.category === 'skills' && text.includes(':')) {
+    const end = text.indexOf(':') + 1;
+    if (text.slice(0, end).split(/\s+/).length <= 8) {
+      context.push(text.slice(0, end));
+      covered.fill(true, 0, end);
+    }
+  }
+  for (const record of section.records) for (const field of record.attributes) {
+    for (const item of field.items) for (const ref of item.evidence) {
+      if (ref.source_id !== block.source_id || !ref.quote) continue;
+      const start = text.indexOf(ref.quote);
+      // Repeated quotes lack offsets: leave ambiguous occurrences visible.
+      if (start < 0 || text.indexOf(ref.quote, start + 1) !== -1) continue;
+      covered.fill(true, start, start + ref.quote.length);
+      mappedFields.add(`${section.category}.${field.name}`);
+    }
+  }
+  const remaining = [];
+  let start = null;
+  for (let i = 0; i <= text.length; i++) {
+    if (i < text.length && !covered[i]) { if (start === null) start = i; }
+    else if (start !== null) {
+      const value = text.slice(start, i).trim();
+      if (/[\p{L}\p{N}]/u.test(value)) remaining.push(value);
+      start = null;
+    }
+  }
+  return {mappedFields: [...mappedFields], remaining, context};
+}
 function renderSubschemas(sections) {
   const root = $('schema-fields'); root.replaceChildren();
   const add = (parent, tag, text) => {
@@ -94,10 +134,18 @@ function renderSubschemas(sections) {
       for (const field of record.attributes) {
         add(fields, 'dt', field.name.replaceAll('_', ' '));
         const value = add(fields, 'dd', '');
-        if (!field.items.length) add(value, 'span', ({not_stated:'Not stated in this source record.',ambiguous:'Ambiguous — source association needs review.',unmapped:'Present in source — mapping still needs review.'})[field.status] || 'Unresolved — not established by the local mapper.');
+        const standardized = section.category === 'experience' && field.name === 'duration'
+          ? mappedResume?.standardized_data?.experience?.[index] : null;
+        if (standardized) {
+          add(value, 'p', (standardized.duration ? `${standardized.duration_months} months · ${standardized.duration}` : null) || 'Cannot calculate duration safely from these dates.');
+          if (standardized.duration) add(value, 'small', `${standardized.duration_is_approximate ? 'Approximate calendar-month coverage' : 'Calculated from exact dates'}${standardized.duration_as_of ? ' · as of '+standardized.duration_as_of : ''}`);
+        }
+
+        if (!standardized && !field.items.length) add(value, 'span', ({not_stated:'Not stated in this source record.',ambiguous:'Ambiguous — source association needs review.',unmapped:'Present in source — mapping still needs review.'})[field.status] || 'Unresolved — not established by the local mapper.');
         for (const item of field.items) {
-          add(value, 'p', String(item.value) + (item.status === 'needs_review' ? ' · association needs review' : ''));
+          if (!standardized) add(value, 'p', String(item.value) + (item.status === 'needs_review' ? ' · association needs review' : ''));
           const evidence = add(value, 'details', ''); add(evidence, 'summary', 'Source evidence');
+          if (standardized) add(evidence, 'p', 'Original source duration/range: '+String(item.value));
           for (const ref of item.evidence) add(evidence, 'p', `${ref.source_id}: “${ref.quote}”`);
         }
       }
@@ -105,15 +153,77 @@ function renderSubschemas(sections) {
     }
     if (section.residual_blocks.length) {
       const residual = add(card, 'details', '');
-      add(residual, 'summary', `${section.residual_blocks.length} source excerpts with headings or text not fully covered by field citations`);
-      for (const block of section.residual_blocks) add(residual, 'p', `${block.source_id}: ${block.quote}`);
+      const sources = sectionResult?.sections?.find(s => s.category === section.category)?.blocks || [];
+      const coverage = section.residual_blocks.map(block => ({block, ...schemaSourceCoverage(section, block, sources)}));
+      const incomplete = coverage.filter(item => item.remaining.length);
+      add(residual, 'summary', incomplete.length
+        ? `${incomplete.length} source excerpt(s) contain text still needing field mapping`
+        : 'Source coverage: cited content mapped; headings and labels retained as context');
+      for (const item of coverage) {
+        const row = add(residual, 'details', '');
+        add(row, 'summary', `${item.block.source_id} · ${item.remaining.length ? 'Some text needs mapping' : item.mappedFields.length ? 'Mapped' : 'Section context'}`);
+        if (item.mappedFields.length) add(row, 'p', `Assigned to: ${item.mappedFields.join(', ')}`);
+        if (item.context.length) add(row, 'p', `Heading or label: ${item.context.join(' ')}`);
+        for (const value of item.remaining) add(row, 'p', `Still needs mapping: ${value}`);
+        const original = add(row, 'details', '');
+        add(original, 'summary', 'Original source excerpt');
+        add(original, 'p', item.block.quote);
+      }
     }
   }
 }
+function standardizedResumeExport(response) {
+  if (!response.standardized_data) return response;
+  const clean = value => Array.isArray(value) ? value.map(clean)
+    : value && typeof value === 'object' ? Object.fromEntries(Object.entries(value)
+      .filter(([key]) => !key.startsWith('raw_')).map(([key, item]) => [key, clean(item)])) : value;
+  const data = clean(response.standardized_data);
+  const metadata = {...response.standardization_metadata};
+  const diagnosticKeys = ['duration_is_approximate', 'duration_as_of', 'duration_status',
+    'start_date_iso', 'end_date_iso', 'start_date_precision', 'end_date_precision'];
+  const order = ['company', 'role', 'location', 'start_date', 'end_date', 'is_current',
+    'duration', 'duration_months', 'responsibilities', 'technologies'];
+  metadata.experience_calculations = (data.experience || []).map((job, index) => {
+    const calculation = {record_path: `data.experience[${index}]`};
+    for (const key of diagnosticKeys) if (key in job) {calculation[key] = job[key]; delete job[key];}
+    data.experience[index] = Object.fromEntries([
+      ...order.filter(key => key in job).map(key => [key, job[key]]),
+      ...Object.entries(job).filter(([key]) => !order.includes(key))
+    ]);
+    return calculation;
+  });
+  return {
+    export_type: 'standardized_resume',
+    schema_version: response.standardization_metadata?.schema_version || '1.1.0',
+    source: response.source,
+    data,
+    standardization_metadata: metadata,
+    validation_status: response.validation_status,
+    warnings: response.warnings || [],
+    source_evidence: Object.fromEntries(['data', 'section_schemas', 'meta', 'raw_sections', 'field_index']
+      .filter(key => key in response).map(key => [key, response[key]]))
+  };
+}
+function renderStandardizationWarnings(data) {
+  if (!data.standardized_data) return;
+  const card = document.createElement('details');
+  const heading = document.createElement('summary');
+  heading.textContent = `Standardization checks · ${data.warnings?.length || 0} notices`;
+  card.append(heading);
+  const policy = document.createElement('p');
+  policy.textContent = `As of ${data.standardization_metadata?.as_of_date || 'unspecified'} · ${data.standardization_metadata?.duration_policy || ''}`;
+  card.append(policy);
+  for (const warning of data.warnings || []) {
+    const text = document.createElement('p');
+    text.textContent = `${warning.field}: ${warning.message}${warning.suggested_value ? ' Suggested: '+warning.suggested_value : ''}${warning.basis ? ' Basis: '+warning.basis : ''}`;
+    card.append(text);
+  }
+  $('schema-fields').append(card);
+}
 $('download-schema').addEventListener('click', () => {
   if (!mappedResume) return;
-  const url = URL.createObjectURL(new Blob([JSON.stringify(mappedResume,null,2)],{type:'application/json'}));
+  const url = URL.createObjectURL(new Blob([JSON.stringify(standardizedResumeExport(mappedResume),null,2)],{type:'application/json'}));
   const anchor = node('a'); anchor.href = url;
-  anchor.download = (file?.name || 'resume').replace(/\.[^.]+$/,'')+'.schema.json'; anchor.click();
+  anchor.download = (file?.name || 'resume').replace(/\.[^.]+$/,'')+(mappedResume.standardized_data ? '.standardized.json' : '.schema.json'); anchor.click();
   setTimeout(() => URL.revokeObjectURL(url),1000);
 });

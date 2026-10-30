@@ -8,7 +8,7 @@ DEGREE_FAMILIES={
  'bachelor':r'\bbachelor\b|\bb\s?(?:com|tech|sc|ca|e|s|a)\b',
  'master':r'\bmaster(?:s)?\b|\bm\s?(?:com|tech|sc|ca|ba|e|s|a)\b',
  'postgraduate_certificate':r'\b(?:pg|postgraduate)\s+certificate\b',
- 'diploma':r'\bdiploma\b|\bpgdca\b',
+ 'diploma':r'\bdiploma\b|\b(?:pgdca|pgdb|pgdm)\b',
  'doctorate':r'\bphd\b|\bdoctorate\b',
  'secondary':r'\b(?:ssc|sslc|10th|class\s+x|schooling|matric(?:ulation)?)\b',
  'higher_secondary':r'\b(?:hsc|puc|intermediate|12th|class\s+xii|higher\s+secondary)\b',

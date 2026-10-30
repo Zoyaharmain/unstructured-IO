@@ -270,6 +270,10 @@ def map_schema(request):
             record_bindings[category] = {}
             for old_index, record in enumerate(getattr(data, category)):
                 review = reviews[old_index]
+                if category == 'experience' and not record.company and not record.role:
+                    review['mapped_index'] = None
+                    review['review_reasons'].append('Source content has no established employer or role; retained for association review, not counted as a job.')
+                    continue
                 if category in {'experience', 'education'} and not any(record.model_dump().values()) and not review['review_reasons']:
                     review['mapped_index'] = None
                     continue

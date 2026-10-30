@@ -36,7 +36,7 @@ def build_sections(grouped, elements):
     grouped = refine_rows(grouped, elements)
     grouped = {category: [b.model_copy(update={'assignment': 'structural_heading'})
                if b.assignment not in {'section_heading', 'structural_heading'}
-               and heading_boundary(b.text, ALIASES)[0] == category else b
+               and heading_boundary(b.text, ALIASES) == (category, None) else b
                for b in blocks] for category, blocks in grouped.items()}
 
     sections = [ResumeSection(category=key, label=ANCHORS[key]['label'], blocks=blocks, entries=entry_groups(blocks, key, elements)) for key, blocks in grouped.items()]
@@ -134,7 +134,8 @@ class SectionEngine:
             for line in element.text.splitlines(keepends=True) or ['']:
                 encoded = self.encoder.tokenizer(line, add_special_tokens=False, return_offsets_mapping=True, truncation=False)
                 offsets = encoded['offset_mapping']
-                line_category, inline_cut = heading_boundary(line, ALIASES)
+                is_list_item = element.type == 'ListItem' or bool(re.match(r'^\s*[•▪●*\uf0b7-]\s+', line))
+                line_category, inline_cut = (None, None) if is_list_item else heading_boundary(line, ALIASES)
                 line_hints = element.metadata.get('pdf_source_lines', [])
                 hint_cuts = [max(0, min(len(line), hint[key] - offset)) for hint in line_hints for key in ('start', 'end') if isinstance(hint.get(key), int) and offset <= hint[key] <= offset + len(line)]
                 recovery_cuts = [cut-offset for cut in element.metadata.get('recovery_cuts', []) if isinstance(cut,int) and offset <= cut <= offset+len(line)]
@@ -225,7 +226,8 @@ class SectionEngine:
                 if len(owners) == 1:
                     context = next(iter(contexts.values()))
             short = len(unit.text.split()) <= 12
-            structural_label, _ = heading_boundary(unit.text, ALIASES)
+            is_bullet = element.type == 'ListItem' or bool(re.match(r'^\s*[•▪●*\uf0b7-]\s+', unit.text))
+            structural_label, _ = (None, None) if is_bullet else heading_boundary(unit.text, ALIASES)
             # Broad profile/highlights headings cannot override explicit job history.
             if structural_label == 'summary':
                 from local_api.services.record_subfields import employment_header_fields, RANGE
@@ -249,6 +251,9 @@ class SectionEngine:
             prefix = normalized_heading(unit.text.split(':', 1)[0])
             record_field = ':' in unit.text and (prefix in RECORD_FIELDS or (
                 context and context[0] in {'experience', 'projects'} and prefix in {'objective', 'summary', 'skills', 'technologies used', 'tools and technology', 'tools and technologies', 'programming languages'}))
+            if context and context[0] in {'experience','projects'} and normalized_heading(unit.text) in {
+                    'key responsibilities and achievements','responsibilities and achievements','technology and tools'}:
+                record_field = True
             if record_field:structural_label = None
             alternatives = sorted(compounds.get(position, set()))
             compound = len(alternatives) > 1 and structural_label is None
@@ -264,7 +269,8 @@ class SectionEngine:
                 re.search(r'\bProject\s*:', element.text, re.I) and
                 re.search(r'\bClient\s*:', element.text, re.I))
             page_artifact = element.type == 'PageBreak' or (element.type == 'Footer' and bool(re.fullmatch(r'\s*(?:page\s*)?\d+(?:\s*(?:of|/)\s*\d+)?\s*', unit.text, flags=re.I)))
-            is_heading = (structural_label is not None or (short and hscore >= .72 and hmargin >= .09 and (not context or not context[2] or unit.heading_style))) and not compound and not record_field and not page_artifact and not employer_boundary
+            from local_api.services.record_subfields import ACTION, ROLE
+            is_heading = (structural_label is not None or (short and not is_bullet and not ACTION.search(unit.text) and hscore >= .72 and hmargin >= .09 and (not context or not context[2] or unit.heading_style))) and not compound and not record_field and not page_artifact and not employer_boundary
             assignment, reason = 'semantic', 'BERT embedding assigned to a labeled K-means centroid'
             if compound:
                 contexts.pop(unit.lane, None)
@@ -297,6 +303,9 @@ class SectionEngine:
             elif position < first_heading and len(unit.text.split()) <= 22 and any(heading_boundary(item.text, ALIASES)[0] == 'personal_information' for item in units[:20]):
                 label = 'personal_information'
                 assignment, reason = 'contact_context', 'Opening identity/headline before the contact section'
+            elif position < first_heading and len(unit.text.split()) <= 18 and (re.match(r'^\s*(?:role|designation|title|position)\s*:\s*\S', unit.text, re.I) or (not context and ROLE.search(unit.text) and len(unit.text.split()) <= 8)):
+                label = 'personal_information'
+                assignment, reason = 'contact_context', 'Opening professional role/headline in document preamble'
             elif not context and position < first_heading and len(unit.text.split()) <= 18 and not unit.text.rstrip().endswith(('.', '!', '?')) and any(
                     re.search(r'[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}', units[j].text)
                     for j in range(max(0, position - 2), min(first_heading, position + 3))

@@ -14,7 +14,15 @@ def unique(values):
 
 def skill_candidates(blocks):
     result=[]
-    sources=[b.text for b in blocks]
+    sources=[]
+    for run in runs(blocks):
+        paragraph=''.join(b.text for b in run)
+        # Explicit inline delimiters establish list boundaries across wrapped
+        # rows. Without them, independent physical rows remain independent.
+        if '·' in paragraph:
+            sources.append(paragraph)
+        else:
+            sources.extend(b.text for b in run)
     # Complete parenthesized items across physical rows, but do not invent a
     # compound skill by concatenating two independently rendered list rows.
     for run in runs(blocks):
@@ -33,7 +41,7 @@ def skill_candidates(blocks):
         for i,char in enumerate(source):
             if char=='(':depth+=1
             elif char==')':depth=max(0,depth-1)
-            elif depth == 0 and (char in ',;|\n\u2022\u25cf' or
+            elif depth == 0 and (char in ',;|·\n\u2022\u25cf' or
                     char == '/' and i > 0 and i + 1 < len(source) and source[i-1].isspace() and source[i+1].isspace()):
                 parts.append(source[start:i].strip());start=i+1
         parts.append(source[start:].strip())

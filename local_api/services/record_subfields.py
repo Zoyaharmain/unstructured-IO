@@ -53,11 +53,19 @@ DATE = r"(?:" + MONTH + r"[.\-‘’']?\s*(?:19|20)?\d{2}|(?:19|20)\d{2}(?:[-/]\
 RANGE = re.compile(r'(?<![\w/])(' + DATE + r')\s*(?:[-\u2013\u2014]|\bto\b|\btill\b|\buntil\b)\s*(' + DATE + r'|Present|Current(?:ly working)?|Till Date|Till Now|Now)(?!\w)', re.I)
 
 
-ROLE = re.compile(r'\b(?:engineer|developer|analyst|consultant|architect|manager|specialist|scientist|associate|director|administrator|officer|executive|intern|underwriter|supervisor|leader|lead|head)\b', re.I)
+ROLE = re.compile(r'\b(?:engineer(?:ing)?|developer|analyst|consultant|architect|manager|specialist|scientist|associate|director|administrator|officer|executive|intern|underwriter|supervisor|leader|lead|head|roles?)\b', re.I)
 
 
-ACTION = re.compile(r'^(?:[\u2022*\-]\s*)?(?:used|utilized|leveraged|led|built|developed|implemented|configured|prepared|managed|conducted|supported|translated|partnered|owned|drove|validated|participated|facilitated|engaged|expanded|created|designed|acted|worked|engineered|responsible|interact|analy[sz]e|ensure|drive|collaborate|assist|coordinate|conduct|perform|create|own|manage|document|maintain|design|develop|implement|translate|prepare|gather|capture|handle|support|took(?=\s+(?:a\s+)?lead\b)|lead(?!\s+(?:business|software|data|engineer|analyst|developer|consultant)\b)|work(?=\s+(?:with|on|closely|across|in)\b))\b', re.I)
-PLACE = re.compile(r'^(?:(?:Chennai|Bangalore|Bengaluru|Pune|Mumbai|Hyderabad|Noida|Delhi|London|Paris|Remote)(?:,\s*[^|]+)?|[^|,]+,\s*(?:India|France|UK|USA))$', re.I)
+ACTION = re.compile(r'^(?:[\u2022*\-]\s*)?(?:established|delivered|directed|spearheaded|oversaw|monitored|streamlined|closed|reduced|realized|executed|guided|championed|used|utilized|leveraged|led|built|developed|implemented|configured|prepared|managed|conducted|supported|translated|partnered|owned|drove|validated|participated|facilitated|engaged|expanded|created|designed|acted|worked|engineered|responsible|interact|analy[sz]e|ensure|drive|collaborate|assist|coordinate|conduct|perform|create|own|manage|document|maintain|design|develop|implement|translate|prepare|gather|capture|handle|support|took(?=\s+(?:a\s+)?lead\b)|lead(?!\s+(?:business|software|data|engineer|analyst|developer|consultant)\b)|work(?=\s+(?:with|on|closely|across|in)\b))\b', re.I)
+CITY = r'(?:Chennai|Bangalore|Bengaluru|Pune|Mumbai|Hyderabad|Noida|Delhi|Gurgaon|Kolkata|London|Paris|Remote|Singapore|New York|San Francisco|Tokyo|Sydney)'
+COUNTRY = r'(?:India|France|UK|USA|Singapore|Australia|Germany|Canada|Japan)'
+PLACE = re.compile(r'^(?:' + CITY + r'(?:,\s*[^|]+)?|[A-Za-z.\s]{2,30},\s*' + COUNTRY + r')$', re.I)
+COMPANY_KEYWORD = re.compile(r'\b(?:ltd|limited|inc|services|solutions|systems|bank|company|pvt|telecom|teleservices|technolog(?:y|ies)|corp|corporation)\b', re.I)
+
+
+def is_place(text):
+    text = text.strip()
+    return bool((PLACE.fullmatch(text) or re.fullmatch(COUNTRY, text, re.I)) and not COMPANY_KEYWORD.search(text))
 
 
 CAPABILITY = re.compile(r'^\s*(?:[•▪●*\-]\s*)?(?:familiar\s+with|proficient\s+in|knowledge\s+(?:of|on)|experienced?\s+(?:with|in)|hands[- ]on\s+(?:experience|with))\b', re.I)
@@ -119,7 +127,11 @@ def employment_header_fields(text):
         # and split only when the suffix is a short explicit role phrase.
         employer, title = prefix.rsplit(',', 1)
         title = title.strip()
-        if employer.strip() and ROLE.search(title) and len(title.split()) <= 12 and not responsibility_fragment(title):
+        if (employer.strip() and ROLE.search(title) and len(title.split()) <= 12
+                and not responsibility_fragment(title)
+                and not re.match(r'^(?:and|&|with|for|in|at|to)\b', title, re.I)
+                and not ACTION.search(employer)
+                and not responsibility_fragment(employer)):
             parts = [employer.strip(), title]
     role_indices = [i for i, part in enumerate(parts) if ROLE.search(part) and len(part.split()) <= 12
                     and not re.search(r'\b(?:ltd|limited|inc|services|systems|bank|company|pvt)\b', part, re.I)]
@@ -127,10 +139,23 @@ def employment_header_fields(text):
     role_index = role_indices[0]
     result = {'role': parts[role_index]}
     rest = [part for i, part in enumerate(parts) if i != role_index]
-    locations = [part for part in rest if PLACE.fullmatch(part)]
+    locations = [part for part in rest if is_place(part)]
     if len(locations) == 1:result['location'] = locations[0];rest.remove(locations[0])
+    for i, part in enumerate(rest):
+        if ',' in part:
+            prefix, loc = part.rsplit(',', 1)
+            if is_place(loc) or is_place(part.split(',', 1)[1]):
+                if is_place(part.split(',', 1)[1]):
+                    prefix, loc = part.split(',', 1)
+                result['location'] = loc.strip()
+                rest[i] = prefix.strip()
+                break
     if len(rest) == 1 and not re.search(r'@|https?://|\b(?:19|20)\d{2}\b', rest[0]):
-        result['company'] = rest[0]
+        result['company'] = rest[0].rstrip(' ,')
+    elif len(rest) == 2:
+        company_candidates = [part for part in rest if not (re.search(r'\b(?:services|practice|division|department|group|team)\b', part, re.I) and re.search(r'\b(?:cybersecurity|information|operations|engineering|technology)\b', part, re.I) and not re.search(r'\b(?:chartered|bank|global|solutions|technologies|pvt|ltd|limited|inc|corp)\b', part, re.I))]
+        if len(company_candidates) == 1 and not re.search(r'@|https?://|\b(?:19|20)\d{2}\b', company_candidates[0]):
+            result['company'] = company_candidates[0].rstrip(' ,')
     # Multiple employer-like components remain ambiguous rather than picked by position.
     return result if 'company' in result else {}
 

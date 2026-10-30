@@ -277,6 +277,55 @@ def recover_literal_contacts(payload, source_sections):
 
 
 
+def recover_literal_lists(payload, source_sections, fallback):
+    """Keep deterministic list evidence when review omits it, without new owners."""
+    local = {s.category:s for s in fallback.section_schemas}
+    parents = {s.category:s for s in source_sections.sections}
+    repairs = []
+    for si,row in enumerate(payload['sections']):
+        category = row['category']
+        if category not in {'awards','skills'} or category not in local:
+            continue
+        source = parents[category]
+        if category == 'skills' and not any('·' in b.text for b in source.blocks):
+            # Recovery here is for explicit inline lists, not arbitrary prose
+            # that a provider has deliberately interpreted more narrowly.
+            continue
+        local_records = local[category].records
+        if category == 'awards':
+            # Only original source bullets establish independent new records.
+            bullet_ids = {e.entry_id for e in source.entries
+                          if e.boundary_reason == 'original achievement list item'}
+            owned = {sid for r in row['records'] for sid in r['source_ids']}
+            for candidate in local_section_payload(fallback, {'awards'})[0]['records']:
+                if candidate['record_id'] in bullet_ids and not owned.intersection(candidate['source_ids']):
+                    row['records'].append(candidate)
+                    owned.update(candidate['source_ids'])
+                    repairs.append({'field':'name','path':f'/sections/{si}/records',
+                                    'code':'source_bullet_record_recovered'})
+        for ri,record in enumerate(row['records']):
+            owned = set(record['source_ids'])
+            name = 'name' if category == 'awards' else 'all_skills'
+            if record['missing'].get(name) == 'ambiguous':
+                continue
+            if category == 'awards' and record['fields'][name]:
+                continue
+            matches = [r for r in local_records if set(r.source_ids) == owned] if category == 'awards' else local_records
+            existing = {v['value'] for v in record['fields'][name]}
+            for candidate in matches:
+                attr = next((a for a in candidate.attributes if a.name == name), None)
+                for item in attr.items if attr else []:
+                    if item.value in existing or not all(q.source_id in owned for q in item.evidence):
+                        continue
+                    record['fields'][name].append(item.model_dump(exclude={'status'}))
+                    existing.add(item.value)
+                    repairs.append({'field':name,'path':f'/sections/{si}/records/{ri}/fields/{name}',
+                                    'code':'source_backed_list_item_recovered'})
+            if record['fields'][name]:
+                record['missing'].pop(name, None)
+    return repairs
+
+
 def recover_record_fields(payload, source_sections, fallback):
     """Recover omitted fields from their own record, never from another job.
 
@@ -864,6 +913,7 @@ def map_with_field_review(request, *, settings=None, transport=None, budget=None
             raise last_attempt_exception
         stage = 'subschema_validation'
         final_payload = {'sections': responses}
+        evidence_repairs.extend(recover_literal_lists(final_payload, request.sections, fallback))
         hierarchy, revised, states = parse_review(json.dumps(final_payload), request.sections)
         record_repairs = recover_record_fields(final_payload, request.sections, fallback)
         contact_repairs = recover_literal_contacts(final_payload, request.sections)

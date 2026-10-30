@@ -2,7 +2,7 @@
 import re
 from local_api.services.source_fragments import runs, texts
 
-DEGREE = re.compile(r'(?<!\w)(?:PG\s+Certificate|Post\s+Graduate\s+Diploma|PGDM|Diploma|Master of (?:Technology|Science|Engineering|Business Administration|Computer Applications?)|Bachelor of (?:Technology|Science|Engineering|Arts|Commerce|Pharmacy)|M\.?\s?Sc\.?|B\.?\s?Sc\.?|B\.?Com\.?|M\.?Com\.?|M\.?Tech\.?|B\.?Tech\.?|B\.?E\.?|M\.?E\.?|MBA|MCA|BCA)(?!\w)', re.I)
+DEGREE = re.compile(r'(?<!\w)(?:PG\s+Certificate|Post\s+Graduate\s+Diploma|PGDM|PGDB|Diploma|Master of (?:Technology|Science|Engineering|Business Administration|Computer Applications?)|Bachelor of (?:Technology|Science|Engineering|Arts|Commerce|Pharmacy)|M\.?\s?Sc\.?|B\.?\s?Sc\.?|B\.?Com\.?|M\.?Com\.?|M\.?Tech\.?|B\.?Tech\.?|B\.?E\.?|M\.?E\.?|MBA|MCA|BCA)(?!\w)', re.I)
 
 
 def refine_education(values, blocks):
@@ -30,6 +30,14 @@ def refine_education(values, blocks):
                 degrees.append((source,match));previous=local
     if not degrees:
         degrees=[(source,match) for source in source_texts for match in DEGREE.finditer(source)]
+    expansions={'pgdb':r'Post\s+Graduate\s+Diploma','pgdm':r'Post\s+Graduate\s+Diploma',
+                'mba':r'Master\s+of\s+Business\s+Administration'}
+    if len(degrees)==2:
+        for acronym,expansion in expansions.items():
+            short=[item for item in degrees if item[1].group().casefold()==acronym]
+            if len(short)==1 and re.search(r'\b'+acronym+r'\s*\(\s*'+expansion,text,re.I):
+                degrees=short
+                break
     if len(degrees) > 1:
         reasons.append('Multiple qualifications in one supplied record; child associations unresolved.')
         return {key: None for key in values}, reasons
@@ -42,6 +50,13 @@ def refine_education(values, blocks):
             candidate = major.group(1).strip()
             if not re.fullmatch(r'(?:MCA|MBA|B\.?Com|B\.?E\.?|B\.?Tech|M\.?Tech|B\.?Sc|M\.?Sc)', candidate, re.I) and not re.search(r'\b(?:university|college|institute|GPA|expected|pursuing)\b', candidate, re.I):
                 values['field_of_study'] = candidate
+    # An expanded qualification name is not a subject/major.
+    degree_key=re.sub(r'[^a-z]','',str(values.get('degree','')).casefold())
+    major_key=re.sub(r'[^a-z]','',str(values.get('field_of_study','')).casefold())
+    if degree_key in expansions:
+        expanded_key=re.sub(r'[^a-z]','',expansions[degree_key].replace(r'\s+','').casefold())
+        if major_key and expanded_key.startswith(major_key) and following.lstrip().startswith('('):
+            values['field_of_study']=None
     institutions = []
     for source in [*(b.text for b in blocks), *source_texts]:
         for part in re.split(r'[,|\n]|\s+[-\u2013\u2014]\s+', source):

@@ -72,9 +72,41 @@ async def map_existing_sections(request: ReviewedSchemaMappingRequest):
     try:
         if request.review_fields:
             from local_api.services.llm_schema_mapping import map_with_field_review
-            return await run_in_threadpool(map_with_field_review, request)
-        mapped = await run_in_threadpool(map_schema,request)
+            mapped = await run_in_threadpool(map_with_field_review, request)
+        else:
+            mapped = await run_in_threadpool(map_schema,request)
         mapped.meta['mapping_result'] = mapping_result(mapped)
+        from local_api.services.standardization.service import standardize_resume_data
+        std_resume, metadata, status, warnings = standardize_resume_data(mapped.data)
+        mapped.standardized_data = std_resume
+        metadata.source_evidence = mapped.meta.get("field_evidence", {})
+        mapped.schema_version = metadata.schema_version
+        mapped.standardization_metadata = metadata
+        mapped.validation_status = status
+        mapped.warnings = warnings
         return mapped
     except ValueError as exc:
         raise mapping_error(exc) from None
+
+
+@router.post('/standardize')
+async def standardize_existing_schema(payload: dict):
+    """Directly standardize an existing resume schema or ParseResponse dictionary."""
+    from local_api.services.standardization.service import standardize_resume_data
+    # Extract data payload if wrapped in ParseResponse or SchemaMappingResponse
+    data_dict = payload.get('data', payload)
+    std_resume, metadata, status, warnings = standardize_resume_data(data_dict)
+    from local_api.services.standardization.export import standardized_export
+    canonical = standardized_export({'data':data_dict,'standardized_data':std_resume.model_dump(),
+        'standardization_metadata':metadata.model_dump(),'validation_status':status.model_dump(),
+        'warnings':[w.model_dump() for w in warnings],'source':payload.get('source')})
+    return {
+        'export_type':canonical['export_type'],
+        'data':canonical['data'],
+        'source_evidence':canonical['source_evidence'],
+        'schema_version': metadata.schema_version,
+        'standardized_data': std_resume.model_dump(),
+        'standardization_metadata': canonical['standardization_metadata'],
+        'validation_status': status.model_dump(),
+        'warnings': [w.model_dump() for w in warnings],
+    }

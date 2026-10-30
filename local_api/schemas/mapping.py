@@ -3,6 +3,12 @@ from pydantic import ConfigDict, Field, computed_field
 from local_api.schemas.sections import SectionRequest, SectionResponse
 from local_api.vendor.handoff_schema.models import ParseResponse
 from local_api.schemas.subschemas import SectionSchema
+from local_api.services.standardization.contracts import (
+    StandardizedResumeSchema,
+    StandardizationMetadata,
+    ValidationStatus,
+    StandardizationWarning,
+)
 
 
 class SchemaMappingRequest(SectionRequest):
@@ -13,6 +19,11 @@ class SchemaMappingRequest(SectionRequest):
 
 class SchemaMappingResponse(ParseResponse):
     section_schemas: list[SectionSchema] = Field(default_factory=list)
+    schema_version: str = Field(default="1.0.0", description="Contract schema version")
+    standardized_data: StandardizedResumeSchema | None = Field(default=None, description="Standardized canonical resume payload")
+    standardization_metadata: StandardizationMetadata | None = Field(default=None, description="Audit metadata of all applied normalizations")
+    validation_status: ValidationStatus | None = Field(default=None, description="Schema and cross-field validation status")
+    warnings: list[StandardizationWarning] = Field(default_factory=list, description="Structured warnings for all corrections and normalizations")
 
     @computed_field
     @property

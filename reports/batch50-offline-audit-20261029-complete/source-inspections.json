@@ -1,0 +1,42 @@
+[
+  {
+    "file": "Ashok Kumar.pdf",
+    "category": "qualification_record_fragmentation",
+    "source_inspection": "Original education list has PGDB and MBA, two qualifications. Saved output has an extra PGDB/Post fragment as a third record.",
+    "repair": "Keep wrapped parenthetical acronym expansions with the same qualification; do not treat expanded degree title as a major.",
+    "verification_artifact": "../batch50-offline-audit-20261029-final/local-replay-ashok/frozen-final-schema.json",
+    "result": "Fresh local replay has two education records, PGDB and MBA; field of study remains unresolved where not safely recovered.",
+    "human_verified": false
+  },
+  {
+    "file": "Jaydipsinh Chudasama.pdf",
+    "category": "identityless_fallback_job",
+    "source_inspection": "Saved output includes an experience record with neither company nor role. Responsibilities alone do not establish another employer/role.",
+    "repair": "Preserve unowned source content and review reasons but do not count it as a job.",
+    "verification_artifact": "../batch50-offline-audit-20261029-final/local-replay-jaydipsinh/schema.json",
+    "result": "Fresh local replay has four jobs and zero identityless experience records; no paid review was run.",
+    "human_verified": false
+  },
+  {
+    "file": "Girish Morab.pdf",
+    "category": "record_subheadings_promoted_to_awards",
+    "source_inspection": "Original job sections use Key Responsibilities & Achievements and technology subheadings; saved awards include concatenated technical lists and impact prose. Two long award names were not confirmed as contiguous original phrases by either independent PDF reading.",
+    "repair": "Keep combined responsibilities/achievements and technology/tools subheadings in established job/project context in local classification.",
+    "result": "Generic real-model regression passes; fresh paid provider classification remains unverified.",
+    "human_verified": false
+  },
+  {
+    "category": "date_format_standardization",
+    "source_inspection": "Recurring date values include June, 2003; OCT2022; May 201 8; 201 7; onwards.",
+    "repair": "Accept supported formatting variants; warn on year-spacing repair; do not interpret certification validity range 2026\u20132029 as a single issue year.",
+    "result": "Unrecognized date warnings decrease from nine to one; calculable job durations increase from 161 to 164 on frozen saved values. Thirty remain insufficient.",
+    "human_verified": false
+  },
+  {
+    "category": "ambiguous_skill_alias",
+    "source_inspection": "Code inspection found ALM unconditionally expanded to vendor-specific HP ALM. The fifty saved all_skills lists do not contain bare ALM; this is an adjacent latent standardizer defect, not a measured batch error.",
+    "repair": "Preserve ALM and request review; explicit HP ALM remains supported.",
+    "result": "Offline regression passes.",
+    "human_verified": false
+  }
+]
