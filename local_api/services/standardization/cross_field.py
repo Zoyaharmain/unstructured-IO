@@ -42,18 +42,18 @@ def validate_cross_field_consistency(
         )
 
     # 2. Total Experience vs Calculated Experience
-    stated_exp = resume.total_experience_years
+    stated_exp = resume.stated_total_experience_years
     calc_exp = resume.calculated_experience_years
 
     if stated_exp is not None and calc_exp is not None:
         discrepancy = abs(stated_exp - calc_exp)
-        # Flag if discrepancy is more than 1.5 years
-        if discrepancy > 1.5:
+        # Allow only the rounding tolerance of the calculated one-decimal value.
+        if discrepancy > 0.100000001:
             warnings.append(
                 StandardizationWarning(
                     field="total_experience_years",
                     warning_type="experience_duration_discrepancy",
-                    severity="info",
+                    severity="review_required",
                     original_value=stated_exp,
                     normalized_value=calc_exp,
                     message=f"Source-stated experience ({stated_exp} years) differs from calculated chronological span ({calc_exp} years). Both values preserved."
@@ -103,13 +103,54 @@ def validate_cross_field_consistency(
                 )
             )
 
-    total_issues = len(warnings)
-    status = ValidationStatus(
-        is_valid=True,
-        usable=not requires_review,
-        requires_human_review=requires_review,
-        issues_count=total_issues,
-    )
+    for category, records, required in (
+        ('experience', resume.experience, 'role'),
+        ('education', resume.education, 'degree'),
+        ('certifications', resume.certifications, 'name'),
+        ('projects', resume.projects, 'name'),
+    ):
+        for i, record in enumerate(records):
+            if not getattr(record, required).strip():
+                warnings.append(StandardizationWarning(field=f'{category}[{i}].{required}',
+                    warning_type='empty_record_field', severity='review_required',
+                    message='Required record identity is not established; source review required.'))
+    if resume.additional_sections:
+        warnings.append(StandardizationWarning(field='additional_sections', warning_type='unresolved_source_content',
+            severity='review_required', message='Additional source content is retained and requires association review.'))
 
-    return status, warnings
-
+    # Compare source-stated elapsed durations only, never a literal date range.
+    import re
+    for i, job in enumerate(resume.experience):
+        raw = job.raw_duration
+        if not raw or job.duration_months is None:
+            continue
+        # A source date range may carry its explicit elapsed claim in parentheses.
+        parenthetical = re.search(r'\(([^()]*)\)\s*$', raw)
+        elapsed_claim = parenthetical[1] if parenthetical else raw
+        match = re.fullmatch(r'\s*(?:(\d+)\s*(?:years?|yrs?)\s*(?:and\s*)?)?(?:(\d+)\s*(?:months?|mos?)\s*)?', elapsed_claim, re.I)
+        if match and any(match.groups()):
+            months = int(match[1] or 0) * 12 + int(match[2] or 0)
+            if months != job.duration_months:
+                warnings.append(StandardizationWarning(field=f'experience[{i}].duration',
+                    warning_type='stated_duration_discrepancy', severity='review_required',
+                    original_value=raw, normalized_value=job.duration, applied=True,
+                    basis='Elapsed calendar duration calculated from employment start/end dates; current roles use the metadata as-of date.',
+                    message='System corrected the source-stated duration using employment dates; original duration retained.'))
+    for category, records, start_key, end_key in (
+        ('education', resume.education, 'start_year', 'graduation_year'),
+        ('certifications', resume.certifications, 'issue_year', 'expiry_date'),
+        ('projects', resume.projects, 'start_date', 'end_date'),
+        ('awards', resume.awards, 'start_date', 'end_date'),
+        ('achievements', resume.achievements, 'start_date', 'end_date'),
+        ('publications', resume.publications, 'start_date', 'end_date'),
+        ('volunteering', resume.volunteering, 'start_date', 'end_date'),
+    ):
+        for i, record in enumerate(records):
+            start, end = getattr(record, start_key), getattr(record, end_key)
+            # Only compare the precision both values establish.
+            if start and end and start[:min(len(start), len(end))] > end[:min(len(start), len(end))]:
+                warnings.append(StandardizationWarning(field=f'{category}[{i}]', warning_type='invalid_date_order',
+                    severity='review_required', original_value={start_key: start, end_key: end},
+                    message='Start/issue date is after end/expiry date. Source values require review.'))
+    from local_api.services.standardization.validation import finalize_status
+    return finalize_status(warnings), warnings

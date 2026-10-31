@@ -118,7 +118,7 @@ def test_date_mentions_in_responsibilities_do_not_replace_employment_dates():
 
 
 def test_reverse_date_range_is_flagged_for_review():
-    req = request('experience', [['2024 - 2020']])
+    req = request('experience', [['Employer: Acme', 'Role: Engineer', '2024 - 2020']])
     record = map_schema(req).section_schemas[0].records[0]
     assert any('precedes' in reason for reason in record.review_reasons)
     assert all(i.status == 'needs_review' for a in record.attributes for i in a.items)

@@ -35,6 +35,10 @@ def recover_sections(request, local_result):
         from local_api.services.fragment_continuation import recover_fragment_continuations
         local_result = recover_fragment_continuations(local_result, request.elements)
         local_result = recover_education_dates(local_result, request.elements)
+        from local_api.services.preamble_recovery import recover_summary_preamble
+        local_result = recover_summary_preamble(local_result, request.elements)
+        from local_api.services.local_completion import recover_local_content
+        local_result = recover_local_content(local_result, request.elements)
         local_result.metadata['recovery']={'passes':0,'remaining_review_units':len(local_result.needs_review)}
         from local_api.services.quality_assessment import assess_quality
         local_result.metadata['quality_assessment']=assess_quality(request.elements,local_result)
@@ -49,6 +53,10 @@ def recover_sections(request, local_result):
     from local_api.services.fragment_continuation import recover_fragment_continuations
     repaired = recover_fragment_continuations(repaired, request.elements)
     repaired = recover_education_dates(repaired, request.elements)
+    from local_api.services.preamble_recovery import recover_summary_preamble
+    repaired = recover_summary_preamble(repaired, request.elements)
+    from local_api.services.local_completion import recover_local_content
+    repaired = recover_local_content(repaired, request.elements)
     repaired.metadata['recovery']={'passes':1,'boundary_count':sum(map(len,updates.values())),
         'initial_review_units':len(local_result.needs_review),'remaining_review_units':len(repaired.needs_review)}
     from local_api.services.quality_assessment import assess_quality

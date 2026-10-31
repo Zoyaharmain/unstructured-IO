@@ -29,7 +29,7 @@ async function mapExistingSections() {
       sectionResult = data.meta.reviewed_sections;
       renderSectionResults(sectionResult, $('section-mode').value === 'local');
     }
-    mappedResume = data; $('schema-json').textContent = JSON.stringify(standardizedResumeExport(data),null,2);
+    mappedResume = data; $('schema-json').textContent = JSON.stringify({...standardizedResumeExport(data), audit: {standardization_metadata: data.standardization_metadata, warnings: data.warnings, source_evidence: {data: data.data, section_schemas: data.section_schemas, raw_sections: data.raw_sections, meta: data.meta}}},null,2);
     renderSubschemas(data.section_schemas || []);
     renderStandardizationWarnings(data);
     $('schema-preview').hidden = false; $('download-schema').disabled = false;
@@ -78,7 +78,7 @@ function renderSchemaHistory(diagnostics) {
   $('schema-status').append(history);
 }
 $('map-schema').addEventListener('click', mapExistingSections);
-function schemaSourceCoverage(section, block, sources = []) {
+function schemaSourceCoverage(section, block, sources = [], completeness = null) {
   const text = block.quote;
   const covered = Array(text.length).fill(false);
   const mappedFields = new Set();
@@ -86,6 +86,16 @@ function schemaSourceCoverage(section, block, sources = []) {
   const source = sources.find(b => `e${b.source_element_index}:${b.start}:${b.end}` === block.source_id);
   if (source && ['section_heading', 'structural_heading'].includes(source.assignment)) {
     return {mappedFields: [], remaining: [], context: [text]};
+  }
+  const interval = /^e\d+:(\d+):(\d+)$/.exec(block.source_id);
+  if (Array.isArray(completeness?.mapped_intervals) && Array.isArray(completeness?.unmapped)
+      && interval && Number(interval[2]) - Number(interval[1]) === Array.from(text).length) {
+    const fields = (completeness.mapped_intervals || []).filter(row => row.source_id === block.source_id && row.field.startsWith(`${section.category}/`))
+      .map(row => { const parts = row.field.split('/'); return `${parts[0]}.${parts[parts.length - 2]}`; });
+    const remaining = (completeness.unmapped || []).filter(row => row.source_id === block.source_id).map(row => row.text.trim());
+    const artifact = (completeness.non_content_artifacts || []).find(row => row.source_id === block.source_id);
+    return {mappedFields: [...new Set(fields)], remaining,
+      context: artifact ? [artifact.reason] : !fields.length && !remaining.length ? [text] : []};
   }
   // Labels group competencies; their values, not their labels, are skill items.
   if (section.category === 'skills' && text.includes(':')) {
@@ -101,7 +111,15 @@ function schemaSourceCoverage(section, block, sources = []) {
       const start = text.indexOf(ref.quote);
       // Repeated quotes lack offsets: leave ambiguous occurrences visible.
       if (start < 0 || text.indexOf(ref.quote, start + 1) !== -1) continue;
-      covered.fill(true, start, start + ref.quote.length);
+      if (!['string', 'number'].includes(typeof item.value)) continue;
+      const value = String(item.value);
+      if (!value.trim()) continue;
+      const relative = ref.quote.toLowerCase().indexOf(value.toLowerCase());
+      if (relative >= 0 && ref.quote.toLowerCase().indexOf(value.toLowerCase(), relative + 1) === -1) {
+        covered.fill(true, start + relative, start + relative + value.length);
+      } else if (value.toLowerCase().includes(ref.quote.toLowerCase())) {
+        covered.fill(true, start, start + ref.quote.length);
+      } else continue;
       mappedFields.add(`${section.category}.${field.name}`);
     }
   }
@@ -138,7 +156,7 @@ function renderSubschemas(sections) {
           ? mappedResume?.standardized_data?.experience?.[index] : null;
         if (standardized) {
           add(value, 'p', (standardized.duration ? `${standardized.duration_months} months · ${standardized.duration}` : null) || 'Cannot calculate duration safely from these dates.');
-          if (standardized.duration) add(value, 'small', `${standardized.duration_is_approximate ? 'Approximate calendar-month coverage' : 'Calculated from exact dates'}${standardized.duration_as_of ? ' · as of '+standardized.duration_as_of : ''}`);
+          if (standardized.duration) add(value, 'small', `${standardized.duration_is_approximate ? 'Approximate elapsed calendar months' : 'Calculated from exact dates'}${standardized.duration_as_of ? ' · as of '+standardized.duration_as_of : ''}`);
         }
 
         if (!standardized && !field.items.length) add(value, 'span', ({not_stated:'Not stated in this source record.',ambiguous:'Ambiguous — source association needs review.',unmapped:'Present in source — mapping still needs review.'})[field.status] || 'Unresolved — not established by the local mapper.');
@@ -154,7 +172,7 @@ function renderSubschemas(sections) {
     if (section.residual_blocks.length) {
       const residual = add(card, 'details', '');
       const sources = sectionResult?.sections?.find(s => s.category === section.category)?.blocks || [];
-      const coverage = section.residual_blocks.map(block => ({block, ...schemaSourceCoverage(section, block, sources)}));
+      const coverage = section.residual_blocks.map(block => ({block, ...schemaSourceCoverage(section, block, sources, mappedResume?.meta?.completeness_check)}));
       const incomplete = coverage.filter(item => item.remaining.length);
       add(residual, 'summary', incomplete.length
         ? `${incomplete.length} source excerpt(s) contain text still needing field mapping`
@@ -173,36 +191,7 @@ function renderSubschemas(sections) {
   }
 }
 function standardizedResumeExport(response) {
-  if (!response.standardized_data) return response;
-  const clean = value => Array.isArray(value) ? value.map(clean)
-    : value && typeof value === 'object' ? Object.fromEntries(Object.entries(value)
-      .filter(([key]) => !key.startsWith('raw_')).map(([key, item]) => [key, clean(item)])) : value;
-  const data = clean(response.standardized_data);
-  const metadata = {...response.standardization_metadata};
-  const diagnosticKeys = ['duration_is_approximate', 'duration_as_of', 'duration_status',
-    'start_date_iso', 'end_date_iso', 'start_date_precision', 'end_date_precision'];
-  const order = ['company', 'role', 'location', 'start_date', 'end_date', 'is_current',
-    'duration', 'duration_months', 'responsibilities', 'technologies'];
-  metadata.experience_calculations = (data.experience || []).map((job, index) => {
-    const calculation = {record_path: `data.experience[${index}]`};
-    for (const key of diagnosticKeys) if (key in job) {calculation[key] = job[key]; delete job[key];}
-    data.experience[index] = Object.fromEntries([
-      ...order.filter(key => key in job).map(key => [key, job[key]]),
-      ...Object.entries(job).filter(([key]) => !order.includes(key))
-    ]);
-    return calculation;
-  });
-  return {
-    export_type: 'standardized_resume',
-    schema_version: response.standardization_metadata?.schema_version || '1.1.0',
-    source: response.source,
-    data,
-    standardization_metadata: metadata,
-    validation_status: response.validation_status,
-    warnings: response.warnings || [],
-    source_evidence: Object.fromEntries(['data', 'section_schemas', 'meta', 'raw_sections', 'field_index']
-      .filter(key => key in response).map(key => [key, response[key]]))
-  };
+  return response.consumer_export || response;
 }
 function renderStandardizationWarnings(data) {
   if (!data.standardized_data) return;
@@ -222,7 +211,14 @@ function renderStandardizationWarnings(data) {
 }
 $('download-schema').addEventListener('click', () => {
   if (!mappedResume) return;
-  const url = URL.createObjectURL(new Blob([JSON.stringify(standardizedResumeExport(mappedResume),null,2)],{type:'application/json'}));
+  const exported = standardizedResumeExport(mappedResume);
+  const download = $('include-schema-audit').checked ? {...exported, audit: {
+    standardization_metadata: mappedResume.standardization_metadata,
+    warnings: mappedResume.warnings,
+    source_evidence: {data: mappedResume.data, section_schemas: mappedResume.section_schemas,
+      raw_sections: mappedResume.raw_sections, meta: mappedResume.meta}
+  }} : exported;
+  const url = URL.createObjectURL(new Blob([JSON.stringify(download,null,2)],{type:'application/json'}));
   const anchor = node('a'); anchor.href = url;
   anchor.download = (file?.name || 'resume').replace(/\.[^.]+$/,'')+(mappedResume.standardized_data ? '.standardized.json' : '.schema.json'); anchor.click();
   setTimeout(() => URL.revokeObjectURL(url),1000);

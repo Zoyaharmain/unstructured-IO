@@ -88,9 +88,9 @@ def test_date_parsing_and_precision():
 
 def test_non_overlapping_experience_calculation():
     # Two overlapping positions:
-    # Job A: 2020-01 to 2021-06 (18 months)
-    # Job B: 2021-01 to 2021-12 (12 months, overlaps Job A by 6 months)
-    # Merged span: 2020-01 to 2021-12 = 24 months = 2.0 years
+    # Job A: 2020-01 to 2021-06 (17 months)
+    # Job B: 2021-01 to 2021-12 (11 months, overlaps Job A by 5 months)
+    # Merged span: 2020-01 to 2021-12 = 23 months ≈ 1.9 years
     records = [
         {"start_date_iso": "2020-01", "end_date_iso": "2021-06", "start_date_precision": "month_year", "end_date_precision": "month_year", "is_current": False},
         {"start_date_iso": "2021-01", "end_date_iso": "2021-12", "start_date_precision": "month_year", "end_date_precision": "month_year", "is_current": False},
@@ -98,7 +98,7 @@ def test_non_overlapping_experience_calculation():
     ref_dt = datetime(2025, 1, 1, tzinfo=timezone.utc)
     total_years, overlap_detected, warns = calculate_non_overlapping_experience(records, reference_date=ref_dt)
     assert overlap_detected is True
-    assert total_years == 2.0
+    assert total_years == 1.9
     assert any(w.warning_type == "experience_overlap_resolved" for w in warns)
 
 
@@ -261,13 +261,16 @@ def test_end_to_end_madhavi_standardization():
     assert std_resume.experience[3].end_date_iso == "2021-05"
 
     # 4. Total experience calculated
-    assert std_resume.total_experience_years == 8.0
+    assert std_resume.stated_total_experience_years == 8.0
+    assert std_resume.total_experience_years == std_resume.calculated_experience_years
     assert std_resume.calculated_experience_years is not None
     assert std_resume.calculated_experience_years > 8.0
 
     # 5. Metadata and validation status
-    assert metadata.schema_version == "1.1.0"
+    assert metadata.schema_version == "2.0.0"
     assert metadata.total_normalizations > 0
     assert status.is_valid is True
-    assert status.usable is True
+    assert status.usable is False
+    assert status.requires_human_review
+    assert any(w.warning_type == 'experience_duration_discrepancy' for w in warnings)
 

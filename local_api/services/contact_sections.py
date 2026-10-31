@@ -1,5 +1,6 @@
 """Conservative candidate-contact routing and literal contact values."""
 import re
+import unicodedata
 from local_api.services.source_fragments import texts
 
 EMAIL = re.compile(r"[\w.!#$%&'*+/=?^`{|}~-]+@[\w.-]+\.[A-Za-z]{2,}")
@@ -8,13 +9,8 @@ PROFILE = re.compile(r"(?<![\w./-])(?:https?://)?(?:www\.)?(?:github\.com/[A-Za-
 
 
 def profile_values(blocks):
-    output = {'github_url': set(), 'linkedin_url': set()}
-    for text in texts(blocks):
-        for match in PROFILE.finditer(text):
-            value = match.group()
-            key = 'github_url' if 'github.com/' in value.casefold() else 'linkedin_url'
-            output[key].add(value)
-    return output
+    from local_api.services.profile_url_recovery import raw_profile_values
+    return raw_profile_values(blocks)
 
 
 LABEL = re.compile(r'^\s*(?:e[ -]?mail(?:[ -]?(?:id|address))?|contact(?:\s+(?:details|number|no\.?))?|mobile(?:\s+(?:number|no\.?))?|phone(?:\s+(?:number|no\.?))?|tel(?:ephone)?)\s*[:=\-]', re.I)
@@ -51,6 +47,13 @@ def recover_contact_sections(result, elements=None):
     # Unlabelled contact values are eligible only before professional content.
     body_start = min((b.source_element_index for s in result.sections
                       if s.category in {'experience','education','projects','references'} for b in s.blocks), default=3)
+    if elements:
+        from local_api.services.profile_url_recovery import linked_profile_label
+        from local_api.services.resume_structure import heading_boundary, employment_start
+        from local_api.services.resume_sections import ALIASES
+        explicit = [i for i, el in enumerate(elements) if not linked_profile_label(el) and (heading_boundary(el.text, ALIASES)[0]
+                    in {'experience', 'education', 'projects', 'references'} or employment_start(el.text))]
+        if explicit: body_start = min(explicit)
     reference_start = min((b.source_element_index for s in result.sections if s.category == 'references' for b in s.blocks), default=float('inf'))
 
     def candidate(b):
@@ -64,8 +67,14 @@ def recover_contact_sections(result, elements=None):
             return True
         if LABEL.match(b.text):
             return True
-        value = b.text.strip(' \t\r\n|•')
-        return b.source_element_index < body_start and bool(EMAIL.fullmatch(value) or PHONE.fullmatch(value))
+        # Lookup-only removal of decorative PDF icons. Returned spans/text are
+        # unchanged, and reference/job contact rows remain out of scope.
+        value = ''.join(c for c in b.text if unicodedata.category(c) not in {'Co', 'So'}).strip(' \t\r\n|•')
+        from local_api.services.record_subfields import is_place
+        phone_match = PHONE.match(value)
+        tail = value[phone_match.end():].strip(' ,|') if phone_match else ''
+        phone_location = bool(phone_match and tail and is_place(tail) and len(value.split()) <= 14 and not re.search(r'[:=]', value))
+        return b.source_element_index < body_start and bool(EMAIL.fullmatch(value) or PHONE.fullmatch(value) or phone_location)
 
     heading_contacts = [b for s in result.sections if s.category == 'personal_information'
                         for b in s.blocks if b.assignment in {'section_heading','structural_heading'}
@@ -82,6 +91,15 @@ def recover_contact_sections(result, elements=None):
         sizes = [h['font_size'] for el in elements if el.page_number == 1
                  for h in el.metadata.get('pdf_source_lines', []) if h.get('font_size')]
         candidates = []
+        contact_region = [b for s in result.sections if s.category == 'personal_information' for b in s.blocks] + moved
+        has_contact = any(any(contact_values([b]).values()) or any(profile_values([b]).values()) for b in contact_region)
+        title_names = [b for b in result.needs_review if has_contact and b.source_element_index < min(body_start, 3)
+            and elements[b.source_element_index].type == 'Title' and b.page_number in {None, 1}
+            and 2 <= len(b.text.split()) <= 5 and all(c.isalpha() or c in " .'-" for c in b.text.strip())
+            and not ROLE.search(elements[b.source_element_index].text) and normalized_heading(b.text) not in aliases
+            and normalized_heading(b.text) not in {'curriculum vitae', 'resume', 'résumé', 'professional profile'}]
+        if len(title_names) == 1:
+            moved.extend(b for b in title_names if b not in moved)
         for b in result.needs_review:
             hs = elements[b.source_element_index].metadata.get('pdf_source_lines', [])
             hs = [h for h in hs if min(b.end,h.get('end',0)) > max(b.start,h.get('start',0))]
@@ -94,6 +112,20 @@ def recover_contact_sections(result, elements=None):
                 candidates.append(b)
         if len(candidates) == 1:
             moved.extend(b for b in candidates if b not in moved)
+        # A prominent name and headline may be fragmented into separate PDF
+        # spans. Classify the shared source element, never concatenate new text.
+        if sizes and (moved or any(s.category == 'personal_information' for s in result.sections)):
+            prominent = set()
+            for b in result.needs_review:
+                el = elements[b.source_element_index]
+                hints = el.metadata.get('pdf_source_lines', [])
+                if (b.source_element_index < body_start and b.page_number == 1 and ROLE.search(el.text)
+                        and len(el.text.split()) <= 18 and hints
+                        and max(h.get('font_size', 0) for h in hints) >= 1.5 * median(sizes)
+                        and any(len(h.get('bbox', [])) == 4 and h['bbox'][1] < .15 for h in hints)):
+                    prominent.add(b.source_element_index)
+            if len(prominent) == 1:
+                moved.extend(b for b in result.needs_review if b.source_element_index in prominent and b not in moved)
     for section in result.sections:
         if section.category in {'summary','skills'}:
             moved.extend(b for b in section.blocks if (LABEL.match(b.text) or any(profile_values([b]).values())) and candidate(b))

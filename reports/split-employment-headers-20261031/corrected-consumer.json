@@ -1,0 +1,282 @@
+{
+  "export_type": "standardized_resume",
+  "schema_version": "2.0.0",
+  "source": "existing-section-blocks",
+  "data": {
+    "contact": {
+      "full_name": null,
+      "email": null,
+      "phone": null,
+      "location": null,
+      "linkedin_url": null,
+      "github_url": null,
+      "portfolio_url": null,
+      "work_preferences": null,
+      "target_role": null,
+      "phone_extension": null
+    },
+    "professional_title": null,
+    "summary": null,
+    "total_experience_years": 0.6,
+    "stated_total_experience_years": null,
+    "skills": {
+      "technical_skills": [],
+      "tools_and_platforms": [],
+      "domain_and_functional": [],
+      "soft_skills": [],
+      "all_skills": []
+    },
+    "experience": [
+      {
+        "company": "Concentrix",
+        "role": "Data Analyst",
+        "start_date": "2017-04",
+        "end_date": "2017-11",
+        "duration": "7 months",
+        "location": "Visakhapatnam",
+        "engagement_type": null,
+        "responsibilities": [
+          "Built reporting dashboards."
+        ],
+        "technologies": [],
+        "duration_months": 7,
+        "is_current": false,
+        "stated_duration": "Apr 2017 \u2013 Nov 2017"
+      }
+    ],
+    "education": [],
+    "certifications": [],
+    "projects": [],
+    "languages": [],
+    "awards": [],
+    "achievements": [],
+    "publications": [],
+    "volunteering": [],
+    "interests": [],
+    "references": [],
+    "additional_sections": [
+      {
+        "category": "experience",
+        "text": "Client: Uber International",
+        "source_ids": [
+          "e3:0:26"
+        ],
+        "status": "unresolved"
+      }
+    ]
+  },
+  "validation_status": {
+    "is_valid": false,
+    "usable": false,
+    "requires_human_review": true,
+    "issues_count": 8
+  },
+  "standardization_metadata": {
+    "schema_version": "2.0.0",
+    "applied_at": "2026-10-31T17:43:02.672884+00:00",
+    "total_normalizations": 4,
+    "corrections_by_type": {
+      "duration_calculated": 1,
+      "total_experience_calculated": 1,
+      "date_standardized": 2
+    },
+    "corrections": [
+      {
+        "field": "experience[0].duration",
+        "warning_type": "duration_calculated",
+        "severity": "info",
+        "original_value": "Apr 2017 \u2013 Nov 2017",
+        "normalized_value": "7 months",
+        "suggested_value": null,
+        "basis": "Month precision: elapsed calendar months. Day precision: completed calendar units. As of 2026-10-31.",
+        "applied": true,
+        "verification_status": "rule_based_not_independently_verified",
+        "message": "Derived duration, approximate elapsed calendar months; original date range retained."
+      },
+      {
+        "field": "total_experience_years",
+        "warning_type": "total_experience_calculated",
+        "severity": "info",
+        "original_value": null,
+        "normalized_value": 0.6,
+        "suggested_value": null,
+        "basis": "Union of dated employment intervals; gaps excluded and overlaps counted once. Current roles use 2026-10-31 at supplied precision; year-only estimates use its year. Rounded to one decimal year.",
+        "applied": true,
+        "verification_status": "rule_based_not_independently_verified",
+        "message": "System calculated total experience from employment dates; source-stated experience retained separately."
+      },
+      {
+        "field": "experience[0].end_date",
+        "warning_type": "date_standardized",
+        "severity": "info",
+        "original_value": "Nov 2017",
+        "normalized_value": "2017-11",
+        "suggested_value": null,
+        "basis": "Deterministic formatting, date parsing, filtering or alias rule; original retained in evidence.",
+        "applied": true,
+        "verification_status": "rule_based_not_independently_verified",
+        "message": "System corrected the date representation to ISO format; the original date is retained and no calendar date was inferred."
+      },
+      {
+        "field": "experience[0].start_date",
+        "warning_type": "date_standardized",
+        "severity": "info",
+        "original_value": "Apr 2017",
+        "normalized_value": "2017-04",
+        "suggested_value": null,
+        "basis": "Deterministic formatting, date parsing, filtering or alias rule; original retained in evidence.",
+        "applied": true,
+        "verification_status": "rule_based_not_independently_verified",
+        "message": "System corrected the date representation to ISO format; the original date is retained and no calendar date was inferred."
+      }
+    ],
+    "source_evidence": {
+      "experience[0].company": [
+        "e2:0:26"
+      ],
+      "experience[0].role": [
+        "e1:0:12"
+      ],
+      "experience[0].start_date": [
+        "e4:0:19"
+      ],
+      "experience[0].end_date": [
+        "e4:0:19"
+      ],
+      "experience[0].duration": [
+        "e4:0:19"
+      ],
+      "experience[0].location": [
+        "e2:0:26"
+      ],
+      "experience[0].responsibilities[0]": [
+        "e5:0:27"
+      ]
+    },
+    "as_of_date": "2026-10-31",
+    "duration_policy": "Year precision: annual-resolution estimates from year-label differences, including current reference year for current roles; months are estimated years times 12, not known elapsed months. Year-label unions use common annual boundaries only for computation; no employment month is inferred. Month precision: elapsed calendar months (approximate). Day precision: completed calendar units. Aggregate unions use first-of-month boundaries for month-only dates; residual days use 365.2425/12 days per month, rounded to one decimal year.",
+    "field_verification": {
+      "source_values": "preserved; normalized values are derived and do not replace source citations",
+      "locations": "not_externally_verified",
+      "spelling_suggestions": "dictionary_candidates_only; not proof of correctness",
+      "experience.duration": "source-precision calculation; year-only values are annual-resolution estimates, not exact elapsed months"
+    },
+    "cross_field_notes": [],
+    "experience_summary": {
+      "calculated_experience_years": 0.6,
+      "calculated_experience_complete": true,
+      "calculated_experience_is_approximate": true,
+      "experience_overlap_detected": false
+    },
+    "experience_calculations": [
+      {
+        "record_path": "data.experience[0]",
+        "duration_is_approximate": true,
+        "duration_as_of": null,
+        "duration_status": "calculated",
+        "start_date_iso": "2017-04",
+        "end_date_iso": "2017-11",
+        "start_date_precision": "month_year",
+        "end_date_precision": "month_year"
+      }
+    ]
+  },
+  "warnings": [
+    {
+      "field": "experience[0].duration",
+      "warning_type": "duration_calculated",
+      "severity": "info",
+      "original_value": "Apr 2017 \u2013 Nov 2017",
+      "normalized_value": "7 months",
+      "suggested_value": null,
+      "basis": "Month precision: elapsed calendar months. Day precision: completed calendar units. As of 2026-10-31.",
+      "applied": true,
+      "verification_status": "rule_based_not_independently_verified",
+      "message": "Derived duration, approximate elapsed calendar months; original date range retained."
+    },
+    {
+      "field": "total_experience_years",
+      "warning_type": "total_experience_calculated",
+      "severity": "info",
+      "original_value": null,
+      "normalized_value": 0.6,
+      "suggested_value": null,
+      "basis": "Union of dated employment intervals; gaps excluded and overlaps counted once. Current roles use 2026-10-31 at supplied precision; year-only estimates use its year. Rounded to one decimal year.",
+      "applied": true,
+      "verification_status": "rule_based_not_independently_verified",
+      "message": "System calculated total experience from employment dates; source-stated experience retained separately."
+    },
+    {
+      "field": "contact.full_name",
+      "warning_type": "missing_required_field",
+      "severity": "review_required",
+      "original_value": null,
+      "normalized_value": null,
+      "suggested_value": null,
+      "basis": null,
+      "applied": false,
+      "verification_status": "rule_based_not_independently_verified",
+      "message": "Candidate full name is missing from contact details."
+    },
+    {
+      "field": "contact",
+      "warning_type": "missing_contact_methods",
+      "severity": "warning",
+      "original_value": null,
+      "normalized_value": null,
+      "suggested_value": null,
+      "basis": null,
+      "applied": false,
+      "verification_status": "rule_based_not_independently_verified",
+      "message": "Candidate has neither email nor phone number listed."
+    },
+    {
+      "field": "additional_sections",
+      "warning_type": "unresolved_source_content",
+      "severity": "review_required",
+      "original_value": null,
+      "normalized_value": null,
+      "suggested_value": null,
+      "basis": null,
+      "applied": false,
+      "verification_status": "rule_based_not_independently_verified",
+      "message": "Additional source content is retained and requires association review."
+    },
+    {
+      "field": "experience[0].end_date",
+      "warning_type": "date_standardized",
+      "severity": "info",
+      "original_value": "Nov 2017",
+      "normalized_value": "2017-11",
+      "suggested_value": null,
+      "basis": "Deterministic formatting, date parsing, filtering or alias rule; original retained in evidence.",
+      "applied": true,
+      "verification_status": "rule_based_not_independently_verified",
+      "message": "System corrected the date representation to ISO format; the original date is retained and no calendar date was inferred."
+    },
+    {
+      "field": "experience[0].start_date",
+      "warning_type": "date_standardized",
+      "severity": "info",
+      "original_value": "Apr 2017",
+      "normalized_value": "2017-04",
+      "suggested_value": null,
+      "basis": "Deterministic formatting, date parsing, filtering or alias rule; original retained in evidence.",
+      "applied": true,
+      "verification_status": "rule_based_not_independently_verified",
+      "message": "System corrected the date representation to ISO format; the original date is retained and no calendar date was inferred."
+    },
+    {
+      "field": "mapping",
+      "warning_type": "unresolved_mapping",
+      "severity": "review_required",
+      "original_value": null,
+      "normalized_value": null,
+      "suggested_value": null,
+      "basis": null,
+      "applied": false,
+      "verification_status": "rule_based_not_independently_verified",
+      "message": "Source mapping has unresolved fields or associations; inspect mapping evidence."
+    }
+  ]
+}

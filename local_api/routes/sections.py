@@ -30,6 +30,8 @@ async def local_resume_sections(request: SectionRequest):
         result = await run_in_threadpool(recover_sections, request, result)
         from local_api.services.contact_sections import recover_contact_sections
         result = recover_contact_sections(result, request.elements)
+        from local_api.services.education_date_recovery import recover_education_dates
+        result = recover_education_dates(result, request.elements)
         result.metadata['inspection_mode'] = 'local_only'
         result.metadata['llm_review'] = {'status': 'not_requested', 'provider_calls': 0}
         return result

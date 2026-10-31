@@ -1,5 +1,5 @@
 """Local Sentence-BERT + seeded K-means. Raw extraction is never rewritten."""
-from collections import Counter
+from collections import Counter, OrderedDict
 from dataclasses import dataclass
 import json
 import hashlib
@@ -19,7 +19,7 @@ from local_api.schemas.sections import SectionRequest, SectionResponse, ResumeSe
 from local_api.utils.file_validation import ExtractionError
 from local_api.services.section_highlights import highlight_kind
 from local_api.services.readable_resume import readable_groups
-from local_api.services.resume_structure import heading_aliases, heading_boundary, entry_groups, RECORD_FIELDS, normalized_heading, employment_start, word_safe_cut
+from local_api.services.resume_structure import heading_aliases, heading_boundary, entry_groups, RECORD_FIELDS, normalized_heading, employment_start, word_safe_cut, token_window_cuts
 
 MODEL_CONFIG = json.loads((Path(__file__).parents[1] / 'data/section_model.json').read_text())
 MODEL_ID = MODEL_CONFIG['model_id']
@@ -31,9 +31,9 @@ _load_lock = threading.Lock()
 _engine = None
 
 
-def build_sections(grouped, elements):
+def build_sections(grouped, elements, *, refine=True):
     from local_api.services.source_rows import refine_rows
-    grouped = refine_rows(grouped, elements)
+    if refine: grouped = refine_rows(grouped, elements)
     grouped = {category: [b.model_copy(update={'assignment': 'structural_heading'})
                if b.assignment not in {'section_heading', 'structural_heading'}
                and heading_boundary(b.text, ALIASES) == (category, None) else b
@@ -125,6 +125,31 @@ class SectionEngine:
         self.headings = SemanticClusters(self.encoder, 'headings')
         self.content = SemanticClusters(self.encoder, 'examples')
         self.lock = threading.Lock()
+        self._embedding_cache = OrderedDict()
+
+    def encode_texts(self, texts):
+        # Only encoder vectors are cached, never classifications or source IDs.
+        # detect() holds the engine lock. Bound memory and avoid retaining raw text.
+        cache = getattr(self, '_embedding_cache', None)
+        if cache is None:
+            cache = self._embedding_cache = OrderedDict()
+        keys = [hashlib.sha256(text.encode('utf-8')).digest() for text in texts]
+        missing = {}
+        for key, text in zip(keys, texts):
+            if key not in cache: missing.setdefault(key, text)
+        fresh = {}
+        if missing:
+            vectors = self.encoder.encode(list(missing.values()), normalize_embeddings=True,
+                                          batch_size=16, show_progress_bar=False)
+            fresh = dict(zip(missing, vectors))
+        output = []
+        for key in keys:
+            value = fresh[key] if key in fresh else cache[key]
+            output.append(value)
+            cache[key] = value
+            cache.move_to_end(key)
+        while len(cache) > 2048: cache.popitem(last=False)
+        return np.asarray(output)
 
     def units(self, elements):
         units = []
@@ -143,9 +168,13 @@ class SectionEngine:
                 if line_category and inline_cut is None:
                     hint_cuts = []
                     recovery_cuts = []
-                mechanical_cuts = hint_cuts + [offsets[i][0] for i in range(200, len(offsets), 200)]
+                mechanical_cuts = hint_cuts + token_window_cuts(line, offsets)
                 project_cuts = [cut for match in re.finditer(r'(?<!\w)project\s*#?\s*\d+\s*:\s*\S',line,re.I) for cut in (match.start(),line.index(':',match.start())+1)]
-                cuts = sorted(set(project_cuts + recovery_cuts + [word_safe_cut(line, cut) for cut in mechanical_cuts] + [0] + ([inline_cut] if inline_cut else []) + [len(line)]))
+                # Inline bullet glyphs establish item boundaries; hyphens in
+                # date ranges, technical names and normal prose do not.
+                bullet_cuts = [match.start() for match in re.finditer(r'[•▪●\uf0b7](?=\s*\S)', line)
+                               if line[:match.start()].strip()]
+                cuts = sorted(set(project_cuts + bullet_cuts + recovery_cuts + [word_safe_cut(line, cut) for cut in mechanical_cuts] + [0] + ([inline_cut] if inline_cut else []) + [len(line)]))
                 if not line:
                     cuts = [0, 0]
                 for start, end in zip(cuts, cuts[1:]):
@@ -185,7 +214,7 @@ class SectionEngine:
     def _detect(self, request):
         units, multicolumn = self.units(request.elements)
         texts = [unit.text.strip() or ' ' for unit in units]
-        vectors = self.encoder.encode(texts, normalize_embeddings=True, batch_size=16, show_progress_bar=False)
+        vectors = self.encode_texts(texts)
         headers = self.headings.score(vectors, headings=True)
         contents = self.content.score(vectors)
         # Generic phrase boundaries only; section names are never matched by regex.
@@ -200,7 +229,7 @@ class SectionEngine:
                     compound_parts.extend(parts)
                     part_owners.extend([i] * len(parts))
         if compound_parts:
-            part_vectors = self.encoder.encode(compound_parts, normalize_embeddings=True, batch_size=16, show_progress_bar=False)
+            part_vectors = self.encode_texts(compound_parts)
             for owner, (label, _, score, margin) in zip(part_owners, self.headings.score(part_vectors, headings=True)):
                 if score >= .85 and margin >= .12:
                     compounds.setdefault(owner, set()).add(label)

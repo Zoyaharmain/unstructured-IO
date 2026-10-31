@@ -89,7 +89,8 @@ def test_source_block_audit_accounts_for_every_character():
     unmapped = res.meta['unmapped_blocks']
     # b1 is structural heading so it's in unmapped blocks; b3 is in needs_review
     assert any(u['text'] == elements[1].text for u in unmapped)
-    assert len(res.meta['needs_review']) == 2
+    assert len(res.meta['needs_review']) == 1  # Page separators are accounted artifacts, not human-review content.
+    assert len(res.meta['layout_artifacts']) == 1
 
 
 def test_candidate_field_not_marked_absent_when_present_in_unassigned_blocks():

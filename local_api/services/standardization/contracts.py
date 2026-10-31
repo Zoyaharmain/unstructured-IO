@@ -31,13 +31,16 @@ class StandardizationMetadata(BaseModel):
     model_config = ConfigDict(extra="ignore")
     schema_version: str = Field(default="1.0.0", description="Contract schema version")
     applied_at: str = Field(description="ISO-8601 UTC timestamp of normalization")
-    total_normalizations: int = Field(default=0, description="Count of modified or normalized fields")
+    total_normalizations: int = Field(default=0, description="Count of applied normalization log entries; not distinct fields")
     corrections_by_type: dict[str, int] = Field(default_factory=dict, description="Summary counts per warning/normalization type")
+    corrections: list[StandardizationWarning] = Field(default_factory=list, description="Applied system changes with original values, resulting values and reasons")
     source_evidence: dict[str, list[str]] = Field(default_factory=dict)
     as_of_date: str | None = None
-    duration_policy: str = 'Month precision: inclusive calendar-month coverage (approximate). Day precision: completed calendar units.'
+    duration_policy: str = 'Year precision: annual-resolution estimates from year-label differences, including current reference year for current roles; months are estimated years times 12, not known elapsed months. Year-label unions use common annual boundaries only for computation; no employment month is inferred. Month precision: elapsed calendar months (approximate). Day precision: completed calendar units. Aggregate unions use first-of-month boundaries for month-only dates; residual days use 365.2425/12 days per month, rounded to one decimal year.'
     field_verification: dict[str, str] = Field(default_factory=dict)
     cross_field_notes: list[str] = Field(default_factory=list, description="Cross-field relationship and consistency observations")
+    experience_summary: dict[str, Any] = Field(default_factory=dict)
+    experience_calculations: list[dict[str, Any]] = Field(default_factory=list)
 
 
 class ValidationStatus(BaseModel):
@@ -53,6 +56,7 @@ class StandardizedContactInfo(ContactInfo):
     raw_phone: str | None = Field(default=None, description="Raw source phone string")
     phone_e164: str | None = Field(default=None, description="E.164 canonical phone number if country code known")
     raw_email: str | None = Field(default=None, description="Raw source email string")
+    phone_extension: str | None = None
 
 
 class StandardizedWorkExperience(WorkExperience):
@@ -61,7 +65,7 @@ class StandardizedWorkExperience(WorkExperience):
     duration_months: int | None = None
     duration_is_approximate: bool = True
     duration_as_of: str | None = None
-    duration_status: Literal['calculated', 'insufficient_dates', 'invalid_dates'] = 'insufficient_dates'
+    duration_status: Literal['calculated', 'estimated_year_precision', 'insufficient_dates', 'invalid_dates'] = 'insufficient_dates'
     raw_start_date: str | None = Field(default=None, description="Original source start date")
     raw_end_date: str | None = Field(default=None, description="Original source end date")
     start_date_iso: str | None = Field(default=None, description="ISO-8601 start date (YYYY, YYYY-MM, or YYYY-MM-DD)")
@@ -90,14 +94,29 @@ class StandardizedCertification(Certification):
     issue_year_iso: str | None = Field(default=None, description="ISO-8601 4-digit certification issue year")
 
 
+class SupplementalRecord(BaseModel):
+    model_config = ConfigDict(extra='forbid')
+    name: str | None = None
+    description: str | None = None
+    organization: str | None = None
+    date: str | None = Field(default=None, pattern=r'^\d{4}(?:-\d{2}(?:-\d{2})?)?$')
+    start_date: str | None = Field(default=None, pattern=r'^\d{4}(?:-\d{2}(?:-\d{2})?)?$')
+    end_date: str | None = Field(default=None, pattern=r'^\d{4}(?:-\d{2}(?:-\d{2})?)?$')
+    url: str | None = None
+    outcomes: list[str] = Field(default_factory=list)
+    details: dict[str, Any] = Field(default_factory=dict)
+
+
 class StandardizedResumeSchema(BaseModel):
     model_config = ConfigDict(extra="ignore")
     contact: StandardizedContactInfo
     professional_title: str | None = None
     summary: str | None = None
-    total_experience_years: float | None = Field(default=None, description="Source-stated total experience in years")
+    total_experience_years: float | None = Field(default=None, description="Non-overlapping experience at source precision, including labelled year-only estimates; null when records cannot be dated")
+    stated_total_experience_years: float | None = Field(default=None, description="Original source-stated numeric experience; qualifiers remain in original summary/evidence")
     calculated_experience_years: float | None = Field(default=None, description="Calculated non-overlapping chronological experience in years")
-    calculated_experience_complete: bool = False
+    calculated_experience_complete: bool = Field(default=False, description="All employment records included at supplied precision; does not establish exact months")
+    calculated_experience_is_approximate: bool = False
     experience_overlap_detected: bool = Field(default=False, description="Whether overlapping employment spans were detected")
     skills: CategorizedSkills = Field(default_factory=CategorizedSkills)
     experience: list[StandardizedWorkExperience] = Field(default_factory=list)
@@ -105,4 +124,11 @@ class StandardizedResumeSchema(BaseModel):
     certifications: list[StandardizedCertification] = Field(default_factory=list)
     projects: list[StandardizedProject] = Field(default_factory=list)
     languages: list[str] = Field(default_factory=list)
+    awards: list[SupplementalRecord] = Field(default_factory=list)
+    achievements: list[SupplementalRecord] = Field(default_factory=list)
+    publications: list[SupplementalRecord] = Field(default_factory=list)
+    volunteering: list[SupplementalRecord] = Field(default_factory=list)
+    interests: list[SupplementalRecord] = Field(default_factory=list)
+    references: list[SupplementalRecord] = Field(default_factory=list)
+    additional_sections: list[dict[str, Any] | str] = Field(default_factory=list)
 

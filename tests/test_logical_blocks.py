@@ -37,7 +37,13 @@ def test_jobs_are_complete_separate_records_not_one_selected_fragment():
     assert not set(groups[0]['source_ids']) & set(groups[1]['source_ids'])
     assert [i for g in groups for i in g['block_indices']]==list(range(1,7))
     prompt=json.loads(messages([s])[1]['content'])['sections'][0]
-    assert prompt['logical_blocks']==groups
+    sources={b['source_id']:b['text'] for b in prompt['blocks']}
+    for packed,original in zip(prompt['logical_blocks'],groups):
+        assert packed['logical_id']==original['logical_id']
+        assert packed['source_ids']==original['source_ids']
+        assert packed['block_indices']==original['block_indices']
+        assert 'text' not in packed
+        assert '\n'.join(sources[sid] for sid in packed['source_ids'])==original['text']
     assert all(g['logical_id'] not in {b['source_id'] for b in prompt['blocks']} for g in groups)
 
 

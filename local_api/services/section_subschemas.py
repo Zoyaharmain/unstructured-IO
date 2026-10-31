@@ -47,7 +47,8 @@ def build_subschemas(sections, data, scope, record_bindings=None):
                 if refs:
                     # A cited fragment does not consume the rest of its source block.
                     used.update(sid(b) for b in allowed if any(
-                        ref.source_id == sid(b) and ref.quote.strip() == b.text.strip() for ref in refs))
+                        ref.source_id == sid(b) and ref.quote.strip() == b.text.strip()
+                        and literal.strip() == b.text.strip() for ref in refs))
                     items.append(AttributeValue(value=item, evidence=refs,
                                  status='needs_review' if uncertain else 'source_supported'))
             return Attribute(name=name, items=items, status='mapped' if items else 'unresolved')

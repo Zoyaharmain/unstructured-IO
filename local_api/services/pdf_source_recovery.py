@@ -6,6 +6,7 @@ not independent proof of PDF fidelity (images and ambiguous overlaps still need
 review). Old element offsets/cached classifications must not be reused afterward.
 """
 from copy import deepcopy
+from collections import Counter
 from hashlib import sha256
 from difflib import SequenceMatcher
 from io import BytesIO
@@ -63,12 +64,30 @@ def recover_pdf_source(payload, original, lines=None):
     by_page={}
     for e in elements:
         by_page.setdefault(e['metadata'].get('page_number'),[]).append(e)
+    occurrences=Counter((r['page'],compact(r['text'])[0]) for r in records)
     additions=[];ambiguous=[]
     for record in records:
         page=record['page'];text=record['text'];key,_=compact(text)
         page_elements=by_page.get(page,[])
         page_key=''.join(compact(e.get('text',''))[0] for e in page_elements)
-        if not key or key in page_key:continue
+        if not key:continue
+        if key in page_key:
+            if occurrences[(page,key)]<2:continue
+            # Text elsewhere on the page is not proof that this physical
+            # occurrence survived partitioning (employer names often repeat).
+            box=record['bbox']
+            located_matches=[]
+            for element in page_elements:
+                for hint in element.get('metadata',{}).get('pdf_source_lines',[]):
+                    if len(hint.get('bbox',[]))!=4:continue
+                    quote=element.get('text','')[hint.get('start',0):hint.get('end',0)]
+                    if key in compact(quote)[0]:located_matches.append(hint['bbox'])
+            def same_region(b):
+                return (min(b[3],box[3])>max(b[1],box[1]) and
+                        min(b[2],box[2])-max(b[0],box[0])>.3*max(.001,box[2]-box[0]))
+            if any(same_region(b) for b in located_matches):continue
+            if not located_matches:continue
+
         if '\x00' in text or '\ufffd' in text:
             ambiguous.append({**record,'reason':'damaged_pdf_character_layer'});continue
         # Partial overlaps can mean a spacing/order issue or a partly missing

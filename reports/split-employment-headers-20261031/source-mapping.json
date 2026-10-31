@@ -1,0 +1,2140 @@
+{
+  "success": true,
+  "source": "existing-section-blocks",
+  "extraction_mode": "existing_blocks_schema_mapping",
+  "data": {
+    "contact": {
+      "full_name": "",
+      "email": "",
+      "phone": "",
+      "location": null,
+      "linkedin_url": null,
+      "github_url": null,
+      "portfolio_url": null,
+      "work_preferences": null,
+      "target_role": null
+    },
+    "professional_title": null,
+    "summary": null,
+    "total_experience_years": null,
+    "skills": {
+      "technical_skills": [],
+      "tools_and_platforms": [],
+      "domain_and_functional": [],
+      "soft_skills": [],
+      "all_skills": []
+    },
+    "experience": [
+      {
+        "company": "Concentrix",
+        "role": "Data Analyst",
+        "start_date": "Apr 2017",
+        "end_date": "Nov 2017",
+        "duration": "Apr 2017 \u2013 Nov 2017",
+        "location": "Visakhapatnam",
+        "engagement_type": null,
+        "responsibilities": [
+          "Built reporting dashboards."
+        ],
+        "technologies": []
+      }
+    ],
+    "education": [],
+    "certifications": [],
+    "projects": [],
+    "languages": []
+  },
+  "schema_mapping": {
+    "fields_populated": 1,
+    "total_fields": 16,
+    "completion_percentage": 6.2,
+    "field_details": [
+      {
+        "field_name": "contact.full_name",
+        "target_type": "string",
+        "is_required": true,
+        "is_extracted": false,
+        "source_section": "Header / Personal Details",
+        "confidence_score": 0.0,
+        "description": "Candidate's full name, extracted from the top header of the resume.",
+        "source_status": "absent_in_source"
+      },
+      {
+        "field_name": "contact.email",
+        "target_type": "string (email)",
+        "is_required": true,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's primary contact email address.",
+        "source_status": "absent_in_source"
+      },
+      {
+        "field_name": "contact.phone",
+        "target_type": "string (phone)",
+        "is_required": true,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's telephone / mobile phone number.",
+        "source_status": "absent_in_source"
+      },
+      {
+        "field_name": "contact.location",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's residential location or work city.",
+        "source_status": "absent_in_source"
+      },
+      {
+        "field_name": "contact.linkedin_url",
+        "target_type": "string (url) | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "URL to candidate's LinkedIn profile.",
+        "source_status": "absent_in_source"
+      },
+      {
+        "field_name": "professional_title",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Subtitle",
+        "confidence_score": 0.0,
+        "description": "Candidate's target headline or most recent job title.",
+        "source_status": "absent_in_source"
+      },
+      {
+        "field_name": "summary",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Professional Summary / Profile / Objective",
+        "confidence_score": 0.0,
+        "description": "Executive bio, professional overview, or career objective.",
+        "source_status": "absent_in_source"
+      },
+      {
+        "field_name": "total_experience_years",
+        "target_type": "float | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Summary / Experience Calculation",
+        "confidence_score": 0.0,
+        "description": "Total professional experience in years.",
+        "source_status": "absent_in_source"
+      },
+      {
+        "field_name": "skills.technical_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Technical Competencies",
+        "confidence_score": 0.0,
+        "description": "Technical programming languages and core software competencies.",
+        "source_status": "absent_in_source"
+      },
+      {
+        "field_name": "skills.tools_and_platforms",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Tools & Technologies",
+        "confidence_score": 0.0,
+        "description": "Software platforms, developer tools, and operational systems.",
+        "source_status": "absent_in_source"
+      },
+      {
+        "field_name": "skills.domain_and_functional",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Domain Expertise",
+        "confidence_score": 0.0,
+        "description": "Functional domain knowledge (e.g. Hedge Funds, KYC, NAV, Derivatives).",
+        "source_status": "absent_in_source"
+      },
+      {
+        "field_name": "skills.all_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills (Aggregated)",
+        "confidence_score": 0.0,
+        "description": "Complete list of candidate skills across all categories.",
+        "source_status": "absent_in_source"
+      },
+      {
+        "field_name": "experience",
+        "target_type": "array[WorkExperience]",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Professional Experience / Work History",
+        "confidence_score": 0.92,
+        "description": "Complete chronological employment records with bullet points.",
+        "source_status": "present_and_extracted"
+      },
+      {
+        "field_name": "education",
+        "target_type": "array[Education]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Education / Academic Qualifications",
+        "confidence_score": 0.0,
+        "description": "University, college, and higher education degree qualifications.",
+        "source_status": "absent_in_source"
+      },
+      {
+        "field_name": "certifications",
+        "target_type": "array[Certification]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Certifications / Licenses",
+        "confidence_score": 0.0,
+        "description": "Professional accreditations and credentials.",
+        "source_status": "absent_in_source"
+      },
+      {
+        "field_name": "projects",
+        "target_type": "array[Project]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Projects / Key Engagements",
+        "confidence_score": 0.0,
+        "description": "Major projects or strategic initiatives led by candidate.",
+        "source_status": "absent_in_source"
+      }
+    ]
+  },
+  "raw_sections": {
+    "experience": "EXPERIENCE\nData Analyst\nConcentrix \u2013 Visakhapatnam\nClient: Uber International\nApr 2017 \u2013 Nov 2017\nBuilt reporting dashboards."
+  },
+  "meta": {
+    "status": "needs_review",
+    "human_verified": false,
+    "provider_calls": 0,
+    "source_accounting": {
+      "all_source_text_preserved": true,
+      "total_spans": 6,
+      "assigned_meaningful_spans": 6,
+      "unresolved_meaningful_spans": 0,
+      "non_content_artifacts": 0,
+      "duplicates_excluded": 0,
+      "all_meaningful_text_assigned": true,
+      "semantic_correctness_verified": false,
+      "outcomes": [
+        {
+          "source_id": "e0:0:10",
+          "source_element_index": 0,
+          "start": 0,
+          "end": 10,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "low semantic separation"
+        },
+        {
+          "source_id": "e1:0:12",
+          "source_element_index": 1,
+          "start": 0,
+          "end": 12,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "low semantic separation"
+        },
+        {
+          "source_id": "e2:0:26",
+          "source_element_index": 2,
+          "start": 0,
+          "end": 26,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "low semantic separation"
+        },
+        {
+          "source_id": "e3:0:26",
+          "source_element_index": 3,
+          "start": 0,
+          "end": 26,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "low semantic separation"
+        },
+        {
+          "source_id": "e4:0:19",
+          "source_element_index": 4,
+          "start": 0,
+          "end": 19,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "low semantic separation"
+        },
+        {
+          "source_id": "e5:0:27",
+          "source_element_index": 5,
+          "start": 0,
+          "end": 27,
+          "section": "experience",
+          "outcome": "assigned",
+          "reason": "low semantic separation"
+        }
+      ]
+    },
+    "document_scope": {
+      "kind": "candidate_or_unknown",
+      "candidate_resume": null,
+      "requires_scope_review": true
+    },
+    "source_inventory_sha256": "3d82b7c456817752a340f17df9af86157998c7674c79569bbd54e90262d6737a",
+    "field_evidence": {
+      "experience[0].company": [
+        "e2:0:26"
+      ],
+      "experience[0].role": [
+        "e1:0:12"
+      ],
+      "experience[0].start_date": [
+        "e4:0:19"
+      ],
+      "experience[0].end_date": [
+        "e4:0:19"
+      ],
+      "experience[0].duration": [
+        "e4:0:19"
+      ],
+      "experience[0].location": [
+        "e2:0:26"
+      ],
+      "experience[0].responsibilities[0]": [
+        "e5:0:27"
+      ]
+    },
+    "record_reviews": [
+      {
+        "category": "experience",
+        "entry_id": "experience-1",
+        "source_ids": [
+          "e1:0:12",
+          "e2:0:26",
+          "e3:0:26",
+          "e4:0:19",
+          "e5:0:27"
+        ],
+        "relationship_status": "needs_review",
+        "review_reasons": [
+          "employer_not_established_from_supported_fields"
+        ],
+        "mapped_index": 0
+      }
+    ],
+    "record_bindings": {
+      "experience": {
+        "experience-1": 0
+      },
+      "education": {},
+      "projects": {},
+      "certifications": {}
+    },
+    "missing_required_fields": [
+      "contact.full_name",
+      "contact.email",
+      "contact.phone"
+    ],
+    "field_source_status": {
+      "contact.full_name": "absent_in_source",
+      "contact.email": "absent_in_source",
+      "contact.phone": "absent_in_source",
+      "contact.location": "absent_in_source",
+      "contact.linkedin_url": "absent_in_source",
+      "contact.github_url": "absent_in_source",
+      "contact.portfolio_url": "absent_in_source",
+      "professional_title": "absent_in_source",
+      "summary": "absent_in_source",
+      "total_experience_years": "absent_in_source",
+      "experience": "present_and_extracted",
+      "education": "absent_in_source",
+      "projects": "absent_in_source",
+      "certifications": "absent_in_source",
+      "experience[0].company": "present_and_extracted",
+      "experience[0].role": "present_and_extracted",
+      "experience[0].start_date": "present_and_extracted",
+      "experience[0].end_date": "present_and_extracted",
+      "experience[0].duration": "present_and_extracted",
+      "experience[0].location": "present_and_extracted",
+      "experience[0].engagement_type": "absent_in_source",
+      "experience[0].responsibilities": "present_and_extracted",
+      "experience[0].technologies": "absent_in_source",
+      "skills": "absent_in_source",
+      "languages": "absent_in_source"
+    },
+    "source_coverage_ledger": {
+      "field_statuses": {
+        "contact.full_name": "absent_in_source",
+        "contact.email": "absent_in_source",
+        "contact.phone": "absent_in_source",
+        "contact.location": "absent_in_source",
+        "contact.linkedin_url": "absent_in_source",
+        "contact.github_url": "absent_in_source",
+        "contact.portfolio_url": "absent_in_source",
+        "professional_title": "absent_in_source",
+        "summary": "absent_in_source",
+        "total_experience_years": "absent_in_source",
+        "experience": "present_and_extracted",
+        "education": "absent_in_source",
+        "projects": "absent_in_source",
+        "certifications": "absent_in_source",
+        "experience[0].company": "present_and_extracted",
+        "experience[0].role": "present_and_extracted",
+        "experience[0].start_date": "present_and_extracted",
+        "experience[0].end_date": "present_and_extracted",
+        "experience[0].duration": "present_and_extracted",
+        "experience[0].location": "present_and_extracted",
+        "experience[0].engagement_type": "absent_in_source",
+        "experience[0].responsibilities": "present_and_extracted",
+        "experience[0].technologies": "absent_in_source",
+        "skills": "absent_in_source",
+        "languages": "absent_in_source"
+      },
+      "status_counts": {
+        "present_and_extracted": 8,
+        "present_but_unmapped": 0,
+        "present_but_ambiguous": 0,
+        "absent_in_source": 17,
+        "extraction_failed": 0,
+        "not_applicable": 0
+      }
+    },
+    "warnings": [
+      "Schema validity and field completion do not establish extraction or relationship accuracy.",
+      "Handoff confidence scores are fixed heuristics, not calibrated probabilities.",
+      "Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields."
+    ],
+    "unmapped_blocks": [
+      {
+        "source_id": "e0:0:10",
+        "category": "experience",
+        "text": "EXPERIENCE",
+        "page_number": 1
+      },
+      {
+        "source_id": "e3:0:26",
+        "category": "experience",
+        "text": "Client: Uber International",
+        "page_number": 1
+      }
+    ],
+    "needs_review": [],
+    "layout_artifacts": [],
+    "reviewed_sections": {
+      "status": "needs_review",
+      "extraction_verified": false,
+      "sections": [
+        {
+          "category": "experience",
+          "label": "Experience",
+          "text": "EXPERIENCE\nData Analyst\nConcentrix \u2013 Visakhapatnam\nClient: Uber International\nApr 2017 \u2013 Nov 2017\nBuilt reporting dashboards.",
+          "highlights": [
+            {
+              "start": 0,
+              "end": 10,
+              "kind": "heading"
+            }
+          ],
+          "blocks": [
+            {
+              "source_element_index": 0,
+              "start": 0,
+              "end": 10,
+              "text": "EXPERIENCE",
+              "page_number": 1,
+              "cluster_id": null,
+              "candidate_section": null,
+              "alternatives": [],
+              "cluster_space": "content",
+              "context_source_element_index": null,
+              "assignment": "structural_heading",
+              "similarity": null,
+              "margin": null,
+              "lane": "main",
+              "reason": "low semantic separation",
+              "reviewed_by_llm": false,
+              "local_section": null,
+              "local_assignment": null,
+              "llm_action": null
+            },
+            {
+              "source_element_index": 1,
+              "start": 0,
+              "end": 12,
+              "text": "Data Analyst",
+              "page_number": 1,
+              "cluster_id": null,
+              "candidate_section": null,
+              "alternatives": [],
+              "cluster_space": "content",
+              "context_source_element_index": null,
+              "assignment": "semantic",
+              "similarity": null,
+              "margin": null,
+              "lane": "main",
+              "reason": "low semantic separation",
+              "reviewed_by_llm": false,
+              "local_section": null,
+              "local_assignment": null,
+              "llm_action": null
+            },
+            {
+              "source_element_index": 2,
+              "start": 0,
+              "end": 26,
+              "text": "Concentrix \u2013 Visakhapatnam",
+              "page_number": 1,
+              "cluster_id": null,
+              "candidate_section": null,
+              "alternatives": [],
+              "cluster_space": "content",
+              "context_source_element_index": null,
+              "assignment": "semantic",
+              "similarity": null,
+              "margin": null,
+              "lane": "main",
+              "reason": "low semantic separation",
+              "reviewed_by_llm": false,
+              "local_section": null,
+              "local_assignment": null,
+              "llm_action": null
+            },
+            {
+              "source_element_index": 3,
+              "start": 0,
+              "end": 26,
+              "text": "Client: Uber International",
+              "page_number": 1,
+              "cluster_id": null,
+              "candidate_section": null,
+              "alternatives": [],
+              "cluster_space": "content",
+              "context_source_element_index": null,
+              "assignment": "semantic",
+              "similarity": null,
+              "margin": null,
+              "lane": "main",
+              "reason": "low semantic separation",
+              "reviewed_by_llm": false,
+              "local_section": null,
+              "local_assignment": null,
+              "llm_action": null
+            },
+            {
+              "source_element_index": 4,
+              "start": 0,
+              "end": 19,
+              "text": "Apr 2017 \u2013 Nov 2017",
+              "page_number": 1,
+              "cluster_id": null,
+              "candidate_section": null,
+              "alternatives": [],
+              "cluster_space": "content",
+              "context_source_element_index": null,
+              "assignment": "semantic",
+              "similarity": null,
+              "margin": null,
+              "lane": "main",
+              "reason": "low semantic separation",
+              "reviewed_by_llm": false,
+              "local_section": null,
+              "local_assignment": null,
+              "llm_action": null
+            },
+            {
+              "source_element_index": 5,
+              "start": 0,
+              "end": 27,
+              "text": "Built reporting dashboards.",
+              "page_number": 1,
+              "cluster_id": null,
+              "candidate_section": null,
+              "alternatives": [],
+              "cluster_space": "content",
+              "context_source_element_index": null,
+              "assignment": "semantic",
+              "similarity": null,
+              "margin": null,
+              "lane": "main",
+              "reason": "low semantic separation",
+              "reviewed_by_llm": false,
+              "local_section": null,
+              "local_assignment": null,
+              "llm_action": null
+            }
+          ],
+          "entries": [
+            {
+              "entry_id": "experience-1",
+              "block_indices": [
+                1,
+                2,
+                3,
+                4,
+                5
+              ],
+              "lane": "main",
+              "boundary_reason": "Adjacent role, employer and date rows form one source-backed employment header.",
+              "fields": {
+                "title": [
+                  1
+                ],
+                "client": [
+                  3
+                ],
+                "dates": [
+                  4
+                ],
+                "responsibilities": [
+                  5
+                ]
+              },
+              "relationship_status": "needs_review",
+              "review_reasons": [
+                "employer_not_established_from_supported_fields"
+              ]
+            }
+          ],
+          "source_heading": "EXPERIENCE",
+          "readable_blocks": [
+            {
+              "kind": "employer",
+              "title": "Concentrix \u2013 Visakhapatnam",
+              "block_indices": [
+                2
+              ],
+              "children": [
+                {
+                  "kind": "role",
+                  "title": "Data Analyst",
+                  "block_indices": [
+                    1,
+                    3,
+                    4,
+                    5
+                  ],
+                  "children": []
+                }
+              ]
+            }
+          ],
+          "logical_blocks": [
+            {
+              "logical_id": "experience-1",
+              "kind": "record",
+              "text": "Data Analyst\nConcentrix \u2013 Visakhapatnam\nClient: Uber International\nApr 2017 \u2013 Nov 2017\nBuilt reporting dashboards.",
+              "block_indices": [
+                1,
+                2,
+                3,
+                4,
+                5
+              ],
+              "source_ids": [
+                "e1:0:12",
+                "e2:0:26",
+                "e3:0:26",
+                "e4:0:19",
+                "e5:0:27"
+              ],
+              "relationship_status": "needs_review",
+              "review_reasons": [
+                "employer_not_established_from_supported_fields"
+              ],
+              "semantic_frame": {
+                "schema_target": "experience",
+                "meaning": "Experience",
+                "scope": "one_record",
+                "field_slots": [
+                  {
+                    "name": "company",
+                    "multiple": false,
+                    "source_hints": []
+                  },
+                  {
+                    "name": "role",
+                    "multiple": false,
+                    "source_hints": [
+                      "e1:0:12"
+                    ]
+                  },
+                  {
+                    "name": "start_date",
+                    "multiple": false,
+                    "source_hints": []
+                  },
+                  {
+                    "name": "end_date",
+                    "multiple": false,
+                    "source_hints": []
+                  },
+                  {
+                    "name": "duration",
+                    "multiple": false,
+                    "source_hints": [
+                      "e4:0:19"
+                    ]
+                  },
+                  {
+                    "name": "location",
+                    "multiple": false,
+                    "source_hints": []
+                  },
+                  {
+                    "name": "engagement_type",
+                    "multiple": false,
+                    "source_hints": []
+                  },
+                  {
+                    "name": "responsibilities",
+                    "multiple": true,
+                    "source_hints": [
+                      "e5:0:27"
+                    ]
+                  },
+                  {
+                    "name": "technologies",
+                    "multiple": true,
+                    "source_hints": []
+                  }
+                ],
+                "interpretation_status": "proposed",
+                "evidence_policy": "Extract literal values from original sources; validate every field. Hints are not established values and empty hints do not mean absent."
+              }
+            }
+          ]
+        }
+      ],
+      "needs_review": [],
+      "metadata": {
+        "split_employment_header_recovery": [
+          {
+            "source_block_indices": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "joined_entries": 2
+          }
+        ]
+      },
+      "warnings": []
+    },
+    "completeness_check": {
+      "version": 1,
+      "source_intervals_valid": true,
+      "semantic_correctness_verified": false,
+      "mapped_intervals": [
+        {
+          "source_id": "e2:0:26",
+          "source_element_index": 2,
+          "start": 0,
+          "end": 10,
+          "field": "experience/experience-1/company/0"
+        },
+        {
+          "source_id": "e2:0:26",
+          "source_element_index": 2,
+          "start": 13,
+          "end": 26,
+          "field": "experience/experience-1/location/0"
+        },
+        {
+          "source_id": "e1:0:12",
+          "source_element_index": 1,
+          "start": 0,
+          "end": 12,
+          "field": "experience/experience-1/role/0"
+        },
+        {
+          "source_id": "e4:0:19",
+          "source_element_index": 4,
+          "start": 0,
+          "end": 8,
+          "field": "experience/experience-1/start_date/0"
+        },
+        {
+          "source_id": "e4:0:19",
+          "source_element_index": 4,
+          "start": 11,
+          "end": 19,
+          "field": "experience/experience-1/end_date/0"
+        },
+        {
+          "source_id": "e4:0:19",
+          "source_element_index": 4,
+          "start": 0,
+          "end": 19,
+          "field": "experience/experience-1/duration/0"
+        },
+        {
+          "source_id": "e5:0:27",
+          "source_element_index": 5,
+          "start": 0,
+          "end": 27,
+          "field": "experience/experience-1/responsibilities/0"
+        }
+      ],
+      "meaningful_unmapped_fragments": 1,
+      "unassigned_source_fragments": 0,
+      "recognized_but_unmapped_fragments": 0,
+      "conflicting_field_overlaps": [],
+      "unmapped": [
+        {
+          "source_id": "e3:0:26",
+          "source_element_index": 3,
+          "start": 0,
+          "end": 26,
+          "text": "Client: Uber International",
+          "section": "experience",
+          "recognizable_category": null,
+          "local_reason": "low semantic separation",
+          "reason": "record_or_field_association_not_established"
+        }
+      ],
+      "non_content_artifacts": [],
+      "heading_source_ids": [
+        "e0:0:10"
+      ],
+      "all_meaningful_content_mapped": false,
+      "all_meaningful_content_accounted_for": true,
+      "interpretation": "Every unmapped fragment retains exact source offsets and an explicit review reason; coverage is not proof of correct associations."
+    },
+    "mapping_result": {
+      "status": "needs_review",
+      "usable": true,
+      "requires_review": true,
+      "fallback_used": false,
+      "meaning": "Source-bound output is available for inspection; this does not certify field accuracy."
+    }
+  },
+  "section_schemas": [
+    {
+      "category": "experience",
+      "label": "Experience",
+      "records": [
+        {
+          "record_id": "experience-1",
+          "source_ids": [
+            "e1:0:12",
+            "e2:0:26",
+            "e3:0:26",
+            "e4:0:19",
+            "e5:0:27"
+          ],
+          "attributes": [
+            {
+              "name": "company",
+              "items": [
+                {
+                  "value": "Concentrix",
+                  "evidence": [
+                    {
+                      "source_id": "e2:0:26",
+                      "quote": "Concentrix"
+                    }
+                  ],
+                  "status": "needs_review"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "role",
+              "items": [
+                {
+                  "value": "Data Analyst",
+                  "evidence": [
+                    {
+                      "source_id": "e1:0:12",
+                      "quote": "Data Analyst"
+                    }
+                  ],
+                  "status": "needs_review"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "start_date",
+              "items": [
+                {
+                  "value": "Apr 2017",
+                  "evidence": [
+                    {
+                      "source_id": "e4:0:19",
+                      "quote": "Apr 2017"
+                    }
+                  ],
+                  "status": "needs_review"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "end_date",
+              "items": [
+                {
+                  "value": "Nov 2017",
+                  "evidence": [
+                    {
+                      "source_id": "e4:0:19",
+                      "quote": "Nov 2017"
+                    }
+                  ],
+                  "status": "needs_review"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "duration",
+              "items": [
+                {
+                  "value": "Apr 2017 \u2013 Nov 2017",
+                  "evidence": [
+                    {
+                      "source_id": "e4:0:19",
+                      "quote": "Apr 2017 \u2013 Nov 2017"
+                    }
+                  ],
+                  "status": "needs_review"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "location",
+              "items": [
+                {
+                  "value": "Visakhapatnam",
+                  "evidence": [
+                    {
+                      "source_id": "e2:0:26",
+                      "quote": "Visakhapatnam"
+                    }
+                  ],
+                  "status": "needs_review"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "engagement_type",
+              "items": [],
+              "status": "unresolved"
+            },
+            {
+              "name": "responsibilities",
+              "items": [
+                {
+                  "value": "Built reporting dashboards.",
+                  "evidence": [
+                    {
+                      "source_id": "e5:0:27",
+                      "quote": "Built reporting dashboards."
+                    }
+                  ],
+                  "status": "needs_review"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "technologies",
+              "items": [],
+              "status": "unresolved"
+            }
+          ],
+          "review_reasons": [
+            "employer_not_established_from_supported_fields"
+          ]
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e0:0:10",
+          "quote": "EXPERIENCE"
+        },
+        {
+          "source_id": "e2:0:26",
+          "quote": "Concentrix \u2013 Visakhapatnam"
+        },
+        {
+          "source_id": "e3:0:26",
+          "quote": "Client: Uber International"
+        }
+      ]
+    }
+  ],
+  "schema_version": "2.0.0",
+  "standardized_data": {
+    "contact": {
+      "full_name": "",
+      "email": "",
+      "phone": "",
+      "location": null,
+      "linkedin_url": null,
+      "github_url": null,
+      "portfolio_url": null,
+      "work_preferences": null,
+      "target_role": null,
+      "raw_phone": "",
+      "phone_e164": null,
+      "raw_email": "",
+      "phone_extension": null
+    },
+    "professional_title": null,
+    "summary": null,
+    "total_experience_years": 0.6,
+    "stated_total_experience_years": null,
+    "calculated_experience_years": 0.6,
+    "calculated_experience_complete": true,
+    "calculated_experience_is_approximate": true,
+    "experience_overlap_detected": false,
+    "skills": {
+      "technical_skills": [],
+      "tools_and_platforms": [],
+      "domain_and_functional": [],
+      "soft_skills": [],
+      "all_skills": []
+    },
+    "experience": [
+      {
+        "company": "Concentrix",
+        "role": "Data Analyst",
+        "start_date": "2017-04",
+        "end_date": "2017-11",
+        "duration": "7 months",
+        "location": "Visakhapatnam",
+        "engagement_type": null,
+        "responsibilities": [
+          "Built reporting dashboards."
+        ],
+        "technologies": [],
+        "raw_duration": "Apr 2017 \u2013 Nov 2017",
+        "duration_months": 7,
+        "duration_is_approximate": true,
+        "duration_as_of": null,
+        "duration_status": "calculated",
+        "raw_start_date": "Apr 2017",
+        "raw_end_date": "Nov 2017",
+        "start_date_iso": "2017-04",
+        "end_date_iso": "2017-11",
+        "start_date_precision": "month_year",
+        "end_date_precision": "month_year",
+        "is_current": false
+      }
+    ],
+    "education": [],
+    "certifications": [],
+    "projects": [],
+    "languages": [],
+    "awards": [],
+    "achievements": [],
+    "publications": [],
+    "volunteering": [],
+    "interests": [],
+    "references": [],
+    "additional_sections": [
+      {
+        "category": "experience",
+        "text": "Client: Uber International",
+        "source_ids": [
+          "e3:0:26"
+        ],
+        "status": "unresolved"
+      }
+    ]
+  },
+  "standardization_metadata": {
+    "schema_version": "2.0.0",
+    "applied_at": "2026-10-31T17:43:02.672884+00:00",
+    "total_normalizations": 4,
+    "corrections_by_type": {
+      "duration_calculated": 1,
+      "total_experience_calculated": 1,
+      "date_standardized": 2
+    },
+    "corrections": [
+      {
+        "field": "experience[0].duration",
+        "warning_type": "duration_calculated",
+        "severity": "info",
+        "original_value": "Apr 2017 \u2013 Nov 2017",
+        "normalized_value": "7 months",
+        "suggested_value": null,
+        "basis": "Month precision: elapsed calendar months. Day precision: completed calendar units. As of 2026-10-31.",
+        "applied": true,
+        "verification_status": "rule_based_not_independently_verified",
+        "message": "Derived duration, approximate elapsed calendar months; original date range retained."
+      },
+      {
+        "field": "total_experience_years",
+        "warning_type": "total_experience_calculated",
+        "severity": "info",
+        "original_value": null,
+        "normalized_value": 0.6,
+        "suggested_value": null,
+        "basis": "Union of dated employment intervals; gaps excluded and overlaps counted once. Current roles use 2026-10-31 at supplied precision; year-only estimates use its year. Rounded to one decimal year.",
+        "applied": true,
+        "verification_status": "rule_based_not_independently_verified",
+        "message": "System calculated total experience from employment dates; source-stated experience retained separately."
+      },
+      {
+        "field": "experience[0].end_date",
+        "warning_type": "date_standardized",
+        "severity": "info",
+        "original_value": "Nov 2017",
+        "normalized_value": "2017-11",
+        "suggested_value": null,
+        "basis": "Deterministic formatting, date parsing, filtering or alias rule; original retained in evidence.",
+        "applied": true,
+        "verification_status": "rule_based_not_independently_verified",
+        "message": "System corrected the date representation to ISO format; the original date is retained and no calendar date was inferred."
+      },
+      {
+        "field": "experience[0].start_date",
+        "warning_type": "date_standardized",
+        "severity": "info",
+        "original_value": "Apr 2017",
+        "normalized_value": "2017-04",
+        "suggested_value": null,
+        "basis": "Deterministic formatting, date parsing, filtering or alias rule; original retained in evidence.",
+        "applied": true,
+        "verification_status": "rule_based_not_independently_verified",
+        "message": "System corrected the date representation to ISO format; the original date is retained and no calendar date was inferred."
+      }
+    ],
+    "source_evidence": {
+      "experience[0].company": [
+        "e2:0:26"
+      ],
+      "experience[0].role": [
+        "e1:0:12"
+      ],
+      "experience[0].start_date": [
+        "e4:0:19"
+      ],
+      "experience[0].end_date": [
+        "e4:0:19"
+      ],
+      "experience[0].duration": [
+        "e4:0:19"
+      ],
+      "experience[0].location": [
+        "e2:0:26"
+      ],
+      "experience[0].responsibilities[0]": [
+        "e5:0:27"
+      ]
+    },
+    "as_of_date": "2026-10-31",
+    "duration_policy": "Year precision: annual-resolution estimates from year-label differences, including current reference year for current roles; months are estimated years times 12, not known elapsed months. Year-label unions use common annual boundaries only for computation; no employment month is inferred. Month precision: elapsed calendar months (approximate). Day precision: completed calendar units. Aggregate unions use first-of-month boundaries for month-only dates; residual days use 365.2425/12 days per month, rounded to one decimal year.",
+    "field_verification": {
+      "source_values": "preserved; normalized values are derived and do not replace source citations",
+      "locations": "not_externally_verified",
+      "spelling_suggestions": "dictionary_candidates_only; not proof of correctness",
+      "experience.duration": "source-precision calculation; year-only values are annual-resolution estimates, not exact elapsed months"
+    },
+    "cross_field_notes": [],
+    "experience_summary": {
+      "calculated_experience_years": 0.6,
+      "calculated_experience_complete": true,
+      "calculated_experience_is_approximate": true,
+      "experience_overlap_detected": false
+    },
+    "experience_calculations": [
+      {
+        "record_path": "data.experience[0]",
+        "duration_is_approximate": true,
+        "duration_as_of": null,
+        "duration_status": "calculated",
+        "start_date_iso": "2017-04",
+        "end_date_iso": "2017-11",
+        "start_date_precision": "month_year",
+        "end_date_precision": "month_year"
+      }
+    ]
+  },
+  "validation_status": {
+    "is_valid": false,
+    "usable": false,
+    "requires_human_review": true,
+    "issues_count": 8
+  },
+  "warnings": [
+    {
+      "field": "experience[0].duration",
+      "warning_type": "duration_calculated",
+      "severity": "info",
+      "original_value": "Apr 2017 \u2013 Nov 2017",
+      "normalized_value": "7 months",
+      "suggested_value": null,
+      "basis": "Month precision: elapsed calendar months. Day precision: completed calendar units. As of 2026-10-31.",
+      "applied": true,
+      "verification_status": "rule_based_not_independently_verified",
+      "message": "Derived duration, approximate elapsed calendar months; original date range retained."
+    },
+    {
+      "field": "total_experience_years",
+      "warning_type": "total_experience_calculated",
+      "severity": "info",
+      "original_value": null,
+      "normalized_value": 0.6,
+      "suggested_value": null,
+      "basis": "Union of dated employment intervals; gaps excluded and overlaps counted once. Current roles use 2026-10-31 at supplied precision; year-only estimates use its year. Rounded to one decimal year.",
+      "applied": true,
+      "verification_status": "rule_based_not_independently_verified",
+      "message": "System calculated total experience from employment dates; source-stated experience retained separately."
+    },
+    {
+      "field": "contact.full_name",
+      "warning_type": "missing_required_field",
+      "severity": "review_required",
+      "original_value": null,
+      "normalized_value": null,
+      "suggested_value": null,
+      "basis": null,
+      "applied": false,
+      "verification_status": "rule_based_not_independently_verified",
+      "message": "Candidate full name is missing from contact details."
+    },
+    {
+      "field": "contact",
+      "warning_type": "missing_contact_methods",
+      "severity": "warning",
+      "original_value": null,
+      "normalized_value": null,
+      "suggested_value": null,
+      "basis": null,
+      "applied": false,
+      "verification_status": "rule_based_not_independently_verified",
+      "message": "Candidate has neither email nor phone number listed."
+    },
+    {
+      "field": "additional_sections",
+      "warning_type": "unresolved_source_content",
+      "severity": "review_required",
+      "original_value": null,
+      "normalized_value": null,
+      "suggested_value": null,
+      "basis": null,
+      "applied": false,
+      "verification_status": "rule_based_not_independently_verified",
+      "message": "Additional source content is retained and requires association review."
+    },
+    {
+      "field": "experience[0].end_date",
+      "warning_type": "date_standardized",
+      "severity": "info",
+      "original_value": "Nov 2017",
+      "normalized_value": "2017-11",
+      "suggested_value": null,
+      "basis": "Deterministic formatting, date parsing, filtering or alias rule; original retained in evidence.",
+      "applied": true,
+      "verification_status": "rule_based_not_independently_verified",
+      "message": "System corrected the date representation to ISO format; the original date is retained and no calendar date was inferred."
+    },
+    {
+      "field": "experience[0].start_date",
+      "warning_type": "date_standardized",
+      "severity": "info",
+      "original_value": "Apr 2017",
+      "normalized_value": "2017-04",
+      "suggested_value": null,
+      "basis": "Deterministic formatting, date parsing, filtering or alias rule; original retained in evidence.",
+      "applied": true,
+      "verification_status": "rule_based_not_independently_verified",
+      "message": "System corrected the date representation to ISO format; the original date is retained and no calendar date was inferred."
+    },
+    {
+      "field": "mapping",
+      "warning_type": "unresolved_mapping",
+      "severity": "review_required",
+      "original_value": null,
+      "normalized_value": null,
+      "suggested_value": null,
+      "basis": null,
+      "applied": false,
+      "verification_status": "rule_based_not_independently_verified",
+      "message": "Source mapping has unresolved fields or associations; inspect mapping evidence."
+    }
+  ],
+  "consumer_export": {
+    "export_type": "standardized_resume",
+    "schema_version": "2.0.0",
+    "source": "existing-section-blocks",
+    "data": {
+      "contact": {
+        "full_name": null,
+        "email": null,
+        "phone": null,
+        "location": null,
+        "linkedin_url": null,
+        "github_url": null,
+        "portfolio_url": null,
+        "work_preferences": null,
+        "target_role": null,
+        "phone_extension": null
+      },
+      "professional_title": null,
+      "summary": null,
+      "total_experience_years": 0.6,
+      "stated_total_experience_years": null,
+      "skills": {
+        "technical_skills": [],
+        "tools_and_platforms": [],
+        "domain_and_functional": [],
+        "soft_skills": [],
+        "all_skills": []
+      },
+      "experience": [
+        {
+          "company": "Concentrix",
+          "role": "Data Analyst",
+          "start_date": "2017-04",
+          "end_date": "2017-11",
+          "duration": "7 months",
+          "location": "Visakhapatnam",
+          "engagement_type": null,
+          "responsibilities": [
+            "Built reporting dashboards."
+          ],
+          "technologies": [],
+          "duration_months": 7,
+          "is_current": false,
+          "stated_duration": "Apr 2017 \u2013 Nov 2017"
+        }
+      ],
+      "education": [],
+      "certifications": [],
+      "projects": [],
+      "languages": [],
+      "awards": [],
+      "achievements": [],
+      "publications": [],
+      "volunteering": [],
+      "interests": [],
+      "references": [],
+      "additional_sections": [
+        {
+          "category": "experience",
+          "text": "Client: Uber International",
+          "source_ids": [
+            "e3:0:26"
+          ],
+          "status": "unresolved"
+        }
+      ]
+    },
+    "validation_status": {
+      "is_valid": false,
+      "usable": false,
+      "requires_human_review": true,
+      "issues_count": 8
+    },
+    "standardization_metadata": {
+      "schema_version": "2.0.0",
+      "applied_at": "2026-10-31T17:43:02.672884+00:00",
+      "total_normalizations": 4,
+      "corrections_by_type": {
+        "duration_calculated": 1,
+        "total_experience_calculated": 1,
+        "date_standardized": 2
+      },
+      "corrections": [
+        {
+          "field": "experience[0].duration",
+          "warning_type": "duration_calculated",
+          "severity": "info",
+          "original_value": "Apr 2017 \u2013 Nov 2017",
+          "normalized_value": "7 months",
+          "suggested_value": null,
+          "basis": "Month precision: elapsed calendar months. Day precision: completed calendar units. As of 2026-10-31.",
+          "applied": true,
+          "verification_status": "rule_based_not_independently_verified",
+          "message": "Derived duration, approximate elapsed calendar months; original date range retained."
+        },
+        {
+          "field": "total_experience_years",
+          "warning_type": "total_experience_calculated",
+          "severity": "info",
+          "original_value": null,
+          "normalized_value": 0.6,
+          "suggested_value": null,
+          "basis": "Union of dated employment intervals; gaps excluded and overlaps counted once. Current roles use 2026-10-31 at supplied precision; year-only estimates use its year. Rounded to one decimal year.",
+          "applied": true,
+          "verification_status": "rule_based_not_independently_verified",
+          "message": "System calculated total experience from employment dates; source-stated experience retained separately."
+        },
+        {
+          "field": "experience[0].end_date",
+          "warning_type": "date_standardized",
+          "severity": "info",
+          "original_value": "Nov 2017",
+          "normalized_value": "2017-11",
+          "suggested_value": null,
+          "basis": "Deterministic formatting, date parsing, filtering or alias rule; original retained in evidence.",
+          "applied": true,
+          "verification_status": "rule_based_not_independently_verified",
+          "message": "System corrected the date representation to ISO format; the original date is retained and no calendar date was inferred."
+        },
+        {
+          "field": "experience[0].start_date",
+          "warning_type": "date_standardized",
+          "severity": "info",
+          "original_value": "Apr 2017",
+          "normalized_value": "2017-04",
+          "suggested_value": null,
+          "basis": "Deterministic formatting, date parsing, filtering or alias rule; original retained in evidence.",
+          "applied": true,
+          "verification_status": "rule_based_not_independently_verified",
+          "message": "System corrected the date representation to ISO format; the original date is retained and no calendar date was inferred."
+        }
+      ],
+      "source_evidence": {
+        "experience[0].company": [
+          "e2:0:26"
+        ],
+        "experience[0].role": [
+          "e1:0:12"
+        ],
+        "experience[0].start_date": [
+          "e4:0:19"
+        ],
+        "experience[0].end_date": [
+          "e4:0:19"
+        ],
+        "experience[0].duration": [
+          "e4:0:19"
+        ],
+        "experience[0].location": [
+          "e2:0:26"
+        ],
+        "experience[0].responsibilities[0]": [
+          "e5:0:27"
+        ]
+      },
+      "as_of_date": "2026-10-31",
+      "duration_policy": "Year precision: annual-resolution estimates from year-label differences, including current reference year for current roles; months are estimated years times 12, not known elapsed months. Year-label unions use common annual boundaries only for computation; no employment month is inferred. Month precision: elapsed calendar months (approximate). Day precision: completed calendar units. Aggregate unions use first-of-month boundaries for month-only dates; residual days use 365.2425/12 days per month, rounded to one decimal year.",
+      "field_verification": {
+        "source_values": "preserved; normalized values are derived and do not replace source citations",
+        "locations": "not_externally_verified",
+        "spelling_suggestions": "dictionary_candidates_only; not proof of correctness",
+        "experience.duration": "source-precision calculation; year-only values are annual-resolution estimates, not exact elapsed months"
+      },
+      "cross_field_notes": [],
+      "experience_summary": {
+        "calculated_experience_years": 0.6,
+        "calculated_experience_complete": true,
+        "calculated_experience_is_approximate": true,
+        "experience_overlap_detected": false
+      },
+      "experience_calculations": [
+        {
+          "record_path": "data.experience[0]",
+          "duration_is_approximate": true,
+          "duration_as_of": null,
+          "duration_status": "calculated",
+          "start_date_iso": "2017-04",
+          "end_date_iso": "2017-11",
+          "start_date_precision": "month_year",
+          "end_date_precision": "month_year"
+        }
+      ]
+    },
+    "warnings": [
+      {
+        "field": "experience[0].duration",
+        "warning_type": "duration_calculated",
+        "severity": "info",
+        "original_value": "Apr 2017 \u2013 Nov 2017",
+        "normalized_value": "7 months",
+        "suggested_value": null,
+        "basis": "Month precision: elapsed calendar months. Day precision: completed calendar units. As of 2026-10-31.",
+        "applied": true,
+        "verification_status": "rule_based_not_independently_verified",
+        "message": "Derived duration, approximate elapsed calendar months; original date range retained."
+      },
+      {
+        "field": "total_experience_years",
+        "warning_type": "total_experience_calculated",
+        "severity": "info",
+        "original_value": null,
+        "normalized_value": 0.6,
+        "suggested_value": null,
+        "basis": "Union of dated employment intervals; gaps excluded and overlaps counted once. Current roles use 2026-10-31 at supplied precision; year-only estimates use its year. Rounded to one decimal year.",
+        "applied": true,
+        "verification_status": "rule_based_not_independently_verified",
+        "message": "System calculated total experience from employment dates; source-stated experience retained separately."
+      },
+      {
+        "field": "contact.full_name",
+        "warning_type": "missing_required_field",
+        "severity": "review_required",
+        "original_value": null,
+        "normalized_value": null,
+        "suggested_value": null,
+        "basis": null,
+        "applied": false,
+        "verification_status": "rule_based_not_independently_verified",
+        "message": "Candidate full name is missing from contact details."
+      },
+      {
+        "field": "contact",
+        "warning_type": "missing_contact_methods",
+        "severity": "warning",
+        "original_value": null,
+        "normalized_value": null,
+        "suggested_value": null,
+        "basis": null,
+        "applied": false,
+        "verification_status": "rule_based_not_independently_verified",
+        "message": "Candidate has neither email nor phone number listed."
+      },
+      {
+        "field": "additional_sections",
+        "warning_type": "unresolved_source_content",
+        "severity": "review_required",
+        "original_value": null,
+        "normalized_value": null,
+        "suggested_value": null,
+        "basis": null,
+        "applied": false,
+        "verification_status": "rule_based_not_independently_verified",
+        "message": "Additional source content is retained and requires association review."
+      },
+      {
+        "field": "experience[0].end_date",
+        "warning_type": "date_standardized",
+        "severity": "info",
+        "original_value": "Nov 2017",
+        "normalized_value": "2017-11",
+        "suggested_value": null,
+        "basis": "Deterministic formatting, date parsing, filtering or alias rule; original retained in evidence.",
+        "applied": true,
+        "verification_status": "rule_based_not_independently_verified",
+        "message": "System corrected the date representation to ISO format; the original date is retained and no calendar date was inferred."
+      },
+      {
+        "field": "experience[0].start_date",
+        "warning_type": "date_standardized",
+        "severity": "info",
+        "original_value": "Apr 2017",
+        "normalized_value": "2017-04",
+        "suggested_value": null,
+        "basis": "Deterministic formatting, date parsing, filtering or alias rule; original retained in evidence.",
+        "applied": true,
+        "verification_status": "rule_based_not_independently_verified",
+        "message": "System corrected the date representation to ISO format; the original date is retained and no calendar date was inferred."
+      },
+      {
+        "field": "mapping",
+        "warning_type": "unresolved_mapping",
+        "severity": "review_required",
+        "original_value": null,
+        "normalized_value": null,
+        "suggested_value": null,
+        "basis": null,
+        "applied": false,
+        "verification_status": "rule_based_not_independently_verified",
+        "message": "Source mapping has unresolved fields or associations; inspect mapping evidence."
+      }
+    ]
+  },
+  "subschema_definitions": {
+    "version": 1,
+    "parents": {
+      "personal_information": {
+        "full_name": {
+          "type": "string",
+          "multiple": false
+        },
+        "email": {
+          "type": "string",
+          "multiple": false
+        },
+        "phone": {
+          "type": "string",
+          "multiple": false
+        },
+        "location": {
+          "type": "string",
+          "multiple": false
+        },
+        "linkedin_url": {
+          "type": "string",
+          "multiple": false
+        },
+        "github_url": {
+          "type": "string",
+          "multiple": false
+        },
+        "portfolio_url": {
+          "type": "string",
+          "multiple": false
+        },
+        "work_preferences": {
+          "type": "string",
+          "multiple": false
+        },
+        "target_role": {
+          "type": "string",
+          "multiple": false
+        },
+        "professional_title": {
+          "type": "string",
+          "multiple": false
+        }
+      },
+      "summary": {
+        "statements": {
+          "type": "string",
+          "multiple": true
+        },
+        "total_experience_years": {
+          "type": "number",
+          "multiple": false
+        }
+      },
+      "experience": {
+        "company": {
+          "type": "string",
+          "multiple": false
+        },
+        "role": {
+          "type": "string",
+          "multiple": false
+        },
+        "start_date": {
+          "type": "string",
+          "multiple": false
+        },
+        "end_date": {
+          "type": "string",
+          "multiple": false
+        },
+        "duration": {
+          "type": "string",
+          "multiple": false
+        },
+        "location": {
+          "type": "string",
+          "multiple": false
+        },
+        "engagement_type": {
+          "type": "string",
+          "multiple": false
+        },
+        "responsibilities": {
+          "type": "string",
+          "multiple": true
+        },
+        "technologies": {
+          "type": "string",
+          "multiple": true
+        }
+      },
+      "education": {
+        "institution": {
+          "type": "string",
+          "multiple": false
+        },
+        "degree": {
+          "type": "string",
+          "multiple": false
+        },
+        "field_of_study": {
+          "type": "string",
+          "multiple": false
+        },
+        "start_year": {
+          "type": "string",
+          "multiple": false
+        },
+        "graduation_year": {
+          "type": "string",
+          "multiple": false
+        },
+        "grade_or_gpa": {
+          "type": "string",
+          "multiple": false
+        }
+      },
+      "projects": {
+        "name": {
+          "type": "string",
+          "multiple": false
+        },
+        "description": {
+          "type": "string",
+          "multiple": false
+        },
+        "role": {
+          "type": "string",
+          "multiple": false
+        },
+        "technologies": {
+          "type": "string",
+          "multiple": true
+        },
+        "url": {
+          "type": "string",
+          "multiple": false
+        },
+        "start_date": {
+          "type": "string",
+          "multiple": false
+        },
+        "end_date": {
+          "type": "string",
+          "multiple": false
+        },
+        "organization": {
+          "type": "string",
+          "multiple": false
+        },
+        "outcomes": {
+          "type": "string",
+          "multiple": true
+        }
+      },
+      "certifications": {
+        "name": {
+          "type": "string",
+          "multiple": false
+        },
+        "issuer": {
+          "type": "string",
+          "multiple": false
+        },
+        "issue_year": {
+          "type": "string",
+          "multiple": false
+        },
+        "expiry_date": {
+          "type": "string",
+          "multiple": false
+        },
+        "credential_id": {
+          "type": "string",
+          "multiple": false
+        },
+        "verification_url": {
+          "type": "string",
+          "multiple": false
+        }
+      },
+      "skills": {
+        "technical_skills": {
+          "type": "string",
+          "multiple": true
+        },
+        "tools_and_platforms": {
+          "type": "string",
+          "multiple": true
+        },
+        "domain_and_functional": {
+          "type": "string",
+          "multiple": true
+        },
+        "soft_skills": {
+          "type": "string",
+          "multiple": true
+        },
+        "all_skills": {
+          "type": "string",
+          "multiple": true
+        }
+      },
+      "awards": {
+        "name": {
+          "type": "string",
+          "multiple": false
+        },
+        "issuer": {
+          "type": "string",
+          "multiple": false
+        },
+        "date": {
+          "type": "string",
+          "multiple": false
+        }
+      },
+      "publications": {
+        "title": {
+          "type": "string",
+          "multiple": false
+        },
+        "publisher": {
+          "type": "string",
+          "multiple": false
+        },
+        "date": {
+          "type": "string",
+          "multiple": false
+        },
+        "url": {
+          "type": "string",
+          "multiple": false
+        }
+      },
+      "volunteering": {
+        "organization": {
+          "type": "string",
+          "multiple": false
+        },
+        "role": {
+          "type": "string",
+          "multiple": false
+        },
+        "dates": {
+          "type": "string",
+          "multiple": false
+        },
+        "activities": {
+          "type": "string",
+          "multiple": true
+        }
+      },
+      "languages": {
+        "language": {
+          "type": "string",
+          "multiple": true
+        },
+        "proficiency": {
+          "type": "string",
+          "multiple": true
+        }
+      },
+      "interests": {
+        "interest": {
+          "type": "string",
+          "multiple": true
+        }
+      },
+      "references": {
+        "name": {
+          "type": "string",
+          "multiple": false
+        },
+        "relationship": {
+          "type": "string",
+          "multiple": false
+        },
+        "organization": {
+          "type": "string",
+          "multiple": false
+        },
+        "email": {
+          "type": "string",
+          "multiple": false
+        },
+        "phone": {
+          "type": "string",
+          "multiple": false
+        },
+        "availability": {
+          "type": "string",
+          "multiple": false
+        }
+      },
+      "needs_review": {}
+    },
+    "legacy_parents": {
+      "personal_information": "contact",
+      "summary": "summary",
+      "experience": "experience",
+      "education": "education",
+      "projects": "projects",
+      "certifications": "certifications",
+      "skills": "skills",
+      "languages": "languages"
+    },
+    "missing_policy": "unresolved does not establish absence from the PDF",
+    "field_names": "Existing ResumeSchema names retained; no renamed legacy fields",
+    "evidence_policy": "Each item requires an exact quote in a record-local source block",
+    "query_path": "parent.child with optional record_id; results preserve record boundaries"
+  },
+  "field_index": {
+    "personal_information.full_name": [],
+    "personal_information.email": [],
+    "personal_information.phone": [],
+    "personal_information.location": [],
+    "personal_information.linkedin_url": [],
+    "personal_information.github_url": [],
+    "personal_information.portfolio_url": [],
+    "personal_information.work_preferences": [],
+    "personal_information.target_role": [],
+    "personal_information.professional_title": [],
+    "summary.statements": [],
+    "summary.total_experience_years": [],
+    "experience.company": [
+      {
+        "parent": "experience",
+        "child": "company",
+        "field_path": "experience[0].company",
+        "record_id": "experience-1",
+        "pointer": "/section_schemas/0/records/0/attributes/0",
+        "status": "mapped",
+        "review_reasons": [
+          "employer_not_established_from_supported_fields"
+        ],
+        "items": [
+          {
+            "value": "Concentrix",
+            "evidence": [
+              {
+                "source_id": "e2:0:26",
+                "quote": "Concentrix"
+              }
+            ],
+            "status": "needs_review",
+            "pointer": "/section_schemas/0/records/0/attributes/0/items/0/value"
+          }
+        ]
+      }
+    ],
+    "experience.role": [
+      {
+        "parent": "experience",
+        "child": "role",
+        "field_path": "experience[0].role",
+        "record_id": "experience-1",
+        "pointer": "/section_schemas/0/records/0/attributes/1",
+        "status": "mapped",
+        "review_reasons": [
+          "employer_not_established_from_supported_fields"
+        ],
+        "items": [
+          {
+            "value": "Data Analyst",
+            "evidence": [
+              {
+                "source_id": "e1:0:12",
+                "quote": "Data Analyst"
+              }
+            ],
+            "status": "needs_review",
+            "pointer": "/section_schemas/0/records/0/attributes/1/items/0/value"
+          }
+        ]
+      }
+    ],
+    "experience.start_date": [
+      {
+        "parent": "experience",
+        "child": "start_date",
+        "field_path": "experience[0].start_date",
+        "record_id": "experience-1",
+        "pointer": "/section_schemas/0/records/0/attributes/2",
+        "status": "mapped",
+        "review_reasons": [
+          "employer_not_established_from_supported_fields"
+        ],
+        "items": [
+          {
+            "value": "Apr 2017",
+            "evidence": [
+              {
+                "source_id": "e4:0:19",
+                "quote": "Apr 2017"
+              }
+            ],
+            "status": "needs_review",
+            "pointer": "/section_schemas/0/records/0/attributes/2/items/0/value"
+          }
+        ]
+      }
+    ],
+    "experience.end_date": [
+      {
+        "parent": "experience",
+        "child": "end_date",
+        "field_path": "experience[0].end_date",
+        "record_id": "experience-1",
+        "pointer": "/section_schemas/0/records/0/attributes/3",
+        "status": "mapped",
+        "review_reasons": [
+          "employer_not_established_from_supported_fields"
+        ],
+        "items": [
+          {
+            "value": "Nov 2017",
+            "evidence": [
+              {
+                "source_id": "e4:0:19",
+                "quote": "Nov 2017"
+              }
+            ],
+            "status": "needs_review",
+            "pointer": "/section_schemas/0/records/0/attributes/3/items/0/value"
+          }
+        ]
+      }
+    ],
+    "experience.duration": [
+      {
+        "parent": "experience",
+        "child": "duration",
+        "field_path": "experience[0].duration",
+        "record_id": "experience-1",
+        "pointer": "/section_schemas/0/records/0/attributes/4",
+        "status": "mapped",
+        "review_reasons": [
+          "employer_not_established_from_supported_fields"
+        ],
+        "items": [
+          {
+            "value": "Apr 2017 \u2013 Nov 2017",
+            "evidence": [
+              {
+                "source_id": "e4:0:19",
+                "quote": "Apr 2017 \u2013 Nov 2017"
+              }
+            ],
+            "status": "needs_review",
+            "pointer": "/section_schemas/0/records/0/attributes/4/items/0/value"
+          }
+        ]
+      }
+    ],
+    "experience.location": [
+      {
+        "parent": "experience",
+        "child": "location",
+        "field_path": "experience[0].location",
+        "record_id": "experience-1",
+        "pointer": "/section_schemas/0/records/0/attributes/5",
+        "status": "mapped",
+        "review_reasons": [
+          "employer_not_established_from_supported_fields"
+        ],
+        "items": [
+          {
+            "value": "Visakhapatnam",
+            "evidence": [
+              {
+                "source_id": "e2:0:26",
+                "quote": "Visakhapatnam"
+              }
+            ],
+            "status": "needs_review",
+            "pointer": "/section_schemas/0/records/0/attributes/5/items/0/value"
+          }
+        ]
+      }
+    ],
+    "experience.engagement_type": [
+      {
+        "parent": "experience",
+        "child": "engagement_type",
+        "field_path": "experience[0].engagement_type",
+        "record_id": "experience-1",
+        "pointer": "/section_schemas/0/records/0/attributes/6",
+        "status": "unresolved",
+        "review_reasons": [
+          "employer_not_established_from_supported_fields"
+        ],
+        "items": []
+      }
+    ],
+    "experience.responsibilities": [
+      {
+        "parent": "experience",
+        "child": "responsibilities",
+        "field_path": "experience[0].responsibilities",
+        "record_id": "experience-1",
+        "pointer": "/section_schemas/0/records/0/attributes/7",
+        "status": "mapped",
+        "review_reasons": [
+          "employer_not_established_from_supported_fields"
+        ],
+        "items": [
+          {
+            "value": "Built reporting dashboards.",
+            "evidence": [
+              {
+                "source_id": "e5:0:27",
+                "quote": "Built reporting dashboards."
+              }
+            ],
+            "status": "needs_review",
+            "pointer": "/section_schemas/0/records/0/attributes/7/items/0/value"
+          }
+        ]
+      }
+    ],
+    "experience.technologies": [
+      {
+        "parent": "experience",
+        "child": "technologies",
+        "field_path": "experience[0].technologies",
+        "record_id": "experience-1",
+        "pointer": "/section_schemas/0/records/0/attributes/8",
+        "status": "unresolved",
+        "review_reasons": [
+          "employer_not_established_from_supported_fields"
+        ],
+        "items": []
+      }
+    ],
+    "education.institution": [],
+    "education.degree": [],
+    "education.field_of_study": [],
+    "education.start_year": [],
+    "education.graduation_year": [],
+    "education.grade_or_gpa": [],
+    "projects.name": [],
+    "projects.description": [],
+    "projects.role": [],
+    "projects.technologies": [],
+    "projects.url": [],
+    "projects.start_date": [],
+    "projects.end_date": [],
+    "projects.organization": [],
+    "projects.outcomes": [],
+    "certifications.name": [],
+    "certifications.issuer": [],
+    "certifications.issue_year": [],
+    "certifications.expiry_date": [],
+    "certifications.credential_id": [],
+    "certifications.verification_url": [],
+    "skills.technical_skills": [],
+    "skills.tools_and_platforms": [],
+    "skills.domain_and_functional": [],
+    "skills.soft_skills": [],
+    "skills.all_skills": [],
+    "awards.name": [],
+    "awards.issuer": [],
+    "awards.date": [],
+    "publications.title": [],
+    "publications.publisher": [],
+    "publications.date": [],
+    "publications.url": [],
+    "volunteering.organization": [],
+    "volunteering.role": [],
+    "volunteering.dates": [],
+    "volunteering.activities": [],
+    "languages.language": [],
+    "languages.proficiency": [],
+    "interests.interest": [],
+    "references.name": [],
+    "references.relationship": [],
+    "references.organization": [],
+    "references.email": [],
+    "references.phone": [],
+    "references.availability": []
+  }
+}

@@ -91,6 +91,21 @@ def test_empty_experience_record_is_retained_as_unmapped_source_not_fake_entity(
     assert any(q.source_id==record['source_ids'][0] for q in hierarchy[0].residual_blocks)
 
 
+def separate_section_budget(request, **kwargs):
+    # These regressions deliberately exercise multiple calls; small ordinary
+    # sections now share a batch. Force separation with a real input budget.
+    from dataclasses import replace
+    from test_llm_schema_mapping import configured
+    from local_api.services.schema_mapping import map_schema
+    from local_api.services.llm_schema_mapping import messages
+    from local_api.services.review_chunking import measure
+    settings = configured(**kwargs)
+    completeness = map_schema(request).meta.get('completeness_check')
+    bound = max(measure(settings, messages([section], completeness))['serialized_characters']
+                for section in request.sections.sections)
+    return replace(settings, max_input_chars=bound)
+
+
 def test_invalid_json_in_one_batch_does_not_discard_another_valid_batch():
     from test_llm_schema_mapping import fixture,configured
     from local_api.schemas.sections import ResumeSection,SectionBlock
@@ -104,7 +119,7 @@ def test_invalid_json_in_one_batch_does_not_discard_another_valid_batch():
     def transport(settings,messages):
         categories=list(json.loads(messages[1]['content'])['registry'])
         return '{invalid JSON' if categories==['summary'] else json.dumps(reply)
-    out=map_with_field_review(req,settings=configured(recovery_attempts=0),transport=transport)
+    out=map_with_field_review(req,settings=separate_section_budget(req,recovery_attempts=0),transport=transport)
     assert out.meta['field_review']['status']=='partial'
     assert out.meta['field_review']['fallback_categories']==['summary']
     assert [(r.company,r.role) for r in out.data.experience]==[('Acme Ltd','Engineer'),('Beta Ltd','Analyst')]
@@ -228,7 +243,7 @@ def test_transport_failure_retains_preceding_valid_records():
         calls.append(1)
         if len(calls)>1:raise ReviewError('provider_unavailable')
         return json.dumps(payload)
-    out=map_with_field_review(req,settings=configured(),transport=transport)
+    out=map_with_field_review(req,settings=separate_section_budget(req),transport=transport)
     assert len(calls)==2
     assert out.meta['field_review']['status']=='partial'
     assert [r.company for r in out.data.experience]==['Acme Ltd','Beta Ltd']

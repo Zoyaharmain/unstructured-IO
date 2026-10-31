@@ -13,6 +13,9 @@ ALIASES = {
         'contact no': 'phone', 'mobile no': 'phone', 'phone number': 'phone', 'contact number': 'phone', 'address': 'location', 'based in': 'location',
         'linkedin': 'linkedin_url', 'github': 'github_url', 'portfolio': 'portfolio_url',
         'website': 'portfolio_url', 'job title': 'professional_title', 'headline': 'professional_title',
+        'preferred location': 'work_preferences', 'preferred locations': 'work_preferences',
+        'work preferences': 'work_preferences', 'relocation preferences': 'work_preferences',
+        'target role': 'target_role', 'target position': 'target_role',
     },
     'experience': {
         'employer': 'company', 'organization': 'company', 'company name': 'company',
@@ -22,6 +25,7 @@ ALIASES = {
         'tools': 'technologies', 'technology': 'technologies', 'tech stack': 'technologies',
         'environment': 'technologies', 'key responsibilities': 'responsibilities',
         'roles and responsibilities': 'responsibilities', 'achievements': 'responsibilities',
+        'employment type': 'engagement_type', 'engagement type': 'engagement_type',
     },
     'education': {
         'university': 'institution', 'college': 'institution', 'qualification': 'degree',
@@ -35,11 +39,16 @@ ALIASES = {
         'project description': 'description', 'tech stack': 'technologies',
         'technology': 'technologies', 'tools': 'technologies', 'environment': 'technologies',
         'project url': 'url', 'repository': 'url', 'github': 'url',
+        'start date': 'start_date', 'end date': 'end_date', 'organization': 'organization',
+        'outcomes': 'outcomes',
     },
     'certifications': {
         'certification': 'name', 'certificate': 'name', 'certification name': 'name',
         'issuing organization': 'issuer', 'issued by': 'issuer', 'provider': 'issuer',
         'year': 'issue_year', 'issue date': 'issue_year', 'issued': 'issue_year',
+        'expiry date': 'expiry_date', 'expiration date': 'expiry_date', 'valid until': 'expiry_date',
+        'credential id': 'credential_id', 'certificate id': 'credential_id',
+        'verification url': 'verification_url', 'credential url': 'verification_url',
     },
     'awards': {'award': 'name', 'award name': 'name', 'awarded by': 'issuer'},
     'publications': {'publication': 'title', 'publication title': 'title', 'published by': 'publisher'},
@@ -49,18 +58,30 @@ ALIASES = {
 }
 
 MONTH = r'(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:t(?:ember)?)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)'
-DATE = r"(?:" + MONTH + r"[.\-‘’']?\s*(?:19|20)?\d{2}|(?:19|20)\d{2}(?:[-/]\d{1,2})?|\d{1,2}/(?:19|20)\d{2})"
-RANGE = re.compile(r'(?<![\w/])(' + DATE + r')\s*(?:[-\u2013\u2014]|\bto\b|\btill\b|\buntil\b)\s*(' + DATE + r'|Present|Current(?:ly working)?|Till Date|Till Now|Now)(?!\w)', re.I)
+DATE = (r"(?:\d{1,2}\s+" + MONTH + r"[,.\s]+(?:19|20)\d{2}|"
+        + MONTH + r"[.,\s\-‘’']*(?:19|20)?\d{2}|"
+        r"(?:19|20)\d{2}(?:[-/]\d{1,2}){0,2}|\d{1,2}[/-](?:\d{1,2}[/-])?(?:19|20)\d{2})")
+GLUED_MONTH = r'(?-i:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:t(?:ember)?)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)'
+RANGE = re.compile(r'(?:(?<![\w/])|(?<=(?-i:[a-z]))(?=' + GLUED_MONTH + r'\s+(?:19|20)\d{2}))(' + DATE + r')\s*(?:[-\u2013\u2014]|\bto\b|\btill\b|\buntil\b)\s*(' + DATE + r'|Present|Current(?:ly working)?|Till Date|Till Now|Now)(?!\w)', re.I)
 
 
 ROLE = re.compile(r'\b(?:engineer(?:ing)?|developer|analyst|consultant|architect|manager|specialist|scientist|associate|director|administrator|officer|executive|intern|underwriter|supervisor|leader|lead|head|roles?)\b', re.I)
 
 
-ACTION = re.compile(r'^(?:[\u2022*\-]\s*)?(?:established|delivered|directed|spearheaded|oversaw|monitored|streamlined|closed|reduced|realized|executed|guided|championed|used|utilized|leveraged|led|built|developed|implemented|configured|prepared|managed|conducted|supported|translated|partnered|owned|drove|validated|participated|facilitated|engaged|expanded|created|designed|acted|worked|engineered|responsible|interact|analy[sz]e|ensure|drive|collaborate|assist|coordinate|conduct|perform|create|own|manage|document|maintain|design|develop|implement|translate|prepare|gather|capture|handle|support|took(?=\s+(?:a\s+)?lead\b)|lead(?!\s+(?:business|software|data|engineer|analyst|developer|consultant)\b)|work(?=\s+(?:with|on|closely|across|in)\b))\b', re.I)
+ACTION = re.compile(r'^(?:[\u2022*\-]\s*)?(?:collaborated|orchestrated|researched|provided|served|utilize|migrated|applied|completed|established|delivered|directed|spearheaded|oversaw|monitored|streamlined|closed|reduced|realized|executed|guided|championed|used|utilized|leveraged|led|built|developed|implemented|configured|prepared|managed|conducted|supported|translated|partnered|owned|drove|validated|participated|facilitated|engaged|expanded|created|designed|acted|worked|engineered|responsible|interact|analy[sz]e|ensure|drive|collaborate|assist|coordinate|conduct|perform|create|own|manage|document|maintain|design|develop|implement|translate|prepare|gather|capture|handle|support|took(?=\s+(?:a\s+)?lead\b)|lead(?!\s+(?:business|software|data|engineer|analyst|developer|consultant)\b)|work(?=\s+(?:with|on|closely|across|in)\b))\b', re.I)
 CITY = r'(?:Chennai|Bangalore|Bengaluru|Pune|Mumbai|Hyderabad|Noida|Delhi|Gurgaon|Kolkata|London|Paris|Remote|Singapore|New York|San Francisco|Tokyo|Sydney)'
 COUNTRY = r'(?:India|France|UK|USA|Singapore|Australia|Germany|Canada|Japan)'
 PLACE = re.compile(r'^(?:' + CITY + r'(?:,\s*[^|]+)?|[A-Za-z.\s]{2,30},\s*' + COUNTRY + r')$', re.I)
 COMPANY_KEYWORD = re.compile(r'\b(?:ltd|limited|inc|services|solutions|systems|bank|company|pvt|telecom|teleservices|technolog(?:y|ies)|corp|corporation)\b', re.I)
+
+
+def employment_duration_literal(match):
+    """Keep a source-stated elapsed duration immediately following a date range."""
+    suffix = re.match(r'\s*\(\s*(?:(?:\d+)\s*(?:years?|yrs?)\s*(?:and\s*)?)?(?:(?:\d+)\s*(?:months?|mos?)\s*)?\)',
+                      match.string[match.end():], re.I)
+    if suffix and re.search(r'\d', suffix.group()):
+        return match.string[match.start():match.end() + suffix.end()]
+    return match.group()
 
 
 def is_place(text):
@@ -68,13 +89,24 @@ def is_place(text):
     return bool((PLACE.fullmatch(text) or re.fullmatch(COUNTRY, text, re.I)) and not COMPANY_KEYWORD.search(text))
 
 
-CAPABILITY = re.compile(r'^\s*(?:[•▪●*\-]\s*)?(?:familiar\s+with|proficient\s+in|knowledge\s+(?:of|on)|experienced?\s+(?:with|in)|hands[- ]on\s+(?:experience|with))\b', re.I)
+CAPABILITY = re.compile(r'^\s*(?:[•▪●*\-]\s*)?(?:proven\s+track\s+record|familiar\s+with|proficient\s+in|knowledge\s+(?:of|on)|experienced?\s+(?:with|in)|hands[- ]on\s+(?:experience|with))\b', re.I)
+
+
+def narrative_identity(text):
+    """Sentence grammar, not company-name vocabulary, excludes prose identities."""
+    text=text.strip()
+    return len(text.split())>=4 and bool(re.match(
+        r'^(?:[•▪●*\-]\s*)?(?:I\s+(?:have|am|speciali[sz]e|thrive|work|excel|focus)\b|My\s+(?:proficiency|expertise|experience|background)\b|With\s+(?:a\s+)?(?:robust|strong|extensive|solid|broad)\s+background\b|[a-z][^,]{0,80},\s*I\s+(?:speciali[sz]e|have|thrive|am)\b)',text,re.I))
 
 
 def responsibility_fragment(text):
     """A wrapped prose clause is not an employer just because it says systems."""
     text = text.strip()
-    return bool(CAPABILITY.search(text) or ACTION.search(text) or len(text.split()) > 6 and (
+    identity = re.split(r'\s+[—–]\s+|\s*\|\s*',text, maxsplit=1)[0]
+    if len(identity.split()) <= 6 and not re.search(r'\b(?:to|for|with|at|across|prior|during|from|as)\b',identity,re.I) and re.search(r'\b(?:ltd\.?|limited|inc\.?|llc|corp\.?|corporation)\s*$',identity,re.I):
+        return False
+    narrative = re.match(r'^(?:[•▪●*\-]\s*)?(?:I\s+(?:have|am|speciali[sz]e|thrive|work|excel|focus)\b|My\s+(?:proficiency|expertise|experience|background)\b|With\s+(?:a\s+)?(?:robust|strong|extensive|solid|broad)\s+background\b)',text,re.I)
+    return bool(narrative or CAPABILITY.search(text) or ACTION.search(text) or len(text.split()) > 6 and (
         re.search(r'\b(?:setting up|cut average|ensuring|enhancing|working across)\b', text, re.I)
         or text[:1].islower() and text.endswith('.')))
 
@@ -137,6 +169,11 @@ def employment_header_fields(text):
                     and not re.search(r'\b(?:ltd|limited|inc|services|systems|bank|company|pvt)\b', part, re.I)]
     if len(role_indices) != 1 or len(parts) < 2:return {}
     role_index = role_indices[0]
+    # Independent work plus a generic practice area does not name an employer.
+    if (role_index == 0 and len(parts) == 2
+        and re.match(r'^(?:independent|freelance|self[- ]employed)\s+',parts[0],re.I)
+        and re.fullmatch(r'(?:business|digital|organizational|software|data|process|operations|IT)\s+(?:transformation|engineering|development|consulting|analytics|improvement)',parts[1],re.I)):
+        return {'role':prefix}
     result = {'role': parts[role_index]}
     rest = [part for i, part in enumerate(parts) if i != role_index]
     locations = [part for part in rest if is_place(part)]
@@ -194,13 +231,37 @@ def refine_record(category, values, blocks, *, header_fields=None):
         if name not in values:
             continue
         unique = list(dict.fromkeys(candidates))
-        if SUBSCHEMAS[category][name]['multiple']:
+        if category == 'experience' and name == 'responsibilities':
+            # A labelled row supplements the record; it must not replace duties
+            # before/after it. Commas and semicolons inside a duty are prose.
+            from types import SimpleNamespace
+            merged = []
+            for item in values.get(name) or []:
+                labelled = labelled_fields(category, [SimpleNamespace(text=item, assignment='semantic')]).get(name)
+                merged.extend(labelled or [item])
+            merged.extend(unique)
+            values[name] = list(dict.fromkeys(p.strip() for item in merged
+                for p in re.split(r'[•▪●\uf0b7]', item) if p.strip()))
+        elif category == 'projects' and name == 'description' and values.get(name) and all(v in values[name] for v in unique):
+            # Preserve source-contiguous continuation paragraphs. Evidence is
+            # still validated by the caller; disjoint synthetic prose is rejected.
+            pass
+        elif SUBSCHEMAS[category][name]['multiple']:
             values[name] = list(dict.fromkeys(p.strip() for v in unique for p in re.split(r'[,;|\n]', v) if p.strip()))
         elif len({v.casefold() for v in unique}) == 1:
             values[name] = unique[0]
         else:
             values[name] = None
             reasons.append(f'Conflicting explicit labels for {name}.')
+    if category == 'projects' and {'start_date','end_date'} & values.keys():
+        from local_api.services.source_fragments import texts
+        ranges = {m.group():m for text in texts(blocks) if not responsibility_fragment(text) for m in RANGE.finditer(text)}
+        if len(ranges) == 1:
+            match = next(iter(ranges.values()))
+            for name,value in zip(('start_date','end_date'),match.group(1,2)):
+                if name in values and name not in found: values[name] = value
+        elif len(ranges) > 1:
+            reasons.append('Multiple project date ranges in one record; association requires review.')
     if category == 'projects' and 'url' in values and 'url' not in found:
         # A PDF hyperlink target can occupy its own span after a separate label.
         # Only accept a complete URL row inside this supplied project record.
@@ -215,7 +276,24 @@ def refine_record(category, values, blocks, *, header_fields=None):
         elif len(candidates) > 1:
             values['url'] = None
             reasons.append('Multiple project URLs in one record; URL requires review.')
+    if category == 'personal_information':
+        from local_api.services.target_preferences import target_section_values
+        for name, value in target_section_values(blocks).items():
+            values[name] = value
+        preference = re.compile(r'\b(?:open to|preferred? (?:work )?locations?|willing to relocate|relocation preferences?)\b', re.I)
+        preference_rows = [b.text.strip() for b in blocks if preference.search(b.text)]
+        if len(set(preference_rows)) == 1 and not values.get('work_preferences'):
+            values['work_preferences'] = preference_rows[0]
+        location = values.get('location')
+        contexts = [b.text for b in blocks if location and location in b.text and b.assignment != 'local_target_preferences']
+        if contexts and all(preference.search(text) for text in contexts):
+            values['location'] = None
+            reasons.append('Preferred work locations do not establish current residence.')
     if category == 'experience':
+        from local_api.services.dated_record_headers import dated_header_candidates
+        dated_headers=dated_header_candidates(blocks)
+        for name in ('company','role'):
+            if values.get(name) and responsibility_fragment(values[name]) and name not in found:values[name]=None
         company = values.get('company')
         contexts = [b for b in blocks if company and company.casefold() in b.text.casefold()]
         if 'company' not in found and contexts and all(CAPABILITY.search(b.text) for b in contexts):
@@ -223,12 +301,18 @@ def refine_record(category, values, blocks, *, header_fields=None):
             reasons.append('Company mention occurs only in a capability statement; employment is not established.')
         from local_api.services.source_fragments import texts
         headers = [employment_header_fields(text) for text in [*texts(blocks), *(b.text for b in blocks)]]
+        independent_roles=[h['role'] for h in headers if 'role' in h and 'company' not in h and re.match(r'^(?:independent|freelance|self[- ]employed)\s+',h['role'],re.I)]
+        if len(set(independent_roles)) == 1 and values.get('company') and values['company'] in independent_roles[0] and 'company' not in found:
+            values['company'] = None
         for name in ('company', 'role', 'location'):
             candidates = list(dict.fromkeys(h[name] for h in headers if name in h))
             if name == 'company' and header_fields is not None and values.get('company') and not ROLE.search(values['company']) and not employment_header_fields(values['company']) and not any('company' in h and 'role' not in h for h in headers):
                 continue
             if (header_fields is None or name in header_fields or (name == 'location' and {'company','role'} <= header_fields)) and name not in found and len(candidates) == 1 :
                 values[name] = candidates[0]
+        if len(dated_headers)==1:
+            for name,value in dated_headers[0].items():
+                if name in values and name not in found:values[name]=value
         # Within an established experience record, a complete identity/date
         # header outranks incidental organization words in wrapped duties.
         dated_companies=[]
@@ -241,13 +325,12 @@ def refine_record(category, values, blocks, *, header_fields=None):
         if (len(dated_companies)==1 and not values.get('company') and 'company' not in found
                 and (header_fields is None or 'company' in header_fields)):
             values['company']=dated_companies[0]
-        date_blocks = [b for b in blocks if len(b.text.split()) <= 24 and not re.match(
-            r'^\s*(?:[\u2022*]\s*)?(?:led|built|developed|implemented|migrated|managed|supported|worked)\b', b.text, re.I)]
+        date_blocks = [b for b in blocks if len(b.text.split()) <= 24 and (not responsibility_fragment(b.text) or employment_header_fields(b.text))]
         ranges = [m for text in texts(date_blocks) for m in RANGE.finditer(text)]
         unique = {m.group(0).casefold(): m for m in ranges}
         if len(unique) == 1:
             match = next(iter(unique.values()))
-            for name, value in zip(('start_date', 'end_date', 'duration'), (*match.group(1, 2), match.group())):
+            for name, value in zip(('start_date', 'end_date', 'duration'), (*match.group(1, 2), employment_duration_literal(match))):
                 if name not in found:
                     values[name] = value
         elif len(unique) > 1:
@@ -259,6 +342,32 @@ def refine_record(category, values, blocks, *, header_fields=None):
         years = [re.search(r'\b(?:19|20)\d{2}\b', v or '') for v in (start, end)]
         if all(years) and int(years[0].group()) > int(years[1].group()):
             reasons.append('Employment end date precedes start date; inspect the source.')
+        if values.get('role') and (values.get('company') or 'role' in found or any(h.get('role') == values['role'] for h in headers)):
+            # Supplied entries can have no field hints. Recover source-local
+            # duties from their established identity instead of requiring the
+            # detector to have populated responsibilities in advance.
+            duties = list(values.get('responsibilities') or [])
+            for block in blocks:
+                text = block.text.strip()
+                labels = labelled_fields(category, [block])
+                if block.assignment in {'section_heading', 'structural_heading'} or (labels and 'responsibilities' not in labels): continue
+                if text in {values.get('company'), values['role']} or employment_header_fields(text): continue
+                action = responsibility_fragment(text) or (len(text.split()) >= 6 and re.match(
+                    r'^(?:[•▪●*\-]\s*)?(?:integrate|automate|optimi[sz]e|maintain|improve|deliver|troubleshoot)\b', text, re.I))
+                if action:
+                    duties.extend(labels.get('responsibilities', [block.text.strip()]))
+            for paragraph in texts(blocks):
+                if responsibility_fragment(paragraph):
+                    duties = [d for d in duties if d.strip() not in paragraph]
+                    duties.append(paragraph.strip())
+            source = '\n'.join(b.text for b in blocks)
+            values['responsibilities'] = sorted(dict.fromkeys(duties),
+                key=lambda value: source.find(value) if value in source else len(source))
+    if category == 'certifications':
+        from local_api.services.certification_integrity import credential_values
+        credential_fields, credential_reasons = credential_values(blocks)
+        values.update({name:value for name,value in credential_fields.items() if name in values})
+        reasons.extend(credential_reasons)
     if category in {'projects', 'certifications'} and found and 'name' not in found:
         name = values.get('name')
         if name and any(name == b.text.strip() and labelled_fields(category, [b]) for b in blocks):

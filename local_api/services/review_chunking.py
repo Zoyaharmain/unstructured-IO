@@ -333,6 +333,14 @@ def audit_plan(elements, sections, schema, settings, feedback=None, document_sha
                           'source_ids': list(dict.fromkeys(q['source_id'] for q in anchors))})
     # All raw spans are omission targets, even when no fields/residual consumed them.
     owners = {sid: key for key, record in record_keys.items() for sid in record['source_ids']}
+    # Unmapped records still have provisional source boundaries. Keep omission
+    # checks inside those boundaries without inventing an employment record.
+    for section in sections.sections:
+        for entry in section.entries:
+            for index in entry.block_indices:
+                block = section.blocks[index]
+                sid = f'e{block.source_element_index}:{block.start}:{block.end}'
+                owners.setdefault(sid, section.category + '/unresolved/' + entry.entry_id)
     for b, category in ledger:
         sid = f'e{b.source_element_index}:{b.start}:{b.end}'
         units.append({'id': 'source:'+sid, 'record_key': owners.get(sid,(category or 'needs_review')+'/source'),

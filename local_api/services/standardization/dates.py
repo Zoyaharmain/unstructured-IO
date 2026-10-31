@@ -45,17 +45,14 @@ def parse_date_string(
         return None, None, False, warnings
 
     text = raw_date.strip()
-    # Apostrophes delimit explicitly shortened years; retain an inference warning.
+    # A shortened year does not establish a century. Preserve it in audit only.
     short = re.fullmatch(r'(' + MONTH_REGEX + r")[.\s‘’'-]+(\d{2})", text, re.I)
     if short:
-        year = 2000 + int(short[2])
-        if year > (reference_date or datetime.now(timezone.utc)).year:
-            year -= 100
         warnings.append(StandardizationWarning(field=field_context, warning_type='two_digit_year_interpretation',
-            severity='warning', original_value=raw_date, normalized_value=f'{year}-{MONTH_MAP[short[1].lower()[:3]]:02d}',
-            basis='Most recent matching year not after the current UTC year; century requires review.',
-            message='Two-digit year expanded using an explicit century policy.'))
-        return f'{year}-{MONTH_MAP[short[1].lower()[:3]]:02d}', 'month_year', False, warnings
+            severity='warning', original_value=raw_date, normalized_value=None,
+            basis='Two-digit year does not establish its century; no normalized date inferred.',
+            message='Two-digit year requires source verification before normalization.'))
+        return None, None, False, warnings
 
     if not text:
         return None, None, False, warnings
@@ -76,7 +73,7 @@ def parse_date_string(
         return None, None, True, warnings
 
     # Match Month + Year: "Aug 2022", "August 2022", "Aug-2022", "Aug/2022", "Aug. 2022"
-    m_my = re.match(r"^(" + MONTH_REGEX + r")[,.\s\-\/]*(19\d{2}|20\d{2})$", text, re.I)
+    m_my = re.match(r"^(" + MONTH_REGEX + r")[,.\s\-\/]*([1-9]\d{3})$", text, re.I)
     if m_my:
         month_str, year_str = m_my.group(1), m_my.group(2)
         month_num = MONTH_MAP.get(month_str.lower()[:3])
@@ -85,7 +82,7 @@ def parse_date_string(
             return iso_str, "month_year", False, warnings
 
     # Match Year + Month: "2022 Aug", "2022-Aug", "2022/Aug"
-    m_ym = re.match(r"^(19\d{2}|20\d{2})[.\s\-\/]+(" + MONTH_REGEX + r")$", text, re.I)
+    m_ym = re.match(r"^([1-9]\d{3})[.\s\-\/]+(" + MONTH_REGEX + r")$", text, re.I)
     if m_ym:
         year_str, month_str = m_ym.group(1), m_ym.group(2)
         month_num = MONTH_MAP.get(month_str.lower()[:3])
@@ -94,25 +91,25 @@ def parse_date_string(
             return iso_str, "month_year", False, warnings
 
     # Match Numeric MM/YYYY or MM-YYYY or YYYY-MM
-    m_num_my = re.match(r"^(0?[1-9]|1[0-2])[\-\/](19\d{2}|20\d{2})$", text)
+    m_num_my = re.match(r"^(0?[1-9]|1[0-2])[\-\/]([1-9]\d{3})$", text)
     if m_num_my:
         month_num = int(m_num_my.group(1))
         year_str = m_num_my.group(2)
         return f"{year_str}-{month_num:02d}", "month_year", False, warnings
 
-    m_iso_ym = re.match(r"^(19\d{2}|20\d{2})[\-\/](0?[1-9]|1[0-2])$", text)
+    m_iso_ym = re.match(r"^([1-9]\d{3})[\-\/](0?[1-9]|1[0-2])$", text)
     if m_iso_ym:
         year_str = m_iso_ym.group(1)
         month_num = int(m_iso_ym.group(2))
         return f"{year_str}-{month_num:02d}", "month_year", False, warnings
 
     # Match Year only: "2022"
-    m_yr = re.match(r"^(19\d{2}|20\d{2})$", text)
+    m_yr = re.match(r"^([1-9]\d{3})$", text)
     if m_yr:
         return m_yr.group(1), "year", False, warnings
 
     # Match ISO Date YYYY-MM-DD
-    m_iso_d = re.match(r"^(19\d{2}|20\d{2})[\-\/](0?[1-9]|1[0-2])[\-\/](0?[1-9]|[12]\d|3[01])$", text)
+    m_iso_d = re.match(r"^([1-9]\d{3})[\-\/](0?[1-9]|1[0-2])[\-\/](0?[1-9]|[12]\d|3[01])$", text)
     if m_iso_d:
         y, m, d = int(m_iso_d.group(1)), int(m_iso_d.group(2)), int(m_iso_d.group(3))
         try: date(y,m,d)
@@ -120,7 +117,7 @@ def parse_date_string(
         return f"{y:04d}-{m:02d}-{d:02d}", "day", False, warnings
 
     # Match Day Month Year: "15 Aug 2022", "15-Aug-2022"
-    m_dmy = re.match(r"^(0?[1-9]|[12]\d|3[01])[.\s\-\/]+(" + MONTH_REGEX + r")[,.\s\-\/]*(19\d{2}|20\d{2})$", text, re.I)
+    m_dmy = re.match(r"^(0?[1-9]|[12]\d|3[01])[.\s\-\/]+(" + MONTH_REGEX + r")[,.\s\-\/]*([1-9]\d{3})$", text, re.I)
     if m_dmy:
         day_str, month_str, year_str = m_dmy.group(1), m_dmy.group(2), m_dmy.group(3)
         month_num = MONTH_MAP.get(month_str.lower()[:3])
@@ -130,7 +127,7 @@ def parse_date_string(
             return f"{year_str}-{month_num:02d}-{int(day_str):02d}", "day", False, warnings
 
     # Numeric ambiguity check: e.g. "05/06/2022"
-    m_ambig = re.match(r"^(\d{1,2})[\-\/](\d{1,2})[\-\/](19\d{2}|20\d{2})$", text)
+    m_ambig = re.match(r"^(\d{1,2})[\-\/](\d{1,2})[\-\/]([1-9]\d{3})$", text)
     if m_ambig:
         v1, v2, year = int(m_ambig.group(1)), int(m_ambig.group(2)), m_ambig.group(3)
         if v1 <= 12 and v2 <= 12 and v1 != v2:
@@ -145,6 +142,8 @@ def parse_date_string(
                 )
             )
             return None, None, False, warnings
+        elif v1 == v2 and 1 <= v1 <= 12:
+            return f"{year}-{v1:02d}-{v2:02d}", "day", False, warnings
         elif v1 > 12 and v2 <= 12:
             # DD/MM/YYYY
             try: date(int(year),v2,v1)
@@ -161,7 +160,7 @@ def parse_date_string(
         StandardizationWarning(
             field=field_context,
             warning_type="unrecognized_date_format",
-            severity="info",
+            severity="review_required",
             original_value=raw_date,
             normalized_value=raw_date,
             message=f"Date '{raw_date}' could not be safely parsed to canonical ISO format; preserved raw."
@@ -199,54 +198,44 @@ def calculate_non_overlapping_experience(
     warnings: list[StandardizationWarning] = []
     if reference_date is None:
         reference_date = datetime.now(timezone.utc)
-    current_month_index = reference_date.year * 12 + reference_date.month
-
-    intervals: list[tuple[int, int]] = []
+    intervals = []
     for idx, rec in enumerate(experience_records):
-        start_iso = rec.get("start_date_iso")
-        end_iso = rec.get("end_date_iso")
-        start_prec = rec.get("start_date_precision")
-        end_prec = rec.get("end_date_precision")
-        is_curr = rec.get("is_current", False)
-
-        if start_prec == 'year' or (end_prec == 'year' and not is_curr):
+        start_iso, end_iso = rec.get('start_date_iso'), rec.get('end_date_iso')
+        start_prec, end_prec = rec.get('start_date_precision'), rec.get('end_date_precision')
+        current = rec.get('is_current', False)
+        _, _, status = calculated_duration(start_iso, end_iso, start_prec, end_prec, current, reference_date)
+        if status not in {'calculated','estimated_year_precision'}:
+            if status == 'invalid_dates':
+                warnings.append(StandardizationWarning(field=f'experience[{idx}].dates',
+                    warning_type='invalid_date_order', severity='review_required',
+                    original_value={'start_date': start_iso, 'end_date': end_iso},
+                    message='Dates are reversed or in the future; excluded from experience calculation.'))
             continue
-        start_m = date_to_month_index(start_iso, start_prec, is_end=False)
-        if start_m is None:
+        # Month precision establishes boundaries only at month granularity.
+        # Use matching first-of-month boundaries for approximate interval union.
+        if status == 'estimated_year_precision':
+            # Year labels define a coarse computational interval, not actual
+            # January employment dates. Source dates remain year-only.
+            intervals.append((date(int(start_iso[:4]),1,1),date(reference_date.year if current else int(end_iso[:4]),1,1)))
             continue
-
-        if is_curr:
-            end_m = current_month_index
+        precise = start_prec == 'day' and (current or end_prec == 'day')
+        start = date.fromisoformat(start_iso if precise else start_iso[:7] + '-01')
+        if current:
+            end = reference_date.date() if precise else reference_date.date().replace(day=1)
         else:
-            end_m = date_to_month_index(end_iso, end_prec, is_end=True)
-            if end_m is None:
-                continue  # Missing end is not evidence of a one-month job.
-
-        future_day = (start_prec == 'day' and start_iso > reference_date.date().isoformat()) or (
-            not is_curr and end_prec == 'day' and end_iso and end_iso > reference_date.date().isoformat())
-        if future_day or start_m > current_month_index or end_m > current_month_index or start_m > end_m:
-            warnings.append(
-                StandardizationWarning(
-                    field=f"experience[{idx}].dates",
-                    warning_type="invalid_date_order",
-                    severity="warning",
-                    original_value={"start_date": rec.get("raw_start_date"), "end_date": rec.get("raw_end_date")},
-                    normalized_value={"start_date_iso": start_iso, "end_date_iso": end_iso},
-                    message=f"Start date ({start_iso}) is after end date ({end_iso})."
-                )
-            )
+            end = date.fromisoformat(end_iso if precise else end_iso[:7] + '-01')
+        if start > end:
             continue
-
-        intervals.append((start_m, end_m))
+        intervals.append((start, end))
 
     if not intervals:
         return None, False, warnings
 
-    # Sort intervals by start month
+    # Sort by elapsed interval boundaries
     intervals.sort(key=lambda x: (x[0], x[1]))
 
     overlap_detected = False
-    merged: list[tuple[int, int]] = []
+    merged: list[tuple[date, date]] = []
     for interval in intervals:
         if not merged:
             merged.append(interval)
@@ -256,13 +245,16 @@ def calculate_non_overlapping_experience(
         curr_start, curr_end = interval
 
         if curr_start <= prev_end:
-            overlap_detected = True
-            # Overlapping or adjacent, extend
+            # Touching elapsed intervals merge without implying an overlap.
+            overlap_detected = overlap_detected or curr_start < prev_end
             merged[-1] = (prev_start, max(prev_end, curr_end))
         else:
             merged.append(interval)
 
-    total_months = sum((end - start + 1) for start, end in merged)
+    total_months = 0.0
+    for start, end in merged:
+        _, months, days = calendar_elapsed(start, end)
+        total_months += months + days / (365.2425 / 12)
     total_years = round(total_months / 12.0, 1)
 
     if overlap_detected:
@@ -287,8 +279,18 @@ def _invalid_date(raw, field):
 
 
 def calculated_duration(start_iso, end_iso, start_precision, end_precision, current, reference_date):
-    if not start_iso or (not end_iso and not current) or start_precision == 'year' or (end_precision == 'year' and not current):
+    if not start_iso or (not end_iso and not current):
         return None, None, 'insufficient_dates'
+    if start_precision == 'year' or (end_precision == 'year' and not current):
+        start_year=int(start_iso[:4]);end_year=reference_date.year if current else int(end_iso[:4])
+        if start_year>end_year or end_year>reference_date.year or start_year>reference_date.year:
+            return None,None,'invalid_dates'
+        for value,precision in ((start_iso,start_precision),(None if current else end_iso,end_precision)):
+            if value and precision != 'year' and value>reference_date.date().isoformat()[:len(value)]:
+                return None,None,'invalid_dates'
+        years=end_year-start_year
+        text=f"Approximately {years} year{'s' if years!=1 else ''}" if years else 'Less than 1 year (year precision)'
+        return text,years*12,'estimated_year_precision'
     start=date_to_month_index(start_iso,start_precision)
     end=reference_date.year*12+reference_date.month if current else date_to_month_index(end_iso,end_precision)
     today=reference_date.year*12+reference_date.month
@@ -301,23 +303,27 @@ def calculated_duration(start_iso, end_iso, start_precision, end_precision, curr
     if start_precision == 'day' and start_iso>reference_date.date().isoformat():
         return None,None,'invalid_dates'
     if start_precision == 'day' and (current or end_precision == 'day'):
-        import calendar
-        first=date.fromisoformat(start_iso)
-        last=reference_date.date() if current else date.fromisoformat(end_iso)
-        months=(last.year-first.year)*12+last.month-first.month
-        if last.day<first.day:months-=1
-        year=first.year+(first.month-1+months)//12
-        month=(first.month-1+months)%12+1
-        anchor=date(year,month,min(first.day,calendar.monthrange(year,month)[1]))
-        days=(last-anchor).days
-        years,remainder=divmod(months,12)
-        parts=[]
-        for amount,unit in [(years,'year'),(remainder,'month'),(days,'day')]:
-            if amount:parts.append(f"{amount} {unit}{'s' if amount!=1 else ''}")
-        return ' '.join(parts) or '0 days',months,'calculated'
-    months=end-start+1
+        text, months, _ = calendar_elapsed(date.fromisoformat(start_iso),
+            reference_date.date() if current else date.fromisoformat(end_iso))
+        return text, months, 'calculated'
+    months=end-start
     years,remainder=divmod(months,12)
     parts=[]
     if years:parts.append(f"{years} year{'s' if years!=1 else ''}")
     if remainder:parts.append(f"{remainder} month{'s' if remainder!=1 else ''}")
-    return ' '.join(parts),months,'calculated'
+    return ' '.join(parts) or '0 months',months,'calculated'
+
+
+def calendar_elapsed(first, last):
+    """Completed calendar months plus remaining days; no inclusive endpoint bonus."""
+    import calendar
+    months = (last.year - first.year) * 12 + last.month - first.month
+    if last.day < first.day: months -= 1
+    year = first.year + (first.month - 1 + months) // 12
+    month = (first.month - 1 + months) % 12 + 1
+    anchor = date(year, month, min(first.day, calendar.monthrange(year, month)[1]))
+    days = (last - anchor).days
+    years, remainder = divmod(months, 12)
+    parts = [f"{amount} {unit}{'s' if amount != 1 else ''}"
+             for amount, unit in ((years, 'year'), (remainder, 'month'), (days, 'day')) if amount]
+    return ' '.join(parts) or '0 days', months, days

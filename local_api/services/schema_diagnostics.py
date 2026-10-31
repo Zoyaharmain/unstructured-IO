@@ -138,7 +138,9 @@ def mapping_result(mapped, *, fallback=False):
     omitted_provider_items = any(r.get('code') in {'unsupported_list_item_pruned',
         'unsupported_optional_scalar_pruned', 'scalar_multiple_values_truncated'}
         for r in mapped.meta.get('field_review', {}).get('evidence_repairs', []))
-    needs_review = bool(omitted_provider_items or mapped.meta.get('missing_required_fields') or counts.get('present_but_unmapped')
+    completeness = mapped.meta.get('completeness_check', {})
+    needs_review = bool(completeness.get('meaningful_unmapped_fragments') or completeness.get('conflicting_field_overlaps')
+                        or omitted_provider_items or mapped.meta.get('missing_required_fields') or counts.get('present_but_unmapped')
                         or counts.get('present_but_ambiguous') or mapped.meta.get('needs_review'))
     return {'status': 'fallback_used' if fallback else 'needs_review' if needs_review else 'success',
             'usable': True, 'requires_review': fallback or needs_review, 'fallback_used': fallback,

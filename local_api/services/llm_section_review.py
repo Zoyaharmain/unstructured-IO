@@ -32,6 +32,7 @@ class ReviewSettings:
     max_document_requests: int = 32
     max_pass_requests: int = 16
     max_total_requests: int = 128
+    field_workers: int = 1
 
     @classmethod
     def from_env(cls):
@@ -51,9 +52,12 @@ class ReviewSettings:
                    max_context_tokens=int(os.getenv('DEEPSEEK_REVIEW_CONTEXT_TOKENS','128000')),
                    max_document_requests=int(os.getenv('DEEPSEEK_REVIEW_DOCUMENT_REQUESTS','32')),
                    max_pass_requests=int(os.getenv('DEEPSEEK_REVIEW_PASS_REQUESTS','16')),
-                   max_total_requests=int(os.getenv('DEEPSEEK_REVIEW_TOTAL_REQUESTS','128')))
+                   max_total_requests=int(os.getenv('DEEPSEEK_REVIEW_TOTAL_REQUESTS','128')),
+                   field_workers=int(os.getenv('DEEPSEEK_FIELD_WORKERS','3')))
 
     def validate(self):
+        if type(self.field_workers) is not int or not 1 <= self.field_workers <= 4:
+            raise ReviewError('invalid_configuration')
         url = urlsplit(self.base_url)
         if url.scheme != 'https' or not url.hostname or url.username or url.password or url.query or url.fragment:
             raise ReviewError('invalid_configuration')
@@ -116,7 +120,9 @@ def provider_json(settings, path, body=None):
     request = Request(settings.base_url + path,
                       data=json.dumps(body).encode() if body is not None else None,
                       headers={'Authorization': 'Bearer ' + settings.api_key, 'Content-Type': 'application/json'})
-    max_retries = 2
+    # Paid completions are never silently repeated after a timeout or HTTP error.
+    # Read-only model/connection checks may retry transient failures.
+    max_retries = 0 if body is not None else 2
     for attempt in range(max_retries + 1):
         try:
             with build_opener(NoRedirect()).open(request, timeout=settings.timeout) as response:
@@ -220,6 +226,7 @@ Use exactly this schema: {"assignments":[["u0","experience"],["u1","education"]]
 Return complete coverage for EVERY supplied id, with one whole-span pair or contiguous offset segments. Categories must be one of the provided category keys or needs_review.
 If a span really cannot be placed reliably, use needs_review instead of forcing a guess. Preserve blank spans too. A nonempty span cannot have an empty segment. The exact tuple order is [id,category,start,end]; never [id,start,end,category]. Physical PDF line joins in allowed_split_offsets may separate words without inserted spaces.
 Declarations, self-attestations and adjacent place/date/signature lines belong to personal_information when explicitly identified in source. Combined section headings can be split at word boundaries into the named categories. A job requirements form is not candidate employment or earned education: abstain rather than invent candidate history.
+Explicit TARGET ROLES / DESIRED POSITIONS headings, desired titles, and their adjacent preferred geographic/remote scope belong to personal_information (target_role and work_preferences), never experience or current residence.
 A provider response is a provisional review, not a guarantee of correct extraction or classification.'''
     return [{'role': 'system', 'content': system}, {'role': 'user', 'content': json.dumps(document, ensure_ascii=False)}]
 
@@ -364,6 +371,8 @@ def review_sections(request, local_result, *, settings=None, transport=None, _re
             assigned_text_percent=round(100 * sum(len(b.text.strip()) for b in assigned) / max(1, sum(len(b.text.strip()) for b in all_blocks)), 1))
         from local_api.services.review_resolution import resolve_unassigned
         candidate=resolve_unassigned(request,candidate)
+        from local_api.services.local_completion import recover_local_content
+        candidate=recover_local_content(candidate,request.elements)
         unresolved=candidate.needs_review
         assigned=[b for section in candidate.sections for b in section.blocks]
         all_blocks=assigned+unresolved

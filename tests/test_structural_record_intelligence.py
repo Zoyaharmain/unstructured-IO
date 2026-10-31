@@ -8,7 +8,7 @@ from local_api.services.resume_structure import project_source_groups, heading_b
 from local_api.services.resume_sections import ANCHORS
 from local_api.services.record_subfields import employment_header_fields
 from local_api.schemas.extraction import ExtractedElement
-from local_api.schemas.sections import SectionBlock
+from local_api.schemas.sections import SectionBlock, SectionResponse
 from local_api.services.source_validation import validate_result
 from local_api.services.subschema_validation import validate_hierarchy
 
@@ -35,7 +35,9 @@ def test_actual_two_column_resume_record_associations_and_evidence():
     assert next(s.category for s in req.sections.sections for b in s.blocks if b.text=='TECHNICAL PROFILE')=='skills'
     assert req.model_dump()==before
     assert validate_result(req.elements,req.sections)==[]
-    validate_hierarchy(out.section_schemas,req.sections)
+    reviewed = SectionResponse.model_validate(out.meta.get('reviewed_sections', req.sections.model_dump()))
+    assert validate_result(req.elements, reviewed) == []
+    validate_hierarchy(out.section_schemas,reviewed)
 
 
 @pytest.mark.parametrize('text,company,role',[

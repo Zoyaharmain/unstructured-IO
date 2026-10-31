@@ -79,6 +79,8 @@ def extract_text(payload: bytes, filename: str, strategy: Strategy = 'auto',
         if detected in {FileType.DOC,FileType.DOCX}:
             from local_api.services.word_preparation import annotate_table_paragraphs
             annotate_table_paragraphs(prepared,serialized)
+            from local_api.services.word_source_structure import annotate_word_source
+            annotate_word_source(prepared,serialized)
         if strategy=='ocr_only':
             for e in serialized:e.setdefault('metadata',{})['ocr_verification_required']=True
         if materialized_textboxes:

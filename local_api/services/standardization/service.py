@@ -20,7 +20,9 @@ from local_api.services.standardization.dates import (
     calculated_duration,
     calculate_non_overlapping_experience,
 )
-from local_api.services.standardization.spelling import correct_ocr_or_spelling
+from local_api.services.standardization.input import prepare_input
+from local_api.services.standardization.contacts import normalize_url
+from local_api.services.standardization.validation import finalize_status, normalization_changes
 from local_api.services.standardization.cross_field import validate_cross_field_consistency
 from local_api.vendor.handoff_schema.models import ResumeSchema
 
@@ -38,10 +40,8 @@ def standardize_resume_data(
     applied_at = datetime.now(timezone.utc).isoformat()
     all_warnings: list[StandardizationWarning] = []
 
-    if isinstance(data, dict):
-        raw_dict = data
-    else:
-        raw_dict = data.model_dump()
+    raw_dict, input_warnings = prepare_input(data)
+    all_warnings.extend(input_warnings)
 
     # 1. Contact standardization
     std_contact, contact_warns = standardize_contact(raw_dict.get("contact", {}))
@@ -80,17 +80,35 @@ def standardize_resume_data(
         # Check if duration mentions 'Present' or 'Current'
         from local_api.services.standardization.dates import CURRENT_PATTERNS
         is_current = is_curr_from_end
+        if not raw_end and exp.get('is_current') is True:
+            is_current = True
+        if raw_end and 'is_current' in exp and exp['is_current'] != is_curr_from_end:
+            all_warnings.append(StandardizationWarning(field=f'experience[{idx}].is_current',
+                warning_type='conflicting_current_status', severity='review_required',
+                original_value=exp['is_current'], normalized_value=is_curr_from_end,
+                message='Current indicator conflicts with the explicit end date; both retained in source evidence.'))
         if not raw_end and duration and CURRENT_PATTERNS.search(duration.split(' – ')[-1].strip()):
             is_current = True
         duration_text, duration_months, duration_status = calculated_duration(
             start_iso,end_iso,start_prec,end_prec,is_current,reference_date)
+        if exp.get('provided_duration_months') is not None and exp['provided_duration_months'] != duration_months:
+            all_warnings.append(StandardizationWarning(field=f'experience[{idx}].duration_months',
+                warning_type='provided_duration_discrepancy', severity='review_required',
+                original_value=exp['provided_duration_months'], normalized_value=duration_months,
+                message='Supplied calculated month count disagrees with the date calculation.'))
         if duration_status == 'calculated':
             all_warnings.append(StandardizationWarning(field=f'experience[{idx}].duration',
                 warning_type='duration_calculated',severity='info',original_value=duration,
                 normalized_value=duration_text,applied=True,
-                basis=f'Month precision: inclusive calendar-month coverage. Day precision: completed calendar units. As of {reference_date.date().isoformat()}.',
-                message='Derived duration, approximate calendar-month coverage; original date range retained.'))
-        if duration_status != 'calculated':
+                basis=f'Month precision: elapsed calendar months. Day precision: completed calendar units. As of {reference_date.date().isoformat()}.',
+                message='Derived duration, approximate elapsed calendar months; original date range retained.'))
+        if duration_status == 'estimated_year_precision':
+            all_warnings.append(StandardizationWarning(field=f'experience[{idx}].duration',
+                warning_type='duration_estimated_year_precision',severity='warning',original_value=duration,
+                normalized_value=duration_text,applied=True,
+                basis=f'Year-label difference only; unknown months/days are not inferred. Estimated month count = year difference times 12. As of {reference_date.date().isoformat()}.',
+                message='System estimated duration at year precision because the source omits months. Duration and month count are approximate, not exact elapsed time.'))
+        if duration_status not in {'calculated','estimated_year_precision'}:
             all_warnings.append(StandardizationWarning(field=f'experience[{idx}].duration',
                 warning_type=duration_status,severity='warning',original_value=duration,
                 basis='Requires unambiguous start/end months, or an explicit current indicator.',
@@ -105,9 +123,10 @@ def standardize_resume_data(
 
         std_rec = StandardizedWorkExperience(
             company=company,
+            engagement_type=exp['engagement_type'].strip() or None if exp.get('engagement_type') else None,
             role=role,
-            start_date=start_iso or raw_start,
-            end_date=end_iso or (None if is_current else raw_end),
+            start_date=start_iso,
+            end_date=end_iso,
             duration=duration_text,
             raw_duration=duration,
             duration_months=duration_months,
@@ -140,6 +159,13 @@ def standardize_resume_data(
     calc_years, overlap_detected, calc_warns = calculate_non_overlapping_experience(exp_calc_inputs, reference_date=reference_date)
     all_warnings.extend(calc_warns)
 
+    if any(e.duration_status == 'estimated_year_precision' for e in std_experience):
+        all_warnings.append(StandardizationWarning(field='total_experience_years',
+            warning_type='total_experience_includes_year_estimates',severity='warning',
+            normalized_value=calc_years,applied=True,
+            basis=f'Union of available date intervals; year-only records use year-label boundaries as a coarse estimate. As of {reference_date.date().isoformat()}.',
+            message='Total experience includes year-only estimates. Exact months, gaps and overlaps cannot be established from the supplied year labels.'))
+
     # 6. Education standardization
     std_education: list[StandardizedEducation] = []
     for idx, edu in enumerate(raw_dict.get("education", [])):
@@ -159,8 +185,8 @@ def standardize_resume_data(
             institution=institution,
             degree=degree,
             field_of_study=fos.strip() if fos else None,
-            start_year=start_yr_iso or raw_start_yr,
-            graduation_year=grad_yr_iso or raw_grad_yr,
+            start_year=start_yr_iso,
+            graduation_year=grad_yr_iso,
             grade_or_gpa=grade.strip() if grade else None,
             raw_start_year=raw_start_yr,
             raw_graduation_year=raw_grad_yr,
@@ -168,6 +194,19 @@ def standardize_resume_data(
             graduation_year_iso=grad_yr_iso,
         )
         std_education.append(std_edu)
+
+    def normalized_date(value, path):
+        iso, _, current, warns = parse_date_string(value, path, reference_date=reference_date)
+        all_warnings.extend(warns)
+        if current:
+            all_warnings.append(StandardizationWarning(field=path, warning_type='invalid_date_context',
+                severity='review_required', original_value=value, message='Current indicator is not a calendar date.'))
+        return iso
+
+    def normalized_url(value, path):
+        result, warns = normalize_url(value, path)
+        all_warnings.extend(warns)
+        return result
 
     # 7. Certifications standardization
     std_certifications: list[StandardizedCertification] = []
@@ -182,7 +221,10 @@ def standardize_resume_data(
         std_cert = StandardizedCertification(
             name=name,
             issuer=issuer.strip() if issuer else None,
-            issue_year=yr_iso or raw_yr,
+            issue_year=yr_iso,
+            expiry_date=normalized_date(cert.get("expiry_date"), f"certifications[{idx}].expiry_date"),
+            credential_id=cert['credential_id'].strip() or None if cert.get('credential_id') else None,
+            verification_url=normalized_url(cert.get("verification_url"), f"certifications[{idx}].verification_url"),
             raw_issue_year=raw_yr,
             issue_year_iso=yr_iso,
         )
@@ -197,9 +239,7 @@ def standardize_resume_data(
         p_url = proj.get("url")
         p_tech = [t.strip() for t in proj.get("technologies", []) if t and t.strip()]
 
-        clean_url = p_url.strip() if p_url else None
-        if clean_url and not clean_url.startswith(("http://", "https://")) and "." in clean_url:
-            clean_url = f"https://{clean_url}"
+        clean_url = normalized_url(p_url, f"projects[{idx}].url")
 
         std_proj = StandardizedProject(
             name=p_name,
@@ -208,8 +248,16 @@ def standardize_resume_data(
             technologies=p_tech,
             url=clean_url,
             raw_url=p_url,
+            start_date=normalized_date(proj.get('start_date'), f'projects[{idx}].start_date'),
+            end_date=normalized_date(proj.get('end_date'), f'projects[{idx}].end_date'),
+            organization=proj['organization'].strip() or None if proj.get('organization') else None,
+            outcomes=[v.strip() for v in proj.get('outcomes', []) if v.strip()],
         )
         std_projects.append(std_proj)
+
+    from local_api.services.standardization.additional import normalize_additional
+    supplemental = {category: normalize_additional(raw_dict[category], category, normalized_date, normalized_url, all_warnings)
+                    for category in ('awards', 'achievements', 'publications', 'volunteering', 'interests', 'references')}
 
     # 9. Languages
     clean_languages = [l.strip() for l in raw_dict.get("languages", []) if l and l.strip()]
@@ -222,13 +270,29 @@ def standardize_resume_data(
         except (ValueError, TypeError):
             stated_total = None
 
+    experience_complete = (bool(std_experience)
+        and all(e.duration_status in {'calculated','estimated_year_precision'} for e in std_experience)
+        and not any(w.warning_type == 'invalid_input_type' and w.field.startswith('experience')
+                    for w in input_warnings))
+    total_years = calc_years if experience_complete else None
+    all_warnings.append(StandardizationWarning(
+        field='total_experience_years',
+        warning_type='total_experience_calculated' if experience_complete else 'total_experience_incomplete',
+        severity='info' if experience_complete else 'review_required',
+        original_value=stated_total, normalized_value=total_years, applied=stated_total != total_years or total_years is not None,
+        basis=f'Union of dated employment intervals; gaps excluded and overlaps counted once. Current roles use {reference_date.date().isoformat()} at supplied precision; year-only estimates use its year. Rounded to one decimal year.',
+        message='System calculated total experience from employment dates; source-stated experience retained separately.' if experience_complete else
+                'Complete total experience cannot be calculated from the supplied employment dates; partial calculated experience and source claim retained separately.'))
+
     std_resume = StandardizedResumeSchema(
         contact=std_contact,
         professional_title=clean_title,
         summary=clean_summary,
-        total_experience_years=stated_total,
+        total_experience_years=total_years,
+        stated_total_experience_years=stated_total,
         calculated_experience_years=calc_years,
-        calculated_experience_complete=bool(std_experience) and all(e.duration_status == "calculated" for e in std_experience),
+        calculated_experience_complete=experience_complete,
+        calculated_experience_is_approximate=any(e.duration_is_approximate for e in std_experience),
         experience_overlap_detected=overlap_detected,
         skills=std_skills,
         experience=std_experience,
@@ -236,6 +300,8 @@ def standardize_resume_data(
         certifications=std_certifications,
         projects=std_projects,
         languages=clean_languages,
+        **supplemental,
+        additional_sections=raw_dict['additional_sections'],
     )
 
     # 10. Cross-field consistency validation
@@ -244,9 +310,7 @@ def standardize_resume_data(
 
     # Suggestions are advisory; source names, locations and prose stay unchanged.
     from local_api.services.standardization.suggestions import spelling_suggestions
-    all_warnings.extend(spelling_suggestions(raw_dict))
-    status.issues_count = len(all_warnings)
-    status.requires_human_review = status.requires_human_review or any(w.severity in {'warning','review_required'} for w in all_warnings)
+    all_warnings.extend(spelling_suggestions(std_resume.model_dump()))
     applied_types = {'duration_calculated','skill_canonicalization','phone_e164_normalized',
                      'email_whitespace_trimmed','url_scheme_canonicalized','name_whitespace_trimmed',
                      'bare_profile_label_rejected'}
@@ -254,20 +318,31 @@ def standardize_resume_data(
         if warning.warning_type in applied_types:
             warning.applied = True
             warning.basis = warning.basis or 'Deterministic local formatting/alias rule; not external factual verification.'
+    all_warnings.extend(normalization_changes(raw_dict, std_resume.model_dump(), all_warnings))
+    # Deduplicate identical findings before deriving status and counts.
+    all_warnings = list({(w.field, w.warning_type, repr(w.original_value), repr(w.normalized_value)): w
+                         for w in all_warnings}.values())
+    status = finalize_status(all_warnings)
     # Build Metadata
-    type_counts = Counter(w.warning_type for w in all_warnings)
     metadata = StandardizationMetadata(
-        schema_version="1.1.0",
+        schema_version="2.0.0",
         as_of_date=reference_date.date().isoformat(),
         field_verification={
             'source_values':'preserved; normalized values are derived and do not replace source citations',
             'locations':'not_externally_verified',
             'spelling_suggestions':'dictionary_candidates_only; not proof of correctness',
-            'experience.duration':'derived_from_dates; inclusive calendar months; approximate',
+            'experience.duration':'source-precision calculation; year-only values are annual-resolution estimates, not exact elapsed months',
         },
         applied_at=applied_at,
+        corrections=[w for w in all_warnings if w.applied],
         total_normalizations=sum(w.applied for w in all_warnings),
-        corrections_by_type=dict(type_counts),
+        corrections_by_type=dict(Counter(w.warning_type for w in all_warnings if w.applied)),
+        experience_summary={key: getattr(std_resume, key) for key in (
+            'calculated_experience_years', 'calculated_experience_complete', 'calculated_experience_is_approximate', 'experience_overlap_detected')},
+        experience_calculations=[{'record_path': f'data.experience[{i}]',
+            **{key: getattr(job, key) for key in ('duration_is_approximate', 'duration_as_of', 'duration_status',
+                'start_date_iso', 'end_date_iso', 'start_date_precision', 'end_date_precision')}}
+            for i, job in enumerate(std_experience)],
         cross_field_notes=[w.message for w in all_warnings if w.warning_type in {
             "experience_duration_discrepancy", "experience_overlap_resolved", "invalid_date_order"
         }],

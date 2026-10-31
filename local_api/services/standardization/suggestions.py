@@ -11,7 +11,8 @@ def spelling_suggestions(data):
             for key,item in value.items():visit(item,f'{path}.{key}' if path else key)
         elif isinstance(value,list):
             for i,item in enumerate(value):visit(item,f'{path}[{i}]')
-        elif isinstance(value,str) and not any(k in path for k in ('email','phone','url')):
+        elif isinstance(value,str) and (path == 'summary' or re.fullmatch(
+                r'experience\[\d+\]\.responsibilities\[\d+\]|projects\[\d+\]\.description', path)):
             proposed=value
             for mistake,fix in OCR_AND_SPELLING_CORRECTIONS.items():
                 proposed=re.sub(r'\b'+re.escape(mistake)+r'\b',lambda _:fix,proposed,flags=re.I)

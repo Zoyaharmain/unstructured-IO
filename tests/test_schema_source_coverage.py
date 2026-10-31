@@ -12,8 +12,8 @@ def test_source_coverage_uses_union_of_record_citations_and_keeps_missing_conten
     function=source[source.index('function schemaSourceCoverage('):source.index('function renderSubschemas(')]
     checks=r'''
 const section={category:'skills',records:[{attributes:[{name:'all_skills',items:[
- {evidence:[{source_id:'own',quote:'Program Management'}]},
- {evidence:[{source_id:'own',quote:'Vendor Management'}]}
+ {value:'Program Management',evidence:[{source_id:'own',quote:'Program Management'}]},
+ {value:'Vendor Management',evidence:[{source_id:'own',quote:'Vendor Management'}]}
 ]}]}]};
 const mapped=schemaSourceCoverage(section,{source_id:'own',quote:'Leadership: Program Management · Vendor Management'});
 if(mapped.remaining.length || !mapped.mappedFields.includes('skills.all_skills')) throw Error('Mapped list mislabelled unassigned');
@@ -26,5 +26,12 @@ const heading=schemaSourceCoverage(section,{source_id:'e0:0:17',quote:'CORE COMP
 if(heading.remaining.length || heading.context[0]!=='CORE COMPETENCIES') throw Error('Heading is not context');
 const repeated=schemaSourceCoverage(section,{source_id:'own',quote:'Program Management · Program Management'});
 if(!repeated.remaining.length) throw Error('Ambiguous repeated quote silently covered');
+const broad={category:'awards',records:[{attributes:[{name:'name',items:[
+ {value:'Prize',evidence:[{source_id:'own',quote:'Prize; unmapped outcome 40%.'}]}]}]}]};
+if(!schemaSourceCoverage(broad,{source_id:'own',quote:'Prize; unmapped outcome 40%.'}).remaining.some(v=>v.includes('40%')))
+ throw Error('Broad evidence quote hid unmapped values');
+const authoritative=schemaSourceCoverage(broad,{source_id:'e0:0:5',quote:'Prize'},[],{
+ mapped_intervals:[{source_id:'e0:0:5',field:'awards/award-1/name/0'}],unmapped:[],non_content_artifacts:[]});
+if(authoritative.remaining.length || authoritative.mappedFields[0]!=='awards.name') throw Error('Server completeness ledger ignored');
 '''
     subprocess.run(['node'],input=function+'\n'+checks,text=True,check=True,capture_output=True)

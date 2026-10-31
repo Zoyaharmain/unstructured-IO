@@ -4,6 +4,25 @@ Keep source offsets authoritative. Formatting normalization is lookup-only; neve
 normalize, deduplicate, reconstruct names, or regenerate the returned source text.
 """
 import re
+from bisect import bisect_left
+
+
+def token_window_cuts(text, offsets, limit=200):
+    """Prefer complete sentences within each bounded encoder window."""
+    starts = [start for start, _ in offsets]
+    cursor, cuts = 0, []
+    while cursor + limit < len(offsets):
+        target = starts[cursor + limit]
+        lower = starts[cursor + limit // 2]
+        sentences = [m.end() for m in re.finditer(r'(?<=[.!?])\s+(?=[A-Z•▪●])', text)
+                     if lower <= m.end() <= target]
+        cut = sentences[-1] if sentences else word_safe_cut(text, target)
+        if cuts and cut <= cuts[-1]: break
+        cuts.append(cut)
+        following = bisect_left(starts, cut)
+        if following <= cursor: break
+        cursor = following
+    return cuts
 
 
 def word_safe_cut(text, cut):
@@ -39,7 +58,9 @@ EXTRA_HEADINGS = {
     'summary': ['objective', 'career summary', 'executive summary', 'profile snapshot', 'profile summary', 'professional summary', 'career objective',
                 'selected jd-aligned highlights', 'key business impact', 'career highlights', 'professional highlights'],
     'projects': ['poc', 'pocs', 'proof of concept', 'proofs of concept', 'key projects', 'project highlights', 'project details', 'projects', 'academic projects',
-                 'independent project', 'independent projects', 'other project details'],
+                 'independent project', 'independent projects', 'other project details',
+                 'selected programs', 'transformation programs', 'selected transformation programs',
+                 'key transformation programs', 'transformation initiatives', 'selected initiatives', 'key initiatives'],
     'experience': ['employment', 'professional background', 'work history', 'career history',
                    'role history', 'employment history', 'experience summary', 'professional employment',
                    'organizational experience', 'organization experience', 'professional experience summary',
@@ -51,6 +72,8 @@ EXTRA_HEADINGS = {
                'core competencies and skills', 'it skillset', 'it skills',
                'testing and development practices', 'skill set', 'skill sets', 'skillset', 'key strengths', 'technical competencies', 'core competency', 'core competence', 'core competences', 'core skills', 'domain expertise', 'business analysis and product management', 'tools and technology'],
     'certifications': ['certificates', 'certification', 'training', 'certifications and licenses'],
+    'publications': ['research publications', 'selected publications', 'papers and publications'],
+    'volunteering': ['volunteer experience', 'voluntary work', 'community service'],
     'awards': ['key achievements', 'professional achievements', 'awards and recognitions',
                'awards and recognition', 'awards & recognition', 'awards & recognitions',
                'recognition and awards', 'recognitions and awards',
@@ -184,7 +207,17 @@ def entry_groups(blocks, category, elements):
         cards=[]
         for index,b in enumerate(blocks):
             if b.assignment in {'section_heading','structural_heading'} or not any(c.isalnum() for c in b.text):continue
-            if not cards or blocks[cards[-1]['block_indices'][-1]].source_element_index != b.source_element_index:
+            from local_api.services.record_subfields import labelled_fields
+            fields = labelled_fields('certifications', [b])
+            previous = blocks[cards[-1]['block_indices'][-1]] if cards else None
+            from local_api.services.certification_integrity import detail_row,aligned_credential_detail
+            detail = b.assignment != 'inline_certification_title' and (detail_row(b.text) or bool(fields) and 'name' not in fields)
+            adjacent_card = bool(previous and previous.page_number == b.page_number and (previous.lane == b.lane or 'wide' in {previous.lane,b.lane})
+                                 and 0 <= b.source_element_index - previous.source_element_index <= 1)
+            if not cards and detail:continue
+            adjacent_card = adjacent_card or bool(detail and aligned_credential_detail(previous,b,elements))
+            new_name = bool(cards and (b.assignment in {'local_certification_title','inline_certification_title'} or not detail and ('name' in fields or re.match(r'^\s*[•▪●\uf0b7]\s*\S', b.text))))
+            if not cards or new_name or (previous.source_element_index != b.source_element_index and not (detail and adjacent_card)):
                 cards.append({'entry_id':f'certifications-{len(cards)+1}','block_indices':[],
                               'lane':b.lane,'boundary_reason':'source-local certification card; source text retained'})
             cards[-1]['block_indices'].append(index)
@@ -224,6 +257,14 @@ def entry_groups(blocks, category, elements):
             from local_api.services.record_relationships import field_kinds
             kinds = field_kinds(text, category)
             explicit_title = (len(text.split()) <= 18 and bool(set(kinds) & {'institution', 'qualification'}))
+        if category == 'projects' and not explicit_title and len(text.split()) <= 12:
+            from local_api.services.record_subfields import responsibility_fragment
+            spans=element.metadata.get('word_source_runs',[])
+            bold_chars=sum(max(0,min(block.end,r['end'])-max(block.start,r['start'])) for r in spans if r.get('bold'))
+            title_words=text.split()
+            named_bullet=(element.type=='ListItem' and all(w[:1].isupper() or w.casefold() in {'and','of','for','the','to','&'} for w in title_words)
+                and not text.endswith(('.', '!', '?')) and not re.match(r'^projects?\s+(?:worked|at|in|for)\b',text,re.I))
+            if (bold_chars >= .8*max(1,len(text)) or named_bullet) and not responsibility_fragment(text): explicit_title=True
         if category == 'projects' and explicit_title:
             from local_api.services.record_subfields import responsibility_fragment,ALIASES
             prefix=normalized_heading(text.split(':',1)[0])
@@ -245,9 +286,22 @@ def entry_groups(blocks, category, elements):
         dated_header = bool(category in {'experience', 'education'} and len(text.split()) <= 24
                             and RANGE.search(text)
                             and not re.match(r'^[•▪●*\-]', text))
+        if category == 'education':
+            from local_api.services.dated_record_headers import education_date_starts_record
+            if RANGE.fullmatch(text): dated_header = False
+            elif education_date_starts_record(blocks,index): dated_header = True
+        if category == 'projects':
+            from local_api.services.record_subfields import responsibility_fragment
+            project_range = RANGE.search(text)
+            prefix = text[:project_range.start()].strip(' |—–-') if project_range else ''
+            dated_header = bool(prefix and ':' not in prefix and len(prefix.split()) <= 18 and not responsibility_fragment(text))
         from local_api.services.record_subfields import paired_employment_header
         paired = category=='experience' and index+1<len(blocks) and paired_employment_header(text,blocks[index+1].text)
         paired_continuation = category=='experience' and index>0 and paired_employment_header(blocks[index-1].text,text)
+        if category == 'experience':
+            from local_api.services.record_subfields import responsibility_fragment, employment_header_fields
+            if element.type == 'ListItem' and responsibility_fragment(element.text) and not employment_header_fields(element.text):
+                explicit_title = labeled_entry = dated_header = paired = False
         boundary = not paired_continuation and category in {'experience', 'projects', 'education'} and (paired or (explicit_title or labeled_entry or dated_header))
         if category=='experience' and labeled_entry and key in active:
             meaningful=[i for i in active[key]['block_indices'] if re.search(r'\w',blocks[i].text)]
@@ -336,7 +390,7 @@ def reviewed_employment_groups(blocks,elements):
             shared_history=not any(responsibility_fragment(part.text) or len(part.text.split())>30 for part in between)
         if b.assignment in {'section_heading', 'structural_heading'} or normalized_heading(text) in {'experience','work experience','professional experience','employment','work history'}:continue
         if re.match(r'^Client\b',text,re.I):continue
-        if responsibility_fragment(text):continue
+        if responsibility_fragment(text) or (elements[b.source_element_index].type == 'ListItem' and responsibility_fragment(elements[b.source_element_index].text) and not employment_header_fields(elements[b.source_element_index].text)):continue
         if len(text.split())>30 or re.match(r'^(?:job\s+role\s*:|[•▪●*]|projects?\s*[:\-]|projects?\s+(?:name|title|description|summary)\b|client\s*[:\-]|responsibilit)',text,re.I):continue
         if re.match(r'^(?:operating systems|servers(?: & web)?|cloud (?:services|platforms)|programming languages|tools|frameworks|databases|ai / llm skills)\s*:', text, re.I):
             continue

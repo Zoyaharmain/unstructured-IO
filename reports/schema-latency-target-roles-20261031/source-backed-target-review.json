@@ -1,0 +1,1654 @@
+{
+  "success": true,
+  "source": "ShyamKumarDonka.pdf",
+  "extraction_mode": "deepseek_source_grounded_schema_mapping",
+  "data": {
+    "contact": {
+      "full_name": "SHYAM KUMAR DONKA",
+      "email": "shyam.don.777.sd@gmail.com",
+      "phone": "+919603796878",
+      "location": null,
+      "linkedin_url": "linkedin.com/in/shyamdonka",
+      "github_url": null,
+      "portfolio_url": null,
+      "work_preferences": "India | UAE & Middle East | UK | Europe | Remote / Global",
+      "target_role": "Senior Program Manager | Business Transformation Manager | Operations Transformation Manager | Change Management Lead | Continuous Improvement Manager | Governance, Risk & Controls Manager | AVP / Assistant Director – Operations"
+    },
+    "professional_title": null,
+    "summary": null,
+    "total_experience_years": null,
+    "skills": {
+      "technical_skills": [],
+      "tools_and_platforms": [],
+      "domain_and_functional": [],
+      "soft_skills": [],
+      "all_skills": []
+    },
+    "experience": [],
+    "education": [],
+    "certifications": [],
+    "projects": [],
+    "languages": []
+  },
+  "schema_mapping": {
+    "fields_populated": 4,
+    "total_fields": 16,
+    "completion_percentage": 25.0,
+    "field_details": [
+      {
+        "field_name": "contact.full_name",
+        "target_type": "string",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Personal Details",
+        "confidence_score": 0.95,
+        "description": "Candidate's full name, extracted from the top header of the resume.",
+        "source_status": "present_and_extracted"
+      },
+      {
+        "field_name": "contact.email",
+        "target_type": "string (email)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.98,
+        "description": "Candidate's primary contact email address.",
+        "source_status": "present_and_extracted"
+      },
+      {
+        "field_name": "contact.phone",
+        "target_type": "string (phone)",
+        "is_required": true,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.95,
+        "description": "Candidate's telephone / mobile phone number.",
+        "source_status": "present_and_extracted"
+      },
+      {
+        "field_name": "contact.location",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.0,
+        "description": "Candidate's residential location or work city.",
+        "source_status": "present_but_unmapped"
+      },
+      {
+        "field_name": "contact.linkedin_url",
+        "target_type": "string (url) | null",
+        "is_required": false,
+        "is_extracted": true,
+        "source_section": "Header / Contact Info",
+        "confidence_score": 0.9,
+        "description": "URL to candidate's LinkedIn profile.",
+        "source_status": "present_and_extracted"
+      },
+      {
+        "field_name": "professional_title",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Header / Subtitle",
+        "confidence_score": 0.0,
+        "description": "Candidate's target headline or most recent job title.",
+        "source_status": "present_but_unmapped"
+      },
+      {
+        "field_name": "summary",
+        "target_type": "string | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Professional Summary / Profile / Objective",
+        "confidence_score": 0.0,
+        "description": "Executive bio, professional overview, or career objective.",
+        "source_status": "absent_in_source"
+      },
+      {
+        "field_name": "total_experience_years",
+        "target_type": "float | null",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Summary / Experience Calculation",
+        "confidence_score": 0.0,
+        "description": "Total professional experience in years.",
+        "source_status": "absent_in_source"
+      },
+      {
+        "field_name": "skills.technical_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Technical Competencies",
+        "confidence_score": 0.0,
+        "description": "Technical programming languages and core software competencies.",
+        "source_status": "absent_in_source"
+      },
+      {
+        "field_name": "skills.tools_and_platforms",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Tools & Technologies",
+        "confidence_score": 0.0,
+        "description": "Software platforms, developer tools, and operational systems.",
+        "source_status": "absent_in_source"
+      },
+      {
+        "field_name": "skills.domain_and_functional",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills / Domain Expertise",
+        "confidence_score": 0.0,
+        "description": "Functional domain knowledge (e.g. Hedge Funds, KYC, NAV, Derivatives).",
+        "source_status": "absent_in_source"
+      },
+      {
+        "field_name": "skills.all_skills",
+        "target_type": "array[string]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Skills (Aggregated)",
+        "confidence_score": 0.0,
+        "description": "Complete list of candidate skills across all categories.",
+        "source_status": "absent_in_source"
+      },
+      {
+        "field_name": "experience",
+        "target_type": "array[WorkExperience]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Professional Experience / Work History",
+        "confidence_score": 0.0,
+        "description": "Complete chronological employment records with bullet points.",
+        "source_status": "absent_in_source"
+      },
+      {
+        "field_name": "education",
+        "target_type": "array[Education]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Education / Academic Qualifications",
+        "confidence_score": 0.0,
+        "description": "University, college, and higher education degree qualifications.",
+        "source_status": "absent_in_source"
+      },
+      {
+        "field_name": "certifications",
+        "target_type": "array[Certification]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Certifications / Licenses",
+        "confidence_score": 0.0,
+        "description": "Professional accreditations and credentials.",
+        "source_status": "absent_in_source"
+      },
+      {
+        "field_name": "projects",
+        "target_type": "array[Project]",
+        "is_required": false,
+        "is_extracted": false,
+        "source_section": "Projects / Key Engagements",
+        "confidence_score": 0.0,
+        "description": "Major projects or strategic initiatives led by candidate.",
+        "source_status": "absent_in_source"
+      }
+    ]
+  },
+  "raw_sections": {
+    "personal_information": "SHYAM KUMAR DONKA Senior Program Manager | Business Transformation Leader | Banking & Financial Services | Automation, Analytics & Digital Transformation | Operational Excellence | Stakeholder & Change Leadership | PMP® Certified\nOpen to: India | UAE & Middle East | UK | Europe | Remote / Global | +919603796878 | shyam.don.777.sd@gmail.com | linkedin.com/in/shyamdonka\nTARGET ROLES\nSenior Program Manager | Business Transformation Manager | Operations Transformation Manager | Change Management Lead | Continuous Improvement Manager | Governance, Risk & Controls Manager | AVP / Assistant Director – Operations — India | UAE & Middle East | UK | Europe | Remote / Global"
+  },
+  "meta": {
+    "status": "needs_review",
+    "human_verified": false,
+    "provider_calls": 1,
+    "source_accounting": {
+      "all_source_text_preserved": true,
+      "total_spans": 8,
+      "assigned_meaningful_spans": 8,
+      "unresolved_meaningful_spans": 0,
+      "non_content_artifacts": 0,
+      "duplicates_excluded": 0,
+      "all_meaningful_text_assigned": true,
+      "semantic_correctness_verified": false,
+      "outcomes": [
+        {
+          "source_id": "e0:0:18",
+          "source_element_index": 0,
+          "start": 0,
+          "end": 18,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Explicit candidate contact source recovered without changing text or offsets."
+        },
+        {
+          "source_id": "e0:18:131",
+          "source_element_index": 0,
+          "start": 18,
+          "end": 131,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e0:131:229",
+          "source_element_index": 0,
+          "start": 131,
+          "end": 229,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Opening identity/headline adjacent to an explicit email address"
+        },
+        {
+          "source_id": "e1:0:140",
+          "source_element_index": 1,
+          "start": 0,
+          "end": 140,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "BERT embedding assigned to a labeled K-means centroid"
+        },
+        {
+          "source_id": "e2:0:12",
+          "source_element_index": 2,
+          "start": 0,
+          "end": 12,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Explicit target-role heading and bounded contiguous desired roles/work preferences; not employment or residence."
+        },
+        {
+          "source_id": "e3:0:120",
+          "source_element_index": 3,
+          "start": 0,
+          "end": 120,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Explicit target-role heading and bounded contiguous desired roles/work preferences; not employment or residence."
+        },
+        {
+          "source_id": "e3:120:245",
+          "source_element_index": 3,
+          "start": 120,
+          "end": 245,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Explicit target-role heading and bounded contiguous desired roles/work preferences; not employment or residence."
+        },
+        {
+          "source_id": "e3:245:288",
+          "source_element_index": 3,
+          "start": 245,
+          "end": 288,
+          "section": "personal_information",
+          "outcome": "assigned",
+          "reason": "Explicit target-role heading and bounded contiguous desired roles/work preferences; not employment or residence."
+        }
+      ]
+    },
+    "document_scope": {
+      "kind": "candidate_or_unknown",
+      "candidate_resume": null,
+      "requires_scope_review": true
+    },
+    "source_inventory_sha256": "a5ba3b387b21b9e363b9560683c321bec8384dbf04b6ee340949bc4992b5535b",
+    "field_evidence": {
+      "contact.full_name": [
+        "e0:0:18"
+      ],
+      "contact.email": [
+        "e1:0:140"
+      ],
+      "contact.phone": [
+        "e1:0:140"
+      ],
+      "contact.linkedin_url": [
+        "e1:0:140"
+      ],
+      "contact.work_preferences": [
+        "e1:0:140"
+      ],
+      "contact.target_role": [
+        "e3:0:120",
+        "e3:120:245"
+      ]
+    },
+    "record_reviews": [],
+    "record_bindings": {
+      "personal_information": {}
+    },
+    "missing_required_fields": [],
+    "field_source_status": {
+      "contact.location": "present_but_unmapped",
+      "contact.github_url": "present_but_unmapped",
+      "contact.portfolio_url": "present_but_unmapped",
+      "professional_title": "present_but_unmapped",
+      "summary": "absent_in_source",
+      "total_experience_years": "absent_in_source",
+      "education": "absent_in_source",
+      "projects": "absent_in_source",
+      "skills": "absent_in_source",
+      "languages": "absent_in_source",
+      "contact.full_name": "present_and_extracted",
+      "contact.email": "present_and_extracted",
+      "contact.phone": "present_and_extracted",
+      "contact.linkedin_url": "present_and_extracted",
+      "contact.work_preferences": "present_and_extracted",
+      "contact.target_role": "present_and_extracted"
+    },
+    "source_coverage_ledger": {
+      "field_statuses": {
+        "contact.location": "present_but_unmapped",
+        "contact.github_url": "present_but_unmapped",
+        "contact.portfolio_url": "present_but_unmapped",
+        "professional_title": "present_but_unmapped",
+        "summary": "absent_in_source",
+        "total_experience_years": "absent_in_source",
+        "education": "absent_in_source",
+        "projects": "absent_in_source",
+        "skills": "absent_in_source",
+        "languages": "absent_in_source",
+        "contact.full_name": "present_and_extracted",
+        "contact.email": "present_and_extracted",
+        "contact.phone": "present_and_extracted",
+        "contact.linkedin_url": "present_and_extracted",
+        "contact.work_preferences": "present_and_extracted",
+        "contact.target_role": "present_and_extracted"
+      },
+      "status_counts": {
+        "present_and_extracted": 6,
+        "present_but_unmapped": 4,
+        "present_but_ambiguous": 0,
+        "absent_in_source": 6,
+        "extraction_failed": 0,
+        "not_applicable": 0
+      }
+    },
+    "warnings": [
+      "Preferred work locations do not establish current residence.",
+      "Schema validity and field completion do not establish extraction or relationship accuracy.",
+      "Handoff confidence scores are fixed heuristics, not calibrated probabilities.",
+      "Missing required strings use empty strings for handoff compatibility; inspect missing_required_fields."
+    ],
+    "unmapped_blocks": [
+      {
+        "source_id": "e0:18:131",
+        "category": "personal_information",
+        "text": "Senior Program Manager | Business Transformation Leader | Banking & Financial Services | Automation, Analytics & ",
+        "page_number": 1
+      },
+      {
+        "source_id": "e0:131:229",
+        "category": "personal_information",
+        "text": "Digital Transformation | Operational Excellence | Stakeholder & Change Leadership | PMP® Certified",
+        "page_number": 1
+      },
+      {
+        "source_id": "e2:0:12",
+        "category": "personal_information",
+        "text": "TARGET ROLES",
+        "page_number": 2
+      },
+      {
+        "source_id": "e3:245:288",
+        "category": "personal_information",
+        "text": "Middle East | UK | Europe | Remote / Global",
+        "page_number": 2
+      }
+    ],
+    "needs_review": [],
+    "layout_artifacts": [],
+    "completeness_check": {
+      "version": 1,
+      "source_intervals_valid": true,
+      "semantic_correctness_verified": false,
+      "mapped_intervals": [
+        {
+          "source_id": "e0:0:18",
+          "source_element_index": 0,
+          "start": 0,
+          "end": 17,
+          "field": "personal_information/personal_information/full_name/0"
+        },
+        {
+          "source_id": "e1:0:140",
+          "source_element_index": 1,
+          "start": 85,
+          "end": 111,
+          "field": "personal_information/personal_information/email/0"
+        },
+        {
+          "source_id": "e1:0:140",
+          "source_element_index": 1,
+          "start": 69,
+          "end": 82,
+          "field": "personal_information/personal_information/phone/0"
+        },
+        {
+          "source_id": "e1:0:140",
+          "source_element_index": 1,
+          "start": 114,
+          "end": 140,
+          "field": "personal_information/personal_information/linkedin_url/0"
+        },
+        {
+          "source_id": "e1:0:140",
+          "source_element_index": 1,
+          "start": 9,
+          "end": 66,
+          "field": "personal_information/personal_information/work_preferences/0"
+        },
+        {
+          "source_id": "e3:0:120",
+          "source_element_index": 3,
+          "start": 0,
+          "end": 120,
+          "field": "personal_information/personal_information/target_role/0"
+        },
+        {
+          "source_id": "e3:120:245",
+          "source_element_index": 3,
+          "start": 120,
+          "end": 228,
+          "field": "personal_information/personal_information/target_role/0"
+        }
+      ],
+      "meaningful_unmapped_fragments": 5,
+      "unassigned_source_fragments": 0,
+      "recognized_but_unmapped_fragments": 0,
+      "conflicting_field_overlaps": [],
+      "unmapped": [
+        {
+          "source_id": "e0:18:131",
+          "source_element_index": 0,
+          "start": 18,
+          "end": 131,
+          "text": "Senior Program Manager | Business Transformation Leader | Banking & Financial Services | Automation, Analytics & ",
+          "section": "personal_information",
+          "recognizable_category": null,
+          "local_reason": "Opening identity/headline adjacent to an explicit email address",
+          "reason": "record_or_field_association_not_established"
+        },
+        {
+          "source_id": "e0:131:229",
+          "source_element_index": 0,
+          "start": 131,
+          "end": 229,
+          "text": "Digital Transformation | Operational Excellence | Stakeholder & Change Leadership | PMP® Certified",
+          "section": "personal_information",
+          "recognizable_category": null,
+          "local_reason": "Opening identity/headline adjacent to an explicit email address",
+          "reason": "record_or_field_association_not_established"
+        },
+        {
+          "source_id": "e1:0:140",
+          "source_element_index": 1,
+          "start": 0,
+          "end": 9,
+          "text": "Open to: ",
+          "section": "personal_information",
+          "recognizable_category": null,
+          "local_reason": "BERT embedding assigned to a labeled K-means centroid",
+          "reason": "record_or_field_association_not_established"
+        },
+        {
+          "source_id": "e3:120:245",
+          "source_element_index": 3,
+          "start": 228,
+          "end": 245,
+          "text": " — India | UAE & ",
+          "section": "personal_information",
+          "recognizable_category": null,
+          "local_reason": "Explicit target-role heading and bounded contiguous desired roles/work preferences; not employment or residence.",
+          "reason": "record_or_field_association_not_established"
+        },
+        {
+          "source_id": "e3:245:288",
+          "source_element_index": 3,
+          "start": 245,
+          "end": 288,
+          "text": "Middle East | UK | Europe | Remote / Global",
+          "section": "personal_information",
+          "recognizable_category": null,
+          "local_reason": "Explicit target-role heading and bounded contiguous desired roles/work preferences; not employment or residence.",
+          "reason": "record_or_field_association_not_established"
+        }
+      ],
+      "non_content_artifacts": [],
+      "heading_source_ids": [
+        "e2:0:12"
+      ],
+      "all_meaningful_content_mapped": false,
+      "all_meaningful_content_accounted_for": true,
+      "interpretation": "Every unmapped fragment retains exact source offsets and an explicit review reason; coverage is not proof of correct associations."
+    },
+    "mapping_result": {
+      "status": "needs_review",
+      "usable": true,
+      "requires_review": true,
+      "fallback_used": false,
+      "meaning": "Source-bound output is available for inspection; this does not certify field accuracy."
+    },
+    "section_review": {
+      "status": "complete"
+    },
+    "field_review": {
+      "status": "complete",
+      "provider": "DeepSeek",
+      "model": "deepseek-flash",
+      "provider_calls": 1,
+      "reviewed_records": 1,
+      "unassigned_source_ids": [],
+      "human_verified": false,
+      "batch_count": 1,
+      "batch_workers": 1,
+      "processing_seconds": 0.044,
+      "evidence_repairs": [
+        {
+          "field": "target_role",
+          "path": "/personal_information/target_role",
+          "code": "complete_explicit_target_list_recovered"
+        }
+      ]
+    },
+    "reviewed_sections": {
+      "status": "provisional",
+      "extraction_verified": false,
+      "sections": [
+        {
+          "category": "personal_information",
+          "label": "Personal information",
+          "text": "SHYAM KUMAR DONKA Senior Program Manager | Business Transformation Leader | Banking & Financial Services | Automation, Analytics & Digital Transformation | Operational Excellence | Stakeholder & Change Leadership | PMP® Certified\nOpen to: India | UAE & Middle East | UK | Europe | Remote / Global | +919603796878 | shyam.don.777.sd@gmail.com | linkedin.com/in/shyamdonka\nTARGET ROLES\nSenior Program Manager | Business Transformation Manager | Operations Transformation Manager | Change Management Lead | Continuous Improvement Manager | Governance, Risk & Controls Manager | AVP / Assistant Director – Operations — India | UAE & Middle East | UK | Europe | Remote / Global",
+          "highlights": [
+            {
+              "start": 371,
+              "end": 383,
+              "kind": "heading"
+            }
+          ],
+          "blocks": [
+            {
+              "source_element_index": 0,
+              "start": 0,
+              "end": 18,
+              "text": "SHYAM KUMAR DONKA ",
+              "page_number": 1,
+              "cluster_id": 2,
+              "candidate_section": "experience",
+              "alternatives": [],
+              "cluster_space": "content",
+              "context_source_element_index": null,
+              "assignment": "contact_recovered",
+              "similarity": 0.1356,
+              "margin": -0.0515,
+              "lane": "left",
+              "reason": "Explicit candidate contact source recovered without changing text or offsets.",
+              "reviewed_by_llm": false,
+              "local_section": null,
+              "local_assignment": null,
+              "llm_action": null
+            },
+            {
+              "source_element_index": 0,
+              "start": 18,
+              "end": 131,
+              "text": "Senior Program Manager | Business Transformation Leader | Banking & Financial Services | Automation, Analytics & ",
+              "page_number": 1,
+              "cluster_id": 2,
+              "candidate_section": "experience",
+              "alternatives": [],
+              "cluster_space": "content",
+              "context_source_element_index": null,
+              "assignment": "contact_context",
+              "similarity": 0.5444,
+              "margin": 0.0218,
+              "lane": "wide",
+              "reason": "Opening identity/headline adjacent to an explicit email address",
+              "reviewed_by_llm": false,
+              "local_section": null,
+              "local_assignment": null,
+              "llm_action": null
+            },
+            {
+              "source_element_index": 0,
+              "start": 131,
+              "end": 229,
+              "text": "Digital Transformation | Operational Excellence | Stakeholder & Change Leadership | PMP® Certified",
+              "page_number": 1,
+              "cluster_id": 2,
+              "candidate_section": "experience",
+              "alternatives": [],
+              "cluster_space": "content",
+              "context_source_element_index": null,
+              "assignment": "contact_context",
+              "similarity": 0.4203,
+              "margin": 0.0057,
+              "lane": "wide",
+              "reason": "Opening identity/headline adjacent to an explicit email address",
+              "reviewed_by_llm": false,
+              "local_section": null,
+              "local_assignment": null,
+              "llm_action": null
+            },
+            {
+              "source_element_index": 1,
+              "start": 0,
+              "end": 140,
+              "text": "Open to: India | UAE & Middle East | UK | Europe | Remote / Global | +919603796878 | shyam.don.777.sd@gmail.com | linkedin.com/in/shyamdonka",
+              "page_number": 1,
+              "cluster_id": 0,
+              "candidate_section": "personal_information",
+              "alternatives": [],
+              "cluster_space": "content",
+              "context_source_element_index": null,
+              "assignment": "semantic",
+              "similarity": 0.5618,
+              "margin": 0.3079,
+              "lane": "wide",
+              "reason": "BERT embedding assigned to a labeled K-means centroid",
+              "reviewed_by_llm": false,
+              "local_section": null,
+              "local_assignment": null,
+              "llm_action": null
+            },
+            {
+              "source_element_index": 2,
+              "start": 0,
+              "end": 12,
+              "text": "TARGET ROLES",
+              "page_number": 2,
+              "cluster_id": 2,
+              "candidate_section": "experience",
+              "alternatives": [],
+              "cluster_space": "content",
+              "context_source_element_index": 46,
+              "assignment": "structural_heading",
+              "similarity": 0.4492,
+              "margin": 0.109,
+              "lane": "left",
+              "reason": "Explicit target-role heading and bounded contiguous desired roles/work preferences; not employment or residence.",
+              "reviewed_by_llm": true,
+              "local_section": null,
+              "local_assignment": null,
+              "llm_action": null
+            },
+            {
+              "source_element_index": 3,
+              "start": 0,
+              "end": 120,
+              "text": "Senior Program Manager | Business Transformation Manager | Operations Transformation Manager | Change Management Lead | ",
+              "page_number": 2,
+              "cluster_id": 2,
+              "candidate_section": "experience",
+              "alternatives": [],
+              "cluster_space": "content",
+              "context_source_element_index": 46,
+              "assignment": "local_target_preferences",
+              "similarity": 0.5061,
+              "margin": 0.0922,
+              "lane": "wide",
+              "reason": "Explicit target-role heading and bounded contiguous desired roles/work preferences; not employment or residence.",
+              "reviewed_by_llm": true,
+              "local_section": null,
+              "local_assignment": null,
+              "llm_action": null
+            },
+            {
+              "source_element_index": 3,
+              "start": 120,
+              "end": 245,
+              "text": "Continuous Improvement Manager | Governance, Risk & Controls Manager | AVP / Assistant Director – Operations — India | UAE & ",
+              "page_number": 2,
+              "cluster_id": 2,
+              "candidate_section": "experience",
+              "alternatives": [],
+              "cluster_space": "content",
+              "context_source_element_index": 46,
+              "assignment": "local_target_preferences",
+              "similarity": 0.4575,
+              "margin": 0.0665,
+              "lane": "wide",
+              "reason": "Explicit target-role heading and bounded contiguous desired roles/work preferences; not employment or residence.",
+              "reviewed_by_llm": true,
+              "local_section": null,
+              "local_assignment": null,
+              "llm_action": null
+            },
+            {
+              "source_element_index": 3,
+              "start": 245,
+              "end": 288,
+              "text": "Middle East | UK | Europe | Remote / Global",
+              "page_number": 2,
+              "cluster_id": 5,
+              "candidate_section": "skills",
+              "alternatives": [],
+              "cluster_space": "content",
+              "context_source_element_index": 46,
+              "assignment": "local_target_preferences",
+              "similarity": 0.1574,
+              "margin": -0.0388,
+              "lane": "left",
+              "reason": "Explicit target-role heading and bounded contiguous desired roles/work preferences; not employment or residence.",
+              "reviewed_by_llm": true,
+              "local_section": null,
+              "local_assignment": null,
+              "llm_action": null
+            }
+          ],
+          "entries": [
+            {
+              "entry_id": "personal_information-1",
+              "block_indices": [
+                0
+              ],
+              "lane": "left",
+              "boundary_reason": "section continuation; no explicit entry boundary",
+              "fields": {},
+              "relationship_status": "provisional",
+              "review_reasons": []
+            },
+            {
+              "entry_id": "personal_information-2",
+              "block_indices": [
+                1,
+                2,
+                3,
+                5,
+                6
+              ],
+              "lane": "wide",
+              "boundary_reason": "section continuation; no explicit entry boundary",
+              "fields": {},
+              "relationship_status": "provisional",
+              "review_reasons": []
+            },
+            {
+              "entry_id": "personal_information-3",
+              "block_indices": [
+                7
+              ],
+              "lane": "left",
+              "boundary_reason": "section continuation; no explicit entry boundary",
+              "fields": {},
+              "relationship_status": "provisional",
+              "review_reasons": []
+            }
+          ],
+          "source_heading": "TARGET ROLES",
+          "readable_blocks": [
+            {
+              "kind": "content",
+              "title": "",
+              "block_indices": [
+                0,
+                7
+              ],
+              "children": []
+            },
+            {
+              "kind": "content",
+              "title": "",
+              "block_indices": [
+                1,
+                2,
+                3,
+                5,
+                6
+              ],
+              "children": []
+            }
+          ],
+          "logical_blocks": [
+            {
+              "logical_id": "personal_information-complete",
+              "kind": "section",
+              "text": "SHYAM KUMAR DONKA Senior Program Manager | Business Transformation Leader | Banking & Financial Services | Automation, Analytics & Digital Transformation | Operational Excellence | Stakeholder & Change Leadership | PMP® Certified\nOpen to: India | UAE & Middle East | UK | Europe | Remote / Global | +919603796878 | shyam.don.777.sd@gmail.com | linkedin.com/in/shyamdonka\nSenior Program Manager | Business Transformation Manager | Operations Transformation Manager | Change Management Lead | Continuous Improvement Manager | Governance, Risk & Controls Manager | AVP / Assistant Director – Operations — India | UAE & Middle East | UK | Europe | Remote / Global",
+              "block_indices": [
+                0,
+                1,
+                2,
+                3,
+                5,
+                6,
+                7
+              ],
+              "source_ids": [
+                "e0:0:18",
+                "e0:18:131",
+                "e0:131:229",
+                "e1:0:140",
+                "e3:0:120",
+                "e3:120:245",
+                "e3:245:288"
+              ],
+              "relationship_status": "provisional",
+              "review_reasons": [],
+              "semantic_frame": {
+                "schema_target": "personal_information",
+                "meaning": "Personal information",
+                "scope": "complete_section",
+                "field_slots": [
+                  {
+                    "name": "full_name",
+                    "multiple": false,
+                    "source_hints": []
+                  },
+                  {
+                    "name": "email",
+                    "multiple": false,
+                    "source_hints": []
+                  },
+                  {
+                    "name": "phone",
+                    "multiple": false,
+                    "source_hints": []
+                  },
+                  {
+                    "name": "location",
+                    "multiple": false,
+                    "source_hints": []
+                  },
+                  {
+                    "name": "linkedin_url",
+                    "multiple": false,
+                    "source_hints": []
+                  },
+                  {
+                    "name": "github_url",
+                    "multiple": false,
+                    "source_hints": []
+                  },
+                  {
+                    "name": "portfolio_url",
+                    "multiple": false,
+                    "source_hints": []
+                  },
+                  {
+                    "name": "work_preferences",
+                    "multiple": false,
+                    "source_hints": []
+                  },
+                  {
+                    "name": "target_role",
+                    "multiple": false,
+                    "source_hints": []
+                  },
+                  {
+                    "name": "professional_title",
+                    "multiple": false,
+                    "source_hints": []
+                  }
+                ],
+                "interpretation_status": "proposed",
+                "evidence_policy": "Extract literal values from original sources; validate every field. Hints are not established values and empty hints do not mean absent."
+              }
+            }
+          ]
+        }
+      ],
+      "needs_review": [],
+      "metadata": {
+        "llm_review": {
+          "status": "complete"
+        }
+      },
+      "warnings": []
+    },
+    "provider_call_summary": {
+      "section_preflight": 0,
+      "field_mapping": 1,
+      "total_this_mapping_request": 1
+    }
+  },
+  "section_schemas": [
+    {
+      "category": "personal_information",
+      "label": "Personal information",
+      "records": [
+        {
+          "record_id": "personal_information",
+          "source_ids": [
+            "e0:0:18",
+            "e0:18:131",
+            "e0:131:229",
+            "e1:0:140",
+            "e3:0:120",
+            "e3:120:245",
+            "e3:245:288"
+          ],
+          "attributes": [
+            {
+              "name": "full_name",
+              "items": [
+                {
+                  "value": "SHYAM KUMAR DONKA",
+                  "evidence": [
+                    {
+                      "source_id": "e0:0:18",
+                      "quote": "SHYAM KUMAR DONKA"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "email",
+              "items": [
+                {
+                  "value": "shyam.don.777.sd@gmail.com",
+                  "evidence": [
+                    {
+                      "source_id": "e1:0:140",
+                      "quote": "shyam.don.777.sd@gmail.com"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "phone",
+              "items": [
+                {
+                  "value": "+919603796878",
+                  "evidence": [
+                    {
+                      "source_id": "e1:0:140",
+                      "quote": "+919603796878"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "location",
+              "items": [],
+              "status": "unmapped"
+            },
+            {
+              "name": "linkedin_url",
+              "items": [
+                {
+                  "value": "linkedin.com/in/shyamdonka",
+                  "evidence": [
+                    {
+                      "source_id": "e1:0:140",
+                      "quote": "linkedin.com/in/shyamdonka"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "github_url",
+              "items": [],
+              "status": "unmapped"
+            },
+            {
+              "name": "portfolio_url",
+              "items": [],
+              "status": "unmapped"
+            },
+            {
+              "name": "work_preferences",
+              "items": [
+                {
+                  "value": "India | UAE & Middle East | UK | Europe | Remote / Global",
+                  "evidence": [
+                    {
+                      "source_id": "e1:0:140",
+                      "quote": "India | UAE & Middle East | UK | Europe | Remote / Global"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "target_role",
+              "items": [
+                {
+                  "value": "Senior Program Manager | Business Transformation Manager | Operations Transformation Manager | Change Management Lead | Continuous Improvement Manager | Governance, Risk & Controls Manager | AVP / Assistant Director – Operations",
+                  "evidence": [
+                    {
+                      "source_id": "e3:0:120",
+                      "quote": "Senior Program Manager | Business Transformation Manager | Operations Transformation Manager | Change Management Lead | "
+                    },
+                    {
+                      "source_id": "e3:120:245",
+                      "quote": "Continuous Improvement Manager | Governance, Risk & Controls Manager | AVP / Assistant Director – Operations"
+                    }
+                  ],
+                  "status": "source_supported"
+                }
+              ],
+              "status": "mapped"
+            },
+            {
+              "name": "professional_title",
+              "items": [],
+              "status": "unmapped"
+            }
+          ],
+          "review_reasons": []
+        }
+      ],
+      "residual_blocks": [
+        {
+          "source_id": "e0:18:131",
+          "quote": "Senior Program Manager | Business Transformation Leader | Banking & Financial Services | Automation, Analytics & "
+        },
+        {
+          "source_id": "e0:131:229",
+          "quote": "Digital Transformation | Operational Excellence | Stakeholder & Change Leadership | PMP® Certified"
+        },
+        {
+          "source_id": "e1:0:140",
+          "quote": "Open to: India | UAE & Middle East | UK | Europe | Remote / Global | +919603796878 | shyam.don.777.sd@gmail.com | linkedin.com/in/shyamdonka"
+        },
+        {
+          "source_id": "e2:0:12",
+          "quote": "TARGET ROLES"
+        },
+        {
+          "source_id": "e3:0:120",
+          "quote": "Senior Program Manager | Business Transformation Manager | Operations Transformation Manager | Change Management Lead | "
+        },
+        {
+          "source_id": "e3:120:245",
+          "quote": "Continuous Improvement Manager | Governance, Risk & Controls Manager | AVP / Assistant Director – Operations — India | UAE & "
+        },
+        {
+          "source_id": "e3:245:288",
+          "quote": "Middle East | UK | Europe | Remote / Global"
+        }
+      ]
+    }
+  ],
+  "schema_version": "1.0.0",
+  "standardized_data": null,
+  "standardization_metadata": null,
+  "validation_status": null,
+  "warnings": [],
+  "consumer_export": null,
+  "subschema_definitions": {
+    "version": 1,
+    "parents": {
+      "personal_information": {
+        "full_name": {
+          "type": "string",
+          "multiple": false
+        },
+        "email": {
+          "type": "string",
+          "multiple": false
+        },
+        "phone": {
+          "type": "string",
+          "multiple": false
+        },
+        "location": {
+          "type": "string",
+          "multiple": false
+        },
+        "linkedin_url": {
+          "type": "string",
+          "multiple": false
+        },
+        "github_url": {
+          "type": "string",
+          "multiple": false
+        },
+        "portfolio_url": {
+          "type": "string",
+          "multiple": false
+        },
+        "work_preferences": {
+          "type": "string",
+          "multiple": false
+        },
+        "target_role": {
+          "type": "string",
+          "multiple": false
+        },
+        "professional_title": {
+          "type": "string",
+          "multiple": false
+        }
+      },
+      "summary": {
+        "statements": {
+          "type": "string",
+          "multiple": true
+        },
+        "total_experience_years": {
+          "type": "number",
+          "multiple": false
+        }
+      },
+      "experience": {
+        "company": {
+          "type": "string",
+          "multiple": false
+        },
+        "role": {
+          "type": "string",
+          "multiple": false
+        },
+        "start_date": {
+          "type": "string",
+          "multiple": false
+        },
+        "end_date": {
+          "type": "string",
+          "multiple": false
+        },
+        "duration": {
+          "type": "string",
+          "multiple": false
+        },
+        "location": {
+          "type": "string",
+          "multiple": false
+        },
+        "engagement_type": {
+          "type": "string",
+          "multiple": false
+        },
+        "responsibilities": {
+          "type": "string",
+          "multiple": true
+        },
+        "technologies": {
+          "type": "string",
+          "multiple": true
+        }
+      },
+      "education": {
+        "institution": {
+          "type": "string",
+          "multiple": false
+        },
+        "degree": {
+          "type": "string",
+          "multiple": false
+        },
+        "field_of_study": {
+          "type": "string",
+          "multiple": false
+        },
+        "start_year": {
+          "type": "string",
+          "multiple": false
+        },
+        "graduation_year": {
+          "type": "string",
+          "multiple": false
+        },
+        "grade_or_gpa": {
+          "type": "string",
+          "multiple": false
+        }
+      },
+      "projects": {
+        "name": {
+          "type": "string",
+          "multiple": false
+        },
+        "description": {
+          "type": "string",
+          "multiple": false
+        },
+        "role": {
+          "type": "string",
+          "multiple": false
+        },
+        "technologies": {
+          "type": "string",
+          "multiple": true
+        },
+        "url": {
+          "type": "string",
+          "multiple": false
+        },
+        "start_date": {
+          "type": "string",
+          "multiple": false
+        },
+        "end_date": {
+          "type": "string",
+          "multiple": false
+        },
+        "organization": {
+          "type": "string",
+          "multiple": false
+        },
+        "outcomes": {
+          "type": "string",
+          "multiple": true
+        }
+      },
+      "certifications": {
+        "name": {
+          "type": "string",
+          "multiple": false
+        },
+        "issuer": {
+          "type": "string",
+          "multiple": false
+        },
+        "issue_year": {
+          "type": "string",
+          "multiple": false
+        },
+        "expiry_date": {
+          "type": "string",
+          "multiple": false
+        },
+        "credential_id": {
+          "type": "string",
+          "multiple": false
+        },
+        "verification_url": {
+          "type": "string",
+          "multiple": false
+        }
+      },
+      "skills": {
+        "technical_skills": {
+          "type": "string",
+          "multiple": true
+        },
+        "tools_and_platforms": {
+          "type": "string",
+          "multiple": true
+        },
+        "domain_and_functional": {
+          "type": "string",
+          "multiple": true
+        },
+        "soft_skills": {
+          "type": "string",
+          "multiple": true
+        },
+        "all_skills": {
+          "type": "string",
+          "multiple": true
+        }
+      },
+      "awards": {
+        "name": {
+          "type": "string",
+          "multiple": false
+        },
+        "issuer": {
+          "type": "string",
+          "multiple": false
+        },
+        "date": {
+          "type": "string",
+          "multiple": false
+        }
+      },
+      "publications": {
+        "title": {
+          "type": "string",
+          "multiple": false
+        },
+        "publisher": {
+          "type": "string",
+          "multiple": false
+        },
+        "date": {
+          "type": "string",
+          "multiple": false
+        },
+        "url": {
+          "type": "string",
+          "multiple": false
+        }
+      },
+      "volunteering": {
+        "organization": {
+          "type": "string",
+          "multiple": false
+        },
+        "role": {
+          "type": "string",
+          "multiple": false
+        },
+        "dates": {
+          "type": "string",
+          "multiple": false
+        },
+        "activities": {
+          "type": "string",
+          "multiple": true
+        }
+      },
+      "languages": {
+        "language": {
+          "type": "string",
+          "multiple": true
+        },
+        "proficiency": {
+          "type": "string",
+          "multiple": true
+        }
+      },
+      "interests": {
+        "interest": {
+          "type": "string",
+          "multiple": true
+        }
+      },
+      "references": {
+        "name": {
+          "type": "string",
+          "multiple": false
+        },
+        "relationship": {
+          "type": "string",
+          "multiple": false
+        },
+        "organization": {
+          "type": "string",
+          "multiple": false
+        },
+        "email": {
+          "type": "string",
+          "multiple": false
+        },
+        "phone": {
+          "type": "string",
+          "multiple": false
+        },
+        "availability": {
+          "type": "string",
+          "multiple": false
+        }
+      },
+      "needs_review": {}
+    },
+    "legacy_parents": {
+      "personal_information": "contact",
+      "summary": "summary",
+      "experience": "experience",
+      "education": "education",
+      "projects": "projects",
+      "certifications": "certifications",
+      "skills": "skills",
+      "languages": "languages"
+    },
+    "missing_policy": "unresolved does not establish absence from the PDF",
+    "field_names": "Existing ResumeSchema names retained; no renamed legacy fields",
+    "evidence_policy": "Each item requires an exact quote in a record-local source block",
+    "query_path": "parent.child with optional record_id; results preserve record boundaries"
+  },
+  "field_index": {
+    "personal_information.full_name": [
+      {
+        "parent": "personal_information",
+        "child": "full_name",
+        "field_path": "personal_information[0].full_name",
+        "record_id": "personal_information",
+        "pointer": "/section_schemas/0/records/0/attributes/0",
+        "status": "mapped",
+        "review_reasons": [],
+        "items": [
+          {
+            "value": "SHYAM KUMAR DONKA",
+            "evidence": [
+              {
+                "source_id": "e0:0:18",
+                "quote": "SHYAM KUMAR DONKA"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/0/records/0/attributes/0/items/0/value"
+          }
+        ]
+      }
+    ],
+    "personal_information.email": [
+      {
+        "parent": "personal_information",
+        "child": "email",
+        "field_path": "personal_information[0].email",
+        "record_id": "personal_information",
+        "pointer": "/section_schemas/0/records/0/attributes/1",
+        "status": "mapped",
+        "review_reasons": [],
+        "items": [
+          {
+            "value": "shyam.don.777.sd@gmail.com",
+            "evidence": [
+              {
+                "source_id": "e1:0:140",
+                "quote": "shyam.don.777.sd@gmail.com"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/0/records/0/attributes/1/items/0/value"
+          }
+        ]
+      }
+    ],
+    "personal_information.phone": [
+      {
+        "parent": "personal_information",
+        "child": "phone",
+        "field_path": "personal_information[0].phone",
+        "record_id": "personal_information",
+        "pointer": "/section_schemas/0/records/0/attributes/2",
+        "status": "mapped",
+        "review_reasons": [],
+        "items": [
+          {
+            "value": "+919603796878",
+            "evidence": [
+              {
+                "source_id": "e1:0:140",
+                "quote": "+919603796878"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/0/records/0/attributes/2/items/0/value"
+          }
+        ]
+      }
+    ],
+    "personal_information.location": [
+      {
+        "parent": "personal_information",
+        "child": "location",
+        "field_path": "personal_information[0].location",
+        "record_id": "personal_information",
+        "pointer": "/section_schemas/0/records/0/attributes/3",
+        "status": "unmapped",
+        "review_reasons": [],
+        "items": []
+      }
+    ],
+    "personal_information.linkedin_url": [
+      {
+        "parent": "personal_information",
+        "child": "linkedin_url",
+        "field_path": "personal_information[0].linkedin_url",
+        "record_id": "personal_information",
+        "pointer": "/section_schemas/0/records/0/attributes/4",
+        "status": "mapped",
+        "review_reasons": [],
+        "items": [
+          {
+            "value": "linkedin.com/in/shyamdonka",
+            "evidence": [
+              {
+                "source_id": "e1:0:140",
+                "quote": "linkedin.com/in/shyamdonka"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/0/records/0/attributes/4/items/0/value"
+          }
+        ]
+      }
+    ],
+    "personal_information.github_url": [
+      {
+        "parent": "personal_information",
+        "child": "github_url",
+        "field_path": "personal_information[0].github_url",
+        "record_id": "personal_information",
+        "pointer": "/section_schemas/0/records/0/attributes/5",
+        "status": "unmapped",
+        "review_reasons": [],
+        "items": []
+      }
+    ],
+    "personal_information.portfolio_url": [
+      {
+        "parent": "personal_information",
+        "child": "portfolio_url",
+        "field_path": "personal_information[0].portfolio_url",
+        "record_id": "personal_information",
+        "pointer": "/section_schemas/0/records/0/attributes/6",
+        "status": "unmapped",
+        "review_reasons": [],
+        "items": []
+      }
+    ],
+    "personal_information.work_preferences": [
+      {
+        "parent": "personal_information",
+        "child": "work_preferences",
+        "field_path": "personal_information[0].work_preferences",
+        "record_id": "personal_information",
+        "pointer": "/section_schemas/0/records/0/attributes/7",
+        "status": "mapped",
+        "review_reasons": [],
+        "items": [
+          {
+            "value": "India | UAE & Middle East | UK | Europe | Remote / Global",
+            "evidence": [
+              {
+                "source_id": "e1:0:140",
+                "quote": "India | UAE & Middle East | UK | Europe | Remote / Global"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/0/records/0/attributes/7/items/0/value"
+          }
+        ]
+      }
+    ],
+    "personal_information.target_role": [
+      {
+        "parent": "personal_information",
+        "child": "target_role",
+        "field_path": "personal_information[0].target_role",
+        "record_id": "personal_information",
+        "pointer": "/section_schemas/0/records/0/attributes/8",
+        "status": "mapped",
+        "review_reasons": [],
+        "items": [
+          {
+            "value": "Senior Program Manager | Business Transformation Manager | Operations Transformation Manager | Change Management Lead | Continuous Improvement Manager | Governance, Risk & Controls Manager | AVP / Assistant Director – Operations",
+            "evidence": [
+              {
+                "source_id": "e3:0:120",
+                "quote": "Senior Program Manager | Business Transformation Manager | Operations Transformation Manager | Change Management Lead | "
+              },
+              {
+                "source_id": "e3:120:245",
+                "quote": "Continuous Improvement Manager | Governance, Risk & Controls Manager | AVP / Assistant Director – Operations"
+              }
+            ],
+            "status": "source_supported",
+            "pointer": "/section_schemas/0/records/0/attributes/8/items/0/value"
+          }
+        ]
+      }
+    ],
+    "personal_information.professional_title": [
+      {
+        "parent": "personal_information",
+        "child": "professional_title",
+        "field_path": "personal_information[0].professional_title",
+        "record_id": "personal_information",
+        "pointer": "/section_schemas/0/records/0/attributes/9",
+        "status": "unmapped",
+        "review_reasons": [],
+        "items": []
+      }
+    ],
+    "summary.statements": [],
+    "summary.total_experience_years": [],
+    "experience.company": [],
+    "experience.role": [],
+    "experience.start_date": [],
+    "experience.end_date": [],
+    "experience.duration": [],
+    "experience.location": [],
+    "experience.engagement_type": [],
+    "experience.responsibilities": [],
+    "experience.technologies": [],
+    "education.institution": [],
+    "education.degree": [],
+    "education.field_of_study": [],
+    "education.start_year": [],
+    "education.graduation_year": [],
+    "education.grade_or_gpa": [],
+    "projects.name": [],
+    "projects.description": [],
+    "projects.role": [],
+    "projects.technologies": [],
+    "projects.url": [],
+    "projects.start_date": [],
+    "projects.end_date": [],
+    "projects.organization": [],
+    "projects.outcomes": [],
+    "certifications.name": [],
+    "certifications.issuer": [],
+    "certifications.issue_year": [],
+    "certifications.expiry_date": [],
+    "certifications.credential_id": [],
+    "certifications.verification_url": [],
+    "skills.technical_skills": [],
+    "skills.tools_and_platforms": [],
+    "skills.domain_and_functional": [],
+    "skills.soft_skills": [],
+    "skills.all_skills": [],
+    "awards.name": [],
+    "awards.issuer": [],
+    "awards.date": [],
+    "publications.title": [],
+    "publications.publisher": [],
+    "publications.date": [],
+    "publications.url": [],
+    "volunteering.organization": [],
+    "volunteering.role": [],
+    "volunteering.dates": [],
+    "volunteering.activities": [],
+    "languages.language": [],
+    "languages.proficiency": [],
+    "interests.interest": [],
+    "references.name": [],
+    "references.relationship": [],
+    "references.organization": [],
+    "references.email": [],
+    "references.phone": [],
+    "references.availability": []
+  }
+}

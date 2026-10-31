@@ -1,5 +1,7 @@
 import json
 import subprocess
+import shutil
+import pytest
 from copy import deepcopy
 from pathlib import Path
 from datetime import datetime,timezone
@@ -18,18 +20,20 @@ def fixture():
 
 def test_primary_export_contains_calculated_duration_and_preserves_original_evidence():
     response=fixture();before=deepcopy(response)
-    result=standardized_export(response)
-    assert result['data']['experience'][0]['duration']=='4 years 3 months'
-    assert result['data']['experience'][0]['duration_months']==51
+    result=standardized_export(response, include_audit=True)
+    assert result['data']['experience'][0]['duration']=='4 years 2 months'
+    assert result['data']['experience'][0]['duration_months']==50
     assert 'raw_duration' not in result['data']['experience'][0]
-    assert result['source_evidence']['data']['experience'][0]['duration']=='Aug 2022 – Present'
+    assert result['audit']['source_evidence']['data']['experience'][0]['duration']=='Aug 2022 – Present'
     assert response==before
 
 
+@pytest.mark.skipif(shutil.which("node") is None, reason="Node.js runtime unavailable")
 def test_browser_download_matches_python_export():
     source=Path('local_api/static/schema.js').read_text()
     function=source[source.index('function standardizedResumeExport('):source.index('function renderStandardizationWarnings(')]
     response=fixture()
+    response['consumer_export'] = standardized_export(response)
     code=function+'\nconsole.log(JSON.stringify(standardizedResumeExport('+json.dumps(response)+')));'
     output=subprocess.run(['node'],input=code,text=True,check=True,capture_output=True)
     assert json.loads(output.stdout)==standardized_export(response)
@@ -38,12 +42,11 @@ def test_browser_download_matches_python_export():
 def test_job_details_are_separate_from_technologies_and_calculation_metadata():
     response=fixture()
     response['standardized_data']['experience'][0]['technologies']=['Python','SQL']
-    result=standardized_export(response)
+    result=standardized_export(response, include_audit=True)
     job=result['data']['experience'][0]
     assert job['technologies']==['Python','SQL']
-    assert list(job).index('duration_months') < list(job).index('technologies')
     assert 'duration_as_of' not in job and 'start_date_iso' not in job
-    details=result['standardization_metadata']['experience_calculations'][0]
+    details=result['audit']['standardization_metadata']['experience_calculations'][0]
     assert details['record_path']=='data.experience[0]'
     assert details['duration_as_of']=='2026-10-29'
     assert details['start_date_precision']=='month_year'

@@ -1,0 +1,414 @@
+{
+  "export_type": "standardized_resume",
+  "schema_version": "2.0.0",
+  "source": null,
+  "data": {
+    "contact": {
+      "full_name": "Example Person",
+      "email": "example@example.org",
+      "phone": null,
+      "location": null,
+      "linkedin_url": null,
+      "github_url": null,
+      "portfolio_url": null,
+      "work_preferences": null,
+      "target_role": null,
+      "phone_extension": null
+    },
+    "professional_title": null,
+    "summary": "Professional with 14+ years of experience.",
+    "total_experience_years": 13.0,
+    "stated_total_experience_years": 14.0,
+    "skills": {
+      "technical_skills": [
+        "PostgreSQL"
+      ],
+      "tools_and_platforms": [],
+      "domain_and_functional": [],
+      "soft_skills": []
+    },
+    "experience": [
+      {
+        "company": "Example Consulting",
+        "role": "Consultant",
+        "start_date": "2024-06",
+        "end_date": null,
+        "duration": "2 years 4 months",
+        "location": null,
+        "engagement_type": null,
+        "responsibilities": [],
+        "technologies": [],
+        "duration_months": 28,
+        "is_current": true,
+        "stated_duration": null
+      },
+      {
+        "company": "Example Bank",
+        "role": "Program Manager",
+        "start_date": "2013-09",
+        "end_date": "2024-05",
+        "duration": "10 years 8 months",
+        "location": null,
+        "engagement_type": null,
+        "responsibilities": [],
+        "technologies": [],
+        "duration_months": 128,
+        "is_current": false,
+        "stated_duration": "Sep 2013 \u2013 May 2024 (10 yrs 9 mos)"
+      }
+    ],
+    "education": [],
+    "certifications": [],
+    "projects": [],
+    "languages": [],
+    "awards": [],
+    "achievements": [],
+    "publications": [],
+    "volunteering": [],
+    "interests": [],
+    "references": [],
+    "additional_sections": []
+  },
+  "validation_status": {
+    "is_valid": true,
+    "usable": false,
+    "requires_human_review": true,
+    "issues_count": 12
+  },
+  "standardization_metadata": {
+    "schema_version": "2.0.0",
+    "applied_at": "2026-10-31T10:46:38.618551+00:00",
+    "total_normalizations": 11,
+    "corrections_by_type": {
+      "skill_canonicalization": 1,
+      "duration_calculated": 2,
+      "total_experience_calculated": 1,
+      "stated_duration_discrepancy": 1,
+      "value_standardized": 5,
+      "collection_standardized": 1
+    },
+    "corrections": [
+      {
+        "field": "skills.technical_skills",
+        "warning_type": "skill_canonicalization",
+        "severity": "info",
+        "original_value": "postgress",
+        "normalized_value": "PostgreSQL",
+        "suggested_value": null,
+        "basis": "Deterministic local formatting/alias rule; not external factual verification.",
+        "applied": true,
+        "verification_status": "rule_based_not_independently_verified",
+        "message": "Canonicalized skill 'postgress' using the local alias rule 'PostgreSQL'."
+      },
+      {
+        "field": "experience[0].duration",
+        "warning_type": "duration_calculated",
+        "severity": "info",
+        "original_value": null,
+        "normalized_value": "2 years 4 months",
+        "suggested_value": null,
+        "basis": "Month precision: elapsed calendar months. Day precision: completed calendar units. As of 2026-10-31.",
+        "applied": true,
+        "verification_status": "rule_based_not_independently_verified",
+        "message": "Derived duration, approximate elapsed calendar months; original date range retained."
+      },
+      {
+        "field": "experience[1].duration",
+        "warning_type": "duration_calculated",
+        "severity": "info",
+        "original_value": "Sep 2013 \u2013 May 2024 (10 yrs 9 mos)",
+        "normalized_value": "10 years 8 months",
+        "suggested_value": null,
+        "basis": "Month precision: elapsed calendar months. Day precision: completed calendar units. As of 2026-10-31.",
+        "applied": true,
+        "verification_status": "rule_based_not_independently_verified",
+        "message": "Derived duration, approximate elapsed calendar months; original date range retained."
+      },
+      {
+        "field": "total_experience_years",
+        "warning_type": "total_experience_calculated",
+        "severity": "info",
+        "original_value": 14.0,
+        "normalized_value": 13.0,
+        "suggested_value": null,
+        "basis": "Union of dated employment intervals; gaps excluded and overlaps counted once. Explicit current roles end on 2026-10-31. Rounded to one decimal year.",
+        "applied": true,
+        "verification_status": "rule_based_not_independently_verified",
+        "message": "System calculated total experience from employment dates; source-stated experience retained separately."
+      },
+      {
+        "field": "experience[1].duration",
+        "warning_type": "stated_duration_discrepancy",
+        "severity": "review_required",
+        "original_value": "Sep 2013 \u2013 May 2024 (10 yrs 9 mos)",
+        "normalized_value": "10 years 8 months",
+        "suggested_value": null,
+        "basis": "Elapsed calendar duration calculated from employment start/end dates; current roles use the metadata as-of date.",
+        "applied": true,
+        "verification_status": "rule_based_not_independently_verified",
+        "message": "System corrected the source-stated duration using employment dates; original duration retained."
+      },
+      {
+        "field": "skills.technical_skills[0]",
+        "warning_type": "value_standardized",
+        "severity": "info",
+        "original_value": "postgress",
+        "normalized_value": "PostgreSQL",
+        "suggested_value": null,
+        "basis": "Deterministic formatting, date parsing, filtering or alias rule; original retained in evidence.",
+        "applied": true,
+        "verification_status": "rule_based_not_independently_verified",
+        "message": "Derived standardized representation; original source value retained."
+      },
+      {
+        "field": "skills.all_skills",
+        "warning_type": "collection_standardized",
+        "severity": "info",
+        "original_value": [],
+        "normalized_value": [
+          "PostgreSQL"
+        ],
+        "suggested_value": null,
+        "basis": "Deterministic formatting, date parsing, filtering or alias rule; original retained in evidence.",
+        "applied": true,
+        "verification_status": "rule_based_not_independently_verified",
+        "message": "Derived standardized representation; original source value retained."
+      },
+      {
+        "field": "experience[0].start_date",
+        "warning_type": "value_standardized",
+        "severity": "info",
+        "original_value": "Jun 2024",
+        "normalized_value": "2024-06",
+        "suggested_value": null,
+        "basis": "Deterministic formatting, date parsing, filtering or alias rule; original retained in evidence.",
+        "applied": true,
+        "verification_status": "rule_based_not_independently_verified",
+        "message": "Derived standardized representation; original source value retained."
+      },
+      {
+        "field": "experience[0].end_date",
+        "warning_type": "value_standardized",
+        "severity": "info",
+        "original_value": "Present",
+        "normalized_value": null,
+        "suggested_value": null,
+        "basis": "Deterministic formatting, date parsing, filtering or alias rule; original retained in evidence.",
+        "applied": true,
+        "verification_status": "rule_based_not_independently_verified",
+        "message": "Derived standardized representation; original source value retained."
+      },
+      {
+        "field": "experience[1].start_date",
+        "warning_type": "value_standardized",
+        "severity": "info",
+        "original_value": "Sep 2013",
+        "normalized_value": "2013-09",
+        "suggested_value": null,
+        "basis": "Deterministic formatting, date parsing, filtering or alias rule; original retained in evidence.",
+        "applied": true,
+        "verification_status": "rule_based_not_independently_verified",
+        "message": "Derived standardized representation; original source value retained."
+      },
+      {
+        "field": "experience[1].end_date",
+        "warning_type": "value_standardized",
+        "severity": "info",
+        "original_value": "May 2024",
+        "normalized_value": "2024-05",
+        "suggested_value": null,
+        "basis": "Deterministic formatting, date parsing, filtering or alias rule; original retained in evidence.",
+        "applied": true,
+        "verification_status": "rule_based_not_independently_verified",
+        "message": "Derived standardized representation; original source value retained."
+      }
+    ],
+    "source_evidence": {},
+    "as_of_date": "2026-10-31",
+    "duration_policy": "Month precision: elapsed calendar months (approximate). Day precision: completed calendar units. Aggregate unions use first-of-month boundaries for month-only dates; residual days use 365.2425/12 days per month, rounded to one decimal year.",
+    "field_verification": {
+      "source_values": "preserved; normalized values are derived and do not replace source citations",
+      "locations": "not_externally_verified",
+      "spelling_suggestions": "dictionary_candidates_only; not proof of correctness",
+      "experience.duration": "derived_from_dates; elapsed calendar months; approximate"
+    },
+    "cross_field_notes": [
+      "Source-stated experience (14.0 years) differs from calculated chronological span (13.0 years). Both values preserved."
+    ],
+    "experience_summary": {
+      "calculated_experience_years": 13.0,
+      "calculated_experience_complete": true,
+      "experience_overlap_detected": false
+    },
+    "experience_calculations": [
+      {
+        "record_path": "data.experience[0]",
+        "duration_is_approximate": true,
+        "duration_as_of": "2026-10-31",
+        "duration_status": "calculated",
+        "start_date_iso": "2024-06",
+        "end_date_iso": null,
+        "start_date_precision": "month_year",
+        "end_date_precision": null
+      },
+      {
+        "record_path": "data.experience[1]",
+        "duration_is_approximate": true,
+        "duration_as_of": null,
+        "duration_status": "calculated",
+        "start_date_iso": "2013-09",
+        "end_date_iso": "2024-05",
+        "start_date_precision": "month_year",
+        "end_date_precision": "month_year"
+      }
+    ]
+  },
+  "warnings": [
+    {
+      "field": "skills.technical_skills",
+      "warning_type": "skill_canonicalization",
+      "severity": "info",
+      "original_value": "postgress",
+      "normalized_value": "PostgreSQL",
+      "suggested_value": null,
+      "basis": "Deterministic local formatting/alias rule; not external factual verification.",
+      "applied": true,
+      "verification_status": "rule_based_not_independently_verified",
+      "message": "Canonicalized skill 'postgress' using the local alias rule 'PostgreSQL'."
+    },
+    {
+      "field": "experience[0].duration",
+      "warning_type": "duration_calculated",
+      "severity": "info",
+      "original_value": null,
+      "normalized_value": "2 years 4 months",
+      "suggested_value": null,
+      "basis": "Month precision: elapsed calendar months. Day precision: completed calendar units. As of 2026-10-31.",
+      "applied": true,
+      "verification_status": "rule_based_not_independently_verified",
+      "message": "Derived duration, approximate elapsed calendar months; original date range retained."
+    },
+    {
+      "field": "experience[1].duration",
+      "warning_type": "duration_calculated",
+      "severity": "info",
+      "original_value": "Sep 2013 \u2013 May 2024 (10 yrs 9 mos)",
+      "normalized_value": "10 years 8 months",
+      "suggested_value": null,
+      "basis": "Month precision: elapsed calendar months. Day precision: completed calendar units. As of 2026-10-31.",
+      "applied": true,
+      "verification_status": "rule_based_not_independently_verified",
+      "message": "Derived duration, approximate elapsed calendar months; original date range retained."
+    },
+    {
+      "field": "total_experience_years",
+      "warning_type": "total_experience_calculated",
+      "severity": "info",
+      "original_value": 14.0,
+      "normalized_value": 13.0,
+      "suggested_value": null,
+      "basis": "Union of dated employment intervals; gaps excluded and overlaps counted once. Explicit current roles end on 2026-10-31. Rounded to one decimal year.",
+      "applied": true,
+      "verification_status": "rule_based_not_independently_verified",
+      "message": "System calculated total experience from employment dates; source-stated experience retained separately."
+    },
+    {
+      "field": "total_experience_years",
+      "warning_type": "experience_duration_discrepancy",
+      "severity": "review_required",
+      "original_value": 14.0,
+      "normalized_value": 13.0,
+      "suggested_value": null,
+      "basis": null,
+      "applied": false,
+      "verification_status": "rule_based_not_independently_verified",
+      "message": "Source-stated experience (14.0 years) differs from calculated chronological span (13.0 years). Both values preserved."
+    },
+    {
+      "field": "experience[1].duration",
+      "warning_type": "stated_duration_discrepancy",
+      "severity": "review_required",
+      "original_value": "Sep 2013 \u2013 May 2024 (10 yrs 9 mos)",
+      "normalized_value": "10 years 8 months",
+      "suggested_value": null,
+      "basis": "Elapsed calendar duration calculated from employment start/end dates; current roles use the metadata as-of date.",
+      "applied": true,
+      "verification_status": "rule_based_not_independently_verified",
+      "message": "System corrected the source-stated duration using employment dates; original duration retained."
+    },
+    {
+      "field": "skills.technical_skills[0]",
+      "warning_type": "value_standardized",
+      "severity": "info",
+      "original_value": "postgress",
+      "normalized_value": "PostgreSQL",
+      "suggested_value": null,
+      "basis": "Deterministic formatting, date parsing, filtering or alias rule; original retained in evidence.",
+      "applied": true,
+      "verification_status": "rule_based_not_independently_verified",
+      "message": "Derived standardized representation; original source value retained."
+    },
+    {
+      "field": "skills.all_skills",
+      "warning_type": "collection_standardized",
+      "severity": "info",
+      "original_value": [],
+      "normalized_value": [
+        "PostgreSQL"
+      ],
+      "suggested_value": null,
+      "basis": "Deterministic formatting, date parsing, filtering or alias rule; original retained in evidence.",
+      "applied": true,
+      "verification_status": "rule_based_not_independently_verified",
+      "message": "Derived standardized representation; original source value retained."
+    },
+    {
+      "field": "experience[0].start_date",
+      "warning_type": "value_standardized",
+      "severity": "info",
+      "original_value": "Jun 2024",
+      "normalized_value": "2024-06",
+      "suggested_value": null,
+      "basis": "Deterministic formatting, date parsing, filtering or alias rule; original retained in evidence.",
+      "applied": true,
+      "verification_status": "rule_based_not_independently_verified",
+      "message": "Derived standardized representation; original source value retained."
+    },
+    {
+      "field": "experience[0].end_date",
+      "warning_type": "value_standardized",
+      "severity": "info",
+      "original_value": "Present",
+      "normalized_value": null,
+      "suggested_value": null,
+      "basis": "Deterministic formatting, date parsing, filtering or alias rule; original retained in evidence.",
+      "applied": true,
+      "verification_status": "rule_based_not_independently_verified",
+      "message": "Derived standardized representation; original source value retained."
+    },
+    {
+      "field": "experience[1].start_date",
+      "warning_type": "value_standardized",
+      "severity": "info",
+      "original_value": "Sep 2013",
+      "normalized_value": "2013-09",
+      "suggested_value": null,
+      "basis": "Deterministic formatting, date parsing, filtering or alias rule; original retained in evidence.",
+      "applied": true,
+      "verification_status": "rule_based_not_independently_verified",
+      "message": "Derived standardized representation; original source value retained."
+    },
+    {
+      "field": "experience[1].end_date",
+      "warning_type": "value_standardized",
+      "severity": "info",
+      "original_value": "May 2024",
+      "normalized_value": "2024-05",
+      "suggested_value": null,
+      "basis": "Deterministic formatting, date parsing, filtering or alias rule; original retained in evidence.",
+      "applied": true,
+      "verification_status": "rule_based_not_independently_verified",
+      "message": "Derived standardized representation; original source value retained."
+    }
+  ]
+}

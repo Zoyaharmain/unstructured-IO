@@ -9,13 +9,13 @@ DEGREE_FAMILIES={
  'master':r'\bmaster(?:s)?\b|\bm\s?(?:com|tech|sc|ca|ba|e|s|a)\b',
  'postgraduate_certificate':r'\b(?:pg|postgraduate)\s+certificate\b',
  'diploma':r'\bdiploma\b|\b(?:pgdca|pgdb|pgdm)\b',
- 'doctorate':r'\bphd\b|\bdoctorate\b',
+ 'doctorate':r'\bph\s*d\b|\bdoctorate\b',
  'secondary':r'\b(?:ssc|sslc|10th|class\s+x|schooling|matric(?:ulation)?)\b',
  'higher_secondary':r'\b(?:hsc|puc|intermediate|12th|class\s+xii|higher\s+secondary)\b',
 }
 
 def degree_families(text):
-    lookup=re.sub(r'(?<=[A-Za-z])\.\s*(?=[A-Za-z])','',text)
+    lookup=re.sub(r'(?<=[A-Za-z])\.(\s*)(?=[A-Za-z])',r'\1',text)
     fams={key for key,pattern in DEGREE_FAMILIES.items() if re.search(pattern,lookup,re.I)}
     if not fams and re.search(r'\bhigh\s+school\b',lookup,re.I):
         fams.add('secondary')
@@ -86,6 +86,8 @@ def annotate_relationships(section):
             assigned.add(index)
             text=section.blocks[index].text
             kinds = field_kinds(text,section.category)
+            if section.category == 'experience' and section.blocks[index].assignment == 'local_record_continuation':
+                kinds = ['responsibilities']
             from local_api.services.record_subfields import employment_header_fields
             if (section.category=='experience' and fields.get('employer') and fields.get('title')
                     and len(text.split())>8 and text.rstrip().endswith('.')

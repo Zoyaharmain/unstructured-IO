@@ -17,6 +17,8 @@ class ContactInfo(BaseModel):
     linkedin_url: str | None = Field(default=None, description="LinkedIn profile URL")
     github_url: str | None = Field(default=None, description="GitHub or code repository URL")
     portfolio_url: str | None = Field(default=None, description="Personal website or portfolio URL")
+    work_preferences: str | None = Field(default=None, description="Literal preferred work locations, remote or relocation preferences; never residential location")
+    target_role: str | None = Field(default=None, description="Explicitly stated target role; not the current professional title")
 
 
 # ---------------------------------------------------------------------------
@@ -29,6 +31,7 @@ class WorkExperience(BaseModel):
     end_date: str | None = Field(default=None, description="Employment end date (e.g. 'Present', 'Dec 2024')")
     duration: str | None = Field(default=None, description="Total duration or date range string")
     location: str | None = Field(default=None, description="Job location (city/country or Remote)")
+    engagement_type: str | None = Field(default=None, description="Explicit employment, internship, consulting or freelance type; do not infer")
     responsibilities: list[str] = Field(
         default_factory=list,
         description="Key responsibilities, achievements, and impact bullet points",
@@ -86,12 +89,19 @@ class Project(BaseModel):
     role: str | None = Field(default=None, description="Candidate's role in the project")
     technologies: list[str] = Field(default_factory=list, description="Technologies and libraries used")
     url: str | None = Field(default=None, description="Live URL or repository link")
+    start_date: str | None = None
+    end_date: str | None = None
+    organization: str | None = None
+    outcomes: list[str] = Field(default_factory=list)
 
 
 class Certification(BaseModel):
     name: str = Field(description="Certification, license, or course title")
     issuer: str | None = Field(default=None, description="Issuing organization (e.g. AWS, Scrum Alliance, Oracle)")
     issue_year: str | None = Field(default=None, description="Year or date of certification")
+    expiry_date: str | None = Field(default=None, description="Explicit expiry or validity end date")
+    credential_id: str | None = None
+    verification_url: str | None = None
 
 
 # ---------------------------------------------------------------------------

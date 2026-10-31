@@ -24,6 +24,7 @@ class SchemaMappingResponse(ParseResponse):
     standardization_metadata: StandardizationMetadata | None = Field(default=None, description="Audit metadata of all applied normalizations")
     validation_status: ValidationStatus | None = Field(default=None, description="Schema and cross-field validation status")
     warnings: list[StandardizationWarning] = Field(default_factory=list, description="Structured warnings for all corrections and normalizations")
+    consumer_export: dict | None = None
 
     @computed_field
     @property

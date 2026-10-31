@@ -9,7 +9,7 @@ from local_api.vendor.handoff_schema.service import (
     extract_contact_info, extract_work_experience, extract_education,
     extract_skills_categorized, build_schema_mapping_report,
 )
-from local_api.services.source_accounting import account_source
+from local_api.services.source_accounting import account_source, artifact_reason
 from local_api.services.review_resolution import document_scope
 from local_api.services.record_relationships import dated_organization_header
 from local_api.services.source_validation import validate_result
@@ -45,10 +45,17 @@ def map_schema(request):
     if errors:
         from local_api.services.schema_diagnostics import fail
         fail('source_binding_validation', errors[0], ('sections',))
+    from local_api.services.local_completion import recover_local_content
+    completed = recover_local_content(request.sections, request.elements)
+    local_completed = completed is not request.sections
+    if completed is not request.sections:
+        request = request.model_copy(update={'sections': completed})
     from local_api.services.contact_sections import recover_contact_sections, contact_values as literal_contact_values
     from local_api.services.education_date_recovery import recover_education_dates
     recovered_sections = recover_education_dates(request.sections, request.elements)
     recovered_sections = recover_contact_sections(recovered_sections, request.elements)
+    from local_api.services.preamble_recovery import recover_summary_preamble
+    recovered_sections = recover_summary_preamble(recovered_sections, request.elements)
     contacts_reassigned = recovered_sections is not request.sections
     if contacts_reassigned:
         request = request.model_copy(update={'sections': recovered_sections})
@@ -77,16 +84,28 @@ def map_schema(request):
     data=ResumeSchema(contact=empty)
     if scope['candidate_resume'] is not False:
         all_section_blocks = [b for s in request.sections.sections for b in s.blocks] + request.sections.needs_review
-        header=blocks('personal_information');text='\n'.join(b.text for b in header)
+        header=blocks('personal_information')
+        identity_header=[b for b in header if b.assignment != 'local_target_preferences']
+        text='\n'.join(b.text for b in identity_header)
         doc_text='\n'.join(e.text for e in request.elements)
-        guessed=extract_contact_info(text,doc_text)
+        guessed=extract_contact_info(text,doc_text) if identity_header else ContactInfo(full_name='',email='',phone='')
         # Prefer a distinct opening identity fragment over words in a role headline.
         from local_api.services.record_subfields import ROLE
-        identity = [b.text.strip() for b in header
-                    if b.source_element_index == min((h.source_element_index for h in header), default=-1)
-                    and 2 <= len(b.text.split()) <= 5
+        identity_parts = [b for b in identity_header
+                    if b.source_element_index == min((h.source_element_index for h in identity_header), default=-1)
                     and all(c.isalpha() or c in " .'-" for c in b.text.strip())
                     and not ROLE.search(b.text)]
+        # Join only adjacent literal pieces of the SAME extracted element.
+        # A surname split by PDF typography must not disappear from the identity.
+        identity_runs = []
+        for part in identity_parts:
+            previous = identity_runs[-1][-1] if identity_runs else None
+            adjacent_words = (previous and previous.source_element_index == part.source_element_index
+                and previous.end == part.start and (previous.text[-1:].isspace() or part.text[:1].isspace()))
+            if adjacent_words: identity_runs[-1].append(part)
+            else: identity_runs.append([part])
+        identity = [''.join(b.text for b in run).strip() for run in identity_runs]
+        identity = [value for value in identity if 2 <= len(value.split()) <= 5]
         if len(identity) == 1:
             guessed.full_name = identity[0]
         for field in type(guessed).model_fields:
@@ -98,13 +117,16 @@ def map_schema(request):
                 evidence_blocks = [b for b in header if norm(value) in norm(b.text)] or [b for b in all_section_blocks if norm(value) in norm(b.text)]
                 setattr(data.contact, field, remember('contact.' + field, value, evidence_blocks or header))
             else:
-                value=literal(value,header)
+                value=literal(value,identity_header)
                 if field in {'email','phone'}:value=value or ''
                 setattr(data.contact,field,remember('contact.'+field,value,header))
-        title_candidates = [(text, run) for run in runs(header) for text in [''.join(b.text for b in run)]
+        title_candidates = [(text, run) for run in runs(identity_header) for text in [''.join(b.text for b in run)]
                             if len(text.split())<=12 and not re.search(r'@|Technical Skills|Core AI|linkedin|github',text,re.I)]
-        title_candidates += [(b.text,[b]) for b in header]
+        title_candidates += [(b.text,[b]) for b in identity_header]
         for title, refs in title_candidates:
+            if any(b.assignment == 'local_target_preferences' for b in refs): continue
+            if re.search(r'\b(?:target (?:role|position)|seeking|open to|preferred locations?)\b', title, re.I):
+                continue
             if len(title.split())<=12 and '@' not in title and re.search(r'\b(?:engineer|engineering lead|developer|analyst|consultant|architect|manager|specialist|scientist)\b',title,re.I):
                 title=title.strip()
                 if data.contact.full_name and title.startswith(data.contact.full_name + ' '):title=title[len(data.contact.full_name):].strip()
@@ -131,7 +153,7 @@ def map_schema(request):
                 remember(path, value, [b for b in header if any(r['source_id']==source_id(b) for r in field_quotes(value,header))])
         # Recover unique literal contacts even when vendor parsing misses labels
         # such as Email-ID or international number formatting.
-        for key, matches in literal_contact_values(header).items():
+        for key, matches in literal_contact_values(identity_header).items():
             if len(matches) == 1:
                 value = next(iter(matches))
                 setattr(data.contact, key, remember('contact.'+key, value, header))
@@ -140,7 +162,7 @@ def map_schema(request):
             if len(matches) == 1:
                 value = next(iter(matches))
                 setattr(data.contact, key, remember('contact.'+key, value,
-                    [b for b in header if value in b.text]))
+                    [b for b in header if any(ref['source_id']==source_id(b) for ref in field_quotes(value,header))]))
             elif len(matches) > 1:
                 setattr(data.contact, key, None)
                 evidence.pop('contact.'+key, None)
@@ -209,7 +231,10 @@ def map_schema(request):
                     dates=field('dates')
                     date=r'(?:\b(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s+)?\b(?:19|20)\d{2}\b'
                     matches=list(re.finditer('('+date+r')\s*(?:[-–—]|\bto\b|\btill\b)\s*('+date+r'|Currently working|Present|Current|Till Date)(?!\w)',dates,re.I))
-                    if len(matches)==1:record.start_date,record.end_date=matches[0].group(1,2);record.duration=matches[0].group()
+                    if len(matches)==1:
+                        from local_api.services.record_subfields import employment_duration_literal
+                        record.start_date,record.end_date=matches[0].group(1,2)
+                        record.duration=employment_duration_literal(matches[0])
                     i=len(data.experience);data.experience.append(record);prefix=f'experience[{i}]'
                     for key,ref in [('company','employer'),('role','title'),('start_date','dates'),('end_date','dates'),('duration','dates')]:remember(prefix+'.'+key,getattr(record,key),refs(ref))
                     for j,b in enumerate(refs('responsibilities')):remember(f'{prefix}.responsibilities[{j}]',b.text,[b])
@@ -228,13 +253,18 @@ def map_schema(request):
                     i=len(data.education);data.education.append(record)
                     for key,ref in [('degree','qualification'),('institution','institution'),('graduation_year','dates')]:remember(f'education[{i}].'+key,getattr(record,key),refs(ref))
                 elif category=='projects':
-                    title=sole('title') or next((b.text.strip() for b in bs if b.assignment not in {'section_heading','structural_heading'} and len(b.text.split())<=18),'')
-                    record=Project(name=title,description=text or None);i=len(data.projects);data.projects.append(record)
+                    from local_api.services.project_fields import project_fields
+                    title, description = project_fields(bs, request.elements, sole('title'))
+                    record=Project(name=title,description=description);i=len(data.projects);data.projects.append(record)
                     remember(f'projects[{i}].name',title,bs);remember(f'projects[{i}].description',record.description,bs)
                 else:
                     contents=[b for b in bs if b.assignment not in {'section_heading','structural_heading'}]
                     if contents:
-                        i=len(data.certifications);value=canonical(contents).strip();record=Certification(name=value);data.certifications.append(record);remember(f'certifications[{i}].name',value,contents)
+                        from local_api.services.record_subfields import labelled_fields
+                        value=next((b.text.strip() for b in contents if b.text.strip()
+                                    and not labelled_fields('certifications', [b])
+                                    and not re.fullmatch(r'\d{4}(?:-\d{2})?|https?://\S+', b.text.strip())), '')
+                        i=len(data.certifications);record=Certification(name=value);data.certifications.append(record);remember(f'certifications[{i}].name',value,contents)
                 if category == 'certifications' and not contents:
                     continue
                 review['mapped_index'] = i
@@ -243,6 +273,9 @@ def map_schema(request):
                 refined, reasons = refine_record(category, base, bs, header_fields=(
                     {'company' if field == 'employer' else 'role' if field == 'title' else field for field in entry.fields}
                     if entry.fields else None))
+                if category == 'education':
+                    from local_api.services.education_header_fields import source_education_fields
+                    refined.update(source_education_fields(bs,request.elements))
                 review['review_reasons'] = list(dict.fromkeys(review['review_reasons'] + education_reasons + reasons))
                 if reasons or education_reasons:review['relationship_status'] = 'needs_review'
                 for key, value in refined.items():
@@ -376,8 +409,12 @@ def map_schema(request):
               },
               'warnings':warnings,
               'unmapped_blocks':[{'source_id':source_id(b),'category':category,'text':b.text,'page_number':b.page_number} for category,b in all_blocks if source_id(b) not in used],
-              'needs_review':[b.model_dump() for b in request.sections.needs_review]})
+              'needs_review':[b.model_dump() for b in request.sections.needs_review
+                              if not artifact_reason(request.elements[b.source_element_index], b)],
+              'layout_artifacts':[row for row in accounting['outcomes'] if row['outcome']=='non_content_artifact']})
 
-    if contacts_reassigned:
+    if contacts_reassigned or local_completed:
         response.meta['reviewed_sections'] = request.sections.model_dump()
+    from local_api.services.mapping_completeness import mapping_completeness
+    response.meta['completeness_check'] = mapping_completeness(request.elements, request.sections, response.section_schemas)
     return response

@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 from local_api.services.standardization.contracts import StandardizationWarning
-from local_api.services.standardization.dictionaries import TECH_ALIASES, TECH_CATEGORIES
+from local_api.services.standardization.dictionaries import TECH_ALIASES
 from local_api.vendor.handoff_schema.models import CategorizedSkills
 
 
@@ -20,12 +20,12 @@ def canonicalize_skill_name(
         return raw_skill, None
 
     folded = clean_skill.lower()
-    if folded == 'alm':
+    if folded in {'alm', 'teams', 'apache', 'python3'}:
         return clean_skill, StandardizationWarning(field=field_context,warning_type='ambiguous_skill_alias',
             severity='review_required',original_value=raw_skill,normalized_value=clean_skill,
             suggested_value=None,applied=False,
-            basis='ALM is an ambiguous acronym; source does not establish a specific vendor/product.',
-            message='Preserved ALM without expanding it to HP ALM. A specific product requires source evidence.')
+            basis='Alias may imply a product or remove version information.',
+            message='Preserved ambiguous or version-specific terminology; no product expansion or version removal applied.')
     canonical = TECH_ALIASES.get(folded)
 
     if canonical and canonical != clean_skill:
@@ -72,7 +72,10 @@ def standardize_skills_categorized(
         for s in skill_list:
             if not s or not s.strip():
                 continue
-            canonical_name, warning = canonicalize_skill_name(s, f"skills.{category_name}")
+            if category_name in {'domain_and_functional', 'soft_skills'}:
+                canonical_name, warning = s.strip(), None
+            else:
+                canonical_name, warning = canonicalize_skill_name(s, f"skills.{category_name}")
             if warning:
                 warnings.append(warning)
             key = canonical_name.casefold()

@@ -5,6 +5,7 @@ values, or silently replace a valid result when validation fails.
 """
 import json
 import re
+import time
 
 from local_api.schemas.mapping import SchemaMappingResponse
 from local_api.schemas.sections import SectionEntry
@@ -45,7 +46,12 @@ Summary statements must include all career-level highlights and business-impact 
 degree and certificate separately; do not merge promotions or attach responsibilities to
 another employer. A single-year earlier job is still a job. Do not turn a heading or its
 last letter into a certification. Keep notes and screening instructions as residual text.
+Selected transformation programs/initiatives are project records, not additional employers.
+Keep each separately titled and dated program with its own complete description and dates.
 Use only supplied category and field names. Each record must list its owning source_ids;
+Completeness targets identify source intervals the local mapper could not map. Re-examine
+each in its full source/record context, including responsibilities and wrapped continuations.
+They are advisory diagnostics, not established classifications or permission to invent values.
 Section headings are context only: never include them in record source_ids or field evidence.
 For repeated categories each non-heading block can belong to at most one record. Never
 borrow another record's values or use clients as employers without explicit support.
@@ -58,11 +64,22 @@ Numeric fields use JSON numbers supported by exact numeric source quotes. String
 remain literal, including punctuation, spelling and dates. Do not normalize or fabricate.
 Short field values should cite the smallest exact phrase; separate role, employer, location,
 qualification, institution and dates from combined rows. A bare LinkedIn label is not a URL.
+Preferred work locations and relocation statements belong in work_preferences, never residence.
+An introductory headline followed by career-summary prose is professional_title,
+not an employment record unless a separate employer/date context establishes it.
+An explicitly targeted role belongs in target_role, never an inferred current professional_title.
+For TARGET ROLES or DESIRED POSITIONS, preserve the entire literal title list, including
+wrapped continuations and all titles separated by pipes. Never select only the first title.
+Keep adjacent geographic/remote preferences in work_preferences.
+Capture literal certification expiry, credential ID and verification URL when supplied.
+A certificate title and its adjacent ID, Issued/Valid through dates and Verify URL
+are ONE certificate record. A Certification # row is metadata, never a new title.
 Split slash-separated competencies into individual skills, preserving compound names.
 Respect field descriptions: business/process methods belong in domain_and_functional;
 industry or insurance-domain labels are not technologies. Technologies are tools,
 platforms, frameworks or implemented technical systems. The duration field accepts the
-literal date range, not only an elapsed number of years; retain an explicit date range.
+literal date range, not only an elapsed number of years; retain an explicit date range
+and its immediately following parenthesized elapsed duration when present, preserving source spelling.
 Include all registry fields for each record. Empty arrays require a missing entry with one
 of not_stated (not in this source record), ambiguous (multiple plausible associations), or
 unmapped (present but cannot be safely bound). Do not infer missing issuer/year/URL/GPA.
@@ -73,23 +90,87 @@ Return ONLY {"sections":[{"category":"experience","records":[{"record_id":"exper
 "missing":{"location":"not_stated",...}}]}]}. No prose or extra keys.'''
 
 
-def messages(sections):
+COMPACT_OUTPUT = """
+For this request use the compact_fields_v1 wire format instead of the verbose evidence
+format above. Return ONLY {"format":"compact_fields_v1","sections":[{"category":"experience",
+"records":[{"record_id":"experience-1","source_ids":["id"],"fields":{"company":[
+{"value":"literal company","source_ids":["id"]}]},"missing":{"location":"not_stated"}}]}]}.
+Keep every source section and record. Keep the complete source ownership IDs.
+Fields contain only populated literal values, each with source_ids restricted to that record.
+Do not repeat source quotations: the server rebuilds exact quotes and validates every value.
+Omit empty fields. Use missing to state not_stated, ambiguous or unmapped when established;
+unreported empty fields remain unmapped, never silently assumed absent. Preserve full lists.
+No other changes to ownership, literal-value, completeness or schema rules are allowed.
+"""
+
+
+def messages(sections, completeness=None):
     definitions = ResumeSchema.model_json_schema()['$defs']
     models = {'personal_information': 'ContactInfo', 'skills': 'CategorizedSkills',
               'experience': 'WorkExperience', 'education': 'Education', 'projects': 'Project', 'certifications': 'Certification'}
     registry = {s.category: {name: dict(rule, description=definitions.get(models.get(s.category), {}).get('properties', {}).get(name, {}).get('description', name))
                 for name, rule in SUBSCHEMAS[s.category].items()} for s in sections}
+    def structure_only(value):
+        if isinstance(value,dict): return {k:structure_only(v) for k,v in value.items() if k != 'text'}
+        if isinstance(value,list): return [structure_only(v) for v in value]
+        return value
     payload = {'registry': registry,
                'sections': [{'category': s.category, 'blocks': [
                    {'source_id': source_id(b), 'text': b.text,
                     'heading': False} for b in s.blocks if b.assignment not in {'section_heading', 'structural_heading'}],
-                   'logical_blocks': s.logical_blocks,
+                   'logical_blocks': structure_only(s.logical_blocks),
                    'heading_context': [b.text for b in s.blocks if b.assignment in {'section_heading', 'structural_heading'}],
                    'local_record_hints': [{'record_id': e.entry_id,
                         'source_ids': [source_id(s.blocks[i]) for i in e.block_indices
                                        if s.blocks[i].assignment not in {'section_heading', 'structural_heading'}]} for e in s.entries]}
                    for s in sections]}
-    return [{'role': 'system', 'content': SYSTEM}, {'role': 'user', 'content': json.dumps(payload, ensure_ascii=False)}]
+    categories = {s.category for s in sections}
+    payload['completeness_targets'] = [{'source_id': row['source_id'], 'source_start': row['start'],
+        'source_end': row['end'], 'reason': row['reason'], 'recognizable_category': row['recognizable_category']}
+        for row in (completeness or {}).get('unmapped', []) if row['section'] in categories]
+    source_ids = {source_id(b) for section in sections for b in section.blocks}
+    payload['field_overlap_targets'] = [row for row in (completeness or {}).get('conflicting_field_overlaps', [])
+                                      if row['source_id'] in source_ids]
+    return [{'role': 'system', 'content': SYSTEM + COMPACT_OUTPUT}, {'role': 'user', 'content': json.dumps(payload, ensure_ascii=False, separators=(',', ':'))}]
+
+
+def expand_compact_review(content, source_sections):
+    """Expand an explicitly versioned wire format; never infer field values."""
+    payload = json.loads(content)
+    if not isinstance(payload, dict) or payload.get('format') != 'compact_fields_v1':
+        return content
+    if set(payload) != {'format', 'sections'} or not isinstance(payload['sections'], list):
+        fail('response_model_validation', 'invalid_envelope', ('sections',))
+    parents = {s.category:s for s in source_sections.sections}
+    for si, row in enumerate(payload['sections']):
+        if not isinstance(row, dict) or row.get('category') not in parents or not isinstance(row.get('records'), list):
+            fail('parent_schema_validation', 'section_coverage', ('sections', si))
+        category = row['category']; parent = parents[category]
+        inventory = {source_id(b):b for b in parent.blocks if b.assignment not in {'section_heading','structural_heading'}}
+        for ri, record in enumerate(row['records']):
+            path = ('sections',si,'records',ri)
+            if not isinstance(record,dict) or not {'record_id','source_ids','fields'} <= set(record) or set(record) - {'record_id','source_ids','fields','missing'}:
+                fail('response_model_validation','invalid_record',path)
+            fields = record['fields']; missing = record.setdefault('missing',{})
+            if not isinstance(fields,dict) or not isinstance(missing,dict) or set(fields)-set(SUBSCHEMAS[category]) or set(missing)-set(SUBSCHEMAS[category]):
+                fail('subschema_validation','invalid_field_set',path)
+            owner = record['source_ids']
+            if not isinstance(owner,list) or any(not isinstance(sid,str) for sid in owner):
+                fail('source_evidence_validation','invalid_or_cross_record_quote',path)
+            for name in SUBSCHEMAS[category]:
+                items = fields.setdefault(name,[])
+                if not isinstance(items,list): fail('response_model_validation','field_not_array',path+('fields',name))
+                if not items: missing.setdefault(name,'unmapped')
+                for vi,item in enumerate(items):
+                    if not isinstance(item,dict) or set(item) != {'value','source_ids'}:
+                        fail('response_model_validation','invalid_field_item',path+('fields',name,vi))
+                    ids=item['source_ids']
+                    if not isinstance(ids,list) or not ids or any(not isinstance(sid,str) or sid not in inventory or sid not in owner for sid in ids):
+                        fail('source_evidence_validation','invalid_or_cross_record_quote',path+('fields',name,vi))
+                    refs=citations(item['value'],[b for sid,b in inventory.items() if sid in ids])
+                    if not refs: fail('source_evidence_validation','invalid_or_cross_record_quote',path+('fields',name,vi))
+                    items[vi]={'value':item['value'],'evidence':refs}
+    return json.dumps({'sections':payload['sections']},ensure_ascii=False)
 
 
 def parse_review(content, source_sections):
@@ -179,12 +260,17 @@ def parse_review(content, source_sections):
                         if SUBSCHEMAS[category][name]['type'] == 'number' and (
                                 isinstance(value['value'], bool) or not isinstance(value['value'], (int, float))):
                             fail('subschema_validation', 'numeric_child_type', value_path, name)
+                if category == 'experience' and name in {'company','role'}:
+                    from local_api.services.record_subfields import narrative_identity
+                    for candidate in values:
+                        if isinstance(candidate,dict) and narrative_identity(str(candidate.get('value',''))):
+                            fail('source_evidence_validation','unsupported_employer_context',record_path+('fields',name),name)
                 if category == 'experience' and name == 'company':
                     from local_api.services.record_subfields import CAPABILITY
                     for value in values:
                         refs=value.get('evidence',[]) if isinstance(value,dict) else []
                         if refs and all(isinstance(ref,dict) and ref.get('source_id') in inventory and
-                                        (CAPABILITY.search(inventory[ref['source_id']][1].text) or re.match(r'^\s*Client\b',inventory[ref['source_id']][1].text,re.I)) for ref in refs):
+                                        (CAPABILITY.search(inventory[ref['source_id']][1].text) or narrative_identity(inventory[ref['source_id']][1].text) or re.match(r'^\s*Client\b',inventory[ref['source_id']][1].text,re.I)) for ref in refs):
                             fail('source_evidence_validation','unsupported_employer_context',record_path+('fields',name),name)
                 try:
                     attrs.append(Attribute(name=name, items=values, status=status))
@@ -212,7 +298,8 @@ def parse_review(content, source_sections):
             section.entries = entries
         # Retain every block as residual unless exact item quotes consume it.
         consumed = {q.source_id for r in records for a in r.attributes for v in a.items for q in v.evidence
-                    if q.source_id in inventory and q.quote.strip() == inventory[q.source_id][1].text.strip()}
+                    if q.source_id in inventory and q.quote.strip() == inventory[q.source_id][1].text.strip()
+                    and str(v.value).strip() == inventory[q.source_id][1].text.strip()}
         hierarchy.append(SectionSchema(category=category, label=section.label, records=records,
             residual_blocks=[{'source_id': source_id(b), 'quote': b.text} for b in section.blocks if source_id(b) not in consumed]))
     if revised.needs_review:
@@ -245,36 +332,72 @@ def repair_section_envelope(payload, source_sections, diagnostic):
 
 
 def recover_literal_contacts(payload, source_sections):
-    """Fill omitted contacts only from unique literal matches in their parent."""
-    repairs = []
-    parent = next((s for s in source_sections.sections if s.category == 'personal_information'), None)
-    row = next((r for r in payload['sections'] if r['category'] == 'personal_information'), None)
-    if parent is None or row is None or len(row['records']) != 1:
-        return repairs
-    record = row['records'][0]
-    blocks = [b for b in parent.blocks if b.assignment not in {'section_heading', 'structural_heading'}]
-    from local_api.services.contact_sections import contact_values
-    candidates = contact_values(blocks)
-    for field in ('email', 'phone'):
-        if record['fields'][field] or record['missing'].get(field) not in {'not_stated', 'unmapped'}:
+    """Recover unique literal contact values and complete source-backed URLs."""
+    repairs=[]
+    parent=next((s for s in source_sections.sections if s.category=='personal_information'),None)
+    row=next((r for r in payload['sections'] if r['category']=='personal_information'),None)
+    if parent is None or row is None or len(row['records'])!=1:return repairs
+    record=row['records'][0]
+    blocks=[b for b in parent.blocks if b.assignment not in {'section_heading','structural_heading'}]
+    from local_api.services.contact_sections import contact_values,profile_values
+    for field,matches in contact_values(blocks).items():
+        if record['fields'][field] or record['missing'].get(field) not in {'not_stated','unmapped'}:continue
+        if len(matches)>1:
+            record['missing'][field]='ambiguous'
+            repairs.append({'field':field,'path':f'/personal_information/{field}','code':'multiple_literal_contacts_require_review'})
             continue
-        matches = candidates[field]
-        if len(matches) > 1:
-            record['missing'][field] = 'ambiguous'
-            repairs.append({'field': field, 'path': f'/personal_information/{field}',
-                            'code': 'multiple_literal_contacts_require_review'})
-            continue
-        if not matches:
-            continue
-        value = next(iter(matches)); evidence = citations(value, blocks)
-        if not evidence:
-            continue
-        record['fields'][field] = [{'value': value, 'evidence': evidence}]
-        record['missing'].pop(field)
+        if len(matches)!=1:continue
+        value=next(iter(matches));evidence=citations(value,blocks)
+        if not evidence:continue
+        record['fields'][field]=[{'value':value,'evidence':evidence}]
+        record['missing'].pop(field,None)
         record['source_ids'].extend(ref['source_id'] for ref in evidence if ref['source_id'] not in record['source_ids'])
-        repairs.append({'field': field, 'path': f'/personal_information/{field}', 'code': 'unique_literal_contact_recovered'})
+        repairs.append({'field':field,'path':f'/personal_information/{field}','code':'unique_literal_contact_recovered'})
+    for field,matches in profile_values(blocks).items():
+        if len(matches)!=1:continue
+        value=next(iter(matches));evidence=citations(value,blocks)
+        if not evidence:continue
+        existing=record['fields'].get(field)
+        if existing and len(existing)==1 and existing[0].get('value')==value:continue
+        record['fields'][field]=[{'value':value,'evidence':evidence}]
+        record['missing'].pop(field,None)
+        record['source_ids'].extend(ref['source_id'] for ref in evidence if ref['source_id'] not in record['source_ids'])
+        repairs.append({'field':field,'code':'complete_literal_profile_url_recovered'})
+    headlines=[b for b in blocks if b.assignment=='professional_headline']
+    if len(headlines)==1:
+        value=headlines[0].text.strip();evidence=citations(value,blocks)
+        existing=record['fields'].get('professional_title')
+        if evidence and (not existing or len(existing)==1 and existing[0].get('value')!=value):
+            record['fields']['professional_title']=[{'value':value,'evidence':evidence}]
+            record['missing'].pop('professional_title',None)
+            record['source_ids'].extend(ref['source_id'] for ref in evidence if ref['source_id'] not in record['source_ids'])
+            repairs.append({'field':'professional_title','code':'introductory_professional_headline_restored'})
     return repairs
 
+
+
+def recover_target_role_lists(payload, source_sections):
+    """Restore an explicit complete preference list after a partial model selection."""
+    from local_api.services.target_preferences import target_section_values
+    parent = next((s for s in source_sections.sections if s.category == 'personal_information'), None)
+    row = next((s for s in payload['sections'] if s['category'] == 'personal_information'), None)
+    if parent is None or row is None or len(row['records']) != 1: return []
+    values = target_section_values(parent.blocks)
+    record = row['records'][0]
+    repairs = []
+    for name, value in values.items():
+        existing = record['fields'][name]
+        if existing and len(existing) == 1 and existing[0]['value'] == value: continue
+        # The heading defines the whole list, not just its first title. Never
+        # synthesize values: citations and the normal hierarchy validation own this.
+        evidence = citations(value, parent.blocks)
+        if not evidence: continue
+        record['fields'][name] = [{'value': value, 'evidence': evidence}]
+        record['missing'].pop(name, None)
+        record['source_ids'].extend(ref['source_id'] for ref in evidence if ref['source_id'] not in record['source_ids'])
+        repairs.append({'field': name, 'path': f'/personal_information/{name}',
+                        'code': 'complete_explicit_target_list_recovered'})
+    return repairs
 
 
 def recover_literal_lists(payload, source_sections, fallback):
@@ -375,7 +498,7 @@ def recover_record_fields(payload, source_sections, fallback):
                     refs = citations(value, blocks, flexible_whitespace=True)
                     if refs:
                         items.append({'value':value, 'evidence':refs})
-                if (not items or name in {'company','role'}) and name in {'company','role','degree','institution','name','issuer'} and name in local_attrs:
+                if (not items or name in {'company','role'}) and name in {'company','role','degree','institution','field_of_study','graduation_year','name','issuer'} and name in local_attrs:
                     local_items = []
                     for item in local_attrs[name].items:
                         if not all(ref.source_id in owned for ref in item.evidence):
@@ -728,6 +851,8 @@ def commit_review(request, fallback, hierarchy, revised, states, calls, model):
         unmapped_blocks=[{'source_id': source_id(b), 'category': s.category, 'text': b.text, 'page_number': b.page_number}
                          for s in revised.sections for b in s.blocks if source_id(b) not in used] +
                         [{'source_id': source_id(b), 'category': None, 'text': b.text, 'page_number': b.page_number} for b in revised.needs_review])
+    from local_api.services.mapping_completeness import mapping_completeness
+    meta['completeness_check'] = mapping_completeness(request.elements, revised, hierarchy)
     return SchemaMappingResponse(success=True, source=request.source, extraction_mode='deepseek_source_grounded_schema_mapping',
         data=data, schema_mapping=build_schema_mapping_report(data, status_overrides=statuses),
         raw_sections=fallback.raw_sections, section_schemas=hierarchy, meta=meta)
@@ -777,6 +902,7 @@ def local_section_payload(fallback, categories):
 
 
 def map_with_field_review(request, *, settings=None, transport=None, budget=None, pass_id=0):
+    started_at = time.monotonic()
     fallback = map_schema(request)
     if fallback.meta.get('reviewed_sections'):
         from local_api.schemas.sections import SectionResponse
@@ -785,9 +911,13 @@ def map_with_field_review(request, *, settings=None, transport=None, budget=None
     settings = settings or ReviewSettings.from_env()
     transport = transport or call_deepseek
     calls = 0
+    preflight_calls = 0
     stage = 'configuration_error'
     attempts = []
+    wire_sizes = []
+    expanded_sizes = []
     last_attempt_exception = None
+    executor = None
     try:
         settings.validate()
         if not settings.enabled or not settings.api_key:
@@ -799,17 +929,54 @@ def map_with_field_review(request, *, settings=None, transport=None, budget=None
             return fallback
         stage = 'request_budget'
         budget = budget or new_budget(settings)
+        # A direct field-mapping request may bypass the sections endpoint.
+        # Review meaningful unassigned source once using the shared budget.
+        from local_api.services.source_accounting import artifact_reason
+        unassigned = [b for b in request.sections.needs_review
+                      if not artifact_reason(request.elements[b.source_element_index], b)]
+        from local_api.services.local_completion import explicit_category
+        suspected = [b for s in request.sections.sections for b in s.blocks
+                     if explicit_category(b.text) not in {None, s.category}
+                     and not (s.category in {'experience', 'projects'} and explicit_category(b.text) == 'skills')]
+        prior_review = request.sections.metadata.get('llm_review', {})
+        if (unassigned or suspected) and prior_review.get('status') not in {'complete', 'partial'}:
+            from local_api.services.llm_section_review import review_sections
+            from local_api.schemas.sections import SectionRequest
+            reviewed = review_sections(SectionRequest(elements=request.elements,
+                extraction_verified=request.sections.extraction_verified), request.sections,
+                settings=settings, transport=transport, _budget=budget, _pass_id=pass_id)
+            request = request.model_copy(update={'sections': reviewed})
+            fallback = map_schema(request)
+            fallback.meta['unassigned_section_review'] = reviewed.metadata.get('llm_review', {})
+            fallback.meta['classification_preflight'] = {'unassigned_targets': len(unassigned),
+                'suspected_misclassifications': len(suspected), 'status': reviewed.metadata.get('llm_review', {}).get('status')}
+            preflight_calls = reviewed.metadata.get('llm_review', {}).get('provider_calls', 0)
+            fallback.meta['mapping_result'] = mapping_result(fallback)
+        if not request.sections.sections:
+            # Classification abstention is not a completed field review of an
+            # empty document. Preserve the source and avoid a pointless call.
+            fallback.meta['field_review'] = {'status': 'not_applicable', 'provider_calls': 0,
+                'reason': 'no_classified_sections',
+                'message': 'No source section has an established classification for field mapping; unresolved source remains available for review.'}
+            fallback.meta['provider_call_summary'] = {'section_preflight': preflight_calls,
+                'field_mapping': 0, 'total_this_mapping_request': preflight_calls}
+            fallback.meta['mapping_result'] = mapping_result(fallback,
+                fallback=fallback.meta.get('unassigned_section_review', {}).get('status') == 'failed')
+            return fallback
         # Pack complete sections; never cut a record's source context arbitrarily.
         batches = []; current = []
         for section in request.sections.sections:
-            fits = measure(settings, messages(current + [section]))['fits']
-            too_dense = current and (section.category in REPEATED or any(s.category in REPEATED for s in current) or sum(len(s.blocks) for s in current + [section]) > 35)
+            fits = measure(settings, messages(current + [section], fallback.meta.get('completeness_check')))['fits']
+            # Repeated categories do not require a separate network round trip.
+            # Pack modest groups while retaining each entire section/record.
+            too_dense = current and (sum(len(s.blocks) for s in current + [section]) > 70
+                or sum(max(1, len(s.entries)) for s in current + [section]) > 12)
             if fits and not too_dense:
                 current.append(section)
             else:
                 if current: batches.append(current)
                 current = [section]
-                if not measure(settings, messages(current))['fits']:
+                if not measure(settings, messages(current, fallback.meta.get('completeness_check')))['fits']:
                     raise ReviewError('document_limit_exceeded')
         if current: batches.append(current)
         if len(batches) > min(settings.max_document_requests, settings.max_pass_requests):
@@ -819,28 +986,53 @@ def map_with_field_review(request, *, settings=None, transport=None, budget=None
         failed_attempts = set()
         evidence_repairs = []
         stop_review = False
-        for batch in batches:
+        prefetched = {}
+        if settings.field_workers > 1 and len(batches) > 1:
+            from concurrent.futures import ThreadPoolExecutor
+            executor = ThreadPoolExecutor(max_workers=settings.field_workers, thread_name_prefix='resume-field-review')
+        for batch_index, batch in enumerate(batches):
             if stop_review:
                 categories={s.category for s in batch}
                 failed_categories.extend(categories)
                 responses.extend(local_section_payload(fallback,categories))
                 continue
+            # Dispatch only one bounded window at a time. All budget reservations
+            # happen on this thread before paid requests enter the worker pool.
+            if executor is not None and batch_index % settings.field_workers == 0:
+                from concurrent.futures import Future
+                for index in range(batch_index, min(len(batches), batch_index + settings.field_workers)):
+                    try:
+                        planned_prompt = messages(batches[index], fallback.meta.get('completeness_check'))
+                        if not measure(settings, planned_prompt)['fits']:
+                            raise ReviewError('document_limit_exceeded')
+                        budget.take(binding(request.elements)['source_inventory_sha256'], pass_id, 'schema_field_mapping')
+                    except Exception as exc:
+                        future = Future(); future.set_exception(exc)
+                        prefetched[index] = future
+                        break
+                    calls += 1
+                    prefetched[index] = executor.submit(transport, settings, planned_prompt)
             attempt_start = len(attempts)
             batch_failed = False
-            prompt = messages(batch)
+            prompt = messages(batch, fallback.meta.get('completeness_check'))
             for attempt in range(1 + settings.recovery_attempts):
                 stage = 'request_budget'
                 if not measure(settings, prompt)['fits']:
                     raise ReviewError('document_limit_exceeded')
                 try:
-                    budget.take(binding(request.elements)['source_inventory_sha256'], pass_id, 'schema_field_mapping')
-                    calls += 1
-                    stage = 'provider_error'
-                    content = transport(settings, prompt)
+                    if executor is not None and attempt == 0:
+                        stage = 'provider_error'
+                        content = prefetched.pop(batch_index).result()
+                    else:
+                        budget.take(binding(request.elements)['source_inventory_sha256'], pass_id, 'schema_field_mapping')
+                        calls += 1
+                        stage = 'provider_error'
+                        content = transport(settings, prompt)
                 except Exception as exc:
                     # Preserve earlier validated batches and do not spend on
                     # remaining batches after a transport/budget failure.
                     last_attempt_exception=exc
+                    if isinstance(exc, ChunkError): stage = 'request_budget'
                     attempts.append(record_failure(exc,stage,attempt=calls,recovered=False))
                     failed_attempts.update(range(attempt_start,len(attempts)))
                     failed_categories.extend(s.category for s in batch)
@@ -849,7 +1041,24 @@ def map_with_field_review(request, *, settings=None, transport=None, budget=None
                 stage = 'response_model_validation'
                 payload = {}
                 try:
+                    wire_sizes.append(len(content))
+                    content = expand_compact_review(content, request.sections.model_copy(update={'sections': batch, 'needs_review': []}))
+                    expanded_sizes.append(len(content))
                     payload = json.loads(content)
+                    from local_api.services.employment_integrity import repair_review_employment
+                    source_repairs = repair_review_employment(payload, request.sections.model_copy(update={'sections':batch,'needs_review':[]})) if isinstance(payload,dict) else []
+                    from local_api.services.certification_integrity import repair_review_certifications
+                    if isinstance(payload,dict):
+                        source_repairs.extend(repair_review_certifications(payload, request.sections.model_copy(update={'sections':batch,'needs_review':[]}), fallback))
+                    from local_api.services.project_section_recovery import repair_review_programs
+                    if isinstance(payload,dict):
+                        source_repairs.extend(repair_review_programs(payload, request.sections.model_copy(update={'sections':batch,'needs_review':[]}), fallback))
+                    from local_api.services.dated_record_recovery import repair_dated_records
+                    if isinstance(payload,dict):
+                        source_repairs.extend(repair_dated_records(payload, request.sections.model_copy(update={'sections':batch,'needs_review':[]}), fallback))
+                    if source_repairs:
+                        content = json.dumps(payload,ensure_ascii=False)
+                        evidence_repairs.extend(source_repairs)
                     if not isinstance(payload, dict) or set(payload) != {'sections'} or not isinstance(payload['sections'], list):
                         fail('response_model_validation', 'invalid_envelope', ('sections',))
                     if len(payload['sections']) != len(batch) or {r.get('category') for r in payload['sections']} != {s.category for s in batch}:
@@ -917,7 +1126,7 @@ def map_with_field_review(request, *, settings=None, transport=None, budget=None
         hierarchy, revised, states = parse_review(json.dumps(final_payload), request.sections)
         record_repairs = recover_record_fields(final_payload, request.sections, fallback)
         contact_repairs = recover_literal_contacts(final_payload, request.sections)
-        contact_repairs = record_repairs + contact_repairs
+        contact_repairs = record_repairs + contact_repairs + recover_target_role_lists(final_payload, request.sections)
         if contact_repairs:
             hierarchy, revised, states = parse_review(json.dumps(final_payload), request.sections)
             evidence_repairs.extend(contact_repairs)
@@ -925,6 +1134,11 @@ def map_with_field_review(request, *, settings=None, transport=None, budget=None
             fail('source_binding_validation', 'invalid_reviewed_binding', ('sections',))
         stage = 'parent_schema_validation'
         mapped = commit_review(request, fallback, hierarchy, revised, states, calls, settings.model)
+        mapped.meta['field_review'].update(batch_count=len(batches),
+            batch_workers=min(settings.field_workers, len(batches)),
+            response_wire_characters=sum(wire_sizes),
+            response_expanded_characters=sum(expanded_sizes),
+            processing_seconds=round(time.monotonic() - started_at, 3))
         if evidence_repairs:
             mapped.meta['field_review']['evidence_repairs'] = evidence_repairs
         if failed_categories:
@@ -936,6 +1150,8 @@ def map_with_field_review(request, *, settings=None, transport=None, budget=None
             for index, diagnostic in enumerate(attempts):
                 diagnostic['recovered'] = index not in failed_attempts
             mapped.meta['field_review']['diagnostics'] = [client_diagnostic(d) for d in attempts]
+        mapped.meta['provider_call_summary'] = {'section_preflight': preflight_calls,
+            'field_mapping': calls, 'total_this_mapping_request': preflight_calls + calls}
         return mapped
     except Exception as exc:
         known_codes = {'authentication_failed', 'insufficient_balance', 'provider_forbidden', 'rate_limited', 'provider_http_error', 'provider_unavailable', 'model_unavailable', 'invalid_configuration', 'request_budget_exhausted', 'document_limit_exceeded', 'incomplete_response', 'invalid_response'}
@@ -949,4 +1165,9 @@ def map_with_field_review(request, *, settings=None, transport=None, budget=None
             'DeepSeek field mapping failed source or schema validation. Local fields were retained.',
             'diagnostic': client_diagnostic(diagnostic), 'diagnostics': [client_diagnostic(d) for d in attempts]}
         fallback.meta['mapping_result'] = mapping_result(fallback, fallback=True)
+        fallback.meta['provider_call_summary'] = {'section_preflight': preflight_calls,
+            'field_mapping': calls, 'total_this_mapping_request': preflight_calls + calls}
         return fallback
+    finally:
+        if executor is not None:
+            executor.shutdown(wait=True, cancel_futures=True)

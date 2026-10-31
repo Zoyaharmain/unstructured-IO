@@ -112,7 +112,11 @@ def test_audit_coverage_acknowledgement_and_incomplete_failure():
  annotate_relationships(sec.sections[0])
  schema=map_schema(SchemaMappingRequest(elements=req.elements,sections=sec,source='fixture')).model_dump(mode='json')
  p=audit_plan(req.elements,sec,schema,settings(max_units=2))
- assert {'populated_field','unresolved_field','source_omission_check','legacy_value'} <= {u['kind'] for c in p['chunks'] for u in c['targets']}
+ kinds = {u['kind'] for c in p['chunks'] for u in c['targets']}
+ assert {'residual','source_omission_check','legacy_value'} <= kinds
+ # Responsibility-only input has no established job identity. Audit its source
+ # without manufacturing populated employment fields.
+ assert 'populated_field' not in kinds
  c=p['chunks'][0]
  with pytest.raises(ChunkError):audit_decisions(c,json.dumps({'checked_ids':[],'findings':[]}))
  result=run_schema_audit(req.elements,sec,schema,settings(max_units=2),lambda cfg,msg:respond(msg,'audit'),budget=RequestBudget(max_total=100,max_document=100,max_pass=100))

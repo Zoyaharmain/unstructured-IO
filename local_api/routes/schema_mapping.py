@@ -27,6 +27,12 @@ def definition():
     return ResumeSchema.model_json_schema()
 
 
+@router.get('/standardized-definition')
+def standardized_definition():
+    from local_api.services.standardization.consumer import ConsumerResume
+    return ConsumerResume.model_json_schema()
+
+
 @router.get('/mapping')
 def mapping():
     spec=get_full_schema_mapping()
@@ -75,38 +81,36 @@ async def map_existing_sections(request: ReviewedSchemaMappingRequest):
             mapped = await run_in_threadpool(map_with_field_review, request)
         else:
             mapped = await run_in_threadpool(map_schema,request)
-        mapped.meta['mapping_result'] = mapping_result(mapped)
+        mapped.meta['mapping_result'] = mapping_result(mapped,
+            fallback=mapped.meta.get('mapping_result', {}).get('fallback_used', False))
         from local_api.services.standardization.service import standardize_resume_data
-        std_resume, metadata, status, warnings = standardize_resume_data(mapped.data)
+        from local_api.services.standardization.mapping import mapping_input, attach_mapping_findings
+        std_resume, metadata, status, warnings = standardize_resume_data(mapping_input(mapped))
         mapped.standardized_data = std_resume
         metadata.source_evidence = mapped.meta.get("field_evidence", {})
         mapped.schema_version = metadata.schema_version
         mapped.standardization_metadata = metadata
         mapped.validation_status = status
         mapped.warnings = warnings
+        attach_mapping_findings(mapped, warnings)
+        from local_api.services.standardization.export import standardized_export
+        mapped.consumer_export = standardized_export(mapped)
         return mapped
     except ValueError as exc:
         raise mapping_error(exc) from None
 
 
 @router.post('/standardize')
-async def standardize_existing_schema(payload: dict):
-    """Directly standardize an existing resume schema or ParseResponse dictionary."""
+async def standardize_existing_schema(payload: dict, include_audit: bool = False):
+    """Version 2 consumer output; include_audit=true retains source and processing evidence."""
     from local_api.services.standardization.service import standardize_resume_data
-    # Extract data payload if wrapped in ParseResponse or SchemaMappingResponse
-    data_dict = payload.get('data', payload)
-    std_resume, metadata, status, warnings = standardize_resume_data(data_dict)
     from local_api.services.standardization.export import standardized_export
-    canonical = standardized_export({'data':data_dict,'standardized_data':std_resume.model_dump(),
-        'standardization_metadata':metadata.model_dump(),'validation_status':status.model_dump(),
-        'warnings':[w.model_dump() for w in warnings],'source':payload.get('source')})
-    return {
-        'export_type':canonical['export_type'],
-        'data':canonical['data'],
-        'source_evidence':canonical['source_evidence'],
-        'schema_version': metadata.schema_version,
-        'standardized_data': std_resume.model_dump(),
-        'standardization_metadata': canonical['standardization_metadata'],
-        'validation_status': status.model_dump(),
-        'warnings': [w.model_dump() for w in warnings],
-    }
+    data_dict = payload.get('data', payload)
+    try:
+        std_resume, metadata, status, warnings = standardize_resume_data(data_dict)
+    except (ValueError, TypeError) as exc:
+        raise HTTPException(422, detail='Resume data must have a valid object structure.') from None
+    return standardized_export({'data': data_dict, 'standardized_data': std_resume.model_dump(),
+        'standardization_metadata': metadata.model_dump(), 'validation_status': status.model_dump(),
+        'warnings': [w.model_dump() for w in warnings], 'source': payload.get('source')},
+        include_audit=include_audit)

@@ -26,7 +26,7 @@ def test_actual_resume_has_three_correct_employers_roles_and_date_ranges():
         ('SLK Software','Team Leader','01/2025','Present'),
         ('Impetus Technologies','SRE/Devops Engineer','06/2021','12/2024'),
         ('Cavisson Systems','Software Engineer','10/2018','05/2021')]
-    assert [(r.start_year,r.graduation_year) for r in out.data.education]==[('2014','2018')]
+    assert [(r.start_year,r.graduation_year) for r in out.data.education]==[('08/2014','07/2018')]
     assert req.model_dump()==before
     revised=SectionResponse.model_validate(out.meta['reviewed_sections'])
     assert validate_result(req.elements,revised)==[]
