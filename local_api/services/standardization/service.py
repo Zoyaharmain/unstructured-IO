@@ -58,6 +58,35 @@ def standardize_resume_data(
     std_skills, skill_warns = standardize_skills_categorized(raw_dict.get("skills", {}))
     all_warnings.extend(skill_warns)
 
+    # Detect unambiguous document-wide numeric date format (e.g. DD-MM-YYYY vs MM-DD-YYYY)
+    import re
+    date_order_hint = None
+    dmy_count = 0
+    mdy_count = 0
+    strings_to_scan = []
+    for exp in raw_dict.get('experience', []):
+        for k in ('start_date', 'end_date', 'duration', 'raw_start_date', 'raw_end_date', 'raw_duration'):
+            val = exp.get(k)
+            if val and isinstance(val, str):
+                strings_to_scan.append(val)
+    for edu in raw_dict.get('education', []):
+        for k in ('start_year', 'graduation_year'):
+            val = edu.get(k)
+            if val and isinstance(val, str):
+                strings_to_scan.append(val)
+    for s in strings_to_scan:
+        cleaned_s = re.sub(r'[\r\n\t]+', '', s)
+        for m in re.finditer(r'(?<!\d)(\d{1,2})[\-\/](\d{1,2})[\-\/]([1-9]\d{3})(?!\d)', cleaned_s):
+            v1, v2 = int(m.group(1)), int(m.group(2))
+            if v1 > 12 >= v2:
+                dmy_count += 1
+            elif v2 > 12 >= v1:
+                mdy_count += 1
+    if dmy_count > 0 and mdy_count == 0:
+        date_order_hint = 'DMY'
+    elif mdy_count > 0 and dmy_count == 0:
+        date_order_hint = 'MDY'
+
     # 4. Experience records standardization
     std_experience: list[StandardizedWorkExperience] = []
     exp_calc_inputs: list[dict] = []
@@ -71,8 +100,12 @@ def standardize_resume_data(
         loc = exp.get("location")
 
         # Parse start and end dates
-        start_iso, start_prec, _, start_warns = parse_date_string(raw_start, f"experience[{idx}].start_date", reference_date=reference_date)
-        end_iso, end_prec, is_curr_from_end, end_warns = parse_date_string(raw_end, f"experience[{idx}].end_date", reference_date=reference_date)
+        start_iso, start_prec, _, start_warns = parse_date_string(
+            raw_start, f"experience[{idx}].start_date", reference_date=reference_date, date_order_hint=date_order_hint
+        )
+        end_iso, end_prec, is_curr_from_end, end_warns = parse_date_string(
+            raw_end, f"experience[{idx}].end_date", reference_date=reference_date, date_order_hint=date_order_hint
+        )
 
         all_warnings.extend(start_warns)
         all_warnings.extend(end_warns)
@@ -91,17 +124,42 @@ def standardize_resume_data(
             is_current = True
         duration_text, duration_months, duration_status = calculated_duration(
             start_iso,end_iso,start_prec,end_prec,is_current,reference_date)
+        if duration_status == 'insufficient_dates' and duration:
+            m = re.search(r'\b(?:(\d+)\s*(?:years?|yrs?)\s*(?:and\s*)?)?(?:(\d+)\s*(?:months?|mos?))\b', duration, re.I)
+            if m and any(m.groups()):
+                y = int(m.group(1) or 0)
+                mo = int(m.group(2) or 0)
+                parts = []
+                if y: parts.append(f"{y} year{'s' if y != 1 else ''}")
+                if mo: parts.append(f"{mo} month{'s' if mo != 1 else ''}")
+                duration_text = ' '.join(parts)
+                duration_months = y * 12 + mo
+                duration_status = 'calculated'
+            else:
+                m_yr = re.search(r'\b(\d+)\s*(?:years?|yrs?)\b', duration, re.I)
+                if m_yr:
+                    y = int(m_yr.group(1))
+                    duration_text = f"{y} year{'s' if y != 1 else ''}"
+                    duration_months = y * 12
+                    duration_status = 'calculated'
         if exp.get('provided_duration_months') is not None and exp['provided_duration_months'] != duration_months:
             all_warnings.append(StandardizationWarning(field=f'experience[{idx}].duration_months',
                 warning_type='provided_duration_discrepancy', severity='review_required',
                 original_value=exp['provided_duration_months'], normalized_value=duration_months,
                 message='Supplied calculated month count disagrees with the date calculation.'))
         if duration_status == 'calculated':
-            all_warnings.append(StandardizationWarning(field=f'experience[{idx}].duration',
-                warning_type='duration_calculated',severity='info',original_value=duration,
-                normalized_value=duration_text,applied=True,
-                basis=f'Month precision: elapsed calendar months. Day precision: completed calendar units. As of {reference_date.date().isoformat()}.',
-                message='Derived duration, approximate elapsed calendar months; original date range retained.'))
+            if start_iso or end_iso or is_current:
+                all_warnings.append(StandardizationWarning(field=f'experience[{idx}].duration',
+                    warning_type='duration_calculated',severity='info',original_value=duration,
+                    normalized_value=duration_text,applied=True,
+                    basis=f'Month precision: elapsed calendar months. Day precision: completed calendar units. As of {reference_date.date().isoformat()}.',
+                    message='Derived duration, approximate elapsed calendar months; original date range retained.'))
+            else:
+                all_warnings.append(StandardizationWarning(field=f'experience[{idx}].duration',
+                    warning_type='duration_calculated',severity='info',original_value=duration,
+                    normalized_value=duration_text,applied=True,
+                    basis='Elapsed duration calculated directly from source-stated duration claim.',
+                    message='Source-stated duration normalized into elapsed calendar duration.'))
         if duration_status == 'estimated_year_precision':
             all_warnings.append(StandardizationWarning(field=f'experience[{idx}].duration',
                 warning_type='duration_estimated_year_precision',severity='warning',original_value=duration,

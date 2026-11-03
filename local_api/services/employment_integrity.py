@@ -21,7 +21,11 @@ def repair_employment_entries(result, elements):
         own_header=any(not (elements[b.source_element_index].type == 'ListItem' and responsibility_fragment(elements[b.source_element_index].text) and not employment_header_fields(elements[b.source_element_index].text))
                        and employment_header_fields(b.text) for b in parts)
         anchored=any(RANGE.search(b.text) and not responsibility_fragment(b.text) for b in previous)
-        if not (prose and adjacent and compatible and anchored and not own_header):
+        # A corporate suffix/date on the next source row completes an explicit
+        # labelled employment statement; it is not an independent employer.
+        explicit_post=any(re.search(r'\bpost\s*of\b',b.text,re.I) and employment_header_fields(b.text) for b in previous)
+        suffix_continuation=bool(explicit_post and re.match(r'^\s*(?:ltd\.?|limited|inc\.?|llc|corp\.?)\s*[.,]?\s*(?:start|from)\b',first.text,re.I))
+        if not ((prose and anchored or suffix_continuation) and adjacent and compatible and not own_header):
             entries.append(entry);continue
         for i in entry.block_indices:
             repaired.blocks[i]=repaired.blocks[i].model_copy(update={'assignment':'local_record_continuation',

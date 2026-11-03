@@ -21,15 +21,25 @@ def credential_date_range(text):
 def detail_row(text):
     # Separate the number marker because # is not a word boundary.
     from local_api.services.record_subfields import DATE
-    return bool(re.fullmatch(DATE,text.strip(),re.I) or credential_date_range(text) or re.match(r'^\s*(?:[•▪●*\-]\s*)?(?:certification|certificate|credential|license)\s*#\s*\S',text,re.I)
+    return bool(re.fullmatch(r'(?:active|valid|expired|in progress|completed)',text.strip(),re.I) or re.fullmatch(DATE,text.strip(),re.I) or credential_date_range(text) or re.match(r'^\s*(?:[•▪●*\-]\s*)?(?:certification|certificate|credential|license)\s*#\s*\S',text,re.I)
                 or DETAIL.match(text))
 
 
 def aligned_credential_detail(previous,block,elements):
     if previous is None or previous.page_number != block.page_number:return False
     def rows(b):
-        return [r for r in elements[b.source_element_index].metadata.get('pdf_source_lines',[])
+        element=elements[b.source_element_index]
+        found=[r for r in element.metadata.get('pdf_source_lines',[])
                 if len(r.get('bbox',[]))==4 and min(b.end,r.get('end',0))>max(b.start,r.get('start',0))]
+        if found:return found
+        # Repeated status words may lack unique PDF-line hints. The original
+        # element's bounding box still establishes its own physical row.
+        geometry=element.metadata.get('coordinates',{})
+        points=geometry.get('points',[]);width=geometry.get('layout_width');height=geometry.get('layout_height')
+        if points and width and height and len(element.text.split())<=3:
+            return [{'bbox':[min(p[0] for p in points)/width,min(p[1] for p in points)/height,
+                             max(p[0] for p in points)/width,max(p[1] for p in points)/height]}]
+        return []
     return any(abs(left['bbox'][1]-right['bbox'][1])<.004 and right['bbox'][0]>=left['bbox'][2]
                for left in rows(previous) for right in rows(block))
 
@@ -43,6 +53,7 @@ def credential_values(blocks):
         if value:candidates.setdefault(name,[]).append(value)
     from local_api.services.record_subfields import DATE,RANGE
     for text in rows:
+        if re.fullmatch(r'(?:19|20)\d{2}',text.strip()):add('issue_year',text.strip())
         period=credential_date_range(text)
         if period:
             add('issue_year',period[1]);add('expiry_date',period[2])
@@ -57,6 +68,12 @@ def credential_values(blocks):
             if match:add('issuer',match[1]);continue
     titles=[text.strip() for text in rows if text.strip() and not credential_heading(text) and not detail_row(text)
             and not re.fullmatch(r'\d{4}(?:-\d{2})?',text.strip())]
+    for text in rows:
+        parts=[p.strip() for p in text.split('|')]
+        if len(parts)>1:
+            issuer=parts[-1]
+            if re.search(r'\b(?:institute|university|association|board|academy|certified in collaboration with)\b',issuer,re.I):
+                add('issuer',issuer)
     if titles:
         title=re.sub(r'^\s*[•▪●*]\s*','',credential_title_text(titles[0])).rstrip(' ·•▪●;|\n\t')
         label=re.match(r'^(?:certification(?: name)?|certificate(?: name)?|credential name)\s*[:=]\s*(.+)$',title,re.I)
@@ -116,6 +133,7 @@ def inline_credential_cuts(text):
         from local_api.services.record_subfields import labelled_fields
         labels=labelled_fields('certifications',[SimpleNamespace(text=value,assignment='semantic')])
         if detail_row(value) or labels and 'name' not in labels:continue
+        if re.search(r'\bcertified\s+(?:by|in collaboration with)\b',value,re.I):continue
         if re.search(r'\b(?:institute|university|association|foundation|academy|council|board|school|corporation|ltd)\b',value,re.I):continue
         if len(value.split())==1 and value.isalpha():return []
         # Only short title-like fragments qualify. A narrative list is not an

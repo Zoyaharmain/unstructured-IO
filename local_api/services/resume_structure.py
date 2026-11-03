@@ -7,6 +7,25 @@ import re
 from bisect import bisect_left
 
 
+def el_meta(el):
+    if hasattr(el, 'metadata'): return el.metadata or {}
+    if isinstance(el, dict): return el.get('metadata') or {}
+    return {}
+
+
+def el_type(el):
+    if hasattr(el, 'type'): return el.type
+    if isinstance(el, dict): return el.get('type')
+    return None
+
+
+def el_text(el):
+    if hasattr(el, 'text'): return el.text or ''
+    if isinstance(el, dict): return el.get('text') or ''
+    return ''
+
+
+
 def token_window_cuts(text, offsets, limit=200):
     """Prefer complete sentences within each bounded encoder window."""
     starts = [start for start, _ in offsets]
@@ -54,7 +73,7 @@ RECORD_FIELDS = {'technologies', 'technology', 'tools', 'tool', 'tech stack',
                  'key responsibilities and achievements', 'responsibilities and achievements', 'technology and tools',
                  'environment', 'client name', 'work base location'}
 EXTRA_HEADINGS = {
-    'personal_information': ['contact', 'personal info', 'personal details'],
+    'personal_information': ['contact', 'personal info', 'personal details', 'additional information'],
     'summary': ['objective', 'career summary', 'executive summary', 'profile snapshot', 'profile summary', 'professional summary', 'career objective',
                 'selected jd-aligned highlights', 'key business impact', 'career highlights', 'professional highlights'],
     'projects': ['poc', 'pocs', 'proof of concept', 'proofs of concept', 'key projects', 'project highlights', 'project details', 'projects', 'academic projects',
@@ -66,7 +85,7 @@ EXTRA_HEADINGS = {
                    'organizational experience', 'organization experience', 'professional experience summary',
                    'project experience', 'key projects and roles', 'earlier experience', 'earlier employment'],
     'languages': ['spoken languages', 'language proficiency', 'langues'],
-    'education': ['qualifications', 'educational background', 'academic qualifications', 'formation', 'formations', 'academics', 'academic background', 'academic details'],
+    'education': ['qualifications', 'educational background', 'educational qualification', 'academic qualifications', 'formation', 'formations', 'academics', 'academic background', 'academic details'],
     'skills': ['technical profile', 'technical exposure', 'competences', 'comp\u00e9tences', 'languages and platforms', 'programming languages',
                'tools and platforms', 'core programming and frameworks', 'cloud and devops',
                'core competencies and skills', 'it skillset', 'it skills',
@@ -92,8 +111,11 @@ def normalized_heading(text):
 
 
 def heading_aliases(anchors):
-    return {normalized_heading(text): category for category, anchor in anchors.items()
+    output={normalized_heading(text): category for category, anchor in anchors.items()
             for text in anchor['headings'] + EXTRA_HEADINGS.get(category, [])}
+    for text,category in list(output.items()):
+        output.setdefault(re.sub(r'\s+','',text),category)
+    return output
 
 
 def heading_boundary(text, aliases):
@@ -182,7 +204,7 @@ def entry_groups(blocks, category, elements):
                     prev_b = blocks[cards[-1]['block_indices'][-1]]
                     if b.source_element_index != prev_b.source_element_index:
                         el = elements[b.source_element_index]
-                        if el.type in {'ListItem', 'Title'}:
+                        if el_type(el) in {'ListItem', 'Title'}:
                             starts_new = True
                         elif re.search(r'\b(?:Award|Champion|Scholarship|Medal|Prize|Honors?|Winner|Recognition|Performer)\b', text, re.I):
                             starts_new = True
@@ -199,6 +221,16 @@ def entry_groups(blocks, category, elements):
             if cards:
                 return cards
     if category == 'projects':
+        # Explicit numbered record markers outrank inferred font/lane anchors.
+        numbered=[i for i,b in enumerate(blocks) if re.match(r'^\s*(?:academic\s+)?project\s*#?\s*\d+(?=\s|[:.)-]|$)',b.text,re.I)]
+        if len(numbered)>=2:
+            cards=[]
+            for n,start in enumerate(numbered):
+                end=numbered[n+1] if n+1<len(numbered) else len(blocks)
+                indices=[i for i in range(start,end) if blocks[i].assignment not in {'section_heading','structural_heading'} and blocks[i].text.strip()]
+                if indices:cards.append({'entry_id':f'projects-{len(cards)+1}','block_indices':indices,
+                    'lane':'source','boundary_reason':'explicit numbered source project marker'})
+            return cards
         geometric = project_source_groups(blocks,elements)
         if geometric:return geometric
     if category == 'certifications':
@@ -223,11 +255,11 @@ def entry_groups(blocks, category, elements):
             cards[-1]['block_indices'].append(index)
         return cards
     if category=='experience' and blocks and (all(b.reviewed_by_llm for b in blocks) or
-            any(elements[b.source_element_index].metadata.get('pdf_source_lines') for b in blocks)):
+            any(el_meta(elements[b.source_element_index]).get('pdf_source_lines') for b in blocks)):
         geometry_groups=reviewed_employment_groups(blocks,elements)
         if geometry_groups:return geometry_groups
     if category=='education' and blocks and (all(b.reviewed_by_llm for b in blocks) or
-            any(elements[b.source_element_index].metadata.get('pdf_source_lines') for b in blocks)):
+            any(el_meta(elements[b.source_element_index]).get('pdf_source_lines') for b in blocks)):
         geometry_groups=reviewed_education_groups(blocks,elements)
         if geometry_groups:return geometry_groups
     groups, active = [], {}
@@ -245,7 +277,7 @@ def entry_groups(blocks, category, elements):
                 first_active['block_indices'].append(index)
             continue
         element = elements[block.source_element_index]
-        explicit_title = (element.type == 'Title' and block.start == 0 and
+        explicit_title = (el_type(element) == 'Title' and block.start == 0 and
                           0 < len(text.split()) <= 18 and not re.match(r'^[•▪●*\-]', text))
         if category == 'experience' and explicit_title:
             from local_api.services.record_relationships import field_kinds
@@ -259,10 +291,10 @@ def entry_groups(blocks, category, elements):
             explicit_title = (len(text.split()) <= 18 and bool(set(kinds) & {'institution', 'qualification'}))
         if category == 'projects' and not explicit_title and len(text.split()) <= 12:
             from local_api.services.record_subfields import responsibility_fragment
-            spans=element.metadata.get('word_source_runs',[])
+            spans=el_meta(element).get('word_source_runs',[])
             bold_chars=sum(max(0,min(block.end,r['end'])-max(block.start,r['start'])) for r in spans if r.get('bold'))
             title_words=text.split()
-            named_bullet=(element.type=='ListItem' and all(w[:1].isupper() or w.casefold() in {'and','of','for','the','to','&'} for w in title_words)
+            named_bullet=(el_type(element)=='ListItem' and all(w[:1].isupper() or w.casefold() in {'and','of','for','the','to','&'} for w in title_words)
                 and not text.endswith(('.', '!', '?')) and not re.match(r'^projects?\s+(?:worked|at|in|for)\b',text,re.I))
             if (bold_chars >= .8*max(1,len(text)) or named_bullet) and not responsibility_fragment(text): explicit_title=True
         if category == 'projects' and explicit_title:
@@ -287,6 +319,9 @@ def entry_groups(blocks, category, elements):
                             and RANGE.search(text)
                             and not re.match(r'^[•▪●*\-]', text))
         if category == 'education':
+            from local_api.services.education_subfields import DEGREE
+            if DEGREE.match(text) and not re.match(r'^(?:from|in)\b', text, re.I):
+                explicit_title = True
             from local_api.services.dated_record_headers import education_date_starts_record
             if RANGE.fullmatch(text): dated_header = False
             elif education_date_starts_record(blocks,index): dated_header = True
@@ -300,7 +335,7 @@ def entry_groups(blocks, category, elements):
         paired_continuation = category=='experience' and index>0 and paired_employment_header(blocks[index-1].text,text)
         if category == 'experience':
             from local_api.services.record_subfields import responsibility_fragment, employment_header_fields
-            if element.type == 'ListItem' and responsibility_fragment(element.text) and not employment_header_fields(element.text):
+            if el_type(element) == 'ListItem' and responsibility_fragment(el_text(element)) and not employment_header_fields(el_text(element)):
                 explicit_title = labeled_entry = dated_header = paired = False
         boundary = not paired_continuation and category in {'experience', 'projects', 'education'} and (paired or (explicit_title or labeled_entry or dated_header))
         if category=='experience' and labeled_entry and key in active:
@@ -317,7 +352,7 @@ def entry_groups(blocks, category, elements):
             groups.append(group)
             active[key] = group
         active[key]['block_indices'].append(index)
-    if category in {'experience','education'} and any(b.reviewed_by_llm for b in blocks):
+    if category in {'experience','education'}:
         groups = attach_aligned_dates(groups, blocks, elements)
     return groups
 
@@ -329,20 +364,25 @@ def attach_aligned_dates(groups, blocks, elements):
     guess a distant date's owner. Leave ambiguous and unlocated dates unchanged.
     """
     def row(block):
-        hints=elements[block.source_element_index].metadata.get('pdf_source_lines',[])
-        candidates=[h for h in hints if len(h.get('bbox',[]))==4 and
-                    min(block.end,h.get('end',0))>max(block.start,h.get('start',0))]
-        if not candidates:return None
-        # A multi-line body cannot establish a unique header row.
-        centers=[(h['bbox'][1]+h['bbox'][3])/2 for h in candidates]
-        if max(centers)-min(centers)>.015:return None
-        return sum(centers)/len(centers)
+        meta = el_meta(elements[block.source_element_index])
+        hints = meta.get('pdf_source_lines',[])
+        candidates = [h for h in hints if len(h.get('bbox',[]))==4 and
+                      min(block.end,h.get('end',0))>max(block.start,h.get('start',0))]
+        if candidates:
+            centers = [(h['bbox'][1]+h['bbox'][3])/2 for h in candidates]
+            if max(centers)-min(centers)<=.015:
+                return sum(centers)/len(centers)
+        pts = meta.get('coordinates', {}).get('points', [])
+        h = meta.get('coordinates', {}).get('layout_height', 792.0)
+        if pts and h:
+            return min(p[1] for p in pts) / h
+        return None
     def date_only(text):
         return bool(re.search(r'\b(?:19|20)\d{2}\b|\b(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec)\s*[\'‘’]?\d{2}\b',text,re.I)) and not re.sub(
             r'(?i)\b(?:jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|jun(?:e)?|jul(?:y)?|aug(?:ust)?|sept?(?:ember)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?|present|current|to|since|till)\b|[\d\s.,/|:–—\-\'‘’()]','',text)
     membership={i:g for g in groups for i in g['block_indices']}
     for index,block in enumerate(blocks):
-        if not block.reviewed_by_llm or index not in membership or not date_only(block.text):continue
+        if index not in membership or not date_only(block.text):continue
         y=row(block)
         if y is None:continue
         candidates=[]
@@ -374,11 +414,21 @@ def reviewed_employment_groups(blocks,elements):
     business=re.compile(r'\b(?:ltd|limited|inc|llc|corp|corporation|systems|services|bank|technolog(?:y|ies|ie)|solutions)\b',re.I)
     date_pat=re.compile(r'\b(?:19|20)\d{2}\b|\b(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sept?|Oct|Nov|Dec)\s*[‘’\']?\d{2}',re.I)
     def hints(b):
-        return [h for h in elements[b.source_element_index].metadata.get('pdf_source_lines',[]) if
+        return [h for h in el_meta(elements[b.source_element_index]).get('pdf_source_lines',[]) if
                 len(h.get('bbox',[]))==4 and min(b.end,h.get('end',0))>max(b.start,h.get('start',0))]
     def y(b):
         hs=hints(b)
-        return min((h['bbox'][1] for h in hs),default=None)
+        min_y = min((h['bbox'][1] for h in hs),default=None)
+        coords = el_meta(elements[b.source_element_index]).get('coordinates', {})
+        pts = coords.get('points', [])
+        h = coords.get('layout_height', 792.0)
+        if pts and h and len(pts) == 4:
+            pts_h = (max(p[1] for p in pts) - min(p[1] for p in pts)) / h
+            pts_top = min(p[1] for p in pts) / h
+            if pts_h < 0.15 and pts_top > 0.02:
+                if min_y is None or abs(pts_top - min_y) > 0.05:
+                    return pts_top
+        return min_y
     from local_api.services.record_relationships import dated_organization_header
     from local_api.services.record_subfields import responsibility_fragment, employment_header_fields, is_place
     anchors=[]
@@ -388,11 +438,11 @@ def reviewed_employment_groups(blocks,elements):
         if normalized_heading(text) == 'responsibilities' and len(anchors)>=2:
             between=blocks[anchors[-2]['index']:i]
             shared_history=not any(responsibility_fragment(part.text) or len(part.text.split())>30 for part in between)
-        if b.assignment in {'section_heading', 'structural_heading'} or normalized_heading(text) in {'experience','work experience','professional experience','employment','work history'}:continue
+        if b.assignment in {'section_heading', 'structural_heading'} or normalized_heading(text) in {'experience','work experience','professional experience','employment','work history','career history','early career history'} or re.search(r'\b(?:career|employment|work)\s+history\b', normalized_heading(text)):continue
         if re.match(r'^Client\b',text,re.I):continue
-        if responsibility_fragment(text) or (elements[b.source_element_index].type == 'ListItem' and responsibility_fragment(elements[b.source_element_index].text) and not employment_header_fields(elements[b.source_element_index].text)):continue
+        if responsibility_fragment(text) or (el_type(elements[b.source_element_index]) == 'ListItem' and responsibility_fragment(el_text(elements[b.source_element_index])) and not employment_header_fields(el_text(elements[b.source_element_index]))):continue
         if len(text.split())>30 or re.match(r'^(?:job\s+role\s*:|[•▪●*]|projects?\s*[:\-]|projects?\s+(?:name|title|description|summary)\b|client\s*[:\-]|responsibilit)',text,re.I):continue
-        if re.match(r'^(?:operating systems|servers(?: & web)?|cloud (?:services|platforms)|programming languages|tools|frameworks|databases|ai / llm skills)\s*:', text, re.I):
+        if re.match(r'^(?:[•▪●*–—\-]+\s*)?(?:technolog(?:y|ies)|tech stack|tools and technologies|core technologies|tech stack used|operating systems|servers(?: & web)?|cloud (?:services|platforms)|programming languages|tools|frameworks|databases|ai / llm skills|environment)\s*:', text, re.I):
             continue
         explicit_header = bool(employment_header_fields(text))
         if shared_history and not (explicit_header or employment_start(text) or dated_organization_header(text)):
@@ -405,7 +455,7 @@ def reviewed_employment_groups(blocks,elements):
             for other in blocks:
                 if other.page_number==b.page_number and date_pat.search(other.text) and len(other.text.split())<=10:
                     other_top=y(other)
-                    if other_top is not None and top is not None and abs(other_top-top)<=.025:
+                    if other_top is not None and top is not None and abs(other_top-top)<=.012:
                         aligned_date=True
                         break
         following = [blocks[k] for k in range(i+1, min(i+4, len(blocks)))]
@@ -440,7 +490,7 @@ def reviewed_employment_groups(blocks,elements):
             shared_from=i
             break
     for i,b in enumerate(blocks):
-        if not re.search(r'[A-Za-z0-9]',b.text) or normalized_heading(b.text) in {'experience','work experience','professional experience','employment','work history'}:continue
+        if not re.search(r'[A-Za-z0-9]',b.text) or normalized_heading(b.text) in {'experience','work experience','professional experience','employment','work history','career history','early career history'} or re.search(r'\b(?:career|employment|work)\s+history\b', normalized_heading(b.text)):continue
         if shared_from is not None and i>=shared_from and not any(shared_from<=a['index']<=i for a in anchors):
             # A shared career-accomplishments list after several history-only
             # headers cannot be attributed to the last employer without evidence.
@@ -475,7 +525,7 @@ def reviewed_education_groups(blocks,elements):
     from local_api.services.record_relationships import degree_families,field_kinds
     rows={}
     for i,b in enumerate(blocks):
-        hs=[h for h in elements[b.source_element_index].metadata.get('pdf_source_lines',[]) if len(h.get('bbox',[]))==4 and min(b.end,h.get('end',0))>max(b.start,h.get('start',0))]
+        hs=[h for h in el_meta(elements[b.source_element_index]).get('pdf_source_lines',[]) if len(h.get('bbox',[]))==4 and min(b.end,h.get('end',0))>max(b.start,h.get('start',0))]
         if not hs:continue
         # Multi-line text cannot establish a precise row relation here.
         tops=[h['bbox'][1] for h in hs]
@@ -541,10 +591,10 @@ def employment_start(text):
     if re.match(r'^(?:projects?\s*[:\-]|projects?\s+(?:name|title|description|summary)\b|client\s*[:\-]|duration\s*:|responsibilities\s*:|accomplishments\s*:)',lookup,re.I):return False
     # A dated "Worked as ... at/with ..." statement is a history header,
     # whereas a responsibility mentioning a date is not.
-    from local_api.services.record_subfields import employment_header_fields
+    from local_api.services.record_subfields import employment_header_fields, RANGE
     stated=bool(employment_header_fields(lookup)) or bool(re.match(r'^(?:I\s+)?(?:am\s+)?(?:working|worked|currently working)\s+as\b.+\b(?:at|with|for)\b',lookup,re.I))
     date=re.search(r"\b(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sept?(?:ember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s*[‘’']?\d{2,4}",lookup,re.I)
-    period=PERIOD.search(lookup)
+    period=RANGE.search(lookup) or PERIOD.search(lookup)
     raw_prefix=lookup[:(period.start() if period else date.start())] if (period or date) else ''
     prefix=raw_prefix.strip(' |,–—-')
     if not (period or date) or len(lookup.split())>30 or EDUCATION.search(prefix) or (ACTION.search(prefix) and not stated):return False
@@ -560,11 +610,12 @@ def project_source_groups(blocks,elements):
     rows={};bold=[];bullet=[];stops=[];numbered=[];contexts=[]
     marker_rows=[]
     for el in elements:
-        if el.type!='ListItem' or el.text.strip():continue
-        c=el.metadata.get('coordinates',{});points=c.get('points',[]);height=c.get('layout_height')
-        if points and height:marker_rows.append((el.page_number,min(p[1] for p in points)/height))
+        if el_type(el)!='ListItem' or el_text(el).strip():continue
+        c=el_meta(el).get('coordinates',{});points=c.get('points',[]);height=c.get('layout_height')
+        page_num = el.get('page_number') if isinstance(el, dict) else getattr(el, 'page_number', 1)
+        if points and height:marker_rows.append((page_num,min(p[1] for p in points)/height))
     for i,b in enumerate(blocks):
-        hints=[h for h in elements[b.source_element_index].metadata.get('pdf_source_lines',[]) if len(h.get('bbox',[]))==4 and min(b.end,h.get('end',0))>max(b.start,h.get('start',0))]
+        hints=[h for h in el_meta(elements[b.source_element_index]).get('pdf_source_lines',[]) if len(h.get('bbox',[]))==4 and min(b.end,h.get('end',0))>max(b.start,h.get('start',0))]
         if not hints:continue
         top=min(h['bbox'][1] for h in hints)
         if max(h['bbox'][1] for h in hints)-top>.025:continue
@@ -578,7 +629,7 @@ def project_source_groups(blocks,elements):
         if re.match(r'^\s*\.?\d+[.)]\s+\S', b.text):numbered.append(i)
         if len(b.text.split())<=18 and ':' not in b.text and not ACTION.search(b.text) and any(h.get('bold') for h in hints):bold.append(i)
         el=elements[b.source_element_index]
-        if el.type=='ListItem' and b.start==0 or any(page==b.page_number and abs(y-top)<.008 for page,y in marker_rows):bullet.append(i)
+        if el_type(el)=='ListItem' and b.start==0 or any(page==b.page_number and abs(y-top)<.008 for page,y in marker_rows):bullet.append(i)
     # Numbered identities outrank typography; bullets alone may be tasks.
     from local_api.services.record_subfields import DATE
     dated_titles=[]
@@ -586,12 +637,12 @@ def project_source_groups(blocks,elements):
         b=blocks[i]
         if i in contexts or b.assignment in {'section_heading','structural_heading'}:continue
         if not 1 <= len(b.text.split()) <= 18 or ':' in b.text or ACTION.search(b.text):continue
-        hs=[h for h in elements[b.source_element_index].metadata.get('pdf_source_lines',[]) if len(h.get('bbox',[]))==4 and min(b.end,h.get('end',0))>max(b.start,h.get('start',0))]
+        hs=[h for h in el_meta(elements[b.source_element_index]).get('pdf_source_lines',[]) if len(h.get('bbox',[]))==4 and min(b.end,h.get('end',0))>max(b.start,h.get('start',0))]
         x=max(h['bbox'][2] for h in hs)
         for k in rows:
             if k==i or rows[k][0]!=rows[i][0] or abs(rows[k][1]-rows[i][1])>.004:continue
             if not re.fullmatch(r'(?:' + DATE + r'|[A-Za-z]{3,9}\s+\d{2})(?:\s*[-–—]\s*(?:' + DATE + r'|[A-Za-z]{3,9}\s+\d{2}))?[\s\uf020]*', blocks[k].text, re.I):continue
-            kh=[h for h in elements[blocks[k].source_element_index].metadata.get('pdf_source_lines',[]) if len(h.get('bbox',[]))==4 and min(blocks[k].end,h.get('end',0))>max(blocks[k].start,h.get('start',0))]
+            kh=[h for h in el_meta(elements[blocks[k].source_element_index]).get('pdf_source_lines',[]) if len(h.get('bbox',[]))==4 and min(blocks[k].end,h.get('end',0))>max(blocks[k].start,h.get('start',0))]
             if kh and min(h['bbox'][0] for h in kh)>x:dated_titles.append(i);break
     identities=sorted(set(numbered+bold+dated_titles),key=lambda i:rows[i])
     bullets=[i for i in bullet if len(blocks[i].text.split())<=18 and not ACTION.search(blocks[i].text.strip().lstrip('•▪●*\uf0b7 '))]

@@ -10,7 +10,7 @@ DEGREE_FAMILIES={
  'postgraduate_certificate':r'\b(?:pg|postgraduate)\s+certificate\b',
  'diploma':r'\bdiploma\b|\b(?:pgdca|pgdb|pgdm)\b',
  'doctorate':r'\bph\s*d\b|\bdoctorate\b',
- 'secondary':r'\b(?:ssc|sslc|10th|class\s+x|schooling|matric(?:ulation)?)\b',
+ 'secondary':r'\b(?<!higher\s)(?<!senior\s)(?:ssc|sslc|10th|class\s+x|schooling|matric(?:ulation)?|secondary\s+(?:school(?:\s+certificate)?|certificate))\b',
  'higher_secondary':r'\b(?:hsc|puc|intermediate|12th|class\s+xii|higher\s+secondary)\b',
 }
 
@@ -68,9 +68,10 @@ def field_kinds(text,category):
         header=employment_header_fields(text)
         if 'company' in header:kinds.append('employer')
         if 'role' in header:kinds.append('title')
+        if 'location' in header:kinds.append('location')
         if len(text.split()) <= 18 and re.search(r'\b(?:engineer|developer|analyst|associate|consultant|manager|architect|intern|specialist|director|officer|executive|practitioner|lead|administrator|underwriter|supervisor)\b',text,re.I):kinds.append('title')
         if dated_organization_header(text) or re.search(r'\b(?:ltd|limited|inc|llc|corp|corporation|systems|services|bank|technolog(?:y|ies|ie)|solutions|ispl|paribas|bnp|pvt|private)\b|\b(?:company|employer)\s*[:=-]',text,re.I):kinds.append('employer')
-        if re.match(r'^\s*[•▪●\-]?\s*(?:led|built|developed|managed|implemented|responsib|worked on|configured|designed|achieved|supported|created|performed|conducted)',text,re.I):kinds.append('responsibilities')
+        if re.match(r'^\s*[•▪●\-]?\s*(?:led|built|developed|managed|implemented|responsib|worked on|configured|designed|achieved|supported|created|performed|conducted|architect(?:ed|ing)?|optimi[sz](?:ed|ing|e)?|resolv(?:ed|ing|e)?|automat(?:ed|ing|e)?|integrat(?:ed|ing|e)?|analy[sz](?:ed|ing|e)?|proactively|successfully|eliminat(?:ed|ing|e)?|identif(?:ied|y)?)',text,re.I):kinds.append('responsibilities')
     if re.match(r'^\s*(?:location|work base)\s*:',text,re.I):kinds.append('location')
     return list(dict.fromkeys(kinds))
 

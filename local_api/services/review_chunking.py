@@ -211,16 +211,20 @@ def section_plan(request, result, settings, feedback=None, document_sha256=None)
 def section_decisions(chunk, content, categories):
     from local_api.services.llm_section_review import parse_decisions
     try:raw = json.loads(content)
-    except (TypeError,ValueError) as exc:raise ChunkError('invalid_assignments') from exc
+    except (TypeError,ValueError) as exc:
+        failure=ChunkError('invalid_assignments');failure.details=[{'kind':'invalid_json'}]
+        raise failure from exc
     if (not isinstance(raw, dict) or set(raw) - {'assignments', 'type'}
             or raw.get('type', 'json_object') != 'json_object'
             or not isinstance(raw.get('assignments'), list)):
-        raise ChunkError('invalid_assignments')
+        failure=ChunkError('invalid_assignments');failure.details=[{'kind':'invalid_schema'}]
+        raise failure
     targets = chunk['targets']; ids = {u['id']: f'u{i}' for i, u in enumerate(targets)}
     rows = []
     for row in raw['assignments']:
         if not isinstance(row, list) or len(row) not in (2, 4) or not isinstance(row[0], str) or row[0] not in ids:
-            raise ChunkError('unknown_or_context_target')
+            failure=ChunkError('unknown_or_context_target');failure.details=[{'kind':'unknown_or_context_target'}]
+            raise failure
         rows.append([ids[row[0]], *row[1:]])
     parsed = parse_decisions(json.dumps({'assignments': rows}), len(targets), categories,
                             {f'u{i}': len(u['text']) for i, u in enumerate(targets)},

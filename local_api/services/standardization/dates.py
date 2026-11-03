@@ -22,7 +22,7 @@ MONTH_MAP: dict[str, int] = {
 }
 
 CURRENT_PATTERNS = re.compile(
-    r"^(?:present|current(?:ly)?(?: working)?|till date|till now|now|ongoing|onwards|to date|till present)$",
+    r"^(?:present|current(?:ly)?(?: working)?|(?:till\s+)+date|(?:till\s+)+now|now|ongoing|onwards|to date|till present)$",
     re.I
 )
 
@@ -34,6 +34,7 @@ def parse_date_string(
     raw_date: str | None,
     field_context: str = "date",
     *, reference_date: datetime | None = None,
+    date_order_hint: Literal["DMY", "MDY"] | None = None,
 ) -> tuple[str | None, Literal["year", "month_year", "day"] | None, bool, list[StandardizationWarning]]:
     """Parse a date string into ISO-8601 format, preserving precision.
 
@@ -45,6 +46,10 @@ def parse_date_string(
         return None, None, False, warnings
 
     text = raw_date.strip()
+    # Normalize internal newlines/carriage returns in extracted dates (e.g. '05-12-\n2022')
+    compact_lines = re.sub(r'[\r\n\t]+', '', text).strip()
+    if compact_lines != text:
+        text = compact_lines
     # A shortened year does not establish a century. Preserve it in audit only.
     short = re.fullmatch(r'(' + MONTH_REGEX + r")[.\s‘’'-]+(\d{2})", text, re.I)
     if short:
@@ -131,6 +136,36 @@ def parse_date_string(
     if m_ambig:
         v1, v2, year = int(m_ambig.group(1)), int(m_ambig.group(2)), m_ambig.group(3)
         if v1 <= 12 and v2 <= 12 and v1 != v2:
+            if date_order_hint == "DMY":
+                try: date(int(year), v2, v1)
+                except ValueError: return _invalid_date(raw_date, field_context)
+                warnings.append(
+                    StandardizationWarning(
+                        field=field_context,
+                        warning_type="numeric_date_disambiguated",
+                        severity="info",
+                        original_value=raw_date,
+                        normalized_value=f"{year}-{v2:02d}-{v1:02d}",
+                        basis="Disambiguated as DD-MM-YYYY using unambiguous document date evidence.",
+                        message=f"Date '{raw_date}' resolved to '{year}-{v2:02d}-{v1:02d}' based on unambiguous date patterns elsewhere in the resume."
+                    )
+                )
+                return f"{year}-{v2:02d}-{v1:02d}", "day", False, warnings
+            elif date_order_hint == "MDY":
+                try: date(int(year), v1, v2)
+                except ValueError: return _invalid_date(raw_date, field_context)
+                warnings.append(
+                    StandardizationWarning(
+                        field=field_context,
+                        warning_type="numeric_date_disambiguated",
+                        severity="info",
+                        original_value=raw_date,
+                        normalized_value=f"{year}-{v1:02d}-{v2:02d}",
+                        basis="Disambiguated as MM-DD-YYYY using unambiguous document date evidence.",
+                        message=f"Date '{raw_date}' resolved to '{year}-{v1:02d}-{v2:02d}' based on unambiguous date patterns elsewhere in the resume."
+                    )
+                )
+                return f"{year}-{v1:02d}-{v2:02d}", "day", False, warnings
             warnings.append(
                 StandardizationWarning(
                     field=field_context,

@@ -300,7 +300,7 @@ def review_sections(request, local_result, *, settings=None, transport=None, _re
         assert_coverage(request.elements, ledger)
         categories = {key: value['label'] for key, value in ANCHORS.items()}
         messages = make_messages(ledger, categories, request.elements, result.sections)
-        from local_api.services.review_chunking import measure, new_budget, run_section_chunks, binding
+        from local_api.services.review_chunking import measure, new_budget, run_section_chunks, binding, ChunkError
         budget = _budget or new_budget(settings)
         document_key = binding(request.elements)['source_inventory_sha256']
         if feedback:
@@ -320,7 +320,7 @@ def review_sections(request, local_result, *, settings=None, transport=None, _re
                 content = (transport or call_deepseek)(settings, messages)
                 decisions = parse_decisions(content, len(ledger), categories, {f'u{i}':len(b.text) for i,(b,_) in enumerate(ledger)}, {f'u{i}':b.text for i,(b,_) in enumerate(ledger)}, {f'u{i}':allowed_split_offsets(b,request.elements) for i,(b,_) in enumerate(ledger)})
                 break
-            except ReviewError as exc:
+            except (ReviewError, ChunkError) as exc:
                 details=getattr(exc,'details',[])
                 state.setdefault('validation_failures',[]).append({'attempt':attempt+1,'error_code':str(exc),'details':details})
                 attempts.append(str(exc))

@@ -287,3 +287,14 @@ def test_record_crosswalk_reports_changes_without_inventing_record_identity():
  assert len(rows)==1 and rows[0]['old_record_id']=='experience-1'
  assert rows[0]['new_owners'][0]['parent']=='skills' and rows[0]['new_owners'][0]['record_id'] is None
  assert rows[0]['new_owners'][0]['source_ids']==[f'e{i}:0:26' for i in range(2)]
+
+
+@pytest.mark.parametrize('content,kind',[('not valid json','invalid_json'),('{}','invalid_schema'),('{"assignments":[["foreign","experience"]]}','unknown_or_context_target')])
+def test_failed_section_chunk_exposes_sanitized_reason_without_changing_local_output(content,kind):
+ req,local=fixture(3);before=local.model_dump()
+ reviewed=review_sections(req,local,settings=settings(max_units=1),transport=lambda *_:content)
+ state=reviewed.metadata['llm_review']
+ assert state['status']=='failed'
+ assert state['validation_failures'][-1]['details'][0]['kind']==kind
+ assert [s.model_dump() for s in reviewed.sections]==before['sections']
+ assert 'not valid json' not in json.dumps(state)

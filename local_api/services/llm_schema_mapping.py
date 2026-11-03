@@ -167,7 +167,7 @@ def expand_compact_review(content, source_sections):
                     ids=item['source_ids']
                     if not isinstance(ids,list) or not ids or any(not isinstance(sid,str) or sid not in inventory or sid not in owner for sid in ids):
                         fail('source_evidence_validation','invalid_or_cross_record_quote',path+('fields',name,vi))
-                    refs=citations(item['value'],[b for sid,b in inventory.items() if sid in ids])
+                    refs=citations(item['value'],[b for sid,b in inventory.items() if sid in ids], flexible_whitespace=True)
                     if not refs: fail('source_evidence_validation','invalid_or_cross_record_quote',path+('fields',name,vi))
                     items[vi]={'value':item['value'],'evidence':refs}
     return json.dumps({'sections':payload['sections']},ensure_ascii=False)
@@ -1088,6 +1088,12 @@ def map_with_field_review(request, *, settings=None, transport=None, budget=None
                     # size and keep full validation after each change.
                     for _ in range(1 + sum(len(s.blocks) for s in batch)):
                         if repaired_valid:break
+                        # Compact decoding may fail before a legacy payload
+                        # exists. Never run legacy repair code on {} or on
+                        # compact source_ids items; retain the original failure.
+                        if not isinstance(payload,dict) or set(payload)!={'sections'} or not isinstance(payload.get('sections'),list):
+                            break
+
                         repairs = (repair_section_envelope(payload, batch_source, attempts[-1]) or
                                    repair_heading_owners(payload, batch_source, attempts[-1]) or
                                    repair_singleton_records(payload, batch_source, attempts[-1]) or

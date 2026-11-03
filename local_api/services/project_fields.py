@@ -11,6 +11,15 @@ def project_fields(blocks, elements, proposed_title=None):
         if offset >= 0: parts.append((value, block.source_element_index, block.start + offset, block.start + offset + len(value), explicit))
     for b in content:
         text = b.text.strip()
+        numbered=re.match(r'^\s*(?:academic\s+)?project\s*#?\s*\d+\s*:\s*(\S.*)',text,re.I)
+        if title is None and numbered:
+            title=numbered[1].strip();continue
+        if re.fullmatch(r'(?:academic\s+)?project\s*#?\s*\d+\s*[:.)-]?',text,re.I):continue
+        if text.strip()==':':continue
+        if title is None and text.startswith(':') and len(text[1:].split())<=18:
+            title=text[1:].strip();continue
+        from local_api.services.resume_structure import RECORD_FIELDS, normalized_heading
+        if normalized_heading(text) in RECORD_FIELDS:continue
         labels = labelled_fields('projects', [b])
         if labels:
             for value in labels.get('description', []): append(b, value, True)

@@ -41,6 +41,14 @@ def raw_profile_values(blocks):
         else:
             for match in PROFILE.finditer(text):
                 output['github_url' if 'github.com/' in match.group().lower() else 'linkedin_url'].add(match.group())
+            for match in re.finditer(r'(?<![/.\w])(?:(?:\(cid:239\)|/linkedin)\s*[:/]?\s*|(?:linkedin|in)\s*[:/]\s*)([A-Za-z0-9_-]{3,50})', text, re.I):
+                handle = match.group(1)
+                if not any(u.rstrip('/').endswith('/' + handle) for u in output['linkedin_url']):
+                    output['linkedin_url'].add(f"linkedin.com/in/{handle}")
+            for match in re.finditer(r'(?<![/.\w])(?:(?:\(cid:238\)|/github)\s*[:/]?\s*|github\s*[:/]\s*)([A-Za-z0-9_-]{3,50})', text, re.I):
+                handle = match.group(1)
+                if not any(u.rstrip('/').endswith('/' + handle) for u in output['github_url']):
+                    output['github_url'].add(f"github.com/{handle}")
     return output
 
 
