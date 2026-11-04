@@ -78,10 +78,17 @@ def test_saved_placement_review_preserves_element_offsets_and_exact_source_text(
     request = SectionRequest(elements=[ExtractedElement.model_validate(e) for e in extraction['elements']])
     local = SectionResponse.model_validate(json.loads((SAVED / 'local-sections.json').read_text()))
     content = json.loads((SAVED / 'provider-response-1.json').read_text())['content']
-    reviewed = review_sections(request, local, settings=ReviewSettings(enabled=True, api_key='mock-only'),
-                              transport=lambda *_: content)
+    from replay_section_decisions import rebind_saved_decisions
+    # Replay the historical whole-document response with ample mock-only budgets;
+    # chunk limits remain covered by the dedicated review-chunking regressions.
+    reviewed = review_sections(request, local, settings=ReviewSettings(enabled=True, api_key='mock-only',max_units=1000,max_input_chars=1000000,max_input_tokens=1000000,max_context_tokens=1016000),
+                              transport=lambda settings,messages: rebind_saved_decisions(content,local,messages))
     assert reviewed.metadata['llm_review']['status'] == 'complete'
-    assert reviewed.metadata['llm_review']['changed_units'] == 18  # saved run, not the unsaved live ten-change run
+    from local_api.services.llm_section_review import source_ledger,parse_decisions
+    ledger=source_ledger(local)
+    decisions=parse_decisions(content,len(ledger),{s.category for s in reviewed.sections},{f'u{i}':len(b.text) for i,(b,_) in enumerate(ledger)})
+    expected=sum(len(decisions[f'u{i}'])>1 or any(c!=(before or 'needs_review') for _,_,c in decisions[f'u{i}']) for i,(b,before) in enumerate(ledger) if b.text.strip())
+    assert reviewed.metadata['llm_review']['changed_units']==expected
     for section in reviewed.sections:
         for block in section.blocks:
             assert request.elements[block.source_element_index].text[block.start:block.end] == block.text

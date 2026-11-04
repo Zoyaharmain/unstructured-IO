@@ -7,7 +7,7 @@ def validate_result(elements, result):
     if any(c not in ANCHORS for c in categories):errors.append('invalid_section_category')
     if len(categories) != len(set(categories)):
         errors.append('duplicate_categories')
-    spans = sorted([b for s in result.sections for b in s.blocks] + result.needs_review,
+    spans = sorted([b for s in result.sections for b in s.blocks] + result.needs_review + getattr(result,'source_artifacts',[]),
                    key=lambda b: (b.source_element_index, b.start))
     if any(not 0 <= b.source_element_index < len(elements) for b in spans):
         errors.append('invalid_source_index')
@@ -38,6 +38,11 @@ def validate_result(elements, result):
         ownership=[];entry_ids=[]
         for entry in section.entries:
             entry_ids.append(entry.entry_id);ownership.extend(entry.block_indices)
+            context_fields=getattr(entry,'context_fields',{})
+            if context_fields and (section.category!='education' or set(context_fields)-{'institution'} or any(not 0<=i<len(section.blocks) for ids in context_fields.values() for i in ids)):errors.append('invalid_record_context')
+            elif context_fields and all(0<=i<len(section.blocks) for i in entry.block_indices):
+                from local_api.services.education_context import valid_institution_context
+                if any(not valid_institution_context(section,entry,i) for i in context_fields['institution']):errors.append('invalid_record_context')
             if any(index not in entry.block_indices for values in entry.fields.values() for index in values):errors.append('invalid_field_entry_reference')
             if any(not 0 <= i < len(section.blocks) for i in entry.block_indices):
                 errors.append('invalid_entry_reference')

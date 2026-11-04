@@ -74,7 +74,7 @@ RECORD_FIELDS = {'technologies', 'technology', 'tools', 'tool', 'tech stack',
                  'environment', 'client name', 'work base location'}
 EXTRA_HEADINGS = {
     'personal_information': ['contact', 'personal info', 'personal details', 'additional information'],
-    'summary': ['objective', 'career summary', 'executive summary', 'profile snapshot', 'profile summary', 'professional summary', 'career objective',
+    'summary': ['synopsis', 'professional synopsis', 'objective', 'career summary', 'executive summary', 'profile snapshot', 'profile summary', 'professional summary', 'career objective',
                 'selected jd-aligned highlights', 'key business impact', 'career highlights', 'professional highlights'],
     'projects': ['poc', 'pocs', 'proof of concept', 'proofs of concept', 'key projects', 'project highlights', 'project details', 'projects', 'academic projects',
                  'independent project', 'independent projects', 'other project details',
@@ -93,7 +93,7 @@ EXTRA_HEADINGS = {
     'certifications': ['certificates', 'certification', 'training', 'certifications and licenses'],
     'publications': ['research publications', 'selected publications', 'papers and publications'],
     'volunteering': ['volunteer experience', 'voluntary work', 'community service'],
-    'awards': ['key achievements', 'professional achievements', 'awards and recognitions',
+    'awards': ['academic achievements', 'academic awards', 'key achievements', 'professional achievements', 'awards and recognitions',
                'awards and recognition', 'awards & recognition', 'awards & recognitions',
                'recognition and awards', 'recognitions and awards',
                'achievements/awards', 'achievements and awards', 'key achievement',
@@ -130,7 +130,17 @@ def heading_boundary(text, aliases):
         return None, None
     if len(normalized.split()) <= 5 and re.fullmatch(r'(?:[a-z]+\s+){0,4}(?:competencies|competences|competency|skillset)', normalized):
         return 'skills', None
+    from local_api.services.competency_sections import expertise_heading
+    if expertise_heading(text):return 'skills',None
     category = aliases.get(normalized)
+    if category is None and 8<=len(normalized)<=45 and len(normalized.split())<=4:
+        # A single transposition/insertion in an established heading is a
+        # structural cue only; source spelling and field text are unchanged.
+        from difflib import SequenceMatcher
+        matches={c for a,c in aliases.items() if len(a)==len(normalized) and
+                 sum(x!=y for x,y in zip(a,normalized))<=2 and
+                 SequenceMatcher(None,a,normalized).ratio()>=.94}
+        if len(matches)==1:category=matches.pop()
     # Compose headings only when every component names the same schema family.
     components=re.split(r'\s+(?:and|/)\s+',normalized)
     owners={aliases.get(part) for part in components}
@@ -185,6 +195,7 @@ def entry_groups(blocks, category, elements):
     a visible entry boundary, retain one group rather than guess from similarity.
     """
     if category == 'awards':
+        from local_api.services.record_subfields import DATE
         content = [(i,b) for i,b in enumerate(blocks)
                    if b.assignment not in {'section_heading','structural_heading'} and b.text.strip()]
         if content:
@@ -212,6 +223,9 @@ def entry_groups(blocks, category, elements):
                             starts_new = True
                     elif re.match(r'^\s*[•▪●*\uf0b7-]\s+', text):
                         starts_new = True
+                named_parent=bool(cards and el_type(elements[blocks[cards[-1]['block_indices'][0]].source_element_index]) in {'Title','Header'})
+                detail=bool(re.fullmatch(DATE,text,re.I) or re.match(r'^(?:won|awarded|achieved|received|earned|secured|placed|ranked|recognized)\b',text,re.I))
+                if named_parent and detail and b.page_number==blocks[cards[-1]['block_indices'][0]].page_number:starts_new=False
                 if starts_new:
                     cards.append({'entry_id': f'awards-{len(cards)+1}', 'block_indices': [index],
                                   'lane': 'source', 'boundary_reason': 'original achievement list item'})
@@ -219,6 +233,9 @@ def entry_groups(blocks, category, elements):
                     cards[-1]['block_indices'].append(index)
                 bullet_seen = False
             if cards:
+                for card in cards:
+                    first=card['block_indices'][0]
+                    if el_type(elements[blocks[first].source_element_index]) in {'Title','Header'} and not re.fullmatch(DATE,blocks[first].text.strip(),re.I):card['fields']={'title':[first]}
                 return cards
     if category == 'projects':
         # Explicit numbered record markers outrank inferred font/lane anchors.

@@ -54,6 +54,8 @@ def map_schema(request):
     from local_api.services.education_date_recovery import recover_education_dates
     recovered_sections = recover_education_dates(request.sections, request.elements)
     recovered_sections = recover_contact_sections(recovered_sections, request.elements)
+    from local_api.services.education_context import recover_education_context
+    recovered_sections = recover_education_context(recovered_sections)
     from local_api.services.preamble_recovery import recover_summary_preamble
     recovered_sections = recover_summary_preamble(recovered_sections, request.elements)
     contacts_reassigned = recovered_sections is not request.sections
@@ -94,7 +96,7 @@ def map_schema(request):
         identity_parts = [b for b in identity_header
                     if b.source_element_index == min((h.source_element_index for h in identity_header), default=-1)
                     and all(c.isalpha() or c in " .'-" for c in b.text.strip())
-                    and not ROLE.search(b.text)]
+                    and not ROLE.search(b.text) and b.assignment!='professional_headline']
         # Join only adjacent literal pieces of the SAME extracted element.
         # A surname split by PDF typography must not disappear from the identity.
         identity_runs = []
@@ -123,11 +125,12 @@ def map_schema(request):
         title_candidates = [(text, run) for run in runs(identity_header) for text in [''.join(b.text for b in run)]
                             if len(text.split())<=12 and not re.search(r'@|Technical Skills|Core AI|linkedin|github',text,re.I)]
         title_candidates += [(b.text,[b]) for b in identity_header]
+        title_candidates=[(b.text,[b]) for b in identity_header if b.assignment=='professional_headline']+title_candidates
         for title, refs in title_candidates:
             if any(b.assignment == 'local_target_preferences' for b in refs): continue
             if re.search(r'\b(?:target (?:role|position)|seeking|open to|preferred locations?)\b', title, re.I):
                 continue
-            if len(title.split())<=12 and '@' not in title and re.search(r'\b(?:engineer|engineering lead|developer|analyst|consultant|architect|manager|specialist|scientist)\b',title,re.I):
+            if len(title.split())<=12 and '@' not in title and (any(b.assignment=='professional_headline' for b in refs) or re.search(r'\b(?:engineer|engineering lead|developer|analyst|consultant|architect|manager|specialist|scientist)\b',title,re.I)):
                 title=title.strip()
                 if data.contact.full_name and title.startswith(data.contact.full_name + ' '):title=title[len(data.contact.full_name):].strip()
                 data.professional_title=remember('professional_title',title,refs);break
@@ -183,6 +186,9 @@ def map_schema(request):
         for skill in ('C#','C++'):
             if re.search(r'(?<!\w)'+re.escape(skill)+r'(?!\w)',skill_text,re.I) and skill not in data.skills.technical_skills:
                 data.skills.technical_skills.append(skill)
+        explicit_competencies=[b.text.strip().removesuffix(':').rstrip() for b in skill_blocks if b.assignment=='local_competency_name']
+        known=set(data.skills.technical_skills+data.skills.tools_and_platforms+data.skills.domain_and_functional+data.skills.soft_skills)
+        data.skills.domain_and_functional=unique(data.skills.domain_and_functional+[name for name in explicit_competencies if name not in known])
         flat=skill_candidates(skill_blocks)
         data.skills.all_skills=unique(data.skills.technical_skills+data.skills.tools_and_platforms+data.skills.domain_and_functional+data.skills.soft_skills+flat)
         for field in type(data.skills).model_fields:
@@ -195,14 +201,16 @@ def map_schema(request):
             section=sections.get(category)
             if not section:continue
             for entry in section.entries:
-                bs=[section.blocks[i] for i in entry.block_indices]
+                owned_bs=[section.blocks[i] for i in entry.block_indices]
+                context_ids={i for ids in entry.context_fields.values() for i in ids}
+                bs=[section.blocks[i] for i in sorted(set(entry.block_indices)|context_ids)]
                 def refs(name):return [section.blocks[i] for i in entry.fields.get(name,[])]
                 def field(name):return canonical(refs(name)).strip()
                 def sole(name):
                     value=field(name)
                     return value if len(refs(name))==1 else None
                 text=canonical(bs)
-                review={'category':category,'entry_id':entry.entry_id,'source_ids':[source_id(b) for b in bs],
+                review={'category':category,'entry_id':entry.entry_id,'source_ids':[source_id(b) for b in owned_bs],
                         'relationship_status':entry.relationship_status,'review_reasons':entry.review_reasons}
                 record_reviews.append(review)
                 if category=='experience':
@@ -311,6 +319,10 @@ def map_schema(request):
                 refined, reasons = refine_record(category, base, bs, header_fields=(
                     {'company' if field == 'employer' else 'role' if field == 'title' else field for field in entry.fields}
                     if entry.fields else None))
+                if category=='experience':
+                    literal_header=request.sections.metadata.get('dated_employment_scope',{}).get('literal_records',{}).get(entry.entry_id,{})
+                    for key,value in literal_header.items():
+                        if key in refined and value and field_quotes(value,bs):refined[key]=value
                 if category == 'education':
                     from local_api.services.education_header_fields import source_education_fields
                     refined.update(source_education_fields(bs,request.elements))

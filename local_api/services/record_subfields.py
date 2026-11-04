@@ -22,6 +22,12 @@ ALIASES = {
         'job title': 'role', 'designation': 'role', 'position': 'role',
         'start date': 'start_date', 'end date': 'end_date', 'period': 'duration',
         'work base location': 'location', 'job location': 'location',
+        'technology & tools': 'technologies', 'tools & technology': 'technologies',
+        'agile/devops': 'technologies', 'cloud & data platforms': 'technologies',
+        'etl & data integration': 'technologies', 'database & bi tools': 'technologies',
+        'product development stack': 'technologies', 'cloud & backend': 'technologies',
+        'ux/ui design': 'technologies', 'mobile development': 'technologies',
+        'frontend & mobile': 'technologies', 'automation & qa': 'technologies',
         'tools': 'technologies', 'technology': 'technologies', 'tech stack': 'technologies',
         'environment': 'technologies', 'key responsibilities': 'responsibilities',
         'roles and responsibilities': 'responsibilities', 'achievements': 'responsibilities',
@@ -106,6 +112,7 @@ def responsibility_fragment(text):
     identity = re.split(r'\s+[—–]\s+|\s*\|\s*',text, maxsplit=1)[0]
     if len(identity.split()) <= 6 and not re.search(r'\b(?:to|for|with|at|across|prior|during|from|as)\b',identity,re.I) and re.search(r'\b(?:ltd\.?|limited|inc\.?|llc|corp\.?|corporation)\s*$',identity,re.I):
         return False
+    if re.match(r'^By\s+[A-Za-z-]+ing\b',text,re.I):return True
     narrative = re.match(r'^(?:[•▪●*\-]\s*)?(?:I\s+(?:have|am|speciali[sz]e|thrive|work|excel|focus)\b|My\s+(?:proficiency|expertise|experience|background)\b|With\s+(?:a\s+)?(?:robust|strong|extensive|solid|broad)\s+background\b)',text,re.I)
     return bool(narrative or CAPABILITY.search(text) or ACTION.search(text) or len(text.split()) > 6 and (
         re.search(r'\b(?:setting up|cut average|ensuring|enhancing|working across)\b', text, re.I)
@@ -116,7 +123,7 @@ def employment_header_fields(text):
     """Identify role/employer by unambiguous component shapes, not field order."""
     text = re.sub(r'^\s*[•▪●*\uf0b7-]\s+', '', text.strip())
     if re.search(r'\brole[- ]based\b', text, re.I):return {}
-    if re.match(r'^Client\b',text,re.I):return {}
+    if re.match(r'^(?:Client\b|(?:Technology\s*&\s*Tools|Tools\s*&\s*Technology|Tech(?:nology)? Stack)\s*:)',text,re.I):return {}
     lookup=re.sub(r'^[^\w]+','',text).strip()
     # Explicit relation labels establish identities even when role spelling is
     # unfamiliar. Do not derive employers from generic capability prose.
@@ -131,6 +138,14 @@ def employment_header_fields(text):
         return {'company':internship[2].rstrip('.'),'role':internship[1]}
 
     if len(text.split()) > 32:return {}
+    # A short employer followed by an explicit department/operation qualifier
+    # is identity context, not a second employer or a duty paragraph.
+    department=re.fullmatch(r'(.+?)\s+[-–—]\s+(.+)',text)
+    if (department and 1<=len(department[1].split())<=8
+        and not responsibility_fragment(text) and not ROLE.search(department[1]) and not ROLE.search(department[2])
+        and re.search(r'\b(?:office|department|division|operations|business unit)\b',department[2],re.I)
+        and len(department[2].split())<=14 and not RANGE.search(text)):
+        return {'company':department[1].strip()}
     stated = re.fullmatch(r'(?:I\s+)?(?:am\s+)?(?:currently\s+)?work(?:ed|ing)\s+as\s+(?:a|an)\s+(.+?)\s+(?:at|with|for)\s+(.+?)(?:\s+(?:from|since))?[ .\uf020]*', text, re.I)
     if stated and ROLE.search(stated[1]):
         employer = re.split(r'\s+(?=' + DATE + r')', stated[2], maxsplit=1, flags=re.I)[0].rstrip(' .–—-')
@@ -190,7 +205,14 @@ def employment_header_fields(text):
     dates = list(RANGE.finditer(text))
     if len(dates) > 1:return {}
     prefix = text[:dates[0].start()].rstrip(' |\u2013\u2014-()') if dates else text
-    parts = [part.strip() for part in re.split(r'\s*\|\s*|\s+[\u2013\u2014]\s+|\s+-\s+', prefix) if part.strip()]
+    parts=[];depth=0;last=0
+    for delimiter in re.finditer(r'[()]|\s*\|\s*|\s+[–—-]\s+|\s*[•▪●]\s*',prefix):
+        if delimiter[0]=='(':depth+=1
+        elif delimiter[0]==')':depth=max(0,depth-1)
+        elif not depth:
+            if prefix[last:delimiter.start()].strip():parts.append(prefix[last:delimiter.start()].strip())
+            last=delimiter.end()
+    if prefix[last:].strip():parts.append(prefix[last:].strip())
     if len(parts) == 1 and ',' in prefix:
         # Common resume header: Employer, Role or Employer, Location.
         employer, title = prefix.rsplit(',', 1)
@@ -273,6 +295,14 @@ def refine_record(category, values, blocks, *, header_fields=None):
     values = dict(values)
     reasons = []
     found = labelled_fields(category, blocks)
+    if category=='experience' and any(b.assignment=='local_employment_header' for b in blocks):
+        from types import SimpleNamespace
+        from local_api.services.source_fragments import texts
+        found=labelled_fields(category,[SimpleNamespace(text=text,assignment='source_paragraph') for text in texts(blocks)])
+        header_labels=labelled_fields(category,[b for b in blocks if b.assignment=='local_employment_header'])
+        for name in ('company','role','start_date','end_date','duration','location'):
+            if name in header_labels:found[name]=header_labels[name]
+            else:found.pop(name,None)
     for name, candidates in found.items():
         if name not in values:
             continue
@@ -435,6 +465,13 @@ def refine_record(category, values, blocks, *, header_fields=None):
             source = '\n'.join(b.text for b in blocks)
             values['responsibilities'] = sorted(dict.fromkeys(duties),
                 key=lambda value: source.find(value) if value in source else len(source))
+    if category=='experience' and any(b.assignment=='local_employment_header' for b in blocks):
+        from local_api.services.employment_details import duties_from_source
+        source_duties=duties_from_source(blocks)
+        if source_duties:values['responsibilities']=source_duties
+        values['responsibilities']=[v for v in values.get('responsibilities',[])
+            if not re.match(r'^\s*(?:Technology\s*&\s*Tools|Tools\s*&\s*Technology|Tech Stack)\s*:',v,re.I)
+            and not re.fullmatch(r'\s*(?:Key\s+)?(?:Responsibilities(?:\s*(?:&|and)\s*Achievements)?|Achievements)\s*:?\s*[•▪● ]*',v,re.I)]
     if category == 'certifications':
         from local_api.services.certification_integrity import credential_values
         credential_fields, credential_reasons = credential_values(blocks)

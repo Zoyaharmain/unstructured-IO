@@ -247,13 +247,15 @@ def test_split_offsets_reject_gaps_overlaps_and_invalid_ranges(ranges):
         review.parse_decisions(content,1,{'skills':'Skills'},{'u0':10})
 
 
-def test_unresolved_content_gets_one_bounded_full_context_followup(document):
+def test_unresolved_content_gets_one_bounded_targeted_context_followup(document):
     request,local=document;calls=[]
     def provider(settings,messages):
         calls.append(json.loads(messages[1]['content']))
-        return reply('experience','experience','needs_review' if len(calls)==1 else 'education')
+        return reply('experience','experience','needs_review') if len(calls)==1 else reply('education')
     result=review.review_sections(request,local,settings=configured(),transport=provider)
-    assert len(calls)==2 and all(len(call['spans'])==3 for call in calls)
+    assert len(calls)==2 and [len(call['spans']) for call in calls]==[3,1]
+    assert calls[1]['review_mode']=='unresolved_contextual_review' and calls[1]['context_read_only']
+    assert 'unresolved_groups' in calls[1]
     assert result.metadata['llm_review']['pass_count']==2
     assert not result.needs_review
     review.assert_coverage(request.elements,review.source_ledger(result))

@@ -8,7 +8,7 @@ DEGREE = re.compile(
     r'Higher\s+Secondary(?!\s+School\b)|High\s+School\s+Diploma|HSC|SSC|SSLC|'
     r'PG\s+Certificate|Post\s+Graduate\s+Diploma|PGDM|PGDB|Diploma|'
     r'Master of (?:Software Engineering|Technology|Science|Engineering|Business Administration|Computer Applications?)|'
-    r'Bachelor of (?:Technology|Science|Engineering|Arts|Commerce|Pharmacy)|'
+    r'Bachelors? (?:of|in) (?:Technology|Science|Engineering|Arts|Commerce|Pharmacy)|'
     r'M\.?\s?Sc\.?|B\.?\s?Sc\.?|B\.?Com\.?|M\.?Com\.?|M\.?Tech\.?|B\.?Tech\.?|B\.?E\.?|M\.?E\.?|MBA|MCA|BCA)(?!\w)',
     re.I
 )
@@ -90,7 +90,8 @@ def refine_education(values, blocks):
             part = re.sub(r'^(?:Institution|University|College)\s*:\s*', '', part.strip(), flags=re.I)
             if (re.fullmatch(r"[A-Za-z][A-Za-z .&/'\u2019\-(),]*", part)
                     and re.search(r'\b(?:University|College|Institute|School|Vidyalaya)\b',part,re.I)
-                    and len(part.split())<=18 and not DEGREE.search(part)):
+                    and len(part.split())<=18 and not DEGREE.search(part)
+                    and not re.match(r'^(?:student|represented|participated|member|won)\b',part,re.I)):
                 institutions.append(part)
     institutions = list(dict.fromkeys(institutions))
     institutions = [value for value in institutions if not any(other != value and value.endswith(other) for other in institutions)]
@@ -99,6 +100,11 @@ def refine_education(values, blocks):
     elif len(institutions) > 1:
         values['institution'] = None
         reasons.append('Multiple institutions in one record; association requires source review.')
+    from local_api.services.record_subfields import RANGE
+    exact_ranges={m.group():m for source in source_texts for m in RANGE.finditer(source)}
+    if len(exact_ranges)==1:
+        period=next(iter(exact_ranges.values()))
+        values['start_year'],values['graduation_year']=period[1],period[2]
     ranges = list(re.finditer(r'\b((?:19|20)\d{2})\s*[-–—]\s*((?:19|20)\d{2})\b', text))
     if len(ranges) == 1:
         values['start_year'], values['graduation_year'] = ranges[0].group(1, 2)
@@ -110,9 +116,14 @@ def refine_education(values, blocks):
         values['start_year']=abbreviated[0].group(1)
         values['graduation_year']=None
         reasons.append('Abbreviated completion year in source; no century inferred.')
-    if len(ranges) == 0 and not abbreviated:
+    if len(ranges) == 0 and not abbreviated and not exact_ranges:
         years = list(dict.fromkeys(re.findall(r'\b(?:19|20)\d{2}\b', text)))
         if len(years) == 1:values['graduation_year'] = years[0]
+    school_levels=list(re.finditer(r'\bClass\s+(?:10th|12th|XII|X)(?!\w)',text,re.I))
+    if len(school_levels)==1:
+        values['degree']=school_levels[0].group()
+        score=re.search(r'\b(\d+(?:\.\d+)?\s*(?:%|CGPA))\b|\b(\d+(?:\.\d+)?)\s*%',text,re.I)
+        if score:values['grade_or_gpa']=score.group(1) or score.group(2)+'%'
     grades = list(re.finditer(r'\b(?:CGPA|GGPA|GPA|Grade)\s*[:=]?\s*(\d+(?:\.\d+)?(?:\s*/\s*\d+(?:\.\d+)?)?)', text, re.I))
     if len(grades) == 1 and not values.get('grade_or_gpa'):
         values['grade_or_gpa'] = grades[0].group(1)

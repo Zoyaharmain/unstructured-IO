@@ -192,6 +192,7 @@ def check_connection():
 def source_ledger(result):
     items = [(block, section.category) for section in result.sections for block in section.blocks]
     items += [(block, None) for block in result.needs_review]
+    items += [(block, None) for block in getattr(result,'source_artifacts',[])]
     return sorted(items, key=lambda item: (item[0].source_element_index, item[0].start, item[0].end))
 
 
@@ -224,7 +225,7 @@ Do not invent, rewrite, summarize, omit or repeat resume text. Return ONLY JSON 
 For a mixed span, split it ONLY at its allowed_split_offsets, using Unicode character offsets relative to its supplied text (0 through length, NEVER source_start/source_end): ["u0","skills",0,10], ["u0","education",10,25]. Segments for an id must cover its entire text contiguously with no gaps or overlaps. Use shorter whole-span pairs only for unmixed spans. For content still marked needs_review, actively recover headings, names and split mixed content before abstaining.
 Use exactly this schema: {"assignments":[["u0","experience"],["u1","education"]]}.
 Return complete coverage for EVERY supplied id, with one whole-span pair or contiguous offset segments. Categories must be one of the provided category keys or needs_review.
-If a span really cannot be placed reliably, use needs_review instead of forcing a guess. Preserve blank spans too. A nonempty span cannot have an empty segment. The exact tuple order is [id,category,start,end]; never [id,start,end,category]. Physical PDF line joins in allowed_split_offsets may separate words without inserted spaces.
+If a span really cannot be placed reliably, use needs_review instead of forcing a guess. Blank spans are retained separately in the source audit. A nonempty span cannot have an empty segment. The exact tuple order is [id,category,start,end]; never [id,start,end,category]. Physical PDF line joins in allowed_split_offsets may separate words without inserted spaces.
 Declarations, self-attestations and adjacent place/date/signature lines belong to personal_information when explicitly identified in source. Combined section headings can be split at word boundaries into the named categories. A job requirements form is not candidate employment or earned education: abstain rather than invent candidate history.
 Explicit TARGET ROLES / DESIRED POSITIONS headings, desired titles, and their adjacent preferred geographic/remote scope belong to personal_information (target_role and work_preferences), never experience or current residence.
 A provider response is a provisional review, not a guarantee of correct extraction or classification.'''
@@ -274,10 +275,12 @@ def assert_coverage(elements, ledger):
         raise ReviewError('source_coverage_error')
 
 
-def review_sections(request, local_result, *, settings=None, transport=None, _recovery=True, _remaining=None, _budget=None, _pass_id=0, feedback=None, document_sha256=None):
+def review_sections(request, local_result, *, settings=None, transport=None, _recovery=True, _remaining=None, _budget=None, _pass_id=0, feedback=None, document_sha256=None, _targeted=False):
     """Atomic application: any failure retains the ENTIRE original local result."""
     from local_api.services.source_accounting import account_source
-    result = local_result.model_copy(deep=True)
+    from local_api.services.empty_source_artifacts import separate_empty_source
+    from local_api.services.competency_sections import recover_competency_sections
+    result = separate_empty_source(recover_competency_sections(separate_empty_source(local_result,request.elements),request.elements),request.elements).model_copy(deep=True)
     result.metadata['source_accounting']=account_source(request.elements,result)
     state = {'provider': 'DeepSeek', 'status': 'disabled', 'reviewed_units': 0, 'changed_units': 0,
              'resolved_units': 0, 'local_result_retained': True, 'provider_calls':0}
@@ -298,8 +301,16 @@ def review_sections(request, local_result, *, settings=None, transport=None, _re
         from local_api.services.resume_sections import ANCHORS, build_sections
         ledger = source_ledger(result)
         assert_coverage(request.elements, ledger)
+        ledger=[item for item in ledger if item[0].text.strip() and (not _targeted or item[1] is None)]
+        if not ledger:
+            state.update(status='complete',reviewed_units=0)
+            return result
         categories = {key: value['label'] for key, value in ANCHORS.items()}
         messages = make_messages(ledger, categories, request.elements, result.sections)
+        if _targeted:
+            from local_api.services.unresolved_review import contextual_messages
+            messages=contextual_messages(messages,request.elements,[b for b,_ in ledger])
+        state.update(review_mode='unresolved_contextual_review' if _targeted else 'whole_document',targeted_units=len(ledger) if _targeted else 0)
         from local_api.services.review_chunking import measure, new_budget, run_section_chunks, binding, ChunkError
         budget = _budget or new_budget(settings)
         document_key = binding(request.elements)['source_inventory_sha256']
@@ -311,13 +322,19 @@ def review_sections(request, local_result, *, settings=None, transport=None, _re
         for attempt in range(remaining+1):
             try:
                 if chunked:
-                    decisions = run_section_chunks(request,result,settings,transport or call_deepseek,budget,_pass_id,state,feedback,document_sha256)
+                    decisions = run_section_chunks(request,result,settings,transport or call_deepseek,budget,_pass_id,state,feedback,document_sha256,target_only=_targeted)
                     break
                 if not measure(settings,messages)['fits']:
                     raise ReviewError('document_limit_exceeded')
                 budget.take(document_key,_pass_id,'section_review')
                 state['provider_calls']+=1
                 content = (transport or call_deepseek)(settings, messages)
+                if _targeted:
+                    response=json.loads(content)
+                    reasons=response.pop('abstention_reasons',{}) if isinstance(response,dict) else {}
+                    if not isinstance(reasons,dict) or any(key not in {f'u{i}' for i in range(len(ledger))} or not isinstance(value,str) for key,value in reasons.items()):raise ReviewError('invalid_assignments')
+                    state['abstention_reasons']={key:value[:400] for key,value in reasons.items()}
+                    content=json.dumps(response,ensure_ascii=False)
                 decisions = parse_decisions(content, len(ledger), categories, {f'u{i}':len(b.text) for i,(b,_) in enumerate(ledger)}, {f'u{i}':b.text for i,(b,_) in enumerate(ledger)}, {f'u{i}':allowed_split_offsets(b,request.elements) for i,(b,_) in enumerate(ledger)})
                 break
             except (ReviewError, ChunkError) as exc:
@@ -331,7 +348,7 @@ def review_sections(request, local_result, *, settings=None, transport=None, _re
                 messages.append({'role':'user','content':'The previous response was rejected: '+str(exc)+'. '+feedback+' Return complete contiguous decisions for EVERY original span ID. Offsets are relative to that span, not its source element. Do not split inside ordinary words. Do not omit spans or change source text.'})
         remaining-=len(attempts)
         state.update(invalid_response_attempts=attempts)
-        grouped, unresolved = {}, []
+        grouped, unresolved = ({s.category:list(s.blocks) for s in result.sections} if _targeted else {}), []
         changed = resolved = split_units = 0
         for i,(block,before) in enumerate(ledger):
             parts=decisions[f'u{i}']
@@ -348,12 +365,14 @@ def review_sections(request, local_result, *, settings=None, transport=None, _re
                     'text':sub_text, 'reviewed_by_llm':True,
                     'local_section':block.local_section if block.reviewed_by_llm else before,
                     'local_assignment':block.local_assignment if block.reviewed_by_llm else block.assignment,
-                    'assignment':'structural_heading' if is_heading else (block.assignment if same else 'llm_reassigned'),
-                    'llm_action':'confirmed' if same else 'reassigned',
-                    'reason':('DeepSeek confirmed placement. ' if same else 'DeepSeek split or reassigned placement. ')+'Local evidence: '+block.reason})
+                    'assignment':'needs_review' if after=='needs_review' else 'structural_heading' if is_heading else (block.assignment if same else 'llm_reassigned'),
+                    'llm_action':'abstained' if after=='needs_review' else 'confirmed' if same else 'reassigned',
+                    'reason':('DeepSeek abstained: '+state.get('abstention_reasons',{}).get(f'u{i}','No confident section selected.')+' ' if after=='needs_review' else 'DeepSeek confirmed placement. ' if same else 'DeepSeek split or reassigned placement. ')+'Local evidence: '+block.reason.rsplit('Local evidence:',1)[-1].strip()})
                 if after=='needs_review':unresolved.append(reviewed)
                 else:grouped.setdefault(after,[]).append(reviewed)
-        if not changed:
+        if _targeted and not changed:
+            sections=[s.model_copy(deep=True) for s in result.sections]
+        elif not changed:
             # Confirmation must preserve established record membership exactly.
             sections = [s.model_copy(deep=True) for s in result.sections]
             for section in sections:
@@ -361,8 +380,12 @@ def review_sections(request, local_result, *, settings=None, transport=None, _re
                 section.blocks=[refs[(b.source_element_index,b.start,b.end)] for b in section.blocks]
         else:
             sections = build_sections(grouped, request.elements)
+            if _targeted:
+                changed_categories={category for parts in decisions.values() for _,_,category in parts if category!='needs_review'}
+                old={section.category:section for section in result.sections}
+                sections=[section if section.category in changed_categories or section.category not in old else old[section.category].model_copy(deep=True) for section in sections]
         candidate = SectionResponse(status='needs_review' if unresolved else 'provisional',
-            extraction_verified=request.extraction_verified, sections=sections, needs_review=unresolved,
+            extraction_verified=request.extraction_verified, sections=sections, needs_review=unresolved, source_artifacts=list(result.source_artifacts),
             metadata=dict(result.metadata), warnings=list(result.warnings))
         assert_coverage(request.elements, source_ledger(candidate))
         assigned = [b for section in sections for b in section.blocks]
@@ -387,14 +410,19 @@ def review_sections(request, local_result, *, settings=None, transport=None, _re
         candidate.metadata['source_accounting']=accounting
         state.update(all_meaningful_text_assigned=accounting['all_meaningful_text_assigned'],
                      remaining_meaningful_review_units=accounting['unresolved_meaningful_spans'])
-        state.update(status='complete', aggregate_status='complete', pass_count=1, split_units=int(split_units), reviewed_units=len(all_blocks), changed_units=int(changed),
+        state.update(status='complete', aggregate_status='complete', pass_count=1, split_units=int(split_units), reviewed_units=len(ledger), changed_units=int(changed),
                      resolved_units=int(resolved), remaining_review_units=len(unresolved), local_result_retained=False)
         candidate.metadata['llm_review'] = state
-        candidate.warnings.append('DeepSeek reviewed all source spans. Its placements remain provisional and do not verify original-word extraction accuracy.')
-        if remaining>0 and accounting['unresolved_meaningful_spans'] and state['resolution_status']!='out_of_scope':
-            second=review_sections(request,candidate,settings=settings,transport=transport,_remaining=remaining-1,_budget=budget,_pass_id=_pass_id+1,feedback=feedback,document_sha256=document_sha256)
+        candidate.warnings.append(('DeepSeek reviewed unresolved source spans with full paragraph context. ' if _targeted else 'DeepSeek reviewed all source spans. ')+'Its placements remain provisional and do not verify original-word extraction accuracy.')
+        state['classification_complete']=accounting['all_meaningful_text_assigned']
+        if not _targeted and remaining>0 and accounting['unresolved_meaningful_spans'] and state['resolution_status']!='out_of_scope':
+            second=review_sections(request,candidate,settings=settings,transport=transport,_remaining=remaining-1,_budget=budget,_pass_id=_pass_id+1,feedback=feedback,document_sha256=document_sha256,_targeted=True)
             next_state=second.metadata['llm_review']
             if next_state['status']=='complete':
+                next_state['initial_reviewed_units']=state.get('reviewed_units',0)
+                next_state['fallback_reviewed_units']=next_state.get('reviewed_units',0)
+                next_state['reviewed_units_total']=state.get('reviewed_units',0)+next_state.get('reviewed_units',0)
+                next_state['reviewed_units']=state.get('reviewed_units',0)
                 next_state['pass_count']=next_state.get('pass_count',1)+1
                 next_state['provider_calls']=next_state.get('provider_calls',1)+state.get('provider_calls',1)
                 for key in ('changed_units','resolved_units','split_units'):

@@ -23,6 +23,13 @@ def validate_hierarchy(hierarchy, sections):
         section = parents.get(parent.category)
         blocks = section.blocks if section else sections.needs_review if parent.category == 'needs_review' else []
         inventory = {source_id(b): b.text for b in blocks}
+        if section:
+            from local_api.services.education_context import valid_institution_context
+            for entry in section.entries:
+                if entry.context_fields and (section.category!='education' or set(entry.context_fields)-{'institution'}
+                    or any(not 0<=i<len(section.blocks) or not valid_institution_context(section,entry,i)
+                           for ids in entry.context_fields.values() for i in ids)):
+                    fail('record_ownership_validation','invalid_record_context',parent_path)
         ownership = {e.entry_id: {source_id(section.blocks[i]) for i in e.block_indices} for e in section.entries} if section else {}
         for residual in parent.residual_blocks:
             if inventory.get(residual.source_id) != residual.quote:
@@ -34,12 +41,14 @@ def validate_hierarchy(hierarchy, sections):
                 fail('record_ownership_validation', 'foreign_record_source', record_path + ('source_ids',))
             if parent.category in REPEATED and allowed != ownership.get(record.record_id):
                 fail('record_ownership_validation', 'record_owner_mismatch', record_path + ('source_ids',))
+            entry=next((e for e in section.entries if e.entry_id==record.record_id),None) if section else None
             for ai, field in enumerate(record.attributes):
                 field_path = record_path + ('attributes', ai)
                 for vi, item in enumerate(field.items):
                     value_path = field_path + ('items', vi)
+                    context={source_id(section.blocks[i]) for i in entry.context_fields.get(field.name,[])} if entry else set()
                     for ref in item.evidence:
-                        if ref.source_id not in allowed or ref.quote not in inventory[ref.source_id]:
+                        if ref.source_id not in allowed|context or ref.quote not in inventory[ref.source_id]:
                             fail('source_evidence_validation', 'invalid_or_cross_record_quote', value_path + ('evidence',), field.name,
                                  evidence_analysis={'item_index': vi, 'value_length': len(str(item.value)),
                                      'evidence_count': len(item.evidence), 'all_quotes_valid': False,

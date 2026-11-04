@@ -1,6 +1,7 @@
 """Source-backed abstention regressions. All provider responses mocked/replayed."""
 import json
 from pathlib import Path
+from replay_section_decisions import rebind_saved_decisions
 import pytest
 from local_api.schemas.sections import SectionRequest,SectionResponse,SectionBlock
 from local_api.schemas.extraction import ExtractedElement
@@ -22,7 +23,7 @@ def fixture(texts,assigned=None,types=None):
 def invoke(request,local,categories,**settings):
  calls=[]
  def provider(config,messages):
-  calls.append(messages);return json.dumps({'assignments':[[f'u{i}',c] for i,c in enumerate(categories)]})
+  calls.append(messages);return rebind_saved_decisions(json.dumps({'assignments':[[f'u{i}',c] for i,c in enumerate(categories)]}),local,messages)
  result=review_sections(request,local,settings=ReviewSettings(enabled=True,api_key='mock',model='mock',**settings),transport=provider)
  assert_coverage(request.elements,source_ledger(result));return result,calls
 
@@ -77,7 +78,8 @@ def test_noise_does_not_trigger_semantic_retry_or_needs_review_status(noise,kind
  result,calls=invoke(req,local,['experience','needs_review'])
  assert len(calls)==1 and result.status=='provisional'
  assert result.metadata['llm_review']['remaining_meaningful_review_units']==0
- assert result.needs_review[0].text==noise
+ if noise.strip():assert result.needs_review[0].text==noise
+ else:assert not result.needs_review and result.source_artifacts[0].text==noise
 
 
 def test_meaningful_unknown_is_explicit_and_preserved_not_silently_successful():
@@ -93,7 +95,7 @@ def test_replay_real_first_response_keeps_source_and_work_education_memberships(
  root=Path('reports/pilot-full-review-20261020-075828/deepseek');id=hashlib.sha256(file.encode()).hexdigest()[:20]
  if not (root/'documents'/(id+'.json')).exists():pytest.skip('Private pilot artifact unavailable')
  a=json.loads((root/'documents'/(id+'.json')).read_text());responses=json.loads((root/'provider-decisions'/(id+'.json')).read_text());request=SectionRequest(elements=a['extraction']['elements']);local=SectionResponse.model_validate(a['local_sections']);original=local.model_dump_json();calls=[]
- def provider(settings,messages):calls.append(messages);return responses[0]['content']
+ def provider(settings,messages):calls.append(messages);return rebind_saved_decisions(responses[0]['content'],local,messages)
  # This frozen response uses the historical whole-document uN contract.
  # Match its explicit large character budget with large token-policy budgets;
  # never reinterpret a historical whole response as chunk-local decisions.
@@ -103,8 +105,8 @@ def test_replay_real_first_response_keeps_source_and_work_education_memberships(
  # Deterministic abstention recovery cannot change the provider's work/education source ownership.
  from local_api.services.llm_section_review import parse_decisions
  original_ledger=source_ledger(local); decisions=parse_decisions(responses[0]['content'],len(original_ledger),{s.category for s in result.sections},{f'u{i}':len(b.text) for i,(b,_) in enumerate(original_ledger)})
- expected=sorted((b.source_element_index,b.start+x,b.start+y,c) for i,(b,_) in enumerate(original_ledger) for x,y,c in decisions[f'u{i}'] if c in {'experience','education'})
- actual=sorted((b.source_element_index,b.start,b.end,c) for b,c in source_ledger(result) if c in {'experience','education'})
+ expected=sorted((b.source_element_index,b.start+x,b.start+y,c) for i,(b,_) in enumerate(original_ledger) for x,y,c in decisions[f'u{i}'] if b.text.strip() and c in {'experience','education'})
+ actual=sorted((b.source_element_index,b.start,b.end,c) for b,c in source_ledger(result) if b.text.strip() and c in {'experience','education'})
  assert actual==expected
  if file=='Java Aws backend.pdf':assert result.metadata['llm_review']['resolution_status']=='out_of_scope'
  else:assert result.metadata['llm_review']['remaining_meaningful_review_units']==0

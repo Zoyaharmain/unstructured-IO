@@ -27,6 +27,9 @@ def mapping_completeness(elements, sections, hierarchy):
                 for index, item in enumerate(attr.items):
                     value = format(item.value, 'g') if isinstance(item.value, (int, float)) else item.value
                     path = f'{section.category}/{record.record_id}/{attr.name}/{index}'
+                    parent=next((s for s in sections.sections if s.category==section.category),None)
+                    entry=next((e for e in parent.entries if e.entry_id==record.record_id),None) if parent else None
+                    context_ids={f'e{parent.blocks[i].source_element_index}:{parent.blocks[i].start}:{parent.blocks[i].end}' for i in entry.context_fields.get(attr.name,[])} if entry else set()
                     for ref in item.evidence:
                         if ref.source_id not in inventory: raise ValueError('Foreign source in completeness check')
                         block, owner = inventory[ref.source_id]
@@ -39,6 +42,7 @@ def mapping_completeness(elements, sections, hierarchy):
                         if not starts and ref.quote.casefold() in value.casefold():
                             starts, length = [0], len(ref.quote)
                         if not starts: continue
+                        if ref.source_id in context_ids:continue
                         candidates = [(pos + start, pos + start + length, section.category, record.record_id, attr.name, path)
                                       for pos in quote_starts for start in starts]
                         def score(candidate):

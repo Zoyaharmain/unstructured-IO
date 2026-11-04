@@ -3,6 +3,8 @@ import re
 
 
 def recover_sections(request, local_result):
+    from local_api.services.empty_source_artifacts import separate_empty_source
+    local_result=separate_empty_source(local_result,request.elements)
     from local_api.services.resume_sections import ALIASES, get_engine
     updates = {}
     # Strong title-style or uppercase labels only. Never match lowercase body vocabulary.

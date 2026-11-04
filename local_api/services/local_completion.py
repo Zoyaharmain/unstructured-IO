@@ -46,11 +46,19 @@ def recover_local_content(result, elements):
     from local_api.services.resume_structure import heading_boundary, entry_groups
     from local_api.schemas.sections import SectionEntry
     from local_api.services.record_relationships import annotate_relationships
+    from local_api.services.empty_source_artifacts import separate_empty_source
+    result = separate_empty_source(result,elements)
     errors = validate_result(elements, result)
     if errors: raise ValueError('Invalid source binding before local completion: ' + errors[0])
     if document_scope(elements)['candidate_resume'] is False: return result
+    from local_api.services.competency_sections import recover_competency_sections
+    result = separate_empty_source(recover_competency_sections(result,elements),elements)
     from local_api.services.profile_url_recovery import recover_header_urls
     result = recover_header_urls(result,elements)
+    from local_api.services.employment_scope import recover_employment_scope
+    result = recover_employment_scope(result,elements)
+    from local_api.services.physical_card_recovery import recover_physical_cards
+    result = recover_physical_cards(result,elements)
     from local_api.services.professional_headline import recover_professional_headline
     result = recover_professional_headline(result,elements)
     from local_api.services.target_preferences import recover_target_preferences

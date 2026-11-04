@@ -44,6 +44,7 @@ class SectionEntry(BaseModel):
     lane: str
     boundary_reason: str
     fields: dict[str,list[int]] = Field(default_factory=dict)
+    context_fields: dict[str,list[int]] = Field(default_factory=dict)
     relationship_status: Literal['provisional','needs_review'] = 'provisional'
     review_reasons: list[str] = Field(default_factory=list)
 
@@ -83,5 +84,6 @@ class SectionResponse(BaseModel):
     extraction_verified: bool = False
     sections: list[ResumeSection]
     needs_review: list[SectionBlock]
+    source_artifacts: list[SectionBlock] = Field(default_factory=list)
     metadata: dict
     warnings: list[str]

@@ -22,7 +22,7 @@ SUBSCHEMAS = {
 # Existing detected categories with no legacy ResumeSchema slot. These are
 # explicit, conservative attribute slots, not model-generated schema names.
 for parent, names in {
-    'awards': ('name', 'issuer', 'date'),
+    'awards': ('name', 'description', 'issuer', 'date'),
     'publications': ('title', 'publisher', 'date', 'url'),
     'volunteering': ('organization', 'role', 'dates', 'activities'),
     'languages': ('language', 'proficiency'), 'interests': ('interest',),

@@ -173,11 +173,12 @@ IDs. Allowed categories are supplied in each target, plus needs_review.
 Keep blank targets. Uncertain placement must stay needs_review.'''
 
 
-def section_plan(request, result, settings, feedback=None, document_sha256=None):
+def section_plan(request, result, settings, feedback=None, document_sha256=None, target_only=False):
     from local_api.services.llm_section_review import source_ledger, assert_coverage
     from local_api.services.resume_sections import ANCHORS
     from local_api.services.review_validation import allowed_split_offsets
-    ledger = source_ledger(result); assert_coverage(request.elements, ledger)
+    assert_coverage(request.elements,source_ledger(result))
+    ledger = [item for item in source_ledger(result) if item[0].text.strip() and (not target_only or item[1] is None)]
     owners, context = {}, {}
     for section in result.sections:
         for entry in section.entries:
@@ -196,7 +197,12 @@ def section_plan(request, result, settings, feedback=None, document_sha256=None)
     units = []
     for block, category in ledger:
         sid = f'e{block.source_element_index}:{block.start}:{block.end}'
-        key = owners.get(sid, (category or 'needs_review')+'/unowned')
+        key = 'needs_review/source-'+str(block.source_element_index) if target_only else owners.get(sid, (category or 'needs_review')+'/unowned')
+        if target_only and key not in context:
+            from local_api.services.unresolved_review import contextual_groups
+            evidence=contextual_groups(request.elements,[block])[0]
+            indices={block.source_element_index}|{item['source_element'] for item in evidence['preceding_headings']}|{item['source_element'] for item in evidence['neighboring_source']}
+            context[key]=[{'source_id':f'e{i}:0:{len(request.elements[i].text)}','text':request.elements[i].text,'page':request.elements[i].page_number,'parent':'read_only_source_context'} for i in sorted(indices)]
         hints = [h for h in request.elements[block.source_element_index].metadata.get('pdf_source_lines', [])
                  if min(block.end, h.get('end', 0)) > max(block.start, h.get('start', 0))]
         units.append({'id': sid, 'original_id': sid, 'record_key': key, 'text': block.text,
@@ -205,7 +211,7 @@ def section_plan(request, result, settings, feedback=None, document_sha256=None)
                       'layout': hints, 'current_category': category or 'needs_review',
                       'allowed_categories': list(ANCHORS), 'allowed_split_offsets': allowed_split_offsets(block, request.elements)})
     return plan(units, context, binding(request.elements, document_sha256), settings,
-                SECTION_SYSTEM, 'section_review', feedback)
+                SECTION_SYSTEM+('\nTargeted second review: classify only unresolved targets using complete paragraphs and headings. Prior abstention is not evidence of ambiguity. Do not modify read-only context or invent information.' if target_only else ''), 'section_review', feedback)
 
 
 def section_decisions(chunk, content, categories):
@@ -233,11 +239,11 @@ def section_decisions(chunk, content, categories):
     return {u['id']: parsed[f'u{i}'] for i, u in enumerate(targets)}
 
 
-def run_section_chunks(request, result, settings, transport, budget, pass_id, state, feedback=None, document_sha256=None):
+def run_section_chunks(request, result, settings, transport, budget, pass_id, state, feedback=None, document_sha256=None, target_only=False):
     from local_api.services.llm_section_review import source_ledger, parse_decisions
     from local_api.services.resume_sections import ANCHORS
     from local_api.services.review_validation import allowed_split_offsets
-    planned = section_plan(request, result, settings, feedback, document_sha256)
+    planned = section_plan(request, result, settings, feedback, document_sha256,target_only=target_only)
     state['chunking'] = planned
     if planned['blocked']:
         raise ChunkError('unreviewable_chunk')
@@ -252,7 +258,7 @@ def run_section_chunks(request, result, settings, transport, budget, pass_id, st
             if unit['id'] in collected:
                 raise ChunkError('duplicate_owned_target')
             collected[unit['id']] = (unit, decisions[unit['id']])
-    ledger = source_ledger(result); rows = []
+    ledger = [item for item in source_ledger(result) if item[0].text.strip() and (not target_only or item[1] is None)]; rows = []
     for i, (block, _) in enumerate(ledger):
         sid = f'e{block.source_element_index}:{block.start}:{block.end}'
         pieces = sorted(

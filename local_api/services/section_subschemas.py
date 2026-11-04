@@ -64,7 +64,8 @@ def build_subschemas(sections, data, scope, record_bindings=None):
                     if index >= len(mapped):
                         continue
                     record = mapped[index]
-                    allowed = [section.blocks[i] for i in entry.block_indices]
+                    owned_blocks=[section.blocks[i] for i in entry.block_indices]
+                    allowed = [section.blocks[i] for i in sorted(set(entry.block_indices)|{i for ids in entry.context_fields.values() for i in ids})]
                     uncertain = entry.relationship_status == 'needs_review' or bool(entry.review_reasons)
                     values = record.model_dump()
                     reasons = list(entry.review_reasons)
@@ -78,8 +79,8 @@ def build_subschemas(sections, data, scope, record_bindings=None):
                         if entry.fields else None))
                     reasons.extend(refinement_reasons)
                     uncertain = uncertain or bool(reasons)
-                    attrs = [attribute(name, value, allowed, uncertain) for name, value in values.items()]
-                    records.append(SubschemaRecord(record_id=entry.entry_id, source_ids=[sid(b) for b in allowed], attributes=attrs,
+                    attrs = [attribute(name, value, [section.blocks[i] for i in sorted(set(entry.block_indices)|set(entry.context_fields.get(name,[])))], uncertain) for name, value in values.items()]
+                    records.append(SubschemaRecord(record_id=entry.entry_id, source_ids=[sid(b) for b in owned_blocks], attributes=attrs,
                                    review_reasons=reasons))
             elif category in {'personal_information', 'summary', 'skills'}:
                 values = data.contact.model_dump() if category == 'personal_information' else (
@@ -124,8 +125,16 @@ def build_subschemas(sections, data, scope, record_bindings=None):
                     # infer an issuer or date from adjacent records.
                     if category == 'awards' and not values.get('name'):
                         from local_api.services.schema_mapping import canonical
+                        from local_api.services.record_subfields import DATE
                         content = [b for b in allowed if b.assignment not in {'section_heading', 'structural_heading'}]
-                        values['name'] = canonical(content).strip() or None
+                        entry=next((e for e in section.entries if e.entry_id==record_id),None)
+                        title_indices=entry.fields.get('title',[]) if entry else []
+                        title=section.blocks[title_indices[0]] if len(title_indices)==1 else None
+                        values['name'] = title.text.strip() if title else canonical(content).strip() or None
+                        descriptions=[b for b in content if b is not title and not re.fullmatch(DATE,b.text.strip(),re.I)]
+                        if title and descriptions:values['description']='\n'.join(b.text.strip() for b in descriptions)
+                        dates=[b.text.strip() for b in content if re.fullmatch(DATE,b.text.strip(),re.I)]
+                        if len(set(dates))==1:values['date']=dates[0]
                     if any(v is None for v in values.values()):
                         reasons.append('Unlabelled compound information requires source review.')
                     records.append(SubschemaRecord(record_id=record_id, source_ids=[sid(b) for b in allowed],

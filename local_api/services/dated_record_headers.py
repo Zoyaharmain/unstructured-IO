@@ -42,13 +42,13 @@ def education_date_starts_record(blocks,index):
 
 def split_employment_headers(blocks):
     """Find compact role/employer/date headers across literal source rows."""
-    from local_api.services.record_subfields import ROLE,RANGE,responsibility_fragment,is_place,COMPANY_KEYWORD
+    from local_api.services.record_subfields import ROLE,RANGE,responsibility_fragment,is_place,COMPANY_KEYWORD,employment_header_fields
     rows=[(i,line.strip()) for i,b in enumerate(blocks)
           if b.assignment not in {'section_heading','structural_heading'}
-          for line in b.text.splitlines() if line.strip()]
+          for line in b.text.splitlines() if any(c.isalnum() for c in line)]
     found=[]
     def title(value):
-        return (bool(ROLE.search(value)) and len(value.split())<=12 and not RANGE.search(value)
+        return (not employment_header_fields(value).get('company') and bool(ROLE.search(value) or re.search(r'\bIntern\b',value,re.I)) and len(value.split())<=12 and not RANGE.search(value)
                 and not responsibility_fragment(value) and not COMPANY_KEYWORD.search(value)
                 and not re.match(r'^(?:client|project|responsibilit)',value,re.I))
     for position in range(len(rows)-2):
@@ -60,18 +60,27 @@ def split_employment_headers(blocks):
             or responsibility_fragment(employer) or RANGE.search(employer)
             or re.match(r'^(?:client|project|location|team|department)\s*:',employer,re.I)):
             continue
-        date=None
+        date=None;location=None
         for index,value in rows[position+2:position+5]:
             if RANGE.fullmatch(value):date=index;break
+            if re.fullmatch(r'[A-Z][A-Za-z .-]+,\s*[A-Z]{2,3}',value):location=value;continue
             if not re.match(r'^Client\s*[:=]',value,re.I):break
         if date is None:continue
         indices=list(range(first[0],date+1));parts=[blocks[i] for i in indices]
-        if any(b.page_number!=parts[0].page_number or b.lane not in {parts[0].lane,'wide'} and parts[0].lane!='wide' for b in parts):continue
+        if any(b.page_number!=parts[0].page_number for b in parts):continue
+        cross_lane=any(b.lane not in {parts[0].lane,'wide'} and parts[0].lane!='wide' for b in parts)
+        # Employer and role split from one source element can own the adjacent
+        # right-aligned location/date column. Independent columns cannot.
+        if cross_lane and not (blocks[first[0]].source_element_index==blocks[second[0]].source_element_index
+                               and blocks[first[0]].lane==blocks[second[0]].lane and location):continue
         if any(b.source_element_index-a.source_element_index>1 for a,b in zip(parts,parts[1:])):continue
         components=re.split(r'\s+[–—-]\s+|\s*\|\s*',employer)
         if len(components)>2:continue
-        company=components[0].strip();values={'company':company,'role':role}
-        if len(components)==2:
+        explicit=employment_header_fields(employer)
+        if explicit.get('role') and explicit['role']!=role:continue
+        company=explicit.get('company',components[0].strip());values={'company':company,'role':role}
+        if location:values['location']=location
+        if len(components)==2 and not explicit.get('company'):
             suffix=components[1].strip()
             # The compact header position provides location context without
             # adding candidate cities to a fixed place-name list. Department/
@@ -110,6 +119,12 @@ def recover_split_employment_headers(result,elements):
         touching=[e for e in revised.entries if span.intersection(e.block_indices)]
         if not touching or any(min(e.block_indices)<start for e in touching):continue
         indices=sorted(span.union(*(set(e.block_indices) for e in touching)))
+        owned={i for e in revised.entries for i in e.block_indices}
+        stop=min((other for other,_,_ in candidates if other>start),default=len(revised.blocks))
+        for i in range(end+1,stop):
+            if i in owned or revised.blocks[i].assignment in {'section_heading','structural_heading'}:break
+            indices.append(i)
+        indices=sorted(set(indices))
         if len(touching)==1 and indices==touching[0].block_indices:continue
         entry=SectionEntry(entry_id=touching[0].entry_id,block_indices=indices,lane=revised.blocks[start].lane,
                            boundary_reason='Adjacent role, employer and date rows form one source-backed employment header.')

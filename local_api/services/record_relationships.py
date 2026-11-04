@@ -5,7 +5,7 @@ These are deterministic structural proposals, never verified entity records.
 import re
 
 DEGREE_FAMILIES={
- 'bachelor':r'\bbachelor\b|\bb\s?(?:com|tech|sc|ca|e|s|a)\b',
+ 'bachelor':r'\bbachelors?\b|\bb\s?(?:com|tech|sc|ca|e|s|a)\b',
  'master':r'\bmaster(?:s)?\b|\bm\s?(?:com|tech|sc|ca|ba|e|s|a)\b',
  'postgraduate_certificate':r'\b(?:pg|postgraduate)\s+certificate\b',
  'diploma':r'\bdiploma\b|\b(?:pgdca|pgdb|pgdm)\b',
@@ -45,7 +45,7 @@ def field_kinds(text,category):
         # A named school is institution evidence, not automatically a degree.
         # Keep an explicit credential such as "High School Diploma" eligible.
         if degree_families(text) and not (institution_marker and not explicit_credential):kinds.append('qualification')
-        if institution_marker:kinds.append('institution')
+        if institution_marker and not re.match(r'^(?:student|represented|participated|member|won)\b',text,re.I):kinds.append('institution')
         if re.search(r'\b(?:cgpa|gpa|grade|distinction|percentage)\b|\d\s*%',text,re.I):kinds.append('grade')
         if re.search(r'\b(?:computer science|engineering|finance|commerce|accountancy|artificial intelligence|mathematics|business administration)\b',text,re.I):kinds.append('field_of_study')
     else:
@@ -87,7 +87,7 @@ def annotate_relationships(section):
             assigned.add(index)
             text=section.blocks[index].text
             kinds = field_kinds(text,section.category)
-            if section.category == 'experience' and section.blocks[index].assignment == 'local_record_continuation':
+            if section.category == 'experience' and section.blocks[index].assignment in {'local_record_continuation','local_responsibility_bullet'}:
                 kinds = ['responsibilities']
             from local_api.services.record_subfields import employment_header_fields
             if (section.category=='experience' and fields.get('employer') and fields.get('title')

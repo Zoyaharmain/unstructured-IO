@@ -26,7 +26,7 @@ def engine():
 
 
 def assert_preserved(original, response):
-    blocks = [block for section in response.sections for block in section.blocks] + response.needs_review
+    blocks = [block for section in response.sections for block in section.blocks] + response.needs_review + response.source_artifacts
     for index, element in enumerate(original.elements):
         parts = sorted([block for block in blocks if block.source_element_index == index], key=lambda block: block.start)
         cursor = 0
@@ -194,7 +194,9 @@ def test_real_footer_is_not_mixed_into_experience(engine):
     experience = next(section for section in result.sections if section.category == 'experience')
     assert 'Page 1 of 2' not in [block.text for block in experience.blocks]
     assert req.elements[-1].text in [block.text for block in experience.blocks]
-    assert {'Page 1 of 2', ''} <= {block.text for block in result.needs_review}
+    assert 'Page 1 of 2' in {block.text for block in result.needs_review}
+    assert '' in {block.text for block in result.source_artifacts}
+    assert all(block.text.strip() for block in result.needs_review)
     assert_preserved(req, result)
 
 

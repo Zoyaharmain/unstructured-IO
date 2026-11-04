@@ -402,13 +402,15 @@ class SectionEngine:
                     'Missing headings, merged columns and unusual layouts can require manual review.']
         if multicolumn:
             warnings.append('Multiple layout lanes detected with K-means; reading order and lane assignments need visual review.')
-        return SectionResponse(status='needs_review' if review else 'provisional', extraction_verified=request.extraction_verified, sections=sections, needs_review=review,
+        result = SectionResponse(status='needs_review' if review else 'provisional', extraction_verified=request.extraction_verified, sections=sections, needs_review=review,
                                metadata={'model': MODEL_ID, 'revision': MODEL_REVISION, 'encoder': 'Sentence-BERT / MiniLM BertModel',
                                          'algorithm': 'structure-led boundaries + Sentence-BERT + seeded K-means', 'readable_grouping': 'pinned repository semantic_blocks.prepare_blocks + group_sections', 'structure_reference': 'Gopi088/knowledge-graph-resume@48376b8d8a0f64d1ab59b405ded3d9f38fc9ae48', 'anchor_sha256': hashlib.sha256(json.dumps(ANCHORS, sort_keys=True).encode()).hexdigest(), 'categories': len(ANCHORS), 'total_units': len(units),
                                          'assigned_units': sum(len(section.blocks) for section in sections), 'review_units': len(review),
                                          'assigned_text_percent': round(100 * assigned_chars / max(total_chars, 1), 1),
                                          'all_source_text_preserved': True, 'heading_seed_purity': round(self.headings.purity, 3),
                                          'content_seed_purity': round(self.content.purity, 3)}, warnings=warnings)
+        from local_api.services.empty_source_artifacts import separate_empty_source
+        return separate_empty_source(result,request.elements)
 
 
 def layout_lanes(elements):

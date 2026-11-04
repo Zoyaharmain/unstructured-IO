@@ -96,6 +96,7 @@ format above. Return ONLY {"format":"compact_fields_v1","sections":[{"category":
 "records":[{"record_id":"experience-1","source_ids":["id"],"fields":{"company":[
 {"value":"literal company","source_ids":["id"]}]},"missing":{"location":"not_stated"}}]}]}.
 Keep every source section and record. Keep the complete source ownership IDs.
+Explicit context_fields permit citations for that named field only; keep context IDs out of record ownership and never inherit dates or grades.
 Fields contain only populated literal values, each with source_ids restricted to that record.
 Do not repeat source quotations: the server rebuilds exact quotes and validates every value.
 Omit empty fields. Use missing to state not_stated, ambiguous or unmapped when established;
@@ -122,7 +123,8 @@ def messages(sections, completeness=None):
                    'heading_context': [b.text for b in s.blocks if b.assignment in {'section_heading', 'structural_heading'}],
                    'local_record_hints': [{'record_id': e.entry_id,
                         'source_ids': [source_id(s.blocks[i]) for i in e.block_indices
-                                       if s.blocks[i].assignment not in {'section_heading', 'structural_heading'}]} for e in s.entries]}
+                                       if s.blocks[i].assignment not in {'section_heading', 'structural_heading'}],
+                        **({'context_fields':{field:[source_id(s.blocks[i]) for i in indices] for field,indices in e.context_fields.items()}} if e.context_fields else {})} for e in s.entries]}
                    for s in sections]}
     categories = {s.category for s in sections}
     payload['completeness_targets'] = [{'source_id': row['source_id'], 'source_start': row['start'],
@@ -155,6 +157,7 @@ def expand_compact_review(content, source_sections):
             if not isinstance(fields,dict) or not isinstance(missing,dict) or set(fields)-set(SUBSCHEMAS[category]) or set(missing)-set(SUBSCHEMAS[category]):
                 fail('subschema_validation','invalid_field_set',path)
             owner = record['source_ids']
+            context_entry=next((e for e in parent.entries if {source_id(parent.blocks[i]) for i in e.block_indices}==set(owner)),None) if isinstance(owner,list) else None
             if not isinstance(owner,list) or any(not isinstance(sid,str) for sid in owner):
                 fail('source_evidence_validation','invalid_or_cross_record_quote',path)
             for name in SUBSCHEMAS[category]:
@@ -165,7 +168,7 @@ def expand_compact_review(content, source_sections):
                     if not isinstance(item,dict) or set(item) != {'value','source_ids'}:
                         fail('response_model_validation','invalid_field_item',path+('fields',name,vi))
                     ids=item['source_ids']
-                    if not isinstance(ids,list) or not ids or any(not isinstance(sid,str) or sid not in inventory or sid not in owner for sid in ids):
+                    if not isinstance(ids,list) or not ids or any(not isinstance(sid,str) or sid not in inventory or sid not in set(owner)|{source_id(parent.blocks[i]) for i in (context_entry.context_fields.get(name,[]) if context_entry else [])} for sid in ids):
                         fail('source_evidence_validation','invalid_or_cross_record_quote',path+('fields',name,vi))
                     refs=citations(item['value'],[b for sid,b in inventory.items() if sid in ids], flexible_whitespace=True)
                     if not refs: fail('source_evidence_validation','invalid_or_cross_record_quote',path+('fields',name,vi))
@@ -289,7 +292,9 @@ def parse_review(content, source_sections):
                                      review_reasons=['Some source fields remain ambiguous.'] if 'ambiguous' in missing.values() else [])
             records.append(record)
             if category in REPEATED:
+                context_entry=next((e for e in section.entries if {source_id(section.blocks[i]) for i in e.block_indices}==set(ids)),None)
                 entries.append(SectionEntry(entry_id=record.record_id,
+                    context_fields=context_entry.context_fields if context_entry else {},
                     block_indices=sorted(inventory[sid][0] for sid in ids), lane='source',
                     boundary_reason='DeepSeek source-backed field and record review',
                     relationship_status='needs_review' if record.review_reasons else 'provisional',
@@ -1047,9 +1052,16 @@ def map_with_field_review(request, *, settings=None, transport=None, budget=None
                     payload = json.loads(content)
                     from local_api.services.employment_integrity import repair_review_employment
                     source_repairs = repair_review_employment(payload, request.sections.model_copy(update={'sections':batch,'needs_review':[]})) if isinstance(payload,dict) else []
+                    from local_api.services.employment_scope import repair_dated_employment_scope
+                    if isinstance(payload,dict):source_repairs.extend(repair_dated_employment_scope(payload,request.sections.model_copy(update={'sections':batch,'needs_review':[]}),fallback))
+                    from local_api.services.competency_sections import repair_competency_fields
+                    if isinstance(payload,dict):source_repairs.extend(repair_competency_fields(payload,request.sections.model_copy(update={'sections':batch,'needs_review':[] })))
                     from local_api.services.certification_integrity import repair_review_certifications
                     if isinstance(payload,dict):
                         source_repairs.extend(repair_review_certifications(payload, request.sections.model_copy(update={'sections':batch,'needs_review':[]}), fallback))
+                    from local_api.services.physical_card_recovery import repair_physical_card_fields
+                    if isinstance(payload,dict):
+                        source_repairs.extend(repair_physical_card_fields(payload, request.sections.model_copy(update={'sections':batch,'needs_review':[]}), fallback))
                     from local_api.services.project_section_recovery import repair_review_programs
                     if isinstance(payload,dict):
                         source_repairs.extend(repair_review_programs(payload, request.sections.model_copy(update={'sections':batch,'needs_review':[]}), fallback))
