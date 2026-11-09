@@ -16,7 +16,7 @@ def recover_employment_scope(result,elements):
     if start is None:return result
     for i in range(start+1,len(elements)):
         text=elements[i].text.strip();category,cut=heading_boundary(text,ALIASES)
-        if category and category!='experience' and cut is None and not re.match(r'^(?:key|impact|governance|technology|tools|agile|client|responsibilit)',text,re.I):
+        if category and category!='experience' and not re.match(r'^(?:key|impact|governance|technology|tools|agile|client|responsibilit)',text,re.I):
             end=i;break
     if end is None:end=len(elements)
     anchors=[]
@@ -28,6 +28,11 @@ def recover_employment_scope(result,elements):
             for first in offsets:
                 quote=element.text[first:period.end()]
                 fields=employment_header_fields(quote)
+                if not (fields.get('company') and fields.get('role')):
+                    full_line = element.text[first:].splitlines()[0]
+                    full_fields = employment_header_fields(full_line)
+                    if full_fields.get('company') and full_fields.get('role'):
+                        fields = full_fields
                 if '\n' in quote:
                     from types import SimpleNamespace
                     from local_api.services.dated_record_headers import split_employment_headers
@@ -70,6 +75,7 @@ def recover_employment_scope(result,elements):
     for i in range(start+1,end):
         if i in header_elements:continue
         if (elements[i].type in {'Title','Header'} and len(elements[i].text.split())<=12
+            and not re.match(r'^\s*(?:(?:key\s+)?roles?(?:\s*(?:&|and)\s*responsibilities)?|responsibilities(?:\s*(?:&|and)\s*achievements)?)\b', elements[i].text, re.I)
             and ROLE.search(elements[i].text) and not any(a<=i<=d for a,_,d,_,_ in anchors)):
             return result
         identity=employment_header_fields(elements[i].text)
@@ -77,13 +83,25 @@ def recover_employment_scope(result,elements):
             return result
     grouped={s.category:list(s.blocks) for s in result.sections}
     selected=[];affected={'experience'}
+    post_blocks = []
     for category,blocks in list(grouped.items()):
         remaining=[]
         for block in blocks:
             if start<=block.source_element_index<end:
                 selected.append(block);affected.add(category)
+            elif category == 'experience' and block.source_element_index >= end:
+                post_blocks.append(block)
             else:remaining.append(block)
         grouped[category]=remaining
+    if post_blocks:
+        current_cat = None
+        for b in sorted(post_blocks, key=lambda x: (x.source_element_index, x.start)):
+            cat, cut = heading_boundary(elements[b.source_element_index].text, ALIASES)
+            if cat and cut is None:
+                current_cat = cat
+            target = current_cat or 'experience'
+            grouped.setdefault(target, []).append(b)
+            affected.add(target)
     pending=[]
     for block in result.needs_review:
         in_scope=start<=block.source_element_index<end
@@ -128,7 +146,8 @@ def recover_employment_scope(result,elements):
     if prior:
         for entry in prior.entries:
             remap={i:positions[(prior.blocks[i].source_element_index,prior.blocks[i].start,prior.blocks[i].end)] for i in entry.block_indices
-                   if not start<=prior.blocks[i].source_element_index<end}
+                   if not start<=prior.blocks[i].source_element_index<end
+                   and (prior.blocks[i].source_element_index,prior.blocks[i].start,prior.blocks[i].end) in positions}
             if remap:
                 identifier=entry.entry_id if entry.entry_id.endswith('-outside-scope') else entry.entry_id+'-outside-scope'
                 outside.append(entry.model_copy(update={'entry_id':identifier,'block_indices':[remap[i] for i in entry.block_indices if i in remap],
@@ -145,7 +164,7 @@ def recover_employment_scope(result,elements):
             if refs:card.fields[field]=[i for i in header if f'e{section.blocks[i].source_element_index}:{section.blocks[i].start}:{section.blocks[i].end}' in ids]
         card.fields['dates']=header
     old={s.category:s for s in result.sections}
-    revised=result.model_copy(deep=True);revised.sections=[s if s.category in affected else old[s.category].model_copy(deep=True) for s in rebuilt];revised.needs_review=pending
+    revised=result.model_copy(deep=True);revised.sections=[s if s.category in affected or s.category not in old else old[s.category].model_copy(deep=True) for s in rebuilt];revised.needs_review=pending
     revised.metadata['dated_employment_scope']={'headers':len(anchors),'source_start':start,'source_end':end,'subheadings_do_not_create_jobs':True,'literal_records':{card.entry_id:anchor[4] for card,anchor in zip(scope_cards,anchors)}}
     errors=validate_result(elements,revised)
     if errors:raise ValueError('Invalid dated employment scope: '+repr(errors))

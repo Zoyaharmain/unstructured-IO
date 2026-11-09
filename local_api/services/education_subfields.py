@@ -7,8 +7,8 @@ DEGREE = re.compile(
     r'Secondary\s+School\s+Certificate(?:\s*\([^)]*\))?|'
     r'Higher\s+Secondary(?!\s+School\b)|High\s+School\s+Diploma|HSC|SSC|SSLC|'
     r'PG\s+Certificate|Post\s+Graduate\s+Diploma|PGDM|PGDB|Diploma|'
-    r'Master of (?:Software Engineering|Technology|Science|Engineering|Business Administration|Computer Applications?)|'
-    r'Bachelors? (?:of|in) (?:Technology|Science|Engineering|Arts|Commerce|Pharmacy)|'
+    r'Masters?(?:[’\']s)?(?:\s+Degree)?(?:\s+(?:of|in)\s+(?:Software Engineering|Technology|Science|Engineering|Business Administration|Computer Applications?|[A-Za-z ]+))?|'
+    r'Bachelors?(?:[’\']s)?(?:\s+Degree)?(?:\s+(?:of|in)\s+(?:Technology|Science|Engineering|Arts|Commerce|Pharmacy|[A-Za-z ]+))?|'
     r'M\.?\s?Sc\.?|B\.?\s?Sc\.?|B\.?Com\.?|M\.?Com\.?|M\.?Tech\.?|B\.?Tech\.?|B\.?E\.?|M\.?E\.?|MBA|MCA|BCA)(?!\w)',
     re.I
 )
@@ -30,7 +30,8 @@ def refine_education(values, blocks):
                 # before Master/Bachelor, defeating a whole-element word boundary.
                 source = ''.join(part.text for part in run)[b.start-run[0].start+local.start():]
                 match = re.match(re.escape(local.group()),source,re.I)
-                if previous and re.fullmatch(r'\s*\(\s*', b.text[previous.end():local.start()]) and b.text[local.end():].startswith(')'):
+                if previous and ((re.fullmatch(r'\s*\(\s*', b.text[previous.end():local.start()]) and b.text[local.end():].startswith(')'))
+                        or re.fullmatch(r'\s*/\s*', b.text[previous.end():local.start()])):
                     continue
                 if (previous and local.group().casefold() == 'pgdm' and 'diploma' in previous.group().casefold()
                         and re.fullmatch(r'\s+in\s+[A-Za-z ]+\(\s*', b.text[previous.end():local.start()])
@@ -76,27 +77,28 @@ def refine_education(values, blocks):
             values['field_of_study']=None
     parenthetic=values.get('field_of_study')
     if parenthetic and re.match(r'^[A-Z][A-Z0-9.]{2,}\s+[A-Za-z]',parenthetic) and degrees and following.lstrip().startswith('('):
+        if not values.get('institution'):
+            values['institution'] = parenthetic
         values['field_of_study']=None
-        reasons.append('Parenthesized acronym/location text may identify an institution rather than a subject; association requires review.')
     institutions = []
     # Explicit "qualification from institution passing year ..." establishes
     # the institution even for acronyms without University/College suffixes.
     for source in source_texts:
         relation = re.search(r'\bfrom\s+(.+?)\s+(?:passing\s+year|year\s+of\s+passing)\b', source, re.I)
         if relation and DEGREE.search(source[:relation.start()]):
-            institutions.append(relation[1].strip(' ,'))
+            institutions.append(re.sub(r'^(?:from|at)\s+', '', relation[1].strip(' ,'), flags=re.I))
     for source in [*(b.text for b in blocks), *source_texts]:
         for part in re.split(r'[,|\n]|\s+[-\u2013\u2014]\s+', source):
-            part = re.sub(r'^(?:Institution|University|College)\s*:\s*', '', part.strip(), flags=re.I)
+            part = re.sub(r'^(?:(?:Institution|University|College)\s*:\s*|(?:from|at)\s+)', '', part.strip(), flags=re.I)
             if (re.fullmatch(r"[A-Za-z][A-Za-z .&/'\u2019\-(),]*", part)
                     and re.search(r'\b(?:University|College|Institute|School|Vidyalaya)\b',part,re.I)
                     and len(part.split())<=18 and not DEGREE.search(part)
                     and not re.match(r'^(?:student|represented|participated|member|won)\b',part,re.I)):
                 institutions.append(part)
     institutions = list(dict.fromkeys(institutions))
-    institutions = [value for value in institutions if not any(other != value and value.endswith(other) for other in institutions)]
+    institutions = [value for value in institutions if not any(other != value and other.endswith(value) for other in institutions)]
     if len(institutions) == 1:
-        values['institution'] = institutions[0]
+        values['institution'] = re.sub(r'^(?:(?:from|at)\s+|(?:Institution|University|College)\s*:\s*)', '', institutions[0], flags=re.I).strip()
     elif len(institutions) > 1:
         values['institution'] = None
         reasons.append('Multiple institutions in one record; association requires source review.')
@@ -134,4 +136,14 @@ def refine_education(values, blocks):
     if not grades and not values.get('grade_or_gpa'):
         percentages=[m.group() for m in re.finditer(r'(?<![\w.])(?:100|[0-9]{1,2})(?:\.[0-9]+)?\s*%',text)]
         if len(percentages)==1:values['grade_or_gpa']=percentages[0]
+    if values.get('institution'):
+        if values.get('degree') and values['institution'].lower().startswith(values['degree'].lower()):
+            values['institution'] = values['institution'][len(values['degree']):].strip()
+            values['institution'] = re.sub(r'^\s*\([^)]*\)\s*', '', values['institution'])
+            values['institution'] = re.sub(r'^(?:under|from|at|affiliated\s+to)\s+', '', values['institution'], flags=re.I).strip()
+            m_univ = re.match(r'^(.*?university)\s+from\s+(.*)$', values['institution'], re.I)
+            if m_univ:
+                values['institution'] = m_univ.group(2).strip()
+        values['institution'] = re.sub(r'\b([A-Za-z]+)\s+\1\b', r'\1', values['institution'], flags=re.I)
+        values['institution'] = re.sub(r'^(?:(?:from|at)\s+|(?:Institution|University|College)\s*:\s*)', '', values['institution'], flags=re.I).strip()
     return values, reasons

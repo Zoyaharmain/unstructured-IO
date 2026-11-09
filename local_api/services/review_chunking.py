@@ -107,7 +107,8 @@ def plan(units, context, binding_info, settings, system, stage, feedback=None):
         size = measure(settings, messages, output)
         size['fits'] = size['fits'] and len(owned) <= settings.max_units
         return {'targets': owned, 'messages': messages, 'measurement': size,
-                'chunk_id': digest(payload), 'context_by_record': {k:[r['source_id'] for r in context.get(k,[])] for k in keys}}
+                'chunk_id': digest(payload), 'context': list(refs.values()), 'record_keys': keys,
+                'context_by_record': {k:[r['source_id'] for r in context.get(k,[])] for k in keys}}
 
     def split_unit(unit):
         candidate = build([unit])
@@ -393,6 +394,9 @@ def audit_plan(elements, sections, schema, settings, feedback=None, document_sha
             for part in parts:
                 evidence_path+=('['+part+']') if part.isdigit() else ('.' if evidence_path else '')+part
             source_ids=schema.get('meta',{}).get('field_evidence',{}).get(evidence_path,[])
+            if not source_ids and evidence_path:
+                source_ids=list(dict.fromkeys(sid for k, sids in schema.get('meta',{}).get('field_evidence',{}).items()
+                                              if (k.startswith(evidence_path+'[') or k.startswith(evidence_path+'.')) for sid in sids))
             refs=[{'source_id':sid,'quote':inventory[sid].text} for sid in source_ids if sid in inventory]
             units.append({'id':'legacy:'+path,'record_key':key,'kind':'legacy_value','path':path,'value':value,
                           'source_ids':[q['source_id'] for q in refs],'evidence':refs})
@@ -417,57 +421,84 @@ def audit_visible_sources(chunk):
     visible = {}
     def add(key, source_ids):
         visible.setdefault(key, set()).update(source_ids)
-    for unit in chunk['targets']:
-        if unit['kind'] == 'source_omission_check':
-            add(unit['record_key'], unit['source_ids'])
+    for unit in chunk.get('targets', []):
+        if unit.get('kind') == 'source_omission_check':
+            add(unit['record_key'], unit.get('source_ids', []))
+        elif unit.get('kind') == 'cross_record_association':
+            add(unit['record_key'], unit.get('source_ids', []))
+        else:
+            if unit.get('source_ids'):
+                add(unit['record_key'], unit['source_ids'])
         for quote in unit.get('evidence', []):
             if isinstance(quote, dict) and isinstance(quote.get('source_id'), str):
                 add(unit['record_key'], [quote['source_id']])
+    for item in chunk.get('context', []):
+        if isinstance(item, dict) and isinstance(item.get('source_id'), str):
+            sid = item['source_id']
+            p = item.get('parent')
+            rid = item.get('record_id')
+            if p and rid:
+                add(f'{p}/{rid}', [sid])
     for key, quotes in chunk.get('context_by_record', {}).items():
         for quote in quotes:
-            if isinstance(quote,str):add(key,[quote])
-            elif isinstance(quote,dict) and isinstance(quote.get('source_id'),str):
-                add(key,[quote['source_id']])
-                # Boundary context holds anchors from both distinct records.
-                if quote.get('parent') and quote.get('record_id'):
-                    add(quote['parent']+'/'+quote['record_id'],[quote['source_id']])
+            if isinstance(quote, str):
+                add(key, [quote])
+            elif isinstance(quote, dict) and isinstance(quote.get('source_id'), str):
+                add(key, [quote['source_id']])
+                p = quote.get('parent')
+                rid = quote.get('record_id')
+                if p and rid:
+                    add(f'{p}/{rid}', [quote['source_id']])
     return visible
 
 
 def audit_record_keys(unit):
     """Return established record scope, including pre-metadata boundary chunks."""
     if unit.get('boundary_record_keys'):
-        return unit['boundary_record_keys']
+        return list(dict.fromkeys(unit['boundary_record_keys'] + [unit['record_key']]))
     if unit['kind'] == 'cross_record_association':
         match = re.fullmatch(r'boundary:([^/]+)/([^:]+):(.+)', unit['record_key'])
         if match:
             category, left, right = match.groups()
-            return [category+'/'+left, category+'/'+right]
+            return [category+'/'+left, category+'/'+right, unit['record_key']]
     return [unit['record_key']]
 
 
 def audit_decisions(chunk, content):
     raw = json.loads(content)
-    if not isinstance(raw,dict) or set(raw)!={'checked_ids','findings'} or not isinstance(raw['checked_ids'],list) or not isinstance(raw['findings'],list):
+    if (not isinstance(raw, dict) or set(raw) - {'checked_ids', 'findings', 'type'}
+            or raw.get('type', 'json_object') != 'json_object'
+            or not isinstance(raw.get('checked_ids'), list)
+            or not isinstance(raw.get('findings'), list)):
         raise ChunkError('invalid_audit_contract')
-    units = {u['id']:u for u in chunk['targets']}
-    if any(not isinstance(i,str) for i in raw['checked_ids']) or len(raw['checked_ids'])!=len(units) or set(raw['checked_ids'])!=set(units):
+    units = {u['id']: u for u in chunk['targets']}
+    chunk_record_keys = set(chunk.get('record_keys', [])) | {u['record_key'] for u in chunk['targets']}
+    if any(not isinstance(i, str) for i in raw['checked_ids']) or len(raw['checked_ids']) != len(units) or set(raw['checked_ids']) != set(units):
         raise ChunkError('incomplete_audit_coverage')
     visible = audit_visible_sources(chunk)
-    findings=[]
+    findings = []
     for finding in raw['findings']:
-        if not isinstance(finding,dict) or set(finding)!={'field','issue','source_ids'} or finding['field'] not in units or not isinstance(finding['issue'],str) or not finding['issue'].strip():
+        if not isinstance(finding, dict) or set(finding) != {'field', 'issue', 'source_ids'} or not isinstance(finding['issue'], str) or not finding['issue'].strip():
             raise ChunkError('invalid_audit_finding')
-        unit = units[finding['field']]
-        ids=finding['source_ids']
-        record_keys = audit_record_keys(unit)
+        f_field = finding['field']
+        if f_field in units:
+            unit = units[f_field]
+            record_keys = audit_record_keys(unit)
+        elif f_field in chunk_record_keys:
+            unit = {'id': f_field, 'record_key': f_field, 'kind': 'record'}
+            record_keys = [f_field]
+        else:
+            raise ChunkError('invalid_audit_finding')
+        ids = finding['source_ids']
         allowed = set().union(*(visible.get(key, set()) for key in record_keys))
         # A required-field candidate may cite only its established record.  An
         # empty list remains the honest state when no source supports a value.
-        absence_finding = ids == [] and (unit['kind'] == 'required_field_candidate' or
-            unit['kind'] == 'unresolved_field' or
-            unit['kind'] == 'legacy_value' and unit.get('value') in (None, '', [], {}))
-        if not isinstance(ids,list) or (not absence_finding and (not ids or any(not isinstance(i,str) or i not in allowed for i in ids))):
+        absence_finding = ids == [] and (
+            unit['kind'] in ('required_field_candidate', 'unresolved_field')
+            or (unit['kind'] == 'legacy_value' and unit.get('value') in (None, '', [], {}))
+            or (unit['kind'] == 'source_omission_check' and not unit.get('text', '').strip())
+        )
+        if not isinstance(ids, list) or (not absence_finding and (not ids or any(not isinstance(i, str) or i not in allowed for i in ids))):
             raise ChunkError('foreign_audit_source')
         findings.append(finding)
     return findings

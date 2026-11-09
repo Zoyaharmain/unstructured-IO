@@ -173,7 +173,7 @@ def heading_boundary(text, aliases):
     for alias, owner in sorted(aliases.items(), key=lambda item: len(item[0]), reverse=True):
         if alias in RECORD_FIELDS:
             continue
-        pattern = r'^\s*(' + r'\s+'.join(re.escape(word) for word in alias.split()) + r')\s+(?=[A-Z0-9])'
+        pattern = r'^\s*(' + r'\s+'.join(re.escape(word) for word in alias.split()) + r')[\s•▪●\uf0b7\-–—:*|]+(?=[A-Z0-9])'
         match = re.match(pattern, text, flags=re.IGNORECASE)
         if match:
             prefix = match.group(1)
@@ -265,7 +265,11 @@ def entry_groups(blocks, category, elements):
                                  and 0 <= b.source_element_index - previous.source_element_index <= 1)
             if not cards and detail:continue
             adjacent_card = adjacent_card or bool(detail and aligned_credential_detail(previous,b,elements))
-            new_name = bool(cards and (b.assignment in {'local_certification_title','inline_certification_title'} or not detail and ('name' in fields or re.match(r'^\s*[•▪●\uf0b7]\s*\S', b.text))))
+            paren_unclosed = bool(previous and previous.text.count('(') > previous.text.count(')'))
+            has_closing_paren = bool(re.search(r'^[^\(]*\)', b.text.strip()))
+            is_continuation = bool(re.match(r'^(?:and|with|for|in|of|to|by|via|using|from|across|at)\b', b.text.strip(), re.I) or paren_unclosed or has_closing_paren)
+            is_cap_title = bool(b.text.strip() and b.text.strip()[0].isupper() and not is_continuation and len(b.text.strip().split()) <= 8)
+            new_name = bool(cards and (b.assignment in {'local_certification_title','inline_certification_title'} or not detail and ('name' in fields or re.match(r'^\s*[•▪●\uf0b7]\s*\S', b.text) or is_cap_title)))
             if not cards or new_name or (previous.source_element_index != b.source_element_index and not (detail and adjacent_card)):
                 cards.append({'entry_id':f'certifications-{len(cards)+1}','block_indices':[],
                               'lane':b.lane,'boundary_reason':'source-local certification card; source text retained'})
@@ -340,7 +344,7 @@ def entry_groups(blocks, category, elements):
             if DEGREE.match(text) and not re.match(r'^(?:from|in)\b', text, re.I):
                 explicit_title = True
             from local_api.services.dated_record_headers import education_date_starts_record
-            if RANGE.fullmatch(text): dated_header = False
+            if RANGE.fullmatch(text.strip()): dated_header = False
             elif education_date_starts_record(blocks,index): dated_header = True
         if category == 'projects':
             from local_api.services.record_subfields import responsibility_fragment
@@ -371,6 +375,16 @@ def entry_groups(blocks, category, elements):
         active[key]['block_indices'].append(index)
     if category in {'experience','education'}:
         groups = attach_aligned_dates(groups, blocks, elements)
+    if category == 'education':
+        from local_api.services.record_subfields import RANGE
+        merged_groups = []
+        for g in groups:
+            texts = [blocks[idx].text.strip() for idx in g['block_indices'] if blocks[idx].text.strip()]
+            if texts and all(RANGE.fullmatch(t) for t in texts) and merged_groups:
+                merged_groups[-1]['block_indices'].extend(g['block_indices'])
+            else:
+                merged_groups.append(g)
+        groups = merged_groups
     return groups
 
 
@@ -427,8 +441,8 @@ def reviewed_employment_groups(blocks,elements):
     This returns source-membership proposals, never invented fields. If source
     typography cannot establish anchors, retain the existing fallback grouping.
     """
-    role=re.compile(r'\b(?:engineer|developer|analyst|associate|consultant|manager|architect|intern|specialist|director|officer|executive|practitioner|lead|administrator)\b',re.I)
-    business=re.compile(r'\b(?:ltd|limited|inc|llc|corp|corporation|systems|services|bank|technolog(?:y|ies|ie)|solutions)\b',re.I)
+    role=re.compile(r'\b(?:engineer|developer|analyst|associate|consultant|manager|architect|intern|specialist|director|officer|executive|practitioner|lead|administrator|sde|swe|mts|tpm|pm)\b',re.I)
+    business=re.compile(r'\b(?:ltd|limited|inc|llc|corp|corporation|systems|services|bank|technolog(?:y|ies|ie)|solutions|enterprise)\b',re.I)
     date_pat=re.compile(r'\b(?:19|20)\d{2}\b|\b(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sept?|Oct|Nov|Dec)\s*[‘’\']?\d{2}',re.I)
     def hints(b):
         return [h for h in el_meta(elements[b.source_element_index]).get('pdf_source_lines',[]) if
@@ -447,7 +461,7 @@ def reviewed_employment_groups(blocks,elements):
                     return pts_top
         return min_y
     from local_api.services.record_relationships import dated_organization_header
-    from local_api.services.record_subfields import responsibility_fragment, employment_header_fields, is_place
+    from local_api.services.record_subfields import responsibility_fragment, employment_header_fields, is_place, RANGE
     anchors=[]
     shared_history=False
     for i,b in enumerate(blocks):
@@ -455,10 +469,11 @@ def reviewed_employment_groups(blocks,elements):
         if normalized_heading(text) == 'responsibilities' and len(anchors)>=2:
             between=blocks[anchors[-2]['index']:i]
             shared_history=not any(responsibility_fragment(part.text) or len(part.text.split())>30 for part in between)
-        if b.assignment in {'section_heading', 'structural_heading'} or normalized_heading(text) in {'experience','work experience','professional experience','employment','work history','career history','early career history'} or re.search(r'\b(?:career|employment|work)\s+history\b', normalized_heading(text)):continue
+        if b.assignment in {'section_heading', 'structural_heading'} or normalized_heading(text) in {'experience','work experience','professional experience','employment','work history','career history','early career history'} or re.search(r'\b(?:career|employment|work|early|earlier|prior|previous)\s+(?:history|experience)\b', normalized_heading(text)):continue
         if re.match(r'^Client\b',text,re.I):continue
-        if responsibility_fragment(text) or (el_type(elements[b.source_element_index]) == 'ListItem' and responsibility_fragment(el_text(elements[b.source_element_index])) and not employment_header_fields(el_text(elements[b.source_element_index]))):continue
-        if len(text.split())>30 or re.match(r'^(?:job\s+role\s*:|[•▪●*]|projects?\s*[:\-]|projects?\s+(?:name|title|description|summary)\b|client\s*[:\-]|responsibilit)',text,re.I):continue
+        if re.search(r'\b(?:exposure|framework|practices|methodologies)\b', text, re.I):continue
+        if responsibility_fragment(text) or (el_type(elements[b.source_element_index]) == 'ListItem' and responsibility_fragment(el_text(elements[b.source_element_index])) and not employment_header_fields(text)):continue
+        if len(text.split())>30 or re.match(r'^(?:(?:duration|period|tenure|job\s+role)\s*:|[•▪●*]|projects?\s*[:\-]|projects?\s+(?:name|title|description|summary)\b|client\s*[:\-]|responsibilit)',text,re.I):continue
         if re.match(r'^(?:[•▪●*–—\-]+\s*)?(?:technolog(?:y|ies)|tech stack|tools and technologies|core technologies|tech stack used|operating systems|servers(?: & web)?|cloud (?:services|platforms)|programming languages|tools|frameworks|databases|ai / llm skills|environment)\s*:', text, re.I):
             continue
         explicit_header = bool(employment_header_fields(text))
@@ -482,18 +497,25 @@ def reviewed_employment_groups(blocks,elements):
         )
         paired_employer = bool(bold and has_following_role_or_date and len(text.split()) <= 10
                                and not role.search(text) and not responsibility_fragment(text)
-                               and not is_place(text))
+                               and not is_place(text) and not RANGE.search(text) and not re.search(r'(?:19|20)\d{2}', text))
         valid_anchor = (explicit_header or ((role.search(text) or business.search(text)) and (bold or employment_start(text) or aligned_date)) or (bold and dated_history) or dated_organization_header(text) or paired_employer)
         if not valid_anchor or is_place(text):continue
         if anchors and anchors[-1].get('paired_employer') and anchors[-1]['index'] == i-1:
             continue
         # Employer and title can occupy two adjacent source rows. Merge a
         # title-only continuation with the immediately preceding employer row.
-        if anchors and top is not None and anchors[-1]['page']==b.page_number and anchors[-1]['y'] is not None and 0<=top-anchors[-1]['y']<=.03 and (
+        if anchors and not explicit_header and top is not None and anchors[-1]['page']==b.page_number and anchors[-1]['y'] is not None and 0<=top-anchors[-1]['y']<=.03 and (
             (role.search(text) and not business.search(text) and not re.search(r'\d|[,|]',text)) or
             (business.search(text) and not role.search(text) and not re.search(r'\d|[,|]',text))
         ):
             continue
+        # Role followed immediately by employer/date on adjacent row forms one employment entry.
+        if anchors and top is not None and anchors[-1]['page']==b.page_number and anchors[-1]['y'] is not None and 0<=top-anchors[-1]['y']<=.05:
+            prev_text = blocks[anchors[-1]['index']].text.strip()
+            prev_is_role_only = bool(role.search(prev_text) and not business.search(prev_text) and not date_pat.search(prev_text) and len(prev_text.split()) <= 6 and not responsibility_fragment(prev_text))
+            cur_is_emp = bool((business.search(text) or date_pat.search(text)) or employment_header_fields(text).get('company'))
+            if prev_is_role_only and cur_is_emp:
+                continue
         anchors.append({'index':i,'page':b.page_number,'y':top,'paired_employer':paired_employer})
     if not anchors:return []
     groups=[{'entry_id':f'experience-{i+1}','block_indices':[],'lane':'source_geometry','boundary_reason':'source employment header; source row/page membership, not layout lane'} for i in range(len(anchors))]
@@ -515,7 +537,7 @@ def reviewed_employment_groups(blocks,elements):
         top=y(b);eligible=[]
         for j,a in enumerate(anchors):
             if top is not None and a['y'] is not None and b.page_number is not None and a['page'] is not None:
-                if a['page']<b.page_number or (a['page']==b.page_number and a['y']<=top+.006):eligible.append((a['page'],a['y'],j))
+                if (a['page']<b.page_number or (a['page']==b.page_number and a['y']<=top+.006)) and not (b.source_element_index == blocks[a['index']].source_element_index and b.start < blocks[a['index']].start):eligible.append((a['page'],a['y'],j))
             elif a['index']<=i:eligible.append((0,a['index'],j))
         if not eligible:
             # Career-wide highlights preceding employment are section content,

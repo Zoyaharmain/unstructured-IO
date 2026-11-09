@@ -27,7 +27,7 @@ def dated_organization_header(text):
 
     Source-shape evidence only: no company-name dictionary or inferred values.
     """
-    match=re.fullmatch(r"\s*([A-Za-z][A-Za-z&.,'’ /-]{1,90}?)\s*\(([^()]+)\)\s*",text)
+    match=re.fullmatch(r"\s*([A-Za-z][A-Za-z&.,'’ /-]{1,90}?)\s*\(([^()]+)\)(?:\s*[•▪●*o\uf0b7\-–—]\s*)?",text)
     if not match:return False
     name,dates=match.groups()
     if len(name.split())>10 or re.search(r'\b(?:project|client|duration|education|school|university|college|certification|training|responsibilit\w*|performed|developed|managed|worked|experience|summary|engineer|developer|consultant|manager|analyst|lead)\b',name,re.I):return False
@@ -38,7 +38,7 @@ def dated_organization_header(text):
 
 def field_kinds(text,category):
     kinds=[]
-    if re.search(r'\b(?:19|20)\d{2}\b|\b(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sept?|Oct|Nov|Dec)\s*[‘’\']?\d{2}',text,re.I):kinds.append('dates')
+    if re.search(r'(?:19|20)\d{2}|\b(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:t(?:ember)?)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s*[‘’\']?\d{2,4}',text,re.I):kinds.append('dates')
     if category=='education':
         institution_marker = bool(re.search(r'\b(?:university|college|institute|institution|school|convent|academy|vidyalaya|vidyapeeth|polytechnic|board|iit|iiit|nit|cbse|icse)\b',text,re.I))
         explicit_credential = bool(re.search(r'\b(?:diploma|certificate|class\s+(?:x|xii)|sslc|ssc|10th|12th|matric(?:ulation)?)\b',text,re.I))
@@ -50,9 +50,17 @@ def field_kinds(text,category):
         if re.search(r'\b(?:computer science|engineering|finance|commerce|accountancy|artificial intelligence|mathematics|business administration)\b',text,re.I):kinds.append('field_of_study')
     else:
         from local_api.services.record_subfields import employment_header_fields, ACTION, ROLE, responsibility_fragment
-        if re.match(r'^\s*Client\b',text,re.I):return [*kinds,'client']
+        if re.match(r'^\s*[•▪●*✓✔\-\uf0b7]\s*', text): return [*kinds, 'responsibilities']
+        if re.match(r'^\s*(?:technolog(?:y|ies)\s+(?:used|stack|tools|environment|include|overview)\b|technolog(?:y|ies)\s*[:=-]|tools\s*&|tools\s+used|tools\s*:|environment\s*:|tech stack\b)', text, re.I):
+            return [*kinds, 'technologies']
         explicit=employment_header_fields(text)
-        if explicit:return list(dict.fromkeys(kinds+(['employer'] if 'company' in explicit else [])+(['title'] if 'role' in explicit else [])))
+        if explicit:
+            return list(dict.fromkeys(kinds
+                + (['employer'] if 'company' in explicit else [])
+                + (['title'] if 'role' in explicit else [])
+                + (['client'] if 'client' in explicit else [])
+                + (['location'] if 'location' in explicit else [])))
+        if re.match(r'^\s*(?:\d+\.\s*)?Client\b',text,re.I):return [*kinds,'client']
         if responsibility_fragment(text):return [*kinds, 'responsibilities']
         # A delivering clause can continue a responsibility across PDF elements.
         # Require a clause, not just the word: "Delivering Systems Ltd" remains
@@ -69,8 +77,16 @@ def field_kinds(text,category):
         if 'company' in header:kinds.append('employer')
         if 'role' in header:kinds.append('title')
         if 'location' in header:kinds.append('location')
-        if len(text.split()) <= 18 and re.search(r'\b(?:engineer|developer|analyst|associate|consultant|manager|architect|intern|specialist|director|officer|executive|practitioner|lead|administrator|underwriter|supervisor)\b',text,re.I):kinds.append('title')
-        if dated_organization_header(text) or re.search(r'\b(?:ltd|limited|inc|llc|corp|corporation|systems|services|bank|technolog(?:y|ies|ie)|solutions|ispl|paribas|bnp|pvt|private)\b|\b(?:company|employer)\s*[:=-]',text,re.I):kinds.append('employer')
+        if len(text.split()) <= 18 and ROLE.search(text):kinds.append('title')
+        if dated_organization_header(text) or (
+            not responsibility_fragment(text)
+            and not text[:1].islower()
+            and not re.match(r'^\s*(?:tools|technolog(?:y|ies)|environment|skills|tech stack)\b', text, re.I)
+            and not re.match(r'^(?:with|for|across|through|by|from|to|and)\s+', text, re.I)
+            and not (len(text.split()) > 6 and text.rstrip().endswith('-'))
+            and not (text.rstrip().endswith('.') and not re.search(r'\b(?:ltd|inc|corp|co|pvt)\.$', text.rstrip(), re.I))
+            and (re.search(r'\b(?:ltd|limited|inc|llc|corp|corporation|systems|services|bank|technolog(?:y|ies|ie)|solutions|ispl|paribas|bnp|pvt|private)\b',text,re.I) or re.search(r'\b(?:company|employer)\s*[:=-]',text,re.I))
+        ):kinds.append('employer')
         if re.match(r'^\s*[•▪●\-]?\s*(?:led|built|developed|managed|implemented|responsib|worked on|configured|designed|achieved|supported|created|performed|conducted|architect(?:ed|ing)?|optimi[sz](?:ed|ing|e)?|resolv(?:ed|ing|e)?|automat(?:ed|ing|e)?|integrat(?:ed|ing|e)?|analy[sz](?:ed|ing|e)?|proactively|successfully|eliminat(?:ed|ing|e)?|identif(?:ied|y)?)',text,re.I):kinds.append('responsibilities')
     if re.match(r'^\s*(?:location|work base)\s*:',text,re.I):kinds.append('location')
     return list(dict.fromkeys(kinds))
@@ -106,6 +122,26 @@ def annotate_relationships(section):
                     and 0 < len(first_text.split()) <= 10 and not re.search(r'\d|[@:;]', first_text)
                     and not field_kinds(first_text, 'experience') and 'title' in field_kinds(second.text, 'experience'))):
                 fields['employer'] = [entry.block_indices[0]]
+        if section.category == 'experience' and not fields.get('employer'):
+            from local_api.services.record_subfields import RANGE, is_place, ROLE, ACTION, responsibility_fragment
+            for idx in entry.block_indices[:5]:
+                if idx in fields.get('title', []) or idx in fields.get('responsibilities', []):
+                    continue
+                cand_text = section.blocks[idx].text.strip()
+                clean_cand = re.split(r'\s+[—–-]\s+', cand_text)[0].strip()
+                words = clean_cand.split()
+                if not (1 <= len(words) <= 6 and clean_cand and clean_cand[0].isupper() and not re.search(r'[@:;]', clean_cand)):
+                    continue
+                if re.match(r'^(?:client|project)\b', clean_cand, re.I) or RANGE.search(cand_text) or RANGE.search(clean_cand) or re.search(r'(?:19|20)\d{2}', cand_text) or ROLE.search(clean_cand) or ACTION.search(clean_cand) or responsibility_fragment(clean_cand):
+                    continue
+                if is_place(clean_cand):
+                    continue
+                fields['employer'] = [idx]
+                break
         if section.category=='education' and not fields.get('qualification'):reasons.append('qualification_not_established')
-        if section.category=='experience' and not fields.get('employer'):reasons.append('employer_not_established_from_supported_fields')
+        if section.category=='experience' and not fields.get('employer'):
+            first_block = section.blocks[entry.block_indices[0]] if entry.block_indices else None
+            is_client_entry = bool('client' in fields or (first_block and re.match(r'^\s*(?:\d+\.\s*)?Client\b', first_block.text, re.I)))
+            if not is_client_entry:
+                reasons.append('employer_not_established_from_supported_fields')
         entry.fields=fields;entry.review_reasons=sorted(set(reasons));entry.relationship_status='needs_review' if reasons else 'provisional'

@@ -11,6 +11,7 @@ ALIASES = {
         'name': 'full_name', 'full name': 'full_name', 'candidate name': 'full_name',
         'email-id': 'email', 'email id': 'email', 'e-mail id': 'email', 'email address': 'email', 'e-mail': 'email', 'mobile': 'phone', 'telephone': 'phone',
         'contact no': 'phone', 'mobile no': 'phone', 'phone number': 'phone', 'contact number': 'phone', 'address': 'location', 'based in': 'location',
+        'place': 'location', 'current location': 'location', 'present address': 'location', 'permanent address': 'location',
         'linkedin': 'linkedin_url', 'github': 'github_url', 'portfolio': 'portfolio_url',
         'website': 'portfolio_url', 'job title': 'professional_title', 'headline': 'professional_title',
         'preferred location': 'work_preferences', 'preferred locations': 'work_preferences',
@@ -64,21 +65,25 @@ ALIASES = {
 }
 
 MONTH = r'(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:t(?:ember)?)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)'
-DATE = (r"(?:(?:0?[1-9]|[12]\d|3[01])\s*[-/]\s*(?:0?[1-9]|1[0-2]|" + MONTH + r")\s*[-/]\s*(?:19|20)\d{2}|"
-        r"\d{1,2}\s+" + MONTH + r"[,.\s]+(?:19|20)\d{2}|"
-        + MONTH + r"[.,\s\-‘’']*(?:19|20)?\d{2}|"
-        r"(?:19|20)\d{2}(?:[-/]\d{1,2}){0,2}|\d{1,2}[/-](?:\d{1,2}[/-])?(?:19|20)\d{2})")
+DAY = r'(?:0?[1-9]|[12]\d|3[01])(?:st|nd|rd|th)?'
+YEAR = r'(?:(?:19|20)\d{2}|[’‘\'`´]?\d{2})'
+DATE = (r'(?:' + DAY + r'[\s\-/]+' + MONTH + r'[\s,.\-’‘\'`´]*' + YEAR + r'|'
+        + DAY + r'\s*[-/]\s*(?:0?[1-9]|1[0-2])\s*[-/]\s*' + YEAR + r'|'
+        + MONTH + r'[\s,.\-’‘\'`´]*' + YEAR + r'|'
+        r'(?:19|20)\d{2}(?:[-/]\d{1,2}){0,2}|\d{1,2}[/-](?:\d{1,2}[/-])?' + YEAR + r')')
 GLUED_MONTH = r'(?-i:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:t(?:ember)?)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)'
-RANGE = re.compile(r'(?:(?<![\w/])|(?<=(?-i:[a-z]))(?=' + GLUED_MONTH + r'\s+(?:19|20)\d{2}))(' + DATE + r')\s*(?:[-\u2013\u2014]|\bto\b|\btill\b|\buntil\b)\s*(?:(?:till|until)\s+){0,2}(' + DATE + r'|Present|Current(?:ly working)?|Till Date|Till Now|Now)(?!\w)', re.I)
+END_DATE = r'(?:' + DATE + r'|Present|Current(?:ly working)?|(?:(?:till|until|to)\s+)?(?:date|now)|now|ongoing|onwards)'
+RANGE = re.compile(r'(?:(?<![\w/])|(?<=(?-i:[a-z]))(?=' + GLUED_MONTH + r'\s+(?:19|20)\d{2}))(' + DATE + r')\s*(?:\b(?:to|till|until)(?:\s+(?:till|to|date|now))?\b|[-\u2013\u2014])\s*(' + END_DATE + r')(?!\w)', re.I)
 
 
-ROLE = re.compile(r'\b(?:engineer(?:ing)?|developer|analyst|consultant|architect|manager|specialist|scientist|associate|director|administrator|officer|executive|intern|underwriter|supervisor|leader|lead|head|roles?)\b', re.I)
+ROLE = re.compile(r'\b(?:engineer(?:ing)?|developer|analyst|consultant|architect|manager|specialist|scientist|researcher|associate|director|administrator|officer|executive|intern|underwriter|supervisor|leader|lead|head|owner|master|roles?|sde|swe|mts|tpm|pm)\b', re.I)
 
 
 ACTION = re.compile(r'^(?:[\u2022*\-]\s*)?(?:collaborated|orchestrated|researched|provided|served|utilize|migrated|applied|completed|established|delivered|directed|spearheaded|oversaw|monitored|streamlined|closed|reduced|realized|executed|guided|championed|used|utilized|leveraged|led|built|developed|implemented|configured|prepared|managed|conducted|supported|translated|partnered|owned|drove|validated|participated|facilitated|engaged|expanded|created|designed|acted|worked|engineered|responsible|interact|analy[sz]e|ensure|drive|collaborate|assist|coordinate|conduct|perform|create|own|manage|document|maintain|design|develop|implement|translate|prepare|gather|capture|handle|support|architected|optimi[sz]ed|resolved|proactively\b\s*\w+|took(?=\s+(?:a\s+)?lead\b)|lead(?!\s+(?:business|software|data|engineer|analyst|developer|consultant)\b)|work(?=\s+(?:with|on|closely|across|in)\b))\b', re.I)
 CITY = r'(?:Chennai|Bangalore|Bengaluru|Pune|Mumbai|Hyderabad|Noida|Delhi|Gurgaon|Kolkata|London|Paris|Remote|Singapore|New York|San Francisco|Tokyo|Sydney)'
 COUNTRY = r'(?:India|France|UK|USA|Singapore|Australia|Germany|Canada|Japan)'
-PLACE = re.compile(r'^(?:' + CITY + r'(?:,\s*[^|]+)?|[A-Za-z.\s]{2,30},\s*' + COUNTRY + r')$', re.I)
+US_STATE = r'(?:AL|AK|AZ|AR|CA|CO|CT|DE|FL|GA|HI|ID|IL|IN|IA|KS|KY|LA|ME|MD|MA|MI|MN|MS|MO|MT|NE|NV|NH|NJ|NM|NY|NC|ND|OH|OK|OR|PA|RI|SC|SD|TN|TX|UT|VT|VA|WA|WV|WI|WY)'
+PLACE = re.compile(r'^(?:' + CITY + r'(?:,\s*[^|]+)?|[A-Za-z.\s]{2,30},\s*(?:' + COUNTRY + r'|' + US_STATE + r')|' + US_STATE + r')$', re.I)
 COMPANY_KEYWORD = re.compile(r'\b(?:ltd|limited|inc|services|solutions|systems|bank|company|pvt|telecom|teleservices|technolog(?:y|ies)|corp|corporation)\b', re.I)
 
 
@@ -93,7 +98,7 @@ def employment_duration_literal(match):
 
 def is_place(text):
     text = text.strip()
-    return bool((PLACE.fullmatch(text) or re.fullmatch(COUNTRY, text, re.I)) and not COMPANY_KEYWORD.search(text))
+    return bool((PLACE.fullmatch(text) or re.fullmatch(COUNTRY, text, re.I) or re.fullmatch(US_STATE, text, re.I)) and not COMPANY_KEYWORD.search(text))
 
 
 CAPABILITY = re.compile(r'^\s*(?:[•▪●*\-]\s*)?(?:proven\s+track\s+record|familiar\s+with|proficient\s+in|knowledge\s+(?:of|on)|experienced?\s+(?:with|in)|hands[- ]on\s+(?:experience|with))\b', re.I)
@@ -109,14 +114,20 @@ def narrative_identity(text):
 def responsibility_fragment(text):
     """A wrapped prose clause is not an employer just because it says systems."""
     text = text.strip()
+    if re.match(r'^\s*[•▪●*✓✔\-\uf0b7]\s*', text):
+        return True
+    if text[:1].islower() or re.match(r'^(?:with|for|across|through|by|from|to|and)\s+', text, re.I):
+        return True
+    if '|' in text and (ROLE.search(text) or COMPANY_KEYWORD.search(text)):
+        return False
     identity = re.split(r'\s+[—–]\s+|\s*\|\s*',text, maxsplit=1)[0]
-    if len(identity.split()) <= 6 and not re.search(r'\b(?:to|for|with|at|across|prior|during|from|as)\b',identity,re.I) and re.search(r'\b(?:ltd\.?|limited|inc\.?|llc|corp\.?|corporation)\s*$',identity,re.I):
+    if len(identity.split()) <= 12 and not re.search(r'\b(?:to|for|with|at|across|prior|during|from|as)\b',identity,re.I) and re.search(r'\b(?:ltd\.?|limited|inc\.?|llc|corp\.?|corporation|pvt\.?)\s*$',identity,re.I):
         return False
     if re.match(r'^By\s+[A-Za-z-]+ing\b',text,re.I):return True
     narrative = re.match(r'^(?:[•▪●*\-]\s*)?(?:I\s+(?:have|am|speciali[sz]e|thrive|work|excel|focus)\b|My\s+(?:proficiency|expertise|experience|background)\b|With\s+(?:a\s+)?(?:robust|strong|extensive|solid|broad)\s+background\b)',text,re.I)
     return bool(narrative or CAPABILITY.search(text) or ACTION.search(text) or len(text.split()) > 6 and (
-        re.search(r'\b(?:setting up|cut average|ensuring|enhancing|working across)\b', text, re.I)
-        or text[:1].islower() and text.endswith('.')))
+        re.search(r'\b(?:setting up|cut average|ensuring|enhancing|working across|AWS|Kafka|RDS|S3|microservices|pipelines|Jenkins|GitLab)\b', text, re.I)
+        or text[:1].islower() or re.search(r'[A-Za-z]-$', text.rstrip()) or (text.rstrip().endswith('.') and not re.search(r'\b(?:ltd|inc|corp|co|pvt)\.$', text.rstrip(), re.I))))
 
 
 def employment_header_fields(text):
@@ -137,6 +148,17 @@ def employment_header_fields(text):
     if internship and len(internship[2].split())<=12:
         return {'company':internship[2].rstrip('.'),'role':internship[1]}
 
+    desig = re.match(r'^(.+?)\s+(?:Designation|Role|Position)\s*:\s*(.+?)(?:\s+Client\s*:\s*(.+))?$', text, re.I)
+    if desig and 1 <= len(desig.group(1).split()) <= 15 and 1 <= len(desig.group(2).split()) <= 10:
+        comp = desig.group(1).strip()
+        m_r = RANGE.search(comp)
+        if m_r:
+            comp = comp[:m_r.start()].strip()
+        res = {'company': comp, 'role': desig.group(2).strip()}
+        if desig.group(3):
+            res['client'] = desig.group(3).strip()
+        return res
+
     if len(text.split()) > 32:return {}
     # A short employer followed by an explicit department/operation qualifier
     # is identity context, not a second employer or a duty paragraph.
@@ -146,11 +168,23 @@ def employment_header_fields(text):
         and re.search(r'\b(?:office|department|division|operations|business unit)\b',department[2],re.I)
         and len(department[2].split())<=14 and not RANGE.search(text)):
         return {'company':department[1].strip()}
-    stated = re.fullmatch(r'(?:I\s+)?(?:am\s+)?(?:currently\s+)?work(?:ed|ing)\s+as\s+(?:a|an)\s+(.+?)\s+(?:at|with|for)\s+(.+?)(?:\s+(?:from|since))?[ .\uf020]*', text, re.I)
+    stated = re.fullmatch(r'(?:I\s+)?(?:am\s+)?(?:currently\s+)?work(?:ed|ing)\s+as\s+(?:(?:a|an)\s+)?(.+?)\s+(?:at|with|for)\s+(.+?)[ .\uf020]*', text, re.I)
     if stated and ROLE.search(stated[1]):
         employer = re.split(r'\s+(?=' + DATE + r')', stated[2], maxsplit=1, flags=re.I)[0].rstrip(' .–—-')
         employer = re.sub(r'\s+(?:from|since)$', '', employer, flags=re.I)
-        return {'role': stated[1], 'company': employer} if employer else {}
+        m_from = re.search(r'\s+(?:from|since)\s+(.+)$', employer, re.I)
+        if m_from:
+            employer = employer[:m_from.start()].strip()
+        loc = None
+        if ',' in employer:
+            cparts = [p.strip() for p in employer.rsplit(',', 1)]
+            if is_place(cparts[1]):
+                employer, loc = cparts[0], cparts[1]
+        if employer and not responsibility_fragment(employer) and len(employer.split()) <= 14:
+            res = {'role': stated[1].strip(), 'company': employer}
+            if loc: res['location'] = loc
+            return res
+        return {}
     employer_statement=re.fullmatch(r'(?:I\s+)?Worked\s+(?:at|for|with)\s+(.+?)\s+(?:from|since)\s+(.+?)[.\s]*',text,re.I)
     if employer_statement and RANGE.fullmatch(employer_statement[2]):
         return {'company':employer_statement[1]}
@@ -180,54 +214,130 @@ def employment_header_fields(text):
                 and identity.strip().casefold() not in known_labels
                 and not ROLE.search(identity) and not responsibility_fragment(identity)):
             return {'company':identity.strip()}
+    dates = list(RANGE.finditer(text))
+    if len(dates) > 1:return {}
+    prefix = text[:dates[0].start()].rstrip(' |\u2013\u2014-()') if dates else text
+    prefix = re.sub(r'\s*(?:Duration|Period|Tenure)\s*[:=-]?$', '', prefix, flags=re.I).strip()
     # A pipe separates role from an organization compound. Preserve the whole
     # organization side when an unlabelled dash may introduce a client.
-    pipe_parts=[part.strip() for part in text.split('|')]
-    if len(pipe_parts)==2 and not RANGE.search(text):
+    pipe_parts=[part.strip() for part in prefix.split('|')]
+    if len(pipe_parts)==2:
         if is_place(pipe_parts[1]) and not is_place(pipe_parts[0]) and not ROLE.search(pipe_parts[0]) and not responsibility_fragment(pipe_parts[0]):
             return {'company': pipe_parts[0], 'location': pipe_parts[1]}
         if is_place(pipe_parts[0]) and not is_place(pipe_parts[1]) and not ROLE.search(pipe_parts[1]) and not responsibility_fragment(pipe_parts[1]):
             return {'company': pipe_parts[1], 'location': pipe_parts[0]}
-        if ROLE.search(pipe_parts[1]) and not ROLE.search(pipe_parts[0]) and not responsibility_fragment(pipe_parts[1]):
+        rpart = re.split(r'\s*[•▪●✓✔❖\uf0b7]\s*', pipe_parts[1])[0].strip()
+        if ROLE.search(rpart) and not ROLE.search(pipe_parts[0]) and not responsibility_fragment(rpart):
+            m_client = re.match(r'^(?:\d+\.\s*)?Client\s*[:–—\-]\s*(.+)$', pipe_parts[0], re.I)
+            if m_client:
+                return {'client': m_client.group(1).strip(), 'role': rpart}
             comp = pipe_parts[0]; loc = None
             if any(sep in comp for sep in ('–','-','—',',')):
                 cparts = [p.strip() for p in re.split(r'[-–—,]', comp) if p.strip()]
                 if len(cparts) == 2 and is_place(cparts[1]):
                     comp = cparts[0]; loc = cparts[1]
-            res = {'company': comp, 'role': pipe_parts[1]}
+            res = {'company': comp, 'role': rpart}
             if loc: res['location'] = loc
             return res
         role_parts=[i for i,part in enumerate(pipe_parts) if ROLE.search(part) and len(part.split())<=12 and not responsibility_fragment(part)]
         if len(role_parts)==1:
             role_index=role_parts[0]; organization=pipe_parts[1-role_index]
-            if re.search(r'\s+[—–]\s+',organization) and not ROLE.search(organization) and not re.search(r'@|https?://',organization):
-                return {'role':pipe_parts[role_index], 'company':organization}
-    dates = list(RANGE.finditer(text))
-    if len(dates) > 1:return {}
-    prefix = text[:dates[0].start()].rstrip(' |\u2013\u2014-()') if dates else text
+            if not is_place(organization) and not ROLE.search(organization) and not re.search(r'@|https?://',organization) and not responsibility_fragment(organization):
+                m_client = re.match(r'^(?:\d+\.\s*)?Client\s*[:–—\-]\s*(.+)$', organization, re.I)
+                if m_client:
+                    return {'role': pipe_parts[role_index], 'client': m_client.group(1).strip()}
+                comp = organization
+                loc = None
+                if ',' in organization:
+                    cparts = [p.strip() for p in organization.split(',') if p.strip()]
+                    if len(cparts) >= 2 and (is_place(', '.join(cparts[1:])) or is_place(cparts[-1]) or is_place(cparts[1])):
+                        comp = cparts[0]
+                        loc = ', '.join(cparts[1:])
+                elif re.search(r'\s+[—–-]\s+', organization):
+                    cparts = [p.strip() for p in re.split(r'\s+[—–-]\s+', organization) if p.strip()]
+                    if len(cparts) == 2 and is_place(cparts[1]):
+                        comp = cparts[0]
+                        loc = cparts[1]
+                if not is_place(comp) and len(comp.split()) <= 10:
+                    res = {'role': pipe_parts[role_index], 'company': comp}
+                    if loc: res['location'] = loc
+                    return res
     parts=[];depth=0;last=0
-    for delimiter in re.finditer(r'[()]|\s*\|\s*|\s+[–—-]\s+|\s*[•▪●]\s*',prefix):
+    for delimiter in re.finditer(r'[()]|\s*\|\s*|\s+[–—-]\s+|\s*[•▪●✓✔❖\uf0b7]\s*',prefix):
         if delimiter[0]=='(':depth+=1
         elif delimiter[0]==')':depth=max(0,depth-1)
         elif not depth:
             if prefix[last:delimiter.start()].strip():parts.append(prefix[last:delimiter.start()].strip())
             last=delimiter.end()
     if prefix[last:].strip():parts.append(prefix[last:].strip())
-    if len(parts) == 1 and ',' in prefix:
-        # Common resume header: Employer, Role or Employer, Location.
-        employer, title = prefix.rsplit(',', 1)
-        title = title.strip(); employer = employer.strip()
-        if is_place(title) and not is_place(employer) and not ROLE.search(employer) and not responsibility_fragment(employer) and len(employer.split()) <= 10:
-            return {'company': employer, 'location': title}
-        if (employer and ROLE.search(title) and len(title.split()) <= 12
-                and not responsibility_fragment(title)
-                and not re.match(r'^(?:and|&|with|for|in|at|to)\b', title, re.I)
-                and not ACTION.search(employer)
-                and not responsibility_fragment(employer)):
-            parts = [employer, title]
-    role_indices = [i for i, part in enumerate(parts) if ROLE.search(part) and len(part.split()) <= 12
-                    and not re.search(r'\b(?:ltd|limited|inc|services|systems|bank|company|pvt)\b', part, re.I)]
-    if len(role_indices) != 1 or len(parts) < 2:
+    if len(parts) == 1:
+        if ',' in prefix:
+            # Common resume header: Employer, Role or Employer, Location.
+            employer, title = prefix.rsplit(',', 1)
+            title = title.strip(); employer = employer.strip()
+            if is_place(title) and not is_place(employer) and not ROLE.search(employer) and not responsibility_fragment(employer) and len(employer.split()) <= 10:
+                return {'company': employer, 'location': title}
+            if (employer and ROLE.search(title) and len(title.split()) <= 12
+                    and not responsibility_fragment(title)
+                    and not re.match(r'^(?:and|&|with|for|in|at|to)\b', title, re.I)
+                    and not ACTION.search(employer)
+                    and not responsibility_fragment(employer)):
+                parts = [employer, title]
+        else:
+            from local_api.services.dated_record_headers import JOINED
+            mj = JOINED.fullmatch(prefix)
+            if mj:
+                parts = [mj['company'], mj['role']]
+
+    cleaned_parts = []
+    client = None
+    i = 0
+    while i < len(parts):
+        p = parts[i]
+        m_inline_client = re.match(r'^(?:(' + CITY + r')\s+)?(?:\d+\.\s*)?Client\s*[:–—\-]\s*(.+)$', p, re.I)
+        if m_inline_client:
+            if m_inline_client.group(1):
+                cleaned_parts.append(m_inline_client.group(1))
+            client = m_inline_client.group(2).strip()
+            i += 1
+            continue
+        m_city_client = re.match(r'^(' + CITY + r')\s+(?:\d+\.\s*)?Client\b', p, re.I)
+        if m_city_client:
+            cleaned_parts.append(m_city_client.group(1))
+            if i + 1 < len(parts) and not ROLE.search(parts[i+1]) and not is_place(parts[i+1]):
+                client = parts[i+1]
+                i += 2
+                continue
+            i += 1
+            continue
+        m_client = re.match(r'^(?:\d+\.\s*)?Client\b', p, re.I)
+        if m_client:
+            if i + 1 < len(parts) and not ROLE.search(parts[i+1]) and not is_place(parts[i+1]):
+                client = parts[i+1]
+                i += 2
+                continue
+            i += 1
+            continue
+        words = p.split(maxsplit=1)
+        if len(words) == 2 and is_place(words[0]) and ROLE.search(words[1]) and not responsibility_fragment(words[1]):
+            cleaned_parts.append(words[0])
+            cleaned_parts.append(words[1])
+            i += 1
+            continue
+        if responsibility_fragment(p) or ACTION.search(p):
+            i += 1
+            continue
+        cleaned_parts.append(p)
+        i += 1
+    parts = cleaned_parts
+
+    def is_candidate_role(part):
+        clean_part = re.sub(r'\s*\([^)]*\)', '', part).strip()
+        return bool(ROLE.search(clean_part) and len(clean_part.split()) <= 12
+                    and not re.search(r'\b(?:ltd|limited|inc|services|systems|bank|company|pvt)\b', clean_part, re.I))
+
+    role_indices = [i for i, part in enumerate(parts) if is_candidate_role(part)]
+    if len(role_indices) != 1 or (len(parts) < 2 and not client):
         if len(parts) == 2 and not role_indices and not RANGE.search(text):
             if is_place(parts[1]) and not is_place(parts[0]) and not responsibility_fragment(parts[0]) and len(parts[0].split()) <= 10:
                 return {'company': parts[0], 'location': parts[1]}
@@ -240,11 +350,27 @@ def employment_header_fields(text):
         and re.match(r'^(?:independent|freelance|self[- ]employed)\s+',parts[0],re.I)
         and re.fullmatch(r'(?:business|digital|organizational|software|data|process|operations|IT)\s+(?:transformation|engineering|development|consulting|analytics|improvement)',parts[1],re.I)):
         return {'role':prefix}
-    result = {'role': parts[role_index]}
+    role_raw = parts[role_index]
+    m_paren = re.search(r'\s*\(([^)]+)\)\s*$', role_raw)
+    if m_paren and not client:
+        client = m_paren.group(1).strip()
+        role_raw = role_raw[:m_paren.start()].strip()
+    result = {'role': role_raw}
+    if client:
+        result['client'] = client
     rest = [part for i, part in enumerate(parts) if i != role_index]
     locations = [part for part in rest if is_place(part)]
     if len(locations) == 1:result['location'] = locations[0];rest.remove(locations[0])
     for i, part in enumerate(rest):
+        m_corp = re.search(r'\b(?:pvt\.?\s*ltd|limited|ltd|inc|llc|corp)\.?', part, re.I)
+        if m_corp and m_corp.end() < len(part):
+            comp_candidate = part[:m_corp.end()].strip()
+            loc_candidate = part[m_corp.end():].lstrip(' ,-–—.').strip()
+            if loc_candidate:
+                loc_existing = result.get('location')
+                result['location'] = f"{loc_candidate}, {loc_existing}" if loc_existing and loc_existing not in loc_candidate else loc_candidate
+                rest[i] = comp_candidate
+                break
         if ',' in part:
             prefix, loc = part.rsplit(',', 1)
             if is_place(loc) or is_place(part.split(',', 1)[1]):
@@ -258,11 +384,18 @@ def employment_header_fields(text):
             return {'role': text[:dates[0].start()].rstrip(' |\u2013\u2014-()') if dates else text}
         result['company'] = rest[0].rstrip(' ,')
     elif len(rest) == 2:
-        company_candidates = [part for part in rest if not (re.search(r'\b(?:services|practice|division|department|group|team)\b', part, re.I) and re.search(r'\b(?:cybersecurity|information|operations|engineering|technology)\b', part, re.I) and not re.search(r'\b(?:chartered|bank|global|solutions|technologies|pvt|ltd|limited|inc|corp)\b', part, re.I))]
-        if len(company_candidates) == 1 and not re.search(r'@|https?://|\b(?:19|20)\d{2}\b', company_candidates[0]):
-            result['company'] = company_candidates[0].rstrip(' ,')
+        corp_candidates = [part for part in rest if re.search(r'\b(?:pvt\.?\s*ltd|ltd\.?|limited|inc\.?|llc|corp\.?)\b', part, re.I)]
+        if len(corp_candidates) == 1 and not re.search(r'@|https?://|\b(?:19|20)\d{2}\b', corp_candidates[0]):
+            result['company'] = corp_candidates[0].rstrip(' ,')
+            other = next(p for p in rest if p != corp_candidates[0])
+            if role_index < parts.index(other):
+                result['role'] = f"{result['role']} – {other}"
+        else:
+            company_candidates = [part for part in rest if not (re.search(r'\b(?:services|practice|division|department|group|team)\b', part, re.I) and re.search(r'\b(?:cybersecurity|information|operations|engineering|technology)\b', part, re.I) and not re.search(r'\b(?:chartered|bank|global|solutions|technologies|pvt|ltd|limited|inc|corp)\b', part, re.I))]
+            if len(company_candidates) == 1 and not re.search(r'@|https?://|\b(?:19|20)\d{2}\b', company_candidates[0]):
+                result['company'] = company_candidates[0].rstrip(' ,')
     # Multiple employer-like components remain ambiguous rather than picked by position.
-    return result if 'company' in result else {}
+    return result if ('company' in result or 'client' in result) else {}
 
 
 def labelled_fields(category, blocks):
@@ -276,11 +409,34 @@ def labelled_fields(category, blocks):
             continue
         matches = list(pattern.finditer(block.text))
         for i, match in enumerate(matches):
+            field = labels[match.group(1).lower()]
+            if category == 'personal_information' and field == 'full_name':
+                prefix_before = block.text[:match.start()]
+                if re.search(r'\b(?:father|mother|husband|spouse|guardian|family|parent)(?:\'s)?\s*$', prefix_before, re.I):
+                    continue
             end = matches[i + 1].start() if i + 1 < len(matches) else len(block.text)
             value = block.text[match.end():end].strip().strip('|; \u2022\n\r\t')
-            field = labels[match.group(1).lower()]
+            if category == 'personal_information' and field == 'full_name':
+                if re.search(r'^(?:signature|sign|place|date)\b', value, re.I) or not any(c.isalpha() for c in value):
+                    continue
             if category=='experience' and field=='company':
                 value=re.split(r',?\s+Client\s*[:=-]\s*',value,maxsplit=1,flags=re.I)[0].strip(' ,')
+                if '|' in value:
+                    pipe_parts = [p.strip() for p in value.split('|')]
+                    if len(pipe_parts) >= 2 and ROLE.search(pipe_parts[1]):
+                        value = pipe_parts[0]
+                        if not found.get('role'):
+                            found.setdefault('role', []).append(pipe_parts[1])
+            if category == 'personal_information' and field == 'location':
+                value = value.lstrip(' -:')
+                if not is_place(value) and not re.search(r'\b(?:' + CITY + r'|' + COUNTRY + r'|\d{5,6})\b', value, re.I) and len(value.split()) <= 3:
+                    city_found = None
+                    for b in blocks:
+                        m_c = re.search(r'\b(' + CITY + r')\b', b.text, re.I)
+                        if m_c and not re.search(r'@|https?://', b.text):
+                            city_found = m_c.group(1).strip()
+                            break
+                    value = city_found or ''
             if category in {'personal_information', 'references'} and field == 'email':
                 token = re.search(r'[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}', value)
                 value = token.group().rstrip('.') if token else ''
@@ -399,10 +555,11 @@ def refine_record(category, values, blocks, *, header_fields=None):
                 continue
             if (header_fields is None or name in header_fields or name == 'location' or (name == 'location' and {'company','role'} <= header_fields)) and name not in found and len(candidates) == 1 :
                 values[name] = candidates[0]
-        if values.get('role') and not values.get('location'):
+        if values.get('role'):
             loc_match = re.match(r'^(.*?,\s*[A-Za-z]+|\b(?:Bangalore|Bengaluru|Chennai|Hyderabad|Mumbai|Pune|Delhi|Noida|Gurgaon|London|Singapore|Dubai)\b)\s+([A-Za-z].*)$', values['role'], re.I)
             if loc_match and is_place(loc_match.group(1)) and not ROLE.search(loc_match.group(1)):
-                values['location'] = loc_match.group(1).strip(' ,')
+                if not values.get('location'):
+                    values['location'] = loc_match.group(1).strip(' ,')
                 values['role'] = loc_match.group(2).strip()
         if len(dated_headers)==1:
             for name,value in dated_headers[0].items():
@@ -423,7 +580,24 @@ def refine_record(category, values, blocks, *, header_fields=None):
         ranges = [m for text in texts(date_blocks) for m in RANGE.finditer(text)]
         if joined_post:
             ranges=list(RANGE.finditer(joined_post))
-        unique = {m.group(0).casefold(): m for m in ranges}
+        unique = {}
+        for m in ranges:
+            s_norm = re.sub(r'[\s\W_]+', '', m.group(1)).casefold()
+            e_norm = re.sub(r'[\s\W_]+', '', m.group(2)).casefold()
+            unique.setdefault((s_norm, e_norm), m)
+        if len(unique) > 1:
+            header_ranges = [
+                m for b in date_blocks
+                if (employment_header_fields(b.text).get('role') or employment_header_fields(b.text).get('client'))
+                for m in RANGE.finditer(b.text)
+            ]
+            unique_header = {}
+            for m in header_ranges:
+                s_norm = re.sub(r'[\s\W_]+', '', m.group(1)).casefold()
+                e_norm = re.sub(r'[\s\W_]+', '', m.group(2)).casefold()
+                unique_header.setdefault((s_norm, e_norm), m)
+            if len(unique_header) == 1:
+                unique = unique_header
         if len(unique) == 1:
             match = next(iter(unique.values()))
             for name, value in zip(('start_date', 'end_date', 'duration'), (*match.group(1, 2), employment_duration_literal(match))):

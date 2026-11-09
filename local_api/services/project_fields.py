@@ -37,6 +37,8 @@ def project_fields(blocks, elements, proposed_title=None):
         if (title is None and combined and len(combined[1].split()) <= 12
                 and combined[1].casefold() not in ALIASES['projects'] and responsibility_fragment(combined[2])):
             title = combined[1].strip(); append(b, combined[2].strip()); continue
+        if text.casefold() in {'project', 'projects', 'project name', 'project title', 'project details', 'description', 'technologies', 'responsibilities'}:
+            continue
         plausible_name = (not responsibility_fragment(text) and not text.endswith(('.', '!', '?'))
                           and len(text.split()) <= 18 and not re.fullmatch(r'project\s*#?\s*\d+[:.)-]?', text, re.I))
         if title is None and plausible_name and (proposed_title == text or not parts or b is content[0] or elements[b.source_element_index].type == 'Title'):

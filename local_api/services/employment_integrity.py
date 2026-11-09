@@ -18,8 +18,7 @@ def repair_employment_entries(result, elements):
         prior=entries[-1]; previous=[repaired.blocks[i] for i in prior.block_indices]
         adjacent=previous and first.page_number==previous[-1].page_number and 0 <= first.source_element_index-previous[-1].source_element_index <= 1
         compatible=previous and (first.lane==previous[-1].lane or 'wide' in {first.lane,previous[-1].lane})
-        own_header=any(not (elements[b.source_element_index].type == 'ListItem' and responsibility_fragment(elements[b.source_element_index].text) and not employment_header_fields(elements[b.source_element_index].text))
-                       and employment_header_fields(b.text) for b in parts)
+        own_header=any(employment_header_fields(b.text) and not responsibility_fragment(b.text) for b in parts)
         anchored=any(RANGE.search(b.text) and not responsibility_fragment(b.text) for b in previous)
         # A corporate suffix/date on the next source row completes an explicit
         # labelled employment statement; it is not an independent employer.

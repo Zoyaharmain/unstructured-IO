@@ -101,6 +101,7 @@ def extract_contact_info(header_text: str, full_text: str) -> ContactInfo:
     full_name = "Candidate"
     blacklist_pattern = re.compile(
         r"\b(curriculum|resume|biodata|profile|contact|location|address|phone|mobile|tel|telephone|"
+        r"father|mother|husband|spouse|guardian|family|parents|"
         r"email|e-mail|skills|technical\s+skills|key\s+skills|core\s+competencies|experience|work\s+experience|"
         r"education|qualifications|projects|certifications|awards|summary|objective|declaration|"
         r"languages|hobbies|interests|references|revenue\s+growth|key\s+accounts|strategic\s+planning|"
@@ -129,6 +130,9 @@ def extract_contact_info(header_text: str, full_text: str) -> ContactInfo:
             return None
         # Strip trailing contact labels if merged onto the same line (e.g. "Puppy kumari Email Id -")
         candidate_prefix = re.split(r"\s*(?:Email(?:\s*Id)?|Ph:|Phone|Mobile|Contact|Location|Address)\b.*", line, flags=re.I)[0].strip()
+        candidate_prefix = re.split(r"\s*,\s*(?=(?:[A-Za-z]+\s+)*(?:Engineer|Developer|Consultant|Architect|Manager|Analyst|Specialist|Scientist|Executive|Associate|Director|Officer|Administrator|Accountant|Supervisor)\b)", candidate_prefix, flags=re.I)[0].strip()
+        candidate_prefix = re.sub(r"\s*\([^)]*\)", "", candidate_prefix)
+        candidate_prefix = re.sub(r"\s*\(.*$", "", candidate_prefix).strip()
         line_to_check = candidate_prefix if candidate_prefix else line
 
         if blacklist_pattern.search(line_to_check):
@@ -139,8 +143,10 @@ def extract_contact_info(header_text: str, full_text: str) -> ContactInfo:
             r"\s+(?=(?:(?:Senior|Junior|Lead|Principal|Business|Financial|Software|Data|Technical|Accounts)\s+)*(?:Analyst|Engineer|Developer|Consultant|Architect|Manager|Specialist|Scientist|Executive|Associate|Director|Officer|Administrator|Accountant|Supervisor)\b)",
             cleaned, maxsplit=1, flags=re.I,
         )[0].strip()
+        cleaned = re.sub(r"\s*\([^)]*\)", "", cleaned)
+        cleaned = re.sub(r"\s*\(.*$", "", cleaned).strip()
         if (1 <= len(cleaned.split()) <= 6 and len(cleaned) < 70
-                and re.fullmatch(r"[^\W\d_][^\d@:/|,;]*", cleaned)
+                and re.fullmatch(r"[^\W\d_][^\d@:/|,;()]*", cleaned)
                 and not buzzword_pattern.search(cleaned)
                 and cleaned.lower() not in {"email", "phone", "mobile", "contact", "name", "candidate", "address"}):
             return cleaned

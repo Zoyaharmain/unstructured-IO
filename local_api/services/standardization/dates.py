@@ -22,7 +22,7 @@ MONTH_MAP: dict[str, int] = {
 }
 
 CURRENT_PATTERNS = re.compile(
-    r"^(?:present|current(?:ly)?(?: working)?|(?:till\s+)+date|(?:till\s+)+now|now|ongoing|onwards|to date|till present)$",
+    r"^(?:present|current(?:ly)?(?: working)?|(?:till\s+)?date|(?:till\s+)?now|now|ongoing|onwards|to date|till present)$",
     re.I
 )
 
@@ -50,14 +50,42 @@ def parse_date_string(
     compact_lines = re.sub(r'[\r\n\t]+', '', text).strip()
     if compact_lines != text:
         text = compact_lines
-    # A shortened year does not establish a century. Preserve it in audit only.
-    short = re.fullmatch(r'(' + MONTH_REGEX + r")[.\s‘’'-]+(\d{2})", text, re.I)
+    text = re.sub(r'(?<=\d)(?:st|nd|rd|th)\b', '', text, flags=re.I)
+    for ch in ('‘', '’', '´', '`'):
+        text = text.replace(ch, "'")
+
+    # Shortened year interpretation with century windowing (00-69 -> 20xx, 70-99 -> 19xx)
+    m_dmy_short = re.match(r"^(0?[1-9]|[12]\d|3[01])[.\s\-\/]+(" + MONTH_REGEX + r")[,.\s\-\/\']*(\d{2})$", text, re.I)
+    if m_dmy_short:
+        day_str, month_str, yy_str = m_dmy_short.group(1), m_dmy_short.group(2), m_dmy_short.group(3)
+        yy = int(yy_str)
+        century = 2000 + yy if yy <= 69 else 1900 + yy
+        month_num = MONTH_MAP.get(month_str.lower()[:3])
+        if month_num:
+            try:
+                date(century, month_num, int(day_str))
+                iso_str = f"{century:04d}-{month_num:02d}-{int(day_str):02d}"
+                warnings.append(StandardizationWarning(field=field_context, warning_type='two_digit_year_interpretation',
+                    severity='info', original_value=raw_date, normalized_value=iso_str, applied=True,
+                    basis='Two-digit year normalized using century windowing (00-69 -> 20xx, 70-99 -> 19xx).',
+                    message=f'Two-digit year {yy_str} normalized to {century}.'))
+                return iso_str, "day", False, warnings
+            except ValueError:
+                return _invalid_date(raw_date, field_context)
+
+    short = re.fullmatch(r'(' + MONTH_REGEX + r")[.\s\-\/']+(\d{2})", text, re.I)
     if short:
-        warnings.append(StandardizationWarning(field=field_context, warning_type='two_digit_year_interpretation',
-            severity='warning', original_value=raw_date, normalized_value=None,
-            basis='Two-digit year does not establish its century; no normalized date inferred.',
-            message='Two-digit year requires source verification before normalization.'))
-        return None, None, False, warnings
+        month_str, yy_str = short.group(1), short.group(2)
+        yy = int(yy_str)
+        century = 2000 + yy if yy <= 69 else 1900 + yy
+        month_num = MONTH_MAP.get(month_str.lower()[:3])
+        if month_num:
+            iso_str = f"{century:04d}-{month_num:02d}"
+            warnings.append(StandardizationWarning(field=field_context, warning_type='two_digit_year_interpretation',
+                severity='info', original_value=raw_date, normalized_value=iso_str, applied=True,
+                basis='Two-digit year normalized using century windowing (00-69 -> 20xx, 70-99 -> 19xx).',
+                message=f'Two-digit year {yy_str} normalized to {century}.'))
+            return iso_str, "month_year", False, warnings
 
     if not text:
         return None, None, False, warnings

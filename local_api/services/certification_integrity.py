@@ -9,7 +9,7 @@ def credential_heading(text):
     from local_api.services.combined_credentials import combined_heading
     if combined_heading(text):return True
     value=re.sub(r'^\s*(?:&|/|and)\s*','',text.strip().rstrip(':'),flags=re.I)
-    return bool(re.fullmatch(r'(?:certifications?|certificates?|credentials?|licen[cs]es?)',value,re.I)
+    return bool(re.fullmatch(r'(?:certifications?|certificates?|credentials?|licen[cs]es?|curriculum vitae|resume|cv|biodata)',value,re.I)
                 or re.fullmatch(r'(?:education|academic qualifications?)\s*(?:&|and|/)\s*(?:certifications?|certificates?|credentials?|licen[cs]es?)',value,re.I))
 
 
@@ -75,7 +75,7 @@ def credential_values(blocks):
             if re.search(r'\b(?:institute|university|association|board|academy|certified in collaboration with)\b',issuer,re.I):
                 add('issuer',issuer)
     if titles:
-        title=re.sub(r'^\s*[•▪●*]\s*','',credential_title_text(titles[0])).rstrip(' ·•▪●;|\n\t')
+        title=re.sub(r'^\s*[•▪●*❖\uf0b7]\s*','',credential_title_text(titles[0])).rstrip(' ·•▪●;|\n\t')
         label=re.match(r'^(?:certification(?: name)?|certificate(?: name)?|credential name)\s*[:=]\s*(.+)$',title,re.I)
         if label:title=label[1]
         # Parenthesized narrative explanations are descriptions, not identity.
@@ -83,11 +83,16 @@ def credential_values(blocks):
         if inline and inline.start()>0 and not title[inline.end():].strip():
             add('issue_year',inline[1]);add('expiry_date',inline[2]);title=title[:inline.start()].rstrip(' |—–-')
         title=re.split(r'\s*\((?=built to\b|designed to\b|focused on\b)',title,maxsplit=1,flags=re.I)[0].strip()
+        trailing_yr = re.search(r'[,.\s]+((?:19|20)\d{2})\s*$', title)
+        if trailing_yr:
+            add('issue_year', trailing_yr.group(1))
+            title = title[:trailing_yr.start()].rstrip(' ,.-')
         parts=re.split(r'\s+[—–]\s+',title,maxsplit=1)
         if len(parts)==2:
             left,right=parts
-            if (re.search(r'\b(?:institute|university|association|foundation|academy|council|board|school|corporation|ltd)\b',right,re.I)
-                or re.search(r'\b(?:workshop|training|bootcamp)\s*$',left,re.I)):
+            if ((re.search(r'\b(?:institute|university|association|foundation|academy|council|board|school|corporation|ltd|mvlco|vector india|huawei|scrum alliance|project management institute)\b',right,re.I)
+                or re.search(r'\b(?:workshop|training|bootcamp|trained in)\b',left,re.I))
+                and not re.search(r'^(?:associate|professional|specialty|foundational|practitioner|expert)\b', right.strip(), re.I)):
                 year=re.search(r'\s*\(((?:19|20)\d{2})\)\s*$',right)
                 add('name',left);add('issuer',right[:year.start()].strip() if year else right)
                 if year:add('issue_year',year[1])
@@ -105,11 +110,13 @@ def credential_values(blocks):
 
 def credential_list_spans(text):
     depth=0;ends=[]
-    for match in re.finditer(r'[()\[\]{}]|[·•▪●;|]+\s*',text):
+    for match in re.finditer(r'[()\[\]{}]|[·•▪●❖\uf0b7;|]+\s*',text):
         token=match[0][0]
+        if match.start() == 0 and token in '❖·•▪●\uf0b7':
+            continue
         if token in '([{':depth+=1
         elif token in ')]}':depth=max(0,depth-1)
-        elif not depth:ends.append(match.end())
+        elif not depth:ends.append(match.start() if token in '❖·•▪●\uf0b7' and match.start() > 0 else match.end())
     bounds=[0]+ends+[len(text)]
     return list(zip(bounds,bounds[1:]))
 

@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 from datetime import datetime, timezone
+import re
 from collections import Counter
 from local_api.services.standardization.contracts import (
     StandardizationWarning,
@@ -49,7 +50,10 @@ def standardize_resume_data(
 
     # 2. Professional title and summary
     raw_title = raw_dict.get("professional_title")
-    clean_title = raw_title.strip() if raw_title else None
+    clean_title = (
+        re.sub(r'^(?:role|designation|job title|title|position)\s*[:=-]\s*', '', raw_title.strip(), flags=re.I)
+        if raw_title else None
+    )
 
     raw_summary = raw_dict.get("summary")
     clean_summary = raw_summary.strip() if raw_summary else None
@@ -59,7 +63,6 @@ def standardize_resume_data(
     all_warnings.extend(skill_warns)
 
     # Detect unambiguous document-wide numeric date format (e.g. DD-MM-YYYY vs MM-DD-YYYY)
-    import re
     date_order_hint = None
     dmy_count = 0
     mdy_count = 0
@@ -270,6 +273,7 @@ def standardize_resume_data(
     std_certifications: list[StandardizedCertification] = []
     for idx, cert in enumerate(raw_dict.get("certifications", [])):
         name = cert.get("name", "").strip()
+        name = re.sub(r'^\s*[❖•▪●*✓✔\-\uf0b7]\s*', '', name)
         issuer = cert.get("issuer")
         raw_yr = cert.get("issue_year")
 
