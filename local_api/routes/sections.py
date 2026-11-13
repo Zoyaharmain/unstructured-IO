@@ -17,7 +17,9 @@ async def resume_sections(request: SectionRequest):
         reviewed = await run_in_threadpool(review_sections, request, local_result)
         from local_api.services.contact_sections import recover_contact_sections
         from local_api.services.education_date_recovery import recover_education_dates
-        return recover_contact_sections(recover_education_dates(reviewed, request.elements), request.elements)
+        from local_api.services.source_ownership import finalize_ownership
+        result = recover_contact_sections(recover_education_dates(reviewed, request.elements), request.elements)
+        return await run_in_threadpool(finalize_ownership, request.elements, result, review=True)
     except ExtractionError as exc:
         raise HTTPException(exc.status, str(exc)) from exc
 
@@ -34,7 +36,8 @@ async def local_resume_sections(request: SectionRequest):
         result = recover_education_dates(result, request.elements)
         result.metadata['inspection_mode'] = 'local_only'
         result.metadata['llm_review'] = {'status': 'not_requested', 'provider_calls': 0}
-        return result
+        from local_api.services.source_ownership import finalize_ownership
+        return finalize_ownership(request.elements, result)
     except ExtractionError as exc:
         raise HTTPException(exc.status, str(exc)) from exc
 

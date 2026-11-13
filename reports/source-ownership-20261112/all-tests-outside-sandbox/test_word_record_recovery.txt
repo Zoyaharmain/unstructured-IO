@@ -1,0 +1,20 @@
+.F.........                                                              [100%]
+=================================== FAILURES ===================================
+_______ test_three_date_first_qualifications_are_three_populated_records _______
+
+    def test_three_date_first_qualifications_are_three_populated_records():
+        texts=['EDUCATION','May 2022','PG Certificate Program | Visual Design (UX) Example Institute of Technology',
+               'September 2012','Bachelor of Science - BS | Computing','Example University',
+               'December 1996','INFORMATION TECHNOLOGY | Digital Publishing','Example Institute of Publishing']
+        elements,sections=fixture(texts,{'education':list(range(len(texts)))},[])
+        out=map_schema(SchemaMappingRequest(elements=elements,sections=sections))
+>       assert len(out.data.education)==3
+E       AssertionError: assert 5 == 3
+E        +  where 5 = len([Education(institution='', degree='', field_of_study=None, start_year=None, graduation_year='May 2022', grade_or_gpa=N...TECHNOLOGY', field_of_study='Digital Publishing', start_year=None, graduation_year='December 1996', grade_or_gpa=None)])
+E        +    where [Education(institution='', degree='', field_of_study=None, start_year=None, graduation_year='May 2022', grade_or_gpa=N...TECHNOLOGY', field_of_study='Digital Publishing', start_year=None, graduation_year='December 1996', grade_or_gpa=None)] = ResumeSchema(contact=ContactInfo(full_name='', email='', phone='', location=None, linkedin_url=None, github_url=None, ...', start_year=None, graduation_year='December 1996', grade_or_gpa=None)], certifications=[], projects=[], languages=[]).education
+E        +      where ResumeSchema(contact=ContactInfo(full_name='', email='', phone='', location=None, linkedin_url=None, github_url=None, ...', start_year=None, graduation_year='December 1996', grade_or_gpa=None)], certifications=[], projects=[], languages=[]) = SchemaMappingResponse(success=True, source='existing-section-blocks', extraction_mode='existing_blocks_schema_mapping'...ip': [], 'references.organization': [], 'references.email': [], 'references.phone': [], 'references.availability': []}).data
+
+tests/test_word_record_recovery.py:44: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_word_record_recovery.py::test_three_date_first_qualifications_are_three_populated_records
+1 failed, 10 passed in 6.57s

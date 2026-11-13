@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="3" skipped="0" tests="11" time="0.680" timestamp="2026-11-12T10:49:29.730341-08:00" hostname="DESKTOP-RNGQH23"><testcase classname="tests.test_assignment_format_generalization" name="test_explicit_organization_and_post_labels_generalize[Having currently working in-Example Labs-FullStack devlopper]" time="0.028" /><testcase classname="tests.test_assignment_format_generalization" name="test_explicit_organization_and_post_labels_generalize[Having Experience in-Another Organization-Platform Specialist]" time="0.001" /><testcase classname="tests.test_assignment_format_generalization" name="test_explicit_organization_and_post_labels_generalize[Currently working in-Northern Systems-Developer]" time="0.001" /><testcase classname="tests.test_assignment_format_generalization" name="test_payroll_employer_is_not_replaced_by_client_organization" time="0.001" /><testcase classname="tests.test_assignment_format_generalization" name="test_internship_is_literal_but_general_experience_prose_is_not_a_job" time="0.021" /><testcase classname="tests.test_assignment_format_generalization" name="test_wrapped_day_month_year_and_repeated_current_connector_keep_literal_offsets" time="0.009"><failure message="AssertionError: assert (&lt;re.Match object; span=(0, 28), match='05-12- 2022 to till till now'&gt; and ('05-12- 2022', 'till now') == ('05-12- 2022', 'now')&#10;  &#10;  At index 1 diff: 'till now' != 'now'&#10;  Use -v to get more diff)">def test_wrapped_day_month_year_and_repeated_current_connector_keep_literal_offsets():
+     text='05-12- 2022 to till till now'
+     match=RANGE.fullmatch(text)
+&gt;    assert match and match.group(1,2)==('05-12- 2022','now')
+E    AssertionError: assert (&lt;re.Match object; span=(0, 28), match='05-12- 2022 to till till now'&gt; and ('05-12- 2022', 'till now') == ('05-12- 2022', 'now')
+E      
+E      At index 1 diff: 'till now' != 'now'
+E      Use -v to get more diff)
+
+tests/test_assignment_format_generalization.py:35: AssertionError</failure></testcase><testcase classname="tests.test_assignment_format_generalization" name="test_numbered_project_markers_outrank_subfield_font_and_lane_boundaries" time="0.008" /><testcase classname="tests.test_assignment_format_generalization" name="test_educational_qualification_singular_is_an_education_heading" time="0.003" /><testcase classname="tests.test_assignment_format_generalization" name="test_wrapped_labelled_statement_keeps_full_source_dates_and_company_suffix" time="0.006" /><testcase classname="tests.test_assignment_format_generalization" name="test_wrapped_numeric_source_range_does_not_degrade_to_year_only" time="0.020"><failure message="AssertionError: assert 'till now' == 'now'&#10;  &#10;  - now&#10;  + till now">def test_wrapped_numeric_source_range_does_not_degrade_to_year_only():
+     from local_api.services.record_subfields import refine_record
+     pieces=['Having currently working in Example Labs post of Developer start 05-12-',
+             '2022 to till till now.']
+     values,reasons=refine_record('experience',{'company':None,'role':None,'start_date':None,'end_date':None,'duration':None,'location':None},[block(t,i) for i,t in enumerate(pieces)])
+     assert values['start_date']=='05-12-\n2022'
+&gt;    assert values['end_date']=='now'
+E    AssertionError: assert 'till now' == 'now'
+E      
+E      - now
+E      + till now
+
+tests/test_assignment_format_generalization.py:73: AssertionError</failure></testcase><testcase classname="tests.test_assignment_format_generalization" name="test_parenthetical_institution_candidate_is_not_declared_as_a_subject" time="0.007"><failure message="AssertionError: assert ('EXAMPLE North Campus' is None)">def test_parenthetical_institution_candidate_is_not_declared_as_a_subject():
+     from local_api.services.education_subfields import refine_education
+     text='MCA (EXAMPLE North Campus) GGPA: 7.04'
+     values,reasons=refine_education({'degree':None,'institution':None,'field_of_study':None,'grade_or_gpa':None},[block(text,0)])
+     assert values['degree']=='MCA' and values['field_of_study'] is None
+&gt;    assert values['institution'] is None and reasons
+E    AssertionError: assert ('EXAMPLE North Campus' is None)
+
+tests/test_assignment_format_generalization.py:81: AssertionError</failure></testcase></testsuite></testsuites>

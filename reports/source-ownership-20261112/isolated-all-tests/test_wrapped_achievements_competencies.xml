@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="6" time="9.364" timestamp="2026-11-12T10:53:58.274613-08:00" hostname="DESKTOP-RNGQH23"><testcase classname="tests.test_wrapped_achievements_competencies" name="test_achievement_list_items_keep_wrapped_rows_in_same_record" time="0.065" /><testcase classname="tests.test_wrapped_achievements_competencies" name="test_middle_dot_competencies_are_completed_across_source_lines" time="0.002" /><testcase classname="tests.test_wrapped_achievements_competencies" name="test_separate_physical_skill_rows_without_delimiters_are_not_joined" time="0.000" /><testcase classname="tests.test_wrapped_achievements_competencies" name="test_inline_heading_with_value_is_not_discarded_as_heading_only" time="0.095" /><testcase classname="tests.test_wrapped_achievements_competencies" name="test_experience_location_and_action_clauses_do_not_fragment_jobs" time="0.005" /><testcase classname="tests.test_wrapped_achievements_competencies" name="test_suresh_resume_experience_and_awards_mapping" time="9.081"><failure message="AssertionError: assert 4 == 3&#10; +  where 4 = len([WorkExperience(company='Standard Chartered Global Business Services', role='IAM Project Manager', start_date='Jun 202...Ps and technical runbooks that strengthened operational readiness across network operations teams.'], technologies=[])])&#10; +    where [WorkExperience(company='Standard Chartered Global Business Services', role='IAM Project Manager', start_date='Jun 202...Ps and technical runbooks that strengthened operational readiness across network operations teams.'], technologies=[])] = ResumeSchema(contact=ContactInfo(full_name='SURESH BABU S', email='sureshbabu.chn@gmail.com', phone='+91 9600037070', ...issuer=None, issue_year=None, expiry_date=None, credential_id=None, verification_url=None)], projects=[], languages=[]).experience&#10; +      where ResumeSchema(contact=ContactInfo(full_name='SURESH BABU S', email='sureshbabu.chn@gmail.com', phone='+91 9600037070', ...issuer=None, issue_year=None, expiry_date=None, credential_id=None, verification_url=None)], projects=[], languages=[]) = SchemaMappingResponse(success=True, source='existing-section-blocks', extraction_mode='existing_blocks_schema_mapping'...ip': [], 'references.organization': [], 'references.email': [], 'references.phone': [], 'references.availability': []}).data">def test_suresh_resume_experience_and_awards_mapping():
+        import json
+        from pathlib import Path
+        from local_api.services.resume_sections import detect_sections
+        from local_api.schemas.sections import SectionRequest
+        from local_api.services.schema_mapping import map_schema
+        from local_api.schemas.mapping import SchemaMappingRequest
+    
+        path = Path('reports/suresh-section-review-20261028/after/extraction.json')
+        if not path.exists():
+            return
+        with open(path) as f:
+            data = json.load(f)
+    
+        req = SectionRequest(elements=data['elements'])
+        res = detect_sections(req)
+        mapped = map_schema(SchemaMappingRequest(elements=req.elements, sections=res))
+    
+        # Experience must have exactly 3 genuine jobs without fake action/location fragments
+&gt;       assert len(mapped.data.experience) == 3
+E       AssertionError: assert 4 == 3
+E        +  where 4 = len([WorkExperience(company='Standard Chartered Global Business Services', role='IAM Project Manager', start_date='Jun 202...Ps and technical runbooks that strengthened operational readiness across network operations teams.'], technologies=[])])
+E        +    where [WorkExperience(company='Standard Chartered Global Business Services', role='IAM Project Manager', start_date='Jun 202...Ps and technical runbooks that strengthened operational readiness across network operations teams.'], technologies=[])] = ResumeSchema(contact=ContactInfo(full_name='SURESH BABU S', email='sureshbabu.chn@gmail.com', phone='+91 9600037070', ...issuer=None, issue_year=None, expiry_date=None, credential_id=None, verification_url=None)], projects=[], languages=[]).experience
+E        +      where ResumeSchema(contact=ContactInfo(full_name='SURESH BABU S', email='sureshbabu.chn@gmail.com', phone='+91 9600037070', ...issuer=None, issue_year=None, expiry_date=None, credential_id=None, verification_url=None)], projects=[], languages=[]) = SchemaMappingResponse(success=True, source='existing-section-blocks', extraction_mode='existing_blocks_schema_mapping'...ip': [], 'references.organization': [], 'references.email': [], 'references.phone': [], 'references.availability': []}).data
+
+tests/test_wrapped_achievements_competencies.py:95: AssertionError</failure></testcase></testsuite></testsuites>

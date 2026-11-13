@@ -49,7 +49,9 @@ def recover_education_dates(result, elements):
         index = len(target.blocks)
         target.blocks.append(block.model_copy(update={'assignment':'education_date_recovered','reason':'Date physically aligned with a unique degree row in original PDF coordinates.'}))
         owners = [e for e in target.entries if degree_index in e.block_indices]
-        if len(owners) == 1:owners[0].block_indices.append(index)
+        if len(owners) == 1:
+            owners[0].block_indices.append(index)
+            owners[0].fields.setdefault('dates', []).append(index)
     target.highlights=[];target.readable_blocks=[]
     annotate_relationships(target)
     from local_api.services.schema_mapping import canonical

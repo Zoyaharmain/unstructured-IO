@@ -1,0 +1,2543 @@
+{
+  "timestamp": "2026-11-13T10:21:51Z",
+  "total_resumes_evaluated": 25,
+  "local_criteria_pass_count": 19,
+  "local_criteria_pass_rate_percent": 76.0,
+  "ground_truth_evaluated_count": 12,
+  "ground_truth_pass_count": 6,
+  "llm_status": {
+    "enabled": false,
+    "configured": false,
+    "provider": "DeepSeek",
+    "model": "deepseek-flash"
+  },
+  "execution_mode": "offline_sandbox_safe",
+  "document_categories_covered": [
+    "academic_cv_phd_publications",
+    "data_analyst_education_dates",
+    "docx_duplicate_prose_multi_employer",
+    "docx_multi_column_missing_dates",
+    "docx_tables_competencies",
+    "docx_tabular_project_experience",
+    "engineering_management_lead",
+    "infrastructure_multi_employer",
+    "junior_developer_fixture",
+    "lead_architect_multi_role",
+    "multi_column_dense_layout",
+    "multi_column_multi_page",
+    "multi_employer_software_engineer",
+    "multi_employer_technical_lead",
+    "multiple_roles_one_employer",
+    "recovered_education_dates_multi_employer",
+    "scanned_image_ocr",
+    "senior_consultant_multi_page",
+    "senior_developer_multi_employer",
+    "senior_engineer_multi_employer",
+    "senior_professional_multi_page",
+    "split_employer_records",
+    "technical_specialist_multi_employer",
+    "unusual_headings_technical_skills"
+  ],
+  "provenance_breakdown": {
+    "regression_testing": 12,
+    "regression_testing_fixture": 2,
+    "development_corpus_batch_next": 11
+  },
+  "per_resume_results": [
+    {
+      "id": "shyam_kumar_donka",
+      "filename": "original.pdf",
+      "provenance": "regression_testing",
+      "category": "senior_engineer_multi_employer",
+      "layout": "single_column",
+      "elapsed_seconds": 15.958,
+      "overall_criteria_status": "PASS",
+      "criteria": {
+        "c1_sections_assigned": {
+          "status": "PASS",
+          "detected_categories": [
+            "awards",
+            "certifications",
+            "education",
+            "experience",
+            "personal_information",
+            "projects",
+            "skills",
+            "summary"
+          ],
+          "unresolved_count": 0
+        },
+        "c2_summary_not_duplicated_into_experience": {
+          "status": "PASS",
+          "duplicates_found": 0,
+          "sample_duplicate": null
+        },
+        "c3_cross_experience_leakage_prevented": {
+          "status": "PASS",
+          "leakage_detected": 0,
+          "details": []
+        },
+        "c4_dates_extracted": {
+          "status": "WARN",
+          "total_jobs": 2,
+          "dated_jobs": 2
+        },
+        "c5_responsibility_role_ownership": {
+          "status": "PASS",
+          "total_responsibilities": 18
+        },
+        "c6_education_entries_separated": {
+          "status": "PASS",
+          "total_education": 1,
+          "institutions": [
+            "Sri Vasavi Engineering College"
+          ]
+        },
+        "c7_auxiliary_sections_classified": {
+          "status": "PASS",
+          "counts": {
+            "projects": 4,
+            "skills": 39,
+            "certifications": 4
+          }
+        },
+        "c8_no_text_silently_lost": {
+          "status": "PASS",
+          "total_spans": 96,
+          "assigned_spans": 93,
+          "unresolved_spans": 0,
+          "non_content_artifacts": 3
+        },
+        "c9_no_fabricated_information": {
+          "status": "PASS",
+          "cited_fields_count": 115
+        },
+        "c10_ambiguity_explicitly_flagged": {
+          "status": "PASS",
+          "requires_human_review": true,
+          "issues_count": 34
+        }
+      },
+      "ground_truth_audit": {
+        "status": "PASS",
+        "candidate_actual": "SHYAM KUMAR DONKA",
+        "candidate_expected": "SHYAM KUMAR DONKA",
+        "jobs_actual": 2,
+        "jobs_expected": 2,
+        "edu_actual": 1,
+        "edu_expected": 1,
+        "missing_jobs": [],
+        "missing_edu": [],
+        "failures": []
+      },
+      "summary": {
+        "candidate_name": "SHYAM KUMAR DONKA",
+        "total_experience_years": 13.1,
+        "experience_count": 2,
+        "education_count": 1,
+        "skills_count": 39,
+        "projects_count": 4,
+        "certifications_count": 4,
+        "requires_human_review": true,
+        "validation_issues_count": 34
+      },
+      "llm_info": {
+        "llm_used": false,
+        "calls": 0
+      }
+    },
+    {
+      "id": "ashfaq_rahman",
+      "filename": "original.pdf",
+      "provenance": "regression_testing",
+      "category": "technical_specialist_multi_employer",
+      "layout": "single_column",
+      "elapsed_seconds": 2.597,
+      "overall_criteria_status": "PASS",
+      "criteria": {
+        "c1_sections_assigned": {
+          "status": "PASS",
+          "detected_categories": [
+            "certifications",
+            "education",
+            "experience",
+            "personal_information",
+            "skills",
+            "summary"
+          ],
+          "unresolved_count": 0
+        },
+        "c2_summary_not_duplicated_into_experience": {
+          "status": "PASS",
+          "duplicates_found": 0,
+          "sample_duplicate": null
+        },
+        "c3_cross_experience_leakage_prevented": {
+          "status": "PASS",
+          "leakage_detected": 0,
+          "details": []
+        },
+        "c4_dates_extracted": {
+          "status": "PASS",
+          "total_jobs": 3,
+          "dated_jobs": 1
+        },
+        "c5_responsibility_role_ownership": {
+          "status": "PASS",
+          "total_responsibilities": 11
+        },
+        "c6_education_entries_separated": {
+          "status": "PASS",
+          "total_education": 1,
+          "institutions": [
+            "Rao Bahadur College of Engineering"
+          ]
+        },
+        "c7_auxiliary_sections_classified": {
+          "status": "PASS",
+          "counts": {
+            "projects": 0,
+            "skills": 23,
+            "certifications": 1
+          }
+        },
+        "c8_no_text_silently_lost": {
+          "status": "PASS",
+          "total_spans": 62,
+          "assigned_spans": 62,
+          "unresolved_spans": 0,
+          "non_content_artifacts": 0
+        },
+        "c9_no_fabricated_information": {
+          "status": "PASS",
+          "cited_fields_count": 74
+        },
+        "c10_ambiguity_explicitly_flagged": {
+          "status": "PASS",
+          "requires_human_review": true,
+          "issues_count": 13
+        }
+      },
+      "ground_truth_audit": {
+        "status": "INCOMPLETE",
+        "candidate_actual": "ASHFAQ RAHMAN",
+        "candidate_expected": "ASHFAQ RAHMAN",
+        "jobs_actual": 3,
+        "jobs_expected": 3,
+        "edu_actual": 1,
+        "edu_expected": 1,
+        "missing_jobs": [],
+        "missing_edu": [],
+        "failures": [
+          "Total experience is None, expected ~7"
+        ]
+      },
+      "summary": {
+        "candidate_name": "ASHFAQ RAHMAN",
+        "total_experience_years": null,
+        "experience_count": 3,
+        "education_count": 1,
+        "skills_count": 23,
+        "projects_count": 0,
+        "certifications_count": 1,
+        "requires_human_review": true,
+        "validation_issues_count": 13
+      },
+      "llm_info": {
+        "llm_used": false,
+        "calls": 0
+      }
+    },
+    {
+      "id": "a_suribhotla",
+      "filename": "original.pdf",
+      "provenance": "regression_testing",
+      "category": "multiple_roles_one_employer",
+      "layout": "single_column",
+      "elapsed_seconds": 3.193,
+      "overall_criteria_status": "FAIL",
+      "criteria": {
+        "c1_sections_assigned": {
+          "status": "PASS",
+          "detected_categories": [
+            "education",
+            "experience",
+            "personal_information",
+            "skills",
+            "summary"
+          ],
+          "unresolved_count": 0
+        },
+        "c2_summary_not_duplicated_into_experience": {
+          "status": "PASS",
+          "duplicates_found": 0,
+          "sample_duplicate": null
+        },
+        "c3_cross_experience_leakage_prevented": {
+          "status": "FAIL",
+          "leakage_detected": 2,
+          "details": [
+            {
+              "pair": [
+                0,
+                1
+              ],
+              "shared": [
+                "Key Responsibilities:"
+              ]
+            },
+            {
+              "pair": [
+                1,
+                2
+              ],
+              "shared": [
+                "Key Responsibilities:"
+              ]
+            }
+          ]
+        },
+        "c4_dates_extracted": {
+          "status": "PASS",
+          "total_jobs": 3,
+          "dated_jobs": 3
+        },
+        "c5_responsibility_role_ownership": {
+          "status": "PASS",
+          "total_responsibilities": 47
+        },
+        "c6_education_entries_separated": {
+          "status": "PASS",
+          "total_education": 1,
+          "institutions": [
+            "Raghu Engineering College"
+          ]
+        },
+        "c7_auxiliary_sections_classified": {
+          "status": "PASS",
+          "counts": {
+            "projects": 0,
+            "skills": 33,
+            "certifications": 0
+          }
+        },
+        "c8_no_text_silently_lost": {
+          "status": "PASS",
+          "total_spans": 106,
+          "assigned_spans": 105,
+          "unresolved_spans": 0,
+          "non_content_artifacts": 1
+        },
+        "c9_no_fabricated_information": {
+          "status": "PASS",
+          "cited_fields_count": 120
+        },
+        "c10_ambiguity_explicitly_flagged": {
+          "status": "PASS",
+          "requires_human_review": true,
+          "issues_count": 22
+        }
+      },
+      "ground_truth_audit": {
+        "status": "PASS",
+        "candidate_actual": "A Suribhotla",
+        "candidate_expected": "A Suribhotla",
+        "jobs_actual": 3,
+        "jobs_expected": 3,
+        "edu_actual": 1,
+        "edu_expected": 1,
+        "missing_jobs": [],
+        "missing_edu": [],
+        "failures": []
+      },
+      "summary": {
+        "candidate_name": "A Suribhotla",
+        "total_experience_years": 9.5,
+        "experience_count": 3,
+        "education_count": 1,
+        "skills_count": 33,
+        "projects_count": 0,
+        "certifications_count": 0,
+        "requires_human_review": true,
+        "validation_issues_count": 22
+      },
+      "llm_info": {
+        "llm_used": false,
+        "calls": 0
+      }
+    },
+    {
+      "id": "arnab_kumar_kar",
+      "filename": "original.pdf",
+      "provenance": "regression_testing",
+      "category": "senior_developer_multi_employer",
+      "layout": "single_column",
+      "elapsed_seconds": 2.584,
+      "overall_criteria_status": "FAIL",
+      "criteria": {
+        "c1_sections_assigned": {
+          "status": "PASS",
+          "detected_categories": [
+            "awards",
+            "certifications",
+            "education",
+            "experience",
+            "languages",
+            "personal_information",
+            "skills",
+            "summary"
+          ],
+          "unresolved_count": 0
+        },
+        "c2_summary_not_duplicated_into_experience": {
+          "status": "PASS",
+          "duplicates_found": 0,
+          "sample_duplicate": null
+        },
+        "c3_cross_experience_leakage_prevented": {
+          "status": "FAIL",
+          "leakage_detected": 1,
+          "details": [
+            {
+              "pair": [
+                0,
+                1
+              ],
+              "shared": [
+                "Partnered with business, technology, PMO, and testing teams to deliver BRD/FSD, UAT/SIT support, and smooth production transition.",
+                "Supported real-time and cross-border payment transformation initiatives with stakeholder workshops, impact assessments, and data mapping."
+              ]
+            }
+          ]
+        },
+        "c4_dates_extracted": {
+          "status": "PASS",
+          "total_jobs": 4,
+          "dated_jobs": 4
+        },
+        "c5_responsibility_role_ownership": {
+          "status": "PASS",
+          "total_responsibilities": 16
+        },
+        "c6_education_entries_separated": {
+          "status": "PASS",
+          "total_education": 2,
+          "institutions": [
+            "Indian Institute of Management (IIM) Kozhikode",
+            "Gandhi Engineering College"
+          ]
+        },
+        "c7_auxiliary_sections_classified": {
+          "status": "PASS",
+          "counts": {
+            "projects": 0,
+            "skills": 37,
+            "certifications": 11
+          }
+        },
+        "c8_no_text_silently_lost": {
+          "status": "PASS",
+          "total_spans": 93,
+          "assigned_spans": 87,
+          "unresolved_spans": 0,
+          "non_content_artifacts": 6
+        },
+        "c9_no_fabricated_information": {
+          "status": "PASS",
+          "cited_fields_count": 114
+        },
+        "c10_ambiguity_explicitly_flagged": {
+          "status": "PASS",
+          "requires_human_review": true,
+          "issues_count": 23
+        }
+      },
+      "ground_truth_audit": {
+        "status": "PASS",
+        "candidate_actual": "ARNAB KUMAR KAR",
+        "candidate_expected": "ARNAB KUMAR KAR",
+        "jobs_actual": 4,
+        "jobs_expected": 4,
+        "edu_actual": 2,
+        "edu_expected": 2,
+        "missing_jobs": [],
+        "missing_edu": [],
+        "failures": []
+      },
+      "summary": {
+        "candidate_name": "ARNAB KUMAR KAR",
+        "total_experience_years": 11.5,
+        "experience_count": 4,
+        "education_count": 2,
+        "skills_count": 37,
+        "projects_count": 0,
+        "certifications_count": 11,
+        "requires_human_review": true,
+        "validation_issues_count": 23
+      },
+      "llm_info": {
+        "llm_used": false,
+        "calls": 0
+      }
+    },
+    {
+      "id": "yogendra_singh",
+      "filename": "original.pdf",
+      "provenance": "regression_testing",
+      "category": "multi_column_multi_page",
+      "layout": "multi_column",
+      "elapsed_seconds": 6.011,
+      "overall_criteria_status": "PASS",
+      "criteria": {
+        "c1_sections_assigned": {
+          "status": "PASS",
+          "detected_categories": [
+            "education",
+            "experience",
+            "personal_information",
+            "projects",
+            "skills",
+            "summary"
+          ],
+          "unresolved_count": 0
+        },
+        "c2_summary_not_duplicated_into_experience": {
+          "status": "PASS",
+          "duplicates_found": 0,
+          "sample_duplicate": null
+        },
+        "c3_cross_experience_leakage_prevented": {
+          "status": "PASS",
+          "leakage_detected": 0,
+          "details": []
+        },
+        "c4_dates_extracted": {
+          "status": "PASS",
+          "total_jobs": 6,
+          "dated_jobs": 5
+        },
+        "c5_responsibility_role_ownership": {
+          "status": "PASS",
+          "total_responsibilities": 2
+        },
+        "c6_education_entries_separated": {
+          "status": "PASS",
+          "total_education": 2,
+          "institutions": []
+        },
+        "c7_auxiliary_sections_classified": {
+          "status": "PASS",
+          "counts": {
+            "projects": 6,
+            "skills": 55,
+            "certifications": 0
+          }
+        },
+        "c8_no_text_silently_lost": {
+          "status": "PASS",
+          "total_spans": 197,
+          "assigned_spans": 191,
+          "unresolved_spans": 0,
+          "non_content_artifacts": 6
+        },
+        "c9_no_fabricated_information": {
+          "status": "PASS",
+          "cited_fields_count": 139
+        },
+        "c10_ambiguity_explicitly_flagged": {
+          "status": "PASS",
+          "requires_human_review": true,
+          "issues_count": 34
+        }
+      },
+      "ground_truth_audit": {
+        "status": "PASS",
+        "candidate_actual": "YOGENDRA SINGH MANIT Bhopal",
+        "candidate_expected": "YOGENDRA SINGH MANIT Bhopal",
+        "jobs_actual": 6,
+        "jobs_expected": 6,
+        "edu_actual": 2,
+        "edu_expected": 2,
+        "missing_jobs": [],
+        "missing_edu": [],
+        "failures": []
+      },
+      "summary": {
+        "candidate_name": "YOGENDRA SINGH MANIT Bhopal",
+        "total_experience_years": 9.3,
+        "experience_count": 6,
+        "education_count": 2,
+        "skills_count": 55,
+        "projects_count": 6,
+        "certifications_count": 0,
+        "requires_human_review": true,
+        "validation_issues_count": 34
+      },
+      "llm_info": {
+        "llm_used": false,
+        "calls": 0
+      }
+    },
+    {
+      "id": "deeksha_yadu",
+      "filename": "original.pdf",
+      "provenance": "regression_testing",
+      "category": "data_analyst_education_dates",
+      "layout": "single_column",
+      "elapsed_seconds": 1.621,
+      "overall_criteria_status": "PASS",
+      "criteria": {
+        "c1_sections_assigned": {
+          "status": "PASS",
+          "detected_categories": [
+            "education",
+            "experience",
+            "personal_information",
+            "skills",
+            "summary"
+          ],
+          "unresolved_count": 0
+        },
+        "c2_summary_not_duplicated_into_experience": {
+          "status": "PASS",
+          "duplicates_found": 0,
+          "sample_duplicate": null
+        },
+        "c3_cross_experience_leakage_prevented": {
+          "status": "PASS",
+          "leakage_detected": 0,
+          "details": []
+        },
+        "c4_dates_extracted": {
+          "status": "PASS",
+          "total_jobs": 2,
+          "dated_jobs": 2
+        },
+        "c5_responsibility_role_ownership": {
+          "status": "PASS",
+          "total_responsibilities": 13
+        },
+        "c6_education_entries_separated": {
+          "status": "WARN",
+          "total_education": 3,
+          "institutions": [
+            "Bhilai Institute of Technology",
+            "Senior Secondary School",
+            "Senior Secondary School"
+          ]
+        },
+        "c7_auxiliary_sections_classified": {
+          "status": "PASS",
+          "counts": {
+            "projects": 0,
+            "skills": 27,
+            "certifications": 0
+          }
+        },
+        "c8_no_text_silently_lost": {
+          "status": "PASS",
+          "total_spans": 57,
+          "assigned_spans": 57,
+          "unresolved_spans": 0,
+          "non_content_artifacts": 0
+        },
+        "c9_no_fabricated_information": {
+          "status": "PASS",
+          "cited_fields_count": 103
+        },
+        "c10_ambiguity_explicitly_flagged": {
+          "status": "PASS",
+          "requires_human_review": true,
+          "issues_count": 14
+        }
+      },
+      "ground_truth_audit": {
+        "status": "PASS",
+        "candidate_actual": "Deeksha Yadu",
+        "candidate_expected": "Deeksha Yadu",
+        "jobs_actual": 2,
+        "jobs_expected": 2,
+        "edu_actual": 3,
+        "edu_expected": 3,
+        "missing_jobs": [],
+        "missing_edu": [],
+        "failures": []
+      },
+      "summary": {
+        "candidate_name": "Deeksha Yadu",
+        "total_experience_years": 5.8,
+        "experience_count": 2,
+        "education_count": 3,
+        "skills_count": 27,
+        "projects_count": 0,
+        "certifications_count": 0,
+        "requires_human_review": true,
+        "validation_issues_count": 14
+      },
+      "llm_info": {
+        "llm_used": false,
+        "calls": 0
+      }
+    },
+    {
+      "id": "supriya_bhagat",
+      "filename": "original.docx",
+      "provenance": "regression_testing",
+      "category": "docx_tables_competencies",
+      "layout": "tables_and_columns",
+      "elapsed_seconds": 1.916,
+      "overall_criteria_status": "PASS",
+      "criteria": {
+        "c1_sections_assigned": {
+          "status": "PASS",
+          "detected_categories": [
+            "education",
+            "experience",
+            "personal_information",
+            "skills",
+            "summary"
+          ],
+          "unresolved_count": 0
+        },
+        "c2_summary_not_duplicated_into_experience": {
+          "status": "PASS",
+          "duplicates_found": 0,
+          "sample_duplicate": null
+        },
+        "c3_cross_experience_leakage_prevented": {
+          "status": "PASS",
+          "leakage_detected": 0,
+          "details": []
+        },
+        "c4_dates_extracted": {
+          "status": "PASS",
+          "total_jobs": 4,
+          "dated_jobs": 4
+        },
+        "c5_responsibility_role_ownership": {
+          "status": "PASS",
+          "total_responsibilities": 14
+        },
+        "c6_education_entries_separated": {
+          "status": "PASS",
+          "total_education": 2,
+          "institutions": [
+            "Institute of Chemical Technology",
+            "University of Mumbai"
+          ]
+        },
+        "c7_auxiliary_sections_classified": {
+          "status": "PASS",
+          "counts": {
+            "projects": 0,
+            "skills": 46,
+            "certifications": 0
+          }
+        },
+        "c8_no_text_silently_lost": {
+          "status": "PASS",
+          "total_spans": 38,
+          "assigned_spans": 37,
+          "unresolved_spans": 0,
+          "non_content_artifacts": 1
+        },
+        "c9_no_fabricated_information": {
+          "status": "PASS",
+          "cited_fields_count": 108
+        },
+        "c10_ambiguity_explicitly_flagged": {
+          "status": "PASS",
+          "requires_human_review": true,
+          "issues_count": 13
+        }
+      },
+      "ground_truth_audit": {
+        "status": "PASS",
+        "candidate_actual": "SUPRIYA BHAGAT",
+        "candidate_expected": "SUPRIYA BHAGAT",
+        "jobs_actual": 4,
+        "jobs_expected": 4,
+        "edu_actual": 2,
+        "edu_expected": 2,
+        "missing_jobs": [],
+        "missing_edu": [],
+        "failures": []
+      },
+      "summary": {
+        "candidate_name": "SUPRIYA BHAGAT",
+        "total_experience_years": 6.0,
+        "experience_count": 4,
+        "education_count": 2,
+        "skills_count": 46,
+        "projects_count": 0,
+        "certifications_count": 0,
+        "requires_human_review": true,
+        "validation_issues_count": 13
+      },
+      "llm_info": {
+        "llm_used": false,
+        "calls": 0
+      }
+    },
+    {
+      "id": "abhishek_tiwari",
+      "filename": "original.pdf",
+      "provenance": "regression_testing",
+      "category": "recovered_education_dates_multi_employer",
+      "layout": "single_column_split_date",
+      "elapsed_seconds": 1.909,
+      "overall_criteria_status": "PASS",
+      "criteria": {
+        "c1_sections_assigned": {
+          "status": "PASS",
+          "detected_categories": [
+            "education",
+            "experience",
+            "personal_information",
+            "projects",
+            "skills",
+            "summary"
+          ],
+          "unresolved_count": 0
+        },
+        "c2_summary_not_duplicated_into_experience": {
+          "status": "PASS",
+          "duplicates_found": 0,
+          "sample_duplicate": null
+        },
+        "c3_cross_experience_leakage_prevented": {
+          "status": "PASS",
+          "leakage_detected": 0,
+          "details": []
+        },
+        "c4_dates_extracted": {
+          "status": "PASS",
+          "total_jobs": 1,
+          "dated_jobs": 1
+        },
+        "c5_responsibility_role_ownership": {
+          "status": "PASS",
+          "total_responsibilities": 9
+        },
+        "c6_education_entries_separated": {
+          "status": "PASS",
+          "total_education": 1,
+          "institutions": [
+            "University of Allahabad"
+          ]
+        },
+        "c7_auxiliary_sections_classified": {
+          "status": "PASS",
+          "counts": {
+            "projects": 3,
+            "skills": 39,
+            "certifications": 0
+          }
+        },
+        "c8_no_text_silently_lost": {
+          "status": "PASS",
+          "total_spans": 78,
+          "assigned_spans": 78,
+          "unresolved_spans": 0,
+          "non_content_artifacts": 0
+        },
+        "c9_no_fabricated_information": {
+          "status": "PASS",
+          "cited_fields_count": 114
+        },
+        "c10_ambiguity_explicitly_flagged": {
+          "status": "PASS",
+          "requires_human_review": true,
+          "issues_count": 10
+        }
+      },
+      "ground_truth_audit": {
+        "status": "INCOMPLETE",
+        "candidate_actual": "Abhishek Tiwari",
+        "candidate_expected": "Abhishek Tiwari",
+        "jobs_actual": 1,
+        "jobs_expected": 2,
+        "edu_actual": 1,
+        "edu_expected": 1,
+        "missing_jobs": [
+          {
+            "index": 1,
+            "company": "Crystaltech Services Private Limited",
+            "role": "Associate Software Engineer",
+            "dates": "2023-07 - 2023-12"
+          }
+        ],
+        "missing_edu": [],
+        "failures": []
+      },
+      "summary": {
+        "candidate_name": "Abhishek Tiwari",
+        "total_experience_years": 2.8,
+        "experience_count": 1,
+        "education_count": 1,
+        "skills_count": 39,
+        "projects_count": 3,
+        "certifications_count": 0,
+        "requires_human_review": true,
+        "validation_issues_count": 10
+      },
+      "llm_info": {
+        "llm_used": false,
+        "calls": 0
+      }
+    },
+    {
+      "id": "chaganti_leela_sankar",
+      "filename": "original.docx",
+      "provenance": "regression_testing",
+      "category": "docx_duplicate_prose_multi_employer",
+      "layout": "docx_prose",
+      "elapsed_seconds": 3.146,
+      "overall_criteria_status": "PASS",
+      "criteria": {
+        "c1_sections_assigned": {
+          "status": "PASS",
+          "detected_categories": [
+            "certifications",
+            "education",
+            "experience",
+            "personal_information",
+            "projects",
+            "skills",
+            "summary"
+          ],
+          "unresolved_count": 0
+        },
+        "c2_summary_not_duplicated_into_experience": {
+          "status": "PASS",
+          "duplicates_found": 0,
+          "sample_duplicate": null
+        },
+        "c3_cross_experience_leakage_prevented": {
+          "status": "PASS",
+          "leakage_detected": 0,
+          "details": []
+        },
+        "c4_dates_extracted": {
+          "status": "PASS",
+          "total_jobs": 2,
+          "dated_jobs": 2
+        },
+        "c5_responsibility_role_ownership": {
+          "status": "PASS",
+          "total_responsibilities": 17
+        },
+        "c6_education_entries_separated": {
+          "status": "PASS",
+          "total_education": 3,
+          "institutions": [
+            "Indian Institute of Technology",
+            "Annamalai University",
+            "Government Institute of Printing Technology"
+          ]
+        },
+        "c7_auxiliary_sections_classified": {
+          "status": "PASS",
+          "counts": {
+            "projects": 3,
+            "skills": 60,
+            "certifications": 5
+          }
+        },
+        "c8_no_text_silently_lost": {
+          "status": "PASS",
+          "total_spans": 95,
+          "assigned_spans": 93,
+          "unresolved_spans": 0,
+          "non_content_artifacts": 2
+        },
+        "c9_no_fabricated_information": {
+          "status": "PASS",
+          "cited_fields_count": 125
+        },
+        "c10_ambiguity_explicitly_flagged": {
+          "status": "PASS",
+          "requires_human_review": false,
+          "issues_count": 20
+        }
+      },
+      "ground_truth_audit": {
+        "status": "INCOMPLETE",
+        "candidate_actual": "Leela Sankar Chaganti",
+        "candidate_expected": "Leela Sankar Chaganti",
+        "jobs_actual": 2,
+        "jobs_expected": 4,
+        "edu_actual": 3,
+        "edu_expected": 3,
+        "missing_jobs": [
+          {
+            "index": 2,
+            "company": "Black Knight",
+            "role": "Application Programmer IV - AI/ML",
+            "dates": "2022-11 - 2023-09"
+          },
+          {
+            "index": 3,
+            "company": "Thomson Reuters",
+            "role": "Content Technical Specialist",
+            "dates": "2019-03 - 2022-08"
+          }
+        ],
+        "missing_edu": [],
+        "failures": [
+          "Total experience mismatch: actual=2.8 vs expected=7"
+        ]
+      },
+      "summary": {
+        "candidate_name": "Leela Sankar Chaganti",
+        "total_experience_years": 2.8,
+        "experience_count": 2,
+        "education_count": 3,
+        "skills_count": 60,
+        "projects_count": 3,
+        "certifications_count": 5,
+        "requires_human_review": false,
+        "validation_issues_count": 20
+      },
+      "llm_info": {
+        "llm_used": false,
+        "calls": 0
+      }
+    },
+    {
+      "id": "sureshbabus",
+      "filename": "original.pdf",
+      "provenance": "regression_testing",
+      "category": "split_employer_records",
+      "layout": "single_column",
+      "elapsed_seconds": 3.259,
+      "overall_criteria_status": "PASS",
+      "criteria": {
+        "c1_sections_assigned": {
+          "status": "PASS",
+          "detected_categories": [
+            "awards",
+            "certifications",
+            "education",
+            "experience",
+            "personal_information",
+            "skills",
+            "summary"
+          ],
+          "unresolved_count": 0
+        },
+        "c2_summary_not_duplicated_into_experience": {
+          "status": "PASS",
+          "duplicates_found": 0,
+          "sample_duplicate": null
+        },
+        "c3_cross_experience_leakage_prevented": {
+          "status": "PASS",
+          "leakage_detected": 0,
+          "details": []
+        },
+        "c4_dates_extracted": {
+          "status": "PASS",
+          "total_jobs": 3,
+          "dated_jobs": 1
+        },
+        "c5_responsibility_role_ownership": {
+          "status": "PASS",
+          "total_responsibilities": 14
+        },
+        "c6_education_entries_separated": {
+          "status": "PASS",
+          "total_education": 1,
+          "institutions": [
+            "Anna University"
+          ]
+        },
+        "c7_auxiliary_sections_classified": {
+          "status": "PASS",
+          "counts": {
+            "projects": 0,
+            "skills": 36,
+            "certifications": 7
+          }
+        },
+        "c8_no_text_silently_lost": {
+          "status": "PASS",
+          "total_spans": 106,
+          "assigned_spans": 105,
+          "unresolved_spans": 0,
+          "non_content_artifacts": 1
+        },
+        "c9_no_fabricated_information": {
+          "status": "PASS",
+          "cited_fields_count": 87
+        },
+        "c10_ambiguity_explicitly_flagged": {
+          "status": "PASS",
+          "requires_human_review": true,
+          "issues_count": 15
+        }
+      },
+      "ground_truth_audit": {
+        "status": "INCOMPLETE",
+        "candidate_actual": "SURESH BABU S",
+        "candidate_expected": "SURESH BABU S",
+        "jobs_actual": 3,
+        "jobs_expected": 3,
+        "edu_actual": 1,
+        "edu_expected": 1,
+        "missing_jobs": [],
+        "missing_edu": [],
+        "failures": [
+          "Total experience is None, expected ~20.5"
+        ]
+      },
+      "summary": {
+        "candidate_name": "SURESH BABU S",
+        "total_experience_years": null,
+        "experience_count": 3,
+        "education_count": 1,
+        "skills_count": 36,
+        "projects_count": 0,
+        "certifications_count": 7,
+        "requires_human_review": true,
+        "validation_issues_count": 15
+      },
+      "llm_info": {
+        "llm_used": false,
+        "calls": 0
+      }
+    },
+    {
+      "id": "ashwin_s_s",
+      "filename": "original.docx",
+      "provenance": "regression_testing",
+      "category": "docx_multi_column_missing_dates",
+      "layout": "multi_column_docx",
+      "elapsed_seconds": 4.787,
+      "overall_criteria_status": "PASS",
+      "criteria": {
+        "c1_sections_assigned": {
+          "status": "PASS",
+          "detected_categories": [
+            "awards",
+            "experience",
+            "interests",
+            "personal_information",
+            "skills",
+            "summary"
+          ],
+          "unresolved_count": 1
+        },
+        "c2_summary_not_duplicated_into_experience": {
+          "status": "PASS",
+          "duplicates_found": 0,
+          "sample_duplicate": null
+        },
+        "c3_cross_experience_leakage_prevented": {
+          "status": "PASS",
+          "leakage_detected": 0,
+          "details": []
+        },
+        "c4_dates_extracted": {
+          "status": "PASS",
+          "total_jobs": 2,
+          "dated_jobs": 2
+        },
+        "c5_responsibility_role_ownership": {
+          "status": "PASS",
+          "total_responsibilities": 46
+        },
+        "c6_education_entries_separated": {
+          "status": "PASS",
+          "total_education": 0,
+          "institutions": []
+        },
+        "c7_auxiliary_sections_classified": {
+          "status": "PASS",
+          "counts": {
+            "projects": 0,
+            "skills": 9,
+            "certifications": 0
+          }
+        },
+        "c8_no_text_silently_lost": {
+          "status": "PASS",
+          "total_spans": 97,
+          "assigned_spans": 96,
+          "unresolved_spans": 1,
+          "non_content_artifacts": 0
+        },
+        "c9_no_fabricated_information": {
+          "status": "PASS",
+          "cited_fields_count": 68
+        },
+        "c10_ambiguity_explicitly_flagged": {
+          "status": "PASS",
+          "requires_human_review": true,
+          "issues_count": 9
+        }
+      },
+      "ground_truth_audit": {
+        "status": "INCOMPLETE",
+        "candidate_actual": "CAREER ASPIRATION",
+        "candidate_expected": "ASHWIN S.S.",
+        "jobs_actual": 2,
+        "jobs_expected": 4,
+        "edu_actual": 0,
+        "edu_expected": 4,
+        "missing_jobs": [
+          {
+            "index": 1,
+            "company": "Broadridge India financial solutions",
+            "role": "Process Manager/Product Manager",
+            "dates": "2022-07 - 2024-06"
+          },
+          {
+            "index": 2,
+            "company": "Wipro LTD",
+            "role": "Deputy Manager",
+            "dates": "2007-07 - 2022-07"
+          },
+          {
+            "index": 3,
+            "company": "HSBC Ltd",
+            "role": "finance executive",
+            "dates": "2005-12 - 2007-07"
+          }
+        ],
+        "missing_edu": [
+          {
+            "index": 0,
+            "institution": "Symbiosis, Pune",
+            "degree": "PGDBA"
+          },
+          {
+            "index": 1,
+            "institution": "Andhra University",
+            "degree": "M.Com"
+          },
+          {
+            "index": 2,
+            "institution": "Osmania University",
+            "degree": "PG Diploma in Taxation"
+          },
+          {
+            "index": 3,
+            "institution": "Osmania University",
+            "degree": "B.Com"
+          }
+        ],
+        "failures": [
+          "Candidate name mismatch: actual='CAREER ASPIRATION' vs expected='ASHWIN S.S.'",
+          "Total experience mismatch: actual=17.3 vs expected=20.8"
+        ]
+      },
+      "summary": {
+        "candidate_name": "CAREER ASPIRATION",
+        "total_experience_years": 17.3,
+        "experience_count": 2,
+        "education_count": 0,
+        "skills_count": 9,
+        "projects_count": 0,
+        "certifications_count": 0,
+        "requires_human_review": true,
+        "validation_issues_count": 9
+      },
+      "llm_info": {
+        "llm_used": false,
+        "calls": 0
+      }
+    },
+    {
+      "id": "ravisankar_sundar",
+      "filename": "original.docx",
+      "provenance": "regression_testing",
+      "category": "docx_tabular_project_experience",
+      "layout": "docx_tables",
+      "elapsed_seconds": 1.725,
+      "overall_criteria_status": "PASS",
+      "criteria": {
+        "c1_sections_assigned": {
+          "status": "PASS",
+          "detected_categories": [
+            "certifications",
+            "education",
+            "experience",
+            "personal_information",
+            "skills"
+          ],
+          "unresolved_count": 2
+        },
+        "c2_summary_not_duplicated_into_experience": {
+          "status": "PASS",
+          "duplicates_found": 0,
+          "sample_duplicate": null
+        },
+        "c3_cross_experience_leakage_prevented": {
+          "status": "PASS",
+          "leakage_detected": 0,
+          "details": []
+        },
+        "c4_dates_extracted": {
+          "status": "PASS",
+          "total_jobs": 1,
+          "dated_jobs": 1
+        },
+        "c5_responsibility_role_ownership": {
+          "status": "PASS",
+          "total_responsibilities": 5
+        },
+        "c6_education_entries_separated": {
+          "status": "PASS",
+          "total_education": 1,
+          "institutions": [
+            "Sri Eshwar college of engineering"
+          ]
+        },
+        "c7_auxiliary_sections_classified": {
+          "status": "PASS",
+          "counts": {
+            "projects": 0,
+            "skills": 51,
+            "certifications": 1
+          }
+        },
+        "c8_no_text_silently_lost": {
+          "status": "PASS",
+          "total_spans": 38,
+          "assigned_spans": 36,
+          "unresolved_spans": 2,
+          "non_content_artifacts": 0
+        },
+        "c9_no_fabricated_information": {
+          "status": "PASS",
+          "cited_fields_count": 81
+        },
+        "c10_ambiguity_explicitly_flagged": {
+          "status": "PASS",
+          "requires_human_review": false,
+          "issues_count": 15
+        }
+      },
+      "ground_truth_audit": {
+        "status": "INCOMPLETE",
+        "candidate_actual": "Sundar Ravisankar",
+        "candidate_expected": "Sundar Ravisankar",
+        "jobs_actual": 1,
+        "jobs_expected": 3,
+        "edu_actual": 1,
+        "edu_expected": 1,
+        "missing_jobs": [
+          {
+            "index": 0,
+            "company": "Elanco",
+            "role": "Senior Technical Business Analyst, Platform Engineering",
+            "dates": "2024-01 - None"
+          },
+          {
+            "index": 1,
+            "company": "Societe Generale",
+            "role": "Senior Business analyst | Agile Lead",
+            "dates": "2021-02 - 2024-01"
+          }
+        ],
+        "missing_edu": [],
+        "failures": [
+          "Total experience mismatch: actual=4.2 vs expected=9.9"
+        ]
+      },
+      "summary": {
+        "candidate_name": "Sundar Ravisankar",
+        "total_experience_years": 4.2,
+        "experience_count": 1,
+        "education_count": 1,
+        "skills_count": 51,
+        "projects_count": 0,
+        "certifications_count": 1,
+        "requires_human_review": false,
+        "validation_issues_count": 15
+      },
+      "llm_info": {
+        "llm_used": false,
+        "calls": 0
+      }
+    },
+    {
+      "id": "dr_shraddha_mishra",
+      "filename": "Dr Shraddha Mishra.pdf",
+      "provenance": "development_corpus_batch_next",
+      "category": "academic_cv_phd_publications",
+      "layout": "academic_cv",
+      "elapsed_seconds": 11.348,
+      "overall_criteria_status": "PASS",
+      "criteria": {
+        "c1_sections_assigned": {
+          "status": "PASS",
+          "detected_categories": [
+            "education",
+            "experience",
+            "languages",
+            "personal_information",
+            "projects",
+            "publications",
+            "summary"
+          ],
+          "unresolved_count": 49
+        },
+        "c2_summary_not_duplicated_into_experience": {
+          "status": "PASS",
+          "duplicates_found": 0,
+          "sample_duplicate": null
+        },
+        "c3_cross_experience_leakage_prevented": {
+          "status": "PASS",
+          "leakage_detected": 0,
+          "details": []
+        },
+        "c4_dates_extracted": {
+          "status": "PASS",
+          "total_jobs": 7,
+          "dated_jobs": 6
+        },
+        "c5_responsibility_role_ownership": {
+          "status": "PASS",
+          "total_responsibilities": 45
+        },
+        "c6_education_entries_separated": {
+          "status": "PASS",
+          "total_education": 5,
+          "institutions": [
+            "Gautam Buddha Technical University",
+            "Edgewood College",
+            "PhD Thesis Co-Supervision: Industry-Academia Partnership in Skill Development, Delhi Technological University (2023)"
+          ]
+        },
+        "c7_auxiliary_sections_classified": {
+          "status": "PASS",
+          "counts": {
+            "projects": 1,
+            "skills": 0,
+            "certifications": 0
+          }
+        },
+        "c8_no_text_silently_lost": {
+          "status": "PASS",
+          "total_spans": 311,
+          "assigned_spans": 236,
+          "unresolved_spans": 38,
+          "non_content_artifacts": 37
+        },
+        "c9_no_fabricated_information": {
+          "status": "PASS",
+          "cited_fields_count": 96
+        },
+        "c10_ambiguity_explicitly_flagged": {
+          "status": "PASS",
+          "requires_human_review": true,
+          "issues_count": 27
+        }
+      },
+      "ground_truth_audit": null,
+      "summary": {
+        "candidate_name": "Dr. Shraddha Mishra",
+        "total_experience_years": null,
+        "experience_count": 7,
+        "education_count": 5,
+        "skills_count": 0,
+        "projects_count": 1,
+        "certifications_count": 0,
+        "requires_human_review": true,
+        "validation_issues_count": 27
+      },
+      "llm_info": {
+        "llm_used": false,
+        "calls": 0
+      }
+    },
+    {
+      "id": "devops_groovy",
+      "filename": "Devops Groovy.pdf",
+      "provenance": "development_corpus_batch_next",
+      "category": "unusual_headings_technical_skills",
+      "layout": "single_column",
+      "elapsed_seconds": 1.005,
+      "overall_criteria_status": "FAIL",
+      "criteria": {
+        "c1_sections_assigned": {
+          "status": "PASS",
+          "detected_categories": [
+            "personal_information"
+          ],
+          "unresolved_count": 23
+        },
+        "c2_summary_not_duplicated_into_experience": {
+          "status": "PASS",
+          "duplicates_found": 0,
+          "sample_duplicate": null
+        },
+        "c3_cross_experience_leakage_prevented": {
+          "status": "PASS",
+          "leakage_detected": 0,
+          "details": []
+        },
+        "c4_dates_extracted": {
+          "status": "PASS",
+          "total_jobs": 0,
+          "dated_jobs": 0
+        },
+        "c5_responsibility_role_ownership": {
+          "status": "PASS",
+          "total_responsibilities": 0
+        },
+        "c6_education_entries_separated": {
+          "status": "PASS",
+          "total_education": 0,
+          "institutions": []
+        },
+        "c7_auxiliary_sections_classified": {
+          "status": "PASS",
+          "counts": {
+            "projects": 0,
+            "skills": 0,
+            "certifications": 0
+          }
+        },
+        "c8_no_text_silently_lost": {
+          "status": "PASS",
+          "total_spans": 25,
+          "assigned_spans": 2,
+          "unresolved_spans": 18,
+          "non_content_artifacts": 5
+        },
+        "c9_no_fabricated_information": {
+          "status": "FAIL",
+          "cited_fields_count": 0
+        },
+        "c10_ambiguity_explicitly_flagged": {
+          "status": "PASS",
+          "requires_human_review": true,
+          "issues_count": 3
+        }
+      },
+      "ground_truth_audit": null,
+      "summary": {
+        "candidate_name": "",
+        "total_experience_years": null,
+        "experience_count": 0,
+        "education_count": 0,
+        "skills_count": 0,
+        "projects_count": 0,
+        "certifications_count": 0,
+        "requires_human_review": true,
+        "validation_issues_count": 3
+      },
+      "llm_info": {
+        "llm_used": false,
+        "calls": 0
+      }
+    },
+    {
+      "id": "ananya_guha",
+      "filename": "Ananya Guha Resume.pdf",
+      "provenance": "development_corpus_batch_next",
+      "category": "senior_consultant_multi_page",
+      "layout": "single_column",
+      "elapsed_seconds": 2.79,
+      "overall_criteria_status": "PASS",
+      "criteria": {
+        "c1_sections_assigned": {
+          "status": "PASS",
+          "detected_categories": [
+            "education",
+            "experience",
+            "personal_information",
+            "skills",
+            "summary"
+          ],
+          "unresolved_count": 0
+        },
+        "c2_summary_not_duplicated_into_experience": {
+          "status": "PASS",
+          "duplicates_found": 0,
+          "sample_duplicate": null
+        },
+        "c3_cross_experience_leakage_prevented": {
+          "status": "PASS",
+          "leakage_detected": 0,
+          "details": []
+        },
+        "c4_dates_extracted": {
+          "status": "WARN",
+          "total_jobs": 4,
+          "dated_jobs": 4
+        },
+        "c5_responsibility_role_ownership": {
+          "status": "PASS",
+          "total_responsibilities": 17
+        },
+        "c6_education_entries_separated": {
+          "status": "PASS",
+          "total_education": 1,
+          "institutions": [
+            "in Information Technology from West Bengal University of Technology, Kolkata in 2016 with CGPA 8.63/10"
+          ]
+        },
+        "c7_auxiliary_sections_classified": {
+          "status": "PASS",
+          "counts": {
+            "projects": 0,
+            "skills": 51,
+            "certifications": 0
+          }
+        },
+        "c8_no_text_silently_lost": {
+          "status": "PASS",
+          "total_spans": 85,
+          "assigned_spans": 69,
+          "unresolved_spans": 0,
+          "non_content_artifacts": 16
+        },
+        "c9_no_fabricated_information": {
+          "status": "PASS",
+          "cited_fields_count": 110
+        },
+        "c10_ambiguity_explicitly_flagged": {
+          "status": "PASS",
+          "requires_human_review": true,
+          "issues_count": 39
+        }
+      },
+      "ground_truth_audit": null,
+      "summary": {
+        "candidate_name": "Ananya Guha",
+        "total_experience_years": null,
+        "experience_count": 4,
+        "education_count": 1,
+        "skills_count": 51,
+        "projects_count": 0,
+        "certifications_count": 0,
+        "requires_human_review": true,
+        "validation_issues_count": 39
+      },
+      "llm_info": {
+        "llm_used": false,
+        "calls": 0
+      }
+    },
+    {
+      "id": "avinash_kumar_singh",
+      "filename": "Avinash Kumar Singh.pdf",
+      "provenance": "development_corpus_batch_next",
+      "category": "multi_employer_software_engineer",
+      "layout": "single_column",
+      "elapsed_seconds": 5.193,
+      "overall_criteria_status": "PASS",
+      "criteria": {
+        "c1_sections_assigned": {
+          "status": "PASS",
+          "detected_categories": [
+            "certifications",
+            "education",
+            "experience",
+            "personal_information",
+            "projects",
+            "skills",
+            "summary"
+          ],
+          "unresolved_count": 41
+        },
+        "c2_summary_not_duplicated_into_experience": {
+          "status": "PASS",
+          "duplicates_found": 0,
+          "sample_duplicate": null
+        },
+        "c3_cross_experience_leakage_prevented": {
+          "status": "PASS",
+          "leakage_detected": 0,
+          "details": []
+        },
+        "c4_dates_extracted": {
+          "status": "PASS",
+          "total_jobs": 0,
+          "dated_jobs": 0
+        },
+        "c5_responsibility_role_ownership": {
+          "status": "PASS",
+          "total_responsibilities": 0
+        },
+        "c6_education_entries_separated": {
+          "status": "PASS",
+          "total_education": 2,
+          "institutions": [
+            "KD College of Commerce & General Studies"
+          ]
+        },
+        "c7_auxiliary_sections_classified": {
+          "status": "PASS",
+          "counts": {
+            "projects": 10,
+            "skills": 55,
+            "certifications": 3
+          }
+        },
+        "c8_no_text_silently_lost": {
+          "status": "PASS",
+          "total_spans": 154,
+          "assigned_spans": 108,
+          "unresolved_spans": 34,
+          "non_content_artifacts": 12
+        },
+        "c9_no_fabricated_information": {
+          "status": "PASS",
+          "cited_fields_count": 91
+        },
+        "c10_ambiguity_explicitly_flagged": {
+          "status": "PASS",
+          "requires_human_review": true,
+          "issues_count": 24
+        }
+      },
+      "ground_truth_audit": null,
+      "summary": {
+        "candidate_name": "AVINASH KUMAR SINGH",
+        "total_experience_years": null,
+        "experience_count": 0,
+        "education_count": 2,
+        "skills_count": 55,
+        "projects_count": 10,
+        "certifications_count": 3,
+        "requires_human_review": true,
+        "validation_issues_count": 24
+      },
+      "llm_info": {
+        "llm_used": false,
+        "calls": 0
+      }
+    },
+    {
+      "id": "dhanraj_g_badhe",
+      "filename": "Dhanraj G Badhe.pdf",
+      "provenance": "development_corpus_batch_next",
+      "category": "multi_column_dense_layout",
+      "layout": "multi_column",
+      "elapsed_seconds": 4.715,
+      "overall_criteria_status": "FAIL",
+      "criteria": {
+        "c1_sections_assigned": {
+          "status": "PASS",
+          "detected_categories": [
+            "education",
+            "experience",
+            "personal_information",
+            "skills",
+            "summary"
+          ],
+          "unresolved_count": 0
+        },
+        "c2_summary_not_duplicated_into_experience": {
+          "status": "PASS",
+          "duplicates_found": 0,
+          "sample_duplicate": null
+        },
+        "c3_cross_experience_leakage_prevented": {
+          "status": "FAIL",
+          "leakage_detected": 1,
+          "details": [
+            {
+              "pair": [
+                3,
+                4
+              ],
+              "shared": [
+                "Responsibilities:"
+              ]
+            }
+          ]
+        },
+        "c4_dates_extracted": {
+          "status": "PASS",
+          "total_jobs": 5,
+          "dated_jobs": 5
+        },
+        "c5_responsibility_role_ownership": {
+          "status": "PASS",
+          "total_responsibilities": 46
+        },
+        "c6_education_entries_separated": {
+          "status": "PASS",
+          "total_education": 2,
+          "institutions": [
+            "Completed Master of commerce in Banking and Finance from Symbiosis International University in year 2015.",
+            "Completed Bachelor of Commerce in Banking and Information Technology from Nagpur University in year 2013."
+          ]
+        },
+        "c7_auxiliary_sections_classified": {
+          "status": "PASS",
+          "counts": {
+            "projects": 0,
+            "skills": 7,
+            "certifications": 0
+          }
+        },
+        "c8_no_text_silently_lost": {
+          "status": "PASS",
+          "total_spans": 147,
+          "assigned_spans": 117,
+          "unresolved_spans": 0,
+          "non_content_artifacts": 30
+        },
+        "c9_no_fabricated_information": {
+          "status": "PASS",
+          "cited_fields_count": 95
+        },
+        "c10_ambiguity_explicitly_flagged": {
+          "status": "PASS",
+          "requires_human_review": true,
+          "issues_count": 24
+        }
+      },
+      "ground_truth_audit": null,
+      "summary": {
+        "candidate_name": "Dhanraj G. Badhe",
+        "total_experience_years": 6.3,
+        "experience_count": 5,
+        "education_count": 2,
+        "skills_count": 7,
+        "projects_count": 0,
+        "certifications_count": 0,
+        "requires_human_review": true,
+        "validation_issues_count": 24
+      },
+      "llm_info": {
+        "llm_used": false,
+        "calls": 0
+      }
+    },
+    {
+      "id": "harini_sasidharanbai",
+      "filename": "Harini Sasidharanbai.pdf",
+      "provenance": "development_corpus_batch_next",
+      "category": "engineering_management_lead",
+      "layout": "single_column",
+      "elapsed_seconds": 3.49,
+      "overall_criteria_status": "PASS",
+      "criteria": {
+        "c1_sections_assigned": {
+          "status": "PASS",
+          "detected_categories": [
+            "awards",
+            "education",
+            "experience",
+            "personal_information",
+            "summary"
+          ],
+          "unresolved_count": 0
+        },
+        "c2_summary_not_duplicated_into_experience": {
+          "status": "PASS",
+          "duplicates_found": 0,
+          "sample_duplicate": null
+        },
+        "c3_cross_experience_leakage_prevented": {
+          "status": "PASS",
+          "leakage_detected": 0,
+          "details": []
+        },
+        "c4_dates_extracted": {
+          "status": "WARN",
+          "total_jobs": 2,
+          "dated_jobs": 2
+        },
+        "c5_responsibility_role_ownership": {
+          "status": "PASS",
+          "total_responsibilities": 24
+        },
+        "c6_education_entries_separated": {
+          "status": "PASS",
+          "total_education": 1,
+          "institutions": [
+            "PG Data science IMS pro school."
+          ]
+        },
+        "c7_auxiliary_sections_classified": {
+          "status": "PASS",
+          "counts": {
+            "projects": 0,
+            "skills": 0,
+            "certifications": 0
+          }
+        },
+        "c8_no_text_silently_lost": {
+          "status": "PASS",
+          "total_spans": 83,
+          "assigned_spans": 70,
+          "unresolved_spans": 0,
+          "non_content_artifacts": 13
+        },
+        "c9_no_fabricated_information": {
+          "status": "PASS",
+          "cited_fields_count": 41
+        },
+        "c10_ambiguity_explicitly_flagged": {
+          "status": "PASS",
+          "requires_human_review": true,
+          "issues_count": 12
+        }
+      },
+      "ground_truth_audit": null,
+      "summary": {
+        "candidate_name": "Harini Sasidharan",
+        "total_experience_years": 4.2,
+        "experience_count": 2,
+        "education_count": 1,
+        "skills_count": 0,
+        "projects_count": 0,
+        "certifications_count": 0,
+        "requires_human_review": true,
+        "validation_issues_count": 12
+      },
+      "llm_info": {
+        "llm_used": false,
+        "calls": 0
+      }
+    },
+    {
+      "id": "chigulla_prashant",
+      "filename": "CHIGULLA PRASHANT.pdf",
+      "provenance": "development_corpus_batch_next",
+      "category": "senior_developer_multi_employer",
+      "layout": "single_column",
+      "elapsed_seconds": 4.88,
+      "overall_criteria_status": "PASS",
+      "criteria": {
+        "c1_sections_assigned": {
+          "status": "PASS",
+          "detected_categories": [
+            "education",
+            "experience",
+            "languages",
+            "personal_information",
+            "projects",
+            "skills",
+            "summary"
+          ],
+          "unresolved_count": 0
+        },
+        "c2_summary_not_duplicated_into_experience": {
+          "status": "PASS",
+          "duplicates_found": 0,
+          "sample_duplicate": null
+        },
+        "c3_cross_experience_leakage_prevented": {
+          "status": "PASS",
+          "leakage_detected": 0,
+          "details": []
+        },
+        "c4_dates_extracted": {
+          "status": "PASS",
+          "total_jobs": 4,
+          "dated_jobs": 2
+        },
+        "c5_responsibility_role_ownership": {
+          "status": "PASS",
+          "total_responsibilities": 58
+        },
+        "c6_education_entries_separated": {
+          "status": "PASS",
+          "total_education": 2,
+          "institutions": [
+            "AIMS IBS Business School / Bengaluru University",
+            "Ambedkar University"
+          ]
+        },
+        "c7_auxiliary_sections_classified": {
+          "status": "PASS",
+          "counts": {
+            "projects": 2,
+            "skills": 76,
+            "certifications": 0
+          }
+        },
+        "c8_no_text_silently_lost": {
+          "status": "PASS",
+          "total_spans": 120,
+          "assigned_spans": 118,
+          "unresolved_spans": 0,
+          "non_content_artifacts": 2
+        },
+        "c9_no_fabricated_information": {
+          "status": "PASS",
+          "cited_fields_count": 176
+        },
+        "c10_ambiguity_explicitly_flagged": {
+          "status": "PASS",
+          "requires_human_review": true,
+          "issues_count": 19
+        }
+      },
+      "ground_truth_audit": null,
+      "summary": {
+        "candidate_name": "Ch Prashant",
+        "total_experience_years": null,
+        "experience_count": 4,
+        "education_count": 2,
+        "skills_count": 76,
+        "projects_count": 2,
+        "certifications_count": 0,
+        "requires_human_review": true,
+        "validation_issues_count": 19
+      },
+      "llm_info": {
+        "llm_used": false,
+        "calls": 0
+      }
+    },
+    {
+      "id": "chandan",
+      "filename": "Chandan_.pdf",
+      "provenance": "development_corpus_batch_next",
+      "category": "multi_employer_technical_lead",
+      "layout": "single_column",
+      "elapsed_seconds": 6.627,
+      "overall_criteria_status": "FAIL",
+      "criteria": {
+        "c1_sections_assigned": {
+          "status": "PASS",
+          "detected_categories": [
+            "education",
+            "experience",
+            "personal_information",
+            "skills",
+            "summary"
+          ],
+          "unresolved_count": 45
+        },
+        "c2_summary_not_duplicated_into_experience": {
+          "status": "PASS",
+          "duplicates_found": 0,
+          "sample_duplicate": null
+        },
+        "c3_cross_experience_leakage_prevented": {
+          "status": "FAIL",
+          "leakage_detected": 1,
+          "details": [
+            {
+              "pair": [
+                0,
+                1
+              ],
+              "shared": [
+                "Responsibilities"
+              ]
+            }
+          ]
+        },
+        "c4_dates_extracted": {
+          "status": "PASS",
+          "total_jobs": 3,
+          "dated_jobs": 3
+        },
+        "c5_responsibility_role_ownership": {
+          "status": "PASS",
+          "total_responsibilities": 35
+        },
+        "c6_education_entries_separated": {
+          "status": "PASS",
+          "total_education": 2,
+          "institutions": [
+            "Finance & Services Manipal School of Banking",
+            "GIET University"
+          ]
+        },
+        "c7_auxiliary_sections_classified": {
+          "status": "PASS",
+          "counts": {
+            "projects": 0,
+            "skills": 59,
+            "certifications": 0
+          }
+        },
+        "c8_no_text_silently_lost": {
+          "status": "PASS",
+          "total_spans": 273,
+          "assigned_spans": 161,
+          "unresolved_spans": 27,
+          "non_content_artifacts": 85
+        },
+        "c9_no_fabricated_information": {
+          "status": "PASS",
+          "cited_fields_count": 133
+        },
+        "c10_ambiguity_explicitly_flagged": {
+          "status": "PASS",
+          "requires_human_review": true,
+          "issues_count": 20
+        }
+      },
+      "ground_truth_audit": null,
+      "summary": {
+        "candidate_name": "CHANDAN BRAHMA",
+        "total_experience_years": 6.7,
+        "experience_count": 3,
+        "education_count": 2,
+        "skills_count": 59,
+        "projects_count": 0,
+        "certifications_count": 0,
+        "requires_human_review": true,
+        "validation_issues_count": 20
+      },
+      "llm_info": {
+        "llm_used": false,
+        "calls": 0
+      }
+    },
+    {
+      "id": "anuradha_yadav",
+      "filename": "Anuradha Yadav.pdf",
+      "provenance": "development_corpus_batch_next",
+      "category": "infrastructure_multi_employer",
+      "layout": "single_column",
+      "elapsed_seconds": 3.441,
+      "overall_criteria_status": "FAIL",
+      "criteria": {
+        "c1_sections_assigned": {
+          "status": "PASS",
+          "detected_categories": [
+            "certifications",
+            "education",
+            "experience",
+            "personal_information",
+            "skills",
+            "summary"
+          ],
+          "unresolved_count": 0
+        },
+        "c2_summary_not_duplicated_into_experience": {
+          "status": "PASS",
+          "duplicates_found": 0,
+          "sample_duplicate": null
+        },
+        "c3_cross_experience_leakage_prevented": {
+          "status": "FAIL",
+          "leakage_detected": 1,
+          "details": [
+            {
+              "pair": [
+                0,
+                1
+              ],
+              "shared": [
+                "Root cause analysis and operational support for the products."
+              ]
+            }
+          ]
+        },
+        "c4_dates_extracted": {
+          "status": "WARN",
+          "total_jobs": 3,
+          "dated_jobs": 3
+        },
+        "c5_responsibility_role_ownership": {
+          "status": "PASS",
+          "total_responsibilities": 19
+        },
+        "c6_education_entries_separated": {
+          "status": "PASS",
+          "total_education": 1,
+          "institutions": [
+            "in Computer Science from Dr K.N. Modi institute of Engr. and Technology(2012-2016)"
+          ]
+        },
+        "c7_auxiliary_sections_classified": {
+          "status": "PASS",
+          "counts": {
+            "projects": 0,
+            "skills": 16,
+            "certifications": 2
+          }
+        },
+        "c8_no_text_silently_lost": {
+          "status": "PASS",
+          "total_spans": 77,
+          "assigned_spans": 56,
+          "unresolved_spans": 0,
+          "non_content_artifacts": 21
+        },
+        "c9_no_fabricated_information": {
+          "status": "PASS",
+          "cited_fields_count": 62
+        },
+        "c10_ambiguity_explicitly_flagged": {
+          "status": "PASS",
+          "requires_human_review": true,
+          "issues_count": 23
+        }
+      },
+      "ground_truth_audit": null,
+      "summary": {
+        "candidate_name": "Anuradha Yadav",
+        "total_experience_years": 9.1,
+        "experience_count": 3,
+        "education_count": 1,
+        "skills_count": 16,
+        "projects_count": 0,
+        "certifications_count": 2,
+        "requires_human_review": true,
+        "validation_issues_count": 23
+      },
+      "llm_info": {
+        "llm_used": false,
+        "calls": 0
+      }
+    },
+    {
+      "id": "anup_gurnani",
+      "filename": "AnupGurnani[7y_0m].pdf",
+      "provenance": "development_corpus_batch_next",
+      "category": "senior_professional_multi_page",
+      "layout": "single_column",
+      "elapsed_seconds": 3.666,
+      "overall_criteria_status": "PASS",
+      "criteria": {
+        "c1_sections_assigned": {
+          "status": "PASS",
+          "detected_categories": [
+            "certifications",
+            "education",
+            "experience",
+            "languages",
+            "personal_information",
+            "skills",
+            "summary"
+          ],
+          "unresolved_count": 0
+        },
+        "c2_summary_not_duplicated_into_experience": {
+          "status": "PASS",
+          "duplicates_found": 0,
+          "sample_duplicate": null
+        },
+        "c3_cross_experience_leakage_prevented": {
+          "status": "PASS",
+          "leakage_detected": 0,
+          "details": []
+        },
+        "c4_dates_extracted": {
+          "status": "WARN",
+          "total_jobs": 7,
+          "dated_jobs": 4
+        },
+        "c5_responsibility_role_ownership": {
+          "status": "PASS",
+          "total_responsibilities": 21
+        },
+        "c6_education_entries_separated": {
+          "status": "PASS",
+          "total_education": 2,
+          "institutions": [
+            "Symbiosis Institute of Management",
+            "Bharti Vidyapeeth University"
+          ]
+        },
+        "c7_auxiliary_sections_classified": {
+          "status": "PASS",
+          "counts": {
+            "projects": 0,
+            "skills": 46,
+            "certifications": 1
+          }
+        },
+        "c8_no_text_silently_lost": {
+          "status": "PASS",
+          "total_spans": 92,
+          "assigned_spans": 91,
+          "unresolved_spans": 0,
+          "non_content_artifacts": 1
+        },
+        "c9_no_fabricated_information": {
+          "status": "PASS",
+          "cited_fields_count": 116
+        },
+        "c10_ambiguity_explicitly_flagged": {
+          "status": "PASS",
+          "requires_human_review": true,
+          "issues_count": 23
+        }
+      },
+      "ground_truth_audit": null,
+      "summary": {
+        "candidate_name": "Anup Gurnani",
+        "total_experience_years": null,
+        "experience_count": 7,
+        "education_count": 2,
+        "skills_count": 46,
+        "projects_count": 0,
+        "certifications_count": 1,
+        "requires_human_review": true,
+        "validation_issues_count": 23
+      },
+      "llm_info": {
+        "llm_used": false,
+        "calls": 0
+      }
+    },
+    {
+      "id": "deepak_malik",
+      "filename": "Deepak Malik.pdf",
+      "provenance": "development_corpus_batch_next",
+      "category": "lead_architect_multi_role",
+      "layout": "single_column",
+      "elapsed_seconds": 2.416,
+      "overall_criteria_status": "PASS",
+      "criteria": {
+        "c1_sections_assigned": {
+          "status": "PASS",
+          "detected_categories": [
+            "certifications",
+            "education",
+            "experience",
+            "personal_information",
+            "skills",
+            "summary"
+          ],
+          "unresolved_count": 0
+        },
+        "c2_summary_not_duplicated_into_experience": {
+          "status": "PASS",
+          "duplicates_found": 0,
+          "sample_duplicate": null
+        },
+        "c3_cross_experience_leakage_prevented": {
+          "status": "PASS",
+          "leakage_detected": 0,
+          "details": []
+        },
+        "c4_dates_extracted": {
+          "status": "PASS",
+          "total_jobs": 3,
+          "dated_jobs": 3
+        },
+        "c5_responsibility_role_ownership": {
+          "status": "PASS",
+          "total_responsibilities": 24
+        },
+        "c6_education_entries_separated": {
+          "status": "PASS",
+          "total_education": 1,
+          "institutions": [
+            "University Of Mumbai"
+          ]
+        },
+        "c7_auxiliary_sections_classified": {
+          "status": "PASS",
+          "counts": {
+            "projects": 0,
+            "skills": 19,
+            "certifications": 3
+          }
+        },
+        "c8_no_text_silently_lost": {
+          "status": "PASS",
+          "total_spans": 87,
+          "assigned_spans": 76,
+          "unresolved_spans": 0,
+          "non_content_artifacts": 11
+        },
+        "c9_no_fabricated_information": {
+          "status": "PASS",
+          "cited_fields_count": 71
+        },
+        "c10_ambiguity_explicitly_flagged": {
+          "status": "PASS",
+          "requires_human_review": true,
+          "issues_count": 19
+        }
+      },
+      "ground_truth_audit": null,
+      "summary": {
+        "candidate_name": "Deepak Malik",
+        "total_experience_years": 8.2,
+        "experience_count": 3,
+        "education_count": 1,
+        "skills_count": 19,
+        "projects_count": 0,
+        "certifications_count": 3,
+        "requires_human_review": true,
+        "validation_issues_count": 19
+      },
+      "llm_info": {
+        "llm_used": false,
+        "calls": 0
+      }
+    },
+    {
+      "id": "jayesh_yadav_cv",
+      "filename": "Jayesh Yadav-CV.pdf",
+      "provenance": "regression_testing_fixture",
+      "category": "junior_developer_fixture",
+      "layout": "multi_page",
+      "elapsed_seconds": 4.509,
+      "overall_criteria_status": "PASS",
+      "criteria": {
+        "c1_sections_assigned": {
+          "status": "PASS",
+          "detected_categories": [
+            "certifications",
+            "experience",
+            "personal_information",
+            "skills",
+            "summary"
+          ],
+          "unresolved_count": 0
+        },
+        "c2_summary_not_duplicated_into_experience": {
+          "status": "PASS",
+          "duplicates_found": 0,
+          "sample_duplicate": null
+        },
+        "c3_cross_experience_leakage_prevented": {
+          "status": "PASS",
+          "leakage_detected": 0,
+          "details": []
+        },
+        "c4_dates_extracted": {
+          "status": "PASS",
+          "total_jobs": 6,
+          "dated_jobs": 6
+        },
+        "c5_responsibility_role_ownership": {
+          "status": "PASS",
+          "total_responsibilities": 26
+        },
+        "c6_education_entries_separated": {
+          "status": "PASS",
+          "total_education": 0,
+          "institutions": []
+        },
+        "c7_auxiliary_sections_classified": {
+          "status": "PASS",
+          "counts": {
+            "projects": 0,
+            "skills": 32,
+            "certifications": 5
+          }
+        },
+        "c8_no_text_silently_lost": {
+          "status": "PASS",
+          "total_spans": 119,
+          "assigned_spans": 113,
+          "unresolved_spans": 0,
+          "non_content_artifacts": 6
+        },
+        "c9_no_fabricated_information": {
+          "status": "PASS",
+          "cited_fields_count": 111
+        },
+        "c10_ambiguity_explicitly_flagged": {
+          "status": "PASS",
+          "requires_human_review": true,
+          "issues_count": 28
+        }
+      },
+      "ground_truth_audit": null,
+      "summary": {
+        "candidate_name": "JAYESH YADAV",
+        "total_experience_years": 7.9,
+        "experience_count": 6,
+        "education_count": 0,
+        "skills_count": 32,
+        "projects_count": 0,
+        "certifications_count": 5,
+        "requires_human_review": true,
+        "validation_issues_count": 28
+      },
+      "llm_info": {
+        "llm_used": false,
+        "calls": 0
+      }
+    },
+    {
+      "id": "scanned_pdf",
+      "filename": "scanned.pdf",
+      "provenance": "regression_testing_fixture",
+      "category": "scanned_image_ocr",
+      "layout": "scanned_ocr",
+      "elapsed_seconds": 2.032,
+      "overall_criteria_status": "PASS",
+      "criteria": {
+        "c1_sections_assigned": {
+          "status": "PASS",
+          "detected_categories": [
+            "education",
+            "experience"
+          ],
+          "unresolved_count": 1
+        },
+        "c2_summary_not_duplicated_into_experience": {
+          "status": "PASS",
+          "duplicates_found": 0,
+          "sample_duplicate": null
+        },
+        "c3_cross_experience_leakage_prevented": {
+          "status": "PASS",
+          "leakage_detected": 0,
+          "details": []
+        },
+        "c4_dates_extracted": {
+          "status": "WARN",
+          "total_jobs": 1,
+          "dated_jobs": 0
+        },
+        "c5_responsibility_role_ownership": {
+          "status": "PASS",
+          "total_responsibilities": 1
+        },
+        "c6_education_entries_separated": {
+          "status": "PASS",
+          "total_education": 1,
+          "institutions": []
+        },
+        "c7_auxiliary_sections_classified": {
+          "status": "PASS",
+          "counts": {
+            "projects": 0,
+            "skills": 0,
+            "certifications": 0
+          }
+        },
+        "c8_no_text_silently_lost": {
+          "status": "PASS",
+          "total_spans": 6,
+          "assigned_spans": 5,
+          "unresolved_spans": 1,
+          "non_content_artifacts": 0
+        },
+        "c9_no_fabricated_information": {
+          "status": "PASS",
+          "cited_fields_count": 3
+        },
+        "c10_ambiguity_explicitly_flagged": {
+          "status": "PASS",
+          "requires_human_review": true,
+          "issues_count": 7
+        }
+      },
+      "ground_truth_audit": null,
+      "summary": {
+        "candidate_name": "",
+        "total_experience_years": null,
+        "experience_count": 1,
+        "education_count": 1,
+        "skills_count": 0,
+        "projects_count": 0,
+        "certifications_count": 0,
+        "requires_human_review": true,
+        "validation_issues_count": 7
+      },
+      "llm_info": {
+        "llm_used": false,
+        "calls": 0
+      }
+    }
+  ]
+}

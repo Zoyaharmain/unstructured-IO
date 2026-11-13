@@ -1,0 +1,45 @@
+.....F...FF                                                              [100%]
+=================================== FAILURES ===================================
+_ test_wrapped_day_month_year_and_repeated_current_connector_keep_literal_offsets _
+
+    def test_wrapped_day_month_year_and_repeated_current_connector_keep_literal_offsets():
+     text='05-12- 2022 to till till now'
+     match=RANGE.fullmatch(text)
+>    assert match and match.group(1,2)==('05-12- 2022','now')
+E    AssertionError: assert (<re.Match object; span=(0, 28), match='05-12- 2022 to till till now'> and ('05-12- 2022', 'till now') == ('05-12- 2022', 'now')
+E      
+E      At index 1 diff: 'till now' != 'now'
+E      Use -v to get more diff)
+
+tests/test_assignment_format_generalization.py:35: AssertionError
+_______ test_wrapped_numeric_source_range_does_not_degrade_to_year_only ________
+
+    def test_wrapped_numeric_source_range_does_not_degrade_to_year_only():
+     from local_api.services.record_subfields import refine_record
+     pieces=['Having currently working in Example Labs post of Developer start 05-12-',
+             '2022 to till till now.']
+     values,reasons=refine_record('experience',{'company':None,'role':None,'start_date':None,'end_date':None,'duration':None,'location':None},[block(t,i) for i,t in enumerate(pieces)])
+     assert values['start_date']=='05-12-\n2022'
+>    assert values['end_date']=='now'
+E    AssertionError: assert 'till now' == 'now'
+E      
+E      - now
+E      + till now
+
+tests/test_assignment_format_generalization.py:73: AssertionError
+____ test_parenthetical_institution_candidate_is_not_declared_as_a_subject _____
+
+    def test_parenthetical_institution_candidate_is_not_declared_as_a_subject():
+     from local_api.services.education_subfields import refine_education
+     text='MCA (EXAMPLE North Campus) GGPA: 7.04'
+     values,reasons=refine_education({'degree':None,'institution':None,'field_of_study':None,'grade_or_gpa':None},[block(text,0)])
+     assert values['degree']=='MCA' and values['field_of_study'] is None
+>    assert values['institution'] is None and reasons
+E    AssertionError: assert ('EXAMPLE North Campus' is None)
+
+tests/test_assignment_format_generalization.py:81: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_assignment_format_generalization.py::test_wrapped_day_month_year_and_repeated_current_connector_keep_literal_offsets
+FAILED tests/test_assignment_format_generalization.py::test_wrapped_numeric_source_range_does_not_degrade_to_year_only
+FAILED tests/test_assignment_format_generalization.py::test_parenthetical_institution_candidate_is_not_declared_as_a_subject
+3 failed, 8 passed in 0.26s

@@ -24,11 +24,9 @@ def validate_hierarchy(hierarchy, sections):
         blocks = section.blocks if section else sections.needs_review if parent.category == 'needs_review' else []
         inventory = {source_id(b): b.text for b in blocks}
         if section:
-            from local_api.services.education_context import valid_institution_context
+            from local_api.services.employer_context import valid_record_context
             for entry in section.entries:
-                if entry.context_fields and (section.category!='education' or set(entry.context_fields)-{'institution'}
-                    or any(not 0<=i<len(section.blocks) or not valid_institution_context(section,entry,i)
-                           for ids in entry.context_fields.values() for i in ids)):
+                if not valid_record_context(section, entry):
                     fail('record_ownership_validation','invalid_record_context',parent_path)
         ownership = {e.entry_id: {source_id(section.blocks[i]) for i in e.block_indices} for e in section.entries} if section else {}
         for residual in parent.residual_blocks:

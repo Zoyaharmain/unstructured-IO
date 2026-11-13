@@ -1,0 +1,20 @@
+F.                                                                       [100%]
+=================================== FAILURES ===================================
+_____ test_actual_resume_has_three_correct_employers_roles_and_date_ranges _____
+
+    def test_actual_resume_has_three_correct_employers_roles_and_date_ranges():
+        req=request();before=req.model_dump()
+        out=map_schema(req)
+>       assert [(r.company,r.role,r.start_date,r.end_date) for r in out.data.experience]==[
+            ('SLK Software','Team Leader','01/2025','Present'),
+            ('Impetus Technologies','SRE/Devops Engineer','06/2021','12/2024'),
+            ('Cavisson Systems','Software Engineer','10/2018','05/2021')]
+E       AssertionError: assert [('SLK Softwa..., None, None)] == [('SLK Softwa...', '05/2021')]
+E         
+E         Left contains one more item: ('VPN Solutions: Libreswan, StrongSwan', 'ENGINEERING INITIATIVES', None, None)
+E         Use -v to get more diff
+
+tests/test_abhishek_record_regression.py:25: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_abhishek_record_regression.py::test_actual_resume_has_three_correct_employers_roles_and_date_ranges
+1 failed, 1 passed in 6.56s

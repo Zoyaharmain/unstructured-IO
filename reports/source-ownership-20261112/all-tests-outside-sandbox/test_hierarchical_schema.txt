@@ -1,0 +1,18 @@
+...............F....                                                     [100%]
+=================================== FAILURES ===================================
+______ test_expected_graduation_and_merged_qualifications_stay_uncertain _______
+
+    def test_expected_graduation_and_merged_qualifications_stay_uncertain():
+        out = map_schema(education_request(['M.Sc. Computer Science, Example University, 2024–2026, expected']))
+        record = out.section_schemas[0].records[0]
+        assert any('Expected' in reason for reason in record.review_reasons)
+        assert all(item.status=='needs_review' for a in record.attributes for item in a.items)
+        merged = map_schema(education_request(['B.Sc. Physics and M.Sc. Chemistry, Example University, 2020–2024']))
+>       record = merged.section_schemas[0].records[0]
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       IndexError: list index out of range
+
+tests/test_hierarchical_schema.py:127: IndexError
+=========================== short test summary info ============================
+FAILED tests/test_hierarchical_schema.py::test_expected_graduation_and_merged_qualifications_stay_uncertain
+1 failed, 19 passed in 3.00s

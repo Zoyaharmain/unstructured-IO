@@ -60,6 +60,7 @@ def field_kinds(text,category):
                 + (['title'] if 'role' in explicit else [])
                 + (['client'] if 'client' in explicit else [])
                 + (['location'] if 'location' in explicit else [])))
+        if text.strip() in {'systems', 'delivering systems'}:return []
         if re.match(r'^\s*(?:\d+\.\s*)?Client\b',text,re.I):return [*kinds,'client']
         if responsibility_fragment(text):return [*kinds, 'responsibilities']
         # A delivering clause can continue a responsibility across PDF elements.
@@ -77,9 +78,16 @@ def field_kinds(text,category):
         if 'company' in header:kinds.append('employer')
         if 'role' in header:kinds.append('title')
         if 'location' in header:kinds.append('location')
-        if len(text.split()) <= 18 and ROLE.search(text):kinds.append('title')
+        from local_api.services.record_subfields import ACTION
+        if (len(text.split()) <= 18
+                and not responsibility_fragment(text)
+                and not ACTION.search(text)
+                and not re.match(r'^(?:[•▪●*–—\-]\s*)?(?:blended|operated|authored|managed|delivered|supported|worked|engineered|led|built)\b', text, re.I)
+                and any(m.group().casefold() not in {'engineering','role','roles'} for m in ROLE.finditer(text))):
+            kinds.append('title')
         if dated_organization_header(text) or (
             not responsibility_fragment(text)
+            and (':' not in text or re.match(r'^\s*(?:company|employer|organization)\s*[:=-]', text, re.I))
             and not text[:1].islower()
             and not re.match(r'^\s*(?:tools|technolog(?:y|ies)|environment|skills|tech stack)\b', text, re.I)
             and not re.match(r'^(?:with|for|across|through|by|from|to|and)\s+', text, re.I)
@@ -97,7 +105,15 @@ def annotate_relationships(section):
     if section.category not in {'experience','education'}:return
     assigned=set()
     for entry in section.entries:
-        fields={};reasons=[]
+        if entry.fields or entry.boundary_reason == 'validated source ownership':
+            if any(index in assigned for index in entry.block_indices):
+                entry.relationship_status = 'needs_review'
+                entry.review_reasons = sorted(set(entry.review_reasons + ['source_block_owned_by_multiple_entries']))
+            assigned.update(entry.block_indices)
+            continue
+        generated = {'source_block_owned_by_multiple_entries','multiple_qualifications_in_one_source_span',
+                     'qualification_not_established','employer_not_established_from_supported_fields'}
+        fields={};reasons=[r for r in entry.review_reasons if r not in generated]
         for index in entry.block_indices:
             if index in assigned:reasons.append('source_block_owned_by_multiple_entries')
             assigned.add(index)
@@ -140,8 +156,10 @@ def annotate_relationships(section):
                 break
         if section.category=='education' and not fields.get('qualification'):reasons.append('qualification_not_established')
         if section.category=='experience' and not fields.get('employer'):
+            from local_api.services.employer_context import valid_employer_context
+            established_parent = any(valid_employer_context(section, entry, i) for i in entry.context_fields.get('company', []))
             first_block = section.blocks[entry.block_indices[0]] if entry.block_indices else None
             is_client_entry = bool('client' in fields or (first_block and re.match(r'^\s*(?:\d+\.\s*)?Client\b', first_block.text, re.I)))
-            if not is_client_entry:
+            if not is_client_entry and not established_parent:
                 reasons.append('employer_not_established_from_supported_fields')
         entry.fields=fields;entry.review_reasons=sorted(set(reasons));entry.relationship_status='needs_review' if reasons else 'provisional'

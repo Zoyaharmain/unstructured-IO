@@ -1,0 +1,40 @@
+.....F..............F....F....F..F.                                      [100%]
+=================================== FAILURES ===================================
+_ test_conflicting_labels_do_not_choose_a_company_or_borrow_next_record_fields _
+tests/test_record_subfields.py:74: in test_conflicting_labels_do_not_choose_a_company_or_borrow_next_record_fields
+    first, second = out.section_schemas[0].records
+    ^^^^^^^^^^^^^
+E   ValueError: not enough values to unpack (expected 2, got 1)
+________ test_tools_results_and_project_roles_stay_with_their_dated_job ________
+tests/test_employment_scope_and_empty_artifacts.py:50: in test_tools_results_and_project_roles_stay_with_their_dated_job
+    assert [(j.company,j.role) for j in out.data.experience]==[
+E   AssertionError: assert [('Example Pa...ram Manager')] == [('Example Pa...ram Manager')]
+E     
+E     At index 0 diff: ('Example Payments (Contract)', 'Senior Program Manager') != ('Example Payments (Contract)', 'Senior Program Manager (TPMO - Technical Program Management Office)')
+E     Use -v to get more diff
+___________ test_dates_in_separate_elements_establish_complete_jobs ____________
+tests/test_employment_scope_and_empty_artifacts.py:106: in test_dates_in_separate_elements_establish_complete_jobs
+    assert [(j.company,j.role) for j in out.data.experience]==[
+E   AssertionError: assert [('Example Pa...ery Manager')] == [('Example Pa...ery Manager')]
+E     
+E     At index 0 diff: ('Example Payments', 'Senior Program Manager') != ('Example Payments', 'Senior Program Manager (Technical - Delivery Office)')
+E     Use -v to get more diff
+______ test_pruned_record_keeps_its_entry_identity_and_reindexed_evidence ______
+tests/test_schema_assignment_integrity.py:36: in test_pruned_record_keeps_its_entry_identity_and_reindexed_evidence
+    assert len(result.data.education) == 1
+E   AssertionError: assert 2 == 1
+E    +  where 2 = len([Education(institution='', degree='', field_of_study=None, start_year=None, graduation_year=None, grade_or_gpa=None), ...', degree='Bachelor of Science', field_of_study='Science', start_year=None, graduation_year='2020', grade_or_gpa=None)])
+E    +    where [Education(institution='', degree='', field_of_study=None, start_year=None, graduation_year=None, grade_or_gpa=None), ...', degree='Bachelor of Science', field_of_study='Science', start_year=None, graduation_year='2020', grade_or_gpa=None)] = ResumeSchema(contact=ContactInfo(full_name='', email='', phone='', location=None, linkedin_url=None, github_url=None, ...='Science', start_year=None, graduation_year='2020', grade_or_gpa=None)], certifications=[], projects=[], languages=[]).education
+E    +      where ResumeSchema(contact=ContactInfo(full_name='', email='', phone='', location=None, linkedin_url=None, github_url=None, ...='Science', start_year=None, graduation_year='2020', grade_or_gpa=None)], certifications=[], projects=[], languages=[]) = SchemaMappingResponse(success=True, source='existing-section-blocks', extraction_mode='existing_blocks_schema_mapping'...ip': [], 'references.organization': [], 'references.email': [], 'references.phone': [], 'references.availability': []}).data
+______ test_record_statuses_include_optional_children_and_local_conflicts ______
+tests/test_schema_assignment_integrity.py:70: in test_record_statuses_include_optional_children_and_local_conflicts
+    assert result.meta['field_source_status']['experience[0].role'] == 'present_but_ambiguous'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   KeyError: 'experience[0].role'
+=========================== short test summary info ============================
+FAILED tests/test_record_subfields.py::test_conflicting_labels_do_not_choose_a_company_or_borrow_next_record_fields
+FAILED tests/test_employment_scope_and_empty_artifacts.py::test_tools_results_and_project_roles_stay_with_their_dated_job
+FAILED tests/test_employment_scope_and_empty_artifacts.py::test_dates_in_separate_elements_establish_complete_jobs
+FAILED tests/test_schema_assignment_integrity.py::test_pruned_record_keeps_its_entry_identity_and_reindexed_evidence
+FAILED tests/test_schema_assignment_integrity.py::test_record_statuses_include_optional_children_and_local_conflicts
+5 failed, 30 passed, 2 deselected in 2.90s

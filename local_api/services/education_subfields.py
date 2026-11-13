@@ -77,9 +77,9 @@ def refine_education(values, blocks):
             values['field_of_study']=None
     parenthetic=values.get('field_of_study')
     if parenthetic and re.match(r'^[A-Z][A-Z0-9.]{2,}\s+[A-Za-z]',parenthetic) and degrees and following.lstrip().startswith('('):
-        if not values.get('institution'):
-            values['institution'] = parenthetic
         values['field_of_study']=None
+        if not values.get('institution'):
+            reasons.append('Parenthetical entity requires source review.')
     institutions = []
     # Explicit "qualification from institution passing year ..." establishes
     # the institution even for acronyms without University/College suffixes.

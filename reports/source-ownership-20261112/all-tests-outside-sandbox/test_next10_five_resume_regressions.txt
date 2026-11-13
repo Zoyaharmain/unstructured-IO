@@ -1,0 +1,19 @@
+....F                                                                    [100%]
+=================================== FAILURES ===================================
+____________ test_09_akshay_singla_betterplace_recovery_and_chicmic ____________
+
+    def test_09_akshay_singla_betterplace_recovery_and_chicmic():
+        mapped, std, meta, status, warns = replay_next10("09")
+        assert "Akshay Singla" in std.contact.full_name
+    
+        companies = [j.company for j in std.experience]
+        # Both Betterplace positions recovered
+        betterplace_jobs = [j for j in std.experience if j.company == "Betterplace"]
+>       assert len(betterplace_jobs) == 2
+E       assert 0 == 2
+E        +  where 0 = len([])
+
+tests/test_next10_five_resume_regressions.py:141: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_next10_five_resume_regressions.py::test_09_akshay_singla_betterplace_recovery_and_chicmic
+1 failed, 4 passed in 16.28s

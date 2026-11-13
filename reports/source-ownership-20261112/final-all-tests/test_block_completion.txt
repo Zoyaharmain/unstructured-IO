@@ -1,0 +1,21 @@
+...........F....................                                         [100%]
+=================================== FAILURES ===================================
+_ test_labelled_responsibility_does_not_drop_first_last_or_split_prose_commas __
+
+    def test_labelled_responsibility_does_not_drop_first_last_or_split_prose_commas():
+        from test_record_subfields import request
+        req=request('experience', [['Employer: Example Ltd','Role: Engineer',
+            'Built the first service.', 'Responsibilities: Managed APIs, releases, and deployments; maintained reliability.',
+            'Delivered the final migration.']])
+        out=map_schema(req)
+>       assert out.data.experience[0].responsibilities == ['Built the first service.',
+            'Managed APIs, releases, and deployments; maintained reliability.', 'Delivered the final migration.']
+E       AssertionError: assert ['Built the f...l migration.'] == ['Built the f...l migration.']
+E         
+E         At index 1 diff: 'Responsibilities: Managed APIs, releases, and deployments; maintained reliability.' != 'Managed APIs, releases, and deployments; maintained reliability.'
+E         Use -v to get more diff
+
+tests/test_block_completion.py:144: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_block_completion.py::test_labelled_responsibility_does_not_drop_first_last_or_split_prose_commas
+1 failed, 31 passed in 7.82s

@@ -1,0 +1,18 @@
+.F...............                                                        [100%]
+=================================== FAILURES ===================================
+_____________ test_record_boundaries_do_not_merge_or_borrow_fields _____________
+
+    def test_record_boundaries_do_not_merge_or_borrow_fields():
+     req=sample();sec=next(s for s in req.sections.sections if s.category=='experience')
+     sec.entries=[SectionEntry(entry_id='job-1',block_indices=[0],lane='source',boundary_reason='first',fields={'employer':[0],'dates':[0]}),SectionEntry(entry_id='job-2',block_indices=[1,2],lane='source',boundary_reason='second',fields={'title':[1],'responsibilities':[2]})]
+     out=map_schema(req)
+     assert len(out.data.experience)==2
+>    assert out.data.experience[0].role==''
+E    AssertionError: assert 'Software Engineer' == ''
+E      
+E      + Software Engineer
+
+tests/test_schema_mapping.py:53: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_schema_mapping.py::test_record_boundaries_do_not_merge_or_borrow_fields
+1 failed, 16 passed in 3.38s

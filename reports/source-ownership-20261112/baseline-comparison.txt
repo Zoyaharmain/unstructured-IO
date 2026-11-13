@@ -1,0 +1,74 @@
+.FFFF.FFFF...FF.                                                         [100%]
+=================================== FAILURES ===================================
+_ test_wrapped_day_month_year_and_repeated_current_connector_keep_literal_offsets _
+tests/test_assignment_format_generalization.py:35: in test_wrapped_day_month_year_and_repeated_current_connector_keep_literal_offsets
+    assert match and match.group(1,2)==('05-12- 2022','now')
+E   AssertionError: assert (<re.Match object; span=(0, 28), match='05-12- 2022 to till till now'> and ('05-12- 2022', 'till now') == ('05-12- 2022', 'now')
+E     
+E     At index 1 diff: 'till now' != 'now'
+E     Use -v to get more diff)
+_______ test_wrapped_numeric_source_range_does_not_degrade_to_year_only ________
+tests/test_assignment_format_generalization.py:73: in test_wrapped_numeric_source_range_does_not_degrade_to_year_only
+    assert values['end_date']=='now'
+E   AssertionError: assert 'till now' == 'now'
+E     
+E     - now
+E     + till now
+____ test_parenthetical_institution_candidate_is_not_declared_as_a_subject _____
+tests/test_assignment_format_generalization.py:81: in test_parenthetical_institution_candidate_is_not_declared_as_a_subject
+    assert values['institution'] is None and reasons
+E   AssertionError: assert ('EXAMPLE North Campus' is None)
+______________________ test_unlocated_date_is_not_guessed ______________________
+tests/test_batch50_repairs.py:66: in test_unlocated_date_is_not_guessed
+    assert len(groups)==2
+E   AssertionError: assert 1 == 2
+E    +  where 1 = len([{'entry_id': 'education-1', 'block_indices': [0, 1], 'lane': 'left', 'boundary_reason': 'section continuation; no explicit entry boundary'}])
+_ test_labelled_responsibility_does_not_drop_first_last_or_split_prose_commas __
+tests/test_block_completion.py:144: in test_labelled_responsibility_does_not_drop_first_last_or_split_prose_commas
+    assert out.data.experience[0].responsibilities == ['Built the first service.',
+E   AssertionError: assert ['Built the f...l migration.'] == ['Built the f...l migration.']
+E     
+E     At index 1 diff: 'Responsibilities: Managed APIs, releases, and deployments; maintained reliability.' != 'Managed APIs, releases, and deployments; maintained reliability.'
+E     Use -v to get more diff
+_____ test_three_organizations_without_company_suffix_keep_distinct_duties _____
+tests/test_existing350_repairs.py:37: in test_three_organizations_without_company_suffix_keep_distinct_duties
+    assert len(groups)==3
+E   AssertionError: assert 5 == 3
+E    +  where 5 = len([{'entry_id': 'experience-1', 'block_indices': [1], 'lane': 'source_geometry', 'boundary_reason': 'source employment h...'lane': 'source_geometry', 'boundary_reason': 'source employment header; source row/page membership, not layout lane'}])
+___________ test_benjamin_resume_schema_mapping_and_standardization ____________
+tests/test_multiline_headers_and_date_alignment.py:48: in test_benjamin_resume_schema_mapping_and_standardization
+    assert j0.location == "Chennai, India"
+E   AssertionError: assert 'FIS Global B...hennai, India' == 'Chennai, India'
+E     
+E     - Chennai, India
+E     + FIS Global Business Solutions | Chennai, India
+----------------------------- Captured stderr call -----------------------------
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 2136.61it/s]
+___________ test_anita_das_resume_schema_mapping_and_standardization ___________
+tests/test_multiline_headers_and_date_alignment.py:71: in test_anita_das_resume_schema_mapping_and_standardization
+    assert len(std_resume.experience) == 6
+E   AssertionError: assert 4 == 6
+E    +  where 4 = len([StandardizedWorkExperience(company='BlackBox', role='Principal Consultant', start_date='2025-07', end_date=None, dura...te=None, start_date_iso=None, end_date_iso=None, start_date_precision=None, end_date_precision=None, is_current=False)])
+E    +    where [StandardizedWorkExperience(company='BlackBox', role='Principal Consultant', start_date='2025-07', end_date=None, dura...te=None, start_date_iso=None, end_date_iso=None, start_date_precision=None, end_date_precision=None, is_current=False)] = StandardizedResumeSchema(contact=StandardizedContactInfo(full_name='ANITA DAS', email='tania_rath@yahoo.com', phone='+...review', 'text': 'creation and successful project outcomes.', 'source_ids': ['e2:1248:1289'], 'status': 'unresolved'}]).experience
+______________ test_no_broad_delivering_or_systems_rule[systems] _______________
+tests/test_phase1_repairs.py:22: in test_no_broad_delivering_or_systems_rule
+    assert field_kinds(text,'experience')!=['responsibilities']
+E   AssertionError: assert ['responsibilities'] != ['responsibilities']
+E    +  where ['responsibilities'] = field_kinds('systems', 'experience')
+_________ test_no_broad_delivering_or_systems_rule[delivering systems] _________
+tests/test_phase1_repairs.py:22: in test_no_broad_delivering_or_systems_rule
+    assert field_kinds(text,'experience')!=['responsibilities']
+E   AssertionError: assert ['responsibilities'] != ['responsibilities']
+E    +  where ['responsibilities'] = field_kinds('delivering systems', 'experience')
+=========================== short test summary info ============================
+FAILED tests/test_assignment_format_generalization.py::test_wrapped_day_month_year_and_repeated_current_connector_keep_literal_offsets
+FAILED tests/test_assignment_format_generalization.py::test_wrapped_numeric_source_range_does_not_degrade_to_year_only
+FAILED tests/test_assignment_format_generalization.py::test_parenthetical_institution_candidate_is_not_declared_as_a_subject
+FAILED tests/test_batch50_repairs.py::test_unlocated_date_is_not_guessed - As...
+FAILED tests/test_block_completion.py::test_labelled_responsibility_does_not_drop_first_last_or_split_prose_commas
+FAILED tests/test_existing350_repairs.py::test_three_organizations_without_company_suffix_keep_distinct_duties
+FAILED tests/test_multiline_headers_and_date_alignment.py::test_benjamin_resume_schema_mapping_and_standardization
+FAILED tests/test_multiline_headers_and_date_alignment.py::test_anita_das_resume_schema_mapping_and_standardization
+FAILED tests/test_phase1_repairs.py::test_no_broad_delivering_or_systems_rule[systems]
+FAILED tests/test_phase1_repairs.py::test_no_broad_delivering_or_systems_rule[delivering systems]
+10 failed, 6 passed in 26.33s

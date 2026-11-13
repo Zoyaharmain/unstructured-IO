@@ -341,9 +341,12 @@ def entry_groups(blocks, category, elements):
                             and not re.match(r'^[•▪●*\-]', text))
         if category == 'education':
             from local_api.services.education_subfields import DEGREE
-            if DEGREE.match(text) and not re.match(r'^(?:from|in)\b', text, re.I):
-                explicit_title = True
             from local_api.services.dated_record_headers import education_date_starts_record
+            if DEGREE.match(text) and not re.match(r'^(?:from|in)\b', text, re.I):
+                if index > 0 and education_date_starts_record(blocks, index - 1):
+                    explicit_title = False
+                else:
+                    explicit_title = True
             if RANGE.fullmatch(text.strip()): dated_header = False
             elif education_date_starts_record(blocks,index): dated_header = True
         if category == 'projects':
@@ -380,7 +383,7 @@ def entry_groups(blocks, category, elements):
         merged_groups = []
         for g in groups:
             texts = [blocks[idx].text.strip() for idx in g['block_indices'] if blocks[idx].text.strip()]
-            if texts and all(RANGE.fullmatch(t) for t in texts) and merged_groups:
+            if texts and all(RANGE.fullmatch(t) for t in texts) and merged_groups and ('wide' in {merged_groups[-1]['lane'], g['lane']} or merged_groups[-1]['lane'] == g['lane']):
                 merged_groups[-1]['block_indices'].extend(g['block_indices'])
             else:
                 merged_groups.append(g)
@@ -469,12 +472,14 @@ def reviewed_employment_groups(blocks,elements):
         if normalized_heading(text) == 'responsibilities' and len(anchors)>=2:
             between=blocks[anchors[-2]['index']:i]
             shared_history=not any(responsibility_fragment(part.text) or len(part.text.split())>30 for part in between)
-        if b.assignment in {'section_heading', 'structural_heading'} or normalized_heading(text) in {'experience','work experience','professional experience','employment','work history','career history','early career history'} or re.search(r'\b(?:career|employment|work|early|earlier|prior|previous)\s+(?:history|experience)\b', normalized_heading(text)):continue
+        if b.assignment in {'section_heading', 'structural_heading'} or normalized_heading(text) in {'experience','work experience','professional experience','employment','work history','career history','early career history','summary','overview','employment summary','professional summary','job summary','career summary'} or re.search(r'\b(?:career|employment|work|early|earlier|prior|previous)\s+(?:history|experience)\b', normalized_heading(text)) or re.match(r'^(?:(?:employment|professional|job|career)\s+summary|summary|overview)\s*:?$', text, re.I):continue
         if re.match(r'^Client\b',text,re.I):continue
         if re.search(r'\b(?:exposure|framework|practices|methodologies)\b', text, re.I):continue
         if responsibility_fragment(text) or (el_type(elements[b.source_element_index]) == 'ListItem' and responsibility_fragment(el_text(elements[b.source_element_index])) and not employment_header_fields(text)):continue
         if len(text.split())>30 or re.match(r'^(?:(?:duration|period|tenure|job\s+role)\s*:|[•▪●*]|projects?\s*[:\-]|projects?\s+(?:name|title|description|summary)\b|client\s*[:\-]|responsibilit)',text,re.I):continue
         if re.match(r'^(?:[•▪●*–—\-]+\s*)?(?:technolog(?:y|ies)|tech stack|tools and technologies|core technologies|tech stack used|operating systems|servers(?: & web)?|cloud (?:services|platforms)|programming languages|tools|frameworks|databases|ai / llm skills|environment)\s*:', text, re.I):
+            continue
+        if text.rstrip().endswith(':') and not re.match(r'^\s*(?:company|employer|organization|client)\s*:', text, re.I) and not RANGE.search(text):
             continue
         explicit_header = bool(employment_header_fields(text))
         if shared_history and not (explicit_header or employment_start(text) or dated_organization_header(text)):
@@ -487,7 +492,9 @@ def reviewed_employment_groups(blocks,elements):
             for other in blocks:
                 if other.page_number==b.page_number and date_pat.search(other.text) and len(other.text.split())<=10:
                     other_top=y(other)
-                    if other_top is not None and top is not None and abs(other_top-top)<=.012:
+                    if other_top is not None and top is not None and abs(other_top-top)<=.025:
+                        if anchors and y(blocks[anchors[-1]['index']]) is not None and abs(other_top - y(blocks[anchors[-1]['index']])) <= 0.015:
+                            continue
                         aligned_date=True
                         break
         following = [blocks[k] for k in range(i+1, min(i+4, len(blocks)))]
@@ -505,14 +512,15 @@ def reviewed_employment_groups(blocks,elements):
         # Employer and title can occupy two adjacent source rows. Merge a
         # title-only continuation with the immediately preceding employer row.
         if anchors and not explicit_header and top is not None and anchors[-1]['page']==b.page_number and anchors[-1]['y'] is not None and 0<=top-anchors[-1]['y']<=.03 and (
-            (role.search(text) and not business.search(text) and not re.search(r'\d|[,|]',text)) or
-            (business.search(text) and not role.search(text) and not re.search(r'\d|[,|]',text))
+            (role.search(text) and not role.search(blocks[anchors[-1]['index']].text) and (business.search(blocks[anchors[-1]['index']].text) or anchors[-1].get('paired_employer')) and not business.search(text) and not re.search(r'\d|[,|]',text)
+             and not any(role.search(blocks[k].text) and not responsibility_fragment(blocks[k].text) for k in range(anchors[-1]['index']+1,i))) or
+            (business.search(text) and role.search(blocks[anchors[-1]['index']].text) and not business.search(blocks[anchors[-1]['index']].text) and not role.search(text) and not re.search(r'\d|[,|]',text))
         ):
             continue
         # Role followed immediately by employer/date on adjacent row forms one employment entry.
-        if anchors and top is not None and anchors[-1]['page']==b.page_number and anchors[-1]['y'] is not None and 0<=top-anchors[-1]['y']<=.05:
+        if anchors and not explicit_header and top is not None and anchors[-1]['page']==b.page_number and anchors[-1]['y'] is not None and 0<=top-anchors[-1]['y']<=.05:
             prev_text = blocks[anchors[-1]['index']].text.strip()
-            prev_is_role_only = bool(role.search(prev_text) and not business.search(prev_text) and not date_pat.search(prev_text) and len(prev_text.split()) <= 6 and not responsibility_fragment(prev_text))
+            prev_is_role_only = bool(role.search(prev_text) and not business.search(prev_text) and not date_pat.search(prev_text) and not employment_header_fields(prev_text).get('company') and len(prev_text.split()) <= 6 and not responsibility_fragment(prev_text))
             cur_is_emp = bool((business.search(text) or date_pat.search(text)) or employment_header_fields(text).get('company'))
             if prev_is_role_only and cur_is_emp:
                 continue
@@ -536,6 +544,10 @@ def reviewed_employment_groups(blocks,elements):
             continue
         top=y(b);eligible=[]
         for j,a in enumerate(anchors):
+            if a['index'] > i and b.lane == blocks[a['index']].lane and (top is None or a['y'] is None or top < a['y'] - 0.001):
+                # Geometric tolerance must not pull a preceding duty into a
+                # later role in the same reading lane.
+                continue
             if top is not None and a['y'] is not None and b.page_number is not None and a['page'] is not None:
                 if (a['page']<b.page_number or (a['page']==b.page_number and a['y']<=top+.006)) and not (b.source_element_index == blocks[a['index']].source_element_index and b.start < blocks[a['index']].start):eligible.append((a['page'],a['y'],j))
             elif a['index']<=i:eligible.append((0,a['index'],j))

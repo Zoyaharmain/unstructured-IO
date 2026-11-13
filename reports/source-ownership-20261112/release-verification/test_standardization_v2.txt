@@ -1,0 +1,14 @@
+.....................F............                                       [100%]
+=================================== FAILURES ===================================
+_____ test_unparseable_dates_do_not_leak_non_iso_strings_or_invent_century _____
+
+    def test_unparseable_dates_do_not_leak_non_iso_strings_or_invent_century():
+        result = export({'experience': [{'company': 'A', 'role': 'B', 'start_date': 'Jan’22', 'end_date': 'Present'}],
+                         'certifications': [{'name': 'C', 'issue_year': 'sometime last year'}]})
+>       assert result['data']['experience'][0]['start_date'] is None
+E       AssertionError: assert '2022-01' is None
+
+tests/test_standardization_v2.py:113: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_standardization_v2.py::test_unparseable_dates_do_not_leak_non_iso_strings_or_invent_century
+1 failed, 33 passed in 1.57s

@@ -239,8 +239,9 @@ class SectionEngine:
                 page_heading_lanes.setdefault(request.elements[unit.index].page_number, set()).add(unit.lane)
         grouped, review, contexts = {}, [], {}
         element_contexts = {}
+        from local_api.services.source_accounting import artifact_reason
         first_heading = next((i for i, (_, _, score, margin) in enumerate(headers)
-                              if request.elements[units[i].index].type not in {'Footer', 'PageBreak'} and
+                              if artifact_reason(request.elements[units[i].index], units[i]) not in {'Explicit page separator','Source-supported page-number footer retained'} and
                               (heading_boundary(units[i].text, ALIASES)[0] is not None or
                                (len(units[i].text.split()) <= 12 and score >= .72 and margin >= .09))), len(units))
         for position, (unit, heading, content) in enumerate(zip(units, headers, contents)):
@@ -256,7 +257,7 @@ class SectionEngine:
                     context = next(iter(contexts.values()))
             short = len(unit.text.split()) <= 12
             is_bullet = element.type == 'ListItem' or bool(re.match(r'^\s*[•▪●*\uf0b7-]\s+', unit.text))
-            structural_label, _ = (None, None) if is_bullet else heading_boundary(unit.text, ALIASES)
+            structural_label, _ = (None, None) if re.match(r'^\s*[•▪●*\uf0b7-]\s+', unit.text) else heading_boundary(unit.text, ALIASES)
             # Broad profile/highlights headings cannot override explicit job history.
             if structural_label == 'summary':
                 from local_api.services.record_subfields import employment_header_fields, RANGE
@@ -297,7 +298,8 @@ class SectionEngine:
                 re.match(r'^\s*Role\s*:\s*\S', unit.text, re.I) and
                 re.search(r'\bProject\s*:', element.text, re.I) and
                 re.search(r'\bClient\s*:', element.text, re.I))
-            page_artifact = element.type == 'PageBreak' or (element.type == 'Footer' and bool(re.fullmatch(r'\s*(?:page\s*)?\d+(?:\s*(?:of|/)\s*\d+)?\s*', unit.text, flags=re.I)))
+            from local_api.services.source_accounting import artifact_reason
+            page_artifact = artifact_reason(element, unit) in {'Explicit page separator', 'Source-supported page-number footer retained'}
             from local_api.services.record_subfields import ACTION, ROLE
             is_heading = (structural_label is not None or (short and not is_bullet and not ACTION.search(unit.text) and hscore >= .72 and hmargin >= .09 and (not context or not context[2] or unit.heading_style))) and not compound and not record_field and not page_artifact and not employer_boundary
             assignment, reason = 'semantic', 'BERT embedding assigned to a labeled K-means centroid'
@@ -341,7 +343,7 @@ class SectionEngine:
                     if units[j].lane == unit.lane or (position <= 2 and request.elements[units[j].index].page_number == element.page_number)):
                 label = 'personal_information'
                 assignment, reason = 'contact_context', 'Opening identity/headline adjacent to an explicit email address'
-            elif (not context or not context[2] or not element.metadata.get('pdf_source_lines')) and not record_field and short and element.type in {'Title', 'Header'} and hscore >= .50 and (hmargin < .09 or similarity < .35):
+            elif (not context or not context[2] or (hscore >= .65 and label != context[0] and similarity < .35)) and not record_field and short and element.type in {'Title', 'Header'} and hscore >= .50 and (hmargin < .09 or similarity < .35):
                 contexts.pop(unit.lane, None)
                 if unit.lane == 'wide':
                     contexts.clear()

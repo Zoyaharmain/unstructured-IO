@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="6" time="0.236" timestamp="2026-11-12T22:05:55.803549-08:00" hostname="DESKTOP-RNGQH23"><testcase classname="tests.test_structural_grouping" name="test_degree_families_handles_dotted_abbreviations_and_schooling" time="0.003" /><testcase classname="tests.test_structural_grouping" name="test_education_table_row_alignment" time="0.005" /><testcase classname="tests.test_structural_grouping" name="test_education_wrapped_degree_and_bullet_artifact" time="0.001" /><testcase classname="tests.test_structural_grouping" name="test_employment_three_column_alignment" time="0.057"><failure message="AssertionError: assert 1 == 2&#10; +  where 1 = len([{'entry_id': 'experience-1', 'block_indices': [1, 2, 3, 4, 5, 6, ...], 'lane': 'source_geometry', 'boundary_reason': 'source employment header; source row/page membership, not layout lane'}])">def test_employment_three_column_alignment():
+        """AdityaSharma pattern: col1=title/company, col2=bullets, col3=dates."""
+        texts = [
+            'Senior Data Architect',
+            'AT&amp;T Inc.',
+            'October 2025 - Present',
+            'Proposed migration plan to Azure cloud',
+            'Managed 11+ folks as subject lead',
+            'Data Engineering Manager',
+            'PepsiCo',
+            'December 2022 - September 2025',
+            'Built data pipelines for SAP migration',
+        ]
+        # Job 1: title(y=0.10, x=0.06), co(y=0.12, x=0.06), date(y=0.12, x=0.70), bullets(y=0.14..0.16, x=0.30)
+        # Job 2: title(y=0.25, x=0.06), co(y=0.27, x=0.06), date(y=0.27, x=0.70), bullets(y=0.29, x=0.30)
+        y_coords = [0.10, 0.12, 0.12, 0.14, 0.16, 0.25, 0.27, 0.27, 0.29]
+        x_coords = [0.06, 0.06, 0.70, 0.30, 0.30, 0.06, 0.06, 0.70, 0.30]
+        lanes = ['left', 'left', 'right', 'wide', 'wide', 'left', 'left', 'right', 'wide']
+    
+        elements = [_elem(t, y=y, x=x) for t, y, x in zip(texts, y_coords, x_coords)]
+        blocks = [_block(i, t, lane=l) for i, (t, l) in enumerate(zip(texts, lanes))]
+    
+        groups = reviewed_employment_groups(blocks, elements)
+&gt;       assert len(groups) == 2
+E       AssertionError: assert 1 == 2
+E        +  where 1 = len([{'entry_id': 'experience-1', 'block_indices': [1, 2, 3, 4, 5, 6, ...], 'lane': 'source_geometry', 'boundary_reason': 'source employment header; source row/page membership, not layout lane'}])
+
+tests/test_structural_grouping.py:136: AssertionError</failure></testcase><testcase classname="tests.test_structural_grouping" name="test_employment_bulleted_roles_separate" time="0.002" /><testcase classname="tests.test_structural_grouping" name="test_employment_consulting_engagements_not_skipped_by_project_title" time="0.002" /></testsuite></testsuites>

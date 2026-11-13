@@ -1,0 +1,39 @@
+..F....F........F........                                                [100%]
+=================================== FAILURES ===================================
+______________________ test_rachana_header_and_full_title ______________________
+
+    def test_rachana_header_and_full_title():
+        out = replay(5)
+>       assert out.data.experience[0].company == 'Tieto HealthCare'
+E       AssertionError: assert 'Tieto HealthCare — Bangalore' == 'Tieto HealthCare'
+E         
+E         - Tieto HealthCare
+E         + Tieto HealthCare — Bangalore
+
+tests/test_saved_hierarchical_defects.py:45: AssertionError
+______ test_responsibility_blocks_do_not_contaminate_titles_or_disappear _______
+
+    def test_responsibility_blocks_do_not_contaminate_titles_or_disappear():
+        out = replay(1)
+>       assert out.data.experience[2].role == 'Senior Business Analyst'
+E       AssertionError: assert 'Senior Busin...onsibilities-' == 'Senior Business Analyst'
+E         
+E         - Senior Business Analyst
+E         + Senior Business Analyst
+E         ?                        +
+E         + Role & Responsibilities-
+
+tests/test_saved_hierarchical_defects.py:81: AssertionError
+____________ test_engineered_responsibility_is_not_lost_as_a_title _____________
+
+    def test_engineered_responsibility_is_not_lost_as_a_title():
+>       assert any('Engineered features' in text for text in replay(3).data.experience[1].responsibilities)
+E       assert False
+E        +  where False = any(<generator object test_engineered_responsibility_is_not_lost_as_a_title.<locals>.<genexpr> at 0x7eb213a3bed0>)
+
+tests/test_saved_hierarchical_defects.py:161: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_saved_hierarchical_defects.py::test_rachana_header_and_full_title
+FAILED tests/test_saved_hierarchical_defects.py::test_responsibility_blocks_do_not_contaminate_titles_or_disappear
+FAILED tests/test_saved_hierarchical_defects.py::test_engineered_responsibility_is_not_lost_as_a_title
+3 failed, 22 passed in 90.58s (0:01:30)

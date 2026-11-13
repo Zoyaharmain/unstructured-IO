@@ -1,0 +1,24 @@
+....................F...                                                 [100%]
+=================================== FAILURES ===================================
+_____ test_actual_flattened_table_recovers_seven_distinct_employer_records _____
+
+    def test_actual_flattened_table_recovers_seven_distinct_employer_records():
+        from local_api.schemas.mapping import SchemaMappingRequest
+        from local_api.services.resume_sections import build_sections
+        from local_api.services.schema_mapping import map_schema
+        root=Path('reports/resume-batch-repairs-20261027/table-verified')
+        row=json.loads((root/'results.json').read_text())[6]
+        artifact=json.loads((root/row['artifact']).read_text())
+        req=SchemaMappingRequest(elements=artifact['extraction']['elements'],sections=artifact['sections'])
+        req.sections.sections=build_sections({s.category:s.blocks for s in req.sections.sections},req.elements)
+        out=map_schema(req)
+>       assert len(out.data.experience)==7
+E       AssertionError: assert 8 == 7
+E        +  where 8 = len([WorkExperience(company='Mantra Softech Pvt. Ltd.', role='', start_date='08/2024', end_date='Present', duration='08/20.... Built visualizations that enabled users to quickly interpret results from complex analyses.'], technologies=[]), ...])
+E        +    where [WorkExperience(company='Mantra Softech Pvt. Ltd.', role='', start_date='08/2024', end_date='Present', duration='08/20.... Built visualizations that enabled users to quickly interpret results from complex analyses.'], technologies=[]), ...] = ResumeSchema(contact=ContactInfo(full_name='A.Bhargava', email='arunbhargava.nic@gmail.com', phone='9557824150', locat...e=None, credential_id=None, verification_url=None)], projects=[], languages=['Hindi: First Language', 'English: \tB1']).experience
+E        +      where ResumeSchema(contact=ContactInfo(full_name='A.Bhargava', email='arunbhargava.nic@gmail.com', phone='9557824150', locat...e=None, credential_id=None, verification_url=None)], projects=[], languages=['Hindi: First Language', 'English: \tB1']) = SchemaMappingResponse(success=True, source='existing-section-blocks', extraction_mode='existing_blocks_schema_mapping'...ip': [], 'references.organization': [], 'references.email': [], 'references.phone': [], 'references.availability': []}).data
+
+tests/test_batch_failure_repairs.py:263: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_batch_failure_repairs.py::test_actual_flattened_table_recovers_seven_distinct_employer_records
+1 failed, 23 passed in 11.56s

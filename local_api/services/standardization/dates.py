@@ -75,17 +75,24 @@ def parse_date_string(
 
     short = re.fullmatch(r'(' + MONTH_REGEX + r")[.\s\-\/']+(\d{2})", text, re.I)
     if short:
-        month_str, yy_str = short.group(1), short.group(2)
-        yy = int(yy_str)
-        century = 2000 + yy if yy <= 69 else 1900 + yy
-        month_num = MONTH_MAP.get(month_str.lower()[:3])
-        if month_num:
-            iso_str = f"{century:04d}-{month_num:02d}"
-            warnings.append(StandardizationWarning(field=field_context, warning_type='two_digit_year_interpretation',
-                severity='info', original_value=raw_date, normalized_value=iso_str, applied=True,
-                basis='Two-digit year normalized using century windowing (00-69 -> 20xx, 70-99 -> 19xx).',
-                message=f'Two-digit year {yy_str} normalized to {century}.'))
-            return iso_str, "month_year", False, warnings
+        has_abbrev_quote = ('‘' in raw_date or bool(re.search(r'\s+[\'’‘`´]\d{2}', raw_date)))
+        if has_abbrev_quote:
+            month_str, yy_str = short.group(1), short.group(2)
+            yy = int(yy_str)
+            century = 2000 + yy if yy <= 69 else 1900 + yy
+            month_num = MONTH_MAP.get(month_str.lower()[:3])
+            if month_num:
+                iso_str = f"{century:04d}-{month_num:02d}"
+                warnings.append(StandardizationWarning(field=field_context, warning_type='two_digit_year_interpretation',
+                    severity='info', original_value=raw_date, normalized_value=iso_str, applied=True,
+                    basis='Two-digit year normalized using century windowing (00-69 -> 20xx, 70-99 -> 19xx).',
+                    message=f'Two-digit year {yy_str} normalized to {century}.'))
+                return iso_str, "month_year", False, warnings
+        warnings.append(StandardizationWarning(field=field_context, warning_type='two_digit_year_interpretation',
+            severity='warning', original_value=raw_date, normalized_value=None,
+            basis='Two-digit year does not establish its century; no normalized date inferred.',
+            message='Two-digit year requires source verification before normalization.'))
+        return None, None, False, warnings
 
     if not text:
         return None, None, False, warnings

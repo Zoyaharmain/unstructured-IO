@@ -1,0 +1,44 @@
+.FF                                                                      [100%]
+=================================== FAILURES ===================================
+___________ test_benjamin_resume_schema_mapping_and_standardization ____________
+
+    def test_benjamin_resume_schema_mapping_and_standardization():
+        with open(".upstream/batch-validation/documents/bca3cd60195c524070c2.json") as f:
+            doc = json.load(f)
+        req = SectionRequest(elements=doc["extraction"]["elements"])
+        sec = detect_sections(req)
+        schema_req = SchemaMappingRequest(elements=doc["extraction"]["elements"], sections=sec)
+        res = map_schema(schema_req)
+        std_resume, metadata, status, warnings = standardize_resume_data(mapping_input(res))
+    
+        # All 7 real jobs must be recognized
+>       assert len(std_resume.experience) == 7
+E       AssertionError: assert 8 == 7
+E        +  where 8 = len([StandardizedWorkExperience(company='FIS Global Business Solutions', role='Value Stream Lead / Senior Project Manager ...6', end_date_iso='2013-07', start_date_precision='month_year', end_date_precision='month_year', is_current=False), ...])
+E        +    where [StandardizedWorkExperience(company='FIS Global Business Solutions', role='Value Stream Lead / Senior Project Manager ...6', end_date_iso='2013-07', start_date_precision='month_year', end_date_precision='month_year', is_current=False), ...] = StandardizedResumeSchema(contact=StandardizedContactInfo(full_name='BENJAMIN ROSAN SUNIL', email='sunil159@live.com', ...'education', 'text': '(B.A.) in Defense and Strategic Studies', 'source_ids': ['e47:45:101'], 'status': 'unresolved'}]).experience
+
+tests/test_multiline_headers_and_date_alignment.py:39: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 2686.90it/s]
+___________ test_anita_das_resume_schema_mapping_and_standardization ___________
+
+    def test_anita_das_resume_schema_mapping_and_standardization():
+        with open(".upstream/batch-validation/documents/8b78a8031de85874736d.json") as f:
+            doc = json.load(f)
+        req = SectionRequest(elements=doc["extraction"]["elements"])
+        sec = detect_sections(req)
+        schema_req = SchemaMappingRequest(elements=doc["extraction"]["elements"], sections=sec)
+        res = map_schema(schema_req)
+        std_resume, metadata, status, warnings = standardize_resume_data(mapping_input(res))
+    
+        # All 6 jobs across 20 years must be recognized
+>       assert len(std_resume.experience) == 6
+E       AssertionError: assert 4 == 6
+E        +  where 4 = len([StandardizedWorkExperience(company='BlackBox', role='Principal Consultant', start_date='2025-07', end_date=None, dura...te=None, start_date_iso=None, end_date_iso=None, start_date_precision=None, end_date_precision=None, is_current=False)])
+E        +    where [StandardizedWorkExperience(company='BlackBox', role='Principal Consultant', start_date='2025-07', end_date=None, dura...te=None, start_date_iso=None, end_date_iso=None, start_date_precision=None, end_date_precision=None, is_current=False)] = StandardizedResumeSchema(contact=StandardizedContactInfo(full_name='ANITA DAS', email='tania_rath@yahoo.com', phone='+...review', 'text': 'creation and successful project outcomes.', 'source_ids': ['e2:1248:1289'], 'status': 'unresolved'}]).experience
+
+tests/test_multiline_headers_and_date_alignment.py:71: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_multiline_headers_and_date_alignment.py::test_benjamin_resume_schema_mapping_and_standardization
+FAILED tests/test_multiline_headers_and_date_alignment.py::test_anita_das_resume_schema_mapping_and_standardization
+2 failed, 1 passed in 12.74s

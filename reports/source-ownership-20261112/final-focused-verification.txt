@@ -1,0 +1,29 @@
+...............................F........................................ [ 84%]
+.............                                                            [100%]
+=================================== FAILURES ===================================
+_ test_validated_achievement_keeps_its_role_and_is_exported_with_source_evidence _
+
+    def test_validated_achievement_keeps_its_role_and_is_exported_with_source_evidence():
+        from local_api.schemas.mapping import SchemaMappingRequest
+        from local_api.services.schema_mapping import map_schema
+        elements,result=document()
+        local=finalize_ownership(elements,result)
+        state=snapshot(elements,local)
+        sid=f'e6:0:{len(elements[6].text)}'
+        rid=state.owners[sid].record
+        reviewed=finalize_ownership(elements,local,settings=ReviewSettings(enabled=True,api_key='mock'),
+            transport=lambda *_:json.dumps({'operations':[{'op':'assign','source_ids':[sid],
+                'section':'experience','record':rid,'fields':['achievements']}]}),review=True)
+        mapped=map_schema(SchemaMappingRequest(elements=elements,sections=reviewed))
+        assert 'Led delivery.' in mapped.data.experience[1].responsibilities
+        assert 'Led delivery.' not in mapped.data.experience[0].responsibilities
+        owner=next(s['owner'] for s in mapped.meta['source_ownership']['spans'] if s['source_id']==sid)
+>       assert owner['fields']==['achievements']
+E       AssertionError: assert ('achievements',) == ['achievements']
+E         
+E         Use -v to get more diff
+
+tests/test_source_ownership.py:349: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_source_ownership.py::test_validated_achievement_keeps_its_role_and_is_exported_with_source_evidence
+1 failed, 84 passed, 3 deselected in 4.98s

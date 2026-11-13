@@ -1,0 +1,35 @@
+.....F                                                                   [100%]
+=================================== FAILURES ===================================
+_______________ test_suresh_resume_experience_and_awards_mapping _______________
+
+    def test_suresh_resume_experience_and_awards_mapping():
+        import json
+        from pathlib import Path
+        from local_api.services.resume_sections import detect_sections
+        from local_api.schemas.sections import SectionRequest
+        from local_api.services.schema_mapping import map_schema
+        from local_api.schemas.mapping import SchemaMappingRequest
+    
+        path = Path('reports/suresh-section-review-20261028/after/extraction.json')
+        if not path.exists():
+            return
+        with open(path) as f:
+            data = json.load(f)
+    
+        req = SectionRequest(elements=data['elements'])
+        res = detect_sections(req)
+        mapped = map_schema(SchemaMappingRequest(elements=req.elements, sections=res))
+    
+        # Experience must have exactly 3 genuine jobs without fake action/location fragments
+>       assert len(mapped.data.experience) == 3
+E       AssertionError: assert 4 == 3
+E        +  where 4 = len([WorkExperience(company='Standard Chartered Global Business Services', role='IAM Project Manager', start_date='Jun 202...Ps and technical runbooks that strengthened operational readiness across network operations teams.'], technologies=[])])
+E        +    where [WorkExperience(company='Standard Chartered Global Business Services', role='IAM Project Manager', start_date='Jun 202...Ps and technical runbooks that strengthened operational readiness across network operations teams.'], technologies=[])] = ResumeSchema(contact=ContactInfo(full_name='SURESH BABU S', email='sureshbabu.chn@gmail.com', phone='+91 9600037070', ...issuer=None, issue_year=None, expiry_date=None, credential_id=None, verification_url=None)], projects=[], languages=[]).experience
+E        +      where ResumeSchema(contact=ContactInfo(full_name='SURESH BABU S', email='sureshbabu.chn@gmail.com', phone='+91 9600037070', ...issuer=None, issue_year=None, expiry_date=None, credential_id=None, verification_url=None)], projects=[], languages=[]) = SchemaMappingResponse(success=True, source='existing-section-blocks', extraction_mode='existing_blocks_schema_mapping'...ip': [], 'references.organization': [], 'references.email': [], 'references.phone': [], 'references.availability': []}).data
+
+tests/test_wrapped_achievements_competencies.py:95: AssertionError
+----------------------------- Captured stderr call -----------------------------
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 2138.13it/s]
+=========================== short test summary info ============================
+FAILED tests/test_wrapped_achievements_competencies.py::test_suresh_resume_experience_and_awards_mapping
+1 failed, 5 passed in 9.37s

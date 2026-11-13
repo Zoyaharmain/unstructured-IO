@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="5" time="9.624" timestamp="2026-11-12T10:51:19.318336-08:00" hostname="DESKTOP-RNGQH23"><testcase classname="tests.test_nov8_five_resume_regressions" name="test_01_bahubalikhot_regression" time="0.937" /><testcase classname="tests.test_nov8_five_resume_regressions" name="test_02_barsita_priyadarshini_nanda_regression" time="1.098" /><testcase classname="tests.test_nov8_five_resume_regressions" name="test_03_bharat_duhan_regression" time="1.464" /><testcase classname="tests.test_nov8_five_resume_regressions" name="test_04_bharatkumar_machhi_name_clean_all_employers_and_experience" time="4.065" /><testcase classname="tests.test_nov8_five_resume_regressions" name="test_05_bhavyashree_ry_narrative_employment_responsibilities_education_cert" time="1.784"><failure message="AssertionError: assert 0 &gt;= 15&#10; +  where 0 = len([])&#10; +    where [] = StandardizedWorkExperience(company='Inventus Info Consulting (INFOSYS)', role='ServiceNow Developer', start_date='2022...art_date_iso='2022-04', end_date_iso=None, start_date_precision='month_year', end_date_precision=None, is_current=True).responsibilities">def test_05_bhavyashree_ry_narrative_employment_responsibilities_education_cert():
+        mapped, std, meta, status, warns = replay_nov8("05_BhavyashreeRY")
+        assert "Bhavyashree" in std.contact.full_name
+    
+        # Narrative employment line parsed
+        assert len(std.experience) &gt;= 1
+        job = std.experience[0]
+        assert job.company == "Inventus Info Consulting (INFOSYS)"
+        assert job.role == "ServiceNow Developer"
+        assert job.location == "Bangalore"
+        assert job.start_date == "2022-04"
+        assert job.is_current is True
+    
+        # Associated responsibilities from HYGO and NEXTEC project sections
+&gt;       assert len(job.responsibilities) &gt;= 15
+E       AssertionError: assert 0 &gt;= 15
+E        +  where 0 = len([])
+E        +    where [] = StandardizedWorkExperience(company='Inventus Info Consulting (INFOSYS)', role='ServiceNow Developer', start_date='2022...art_date_iso='2022-04', end_date_iso=None, start_date_precision='month_year', end_date_precision=None, is_current=True).responsibilities
+
+tests/test_nov8_five_resume_regressions.py:115: AssertionError</failure></testcase></testsuite></testsuites>

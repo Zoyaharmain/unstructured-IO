@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="5" time="16.281" timestamp="2026-11-12T21:48:18.347597-08:00" hostname="DESKTOP-RNGQH23"><testcase classname="tests.test_next10_five_resume_regressions" name="test_02_aarunis_name_title_and_curly_quote_dates" time="1.826" /><testcase classname="tests.test_next10_five_resume_regressions" name="test_05_ajay_kumar_tiwari_multiline_job_merging" time="3.883" /><testcase classname="tests.test_next10_five_resume_regressions" name="test_06_akanksha_bhand_earlier_experience_and_certifications" time="2.646" /><testcase classname="tests.test_next10_five_resume_regressions" name="test_07_akash_kumar_dates_and_education_institutions" time="4.554" /><testcase classname="tests.test_next10_five_resume_regressions" name="test_09_akshay_singla_betterplace_recovery_and_chicmic" time="2.778"><failure message="assert 0 == 2&#10; +  where 0 = len([])">def test_09_akshay_singla_betterplace_recovery_and_chicmic():
+        mapped, std, meta, status, warns = replay_next10("09")
+        assert "Akshay Singla" in std.contact.full_name
+    
+        companies = [j.company for j in std.experience]
+        # Both Betterplace positions recovered
+        betterplace_jobs = [j for j in std.experience if j.company == "Betterplace"]
+&gt;       assert len(betterplace_jobs) == 2
+E       assert 0 == 2
+E        +  where 0 = len([])
+
+tests/test_next10_five_resume_regressions.py:141: AssertionError</failure></testcase></testsuite></testsuites>

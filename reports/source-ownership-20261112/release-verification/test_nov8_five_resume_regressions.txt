@@ -1,0 +1,27 @@
+....F                                                                    [100%]
+=================================== FAILURES ===================================
+_ test_05_bhavyashree_ry_narrative_employment_responsibilities_education_cert __
+
+    def test_05_bhavyashree_ry_narrative_employment_responsibilities_education_cert():
+        mapped, std, meta, status, warns = replay_nov8("05_BhavyashreeRY")
+        assert "Bhavyashree" in std.contact.full_name
+    
+        # Narrative employment line parsed
+        assert len(std.experience) >= 1
+        job = std.experience[0]
+        assert job.company == "Inventus Info Consulting (INFOSYS)"
+        assert job.role == "ServiceNow Developer"
+        assert job.location == "Bangalore"
+        assert job.start_date == "2022-04"
+        assert job.is_current is True
+    
+        # Associated responsibilities from HYGO and NEXTEC project sections
+>       assert len(job.responsibilities) >= 15
+E       AssertionError: assert 0 >= 15
+E        +  where 0 = len([])
+E        +    where [] = StandardizedWorkExperience(company='Inventus Info Consulting (INFOSYS)', role='ServiceNow Developer', start_date='2022...art_date_iso='2022-04', end_date_iso=None, start_date_precision='month_year', end_date_precision=None, is_current=True).responsibilities
+
+tests/test_nov8_five_resume_regressions.py:115: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_nov8_five_resume_regressions.py::test_05_bhavyashree_ry_narrative_employment_responsibilities_education_cert
+1 failed, 4 passed in 11.97s

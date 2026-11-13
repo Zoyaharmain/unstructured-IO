@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="2" time="6.557" timestamp="2026-11-12T10:49:29.688794-08:00" hostname="DESKTOP-RNGQH23"><testcase classname="tests.test_abhishek_record_regression" name="test_actual_resume_has_three_correct_employers_roles_and_date_ranges" time="5.609"><failure message="AssertionError: assert [('SLK Softwa..., None, None)] == [('SLK Softwa...', '05/2021')]&#10;  &#10;  Left contains one more item: ('VPN Solutions: Libreswan, StrongSwan', 'ENGINEERING INITIATIVES', None, None)&#10;  Use -v to get more diff">def test_actual_resume_has_three_correct_employers_roles_and_date_ranges():
+        req=request();before=req.model_dump()
+        out=map_schema(req)
+&gt;       assert [(r.company,r.role,r.start_date,r.end_date) for r in out.data.experience]==[
+            ('SLK Software','Team Leader','01/2025','Present'),
+            ('Impetus Technologies','SRE/Devops Engineer','06/2021','12/2024'),
+            ('Cavisson Systems','Software Engineer','10/2018','05/2021')]
+E       AssertionError: assert [('SLK Softwa..., None, None)] == [('SLK Softwa...', '05/2021')]
+E         
+E         Left contains one more item: ('VPN Solutions: Libreswan, StrongSwan', 'ENGINEERING INITIATIVES', None, None)
+E         Use -v to get more diff
+
+tests/test_abhishek_record_regression.py:25: AssertionError</failure></testcase><testcase classname="tests.test_abhishek_record_regression" name="test_date_is_not_moved_when_degree_row_is_not_physically_aligned" time="0.431" /></testsuite></testsuites>

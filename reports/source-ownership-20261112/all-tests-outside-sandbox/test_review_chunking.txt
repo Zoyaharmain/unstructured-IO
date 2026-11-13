@@ -1,0 +1,30 @@
+.....................F.........                                          [100%]
+=================================== FAILURES ===================================
+__ test_required_field_candidate_accepts_own_record_evidence_not_other_record __
+
+    def test_required_field_candidate_accepts_own_record_evidence_not_other_record():
+     req,sec=fixture(3)
+     texts=['Acme Ltd','Business Development Manager','Other Systems']
+     for i,text in enumerate(texts):
+      req.elements[i].text=text
+      sec.sections[0].blocks[i].text=text;sec.sections[0].blocks[i].end=len(text)
+     sec.sections[0].text='\n'.join(texts)
+     sec.sections[0].entries=[
+      SectionEntry(entry_id='experience-1',block_indices=[0,1],lane='main',boundary_reason='first',fields={'employer':[0],'title':[1]}),
+      SectionEntry(entry_id='experience-2',block_indices=[2],lane='main',boundary_reason='second',fields={'employer':[2]}),
+     ]
+     schema=map_schema(SchemaMappingRequest(elements=req.elements,sections=sec,source='fixture')).model_dump(mode='json')
+     schema['meta']['missing_required_fields']=['experience[0].role']
+     p=audit_plan(req.elements,sec,schema,settings())
+     c=next(c for c in p['chunks'] if any(u['id']=='missing:0' for u in c['targets']))
+     missing=next(u for u in c['targets'] if u['id']=='missing:0')
+>    assert missing['record_key']=='experience/experience-1'
+E    AssertionError: assert 'document/missing' == 'experience/experience-1'
+E      
+E      - experience/experience-1
+E      + document/missing
+
+tests/test_review_chunking.py:196: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_review_chunking.py::test_required_field_candidate_accepts_own_record_evidence_not_other_record
+1 failed, 30 passed in 11.08s

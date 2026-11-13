@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="3" skipped="0" tests="12" time="15.597" timestamp="2026-11-12T22:14:24.402594-08:00" hostname="DESKTOP-RNGQH23"><testcase classname="tests.test_twelve_ground_truth_replays" name="test_ground_truth_semantic_validation[shyam_kumar_donka]" time="1.611" /><testcase classname="tests.test_twelve_ground_truth_replays" name="test_ground_truth_semantic_validation[ashfaq_rahman]" time="1.066" /><testcase classname="tests.test_twelve_ground_truth_replays" name="test_ground_truth_semantic_validation[chaganti_leela_sankar]" time="1.441" /><testcase classname="tests.test_twelve_ground_truth_replays" name="test_ground_truth_semantic_validation[sureshbabus]" time="1.185" /><testcase classname="tests.test_twelve_ground_truth_replays" name="test_ground_truth_semantic_validation[a_suribhotla]" time="1.403" /><testcase classname="tests.test_twelve_ground_truth_replays" name="test_ground_truth_semantic_validation[abhishek_tiwari]" time="0.703"><failure message="AssertionError: abhishek_tiwari expected PASS but got FAIL: ['Job 1 (Associate Software Engineer) missing company name']&#10;assert 'FAIL' == 'PASS'&#10;  &#10;  - PASS&#10;  + FAIL">item = {'resume_id': 'abhishek_tiwari', 'folder': 'ground_truth/schema_mapping/abhishek_tiwari', 'original_filename': 'AbhishekTiwari.pdf', 'original_file': 'ground_truth/schema_mapping/abhishek_tiwari/original.pdf', ...}
+
+    @pytest.mark.parametrize("item", MANIFEST, ids=[r["resume_id"] for r in MANIFEST])
+    def test_ground_truth_semantic_validation(item):
+        rid = item["resume_id"]
+        fname = item["original_filename"]
+        expected_path = item["expected_json"]
+    
+        elements, sections = load_ground_truth_inputs(rid, fname)
+        mapped = map_schema(SchemaMappingRequest(elements=elements, sections=sections, source=fname))
+        std, meta, status, warns = standardize_resume_data(mapped.data.model_dump())
+    
+        exp_data = json.load(open(expected_path))["data"]
+        audit = evaluate_resume_mapping(rid, std, exp_data)
+    
+        # 1. Candidate Name must be valid and uncontaminated
+        assert audit["name_status"] == "PASS", f"Name error on {rid}: {audit['failures']}"
+        assert audit["candidate_actual"] != ""
+    
+        # 2. Field evidence must be preserved
+        assert len(mapped.meta.get("field_evidence", {})) &gt; 0
+    
+        # 3. Strict semantic validation
+        if rid in PASSING_RESUME_IDS:
+            # Full semantic pass: 0 missing jobs, 0 missing edu, exact record counts
+&gt;           assert audit["status"] == "PASS", f"{rid} expected PASS but got {audit['status']}: {audit['failures']}"
+E           AssertionError: abhishek_tiwari expected PASS but got FAIL: ['Job 1 (Associate Software Engineer) missing company name']
+E           assert 'FAIL' == 'PASS'
+E             
+E             - PASS
+E             + FAIL
+
+tests/test_twelve_ground_truth_replays.py:72: AssertionError</failure></testcase><testcase classname="tests.test_twelve_ground_truth_replays" name="test_ground_truth_semantic_validation[ashwin_s_s]" time="1.688"><failure message="assert 2 == 3">item = {'resume_id': 'ashwin_s_s', 'folder': 'ground_truth/schema_mapping/ashwin_s_s', 'original_filename': 'Ashwin S S.docx', 'original_file': 'ground_truth/schema_mapping/ashwin_s_s/original.docx', ...}
+
+    @pytest.mark.parametrize("item", MANIFEST, ids=[r["resume_id"] for r in MANIFEST])
+    def test_ground_truth_semantic_validation(item):
+        rid = item["resume_id"]
+        fname = item["original_filename"]
+        expected_path = item["expected_json"]
+    
+        elements, sections = load_ground_truth_inputs(rid, fname)
+        mapped = map_schema(SchemaMappingRequest(elements=elements, sections=sections, source=fname))
+        std, meta, status, warns = standardize_resume_data(mapped.data.model_dump())
+    
+        exp_data = json.load(open(expected_path))["data"]
+        audit = evaluate_resume_mapping(rid, std, exp_data)
+    
+        # 1. Candidate Name must be valid and uncontaminated
+        assert audit["name_status"] == "PASS", f"Name error on {rid}: {audit['failures']}"
+        assert audit["candidate_actual"] != ""
+    
+        # 2. Field evidence must be preserved
+        assert len(mapped.meta.get("field_evidence", {})) &gt; 0
+    
+        # 3. Strict semantic validation
+        if rid in PASSING_RESUME_IDS:
+            # Full semantic pass: 0 missing jobs, 0 missing edu, exact record counts
+            assert audit["status"] == "PASS", f"{rid} expected PASS but got {audit['status']}: {audit['failures']}"
+            assert len(audit["missing_jobs"]) == 0
+            assert len(audit["missing_edu"]) == 0
+            assert audit["jobs_actual"] == audit["jobs_expected"]
+            assert audit["edu_actual"] == audit["edu_expected"]
+            assert len(audit["failures"]) == 0
+        else:
+            # Incomplete / failing resumes: MUST NEVER PASS
+            assert audit["status"] != "PASS", f"{rid} has missing records or defects and MUST NEVER receive PASS!"
+            assert audit["status"] in {"INCOMPLETE", "FAIL"}
+    
+            # Verify specific known defects are detected
+            if rid == "chaganti_leela_sankar":
+                # Missing 1 job (Thomson Reuters)
+                assert len(audit["missing_jobs"]) == 1
+                assert audit["jobs_actual"] == 3
+                assert audit["jobs_expected"] == 4
+            elif rid == "sureshbabus":
+                # Standard Chartered split record
+                assert audit["jobs_actual"] == 4
+                assert audit["jobs_expected"] == 3
+            elif rid == "ashwin_s_s":
+                # Missing 2 jobs in summary prose/table
+                assert len(audit["missing_jobs"]) == 2
+&gt;               assert audit["jobs_actual"] == 3
+E               assert 2 == 3
+
+tests/test_twelve_ground_truth_replays.py:96: AssertionError</failure></testcase><testcase classname="tests.test_twelve_ground_truth_replays" name="test_ground_truth_semantic_validation[arnab_kumar_kar]" time="1.455"><failure message="AssertionError: arnab_kumar_kar expected PASS but got FAIL: ['Total experience is None, expected ~11.5']&#10;assert 'FAIL' == 'PASS'&#10;  &#10;  - PASS&#10;  + FAIL">item = {'resume_id': 'arnab_kumar_kar', 'folder': 'ground_truth/schema_mapping/arnab_kumar_kar', 'original_filename': 'Arnab_Kumar Kar.pdf', 'original_file': 'ground_truth/schema_mapping/arnab_kumar_kar/original.pdf', ...}
+
+    @pytest.mark.parametrize("item", MANIFEST, ids=[r["resume_id"] for r in MANIFEST])
+    def test_ground_truth_semantic_validation(item):
+        rid = item["resume_id"]
+        fname = item["original_filename"]
+        expected_path = item["expected_json"]
+    
+        elements, sections = load_ground_truth_inputs(rid, fname)
+        mapped = map_schema(SchemaMappingRequest(elements=elements, sections=sections, source=fname))
+        std, meta, status, warns = standardize_resume_data(mapped.data.model_dump())
+    
+        exp_data = json.load(open(expected_path))["data"]
+        audit = evaluate_resume_mapping(rid, std, exp_data)
+    
+        # 1. Candidate Name must be valid and uncontaminated
+        assert audit["name_status"] == "PASS", f"Name error on {rid}: {audit['failures']}"
+        assert audit["candidate_actual"] != ""
+    
+        # 2. Field evidence must be preserved
+        assert len(mapped.meta.get("field_evidence", {})) &gt; 0
+    
+        # 3. Strict semantic validation
+        if rid in PASSING_RESUME_IDS:
+            # Full semantic pass: 0 missing jobs, 0 missing edu, exact record counts
+&gt;           assert audit["status"] == "PASS", f"{rid} expected PASS but got {audit['status']}: {audit['failures']}"
+E           AssertionError: arnab_kumar_kar expected PASS but got FAIL: ['Total experience is None, expected ~11.5']
+E           assert 'FAIL' == 'PASS'
+E             
+E             - PASS
+E             + FAIL
+
+tests/test_twelve_ground_truth_replays.py:72: AssertionError</failure></testcase><testcase classname="tests.test_twelve_ground_truth_replays" name="test_ground_truth_semantic_validation[yogendra_singh]" time="2.444" /><testcase classname="tests.test_twelve_ground_truth_replays" name="test_ground_truth_semantic_validation[deeksha_yadu]" time="0.711" /><testcase classname="tests.test_twelve_ground_truth_replays" name="test_ground_truth_semantic_validation[supriya_bhagat]" time="0.767" /><testcase classname="tests.test_twelve_ground_truth_replays" name="test_ground_truth_semantic_validation[ravisankar_sundar]" time="0.826" /></testsuite></testsuites>

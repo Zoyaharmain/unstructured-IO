@@ -1,0 +1,28 @@
+.........F..F...........                                                 [100%]
+=================================== FAILURES ===================================
+______________ test_no_broad_delivering_or_systems_rule[systems] _______________
+
+text = 'systems'
+
+    @pytest.mark.parametrize('text',['systems','Delivering results','Data for systems','delivering systems','Systems for Everyone Ltd'])
+    def test_no_broad_delivering_or_systems_rule(text):
+>    assert field_kinds(text,'experience')!=['responsibilities']
+E    AssertionError: assert ['responsibilities'] != ['responsibilities']
+E     +  where ['responsibilities'] = field_kinds('systems', 'experience')
+
+tests/test_phase1_repairs.py:22: AssertionError
+_________ test_no_broad_delivering_or_systems_rule[delivering systems] _________
+
+text = 'delivering systems'
+
+    @pytest.mark.parametrize('text',['systems','Delivering results','Data for systems','delivering systems','Systems for Everyone Ltd'])
+    def test_no_broad_delivering_or_systems_rule(text):
+>    assert field_kinds(text,'experience')!=['responsibilities']
+E    AssertionError: assert ['responsibilities'] != ['responsibilities']
+E     +  where ['responsibilities'] = field_kinds('delivering systems', 'experience')
+
+tests/test_phase1_repairs.py:22: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_phase1_repairs.py::test_no_broad_delivering_or_systems_rule[systems]
+FAILED tests/test_phase1_repairs.py::test_no_broad_delivering_or_systems_rule[delivering systems]
+2 failed, 22 passed in 0.29s

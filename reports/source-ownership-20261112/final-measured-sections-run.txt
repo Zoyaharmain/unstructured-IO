@@ -1,0 +1,23 @@
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 2034.50it/s]
+{"completed": 1, "status": "scored"}
+{"completed": 2, "status": "scored"}
+{"completed": 3, "status": "scored"}
+{"completed": 4, "status": "scored"}
+{"completed": 5, "status": "scored"}
+{"completed": 6, "status": "scored"}
+{"completed": 7, "status": "scored"}
+{"completed": 8, "status": "scored"}
+{"completed": 9, "status": "scored"}
+{"completed": 10, "status": "scored"}
+Traceback (most recent call last):
+  File "/home/gopal/unstructured-IO/scripts/evaluate_ownership_sections.py", line 58, in <module>
+    main()
+  File "/home/gopal/unstructured-IO/scripts/evaluate_ownership_sections.py", line 40, in main
+    sections = finalize_ownership(request.elements, recover_sections(request, detect_sections(request)))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gopal/unstructured-IO/local_api/services/source_ownership.py", line 397, in finalize_ownership
+    state = snapshot(elements, out)
+            ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gopal/unstructured-IO/local_api/services/source_ownership.py", line 91, in snapshot
+    raise ValueError('Invalid record context')
+ValueError: Invalid record context

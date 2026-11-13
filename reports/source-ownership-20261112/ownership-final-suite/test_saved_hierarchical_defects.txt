@@ -1,0 +1,25 @@
+..F.............F........                                                [100%]
+=================================== FAILURES ===================================
+______________________ test_rachana_header_and_full_title ______________________
+
+    def test_rachana_header_and_full_title():
+        out = replay(5)
+>       assert out.data.experience[0].company == 'Tieto HealthCare'
+E       AssertionError: assert 'Tieto HealthCare — Bangalore' == 'Tieto HealthCare'
+E         
+E         - Tieto HealthCare
+E         + Tieto HealthCare — Bangalore
+
+tests/test_saved_hierarchical_defects.py:45: AssertionError
+____________ test_engineered_responsibility_is_not_lost_as_a_title _____________
+
+    def test_engineered_responsibility_is_not_lost_as_a_title():
+>       assert any('Engineered features' in text for text in replay(3).data.experience[1].responsibilities)
+E       assert False
+E        +  where False = any(<generator object test_engineered_responsibility_is_not_lost_as_a_title.<locals>.<genexpr> at 0x775b17da8d40>)
+
+tests/test_saved_hierarchical_defects.py:161: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_saved_hierarchical_defects.py::test_rachana_header_and_full_title
+FAILED tests/test_saved_hierarchical_defects.py::test_engineered_responsibility_is_not_lost_as_a_title
+2 failed, 23 passed in 81.46s (0:01:21)

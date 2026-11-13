@@ -1,0 +1,17 @@
+...F....                                                                 [100%]
+=================================== FAILURES ===================================
+__________________ test_ambiguous_associations_remain_flagged __________________
+
+    def test_ambiguous_associations_remain_flagged():
+        request = sample()
+        entry = next(s for s in request.sections.sections if s.category == 'experience').entries[0]
+        entry.relationship_status = 'needs_review'; entry.review_reasons = ['Uncertain employer/date association']
+        job = next(s for s in map_schema(request).section_schemas if s.category == 'experience').records[0]
+>       assert job.review_reasons
+E       AssertionError: assert []
+E        +  where [] = SubschemaRecord(record_id='job-1', source_ids=['e3:0:50', 'e4:0:17', 'e5:0:30'], attributes=[Attribute(name='company',...urce_supported')], status='mapped'), Attribute(name='technologies', items=[], status='unresolved')], review_reasons=[]).review_reasons
+
+tests/test_section_subschemas.py:56: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_section_subschemas.py::test_ambiguous_associations_remain_flagged
+1 failed, 7 passed in 3.31s

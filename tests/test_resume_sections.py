@@ -533,3 +533,29 @@ def test_certification_testing_bullet_does_not_split_or_hijack_section(engine):
     assert '- Certified Scrum Product Owner (CSPO), 2025' in certifications.text
     assert not out.needs_review
 
+
+
+@pytest.mark.parametrize('weak_type', ['Title','Header','Footer','NarrativeText'])
+def test_upstream_layout_type_cannot_end_explicit_semantic_section(engine, weak_type):
+    req=request(['SKILLS','Python, SQL, Docker','WORK EXPERIENCE',
+                 'Software Engineer | Example Ltd | Jan 2020 - Present',
+                 'Built services across','regions.'],
+                ['Title',weak_type,'Title','Header','Footer','Title'])
+    req.elements[-1].page_number=2
+    result=engine.detect(req)
+    owners={b.source_element_index:s.category for s in result.sections for b in s.blocks}
+    assert owners[1]=='skills'
+    assert owners[4]==owners[5]=='experience'
+    assert_preserved(req,result)
+
+
+@pytest.mark.parametrize('upstream_type',['Footer','PageBreak','ListItem','NarrativeText'])
+def test_explicit_section_heading_overrides_upstream_element_type(engine, upstream_type):
+    req=request(['SKILLS','Python, SQL','WORK EXPERIENCE',
+                 'Engineer | Example Ltd | 2020 - Present','Built production services.'],
+                [upstream_type,'Title',upstream_type,'Header','Footer'])
+    result=engine.detect(req)
+    owners={b.source_element_index:s.category for s in result.sections for b in s.blocks}
+    assert owners[0]==owners[1]=='skills'
+    assert owners[2]==owners[3]==owners[4]=='experience'
+    assert_preserved(req,result)

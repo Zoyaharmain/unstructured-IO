@@ -1,0 +1,29 @@
+......F.....                                                             [100%]
+=================================== FAILURES ===================================
+_ test_artifacts_require_specific_source_evidence[2 | P a g e-NarrativeText-False-False] _
+
+text = '2 | P a g e', kind = 'NarrativeText', bottom = False, expected = False
+
+    @pytest.mark.parametrize('text,kind,bottom,expected',[
+     ('1 | P a g e','Footer',False,True),
+     ('2 | P a g e','UncategorizedText',True,True),
+     ('2 | P a g e','NarrativeText',False,False),
+     (' • ','Footer',False,True),
+     ('ADDITIONAL INFORMATION','Footer',True,False),
+     ('C#','Footer',True,False),
+     ('2024','Footer',True,False),
+     ('Member, IEEE','NarrativeText',True,False),
+    ])
+    def test_artifacts_require_specific_source_evidence(text,kind,bottom,expected):
+        metadata={'pdf_source_lines':[{'start':0,'end':len(text),'bbox':[.1,.95,.8,.97]}]} if bottom else {}
+        element=ExtractedElement(type=kind,text=text,page_number=1,metadata=metadata)
+        block=SectionBlock(source_element_index=0,start=0,end=len(text),text=text,page_number=1,lane='main',assignment='needs_review',reason='source')
+>       assert bool(artifact_reason(element,block)) is expected
+E       AssertionError: assert True is False
+E        +  where True = bool('Source-supported page-number footer retained')
+E        +    where 'Source-supported page-number footer retained' = artifact_reason(ExtractedElement(type='NarrativeText', text='2 | P a g e', page_number=1, metadata={}), SectionBlock(source_element_index=0, start=0, end=11, text='2 | P a g e', page_number=1, cluster_id=None, candidate_se...=None, lane='main', reason='source', reviewed_by_llm=False, local_section=None, local_assignment=None, llm_action=None))
+
+tests/test_readiness_audit.py:48: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_readiness_audit.py::test_artifacts_require_specific_source_evidence[2 | P a g e-NarrativeText-False-False]
+1 failed, 11 passed in 0.59s

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="12" time="0.586" timestamp="2026-11-12T22:13:23.832635-08:00" hostname="DESKTOP-RNGQH23"><testcase classname="tests.test_readiness_audit" name="test_replay_does_not_attribute_historical_calls_to_new_run" time="0.001" /><testcase classname="tests.test_readiness_audit" name="test_replay_refuses_to_delete_existing_results[reproduce_100_fixed_offline.py]" time="0.180" /><testcase classname="tests.test_readiness_audit" name="test_replay_refuses_to_delete_existing_results[reproduce_structural_fix_offline.py]" time="0.235" /><testcase classname="tests.test_readiness_audit" name="test_optional_provider_type_is_only_the_documented_constant" time="0.001" /><testcase classname="tests.test_readiness_audit" name="test_artifacts_require_specific_source_evidence[1 | P a g e-Footer-False-True]" time="0.002" /><testcase classname="tests.test_readiness_audit" name="test_artifacts_require_specific_source_evidence[2 | P a g e-UncategorizedText-True-True]" time="0.001" /><testcase classname="tests.test_readiness_audit" name="test_artifacts_require_specific_source_evidence[2 | P a g e-NarrativeText-False-False]" time="0.001"><failure message="AssertionError: assert True is False&#10; +  where True = bool('Source-supported page-number footer retained')&#10; +    where 'Source-supported page-number footer retained' = artifact_reason(ExtractedElement(type='NarrativeText', text='2 | P a g e', page_number=1, metadata={}), SectionBlock(source_element_index=0, start=0, end=11, text='2 | P a g e', page_number=1, cluster_id=None, candidate_se...=None, lane='main', reason='source', reviewed_by_llm=False, local_section=None, local_assignment=None, llm_action=None))">text = '2 | P a g e', kind = 'NarrativeText', bottom = False, expected = False
+
+    @pytest.mark.parametrize('text,kind,bottom,expected',[
+     ('1 | P a g e','Footer',False,True),
+     ('2 | P a g e','UncategorizedText',True,True),
+     ('2 | P a g e','NarrativeText',False,False),
+     (' • ','Footer',False,True),
+     ('ADDITIONAL INFORMATION','Footer',True,False),
+     ('C#','Footer',True,False),
+     ('2024','Footer',True,False),
+     ('Member, IEEE','NarrativeText',True,False),
+    ])
+    def test_artifacts_require_specific_source_evidence(text,kind,bottom,expected):
+        metadata={'pdf_source_lines':[{'start':0,'end':len(text),'bbox':[.1,.95,.8,.97]}]} if bottom else {}
+        element=ExtractedElement(type=kind,text=text,page_number=1,metadata=metadata)
+        block=SectionBlock(source_element_index=0,start=0,end=len(text),text=text,page_number=1,lane='main',assignment='needs_review',reason='source')
+&gt;       assert bool(artifact_reason(element,block)) is expected
+E       AssertionError: assert True is False
+E        +  where True = bool('Source-supported page-number footer retained')
+E        +    where 'Source-supported page-number footer retained' = artifact_reason(ExtractedElement(type='NarrativeText', text='2 | P a g e', page_number=1, metadata={}), SectionBlock(source_element_index=0, start=0, end=11, text='2 | P a g e', page_number=1, cluster_id=None, candidate_se...=None, lane='main', reason='source', reviewed_by_llm=False, local_section=None, local_assignment=None, llm_action=None))
+
+tests/test_readiness_audit.py:48: AssertionError</failure></testcase><testcase classname="tests.test_readiness_audit" name="test_artifacts_require_specific_source_evidence[ \u2022 -Footer-False-True]" time="0.001" /><testcase classname="tests.test_readiness_audit" name="test_artifacts_require_specific_source_evidence[ADDITIONAL INFORMATION-Footer-True-False]" time="0.001" /><testcase classname="tests.test_readiness_audit" name="test_artifacts_require_specific_source_evidence[C#-Footer-True-False]" time="0.001" /><testcase classname="tests.test_readiness_audit" name="test_artifacts_require_specific_source_evidence[2024-Footer-True-False]" time="0.001" /><testcase classname="tests.test_readiness_audit" name="test_artifacts_require_specific_source_evidence[Member, IEEE-NarrativeText-True-False]" time="0.001" /></testsuite></testsuites>

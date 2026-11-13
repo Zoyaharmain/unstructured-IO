@@ -1,0 +1,16 @@
+................................................F..................      [100%]
+=================================== FAILURES ===================================
+_ test_conflicting_labels_do_not_choose_a_company_or_borrow_next_record_fields _
+
+    def test_conflicting_labels_do_not_choose_a_company_or_borrow_next_record_fields():
+        req = request('experience', [['Employer: Acme', 'Company: Beta', 'Role: Engineer'],
+                                     ['Employer: Gamma', 'Location: London']])
+        out = map_schema(req)
+>       first, second = out.section_schemas[0].records
+        ^^^^^^^^^^^^^
+E       ValueError: not enough values to unpack (expected 2, got 1)
+
+tests/test_record_subfields.py:74: ValueError
+=========================== short test summary info ============================
+FAILED tests/test_record_subfields.py::test_conflicting_labels_do_not_choose_a_company_or_borrow_next_record_fields
+1 failed, 66 passed in 6.71s

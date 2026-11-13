@@ -65,7 +65,7 @@ def build_subschemas(sections, data, scope, record_bindings=None):
                         continue
                     record = mapped[index]
                     owned_blocks=[section.blocks[i] for i in entry.block_indices]
-                    allowed = [section.blocks[i] for i in sorted(set(entry.block_indices)|{i for ids in entry.context_fields.values() for i in ids})]
+                    allowed = [section.blocks[i] for i in sorted(set(entry.block_indices)|{i for field,ids in entry.context_fields.items() for i in ids if category != 'experience' or field != 'company'})]
                     uncertain = entry.relationship_status == 'needs_review' or bool(entry.review_reasons)
                     values = record.model_dump()
                     reasons = list(entry.review_reasons)
@@ -75,8 +75,10 @@ def build_subschemas(sections, data, scope, record_bindings=None):
                     if category == 'experience' and not record.company and re.search(r'\b(?:trainee|research|training)\b', allowed[0].text if allowed else '', re.I):
                         reasons.append('Training/research content requires employment association review.')
                     _, refinement_reasons = refine_record(category, values, allowed, header_fields=(
-                        {'company' if field == 'employer' else 'role' if field == 'title' else field for field in entry.fields}
+                        {'company' if field == 'employer' else 'role' if field == 'title' else field for field in entry.fields} | set(entry.context_fields)
                         if entry.fields else None))
+                    if category == 'experience' and entry.context_fields.get('company'):
+                        values['company'] = record.company
                     reasons.extend(refinement_reasons)
                     uncertain = uncertain or bool(reasons)
                     attrs = [attribute(name, value, [section.blocks[i] for i in sorted(set(entry.block_indices)|set(entry.context_fields.get(name,[])))], uncertain) for name, value in values.items()]

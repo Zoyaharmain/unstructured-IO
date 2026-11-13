@@ -39,10 +39,9 @@ def validate_result(elements, result):
         for entry in section.entries:
             entry_ids.append(entry.entry_id);ownership.extend(entry.block_indices)
             context_fields=getattr(entry,'context_fields',{})
-            if context_fields and (section.category!='education' or set(context_fields)-{'institution'} or any(not 0<=i<len(section.blocks) for ids in context_fields.values() for i in ids)):errors.append('invalid_record_context')
-            elif context_fields and all(0<=i<len(section.blocks) for i in entry.block_indices):
-                from local_api.services.education_context import valid_institution_context
-                if any(not valid_institution_context(section,entry,i) for i in context_fields['institution']):errors.append('invalid_record_context')
+            if context_fields and all(0<=i<len(section.blocks) for i in entry.block_indices):
+                from local_api.services.employer_context import valid_record_context
+                if not valid_record_context(section, entry):errors.append('invalid_record_context')
             if any(index not in entry.block_indices for values in entry.fields.values() for index in values):errors.append('invalid_field_entry_reference')
             if any(not 0 <= i < len(section.blocks) for i in entry.block_indices):
                 errors.append('invalid_entry_reference')

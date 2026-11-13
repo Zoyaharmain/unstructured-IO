@@ -46,22 +46,30 @@ def map_schema(request):
     if errors:
         from local_api.services.schema_diagnostics import fail
         fail('source_binding_validation', errors[0], ('sections',))
+    ownership_locked = request.sections.metadata.get('structure_review', {}).get('status') == 'provisional'
+    if ownership_locked:
+        from local_api.services.source_ownership import validated_ownership_state
+        validated_ownership_state(request.elements, request.sections)
     from local_api.services.local_completion import recover_local_content
-    completed = recover_local_content(request.sections, request.elements)
+    completed = request.sections if ownership_locked else recover_local_content(request.sections, request.elements)
     local_completed = completed is not request.sections
     if completed is not request.sections:
         request = request.model_copy(update={'sections': completed})
     from local_api.services.contact_sections import recover_contact_sections, contact_values as literal_contact_values
     from local_api.services.education_date_recovery import recover_education_dates
-    recovered_sections = recover_education_dates(request.sections, request.elements)
-    recovered_sections = recover_contact_sections(recovered_sections, request.elements)
+    recovered_sections = request.sections if ownership_locked else recover_education_dates(request.sections, request.elements)
+    if not ownership_locked: recovered_sections = recover_contact_sections(recovered_sections, request.elements)
     from local_api.services.education_context import recover_education_context
-    recovered_sections = recover_education_context(recovered_sections)
+    if not ownership_locked: recovered_sections = recover_education_context(recovered_sections)
     from local_api.services.preamble_recovery import recover_summary_preamble
-    recovered_sections = recover_summary_preamble(recovered_sections, request.elements)
+    if not ownership_locked: recovered_sections = recover_summary_preamble(recovered_sections, request.elements)
     contacts_reassigned = recovered_sections is not request.sections
     if contacts_reassigned:
         request = request.model_copy(update={'sections': recovered_sections})
+    from local_api.services.source_ownership import finalize_ownership
+    owned_sections = finalize_ownership(request.elements, request.sections)
+    ownership_repaired = any(a.entries != b.entries for a,b in zip(owned_sections.sections, request.sections.sections))
+    request = request.model_copy(update={'sections': owned_sections})
     accounting=account_source(request.elements,request.sections)
     scope=document_scope(request.elements)
     sections={s.category:s for s in request.sections.sections}
@@ -136,11 +144,12 @@ def map_schema(request):
                 m_name_title = re.match(r'^\s*([A-Z][a-zA-Z]+(?:\s+[A-Z][a-zA-Z]+){1,3})\s*(?:\(([^)]+)\)|[-–—|:,]\s*([A-Za-z][^+\n/|]+))\s*(?:[+,|/].*)?$', title)
                 from local_api.services.record_subfields import ROLE
                 if m_name_title:
+                    cand_name = m_name_title.group(1).strip()
                     cand_sub_title = (m_name_title.group(2) or m_name_title.group(3)).strip()
-                    if ROLE.search(cand_sub_title):
-                        cand_name = m_name_title.group(1).strip()
-                        if not data.contact.full_name or '(' in data.contact.full_name or data.contact.full_name.startswith(cand_name):
-                            setattr(data.contact, 'full_name', remember('contact.full_name', cand_name, refs))
+                    if (ROLE.search(cand_sub_title)
+                            and not re.search(r'\b(?:senior|junior|lead|principal|staff|associate|chief|director|head|manager|analyst|engineer|developer|consultant)\b', cand_name, re.I)
+                            and (not data.contact.full_name or '(' in data.contact.full_name or data.contact.full_name.startswith(cand_name))):
+                        setattr(data.contact, 'full_name', remember('contact.full_name', cand_name, refs))
                         title = cand_sub_title
                 if data.contact.full_name and title.startswith(data.contact.full_name + ' '):title=title[len(data.contact.full_name):].strip()
                 data.professional_title=remember('professional_title',title,refs);break
@@ -210,22 +219,18 @@ def map_schema(request):
         for category in ('experience','education','projects','certifications'):
             section=sections.get(category)
             if not section:continue
-            if category in {'experience', 'education'}:
+            if category in {'experience', 'education'} and not ownership_locked:
                 from local_api.services.record_relationships import annotate_relationships
                 annotate_relationships(section)
-            last_experience_employer = None
-            last_experience_employer_blocks = []
             for entry in section.entries:
                 owned_bs=[section.blocks[i] for i in entry.block_indices]
-                context_ids={i for ids in entry.context_fields.values() for i in ids}
+                context_ids={i for field,ids in entry.context_fields.items() for i in ids if category != 'experience' or field != 'company'}
                 bs=[section.blocks[i] for i in sorted(set(entry.block_indices)|context_ids)]
-                first_b = owned_bs[0] if owned_bs else None
-                is_client_subentry = bool(category == 'experience' and last_experience_employer and 'employer' not in entry.fields and (
-                    'client' in entry.fields or (first_b and re.match(r'^\s*(?:\d+\.\s*)?Client\b', first_b.text, re.I))
-                ))
-                if (is_client_subentry or (last_experience_employer_blocks and not refs('employer'))) and last_experience_employer_blocks:
-                    bs = [b for b in section.blocks if b in bs or b in last_experience_employer_blocks]
-                def refs(name):return [section.blocks[i] for i in entry.fields.get(name,[])]
+                def refs(name):
+                    indices = entry.fields.get(name, [])
+                    if category == 'experience' and name == 'responsibilities':
+                        indices = sorted(set(indices) | set(entry.fields.get('achievements', [])))
+                    return [section.blocks[i] for i in indices]
                 def field(name):return canonical(refs(name)).strip()
                 def sole(name):
                     value=field(name)
@@ -238,6 +243,11 @@ def map_schema(request):
                     candidates=extract_work_experience(text,text)
                     candidate=candidates[0] if len(candidates)==1 else None
                     company=literal(candidate.company,refs('employer')) if candidate else None
+                    company_context = [section.blocks[i] for i in entry.context_fields.get('company', [])]
+                    if company_context:
+                        from local_api.services.record_subfields import labelled_fields, employment_header_fields
+                        names = labelled_fields('experience', company_context).get('company', [])
+                        company = names[0] if len(names) == 1 else employment_header_fields(company_context[0].text).get('company') or re.split(r'\s+[—–-]\s+', company_context[0].text)[0].strip()
                     role=literal(candidate.role,refs('title')) if candidate else None
                     role_pattern=r'\b(?:engineer|developer|analyst|consultant|architect|manager|specialist|director|lead|supervisor)\b'
                     company_pattern=r'\b(?:ltd|limited|inc|llc|corp|corporation|systems|services|bank|technolog(?:y|ies)|solutions|company|ispl|paribas|bnp|pvt|private)\b'
@@ -277,8 +287,16 @@ def map_schema(request):
                             company = cand_emp
                     if not role and sole('title') and not re.search(r'(?:19|20)\d{2}|\||\b(?:ltd|inc|corporation|company)\b', field('title'), re.I):
                         role = field('title')
-                    allow_company = not entry.fields or 'employer' in entry.fields or is_client_subentry
-                    allow_role = not entry.fields or 'title' in entry.fields
+                    from local_api.services.dated_record_headers import dated_header_candidates
+                    dh = dated_header_candidates(bs)
+                    if len(dh) == 1:
+                        if dh[0].get('company') and not company: company = dh[0]['company']
+                        if dh[0].get('role') and not role: role = dh[0]['role']
+                        allow_company = True
+                        allow_role = True
+                    else:
+                        allow_company = not entry.fields or 'employer' in entry.fields or bool(company_context)
+                        allow_role = not entry.fields or 'title' in entry.fields
                     from local_api.services.record_subfields import employment_header_fields
                     if (not company and allow_company) or (not role and allow_role) or (company and role and role.casefold().startswith(company.casefold())):
                         for candidate_text in [field('employer'), field('title'), text]:
@@ -287,16 +305,15 @@ def map_schema(request):
                                 if allow_company and (not company or (role and role.casefold().startswith(company.casefold()))) and parsed.get('company'): company = parsed['company']
                                 if allow_role and (not role or (company and role.casefold().startswith(company.casefold()))) and parsed.get('role'): role = parsed['role']
                                 if company and role and not role.casefold().startswith(company.casefold()): break
-                    if not company and (is_client_subentry or (last_experience_employer and (role or dates or refs('responsibilities')))):
-                        company = last_experience_employer
                     if company and role and role.casefold().startswith(company.casefold()):
                         role = re.sub(r'^' + re.escape(company) + r'\s*[-–—:|]\s*', '', role, flags=re.I).strip()
-                    if not allow_company and not is_client_subentry and not (company and company == last_experience_employer): company = None
+                    if not allow_company: company = None
                     if not allow_role: role = None
-                    if company and not is_client_subentry and (refs('employer') or not last_experience_employer):
-                        last_experience_employer = company
-                        last_experience_employer_blocks = refs('employer') or owned_bs[:1]
+                    if company and employment_header_fields(company).get('company'):
+                        company = employment_header_fields(company)['company']
                     loc = sole('location')
+                    if loc and employment_header_fields(loc).get('location'):
+                        loc = employment_header_fields(loc)['location']
                     if not loc:
                         for candidate_text in [field('employer'), field('title'), text]:
                             if candidate_text:
@@ -304,6 +321,14 @@ def map_schema(request):
                                 if parsed.get('location'):
                                     loc = parsed['location']
                                     break
+                    if not loc and field('employer'):
+                        from local_api.services.record_subfields import is_place
+                        cparts = re.split(r'\s+[—–-]\s+', field('employer'))
+                        if len(cparts) == 2:
+                            suffix = cparts[1].strip()
+                            place_shape = bool(re.fullmatch(r'[A-Z][A-Za-z.\'-]*(?:[ ,]+[A-Z][A-Za-z.\'-]*){0,4}', suffix))
+                            if (is_place(suffix) or place_shape) and not re.search(r'\b(?:team|department|division|operations|engineering|services|solutions|platform|products|practice|business|unit|group|ltd|limited|inc|corp|co|pvt)\b', suffix, re.I):
+                                loc = suffix
                     if not loc and role:
                         from local_api.services.record_subfields import is_place, ROLE
                         loc_match = re.match(r'^(.*?,\s*[A-Za-z]+|\b(?:Bangalore|Bengaluru|Chennai|Hyderabad|Mumbai|Pune|Delhi|Noida|Gurgaon|London|Singapore|Dubai)\b)\s+([A-Za-z].*)$', role, re.I)
@@ -326,12 +351,14 @@ def map_schema(request):
                                 record.duration = dur_match.group(0).strip()
                                 break
                     if company and not (role or dates or refs('responsibilities')):
-                        continue
+                        entry.relationship_status = 'needs_review'
+                        entry.review_reasons.append('Role and dates are not established; partial employer record retained.')
+                        review['relationship_status'] = 'needs_review'
                     i=len(data.experience);data.experience.append(record);prefix=f'experience[{i}]'
                     for key,ref in [('company','employer'),('role','title'),('start_date','dates'),('end_date','dates'),('duration','dates'),('location','location')]:
                         ref_bs = refs(ref)
-                        if key == 'company' and not ref_bs and (is_client_subentry or company == last_experience_employer):
-                            ref_bs = last_experience_employer_blocks
+                        if key == 'company' and company_context:
+                            ref_bs = company_context
                         remember(prefix+'.'+key,getattr(record,key),ref_bs)
                     for j,b in enumerate(refs('responsibilities')):remember(f'{prefix}.responsibilities[{j}]',b.text,[b])
                 elif category=='education':
@@ -367,8 +394,10 @@ def map_schema(request):
                 original = record.model_dump()
                 base, education_reasons = refine_education(original, bs) if category == 'education' else (original, [])
                 refined, reasons = refine_record(category, base, bs, header_fields=(
-                    {'company' if field == 'employer' else 'role' if field == 'title' else field for field in entry.fields}
+                    {'company' if field == 'employer' else 'role' if field == 'title' else field for field in entry.fields} | set(entry.context_fields)
                     if entry.fields else None))
+                if category == 'experience' and company_context:
+                    refined['company'] = company
                 if category=='experience':
                     literal_header=request.sections.metadata.get('dated_employment_scope',{}).get('literal_records',{}).get(entry.entry_id,{})
                     for key,value in literal_header.items():
@@ -379,23 +408,24 @@ def map_schema(request):
                 review['review_reasons'] = list(dict.fromkeys(review['review_reasons'] + education_reasons + reasons))
                 if reasons or education_reasons:review['relationship_status'] = 'needs_review'
                 for key, value in refined.items():
+                    allowed_field_blocks = company_context if category == 'experience' and key == 'company' and company_context else bs
                     if value is None:
                         value = [] if isinstance(original[key], list) else '' if key in {'company','role','degree','institution','name'} else None
-                    if isinstance(value,list):value=[item for item in value if field_quotes(item,bs)]
-                    elif value and not field_quotes(value,bs):value='' if key in {'company','role','degree','institution','name'} else None
+                    if isinstance(value,list):value=[item for item in value if field_quotes(item,allowed_field_blocks)]
+                    elif value and not field_quotes(value,allowed_field_blocks):value='' if key in {'company','role','degree','institution','name'} else None
                     setattr(record, key, value)
                     path = f'{category}[{i}].{key}'
                     for old_path in list(evidence):
                         if old_path == path or old_path.startswith(path + '['):evidence.pop(old_path)
                     for j, item in enumerate(value if isinstance(value, list) else [value]):
                         remember(f'{path}[{j}]' if isinstance(value, list) else path, item,
-                                 [b for b in bs if any(r['source_id']==source_id(b) for r in field_quotes(item,bs))])
+                                 [b for b in allowed_field_blocks if any(r['source_id']==source_id(b) for r in field_quotes(item,allowed_field_blocks))])
         for language, level, b in language_rows(blocks('languages')):
             value=language if level is None else next((part.strip() for part in re.split(r'[\u2022\u25cf\n]',b.text) if language in part and level in part),language)
             i=len(data.languages);data.languages.append(value);remember(f'languages[{i}]',value,[b])
         if len(data.experience) == 1 and not data.experience[0].responsibilities:
             proj_sec = next((s for s in request.sections.sections if s.category == 'projects'), None)
-            if proj_sec:
+            if proj_sec and proj_sec.blocks and re.search(r'\b(?:project\s+details|client\s+projects|projects\s+undertaken|project\s+experience)\b', proj_sec.blocks[0].text, re.I):
                 full_proj_text = " ".join(b.text.strip() for b in proj_sec.blocks)
                 bullets = [re.sub(r"\s+", " ", p).strip() for p in re.split(r"[•▪●\uf0b7]", full_proj_text) if p.strip()]
                 filtered_resps = [p for p in bullets if not re.match(r"^(?:Project|Responsibilities|Technologies|ServiceNow|Description)\b", p, re.I) and len(p.split()) >= 4]
@@ -414,11 +444,31 @@ def map_schema(request):
             record_bindings[category] = {}
             for old_index, record in enumerate(getattr(data, category)):
                 review = reviews[old_index]
-                if category == 'experience' and ((not record.company and not record.role) or (not record.role and not record.start_date and not record.responsibilities)):
+                parent_entry = next((e for e in sections[category].entries if e.entry_id == review['entry_id']), None)
+                explicit_identity = bool(parent_entry and (parent_entry.fields.get('employer') or parent_entry.fields.get('title')))
+                employer_scope_only = bool(category == 'experience' and parent_entry and not parent_entry.fields.get('title')
+                    and not parent_entry.fields.get('responsibilities') and any(
+                        set(sibling.context_fields.get('company', [])) & set(parent_entry.block_indices)
+                        for sibling in sections[category].entries if sibling.entry_id != parent_entry.entry_id))
+                if employer_scope_only:
+                    review['mapped_index'] = None
+                    review['review_reasons'].append('Employer scope retained as company context for child roles, not a separate role.')
+                    continue
+                if category == 'experience' and not record.role and not record.start_date and not record.end_date and not record.responsibilities:
+                    from local_api.services.record_subfields import labelled_fields, employment_header_fields
+                    owned = [sections[category].blocks[j] for j in parent_entry.block_indices] if parent_entry else []
+                    labels = labelled_fields(category, owned)
+                    supported_header = any({'company','role'} <= employment_header_fields(b.text).keys() for b in owned)
+                    if not ({'company','role'} & labels.keys() or supported_header):
+                        review['mapped_index'] = None
+                        review['review_reasons'].append('Undated identity fragment has no explicit employment relation; retained as Needs Review.')
+                        continue
+                if category == 'experience' and not record.company and not record.role and not explicit_identity:
                     review['mapped_index'] = None
                     review['review_reasons'].append('Source content has no established employer or role; retained for association review, not counted as a job.')
                     continue
-                if category in {'experience', 'education'} and not any(record.model_dump().values()) and not review['review_reasons']:
+                education_identity = bool(category == 'education' and parent_entry and (parent_entry.fields.get('qualification') or parent_entry.fields.get('institution')))
+                if category in {'experience', 'education'} and not any(record.model_dump().values()) and not (category == 'experience' and explicit_identity or education_identity):
                     review['mapped_index'] = None
                     continue
                 new_index = len(kept)
@@ -524,7 +574,10 @@ def map_schema(request):
                               if not artifact_reason(request.elements[b.source_element_index], b)],
               'layout_artifacts':[row for row in accounting['outcomes'] if row['outcome']=='non_content_artifact']})
 
-    if contacts_reassigned or local_completed:
+    from local_api.services.source_ownership import snapshot
+    response.meta['source_ownership'] = snapshot(request.elements, request.sections).payload()
+    request.sections.metadata['source_ownership'] = response.meta['source_ownership']
+    if contacts_reassigned or local_completed or ownership_repaired:
         response.meta['reviewed_sections'] = request.sections.model_dump()
     from local_api.services.mapping_completeness import mapping_completeness
     response.meta['completeness_check'] = mapping_completeness(request.elements, request.sections, response.section_schemas)

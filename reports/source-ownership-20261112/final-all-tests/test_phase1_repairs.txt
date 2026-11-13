@@ -1,0 +1,40 @@
+......F..F..F...........                                                 [100%]
+=================================== FAILURES ===================================
+_______ test_company_headers_are_preserved[Company: Delivering Systems] ________
+
+text = 'Company: Delivering Systems'
+
+    @pytest.mark.parametrize('text',['Persistent Systems','Delivering Systems','Delivering Systems Ltd','Company: Delivering Systems','Engineer | Persistent Systems | 2020 - 2024','BNP Paribas ISPL'])
+    def test_company_headers_are_preserved(text):
+>    assert 'employer' in field_kinds(text,'experience')
+E    AssertionError: assert 'employer' in []
+E     +  where [] = field_kinds('Company: Delivering Systems', 'experience')
+
+tests/test_phase1_repairs.py:18: AssertionError
+______________ test_no_broad_delivering_or_systems_rule[systems] _______________
+
+text = 'systems'
+
+    @pytest.mark.parametrize('text',['systems','Delivering results','Data for systems','delivering systems','Systems for Everyone Ltd'])
+    def test_no_broad_delivering_or_systems_rule(text):
+>    assert field_kinds(text,'experience')!=['responsibilities']
+E    AssertionError: assert ['responsibilities'] != ['responsibilities']
+E     +  where ['responsibilities'] = field_kinds('systems', 'experience')
+
+tests/test_phase1_repairs.py:22: AssertionError
+_________ test_no_broad_delivering_or_systems_rule[delivering systems] _________
+
+text = 'delivering systems'
+
+    @pytest.mark.parametrize('text',['systems','Delivering results','Data for systems','delivering systems','Systems for Everyone Ltd'])
+    def test_no_broad_delivering_or_systems_rule(text):
+>    assert field_kinds(text,'experience')!=['responsibilities']
+E    AssertionError: assert ['responsibilities'] != ['responsibilities']
+E     +  where ['responsibilities'] = field_kinds('delivering systems', 'experience')
+
+tests/test_phase1_repairs.py:22: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_phase1_repairs.py::test_company_headers_are_preserved[Company: Delivering Systems]
+FAILED tests/test_phase1_repairs.py::test_no_broad_delivering_or_systems_rule[systems]
+FAILED tests/test_phase1_repairs.py::test_no_broad_delivering_or_systems_rule[delivering systems]
+3 failed, 21 passed in 0.57s

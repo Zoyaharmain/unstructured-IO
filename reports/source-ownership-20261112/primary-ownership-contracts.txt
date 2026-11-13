@@ -1,0 +1,37 @@
+..................................F..................................... [ 81%]
+................                                                         [100%]
+=================================== FAILURES ===================================
+____ test_explicit_company_link_never_inherits_parent_title_dates_or_duties ____
+
+    def test_explicit_company_link_never_inherits_parent_title_dates_or_duties():
+        from local_api.schemas.mapping import SchemaMappingRequest
+        from local_api.services.schema_mapping import map_schema
+        from local_api.services.subschema_validation import validate_hierarchy
+        from test_block_completion import fixture
+        elements,result=fixture(['Engineer | Orbit Ltd | 2019 - 2021','Built the original service.',
+                                 'Analyst','Client: Fictional Customer','Managed separate reports.'],
+                                {'experience':[0,1,2,3,4]},[])
+        # Supply two explicit source-owned roles; no company relation is guessed.
+        result.sections[0].entries=[SectionEntry(entry_id='a',block_indices=[0,1],lane='main',boundary_reason='test',
+            fields={'employer':[0],'title':[0],'dates':[0],'responsibilities':[1]}),
+            SectionEntry(entry_id='b',block_indices=[2,3,4],lane='main',boundary_reason='test',
+            fields={'title':[2],'client':[3],'responsibilities':[4]})]
+        local=map_schema(SchemaMappingRequest(elements=elements,sections=result))
+        assert not local.data.experience[1].company
+        state=snapshot(elements,result)
+        parent=state.spans[0].source_id
+        child=state.owners[state.spans[2].source_id].record
+        reviewed=finalize_ownership(elements,result,settings=ReviewSettings(enabled=True,api_key='mock'),
+            transport=lambda *_:json.dumps({'operations':[{'op':'link_employer','record':child,'source_id':parent}]}),review=True)
+        assert reviewed.metadata['structure_review']['status']=='provisional'
+        mapped=map_schema(SchemaMappingRequest(elements=elements,sections=reviewed))
+        job=mapped.data.experience[1]
+>       assert job.company=='Orbit Ltd' and job.role=='Analyst'
+E       AssertionError: assert ('' == 'Orbit Ltd'
+E         
+E         - Orbit Ltd)
+
+tests/test_source_ownership.py:395: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_source_ownership.py::test_explicit_company_link_never_inherits_parent_title_dates_or_duties
+1 failed, 87 passed, 3 deselected in 4.06s

@@ -1,0 +1,24 @@
+...........F.                                                            [100%]
+=================================== FAILURES ===================================
+_____ test_three_organizations_without_company_suffix_keep_distinct_duties _____
+
+    def test_three_organizations_without_company_suffix_keep_distinct_duties():
+     texts=['Work Experience:', 'NTT Data, Noida (November 2022- Currently working)',
+     'Employment Summary:', 'Job Role: Network Engineering Specialist',
+     'Configured the first employer network.',
+     'Tech Mahindra, Noida (May 2022- October 2022)',
+     'Employment Summary:', 'Job Role: Senior Associate Technical Support',
+     'Supported the second employer clients.', 'Wipro Technology, Pune (2019-2022)',
+     'Employment Summary:', 'Job Role: Student Computer Applications',
+     'Prepared the third employer reports.']
+     els=[_elem(t,y=.1+i*.04,bold=True) for i,t in enumerate(texts)]
+     blocks=[_block(i,t) for i,t in enumerate(texts)]
+     groups=reviewed_employment_groups(blocks,els)
+>    assert len(groups)==3
+E    AssertionError: assert 5 == 3
+E     +  where 5 = len([{'entry_id': 'experience-1', 'block_indices': [1], 'lane': 'source_geometry', 'boundary_reason': 'source employment h...'lane': 'source_geometry', 'boundary_reason': 'source employment header; source row/page membership, not layout lane'}])
+
+tests/test_existing350_repairs.py:37: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_existing350_repairs.py::test_three_organizations_without_company_suffix_keep_distinct_duties
+1 failed, 12 passed in 0.50s

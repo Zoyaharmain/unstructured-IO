@@ -1,0 +1,32 @@
+F....                                                                    [100%]
+=================================== FAILURES ===================================
+___________ test_01_a_lokhande_employers_and_clean_responsibilities ____________
+
+    def test_01_a_lokhande_employers_and_clean_responsibilities():
+        mapped, std, meta, status, warns = replay_nov5("01")
+        assert "Lokhande" in std.contact.full_name
+    
+        companies = [j.company for j in std.experience]
+        roles = [j.role for j in std.experience]
+    
+        # Capgemini and Cognizant identified, not swallowed by responsibilities
+        assert "Capgemini" in companies
+        assert any("Cognizant" in c for c in companies)
+        assert any("Aurus" in c for c in companies)
+    
+        # Responsibilities must not become company names
+        for comp in companies:
+            assert "AWS" not in comp
+            assert "EC2" not in comp
+            assert "services" != comp.lower()
+    
+        assert any("Senior Java Consultant" in r for r in roles)
+        assert any("Java Developer" in r for r in roles)
+>       assert std.total_experience_years is not None
+E       AssertionError: assert None is not None
+E        +  where None = StandardizedResumeSchema(contact=StandardizedContactInfo(full_name='A A Lokhande', email='ashish.lokhande147@gmail.com...=[], awards=[], achievements=[], publications=[], volunteering=[], interests=[], references=[], additional_sections=[]).total_experience_years
+
+tests/test_nov5_five_resume_regressions.py:52: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_nov5_five_resume_regressions.py::test_01_a_lokhande_employers_and_clean_responsibilities
+1 failed, 4 passed in 10.52s
