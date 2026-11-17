@@ -14,8 +14,26 @@ def recover_employment_scope(result,elements):
         category,cut=heading_boundary(element.text,ALIASES)
         if category=='experience' and cut is None and len(element.text.split())<=5:start=i;break
     if start is None:return result
+    # Existing positive boundaries outrank this interval-based recovery. A
+    # distant recognized heading is not authority to reclaim other sections.
+    protected = {b.source_element_index for section in result.sections if section.category!='experience'
+                 for b in section.blocks if b.reviewed_by_llm or b.assignment in {
+                     'section_heading','structural_heading','education_boundary','education_relation','education_date_recovered'}
+                 or b.similarity is not None and b.similarity>=.65 and b.margin is not None and b.margin>=.12}
+    from local_api.services.record_relationships import field_kinds, degree_families
+    protected.update(i for i,e in enumerate(elements)
+                     if degree_families(e.text) and 'institution' in field_kinds(e.text,'education')
+                     and not employment_header_fields(e.text))
+    pending = {b.source_element_index for b in result.needs_review if b.boundary_candidate or b.pending_boundary_id}
     for i in range(start+1,len(elements)):
         text=elements[i].text.strip();category,cut=heading_boundary(text,ALIASES)
+        # A short unfamiliar title immediately before positive non-employment
+        # evidence is a possible transition even without reliable font flags.
+        possible_transition = (elements[i].type in {'Title','Header'} and len(text.split())<=8
+            and not ROLE.search(text) and not employment_header_fields(text) and not RANGE.search(text)
+            and any(j in protected for j in range(i+1,min(i+3,len(elements)))))
+        if i in protected or i in pending or possible_transition:
+            end=i;break
         if category and category!='experience' and not re.match(r'^(?:key|impact|governance|technology|tools|agile|client|responsibilit)',text,re.I):
             end=i;break
     if end is None:end=len(elements)
@@ -87,7 +105,7 @@ def recover_employment_scope(result,elements):
     for category,blocks in list(grouped.items()):
         remaining=[]
         for block in blocks:
-            if start<=block.source_element_index<end:
+            if start<=block.source_element_index<end and block.source_element_index not in protected:
                 selected.append(block);affected.add(category)
             elif category == 'experience' and block.source_element_index >= end:
                 post_blocks.append(block)

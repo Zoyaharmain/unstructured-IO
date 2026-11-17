@@ -52,5 +52,9 @@ def validate_result(elements, result):
                 errors.append('invalid_entry_reference')
         if len(ownership)!=len(set(ownership)):errors.append('overlapping_entry_ownership')
         if len(entry_ids)!=len(set(entry_ids)):errors.append('duplicate_entry_id')
+    if not errors:
+        from local_api.services.source_ownership import snapshot
+        from local_api.services.section_boundaries import boundary_errors
+        errors.extend(boundary_errors(snapshot(elements, result)))
     return sorted(set(errors))
 

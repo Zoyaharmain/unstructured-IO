@@ -39,7 +39,7 @@ def build_sections(grouped, elements, *, refine=True):
                and heading_boundary(b.text, ALIASES) == (category, None) else b
                for b in blocks] for category, blocks in grouped.items()}
 
-    sections = [ResumeSection(category=key, label=ANCHORS[key]['label'], blocks=blocks, entries=entry_groups(blocks, key, elements)) for key, blocks in grouped.items()]
+    sections = [ResumeSection(category=key, label=ANCHORS[key]['label'], blocks=blocks, entries=[e for e in entry_groups(blocks, key, elements) if e['block_indices']]) for key, blocks in grouped.items()]
     for section in sections:
         from local_api.services.record_relationships import annotate_relationships
         annotate_relationships(section)
@@ -238,6 +238,9 @@ class SectionEngine:
             if heading_boundary(unit.text, ALIASES)[0]:
                 page_heading_lanes.setdefault(request.elements[unit.index].page_number, set()).add(unit.lane)
         grouped, review, contexts = {}, [], {}
+        from local_api.services.education_relations import aligned_education_elements
+        education_elements = aligned_education_elements(request.elements)
+        pending_boundary = None
         element_contexts = {}
         from local_api.services.source_accounting import artifact_reason
         first_heading = next((i for i, (_, _, score, margin) in enumerate(headers)
@@ -256,6 +259,13 @@ class SectionEngine:
                 if len(owners) == 1:
                     context = next(iter(contexts.values()))
             short = len(unit.text.split()) <= 12
+            # A title followed by explicit degree/institution evidence can mark
+            # a transition even when the extractor misses heading typography.
+            from local_api.services.record_relationships import field_kinds, degree_families
+            next_source = next((u for u in units[position+1:position+6] if u.index!=unit.index),None)
+            possible_transition = bool(short and element.type in {'Title','Header'}
+                and not set(field_kinds(unit.text,'experience')).intersection({'employer','title','dates'})
+                and next_source and degree_families(next_source.text) and 'institution' in field_kinds(next_source.text,'education'))
             is_bullet = element.type == 'ListItem' or bool(re.match(r'^\s*[•▪●*\uf0b7-]\s+', unit.text))
             structural_label, _ = (None, None) if re.match(r'^\s*[•▪●*\uf0b7-]\s+', unit.text) else heading_boundary(unit.text, ALIASES)
             # Broad profile/highlights headings cannot override explicit job history.
@@ -315,7 +325,11 @@ class SectionEngine:
             elif unit.margin_footer and re.match(r'\s*(?:place|date)\s*:', unit.text, re.I):
                 label = 'personal_information'
                 assignment, reason = 'personal_detail', 'Location/date signature in the document bottom margin'
+            elif unit.index in education_elements:
+                label = 'education'
+                assignment, reason = 'education_relation', 'Institution and date have unique aligned source rows; no employment ownership inferred'
             elif (re.search(r'\b(?:b\.?s\b|b\.?tech|b\.?e\b|bachelor|m\.?s\b|m\.?tech|master|ph\.?d|doctorate|diploma|juris\s+doctor|j\.?d\b)\b', unit.text, re.I) and re.search(r'\b(?:university|college|institute|academy|school)\b', unit.text, re.I)) and (not context or not context[2] or context[0] in {'experience', 'projects', 'certifications'}):
+                pending_boundary = None
                 label = 'education'
                 context_source = unit.index
                 target_lanes = set(item.lane for item in units) if len(page_heading_lanes.get(element.page_number, set()) - {'wide', 'unknown'}) <= 1 else {unit.lane}
@@ -323,6 +337,7 @@ class SectionEngine:
                     contexts[lane] = ('education', unit.index, False)
                 assignment, reason = 'education_boundary', 'Unambiguous degree and institution in headingless or transition text'
             elif employer_boundary or engagement_boundary:
+                pending_boundary = None
                 label = 'experience'
                 context_source = unit.index
                 target_lanes = set(item.lane for item in units) if len(page_heading_lanes.get(element.page_number, set()) - {'wide', 'unknown'}) <= 1 else {unit.lane}
@@ -331,6 +346,7 @@ class SectionEngine:
                 assignment, reason = 'employment_boundary', ('Explicit role, project and client resume employment context'
                     if engagement_boundary else 'Explicit dated employer starts or continues Experience across layout changes')
             elif is_heading:
+                pending_boundary = None
                 label, cluster, similarity, margin = heading
                 label = structural_label or label
                 contexts[unit.lane] = (label, unit.index, structural_label is not None)
@@ -351,6 +367,15 @@ class SectionEngine:
                     if units[j].lane == unit.lane or (position <= 2 and request.elements[units[j].index].page_number == element.page_number)):
                 label = 'personal_information'
                 assignment, reason = 'contact_context', 'Opening identity/headline adjacent to an explicit email address'
+            elif (unit.heading_style or possible_transition) and short and not is_bullet and not record_field:
+                # Typography establishes a possible boundary, not its category.
+                # Do not let a confidently old context absorb an unfamiliar title.
+                contexts.clear()
+                context = None
+                pending_boundary = f'e{unit.index}:{unit.start}:{unit.end}'
+                assignment, reason = 'needs_review', 'Unfamiliar styled heading; section context stopped pending boundary review'
+            elif pending_boundary:
+                assignment, reason = 'needs_review', 'Content belongs to a pending section boundary; old employment ownership is not evidence'
             elif (not context or not context[2] or (hscore >= .65 and label != context[0] and similarity < .35)) and not record_field and short and element.type in {'Title', 'Header'} and hscore >= .50 and (hmargin < .09 or similarity < .35):
                 contexts.pop(unit.lane, None)
                 if unit.lane == 'wide':
@@ -380,13 +405,15 @@ class SectionEngine:
             # Retain its explicit owning section until a new heading overrides it.
             if assignment == 'needs_review':
                 element_contexts.pop(unit.index, None)
-            elif assignment in {'structural_heading', 'section_heading', 'employment_boundary'}:
+            elif assignment in {'structural_heading', 'section_heading', 'employment_boundary','education_boundary'}:
                 element_contexts[unit.index] = (label, unit.index, True)
             elif context and context[2] and assignment == 'heading_context':
                 element_contexts[unit.index] = context
             block = SectionBlock(source_element_index=unit.index, start=unit.start, end=unit.end,
                                  text=unit.text, page_number=element.page_number, cluster_id=cluster,
                                  candidate_section=candidate, alternatives=alternatives if compound else [], assignment=assignment,
+                                 boundary_candidate=bool(assignment == 'needs_review' and (unit.heading_style or possible_transition) and short and not record_field and not is_bullet),
+                                 pending_boundary_id=pending_boundary,
                                  cluster_space='heading' if is_heading else 'content', context_source_element_index=context_source, similarity=round(similarity, 4),
                                  margin=round(margin, 4), lane=unit.lane, reason=reason)
             if assignment == 'needs_review' or label not in ANCHORS:

@@ -27,6 +27,9 @@ class SectionBlock(BaseModel):
     alternatives: list[str] = Field(default_factory=list)
     cluster_space: Literal['heading', 'content'] = 'content'
     context_source_element_index: int | None = None
+    boundary_source_id: str | None = None
+    boundary_candidate: bool = False
+    pending_boundary_id: str | None = None
     assignment: str
     similarity: float | None = None
     margin: float | None = None
@@ -89,3 +92,9 @@ class SectionResponse(BaseModel):
     source_artifacts: list[SectionBlock] = Field(default_factory=list)
     metadata: dict
     warnings: list[str]
+
+    @computed_field
+    @property
+    def review_issues(self) -> list[dict]:
+        from local_api.services.review_issues import collect_review_issues
+        return collect_review_issues(self)

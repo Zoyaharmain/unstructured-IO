@@ -46,7 +46,8 @@ def map_schema(request):
     if errors:
         from local_api.services.schema_diagnostics import fail
         fail('source_binding_validation', errors[0], ('sections',))
-    ownership_locked = request.sections.metadata.get('structure_review', {}).get('status') == 'provisional'
+    from local_api.services.source_ownership import ownership_is_locked
+    ownership_locked = ownership_is_locked(request.sections)
     if ownership_locked:
         from local_api.services.source_ownership import validated_ownership_state
         validated_ownership_state(request.elements, request.sections)
@@ -412,6 +413,18 @@ def map_schema(request):
                 if category == 'experience' and company_context:
                     refined['company'] = company
                 if category=='experience':
+                    # Repeated source occurrences can make the legacy parser
+                    # see several equivalent titles. Preserve the literal role
+                    # when every supported identity header agrees; do not turn
+                    # a consolidated job into a missing-title record.
+                    owned_ids={source_id(b) for b in owned_bs}
+                    repeated=any(set(g['source_ids']) <= owned_ids for g in request.sections.metadata.get('duplicate_source_occurrences',[]))
+                    if repeated and not refined.get('role'):
+                        from local_api.services.employment_identity import normalize
+                        roles=[employment_header_fields(b.text).get('role') for b in refs('title')+refs('employer')]
+                        roles=[v for v in roles if v]
+                        if roles and len({normalize(v) for v in roles})==1 and field_quotes(roles[0],owned_bs):
+                            refined['role']=roles[0]
                     literal_header=request.sections.metadata.get('dated_employment_scope',{}).get('literal_records',{}).get(entry.entry_id,{})
                     for key,value in literal_header.items():
                         if key in refined and value and field_quotes(value,bs):refined[key]=value
@@ -511,7 +524,7 @@ def map_schema(request):
                         e_inst = norm_s(existing.institution)
                         e_deg = norm_s(existing.degree)
                         e_grad = norm_s(existing.graduation_year)
-                        if (r_inst and e_inst and r_inst == e_inst and
+                        if (r_inst and e_inst and r_inst == e_inst and r_deg and e_deg and
                             r_deg == e_deg and (r_grad == e_grad or not r_grad or not e_grad)):
                             duplicate_match = k_idx
                             break

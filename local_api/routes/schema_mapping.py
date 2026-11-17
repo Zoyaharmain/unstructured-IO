@@ -95,6 +95,19 @@ async def map_existing_sections(request: ReviewedSchemaMappingRequest):
         attach_mapping_findings(mapped, warnings)
         from local_api.services.standardization.export import standardized_export
         mapped.consumer_export = standardized_export(mapped)
+        if mapped.meta.get('reviewed_sections') or mapped.section_schemas:
+            from local_api.schemas.sections import SectionResponse
+            reviewed = SectionResponse.model_validate(mapped.meta.get('reviewed_sections') or request.sections.model_dump(mode='json'))
+            reviewed.metadata['field_review'] = mapped.meta.get('field_review', {})
+            reviewed.metadata['field_review_issues'] = [
+                {'kind':'field','section':section.category,'record_id':record.record_id,
+                 'field':attribute.name,'source_ids':record.source_ids,
+                 'reason':f'{attribute.name}: source mapping requires review ({attribute.status}).'}
+                for section in mapped.section_schemas for record in section.records for attribute in record.attributes
+                if attribute.status in {'unresolved','ambiguous','unmapped'} or any(item.status=='needs_review' for item in attribute.items)]
+            if reviewed.review_issues:
+                reviewed.status='needs_review'
+            mapped.meta['reviewed_sections'] = reviewed.model_dump(mode='json')
         return mapped
     except ValueError as exc:
         raise mapping_error(exc) from None

@@ -42,6 +42,8 @@ class Owner:
     record: str | None
     fields: tuple[str, ...] = ()
     status: str = 'provisional'
+    heading: bool = False
+    boundary_source: str | None = None
 
 
 @dataclass(frozen=True)
@@ -146,6 +148,16 @@ def snapshot(elements, result):
                 b = section.blocks[employers[0]]
                 parents[rid] = f'employer@e{b.source_element_index}:{b.start}:{b.end}'
             elif len(set(employers)) > 1:
+                from local_api.services.record_subfields import employment_header_fields
+                headers = [employment_header_fields(section.blocks[i].text) for i in employers]
+                identified = [h for h in headers if h.get('company')]
+                # One employer header followed by wrapped fragments is one
+                # identity with several citations, not several employers.
+                from local_api.services.employment_identity import normalize
+                if identified and len({normalize(h['company']) for h in identified}) == 1:
+                    b = section.blocks[employers[0]]
+                    parents[rid] = f'employer@e{b.source_element_index}:{b.start}:{b.end}'
+                    continue
                 for i in entry.block_indices:
                     b = section.blocks[i]
                     statuses[b.source_element_index, b.start, b.end] = 'needs_review'
@@ -178,7 +190,7 @@ def snapshot(elements, result):
         status = 'needs_review' if block.assignment == 'ownership_needs_review' or statuses.get(key) == 'needs_review' or category is None or category in RECORD_SECTIONS and record is None and not is_heading else 'provisional'
         if artifact_reason(element, block):
             status = 'non_content_artifact'
-        owners[sid] = Owner(category, record, fields.get(key, ()), status)
+        owners[sid] = Owner(category, record, fields.get(key, ()), status, is_heading, block.boundary_source_id)
         cand_parent = record_parents.get(record) or parents.get(record)
         ambiguity_r = None
         conf = 1.0
@@ -285,7 +297,8 @@ def apply_operations(state, operations, categories):
         if not isinstance(op, dict):
             raise ValueError('Invalid operation')
         kind = op.get('op')
-        required = {'create': {'op', 'section', 'source_ids'},
+        required = {'heading': {'op', 'section', 'source_ids'},
+                    'create': {'op', 'section', 'source_ids'},
                     'create_group': {'op', 'section', 'source_ids'},
                     'link_parent': {'op', 'record', 'parent'},
                     'link_employer': {'op', 'record', 'source_id'},
@@ -294,7 +307,16 @@ def apply_operations(state, operations, categories):
                     'review': {'op', 'source_ids'}}
         if kind not in required or set(op) != required[kind]:
             raise ValueError('Invalid operation schema')
-        if kind == 'link_parent':
+        if kind == 'heading':
+            ss = ids(op['source_ids'])
+            if op['section'] not in categories or any(owners[s].status == 'non_content_artifact' for s in ss):
+                raise ValueError('Invalid heading sources or section')
+            for sid in ss:
+                owners[sid] = Owner(op['section'], None, (), 'provisional', True, sid)
+            from local_api.services.section_boundaries import reconcile_boundaries
+            updated = reconcile_boundaries(replace(state, owners=MappingProxyType(owners)), ss)
+            owners = dict(updated.owners)
+        elif kind == 'link_parent':
             rid, parent = op['record'], op['parent']
             if rid not in records() or parent not in records() or rid == parent:
                 raise ValueError('Invalid parent record reference')
@@ -331,6 +353,11 @@ def apply_operations(state, operations, categories):
             rid, anchor = op['record'], op['anchor']
             if rid not in records() or anchor not in owners or owners[anchor].record != rid:
                 raise ValueError('Split must reference an owned source anchor')
+            if owners[anchor].section == 'experience':
+                from local_api.services.record_relationships import field_kinds
+                evidence=set(field_kinds(next(s.text for s in state.spans if s.source_id==anchor),'experience'))
+                if not evidence.intersection({'title','employer','dates'}):
+                    raise ValueError('Employment split requires source identity or date evidence')
             members = [s for s, o in owners.items() if o.record == rid]
             moved = [s for s in members if order[s] >= order[anchor]]
             if len(moved) == len(members):
@@ -349,10 +376,13 @@ def apply_operations(state, operations, categories):
             if not isinstance(rs, list) or len(rs) < 2 or len(set(rs)) != len(rs) or any(r not in records() for r in rs):
                 raise ValueError('Invalid merge records')
             sections = {o.section for o in owners.values() if o.record in rs}
-            if len(sections) != 1 or len({parents.get(r) for r in rs}) != 1 or ('experience' in sections and any(r not in parents for r in rs)):
+            from local_api.services.employment_identity import identity
+            identities = [identity(replace(state, owners=MappingProxyType(owners)), r) for r in rs]
+            same_identity = bool(identities and identities[0] and all(i == identities[0] for i in identities))
+            if len(sections) != 1 or (not same_identity and (len({parents.get(r) for r in rs}) != 1 or ('experience' in sections and any(r not in parents for r in rs)))):
                 raise ValueError('Merge crosses section or unestablished employer')
             lanes = {s.lane for s in state.spans if owners[s.source_id].record in rs} - {'wide'}
-            if len(lanes) > 1:
+            if len(lanes) > 1 and not same_identity:
                 raise ValueError('Merge crosses reading lanes')
             for sid, owner in list(owners.items()):
                 if owner.record in rs:
@@ -372,13 +402,8 @@ def apply_operations(state, operations, categories):
                     owners[sid] = replace(owners[sid], record=None, fields=(), status='needs_review')
                 continue
             category, rid, fs = op['section'], op['record'], op['fields']
-            entity_fields = {
-                'experience': {'employer','title','dates','responsibilities','achievements','technologies','location','client'},
-                'education': {'institution','qualification','dates','grade','field_of_study'},
-                'projects': {'title','dates','responsibilities','technologies'},
-                'certifications': {'title','dates','issuer'},
-                'awards': {'title','dates','responsibilities'},
-            }
+            from local_api.services.section_boundaries import FIELD_KINDS
+            entity_fields = FIELD_KINDS
             if category not in categories or not isinstance(fs, list) or any(f not in entity_fields.get(category, set()) for f in fs):
                 raise ValueError('Invalid section or entity kind')
             if rid is not None and (rid not in records() or any(o.section != category for o in owners.values() if o.record == rid)):
@@ -389,7 +414,18 @@ def apply_operations(state, operations, categories):
                 from local_api.services.resume_structure import heading_boundary
                 from local_api.services.resume_sections import ALIASES
                 heading = heading_boundary(next(s.text for s in state.spans if s.source_id == sid), ALIASES) == (category, None)
-                owners[sid] = Owner(category, rid, tuple(fs), 'provisional' if rid or category != 'experience' or heading else 'needs_review')
+                previous = owners[sid]
+                if category=='experience':
+                    from local_api.services.record_relationships import field_kinds
+                    evidence=set(field_kinds(next(s.text for s in state.spans if s.source_id==sid),'experience')) | set(previous.fields)
+                    if previous.heading and set(fs).intersection({'employer','title','dates'}):
+                        raise ValueError('Heading cannot support employment identity')
+                    if not set(fs).intersection({'employer','title','dates'}) <= evidence:
+                        raise ValueError('Employment field lacks positive source compatibility')
+                keep_heading = previous.heading and previous.section == category and rid is None and not fs
+                owners[sid] = Owner(category, rid, tuple(fs),
+                    'provisional' if rid or category != 'experience' or heading or keep_heading else 'needs_review',
+                    keep_heading, previous.boundary_source)
     used = {o.record for o in owners.values()}
     employer_ids = {f'employer@{sid}' for sid, owner in owners.items() if 'employer' in owner.fields}
     parents = {r:p for r,p in parents.items() if r in used and p in employer_ids}
@@ -424,6 +460,9 @@ def materialize(elements, result, state, *, strict_parent_links=False):
     """Project validated ownership onto the existing section/entry API."""
     from local_api.schemas.sections import SectionEntry
     from local_api.services.resume_sections import build_sections
+    from local_api.services.section_boundaries import boundary_errors
+    if boundary_errors(state):
+        raise ValueError('Unresolved section boundary conflict')
     current = snapshot(elements, result)
     if current.digest != state.digest or current.spans != state.spans:
         raise ValueError('Stale source ledger')
@@ -433,6 +472,7 @@ def materialize(elements, result, state, *, strict_parent_links=False):
     for span in state.spans:
         owner = state.owners[span.source_id]
         block = blocks[span.source_id]
+        block = block.model_copy(update={'boundary_source_id': owner.boundary_source})
         if owner.section != current.owners[span.source_id].section:
             block = block.model_copy(update={'assignment': 'semantic', 'context_source_element_index': None,
                                              'reason': 'Validated source-ID section reassignment'})
@@ -441,6 +481,9 @@ def materialize(elements, result, state, *, strict_parent_links=False):
         if owner.status == 'needs_review':
             block = block.model_copy(update={'assignment': 'ownership_needs_review',
                                              'reason': 'Primary source ownership requires review'})
+        if owner.heading:
+            block = block.model_copy(update={'assignment': 'structural_heading',
+                                             'context_source_element_index': None})
         if span.source_id in artifact_ids:
             if owner != current.owners[span.source_id]:
                 raise ValueError('Artifact cannot be reassigned')
@@ -463,7 +506,7 @@ def materialize(elements, result, state, *, strict_parent_links=False):
             for b in section.blocks)
         unchanged = unchanged and dict(state.record_parents) == dict(current.record_parents) and state.groups == current.groups
         if unchanged:
-            section.entries = [e.model_copy(deep=True) for e in original.entries]
+            section.entries = [e.model_copy(deep=True) for e in original.entries if e.block_indices]
             continue
         entries = {}
         for i, block in enumerate(section.blocks):
@@ -504,6 +547,10 @@ def materialize(elements, result, state, *, strict_parent_links=False):
     from local_api.services.employer_context import recover_employer_context
     out = recover_employer_context(out)
     out.metadata['source_ownership'] = state.payload()
+    from local_api.services.readable_resume import readable_groups
+    for section in out.sections:
+        from local_api.schemas.sections import ReadableGroup
+        section.readable_blocks = [ReadableGroup.model_validate(g) for g in readable_groups(section, elements)]
     out.status = 'needs_review' if any(o.status == 'needs_review' for o in state.owners.values()) or any(e.relationship_status == 'needs_review' for s in out.sections for e in s.entries) else 'provisional'
     return out
 
@@ -511,6 +558,9 @@ def materialize(elements, result, state, *, strict_parent_links=False):
 def validated_ownership_state(elements, result):
     """Verify persisted ownership before consuming it without heuristic recovery."""
     state = snapshot(elements, result)
+    from local_api.services.section_boundaries import boundary_errors
+    if boundary_errors(state):
+        raise ValueError('Invalid validated section boundary')
     expected = result.metadata.get('source_ownership', {})
     if expected.get('source_digest') != state.digest:
         raise ValueError('Stale validated ownership source')
@@ -526,9 +576,15 @@ def validated_ownership_state(elements, result):
         row = stored.get(span.source_id, {})
         owner = state.owners[span.source_id]
         reference = row.get('owner', {})
-        if row.get('text') != span.text or reference.get('section') != owner.section or reference.get('record') != owner.record or set(reference.get('fields', ())) != set(owner.fields) or reference.get('status') != owner.status:
+        if row.get('text') != span.text or reference.get('section') != owner.section or reference.get('record') != owner.record or set(reference.get('fields', ())) != set(owner.fields) or reference.get('status') != owner.status or reference.get('heading', owner.heading) != owner.heading or reference.get('boundary_source', owner.boundary_source) != owner.boundary_source:
             raise ValueError('Validated ownership ledger changed')
     return state
+
+
+def ownership_is_locked(result):
+    """Accepted boundary provenance has the same persistence contract as review."""
+    return (result.metadata.get('structure_review', {}).get('status') == 'provisional'
+            or any(b.boundary_source_id for s in result.sections for b in s.blocks))
 
 
 def ambiguity_package(state, result):
@@ -540,6 +596,14 @@ def ambiguity_package(state, result):
     payload = state.payload()
     questions = []
     focus = set()
+    from local_api.services.employment_identity import duplicate_groups
+    for records in duplicate_groups(state):
+        source_ids = [s.source_id for s in state.spans if state.owners[s.source_id].record in records]
+        focus.update(source_ids)
+        questions.append({'source_ids':source_ids,'reason':'potential_duplicate_employment',
+            'question':'These records have equal source-backed employer, role and dates. Compare the repeated occurrences. '
+                       'Merge only if they describe the same employment; preserve every source citation. Different employers '
+                       'sharing dates are not duplicates. Candidate records: '+', '.join(records)})
     for span in state.spans:
         owner = state.owners[span.source_id]
         if owner.status == 'needs_review':
@@ -638,7 +702,7 @@ def translate_decisions_to_operations(decisions, state):
             section = d.get('section')
             if not section and source_ids and source_ids[0] in state.owners:
                 section = state.owners[source_ids[0]].section
-            ops.append({'op': 'assign', 'source_ids': source_ids, 'section': section, 'record': None, 'fields': []})
+            ops.append({'op': 'heading', 'source_ids': source_ids, 'section': section})
 
         elif decision_type == 'SPLIT_RECORD':
             record = d.get('record')
@@ -695,7 +759,7 @@ def translate_decisions_to_operations(decisions, state):
 def finalize_ownership(elements, result, *, settings=None, transport=None, review=False):
     """Always audit locally; optionally perform budgeted configured-provider review using context-aware chunks."""
     from local_api.services.llm_section_review import ReviewSettings, ReviewError, call_deepseek
-    if result.metadata.get('structure_review', {}).get('status') == 'provisional' and not review:
+    if ownership_is_locked(result) and not review:
         validated_ownership_state(elements, result)
         return result.model_copy(deep=True)
     from local_api.services.employer_context import recover_employer_context
@@ -712,6 +776,24 @@ def finalize_ownership(elements, result, *, settings=None, transport=None, revie
         state = apply_operations(state, operations, set(ANCHORS))
         out = materialize(elements, out, state)
         state = snapshot(elements, out)
+    from local_api.services.employment_identity import repeated_occurrence_operations
+    repeated = repeated_occurrence_operations(state)
+    if repeated:
+        prior = state
+        accepted=[]
+        for op in repeated:
+            try:
+                candidate=apply_operations(state,[op],set(ANCHORS))
+                revised=materialize(elements,out,candidate)
+            except ValueError as exc:
+                out.metadata.setdefault('duplicate_reconciliation_failures',[]).append({'operation':op,'reason':str(exc)})
+                continue
+            out=revised;state=snapshot(elements,out);accepted.append(op)
+        out.metadata['duplicate_source_occurrences'] = [
+            {'original_record_ids':op['records'],
+             'source_ids':[s.source_id for s in prior.spans if prior.owners[s.source_id].record in op['records']],
+             'evidence':'Equal employer, role, dates and repeated complete source record; all occurrences retained.'}
+            for op in accepted]
     for section in out.sections:
         if section.category == 'experience':
             for entry in section.entries:
@@ -741,6 +823,8 @@ def finalize_ownership(elements, result, *, settings=None, transport=None, revie
                         entry.relationship_status = 'needs_review'
                         entry.review_reasons = sorted(set(entry.review_reasons + ['potential_multiline_continuation']))
     state = snapshot(elements, out)
+    from local_api.services.employment_identity import duplicate_issues
+    out.metadata['duplicate_record_issues'] = duplicate_issues(state)
     status = {'status': 'not_requested', 'provider_calls': 0}
     if review:
         settings = settings or ReviewSettings.from_env()
@@ -754,9 +838,10 @@ def finalize_ownership(elements, result, *, settings=None, transport=None, revie
             elif previous_calls >= settings.max_total_requests or settings.max_units < 1:
                 status['status'] = 'budget_exceeded'
             else:
+                from local_api.services.review_chunking import run_structural_chunks, new_budget, ChunkError
+                budget = None
                 try:
                     settings.validate()
-                    from local_api.services.review_chunking import run_structural_chunks, new_budget, ChunkError
                     budget = new_budget(settings)
                     budget.total = previous_calls
                     exec_transport = transport or call_deepseek
@@ -769,7 +854,7 @@ def finalize_ownership(elements, result, *, settings=None, transport=None, revie
                 except (ValueError, TypeError, KeyError, RuntimeError, ReviewError, ChunkError) as exc:
                     from local_api.services.review_chunking import ChunkError
                     from local_api.services.llm_section_review import FAILURE_MESSAGES
-                    status['provider_calls'] = budget.total
+                    status['provider_calls'] = max(0, getattr(budget, 'total', previous_calls) - previous_calls)
                     if str(exc) == 'request_budget_exhausted':
                         status['status'] = 'budget_exceeded'
                     else:
@@ -779,6 +864,7 @@ def finalize_ownership(elements, result, *, settings=None, transport=None, revie
                             status['validation_reason'] = str(exc)
     out.metadata['source_ownership'] = state.payload()
     out.metadata['structure_review'] = status
-    if status['status'] in {'rejected', 'budget_exceeded'} or any(o.status == 'needs_review' for o in state.owners.values()):
+    out.metadata['duplicate_record_issues'] = duplicate_issues(state)
+    if out.review_issues or status['status'] in {'rejected', 'budget_exceeded'} or any(o.status == 'needs_review' for o in state.owners.values()):
         out.status = 'needs_review'
     return out

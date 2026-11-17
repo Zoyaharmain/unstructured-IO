@@ -210,6 +210,7 @@ def make_messages(ledger, categories, elements=None, sections=None):
                                      'coordinates':e.metadata.get('coordinates')} for i,e in enumerate(elements)]
         for item,(block,_) in zip(document['spans'],ledger):
             item.update(source_id=f'e{block.source_element_index}:{block.start}:{block.end}',
+                        pending_boundary_id=block.pending_boundary_id,
                         similarity=block.similarity,margin=block.margin,local_evidence=block.reason,
                         alternatives=block.alternatives)
     if sections is not None:
@@ -360,7 +361,7 @@ def review_sections(request, local_result, *, settings=None, transport=None, _re
                 sub_text = block.text[start:end]
                 from local_api.services.resume_sections import ALIASES
                 from local_api.services.resume_structure import normalized_heading
-                is_heading = normalized_heading(sub_text) in ALIASES
+                is_heading = normalized_heading(sub_text) in ALIASES or (block.boundary_candidate and len(parts) == 1)
                 reviewed=block.model_copy(update={'start':block.start+start,'end':block.start+end,
                     'text':sub_text, 'reviewed_by_llm':True,
                     'local_section':block.local_section if block.reviewed_by_llm else before,
@@ -380,6 +381,40 @@ def review_sections(request, local_result, *, settings=None, transport=None, _re
                 section.blocks=[refs[(b.source_element_index,b.start,b.end)] for b in section.blocks]
         else:
             sections = build_sections(grouped, request.elements)
+            # Classifying a heading must not first destroy the existing record
+            # boundaries of its unchanged body. Reuse whole source-identical
+            # records; only genuinely moved/split inventories need regrouping.
+            for section in sections:
+                if not any(b.boundary_candidate and b.assignment == 'structural_heading'
+                           for s in sections for b in s.blocks):
+                    break
+                previous = next((s for s in result.sections if s.category == section.category), None)
+                if previous is None:
+                    continue
+                def source_key(b):
+                    return b.source_element_index, b.start, b.end
+                indices = {source_key(b):i for i,b in enumerate(section.blocks)
+                           if b.assignment not in {'section_heading','structural_heading'}}
+                retained, occupied = [], set()
+                for entry in previous.entries:
+                    keys = [source_key(previous.blocks[i]) for i in entry.block_indices]
+                    if keys and all(key in indices for key in keys):
+                        remap = {i:indices[source_key(previous.blocks[i])] for i in entry.block_indices}
+                        retained.append(entry.model_copy(update={
+                            'block_indices':[remap[i] for i in entry.block_indices],
+                            'fields':{name:[remap[i] for i in values] for name,values in entry.fields.items()},
+                            'context_fields':{name:[indices[source_key(previous.blocks[i])] for i in values
+                                                   if source_key(previous.blocks[i]) in indices]
+                                              for name,values in entry.context_fields.items()}}))
+                        occupied.update(remap.values())
+                extra = [e for e in section.entries if not occupied.intersection(e.block_indices)]
+                used_ids = {e.entry_id for e in retained}
+                for entry in extra:
+                    if entry.entry_id in used_ids:
+                        b = section.blocks[min(entry.block_indices)]
+                        entry.entry_id = f'{section.category}@e{b.source_element_index}:{b.start}:{b.end}'
+                    used_ids.add(entry.entry_id)
+                section.entries = retained + extra
             if _targeted:
                 changed_categories={category for parts in decisions.values() for _,_,category in parts if category!='needs_review'}
                 old={section.category:section for section in result.sections}
@@ -387,6 +422,19 @@ def review_sections(request, local_result, *, settings=None, transport=None, _re
         candidate = SectionResponse(status='needs_review' if unresolved else 'provisional',
             extraction_verified=request.extraction_verified, sections=sections, needs_review=unresolved, source_artifacts=list(result.source_artifacts),
             metadata=dict(result.metadata), warnings=list(result.warnings))
+        # A reviewed styled boundary may acquire its category here rather than
+        # in structural review. Reconcile its dependent region through the same
+        # source-bound heading operation before any local recovery runs.
+        boundary_blocks = [b for s in candidate.sections for b in s.blocks
+                           if b.boundary_candidate and b.assignment == 'structural_heading']
+        if boundary_blocks:
+            from local_api.services.source_ownership import snapshot, apply_operations, materialize
+            boundary_state = snapshot(request.elements, candidate)
+            ops = [{'op':'heading', 'source_ids':[f'e{b.source_element_index}:{b.start}:{b.end}'],
+                    'section':s.category} for s in candidate.sections for b in s.blocks if b in boundary_blocks]
+            boundary_state = apply_operations(boundary_state, ops, set(ANCHORS))
+            candidate = materialize(request.elements, candidate, boundary_state)
+            sections, unresolved = candidate.sections, candidate.needs_review
         assert_coverage(request.elements, source_ledger(candidate))
         assigned = [b for section in sections for b in section.blocks]
         all_blocks = assigned + unresolved
@@ -396,6 +444,12 @@ def review_sections(request, local_result, *, settings=None, transport=None, _re
         candidate=resolve_unassigned(request,candidate)
         from local_api.services.local_completion import recover_local_content
         candidate=recover_local_content(candidate,request.elements)
+        if boundary_blocks:
+            from local_api.services.section_boundaries import boundary_errors
+            checked = snapshot(request.elements, candidate)
+            if boundary_errors(checked):
+                raise ReviewError('invalid_assignments')
+            candidate.metadata['source_ownership'] = checked.payload()
         unresolved=candidate.needs_review
         assigned=[b for section in candidate.sections for b in section.blocks]
         all_blocks=assigned+unresolved

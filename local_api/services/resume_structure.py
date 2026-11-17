@@ -378,6 +378,20 @@ def entry_groups(blocks, category, elements):
             any(el_meta(elements[b.source_element_index]).get('pdf_source_lines') for b in blocks)):
         geometry_groups=reviewed_employment_groups(blocks,elements)
         if geometry_groups:return geometry_groups
+    if category=='education' and blocks:
+        from local_api.services.education_relations import education_pairs
+        pairs=education_pairs(elements)
+        covered=set(pairs)|set(pairs.values())
+        content=[i for i,b in enumerate(blocks) if b.assignment not in {'section_heading','structural_heading'}]
+        if content and all(blocks[i].source_element_index in covered for i in content):
+            groups=[]
+            for institution in sorted(set(pairs.values())):
+                related={institution}|{date for date,owner in pairs.items() if owner==institution}
+                members=[i for i in content if blocks[i].source_element_index in related]
+                if members:
+                    groups.append({'entry_id':f'education-{len(groups)+1}','block_indices':members,
+                        'lane':'source_geometry','boundary_reason':'unique aligned institution/date source relationship; qualification not inferred'})
+            return groups
     if category=='education' and blocks and (all(b.reviewed_by_llm for b in blocks) or
             any(el_meta(elements[b.source_element_index]).get('pdf_source_lines') for b in blocks)):
         geometry_groups=reviewed_education_groups(blocks,elements)
@@ -640,12 +654,24 @@ def reviewed_employment_groups(blocks,elements):
             break
     for i,b in enumerate(blocks):
         if not re.search(r'[A-Za-z0-9]',b.text) or normalized_heading(b.text) in {'experience','work experience','professional experience','employment','work history','career history','early career history'} or re.search(r'\b(?:career|employment|work)\s+history\b', normalized_heading(b.text)):continue
+        if b.pending_boundary_id and not b.reviewed_by_llm:
+            continue
+        from local_api.services.record_relationships import field_kinds
+        from local_api.services.record_subfields import employment_header_fields
+        if len(b.text.split()) <= 16 and 'institution' in field_kinds(b.text,'education') and not employment_header_fields(b.text):
+            continue
         if shared_from is not None and i>=shared_from and not any(shared_from<=a['index']<=i for a in anchors):
             # A shared career-accomplishments list after several history-only
             # headers cannot be attributed to the last employer without evidence.
             continue
         top=y(b);eligible=[]
         for j,a in enumerate(anchors):
+            date_row = RANGE.match(el_text(elements[b.source_element_index]).strip())
+            if date_row and a['page']==b.page_number and top is not None and a['y'] is not None and 0<=a['y']-top<=.025 and abs(blocks[a['index']].source_element_index-b.source_element_index)<=1:
+                eligible.append((a['page'],a['y'],j))
+                continue
+            if a['page'] != b.page_number and b.context_source_element_index is None:
+                continue
             if a['index'] > i and b.lane == blocks[a['index']].lane and (top is None or a['y'] is None or top < a['y'] - 0.001):
                 # Geometric tolerance must not pull a preceding duty into a
                 # later role in the same reading lane.

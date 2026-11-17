@@ -28,6 +28,37 @@ def explicit_category(text):
 def source_key(block): return (block.source_element_index, block.start, block.end)
 
 
+def preserve_pending(result):
+    """Recovery may not borrow ownership across an unreviewed boundary."""
+    deferred=[]
+    for section in result.sections:
+        removed={i for i,b in enumerate(section.blocks) if b.pending_boundary_id and
+                 (not b.reviewed_by_llm or b.assignment=='needs_review')}
+        if not removed:
+            continue
+        deferred.extend(section.blocks[i].model_copy(update={'assignment':'needs_review',
+            'reason':'Pending section boundary must be resolved before record ownership.'}) for i in sorted(removed))
+        kept=[(i,b) for i,b in enumerate(section.blocks) if i not in removed]
+        remap={i:n for n,(i,_) in enumerate(kept)}
+        for entry in section.entries:
+            entry.block_indices=[remap[i] for i in entry.block_indices if i in remap]
+            entry.fields={k:[remap[i] for i in v if i in remap] for k,v in entry.fields.items()}
+            entry.context_fields={k:[remap[i] for i in v if i in remap] for k,v in entry.context_fields.items()}
+        section.entries=[e for e in section.entries if e.block_indices]
+        section.blocks=[b for _,b in kept]
+        parts=[];previous=None
+        for b in section.blocks:
+            parts.append(('' if previous is None or previous.source_element_index==b.source_element_index and previous.end==b.start else '\n')+b.text)
+            previous=b
+        section.text=''.join(parts);section.highlights=[];section.readable_blocks=[]
+    result.sections=[s for s in result.sections if s.blocks]
+    existing={source_key(b) for b in result.needs_review}
+    result.needs_review.extend(b for b in deferred if source_key(b) not in existing)
+    if result.needs_review:
+        result.status='needs_review'
+    return result
+
+
 def supported_new_entry(category, blocks):
     if category == 'experience':
         from local_api.services.resume_structure import employment_start
@@ -51,6 +82,8 @@ def recover_local_content(result, elements):
     errors = validate_result(elements, result)
     if errors: raise ValueError('Invalid source binding before local completion: ' + errors[0])
     if document_scope(elements)['candidate_resume'] is False: return result
+    from local_api.services.education_relations import recover_aligned_education
+    result = recover_aligned_education(result, elements)
     from local_api.services.competency_sections import recover_competency_sections
     result = separate_empty_source(recover_competency_sections(result,elements),elements)
     from local_api.services.profile_url_recovery import recover_header_urls
@@ -91,6 +124,8 @@ def recover_local_content(result, elements):
         return len(owner_windows[key]) == 1
 
     for block in sorted(result.needs_review, key=source_key):
+        if block.pending_boundary_id:
+            continue
         if artifact_reason(elements[block.source_element_index], block): continue
         if block.alternatives: continue
         heading, cut = heading_boundary(block.text, ALIASES)
@@ -159,7 +194,7 @@ def recover_local_content(result, elements):
                        'category': category, 'record_id': owner, 'reason': reason})
         assigned.append((new, category, owner))
         owner_windows.clear()
-    if not moved: return result
+    if not moved: return preserve_pending(result)
     grouped = {s.category: list(s.blocks) for s in result.sections}
     for category, _, block in moved.values(): grouped.setdefault(category, []).append(block)
     for blocks in grouped.values(): blocks.sort(key=source_key)
@@ -215,4 +250,4 @@ def recover_local_content(result, elements):
         / max(1, sum(len(b.text.strip()) for b in all_blocks)), 1)
     errors = validate_result(elements, updated)
     if errors: raise ValueError('Invalid source binding after local completion: ' + errors[0])
-    return updated
+    return preserve_pending(updated)

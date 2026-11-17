@@ -45,6 +45,25 @@ def test_global_union_has_no_duplicate_or_lost_source():
  assert all(parts==[(0,len(req.elements[i].text),'experience')] for i,parts in enumerate(decisions.values()))
 
 
+def test_chunk_validation_retry_is_bounded_and_preserves_exact_targets():
+ req,sec=fixture(1);calls=[];state={'provider_calls':0}
+ def transport(cfg,msg):
+  calls.append(msg)
+  return '{"assignments":[["read-only-context","experience"]]}' if len(calls)==1 else respond(msg)
+ result=run_section_chunks(req,sec,settings(recovery_attempts=1),transport,RequestBudget(),0,state)
+ assert len(calls)==2 and len(result)==1 and state['provider_calls']==2
+ assert len(state['chunk_validation_attempts'])==1
+
+
+def test_chunk_validation_retry_cannot_exceed_request_budget():
+ req,sec=fixture(1);calls=[]
+ def transport(cfg,msg):
+  calls.append(msg);return '{bad-json'
+ with pytest.raises(ChunkError,match='request_budget_exhausted'):
+  run_section_chunks(req,sec,settings(recovery_attempts=1),transport,RequestBudget(max_total=1),0,{'provider_calls':0})
+ assert len(calls)==1
+
+
 @pytest.mark.parametrize('kind',['unknown','context','overlap','gap','offset','conflict','word'])
 def test_invalid_or_nonowned_decisions_rejected(kind):
  req,sec=fixture(1);c=section_plan(req,sec,settings())['chunks'][0];sid=c['targets'][0]['id'];n=len(c['targets'][0]['text'])

@@ -140,7 +140,7 @@ def responsibility_fragment(text):
 
 def employment_header_fields(text):
     """Identify role/employer by unambiguous component shapes, not field order."""
-    text = re.sub(r'^\s*[•▪●*\uf0b7-]\s+', '', text.strip())
+    text = re.sub(r'^\s*[•▪●➢➤►▶*\uf0b7-]\s+', '', text.strip())
     if re.search(r'\b(?:career\s+break|career\s+gap|sabbatical|parental\s+leave|family\s+leave|fellowship|scholarship|research\s+grant|grant\s+funding)\b', text, re.I):
         return {}
     if re.search(r'\b(?:system\s+(?:prompt|instruction|override)|ignore\s+all\s+(?:previous|prior)\s+instructions|human\s+review\s*:|output\s+role\s*:)\b', text, re.I):
@@ -187,6 +187,7 @@ def employment_header_fields(text):
         m_from = re.search(r'\s+(?:from|since)\s+(.+)$', employer, re.I)
         if m_from:
             employer = employer[:m_from.start()].strip()
+        employer = employer.rstrip(' .–—-')
         loc = None
         if ',' in employer:
             cparts = [p.strip() for p in employer.rsplit(',', 1)]

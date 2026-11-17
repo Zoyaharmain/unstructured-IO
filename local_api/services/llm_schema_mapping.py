@@ -187,7 +187,8 @@ def parse_review(content, source_sections):
         fail('response_model_validation', 'invalid_section', ('sections',))
     if len(rows) != len(expected) or {r.get('category') for r in rows} != set(expected):
         fail('parent_schema_validation', 'section_coverage', ('sections',))
-    locked = source_sections.metadata.get('structure_review', {}).get('status') == 'provisional'
+    from local_api.services.source_ownership import ownership_is_locked
+    locked = ownership_is_locked(source_sections)
     if locked:
         from local_api.services.source_ownership import validate_record_tree
         for parent in source_sections.sections:
@@ -214,6 +215,15 @@ def parse_review(content, source_sections):
                 fail('response_model_validation', 'invalid_record', record_path)
             ids = item['source_ids']; fields = item['fields']; missing = item['missing']
             canonical_entry = next((e for e in section.entries if e.entry_id == item['record_id']), None) if locked else None
+            if locked and canonical_entry is None and isinstance(ids,list):
+                exact = [e for e in section.entries if set(ids)=={source_id(section.blocks[i]) for i in e.block_indices}]
+                if len(exact)==1:
+                    # Generated labels are not ownership changes when the exact
+                    # complete source membership identifies one canonical record.
+                    canonical_entry=exact[0]
+                    revised.metadata.setdefault('field_record_id_repairs',[]).append({
+                        'category':category,'proposed':item['record_id'],'canonical':canonical_entry.entry_id})
+                    item['record_id']=canonical_entry.entry_id
             if locked and category in REPEATED:
                 if canonical_entry is None or not isinstance(ids, list) or set(ids) != {source_id(section.blocks[i]) for i in canonical_entry.block_indices}:
                     fail('record_ownership_validation', 'validated_record_boundary_changed', record_path)
@@ -959,7 +969,8 @@ def map_with_field_review(request, *, settings=None, transport=None, budget=None
                      if explicit_category(b.text) not in {None, s.category}
                      and not (s.category in {'experience', 'projects'} and explicit_category(b.text) == 'skills')]
         prior_review = request.sections.metadata.get('llm_review', {})
-        ownership_locked = request.sections.metadata.get('structure_review', {}).get('status') == 'provisional'
+        from local_api.services.source_ownership import ownership_is_locked
+        ownership_locked = ownership_is_locked(request.sections)
         if not ownership_locked and (unassigned or suspected) and prior_review.get('status') not in {'complete', 'partial'}:
             from local_api.services.llm_section_review import review_sections
             from local_api.schemas.sections import SectionRequest

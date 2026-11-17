@@ -77,7 +77,7 @@ function renderSectionResults(data, localOnly) {
   const fragment = document.createDocumentFragment();
   fragment.append(node('h3', '', localOnly ? 'Local model output · no DeepSeek' : data.metadata.llm_review?.status === 'complete' ? 'Output after DeepSeek review' : 'Local output · DeepSeek review incomplete'));
   const summary = node('div', 'compare-summary');
-  for (const [value, label] of [[data.sections.length, 'Proposed sections'], [data.metadata.assigned_units, 'Assigned text units'], [data.metadata.review_units, 'Units needing review']]) { const card = node('div', 'compare-stat'); card.append(node('strong','',value), node('span','',label)); summary.append(card); }
+  for (const [value, label] of [[data.sections.length, 'Proposed sections'], [data.metadata.assigned_units, 'Assigned text units'], [data.review_issues?.length ?? data.metadata.review_units, 'Issues needing review']]) { const card = node('div', 'compare-stat'); card.append(node('strong','',value), node('span','',label)); summary.append(card); }
   fragment.append(summary, node('p','comparison-note', `${data.metadata.assigned_text_percent}% of text assigned; this is coverage, not accuracy. All extracted input text preserved: ${data.metadata.all_source_text_preserved ? 'yes' : 'no'}.`));
   const review = data.metadata.llm_review;
   const reviewNote = node('p', 'comparison-note llm-review-status');
@@ -86,6 +86,7 @@ function renderSectionResults(data, localOnly) {
   else if (review?.status === 'failed') { reviewNote.textContent = (review.message || 'DeepSeek review failed.') + ' Showing unchanged local blocks; these have not been LLM-validated.'; reviewNote.classList.add('error'); }
   else if (review?.status === 'not_configured') reviewNote.textContent = 'DeepSeek review is enabled but its API key/model is missing. Showing local grouping only.';
   else reviewNote.textContent = localOnly ? 'Local inspection selected. DeepSeek was not called, even if enabled on the server.' : 'DeepSeek review is disabled. Showing local grouping only.';
+  if (data.review_issues?.length) reviewNote.textContent += ` ${data.review_issues.length} section, relationship or processing issues need review.`;
   fragment.append(reviewNote);
   if (review?.status === 'failed') {
     const diagnostic = node('details', 'section-warnings');
@@ -156,6 +157,13 @@ function renderSectionResults(data, localOnly) {
   }
   const meaningfulReview=(data.needs_review || []).filter(block => (block.text || '').trim().length);
   if (meaningfulReview.length) { const card = node('section','resume-section review-section'); card.append(node('h3','','Needs review — not forced into a section')); for (const block of meaningfulReview) card.append(renderSectionBlock(block)); fragment.append(card); }
+  const relationshipIssues = (data.review_issues || []).filter(issue => issue.kind !== 'section');
+  if (relationshipIssues.length) {
+    const card = node('section','resume-section review-section'); card.append(node('h3','','Needs Review — relationships and processing'));
+    for (const issue of relationshipIssues) card.append(node('p','comparison-note',
+      [issue.section, issue.record_id, issue.stage, issue.reason || (issue.reasons || []).join('; ')].filter(Boolean).join(' · ')));
+    fragment.append(card);
+  }
     $('section-results').replaceChildren(fragment);
 }
 async function detectSections() {
@@ -176,8 +184,8 @@ async function detectSections() {
     sectionResult.extraction_verified = $('verify-extraction').checked;
     renderSectionResults(data, localOnly);
     const review = data.metadata.llm_review;
-    workflowStage('review', localOnly ? 'complete' : review?.status === 'complete' ? 'complete' : 'failed',
-      localOnly ? 'Local section detection complete' : review?.status === 'complete' ? `DeepSeek review finished · ${review.remaining_meaningful_review_units || 0} unresolved spans · ${review.changed_units || 0} placement changes` : review?.message || 'DeepSeek did not complete; local results retained');
+    workflowStage('review', data.review_issues?.length ? 'needs_review' : localOnly ? 'complete' : review?.status === 'complete' ? 'complete' : 'failed',
+      data.review_issues?.length ? `Review needs attention · ${data.review_issues.length} issues` : localOnly ? 'Local section detection complete' : review?.status === 'complete' ? `DeepSeek review finished · ${review.remaining_meaningful_review_units || 0} unresolved spans · ${review.changed_units || 0} placement changes` : review?.message || 'DeepSeek did not complete; local results retained');
     $('download-sections').disabled = false; document.dispatchEvent(new Event('sections-ready'));
     sectionStatus(localOnly ? 'Local blocks are ready. Inspect the numbered boundaries and section labels below; no DeepSeek was called.' : review?.status === 'complete' ? 'LLM-reviewed sections are ready. Check any remaining Needs review items.' : 'Local sections are ready. DeepSeek review has not completed; inspect Needs review before use.');
   } catch (error) { if (generation === sectionGeneration) { sectionStatus(error.message, true); workflowStage('review', 'failed', error.message); $('workflow-verdict').textContent = 'Section processing failed. Retry after checking the error.'; } }
