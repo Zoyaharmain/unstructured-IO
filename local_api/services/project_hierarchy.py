@@ -22,6 +22,11 @@ PROJECT_KEYWORD_PAT = re.compile(
     re.IGNORECASE
 )
 
+PORTFOLIO_CONTEXT_PAT = re.compile(
+    r'^\s*(?:(?:projects?|portfolio|client\s+projects?)\s*(?:worked\s+(?:in|on|at|for)|in|at|for)\b|worked\s+(?:in|on|at|for)\b)',
+    re.IGNORECASE
+)
+
 PROJECT_METADATA_PAT = re.compile(
     r'^\s*(?:'
     r'technolog(?:y|ies)|tools?(?:\s+and\s+technolog(?:y|ies)|\s*&\s*technolog(?:y|ies))?|'
@@ -321,8 +326,8 @@ def detect_project_records(blocks, elements):
                 )
             continue
 
-        # Context line: "Projects Worked in Param Info..."
-        if re.match(r'^projects?\s+(?:worked\s+(?:in|on|at)|in|at)\b', text, re.I):
+        # Context line: "Projects Worked in Param Info..." or "Worked in Param Info..."
+        if PORTFOLIO_CONTEXT_PAT.match(text):
             in_child_list = False
             parent_has_explicit_keyword = False
             log_project_boundary(
@@ -529,3 +534,44 @@ def resolve_ambiguous_project_span(span_text, context_text=None):
     except Exception as exc:
         logger.debug("LLM ambiguous project classification abstained: %s", exc)
         return 'UNRESOLVED'
+
+
+def recover_project_groups(result):
+    """Promote existing portfolio context evidence to a source-owning parent.
+
+    Reuse the detector's context classification; numbering alone never creates
+    children here. Only already-established records in the same reading lane
+    can be linked, and dates before the first child stay with the parent.
+    """
+    from local_api.schemas.sections import SectionEntry
+    out = result.model_copy(deep=True)
+    for section in out.sections:
+        if section.category != 'projects' or any(e.record_kind == 'group' for e in section.entries):
+            continue
+        headers = [i for i, b in enumerate(section.blocks)
+                   if PORTFOLIO_CONTEXT_PAT.match(b.text.strip())]
+        for position, start in enumerate(headers):
+            stop = headers[position + 1] if position + 1 < len(headers) else len(section.blocks)
+            children = [e for e in section.entries if e.block_indices and start < min(e.block_indices) < stop
+                        and e.lane == section.blocks[start].lane and e.parent_entry_id is None]
+            if not children:
+                continue
+            first = min(min(e.block_indices) for e in children)
+            indices = [i for i in range(start, first)
+                       if i == start or is_project_metadata_line(section.blocks[i].text) or is_date_line(section.blocks[i].text)]
+            # Content between the context heading and first child must be fully
+            # explained as parent metadata; never merge unexplained prose.
+            if indices != list(range(start, first)):
+                continue
+            parent_id = f'project-group@e{section.blocks[start].source_element_index}:{section.blocks[start].start}:{section.blocks[start].end}'
+            for entry in section.entries:
+                entry.block_indices = [i for i in entry.block_indices if i not in indices]
+                entry.fields = {key: [i for i in values if i not in indices] for key, values in entry.fields.items()}
+            section.entries = [e for e in section.entries if e.block_indices]
+            section.entries.append(SectionEntry(entry_id=parent_id, block_indices=indices, lane=section.blocks[start].lane,
+                boundary_reason='explicit portfolio context and established child records', record_kind='group',
+                fields={'title': [start], 'dates': [i for i in indices if i != start and is_date_line(section.blocks[i].text)]}))
+            for child in children:
+                child.parent_entry_id = parent_id
+            section.entries.sort(key=lambda e: min(e.block_indices))
+    return out

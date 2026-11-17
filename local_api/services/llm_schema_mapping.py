@@ -187,6 +187,11 @@ def parse_review(content, source_sections):
         fail('response_model_validation', 'invalid_section', ('sections',))
     if len(rows) != len(expected) or {r.get('category') for r in rows} != set(expected):
         fail('parent_schema_validation', 'section_coverage', ('sections',))
+    locked = source_sections.metadata.get('structure_review', {}).get('status') == 'provisional'
+    if locked:
+        from local_api.services.source_ownership import validate_record_tree
+        for parent in source_sections.sections:
+            validate_record_tree(parent.entries)
     revised = source_sections.model_copy(deep=True)
     revised_by_category = {s.category: s for s in revised.sections}
     hierarchy = []
@@ -208,11 +213,15 @@ def parse_review(content, source_sections):
             if not isinstance(item, dict) or set(item) != {'record_id', 'source_ids', 'fields', 'missing'}:
                 fail('response_model_validation', 'invalid_record', record_path)
             ids = item['source_ids']; fields = item['fields']; missing = item['missing']
+            canonical_entry = next((e for e in section.entries if e.entry_id == item['record_id']), None) if locked else None
+            if locked and category in REPEATED:
+                if canonical_entry is None or not isinstance(ids, list) or set(ids) != {source_id(section.blocks[i]) for i in canonical_entry.block_indices}:
+                    fail('record_ownership_validation', 'validated_record_boundary_changed', record_path)
             if not isinstance(ids, list) or any(not isinstance(sid, str) for sid in ids):
                 fail('response_model_validation', 'invalid_source_ids', record_path + ('source_ids',))
             if not ids or len(ids) != len(set(ids)) or not set(ids) <= inventory.keys():
                 fail('record_ownership_validation', 'foreign_or_repeated_source', record_path + ('source_ids',))
-            if any(inventory[sid][1].assignment in {'section_heading', 'structural_heading'} for sid in ids):
+            if any(inventory[sid][1].assignment in {'section_heading', 'structural_heading'} for sid in ids) and not (canonical_entry and canonical_entry.record_kind == 'group'):
                 fail('record_ownership_validation', 'heading_as_record', record_path + ('source_ids',))
             if category in REPEATED and owned.intersection(ids):
                 fail('record_ownership_validation', 'overlapping_records', record_path + ('source_ids',))
@@ -289,17 +298,21 @@ def parse_review(content, source_sections):
                 owned.difference_update(ids)
                 continue
             record = SubschemaRecord(record_id=item['record_id'], source_ids=ids, attributes=attrs,
+                                     parent_record_id=canonical_entry.parent_entry_id if canonical_entry else None,
+                                     record_kind=canonical_entry.record_kind if canonical_entry else 'record',
                                      review_reasons=['Some source fields remain ambiguous.'] if 'ambiguous' in missing.values() else [])
             records.append(record)
             if category in REPEATED:
                 context_entry=next((e for e in section.entries if {source_id(section.blocks[i]) for i in e.block_indices}==set(ids)),None)
-                entries.append(SectionEntry(entry_id=record.record_id,
+                entries.append(canonical_entry.model_copy(deep=True) if canonical_entry else SectionEntry(entry_id=record.record_id,
                     context_fields=context_entry.context_fields if context_entry else {},
                     block_indices=sorted(inventory[sid][0] for sid in ids), lane='source',
                     boundary_reason='DeepSeek source-backed field and record review',
                     relationship_status='needs_review' if record.review_reasons else 'provisional',
                     review_reasons=record.review_reasons))
         if category in REPEATED:
+            if locked and {e.entry_id for e in entries} != {e.entry_id for e in section.entries}:
+                fail('record_ownership_validation', 'validated_record_omitted', section_path)
             section.entries = entries
         # Retain every block as residual unless exact item quotes consume it.
         consumed = {q.source_id for r in records for a in r.attributes for v in a.items for q in v.evidence
@@ -784,6 +797,8 @@ def commit_review(request, fallback, hierarchy, revised, states, calls, model):
             continue
         bindings[category] = {}
         for index, record in enumerate(section.records):
+            if record.record_kind == 'group':
+                continue
             if category == 'skills':
                 union = {}
                 for attr in record.attributes:
@@ -944,7 +959,8 @@ def map_with_field_review(request, *, settings=None, transport=None, budget=None
                      if explicit_category(b.text) not in {None, s.category}
                      and not (s.category in {'experience', 'projects'} and explicit_category(b.text) == 'skills')]
         prior_review = request.sections.metadata.get('llm_review', {})
-        if (unassigned or suspected) and prior_review.get('status') not in {'complete', 'partial'}:
+        ownership_locked = request.sections.metadata.get('structure_review', {}).get('status') == 'provisional'
+        if not ownership_locked and (unassigned or suspected) and prior_review.get('status') not in {'complete', 'partial'}:
             from local_api.services.llm_section_review import review_sections
             from local_api.schemas.sections import SectionRequest
             reviewed = review_sections(SectionRequest(elements=request.elements,

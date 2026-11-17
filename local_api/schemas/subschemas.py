@@ -40,6 +40,8 @@ class Attribute(StrictModel):
 class SubschemaRecord(StrictModel):
     record_id: str = Field(min_length=1)
     source_ids: list[str] = Field(default_factory=list)
+    parent_record_id: str | None = None
+    record_kind: Literal['record', 'group'] = 'record'
     attributes: list[Attribute]
     review_reasons: list[str] = Field(default_factory=list)
 
@@ -57,6 +59,15 @@ class SectionSchema(StrictModel):
         specification = SUBSCHEMAS[self.category]
         if len({r.record_id for r in self.records}) != len(self.records):
             raise ValueError('Duplicate record ID')
+        links = {r.record_id: r.parent_record_id for r in self.records}
+        for rid in links:
+            seen = set()
+            cursor = rid
+            while cursor is not None:
+                if cursor not in links or cursor in seen:
+                    raise ValueError('Invalid record hierarchy')
+                seen.add(cursor)
+                cursor = links[cursor]
         for record in self.records:
             names = [a.name for a in record.attributes]
             if len(set(names)) != len(names) or set(names) != set(specification):

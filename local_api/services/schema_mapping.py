@@ -228,6 +228,8 @@ def map_schema(request):
                 from local_api.services.record_relationships import annotate_relationships
                 annotate_relationships(section)
             for entry in section.entries:
+                if entry.record_kind == 'group':
+                    continue
                 owned_bs=[section.blocks[i] for i in entry.block_indices]
                 context_ids={i for field,ids in entry.context_fields.items() for i in ids if category != 'experience' or field != 'company'}
                 bs=[section.blocks[i] for i in sorted(set(entry.block_indices)|context_ids)]
@@ -493,7 +495,7 @@ def map_schema(request):
                         e_role = norm_s(existing.role)
                         e_dates = (existing.start_date, existing.end_date)
                         comp_match = bool(r_comp and e_comp and r_comp == e_comp)
-                        role_match = bool(r_role and e_role and (r_role == e_role or r_role in e_role or e_role in r_role))
+                        role_match = bool(r_role and e_role and r_role == e_role)
                         if comp_match and role_match:
                             dates_match = (r_dates == e_dates or
                                            (r_dates == (None, None) and e_dates != (None, None)) or

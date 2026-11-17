@@ -19,7 +19,7 @@ async def resume_sections(request: SectionRequest):
         from local_api.services.education_date_recovery import recover_education_dates
         from local_api.services.source_ownership import finalize_ownership
         result = recover_contact_sections(recover_education_dates(reviewed, request.elements), request.elements)
-        return await run_in_threadpool(finalize_ownership, request.elements, result, review=True)
+        return await run_in_threadpool(finalize_ownership, request.elements, result, review='ambiguous')
     except ExtractionError as exc:
         raise HTTPException(exc.status, str(exc)) from exc
 

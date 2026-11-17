@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="4" skipped="0" tests="9" time="6.383" timestamp="2026-11-16T22:03:25.628824-08:00" hostname="DESKTOP-RNGQH23"><testcase classname="tests.test_batch_resume_audit" name="test_valid_source_and_highlights" time="0.016" /><testcase classname="tests.test_batch_resume_audit" name="test_audit_catches_lost_text_and_invalid_highlight" time="0.001" /><testcase classname="tests.test_batch_resume_audit" name="test_audit_catches_duplicate_sections_and_bad_entry_reference" time="0.000" /><testcase classname="tests.test_batch_resume_audit" name="test_offline_guard_blocks_sockets_and_removes_provider_key" time="0.058" /><testcase classname="tests.test_batch_resume_audit" name="test_deadline_cannot_be_swallowed_by_parser_exception_handler" time="0.000" /><testcase classname="tests.test_batch_failure_repairs" name="test_actual_repaired_word_records_keep_two_jobs_and_four_project_names" time="2.531"><failure message="AssertionError: assert ['Pre-screen ...assifier', ''] == ['Pre-screen ...onversations']&#10;  &#10;  At index 3 diff: '' != 'Automated Patient Condition Extraction from Clinical Conversations'&#10;  Use -v to get more diff">def test_actual_repaired_word_records_keep_two_jobs_and_four_project_names():
+        from local_api.schemas.mapping import SchemaMappingRequest
+        from local_api.services.resume_sections import build_sections
+        from local_api.services.schema_mapping import map_schema
+        root=Path('reports/resume-batch-repairs-20261027/table-verified')
+        rows=json.loads((root/'results.json').read_text())
+        for row in rows[3:5]:
+            artifact=json.loads((root/row['artifact']).read_text())
+            req=SchemaMappingRequest(elements=artifact['extraction']['elements'],sections=artifact['sections'])
+            req.sections.sections=build_sections({s.category:s.blocks for s in req.sections.sections},req.elements)
+            out=map_schema(req)
+            assert [(r.company,r.role) for r in out.data.experience]==[('Velocity IT','DataScientist'),('Netafim','Software engineer')]
+&gt;           assert [r.name for r in out.data.projects]==['Pre-screen Calling Agent','Question Identification System',
+                'Clinical Trial Adverse Event Classifier','Automated Patient Condition Extraction from Clinical Conversations']
+E           AssertionError: assert ['Pre-screen ...assifier', ''] == ['Pre-screen ...onversations']
+E             
+E             At index 3 diff: '' != 'Automated Patient Condition Extraction from Clinical Conversations'
+E             Use -v to get more diff
+
+tests/test_batch_failure_repairs.py:206: AssertionError</failure></testcase><testcase classname="tests.test_professional_headline" name="test_sidebar_skills_do_not_hide_headline_or_make_it_a_job" time="0.721"><failure message="AssertionError: assert None == 'PRINCIPAL PLATFORM ENGINEER, DISTRIBUTED SYSTEMS'&#10; +  where None = ResumeSchema(contact=ContactInfo(full_name='Example Person', email='', phone='', location=None, linkedin_url=None, git...bilities=['Built production services.'], technologies=[])], education=[], certifications=[], projects=[], languages=[]).professional_title&#10; +    where ResumeSchema(contact=ContactInfo(full_name='Example Person', email='', phone='', location=None, linkedin_url=None, git...bilities=['Built production services.'], technologies=[])], education=[], certifications=[], projects=[], languages=[]) = SchemaMappingResponse(success=True, source='existing-section-blocks', extraction_mode='existing_blocks_schema_mapping'...ip': [], 'references.organization': [], 'references.email': [], 'references.phone': [], 'references.availability': []}).data">def test_sidebar_skills_do_not_hide_headline_or_make_it_a_job():
+        texts=['Example Person','SKILLS','Python',
+               'PRINCIPAL PLATFORM ENGINEER, DISTRIBUTED SYSTEMS',
+               'Experienced platform engineer specializing in distributed systems with a proven track record of delivering reliable services across engineering teams.',
+               'EXPERIENCE','Engineer | Example Ltd | Jan 2020 - Dec 2021','Built production services.']
+        elements,sections=fixture(texts,{'personal_information':[0],'skills':[1,2], 'experience':[3,4,5,6,7]},[])
+        elements[3].type='Title'
+        before=deepcopy([e.model_dump() for e in elements])
+        out=map_schema(SchemaMappingRequest(elements=elements,sections=sections))
+&gt;       assert out.data.professional_title==texts[3]
+E       AssertionError: assert None == 'PRINCIPAL PLATFORM ENGINEER, DISTRIBUTED SYSTEMS'
+E        +  where None = ResumeSchema(contact=ContactInfo(full_name='Example Person', email='', phone='', location=None, linkedin_url=None, git...bilities=['Built production services.'], technologies=[])], education=[], certifications=[], projects=[], languages=[]).professional_title
+E        +    where ResumeSchema(contact=ContactInfo(full_name='Example Person', email='', phone='', location=None, linkedin_url=None, git...bilities=['Built production services.'], technologies=[])], education=[], certifications=[], projects=[], languages=[]) = SchemaMappingResponse(success=True, source='existing-section-blocks', extraction_mode='existing_blocks_schema_mapping'...ip': [], 'references.organization': [], 'references.email': [], 'references.phone': [], 'references.availability': []}).data
+
+tests/test_professional_headline.py:18: AssertionError</failure></testcase><testcase classname="tests.test_nov8_five_resume_regressions" name="test_05_bhavyashree_ry_narrative_employment_responsibilities_education_cert" time="2.315"><failure message="local_api.services.schema_diagnostics.MappingValidationError: Record source ownership is missing, overlapping, or foreign.">def test_05_bhavyashree_ry_narrative_employment_responsibilities_education_cert():
+&gt;       mapped, std, meta, status, warns = replay_nov8("05_BhavyashreeRY")
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_nov8_five_resume_regressions.py:102: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_nov8_five_resume_regressions.py:27: in replay_nov8
+    mapped = map_schema(SchemaMappingRequest(elements=elements, sections=sections, source=folder))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+local_api/services/schema_mapping.py:574: in map_schema
+    section_schemas=build_subschemas(request.sections,data,scope,record_bindings),
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+local_api/services/section_subschemas.py:179: in build_subschemas
+    return validate_hierarchy(output, sections)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+local_api/services/subschema_validation.py:39: in validate_hierarchy
+    fail('record_ownership_validation', 'foreign_record_source', record_path + ('source_ids',))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+category = 'record_ownership_validation', code = 'foreign_record_source'
+path = ('section_schemas', 6, 'records', 0, 'source_ids'), field = None
+evidence_analysis = None
+
+    def fail(category, code, path=(), field=None, evidence_analysis=None):
+&gt;       raise MappingValidationError(category, code, path, field=field, evidence_analysis=evidence_analysis)
+E       local_api.services.schema_diagnostics.MappingValidationError: Record source ownership is missing, overlapping, or foreign.
+
+local_api/services/schema_diagnostics.py:81: MappingValidationError</failure></testcase><testcase classname="tests.test_jayesh_statement_evidence" name="test_jayesh_rewritten_fourth_statement_remains_rejected_without_source_text_logging" time="0.005"><failure message="Failed: DID NOT RAISE MappingValidationError">monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x7d8256ff47a0&gt;
+
+    def test_jayesh_rewritten_fourth_statement_remains_rejected_without_source_text_logging(monkeypatch):
+        sections, payload = candidate()
+        item = payload['sections'][0]['records'][0]['fields']['statements'][3]
+        item['value'] = item['value'].replace('client- facing', 'client-facing')
+&gt;       with pytest.raises(MappingValidationError) as error:
+E       Failed: DID NOT RAISE MappingValidationError
+
+tests/test_jayesh_statement_evidence.py:50: Failed</failure></testcase></testsuite></testsuites>

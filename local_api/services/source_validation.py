@@ -22,6 +22,11 @@ def validate_result(elements, result):
         if cursor != len(el.text):
             errors.append('source_coverage_incomplete')
     for section in result.sections:
+        from local_api.services.source_ownership import validate_record_tree
+        try:
+            validate_record_tree(section.entries)
+        except ValueError:
+            errors.append('invalid_record_hierarchy')
         expected, previous = '', None
         for b in section.blocks:
             if previous is not None and not (previous.source_element_index == b.source_element_index and previous.end == b.start):

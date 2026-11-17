@@ -45,6 +45,8 @@ class SectionEntry(BaseModel):
     boundary_reason: str
     fields: dict[str,list[int]] = Field(default_factory=dict)
     context_fields: dict[str,list[int]] = Field(default_factory=dict)
+    parent_entry_id: str | None = None
+    record_kind: Literal['record', 'group'] = 'record'
     relationship_status: Literal['provisional','needs_review'] = 'provisional'
     review_reasons: list[str] = Field(default_factory=list)
 

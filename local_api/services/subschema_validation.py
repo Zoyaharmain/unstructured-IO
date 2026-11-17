@@ -40,6 +40,8 @@ def validate_hierarchy(hierarchy, sections):
             if parent.category in REPEATED and allowed != ownership.get(record.record_id):
                 fail('record_ownership_validation', 'record_owner_mismatch', record_path + ('source_ids',))
             entry=next((e for e in section.entries if e.entry_id==record.record_id),None) if section else None
+            if entry and (record.parent_record_id != entry.parent_entry_id or record.record_kind != entry.record_kind):
+                fail('record_ownership_validation', 'record_hierarchy_mismatch', record_path)
             for ai, field in enumerate(record.attributes):
                 field_path = record_path + ('attributes', ai)
                 for vi, item in enumerate(field.items):

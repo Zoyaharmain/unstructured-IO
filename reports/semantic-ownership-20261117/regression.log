@@ -1,0 +1,362 @@
+....................................................................F... [  7%]
+......FFF............................................................... [ 14%]
+........................................................................ [ 21%]
+........................................................................ [ 28%]
+......................F................................................. [ 35%]
+........................................................................ [ 42%]
+...........................F............................................ [ 49%]
+..................................F..................................... [ 56%]
+........................................................................ [ 63%]
+.....................................FF................................. [ 70%]
+.......................................................F.F.............. [ 77%]
+........................................................................ [ 84%]
+........................................................................ [ 91%]
+......................................F............................F.... [ 98%]
+............                                                             [100%]
+=================================== FAILURES ===================================
+____ test_actual_repaired_word_records_keep_two_jobs_and_four_project_names ____
+
+    def test_actual_repaired_word_records_keep_two_jobs_and_four_project_names():
+        from local_api.schemas.mapping import SchemaMappingRequest
+        from local_api.services.resume_sections import build_sections
+        from local_api.services.schema_mapping import map_schema
+        root=Path('reports/resume-batch-repairs-20261027/table-verified')
+        rows=json.loads((root/'results.json').read_text())
+        for row in rows[3:5]:
+            artifact=json.loads((root/row['artifact']).read_text())
+            req=SchemaMappingRequest(elements=artifact['extraction']['elements'],sections=artifact['sections'])
+            req.sections.sections=build_sections({s.category:s.blocks for s in req.sections.sections},req.elements)
+            out=map_schema(req)
+            assert [(r.company,r.role) for r in out.data.experience]==[('Velocity IT','DataScientist'),('Netafim','Software engineer')]
+>           assert [r.name for r in out.data.projects]==['Pre-screen Calling Agent','Question Identification System',
+                'Clinical Trial Adverse Event Classifier','Automated Patient Condition Extraction from Clinical Conversations']
+E           AssertionError: assert ['Pre-screen ...assifier', ''] == ['Pre-screen ...onversations']
+E             
+E             At index 3 diff: '' != 'Automated Patient Condition Extraction from Clinical Conversations'
+E             Use -v to get more diff
+
+tests/test_batch_failure_repairs.py:206: AssertionError
+_______________________ test_valid_source_and_highlights _______________________
+
+    def test_valid_source_and_highlights():
+        elements,result=fixture()
+>       assert audit.validate_result(elements,result)==[]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_batch_resume_audit.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+local_api/services/source_validation.py:27: in validate_result
+    validate_record_tree(section.entries)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+entries = [namespace(entry_id='skills-1', block_indices=[0], fields={})]
+
+    def validate_record_tree(entries):
+        """Parent links are section-local, acyclic, and do not share primary text."""
+>       parents = {e.entry_id: e.parent_entry_id for e in entries}
+                               ^^^^^^^^^^^^^^^^^
+E       AttributeError: 'types.SimpleNamespace' object has no attribute 'parent_entry_id'
+
+local_api/services/source_ownership.py:81: AttributeError
+______________ test_audit_catches_lost_text_and_invalid_highlight ______________
+
+    def test_audit_catches_lost_text_and_invalid_highlight():
+        elements,result=fixture()
+        result.sections[0].blocks[0].start=1
+        result.sections[0].highlights[0].end=6
+>       errors=audit.validate_result(elements,result)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_batch_resume_audit.py:29: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+local_api/services/source_validation.py:27: in validate_result
+    validate_record_tree(section.entries)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+entries = [namespace(entry_id='skills-1', block_indices=[0], fields={})]
+
+    def validate_record_tree(entries):
+        """Parent links are section-local, acyclic, and do not share primary text."""
+>       parents = {e.entry_id: e.parent_entry_id for e in entries}
+                               ^^^^^^^^^^^^^^^^^
+E       AttributeError: 'types.SimpleNamespace' object has no attribute 'parent_entry_id'
+
+local_api/services/source_ownership.py:81: AttributeError
+________ test_audit_catches_duplicate_sections_and_bad_entry_reference _________
+
+    def test_audit_catches_duplicate_sections_and_bad_entry_reference():
+        elements,result=fixture()
+        result.sections.append(result.sections[0])
+        result.sections[0].entries[0].block_indices=[99]
+>       errors=audit.validate_result(elements,result)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_batch_resume_audit.py:38: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+local_api/services/source_validation.py:27: in validate_result
+    validate_record_tree(section.entries)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+entries = [namespace(entry_id='skills-1', block_indices=[99], fields={})]
+
+    def validate_record_tree(entries):
+        """Parent links are section-local, acyclic, and do not share primary text."""
+>       parents = {e.entry_id: e.parent_entry_id for e in entries}
+                               ^^^^^^^^^^^^^^^^^
+E       AttributeError: 'types.SimpleNamespace' object has no attribute 'parent_entry_id'
+
+local_api/services/source_ownership.py:81: AttributeError
+_ test_jayesh_rewritten_fourth_statement_remains_rejected_without_source_text_logging _
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x71b3bb3438f0>
+
+    def test_jayesh_rewritten_fourth_statement_remains_rejected_without_source_text_logging(monkeypatch):
+        sections, payload = candidate()
+        item = payload['sections'][0]['records'][0]['fields']['statements'][3]
+        item['value'] = item['value'].replace('client- facing', 'client-facing')
+>       with pytest.raises(MappingValidationError) as error:
+E       Failed: DID NOT RAISE MappingValidationError
+
+tests/test_jayesh_statement_evidence.py:50: Failed
+_ test_05_bhavyashree_ry_narrative_employment_responsibilities_education_cert __
+
+    def test_05_bhavyashree_ry_narrative_employment_responsibilities_education_cert():
+>       mapped, std, meta, status, warns = replay_nov8("05_BhavyashreeRY")
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_nov8_five_resume_regressions.py:102: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_nov8_five_resume_regressions.py:27: in replay_nov8
+    mapped = map_schema(SchemaMappingRequest(elements=elements, sections=sections, source=folder))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+local_api/services/schema_mapping.py:574: in map_schema
+    section_schemas=build_subschemas(request.sections,data,scope,record_bindings),
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+local_api/services/section_subschemas.py:179: in build_subschemas
+    return validate_hierarchy(output, sections)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+local_api/services/subschema_validation.py:39: in validate_hierarchy
+    fail('record_ownership_validation', 'foreign_record_source', record_path + ('source_ids',))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+category = 'record_ownership_validation', code = 'foreign_record_source'
+path = ('section_schemas', 6, 'records', 0, 'source_ids'), field = None
+evidence_analysis = None
+
+    def fail(category, code, path=(), field=None, evidence_analysis=None):
+>       raise MappingValidationError(category, code, path, field=field, evidence_analysis=evidence_analysis)
+E       local_api.services.schema_diagnostics.MappingValidationError: Record source ownership is missing, overlapping, or foreign.
+
+local_api/services/schema_diagnostics.py:81: MappingValidationError
+__________ test_sidebar_skills_do_not_hide_headline_or_make_it_a_job ___________
+
+    def test_sidebar_skills_do_not_hide_headline_or_make_it_a_job():
+        texts=['Example Person','SKILLS','Python',
+               'PRINCIPAL PLATFORM ENGINEER, DISTRIBUTED SYSTEMS',
+               'Experienced platform engineer specializing in distributed systems with a proven track record of delivering reliable services across engineering teams.',
+               'EXPERIENCE','Engineer | Example Ltd | Jan 2020 - Dec 2021','Built production services.']
+        elements,sections=fixture(texts,{'personal_information':[0],'skills':[1,2], 'experience':[3,4,5,6,7]},[])
+        elements[3].type='Title'
+        before=deepcopy([e.model_dump() for e in elements])
+        out=map_schema(SchemaMappingRequest(elements=elements,sections=sections))
+>       assert out.data.professional_title==texts[3]
+E       AssertionError: assert None == 'PRINCIPAL PLATFORM ENGINEER, DISTRIBUTED SYSTEMS'
+E        +  where None = ResumeSchema(contact=ContactInfo(full_name='Example Person', email='', phone='', location=None, linkedin_url=None, git...bilities=['Built production services.'], technologies=[])], education=[], certifications=[], projects=[], languages=[]).professional_title
+E        +    where ResumeSchema(contact=ContactInfo(full_name='Example Person', email='', phone='', location=None, linkedin_url=None, git...bilities=['Built production services.'], technologies=[])], education=[], certifications=[], projects=[], languages=[]) = SchemaMappingResponse(success=True, source='existing-section-blocks', extraction_mode='existing_blocks_schema_mapping'...ip': [], 'references.organization': [], 'references.email': [], 'references.phone': [], 'references.availability': []}).data
+
+tests/test_professional_headline.py:18: AssertionError
+_ test_source_backed_project_descriptions_are_not_erased_by_consistency_checks _
+
+    def test_source_backed_project_descriptions_are_not_erased_by_consistency_checks():
+        for index in (3,4):
+            out=replay(index)
+            assert out.data.projects
+>           assert all(project.description for project in out.data.projects)
+E           assert False
+E            +  where False = all(<generator object test_source_backed_project_descriptions_are_not_erased_by_consistency_checks.<locals>.<genexpr> at 0x71b45e9bc700>)
+
+tests/test_saved_hierarchical_defects.py:182: AssertionError
+_____ test_project_groups_follow_visible_titles_and_keep_domain_lists_out ______
+
+    def test_project_groups_follow_visible_titles_and_keep_domain_lists_out():
+        aditya=replay(3)
+        assert len(aditya.data.projects)==5
+        assert aditya.data.projects[0].name.startswith('Heart Flow')
+        assert aditya.data.projects[-1].name.startswith('AI Customer Support')
+        levi=replay(4)
+>       assert len(levi.data.projects)==5
+E       AssertionError: assert 1 == 5
+E        +  where 1 = len([Project(name='Integration of ORM with ServiceNow GRC Module and automatising the Risk', description='management , Aud...dies: NSDL, CDSL', role='', technologies=[], url=None, start_date=None, end_date=None, organization=None, outcomes=[])])
+E        +    where [Project(name='Integration of ORM with ServiceNow GRC Module and automatising the Risk', description='management , Aud...dies: NSDL, CDSL', role='', technologies=[], url=None, start_date=None, end_date=None, organization=None, outcomes=[])] = ResumeSchema(contact=ContactInfo(full_name='Levi Arbole', email='arbole60@gmail.com', phone='9823506339', location='Am...ologies=[], url=None, start_date=None, end_date=None, organization=None, outcomes=[])], languages=['English', 'Hindi']).projects
+E        +      where ResumeSchema(contact=ContactInfo(full_name='Levi Arbole', email='arbole60@gmail.com', phone='9823506339', location='Am...ologies=[], url=None, start_date=None, end_date=None, organization=None, outcomes=[])], languages=['English', 'Hindi']) = SchemaMappingResponse(success=True, source='_Levi Arbole.pdf', extraction_mode='existing_blocks_schema_mapping', data=...ip': [], 'references.organization': [], 'references.email': [], 'references.phone': [], 'references.availability': []}).data
+
+tests/test_saved_hierarchical_defects.py:194: AssertionError
+_________ test_astha_saraogi_education_ownership_and_date_attribution __________
+
+    @pytest.mark.skipif(not os.path.exists(ASTHA_FIXTURE_PATH), reason='Astha Saraogi fixture not available')
+    def test_astha_saraogi_education_ownership_and_date_attribution():
+        """Verify education dates attach to education institution and not experience."""
+        with open(ASTHA_FIXTURE_PATH) as f:
+            raw_data = json.load(f)
+        elements = [ExtractedElement(**e) for e in (raw_data if isinstance(raw_data, list) else raw_data['elements'])]
+        req = SectionRequest(elements=elements)
+        res = detect_sections(req)
+        res = recover_sections(req, res)
+        res = recover_contact_sections(res, req.elements)
+        res = recover_education_dates(res, req.elements)
+        res = finalize_ownership(req.elements, res)
+    
+        # 1. Experience must not have 2010 - 2014 education dates
+        exp_sec = next(s for s in res.sections if s.category == 'experience')
+        assert exp_sec is not None
+        for b in exp_sec.blocks:
+            assert '2010 – 2014' not in b.text
+            assert 'Bhopal (M.P)' not in b.text
+    
+        # 2. Education section must contain recovered dates and institution
+        edu_sec = next(s for s in res.sections if s.category == 'education')
+        assert edu_sec is not None
+        edu_texts = [b.text for b in edu_sec.blocks]
+        assert any('2010 – 2014' in t for t in edu_texts)
+        assert any('Rajiv Gandhi Proudyogiki Vishwavidyalaya' in t for t in edu_texts)
+    
+        # 3. Schema mapping produces valid Education record
+        map_req = ReviewedSchemaMappingRequest(elements=elements, sections=res)
+        mapped = map_schema(map_req)
+>       assert len(mapped.data.education) == 1, f"Expected 1 education record, got {len(mapped.data.education)}"
+E       AssertionError: Expected 1 education record, got 2
+E       assert 2 == 1
+E        +  where 2 = len([Education(institution='Rajiv Gandhi Proudyogiki Vishwavidyalaya', degree='', field_of_study=None, start_year='2010', ...yogiki Vishwavidyalaya', degree='', field_of_study=None, start_year='2010', graduation_year='2014', grade_or_gpa=None)])
+E        +    where [Education(institution='Rajiv Gandhi Proudyogiki Vishwavidyalaya', degree='', field_of_study=None, start_year='2010', ...yogiki Vishwavidyalaya', degree='', field_of_study=None, start_year='2010', graduation_year='2014', grade_or_gpa=None)] = ResumeSchema(contact=ContactInfo(full_name='Astha Saraogi', email='Saraogi.astha28061992@gmail.com', phone='9691205551....', role='', technologies=[], url=None, start_date=None, end_date=None, organization=None, outcomes=[])], languages=[]).education
+E        +      where ResumeSchema(contact=ContactInfo(full_name='Astha Saraogi', email='Saraogi.astha28061992@gmail.com', phone='9691205551....', role='', technologies=[], url=None, start_date=None, end_date=None, organization=None, outcomes=[])], languages=[]) = SchemaMappingResponse(success=True, source='existing-section-blocks', extraction_mode='existing_blocks_schema_mapping'...ip': [], 'references.organization': [], 'references.email': [], 'references.phone': [], 'references.availability': []}).data
+
+tests/test_section_ownership_architecture.py:266: AssertionError
+_________________ test_astha_saraogi_experience_deduplication __________________
+
+    @pytest.mark.skipif(not os.path.exists(ASTHA_FIXTURE_PATH), reason='Astha Saraogi fixture not available')
+    def test_astha_saraogi_experience_deduplication():
+        """Verify duplicate experience entries are cleanly unified to 4 distinct employers."""
+        with open(ASTHA_FIXTURE_PATH) as f:
+            raw_data = json.load(f)
+        elements = [ExtractedElement(**e) for e in (raw_data if isinstance(raw_data, list) else raw_data['elements'])]
+        req = SectionRequest(elements=elements)
+        res = detect_sections(req)
+        res = recover_sections(req, res)
+        res = recover_contact_sections(res, req.elements)
+        res = recover_education_dates(res, req.elements)
+        res = finalize_ownership(req.elements, res)
+    
+        map_req = ReviewedSchemaMappingRequest(elements=elements, sections=res)
+        mapped = map_schema(map_req)
+    
+        # 4 distinct employers: Mastercard, Deutsche Bank, Allstate, Cognizant
+>       assert len(mapped.data.experience) == 4, f"Expected 4 experience records, got {len(mapped.data.experience)}"
+E       AssertionError: Expected 4 experience records, got 7
+E       assert 7 == 4
+E        +  where 7 = len([WorkExperience(company='Mastercard', role='Senior Bizops (Role Business Analyst)', start_date='10/2021', end_date='pr...owledge of DB-UNITY tool worked on incidents and problem tickets, creation of support groups.'], technologies=[]), ...])
+E        +    where [WorkExperience(company='Mastercard', role='Senior Bizops (Role Business Analyst)', start_date='10/2021', end_date='pr...owledge of DB-UNITY tool worked on incidents and problem tickets, creation of support groups.'], technologies=[]), ...] = ResumeSchema(contact=ContactInfo(full_name='Astha Saraogi', email='Saraogi.astha28061992@gmail.com', phone='9691205551....', role='', technologies=[], url=None, start_date=None, end_date=None, organization=None, outcomes=[])], languages=[]).experience
+E        +      where ResumeSchema(contact=ContactInfo(full_name='Astha Saraogi', email='Saraogi.astha28061992@gmail.com', phone='9691205551....', role='', technologies=[], url=None, start_date=None, end_date=None, organization=None, outcomes=[])], languages=[]) = SchemaMappingResponse(success=True, source='existing-section-blocks', extraction_mode='existing_blocks_schema_mapping'...ip': [], 'references.organization': [], 'references.email': [], 'references.phone': [], 'references.availability': []}).data
+
+tests/test_section_ownership_architecture.py:324: AssertionError
+___________ test_ground_truth_semantic_validation[ravisankar_sundar] ___________
+
+item = {'resume_id': 'ravisankar_sundar', 'folder': 'ground_truth/schema_mapping/ravisankar_sundar', 'original_filename': 'Ravisankar Sundar.docx', 'original_file': 'ground_truth/schema_mapping/ravisankar_sundar/original.docx', ...}
+
+    @pytest.mark.parametrize("item", MANIFEST, ids=[r["resume_id"] for r in MANIFEST])
+    def test_ground_truth_semantic_validation(item):
+        rid = item["resume_id"]
+        fname = item["original_filename"]
+        expected_path = item["expected_json"]
+    
+        elements, sections = load_ground_truth_inputs(rid, fname)
+        mapped = map_schema(SchemaMappingRequest(elements=elements, sections=sections, source=fname))
+        std, meta, status, warns = standardize_resume_data(mapped.data.model_dump())
+    
+        exp_data = json.load(open(expected_path))["data"]
+        audit = evaluate_resume_mapping(rid, std, exp_data)
+    
+        # 1. Candidate Name must be valid and uncontaminated
+        assert audit["name_status"] == "PASS", f"Name error on {rid}: {audit['failures']}"
+        assert audit["candidate_actual"] != ""
+    
+        # 2. Field evidence must be preserved
+        assert len(mapped.meta.get("field_evidence", {})) > 0
+    
+        # 3. Strict semantic validation
+        if rid in PASSING_RESUME_IDS:
+            # Full semantic pass: 0 missing jobs, 0 missing edu, exact record counts
+            assert audit["status"] == "PASS", f"{rid} expected PASS but got {audit['status']}: {audit['failures']}"
+            assert len(audit["missing_jobs"]) == 0
+            assert len(audit["missing_edu"]) == 0
+            assert audit["jobs_actual"] == audit["jobs_expected"]
+            assert audit["edu_actual"] == audit["edu_expected"]
+            assert len(audit["failures"]) == 0
+        else:
+            # Incomplete / failing resumes: MUST NEVER PASS
+            assert audit["status"] != "PASS", f"{rid} has missing records or defects and MUST NEVER receive PASS!"
+            assert audit["status"] in {"INCOMPLETE", "FAIL"}
+    
+            # Verify specific known defects are detected
+            if rid == "chaganti_leela_sankar":
+                # Missing 1 job (Thomson Reuters)
+                assert len(audit["missing_jobs"]) == 1
+                assert audit["jobs_actual"] == 3
+                assert audit["jobs_expected"] == 4
+            elif rid == "sureshbabus":
+                # Standard Chartered split record
+                assert audit["jobs_actual"] == 4
+                assert audit["jobs_expected"] == 3
+            elif rid == "ashwin_s_s":
+                # Missing jobs in summary prose/table
+                assert len(audit["missing_jobs"]) in {1, 2}
+                assert audit["jobs_actual"] == 3
+                assert audit["jobs_expected"] == 4
+            elif rid == "ravisankar_sundar":
+                # Missing 2 jobs in table cells
+>               assert len(audit["missing_jobs"]) == 2
+E               AssertionError: assert 1 == 2
+E                +  where 1 = len([{'index': 1, 'company': 'Societe Generale', 'role': 'Senior Business analyst | Agile Lead', 'dates': '2021-02 - 2024-01'}])
+
+tests/test_twelve_ground_truth_replays.py:100: AssertionError
+_________ test_achievement_list_items_keep_wrapped_rows_in_same_record _________
+
+    def test_achievement_list_items_keep_wrapped_rows_in_same_record():
+        from local_api.services.section_subschemas import build_subschemas
+        from local_api.schemas.sections import SectionResponse
+        from local_api.vendor.handoff_schema.models import ResumeSchema, ContactInfo
+        values=['Delivered a global program across multiple regions.', 'Reduced support incidents through platform improvements.']
+        elements=[ExtractedElement(type='ListItem',text=t,page_number=1,metadata={}) for t in values]
+        blocks=[]
+        for i,text in enumerate(values):
+            cut=text.index(' ',20)+1
+            blocks.extend([block(i,0,text[:cut],'wide'),block(i,cut,text[cut:],'left')])
+        entries=entry_groups(blocks,'awards',elements)
+        assert [e['block_indices'] for e in entries]==[[0,1],[2,3]]
+        section=ResumeSection(category='awards',label='Awards',blocks=blocks,
+                              entries=[SectionEntry.model_validate(e) for e in entries])
+        sections=SectionResponse(status='provisional',warnings=[],metadata={},sections=[section],needs_review=[])
+        data=ResumeSchema(contact=ContactInfo(full_name='',email='',phone=''))
+        mapped=build_subschemas(sections,data,{'candidate_resume':True})
+        names=[next(a for a in r.attributes if a.name=='name').items[0] for r in mapped[0].records]
+>       assert [item.value for item in names]==values
+E       AssertionError: assert ['Delivered a...rt incidents'] == ['Delivered a...mprovements.']
+E         
+E         At index 0 diff: 'Delivered a global program' != 'Delivered a global program across multiple regions.'
+E         Use -v to get more diff
+
+tests/test_wrapped_achievements_competencies.py:30: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_batch_failure_repairs.py::test_actual_repaired_word_records_keep_two_jobs_and_four_project_names
+FAILED tests/test_batch_resume_audit.py::test_valid_source_and_highlights - A...
+FAILED tests/test_batch_resume_audit.py::test_audit_catches_lost_text_and_invalid_highlight
+FAILED tests/test_batch_resume_audit.py::test_audit_catches_duplicate_sections_and_bad_entry_reference
+FAILED tests/test_jayesh_statement_evidence.py::test_jayesh_rewritten_fourth_statement_remains_rejected_without_source_text_logging
+FAILED tests/test_nov8_five_resume_regressions.py::test_05_bhavyashree_ry_narrative_employment_responsibilities_education_cert
+FAILED tests/test_professional_headline.py::test_sidebar_skills_do_not_hide_headline_or_make_it_a_job
+FAILED tests/test_saved_hierarchical_defects.py::test_source_backed_project_descriptions_are_not_erased_by_consistency_checks
+FAILED tests/test_saved_hierarchical_defects.py::test_project_groups_follow_visible_titles_and_keep_domain_lists_out
+FAILED tests/test_section_ownership_architecture.py::test_astha_saraogi_education_ownership_and_date_attribution
+FAILED tests/test_section_ownership_architecture.py::test_astha_saraogi_experience_deduplication
+FAILED tests/test_twelve_ground_truth_replays.py::test_ground_truth_semantic_validation[ravisankar_sundar]
+FAILED tests/test_wrapped_achievements_competencies.py::test_achievement_list_items_keep_wrapped_rows_in_same_record
+13 failed, 1007 passed, 50 deselected in 357.82s (0:05:57)

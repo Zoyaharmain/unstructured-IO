@@ -1,0 +1,886 @@
+{
+  "local_api/services/text_extraction_service.py": [
+    {
+      "function": "refine_extracted_elements",
+      "line": 34,
+      "calls": [
+        "refined.append",
+        "refined.extend",
+        "text.split"
+      ]
+    },
+    {
+      "function": "extract_text",
+      "line": 84,
+      "calls": [
+        "materialize_textboxes",
+        "recover_pdf_glyphs",
+        "recover_pdf_source",
+        "refine_extracted_elements",
+        "repair_null_image_relationships"
+      ]
+    }
+  ],
+  "local_api/services/pdf_section_layout.py": [
+    {
+      "function": "compact",
+      "line": 8,
+      "calls": []
+    },
+    {
+      "function": "line_occurrences",
+      "line": 19,
+      "calls": []
+    },
+    {
+      "function": "annotate_pdf_lines",
+      "line": 33,
+      "calls": []
+    },
+    {
+      "function": "lines",
+      "line": 37,
+      "calls": []
+    }
+  ],
+  "local_api/services/logical_blocks.py": [
+    {
+      "function": "logical_blocks",
+      "line": 9,
+      "calls": [
+        "group"
+      ]
+    },
+    {
+      "function": "semantic_frame",
+      "line": 84,
+      "calls": []
+    },
+    {
+      "function": "group",
+      "line": 22,
+      "calls": []
+    }
+  ],
+  "local_api/services/resume_structure.py": [
+    {
+      "function": "el_meta",
+      "line": 10,
+      "calls": []
+    },
+    {
+      "function": "el_type",
+      "line": 16,
+      "calls": []
+    },
+    {
+      "function": "el_text",
+      "line": 22,
+      "calls": []
+    },
+    {
+      "function": "token_window_cuts",
+      "line": 29,
+      "calls": []
+    },
+    {
+      "function": "word_safe_cut",
+      "line": 47,
+      "calls": []
+    },
+    {
+      "function": "normalized_heading",
+      "line": 109,
+      "calls": [
+        "value.casefold().replace('&', ' and ').split"
+      ]
+    },
+    {
+      "function": "heading_aliases",
+      "line": 119,
+      "calls": []
+    },
+    {
+      "function": "heading_boundary",
+      "line": 127,
+      "calls": [
+        "alias.split",
+        "match.group",
+        "normalized.split",
+        "qualified.group",
+        "re.split",
+        "text.split"
+      ]
+    },
+    {
+      "function": "entry_groups",
+      "line": 196,
+      "calls": [
+        "groups.append",
+        "merged_groups.append",
+        "merged_groups[-1]['block_indices'].extend",
+        "prefix.split",
+        "project_source_groups",
+        "reviewed_education_groups",
+        "reviewed_employment_groups",
+        "text.split"
+      ]
+    },
+    {
+      "function": "attach_aligned_dates",
+      "line": 494,
+      "calls": [
+        "g['entry_id'].rsplit"
+      ]
+    },
+    {
+      "function": "reviewed_employment_groups",
+      "line": 541,
+      "calls": [
+        "groups[owner]['block_indices'].append",
+        "other.text.split",
+        "part.text.split",
+        "prev_text.split",
+        "text.split"
+      ]
+    },
+    {
+      "function": "reviewed_education_groups",
+      "line": 670,
+      "calls": [
+        "b.text.split",
+        "groups[owner]['block_indices'].append"
+      ]
+    },
+    {
+      "function": "employment_start",
+      "line": 738,
+      "calls": [
+        "lookup.split",
+        "prefix.split"
+      ]
+    },
+    {
+      "function": "project_source_groups",
+      "line": 761,
+      "calls": [
+        "b.text.split",
+        "blocks[i].text.split",
+        "group['block_indices'].sort",
+        "groups[eligible[-1][2]]['block_indices'].append",
+        "groups[owner]['block_indices'].append"
+      ]
+    },
+    {
+      "function": "row",
+      "line": 500,
+      "calls": []
+    },
+    {
+      "function": "date_only",
+      "line": 514,
+      "calls": []
+    },
+    {
+      "function": "hints",
+      "line": 550,
+      "calls": []
+    },
+    {
+      "function": "y",
+      "line": 553,
+      "calls": []
+    },
+    {
+      "function": "block_bold",
+      "line": 290,
+      "calls": []
+    },
+    {
+      "function": "norm_text",
+      "line": 253,
+      "calls": []
+    }
+  ],
+  "local_api/services/project_hierarchy.py": [
+    {
+      "function": "log_project_boundary",
+      "line": 44,
+      "calls": []
+    },
+    {
+      "function": "log_project_boundary_decision",
+      "line": 65,
+      "calls": []
+    },
+    {
+      "function": "is_date_line",
+      "line": 86,
+      "calls": []
+    },
+    {
+      "function": "is_project_metadata_line",
+      "line": 93,
+      "calls": [
+        "s.split"
+      ]
+    },
+    {
+      "function": "is_title_phrase",
+      "line": 109,
+      "calls": [
+        "re.split"
+      ]
+    },
+    {
+      "function": "is_project_description_step",
+      "line": 123,
+      "calls": [
+        "core.split"
+      ]
+    },
+    {
+      "function": "extract_project_header_info",
+      "line": 183,
+      "calls": [
+        "(m_kw.group(3) or '').strip",
+        "m_kw.group",
+        "m_num.group",
+        "m_num.group(2).strip",
+        "re.split",
+        "re.split('\\\\s+(?:Clients?|Tools|Technologies|Technology|Description|Duration)\\\\s*:', rest, flags=re.I)[0].strip"
+      ]
+    },
+    {
+      "function": "detect_project_records",
+      "line": 215,
+      "calls": [
+        "cand_title.split",
+        "text.split"
+      ]
+    },
+    {
+      "function": "extract_project_numbered_anchors",
+      "line": 490,
+      "calls": []
+    },
+    {
+      "function": "resolve_ambiguous_project_span",
+      "line": 498,
+      "calls": []
+    },
+    {
+      "function": "recover_project_groups",
+      "line": 534,
+      "calls": []
+    }
+  ],
+  "local_api/services/project_section_recovery.py": [
+    {
+      "function": "recover_project_sections",
+      "line": 4,
+      "calls": [
+        "build_sections",
+        "grouped.items",
+        "grouped.setdefault",
+        "grouped.setdefault('projects', []).extend",
+        "normalized_heading(block.text).split"
+      ]
+    },
+    {
+      "function": "repair_review_programs",
+      "line": 41,
+      "calls": [
+        "recovered.append",
+        "repairs.append"
+      ]
+    }
+  ],
+  "local_api/services/record_relationships.py": [
+    {
+      "function": "degree_families",
+      "line": 17,
+      "calls": []
+    },
+    {
+      "function": "dated_organization_header",
+      "line": 25,
+      "calls": [
+        "match.groups",
+        "name.split"
+      ]
+    },
+    {
+      "function": "field_kinds",
+      "line": 39,
+      "calls": [
+        "m.group",
+        "m.group().casefold",
+        "text.split"
+      ]
+    },
+    {
+      "function": "annotate_relationships",
+      "line": 106,
+      "calls": [
+        "assigned.add",
+        "assigned.update",
+        "clean_cand.split",
+        "first_text.split",
+        "re.split",
+        "re.split('\\\\s+[\u2014\u2013-]\\\\s+', cand_text)[0].strip",
+        "text.split"
+      ]
+    }
+  ],
+  "local_api/services/source_ownership.py": [
+    {
+      "function": "validate_record_tree",
+      "line": 79,
+      "calls": []
+    },
+    {
+      "function": "snapshot",
+      "line": 96,
+      "calls": [
+        "groups.add",
+        "marker.group"
+      ]
+    },
+    {
+      "function": "role_boundary_operations",
+      "line": 193,
+      "calls": [
+        "text.split"
+      ]
+    },
+    {
+      "function": "apply_operations",
+      "line": 244,
+      "calls": [
+        "groups.add"
+      ]
+    },
+    {
+      "function": "materialize",
+      "line": 403,
+      "calls": [
+        "build_sections",
+        "grouped.setdefault",
+        "grouped.setdefault(owner.section, []).append",
+        "recover_employer_context"
+      ]
+    },
+    {
+      "function": "validated_ownership_state",
+      "line": 491,
+      "calls": []
+    },
+    {
+      "function": "ambiguity_package",
+      "line": 514,
+      "calls": []
+    },
+    {
+      "function": "finalize_ownership",
+      "line": 571,
+      "calls": [
+        "apply_operations",
+        "materialize",
+        "recover_employer_context",
+        "recover_project_groups"
+      ]
+    },
+    {
+      "function": "payload",
+      "line": 53,
+      "calls": []
+    },
+    {
+      "function": "is_role_anchor",
+      "line": 210,
+      "calls": [
+        "text.split"
+      ]
+    },
+    {
+      "function": "records",
+      "line": 258,
+      "calls": []
+    },
+    {
+      "function": "ids",
+      "line": 260,
+      "calls": []
+    }
+  ],
+  "local_api/services/section_recovery.py": [
+    {
+      "function": "recover_sections",
+      "line": 5,
+      "calls": [
+        "alias.split",
+        "match.group",
+        "match.group().isupper",
+        "recover_education_dates",
+        "recover_fragment_continuations",
+        "recover_local_content",
+        "recover_summary_preamble"
+      ]
+    }
+  ],
+  "local_api/services/llm_section_review.py": [
+    {
+      "function": "failure_message",
+      "line": 95,
+      "calls": []
+    },
+    {
+      "function": "http_error_code",
+      "line": 99,
+      "calls": []
+    },
+    {
+      "function": "review_status",
+      "line": 109,
+      "calls": []
+    },
+    {
+      "function": "provider_json",
+      "line": 119,
+      "calls": []
+    },
+    {
+      "function": "call_deepseek",
+      "line": 154,
+      "calls": []
+    },
+    {
+      "function": "check_connection",
+      "line": 169,
+      "calls": []
+    },
+    {
+      "function": "source_ledger",
+      "line": 192,
+      "calls": []
+    },
+    {
+      "function": "make_messages",
+      "line": 199,
+      "calls": [
+        "allowed_split_offsets"
+      ]
+    },
+    {
+      "function": "assignment_feedback",
+      "line": 235,
+      "calls": []
+    },
+    {
+      "function": "parse_decisions",
+      "line": 251,
+      "calls": [
+        "inspect_assignments"
+      ]
+    },
+    {
+      "function": "assert_coverage",
+      "line": 261,
+      "calls": []
+    },
+    {
+      "function": "review_sections",
+      "line": 278,
+      "calls": [
+        "allowed_split_offsets",
+        "block.reason.rsplit",
+        "block.reason.rsplit('Local evidence:', 1)[-1].strip",
+        "build_sections",
+        "grouped.setdefault",
+        "grouped.setdefault(after, []).append",
+        "recover_competency_sections",
+        "recover_local_content",
+        "resolve_unassigned",
+        "separate_empty_source(recover_competency_sections(separate_empty_source(local_result, request.elements), request.elements), request.elements).model_copy"
+      ]
+    },
+    {
+      "function": "from_env",
+      "line": 38,
+      "calls": []
+    },
+    {
+      "function": "validate",
+      "line": 58,
+      "calls": [
+        "urlsplit"
+      ]
+    },
+    {
+      "function": "redirect_request",
+      "line": 105,
+      "calls": []
+    }
+  ],
+  "local_api/services/llm_schema_mapping.py": [
+    {
+      "function": "messages",
+      "line": 108,
+      "calls": []
+    },
+    {
+      "function": "expand_compact_review",
+      "line": 139,
+      "calls": []
+    },
+    {
+      "function": "parse_review",
+      "line": 179,
+      "calls": [
+        "m.group",
+        "num_match.group"
+      ]
+    },
+    {
+      "function": "repair_section_envelope",
+      "line": 331,
+      "calls": [
+        "repairs.append"
+      ]
+    },
+    {
+      "function": "recover_literal_contacts",
+      "line": 352,
+      "calls": [
+        "repairs.append"
+      ]
+    },
+    {
+      "function": "recover_target_role_lists",
+      "line": 397,
+      "calls": [
+        "repairs.append"
+      ]
+    },
+    {
+      "function": "recover_literal_lists",
+      "line": 421,
+      "calls": [
+        "repairs.append"
+      ]
+    },
+    {
+      "function": "recover_record_fields",
+      "line": 470,
+      "calls": [
+        "refine_education",
+        "refine_record",
+        "repairs.append"
+      ]
+    },
+    {
+      "function": "repair_singleton_records",
+      "line": 538,
+      "calls": [
+        "repairs.append"
+      ]
+    },
+    {
+      "function": "repair_overlapping_records",
+      "line": 569,
+      "calls": [
+        "repairs.append"
+      ]
+    },
+    {
+      "function": "repair_heading_owners",
+      "line": 603,
+      "calls": [
+        "diagnostic['path'].strip('/').split"
+      ]
+    },
+    {
+      "function": "repair_literal_citation",
+      "line": 629,
+      "calls": [
+        "num_match.group",
+        "repairs.append"
+      ]
+    },
+    {
+      "function": "commit_review",
+      "line": 786,
+      "calls": []
+    },
+    {
+      "function": "repair_terminal_json_closer",
+      "line": 883,
+      "calls": []
+    },
+    {
+      "function": "local_section_payload",
+      "line": 912,
+      "calls": []
+    },
+    {
+      "function": "map_with_field_review",
+      "line": 924,
+      "calls": [
+        "candidate_repairs.append",
+        "candidate_repairs.extend",
+        "evidence_repairs.extend",
+        "fallback.meta.get('unassigned_section_review', {}).get",
+        "recover_literal_contacts",
+        "recover_literal_lists",
+        "recover_record_fields",
+        "recover_target_role_lists",
+        "repair_competency_fields",
+        "repair_dated_employment_scope",
+        "repair_dated_records",
+        "repair_heading_owners",
+        "repair_literal_citation",
+        "repair_overlapping_records",
+        "repair_physical_card_fields",
+        "repair_review_certifications",
+        "repair_review_employment",
+        "repair_review_programs",
+        "repair_section_envelope",
+        "repair_singleton_records",
+        "repair_terminal_json_closer",
+        "source_repairs.extend"
+      ]
+    },
+    {
+      "function": "structure_only",
+      "line": 114,
+      "calls": []
+    }
+  ],
+  "local_api/services/schema_mapping.py": [
+    {
+      "function": "source_id",
+      "line": 25,
+      "calls": []
+    },
+    {
+      "function": "canonical",
+      "line": 29,
+      "calls": []
+    },
+    {
+      "function": "norm",
+      "line": 37,
+      "calls": [
+        "' '.join(text.split()).casefold",
+        "text.split"
+      ]
+    },
+    {
+      "function": "map_schema",
+      "line": 40,
+      "calls": [
+        "(m_name_title.group(2) or m_name_title.group(3)).strip",
+        "dur_match.group",
+        "dur_match.group(0).strip",
+        "field('employer').rsplit",
+        "field('employer').rsplit('(', 1)[0].strip",
+        "field('employer').split",
+        "field('title').split",
+        "item.split",
+        "loc_match.group",
+        "loc_match.group(1).strip",
+        "loc_match.group(2).strip",
+        "m_dated_prefix.rsplit",
+        "m_hdr.groups",
+        "m_name_title.group",
+        "m_name_title.group(1).strip",
+        "match.group",
+        "matches[0].group",
+        "name_part.split",
+        "p.split",
+        "re.split",
+        "re.split('\\\\s*(?:E-?mail(?:\\\\s*Id)?|Ph:|Phone|Mobile|Contact|Location|Address)\\\\b.*', ''.join((b.text for b in run)), flags=re.I)[0].strip",
+        "re.split('\\\\s+[\u2014\u2013-]\\\\s+', company_context[0].text)[0].strip",
+        "re.split('\\\\s+[\u2014\u2013-]\\\\s+', field('employer'))[0].strip",
+        "recover_contact_sections",
+        "recover_education_context",
+        "recover_education_dates",
+        "recover_local_content",
+        "recover_summary_preamble",
+        "refine_education",
+        "refine_record",
+        "refined.items",
+        "refined.update",
+        "text.split",
+        "title.split",
+        "value.rstrip('/').split",
+        "value.split"
+      ]
+    },
+    {
+      "function": "field_quotes",
+      "line": 80,
+      "calls": []
+    },
+    {
+      "function": "blocks",
+      "line": 89,
+      "calls": []
+    },
+    {
+      "function": "remember",
+      "line": 91,
+      "calls": []
+    },
+    {
+      "function": "supported",
+      "line": 95,
+      "calls": []
+    },
+    {
+      "function": "literal",
+      "line": 97,
+      "calls": []
+    },
+    {
+      "function": "refs",
+      "line": 236,
+      "calls": []
+    },
+    {
+      "function": "field",
+      "line": 241,
+      "calls": []
+    },
+    {
+      "function": "sole",
+      "line": 242,
+      "calls": []
+    }
+  ],
+  "local_api/services/local_completion.py": [
+    {
+      "function": "explicit_category",
+      "line": 22,
+      "calls": []
+    },
+    {
+      "function": "source_key",
+      "line": 28,
+      "calls": []
+    },
+    {
+      "function": "supported_new_entry",
+      "line": 31,
+      "calls": []
+    },
+    {
+      "function": "recover_local_content",
+      "line": 42,
+      "calls": [
+        "assigned.append",
+        "block.text.split",
+        "build_sections",
+        "entry_groups",
+        "grouped.setdefault",
+        "grouped.setdefault(category, []).append",
+        "grouped.values",
+        "readable_groups",
+        "recover_certification_cards",
+        "recover_combined_credentials",
+        "recover_competency_sections",
+        "recover_employment_scope",
+        "recover_header_urls",
+        "recover_physical_cards",
+        "recover_professional_headline",
+        "recover_project_sections",
+        "recover_split_employment_headers",
+        "recover_target_preferences",
+        "repair_employment_entries"
+      ]
+    },
+    {
+      "function": "compatible",
+      "line": 81,
+      "calls": []
+    }
+  ],
+  "local_api/services/resume_sections.py": [
+    {
+      "function": "build_sections",
+      "line": 34,
+      "calls": [
+        "entry_groups",
+        "grouped.items",
+        "readable_groups",
+        "refine_rows"
+      ]
+    },
+    {
+      "function": "layout_lanes",
+      "line": 426,
+      "calls": []
+    },
+    {
+      "function": "get_engine",
+      "line": 460,
+      "calls": []
+    },
+    {
+      "function": "detect_sections",
+      "line": 472,
+      "calls": []
+    },
+    {
+      "function": "__init__",
+      "line": 78,
+      "calls": []
+    },
+    {
+      "function": "score",
+      "line": 96,
+      "calls": []
+    },
+    {
+      "function": "__init__",
+      "line": 119,
+      "calls": []
+    },
+    {
+      "function": "encode_texts",
+      "line": 130,
+      "calls": []
+    },
+    {
+      "function": "units",
+      "line": 154,
+      "calls": [
+        "element.text.splitlines"
+      ]
+    },
+    {
+      "function": "detect",
+      "line": 210,
+      "calls": []
+    },
+    {
+      "function": "_detect",
+      "line": 214,
+      "calls": [
+        "build_sections",
+        "grouped.setdefault",
+        "grouped.setdefault(label, []).append",
+        "re.split",
+        "text.split",
+        "unit.text.split",
+        "units[i].text.split"
+      ]
+    },
+    {
+      "function": "spans_columns",
+      "line": 439,
+      "calls": []
+    }
+  ]
+}

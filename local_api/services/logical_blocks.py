@@ -12,9 +12,10 @@ def logical_blocks(section):
     from local_api.services.resume_sections import ALIASES
     # Old/reviewed inventories may retain a content assignment on an exact
     # heading. It establishes section context, never a record's field value.
+    group_content = {i for entry in section.entries if entry.record_kind == 'group' for i in entry.block_indices}
     content = [i for i, b in enumerate(section.blocks)
-               if b.assignment not in HEADINGS
-               and heading_boundary(b.text, ALIASES) != (section.category, None)]
+               if i in group_content or (b.assignment not in HEADINGS
+               and heading_boundary(b.text, ALIASES) != (section.category, None))]
     if not content:
         return []
 
@@ -26,7 +27,9 @@ def logical_blocks(section):
             if previous is not None and not (previous.source_element_index == b.source_element_index and previous.end == b.start):
                 parts.append('\n')
             parts.append(b.text); previous = b
-        return {'logical_id': identifier, 'kind': kind, 'text': ''.join(parts),
+        return {'logical_id': identifier, 'kind': kind, 'title': '',
+                'parent_record_id': None, 'children': [],
+                'text': ''.join(parts),
                 'block_indices': indices,
                 'source_ids': [f'e{section.blocks[i].source_element_index}:{section.blocks[i].start}:{section.blocks[i].end}' for i in indices],
                 'relationship_status': 'needs_review' if reasons else 'provisional',
@@ -48,7 +51,12 @@ def logical_blocks(section):
         reasons = list(entry.review_reasons)
         if entry.relationship_status == 'needs_review' and not reasons:
             reasons.append('Record association requires review.')
-        output.append(group(entry.entry_id, indices, 'record', reasons, entry)); used.update(indices)
+        item = group(entry.entry_id, indices, entry.record_kind, reasons, entry)
+        title_indices = entry.fields.get('title', []) or entry.fields.get('qualification', []) or entry.fields.get('employer', []) or entry.fields.get('name', [])
+        item['title'] = '\n'.join(section.blocks[i].text.strip() for i in title_indices if i in indices) or section.blocks[indices[0]].text.strip()
+        item['parent_record_id'] = entry.parent_entry_id
+        item['children'] = []
+        output.append(item); used.update(indices)
     # Do not guess which employer/degree should own a remaining paragraph.
     remaining = [i for i in content if i not in used]
     # Keep separated leftovers separated: a single catch-all card can falsely
@@ -62,7 +70,17 @@ def logical_blocks(section):
         if any(c.isalnum() for i in indices for c in section.blocks[i].text):
             output.append(group(f'{section.category}-unassigned-{number}', indices, 'unresolved',
                                 ['Section identified; association with a specific record has not been established.']))
-    return sorted(output, key=lambda g: g['block_indices'][0])
+    by_id = {item['logical_id']: item for item in output}
+    roots = []
+    from local_api.services.source_ownership import validate_record_tree
+    validate_record_tree(section.entries)
+    for item in sorted(output, key=lambda g: g['block_indices'][0]):
+        parent = item.get('parent_record_id')
+        if parent in by_id:
+            by_id[parent]['children'].append(item)
+        else:
+            roots.append(item)
+    return roots
 
 
 def semantic_frame(section, indices, kind, entry=None):

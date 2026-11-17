@@ -50,6 +50,14 @@ function renderReadableGroup(group, section) {
   for (const child of group.children) container.append(renderReadableGroup(child, section));
   return container;
 }
+function renderLogicalRecord(group, section) {
+  const logical = node('article', 'logical-record');
+  if (group.kind !== 'section') logical.append(node('h4', '', group.title || (group.kind === 'unresolved' ? `${section.label} · record association needs review` : section.label)));
+  logical.append(node('p', 'readable-text', group.text));
+  for (const reason of group.review_reasons || []) logical.append(node('p', 'comparison-note', reason));
+  for (const child of group.children || []) logical.append(renderLogicalRecord(child, section));
+  return logical;
+}
 function renderSectionResults(data, localOnly) {
   const fragment = document.createDocumentFragment();
   fragment.append(node('h3', '', localOnly ? 'Local model output · no DeepSeek' : data.metadata.llm_review?.status === 'complete' ? 'Output after DeepSeek review' : 'Local output · DeepSeek review incomplete'));
@@ -116,19 +124,7 @@ function renderSectionResults(data, localOnly) {
     }
     content.append(document.createTextNode(chars.slice(cursor).join('')));
     if (section.logical_blocks?.length) {
-      let recordNumber = 0;
-      for (const group of section.logical_blocks) {
-        if (group.kind === 'record') recordNumber++;
-        const logical = node('article', 'logical-record');
-        if (group.kind !== 'section') logical.append(node('h4', '', group.kind === 'unresolved' ? `${section.label} · record association needs review` : `${section.label} ${recordNumber}`));
-        if (group.semantic_frame) {
-          const scope = group.semantic_frame.scope === 'one_record' ? 'One complete record' : group.semantic_frame.scope === 'complete_section' ? 'Complete section' : 'Association needed';
-          logical.append(node('p', 'comparison-note', `${group.semantic_frame.meaning} · ${scope}`));
-        }
-        logical.append(node('p', 'readable-text', group.text));
-        for (const reason of group.review_reasons || []) logical.append(node('p', 'comparison-note', reason));
-        card.append(logical);
-      }
+      for (const group of section.logical_blocks) card.append(renderLogicalRecord(group, section));
     } else card.append(content);
     if (section.category === 'experience' && section.readable_blocks?.length) {
       const hierarchy = document.createElement('details'); hierarchy.className = 'section-evidence';

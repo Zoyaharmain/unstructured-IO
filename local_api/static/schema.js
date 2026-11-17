@@ -144,16 +144,25 @@ function renderSubschemas(sections) {
   for (const section of sections) {
     const card = add(root, 'section', '');
     add(card, 'h3', section.label);
+    const recordContainers = new Map();
+    for (const record of section.records) {
+      const group = document.createElement('details');
+      recordContainers.set(record.record_id, group);
+    }
+    let mappedIndex = -1;
     for (const [index, record] of section.records.entries()) {
-      const group = add(card, 'details', ''); group.open = true;
+      if (record.record_kind !== 'group') mappedIndex++;
+      const group = recordContainers.get(record.record_id);
+      (recordContainers.get(record.parent_record_id) || card).append(group); group.open = true;
       group.dataset.recordId = record.record_id;
-      add(group, 'summary', `${section.label} ${index + 1}`);
+      const titleField = ['name', 'title', 'role', 'degree', 'company'].map(name => record.attributes.find(field => field.name === name && field.items.length)).find(Boolean);
+      add(group, 'summary', titleField ? titleField.items.map(item => String(item.value)).join(' · ') : section.label);
       const fields = add(group, 'dl', '');
       for (const field of record.attributes) {
         add(fields, 'dt', field.name.replaceAll('_', ' '));
         const value = add(fields, 'dd', '');
         const standardized = section.category === 'experience' && field.name === 'duration'
-          ? mappedResume?.standardized_data?.experience?.[index] : null;
+          ? record.record_kind !== 'group' ? mappedResume?.standardized_data?.experience?.[mappedIndex] : null : null;
         if (standardized) {
           add(value, 'p', (standardized.duration ? `${standardized.duration_months} months · ${standardized.duration}` : null) || 'Cannot calculate duration safely from these dates.');
           if (standardized.duration) add(value, 'small', `${standardized.duration_is_approximate ? 'Approximate elapsed calendar months' : 'Calculated from exact dates'}${standardized.duration_as_of ? ' · as of '+standardized.duration_as_of : ''}`);

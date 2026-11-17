@@ -333,7 +333,9 @@ def entry_groups(blocks, category, elements):
                 if prev_ends_continuation and not is_bold_heading_start and not bold:
                     cross_page_continuation = True
 
-            is_continuation = prev_unclosed_paren or has_closing_paren or heading_wrap_into_colon or cross_page_continuation or (prev_ends_continuation and not is_bold_heading_start)
+            credential_noun_wrap = bool(previous and not bullet_seen and el_type(el) != 'ListItem' and not re.match(r'^\s*[•▪●*\uf0b7-]\s+', b.text) and re.match(r'^(?:program|course|certification|certificate|training|specialization|credential|degree|diploma|track|foundation|foundations|professional|associate|expert|mastery|module|bootcamp|awareness\s+program)\b', text, re.I))
+
+            is_continuation = prev_unclosed_paren or has_closing_paren or heading_wrap_into_colon or cross_page_continuation or (prev_ends_continuation and not is_bold_heading_start) or (starts_continuation and not is_bold_heading_start) or credential_noun_wrap
 
             card_has_colon_heading = bool(cards and any(blocks[j].text.strip().endswith(':') for j in cards[-1]['block_indices']))
             is_cap_title = bool(text and text[0].isupper() and len(text.split()) <= 8 and not text.endswith(','))

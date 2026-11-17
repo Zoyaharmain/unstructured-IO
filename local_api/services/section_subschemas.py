@@ -61,6 +61,16 @@ def build_subschemas(sections, data, scope, record_bindings=None):
         if scope.get('candidate_resume') is not False:
             if category in grouped:
                 for index, entry in enumerate(section.entries):
+                    if entry.record_kind == 'group':
+                        owned = [section.blocks[i] for i in entry.block_indices]
+                        titles = [section.blocks[i] for i in entry.fields.get('title', entry.block_indices[:1])]
+                        title_field = next((name for name in ('name', 'title', 'company', 'institution') if name in SUBSCHEMAS[category]), None)
+                        attrs = [attribute(name, '\n'.join(b.text for b in titles) if name == title_field else None, owned,
+                                           entry.relationship_status == 'needs_review') for name in SUBSCHEMAS[category]]
+                        records.append(SubschemaRecord(record_id=entry.entry_id, source_ids=[sid(b) for b in owned],
+                                       parent_record_id=entry.parent_entry_id, record_kind='group', attributes=attrs,
+                                       review_reasons=list(entry.review_reasons)))
+                        continue
                     mapped = getattr(data, category)
                     if record_bindings is not None:
                         index = record_bindings.get(category, {}).get(entry.entry_id)
@@ -87,7 +97,8 @@ def build_subschemas(sections, data, scope, record_bindings=None):
                     reasons.extend(refinement_reasons)
                     uncertain = uncertain or bool(reasons)
                     attrs = [attribute(name, value, [section.blocks[i] for i in sorted(set(entry.block_indices)|set(entry.context_fields.get(name,[])))], uncertain) for name, value in values.items()]
-                    records.append(SubschemaRecord(record_id=entry.entry_id, source_ids=[sid(b) for b in owned_blocks], attributes=attrs,
+                    records.append(SubschemaRecord(record_id=entry.entry_id, source_ids=[sid(b) for b in owned_blocks],
+                                   parent_record_id=entry.parent_entry_id, record_kind=entry.record_kind, attributes=attrs,
                                    review_reasons=reasons))
             elif category in {'personal_information', 'summary', 'skills'}:
                 values = data.contact.model_dump() if category == 'personal_information' else (
