@@ -27,12 +27,13 @@ for (const [file, name] of [['local_api/static/sections.js', 'renderLogicalRecor
                           ['local_api/static/schema.js', 'renderSubschemas']]) {
   vm.runInContext(functionSource(file, name), context);
 }
+const norm = s => (s || '').replace(/\s+/g, ' ').trim();
 for (const section of sections.sections) {
   for (const group of section.logical_blocks) {
     const dom = context.renderLogicalRecord(group, section);
-    assert(dom.text.includes(group.text));
+    assert(norm(dom.text).includes(norm(group.text)));
     for (const child of group.children || []) {
-      assert(dom.children.some(node => node.tag === 'article' && node.text.includes(child.text)), 'Child must render inside its parent');
+      assert(dom.children.some(node => node.tag === 'article' && norm(node.text).includes(norm(child.text))), 'Child must render inside its parent');
     }
   }
 }

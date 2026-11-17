@@ -30,6 +30,7 @@ def logical_blocks(section):
         return {'logical_id': identifier, 'kind': kind, 'title': '',
                 'parent_record_id': None, 'children': [],
                 'text': ''.join(parts),
+                'body_text': ''.join(parts),
                 'block_indices': indices,
                 'source_ids': [f'e{section.blocks[i].source_element_index}:{section.blocks[i].start}:{section.blocks[i].end}' for i in indices],
                 'relationship_status': 'needs_review' if reasons else 'provisional',
@@ -54,6 +55,15 @@ def logical_blocks(section):
         item = group(entry.entry_id, indices, entry.record_kind, reasons, entry)
         title_indices = entry.fields.get('title', []) or entry.fields.get('qualification', []) or entry.fields.get('employer', []) or entry.fields.get('name', [])
         item['title'] = '\n'.join(section.blocks[i].text.strip() for i in title_indices if i in indices) or section.blocks[indices[0]].text.strip()
+        title_set = set(title_indices if title_indices else [indices[0]])
+        body_indices = [i for i in indices if i not in title_set]
+        b_parts = []; b_prev = None
+        for i in body_indices:
+            b = section.blocks[i]
+            if b_prev is not None and not (b_prev.source_element_index == b.source_element_index and b_prev.end == b.start):
+                b_parts.append('\n')
+            b_parts.append(b.text); b_prev = b
+        item['body_text'] = ''.join(b_parts).strip()
         item['parent_record_id'] = entry.parent_entry_id
         item['children'] = []
         output.append(item); used.update(indices)

@@ -29,7 +29,7 @@ function renderSectionBlock(block) {
 function renderReadableGroup(group, section) {
   const container = node('div', 'readable-group ' + group.kind);
   const first = group.block_indices[0];
-  const sourceTitle = group.kind === 'role' && first != null && group.title && section.blocks[first].text.toLocaleLowerCase().includes(group.title.toLocaleLowerCase());
+  const sourceTitle = first != null && group.title && section.blocks[first].text.toLocaleLowerCase().includes(group.title.toLocaleLowerCase());
   if (group.title) container.append(node('h4', '', sourceTitle ? section.blocks[first].text.trim() : group.title));
   let paragraph = [], previous = null;
   const flush = () => { if (paragraph.length) container.append(node('p', 'readable-text', paragraph.join(' '))); paragraph = []; previous = null; };
@@ -52,8 +52,23 @@ function renderReadableGroup(group, section) {
 }
 function renderLogicalRecord(group, section) {
   const logical = node('article', 'logical-record');
-  if (group.kind !== 'section') logical.append(node('h4', '', group.title || (group.kind === 'unresolved' ? `${section.label} · record association needs review` : section.label)));
-  logical.append(node('p', 'readable-text', group.text));
+  const showHeading = group.kind !== 'section';
+  if (showHeading) {
+    logical.append(node('h4', '', group.title || (group.kind === 'unresolved' ? `${section.label} · record association needs review` : section.label)));
+  }
+  const displayText = group.body_text !== undefined ? group.body_text : (() => {
+    if (!group.title) return group.text;
+    const t = (group.text || '').trim();
+    const h = group.title.trim();
+    if (t.toLowerCase() === h.toLowerCase()) return '';
+    if (t.toLowerCase().startsWith(h.toLowerCase())) {
+      return t.slice(h.length).replace(/^[\s:\n–—-]+/, '');
+    }
+    return t;
+  })();
+  if (displayText && displayText.trim()) {
+    logical.append(node('p', 'readable-text', displayText.trim()));
+  }
   for (const reason of group.review_reasons || []) logical.append(node('p', 'comparison-note', reason));
   for (const child of group.children || []) logical.append(renderLogicalRecord(child, section));
   return logical;

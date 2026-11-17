@@ -217,6 +217,38 @@ def extract_project_header_info(text):
     return False, None, ""
 
 
+def has_subordinate_projects(blocks, elements, start, stop):
+    """Check if there are subordinate project headers between start and stop."""
+    for i in range(start + 1, stop):
+        b = blocks[i]
+        el = elements[b.source_element_index] if b.source_element_index < len(elements) else None
+        text = b.text.strip()
+        if not text:
+            continue
+        if normalized_heading(text) in {'projects', 'project', 'academic projects', 'academic project'}:
+            continue
+        is_exp, num, cand = extract_project_header_info(text)
+        is_desc = is_project_description_step(text, el)
+        is_meta = is_project_metadata_line(text) or is_date_line(text)
+        if is_exp and not is_desc:
+            return True
+        if num is not None and not is_meta and not is_desc:
+            words = cand.split()
+            is_title_cased = (1 <= len(words) <= 8 and not cand.endswith(('.', ';', '!', '?'))
+                              and all(w[:1].isupper() or w.lower() in {'and', 'or', 'for', 'the', 'of', 'in', '&', 'to', 'with', 'a', 'an'} for w in words))
+            if is_title_phrase(cand) or is_title_cased:
+                return True
+        if num is None and not is_meta and not is_desc:
+            words = text.split()
+            hints = el_meta(el).get('pdf_source_lines', []) if el else []
+            is_bold = any(h.get('bold') for h in hints)
+            is_title_element = el is not None and el_type(el) in {'Title', 'Header'}
+            if (is_bold or is_title_element) and 1 <= len(words) <= 12 and not text.rstrip().endswith(('.', ';', '!', '?')):
+                if is_title_phrase(text) or (el is not None and el_type(el) in {'Title', 'Header'}):
+                    return True
+    return False
+
+
 def detect_project_records(blocks, elements):
     """Detect hierarchical project records, distinguishing top-level projects from numbered steps."""
     if not blocks:
@@ -324,22 +356,58 @@ def detect_project_records(blocks, elements):
                     boundary_reason=f"explicit project keyword in structural heading (num={num})",
                     resulting_parent_project_id=entry_id
                 )
+            else:
+                active_record = None
+                in_child_list = False
+                parent_has_explicit_keyword = False
             continue
 
         # Context line: "Projects Worked in Param Info..." or "Worked in Param Info..."
         if PORTFOLIO_CONTEXT_PAT.match(text):
+            # Terminate any preceding active project record so its description never bleeds past this context boundary
+            active_record = None
             in_child_list = False
             parent_has_explicit_keyword = False
-            log_project_boundary(
-                source_block_id=sid,
-                candidate_text=text,
-                active_project_id=active_proj_id_before,
-                classification='PORTFOLIO_CONTEXT_HEADER',
-                boundary_accepted=False,
-                boundary_reason='portfolio/employer context overview header',
-                resulting_parent_project_id=active_proj_id_before
-            )
-            continue
+
+            # Check if this context line has subordinate child projects following it
+            next_context_indices = [
+                j for j in range(idx + 1, len(blocks))
+                if PORTFOLIO_CONTEXT_PAT.match(blocks[j].text.strip())
+            ]
+            stop_idx = next_context_indices[0] if next_context_indices else len(blocks)
+            has_subordinates = has_subordinate_projects(blocks, elements, idx, stop_idx)
+
+            if has_subordinates:
+                log_project_boundary(
+                    source_block_id=sid,
+                    candidate_text=text,
+                    active_project_id=active_proj_id_before,
+                    classification='PORTFOLIO_CONTEXT_HEADER',
+                    boundary_accepted=False,
+                    boundary_reason='portfolio/employer context overview header',
+                    resulting_parent_project_id=None
+                )
+                continue
+            else:
+                # Standalone project header with direct duties/description (e.g. "Project In Percoyo March -2021 - March 2022")
+                entry_id = f'projects-{len(records) + 1}'
+                active_record = {
+                    'entry_id': entry_id,
+                    'block_indices': [idx],
+                    'lane': b.lane,
+                    'boundary_reason': 'standalone portfolio project header with direct description'
+                }
+                records.append(active_record)
+                log_project_boundary(
+                    source_block_id=sid,
+                    candidate_text=text,
+                    active_project_id=active_proj_id_before,
+                    classification='TOP_LEVEL_PROJECT_HEADING',
+                    boundary_accepted=True,
+                    boundary_reason='standalone portfolio project header with direct description',
+                    resulting_parent_project_id=entry_id
+                )
+                continue
 
         is_explicit, num, cand_title = extract_project_header_info(text)
         is_desc = is_project_description_step(text, el)

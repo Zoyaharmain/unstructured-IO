@@ -294,8 +294,8 @@ def test_scenario_k_abdul_shukoor_fixture_end_to_end():
     res = detect_sections(req)
     proj_sec = next(s for s in res.sections if s.category == 'projects')
 
-    # Hierarchical detection must detect all 23 projects in Abdul Shukoor
-    assert len(proj_sec.entries) == 23, f"Expected 23 project entries in Abdul Shukoor, got {len(proj_sec.entries)}"
+    # Hierarchical detection must detect all 24 projects in Abdul Shukoor (including SQL Server and Project In Percoyo)
+    assert len(proj_sec.entries) == 24, f"Expected 24 project entries in Abdul Shukoor, got {len(proj_sec.entries)}"
 
     # Top 10 Param Info projects must have sequential titles and descriptions attached
     first_10 = proj_sec.entries[:10]
@@ -314,6 +314,20 @@ def test_scenario_k_abdul_shukoor_fixture_end_to_end():
     for i, exp in enumerate(expected_top_10):
         t, d = project_fields([proj_sec.blocks[idx] for idx in first_10[i].block_indices], elements)
         assert exp.lower() in t.lower(), f"Project {i+1} mismatch: {t!r} vs {exp!r}"
+
+    # Verify SQL Server has its own description and does NOT leak into Percoyo
+    sql_entry = proj_sec.entries[22]
+    sql_t, sql_d = project_fields([proj_sec.blocks[idx] for idx in sql_entry.block_indices], elements)
+    assert "sql server" in sql_t.lower()
+    assert sql_d and "In our Power Apps application" in sql_d
+    assert "percoyo" not in sql_d.lower()
+
+    # Verify Project In Percoyo is preserved as its own project
+    percoyo_entry = proj_sec.entries[23]
+    per_t, per_d = project_fields([proj_sec.blocks[idx] for idx in percoyo_entry.block_indices], elements)
+    assert "percoyo" in per_t.lower()
+    assert per_d and "Maintaining Servers" in per_d
+    assert "power apps application" not in per_d.lower()
 
 
 def test_scenario_l_full_api_pipeline_numbered_steps():
