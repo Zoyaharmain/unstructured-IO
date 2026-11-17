@@ -26,12 +26,19 @@ def recover_physical_cards(result,elements):
             if name.assignment!='candidate_name' or title.assignment!='professional_headline':events.append('physical_identity_rows');affected.add('personal_information')
     # Explicit headings can recover from an inherited category, including a
     # tightly bounded heading transposition. Never change literal source text.
-    pending=[];owner=None
+    pending=[];owner=None;owner_lane=None;owner_page=None
     for category,block in sorted([(c,b) for c,bs in grouped.items() for b in bs],key=lambda cb:(cb[1].source_element_index,cb[1].start)):
         heading,cut=heading_boundary(block.text,ALIASES)
         work=result.metadata.get('dated_employment_scope',{})
         if block.assignment=='local_record_continuation' or category=='experience' and work.get('source_start',-1)<block.source_element_index<work.get('source_end',-1):heading=None
-        if heading and cut is None and (heading!='awards' or elements[block.source_element_index].type in {'Title','Header'}):owner=heading
+        if heading and cut is None and (heading!='awards' or elements[block.source_element_index].type in {'Title','Header'}):
+            owner=heading;owner_lane=block.lane;owner_page=block.page_number
+        if owner and owner_lane in {'left', 'right'}:
+            if block.page_number != owner_page or block.lane == 'wide':
+                owner = None
+                continue
+            if block.lane != owner_lane:
+                continue
         if owner=='awards' and category!='awards':pending.append((category,block))
     for category,block in pending:
         grouped[category].remove(block);grouped.setdefault('awards',[]).append(block);affected.update({category,'awards'});events.append('explicit_award_section')

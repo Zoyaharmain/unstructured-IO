@@ -152,6 +152,7 @@ async function detectSections() {
   document.dispatchEvent(new Event('sections-reset'));
   const generation = ++sectionGeneration; const controller = new AbortController(); sectionAbort = controller; sectionsBusy = true; updateSectionButton();
   const localOnly = $('section-mode').value === 'local';
+  $('stage-review').querySelector('strong').textContent = localOnly ? '2. Section grouping' : '2. DeepSeek review';
   workflowStage('review', 'working', localOnly ? 'Running local section detection…' : 'Detecting sections, then reviewing with DeepSeek…');
   workflowStage('schema', 'pending', 'Waiting for section review');
   $('workflow-verdict').textContent = 'Review in progress. Results will appear automatically.';
@@ -164,8 +165,8 @@ async function detectSections() {
     sectionResult.extraction_verified = $('verify-extraction').checked;
     renderSectionResults(data, localOnly);
     const review = data.metadata.llm_review;
-    workflowStage('review', review?.status === 'complete' ? 'complete' : localOnly ? 'local' : 'failed',
-      review?.status === 'complete' ? `DeepSeek review finished · ${review.remaining_meaningful_review_units || 0} unresolved spans · ${review.changed_units || 0} placement changes` : localOnly ? 'Local-only mode selected' : review?.message || 'DeepSeek did not complete; local results retained');
+    workflowStage('review', localOnly ? 'complete' : review?.status === 'complete' ? 'complete' : 'failed',
+      localOnly ? 'Local section detection complete' : review?.status === 'complete' ? `DeepSeek review finished · ${review.remaining_meaningful_review_units || 0} unresolved spans · ${review.changed_units || 0} placement changes` : review?.message || 'DeepSeek did not complete; local results retained');
     $('download-sections').disabled = false; document.dispatchEvent(new Event('sections-ready'));
     sectionStatus(localOnly ? 'Local blocks are ready. Inspect the numbered boundaries and section labels below; no DeepSeek was called.' : review?.status === 'complete' ? 'LLM-reviewed sections are ready. Check any remaining Needs review items.' : 'Local sections are ready. DeepSeek review has not completed; inspect Needs review before use.');
   } catch (error) { if (generation === sectionGeneration) { sectionStatus(error.message, true); workflowStage('review', 'failed', error.message); $('workflow-verdict').textContent = 'Section processing failed. Retry after checking the error.'; } }

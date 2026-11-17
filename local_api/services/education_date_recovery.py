@@ -4,7 +4,7 @@ from local_api.services.education_subfields import DEGREE
 
 
 def recover_education_dates(result, elements):
-    from local_api.services.record_relationships import annotate_relationships
+    from local_api.services.record_relationships import annotate_relationships, field_kinds
     education = next((s for s in result.sections if s.category == 'education'), None)
     if education is None:
         return result
@@ -14,6 +14,15 @@ def recover_education_dates(result, elements):
                 if len(r.get('bbox', [])) == 4 and min(b.end,r.get('end',0)) > max(b.start,r.get('start',0))]
 
     degrees = [(i,b,r) for i,b in enumerate(education.blocks) if DEGREE.search(b.text) for r in rows(b)]
+    if not degrees:
+        degrees = [(i,b,r) for i,b in enumerate(education.blocks)
+                   if b.assignment not in {'section_heading', 'structural_heading'}
+                   and ('institution' in field_kinds(b.text, 'education') or 'qualification' in field_kinds(b.text, 'education'))
+                   for r in rows(b)]
+    if not degrees:
+        degrees = [(i,b,r) for i,b in enumerate(education.blocks)
+                   if b.assignment not in {'section_heading', 'structural_heading'}
+                   for r in rows(b)]
     moves = []
     sources = [(s,b) for s in result.sections if s.category == 'experience' for b in s.blocks]
     sources += [(None,b) for b in result.needs_review]
@@ -23,16 +32,28 @@ def recover_education_dates(result, elements):
             continue
         aligned = {i for i,degree,degree_row in degrees if degree.page_number == block.page_number
                    for date_row in rows(block)
-                   if abs(date_row['bbox'][1]-degree_row['bbox'][1]) < .004
-                   and date_row['bbox'][0] >= degree_row['bbox'][2]}
+                   if abs(date_row['bbox'][1]-degree_row['bbox'][1]) < .008
+                   and (date_row['bbox'][0] >= degree_row['bbox'][2] - .02 or date_row['bbox'][2] <= degree_row['bbox'][0] + .02)}
         if len(aligned) == 1:
             moves.append((source,block,next(iter(aligned))))
     if not moves:
         return result
+
+    moved_blocks = []
+    seen_keys = set()
+    for source, block, degree_index in moves:
+        element_idx = block.source_element_index
+        element_blocks = [b for s, b in sources if s is source and b.source_element_index == element_idx] or [block]
+        for eb in element_blocks:
+            k = (eb.source_element_index, eb.start, eb.end)
+            if k not in seen_keys:
+                seen_keys.add(k)
+                moved_blocks.append((source, eb, degree_index))
+
     output = result.model_copy(deep=True)
     target = next(s for s in output.sections if s.category == 'education')
     def key(b):return (b.source_element_index,b.start,b.end)
-    moved = {key(b) for _,b,_ in moves}
+    moved = {key(b) for _,b,_ in moved_blocks}
     for section in output.sections:
         if section.category != 'experience':continue
         kept = [(i,b) for i,b in enumerate(section.blocks) if key(b) not in moved]
@@ -45,13 +66,16 @@ def recover_education_dates(result, elements):
         section.highlights=[];section.readable_blocks=[]
         annotate_relationships(section)
     output.needs_review = [b for b in output.needs_review if key(b) not in moved]
-    for _,block,degree_index in moves:
+    for _,block,degree_index in moved_blocks:
         index = len(target.blocks)
         target.blocks.append(block.model_copy(update={'assignment':'education_date_recovered','reason':'Date physically aligned with a unique degree row in original PDF coordinates.'}))
         owners = [e for e in target.entries if degree_index in e.block_indices]
         if len(owners) == 1:
             owners[0].block_indices.append(index)
-            owners[0].fields.setdefault('dates', []).append(index)
+            if RANGE.match(block.text.strip()):
+                owners[0].fields.setdefault('dates', []).append(index)
+            else:
+                owners[0].fields.setdefault('location', []).append(index)
     target.highlights=[];target.readable_blocks=[]
     annotate_relationships(target)
     from local_api.services.schema_mapping import canonical

@@ -37,10 +37,12 @@ def dated_organization_header(text):
 
 
 def field_kinds(text,category):
+    if re.search(r'\b(?:system\s+(?:prompt|instruction|override)|ignore\s+all\s+(?:previous|prior)\s+instructions|human\s+review\s*:|output\s+role\s*:)\b', text, re.I):
+        return []
     kinds=[]
     if re.search(r'(?:19|20)\d{2}|\b(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:t(?:ember)?)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s*[‘’\']?\d{2,4}',text,re.I):kinds.append('dates')
     if category=='education':
-        institution_marker = bool(re.search(r'\b(?:university|college|institute|institution|school|convent|academy|vidyalaya|vidyapeeth|polytechnic|board|iit|iiit|nit|cbse|icse)\b',text,re.I))
+        institution_marker = bool(re.search(r'\b(?:university|college|institute|institution|school|convent|academy|vishwavidyalaya|vishwavidyalay|vidyalaya|vidyapeeth|polytechnic|board|iit|iiit|nit|cbse|icse)\b',text,re.I))
         explicit_credential = bool(re.search(r'\b(?:diploma|certificate|class\s+(?:x|xii)|sslc|ssc|10th|12th|matric(?:ulation)?)\b',text,re.I))
         # A named school is institution evidence, not automatically a degree.
         # Keep an explicit credential such as "High School Diploma" eligible.
@@ -87,13 +89,14 @@ def field_kinds(text,category):
             kinds.append('title')
         if dated_organization_header(text) or (
             not responsibility_fragment(text)
+            and not re.search(r'\b(?:fellowship|scholarship|research\s+grant|grant\s+funding)\b', text, re.I)
             and (':' not in text or re.match(r'^\s*(?:company|employer|organization)\s*[:=-]', text, re.I))
             and not text[:1].islower()
             and not re.match(r'^\s*(?:tools|technolog(?:y|ies)|environment|skills|tech stack)\b', text, re.I)
             and not re.match(r'^(?:with|for|across|through|by|from|to|and)\s+', text, re.I)
             and not (len(text.split()) > 6 and text.rstrip().endswith('-'))
             and not (text.rstrip().endswith('.') and not re.search(r'\b(?:ltd|inc|corp|co|pvt)\.$', text.rstrip(), re.I))
-            and (re.search(r'\b(?:ltd|limited|inc|llc|corp|corporation|systems|services|bank|technolog(?:y|ies|ie)|solutions|ispl|paribas|bnp|pvt|private)\b',text,re.I) or re.search(r'\b(?:company|employer)\s*[:=-]',text,re.I))
+            and (re.search(r'\b(?:ltd|limited|inc|llc|corp|corporation|systems|services|bank|technolog(?:y|ies|ie)|solutions|ispl|paribas|bnp|pvt|private|labs?|clinic|hospital|center|centre|group|agency|partners|studio|holdings)\b',text,re.I) or re.search(r'\b(?:company|employer)\s*[:=-]',text,re.I))
         ):kinds.append('employer')
         if re.match(r'^\s*[•▪●\-]?\s*(?:led|built|developed|managed|implemented|responsib|worked on|configured|designed|achieved|supported|created|performed|conducted|architect(?:ed|ing)?|optimi[sz](?:ed|ing|e)?|resolv(?:ed|ing|e)?|automat(?:ed|ing|e)?|integrat(?:ed|ing|e)?|analy[sz](?:ed|ing|e)?|proactively|successfully|eliminat(?:ed|ing|e)?|identif(?:ied|y)?)',text,re.I):kinds.append('responsibilities')
     if re.match(r'^\s*(?:location|work base)\s*:',text,re.I):kinds.append('location')
@@ -136,7 +139,7 @@ def annotate_relationships(section):
             from local_api.services.record_subfields import paired_employment_header
             if (paired_employment_header(first_text,second.text) or (first.source_element_index == second.source_element_index and first.end == second.start
                     and 0 < len(first_text.split()) <= 10 and not re.search(r'\d|[@:;]', first_text)
-                    and not field_kinds(first_text, 'experience') and 'title' in field_kinds(second.text, 'experience'))):
+                    and not (set(field_kinds(first_text, 'experience')) - {'employer'}) and 'title' in field_kinds(second.text, 'experience'))):
                 fields['employer'] = [entry.block_indices[0]]
         if section.category == 'experience' and not fields.get('employer'):
             from local_api.services.record_subfields import RANGE, is_place, ROLE, ACTION, responsibility_fragment

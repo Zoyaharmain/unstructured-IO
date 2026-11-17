@@ -1,6 +1,6 @@
 """Separate project identity and field labels from literal contiguous descriptions."""
 import re
-from local_api.services.record_subfields import labelled_fields, responsibility_fragment, RANGE, ALIASES
+from local_api.services.record_subfields import labelled_fields, responsibility_fragment, RANGE, ALIASES, ACTION
 
 
 def project_fields(blocks, elements, proposed_title=None):
@@ -11,9 +11,32 @@ def project_fields(blocks, elements, proposed_title=None):
         if offset >= 0: parts.append((value, block.source_element_index, block.start + offset, block.start + offset + len(value), explicit))
     for b in content:
         text = b.text.strip()
-        numbered=re.match(r'^\s*(?:academic\s+)?project\s*#?\s*\d+\s*:\s*(\S.*)',text,re.I)
-        if title is None and numbered:
-            title=numbered[1].strip();continue
+        project_header = re.match(
+            r'^\s*(?:[•▪●*✓✔\-\uf0b7]\s*)?(?:'
+            r'#?\s*\.?\s*\d+[\s:.)-]+(?:project(?:\s+name|\s+title)?|academic\s+project)?\s*[:.)-]?\s*|'
+            r'#(?:project(?:\s+name|\s+title)?)\s*[:.)-]\s*|'
+            r'(?:academic\s+)?project\s*#?\s*\d*\s*[:.)-]\s*|'
+            r'project\s+(?:name|title)\s*[:.)-]\s*'
+            r')(\S.*)',
+            text, re.I
+        )
+        if title is None and project_header:
+            cand_title = re.split(r'\s+(?:Clients?|Tools|Technologies|Technology|Description)\s*:', project_header[1], flags=re.I)[0].strip()
+            has_explicit_word = bool(re.search(r'^\s*(?:[•▪●*✓✔\-\uf0b7]\s*)?#?\s*\.?\s*\d*[\s:.)-]*(?:project(?:\s+name|\s+title)?|academic\s+project)\b', text, re.I))
+            words = cand_title.split()
+            is_title_cased = (1 <= len(words) <= 6 and not cand_title.endswith(('.', ';', '!', '?'))
+                              and all(w[:1].isupper() or w.lower() in {'and', 'or', 'for', 'the', 'of', 'in', '&', 'to', 'with'} for w in words))
+            if not has_explicit_word and len(content) > 1 and not is_title_cased and ACTION.search(cand_title) and b is not content[0]:
+                append(b, b.text)
+                continue
+            if len(content) == 1 and '.' in cand_title:
+                sp = re.split(r'(?<=\.)\s+(?=[A-Z])', cand_title, maxsplit=1)
+                title = sp[0].rstrip('. ')
+                if len(sp) > 1 and sp[1].strip():
+                    append(b, sp[1].strip())
+            else:
+                title = cand_title.rstrip('. ')
+            continue
         if re.fullmatch(r'(?:academic\s+)?project\s*#?\s*\d+\s*[:.)-]?',text,re.I):continue
         if text.strip()==':':continue
         if title is None and text.startswith(':') and len(text[1:].split())<=18:
@@ -64,6 +87,15 @@ def project_fields(blocks, elements, proposed_title=None):
         if not join: groups.append([]); separator = ''
         groups[-1].append((part, separator))
     if not groups: return title or '', None
-    chosen = max(groups, key=lambda group: (any(p[0][4] for p in group), sum(len(p[0][0]) for p in group)))
-    description = ''.join(separator + part[0] for part, separator in chosen).strip()
+    valid_groups = [
+        g for g in groups
+        if any(p[0][0].strip() and not re.match(r'^(?:client|technolog(?:y|ies)|tools|environment|role|duration|domain)\s*:', p[0][0], re.I) for p in g)
+    ]
+    if len(valid_groups) > 1:
+        description = '\n'.join(''.join(sep + part[0] for part, sep in g).strip() for g in valid_groups if g).strip()
+    elif valid_groups:
+        description = ''.join(separator + part[0] for part, separator in valid_groups[0]).strip()
+    else:
+        chosen = max(groups, key=lambda group: (any(p[0][4] for p in group), sum(len(p[0][0]) for p in group)))
+        description = ''.join(separator + part[0] for part, separator in chosen).strip()
     return title or '', description or None

@@ -1,0 +1,116 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "IndependentResumeGroundTruth",
+  "description": "Standard schema for independent, human-verified ground-truth annotations across unstructured resumes.",
+  "type": "object",
+  "required": [
+    "document_id",
+    "filename",
+    "source_sha256",
+    "metadata",
+    "sections",
+    "contact",
+    "experience",
+    "education"
+  ],
+  "properties": {
+    "document_id": {
+      "type": "string",
+      "description": "Unique identifier for the document"
+    },
+    "filename": {
+      "type": "string",
+      "description": "Original filename of the evaluated resume"
+    },
+    "source_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-fA-F]{64}$",
+      "description": "Cryptographic SHA-256 digest of the source document bytes"
+    },
+    "metadata": {
+      "type": "object",
+      "required": ["pages", "file_type", "layout_type", "domain_category"],
+      "properties": {
+        "pages": { "type": "integer", "minimum": 1 },
+        "file_type": { "type": "string", "enum": ["pdf", "docx"] },
+        "layout_type": { "type": "string", "enum": ["single_column", "two_column_sidebar", "multi_column", "tabular", "academic_cv"] },
+        "domain_category": { "type": "string", "enum": ["engineering", "operations_and_cloud", "leadership_and_management", "finance_and_analytics", "healthcare_and_medical", "legal_and_consulting", "academic_and_research", "general_nontechnical"] },
+        "has_tables": { "type": "boolean" },
+        "is_scanned": { "type": "boolean" }
+      }
+    },
+    "sections": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "List of canonical section categories present in the document"
+    },
+    "contact": {
+      "type": "object",
+      "required": ["full_name"],
+      "properties": {
+        "full_name": { "type": ["string", "null"] },
+        "email": { "type": ["string", "null"] },
+        "phone": { "type": ["string", "null"] },
+        "location": { "type": ["string", "null"] }
+      }
+    },
+    "experience": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["company", "role"],
+        "properties": {
+          "company": { "type": "string" },
+          "role": { "type": "string" },
+          "start_date": { "type": ["string", "null"] },
+          "end_date": { "type": ["string", "null"] },
+          "is_current": { "type": "boolean" },
+          "location": { "type": ["string", "null"] },
+          "responsibilities": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "source_spans": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        }
+      }
+    },
+    "education": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["institution"],
+        "properties": {
+          "institution": { "type": "string" },
+          "degree": { "type": ["string", "null"] },
+          "field_of_study": { "type": ["string", "null"] },
+          "start_date": { "type": ["string", "null"] },
+          "end_date": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "skills": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "certifications": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "projects": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "review_status": {
+      "type": "object",
+      "properties": {
+        "human_verified": { "type": "boolean" },
+        "reviewer_id": { "type": ["string", "null"] },
+        "saw_parser_predictions": { "type": "boolean" },
+        "independence_attested": { "type": "boolean" }
+      }
+    }
+  }
+}

@@ -6,6 +6,9 @@ import os
 import shutil
 from zipfile import BadZipFile
 
+import re
+from copy import deepcopy
+
 from unstructured.file_utils.filetype import detect_filetype
 from unstructured.file_utils.model import FileType
 from unstructured.partition.auto import partition
@@ -18,6 +21,64 @@ from local_api.utils.file_validation import ExtractionError, safe_filename
 logger = logging.getLogger(__name__)
 ALLOWED_TYPES = {getattr(FileType, name) for name in
                  ('PDF', 'DOC', 'DOCX', 'TXT', 'MD', 'HTML', 'CSV', 'XLSX', 'PPTX', 'PNG', 'JPG')}
+
+
+CONTACT_HINTS = re.compile(
+    r'(?:\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b)|'
+    r'(?:(?:\+?\d{1,3}[\s-]?)?\(?\d{2,4}\)?[\s.-]?\d{3,5}[\s.-]?\d{3,5})|'
+    r'(?:\b(?:email|mobile|phone|tel|linkedin|github|portfolio)\s*[:|])',
+    re.I
+)
+
+
+def refine_extracted_elements(elements):
+    """Refine element classifications and split mixed heading/content blocks based on layout typography."""
+    refined = []
+    for el in elements:
+        text = el.get('text', '').strip()
+        etype = el.get('type', 'UncategorizedText')
+        lines = el.get('metadata', {}).get('pdf_source_lines', [])
+
+        # Split mixed heading/content elements when the leading physical line(s)
+        # are heading_style (e.g. bold and large font) and subsequent line(s) are body style.
+        if len(lines) >= 2:
+            k = 0
+            while k < len(lines) and lines[k].get('heading_style'):
+                k += 1
+            if 0 < k < len(lines):
+                h_end = lines[k - 1]['end']
+                h_text = el.get('text', '')[:h_end].strip()
+                b_text = el.get('text', '')[h_end:].strip()
+                if h_text and b_text:
+                    h_el = deepcopy(el)
+                    h_el['type'] = 'Title'
+                    h_el['text'] = h_text
+                    h_el.setdefault('metadata', {})['pdf_source_lines'] = deepcopy(lines[:k])
+
+                    b_el = deepcopy(el)
+                    b_el['type'] = 'NarrativeText'
+                    b_el['text'] = b_text
+                    raw_rem = el.get('text', '')[h_end:]
+                    shift = h_end + (len(raw_rem) - len(raw_rem.lstrip()))
+                    b_lines = deepcopy(lines[k:])
+                    for l in b_lines:
+                        l['start'] = max(0, l['start'] - shift)
+                        l['end'] = max(0, l['end'] - shift)
+                    b_el.setdefault('metadata', {})['pdf_source_lines'] = b_lines
+                    refined.extend([h_el, b_el])
+                    continue
+
+        # Spurious Title reclassification:
+        if etype == 'Title':
+            if CONTACT_HINTS.search(text) and not any(k in text.lower() for k in ['experience', 'education', 'project', 'skill', 'summary']):
+                el['type'] = 'UncategorizedText'
+            elif lines and not any(l.get('heading_style') for l in lines):
+                if text[:1].islower() or text.endswith(('.', ',')) or len(text.split()) > 6:
+                    el['type'] = 'NarrativeText'
+            elif not lines and (text[:1].islower() or text.startswith((',', '.', ')', ']', ';', ':'))):
+                el['type'] = 'NarrativeText'
+        refined.append(el)
+    return refined
 
 
 def extract_text(payload: bytes, filename: str, strategy: Strategy = 'auto',
@@ -102,6 +163,8 @@ def extract_text(payload: bytes, filename: str, strategy: Strategy = 'auto',
                 # reuse classifications/offsets from a pre-recovery inventory.
                 from local_api.services.pdf_source_recovery import recover_pdf_source
                 serialized, _ = recover_pdf_source(payload, serialized)
+                annotate_pdf_lines(payload, serialized)
+                serialized = refine_extracted_elements(serialized)
             except Exception as exc:
                 logger.warning('PDF section layout unavailable: %s', type(exc).__name__)
         # Uploads carry no local filesystem identity. Never expose parser paths.

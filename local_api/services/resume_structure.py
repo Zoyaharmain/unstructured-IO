@@ -67,7 +67,7 @@ def word_safe_cut(text, cut):
 RECORD_FIELDS = {'technologies', 'technology', 'tools', 'tool', 'tech stack',
                  'tools and technology', 'tools and technologies', 'technology stack',
                  'description', 'project description', 'project title', 'project name',
-                 'role', 'job title', 'designation', 'client', 'duration', 'period',
+                 'role', 'job title', 'designation', 'client', 'duration', 'period', 'company', 'employer',
                  'achievement', 'accomplishment', 'responsibilities', 'key responsibilities',
                  'roles and responsibilities', 'job responsibilities', 'key achievements',
                  'key responsibilities and achievements', 'responsibilities and achievements', 'technology and tools',
@@ -75,21 +75,26 @@ RECORD_FIELDS = {'technologies', 'technology', 'tools', 'tool', 'tech stack',
 EXTRA_HEADINGS = {
     'personal_information': ['contact', 'personal info', 'personal details', 'additional information'],
     'summary': ['synopsis', 'professional synopsis', 'objective', 'career summary', 'executive summary', 'profile snapshot', 'profile summary', 'professional summary', 'career objective',
-                'selected jd-aligned highlights', 'key business impact', 'career highlights', 'professional highlights'],
+                'selected jd-aligned highlights', 'key business impact', 'career highlights', 'professional highlights', 'professional bummary'],
     'projects': ['poc', 'pocs', 'proof of concept', 'proofs of concept', 'key projects', 'project highlights', 'project details', 'projects', 'academic projects',
                  'independent project', 'independent projects', 'other project details',
                  'selected programs', 'transformation programs', 'selected transformation programs',
-                 'key transformation programs', 'transformation initiatives', 'selected initiatives', 'key initiatives'],
+                 'key transformation programs', 'transformation initiatives', 'selected initiatives', 'key initiatives',
+                 'engagement portfolio', 'project portfolio', 'portfolio of projects', 'client engagements', 'key engagements', 'selected portfolio', 'consulting projects'],
     'experience': ['employment', 'professional background', 'work history', 'career history',
                    'role history', 'employment history', 'experience summary', 'professional employment',
                    'organizational experience', 'organization experience', 'professional experience summary',
-                   'project experience', 'key projects and roles', 'earlier experience', 'earlier employment'],
+                   'project experience', 'key projects and roles', 'earlier experience', 'earlier employment',
+                   'where i have been', 'where i have contributed', 'professional journey', 'career journey', 'academic appointments',
+                   'career appointments', 'career appointment', 'career roles', 'professional engagements', 'engagements and roles', 'employment history and experience'],
     'languages': ['spoken languages', 'language proficiency', 'langues'],
-    'education': ['qualifications', 'educational background', 'educational qualification', 'academic qualifications', 'formation', 'formations', 'academics', 'academic background', 'academic details'],
+    'education': ['qualifications', 'educational background', 'educational qualification', 'academic qualifications', 'formation', 'formations', 'academics', 'academic background', 'academic details',
+                  'scholastic background', 'scholastic credentials', 'academic journey', 'academic credentials', 'academic credential'],
     'skills': ['technical profile', 'technical exposure', 'competences', 'comp\u00e9tences', 'languages and platforms', 'programming languages',
                'tools and platforms', 'core programming and frameworks', 'cloud and devops',
                'core competencies and skills', 'it skillset', 'it skills',
-               'testing and development practices', 'skill set', 'skill sets', 'skillset', 'key strengths', 'technical competencies', 'core competency', 'core competence', 'core competences', 'core skills', 'domain expertise', 'business analysis and product management', 'tools and technology'],
+               'testing and development practices', 'skill set', 'skill sets', 'skillset', 'key strengths', 'technical competencies', 'core competency', 'core competence', 'core competences', 'core skills', 'domain expertise', 'business analysis and product management', 'tools and technology',
+               'technical arsenal', 'technical repertoire'],
     'certifications': ['certificates', 'certification', 'training', 'certifications and licenses'],
     'publications': ['research publications', 'selected publications', 'papers and publications'],
     'volunteering': ['volunteer experience', 'voluntary work', 'community service'],
@@ -103,8 +108,9 @@ EXTRA_HEADINGS = {
 
 def normalized_heading(text):
     value = text.strip()
-    value = re.sub(r'^\s*(?:\d+[.)]|[•▪●*#])\s*', '', value)
-    value = value.strip(' |–—_-:.\t\r\n')
+    value = re.sub(r'^\s*(?:\d+[.)]|[•▪●*#&/])\s*', '', value)
+    value = re.sub(r'^\s*(?:and|&)\s+', '', value, flags=re.I)
+    value = value.strip(' |–—_-:.\t\r\n&/')
     if re.fullmatch(r'(?:[A-Za-z]{1,2}\s+){3,}[A-Za-z]{1,2}', value):
         value = re.sub(r'\s+', '', value)
     return ' '.join(value.casefold().replace('&', ' and ').split())
@@ -137,9 +143,8 @@ def heading_boundary(text, aliases):
         # A single transposition/insertion in an established heading is a
         # structural cue only; source spelling and field text are unchanged.
         from difflib import SequenceMatcher
-        matches={c for a,c in aliases.items() if len(a)==len(normalized) and
-                 sum(x!=y for x,y in zip(a,normalized))<=2 and
-                 SequenceMatcher(None,a,normalized).ratio()>=.94}
+        matches={c for a,c in aliases.items() if abs(len(a)-len(normalized))<=2 and
+                 SequenceMatcher(None,a,normalized).ratio()>=.88}
         if len(matches)==1:category=matches.pop()
     # Compose headings only when every component names the same schema family.
     components=re.split(r'\s+(?:and|/)\s+',normalized)
@@ -217,15 +222,22 @@ def entry_groups(blocks, category, elements):
                         el = elements[b.source_element_index]
                         if el_type(el) in {'ListItem', 'Title'}:
                             starts_new = True
-                        elif re.search(r'\b(?:Award|Champion|Scholarship|Medal|Prize|Honors?|Winner|Recognition|Performer)\b', text, re.I):
+                        elif re.search(r'\b(?:Award|Champion|Scholarship|Medal|Prize|Honors?|Winner|Recognition|Performer|Satisfaction|Appreciation|Star|Excellence|Merit)\b', text, re.I):
+                            starts_new = True
+                        elif re.match(r'^\s*(?:\d+%|\d+/\d+)\b', text):
                             starts_new = True
                         elif re.match(r'^\s*[•▪●*\uf0b7-]\s+', text):
                             starts_new = True
                     elif re.match(r'^\s*[•▪●*\uf0b7-]\s+', text):
                         starts_new = True
-                named_parent=bool(cards and el_type(elements[blocks[cards[-1]['block_indices'][0]].source_element_index]) in {'Title','Header'})
+                named_parent=bool(cards and (el_type(elements[blocks[cards[-1]['block_indices'][0]].source_element_index]) in {'Title','Header'} or len(cards[-1]['block_indices']) >= 1))
                 detail=bool(re.fullmatch(DATE,text,re.I) or re.match(r'^(?:won|awarded|achieved|received|earned|secured|placed|ranked|recognized)\b',text,re.I))
-                if named_parent and detail and b.page_number==blocks[cards[-1]['block_indices'][0]].page_number:starts_new=False
+                parent_text = ' '.join(blocks[i].text for i in cards[-1]['block_indices']) if cards else ''
+                parent_has_satisfaction = bool(re.search(r'\b(?:satisfaction|csat)\b', parent_text, re.I))
+                this_has_satisfaction = bool(re.search(r'\b(?:satisfaction|csat)\b', text, re.I))
+                detail_matches_parent = not this_has_satisfaction or parent_has_satisfaction
+                if named_parent and detail and detail_matches_parent and b.page_number==blocks[cards[-1]['block_indices'][0]].page_number:
+                    starts_new=False
                 if starts_new:
                     cards.append({'entry_id': f'awards-{len(cards)+1}', 'block_indices': [index],
                                   'lane': 'source', 'boundary_reason': 'original achievement list item'})
@@ -235,45 +247,130 @@ def entry_groups(blocks, category, elements):
             if cards:
                 for card in cards:
                     first=card['block_indices'][0]
-                    if el_type(elements[blocks[first].source_element_index]) in {'Title','Header'} and not re.fullmatch(DATE,blocks[first].text.strip(),re.I):card['fields']={'title':[first]}
+                    if (el_type(elements[blocks[first].source_element_index]) in {'Title','Header'} or len(card['block_indices']) > 1) and not re.fullmatch(DATE,blocks[first].text.strip(),re.I):
+                        card['fields']={'title':[first]}
+
+                def norm_text(indices):
+                    return re.sub(r'[\W_]+', '', ''.join(blocks[i].text for i in indices).casefold())
+
+                unique_cards = []
+                for card in cards:
+                    card_norm = norm_text(card['block_indices'])
+                    title_idx = card.get('fields', {}).get('title', [card['block_indices'][0]])[0]
+                    title_norm = re.sub(r'[\W_]+', '', blocks[title_idx].text.casefold())
+                    match = None
+                    for existing in unique_cards:
+                        existing_norm = norm_text(existing['block_indices'])
+                        existing_title_idx = existing.get('fields', {}).get('title', [existing['block_indices'][0]])[0]
+                        existing_title_norm = re.sub(r'[\W_]+', '', blocks[existing_title_idx].text.casefold())
+                        if (card_norm == existing_norm or
+                            title_norm == existing_title_norm or
+                            card_norm == existing_title_norm or
+                            card_norm in existing_norm or
+                            (existing_title_norm and existing_title_norm in card_norm)):
+                            match = existing
+                            break
+                    if match is not None:
+                        match['block_indices'].extend(card['block_indices'])
+                    else:
+                        unique_cards.append(card)
+                cards = unique_cards
+                for i, card in enumerate(cards):
+                    card['entry_id'] = f'awards-{i+1}'
                 return cards
     if category == 'projects':
-        # Explicit numbered record markers outrank inferred font/lane anchors.
-        numbered=[i for i,b in enumerate(blocks) if re.match(r'^\s*(?:academic\s+)?project\s*#?\s*\d+(?=\s|[:.)-]|$)',b.text,re.I)]
-        if len(numbered)>=2:
-            cards=[]
-            for n,start in enumerate(numbered):
-                end=numbered[n+1] if n+1<len(numbered) else len(blocks)
-                indices=[i for i in range(start,end) if blocks[i].assignment not in {'section_heading','structural_heading'} and blocks[i].text.strip()]
-                if indices:cards.append({'entry_id':f'projects-{len(cards)+1}','block_indices':indices,
-                    'lane':'source','boundary_reason':'explicit numbered source project marker'})
-            return cards
-        geometric = project_source_groups(blocks,elements)
-        if geometric:return geometric
+        from local_api.services.project_hierarchy import detect_project_records
+        hierarchical_cards = detect_project_records(blocks, elements)
+        if hierarchical_cards:
+            return hierarchical_cards
+        geometric = project_source_groups(blocks, elements)
+        if geometric:
+            return geometric
     if category == 'certifications':
-        # A certificate name cannot silently become a newline-joined name of
-        # several unrelated source elements. Keep each source-backed card local.
-        cards=[]
-        for index,b in enumerate(blocks):
-            if b.assignment in {'section_heading','structural_heading'} or not any(c.isalnum() for c in b.text):continue
+        def block_bold(element, block):
+            lines = el_meta(element).get('pdf_source_lines', [])
+            for line in lines:
+                overlap = max(0, min(block.end, line.get('end', 0)) - max(block.start, line.get('start', 0)))
+                if overlap > 0 and line.get('bold'):
+                    return True
+            return False
+
+        cards = []
+        bullet_seen = False
+        for index, b in enumerate(blocks):
+            if b.assignment in {'section_heading', 'structural_heading'}:
+                continue
+            text = b.text.strip()
+            if not any(c.isalnum() for c in text):
+                bullet_seen = True
+                continue
+
+            el = elements[b.source_element_index]
+            bold = block_bold(el, b)
             from local_api.services.record_subfields import labelled_fields
             fields = labelled_fields('certifications', [b])
+            from local_api.services.certification_integrity import detail_row, aligned_credential_detail
+            detail = b.assignment != 'inline_certification_title' and (detail_row(b.text) or (bool(fields) and 'name' not in fields))
+            if not cards and detail:
+                continue
+
             previous = blocks[cards[-1]['block_indices'][-1]] if cards else None
-            from local_api.services.certification_integrity import detail_row,aligned_credential_detail
-            detail = b.assignment != 'inline_certification_title' and (detail_row(b.text) or bool(fields) and 'name' not in fields)
-            adjacent_card = bool(previous and previous.page_number == b.page_number and (previous.lane == b.lane or 'wide' in {previous.lane,b.lane})
-                                 and 0 <= b.source_element_index - previous.source_element_index <= 1)
-            if not cards and detail:continue
-            adjacent_card = adjacent_card or bool(detail and aligned_credential_detail(previous,b,elements))
-            paren_unclosed = bool(previous and previous.text.count('(') > previous.text.count(')'))
-            has_closing_paren = bool(re.search(r'^[^\(]*\)', b.text.strip()))
-            is_continuation = bool(re.match(r'^(?:and|with|for|in|of|to|by|via|using|from|across|at)\b', b.text.strip(), re.I) or paren_unclosed or has_closing_paren)
-            is_cap_title = bool(b.text.strip() and b.text.strip()[0].isupper() and not is_continuation and len(b.text.strip().split()) <= 8)
-            new_name = bool(cards and (b.assignment in {'local_certification_title','inline_certification_title'} or not detail and ('name' in fields or re.match(r'^\s*[•▪●\uf0b7]\s*\S', b.text) or is_cap_title)))
-            if not cards or new_name or (previous.source_element_index != b.source_element_index and not (detail and adjacent_card)):
-                cards.append({'entry_id':f'certifications-{len(cards)+1}','block_indices':[],
-                              'lane':b.lane,'boundary_reason':'source-local certification card; source text retained'})
-            cards[-1]['block_indices'].append(index)
+            prev_text = previous.text.strip() if previous else ''
+            prev_bold = block_bold(elements[previous.source_element_index], previous) if previous else False
+
+            prev_unclosed_paren = bool(previous and prev_text.count('(') > prev_text.count(')'))
+            has_closing_paren = bool(re.search(r'^[^\(]*\)', text))
+            prev_ends_continuation = bool(previous and prev_text.endswith((',', ';', '/', '&', '-', '–', '—', 'and', 'or', 'with', 'for', 'in', 'of', 'to', 'by', 'via', 'using', 'from', 'across', 'at')))
+            starts_continuation = bool(re.match(r'^(?:and|or|with|for|in|of|to|by|via|using|from|across|at|&)\b', text, re.I))
+            heading_wrap_into_colon = bool(previous and not prev_text.endswith(('.', ':', ';', '!', '?')) and text.endswith(':') and bold and prev_bold)
+
+            next_b = blocks[index + 1] if index + 1 < len(blocks) else None
+            next_bold = block_bold(elements[next_b.source_element_index], next_b) if next_b else False
+            is_bold_heading_start = bold and (text.endswith(':') or (next_b and next_b.text.strip().endswith(':') and next_bold))
+
+            cross_page_continuation = False
+            if previous and b.page_number != previous.page_number:
+                if prev_ends_continuation and not is_bold_heading_start and not bold:
+                    cross_page_continuation = True
+
+            is_continuation = prev_unclosed_paren or has_closing_paren or heading_wrap_into_colon or cross_page_continuation or (prev_ends_continuation and not is_bold_heading_start)
+
+            card_has_colon_heading = bool(cards and any(blocks[j].text.strip().endswith(':') for j in cards[-1]['block_indices']))
+            is_cap_title = bool(text and text[0].isupper() and len(text.split()) <= 8 and not text.endswith(','))
+
+            starts_new = False
+            if not cards:
+                starts_new = True
+            elif b.assignment == 'inline_certification_title':
+                starts_new = True
+            elif is_bold_heading_start and not prev_bold:
+                starts_new = True
+            elif previous and previous.source_element_index == b.source_element_index and not bullet_seen and not re.match(r'^\s*[•▪●*\uf0b7-]\s+', b.text) and (len(text.split()) <= 1 or not is_cap_title or prev_ends_continuation):
+                starts_new = False
+            elif is_continuation:
+                starts_new = False
+            elif bullet_seen:
+                starts_new = True
+            elif el_type(el) == 'ListItem' and b.start == 0:
+                starts_new = True
+            elif re.match(r'^\s*[•▪●*\uf0b7-]\s+', b.text):
+                starts_new = True
+            elif detail:
+                starts_new = False
+            elif ' — ' in text or ' – ' in text or ' | ' in text:
+                starts_new = True
+            elif not card_has_colon_heading and is_cap_title and not prev_ends_continuation:
+                starts_new = True
+            elif previous and previous.source_element_index != b.source_element_index and not (detail and aligned_credential_detail(previous, b, elements)):
+                if not is_continuation and not prev_ends_continuation and is_cap_title:
+                    starts_new = True
+
+            if starts_new:
+                cards.append({'entry_id': f'certifications-{len(cards)+1}', 'block_indices': [index],
+                              'lane': b.lane, 'boundary_reason': 'source-local certification card; source text retained'})
+            else:
+                cards[-1]['block_indices'].append(index)
+            bullet_seen = False
         return cards
     if category=='experience' and blocks and (all(b.reviewed_by_llm for b in blocks) or
             any(el_meta(elements[b.source_element_index]).get('pdf_source_lines') for b in blocks)):
@@ -338,7 +435,8 @@ def entry_groups(blocks, category, elements):
         from local_api.services.record_subfields import RANGE
         dated_header = bool(category in {'experience', 'education'} and len(text.split()) <= 24
                             and RANGE.search(text)
-                            and not re.match(r'^[•▪●*\-]', text))
+                            and not re.match(r'^[•▪●*\-]', text)
+                            and not re.match(r'^\s*(?:duration|period|dates?)\s*:', text, re.I))
         if category == 'education':
             from local_api.services.education_subfields import DEGREE
             from local_api.services.dated_record_headers import education_date_starts_record
@@ -360,6 +458,8 @@ def entry_groups(blocks, category, elements):
         if category == 'experience':
             from local_api.services.record_subfields import responsibility_fragment, employment_header_fields
             if el_type(element) == 'ListItem' and responsibility_fragment(el_text(element)) and not employment_header_fields(el_text(element)):
+                explicit_title = labeled_entry = dated_header = paired = False
+            if re.search(r'\b(?:system\s+(?:prompt|instruction|override)|ignore\s+all\s+(?:previous|prior)\s+instructions|human\s+review\s*:|output\s+role\s*:)\b', text, re.I):
                 explicit_title = labeled_entry = dated_header = paired = False
         boundary = not paired_continuation and category in {'experience', 'projects', 'education'} and (paired or (explicit_title or labeled_entry or dated_header))
         if category=='experience' and labeled_entry and key in active:
@@ -475,7 +575,7 @@ def reviewed_employment_groups(blocks,elements):
         if b.assignment in {'section_heading', 'structural_heading'} or normalized_heading(text) in {'experience','work experience','professional experience','employment','work history','career history','early career history','summary','overview','employment summary','professional summary','job summary','career summary'} or re.search(r'\b(?:career|employment|work|early|earlier|prior|previous)\s+(?:history|experience)\b', normalized_heading(text)) or re.match(r'^(?:(?:employment|professional|job|career)\s+summary|summary|overview)\s*:?$', text, re.I):continue
         if re.match(r'^Client\b',text,re.I):continue
         if re.search(r'\b(?:exposure|framework|practices|methodologies)\b', text, re.I):continue
-        if responsibility_fragment(text) or (el_type(elements[b.source_element_index]) == 'ListItem' and responsibility_fragment(el_text(elements[b.source_element_index])) and not employment_header_fields(text)):continue
+        if (responsibility_fragment(text) and not employment_header_fields(text)) or (el_type(elements[b.source_element_index]) == 'ListItem' and responsibility_fragment(el_text(elements[b.source_element_index])) and not employment_header_fields(text)):continue
         if len(text.split())>30 or re.match(r'^(?:(?:duration|period|tenure|job\s+role)\s*:|[•▪●*]|projects?\s*[:\-]|projects?\s+(?:name|title|description|summary)\b|client\s*[:\-]|responsibilit)',text,re.I):continue
         if re.match(r'^(?:[•▪●*–—\-]+\s*)?(?:technolog(?:y|ies)|tech stack|tools and technologies|core technologies|tech stack used|operating systems|servers(?: & web)?|cloud (?:services|platforms)|programming languages|tools|frameworks|databases|ai / llm skills|environment)\s*:', text, re.I):
             continue
@@ -518,7 +618,7 @@ def reviewed_employment_groups(blocks,elements):
         ):
             continue
         # Role followed immediately by employer/date on adjacent row forms one employment entry.
-        if anchors and not explicit_header and top is not None and anchors[-1]['page']==b.page_number and anchors[-1]['y'] is not None and 0<=top-anchors[-1]['y']<=.05:
+        if anchors and top is not None and anchors[-1]['page']==b.page_number and anchors[-1]['y'] is not None and 0<=top-anchors[-1]['y']<=.05:
             prev_text = blocks[anchors[-1]['index']].text.strip()
             prev_is_role_only = bool(role.search(prev_text) and not business.search(prev_text) and not date_pat.search(prev_text) and not employment_header_fields(prev_text).get('company') and len(prev_text.split()) <= 6 and not responsibility_fragment(prev_text))
             cur_is_emp = bool((business.search(text) or date_pat.search(text)) or employment_header_fields(text).get('company'))
@@ -638,7 +738,7 @@ def reviewed_education_groups(blocks,elements):
 def employment_start(text):
     from local_api.vendor.resume_semantic_blocks import PERIOD, employment_header, ACTION, EDUCATION
     lookup=text.strip().lstrip('•▪●*\uf0b7- ').strip()
-    if re.search(r'\b(?:award|awarded|prize|winner|best employee|certified|certification|certificate)\b', lookup, re.I):return False
+    if re.search(r'\b(?:award|awarded|prize|winner|best employee|certified|certification|certificate|career\s+break|career\s+gap|sabbatical|parental\s+leave|family\s+leave|fellowship|scholarship|research\s+grant|grant\s+funding)\b', lookup, re.I):return False
     if re.match(r'^(?:projects?\s*[:\-]|projects?\s+(?:name|title|description|summary)\b|client\s*[:\-]|duration\s*:|responsibilities\s*:|accomplishments\s*:)',lookup,re.I):return False
     # A dated "Worked as ... at/with ..." statement is a history header,
     # whereas a responsibility mentioning a date is not.
@@ -648,9 +748,12 @@ def employment_start(text):
     period=RANGE.search(lookup) or PERIOD.search(lookup)
     raw_prefix=lookup[:(period.start() if period else date.start())] if (period or date) else ''
     prefix=raw_prefix.strip(' |,–—-')
-    if not (period or date) or len(lookup.split())>30 or EDUCATION.search(prefix) or (ACTION.search(prefix) and not stated):return False
-    business=re.search(r'\b(?:ltd|limited|inc|llc|corp|corporation|systems|services|bank|technolog(?:y|ies|ie)|solutions)\b',prefix,re.I)
-    role=re.search(r'\b(?:engineer|developer|analyst|associate|consultant|manager|architect|intern|specialist|director|officer|executive|lead|administrator)\b',prefix,re.I)
+    if not (period or date) or len(lookup.split()) > 30 or (ACTION.search(prefix) and not stated): return False
+    if re.search(r'\b(?:b\.?s\b|b\.?tech|b\.?e\b|bachelor|m\.?s\b|m\.?tech|master|ph\.?d|doctorate|diploma)\b', prefix, re.I) and re.search(r'\b(?:university|college|institute|academy|school)\b', prefix, re.I):
+        return False
+    if EDUCATION.search(prefix): return False
+    business=re.search(r'\b(?:ltd|limited|inc|llc|corp|corporation|systems|services|bank|technolog(?:y|ies|ie)|solutions|labs?|clinic|hospital|center|centre|group|agency|partners|studio|holdings)\b',prefix,re.I)
+    role=re.search(r'\b(?:engineer|developer|analyst|associate|consultant|manager|architect|intern|specialist|director|officer|executive|lead|administrator|tester|diagnostician|fellow|resident|vp|vice\s+president|president|psychotherapist|physician|attorney|counsel|cso|cto|cio|cfo|ceo|investigator|chemist)\b',prefix,re.I)
     has_delim=bool(re.search(r'[,|–—\-/]',raw_prefix))
     return bool(employment_header(lookup) or business or stated or (role and (has_delim or len(prefix.split())<=4)))
 
@@ -677,10 +780,12 @@ def project_source_groups(blocks,elements):
         # Portfolio/employer overview rows give context, not a project identity.
         if re.match(r'^projects?\s+(?:worked\s+(?:in|on|at)|in|at)\b', b.text.strip(), re.I):
             contexts.append(i);continue
-        if re.match(r'^\s*\.?\d+[.)]\s+\S', b.text):numbered.append(i)
-        if len(b.text.split())<=18 and ':' not in b.text and not ACTION.search(b.text) and any(h.get('bold') for h in hints):bold.append(i)
+        from local_api.services.project_hierarchy import is_project_description_step
+        if len(b.text.split())<=18 and ':' not in b.text and not ACTION.search(b.text) and not is_project_description_step(b.text, elements[b.source_element_index]) and any(h.get('bold') for h in hints):bold.append(i)
         el=elements[b.source_element_index]
         if el_type(el)=='ListItem' and b.start==0 or any(page==b.page_number and abs(y-top)<.008 for page,y in marker_rows):bullet.append(i)
+    from local_api.services.project_hierarchy import extract_project_numbered_anchors
+    numbered = extract_project_numbered_anchors(blocks, elements, rows, contexts)
     # Numbered identities outrank typography; bullets alone may be tasks.
     from local_api.services.record_subfields import DATE
     dated_titles=[]
@@ -695,13 +800,22 @@ def project_source_groups(blocks,elements):
             if not re.fullmatch(r'(?:' + DATE + r'|[A-Za-z]{3,9}\s+\d{2})(?:\s*[-–—]\s*(?:' + DATE + r'|[A-Za-z]{3,9}\s+\d{2}))?[\s\uf020]*', blocks[k].text, re.I):continue
             kh=[h for h in el_meta(elements[blocks[k].source_element_index]).get('pdf_source_lines',[]) if len(h.get('bbox',[]))==4 and min(blocks[k].end,h.get('end',0))>max(blocks[k].start,h.get('start',0))]
             if kh and min(h['bbox'][0] for h in kh)>x:dated_titles.append(i);break
-    identities=sorted(set(numbered+bold+dated_titles),key=lambda i:rows[i])
+    identities=sorted(set(numbered+bold+dated_titles), key=lambda i: rows[i] if i in rows else (blocks[i].page_number or 0, i))
     bullets=[i for i in bullet if len(blocks[i].text.split())<=18 and not ACTION.search(blocks[i].text.strip().lstrip('•▪●*\uf0b7 '))]
-    anchors=identities if len(identities)>=2 else bullets
+    anchors=identities if len(identities)>=1 else bullets
     if stops:
-        cutoff=min(rows[i] for i in stops)
-        anchors=[i for i in anchors if rows[i]<cutoff]
-    if len(anchors)<2:return []
+        valid_stops = [rows[i] for i in stops if i in rows]
+        if valid_stops:
+            cutoff = min(valid_stops)
+            anchors = [i for i in anchors if i in rows and rows[i] < cutoff]
+    if len(anchors)<2:
+        if len(anchors) == 1 and len(rows) > 1:
+            cutoff = min(rows[i] for i in stops) if stops else None
+            valid_indices = [i for i, b in enumerate(blocks) if i in rows and b.assignment not in {'section_heading', 'structural_heading'} and (cutoff is None or rows[i] < cutoff)]
+            if valid_indices:
+                return [{'entry_id': 'projects-1', 'block_indices': sorted(valid_indices), 'lane': 'source_geometry',
+                         'boundary_reason': 'single visible project anchor and source page rows'}]
+        return []
     outline=sorted([(rows[i], 'start',j) for j,i in enumerate(anchors)]+[(rows[i],'stop',None) for i in stops+contexts])
     groups=[{'entry_id':f'projects-{j+1}','block_indices':[],'lane':'source_geometry',
              'boundary_reason':'visible project title/bullet and source page rows'} for j in range(len(anchors))]

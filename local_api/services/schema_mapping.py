@@ -79,7 +79,12 @@ def map_schema(request):
     inventory.update({source_id(b):b.text for b in request.sections.needs_review})
     def field_quotes(value, bs):
         refs=citations(value,bs)
-        if any(str(value).casefold() in r['quote'].casefold() for r in refs) or contiguous_support(value,[SourceQuote(**r) for r in refs],inventory):return refs
+        if not refs:
+            refs=citations(value,bs,flexible_whitespace=True)
+        if (any(str(value).casefold() in r['quote'].casefold() for r in refs)
+                or contiguous_support(value,[SourceQuote(**r) for r in refs],inventory)
+                or (refs and re.sub(r'[\s\W_]+','',''.join(r['quote'] for r in refs)).casefold() == re.sub(r'[\s\W_]+','',str(value)).casefold())):
+            return refs
         return []
     def blocks(category):
         return [b for b in sections[category].blocks if b.assignment not in {'section_heading','structural_heading'} and b.text.strip()] if category in sections else []
@@ -301,10 +306,13 @@ def map_schema(request):
                     if (not company and allow_company) or (not role and allow_role) or (company and role and role.casefold().startswith(company.casefold())):
                         for candidate_text in [field('employer'), field('title'), text]:
                             if candidate_text:
-                                parsed = employment_header_fields(candidate_text)
+                                clean_cand = re.sub(r'\b(?:system\s+(?:prompt|instruction|override)|ignore\s+all\s+(?:previous|prior)\s+instructions|output\s+role\s*:|human\s+review\s*:)\b.*', '', candidate_text, flags=re.I).strip()
+                                parsed = employment_header_fields(clean_cand) if clean_cand else {}
                                 if allow_company and (not company or (role and role.casefold().startswith(company.casefold()))) and parsed.get('company'): company = parsed['company']
                                 if allow_role and (not role or (company and role.casefold().startswith(company.casefold()))) and parsed.get('role'): role = parsed['role']
                                 if company and role and not role.casefold().startswith(company.casefold()): break
+                    if role and re.search(r'\b(?:system\s+(?:prompt|instruction)|ignore\s+all|output\s+role)\b', role, re.I):
+                        role = None
                     if company and role and role.casefold().startswith(company.casefold()):
                         role = re.sub(r'^' + re.escape(company) + r'\s*[-–—:|]\s*', '', role, flags=re.I).strip()
                     if not allow_company: company = None
@@ -373,6 +381,9 @@ def map_schema(request):
                     record=Education(degree=degree or '',institution=institution or '')
                     years=list(dict.fromkeys(re.findall(r'\b(?:19|20)\d{2}\b',field('dates'))))
                     if len(years)==1:record.graduation_year=years[0]
+                    elif len(years)>=2:
+                        record.start_year=years[0]
+                        record.graduation_year=years[1]
                     i=len(data.education);data.education.append(record)
                     for key,ref in [('degree','qualification'),('institution','institution'),('graduation_year','dates')]:remember(f'education[{i}].'+key,getattr(record,key),refs(ref))
                 elif category=='projects':
@@ -471,14 +482,69 @@ def map_schema(request):
                 if category in {'experience', 'education'} and not any(record.model_dump().values()) and not (category == 'experience' and explicit_identity or education_identity):
                     review['mapped_index'] = None
                     continue
-                new_index = len(kept)
-                review['mapped_index'] = new_index
-                kept.append(record)
-                record_bindings[category][review['entry_id']] = new_index
-                old_prefix = f'{category}[{old_index}].'
-                for path, refs in old_evidence.items():
-                    if path.startswith(old_prefix):
-                        evidence[f'{category}[{new_index}].' + path[len(old_prefix):]] = refs
+                def norm_s(s): return re.sub(r'[\W_]+', '', (s or '').casefold())
+                duplicate_match = None
+                if category == 'experience':
+                    r_comp = norm_s(record.company)
+                    r_role = norm_s(record.role)
+                    r_dates = (record.start_date, record.end_date)
+                    for k_idx, existing in enumerate(kept):
+                        e_comp = norm_s(existing.company)
+                        e_role = norm_s(existing.role)
+                        e_dates = (existing.start_date, existing.end_date)
+                        comp_match = bool(r_comp and e_comp and r_comp == e_comp)
+                        role_match = bool(r_role and e_role and (r_role == e_role or r_role in e_role or e_role in r_role))
+                        if comp_match and role_match:
+                            dates_match = (r_dates == e_dates or
+                                           (r_dates == (None, None) and e_dates != (None, None)) or
+                                           (e_dates == (None, None) and r_dates != (None, None)))
+                            if dates_match:
+                                duplicate_match = k_idx
+                                break
+                elif category == 'education':
+                    r_inst = norm_s(record.institution)
+                    r_deg = norm_s(record.degree)
+                    r_grad = norm_s(record.graduation_year)
+                    for k_idx, existing in enumerate(kept):
+                        e_inst = norm_s(existing.institution)
+                        e_deg = norm_s(existing.degree)
+                        e_grad = norm_s(existing.graduation_year)
+                        if (r_inst and e_inst and r_inst == e_inst and
+                            r_deg == e_deg and (r_grad == e_grad or not r_grad or not e_grad)):
+                            duplicate_match = k_idx
+                            break
+
+                if duplicate_match is not None:
+                    new_index = duplicate_match
+                    review['mapped_index'] = new_index
+                    record_bindings[category][review['entry_id']] = new_index
+                    existing = kept[duplicate_match]
+                    if category == 'experience':
+                        if existing.start_date is None and record.start_date is not None:
+                            existing.start_date = record.start_date
+                            existing.end_date = record.end_date
+                        for resp in record.responsibilities:
+                            if resp not in existing.responsibilities:
+                                existing.responsibilities.append(resp)
+                    elif category == 'education':
+                        if existing.start_year is None and record.start_year is not None:
+                            existing.start_year = record.start_year
+                        if existing.graduation_year is None and record.graduation_year is not None:
+                            existing.graduation_year = record.graduation_year
+                    old_prefix = f'{category}[{old_index}].'
+                    for path, refs in old_evidence.items():
+                        if path.startswith(old_prefix):
+                            target_path = f'{category}[{new_index}].' + path[len(old_prefix):]
+                            evidence.setdefault(target_path, []).extend(refs)
+                else:
+                    new_index = len(kept)
+                    review['mapped_index'] = new_index
+                    kept.append(record)
+                    record_bindings[category][review['entry_id']] = new_index
+                    old_prefix = f'{category}[{old_index}].'
+                    for path, refs in old_evidence.items():
+                        if path.startswith(old_prefix):
+                            evidence[f'{category}[{new_index}].' + path[len(old_prefix):]] = refs
             setattr(data, category, kept)
         used = {ref for refs in evidence.values() for ref in refs}
     else:warnings.append('Document scope is non-resume; candidate fields were left empty and source sections retained.')

@@ -75,7 +75,15 @@ def credential_values(blocks):
             if re.search(r'\b(?:institute|university|association|board|academy|certified in collaboration with)\b',issuer,re.I):
                 add('issuer',issuer)
     if titles:
-        title=re.sub(r'^\s*[•▪●*❖\uf0b7]\s*','',credential_title_text(titles[0])).rstrip(' ·•▪●;|\n\t')
+        full_title = titles[0]
+        for cont in titles[1:]:
+            cont_clean = re.sub(r'^\s*[•▪●*❖\uf0b7]\s*', '', cont).strip()
+            if cont_clean:
+                if full_title.endswith(('-', '/')):
+                    full_title = full_title + cont_clean
+                else:
+                    full_title = full_title + ' ' + cont_clean
+        title=re.sub(r'^\s*[•▪●*❖\uf0b7]\s*','',credential_title_text(full_title)).rstrip(' ·•▪●;|\n\t')
         label=re.match(r'^(?:certification(?: name)?|certificate(?: name)?|credential name)\s*[:=]\s*(.+)$',title,re.I)
         if label:title=label[1]
         # Parenthesized narrative explanations are descriptions, not identity.

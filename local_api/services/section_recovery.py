@@ -11,7 +11,7 @@ def recover_sections(request, local_result):
     aliases = sorted((a for a in ALIASES if len(a) >= 5), key=len, reverse=True)
     all_blocks = list(local_result.needs_review)
     for section in local_result.sections:
-        all_blocks.extend(b for b in section.blocks if len(b.text) > 15)
+        all_blocks.extend(b for b in section.blocks if len(b.text) > 15 and b.assignment not in {'section_heading', 'structural_heading'})
 
     for block in all_blocks:
         for alias in aliases:
@@ -28,7 +28,7 @@ def recover_sections(request, local_result):
                     stripped = prefix.rstrip(' \t')
                     joined_upper = bool(prefix and prefix[-1].islower() and match.group().isupper())
                     review_upper = block in local_result.needs_review and match.group().isupper()
-                    if (stripped.endswith(('.', '!', '?', ';', '\n', '\r', ':', '&')) or joined_upper or review_upper):
+                    if (stripped.endswith(('.', '!', '?', ';', '\n', '\r', ':')) or joined_upper or review_upper):
                         updates.setdefault(block.source_element_index, set()).update(
                             [block.start + match.start(), block.start + match.end()]
                         )

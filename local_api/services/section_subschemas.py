@@ -43,7 +43,12 @@ def build_subschemas(sections, data, scope, record_bindings=None):
                 # Each scalar/list item gets its own exact source match and quote.
                 literal = format(item, 'g') if isinstance(item, (int, float)) else str(item)
                 refs = [SourceQuote(**ref) for ref in citations(item, allowed)]
-                if refs and not any(literal.casefold() in r.quote.casefold() for r in refs) and not contiguous_support(item,refs,inventory):refs=[]
+                if not refs:
+                    refs = [SourceQuote(**ref) for ref in citations(item, allowed, flexible_whitespace=True)]
+                if (refs and not any(literal.casefold() in r.quote.casefold() for r in refs)
+                        and not contiguous_support(item, refs, inventory)
+                        and not (re.sub(r'[\s\W_]+', '', ''.join(r.quote for r in refs)).casefold() == re.sub(r'[\s\W_]+', '', literal).casefold())):
+                    refs = []
                 if refs:
                     # A cited fragment does not consume the rest of its source block.
                     used.update(sid(b) for b in allowed if any(
@@ -134,7 +139,20 @@ def build_subschemas(sections, data, scope, record_bindings=None):
                         title=section.blocks[title_indices[0]] if len(title_indices)==1 else None
                         values['name'] = title.text.strip() if title else canonical(content).strip() or None
                         descriptions=[b for b in content if b is not title and not re.fullmatch(DATE,b.text.strip(),re.I)]
-                        if title and descriptions:values['description']='\n'.join(b.text.strip() for b in descriptions)
+                        if title and descriptions:
+                            title_norm = re.sub(r'[\W_]+', '', title.text.casefold())
+                            desc_seen = set()
+                            desc_lines = []
+                            for b in descriptions:
+                                line = b.text.strip()
+                                l_norm = re.sub(r'[\W_]+', '', line.casefold())
+                                if l_norm and l_norm != title_norm and l_norm not in desc_seen:
+                                    combined = title_norm + ''.join(desc_seen)
+                                    if l_norm != combined:
+                                        desc_seen.add(l_norm)
+                                        desc_lines.append(line)
+                            if desc_lines:
+                                values['description'] = '\n'.join(desc_lines)
                         dates=[b.text.strip() for b in content if re.fullmatch(DATE,b.text.strip(),re.I)]
                         if len(set(dates))==1:values['date']=dates[0]
                     if any(v is None for v in values.values()):

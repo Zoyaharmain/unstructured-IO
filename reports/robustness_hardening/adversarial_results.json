@@ -1,0 +1,1246 @@
+{
+  "timestamp": "2026-11-15T10:52:11Z",
+  "total_fixtures": 48,
+  "passed": 48,
+  "failed": 0,
+  "pass_rate_percent": 100.0,
+  "by_category": {
+    "A": {
+      "total": 9,
+      "pass": 9,
+      "fail": 0
+    },
+    "B": {
+      "total": 8,
+      "pass": 8,
+      "fail": 0
+    },
+    "C": {
+      "total": 8,
+      "pass": 8,
+      "fail": 0
+    },
+    "D": {
+      "total": 9,
+      "pass": 9,
+      "fail": 0
+    },
+    "E": {
+      "total": 7,
+      "pass": 7,
+      "fail": 0
+    },
+    "F": {
+      "total": 7,
+      "pass": 7,
+      "fail": 0
+    }
+  },
+  "evaluations": [
+    {
+      "id": "adv_a01_16_employers",
+      "category": "A",
+      "subcategory": "employment_boundaries",
+      "description": "16 distinct sequential employers across multiple pages",
+      "filename": "document.pdf",
+      "filesize_bytes": 11190,
+      "execution_time_seconds": 11.2127,
+      "status": "PASS",
+      "metrics": {
+        "section_recall": 1.0,
+        "section_precision": 0.5,
+        "actual_employers": 16,
+        "actual_roles": 16,
+        "expected_employers": 16,
+        "expected_roles": 16,
+        "actual_education": 0
+      },
+      "invariants": {
+        "no_unsupported_field_values": true,
+        "no_silent_text_loss": true,
+        "no_cross_record_leakage": true,
+        "no_arbitrary_date_borrowing": true
+      },
+      "issues": []
+    },
+    {
+      "id": "adv_a02_multi_role_one_employer",
+      "category": "A",
+      "subcategory": "employment_boundaries",
+      "description": "Single employer with 3 distinct successive promotions/roles",
+      "filename": "document.pdf",
+      "filesize_bytes": 3703,
+      "execution_time_seconds": 0.7505,
+      "status": "PASS",
+      "metrics": {
+        "section_recall": 1.0,
+        "section_precision": 0.67,
+        "actual_employers": 1,
+        "actual_roles": 3,
+        "expected_employers": 1,
+        "expected_roles": 3,
+        "actual_education": 1
+      },
+      "invariants": {
+        "no_unsupported_field_values": true,
+        "no_silent_text_loss": true,
+        "no_cross_record_leakage": true,
+        "no_arbitrary_date_borrowing": true
+      },
+      "issues": []
+    },
+    {
+      "id": "adv_a03_nonadjacent_same_employer",
+      "category": "A",
+      "subcategory": "employment_boundaries",
+      "description": "Boomerang employee: Employer A (2016-2019), Employer B (2019-2022), Employer A (2022-Present)",
+      "filename": "document.pdf",
+      "filesize_bytes": 2647,
+      "execution_time_seconds": 0.6703,
+      "status": "PASS",
+      "metrics": {
+        "section_recall": 1.0,
+        "section_precision": 0.5,
+        "actual_employers": 3,
+        "actual_roles": 3,
+        "expected_employers": 3,
+        "expected_roles": 3,
+        "actual_education": 0
+      },
+      "invariants": {
+        "no_unsupported_field_values": true,
+        "no_silent_text_loss": true,
+        "no_cross_record_leakage": true,
+        "no_arbitrary_date_borrowing": true
+      },
+      "issues": []
+    },
+    {
+      "id": "adv_a04_employer_in_responsibilities",
+      "category": "A",
+      "subcategory": "employment_boundaries",
+      "description": "Bullet points mention AWS, Google Cloud, Microsoft Azure, Oracle, and Salesforce; only Snowflake Computing is employer",
+      "filename": "document.pdf",
+      "filesize_bytes": 2267,
+      "execution_time_seconds": 0.5576,
+      "status": "PASS",
+      "metrics": {
+        "section_recall": 1.0,
+        "section_precision": 0.5,
+        "actual_employers": 1,
+        "actual_roles": 1,
+        "expected_employers": 1,
+        "expected_roles": 1,
+        "actual_education": 0
+      },
+      "invariants": {
+        "no_unsupported_field_values": true,
+        "no_silent_text_loss": true,
+        "no_cross_record_leakage": true,
+        "no_arbitrary_date_borrowing": true
+      },
+      "issues": []
+    },
+    {
+      "id": "adv_a05_same_line_role_employer",
+      "category": "A",
+      "subcategory": "employment_boundaries",
+      "description": "Role and employer combined on same line separated by hyphens",
+      "filename": "document.docx",
+      "filesize_bytes": 36880,
+      "execution_time_seconds": 0.6292,
+      "status": "PASS",
+      "metrics": {
+        "section_recall": 1.0,
+        "section_precision": 0.5,
+        "actual_employers": 2,
+        "actual_roles": 2,
+        "expected_employers": 2,
+        "expected_roles": 2,
+        "actual_education": 0
+      },
+      "invariants": {
+        "no_unsupported_field_values": true,
+        "no_silent_text_loss": true,
+        "no_cross_record_leakage": true,
+        "no_arbitrary_date_borrowing": true
+      },
+      "issues": []
+    },
+    {
+      "id": "adv_a06_role_before_employer",
+      "category": "A",
+      "subcategory": "employment_boundaries",
+      "description": "Role title listed on line before employer name",
+      "filename": "document.pdf",
+      "filesize_bytes": 2584,
+      "execution_time_seconds": 0.4707,
+      "status": "PASS",
+      "metrics": {
+        "section_recall": 1.0,
+        "section_precision": 0.33,
+        "actual_employers": 2,
+        "actual_roles": 2,
+        "expected_employers": 2,
+        "expected_roles": 2,
+        "actual_education": 0
+      },
+      "invariants": {
+        "no_unsupported_field_values": true,
+        "no_silent_text_loss": true,
+        "no_cross_record_leakage": true,
+        "no_arbitrary_date_borrowing": true
+      },
+      "issues": []
+    },
+    {
+      "id": "adv_a07_missing_employer_name",
+      "category": "A",
+      "subcategory": "employment_boundaries",
+      "description": "Consultant and stealth roles without traditional corporate entities",
+      "filename": "document.pdf",
+      "filesize_bytes": 2494,
+      "execution_time_seconds": 0.5832,
+      "status": "PASS",
+      "metrics": {
+        "section_recall": 1.0,
+        "section_precision": 0.5,
+        "actual_employers": 1,
+        "actual_roles": 2,
+        "expected_roles": 2,
+        "actual_education": 0
+      },
+      "invariants": {
+        "no_unsupported_field_values": true,
+        "no_silent_text_loss": true,
+        "no_cross_record_leakage": true,
+        "no_arbitrary_date_borrowing": true
+      },
+      "issues": []
+    },
+    {
+      "id": "adv_a08_consulting_freelance",
+      "category": "A",
+      "subcategory": "employment_boundaries",
+      "description": "Independent advisory combined with institutional consulting firm",
+      "filename": "document.docx",
+      "filesize_bytes": 36897,
+      "execution_time_seconds": 0.5623,
+      "status": "PASS",
+      "metrics": {
+        "section_recall": 1.0,
+        "section_precision": 0.5,
+        "actual_employers": 2,
+        "actual_roles": 2,
+        "expected_roles": 2,
+        "actual_education": 0
+      },
+      "invariants": {
+        "no_unsupported_field_values": true,
+        "no_silent_text_loss": true,
+        "no_cross_record_leakage": true,
+        "no_arbitrary_date_borrowing": true
+      },
+      "issues": []
+    },
+    {
+      "id": "adv_a09_internship_mixed",
+      "category": "A",
+      "subcategory": "employment_boundaries",
+      "description": "Full-time role preceded by return internship at same employer and another internship",
+      "filename": "document.pdf",
+      "filesize_bytes": 2642,
+      "execution_time_seconds": 0.6071,
+      "status": "PASS",
+      "metrics": {
+        "section_recall": 1.0,
+        "section_precision": 0.5,
+        "actual_employers": 2,
+        "actual_roles": 3,
+        "expected_roles": 3,
+        "actual_education": 0
+      },
+      "invariants": {
+        "no_unsupported_field_values": true,
+        "no_silent_text_loss": true,
+        "no_cross_record_leakage": true,
+        "no_arbitrary_date_borrowing": true
+      },
+      "issues": []
+    },
+    {
+      "id": "adv_b01_multipage_responsibilities",
+      "category": "B",
+      "subcategory": "responsibility_ownership",
+      "description": "16 responsibilities for Job 1 spanning cross-page boundary before Job 2 begins",
+      "filename": "document.pdf",
+      "filesize_bytes": 6580,
+      "execution_time_seconds": 1.6634,
+      "status": "PASS",
+      "metrics": {
+        "section_recall": 1.0,
+        "section_precision": 0.5,
+        "actual_employers": 2,
+        "actual_roles": 2,
+        "expected_employers": 2,
+        "expected_roles": 2,
+        "actual_education": 0
+      },
+      "invariants": {
+        "no_unsupported_field_values": true,
+        "no_silent_text_loss": true,
+        "no_cross_record_leakage": true,
+        "no_arbitrary_date_borrowing": true
+      },
+      "issues": []
+    },
+    {
+      "id": "adv_b02_repeated_key_responsibilities",
+      "category": "B",
+      "subcategory": "responsibility_ownership",
+      "description": "Both jobs contain literal line \"Key Responsibilities:\" without cross-job bullet leakage",
+      "filename": "document.pdf",
+      "filesize_bytes": 3043,
+      "execution_time_seconds": 0.654,
+      "status": "PASS",
+      "metrics": {
+        "section_recall": 1.0,
+        "section_precision": 0.5,
+        "actual_employers": 2,
+        "actual_roles": 2,
+        "expected_employers": 2,
+        "expected_roles": 2,
+        "actual_education": 0
+      },
+      "invariants": {
+        "no_unsupported_field_values": true,
+        "no_silent_text_loss": true,
+        "no_cross_record_leakage": true,
+        "no_arbitrary_date_borrowing": true
+      },
+      "issues": []
+    },
+    {
+      "id": "adv_b03_responsibilities_no_bullets",
+      "category": "B",
+      "subcategory": "responsibility_ownership",
+      "description": "Duties written as flowing prose paragraphs without bullet characters",
+      "filename": "document.docx",
+      "filesize_bytes": 36972,
+      "execution_time_seconds": 0.5081,
+      "status": "PASS",
+      "metrics": {
+        "section_recall": 1.0,
+        "section_precision": 0.5,
+        "actual_employers": 2,
+        "actual_roles": 2,
+        "expected_employers": 2,
+        "expected_roles": 2,
+        "actual_education": 0
+      },
+      "invariants": {
+        "no_unsupported_field_values": true,
+        "no_silent_text_loss": true,
+        "no_cross_record_leakage": true,
+        "no_arbitrary_date_borrowing": true
+      },
+      "issues": []
+    },
+    {
+      "id": "adv_b04_numbered_responsibilities",
+      "category": "B",
+      "subcategory": "responsibility_ownership",
+      "description": "Duties formatted as numbered lists (1. ..., 2. ...) rather than bullet glyphs",
+      "filename": "document.pdf",
+      "filesize_bytes": 2978,
+      "execution_time_seconds": 0.5474,
+      "status": "PASS",
+      "metrics": {
+        "section_recall": 1.0,
+        "section_precision": 0.5,
+        "actual_employers": 1,
+        "actual_roles": 2,
+        "expected_roles": 2,
+        "actual_education": 0
+      },
+      "invariants": {
+        "no_unsupported_field_values": true,
+        "no_silent_text_loss": true,
+        "no_cross_record_leakage": true,
+        "no_arbitrary_date_borrowing": true
+      },
+      "issues": []
+    },
+    {
+      "id": "adv_b05_nested_responsibility_lists",
+      "category": "B",
+      "subcategory": "responsibility_ownership",
+      "description": "Hierarchical bullet lists with category headings and sub-bullets",
+      "filename": "document.docx",
+      "filesize_bytes": 36960,
+      "execution_time_seconds": 0.5311,
+      "status": "PASS",
+      "metrics": {
+        "section_recall": 1.0,
+        "section_precision": 0.5,
+        "actual_employers": 1,
+        "actual_roles": 1,
+        "expected_employers": 1,
+        "expected_roles": 1,
+        "actual_education": 0
+      },
+      "invariants": {
+        "no_unsupported_field_values": true,
+        "no_silent_text_loss": true,
+        "no_cross_record_leakage": true,
+        "no_arbitrary_date_borrowing": true
+      },
+      "issues": []
+    },
+    {
+      "id": "adv_b06_projects_embedded_in_experience",
+      "category": "B",
+      "subcategory": "responsibility_ownership",
+      "description": "Sub-projects embedded directly within a single consulting employer record",
+      "filename": "document.pdf",
+      "filesize_bytes": 2879,
+      "execution_time_seconds": 0.6418,
+      "status": "PASS",
+      "metrics": {
+        "section_recall": 1.0,
+        "section_precision": 0.5,
+        "actual_employers": 2,
+        "actual_roles": 2,
+        "expected_employers": 2,
+        "expected_roles": 2,
+        "actual_education": 0
+      },
+      "invariants": {
+        "no_unsupported_field_values": true,
+        "no_silent_text_loss": true,
+        "no_cross_record_leakage": true,
+        "no_arbitrary_date_borrowing": true
+      },
+      "issues": []
+    },
+    {
+      "id": "adv_b07_responsibilities_mentioning_vendor",
+      "category": "B",
+      "subcategory": "responsibility_ownership",
+      "description": "Duties cite external vendors CrowdStrike, Mandiant, Okta; employer is Capital One",
+      "filename": "document.pdf",
+      "filesize_bytes": 2230,
+      "execution_time_seconds": 0.5446,
+      "status": "PASS",
+      "metrics": {
+        "section_recall": 1.0,
+        "section_precision": 0.5,
+        "actual_employers": 1,
+        "actual_roles": 1,
+        "expected_employers": 1,
+        "expected_roles": 1,
+        "actual_education": 0
+      },
+      "invariants": {
+        "no_unsupported_field_values": true,
+        "no_silent_text_loss": true,
+        "no_cross_record_leakage": true,
+        "no_arbitrary_date_borrowing": true
+      },
+      "issues": []
+    },
+    {
+      "id": "adv_b08_similar_responsibilities_multiple_roles",
+      "category": "B",
+      "subcategory": "responsibility_ownership",
+      "description": "Candidate authored identical duties across two different employers; must remain isolated without leakage",
+      "filename": "document.pdf",
+      "filesize_bytes": 2746,
+      "execution_time_seconds": 0.6775,
+      "status": "PASS",
+      "metrics": {
+        "section_recall": 1.0,
+        "section_precision": 0.5,
+        "actual_employers": 2,
+        "actual_roles": 2,
+        "expected_employers": 2,
+        "expected_roles": 2,
+        "actual_education": 0
+      },
+      "invariants": {
+        "no_unsupported_field_values": true,
+        "no_silent_text_loss": true,
+        "no_cross_record_leakage": true,
+        "no_arbitrary_date_borrowing": true
+      },
+      "issues": []
+    },
+    {
+      "id": "adv_c01_dates_preceding_employer",
+      "category": "C",
+      "subcategory": "dates",
+      "description": "Dates placed at start of employment header line before company and role",
+      "filename": "document.pdf",
+      "filesize_bytes": 2197,
+      "execution_time_seconds": 0.5263,
+      "status": "PASS",
+      "metrics": {
+        "section_recall": 1.0,
+        "section_precision": 0.5,
+        "actual_employers": 2,
+        "actual_roles": 2,
+        "expected_employers": 2,
+        "expected_roles": 2,
+        "actual_education": 0
+      },
+      "invariants": {
+        "no_unsupported_field_values": true,
+        "no_silent_text_loss": true,
+        "no_cross_record_leakage": true,
+        "no_arbitrary_date_borrowing": true
+      },
+      "issues": []
+    },
+    {
+      "id": "adv_c02_year_only_and_month_year",
+      "category": "C",
+      "subcategory": "dates",
+      "description": "Mixed date formats: month/year for recent job, year-only for older jobs",
+      "filename": "document.docx",
+      "filesize_bytes": 36918,
+      "execution_time_seconds": 0.5194,
+      "status": "PASS",
+      "metrics": {
+        "section_recall": 1.0,
+        "section_precision": 0.5,
+        "actual_employers": 3,
+        "actual_roles": 3,
+        "expected_employers": 3,
+        "expected_roles": 3,
+        "actual_education": 0
+      },
+      "invariants": {
+        "no_unsupported_field_values": true,
+        "no_silent_text_loss": true,
+        "no_cross_record_leakage": true,
+        "no_arbitrary_date_borrowing": true
+      },
+      "issues": []
+    },
+    {
+      "id": "adv_c03_present_current_till_date",
+      "category": "C",
+      "subcategory": "dates",
+      "description": "Indian resume format with \"Till Date\" as current employment marker",
+      "filename": "document.pdf",
+      "filesize_bytes": 2662,
+      "execution_time_seconds": 0.6162,
+      "status": "PASS",
+      "metrics": {
+        "section_recall": 1.0,
+        "section_precision": 0.5,
+        "actual_employers": 3,
+        "actual_roles": 3,
+        "expected_employers": 3,
+        "expected_roles": 3,
+        "actual_education": 0
+      },
+      "invariants": {
+        "no_unsupported_field_values": true,
+        "no_silent_text_loss": true,
+        "no_cross_record_leakage": true,
+        "no_arbitrary_date_borrowing": true
+      },
+      "issues": []
+    },
+    {
+      "id": "adv_c04_overlapping_employment",
+      "category": "C",
+      "subcategory": "dates",
+      "description": "Concurrent employment: full-time researcher alongside concurrent advisory fellowship",
+      "filename": "document.docx",
+      "filesize_bytes": 36903,
+      "execution_time_seconds": 0.5299,
+      "status": "PASS",
+      "metrics": {
+        "section_recall": 1.0,
+        "section_precision": 0.5,
+        "actual_employers": 3,
+        "actual_roles": 3,
+        "expected_employers": 3,
+        "expected_roles": 3,
+        "actual_education": 0
+      },
+      "invariants": {
+        "no_unsupported_field_values": true,
+        "no_silent_text_loss": true,
+        "no_cross_record_leakage": true,
+        "no_arbitrary_date_borrowing": true
+      },
+      "issues": []
+    },
+    {
+      "id": "adv_c05_employment_gaps",
+      "category": "C",
+      "subcategory": "dates",
+      "description": "3-year career break between financial industry analyst roles",
+      "filename": "document.pdf",
+      "filesize_bytes": 2726,
+      "execution_time_seconds": 0.5198,
+      "status": "PASS",
+      "metrics": {
+        "section_recall": 1.0,
+        "section_precision": 0.5,
+        "actual_employers": 2,
+        "actual_roles": 2,
+        "expected_employers": 2,
+        "expected_roles": 2,
+        "actual_education": 0
+      },
+      "invariants": {
+        "no_unsupported_field_values": true,
+        "no_silent_text_loss": true,
+        "no_cross_record_leakage": true,
+        "no_arbitrary_date_borrowing": true
+      },
+      "issues": []
+    },
+    {
+      "id": "adv_c06_missing_dates",
+      "category": "C",
+      "subcategory": "dates",
+      "description": "Older medical residency omitted dates entirely; must retain record without fabricated dates",
+      "filename": "document.pdf",
+      "filesize_bytes": 2198,
+      "execution_time_seconds": 0.4773,
+      "status": "PASS",
+      "metrics": {
+        "section_recall": 1.0,
+        "section_precision": 0.5,
+        "actual_employers": 2,
+        "actual_roles": 2,
+        "expected_employers": 2,
+        "expected_roles": 2,
+        "actual_education": 0
+      },
+      "invariants": {
+        "no_unsupported_field_values": true,
+        "no_silent_text_loss": true,
+        "no_cross_record_leakage": true,
+        "no_arbitrary_date_borrowing": true
+      },
+      "issues": []
+    },
+    {
+      "id": "adv_c07_dates_inside_project_descriptions",
+      "category": "C",
+      "subcategory": "dates",
+      "description": "Responsibilities contain embedded date spans (June 2021, March 2019 - September 2020); job tenure is 2018 - Present",
+      "filename": "document.pdf",
+      "filesize_bytes": 2254,
+      "execution_time_seconds": 0.6315,
+      "status": "PASS",
+      "metrics": {
+        "section_recall": 1.0,
+        "section_precision": 0.5,
+        "actual_employers": 1,
+        "actual_roles": 1,
+        "expected_employers": 1,
+        "expected_roles": 1,
+        "actual_education": 0
+      },
+      "invariants": {
+        "no_unsupported_field_values": true,
+        "no_silent_text_loss": true,
+        "no_cross_record_leakage": true,
+        "no_arbitrary_date_borrowing": true
+      },
+      "issues": []
+    },
+    {
+      "id": "adv_c08_multiple_dates_under_one_employer",
+      "category": "C",
+      "subcategory": "dates",
+      "description": "Parent umbrella company has dates (2016 - 2023) and 3 sub-roles have individual date ranges",
+      "filename": "document.pdf",
+      "filesize_bytes": 2772,
+      "execution_time_seconds": 0.5221,
+      "status": "PASS",
+      "metrics": {
+        "section_recall": 1.0,
+        "section_precision": 0.5,
+        "actual_employers": 1,
+        "actual_roles": 3,
+        "expected_employers": 1,
+        "expected_roles": 3,
+        "actual_education": 0
+      },
+      "invariants": {
+        "no_unsupported_field_values": true,
+        "no_silent_text_loss": true,
+        "no_cross_record_leakage": true,
+        "no_arbitrary_date_borrowing": true
+      },
+      "issues": []
+    },
+    {
+      "id": "adv_d01_single_column_standard",
+      "category": "D",
+      "subcategory": "layouts",
+      "description": "Baseline pristine single-column resume with standard sections",
+      "filename": "document.pdf",
+      "filesize_bytes": 2501,
+      "execution_time_seconds": 0.5733,
+      "status": "PASS",
+      "metrics": {
+        "section_recall": 1.0,
+        "section_precision": 0.75,
+        "actual_employers": 1,
+        "actual_roles": 1,
+        "expected_employers": 1,
+        "expected_roles": 1,
+        "actual_education": 1
+      },
+      "invariants": {
+        "no_unsupported_field_values": true,
+        "no_silent_text_loss": true,
+        "no_cross_record_leakage": true,
+        "no_arbitrary_date_borrowing": true
+      },
+      "issues": []
+    },
+    {
+      "id": "adv_d02_two_column_sidebar",
+      "category": "D",
+      "subcategory": "layouts",
+      "description": "2-column layout: Left sidebar for contact, education, skills; right column for experience",
+      "filename": "document.pdf",
+      "filesize_bytes": 3696,
+      "execution_time_seconds": 0.8745,
+      "status": "PASS",
+      "metrics": {
+        "section_recall": 1.0,
+        "section_precision": 0.75,
+        "actual_employers": 2,
+        "actual_roles": 2,
+        "expected_employers": 2,
+        "expected_roles": 2,
+        "actual_education": 1
+      },
+      "invariants": {
+        "no_unsupported_field_values": true,
+        "no_silent_text_loss": true,
+        "no_cross_record_leakage": true,
+        "no_arbitrary_date_borrowing": true
+      },
+      "issues": []
+    },
+    {
+      "id": "adv_d03_three_column_layout",
+      "category": "D",
+      "subcategory": "layouts",
+      "description": "3-column layout: Contact / Competencies / Experience",
+      "filename": "document.pdf",
+      "filesize_bytes": 2490,
+      "execution_time_seconds": 0.5495,
+      "status": "PASS",
+      "metrics": {
+        "section_recall": 1.0,
+        "section_precision": 0.67,
+        "actual_employers": 1,
+        "actual_roles": 1,
+        "expected_employers": 1,
+        "expected_roles": 1,
+        "actual_education": 0
+      },
+      "invariants": {
+        "no_unsupported_field_values": true,
+        "no_silent_text_loss": true,
+        "no_cross_record_leakage": true,
+        "no_arbitrary_date_borrowing": true
+      },
+      "issues": []
+    },
+    {
+      "id": "adv_d04_docx_tables_nested",
+      "category": "D",
+      "subcategory": "layouts",
+      "description": "DOCX tables enclosing company, dates, designation, location, and duties in cells",
+      "filename": "document.docx",
+      "filesize_bytes": 36923,
+      "execution_time_seconds": 0.2773,
+      "status": "PASS",
+      "metrics": {
+        "section_recall": 1.0,
+        "section_precision": 1.0,
+        "actual_employers": 1,
+        "actual_roles": 1,
+        "expected_employers": 1,
+        "expected_roles": 1,
+        "actual_education": 0
+      },
+      "invariants": {
+        "no_unsupported_field_values": true,
+        "no_silent_text_loss": true,
+        "no_cross_record_leakage": true,
+        "no_arbitrary_date_borrowing": true
+      },
+      "issues": []
+    },
+    {
+      "id": "adv_d05_multipage_4pages",
+      "category": "D",
+      "subcategory": "layouts",
+      "description": "Dense 4-page executive resume",
+      "filename": "document.pdf",
+      "filesize_bytes": 5687,
+      "execution_time_seconds": 1.5554,
+      "status": "PASS",
+      "metrics": {
+        "section_recall": 1.0,
+        "section_precision": 1.0,
+        "actual_employers": 4,
+        "actual_roles": 4,
+        "expected_employers": 4,
+        "expected_roles": 4,
+        "actual_education": 0
+      },
+      "invariants": {
+        "no_unsupported_field_values": true,
+        "no_silent_text_loss": true,
+        "no_cross_record_leakage": true,
+        "no_arbitrary_date_borrowing": true
+      },
+      "issues": []
+    },
+    {
+      "id": "adv_d06_mixed_font_sizes",
+      "category": "D",
+      "subcategory": "layouts",
+      "description": "Section title in tiny 8pt font, company name in giant 16pt uppercase font",
+      "filename": "document.pdf",
+      "filesize_bytes": 1880,
+      "execution_time_seconds": 0.4365,
+      "status": "PASS",
+      "metrics": {
+        "section_recall": 1.0,
+        "section_precision": 0.5,
+        "actual_employers": 1,
+        "actual_roles": 1,
+        "expected_employers": 1,
+        "expected_roles": 1,
+        "actual_education": 0
+      },
+      "invariants": {
+        "no_unsupported_field_values": true,
+        "no_silent_text_loss": true,
+        "no_cross_record_leakage": true,
+        "no_arbitrary_date_borrowing": true
+      },
+      "issues": []
+    },
+    {
+      "id": "adv_d07_misleading_bold_formatting",
+      "category": "D",
+      "subcategory": "layouts",
+      "description": "Company unbolded while arbitrary nouns inside bullet are bolded",
+      "filename": "document.pdf",
+      "filesize_bytes": 2026,
+      "execution_time_seconds": 0.4929,
+      "status": "PASS",
+      "metrics": {
+        "section_recall": 1.0,
+        "section_precision": 0.5,
+        "actual_employers": 1,
+        "actual_roles": 1,
+        "expected_employers": 1,
+        "expected_roles": 1,
+        "actual_education": 0
+      },
+      "invariants": {
+        "no_unsupported_field_values": true,
+        "no_silent_text_loss": true,
+        "no_cross_record_leakage": true,
+        "no_arbitrary_date_borrowing": true
+      },
+      "issues": []
+    },
+    {
+      "id": "adv_d08_headers_footers_noise",
+      "category": "D",
+      "subcategory": "layouts",
+      "description": "Header and footer with confidentiality and portal metadata; must be classified as non-content artifacts",
+      "filename": "document.pdf",
+      "filesize_bytes": 2190,
+      "execution_time_seconds": 0.4995,
+      "status": "PASS",
+      "metrics": {
+        "section_recall": 1.0,
+        "section_precision": 0.5,
+        "actual_employers": 1,
+        "actual_roles": 1,
+        "expected_employers": 1,
+        "expected_roles": 1,
+        "actual_education": 0
+      },
+      "invariants": {
+        "no_unsupported_field_values": true,
+        "no_silent_text_loss": true,
+        "no_cross_record_leakage": true,
+        "no_arbitrary_date_borrowing": true
+      },
+      "issues": []
+    },
+    {
+      "id": "adv_d09_page_break_in_experience",
+      "category": "D",
+      "subcategory": "layouts",
+      "description": "Page break splits employer/role header on page 1 from duties on page 2",
+      "filename": "document.pdf",
+      "filesize_bytes": 2639,
+      "execution_time_seconds": 0.5377,
+      "status": "PASS",
+      "metrics": {
+        "section_recall": 1.0,
+        "section_precision": 0.5,
+        "actual_employers": 2,
+        "actual_roles": 2,
+        "expected_employers": 2,
+        "expected_roles": 2,
+        "actual_education": 0
+      },
+      "invariants": {
+        "no_unsupported_field_values": true,
+        "no_silent_text_loss": true,
+        "no_cross_record_leakage": true,
+        "no_arbitrary_date_borrowing": true
+      },
+      "issues": []
+    },
+    {
+      "id": "adv_e01_missing_standard_headings",
+      "category": "E",
+      "subcategory": "sections",
+      "description": "Resume completely lacks section headings (\"Experience\", \"Education\")",
+      "filename": "document.pdf",
+      "filesize_bytes": 1853,
+      "execution_time_seconds": 0.3514,
+      "status": "PASS",
+      "metrics": {
+        "actual_employers": 1,
+        "actual_roles": 1,
+        "expected_roles": 1,
+        "actual_education": 1
+      },
+      "invariants": {
+        "no_unsupported_field_values": true,
+        "no_silent_text_loss": true,
+        "no_cross_record_leakage": true,
+        "no_arbitrary_date_borrowing": true
+      },
+      "issues": []
+    },
+    {
+      "id": "adv_e02_unusual_section_headings",
+      "category": "E",
+      "subcategory": "sections",
+      "description": "Unusual heading synonyms: \"Where I Have Been\", \"Scholastic Background\", \"Technical Arsenal\"",
+      "filename": "document.pdf",
+      "filesize_bytes": 2547,
+      "execution_time_seconds": 0.568,
+      "status": "PASS",
+      "metrics": {
+        "section_recall": 1.0,
+        "section_precision": 0.75,
+        "actual_employers": 1,
+        "actual_roles": 1,
+        "expected_employers": 1,
+        "expected_roles": 1,
+        "actual_education": 1
+      },
+      "invariants": {
+        "no_unsupported_field_values": true,
+        "no_silent_text_loss": true,
+        "no_cross_record_leakage": true,
+        "no_arbitrary_date_borrowing": true
+      },
+      "issues": []
+    },
+    {
+      "id": "adv_e03_skills_embedded_in_experience",
+      "category": "E",
+      "subcategory": "sections",
+      "description": "Technologies and skills embedded as last line of experience record",
+      "filename": "document.pdf",
+      "filesize_bytes": 1999,
+      "execution_time_seconds": 0.5999,
+      "status": "PASS",
+      "metrics": {
+        "section_recall": 1.0,
+        "section_precision": 0.5,
+        "actual_employers": 1,
+        "actual_roles": 1,
+        "expected_employers": 1,
+        "expected_roles": 1,
+        "actual_education": 0
+      },
+      "invariants": {
+        "no_unsupported_field_values": true,
+        "no_silent_text_loss": true,
+        "no_cross_record_leakage": true,
+        "no_arbitrary_date_borrowing": true
+      },
+      "issues": []
+    },
+    {
+      "id": "adv_e04_projects_embedded_in_employment",
+      "category": "E",
+      "subcategory": "sections",
+      "description": "Projects embedded with sub-headings inside employment block",
+      "filename": "document.docx",
+      "filesize_bytes": 36912,
+      "execution_time_seconds": 0.4991,
+      "status": "PASS",
+      "metrics": {
+        "section_recall": 1.0,
+        "section_precision": 0.5,
+        "actual_employers": 1,
+        "actual_roles": 1,
+        "expected_employers": 1,
+        "expected_roles": 1,
+        "actual_education": 0
+      },
+      "invariants": {
+        "no_unsupported_field_values": true,
+        "no_silent_text_loss": true,
+        "no_cross_record_leakage": true,
+        "no_arbitrary_date_borrowing": true
+      },
+      "issues": []
+    },
+    {
+      "id": "adv_e05_education_mixed_with_certifications",
+      "category": "E",
+      "subcategory": "sections",
+      "description": "Combined \"Education & Certifications\" header holding both law degree and professional licenses",
+      "filename": "document.pdf",
+      "filesize_bytes": 1999,
+      "execution_time_seconds": 0.4365,
+      "status": "PASS",
+      "metrics": {
+        "section_recall": 1.0,
+        "section_precision": 0.67,
+        "actual_employers": 0,
+        "actual_roles": 0,
+        "actual_education": 1,
+        "expected_education": 1
+      },
+      "invariants": {
+        "no_unsupported_field_values": true,
+        "no_silent_text_loss": true,
+        "no_cross_record_leakage": true,
+        "no_arbitrary_date_borrowing": true
+      },
+      "issues": []
+    },
+    {
+      "id": "adv_e06_multiple_degrees_same_institution",
+      "category": "E",
+      "subcategory": "sections",
+      "description": "3 degrees (Ph.D., M.S., B.S.) from single institution (Caltech)",
+      "filename": "document.pdf",
+      "filesize_bytes": 2087,
+      "execution_time_seconds": 0.365,
+      "status": "PASS",
+      "metrics": {
+        "section_recall": 1.0,
+        "section_precision": 0.5,
+        "actual_employers": 0,
+        "actual_roles": 0,
+        "actual_education": 3,
+        "expected_education": 3
+      },
+      "invariants": {
+        "no_unsupported_field_values": true,
+        "no_silent_text_loss": true,
+        "no_cross_record_leakage": true,
+        "no_arbitrary_date_borrowing": true
+      },
+      "issues": []
+    },
+    {
+      "id": "adv_e07_academic_cv_publications",
+      "category": "E",
+      "subcategory": "sections",
+      "description": "Academic CV with academic appointments, publications list, and grant funding",
+      "filename": "document.pdf",
+      "filesize_bytes": 2835,
+      "execution_time_seconds": 0.6649,
+      "status": "PASS",
+      "metrics": {
+        "section_recall": 1.0,
+        "section_precision": 0.67,
+        "actual_employers": 1,
+        "actual_roles": 1,
+        "expected_employers": 1,
+        "expected_roles": 1,
+        "actual_education": 0
+      },
+      "invariants": {
+        "no_unsupported_field_values": true,
+        "no_silent_text_loss": true,
+        "no_cross_record_leakage": true,
+        "no_arbitrary_date_borrowing": true
+      },
+      "issues": []
+    },
+    {
+      "id": "adv_f01_malformed_pdf",
+      "category": "F",
+      "subcategory": "security_resilience",
+      "description": "Malformed truncated PDF binary bytes",
+      "filename": "document.pdf",
+      "filesize_bytes": 87,
+      "execution_time_seconds": 0.0009,
+      "status": "PASS",
+      "metrics": {
+        "security_status": "Expected error handled: HTTP 422"
+      },
+      "invariants": {
+        "no_crash_on_malformed": true
+      },
+      "issues": []
+    },
+    {
+      "id": "adv_f02_corrupted_docx",
+      "category": "F",
+      "subcategory": "security_resilience",
+      "description": "Corrupted ZIP archive pretending to be a DOCX document",
+      "filename": "document.docx",
+      "filesize_bytes": 59,
+      "execution_time_seconds": 0.0018,
+      "status": "PASS",
+      "metrics": {
+        "security_status": "Expected error handled: HTTP 415"
+      },
+      "invariants": {
+        "no_crash_on_malformed": true
+      },
+      "issues": []
+    },
+    {
+      "id": "adv_f03_extremely_long_resume",
+      "category": "F",
+      "subcategory": "security_resilience",
+      "description": "25-page dense resume stress-testing parsing time and memory limits",
+      "filename": "document.pdf",
+      "filesize_bytes": 76370,
+      "execution_time_seconds": 15.1559,
+      "status": "PASS",
+      "metrics": {
+        "section_recall": 1.0,
+        "section_precision": 1.0,
+        "actual_employers": 25,
+        "actual_roles": 25,
+        "actual_education": 0
+      },
+      "invariants": {
+        "no_unsupported_field_values": true,
+        "no_silent_text_loss": true,
+        "no_cross_record_leakage": true,
+        "no_arbitrary_date_borrowing": true
+      },
+      "issues": []
+    },
+    {
+      "id": "adv_f04_empty_document",
+      "category": "F",
+      "subcategory": "security_resilience",
+      "description": "0-byte completely empty file",
+      "filename": "document.pdf",
+      "filesize_bytes": 0,
+      "execution_time_seconds": 0.0001,
+      "status": "PASS",
+      "metrics": {
+        "security_status": "Expected error handled: HTTP 422"
+      },
+      "invariants": {
+        "no_crash_on_malformed": true
+      },
+      "issues": []
+    },
+    {
+      "id": "adv_f05_duplicate_text_loops",
+      "category": "F",
+      "subcategory": "security_resilience",
+      "description": "Repeated identical line looped 35 times across page",
+      "filename": "document.pdf",
+      "filesize_bytes": 8608,
+      "execution_time_seconds": 1.2425,
+      "status": "PASS",
+      "metrics": {
+        "actual_employers": 1,
+        "actual_roles": 34,
+        "actual_education": 0
+      },
+      "invariants": {
+        "no_unsupported_field_values": true,
+        "no_silent_text_loss": true,
+        "no_cross_record_leakage": true,
+        "no_arbitrary_date_borrowing": true
+      },
+      "issues": []
+    },
+    {
+      "id": "adv_f06_unsupported_unicode",
+      "category": "F",
+      "subcategory": "security_resilience",
+      "description": "Zero-width spaces, Cyrillic homoglyphs, bidirectional RTL overrides, emojis",
+      "filename": "document.pdf",
+      "filesize_bytes": 1732,
+      "execution_time_seconds": 0.4047,
+      "status": "PASS",
+      "metrics": {
+        "section_recall": 1.0,
+        "section_precision": 0.5,
+        "actual_employers": 1,
+        "actual_roles": 0,
+        "actual_education": 0
+      },
+      "invariants": {
+        "no_unsupported_field_values": true,
+        "no_silent_text_loss": true,
+        "no_cross_record_leakage": true,
+        "no_arbitrary_date_borrowing": true
+      },
+      "issues": []
+    },
+    {
+      "id": "adv_f07_prompt_injection",
+      "category": "F",
+      "subcategory": "security_resilience",
+      "description": "Malicious prompt injection attempting to force CEO role and 50 years experience",
+      "filename": "document.pdf",
+      "filesize_bytes": 2252,
+      "execution_time_seconds": 0.5578,
+      "status": "PASS",
+      "metrics": {
+        "section_recall": 1.0,
+        "section_precision": 0.5,
+        "actual_employers": 1,
+        "actual_roles": 1,
+        "expected_employers": 1,
+        "expected_roles": 1,
+        "actual_education": 0
+      },
+      "invariants": {
+        "no_unsupported_field_values": true,
+        "no_silent_text_loss": true,
+        "no_cross_record_leakage": true,
+        "no_arbitrary_date_borrowing": true,
+        "prompt_injection_thwarted": true
+      },
+      "issues": []
+    }
+  ]
+}

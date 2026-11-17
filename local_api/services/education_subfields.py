@@ -90,11 +90,15 @@ def refine_education(values, blocks):
     for source in [*(b.text for b in blocks), *source_texts]:
         for part in re.split(r'[,|\n]|\s+[-\u2013\u2014]\s+', source):
             part = re.sub(r'^(?:(?:Institution|University|College)\s*:\s*|(?:from|at)\s+)', '', part.strip(), flags=re.I)
-            if (re.fullmatch(r"[A-Za-z][A-Za-z .&/'\u2019\-(),]*", part)
-                    and re.search(r'\b(?:University|College|Institute|School|Vidyalaya)\b',part,re.I)
-                    and len(part.split())<=18 and not DEGREE.search(part)
-                    and not re.match(r'^(?:student|represented|participated|member|won)\b',part,re.I)):
-                institutions.append(part)
+            cand = part
+            m_from = re.search(r'\bfrom\s+(.+)$', cand, re.I)
+            if m_from and DEGREE.search(cand[:m_from.start()]):
+                cand = m_from.group(1).strip()
+            if (re.fullmatch(r"[A-Za-z][A-Za-z .&/'\u2019\-(),]*", cand)
+                    and re.search(r'\b(?:University|College|Institute|School|Vishwavidyalaya|Vishwavidyalay|Vidyalaya)\b',cand,re.I)
+                    and len(cand.split())<=18 and not DEGREE.search(cand)
+                    and not re.match(r'^(?:student|represented|participated|member|won)\b',cand,re.I)):
+                institutions.append(cand)
     institutions = list(dict.fromkeys(institutions))
     institutions = [value for value in institutions if not any(other != value and other.endswith(value) for other in institutions)]
     if len(institutions) == 1:

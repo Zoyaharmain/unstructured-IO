@@ -54,7 +54,10 @@ def validate_hierarchy(hierarchy, sections):
                                      'evidence_source_ids': [q.source_id for q in item.evidence],
                                      'evidence_quote_lengths': [len(q.quote) for q in item.evidence]})
                     if isinstance(item.value, str):
-                        if not any(item.value.casefold() in ref.quote.casefold() for ref in item.evidence) and not contiguous_support(item.value, item.evidence, global_inventory):
+                        evidence_matches_full = bool(item.evidence and re.sub(r'[\s\W_]+', '', ''.join(ref.quote for ref in item.evidence)).casefold() == re.sub(r'[\s\W_]+', '', item.value).casefold())
+                        if (not any(item.value.casefold() in ref.quote.casefold() for ref in item.evidence)
+                                and not contiguous_support(item.value, item.evidence, global_inventory)
+                                and not evidence_matches_full):
                             own_blocks = [b for b in blocks if source_id(b) in allowed]
                             fail('source_evidence_validation', 'unsupported_value', value_path + ('value',), field.name,
                                  evidence_analysis={'item_index': vi, 'value_length': len(item.value),

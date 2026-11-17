@@ -22,7 +22,7 @@ class ReviewSettings:
     model: str = DEFAULT_MODEL
     base_url: str = 'https://api.deepseek.com'
     thinking: str = 'disabled'
-    timeout: int = 90
+    timeout: int = 180
     max_units: int = 600
     max_input_chars: int = 200_000
     max_tokens: int = 16_000
@@ -43,7 +43,7 @@ class ReviewSettings:
                    model=os.getenv('DEEPSEEK_MODEL', DEFAULT_MODEL).strip() or DEFAULT_MODEL,
                    thinking=os.getenv('DEEPSEEK_THINKING_MODE', 'disabled').lower(),
                    base_url=os.getenv('DEEPSEEK_BASE_URL', 'https://api.deepseek.com').rstrip('/'),
-                   timeout=int(os.getenv('DEEPSEEK_TIMEOUT_SECONDS', '90')),
+                   timeout=int(os.getenv('DEEPSEEK_TIMEOUT_SECONDS', '180')),
                    max_units=int(os.getenv('DEEPSEEK_REVIEW_MAX_UNITS', '600')),
                    max_input_chars=int(os.getenv('DEEPSEEK_REVIEW_MAX_INPUT_CHARS', '200000')),
                    max_tokens=int(os.getenv('DEEPSEEK_MAX_TOKENS', '16000')),

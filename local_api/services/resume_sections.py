@@ -289,8 +289,9 @@ class SectionEngine:
             compound = len(alternatives) > 1 and structural_label is None
             from local_api.services.record_subfields import paired_employment_header
             next_unit = units[position+1] if position+1<len(units) else None
-            paired_boundary = bool(next_unit and context and context[0] in {'experience','projects'} and paired_employment_header(unit.text,next_unit.text))
-            employer_boundary = employment_start(unit.text) or paired_boundary
+            paired_boundary = bool(next_unit and (not context or not context[2] or context[0] in {'experience', 'projects', 'summary'}) and paired_employment_header(unit.text, next_unit.text))
+            table_emp_boundary = bool(element.type == 'Table' and re.search(r'\bCompany\s*:\s*\S', unit.text, re.I) and re.search(r'\b(?:Designation|Role)\s*:\s*\S', element.text, re.I))
+            employer_boundary = employment_start(unit.text) or paired_boundary or table_emp_boundary
             # A labelled professional engagement may follow a skills sidebar
             # without a repeated Experience heading. Require role, project and
             # client evidence; do not treat a client as an employer.
@@ -314,6 +315,13 @@ class SectionEngine:
             elif unit.margin_footer and re.match(r'\s*(?:place|date)\s*:', unit.text, re.I):
                 label = 'personal_information'
                 assignment, reason = 'personal_detail', 'Location/date signature in the document bottom margin'
+            elif (re.search(r'\b(?:b\.?s\b|b\.?tech|b\.?e\b|bachelor|m\.?s\b|m\.?tech|master|ph\.?d|doctorate|diploma|juris\s+doctor|j\.?d\b)\b', unit.text, re.I) and re.search(r'\b(?:university|college|institute|academy|school)\b', unit.text, re.I)) and (not context or not context[2] or context[0] in {'experience', 'projects', 'certifications'}):
+                label = 'education'
+                context_source = unit.index
+                target_lanes = set(item.lane for item in units) if len(page_heading_lanes.get(element.page_number, set()) - {'wide', 'unknown'}) <= 1 else {unit.lane}
+                for lane in target_lanes:
+                    contexts[lane] = ('education', unit.index, False)
+                assignment, reason = 'education_boundary', 'Unambiguous degree and institution in headingless or transition text'
             elif employer_boundary or engagement_boundary:
                 label = 'experience'
                 context_source = unit.index
@@ -334,7 +342,7 @@ class SectionEngine:
             elif position < first_heading and len(unit.text.split()) <= 22 and any(heading_boundary(item.text, ALIASES)[0] == 'personal_information' for item in units[:20]):
                 label = 'personal_information'
                 assignment, reason = 'contact_context', 'Opening identity/headline before the contact section'
-            elif position < first_heading and len(unit.text.split()) <= 18 and (re.match(r'^\s*(?:role|designation|title|position)\s*:\s*\S', unit.text, re.I) or (not context and ROLE.search(unit.text) and len(unit.text.split()) <= 8)):
+            elif not context and position < first_heading and len(unit.text.split()) <= 18 and (re.match(r'^\s*(?:role|designation|title|position)\s*:\s*\S', unit.text, re.I) or (not context and ROLE.search(unit.text) and len(unit.text.split()) <= 8)):
                 label = 'personal_information'
                 assignment, reason = 'contact_context', 'Opening professional role/headline in document preamble'
             elif not context and position < first_heading and len(unit.text.split()) <= 18 and not unit.text.rstrip().endswith(('.', '!', '?')) and any(
