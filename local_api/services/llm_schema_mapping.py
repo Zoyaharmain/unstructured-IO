@@ -189,6 +189,8 @@ def parse_review(content, source_sections):
         fail('parent_schema_validation', 'section_coverage', ('sections',))
     from local_api.services.source_ownership import ownership_is_locked
     locked = ownership_is_locked(source_sections)
+    from local_api.services.logical_blocks import RECORD_SECTIONS
+    record_categories = REPEATED | (RECORD_SECTIONS if locked else set())
     if locked:
         from local_api.services.source_ownership import validate_record_tree
         for parent in source_sections.sections:
@@ -224,7 +226,7 @@ def parse_review(content, source_sections):
                     revised.metadata.setdefault('field_record_id_repairs',[]).append({
                         'category':category,'proposed':item['record_id'],'canonical':canonical_entry.entry_id})
                     item['record_id']=canonical_entry.entry_id
-            if locked and category in REPEATED:
+            if locked and category in record_categories:
                 if canonical_entry is None or not isinstance(ids, list) or set(ids) != {source_id(section.blocks[i]) for i in canonical_entry.block_indices}:
                     fail('record_ownership_validation', 'validated_record_boundary_changed', record_path)
             if not isinstance(ids, list) or any(not isinstance(sid, str) for sid in ids):
@@ -312,7 +314,7 @@ def parse_review(content, source_sections):
                                      record_kind=canonical_entry.record_kind if canonical_entry else 'record',
                                      review_reasons=['Some source fields remain ambiguous.'] if 'ambiguous' in missing.values() else [])
             records.append(record)
-            if category in REPEATED:
+            if category in record_categories:
                 context_entry=next((e for e in section.entries if {source_id(section.blocks[i]) for i in e.block_indices}==set(ids)),None)
                 entries.append(canonical_entry.model_copy(deep=True) if canonical_entry else SectionEntry(entry_id=record.record_id,
                     context_fields=context_entry.context_fields if context_entry else {},
@@ -320,7 +322,7 @@ def parse_review(content, source_sections):
                     boundary_reason='DeepSeek source-backed field and record review',
                     relationship_status='needs_review' if record.review_reasons else 'provisional',
                     review_reasons=record.review_reasons))
-        if category in REPEATED:
+        if category in record_categories:
             if locked and {e.entry_id for e in entries} != {e.entry_id for e in section.entries}:
                 fail('record_ownership_validation', 'validated_record_omitted', section_path)
             section.entries = entries

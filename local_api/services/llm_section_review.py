@@ -281,7 +281,13 @@ def review_sections(request, local_result, *, settings=None, transport=None, _re
     from local_api.services.source_accounting import account_source
     from local_api.services.empty_source_artifacts import separate_empty_source
     from local_api.services.competency_sections import recover_competency_sections
-    result = separate_empty_source(recover_competency_sections(separate_empty_source(local_result,request.elements),request.elements),request.elements).model_copy(deep=True)
+    result = local_result.model_copy(deep=True)
+    if not any(b.reviewed_by_llm for b, _ in source_ledger(result)):
+        result = separate_empty_source(recover_competency_sections(separate_empty_source(result,request.elements),request.elements),request.elements)
+    if not any(b.reviewed_by_llm for b, _ in source_ledger(result)):
+        from local_api.services.review_resolution import resolve_unassigned
+        from local_api.services.local_completion import recover_local_content
+        result = recover_local_content(resolve_unassigned(request, result), request.elements)
     result.metadata['source_accounting']=account_source(request.elements,result)
     state = {'provider': 'DeepSeek', 'status': 'disabled', 'reviewed_units': 0, 'changed_units': 0,
              'resolved_units': 0, 'local_result_retained': True, 'provider_calls':0}
@@ -380,14 +386,11 @@ def review_sections(request, local_result, *, settings=None, transport=None, _re
                 refs={(b.source_element_index,b.start,b.end):b for b in grouped[section.category]}
                 section.blocks=[refs[(b.source_element_index,b.start,b.end)] for b in section.blocks]
         else:
-            sections = build_sections(grouped, request.elements)
+            sections = build_sections(grouped, request.elements, refine=False)
             # Classifying a heading must not first destroy the existing record
             # boundaries of its unchanged body. Reuse whole source-identical
             # records; only genuinely moved/split inventories need regrouping.
             for section in sections:
-                if not any(b.boundary_candidate and b.assignment == 'structural_heading'
-                           for s in sections for b in s.blocks):
-                    break
                 previous = next((s for s in result.sections if s.category == section.category), None)
                 if previous is None:
                     continue
@@ -440,10 +443,8 @@ def review_sections(request, local_result, *, settings=None, transport=None, _re
         all_blocks = assigned + unresolved
         candidate.metadata.update(total_units=len(all_blocks), assigned_units=len(assigned), review_units=len(unresolved),
             assigned_text_percent=round(100 * sum(len(b.text.strip()) for b in assigned) / max(1, sum(len(b.text.strip()) for b in all_blocks)), 1))
-        from local_api.services.review_resolution import resolve_unassigned
-        candidate=resolve_unassigned(request,candidate)
-        from local_api.services.local_completion import recover_local_content
-        candidate=recover_local_content(candidate,request.elements)
+        # The provider has reviewed these assignments and abstentions. Local
+        # recovery runs before review, never silently after its decisions.
         if boundary_blocks:
             from local_api.services.section_boundaries import boundary_errors
             checked = snapshot(request.elements, candidate)
@@ -467,6 +468,18 @@ def review_sections(request, local_result, *, settings=None, transport=None, _re
         state.update(status='complete', aggregate_status='complete', pass_count=1, split_units=int(split_units), reviewed_units=len(ledger), changed_units=int(changed),
                      resolved_units=int(resolved), remaining_review_units=len(unresolved), local_result_retained=False)
         candidate.metadata['llm_review'] = state
+        coverage = {
+            'mode': 'targeted_followup' if _targeted else 'all_assigned_and_unassigned',
+            'reviewed_source_ids': [f'e{b.source_element_index}:{b.start}:{b.end}' for b, _ in ledger],
+            'complete': len(decisions) == len(ledger),
+            'empty_source_policy': 'Preserved in source artifacts; no semantic category required.'}
+        if _targeted and result.metadata.get('semantic_review_coverage'):
+            candidate.metadata['semantic_review_coverage'] = dict(result.metadata['semantic_review_coverage'])
+            candidate.metadata['semantic_review_coverage']['followup'] = coverage
+        else:
+            candidate.metadata['semantic_review_coverage'] = coverage
+        from local_api.services.source_ownership import snapshot
+        candidate.metadata['source_ownership'] = snapshot(request.elements, candidate).payload()
         candidate.warnings.append(('DeepSeek reviewed unresolved source spans with full paragraph context. ' if _targeted else 'DeepSeek reviewed all source spans. ')+'Its placements remain provisional and do not verify original-word extraction accuracy.')
         state['classification_complete']=accounting['all_meaningful_text_assigned']
         if not _targeted and remaining>0 and accounting['unresolved_meaningful_spans'] and state['resolution_status']!='out_of_scope':

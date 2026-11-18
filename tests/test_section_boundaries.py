@@ -149,7 +149,7 @@ def test_heading_correction_survives_materialization_schema_mapping_and_source_v
     assert next(s for s in revised.sections if s.category=='projects').source_heading=='Independent Work'
 
     # Section-review classification can recognize the same unfamiliar boundary
-    # before structural review. It must use the identical scope/persistence rule.
+    # before structural review. Explicit confirmations of its body must survive.
     from local_api.services.llm_section_review import review_sections
     from local_api.schemas.sections import SectionRequest
     result.sections[0].blocks[2].boundary_candidate=True
@@ -163,4 +163,36 @@ def test_heading_correction_survives_materialization_schema_mapping_and_source_v
     validated_ownership_state(elements,reviewed)
     assert next(s for s in reviewed.sections if s.category=='projects').source_heading=='Independent Work'
     remapped=map_schema(SchemaMappingRequest(elements=elements,sections=reviewed))
-    assert set(next(s for s in remapped.section_schemas if s.category=='projects').records[0].source_ids)=={state.spans[3].source_id,state.spans[4].source_id}
+    # The provider explicitly confirmed the dependent body as Certifications.
+    # A heading-only decision must flag that contradiction, not override it.
+    assert not next(s for s in remapped.section_schemas if s.category=='projects').records
+    body = next(s for s in reviewed.sections if s.category=='certifications')
+    assert all(b.assignment=='ownership_needs_review' for b in body.blocks if b.source_element_index in {3,4})
+
+
+def test_employment_transition_terminates_an_earlier_sidebar_heading():
+    state=ledger();spans=list(state.spans);owners=dict(state.owners)
+    # A supported dated employment anchor is a boundary even without Title style.
+    spans[3]=replace(spans[3],source_assignment='employment_boundary')
+    for i in [3,4]:
+        owners[spans[i].source_id]=Owner('experience','job',('responsibilities',) if i==4 else ())
+    state=replace(state,spans=tuple(spans),owners=MappingProxyType(owners))
+    out=correct(state)
+    assert all(out.owners[spans[i].source_id]==state.owners[spans[i].source_id] for i in [3,4])
+
+
+def test_reviewed_wrapped_responsibility_cannot_be_implicitly_reclassified():
+    state=ledger();spans=list(state.spans);owners=dict(state.owners)
+    for i in [3,4]:
+        spans[i]=replace(spans[i],reviewed_section='experience',element=3)
+        owners[spans[i].source_id]=Owner('experience','job',('responsibilities',) if i==4 else ())
+    state=replace(state,spans=tuple(spans),owners=MappingProxyType(owners))
+    out=correct(state)
+    for i in [3,4]:
+        owner=out.owners[spans[i].source_id]
+        assert (owner.section,owner.record)==('experience','job')
+        assert owner.status=='needs_review'
+    # Explicit, source-bound corrections remain possible after review.
+    out=apply_operations(out,[{'op':'assign','source_ids':[spans[i].source_id for i in [3,4]],
+        'section':'projects','record':None,'fields':[]}],{'experience','projects'})
+    assert all(out.owners[spans[i].source_id].section=='projects' for i in [3,4])

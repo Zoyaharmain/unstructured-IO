@@ -43,11 +43,12 @@ def test_combined_heading_without_supporting_sections_is_not_forced():
  assert len(result.needs_review)==1 and result.metadata['llm_review']['resolution_status']=='unresolved_meaningful_content'
 
 
-def test_declaration_with_explicit_attestation_and_signoff_is_personal_information():
+def test_reviewed_declaration_abstention_is_not_silently_reclassified():
  req,local=fixture(['Declaration','I do hereby declare that these facts are true.','Place: Hyderabad Date: 9 June 2026','Signature'])
- result,calls=invoke(req,local,['needs_review']*4)
- assert len(calls)==1 and not result.needs_review
- assert {s.category for s in result.sections}=={'personal_information'}
+ result,calls=invoke(req,local,['needs_review']*4,recovery_attempts=0)
+ assert len(calls)==1 and len(result.needs_review)==4
+ assert all(b.reviewed_by_llm for b in result.needs_review)
+ assert result.status=='needs_review'
 
 
 def test_declaration_keyword_without_attestation_cannot_promote_unknown_body():
@@ -99,7 +100,7 @@ def test_replay_real_first_response_keeps_source_and_work_education_memberships(
  # This frozen response uses the historical whole-document uN contract.
  # Match its explicit large character budget with large token-policy budgets;
  # never reinterpret a historical whole response as chunk-local decisions.
- result=review_sections(request,local,settings=ReviewSettings(enabled=True,api_key='mock',model='mock',max_units=1000,max_input_chars=1000000,max_input_tokens=1000000,max_context_tokens=1016000),transport=provider)
+ result=review_sections(request,local,settings=ReviewSettings(enabled=True,api_key='mock',model='mock',recovery_attempts=0,max_units=1000,max_input_chars=1000000,max_input_tokens=1000000,max_context_tokens=1016000),transport=provider)
  assert len(calls)==1 and result.metadata['llm_review']['status']=='complete'
  assert_coverage(request.elements,source_ledger(result));assert local.model_dump_json()==original
  # Deterministic abstention recovery cannot change the provider's work/education source ownership.
@@ -109,4 +110,7 @@ def test_replay_real_first_response_keeps_source_and_work_education_memberships(
  actual=sorted((b.source_element_index,b.start,b.end,c) for b,c in source_ledger(result) if b.text.strip() and c in {'experience','education'})
  assert actual==expected
  if file=='Java Aws backend.pdf':assert result.metadata['llm_review']['resolution_status']=='out_of_scope'
- else:assert result.metadata['llm_review']['remaining_meaningful_review_units']==0
+ else:
+  # Historical abstentions remain visible instead of being silently recovered
+  # after the model's final decision.
+  assert all(b.reviewed_by_llm for b in result.needs_review if b.text.strip())

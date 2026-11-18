@@ -61,7 +61,9 @@ def boundary_scope(state, heading_id):
         main = head.lane == span.lane == 'main'
         applicable = full_region or overlap or same_lane or span.lane == 'wide'
         styled = any(h.get('heading_style') for h in json.loads(span.coordinates_json).get('lines', []))
-        if owner.heading or (styled and len(span.text.split()) <= 12):
+        transition = (span.source_assignment in {'employment_boundary', 'education_boundary', 'education_relation'}
+                      and owner.section != state.owners[heading_id].section)
+        if owner.heading or transition or (styled and len(span.text.split()) <= 12):
             if applicable or not same_page:
                 break
             continue
@@ -95,10 +97,16 @@ def reconcile_boundaries(state, heading_ids):
             old = owners[sid]
             if old.section == target:
                 continue
+            if span.reviewed_section == old.section:
+                # Heading scope is advisory after semantic review. Preserve the
+                # reviewed owner; an explicit assign transaction can resolve it.
+                owners[sid] = replace(old, status='needs_review', boundary_source=hid)
+                continue
             members = records.get(old.record, set())
             # Whole records and compatible identity tags are required. A job
             # with employer evidence cannot silently become a project.
             safe_record = bool(old.record and members <= eligible and old.record not in linked
+                               and any(owners[s].fields for s in members)
                                and all(set(owners[s].fields) <= FIELD_KINDS.get(target, set()) for s in members))
             if supported and safe_record:
                 anchor = min((s for s in state.spans if s.source_id in members), key=lambda s: s.order)
@@ -108,7 +116,7 @@ def reconcile_boundaries(state, heading_ids):
                 peers = {owners[s.source_id].record for s in state.spans
                          if s.element == span.element and s.source_id != sid
                          and owners[s.source_id].section == target and owners[s.source_id].record}
-                if supported and set(old.fields) <= FIELD_KINDS.get(target, set()):
+                if supported and old.fields and set(old.fields) <= FIELD_KINDS.get(target, set()):
                     # A contaminated record must not make its unrelated members
                     # inseparable. Physical siblings can establish a new owner.
                     rid = next(iter(peers)) if len(peers) == 1 else None

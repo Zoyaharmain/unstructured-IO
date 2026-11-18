@@ -34,6 +34,8 @@ class SourceSpan:
     parent_candidate: str | None = None
     ambiguity_reason: str | None = None
     confidence: float = 1.0
+    source_assignment: str | None = None
+    reviewed_section: str | None = None
 
 
 @dataclass(frozen=True)
@@ -213,7 +215,8 @@ def snapshot(elements, result):
                                 section_candidate=block.candidate_section, section_alternatives=tuple(block.alternatives),
                                 parent_candidate=cand_parent,
                                 ambiguity_reason=ambiguity_r,
-                                confidence=conf))
+                                confidence=conf, source_assignment=block.local_assignment or block.assignment,
+                                reviewed_section=category if block.reviewed_by_llm else None))
     orphan_groups = groups - set(record_parents.values())
     for sid, owner in list(owners.items()):
         if owner.record in orphan_groups:
@@ -475,7 +478,8 @@ def materialize(elements, result, state, *, strict_parent_links=False):
         block = block.model_copy(update={'boundary_source_id': owner.boundary_source})
         if owner.section != current.owners[span.source_id].section:
             block = block.model_copy(update={'assignment': 'semantic', 'context_source_element_index': None,
-                                             'reason': 'Validated source-ID section reassignment'})
+                                             'reason': 'Validated source-ID section reassignment',
+                                             'llm_action': 'structural_correction' if block.reviewed_by_llm else block.llm_action})
         if owner.status != 'needs_review' and block.assignment == 'ownership_needs_review':
             block = block.model_copy(update={'assignment': 'semantic', 'reason': 'Validated primary source ownership'})
         if owner.status == 'needs_review':
@@ -493,6 +497,13 @@ def materialize(elements, result, state, *, strict_parent_links=False):
         else:
             grouped.setdefault(owner.section, []).append(block)
     out = result.model_copy(deep=True)
+    changes = [{'source_id': sid, 'before': {'section': current.owners[sid].section, 'record': current.owners[sid].record},
+                'after': {'section': owner.section, 'record': owner.record},
+                'reason': 'validated_ownership_transaction'}
+               for sid, owner in state.owners.items()
+               if (owner.section, owner.record) != (current.owners[sid].section, current.owners[sid].record)]
+    if changes:
+        out.metadata.setdefault('ownership_transactions', []).append({'changes': changes})
     out.sections = build_sections(grouped, elements, refine=False)
     out.needs_review, out.source_artifacts = unresolved, artifacts
     for section in out.sections:
@@ -545,7 +556,8 @@ def materialize(elements, result, state, *, strict_parent_links=False):
                 entry.review_reasons = sorted(set(entry.review_reasons + ['employer_requires_parent_context_review']))
     assert_coverage(elements, source_ledger(out))
     from local_api.services.employer_context import recover_employer_context
-    out = recover_employer_context(out)
+    if not any(b.reviewed_by_llm for s in result.sections for b in s.blocks):
+        out = recover_employer_context(out)
     out.metadata['source_ownership'] = state.payload()
     from local_api.services.readable_resume import readable_groups
     for section in out.sections:
@@ -583,7 +595,8 @@ def validated_ownership_state(elements, result):
 
 def ownership_is_locked(result):
     """Accepted boundary provenance has the same persistence contract as review."""
-    return (result.metadata.get('structure_review', {}).get('status') == 'provisional'
+    return (result.metadata.get('llm_review', {}).get('status') == 'complete'
+            or result.metadata.get('structure_review', {}).get('status') == 'provisional'
             or any(b.boundary_source_id for s in result.sections for b in s.blocks))
 
 
@@ -763,21 +776,24 @@ def finalize_ownership(elements, result, *, settings=None, transport=None, revie
         validated_ownership_state(elements, result)
         return result.model_copy(deep=True)
     from local_api.services.employer_context import recover_employer_context
-    result = recover_employer_context(result)
+    reviewed = any(b.reviewed_by_llm for s in result.sections for b in s.blocks) or any(b.reviewed_by_llm for b in result.needs_review)
+    if not reviewed:
+        result = recover_employer_context(result)
     from local_api.services.project_hierarchy import recover_project_groups
-    result = recover_project_groups(result)
+    if not reviewed:
+        result = recover_project_groups(result)
     state = snapshot(elements, result)
     out = result.model_copy(deep=True)
     from local_api.services.resume_sections import ANCHORS, ALIASES
     from local_api.services.resume_structure import heading_boundary
     import re
-    operations = role_boundary_operations(state)
+    operations = [] if reviewed else role_boundary_operations(state)
     if operations:
         state = apply_operations(state, operations, set(ANCHORS))
         out = materialize(elements, out, state)
         state = snapshot(elements, out)
     from local_api.services.employment_identity import repeated_occurrence_operations
-    repeated = repeated_occurrence_operations(state)
+    repeated = [] if reviewed else repeated_occurrence_operations(state)
     if repeated:
         prior = state
         accepted=[]

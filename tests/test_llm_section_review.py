@@ -65,6 +65,9 @@ def test_one_review_checks_assigned_and_unassigned_and_applies_atomically(docume
     state = result.metadata['llm_review']
     assert state['status'] == 'complete' and state['reviewed_units'] == 3
     assert state['changed_units'] == 2 and state['resolved_units'] == 1
+    assert result.metadata['semantic_review_coverage']['mode'] == 'all_assigned_and_unassigned'
+    assert result.metadata['semantic_review_coverage']['complete']
+    assert len(result.metadata['semantic_review_coverage']['reviewed_source_ids']) == 3
     assert result.extraction_verified is False
     review.assert_coverage(request.elements, review.source_ledger(result))
 
@@ -77,6 +80,29 @@ def test_llm_can_abstain_without_forcing_an_assignment(document):
     assert all(b.reviewed_by_llm for b in result.needs_review)
     assert result.metadata['llm_review']['reviewed_units'] == 3
     review.assert_coverage(request.elements, review.source_ledger(result))
+
+
+def test_recovery_runs_before_complete_review_not_after_it(document, monkeypatch):
+    from local_api.services import local_completion, review_resolution
+    request, local = document
+    sent = False
+    for module, name in [(local_completion, 'recover_local_content'), (review_resolution, 'resolve_unassigned')]:
+        original = getattr(module, name)
+        def guarded(*args, _original=original, **kwargs):
+            assert not sent, 'Deterministic recovery ran after semantic review'
+            return _original(*args, **kwargs)
+        monkeypatch.setattr(module, name, guarded)
+    def provider(*_):
+        nonlocal sent
+        sent = True
+        return reply('experience', 'skills', 'needs_review')
+    result = review.review_sections(request, local, settings=configured(recovery_attempts=0), transport=provider)
+    assert result.metadata['llm_review']['status']=='complete'
+    assert result.needs_review[0].reviewed_by_llm
+    from local_api.services.source_ownership import finalize_ownership, validated_ownership_state
+    finalized = finalize_ownership(request.elements, result)
+    validated_ownership_state(request.elements, finalized)
+    assert finalized.sections == result.sections and finalized.needs_review == result.needs_review
 
 
 @pytest.mark.parametrize('content', [
