@@ -1,7 +1,9 @@
 """Distinguish an introductory professional headline from employment records."""
+from local_api.services.decision_trace import traced
 import re
 
 
+@traced('professional_headline', detail=True)
 def recover_professional_headline(result,elements):
     from local_api.services.record_subfields import ROLE,RANGE,employment_header_fields
     from local_api.services.resume_sections import ALIASES,build_sections

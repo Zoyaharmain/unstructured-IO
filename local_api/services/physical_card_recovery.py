@@ -1,7 +1,9 @@
 """Preserve physical identity rows and explicit supplemental section boundaries."""
+from local_api.services.decision_trace import traced
 import re
 
 
+@traced('recover_physical_cards', detail=True)
 def recover_physical_cards(result,elements):
     from local_api.services.resume_sections import ALIASES,build_sections
     from local_api.services.resume_structure import heading_boundary

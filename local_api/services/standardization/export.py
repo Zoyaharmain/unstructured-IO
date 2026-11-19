@@ -47,6 +47,8 @@ def standardized_export(response, *, include_audit=False):
               'validation_status': deepcopy(value.get('validation_status', {})),
               'standardization_metadata': metadata,
               'warnings': deepcopy(value.get('warnings', []))}
+    if 'schema_audit' in value.get('meta', {}):
+        result['processing_metadata'] = {'schema_audit': deepcopy(value['meta']['schema_audit'])}
     if include_audit:
         # One source bundle, rather than duplicated field-index/raw-section/meta trees.
         result['audit'] = {'standardization_metadata': metadata,

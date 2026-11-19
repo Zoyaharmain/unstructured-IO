@@ -4,6 +4,7 @@ A combined employer/role header describes one job and cannot establish a shared
 employer scope. A standalone employer heading may scope subsequent roles in the
 same reading lane until another employer or section heading occurs.
 """
+from local_api.services.decision_trace import traced
 from local_api.services.record_relationships import field_kinds
 
 
@@ -36,6 +37,7 @@ def valid_employer_context(section, entry, index, *, allow_combined=False):
     return True
 
 
+@traced('recover_employer_context', detail=True)
 def recover_employer_context(result):
     section = next((s for s in result.sections if s.category == 'experience'), None)
     if section is None:

@@ -1,6 +1,8 @@
 """Explicit project/program headings establish their own source section scope."""
+from local_api.services.decision_trace import traced
 
 
+@traced('recover_project_sections', detail=True)
 def recover_project_sections(result,elements):
     from local_api.services.resume_sections import ALIASES,build_sections
     from local_api.services.resume_structure import heading_boundary,normalized_heading

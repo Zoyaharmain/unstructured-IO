@@ -1,5 +1,7 @@
 """Shared exact source/record validation for batch and HTTP paths."""
+from local_api.services.decision_trace import traced
 
+@traced('source_validation', detail=True)
 def validate_result(elements, result):
     errors = []
     from local_api.services.resume_sections import ANCHORS

@@ -1,5 +1,6 @@
 """Main standardization service orchestrating normalization, metadata accounting, and validation."""
 from __future__ import annotations
+from local_api.services.decision_trace import traced
 
 from datetime import datetime, timezone
 import re
@@ -28,6 +29,7 @@ from local_api.services.standardization.cross_field import validate_cross_field_
 from local_api.vendor.handoff_schema.models import ResumeSchema
 
 
+@traced('standardization')
 def standardize_resume_data(
     data: ResumeSchema | dict,
     *, reference_date: datetime | None = None,

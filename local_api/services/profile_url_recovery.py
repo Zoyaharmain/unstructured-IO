@@ -1,4 +1,5 @@
 """Recover literal explicit URLs, retaining source whitespace until normalization."""
+from local_api.services.decision_trace import traced
 import re
 from urllib.parse import urlsplit
 
@@ -57,6 +58,7 @@ def linked_profile_label(element):
                 re.fullmatch(r'\s*(?:portfolio|website|linkedin|github|profile)\s*[:=]?\s*',element.text,re.I))
 
 
+@traced('recover_header_urls', detail=True)
 def recover_header_urls(result,elements):
     from local_api.services.resume_sections import ALIASES,build_sections
     from local_api.services.resume_structure import heading_boundary

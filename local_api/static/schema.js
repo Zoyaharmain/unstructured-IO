@@ -18,13 +18,15 @@ async function mapExistingSections() {
   $('map-schema').disabled = true; $('download-schema').disabled = true;
   const reviewFields = $('section-mode').value === 'reviewed';
   $('schema-status').textContent = reviewFields ? 'DeepSeek is mapping fields and subschemas from source evidence…' : 'Mapping existing blocks…';
-  workflowStage('schema', 'working', 'Assigning fields and checking source evidence…');
+  workflowStage('schema', 'working', reviewFields ? 'Mapping fields, validating evidence, then running the schema audit…' : 'Assigning fields and checking source evidence…');
   try {
-    const data = await readResponse(await fetch('/api/v1/resume/schema', {
-      method: 'POST', signal: controller.signal, headers: {'Content-Type':'application/json'},
+    const schemaResponse = await fetch('/api/v1/resume/schema', {
+      method: 'POST', signal: controller.signal, headers: {'Content-Type':'application/json', ...(pipelineRunId ? {'X-Resume-Run-ID':pipelineRunId} : {})},
       body: JSON.stringify({elements:result.elements, sections:sectionResult, source:file?.name || 'uploaded-resume', review_fields:reviewFields})
-    }));
+    });
+    const data = await readResponse(schemaResponse);
     if (generation !== schemaGeneration) return;
+    pipelineRunId = schemaResponse.headers.get('X-Resume-Run-ID') || pipelineRunId;
     if (data.meta?.reviewed_sections) {
       sectionResult = data.meta.reviewed_sections;
       renderSectionResults(sectionResult, $('section-mode').value === 'local');
@@ -32,6 +34,17 @@ async function mapExistingSections() {
     mappedResume = data; $('schema-json').textContent = JSON.stringify({...standardizedResumeExport(data), audit: {standardization_metadata: data.standardization_metadata, warnings: data.warnings, source_evidence: {data: data.data, section_schemas: data.section_schemas, raw_sections: data.raw_sections, meta: data.meta}}},null,2);
     renderSubschemas(data.section_schemas || []);
     renderStandardizationWarnings(data);
+    const judge = data.meta?.schema_audit;
+    document.getElementById('schema-audit-status')?.remove();
+    if (judge) {
+      const note = document.createElement('p'); note.className = 'comparison-note'; note.id = 'schema-audit-status';
+      note.textContent = judge.status === 'not_requested' ? 'Schema audit not requested in local-only mode.' :
+        `Schema audit: ${judge.status} · ${judge.findings.length} finding(s) · ${judge.coverage.checked_units}/${judge.coverage.expected_units} units checked · ${judge.provider_calls} provider call(s).`;
+      if (judge.status === 'complete' && !judge.findings.length) note.textContent += ' No findings reported; this does not certify correctness.';
+      if (judge.errors?.length) note.textContent += ` Errors: ${judge.errors.map(e => e.code).join(', ')}.`;
+      if (judge.diagnostic) note.textContent += ` Diagnostic reference: ${judge.diagnostic.id}.`;
+      $('schema-preview').prepend(note);
+    }
     $('schema-preview').hidden = false; $('download-schema').disabled = false;
     const missing = data.meta?.missing_required_fields?.length || 0;
     const coverage = data.meta?.source_coverage_ledger?.status_counts || {};

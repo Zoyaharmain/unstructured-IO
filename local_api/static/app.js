@@ -1,6 +1,7 @@
 'use strict';
 const $ = id => document.getElementById(id);
 let file = null, result = null, originalURL = null, busy = false, comparisonGeneration = 0;
+let pipelineRunId = null;
 const node = (tag, className, text) => { const el = document.createElement(tag); if (className) el.className = className; if (text !== undefined) el.textContent = text; return el; };
 function status(message, kind = '') { $('status').textContent = message; $('status').className = `status ${kind}`; }
 function setBusy(value) { busy = value; $('file').disabled = value; $('strategy').disabled = value || file?.name.toLowerCase().endsWith('.docx'); $('extract').disabled = value || !file; $('extract').textContent = value ? 'Extracting…' : 'Process resume →'; $('dropzone').setAttribute('aria-disabled', String(value)); }
@@ -64,7 +65,9 @@ async function runExtraction() {
   const started = performance.now();
   const data = new FormData(); data.append('file', file); data.append('strategy', $('strategy').value); data.append('include_elements', 'true');
   try {
-    result = await readResponse(await fetch('/api/v1/extract/text', {method: 'POST', body: data}));
+    const extractionResponse = await fetch('/api/v1/extract/text', {method: 'POST', body: data});
+    pipelineRunId = extractionResponse.headers.get('X-Resume-Run-ID');
+    result = await readResponse(extractionResponse);
     $('words').textContent = (result.text.match(/\S+/gu) || []).length.toLocaleString();
     $('characters').textContent = Array.from(result.text).length.toLocaleString();
     $('blocks-count').textContent = result.metadata.total_elements.toLocaleString();

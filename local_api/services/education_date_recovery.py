@@ -1,8 +1,10 @@
 """Recover a misplaced date only when PDF geometry identifies one degree row."""
+from local_api.services.decision_trace import traced
 from local_api.services.record_subfields import RANGE
 from local_api.services.education_subfields import DEGREE
 
 
+@traced('recover_education_dates', detail=True)
 def recover_education_dates(result, elements):
     from local_api.services.record_relationships import annotate_relationships, field_kinds
     education = next((s for s in result.sections if s.category == 'education'), None)

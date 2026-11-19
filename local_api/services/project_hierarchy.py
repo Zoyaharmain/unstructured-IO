@@ -4,6 +4,7 @@ Distinguishes top-level project headings from nested numbered description steps,
 ensuring multi-step descriptions remain aggregated within their parent project
 record, while genuinely separate projects produce distinct records.
 """
+from local_api.services.decision_trace import traced
 import json
 import logging
 import re
@@ -604,6 +605,7 @@ def resolve_ambiguous_project_span(span_text, context_text=None):
         return 'UNRESOLVED'
 
 
+@traced('recover_project_groups', detail=True)
 def recover_project_groups(result):
     """Promote existing portfolio context evidence to a source-owning parent.
 

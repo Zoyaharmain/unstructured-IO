@@ -1,4 +1,5 @@
 """Headingless education needs both institution evidence and an aligned date."""
+from local_api.services.decision_trace import traced
 def education_pairs(elements):
     from local_api.services.record_relationships import field_kinds
     from local_api.services.record_subfields import RANGE, employment_header_fields, responsibility_fragment
@@ -28,6 +29,7 @@ def aligned_education_elements(elements):
     return set(pairs)|set(pairs.values())
 
 
+@traced('recover_aligned_education', detail=True)
 def recover_aligned_education(result, elements):
     """Keep positive physical relations coherent after optional model review."""
     selected=aligned_education_elements(elements)

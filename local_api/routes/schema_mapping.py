@@ -93,8 +93,6 @@ async def map_existing_sections(request: ReviewedSchemaMappingRequest):
         mapped.validation_status = status
         mapped.warnings = warnings
         attach_mapping_findings(mapped, warnings)
-        from local_api.services.standardization.export import standardized_export
-        mapped.consumer_export = standardized_export(mapped)
         if mapped.meta.get('reviewed_sections') or mapped.section_schemas:
             from local_api.schemas.sections import SectionResponse
             reviewed = SectionResponse.model_validate(mapped.meta.get('reviewed_sections') or request.sections.model_dump(mode='json'))
@@ -105,9 +103,21 @@ async def map_existing_sections(request: ReviewedSchemaMappingRequest):
                  'reason':f'{attribute.name}: source mapping requires review ({attribute.status}).'}
                 for section in mapped.section_schemas for record in section.records for attribute in record.attributes
                 if attribute.status in {'unresolved','ambiguous','unmapped'} or any(item.status=='needs_review' for item in attribute.items)]
-            if reviewed.review_issues:
-                reviewed.status='needs_review'
-            mapped.meta['reviewed_sections'] = reviewed.model_dump(mode='json')
+        else:
+            reviewed = request.sections.model_copy(deep=True)
+        from local_api.services.schema_audit import audit_mapping
+        audit = await run_in_threadpool(audit_mapping, request.elements, reviewed, mapped,
+                                        requested=request.review_fields)
+        mapped.meta['schema_audit'] = audit
+        reviewed.metadata['schema_audit'] = audit
+        if reviewed.review_issues:
+            reviewed.status = 'needs_review'
+            mapped.validation_status.requires_human_review = True
+            if mapped.meta['mapping_result'].get('status') == 'success':
+                mapped.meta['mapping_result'].update(status='needs_review', requires_review=True)
+        mapped.meta['reviewed_sections'] = reviewed.model_dump(mode='json')
+        from local_api.services.standardization.export import standardized_export
+        mapped.consumer_export = standardized_export(mapped)
         return mapped
     except ValueError as exc:
         raise mapping_error(exc) from None

@@ -1,7 +1,9 @@
 """Repair only source-established prose splits; never infer a new employer."""
+from local_api.services.decision_trace import traced
 import re
 
 
+@traced('employment_prose_repair', detail=True)
 def repair_employment_entries(result, elements):
     from local_api.services.record_subfields import responsibility_fragment, employment_header_fields, RANGE
     from local_api.services.record_relationships import annotate_relationships
@@ -24,6 +26,12 @@ def repair_employment_entries(result, elements):
         # labelled employment statement; it is not an independent employer.
         explicit_post=any(re.search(r'\bpost\s*of\b',b.text,re.I) and employment_header_fields(b.text) for b in previous)
         suffix_continuation=bool(explicit_post and re.match(r'^\s*(?:ltd\.?|limited|inc\.?|llc|corp\.?)\s*[.,]?\s*(?:start|from)\b',first.text,re.I))
+        from local_api.services.decision_trace import decision
+        decision('employment_continuation_rule',
+            source_ids=[f'e{first.source_element_index}:{first.start}:{first.end}'],
+            record_ids=[entry.entry_id, prior.entry_id], prose=bool(prose),
+            anchored=bool(anchored), adjacent=bool(adjacent), compatible=bool(compatible),
+            own_header=bool(own_header), suffix_continuation=bool(suffix_continuation))
         if not ((prose and anchored or suffix_continuation) and adjacent and compatible and not own_header):
             entries.append(entry);continue
         for i in entry.block_indices:

@@ -1,4 +1,5 @@
 """Source-bound competency names and profile descriptions under explicit headings."""
+from local_api.services.decision_trace import traced
 import re
 
 LABEL=re.compile(r'(?:^|(?<=[.!?])\s+|(?<=[•▪●])\s*)([A-Z][A-Za-z0-9 &/()\-]{1,90}):\s*')
@@ -11,6 +12,7 @@ def expertise_heading(text):
     return bool(re.fullmatch(r'(?:areas?|fields?) of (?:expertise|speciali[sz]ation|competenc(?:e|y|ies))(?: (?:and|/) (?:interests?|skills?|capabilities))?',value))
 
 
+@traced('recover_competency_sections', detail=True)
 def recover_competency_sections(result,elements):
     from local_api.services.review_resolution import document_scope
     if document_scope(elements)['candidate_resume'] is False:return result

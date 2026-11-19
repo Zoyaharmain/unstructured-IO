@@ -8,6 +8,10 @@ function schemaOutcome(data, reviewRequested) {
   let status = meta.mapping_result?.status || (reviewRequested && review.status !== 'complete'
     ? data.success ? 'fallback_used' : 'failed' : pending ? 'needs_review' : 'success');
   if (status === 'success' && pending) status = 'needs_review';
+  const audit = meta.schema_audit || {};
+  const auditPending = audit.findings?.length || audit.partial_findings?.length ||
+    (reviewRequested && audit.status !== 'complete');
+  if (status === 'success' && (auditPending || meta.reviewed_sections?.review_issues?.length)) status = 'needs_review';
   const summaries = {
     fallback_used: 'DeepSeek field mapping did not complete. Source-bound local results are available, but require review.',
     needs_review: 'Schema assignment completed with items requiring review.',
@@ -17,6 +21,11 @@ function schemaOutcome(data, reviewRequested) {
   const history = [...(review.diagnostics || [])];
   if (review.diagnostic && !history.some(d => d.id && d.id === review.diagnostic.id)) history.push(review.diagnostic);
   const reviewReasons = [];
+  if (audit.status === 'complete') {
+    if (audit.findings?.length) reviewReasons.push(`Schema audit reported ${audit.findings.length} finding(s)`);
+  } else if (reviewRequested) {
+    reviewReasons.push(`Schema audit ${audit.status || 'not run'}; output requires review`);
+  }
   const completeness = meta.completeness_check || {};
   if (completeness.meaningful_unmapped_fragments) reviewReasons.push(`${completeness.meaningful_unmapped_fragments} source fragment(s) lack a field association`);
   if (completeness.conflicting_field_overlaps?.length) reviewReasons.push(`${completeness.conflicting_field_overlaps.length} overlapping field association(s) require review`);

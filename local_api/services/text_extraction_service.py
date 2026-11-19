@@ -1,4 +1,5 @@
 """Local Unstructured adapter, callable without HTTP or application state."""
+from local_api.services.decision_trace import traced
 from io import BytesIO
 from importlib.util import find_spec
 import logging
@@ -31,6 +32,7 @@ CONTACT_HINTS = re.compile(
 )
 
 
+@traced('extraction_refinement', detail=True)
 def refine_extracted_elements(elements):
     """Refine element classifications and split mixed heading/content blocks based on layout typography."""
     refined = []
@@ -81,6 +83,7 @@ def refine_extracted_elements(elements):
     return refined
 
 
+@traced('extraction')
 def extract_text(payload: bytes, filename: str, strategy: Strategy = 'auto',
                  include_elements: bool = True, settings: Settings | None = None) -> ExtractionResponse:
     settings = settings or Settings.from_env()

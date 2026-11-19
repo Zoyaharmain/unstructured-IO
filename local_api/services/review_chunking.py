@@ -3,6 +3,7 @@
 Token guard uses UTF-8 bytes as a conservative policy bound, not a provider
 usage estimate. Callers must configure limits for their provider separately.
 """
+from local_api.services.decision_trace import traced
 from dataclasses import dataclass, field
 from hashlib import sha256
 import json
@@ -248,6 +249,7 @@ def section_decisions(chunk, content, categories):
     return {u['id']: parsed[f'u{i}'] for i, u in enumerate(targets)}
 
 
+@traced('section_review_chunks')
 def run_section_chunks(request, result, settings, transport, budget, pass_id, state, feedback=None, document_sha256=None, target_only=False):
     from local_api.services.llm_section_review import source_ledger, parse_decisions
     from local_api.services.resume_sections import ANCHORS
@@ -527,6 +529,7 @@ def audit_decisions(chunk, content):
     return findings
 
 
+@traced('schema_audit')
 def run_schema_audit(elements, sections, schema, settings, transport, *, budget=None,
                      pass_id=0, document_sha256=None, feedback=None):
     """An incomplete/failed audit never becomes a clean completed audit."""
@@ -859,6 +862,7 @@ def structural_review_plan(elements, state, result, settings, system=None, feedb
     }
 
 
+@traced('structural_review', 'existing_structural_review_trigger')
 def run_structural_chunks(elements, state, result, settings, transport, *,
                            budget=None, pass_id=0, document_sha256=None, feedback=None, system=None):
     """Execute context-aware structural review chunks with cross-chunk reconciliation and safety."""

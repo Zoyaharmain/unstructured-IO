@@ -1,6 +1,7 @@
 """No provider calls: classified failures, safe logs, fallback and UI semantics."""
 import json
 import subprocess
+import shutil
 from copy import deepcopy
 from pathlib import Path
 import pytest
@@ -100,6 +101,7 @@ def test_other_failure_stages_are_not_mislabeled(monkeypatch, stage, expected):
     assert out.meta['mapping_result']['status'] == 'fallback_used'
 
 
+@pytest.mark.skipif(shutil.which('node') is None, reason='Node.js runtime unavailable')
 def test_frontend_status_does_not_hide_failed_review_or_color_usable_fallback_red():
     script = """
 const {schemaOutcome} = require('./local_api/static/schema-status.js');
@@ -110,7 +112,7 @@ assert.equal(schemaOutcome(fallback,true).className,'status warning');
 assert.equal(schemaOutcome(fallback,true).diagnostic.category,'json_parsing');
 assert.equal(schemaOutcome({success:false,meta:{mapping_result:{status:'failed'}}},true).className,'status error');
 assert.equal(schemaOutcome({success:true,meta:{missing_required_fields:['contact.email']}},false).status,'needs_review');
-assert.equal(schemaOutcome({success:true,meta:{field_review:{status:'complete'}}},true).status,'success');
+assert.equal(schemaOutcome({success:true,meta:{field_review:{status:'complete'}}},true).status,'needs_review');
 """
     subprocess.run(['node', '-e', script], check=True)
 
@@ -211,12 +213,13 @@ def test_child_type_failure_names_the_field_without_logging_its_value(monkeypatc
     assert '12345' not in json.dumps(diagnostic)
 
 
+@pytest.mark.skipif(shutil.which('node') is None, reason='Node.js runtime unavailable')
 def test_frontend_separates_recovered_history_from_active_failure_and_review_findings():
     script = r"""
 const {schemaOutcome} = require('./local_api/static/schema-status.js');
 const assert = require('node:assert/strict');
 const resolved = {id:'f9f226',category:'subschema_validation',code:'missing_source_status',recovered:true};
-const good = {success:true,meta:{field_review:{status:'complete',diagnostics:[resolved]},mapping_result:{status:'success'}}};
+const good = {success:true,meta:{schema_audit:{status:'complete',findings:[]},field_review:{status:'complete',diagnostics:[resolved]},mapping_result:{status:'success'}}};
 let out = schemaOutcome(good,true);
 assert.equal(out.status,'success');
 assert.equal(out.diagnostic,null);

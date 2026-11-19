@@ -1,4 +1,5 @@
 """Source-bound adapter to the handoff schema; no extraction, regrouping or LLM calls."""
+from local_api.services.decision_trace import traced
 import hashlib
 import json
 import re
@@ -37,6 +38,7 @@ def canonical(blocks):
 def norm(text):return ' '.join(text.split()).casefold()
 
 
+@traced('schema_mapping')
 def map_schema(request):
     request = request.model_copy(deep=True)
     # Fail closed on stale/altered/overlapping source intervals or foreign fields.

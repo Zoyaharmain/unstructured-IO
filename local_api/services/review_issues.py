@@ -21,4 +21,13 @@ def collect_review_issues(result):
                                     'Some correction transactions require review; independent accepted repairs were retained.'})
     issues.extend(result.metadata.get('duplicate_record_issues',[]))
     issues.extend(result.metadata.get('field_review_issues',[]))
+    audit = result.metadata.get('schema_audit', {})
+    for finding in audit.get('findings', []) + audit.get('partial_findings', []):
+        issues.append({'kind': 'schema_audit', 'stage': 'schema_audit',
+                       'field': finding['field'], 'source_ids': finding['source_ids'],
+                       'reason': finding['issue']})
+    if audit.get('status') not in {None, 'complete', 'not_requested'}:
+        issues.append({'kind': 'review_execution', 'stage': 'schema_audit',
+                       'status': audit['status'], 'source_ids': [],
+                       'reason': 'Schema audit did not complete; output requires review.'})
     return issues

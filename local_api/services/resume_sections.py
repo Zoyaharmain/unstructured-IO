@@ -1,4 +1,5 @@
 """Local Sentence-BERT + seeded K-means. Raw extraction is never rewritten."""
+from local_api.services.decision_trace import traced
 from collections import Counter, OrderedDict
 from dataclasses import dataclass
 import json
@@ -31,6 +32,7 @@ _load_lock = threading.Lock()
 _engine = None
 
 
+@traced('section_construction', detail=True)
 def build_sections(grouped, elements, *, refine=True):
     from local_api.services.source_rows import refine_rows
     if refine: grouped = refine_rows(grouped, elements)
@@ -211,6 +213,7 @@ class SectionEngine:
         with self.lock:
             return self._detect(request)
 
+    @traced('section_classification')
     def _detect(self, request):
         units, multicolumn = self.units(request.elements)
         texts = [unit.text.strip() or ' ' for unit in units]
@@ -255,6 +258,15 @@ class SectionEngine:
             element = request.elements[unit.index]
             hlabel, hcluster, hscore, hmargin = heading
             label, cluster, similarity, margin = content
+            from local_api.services.decision_trace import decision
+            from local_api.services.confidence import confidence_for
+            anchor_digest = hashlib.sha256(json.dumps(ANCHORS, sort_keys=True).encode()).hexdigest()
+            decision('ml_section_prediction', source_ids=[f'e{unit.index}:{unit.start}:{unit.end}'],
+                     heading_candidate=hlabel, heading_similarity=hscore, heading_margin=hmargin,
+                     content_candidate=label, content_similarity=similarity, content_margin=margin,
+                     model=MODEL_ID, model_revision=MODEL_REVISION,
+                     confidence=confidence_for(margin, task='section_content', model_revision=MODEL_REVISION, anchor_sha256=anchor_digest),
+                     heading_confidence=confidence_for(hmargin, task='section_heading', model_revision=MODEL_REVISION, anchor_sha256=anchor_digest))
             candidate = label
             context_source = None
             context = element_contexts.get(unit.index) or contexts.get(unit.lane)
@@ -321,6 +333,11 @@ class SectionEngine:
             page_artifact = artifact_reason(element, unit) in {'Explicit page separator', 'Source-supported page-number footer retained'}
             from local_api.services.record_subfields import ACTION, ROLE
             is_heading = (structural_label is not None or (short and not is_bullet and not ACTION.search(unit.text) and hscore >= .72 and hmargin >= .09 and (not context or not context[2] or unit.heading_style))) and not compound and not record_field and not page_artifact and not employer_boundary
+            decision('section_rule_evidence', source_ids=[f'e{unit.index}:{unit.start}:{unit.end}'],
+                     active_section=context[0] if context else None,
+                     explicit_context=bool(context and context[2]), structural_label=structural_label,
+                     is_heading=bool(is_heading), record_field=bool(record_field),
+                     employer_boundary=bool(employer_boundary), compound=bool(compound))
             assignment, reason = 'semantic', 'BERT embedding assigned to a labeled K-means centroid'
             if compound:
                 contexts.pop(unit.lane, None)

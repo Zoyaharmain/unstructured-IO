@@ -1,4 +1,5 @@
 """Source-local credential cards: titles own adjacent IDs, dates and verification."""
+from local_api.services.decision_trace import traced
 import re
 
 DETAIL = re.compile(r'^\s*(?:[•▪●*\-]\s*)?(?:(?:certification|certificate|credential|license)\s*(?:#|(?:id|number|no\.?)(?:\s*[:#=])?)|(?:issued(?:\s+(?:on|by))?|issue date|issuer|provider|issuing organization|valid\s+(?:through|until|to)|expir(?:y|ation)(?: date)?|verif(?:y|ication)(?: url)?|credential url)\s*[:#=]?\s*\S|(?:https?://|www\.)\S)',re.I)
@@ -161,6 +162,7 @@ def inline_credential_cuts(text):
     return cuts
 
 
+@traced('certification_recovery', detail=True)
 def recover_certification_cards(result,elements):
     from local_api.services.resume_structure import entry_groups
     from local_api.schemas.sections import SectionEntry

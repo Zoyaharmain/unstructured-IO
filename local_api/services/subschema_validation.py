@@ -1,4 +1,5 @@
 """Source-aware hierarchy validation and deterministic record-preserving queries."""
+from local_api.services.decision_trace import traced
 import re
 from local_api.services.source_fragments import contiguous_support, citations
 from local_api.schemas.subschemas import SectionSchema
@@ -10,6 +11,7 @@ def source_id(block):
     return f'e{block.source_element_index}:{block.start}:{block.end}'
 
 
+@traced('hierarchy_validation', detail=True)
 def validate_hierarchy(hierarchy, sections):
     """Fail closed on invalid structure, citations or cross-record evidence."""
     parsed = [SectionSchema.model_validate(s.model_dump() if isinstance(s, SectionSchema) else s) for s in hierarchy]

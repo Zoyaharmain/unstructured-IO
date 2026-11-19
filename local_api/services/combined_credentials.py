@@ -1,4 +1,5 @@
 """Separate education and certification rows under a shared explicit heading."""
+from local_api.services.decision_trace import traced
 import re
 
 
@@ -10,6 +11,7 @@ def combined_heading(text):
     return len(pieces)==2 and ((pieces[0] in education and pieces[1] in credentials) or (pieces[1] in education and pieces[0] in credentials))
 
 
+@traced('recover_combined_credentials', detail=True)
 def recover_combined_credentials(result,elements):
     from local_api.services.resume_sections import ALIASES,build_sections
     from local_api.services.resume_structure import heading_boundary

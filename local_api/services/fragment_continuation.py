@@ -1,7 +1,9 @@
 """Recover contiguous tails of a single extracted paragraph, never across records."""
+from local_api.services.decision_trace import traced
 from collections import defaultdict
 
 
+@traced('recover_fragment_continuations', detail=True)
 def recover_fragment_continuations(result, elements):
     from local_api.services.resume_sections import build_sections
     owners = defaultdict(list)

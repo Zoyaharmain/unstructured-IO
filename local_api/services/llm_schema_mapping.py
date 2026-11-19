@@ -3,6 +3,7 @@
 Provider output cannot rewrite extraction, cite another section/record, invent
 values, or silently replace a valid result when validation fails.
 """
+from local_api.services.decision_trace import traced
 import json
 import re
 import time
@@ -176,6 +177,7 @@ def expand_compact_review(content, source_sections):
     return json.dumps({'sections':payload['sections']},ensure_ascii=False)
 
 
+@traced('field_response_validation', detail=True)
 def parse_review(content, source_sections):
     """Validate the entire candidate atomically before any legacy fields change."""
     payload = json.loads(content)
@@ -340,6 +342,7 @@ def parse_review(content, source_sections):
 
 
 
+@traced('repair_section_envelope', detail=True)
 def repair_section_envelope(payload, source_sections, diagnostic):
     """Normalize unambiguous JSON representation only, then fully revalidate."""
     if diagnostic.get('code') != 'invalid_section' or not isinstance(payload, dict):
@@ -361,6 +364,7 @@ def repair_section_envelope(payload, source_sections, diagnostic):
     return repairs
 
 
+@traced('recover_literal_contacts', detail=True)
 def recover_literal_contacts(payload, source_sections):
     """Recover unique literal contact values and complete source-backed URLs."""
     repairs=[]
@@ -406,6 +410,7 @@ def recover_literal_contacts(payload, source_sections):
 
 
 
+@traced('recover_target_role_lists', detail=True)
 def recover_target_role_lists(payload, source_sections):
     """Restore an explicit complete preference list after a partial model selection."""
     from local_api.services.target_preferences import target_section_values
@@ -430,6 +435,7 @@ def recover_target_role_lists(payload, source_sections):
     return repairs
 
 
+@traced('recover_literal_lists', detail=True)
 def recover_literal_lists(payload, source_sections, fallback):
     """Keep deterministic list evidence when review omits it, without new owners."""
     local = {s.category:s for s in fallback.section_schemas}
@@ -479,6 +485,7 @@ def recover_literal_lists(payload, source_sections, fallback):
     return repairs
 
 
+@traced('recover_record_fields', detail=True)
 def recover_record_fields(payload, source_sections, fallback):
     """Recover omitted fields from their own record, never from another job.
 
@@ -547,6 +554,7 @@ def recover_record_fields(payload, source_sections, fallback):
     return repairs
 
 
+@traced('repair_singleton_records', detail=True)
 def repair_singleton_records(payload, source_sections, diagnostic):
     """Merge multiple records in singleton sections into a single record."""
     if diagnostic.get('code') != 'duplicate_singleton':
@@ -578,6 +586,7 @@ def repair_singleton_records(payload, source_sections, diagnostic):
     return repairs
 
 
+@traced('repair_overlapping_records', detail=True)
 def repair_overlapping_records(payload, source_sections, diagnostic):
     """Remove overlapping source_ids claimed by multiple records in repeated sections."""
     if diagnostic.get('code') != 'overlapping_records':
@@ -612,6 +621,7 @@ def repair_overlapping_records(payload, source_sections, diagnostic):
     return repairs
 
 
+@traced('repair_heading_owners', detail=True)
 def repair_heading_owners(payload, source_sections, diagnostic):
     """Drop unused heading context from owners, preserving all content/evidence."""
     if diagnostic.get('code') != 'heading_as_record':
@@ -638,6 +648,7 @@ def repair_heading_owners(payload, source_sections, diagnostic):
     return []
 
 
+@traced('repair_literal_citation', detail=True)
 def repair_literal_citation(payload, source_sections, diagnostic):
     """Rebuild bad citations from unchanged literal values inside each owner.
 
@@ -795,6 +806,7 @@ def repair_literal_citation(payload, source_sections, diagnostic):
     return repairs
 
 
+@traced('field_review_commit')
 def commit_review(request, fallback, hierarchy, revised, states, calls, model):
     data = ResumeSchema(contact=ContactInfo(full_name='', email='', phone=''))
     # Rebuild review findings from reviewed records. Generic keyword guesses
@@ -933,6 +945,7 @@ def local_section_payload(fallback, categories):
         if section.category in categories]
 
 
+@traced('field_review', 'review_fields_requested')
 def map_with_field_review(request, *, settings=None, transport=None, budget=None, pass_id=0):
     started_at = time.monotonic()
     fallback = map_schema(request)

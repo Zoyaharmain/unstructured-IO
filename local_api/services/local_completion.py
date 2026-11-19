@@ -3,6 +3,7 @@
 Classification is a proposal, not factual verification. Never rewrite text or
 borrow record ownership across lanes, sections, pages or intervening headings.
 """
+from local_api.services.decision_trace import traced
 import re
 from local_api.services.record_subfields import labelled_fields, employment_header_fields, ACTION, ROLE
 from local_api.services.source_accounting import artifact_reason
@@ -70,6 +71,7 @@ def supported_new_entry(category, blocks):
     return True
 
 
+@traced('local_completion')
 def recover_local_content(result, elements):
     from local_api.services.source_validation import validate_result
     from local_api.services.review_resolution import document_scope

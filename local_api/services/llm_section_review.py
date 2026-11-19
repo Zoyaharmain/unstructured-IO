@@ -1,4 +1,5 @@
 """One optional DeepSeek review of ALL source spans, without generated resume text."""
+from local_api.services.decision_trace import traced
 from dataclasses import dataclass, field, replace
 import json
 import logging
@@ -116,6 +117,10 @@ def review_status():
         return {'enabled': False, 'configured': False, 'provider': 'DeepSeek', 'configuration_error': True}
 
 
+from local_api.services.decision_trace import provider_trace
+
+
+@provider_trace
 def provider_json(settings, path, body=None):
     request = Request(settings.base_url + path,
                       data=json.dumps(body).encode() if body is not None else None,
@@ -273,6 +278,7 @@ def assert_coverage(elements, ledger):
         raise ReviewError('source_coverage_error')
 
 
+@traced('section_review', 'reviewed_mode_complete_section_review')
 def review_sections(request, local_result, *, settings=None, transport=None, _recovery=True, _remaining=None, _budget=None, _pass_id=0, feedback=None, document_sha256=None, _targeted=False):
     """Atomic application: any failure retains the ENTIRE original local result."""
     from local_api.services.source_accounting import account_source

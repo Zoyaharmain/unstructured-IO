@@ -1,4 +1,5 @@
 """Identify dated record headers using literal title grammar and source position."""
+from local_api.services.decision_trace import traced
 import re
 
 ROLE_END=r'(?:Engineer|Developer|Programmer|Scientist|Specialist|Analyst|Consultant|Architect|Manager|Administrator|Officer|Director)'
@@ -93,6 +94,7 @@ def split_employment_headers(blocks):
     return found
 
 
+@traced('employment_header_recovery', detail=True)
 def recover_split_employment_headers(result,elements):
     """Join a split header/date entry only when source adjacency establishes it."""
     from local_api.schemas.sections import SectionEntry

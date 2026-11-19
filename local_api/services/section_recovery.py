@@ -1,7 +1,9 @@
 """One bounded local resegmentation pass for unresolved, merged source text."""
+from local_api.services.decision_trace import traced
 import re
 
 
+@traced('section_recovery')
 def recover_sections(request, local_result):
     from local_api.services.empty_source_artifacts import separate_empty_source
     local_result=separate_empty_source(local_result,request.elements)

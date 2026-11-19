@@ -1,4 +1,5 @@
 """Source-backed desired-role sections are preferences, never employment history."""
+from local_api.services.decision_trace import traced
 import re
 
 TARGET_HEADING = re.compile(r'^\s*(?:target roles?|target positions?|desired roles?|desired positions?|roles sought|preferred roles?)\s*:?\s*$', re.I)
@@ -53,6 +54,7 @@ def target_section_values(blocks):
     return {'target_role': text} if text else {}
 
 
+@traced('recover_target_preferences', detail=True)
 def recover_target_preferences(result, elements):
     from local_api.services.resume_sections import build_sections
     from local_api.services.source_validation import validate_result

@@ -161,7 +161,8 @@ function renderSectionResults(data, localOnly) {
   if (relationshipIssues.length) {
     const card = node('section','resume-section review-section'); card.append(node('h3','','Needs Review — relationships and processing'));
     for (const issue of relationshipIssues) card.append(node('p','comparison-note',
-      [issue.section, issue.record_id, issue.stage, issue.reason || (issue.reasons || []).join('; ')].filter(Boolean).join(' · ')));
+      [issue.section, issue.record_id, issue.stage, issue.field, issue.reason || (issue.reasons || []).join('; '),
+       issue.source_ids?.length ? `Sources: ${issue.source_ids.join(', ')}` : ''].filter(Boolean).join(' · ')));
     fragment.append(card);
   }
     $('section-results').replaceChildren(fragment);
@@ -178,8 +179,10 @@ async function detectSections() {
   sectionStatus(localOnly ? 'Running local Sentence-BERT, K-means and boundary recovery… No DeepSeek calls.' : 'Grouping sections and applying configured LLM review…');
   $('section-results').replaceChildren(); $('download-sections').disabled = true;
   try {
-    const data = await readResponse(await fetch(localOnly ? '/api/v1/resume/sections/local' : '/api/v1/resume/sections', {method:'POST',signal:controller.signal,headers:{'Content-Type':'application/json'},body:JSON.stringify({elements:result.elements, extraction_verified:$('verify-extraction').checked})}));
+    const sectionResponse = await fetch(localOnly ? '/api/v1/resume/sections/local' : '/api/v1/resume/sections', {method:'POST',signal:controller.signal,headers:{'Content-Type':'application/json', ...(pipelineRunId ? {'X-Resume-Run-ID':pipelineRunId} : {})},body:JSON.stringify({elements:result.elements, extraction_verified:$('verify-extraction').checked})});
+    const data = await readResponse(sectionResponse);
     if (generation !== sectionGeneration) return;
+    pipelineRunId = sectionResponse.headers.get('X-Resume-Run-ID') || pipelineRunId;
     sectionResult = data;
     sectionResult.extraction_verified = $('verify-extraction').checked;
     renderSectionResults(data, localOnly);

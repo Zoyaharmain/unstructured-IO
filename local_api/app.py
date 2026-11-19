@@ -21,6 +21,32 @@ from local_api.routes.schema_mapping import router as schema_mapping_router
 logger = logging.getLogger(__name__)
 MAX_UPLOAD_BYTES = 25 * 1024 * 1024
 app = FastAPI(title='Local Unstructured Extraction API', version='1.0.0')
+from local_api.services import decision_trace
+decision_trace.configure_logging()
+
+
+@app.middleware('http')
+async def pipeline_terminal_trace(request: Request, call_next):
+    paths = {'/api/v1/extract/text', '/api/v1/resume/sections', '/api/v1/resume/sections/local',
+             '/api/v1/resume/schema', '/api/v1/resume/schema/query', '/api/v1/resume/review-connection'}
+    if request.method != 'POST' or request.url.path not in paths:
+        return await call_next(request)
+    context, token = decision_trace.start(None if request.url.path == '/api/v1/extract/text'
+                                         else request.headers.get('X-Resume-Run-ID'))
+    import time
+    begin = time.monotonic()
+    decision_trace.emit('request_start', endpoint=request.url.path)
+    try:
+        response = await call_next(request)
+        response.headers['X-Resume-Run-ID'] = context.run_id
+        decision_trace.emit('request_end', http_status=response.status_code,
+                            duration_ms=round((time.monotonic()-begin)*1000, 3))
+        return response
+    except Exception as exc:
+        decision_trace.emit('request_failure', level=logging.ERROR, error_type=type(exc).__name__)
+        raise
+    finally:
+        decision_trace.reset(token)
 
 
 @app.exception_handler(RequestValidationError)

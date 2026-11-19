@@ -3,6 +3,7 @@
 Record identity is anchored to source, never employer spelling or chronology.
 Geometry and upstream element types are evidence, not semantic authority.
 """
+from local_api.services.decision_trace import traced
 from dataclasses import dataclass, field, replace
 from hashlib import sha256
 import json
@@ -276,6 +277,7 @@ def role_boundary_operations(state):
     return operations
 
 
+@traced('ownership_transaction', detail=True)
 def apply_operations(state, operations, categories):
     """Validate an entire transaction before committing any ownership changes.
 
@@ -459,6 +461,7 @@ def apply_operations(state, operations, categories):
                    record_parents=MappingProxyType(record_parents), groups=frozenset(groups & used))
 
 
+@traced('ownership_materialization', detail=True)
 def materialize(elements, result, state, *, strict_parent_links=False):
     """Project validated ownership onto the existing section/entry API."""
     from local_api.schemas.sections import SectionEntry
@@ -769,6 +772,7 @@ def translate_decisions_to_operations(decisions, state):
     return ops
 
 
+@traced('ownership_finalization')
 def finalize_ownership(elements, result, *, settings=None, transport=None, review=False):
     """Always audit locally; optionally perform budgeted configured-provider review using context-aware chunks."""
     from local_api.services.llm_section_review import ReviewSettings, ReviewError, call_deepseek

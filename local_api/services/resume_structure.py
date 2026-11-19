@@ -3,6 +3,7 @@
 Keep source offsets authoritative. Formatting normalization is lookup-only; never
 normalize, deduplicate, reconstruct names, or regenerate the returned source text.
 """
+from local_api.services.decision_trace import traced
 import re
 from bisect import bisect_left
 
@@ -194,6 +195,7 @@ def heading_boundary(text, aliases):
     return None, None
 
 
+@traced('record_grouping', detail=True)
 def entry_groups(blocks, category, elements):
     """Reference existing spans, separating explicit entries within each lane/context.
 

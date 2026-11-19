@@ -1,7 +1,9 @@
 """Dated employer/role headers own work subheadings and client project details."""
+from local_api.services.decision_trace import traced
 import re
 
 
+@traced('employment_scope_recovery', detail=True)
 def recover_employment_scope(result,elements):
     from local_api.services.resume_sections import ALIASES,build_sections
     from local_api.services.resume_structure import heading_boundary

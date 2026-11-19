@@ -1,9 +1,11 @@
 """Recover explicit career-summary prose before employment without inventing identity."""
+from local_api.services.decision_trace import traced
 import re
 from local_api.services.record_subfields import ROLE, employment_header_fields
 from local_api.services.resume_structure import heading_boundary, employment_start
 
 
+@traced('recover_summary_preamble', detail=True)
 def recover_summary_preamble(result, elements):
     from local_api.services.resume_sections import ALIASES, build_sections
     from local_api.services.contact_sections import recover_contact_sections, contact_values, profile_values

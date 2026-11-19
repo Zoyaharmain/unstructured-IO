@@ -1,4 +1,5 @@
 """Conservative candidate-contact routing and literal contact values."""
+from local_api.services.decision_trace import traced
 import re
 import unicodedata
 from local_api.services.source_fragments import texts
@@ -41,6 +42,7 @@ def contact_values(blocks):
     return output
 
 
+@traced('recover_contact_sections', detail=True)
 def recover_contact_sections(result, elements=None):
     """Move only identifiable contact fragments; never search reference records."""
     from local_api.schemas.sections import ResumeSection
