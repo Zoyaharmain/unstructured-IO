@@ -132,14 +132,11 @@ def provider_json(settings, path, body=None):
             return json.loads(payload)
         except HTTPError as exc:
             code_name = http_error_code(exc.code)
+            exc.close()
             if attempt < max_retries and exc.code in {429, 500, 502, 503, 504}:
                 time.sleep(0.5 * (2 ** attempt))
                 continue
-            try:
-                error_body = exc.read().decode('utf-8', errors='replace')
-                logger.warning('DeepSeek HTTPError %s (%s): %s', exc.code, code_name, error_body)
-            except Exception:
-                pass
+            logger.warning('DeepSeek HTTPError %s (%s)', exc.code, code_name)
             raise ReviewError(code_name) from None
         except (URLError, TimeoutError, OSError) as exc:
             if attempt < max_retries:

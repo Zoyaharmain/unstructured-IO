@@ -108,6 +108,26 @@ def parse_date_string(
             basis='Whitespace removed only inside a four-digit 19xx/20xx year in a date field.',
             message='Possible extraction spacing in year normalized; original source retained.'))
         text=compact
+
+    has_temporal_marker = False
+    m_temporal = re.match(r'^\s*(?:since|from)\s+(.+)$', text, re.I)
+    if m_temporal:
+        candidate_inner = m_temporal.group(1).strip()
+        if (re.match(r'^' + MONTH_REGEX, candidate_inner, re.I) or
+                re.match(r'^(?:19|20)\d{2}\b', candidate_inner) or
+                re.match(r'^\d{1,2}[/\-]\d{2,4}\b', candidate_inner)):
+            text = candidate_inner
+            has_temporal_marker = True
+
+    m_range_present = re.match(r'^(.+?)\s*(?:[-–—]|\bto\b|\btill\b)\s*(?:Present|Current|Till Date|Till Now|Now)$', text, re.I)
+    if m_range_present:
+        candidate_left = m_range_present.group(1).strip()
+        if (re.match(r'^' + MONTH_REGEX, candidate_left, re.I) or
+                re.match(r'^(?:19|20)\d{2}\b', candidate_left) or
+                re.match(r'^\d{1,2}[/\-]\d{2,4}\b', candidate_left)):
+            text = candidate_left
+            has_temporal_marker = True
+
     # Check for current employment indicators
     if CURRENT_PATTERNS.match(text):
         return None, None, True, warnings
@@ -119,7 +139,7 @@ def parse_date_string(
         month_num = MONTH_MAP.get(month_str.lower()[:3])
         if month_num:
             iso_str = f"{year_str}-{month_num:02d}"
-            return iso_str, "month_year", False, warnings
+            return iso_str, "month_year", has_temporal_marker, warnings
 
     # Match Year + Month: "2022 Aug", "2022-Aug", "2022/Aug"
     m_ym = re.match(r"^([1-9]\d{3})[.\s\-\/]+(" + MONTH_REGEX + r")$", text, re.I)
@@ -128,25 +148,25 @@ def parse_date_string(
         month_num = MONTH_MAP.get(month_str.lower()[:3])
         if month_num:
             iso_str = f"{year_str}-{month_num:02d}"
-            return iso_str, "month_year", False, warnings
+            return iso_str, "month_year", has_temporal_marker, warnings
 
     # Match Numeric MM/YYYY or MM-YYYY or YYYY-MM
     m_num_my = re.match(r"^(0?[1-9]|1[0-2])[\-\/]([1-9]\d{3})$", text)
     if m_num_my:
         month_num = int(m_num_my.group(1))
         year_str = m_num_my.group(2)
-        return f"{year_str}-{month_num:02d}", "month_year", False, warnings
+        return f"{year_str}-{month_num:02d}", "month_year", has_temporal_marker, warnings
 
     m_iso_ym = re.match(r"^([1-9]\d{3})[\-\/](0?[1-9]|1[0-2])$", text)
     if m_iso_ym:
         year_str = m_iso_ym.group(1)
         month_num = int(m_iso_ym.group(2))
-        return f"{year_str}-{month_num:02d}", "month_year", False, warnings
+        return f"{year_str}-{month_num:02d}", "month_year", has_temporal_marker, warnings
 
     # Match Year only: "2022"
     m_yr = re.match(r"^([1-9]\d{3})$", text)
     if m_yr:
-        return m_yr.group(1), "year", False, warnings
+        return m_yr.group(1), "year", has_temporal_marker, warnings
 
     # Match ISO Date YYYY-MM-DD
     m_iso_d = re.match(r"^([1-9]\d{3})[\-\/](0?[1-9]|1[0-2])[\-\/](0?[1-9]|[12]\d|3[01])$", text)
@@ -154,7 +174,7 @@ def parse_date_string(
         y, m, d = int(m_iso_d.group(1)), int(m_iso_d.group(2)), int(m_iso_d.group(3))
         try: date(y,m,d)
         except ValueError: return _invalid_date(raw_date,field_context)
-        return f"{y:04d}-{m:02d}-{d:02d}", "day", False, warnings
+        return f"{y:04d}-{m:02d}-{d:02d}", "day", has_temporal_marker, warnings
 
     # Match Day Month Year: "15 Aug 2022", "15-Aug-2022"
     m_dmy = re.match(r"^(0?[1-9]|[12]\d|3[01])[.\s\-\/]+(" + MONTH_REGEX + r")[,.\s\-\/]*([1-9]\d{3})$", text, re.I)
@@ -164,7 +184,7 @@ def parse_date_string(
         if month_num:
             try: date(int(year_str),month_num,int(day_str))
             except ValueError: return _invalid_date(raw_date,field_context)
-            return f"{year_str}-{month_num:02d}-{int(day_str):02d}", "day", False, warnings
+            return f"{year_str}-{month_num:02d}-{int(day_str):02d}", "day", has_temporal_marker, warnings
 
     # Numeric ambiguity check: e.g. "05/06/2022"
     m_ambig = re.match(r"^(\d{1,2})[\-\/](\d{1,2})[\-\/]([1-9]\d{3})$", text)

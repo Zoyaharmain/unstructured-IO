@@ -103,7 +103,7 @@ def standardize_resume_data(
         loc = exp.get("location")
 
         # Parse start and end dates
-        start_iso, start_prec, _, start_warns = parse_date_string(
+        start_iso, start_prec, is_curr_from_start, start_warns = parse_date_string(
             raw_start, f"experience[{idx}].start_date", reference_date=reference_date, date_order_hint=date_order_hint
         )
         end_iso, end_prec, is_curr_from_end, end_warns = parse_date_string(
@@ -115,7 +115,7 @@ def standardize_resume_data(
 
         # Check if duration mentions 'Present' or 'Current'
         from local_api.services.standardization.dates import CURRENT_PATTERNS
-        is_current = is_curr_from_end
+        is_current = is_curr_from_end or is_curr_from_start
         if not raw_end and exp.get('is_current') is True:
             is_current = True
         if raw_end and 'is_current' in exp and exp['is_current'] != is_curr_from_end:
@@ -125,6 +125,18 @@ def standardize_resume_data(
                 message='Current indicator conflicts with the explicit end date; both retained in source evidence.'))
         if not raw_end and duration and CURRENT_PATTERNS.search(duration.split(' – ')[-1].strip()):
             is_current = True
+        if not raw_end and not is_current and start_iso:
+            has_current_marker = bool(raw_start and re.search(r'\b(?:since|from|onwards?)\b', raw_start, re.I)) or \
+                                 bool(duration and re.search(r'\b(?:since|from|onwards?|ongoing|present|current)\b', duration, re.I)) or \
+                                 is_curr_from_start
+            if has_current_marker:
+                is_current = True
+            else:
+                all_warnings.append(StandardizationWarning(field=f'experience[{idx}].is_current',
+                    warning_type='unconfirmed_current_role', severity='review_required',
+                    original_value=None, normalized_value=False,
+                    basis='Missing end date without explicit current indicator.',
+                    message='Position has a start date but no end date or explicit current indicator; current status and duration remain unconfirmed.'))
         duration_text, duration_months, duration_status = calculated_duration(
             start_iso,end_iso,start_prec,end_prec,is_current,reference_date)
         if duration_status == 'insufficient_dates' and duration:

@@ -305,6 +305,7 @@ def test_structural_review_budget_exhaustion_never_reports_success():
     assert review_meta.get('provider_calls', 0) == 0
 
 
+@pytest.mark.provider
 def test_live_deepseek_structural_chunking_abhishek_fixture():
     """Mandatory end-to-end verification against real Abhishek_HV fixture (doc 86ca79a7aead8cedc055.json).
 

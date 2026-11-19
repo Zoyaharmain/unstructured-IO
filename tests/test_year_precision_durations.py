@@ -57,3 +57,19 @@ def test_overlapping_year_labels_do_not_double_count_estimated_total():
     raw=payload();raw['experience']=[dict(raw['experience'][0],start_date='2020',end_date='2024'),dict(raw['experience'][1],start_date='2022',end_date='2025')]
     std,*_=standardize_resume_data(raw,reference_date=ASOF)
     assert std.total_experience_years==5.0 and std.experience_overlap_detected
+
+
+def test_experience_total_is_invariant_to_permutation_and_duplicate_intervals():
+    from itertools import permutations
+
+    records = [
+        {'company': 'Example One', 'role': 'Engineer', 'start_date': '2020-01', 'end_date': '2022-01'},
+        {'company': 'Example Two', 'role': 'Engineer', 'start_date': '2021-01', 'end_date': '2023-01'},
+        {'company': 'Example Three', 'role': 'Engineer', 'start_date': '2023-01', 'end_date': '2024-01'},
+    ]
+    for order in permutations(records):
+        raw = {'experience': [*order, dict(records[1])]}
+        standardized, _, _, warnings = standardize_resume_data(raw, reference_date=ASOF)
+        assert standardized.total_experience_years == 4.0
+        assert standardized.experience_overlap_detected
+        assert sum(w.warning_type == 'experience_overlap_resolved' for w in warnings) == 1

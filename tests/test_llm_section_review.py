@@ -356,3 +356,63 @@ def test_reviewed_job_fields_and_embedded_projects_do_not_start_new_employers():
     entries=entry_groups(blocks,'experience',elements)
     assert len(entries)==1
     assert entries[0]['block_indices']==list(range(len(texts)))
+
+
+def test_provider_http_error_does_not_log_or_read_response_body(monkeypatch, caplog):
+    from io import BytesIO
+
+    error_body = BytesIO(b'synthetic private provider data')
+
+    class Opener:
+        def open(self, request, timeout):
+            raise HTTPError(request.full_url, 503, 'unavailable', {}, error_body)
+
+    monkeypatch.setattr(review, 'build_opener', lambda *_: Opener())
+    with pytest.raises(review.ReviewError, match='provider_unavailable'):
+        review.call_deepseek(configured(), [])
+
+    assert 'provider_unavailable' in caplog.text
+    assert 'synthetic private provider data' not in caplog.text
+    assert error_body.closed
+
+
+def test_paid_provider_request_rejects_oversized_response_without_retry(monkeypatch):
+    from io import BytesIO
+
+    attempts = []
+
+    class Opener:
+        def open(self, request, timeout):
+            attempts.append((request.get_method(), timeout))
+            return BytesIO(b'{"choices": []}')
+
+    monkeypatch.setattr(review, 'MAX_RESPONSE_BYTES', 8)
+    monkeypatch.setattr(review, 'build_opener', lambda *_: Opener())
+    settings = configured()
+    with pytest.raises(review.ReviewError, match='response_too_large'):
+        review.call_deepseek(settings, [])
+
+    assert attempts == [('POST', settings.timeout)]
+
+
+def test_read_only_provider_retries_transient_failure_and_closes_response(monkeypatch):
+    from io import BytesIO
+
+    responses = [BytesIO(b'temporary outage'), BytesIO(b'{"data": []}')]
+    waits = []
+    attempts = []
+
+    class Opener:
+        def open(self, request, timeout):
+            attempts.append(request.get_method())
+            if len(attempts) == 1:
+                raise HTTPError(request.full_url, 503, 'unavailable', {}, responses[0])
+            return responses[1]
+
+    monkeypatch.setattr(review, 'build_opener', lambda *_: Opener())
+    monkeypatch.setattr(review.time, 'sleep', waits.append)
+
+    assert review.provider_json(configured(), '/models') == {'data': []}
+    assert attempts == ['GET', 'GET']
+    assert waits == [0.5]
+    assert all(response.closed for response in responses)

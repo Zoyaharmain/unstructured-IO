@@ -224,10 +224,14 @@ class SectionEngine:
         part_owners = []
         for i, text in enumerate(texts):
             if len(text.split()) <= 12:
-                parts = [part.strip() for part in re.split(r'\s+(?:and|&)\s+|[/|;]', text, flags=re.IGNORECASE) if part.strip()]
+                parts = [part.strip() for part in re.split(r'\s*(?:and|&|/|;)\s*', text, flags=re.IGNORECASE) if part.strip()]
                 if len(parts) > 1:
                     compound_parts.extend(parts)
                     part_owners.extend([i] * len(parts))
+                    for p in parts:
+                        lbl, _ = heading_boundary(p, ALIASES)
+                        if lbl:
+                            compounds.setdefault(i, set()).add(lbl)
         if compound_parts:
             part_vectors = self.encode_texts(compound_parts)
             for owner, (label, _, score, margin) in zip(part_owners, self.headings.score(part_vectors, headings=True)):
@@ -268,6 +272,10 @@ class SectionEngine:
                 and next_source and degree_families(next_source.text) and 'institution' in field_kinds(next_source.text,'education'))
             is_bullet = element.type == 'ListItem' or bool(re.match(r'^\s*[•▪●*\uf0b7-]\s+', unit.text))
             structural_label, _ = (None, None) if re.match(r'^\s*[•▪●*\uf0b7-]\s+', unit.text) else heading_boundary(unit.text, ALIASES)
+            if structural_label and unit.start > 0 and element.type in {'NarrativeText', 'Paragraph'} and not unit.heading_style:
+                prefix_lead = element.text[:unit.start]
+                if not prefix_lead.rstrip().endswith(('\n', '\r', ':')):
+                    structural_label = None
             # Broad profile/highlights headings cannot override explicit job history.
             if structural_label == 'summary':
                 from local_api.services.record_subfields import employment_header_fields, RANGE
@@ -356,15 +364,18 @@ class SectionEngine:
                 candidate = hlabel
                 assignment, reason = ('structural_heading', 'Explicit section heading; BERT/K-means candidate retained as evidence') if structural_label else ('section_heading', 'Distinct BERT heading match with a K-means section label')
             elif position < first_heading and len(unit.text.split()) <= 22 and any(heading_boundary(item.text, ALIASES)[0] == 'personal_information' for item in units[:20]):
+                pending_boundary = None
                 label = 'personal_information'
                 assignment, reason = 'contact_context', 'Opening identity/headline before the contact section'
             elif not context and position < first_heading and len(unit.text.split()) <= 18 and (re.match(r'^\s*(?:role|designation|title|position)\s*:\s*\S', unit.text, re.I) or (not context and ROLE.search(unit.text) and len(unit.text.split()) <= 8)):
+                pending_boundary = None
                 label = 'personal_information'
                 assignment, reason = 'contact_context', 'Opening professional role/headline in document preamble'
             elif not context and position < first_heading and len(unit.text.split()) <= 18 and not unit.text.rstrip().endswith(('.', '!', '?')) and any(
                     re.search(r'[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}', units[j].text)
                     for j in range(max(0, position - 2), min(first_heading, position + 3))
                     if units[j].lane == unit.lane or (position <= 2 and request.elements[units[j].index].page_number == element.page_number)):
+                pending_boundary = None
                 label = 'personal_information'
                 assignment, reason = 'contact_context', 'Opening identity/headline adjacent to an explicit email address'
             elif (unit.heading_style or possible_transition) and short and not is_bullet and not record_field:
@@ -394,6 +405,7 @@ class SectionEngine:
                              if units[j].lane == unit.lane and contents[j][0] == 'personal_information'
                              and contents[j][2] >= .50 and contents[j][3] >= .12]
                 if neighbors:
+                    pending_boundary = None
                     label, cluster, similarity, margin = max(neighbors, key=lambda item: item[2])
                     candidate = label
                     assignment, reason = 'contact_context', 'Short preamble beside BERT-detected contact details; verify visually'
@@ -413,7 +425,7 @@ class SectionEngine:
                                  text=unit.text, page_number=element.page_number, cluster_id=cluster,
                                  candidate_section=candidate, alternatives=alternatives if compound else [], assignment=assignment,
                                  boundary_candidate=bool(assignment == 'needs_review' and (unit.heading_style or possible_transition) and short and not record_field and not is_bullet),
-                                 pending_boundary_id=pending_boundary,
+                                 pending_boundary_id=None if label == 'personal_information' else pending_boundary,
                                  cluster_space='heading' if is_heading else 'content', context_source_element_index=context_source, similarity=round(similarity, 4),
                                  margin=round(margin, 4), lane=unit.lane, reason=reason)
             if assignment == 'needs_review' or label not in ANCHORS:

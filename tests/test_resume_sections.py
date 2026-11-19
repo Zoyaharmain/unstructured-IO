@@ -559,3 +559,20 @@ def test_explicit_section_heading_overrides_upstream_element_type(engine, upstre
     assert owners[0]==owners[1]=='skills'
     assert owners[2]==owners[3]==owners[4]=='experience'
     assert_preserved(req,result)
+
+
+@pytest.mark.parametrize('heading', [True, False], ids=['explicit-heading', 'headingless'])
+def test_degree_and_institution_establish_education_after_projects(engine, heading):
+    degree = 'Bachelor of Science in Computer Science, Example University, GPA 3.8.'
+    project = 'Expense Tracker: Built a personal application with React.'
+    texts = ['Projects', project, *(['Education'] if heading else []), degree]
+    req = request(texts)
+
+    result = engine.detect(req)
+
+    sections = {section.category: section for section in result.sections}
+    degree_block = next(block for block in sections['education'].blocks if block.text == degree)
+    assert degree_block.source_element_index == len(texts) - 1
+    assert degree_block.assignment == ('heading_context' if heading else 'education_boundary')
+    assert project in [block.text for block in sections['projects'].blocks]
+    assert_preserved(req, result)

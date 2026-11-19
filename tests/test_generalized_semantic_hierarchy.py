@@ -19,7 +19,6 @@ import pytest
 from types import MappingProxyType
 
 from local_api.core.provider_env import load_provider_env
-load_provider_env(Path('.env'))
 
 from local_api.schemas.extraction import ExtractedElement
 from local_api.schemas.sections import (
@@ -345,6 +344,7 @@ def test_invalid_llm_response_rejection():
 # ==============================================================================
 # Mandatory Live DeepSeek Recovery Test
 # ==============================================================================
+@pytest.mark.provider
 def test_mandatory_live_deepseek_recovery():
     """Perform live review request to DeepSeek Flash, verify decision execution and schema propagation."""
     env_path = Path(__file__).resolve().parents[1] / '.env'

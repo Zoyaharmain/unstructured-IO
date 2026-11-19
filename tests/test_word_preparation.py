@@ -59,3 +59,22 @@ def test_failed_legacy_conversion_has_clear_document_error(monkeypatch):
     monkeypatch.setattr(subprocess,'run',lambda *a,**k:SimpleNamespace(returncode=77))
     with pytest.raises(ExtractionError,match='could not be converted') as exc:convert_legacy_word(b'bad')
     assert exc.value.status==422
+
+
+def test_legacy_conversion_timeout_closes_temporary_source_and_profile(monkeypatch):
+    workdirs = []
+
+    def run(command, *, timeout, **kwargs):
+        source = Path(command[-1])
+        workdirs.append(source.parent)
+        assert timeout == 60
+        assert source.read_bytes() == b'synthetic legacy document'
+        (source.parent / 'profile').mkdir()
+        raise subprocess.TimeoutExpired(command, timeout)
+
+    monkeypatch.setattr(subprocess, 'run', run)
+    with pytest.raises(ExtractionError, match='conversion timed out') as caught:
+        convert_legacy_word(b'synthetic legacy document')
+
+    assert caught.value.status == 422
+    assert workdirs and not workdirs[0].exists()

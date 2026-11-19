@@ -136,22 +136,40 @@ def annotate_relationships(section):
         if section.category == 'experience' and len(entry.block_indices) >= 2:
             first, second = (section.blocks[i] for i in entry.block_indices[:2])
             first_text = first.text.strip()
-            from local_api.services.record_subfields import paired_employment_header
+            from local_api.services.record_subfields import paired_employment_header, RANGE, ROLE, employment_header_fields
             if (paired_employment_header(first_text,second.text) or (first.source_element_index == second.source_element_index and first.end == second.start
                     and 0 < len(first_text.split()) <= 10 and not re.search(r'\d|[@:;]', first_text)
                     and not (set(field_kinds(first_text, 'experience')) - {'employer'}) and 'title' in field_kinds(second.text, 'experience'))):
-                fields['employer'] = [entry.block_indices[0]]
+                if RANGE.search(first_text) or re.search(r'\b(?:19|20)\d{2}\b', first_text):
+                    fields['dates'] = [entry.block_indices[0]]
+                    fields['employer'] = [entry.block_indices[1]]
+                elif ROLE.search(first_text) and not employment_header_fields(first_text).get('company') and (employment_header_fields(second.text).get('company') or not ROLE.search(second.text)):
+                    fields['title'] = [entry.block_indices[0]]
+                    fields['employer'] = [entry.block_indices[1]]
+                else:
+                    fields['employer'] = [entry.block_indices[0]]
         if section.category == 'experience' and not fields.get('employer'):
-            from local_api.services.record_subfields import RANGE, is_place, ROLE, ACTION, responsibility_fragment
+            from local_api.services.record_subfields import RANGE, is_place, ROLE, ACTION, responsibility_fragment, employment_header_fields
+            from local_api.services.resume_structure import heading_boundary
+            from local_api.services.resume_sections import ALIASES
             for idx in entry.block_indices[:5]:
-                if idx in fields.get('title', []) or idx in fields.get('responsibilities', []):
+                if section.blocks[idx].assignment in {'section_heading', 'structural_heading', 'heading_context'}:
+                    continue
+                if idx in fields.get('responsibilities', []):
+                    continue
+                if employment_header_fields(section.blocks[idx].text).get('company'):
+                    fields['employer'] = [idx]
+                    break
+                if idx in fields.get('title', []):
                     continue
                 cand_text = section.blocks[idx].text.strip()
-                clean_cand = re.split(r'\s+[—–-]\s+', cand_text)[0].strip()
+                clean_cand = re.split(r'\s*[|—–-]\s*', cand_text)[0].strip()
                 words = clean_cand.split()
                 if not (1 <= len(words) <= 6 and clean_cand and clean_cand[0].isupper() and not re.search(r'[@:;]', clean_cand)):
                     continue
-                if re.match(r'^(?:client|project)\b', clean_cand, re.I) or RANGE.search(cand_text) or RANGE.search(clean_cand) or re.search(r'(?:19|20)\d{2}', cand_text) or ROLE.search(clean_cand) or ACTION.search(clean_cand) or responsibility_fragment(clean_cand):
+                if (re.match(r'^(?:client|project)\b', clean_cand, re.I) or RANGE.search(cand_text) or RANGE.search(clean_cand)
+                        or re.search(r'(?:19|20)\d{2}', cand_text) or ROLE.search(clean_cand) or ACTION.search(clean_cand)
+                        or responsibility_fragment(clean_cand) or heading_boundary(clean_cand, ALIASES)[0]):
                     continue
                 if is_place(clean_cand):
                     continue

@@ -262,10 +262,12 @@ def map_schema(request):
                     if company and re.search(role_pattern,company,re.I) and not re.search(company_pattern,company,re.I):company=None
                     if role and re.search(company_pattern,role,re.I):role=None
                     if not company:
-                        pieces=[part.strip() for part in field('employer').split('|') if part.strip() and re.search(company_pattern,part,re.I) and not re.search(r'\b(?:19|20)\d{2}\b',part)]
+                        pieces=[part.strip().rstrip(', ') for part in re.split(r'[|\n]', field('employer')) if part.strip() and re.search(company_pattern,part,re.I) and not re.search(r'\b(?:19|20)\d{2}\b',part)]
+                        pieces=[p for p in pieces if field_quotes(p, refs('employer'))]
                         if len(pieces)==1:company=pieces[0]
                     if not role:
-                        pieces=[part.strip() for part in field('title').split('|') if part.strip() and re.search(role_pattern,part,re.I) and not re.search(company_pattern,part,re.I) and not re.search(r'\b(?:19|20)\d{2}\b',part)]
+                        pieces=[part.strip().rstrip(', ') for part in re.split(r'[|\n]', field('title')) if part.strip() and re.search(role_pattern,part,re.I) and not re.search(company_pattern,part,re.I) and not re.search(r'\b(?:19|20)\d{2}\b',part)]
+                        pieces=[p for p in pieces if field_quotes(p, refs('title'))]
                         if len(pieces)==1:role=pieces[0]
                     if not company and sole('employer'):
                         m_dated_prefix = None
@@ -297,6 +299,7 @@ def map_schema(request):
                         role = field('title')
                     from local_api.services.dated_record_headers import dated_header_candidates
                     dh = dated_header_candidates(bs)
+                    from local_api.services.record_subfields import employment_header_fields
                     if len(dh) == 1:
                         if dh[0].get('company') and not company: company = dh[0]['company']
                         if dh[0].get('role') and not role: role = dh[0]['role']
@@ -305,15 +308,23 @@ def map_schema(request):
                     else:
                         allow_company = not entry.fields or 'employer' in entry.fields or bool(company_context)
                         allow_role = not entry.fields or 'title' in entry.fields
-                    from local_api.services.record_subfields import employment_header_fields
-                    if (not company and allow_company) or (not role and allow_role) or (company and role and role.casefold().startswith(company.casefold())):
-                        for candidate_text in [field('employer'), field('title'), text]:
+                    if (not company and allow_company) or (not role and allow_role) or (role and not field_quotes(role, bs)) or (company and role and role.casefold().startswith(company.casefold())):
+                        candidate_texts = [b.text for b in refs('title') + refs('employer')] + [field('employer'), field('title'), text]
+                        for candidate_text in candidate_texts:
                             if candidate_text:
                                 clean_cand = re.sub(r'\b(?:system\s+(?:prompt|instruction|override)|ignore\s+all\s+(?:previous|prior)\s+instructions|output\s+role\s*:|human\s+review\s*:)\b.*', '', candidate_text, flags=re.I).strip()
                                 parsed = employment_header_fields(clean_cand) if clean_cand else {}
-                                if allow_company and (not company or (role and role.casefold().startswith(company.casefold()))) and parsed.get('company'): company = parsed['company']
-                                if allow_role and (not role or (company and role.casefold().startswith(company.casefold()))) and parsed.get('role'): role = parsed['role']
-                                if company and role and not role.casefold().startswith(company.casefold()): break
+                                if allow_company and (not company or not field_quotes(company, bs) or (role and role.casefold().startswith(company.casefold()))) and parsed.get('company'):
+                                    if not (company and field_quotes(company, bs) and len(parsed['company']) < len(company)):
+                                        company = parsed['company']
+                                if allow_role and (not role or not field_quotes(role, bs) or (company and role.casefold().startswith(company.casefold()))) and parsed.get('role'): role = parsed['role']
+                                if company and role and field_quotes(company, bs) and field_quotes(role, bs) and not role.casefold().startswith(company.casefold()): break
+                    if not role and refs('title'):
+                        for b in refs('title'):
+                            cand = b.text.strip().rstrip(', ')
+                            if cand and re.search(role_pattern, cand, re.I) and not re.search(company_pattern, cand, re.I) and field_quotes(cand, refs('title')):
+                                role = cand
+                                break
                     if role and re.search(r'\b(?:system\s+(?:prompt|instruction)|ignore\s+all|output\s+role)\b', role, re.I):
                         role = None
                     if company and role and role.casefold().startswith(company.casefold()):
@@ -322,6 +333,11 @@ def map_schema(request):
                     if not allow_role: role = None
                     if company and employment_header_fields(company).get('company'):
                         company = employment_header_fields(company)['company']
+                    if company:
+                        from local_api.services.resume_structure import heading_boundary
+                        from local_api.services.resume_sections import ALIASES
+                        if heading_boundary(company, ALIASES)[0]:
+                            company = None
                     loc = sole('location')
                     if loc and employment_header_fields(loc).get('location'):
                         loc = employment_header_fields(loc)['location']
@@ -354,7 +370,21 @@ def map_schema(request):
                         from local_api.services.record_subfields import employment_duration_literal
                         record.start_date,record.end_date=matches[0].group(1,2)
                         record.duration=employment_duration_literal(matches[0])
-                    elif not record.duration:
+                    else:
+                        month_name = r'(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:t(?:ember)?)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)'
+                        single_date_pat = r'(?:' + month_name + r'[\s,.\-’‘\'`´]*(?:(?:19|20)\d{2}|[’‘\'`´]\d{2})|(?:0?[1-9]|1[0-2])[/-](?:19|20)\d{2}|(?:19|20)\d{2})'
+                        single_match = re.search(r'\b(?:Since|From)?\s*(' + single_date_pat + r')\b', dates, re.I) if dates else None
+                        if not single_match:
+                            for b in bs:
+                                if len(b.text.split()) <= 12 and not re.search(r'\b(?:19|20)\d{2}\s*[-–—]\s*(?:19|20)\d{2}\b', b.text):
+                                    m_s = re.search(r'\b(?:Since|From)?\s*(' + single_date_pat + r')\b', b.text, re.I)
+                                    if m_s and not re.search(r'\b(?:batch|graduat|born|dob|exp|phone|call)\b', b.text, re.I):
+                                        single_match = m_s
+                                        break
+                        if single_match and not re.search(r'\b(?:19|20)\d{2}\s*[-–—]\s*(?:19|20)\d{2}\b', dates or ''):
+                            record.start_date = single_match.group(1).strip()
+                            record.end_date = None
+                    if not record.duration:
                         for source_text in (dates, text):
                             if not source_text: continue
                             dur_match = re.search(r'\b(?:(\d+)\s*(?:years?|yrs?)\s*(?:and\s*)?)?(?:(\d+)\s*(?:months?|mos?))\b|\b(\d+(?:\.\d+)?\s*(?:years?|yrs?))\b', source_text, re.I)
@@ -370,6 +400,8 @@ def map_schema(request):
                         ref_bs = refs(ref)
                         if key == 'company' and company_context:
                             ref_bs = company_context
+                        if not ref_bs and getattr(record, key):
+                            ref_bs = [b for b in bs if str(getattr(record, key)).casefold() in b.text.casefold()] or bs[:1]
                         remember(prefix+'.'+key,getattr(record,key),ref_bs)
                     for j,b in enumerate(refs('responsibilities')):remember(f'{prefix}.responsibilities[{j}]',b.text,[b])
                 elif category=='education':
@@ -508,7 +540,8 @@ def map_schema(request):
                         e_role = norm_s(existing.role)
                         e_dates = (existing.start_date, existing.end_date)
                         comp_match = bool(r_comp and e_comp and r_comp == e_comp)
-                        role_match = bool(r_role and e_role and r_role == e_role)
+                        role_match = bool((r_role and e_role and r_role == e_role) or
+                                          (comp_match and (not r_role or not e_role)))
                         if comp_match and role_match:
                             dates_match = (r_dates == e_dates or
                                            (r_dates == (None, None) and e_dates != (None, None)) or
@@ -524,8 +557,10 @@ def map_schema(request):
                         e_inst = norm_s(existing.institution)
                         e_deg = norm_s(existing.degree)
                         e_grad = norm_s(existing.graduation_year)
-                        if (r_inst and e_inst and r_inst == e_inst and r_deg and e_deg and
-                            r_deg == e_deg and (r_grad == e_grad or not r_grad or not e_grad)):
+                        inst_match = bool(r_inst and e_inst and r_inst == e_inst)
+                        deg_match = bool((r_deg and e_deg and r_deg == e_deg) or not r_deg or not e_deg)
+                        grad_match = bool(r_grad == e_grad or not r_grad or not e_grad)
+                        if inst_match and deg_match and grad_match:
                             duplicate_match = k_idx
                             break
 
@@ -535,6 +570,10 @@ def map_schema(request):
                     record_bindings[category][review['entry_id']] = new_index
                     existing = kept[duplicate_match]
                     if category == 'experience':
+                        if not existing.role and record.role:
+                            existing.role = record.role
+                        if not existing.company and record.company:
+                            existing.company = record.company
                         if existing.start_date is None and record.start_date is not None:
                             existing.start_date = record.start_date
                             existing.end_date = record.end_date
@@ -542,6 +581,8 @@ def map_schema(request):
                             if resp not in existing.responsibilities:
                                 existing.responsibilities.append(resp)
                     elif category == 'education':
+                        if not existing.degree and record.degree:
+                            existing.degree = record.degree
                         if existing.start_year is None and record.start_year is not None:
                             existing.start_year = record.start_year
                         if existing.graduation_year is None and record.graduation_year is not None:

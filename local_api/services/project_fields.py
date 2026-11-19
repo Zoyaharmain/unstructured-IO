@@ -3,6 +3,14 @@ import re
 from local_api.services.record_subfields import labelled_fields, responsibility_fragment, RANGE, ALIASES, ACTION
 
 
+def _el_text(el):
+    return el.get('text', '') if isinstance(el, dict) else getattr(el, 'text', '')
+
+
+def _el_type(el):
+    return el.get('type', '') if isinstance(el, dict) else getattr(el, 'type', '')
+
+
 def project_fields(blocks, elements, proposed_title=None):
     content = [b for b in blocks if b.assignment not in {'section_heading', 'structural_heading'} and b.text.strip()]
     title, parts = None, []
@@ -64,7 +72,7 @@ def project_fields(blocks, elements, proposed_title=None):
             continue
         plausible_name = (not responsibility_fragment(text) and not text.endswith(('.', '!', '?'))
                           and len(text.split()) <= 18 and not re.fullmatch(r'project\s*#?\s*\d+[:.)-]?', text, re.I))
-        if title is None and plausible_name and (proposed_title == text or not parts or b is content[0] or elements[b.source_element_index].type == 'Title'):
+        if title is None and plausible_name and (proposed_title == text or not parts or b is content[0] or _el_type(elements[b.source_element_index]) == 'Title'):
             title = text
         else:
             append(b, b.text)
@@ -76,12 +84,12 @@ def project_fields(blocks, elements, proposed_title=None):
         if groups:
             previous = groups[-1][-1][0]
             if part[1] == previous[1]:
-                gap = elements[part[1]].text[previous[3]:part[2]]
+                gap = _el_text(elements[part[1]])[previous[3]:part[2]]
                 join = not re.sub(r'[\s•▪●*,-]', '', gap)
                 separator = gap
             elif part[1] > previous[1]:
-                gaps = elements[previous[1]].text[previous[3]:] + elements[part[1]].text[:part[2]]
-                gaps += ''.join(e.text for e in elements[previous[1]+1:part[1]])
+                gaps = _el_text(elements[previous[1]])[previous[3]:] + _el_text(elements[part[1]])[:part[2]]
+                gaps += ''.join(_el_text(e) for e in elements[previous[1]+1:part[1]])
                 join = not re.sub(r'[\s•▪●*,-]', '', gaps)
                 separator = '\n'
         if not join: groups.append([]); separator = ''

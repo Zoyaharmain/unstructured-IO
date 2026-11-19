@@ -93,16 +93,17 @@ EXTRA_HEADINGS = {
     'skills': ['technical profile', 'technical exposure', 'competences', 'comp\u00e9tences', 'languages and platforms', 'programming languages',
                'tools and platforms', 'core programming and frameworks', 'cloud and devops',
                'core competencies and skills', 'it skillset', 'it skills',
+               'technology stack', 'tech stack', 'technical stack', 'tools and technologies', 'tools & technologies',
                'testing and development practices', 'skill set', 'skill sets', 'skillset', 'key strengths', 'technical competencies', 'core competency', 'core competence', 'core competences', 'core skills', 'domain expertise', 'business analysis and product management', 'tools and technology',
                'technical arsenal', 'technical repertoire'],
-    'certifications': ['certificates', 'certification', 'training', 'certifications and licenses'],
+    'certifications': ['certificates', 'certification', 'training', 'trainings', 'certifications and licenses', 'credentials', 'licenses'],
     'publications': ['research publications', 'selected publications', 'papers and publications'],
     'volunteering': ['volunteer experience', 'voluntary work', 'community service'],
     'awards': ['academic achievements', 'academic awards', 'key achievements', 'professional achievements', 'awards and recognitions',
                'awards and recognition', 'awards & recognition', 'awards & recognitions',
                'recognition and awards', 'recognitions and awards',
                'achievements/awards', 'achievements and awards', 'key achievement',
-               'awards/achievements', 'awards and achievement'],
+               'awards/achievements', 'awards and achievement', 'achievement', 'achievements', 'recognition', 'recognitions'],
 }
 
 
@@ -134,7 +135,7 @@ def heading_boundary(text, aliases):
         return 'projects', text.index(':')+1
     if normalized in RECORD_FIELDS and normalized not in aliases:
         return None, None
-    if len(normalized.split()) <= 5 and re.fullmatch(r'(?:[a-z]+\s+){0,4}(?:competencies|competences|competency|skillset)', normalized):
+    if len(normalized.split()) <= 5 and re.fullmatch(r'(?:[a-z]+\s+){0,4}(?:competencies|competences|competency|skillset|skills|skill\s+set|skill\s+sets|stack|stacks)', normalized):
         return 'skills', None
     from local_api.services.competency_sections import expertise_heading
     if expertise_heading(text):return 'skills',None
@@ -147,7 +148,7 @@ def heading_boundary(text, aliases):
                  SequenceMatcher(None,a,normalized).ratio()>=.88}
         if len(matches)==1:category=matches.pop()
     # Compose headings only when every component names the same schema family.
-    components=re.split(r'\s+(?:and|/)\s+',normalized)
+    components = [part.strip() for part in re.split(r'\s*(?:and|/|&)\s*|\s*,\s*', normalized) if part.strip()]
     owners={aliases.get(part) for part in components}
     if not category and len(components)>1 and None not in owners:
         if len(owners)==1:category=owners.pop()
@@ -580,7 +581,7 @@ def reviewed_employment_groups(blocks,elements):
                     return pts_top
         return min_y
     from local_api.services.record_relationships import dated_organization_header
-    from local_api.services.record_subfields import responsibility_fragment, employment_header_fields, is_place, RANGE
+    from local_api.services.record_subfields import responsibility_fragment, employment_header_fields, is_place, RANGE, paired_employment_header
     anchors=[]
     shared_history=False
     for i,b in enumerate(blocks):
@@ -625,8 +626,9 @@ def reviewed_employment_groups(blocks,elements):
         if not valid_anchor or is_place(text):continue
         if anchors and anchors[-1].get('paired_employer') and anchors[-1]['index'] == i-1:
             continue
-        # Employer and title can occupy two adjacent source rows. Merge a
-        # title-only continuation with the immediately preceding employer row.
+        # Employer and title can occupy two adjacent source rows or parts of the same element.
+        if anchors and (b.source_element_index == blocks[anchors[-1]['index']].source_element_index or paired_employment_header(blocks[anchors[-1]['index']].text, b.text)):
+            continue
         if anchors and not explicit_header and top is not None and anchors[-1]['page']==b.page_number and anchors[-1]['y'] is not None and 0<=top-anchors[-1]['y']<=.03 and (
             (role.search(text) and not role.search(blocks[anchors[-1]['index']].text) and (business.search(blocks[anchors[-1]['index']].text) or anchors[-1].get('paired_employer')) and not business.search(text) and not re.search(r'\d|[,|]',text)
              and not any(role.search(blocks[k].text) and not responsibility_fragment(blocks[k].text) for k in range(anchors[-1]['index']+1,i))) or
@@ -672,13 +674,17 @@ def reviewed_employment_groups(blocks,elements):
                 continue
             if a['page'] != b.page_number and b.context_source_element_index is None:
                 continue
-            if a['index'] > i and b.lane == blocks[a['index']].lane and (top is None or a['y'] is None or top < a['y'] - 0.001):
+            if b.source_element_index != blocks[a['index']].source_element_index and a['index'] > i and b.lane == blocks[a['index']].lane and (top is None or a['y'] is None or top < a['y'] - 0.001):
                 # Geometric tolerance must not pull a preceding duty into a
                 # later role in the same reading lane.
                 continue
             if top is not None and a['y'] is not None and b.page_number is not None and a['page'] is not None:
-                if (a['page']<b.page_number or (a['page']==b.page_number and a['y']<=top+.006)) and not (b.source_element_index == blocks[a['index']].source_element_index and b.start < blocks[a['index']].start):eligible.append((a['page'],a['y'],j))
-            elif a['index']<=i:eligible.append((0,a['index'],j))
+                if b.source_element_index == blocks[a['index']].source_element_index:
+                    eligible.append((a['page'], a['y'], j))
+                elif a['page']<b.page_number or (a['page']==b.page_number and a['y']<=top+.006):
+                    eligible.append((a['page'],a['y'],j))
+            elif a['index']<=i or b.source_element_index == blocks[a['index']].source_element_index:
+                eligible.append((0,a['index'],j))
         if not eligible:
             # Career-wide highlights preceding employment are section content,
             # not evidence of responsibilities for the first job.
@@ -774,16 +780,20 @@ def employment_start(text):
     stated=bool(employment_header_fields(lookup)) or bool(re.match(r'^(?:I\s+)?(?:am\s+)?(?:working|worked|currently working)\s+as\b.+\b(?:at|with|for)\b',lookup,re.I))
     date=re.search(r"\b(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sept?(?:ember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s*[‘’']?\d{2,4}",lookup,re.I)
     period=RANGE.search(lookup) or PERIOD.search(lookup)
-    raw_prefix=lookup[:(period.start() if period else date.start())] if (period or date) else ''
+    match_dt = period or date
+    raw_prefix=lookup[:match_dt.start()] if match_dt else ''
+    raw_suffix=lookup[match_dt.end():] if match_dt else ''
     prefix=raw_prefix.strip(' |,–—-')
-    if not (period or date) or len(lookup.split()) > 30 or (ACTION.search(prefix) and not stated): return False
-    if re.search(r'\b(?:b\.?s\b|b\.?tech|b\.?e\b|bachelor|m\.?s\b|m\.?tech|master|ph\.?d|doctorate|diploma)\b', prefix, re.I) and re.search(r'\b(?:university|college|institute|academy|school)\b', prefix, re.I):
+    suffix=raw_suffix.strip(' |,–—-')
+    if not match_dt or len(lookup.split()) > 30 or (ACTION.search(prefix) and not stated and not suffix): return False
+    target = f"{prefix} {suffix}".strip()
+    if re.search(r'\b(?:b\.?s\b|b\.?tech|b\.?e\b|bachelor|m\.?s\b|m\.?tech|master|ph\.?d|doctorate|diploma)\b', target, re.I) and re.search(r'\b(?:university|college|institute|academy|school)\b', target, re.I):
         return False
-    if EDUCATION.search(prefix): return False
-    business=re.search(r'\b(?:ltd|limited|inc|llc|corp|corporation|systems|services|bank|technolog(?:y|ies|ie)|solutions|labs?|clinic|hospital|center|centre|group|agency|partners|studio|holdings)\b',prefix,re.I)
-    role=re.search(r'\b(?:engineer|developer|analyst|associate|consultant|manager|architect|intern|specialist|director|officer|executive|lead|administrator|tester|diagnostician|fellow|resident|vp|vice\s+president|president|psychotherapist|physician|attorney|counsel|cso|cto|cio|cfo|ceo|investigator|chemist)\b',prefix,re.I)
-    has_delim=bool(re.search(r'[,|–—\-/]',raw_prefix))
-    return bool(employment_header(lookup) or business or stated or (role and (has_delim or len(prefix.split())<=4)))
+    if EDUCATION.search(prefix) or (not prefix and EDUCATION.search(suffix)): return False
+    business=re.search(r'\b(?:ltd|limited|inc|llc|corp|corporation|systems|services|bank|technolog(?:y|ies|ie)|solutions|labs?|clinic|hospital|center|centre|group|agency|partners|studio|holdings)\b',target,re.I)
+    role=re.search(r'\b(?:engineer|developer|analyst|associate|consultant|manager|architect|intern|specialist|director|officer|executive|lead|administrator|tester|diagnostician|fellow|resident|vp|vice\s+president|president|psychotherapist|physician|attorney|counsel|cso|cto|cio|cfo|ceo|investigator|chemist)\b',target,re.I)
+    has_delim=bool(re.search(r'[,|–—\-/]',lookup))
+    return bool(employment_header(lookup) or business or stated or (role and (has_delim or len(target.split())<=6)))
 
 
 def project_source_groups(blocks,elements):

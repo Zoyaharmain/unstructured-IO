@@ -29,7 +29,7 @@ def refine_education(values, blocks):
                 # Match physical rows first: PDF joins may put a year directly
                 # before Master/Bachelor, defeating a whole-element word boundary.
                 source = ''.join(part.text for part in run)[b.start-run[0].start+local.start():]
-                match = re.match(re.escape(local.group()),source,re.I)
+                match = DEGREE.match(source) or re.match(re.escape(local.group()), source, re.I)
                 if previous and ((re.fullmatch(r'\s*\(\s*', b.text[previous.end():local.start()]) and b.text[local.end():].startswith(')'))
                         or re.fullmatch(r'\s*/\s*', b.text[previous.end():local.start()])):
                     continue

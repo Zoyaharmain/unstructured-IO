@@ -2,7 +2,7 @@
 import re
 
 ROLE_END=r'(?:Engineer|Developer|Programmer|Scientist|Specialist|Analyst|Consultant|Architect|Manager|Administrator|Officer|Director)'
-JOINED=re.compile(r'^(?P<role>(?:[A-Z][\w+/#&.-]*\s+){0,5}'+ROLE_END+r'(?:\s+(?:[IVX]+|[1-6]))?(?:\s*[-–—]\s*[A-Z][A-Z0-9/+.-]*)?)\s+(?P<company>[A-Z][A-Za-z0-9&.\x27’ -]+?)\s*$')
+JOINED=re.compile(r'^(?P<role>(?:[A-Za-z][\w+/#&.-]*\s+){0,5}'+ROLE_END+r'(?:\s+(?:[IVX]+|[1-6]))?(?:\s*[-–—]\s*[A-Za-z0-9/+.-]*)?)\s+(?P<company>[A-Za-z0-9&.\x27’ -]+?)\s*$', re.I)
 
 
 def joined_job_header(text):

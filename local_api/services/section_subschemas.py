@@ -45,9 +45,21 @@ def build_subschemas(sections, data, scope, record_bindings=None):
                 refs = [SourceQuote(**ref) for ref in citations(item, allowed)]
                 if not refs:
                     refs = [SourceQuote(**ref) for ref in citations(item, allowed, flexible_whitespace=True)]
+                if not refs and '\n' in literal:
+                    parts = [p.strip() for p in literal.split('\n') if p.strip()]
+                    part_refs = []
+                    for p in parts:
+                        c = citations(p, allowed) or citations(p, allowed, flexible_whitespace=True)
+                        if not c:
+                            part_refs = []
+                            break
+                        part_refs.extend(c)
+                    if part_refs:
+                        refs = [SourceQuote(**ref) for ref in part_refs]
                 if (refs and not any(literal.casefold() in r.quote.casefold() for r in refs)
                         and not contiguous_support(item, refs, inventory)
-                        and not (re.sub(r'[\s\W_]+', '', ''.join(r.quote for r in refs)).casefold() == re.sub(r'[\s\W_]+', '', literal).casefold())):
+                        and not (re.sub(r'[\s\W_]+', '', ''.join(r.quote for r in refs)).casefold() == re.sub(r'[\s\W_]+', '', literal).casefold())
+                        and not ('\n' in literal and all(any(p.casefold() in r.quote.casefold() for r in refs) for p in [x.strip() for x in literal.split('\n') if x.strip()]))):
                     refs = []
                 if refs:
                     # A cited fragment does not consume the rest of its source block.
