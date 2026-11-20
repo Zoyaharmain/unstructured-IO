@@ -416,3 +416,43 @@ def test_read_only_provider_retries_transient_failure_and_closes_response(monkey
     assert attempts == ['GET', 'GET']
     assert waits == [0.5]
     assert all(response.closed for response in responses)
+
+
+@pytest.mark.parametrize('score, model, tier', [
+    (.80, 'test-cheap', 'cheap'),
+    (.50, 'test-higher', 'higher'),
+    (.49, 'test-strongest', 'strongest'),
+    (None, 'test-model', None),
+])
+def test_section_confidence_selects_the_model_used_by_transport(document, monkeypatch, score, model, tier):
+    from local_api.services import section_model_routing
+
+    request, local = document
+    local.needs_review[0].candidate_section = 'education'
+    local.needs_review[0].margin = .08
+    monkeypatch.setattr(section_model_routing, 'confidence_for', lambda *args, **kwargs: {'probability': score})
+    called = []
+
+    def transport(settings, messages):
+        called.append((settings.model, settings.routing_tier))
+        return reply('experience', 'experience', 'education')
+
+    settings = configured(section_review_models=('test-cheap', 'test-higher', 'test-strongest'))
+    result = review.review_sections(request, local, settings=settings, transport=transport)
+    assert result.metadata['llm_review']['status'] == 'complete'
+    assert called == [(model, tier)]
+
+
+def test_paid_completion_timeout_is_not_retried(monkeypatch):
+    attempts = []
+
+    class Opener:
+        def open(self, request, timeout):
+            attempts.append(timeout)
+            raise TimeoutError('synthetic timeout')
+
+    monkeypatch.setattr(review, 'build_opener', lambda *_: Opener())
+    settings = configured(timeout=8)
+    with pytest.raises(review.ReviewError, match='provider_unavailable'):
+        review.call_deepseek(settings, [])
+    assert attempts == [8]

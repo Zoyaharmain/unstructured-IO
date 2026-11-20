@@ -175,3 +175,98 @@ def test_browser_run_id_crosses_extraction_sections_and_mapping(run, monkeypatch
         assert c.status_code==200,c.text
         assert b.headers['X-Resume-Run-ID']==c.headers['X-Resume-Run-ID']==run_id
         assert c.json()['meta']['schema_audit']['provider_calls']==0
+
+
+def test_terminal_view_distinguishes_configured_model_confidence_and_judge():
+    from local_api.services.terminal_trace_format import TerminalTraceFormatter
+
+    formatter = TerminalTraceFormatter(use_color=True)
+
+    def render(event, **fields):
+        record = logging.LogRecord('resume.pipeline', logging.DEBUG, '', 1, '', (), None)
+        record.trace_row = {'event': event, 'run_id': '12345678' * 4, 'stage': 'test', **fields}
+        return formatter.format(record)
+
+    provider = render('llm_call_start', model='configured-model', trigger='automatic_schema_audit',
+                      confidence_based_routing=False)
+    assert '\x1b[34mDEBUG' in provider
+    assert 'Input' in provider and 'Output' in provider
+    assert 'configured-model' in provider and 'configured model' in provider
+
+    prediction = render('decision', decision_type='ml_section_prediction',
+                        confidence={'state': 'calibrated', 'probability': .82})
+    assert '82.0%' in prediction
+
+    judge = render('audit_outcome', status='complete', outcome='no_findings',
+                   expected_units=4, checked_units=4, provider_calls=1)
+    assert 'read-only schema audit' in judge.lower() and 'no_findings' in judge
+
+
+def test_section_assignment_preview_only_goes_to_readable_console(run, monkeypatch):
+    from local_api.services.terminal_trace_format import TerminalTraceFormatter
+
+    monkeypatch.setenv('RESUME_LOG_VALUES', 'true')
+    captured = []
+
+    class Capture(logging.Handler):
+        def emit(self, record):
+            captured.append(self.format(record))
+
+    handler = Capture()
+    handler.setFormatter(TerminalTraceFormatter(use_color=False))
+    trace.logger.addHandler(handler)
+    old_level = trace.logger.level
+    trace.logger.setLevel(logging.DEBUG)
+    try:
+        trace.decision('section_assignment', source_ids=['e5:0:8'], section='skills',
+                       reason='Follows a detected heading', candidate='skills', margin=.08,
+                       preview="'Example source'")
+    finally:
+        trace.logger.removeHandler(handler)
+        trace.logger.setLevel(old_level)
+
+    assert 'Stage 2 · e5:0:8' in captured[0]
+    assert "Input: 'Example source'" in captured[0]
+    assert 'Assigned to: Skills' in captured[0]
+    assert 'Why: Follows a detected heading' in captured[0]
+    assert 'Confidence: not calibrated' in captured[0]
+    assert 'Example source' not in json.dumps(events(run))
+
+
+def test_manager_view_keeps_stage_summaries_and_judge_without_debug_noise():
+    from local_api.services.terminal_trace_format import ConsolidatedSectionFilter, TerminalTraceFormatter
+
+    def record(event, **fields):
+        item = logging.LogRecord('resume.pipeline', logging.INFO, '', 1, '', (), None)
+        item.trace_row = {'event': event, 'run_id': '12345678' * 4, 'stage': 'request', **fields}
+        return item
+
+    summary = ConsolidatedSectionFilter(summary=True)
+    formatter = TerminalTraceFormatter()
+    stage = record('stage_summary', number=6, inputs='mapped fields', outputs='LLM-as-judge not_requested; 0 calls',
+                   method='source validation')
+    assert summary.filter(stage)
+    assert 'Stage 6 · Evidence validation and review' in formatter.format(stage)
+    assert 'Output: LLM-as-judge not_requested; 0 calls' in formatter.format(stage)
+    assert summary.filter(record('llm_call_start'))
+    assert not summary.filter(record('stage_start'))
+    assert not ConsolidatedSectionFilter().filter(record('decision', decision_type='section_assignment', meaningful=False))
+
+
+def test_run_summary_uses_only_reported_tokens_and_configured_cost(run, monkeypatch):
+    monkeypatch.setenv('DEEPSEEK_MODEL_PRICES_JSON', '{"test-model":{"input":2,"output":4}}')
+
+    @trace.provider_trace
+    def provider(settings, path, body):
+        return {'usage': {'prompt_tokens': 100, 'completion_tokens': 50}}
+
+    trace.stage_summary(1, 'document', 'one element', 'local extraction')
+    provider(ReviewSettings(model='test-model'), '/chat/completions', {})
+    trace.emit('request_end', duration_ms=120)
+    trace.emit('run_summary')
+    totals = events(run)[-1]['totals']
+    assert totals['stages_completed'] == totals['completion_calls'] == 1
+    assert totals['input_tokens_reported'] == 100 and totals['output_tokens_reported'] == 50
+    assert totals['processing_ms'] == 120
+    assert totals['estimated_cost_usd_for_priced_calls'] == .0004
+    assert totals['calibrated_candidate_confidence'] == {}

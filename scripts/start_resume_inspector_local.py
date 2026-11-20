@@ -30,7 +30,8 @@ def main():
     print(f"Resume Inspector: http://localhost:{args.port}", flush=True)
     print(f"DeepSeek enabled: {status['enabled']}; configured: {status['configured']}", flush=True)
     import uvicorn
-    run_options = {'host': '127.0.0.1', 'port': args.port}
+    run_options = {'host': '127.0.0.1', 'port': args.port,
+                   'access_log': os.getenv('RESUME_LOG_FORMAT', 'dashboard').lower() != 'dashboard'}
     if args.development:
         # Schema/mapper edits must invalidate the running development process.
         # Watch application code only, excluding reports and model caches.

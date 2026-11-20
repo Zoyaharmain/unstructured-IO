@@ -121,6 +121,10 @@ def record_failure(exc, stage, path=(), *, attempt=None, recovered=False):
     diagnostic = diagnose(exc, stage, path)
     diagnostic.update(attempt=attempt, recovered=recovered)
     logger.warning('schema_mapping_failure %s', json.dumps(diagnostic, sort_keys=True))
+    from local_api.services.decision_trace import emit
+    emit('validation_failure', level=logging.WARNING, diagnostic_id=diagnostic['id'],
+         path=diagnostic['path'], code=diagnostic['code'], reason=diagnostic['validation_message'],
+         attempt=attempt, recovered=recovered)
     return diagnostic
 
 

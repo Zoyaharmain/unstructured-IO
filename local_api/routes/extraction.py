@@ -1,9 +1,11 @@
+import re
 from typing import Annotated
 from fastapi import APIRouter, File, Form, HTTPException, UploadFile
 from starlette.concurrency import run_in_threadpool
 from local_api.core.config import Settings
 from local_api.schemas.extraction import ExtractionResponse, Strategy
 from local_api.services.text_extraction_service import extract_text
+from local_api.services.decision_trace import emit
 from local_api.utils.file_validation import ExtractionError, safe_filename
 
 router = APIRouter()
@@ -25,6 +27,10 @@ async def extract_document(
             payload.extend(chunk)
             if len(payload) > settings.max_upload_bytes:
                 raise ExtractionError(413, 'Uploaded file exceeds configured size limit')
+        declared_type = file.content_type or ''
+        emit('document_received', input_bytes=len(payload),
+             declared_file_type=declared_type if re.fullmatch(r'[a-zA-Z0-9.+-]+/[a-zA-Z0-9.+-]+', declared_type) else None,
+             preview=repr(name))
         return await run_in_threadpool(extract_text, bytes(payload), name, strategy, include_elements, settings)
     except ExtractionError as exc:
         raise HTTPException(exc.status, str(exc)) from exc

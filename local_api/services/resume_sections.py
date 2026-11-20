@@ -254,19 +254,20 @@ class SectionEngine:
                               if artifact_reason(request.elements[units[i].index], units[i]) not in {'Explicit page separator','Source-supported page-number footer retained'} and
                               (heading_boundary(units[i].text, ALIASES)[0] is not None or
                                (len(units[i].text.split()) <= 12 and score >= .72 and margin >= .09))), len(units))
+        from local_api.services.confidence import confidence_for
+        anchor_digest = hashlib.sha256(json.dumps(ANCHORS, sort_keys=True).encode()).hexdigest()
         for position, (unit, heading, content) in enumerate(zip(units, headers, contents)):
             element = request.elements[unit.index]
             hlabel, hcluster, hscore, hmargin = heading
             label, cluster, similarity, margin = content
             from local_api.services.decision_trace import decision
-            from local_api.services.confidence import confidence_for
-            anchor_digest = hashlib.sha256(json.dumps(ANCHORS, sort_keys=True).encode()).hexdigest()
+            content_confidence = confidence_for(margin, task='section_content', model_revision=MODEL_REVISION, anchor_sha256=anchor_digest)
+            heading_confidence = confidence_for(hmargin, task='section_heading', model_revision=MODEL_REVISION, anchor_sha256=anchor_digest)
             decision('ml_section_prediction', source_ids=[f'e{unit.index}:{unit.start}:{unit.end}'],
                      heading_candidate=hlabel, heading_similarity=hscore, heading_margin=hmargin,
                      content_candidate=label, content_similarity=similarity, content_margin=margin,
                      model=MODEL_ID, model_revision=MODEL_REVISION,
-                     confidence=confidence_for(margin, task='section_content', model_revision=MODEL_REVISION, anchor_sha256=anchor_digest),
-                     heading_confidence=confidence_for(hmargin, task='section_heading', model_revision=MODEL_REVISION, anchor_sha256=anchor_digest))
+                     confidence=content_confidence, heading_confidence=heading_confidence)
             candidate = label
             context_source = None
             context = element_contexts.get(unit.index) or contexts.get(unit.lane)
@@ -445,7 +446,16 @@ class SectionEngine:
                                  pending_boundary_id=None if label == 'personal_information' else pending_boundary,
                                  cluster_space='heading' if is_heading else 'content', context_source_element_index=context_source, similarity=round(similarity, 4),
                                  margin=round(margin, 4), lane=unit.lane, reason=reason)
-            if assignment == 'needs_review' or label not in ANCHORS:
+            assigned = label if assignment != 'needs_review' and label in ANCHORS else 'unresolved'
+            decision('section_assignment', source_ids=[f'e{unit.index}:{unit.start}:{unit.end}'],
+                     section=assigned, reason=reason, rule=assignment, candidate=hlabel if is_heading else candidate,
+                     alternatives=block.alternatives,
+                     similarity=hscore if is_heading else content[2],
+                     meaningful=any(char.isalnum() for char in unit.text),
+                     margin=hmargin if is_heading else content[3],
+                     confidence=heading_confidence if is_heading else content_confidence,
+                     preview=repr(unit.text[:240]))
+            if assigned == 'unresolved':
                 review.append(block)
             else:
                 grouped.setdefault(label, []).append(block)

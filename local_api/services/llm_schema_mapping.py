@@ -7,6 +7,7 @@ from local_api.services.decision_trace import traced
 import json
 import re
 import time
+from contextvars import copy_context
 
 from local_api.schemas.mapping import SchemaMappingResponse
 from local_api.schemas.sections import SectionEntry
@@ -1058,7 +1059,7 @@ def map_with_field_review(request, *, settings=None, transport=None, budget=None
                         prefetched[index] = future
                         break
                     calls += 1
-                    prefetched[index] = executor.submit(transport, settings, planned_prompt)
+                    prefetched[index] = executor.submit(copy_context().run, transport, settings, planned_prompt)
             attempt_start = len(attempts)
             batch_failed = False
             prompt = messages(batch, fallback.meta.get('completeness_check'))

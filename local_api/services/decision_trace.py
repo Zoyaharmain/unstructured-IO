@@ -9,6 +9,7 @@ import logging
 import os
 from pathlib import Path
 import re
+import sys
 import threading
 import time
 from uuid import uuid4
@@ -17,6 +18,7 @@ logger = logging.getLogger('resume.pipeline')
 _context = ContextVar('resume_trace', default=None)
 _stage = ContextVar('resume_stage', default=('request', None))
 _parent = ContextVar('resume_parent_decision', default=None)
+_provider_call = ContextVar('resume_provider_call', default=None)
 _lock = threading.RLock()
 
 
@@ -25,7 +27,27 @@ def configure_logging():
     logger.setLevel(level)
     if not logger.handlers:
         handler = logging.StreamHandler()
-        handler.setFormatter(logging.Formatter('%(asctime)s %(levelname)s %(message)s'))
+        style = os.getenv('RESUME_LOG_FORMAT', 'dashboard').lower()
+        if style == 'dashboard':
+            from rich.console import Console
+            from local_api.services.terminal_dashboard import DashboardHandler
+            color = os.getenv('RESUME_LOG_COLOR', 'auto').lower()
+            mode = 'quiet' if os.getenv('RESUME_LOG_VIEW') == 'quiet' else (
+                'debug' if level == logging.DEBUG else 'normal')
+            handler = DashboardHandler(mode=mode,
+                console=Console(stderr=True, force_terminal=True if color == 'always' else None,
+                                no_color=True if color == 'never' else None),
+                live=sys.stderr.isatty() and os.getenv('RESUME_DASHBOARD_LIVE', 'true').lower() == 'true')
+            logger.setLevel(logging.DEBUG)
+        elif style == 'json':
+            handler.setFormatter(logging.Formatter('%(message)s'))
+        else:
+            from local_api.services.terminal_trace_format import ConsolidatedSectionFilter, TerminalTraceFormatter
+            color = os.getenv('RESUME_LOG_COLOR', 'auto').lower()
+            use_color = color == 'always' or (color == 'auto' and sys.stderr.isatty() and 'NO_COLOR' not in os.environ)
+            handler.setFormatter(TerminalTraceFormatter(use_color=use_color))
+            view = os.getenv('RESUME_LOG_VIEW', '').lower()
+            handler.addFilter(ConsolidatedSectionFilter(summary=view == 'summary', quiet=view == 'quiet'))
         logger.addHandler(handler)
     logger.propagate = False
 
@@ -51,16 +73,25 @@ def reset(token):
     _context.reset(token)
 
 
-def emit(event, *, level=logging.INFO, **fields):
+def trace_enabled():
+    return _context.get() is not None and os.getenv('RESUME_TRACE_ENABLED', 'true').lower() == 'true'
+
+
+def emit(event, *, level=logging.INFO, preview=None, payload_preview=None, **fields):
     """Only callers' explicit safe signals are serialized. I/O failures never affect parsing."""
     context = _context.get()
-    if context is None or os.getenv('RESUME_TRACE_ENABLED', 'true').lower() != 'true':
+    if not trace_enabled():
         return
     row = {'run_id': context.run_id, 'event_id': uuid4().hex, 'event': event,
            'stage': _stage.get()[0], 'parent_decision_id': _parent.get(),
            'timestamp_ns': time.time_ns(), **fields}
     if event == 'decision':
         row['decision_id'] = row['event_id']
+    extra = {'trace_row': row}
+    if preview is not None and os.getenv('RESUME_LOG_VALUES', '').lower() == 'true':
+        extra['trace_preview'] = preview
+    if payload_preview is not None:
+        extra['trace_payload_preview'] = payload_preview
     try:
         directory = context.root / context.run_id
         directory.mkdir(parents=True, exist_ok=True, mode=0o700)
@@ -70,16 +101,27 @@ def emit(event, *, level=logging.INFO, **fields):
             saved = json.loads(state.read() or '{}')
             row['sequence'] = saved.get('sequence', 0) + 1
             saved['sequence'] = row['sequence']
+            from local_api.services.trace_totals import summarize, update_totals
+            update_totals(saved, row)
+            if event == 'run_summary':
+                row['totals'] = summarize(saved.get('totals', {}))
             state.seek(0); state.truncate(); json.dump(saved, state); state.flush()
             with open(directory / 'events.jsonl', 'a', encoding='utf-8',
                       opener=lambda p, f: os.open(p, f, 0o600)) as output:
                 output.write(json.dumps(row, ensure_ascii=False, default=str) + '\n')
-            logger.log(level, json.dumps(row, ensure_ascii=False, default=str))
+            if event in {'stage_summary', 'run_summary', 'llm_call_start', 'llm_call_end', 'audit_outcome'} or level >= logging.WARNING:
+                from local_api.services.terminal_trace_format import TerminalTraceFormatter
+                record = logging.LogRecord(logger.name, level, '', 0, '', (), None)
+                record.trace_row = row
+                with open(directory / 'execution.log', 'a', encoding='utf-8',
+                          opener=lambda p, f: os.open(p, f, 0o600)) as output:
+                    output.write(TerminalTraceFormatter().format(record) + '\n')
             fcntl.flock(state, fcntl.LOCK_UN)
+        logger.log(level, json.dumps(row, ensure_ascii=False, default=str), extra=extra)
     except Exception:
         try:
             logger.warning('run_id=%s trace_storage_unavailable', context.run_id)
-            logger.log(level, json.dumps(row, default=str))
+            logger.log(level, json.dumps(row, default=str), extra=extra)
         except Exception:
             pass
     return row['event_id']
@@ -120,10 +162,26 @@ def uncertainty(state='not_calibrated'):
     return {'state': state, 'probability': None, 'method': None, 'calibration_version': None}
 
 
+def structure(value):
+    """Report shape and known pipeline counts without logging argument values."""
+    result = {'type': type(value).__name__}
+    if isinstance(value, (list, tuple, dict)):
+        result['items'] = len(value)
+    for key in ('elements', 'sections', 'needs_review', 'section_schemas'):
+        collection = getattr(value, key, None)
+        if isinstance(collection, list):
+            result[key] = len(collection)
+    return result
+
+
 def decision(kind, **data):
     data.setdefault('confidence', uncertainty())
     emit('decision', level=logging.DEBUG, decision_type=kind,
          **data)
+
+
+def stage_summary(number, inputs, outputs, method):
+    emit('stage_summary', number=number, inputs=inputs, outputs=outputs, method=method)
 
 
 def _view(value):
@@ -175,7 +233,10 @@ def _report(before, value):
                              source_ids=list(dict.fromkeys(q.source_id for item in attribute.items for q in item.evidence)),
                              item_count=len(attribute.items), confidence=uncertainty('evidence_only'),
                              before=before_field, after=selected,
-                             value_ref=f'/section_schemas/{si}/records/{ri}/attributes/{ai}')
+                             value_ref=f'/section_schemas/{si}/records/{ri}/attributes/{ai}',
+                             preview=repr([{'value': item.value, 'quotes': [q.quote for q in item.evidence]}
+                                           for item in attribute.items])[:240]
+                             if os.getenv('RESUME_LOG_VALUES', '').lower() == 'true' else None)
     if isinstance(value, list) and all(isinstance(x, str) for x in value):
         emit('validation_result', errors=value, confidence=uncertainty('evidence_only'))
     if isinstance(value, tuple) and len(value) == 4 and hasattr(value[0], 'model_dump'):
@@ -194,7 +255,7 @@ def _report(before, value):
                      semantic_correctness='unmeasured')
     if isinstance(value, dict) and 'findings' in value and 'coverage' in value:
         coverage = value.get('coverage', {})
-        emit('audit_outcome', status=value.get('status'),
+        emit('audit_outcome', status=value.get('status'), outcome=value.get('outcome'),
              findings=len(value.get('findings', [])), partial_findings=len(value.get('partial_findings', [])),
              expected_units=coverage.get('expected_units', len(coverage.get('original_target_ids', []))),
              checked_units=coverage.get('checked_units', len(value.get('checked_ids', []))),
@@ -206,6 +267,8 @@ def traced(stage, trigger=None, *, detail=False):
     def decorate(fn):
         @wraps(fn)
         def wrapper(*args, **kwargs):
+            if not trace_enabled():
+                return fn(*args, **kwargs)
             effective_trigger = ('existing_unresolved_followup' if kwargs.get('_targeted') else trigger) or _stage.get()[1]
             token = _stage.set((stage, effective_trigger))
             parent_token = None
@@ -221,13 +284,24 @@ def traced(stage, trigger=None, *, detail=False):
                         pass
                 event_id = emit('stage_start', level=logging.DEBUG if detail else logging.INFO,
                                 function=fn.__name__, module=fn.__module__, line=fn.__code__.co_firstlineno,
-                                trigger=effective_trigger, confidence_based_routing=False)
+                                trigger=effective_trigger, confidence_based_routing=False,
+                                input_structure=[structure(arg) for arg in args])
                 parent_token = _parent.set(event_id)
                 value = fn(*args, **kwargs)
-                if type(value).__name__ == 'ExtractionResponse' and value.elements:
+                if type(value).__name__ == 'ExtractionResponse':
                     bind_elements(value.elements)
+                    elements = value.elements or []
                     emit('extraction_result', requested_strategy=value.strategy,
-                         element_count=len(value.elements), source_accuracy='unknown')
+                         element_count=value.metadata.total_elements, source_accuracy='unknown',
+                         file_type=value.file_type, pages=value.metadata.page_count)
+                    stage_summary(1, f'uploaded document; requested strategy: {value.strategy}',
+                                  f'{value.metadata.total_elements} extracted text elements', 'local document extraction')
+                    if logger.isEnabledFor(logging.DEBUG):
+                        for index, element in enumerate(elements):
+                            emit('extracted_element', level=logging.DEBUG, source_id=f'e{index}',
+                                 page=element.page_number, element_type=element.type,
+                                 characters=len(element.text),
+                                 preview=repr(element.text[:240]))
                 if _context.get():
                     try:
                         _report(before, value)
@@ -240,10 +314,15 @@ def traced(stage, trigger=None, *, detail=False):
                     except Exception:
                         emit('trace_observation_unavailable', level=logging.WARNING)
                 emit('stage_end', level=logging.DEBUG if detail else logging.INFO,
-                     status='returned', duration_ms=round((time.monotonic()-begin)*1000, 3))
+                     status='returned', duration_ms=round((time.monotonic()-begin)*1000, 3),
+                     output_structure=structure(value))
                 return value
             except Exception as exc:
+                import traceback
+                frames = [f'{Path(frame.filename).name}:{frame.lineno} in {frame.name}'
+                          for frame in traceback.extract_tb(exc.__traceback__)]
                 emit('stage_failure', level=logging.ERROR, error_type=type(exc).__name__,
+                     frames=frames,
                      duration_ms=round((time.monotonic()-begin)*1000, 3))
                 raise
             finally:
@@ -257,6 +336,8 @@ def traced(stage, trigger=None, *, detail=False):
 def provider_trace(fn):
     @wraps(fn)
     def wrapper(settings, path, body=None):
+        if not trace_enabled():
+            return fn(settings, path, body)
         call_id, begin = uuid4().hex, time.monotonic()
         stage, trigger = _stage.get()
         targets, signals, target_ids = [], [], []
@@ -277,20 +358,41 @@ def provider_trace(fn):
                                 targets.extend(b['source_id'] for b in section.get('blocks', []) if 'source_id' in b)
         except Exception:
             pass
+        targets = [sid for sid in targets if isinstance(sid, str) and re.fullmatch(r'e\d+:\d+:\d+', sid)]
+        from local_api.services.trace_payloads import capture_payload
+        context = _context.get()
+        def capture(phase, value):
+            if not trace_enabled():
+                return None, None
+            return capture_payload(context.root, context.run_id, call_id, phase, value, settings.api_key)
+
+        payload_preview, payload_file = capture('request', body)
         emit('llm_call_start', call_id=call_id, provider='DeepSeek', model=settings.model,
+             payload_preview=payload_preview, private_payload_file=payload_file,
              trigger=trigger or ('connection_check' if body is None else 'existing_review_logic'),
              requirement='mandatory_within_reviewed_mode' if trigger in {
                  'reviewed_mode_complete_section_review', 'automatic_schema_audit'} else
                  'optional_requested_review' if trigger == 'review_fields_requested' else 'conditional_existing_logic',
-             source_ids=targets, decision_ids=[_parent.get()] if _parent.get() else [],
-             confidence=uncertainty(), confidence_based_routing=False)
+             request_kind='completion' if body is not None else 'connection_check',
+             attempt=1, timeout_seconds=settings.timeout,
+             source_ids=targets, source_span_count=len(set(targets)),
+             input_bytes=len(json.dumps(body).encode('utf-8')) if body is not None else 0, decision_ids=[_parent.get()] if _parent.get() else [],
+             confidence=uncertainty(), confidence_based_routing=bool(getattr(settings, 'routing_tier', None)),
+             model_tier=getattr(settings, 'routing_tier', None),
+             routing_probability=getattr(settings, 'routing_probability', None))
         emit('llm_call_signals', level=logging.DEBUG, call_id=call_id,
              target_ids=target_ids, available_signals=signals)
+        token = _provider_call.set(call_id)
         try:
             result = fn(settings, path, body)
             raw_usage = result.get('usage') if isinstance(result, dict) else None
-            usage = {k: v for k, v in raw_usage.items() if isinstance(v, (int, float))} if isinstance(raw_usage, dict) else {}
-            emit('llm_call_end', call_id=call_id, status='provider_returned',
+            usage = {k: raw_usage[k] for k in ('prompt_tokens', 'completion_tokens', 'total_tokens')
+                     if isinstance(raw_usage, dict) and type(raw_usage.get(k)) is int and raw_usage[k] >= 0}
+            from local_api.services.trace_totals import estimated_cost
+            payload_preview, payload_file = capture('response', result)
+            emit('llm_call_end', call_id=call_id, model=settings.model, status='provider_returned',
+                 payload_preview=payload_preview, private_payload_file=payload_file,
+                 estimated_cost=estimated_cost(settings.model, usage),
                  latency_ms=round((time.monotonic()-begin)*1000, 3), token_usage=usage or None,
                  semantic_correctness='unmeasured')
             return result
@@ -302,4 +404,11 @@ def provider_trace(fn):
             emit('llm_call_error', level=logging.ERROR, call_id=call_id, error_type=type(exc).__name__,
                  error_code=safe_code, latency_ms=round((time.monotonic()-begin)*1000, 3), token_usage=None)
             raise
+        finally:
+            _provider_call.reset(token)
     return wrapper
+
+
+def provider_retry(attempt, reason):
+    emit('provider_retry', level=logging.WARNING, call_id=_provider_call.get(),
+         attempt=attempt, reason=reason)

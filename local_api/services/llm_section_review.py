@@ -34,6 +34,13 @@ class ReviewSettings:
     max_pass_requests: int = 16
     max_total_requests: int = 128
     field_workers: int = 1
+    section_review_models: tuple[str, str, str] = ('', '', '')
+    routing_tier: str | None = None
+    routing_probability: float | None = None
+    section_consensus: bool = False
+    high_confidence: float = .80
+    low_confidence: float = .50
+    section_judge_model: str = ''
 
     @classmethod
     def from_env(cls):
@@ -54,9 +61,18 @@ class ReviewSettings:
                    max_document_requests=int(os.getenv('DEEPSEEK_REVIEW_DOCUMENT_REQUESTS','32')),
                    max_pass_requests=int(os.getenv('DEEPSEEK_REVIEW_PASS_REQUESTS','16')),
                    max_total_requests=int(os.getenv('DEEPSEEK_REVIEW_TOTAL_REQUESTS','128')),
-                   field_workers=int(os.getenv('DEEPSEEK_FIELD_WORKERS','3')))
+                   field_workers=int(os.getenv('DEEPSEEK_FIELD_WORKERS','3')),
+                   section_review_models=(os.getenv('DEEPSEEK_CHEAP_MODEL', '').strip(),
+                                          os.getenv('DEEPSEEK_HIGHER_MODEL', '').strip(),
+                                          os.getenv('DEEPSEEK_STRONGEST_MODEL', '').strip()),
+                   section_consensus=os.getenv('DEEPSEEK_SECTION_CONSENSUS', '').lower() == 'true',
+                   high_confidence=float(os.getenv('DEEPSEEK_HIGH_CONFIDENCE', '.80')),
+                   low_confidence=float(os.getenv('DEEPSEEK_LOW_CONFIDENCE', '.50')),
+                   section_judge_model=os.getenv('DEEPSEEK_SECTION_JUDGE_MODEL', '').strip())
 
     def validate(self):
+        if not 0 <= self.low_confidence < self.high_confidence <= 1:
+            raise ReviewError('invalid_configuration')
         if type(self.field_workers) is not int or not 1 <= self.field_workers <= 4:
             raise ReviewError('invalid_configuration')
         url = urlsplit(self.base_url)
@@ -117,7 +133,7 @@ def review_status():
         return {'enabled': False, 'configured': False, 'provider': 'DeepSeek', 'configuration_error': True}
 
 
-from local_api.services.decision_trace import provider_trace
+from local_api.services.decision_trace import provider_retry, provider_trace
 
 
 @provider_trace
@@ -139,12 +155,14 @@ def provider_json(settings, path, body=None):
             code_name = http_error_code(exc.code)
             exc.close()
             if attempt < max_retries and exc.code in {429, 500, 502, 503, 504}:
+                provider_retry(attempt + 2, code_name)
                 time.sleep(0.5 * (2 ** attempt))
                 continue
             logger.warning('DeepSeek HTTPError %s (%s)', exc.code, code_name)
             raise ReviewError(code_name) from None
         except (URLError, TimeoutError, OSError) as exc:
             if attempt < max_retries:
+                provider_retry(attempt + 2, type(exc).__name__)
                 time.sleep(0.5 * (2 ** attempt))
                 continue
             logger.warning('DeepSeek connection error: %s', type(exc).__name__)
@@ -334,11 +352,13 @@ def review_sections(request, local_result, *, settings=None, transport=None, _re
                 if chunked:
                     decisions = run_section_chunks(request,result,settings,transport or call_deepseek,budget,_pass_id,state,feedback,document_sha256,target_only=_targeted)
                     break
-                if not measure(settings,messages)['fits']:
+                from local_api.services.section_model_routing import select_section_model
+                selected = select_section_model(settings, (block for block, _ in ledger))
+                if not measure(selected,messages)['fits']:
                     raise ReviewError('document_limit_exceeded')
                 budget.take(document_key,_pass_id,'section_review')
                 state['provider_calls']+=1
-                content = (transport or call_deepseek)(settings, messages)
+                content = (transport or call_deepseek)(selected, messages)
                 if _targeted:
                     response=json.loads(content)
                     reasons=response.pop('abstention_reasons',{}) if isinstance(response,dict) else {}
@@ -346,6 +366,14 @@ def review_sections(request, local_result, *, settings=None, transport=None, _re
                     state['abstention_reasons']={key:value[:400] for key,value in reasons.items()}
                     content=json.dumps(response,ensure_ascii=False)
                 decisions = parse_decisions(content, len(ledger), categories, {f'u{i}':len(b.text) for i,(b,_) in enumerate(ledger)}, {f'u{i}':b.text for i,(b,_) in enumerate(ledger)}, {f'u{i}':allowed_split_offsets(b,request.elements) for i,(b,_) in enumerate(ledger)})
+                from local_api.services.section_verification import verify_section_decisions
+                decisions = verify_section_decisions(selected, decisions,
+                    {f'u{i}': (b.text, category) for i, (b, category) in enumerate(ledger)},
+                    messages, transport or call_deepseek, budget, document_key, _pass_id, state,
+                    lambda response: parse_decisions(response, len(ledger), categories,
+                        {f'u{i}': len(b.text) for i, (b, _) in enumerate(ledger)},
+                        {f'u{i}': b.text for i, (b, _) in enumerate(ledger)},
+                        {f'u{i}': allowed_split_offsets(b, request.elements) for i, (b, _) in enumerate(ledger)}))
                 break
             except (ReviewError, ChunkError) as exc:
                 details=getattr(exc,'details',[])
@@ -485,7 +513,8 @@ def review_sections(request, local_result, *, settings=None, transport=None, _re
         candidate.metadata['source_ownership'] = snapshot(request.elements, candidate).payload()
         candidate.warnings.append(('DeepSeek reviewed unresolved source spans with full paragraph context. ' if _targeted else 'DeepSeek reviewed all source spans. ')+'Its placements remain provisional and do not verify original-word extraction accuracy.')
         state['classification_complete']=accounting['all_meaningful_text_assigned']
-        if not _targeted and remaining>0 and accounting['unresolved_meaningful_spans'] and state['resolution_status']!='out_of_scope':
+        if (not _targeted and remaining > 0 and accounting['unresolved_meaningful_spans']
+                and state['resolution_status'] != 'out_of_scope' and not state.get('consensus_unresolved')):
             second=review_sections(request,candidate,settings=settings,transport=transport,_remaining=remaining-1,_budget=budget,_pass_id=_pass_id+1,feedback=feedback,document_sha256=document_sha256,_targeted=True)
             next_state=second.metadata['llm_review']
             if next_state['status']=='complete':

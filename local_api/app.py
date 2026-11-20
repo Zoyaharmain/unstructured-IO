@@ -41,6 +41,8 @@ async def pipeline_terminal_trace(request: Request, call_next):
         response.headers['X-Resume-Run-ID'] = context.run_id
         decision_trace.emit('request_end', http_status=response.status_code,
                             duration_ms=round((time.monotonic()-begin)*1000, 3))
+        if request.url.path == '/api/v1/resume/schema':
+            decision_trace.emit('run_summary', http_status=response.status_code)
         return response
     except Exception as exc:
         decision_trace.emit('request_failure', level=logging.ERROR, error_type=type(exc).__name__)

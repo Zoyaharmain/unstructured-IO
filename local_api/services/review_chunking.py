@@ -259,18 +259,26 @@ def run_section_chunks(request, result, settings, transport, budget, pass_id, st
     if planned['blocked']:
         raise ChunkError('unreviewable_chunk')
     collected = {}
+    from local_api.services.section_model_routing import select_section_model
+    blocks = {f'e{b.source_element_index}:{b.start}:{b.end}': b for b, _ in source_ledger(result)}
     for chunk in planned['chunks']:
         messages=chunk['messages']
         for attempt in range(settings.recovery_attempts+1):
-            if not measure(settings,messages)['fits']:
+            selected = select_section_model(settings, (blocks[u['original_id']] for u in chunk['targets']))
+            if not measure(selected,messages)['fits']:
                 raise ChunkError('unreviewable_chunk')
             budget.take(planned['binding']['source_inventory_sha256'], pass_id, 'section_review')
             state['provider_calls'] += 1
             # Retry only a returned response that violates the local contract.
             # Provider/network errors propagate without repeating paid calls.
-            content = transport(settings, messages)
+            content = transport(selected, messages)
             try:
                 decisions = section_decisions(chunk, content, ANCHORS)
+                from local_api.services.section_verification import verify_section_decisions
+                decisions = verify_section_decisions(selected, decisions,
+                    {u['id']: (u['text'], u['current_category']) for u in chunk['targets']},
+                    messages, transport, budget, planned['binding']['source_inventory_sha256'],
+                    pass_id, state, lambda response: section_decisions(chunk, response, ANCHORS))
                 break
             except ChunkError as exc:
                 state.setdefault('chunk_validation_attempts',[]).append({'chunk_id':chunk['chunk_id'],
