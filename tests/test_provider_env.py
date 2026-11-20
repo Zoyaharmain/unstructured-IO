@@ -1,5 +1,6 @@
 """The local launcher reads provider settings without executing .env content."""
 from local_api.core.provider_env import load_provider_env
+import os
 
 
 def test_private_settings_and_process_precedence(tmp_path, monkeypatch):
@@ -32,3 +33,15 @@ def test_env_content_is_not_executed(tmp_path, monkeypatch):
 
 def test_absent_env_is_allowed(tmp_path):
     load_provider_env(tmp_path / 'missing.env')
+
+
+def test_openai_key_is_loaded_and_respects_process_precedence(tmp_path, monkeypatch):
+    monkeypatch.setenv('OPENAI_API_KEY', 'process-key')
+    path = tmp_path / '.env'
+    path.write_text('OPENAI_API_KEY="file-key"\n')
+    load_provider_env(path)
+    assert os.environ['OPENAI_API_KEY'] == 'process-key'
+
+    monkeypatch.delenv('OPENAI_API_KEY')
+    load_provider_env(path)
+    assert os.environ['OPENAI_API_KEY'] == 'file-key'

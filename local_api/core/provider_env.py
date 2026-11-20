@@ -15,7 +15,7 @@ def load_provider_env(path: Path):
             continue
         key, value = line.split('=', 1)
         key, value = key.strip(), value.strip()
-        if not re.fullmatch(r'DEEPSEEK_[A-Z0-9_]+', key):
+        if key != 'OPENAI_API_KEY' and not re.fullmatch(r'DEEPSEEK_[A-Z0-9_]+', key):
             continue
         if len(value) >= 2 and value[0] == value[-1] and value[0] in ('"', "'"):
             value = value[1:-1]
